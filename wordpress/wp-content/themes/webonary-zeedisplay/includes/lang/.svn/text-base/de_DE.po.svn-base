@@ -1,0 +1,468 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zeeDisplay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-04 13:24+0100\n"
+"PO-Revision-Date: 2011-03-04 13:24+0100\n"
+"Last-Translator: themezee.com <contact@themezee.com>\n"
+"Language-Team: themezee.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: E:\\xampplite\\htdocs\\wordpress\\wp-content\\themes\\zeeDisplay\n"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/404.php:9
+msgid "404 Error: Not found"
+msgstr "404 Fehler: Seite nicht gefunden"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/404.php:12
+msgid "The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for"
+msgstr "Diese Seite existiert nicht oder nicht mehr. Bitte verwende die Navigation oder die Suchbox, um die richtige Seite zu finden."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:5
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:6
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:7
+msgid "Archive for"
+msgstr "Archiv für"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:8
+msgid "Tag Archive for"
+msgstr "Tag Archiv für"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:9
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:48
+msgid "Archives"
+msgstr "Archive"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:20
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/comments.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:21
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/single.php:14
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/slide.php:36
+msgid "No comments"
+msgstr "Keine Kommentare"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:20
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/comments.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:21
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/single.php:14
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/slide.php:36
+msgid "One comment"
+msgstr "Ein Kommentar"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:20
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/comments.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:21
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:17
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/single.php:14
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/slide.php:36
+#, php-format
+msgid "% comments"
+msgstr "% Kommentare"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:25
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:26
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:22
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:47
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:46
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:41
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Ältere Beiträge"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/archive.php:47
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/index.php:46
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:41
+msgid "Recent Entries &raquo;"
+msgstr "Neuere Beiträge &raquo;"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/comments.php:8
+msgid "Enter password to view comments."
+msgstr "Passwort erforderlich, um Kommentare zu sehen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/comments.php:39
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:27
+msgid "Latest Posts"
+msgstr "Letzte Artikel"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:38
+msgid "Pages"
+msgstr "Seiten"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:43
+msgid "Categories"
+msgstr "Kategorien"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:53
+msgid "Posts by Category"
+msgstr "Artikel per Kategorie"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/page-sitemap.php:56
+msgid "Category"
+msgstr "Kategorie"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:6
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:48
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/search.php:53
+msgid "No matches. Please try again, or use the navigation menus to find what you search for."
+msgstr "Diese Seite existiert nicht oder nicht mehr. Bitte verwende die Navigation oder die Suchbox, um die richtige Seite zu finden."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-admin.php:5
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-admin.php:31
+msgid "Options"
+msgstr "Optionen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-admin.php:33
+msgid "It is completely optional, but if you like the Theme I would appreciate it if you keep the credit link at the bottom."
+msgstr "Falls dir dieses Theme gefällt, würde ich mich freuen wenn du den Link zu ThemeZee im Footer beibehältst."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:4
+msgid "Brown"
+msgstr "Braun"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:5
+msgid "Darkblue"
+msgstr "Dunkelblau"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:6
+msgid "Darkgreen"
+msgstr "Dunkelgrün"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:7
+msgid "Green"
+msgstr "Grün"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:8
+msgid "Grey"
+msgstr "Grau"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:9
+msgid "Orange"
+msgstr "Orange"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:10
+msgid "Purple"
+msgstr "Lila"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:11
+msgid "Red"
+msgstr "Rot"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:12
+msgid "Standard"
+msgstr "Standard"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:13
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:74
+msgid "Custom Color"
+msgstr "Eigene Farbe"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:22
+msgid "Theme Settings"
+msgstr "Theme Einstellungen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:25
+msgid "Theme Layout"
+msgstr "Theme Layout"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:28
+msgid "Featured Post Slider"
+msgstr "Artikel Slider"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:31
+msgid "Social Media Buttons"
+msgstr "SocialMedia Buttons"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:34
+msgid "125x125 Ad Spots"
+msgstr "125x125 Banner Spots"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:42
+msgid "Paste the full Image URL of your logo."
+msgstr "Trage hier die volle Bild URL zu deinem Logo ein."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:49
+msgid "Please paste your Google Analytics(or other) tracking code here."
+msgstr "Hier Google Analytics Code (oder anderen) Tracking Code eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:55
+msgid "Footer Content"
+msgstr "Footer Inhalt"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:56
+msgid "Enter here the content which is displayed in the footer."
+msgstr "Hier Inhalt eingeben, der im Footer angezeigt wird."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:66
+msgid "Please select your color scheme here."
+msgstr "Bitte wähle hier dein bevorzugtes Farbschema."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:75
+msgid "Select a custom color here (You have to select the 'custom color' option above)."
+msgstr "Konfiguriere hier deine bevorzugte Farbe. (Oben muss  'custom color'  auswählt sein)"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:81
+msgid "Custom CSS"
+msgstr "Eigenes CSS"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:82
+msgid "Insert your own custom css code into the head of the theme."
+msgstr "Trage hier deinen eigenen CSS Code in den Kopfbereich des Themes ein."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:90
+msgid "Show Post Slider?"
+msgstr "Artikel Slider anzeigen?"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:91
+msgid "Check this if you want to show the Featured Post Slider."
+msgstr "Haken setzen wenn der Featured Artikel Slider angezeigt werden soll."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:97
+msgid "Slider Title"
+msgstr "Slider Titel"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:98
+msgid "Enter here your headline which is displayed above the featured posts."
+msgstr "Hier Überschrift für den Artikel Slider eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:116
+msgid "Slider Content"
+msgstr "Slider Inhalt"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:122
+msgid "Show latest posts"
+msgstr "Letzte Artikel anzeigen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:123
+msgid "Show latest posts from category \"featured\""
+msgstr "Letzte Artikel aus der Kategorie \"featured\" anzeigen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:124
+msgid "Show latest posts with post_meta_key \"featured\""
+msgstr "Letzte Artikel mit Meta Key \"featured\" anzeigen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:125
+msgid "Show latest posts from custom category(enter ID below)"
+msgstr "Letzte Artikel einer bestimmten Kategorie anzeigen (ID unten eingeben)"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:129
+msgid "category ID"
+msgstr "Kategorie ID"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:130
+msgid "Please enter the category ID you'd like to include in the slideshow.(You have to tick the last option above)"
+msgstr "Bitte trage hier die Kategorie ID ein, welche im Slider angezeigt werden soll. (Oben die letzte Option auswählen)"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:136
+msgid "Number of Posts"
+msgstr "Anzahl der Artikel"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:137
+msgid "Enter the number how much posts should be displayed in the post slider."
+msgstr "Hier Anzahl der Artikel eintragen, die im Slider angezeigt werden sollen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:147
+msgid "Enter your RSS URL (e.g. Feedburner Feed) here."
+msgstr "Hier RSS URL eintragen. (z.B. Feedburner URL)"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:154
+msgid "Enter your Email URL (e.g. Feedburner Email Subscription) here."
+msgstr "Hier Email Abonnenten URL eintragen. (z.B. Feedburner Email Subscription URL)"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:161
+msgid "Enter the URL to your Twitter Profile here."
+msgstr "Hier URL zum Twitter Account eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:168
+msgid "Enter the URL to your Facebook Profile here."
+msgstr "Hier URL zum Facebook Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:175
+msgid "Enter the URL to your Tumblr Blog here."
+msgstr "Hier URL zum Tumblr Blog eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:182
+msgid "Enter the URL to your LinkedIn Profile here."
+msgstr "Hier URL zum LinkedIn Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:189
+msgid "Enter the URL to your Xing Profile here."
+msgstr "Hier URL zum Xing Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:196
+msgid "Enter the URL to your Delicious Profile here."
+msgstr "Hier URL zum Delicious Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:203
+msgid "Enter the URL to your Digg Profile here."
+msgstr "Hier URL zum Digg Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:210
+msgid "Enter the URL to your Flickr Profile here."
+msgstr "Hier URL zum Twitter Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:217
+msgid "Enter the URL to your Youtube Profile here."
+msgstr "Hier URL zum Youtube Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:224
+msgid "Enter the URL to your Vimeo Profile here."
+msgstr "Hier URL zum Vimeo Profil eintragen."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:233
+msgid "Rotate banners?"
+msgstr "Banner rotieren?"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:234
+msgid "Check this to randomly rotate the ad spots."
+msgstr "Haken setzen, um alle Banner zufällig rotieren zu lassen"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:240
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:254
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:268
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:282
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:296
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:310
+msgid "Ad Spot Image URL"
+msgstr "Banner Bild URL"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:241
+msgid "Enter the image URL for this ad spot."
+msgstr "Trage hier die Banner URL ein."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:247
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:261
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:275
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:289
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:303
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:317
+msgid "Ad Spot Destination"
+msgstr "Banner Ziel"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/admin/theme-settings.php:248
+msgid "Enter the URL where this ad spot points to."
+msgstr "Trage hier die Zieladresse (Link) des Banners ein."
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/plugins/theme_ads_widget.php:5
+msgid "Show your 125x125 Ad Spots"
+msgstr "Anzeige deiner 125x125 Banner"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/plugins/theme_ads_widget.php:56
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/plugins/theme_socialmedia_widget.php:96
+msgid "Title"
+msgstr "Titel"
+
+#: E:\xampplite\htdocs\wordpress\wp-content\themes\zeeDisplay/includes/plugins/theme_socialmedia_widget.php:5
+msgid "Show your Social Media Buttons"
+msgstr "SocialMedia Buttons anzeigen"
+
+#~ msgid "Tags: "
+#~ msgstr "Tags:"
+
+#~ msgid "Blue"
+#~ msgstr "Blau"
+
+#~ msgid "Archive for the year"
+#~ msgstr "Archiv für das Jahr"
+
+#~ msgid "'s Options has been updated at"
+#~ msgstr "'s Optionen wurden gespeichert um"
+
+#~ msgid "o'clock"
+#~ msgstr "Uhr"
+
+#~ msgid "Save All Changes"
+#~ msgstr "Änderungen speichern"
+
+#~ msgid "Upload picture"
+#~ msgstr "Bild hochladen"
+
+#~ msgid "125x125 Ad Spots - can be activated as widget into sidebar"
+#~ msgstr "125x125 Banner - müssen als Widget in der Sidebar aktiviert werden"
+
+#~ msgid "Leave a Reply"
+#~ msgstr "Kommentar hinterlassen"
+
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Antworten auf %s"
+
+#~ msgid "You must be logged in to post a comment."
+#~ msgstr "Du musst eingeloggt sein, um einen Kommentar zu hinterlassen."
+
+#~ msgid "Logged in as"
+#~ msgstr "Eingeloggt als"
+
+#~ msgid "(required)"
+#~ msgstr "(erforderlich)"
+
+#~ msgid "E-mail (will not be published)"
+#~ msgstr "Email (wird nicht veröffentlicht)"
+
+#~ msgid "Submit"
+#~ msgstr "Abschicken"
+
+#~ msgid "Enter your Feedburner URL here."
+#~ msgstr "Hier kannst du deine Feedburner URL eintragen."
+
+#~ msgid "Please select the sidebar position here (left or right)."
+#~ msgstr "Wähle hier die Sidebar Position (links oder rechts)"
+
+#~ msgid ""
+#~ "Build your tabbed area by placing widgets here. IMPORTANT: DO NOT PLACE "
+#~ "THE THEME TABBED WIDGET IN THIS AREA!! Place the THEME TABBED widget in "
+#~ "another widget area."
+#~ msgstr ""
+#~ "Gestalte deine Tabs, indem du hier Widgets platzierst. Jedes Widget "
+#~ "ergibt einen Tab. WICHTIG: PLATZIERE HIER NICHT DAS THEME TABBED WIDGET! "
+#~ "Das Theme Tabbed Widget gehört in einen anderen Widget Bereich."
+
+#~ msgid "Show built-in Tab Widget"
+#~ msgstr "Dein Widget zur Anzeige von Tabs"
+
+#~ msgid "Show your latest Tweets"
+#~ msgstr "Letzte Tweets anzeigen"
+
+#~ msgid "Latest Tweets"
+#~ msgstr "Letzte Tweets"
+
+#~ msgid "More updates on Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "User"
+#~ msgstr "Account"
+
+#~ msgid "Number of tweets to show"
+#~ msgstr "Anzahl der Tweets"
+
+#~ msgid "(at most 15)"
+#~ msgstr "(höchstens 15)"
+
+#~ msgid "Show link to Twitter"
+#~ msgstr "Link zu Twitter zeigen?"
+
+#~ msgid "Link label"
+#~ msgstr "Linktext"
+
+#~ msgid "No replies"
+#~ msgstr "Keine Kommentare"
+
+#~ msgid "One reply"
+#~ msgstr "Ein Kommentar"
+
+#~ msgid "% replies"
+#~ msgstr "% Kommentare"

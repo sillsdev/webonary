@@ -1,0 +1,7 @@
+<html>
+<body>
+	<div id="content">
+		<img src="../../../wp-content/uploads/images/original/<?php echo $_GET['img']; ?>">		
+	</div>
+</body>
+</html>

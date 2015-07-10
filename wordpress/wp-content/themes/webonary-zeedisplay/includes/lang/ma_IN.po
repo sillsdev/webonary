@@ -1,0 +1,280 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: webonary-zeedisplay v2.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-15 11:53-0600\n"
+"PO-Revision-Date: 2014-09-15 11:53-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: Marwari\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ dictrans
+#: 404.php:10
+msgid "404 Error: Not found"
+msgstr ""
+
+# @ dictrans
+#: 404.php:13
+msgid ""
+"The page you trying to reach does not exist, or has been moved. Please use "
+"the menus or the search box to find what you are looking for"
+msgstr ""
+
+# @ dictrans
+#: 404.php:18 page-sitemap.php:27
+msgid "Latest Posts"
+msgstr ""
+
+# @ dictrans
+#: 404.php:29 page-sitemap.php:38
+msgid "Pages"
+msgstr ""
+
+# @ dictrans
+#: archive.php:5 archive.php:6 archive.php:7
+msgid "Archive for"
+msgstr ""
+
+# @ dictrans
+#: archive.php:8
+msgid "Tag Archive for"
+msgstr ""
+
+# @ dictrans
+#: archive.php:9 page-sitemap.php:48
+msgid "Archives"
+msgstr ""
+
+# @ dictrans
+#: comments.php:8
+msgid "Enter password to view comments."
+msgstr ""
+
+# @ dictrans
+#: comments.php:16 includes/entry.php:15
+msgid "No comments"
+msgstr ""
+
+# @ dictrans
+#: comments.php:16 includes/entry.php:15
+msgid "One comment"
+msgstr ""
+
+# @ dictrans
+#: comments.php:16 includes/entry.php:15
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: footer.php:43
+msgid "Terms of Service"
+msgstr ""
+
+# @ dictrans
+#: functions.php:207
+msgid "Search Bar Popups"
+msgstr ""
+
+# @ searchform
+#: functions.php:209
+msgid ""
+"If a widget placed here has links, those links will appear above the search "
+"field on the main screen."
+msgstr ""
+
+# @ dictrans
+#: page-sitemap.php:43
+msgid "Categories"
+msgstr ""
+
+# @ dictrans
+#: page-sitemap.php:53
+msgid "Posts by Category"
+msgstr ""
+
+# @ dictrans
+#: page-sitemap.php:56
+msgid "Category"
+msgstr ""
+
+#: search.php:33
+#, php-format
+msgid "Search results for \"%s\""
+msgstr ""
+
+# @ dictrans
+#: search.php:71
+msgid ""
+"No matches. Please try again, or use the navigation menus to find what you "
+"search for."
+msgstr ""
+
+# @ dictrans
+#: slide.php:8 slide.php:9
+msgid "featured"
+msgstr ""
+
+# @ dictrans
+#: includes/entry.php:31
+msgid "Read more"
+msgstr ""
+
+# @ dictrans
+#: includes/navigation.php:17
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+# @ dictrans
+#: includes/navigation.php:18
+msgid "Next Entries &raquo;"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-admin.php:5 includes/admin/theme-admin.php:31
+msgid "Options"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-admin.php:33
+msgid ""
+"It is completely optional, but if you like the Theme I would appreciate it "
+"if you keep the credit link at the bottom."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:4
+msgid "Brown"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:5
+msgid "Darkblue"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:6
+msgid "Darkgreen"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:7
+msgid "Green"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:8
+msgid "Grey"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:9
+msgid "Orange"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:10
+msgid "Purple"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:11
+msgid "Red"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:12
+msgid "Standard"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:13
+msgid "Custom Color"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:22
+msgid "Theme Settings"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:41
+msgid "Paste the full Image URL of your logo."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:47
+msgid "Meta Description"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:48
+msgid "Enter the description displayed by search engines."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:54
+msgid "Meta Keywords"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:55
+msgid "Enter some keywords for better indexing."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:62
+msgid "Footer Content"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:63
+msgid "Enter here the content which is displayed in the footer."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:69
+msgid "Right Footer Content"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:70
+msgid ""
+"Enter here the content which is displayed in the right side of the footer."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:93
+msgid "Custom CSS"
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:94
+msgid "Insert your own custom css code into the head of the theme."
+msgstr ""
+
+# @ dictrans
+#: includes/plugins/theme_ads_widget.php:5
+msgid "Show your 125x125 Ad Spots"
+msgstr ""
+
+# @ dictrans
+#: includes/plugins/theme_ads_widget.php:56
+#: includes/plugins/theme_socialmedia_widget.php:96
+msgid "Title"
+msgstr ""
+
+# @ dictrans
+#: includes/plugins/theme_socialmedia_widget.php:5
+msgid "Show your Social Media Buttons"
+msgstr ""

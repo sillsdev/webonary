@@ -1,0 +1,22 @@
+a, a:link, a:visited{
+	color: #ff0000;
+}
+#sidebar ul li h2,
+#topnavi ul li.current_page_item a, #topnavi ul li.current-cat a, #topnavi ul li.current-menu-item a  {
+	color: #ff0000 !important;
+}
+.post h2, .attachment h2, .post h2 a:link, .post h2 a:visited {
+	color: #ff0000;
+}
+#slideshow .post h2 a{  
+    color: #ff0000;
+}
+.comment-author .fn, .comment-reply-link {
+	color: #ff0000 !important;
+}
+.wp-pagenavi .current {
+    background-color: #ff0000;
+}
+#slide_keys a:link, #slide_keys a:visited {
+	color: #ff0000 !important;
+}

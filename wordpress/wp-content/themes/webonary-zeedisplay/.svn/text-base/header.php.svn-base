@@ -1,0 +1,80 @@
+<!DOCTYPE html><!-- HTML 5 -->
+<?php webonary_zeedisplay_link_style_sheets() ?>
+
+<html <?php language_attributes(); ?>>
+
+<head>
+	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+	
+	<title><?php bloginfo('name'); if(is_home() || is_front_page()) { echo ' - '; bloginfo('description'); } else { wp_title(); } ?></title>
+
+<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+<!-- My IME complains about an unmatched div here and below, but matching the
+     divs causes problems with the site. I assume they are closed elsewhere.-->
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+				<?php 
+				$options = get_option('themezee_options');
+				if ( isset($options['themeZee_logo']) and $options['themeZee_logo'] <> "" ) { ?>
+					<a href="<?php echo home_url(); ?>"><img src="<?php echo esc_url($options['themeZee_logo']); ?>" alt="Logo" /></a>
+				<?php } else { ?>
+					<a href="<?php echo home_url(); ?>/"><h1><?php bloginfo('name'); ?></h1></a>
+				<?php } ?>
+			</div>
+			<?php if (has_nav_menu('top_navi')){?>
+				<div id="topnavi">
+					<?php
+					// Get Top Navigation out of Theme Options
+						wp_nav_menu(array(
+							'theme_location' => 'top_navi',
+							'container' => false,
+							'echo' => true,
+							'before' => '',
+							'after' => '',
+							'link_before' => '',
+							'link_after' => '',
+							'depth' => 0,
+							'fallback_cb' => ''));
+					?>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+	
+	<div id="wrap">
+		<?php if (has_nav_menu('main_navi')){?>
+			<div id="navi">
+				<?php
+				// Get Main Navigation out of Theme Options
+					wp_nav_menu(array(
+						'theme_location' => 'main_navi',
+						'container' => false,
+						'echo' => true,
+						'before' => '',
+						'after' => '',
+						'link_before' => '',
+						'link_after' => '',
+						'depth' => 0,
+						'fallback_cb' => ''));
+				?>
+			</div>
+		<?php } ?>
+		<div class="clear"></div>
+		
+	<?php if( get_header_image() != '' ) : ?>
+		<div id="custom_header">
+			<img src="<?php echo get_header_image(); ?>" />
+		</div>
+	<?php endif; ?>
+
+<!-- My IME complains about an unmatched div, but matching the divs here causes
+problems with the site. I assume they are closed elsewhere.-->

@@ -1,0 +1,86 @@
+#zee_admin_header {
+	margin: 10px 0;
+	height: 100px;
+	background: url(images/background.png) repeat #222;
+	color: #fff;
+}
+#zee_admin_logo {
+	float: left;
+	margin: 25px 20px;
+}
+#zee_head {
+	margin: 20px 0 5px 0;
+	padding: 0;
+	font-size: 2.2em;
+}
+
+#zee_admin_menu {
+    float: right;
+    margin: 25px;
+}
+#zee_admin_menu li {
+    float: left;
+    margin: 0 0 0 5px;
+}
+#zee_admin_menu li a {
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #333333;
+    display: block;
+    padding: 10px 15px;
+        
+}
+#zee_admin_menu li a:hover {
+	color: #aaa;
+}
+#zee_admin_menu span {
+    display: block;
+    color: #c8c8c8;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: 1px 1px 1px #222621;
+}
+.warning {
+	display: block;
+	padding: 10px;
+	margin: 10px 0;
+	background: #abf5b7 !important;
+	border: 1px solid #2b8a39;
+}
+
+#zee-logo-bg {
+	width: 470px;
+	padding: 10px;
+	background: transparent url(images/zee-logo-bg.png) repeat left top;
+	overflow: hidden;
+}
+.zee_form{
+	margin-top: 30px !important;
+}
+.form-table {
+	margin: 0 5px 20px 5px !important;
+}
+.form-table input[type=text]{ 
+	width: 495px; 
+}
+.form-table textarea{ 
+	width: 495px;
+}
+.form-table .colorpickerfield { 
+	width: 70px !important; 
+}
+.zee_settings {
+	background: #fff;
+	padding: 0 10px;
+	border: 1px solid #ddd;
+}
+.zee_settings h3 {
+	font-size: 1.3em;
+	background: #eee;
+	border: 1px solid #ddd;
+	padding: 10px !important;
+	margin: 10px 0 !important;
+}

@@ -1,0 +1,460 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zeeDisplay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-04 13:24+0100\n"
+"PO-Revision-Date: 2011-03-04 13:24+0100\n"
+"Last-Translator: themezee.com <contact@themezee.com>\n"
+"Language-Team: themezee.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: E:/xampplite/htdocs/wordpress/wp-content/themes/zeeDisplay\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:9
+#@ zeeDisplay
+msgid "404 Error: Not found"
+msgstr "404 Fehler: Seite nicht gefunden"
+
+#: 404.php:12
+#@ zeeDisplay
+msgid "The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for"
+msgstr "Diese Seite existiert nicht oder nicht mehr. Bitte verwende die Navigation oder die Suchbox, um die richtige Seite zu finden."
+
+#: archive.php:5
+#: archive.php:6
+#: archive.php:7
+#@ zeeDisplay
+msgid "Archive for"
+msgstr "Archiv für"
+
+#: archive.php:8
+#@ zeeDisplay
+msgid "Tag Archive for"
+msgstr "Tag Archiv für"
+
+#: archive.php:9
+#: page-sitemap.php:48
+#@ zeeDisplay
+msgid "Archives"
+msgstr "Archive"
+
+#: comments.php:16
+#: includes/entry.php:15
+#@ zeeDisplay
+msgid "No comments"
+msgstr "Keine Kommentare"
+
+#: comments.php:16
+#: includes/entry.php:15
+#@ zeeDisplay
+msgid "One comment"
+msgstr "Ein Kommentar"
+
+#: comments.php:16
+#: includes/entry.php:15
+#, php-format
+#@ zeeDisplay
+msgid "% comments"
+msgstr "% Kommentare"
+
+#: includes/entry.php:31
+#@ zeeDisplay
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: comments.php:8
+#@ zeeDisplay
+msgid "Enter password to view comments."
+msgstr "Passwort erforderlich, um Kommentare zu sehen."
+
+#: comments.php:38
+#@ zeeDisplay
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: 404.php:17
+#: page-sitemap.php:27
+#@ zeeDisplay
+msgid "Latest Posts"
+msgstr "Letzte Artikel"
+
+#: 404.php:28
+#: page-sitemap.php:38
+#@ zeeDisplay
+msgid "Pages"
+msgstr "Seiten"
+
+#: page-sitemap.php:43
+#@ zeeDisplay
+msgid "Categories"
+msgstr "Kategorien"
+
+#: page-sitemap.php:53
+#@ zeeDisplay
+msgid "Posts by Category"
+msgstr "Artikel per Kategorie"
+
+#: page-sitemap.php:56
+#@ zeeDisplay
+msgid "Category"
+msgstr "Kategorie"
+
+#: search.php:12
+#@ zeeDisplay
+msgid "Search results"
+msgstr "Suchergebnisse"
+
+#: search.php:34
+#@ zeeDisplay
+msgid "No matches. Please try again, or use the navigation menus to find what you search for."
+msgstr "Diese Seite existiert nicht oder nicht mehr. Bitte verwende die Navigation oder die Suchbox, um die richtige Seite zu finden."
+
+#: includes/admin/theme-admin.php:5
+#: includes/admin/theme-admin.php:31
+#@ zeeDisplay
+msgid "Options"
+msgstr "Optionen"
+
+#: includes/admin/theme-admin.php:33
+#@ zeeDisplay
+msgid "It is completely optional, but if you like the Theme I would appreciate it if you keep the credit link at the bottom."
+msgstr "Falls dir dieses Theme gefällt, würde ich mich freuen wenn du den Link zu ThemeZee im Footer beibehältst."
+
+#: includes/admin/theme-settings.php:4
+#@ zeeDisplay
+msgid "Brown"
+msgstr "Braun"
+
+#: includes/admin/theme-settings.php:5
+#@ zeeDisplay
+msgid "Darkblue"
+msgstr "Dunkelblau"
+
+#: includes/admin/theme-settings.php:6
+#@ zeeDisplay
+msgid "Darkgreen"
+msgstr "Dunkelgrün"
+
+#: includes/admin/theme-settings.php:7
+#@ zeeDisplay
+msgid "Green"
+msgstr "Grün"
+
+#: includes/admin/theme-settings.php:8
+#@ zeeDisplay
+msgid "Grey"
+msgstr "Grau"
+
+#: includes/admin/theme-settings.php:9
+#@ zeeDisplay
+msgid "Orange"
+msgstr "Orange"
+
+#: includes/admin/theme-settings.php:10
+#@ zeeDisplay
+msgid "Purple"
+msgstr "Lila"
+
+#: includes/admin/theme-settings.php:11
+#@ zeeDisplay
+msgid "Red"
+msgstr "Rot"
+
+#: includes/admin/theme-settings.php:12
+#@ zeeDisplay
+msgid "Standard"
+msgstr "Standard"
+
+#: includes/admin/theme-settings.php:13
+#: includes/admin/theme-settings.php:78
+#@ zeeDisplay
+msgid "Custom Color"
+msgstr "Eigene Farbe"
+
+#: includes/admin/theme-settings.php:22
+#@ zeeDisplay
+msgid "Theme Settings"
+msgstr "Theme Einstellungen"
+
+#: includes/admin/theme-settings.php:25
+#@ zeeDisplay
+msgid "Featured Post Slider"
+msgstr "Artikel Slider"
+
+#: includes/admin/theme-settings.php:28
+#@ zeeDisplay
+msgid "Social Media Buttons"
+msgstr "SocialMedia Buttons"
+
+#: includes/admin/theme-settings.php:31
+#@ zeeDisplay
+msgid "125x125 Ad Spots"
+msgstr "125x125 Banner Spots"
+
+#: includes/admin/theme-settings.php:49
+#@ zeeDisplay
+msgid "Paste the full Image URL of your logo."
+msgstr "Trage hier die volle Bild URL zu deinem Logo ein."
+
+#: includes/admin/theme-settings.php:55
+#@ zeeDisplay
+msgid "Footer Content"
+msgstr "Footer Inhalt"
+
+#: includes/admin/theme-settings.php:56
+#@ zeeDisplay
+msgid "Enter here the content which is displayed in the footer."
+msgstr "Hier Inhalt eingeben, der im Footer angezeigt wird."
+
+#: includes/admin/theme-settings.php:70
+#@ zeeDisplay
+msgid "Please select your color scheme here."
+msgstr "Bitte wähle hier dein bevorzugtes Farbschema."
+
+#: includes/admin/theme-settings.php:79
+#@ zeeDisplay
+msgid "Select a custom color here (You have to select the 'custom color' option above)."
+msgstr "Konfiguriere hier deine bevorzugte Farbe. (Oben muss  'custom color'  auswählt sein)"
+
+#: includes/admin/theme-settings.php:85
+#@ zeeDisplay
+msgid "Custom CSS"
+msgstr "Eigenes CSS"
+
+#: includes/admin/theme-settings.php:86
+#@ zeeDisplay
+msgid "Insert your own custom css code into the head of the theme."
+msgstr "Trage hier deinen eigenen CSS Code in den Kopfbereich des Themes ein."
+
+#: includes/admin/theme-settings.php:94
+#@ zeeDisplay
+msgid "Show Post Slider?"
+msgstr "Artikel Slider anzeigen?"
+
+#: includes/admin/theme-settings.php:95
+#@ zeeDisplay
+msgid "Check this if you want to show the Featured Post Slider."
+msgstr "Haken setzen wenn der Featured Artikel Slider angezeigt werden soll."
+
+#: includes/admin/theme-settings.php:101
+#@ zeeDisplay
+msgid "Slider Title"
+msgstr "Slider Titel"
+
+#: includes/admin/theme-settings.php:102
+#@ zeeDisplay
+msgid "Enter here your headline which is displayed above the featured posts."
+msgstr "Hier Überschrift für den Artikel Slider eintragen."
+
+#: includes/admin/theme-settings.php:120
+#@ zeeDisplay
+msgid "Slider Content"
+msgstr "Slider Inhalt"
+
+#: includes/admin/theme-settings.php:126
+#@ zeeDisplay
+msgid "Show latest posts"
+msgstr "Letzte Artikel anzeigen"
+
+#: includes/admin/theme-settings.php:127
+#@ zeeDisplay
+msgid "Show latest posts from category \"featured\""
+msgstr "Letzte Artikel aus der Kategorie \"featured\" anzeigen"
+
+#: includes/admin/theme-settings.php:128
+#@ zeeDisplay
+msgid "Show latest posts with post_meta_key \"featured\""
+msgstr "Letzte Artikel mit Meta Key \"featured\" anzeigen"
+
+#: includes/admin/theme-settings.php:129
+#@ zeeDisplay
+msgid "Show latest posts from custom category(enter ID below)"
+msgstr "Letzte Artikel einer bestimmten Kategorie anzeigen (ID unten eingeben)"
+
+#: includes/admin/theme-settings.php:133
+#@ zeeDisplay
+msgid "category ID"
+msgstr "Kategorie ID"
+
+#: includes/admin/theme-settings.php:134
+#@ zeeDisplay
+msgid "Please enter the category ID you'd like to include in the slideshow.(You have to tick the last option above)"
+msgstr "Bitte trage hier die Kategorie ID ein, welche im Slider angezeigt werden soll. (Oben die letzte Option auswählen)"
+
+#: includes/admin/theme-settings.php:140
+#@ zeeDisplay
+msgid "Number of Posts"
+msgstr "Anzahl der Artikel"
+
+#: includes/admin/theme-settings.php:141
+#@ zeeDisplay
+msgid "Enter the number how much posts should be displayed in the post slider."
+msgstr "Hier Anzahl der Artikel eintragen, die im Slider angezeigt werden sollen."
+
+#: includes/admin/theme-settings.php:151
+#@ zeeDisplay
+msgid "Enter your RSS URL (e.g. Feedburner Feed) here."
+msgstr "Hier RSS URL eintragen. (z.B. Feedburner URL)"
+
+#: includes/admin/theme-settings.php:158
+#@ zeeDisplay
+msgid "Enter your Email URL (e.g. Feedburner Email Subscription) here."
+msgstr "Hier Email Abonnenten URL eintragen. (z.B. Feedburner Email Subscription URL)"
+
+#: includes/admin/theme-settings.php:165
+#@ zeeDisplay
+msgid "Enter the URL to your Twitter Profile here."
+msgstr "Hier URL zum Twitter Account eintragen."
+
+#: includes/admin/theme-settings.php:172
+#@ zeeDisplay
+msgid "Enter the URL to your Facebook Profile here."
+msgstr "Hier URL zum Facebook Profil eintragen."
+
+#: includes/admin/theme-settings.php:179
+#@ zeeDisplay
+msgid "Enter the URL to your Tumblr Blog here."
+msgstr "Hier URL zum Tumblr Blog eintragen."
+
+#: includes/admin/theme-settings.php:186
+#@ zeeDisplay
+msgid "Enter the URL to your LinkedIn Profile here."
+msgstr "Hier URL zum LinkedIn Profil eintragen."
+
+#: includes/admin/theme-settings.php:193
+#@ zeeDisplay
+msgid "Enter the URL to your Xing Profile here."
+msgstr "Hier URL zum Xing Profil eintragen."
+
+#: includes/admin/theme-settings.php:200
+#@ zeeDisplay
+msgid "Enter the URL to your Delicious Profile here."
+msgstr "Hier URL zum Delicious Profil eintragen."
+
+#: includes/admin/theme-settings.php:207
+#@ zeeDisplay
+msgid "Enter the URL to your Digg Profile here."
+msgstr "Hier URL zum Digg Profil eintragen."
+
+#: includes/admin/theme-settings.php:214
+#@ zeeDisplay
+msgid "Enter the URL to your Flickr Profile here."
+msgstr "Hier URL zum Twitter Profil eintragen."
+
+#: includes/admin/theme-settings.php:221
+#@ zeeDisplay
+msgid "Enter the URL to your Youtube Profile here."
+msgstr "Hier URL zum Youtube Profil eintragen."
+
+#: includes/admin/theme-settings.php:228
+#@ zeeDisplay
+msgid "Enter the URL to your Vimeo Profile here."
+msgstr "Hier URL zum Vimeo Profil eintragen."
+
+#: includes/admin/theme-settings.php:237
+#@ zeeDisplay
+msgid "Rotate banners?"
+msgstr "Banner rotieren?"
+
+#: includes/admin/theme-settings.php:238
+#@ zeeDisplay
+msgid "Check this to randomly rotate the ad spots."
+msgstr "Haken setzen, um alle Banner zufällig rotieren zu lassen"
+
+#: includes/admin/theme-settings.php:244
+#: includes/admin/theme-settings.php:258
+#: includes/admin/theme-settings.php:272
+#: includes/admin/theme-settings.php:286
+#: includes/admin/theme-settings.php:300
+#: includes/admin/theme-settings.php:314
+#@ zeeDisplay
+msgid "Ad Spot Image URL"
+msgstr "Banner Bild URL"
+
+#: includes/admin/theme-settings.php:245
+#@ zeeDisplay
+msgid "Enter the image URL for this ad spot."
+msgstr "Trage hier die Banner URL ein."
+
+#: includes/admin/theme-settings.php:251
+#: includes/admin/theme-settings.php:265
+#: includes/admin/theme-settings.php:279
+#: includes/admin/theme-settings.php:293
+#: includes/admin/theme-settings.php:307
+#: includes/admin/theme-settings.php:321
+#@ zeeDisplay
+msgid "Ad Spot Destination"
+msgstr "Banner Ziel"
+
+#: includes/admin/theme-settings.php:252
+#@ zeeDisplay
+msgid "Enter the URL where this ad spot points to."
+msgstr "Trage hier die Zieladresse (Link) des Banners ein."
+
+#: includes/plugins/theme_ads_widget.php:5
+#@ zeeDisplay
+msgid "Show your 125x125 Ad Spots"
+msgstr "Anzeige deiner 125x125 Banner"
+
+#: includes/plugins/theme_ads_widget.php:56
+#: includes/plugins/theme_socialmedia_widget.php:96
+#@ zeeDisplay
+msgid "Title"
+msgstr "Titel"
+
+#: includes/plugins/theme_socialmedia_widget.php:5
+#@ zeeDisplay
+msgid "Show your Social Media Buttons"
+msgstr "SocialMedia Buttons anzeigen"
+
+#: includes/admin/theme-admin.php:36
+#: includes/admin/theme-admin.php:43
+#@ zeeDisplay
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/theme-settings.php:62
+#@ zeeDisplay
+msgid "Right Footer Content"
+msgstr ""
+
+#: includes/admin/theme-settings.php:63
+#@ zeeDisplay
+msgid "Enter here the content which is displayed in the right side of the footer."
+msgstr ""
+
+#: includes/navigation.php:17
+#@ zeeDisplay
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+#: includes/navigation.php:18
+#@ zeeDisplay
+msgid "Next Entries &raquo;"
+msgstr ""
+
+#: searchform.php:13
+#@ default
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:15
+#@ default
+msgid "Search"
+msgstr ""
+
+#: slide.php:8
+#: slide.php:9
+#@ zeeDisplay
+msgid "featured"
+msgstr ""
+
