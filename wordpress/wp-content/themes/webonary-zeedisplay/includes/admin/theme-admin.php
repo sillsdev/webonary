@@ -92,12 +92,17 @@ function themezee_display_setting( $setting = array() ) {
 		break;
 		
 		case 'logo':
-			//
-			echo "<p id='zee-logo-bg'><img id='zee-logo-img' src='" . esc_attr($options[$setting['id']]) . "' /></p>";
-			echo "<input id='".$setting['id']."' name='themezee_options[".$setting['id']."]' type='text' value='". esc_attr($options[$setting['id']]) ."' />";
-			echo '<br/><label>'.$setting['desc'].'</label>';
-			//
-			//echo "<input id='".$setting['id']."' name='themezee_options[".$setting['id']."]' type='hidden' value='". esc_attr($options[$setting['id']]) ."' />";
+			$current_user = wp_get_current_user();
+			if($current_user->user_login == "vernastutzman" || $current_user->user_login == "philip")
+			{
+				echo "<p id='zee-logo-bg'><img id='zee-logo-img' src='" . esc_attr($options[$setting['id']]) . "' /></p>";
+				echo "<input id='".$setting['id']."' name='themezee_options[".$setting['id']."]' type='text' value='". esc_attr($options[$setting['id']]) ."' />";
+				echo '<br/><label>'.$setting['desc'].'</label>';
+			}
+			else
+			{
+				echo "<input id='".$setting['id']."' name='themezee_options[".$setting['id']."]' type='hidden' value='". esc_attr($options[$setting['id']]) ."' />";
+			}
 		break;
 		
 		case 'colorpicker':

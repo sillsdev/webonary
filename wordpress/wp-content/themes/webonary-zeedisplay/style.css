@@ -2,7 +2,7 @@
 Theme Name: webonary-zeedisplay
 Theme URI: http://www.webonary.org
 Description: A Webonary theme created for dictionaries based on the theme zeeDisplay. See: http://themezee.com/zeeDisplay
-Version: 2.9.0
+Version: 2.9.2
 Author: SIL International
 Author URI: http://www.sil.org/
 Tags:  dictionary, two-columns, light, custom-background, custom-menu, threaded-comments, translation-ready, theme-options, fixed-width, custom-colors
@@ -254,7 +254,7 @@ background: url(images/button_hover.png) repeat-x #eee;
 }
 
 .hilite {background-color:#CCFFFF;}
-.highlight { background-color: #CCFFFF; }
+.highlight { background-color: #CCFFFF; display: inline; }
 
 
 /*============================ HEADER ============================*/
@@ -855,6 +855,22 @@ blockquote:after{
  */
 .webonary_searchform_language_select {
   width:250px;
+}
+
+.pageentry p {
+ color: black;
+}
+.pageentry li {
+ color: black;
+}
+input {
+ color: black !important;
+}
+select {
+ color: black !important;
+}
+hr {
+ color: black !important;
 }
 
 /* Image wrapping in Wordpress menu pages */

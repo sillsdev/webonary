@@ -11,8 +11,7 @@ function webonary_zeedisplay_link_style_sheets() {
 	//if(isset($options['themeZee_blog_mode']) and $options['themeZee_blog_mode'] == DICTIONARY_MODE) {
 		?>
 		<!-- Styles that came with the XHTML file that was imported -->
-<? $upload_dir = wp_upload_dir(); ?>
-		<link rel="stylesheet" type="text/css" href="<? echo $upload_dir['baseurl']; ?>/imported-with-xhtml.css<?php echo '?'.mt_rand(); ?>" />
+
 		<?php
 	//} ?>
 

@@ -1,13 +1,13 @@
 <script language=JavaScript>
 /* Adapted code from http://www.nsftools.com/misc/SearchAndHighlight.htm
- * 
+ *
  * This is the function that actually highlights a text string by
  * adding HTML tags before and after all occurrences of the search
  * term. You can pass your own tags if you'd like, or if the
  * highlightStartTag or highlightEndTag parameters are omitted or
  * are empty strings then the default <font> tags will be used.
  */
-function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag) 
+function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
 {
   // the highlightStartTag and highlightEndTag parameters are optional
   if ((!highlightStartTag) || (!highlightEndTag)) {
@@ -26,9 +26,9 @@ function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
   var lcBodyText = bodyText.toLowerCase();
     
   while (bodyText.length > 0) {
-    i = lcBodyText.indexOf(lcSearchTerm, i+1);    
-    if (i < 0) 
-    {        
+    i = lcBodyText.indexOf(lcSearchTerm, i+1);
+    if (i < 0)
+    {
       	newText += bodyText;
       	bodyText = "";
     } else {
@@ -58,7 +58,7 @@ function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
  */
 function highlightSearchTerms(searchText, treatAsPhrase, warnOnFailure, highlightStartTag, highlightEndTag)
 {
-  // if the treatAsPhrase parameter is true, then we should search for 
+  // if the treatAsPhrase parameter is true, then we should search for
   // the entire phrase that was entered; otherwise, we will split the
   // search string so that each word is searched for and highlighted
   // individually

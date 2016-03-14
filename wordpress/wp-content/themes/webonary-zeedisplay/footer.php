@@ -35,15 +35,15 @@ function popitup(url) {
 		}
 		?>
 		<div id="footer" class=<?php echo $color; ?> style="text-align:center; padding-bottom: 8px; font-size:12px;">
-			<div style="float:left;"><?php echo  $options['themeZee_footer']; ?></div>
-			<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank"><img src="<?php echo  get_template_directory_uri(); ?>/images/creative-commons.png" style="float:right; vertical-align:text-bottom"></a>
+			<div style="text-align:center;"><?php echo  $options['themeZee_footer']; ?></div>
 			<hr style="font-size:5px; margin-bottom: 4px; clear:both;">
 			<div style="float:left; width: 230px; text-align:left;"><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="width: 20%; margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
 			<img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <span style="margin-right:30px;"><a href="http://www.webonary.org" target="_blank">Webonary.org</a></span>
-			<div style="float:right; width: 200px; text-align:right;"><a href="http://webonary.org/sil-international-terms-of-service-for-webonary-org/" style="width:20%;">Terms of Service</a></div>
+			<div style="float:right; width: 200px; text-align:right;"><a href="http://webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>" style="width:20%;"><?php _e("Terms of Service"); ?></a></div>
 		</div>
 	</div>
 </div>
 </body>
 </html>
-<?php //echo var_dump($wpdb->queries); ?>
+<?php
+		//echo var_dump($wpdb->queries); ?>

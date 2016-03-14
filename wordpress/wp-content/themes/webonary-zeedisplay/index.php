@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
 		<div id="content" <?php if(!isMobile()) { ?>style="width:530px"<?php } ?>>
-		<?php 
+		<?php
 		if(isMobile()) {
 			get_sidebar();
-		} 			
-		?>		
+		}
+		?>
 		<?php
 		/*
 		 * If the slider is turned on, we'll show posts there, and not get into
@@ -21,7 +21,6 @@
 		 */
 		else {
 			?>
-
 			<?php
 			if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -42,9 +41,9 @@
 			?>
 		</div>
 		
-	<?php 
+	<?php
 	if(!isMobile()) {
-		get_sidebar(); 
+		get_sidebar();
 	}
 	?>
-<?php get_footer(); ?>	
+<?php get_footer(); ?>

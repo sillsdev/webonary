@@ -1,42 +1,27 @@
-<?php get_header(); 
-?>
+<?php get_header(); ?>
 
-	<div id="content">
+	<div align=center><?php if(isMobile()) { echo "<br>"; get_sidebar(); } ?></div>
 
-	<!--- Post Starts -->
+	<div id="content" <?php if(!isMobile()) { ?>style="min-width:530px; width:530px;"<?php } ?>>
 		
-		<div class="page">
 			
-			<h2><?php _e('404 Error: Not found', ZEE_LANG); ?></h2>
+			<div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
 				
-			<div class="entry">
-					<p><?php _e('The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for', ZEE_LANG); ?></p>
-					<?php get_search_form(); ?>
-					
-					<?php wp_reset_query(); ?> 
-		
-					<h2><?php _e('Latest Posts', ZEE_LANG); ?></h2><br/>
-					<ul>
-					
-					<?php query_posts('post_type="post"&post_status="publish"&showposts=9'); ?>
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-							<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>
-						<?php endwhile; ?>
-						<?php endif; ?>
-						<?php wp_reset_query(); ?> 
-					</ul>
-					
-					<h2><?php _e('Pages', ZEE_LANG); ?></h2><br/>
-					<ul>
-						<?php wp_list_pages('title_li='); ?>
-					</ul>
+				<div class="pageentry">
+					<?php if (! is_front_page()) { ?>
+					<h3><?php echo gettext("Entry not found."); ?></h3>
+					<?php } ?>
+				
+					<?php the_post_thumbnail('medium', array('class' => 'alignleft')); ?>
+					<?php the_content(); ?>
+					<div class="clear"></div>
+					<?php wp_link_pages(); ?>
 				</div>
-				
-		</div>
-			
-		<!--- Post Ends -->
-			
-	</div>
 
-	<?php get_sidebar(); ?>
-<?php get_footer(); ?>	
+			</div>
+		
+	</div>
+ 
+	<?php if(!isMobile()) { get_sidebar(); } ?>
+<?php get_footer();
+?>

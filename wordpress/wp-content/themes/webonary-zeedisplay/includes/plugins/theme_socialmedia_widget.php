@@ -3,7 +3,7 @@
 	class Theme_SocialMedia_Widget extends WP_Widget {
 		function Theme_SocialMedia_Widget() {
 			$widget_ops = array('classname' => 'theme_socialmedia', 'description' => __('Show your Social Media Buttons', ZEE_LANG) );
-			$this->WP_Widget('theme_socialmedia', 'zeeSocialMedia Buttons', $widget_ops);
+			parent::__construct('theme_socialmedia', 'zeeSocialMedia Buttons', $widget_ops);
 		}
 	 
 		function widget($args, $instance) {

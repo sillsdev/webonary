@@ -1,4 +1,4 @@
-<?php get_header(); 
+<?php get_header();
 require("highlight-code.php");
 ?>
 	<div style="padding: 10px 25px;">
@@ -17,7 +17,7 @@ require("highlight-code.php");
 					<?php the_content(); ?>
 					<div class="clear"></div>
 					<?php wp_link_pages(); ?>
-					<!-- <?php trackback_rdf(); ?> -->			
+					<!-- <?php trackback_rdf(); ?> -->
 				</div>
 				
 				<?php webonary_zeedisplay_display_entry_footer(); ?>
@@ -33,8 +33,8 @@ require("highlight-code.php");
 	</div>
 	</div>
 		<?php get_sidebar(); ?>
-<?php get_footer(); ?>	
-<?php 
+<?php get_footer(); ?>
+<?php
 if(strlen(trim($query)) > 0)
 {
 ?>
@@ -45,6 +45,6 @@ if(strlen(trim($query)) > 0)
 	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', true);
 //-->
 </script>
-<?php 
+<?php
 }
 ?>

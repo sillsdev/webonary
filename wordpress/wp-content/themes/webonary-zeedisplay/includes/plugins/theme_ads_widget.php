@@ -3,7 +3,7 @@
 	class Theme_125_Ads extends WP_Widget {
 		function Theme_125_Ads() {
 			$widget_ops = array('classname' => 'theme_ads', 'description' => __('Show your 125x125 Ad Spots', ZEE_LANG) );
-			$this->WP_Widget('theme_ads', 'zeeBanners 125x125', $widget_ops);
+			parent::__construct('theme_ads', 'zeeBanners 125x125', $widget_ops);
 		}
 	 
 		function widget($args, $instance) {
@@ -12,7 +12,7 @@
 			
 			$pic = array();
 			$url = array();
-			$nr = range(1,6); 
+			$nr = range(1,6);
 			$i = 0;
 			$n = 0;
 
@@ -20,7 +20,7 @@
 			if ( isset($options['themeZee_rotate']) and $options['themeZee_rotate'] == 'true' ) {
 				shuffle($nr);
 			}
-			foreach ($nr as $number) {	
+			foreach ($nr as $number) {
 				if( isset($options['themeZee_ad_image_'.$number]) and $options['themeZee_ad_image_'.$number] != '' ) {
 					$i++;
 					$pic[$i] = esc_url($options['themeZee_ad_image_'.$number]);
@@ -33,7 +33,7 @@
 			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
 		?>
 			<div id="ads">
-				<?php foreach($pic as $key) { 
+				<?php foreach($pic as $key) {
 						$n++;
 				?>
 					<a href="<?php echo $url[$n]; ?>"><img src="<?php echo $pic[$n]; ?>" alt="banner" /></a>
