@@ -1,0 +1,5909 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SIL Dictionary v1.2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-30 10:15+0800\n"
+"PO-Revision-Date: 2015-11-16 11:50+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:109
+msgid "No entries exist for"
+msgstr "Tidak ada entri untuk"
+
+#: include/browseview_func.php:186
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:186
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:507
+msgid "No entries exist starting with this letter."
+msgstr "Tidak ada entri yang mulai dengan huruf ini."
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/comments_func.php:92
+msgid "Comments Re-Sync"
+msgstr ""
+
+#: include/comments_func.php:93
+msgid ""
+"If you have the comments turned on, you need to re-sync your comments after "
+"re-importing of your posts."
+msgstr ""
+
+msgid "Universe, creation"
+msgstr "Alam semesta, ciptaan"
+
+msgid "Sky"
+msgstr "Langit"
+
+msgid "Sun"
+msgstr "Matahari"
+
+msgid "Moon"
+msgstr "Bulan"
+
+msgid "Star"
+msgstr "Bintang"
+
+msgid "Planet"
+msgstr "Planet (bintang sayarah/siarah, bintang beredar)"
+
+msgid "Air"
+msgstr "Udara"
+
+msgid "Blow air"
+msgstr "Tiup"
+
+msgid "Weather"
+msgstr "Cuaca"
+
+msgid "Wind"
+msgstr "Angin"
+
+msgid "Cloud"
+msgstr "Awan"
+
+msgid "Rain"
+msgstr "Hujan"
+
+msgid "Snow, ice"
+msgstr "Salju, es"
+
+msgid "Storm"
+msgstr "Badai"
+
+msgid "Lightning, thunder"
+msgstr "Kilat, Guntur"
+
+msgid "Flood"
+msgstr "Banjir, air bah"
+
+msgid "Drought"
+msgstr "Kekeringan"
+
+msgid "World"
+msgstr "Dunia, bumi"
+
+msgid "Land"
+msgstr "Daratan"
+
+msgid "Mountain"
+msgstr "Gunung"
+
+msgid "Volcano"
+msgstr "Gunung api"
+
+msgid "Plain, plateau"
+msgstr "Tanah datar"
+
+msgid "Valley"
+msgstr "Lembah"
+
+msgid "Underground"
+msgstr "Di bawah tanah"
+
+msgid "Forest, grassland, desert"
+msgstr "Hutan, rumput-rumput, padang gurun"
+
+msgid "Earthquake"
+msgstr "Gempa bumi"
+
+msgid "Substance, matter"
+msgstr "Bahan, zat"
+
+msgid "Soil, dirt"
+msgstr "Tanah"
+
+msgid "Rock"
+msgstr "Batu"
+
+msgid "Metal"
+msgstr "Logam"
+
+msgid "Mineral"
+msgstr "Barang tambang"
+
+msgid "Jewel"
+msgstr "Permata"
+
+msgid "Solid, liquid, gas"
+msgstr "Zat padat, zat cair, zat gas"
+
+msgid "Liquid"
+msgstr "Zat cair"
+
+msgid "Oil"
+msgstr "Minyak, oli, BBM (Bahan Bakar Minyak)"
+
+msgid "Gas"
+msgstr "Gas"
+
+msgid "Water"
+msgstr "Air"
+
+msgid "Bodies of water"
+msgstr "Kumpulan air"
+
+msgid "Ocean, lake"
+msgstr "Laut, danau"
+
+msgid "Swamp"
+msgstr "Rawa"
+
+msgid "River"
+msgstr "Sungai"
+
+msgid "Spring, well"
+msgstr "Mata air, sumur, perigi"
+
+msgid "Island, shore"
+msgstr "Pulau, pantai"
+
+msgid "Movement of water"
+msgstr "Gerakan air"
+
+msgid "Flow"
+msgstr "Mengalir"
+
+msgid "Pour"
+msgstr "Menuangkan"
+
+msgid "Drip"
+msgstr "Menetes"
+
+msgid "Wave"
+msgstr "Ombak"
+
+msgid "Calm, rough"
+msgstr "Teduh, berombak"
+
+msgid "Tide"
+msgstr "Pasang surut"
+
+msgid "Wet"
+msgstr "Basah"
+
+msgid "Dry"
+msgstr "Kering"
+
+msgid "Be in water"
+msgstr "Berada di dalam air"
+
+msgid "Solutions of water"
+msgstr "Larutan air"
+
+msgid "Water quality"
+msgstr "Kondisi air"
+
+msgid "Living things"
+msgstr "Benda hidup"
+
+msgid "Dead things"
+msgstr "Makhluk mati"
+
+msgid "Spirits of things"
+msgstr "Nyawa, roh"
+
+msgid "Plant"
+msgstr "Tumbuhan"
+
+msgid "Tree"
+msgstr "Pohon"
+
+msgid "Bush, shrub"
+msgstr "Semak"
+
+msgid "Grass, herb, vine"
+msgstr "Rumput, herba, tumbuhan merambat"
+
+msgid "Moss, fungus, algae"
+msgstr "Lumut, ganggang, jamur"
+
+msgid "Parts of a plant"
+msgstr "Bagian-bagian tumbuhan"
+
+msgid "Growth of plants"
+msgstr "Pertumbuhan pada tumbuhan"
+
+msgid "Plant diseases"
+msgstr "Penyakit tumbuhan"
+
+msgid "Animal"
+msgstr "Binatang"
+
+msgid "Types of animals"
+msgstr "Jenis-jenis binatang"
+
+msgid "Mammal"
+msgstr "Binatang menyusui"
+
+msgid "Primate"
+msgstr "Binatang Primata"
+
+msgid "Carnivore"
+msgstr "Binatang pemakan daging"
+
+msgid "Hoofed animals"
+msgstr "Binatang berkuku besar"
+
+msgid "Rodent"
+msgstr "Binatang pengerat"
+
+msgid "Marsupial"
+msgstr "Binatang berkantong"
+
+msgid "Anteater, aardvark"
+msgstr "Tenggiling"
+
+msgid "Sea mammal"
+msgstr "Binatang menyusui yang hidup di laut"
+
+msgid "Bat"
+msgstr "Kelelawar"
+
+msgid "Bird"
+msgstr "Burung"
+
+msgid "Reptile"
+msgstr "Binatang melata / reptil"
+
+msgid "Snake"
+msgstr "Ular"
+
+msgid "Lizard"
+msgstr "Kadal"
+
+msgid "Turtle"
+msgstr "Kura-kura, penyu"
+
+msgid "Crocodile"
+msgstr "Buaya"
+
+msgid "Amphibian"
+msgstr "Amfibi"
+
+msgid "Fish"
+msgstr "Ikan"
+
+msgid "Shark, ray"
+msgstr "Ikan hiu, ikan pari"
+
+msgid "Insect"
+msgstr "Serangga"
+
+msgid "Spider"
+msgstr "Laba-laba"
+
+msgid "Small animals"
+msgstr "Binatang kecil lainnya"
+
+msgid "Parts of an animal"
+msgstr "Bagian-bagian binatang"
+
+msgid "Parts of a bird"
+msgstr "Bagian-bagian burung"
+
+msgid "Parts of a reptile"
+msgstr "Bagian-bagian binatang melata (reptil)"
+
+msgid "Parts of a fish"
+msgstr "Bagian-bagian ikan"
+
+msgid "Parts of an insect"
+msgstr "Bagian-bagian serangga"
+
+msgid "Parts of small animals"
+msgstr "Bagian-bagian binatang kecil lainnya"
+
+msgid "Animal life cycle"
+msgstr "Siklus/perputaran hidup binatang"
+
+msgid "Egg"
+msgstr "Telur"
+
+msgid "Animal actions"
+msgstr "Tingkah laku binatang"
+
+msgid "Animal movement"
+msgstr "Gerakan binatang"
+
+msgid "Animal eating"
+msgstr "Cara makan binatang"
+
+msgid "Animal sounds"
+msgstr "Suara binatang"
+
+msgid "Animal home"
+msgstr "Lingkungan hidup binatang"
+
+msgid "Animal group"
+msgstr "Kelompok binatang"
+
+msgid "Male and female animals"
+msgstr "Jantan, betina"
+
+msgid "Nature, environment"
+msgstr "Alam, lingkungan"
+
+msgid "Natural"
+msgstr "Alami"
+
+msgid "Person"
+msgstr "Orang"
+
+msgid "Body"
+msgstr "Tubuh, badan"
+
+msgid "Head"
+msgstr "Kepala"
+
+msgid "Eye"
+msgstr "Mata"
+
+msgid "Ear"
+msgstr "Telinga"
+
+msgid "Nose"
+msgstr "Hidung"
+
+msgid "Mouth"
+msgstr "Mulut"
+
+msgid "Tooth"
+msgstr "Gigi"
+
+msgid "Torso"
+msgstr "Badan (tidak termasuk kaki, tangan, kepala)"
+
+msgid "Limb"
+msgstr "Anggota badan"
+
+msgid "Arm"
+msgstr "Tangan"
+
+msgid "Leg"
+msgstr "Kaki"
+
+msgid "Finger, toe"
+msgstr "Jari"
+
+msgid "Skin"
+msgstr "Kulit (manusia, binatang)"
+
+msgid "Hair"
+msgstr "Rambut dan bulu manusia"
+
+msgid "Bone, joint"
+msgstr "Tulang, persendian"
+
+msgid "Flesh"
+msgstr "Daging"
+
+msgid "Internal organs"
+msgstr "Anggota tubuh bagian dalam"
+
+msgid "Heart"
+msgstr "Jantung"
+
+msgid "Stomach"
+msgstr "Perut"
+
+msgid "Male organs"
+msgstr ""
+"Alat kelamin laki-laki (Anggota tubuh yang khusus dimiliki oleh laki-laki)"
+
+msgid "Female organs"
+msgstr ""
+"Alat kelamin perempuan (Anggota tubuh yang khusus dimiliki oleh perempuan)"
+
+msgid "Body functions"
+msgstr "Fungsi-fungsi tubuh"
+
+msgid "Breathe, breath"
+msgstr "Napas, bernapas"
+
+msgid "Cough, sneeze"
+msgstr "Batuk, bersin"
+
+msgid "Spit, saliva"
+msgstr "Air ludah, air liur"
+
+msgid "Mucus"
+msgstr "Ingus"
+
+msgid "Bleed, blood"
+msgstr "Darah, berdarah"
+
+msgid "Sweat"
+msgstr "Keringat"
+
+msgid "Urinate, urine"
+msgstr "Buang air kecil, air kencing"
+
+msgid "Defecate, feces"
+msgstr "Buang air besar, tinja/tahi"
+
+msgid "Sense, perceive"
+msgstr "Pancaindra, merasa"
+
+msgid "See"
+msgstr "Melihat"
+
+msgid "Look"
+msgstr "Memandang"
+
+msgid "Watch"
+msgstr "Memperhatikan"
+
+msgid "Examine"
+msgstr "Meneliti"
+
+msgid "Show, let someone see"
+msgstr "Menunjukkan, memperlihatkan sesuatu kepada seseorang"
+
+msgid "Visible"
+msgstr "Dapat dilihat"
+
+msgid "Appear"
+msgstr "Muncul, tampak"
+
+msgid "Transparent"
+msgstr "Tembus pandang"
+
+msgid "Reflect, mirror"
+msgstr "Pantulan, cermin"
+
+msgid "Appearance"
+msgstr "Tampak, wujud"
+
+msgid "Beautiful"
+msgstr "Cantik"
+
+msgid "Ugly"
+msgstr "Jelek"
+
+msgid "Something used to see"
+msgstr "Sesuatu yang digunakan untuk melihat"
+
+msgid "Hear"
+msgstr "Mendengar"
+
+msgid "Listen"
+msgstr "Mendengarkan"
+
+msgid "Sound"
+msgstr "Bunyi"
+
+msgid "Types of sounds"
+msgstr "Jenis-jenis bunyi"
+
+msgid "Loud"
+msgstr "Keras"
+
+msgid "Quiet"
+msgstr "Tenang"
+
+msgid "Taste"
+msgstr "Rasa"
+
+msgid "Smell"
+msgstr "Bau"
+
+msgid "Sense of touch"
+msgstr "Indra peraba"
+
+msgid "Comfortable"
+msgstr "Nyaman"
+
+msgid "Body condition"
+msgstr "Kondisi tubuh"
+
+msgid "Strong"
+msgstr "Kuat"
+
+msgid "Weak"
+msgstr "Lemah"
+
+msgid "Energetic"
+msgstr "Penuh semangat"
+
+msgid "Tired"
+msgstr "Lelah"
+
+msgid "Rest"
+msgstr "Istirahat"
+
+msgid "Healthy"
+msgstr "Sehat"
+
+msgid "Sick"
+msgstr "Sakit"
+
+msgid "Recover from sickness"
+msgstr "Sembuh dari sakit"
+
+msgid "Disease"
+msgstr "Penyakit"
+
+msgid "Malnutrition, starvation"
+msgstr "Kekurangan makanan, kelaparan"
+
+msgid "Skin disease"
+msgstr "Penyakit kulit"
+
+msgid "Stomach illness"
+msgstr "Penyakit perut"
+
+msgid "Tooth decay"
+msgstr "Kerusakan gigi"
+
+msgid "Injure"
+msgstr "Luka"
+
+msgid "Amputate"
+msgstr "Kehilangan kaki atau tangan (amputasi)"
+
+msgid "Poison"
+msgstr "Racun dan bisa"
+
+msgid "Disabled"
+msgstr "Cacat"
+
+msgid "Blind"
+msgstr "Buta"
+
+msgid "Poor eyesight"
+msgstr "Penglihatan kabur"
+
+msgid "Deaf"
+msgstr "Pekak dan tuli"
+
+msgid "Mute"
+msgstr "Bisu"
+
+msgid "Birth defect"
+msgstr "Cacat bawaan atau cacat sejak lahir"
+
+msgid "Cause of disease"
+msgstr "Penyebab penyakit"
+
+msgid "Symptom of disease"
+msgstr "Gejala penyakit"
+
+msgid "Pain"
+msgstr "Rasa sakit"
+
+msgid "Fever"
+msgstr "Demam"
+
+msgid "Swell"
+msgstr "Bengkak"
+
+msgid "Lose consciousness"
+msgstr "Hilang kesadaran"
+
+msgid "Dazed, confused"
+msgstr "Linglung, bingung"
+
+msgid "Vision, hallucination"
+msgstr "Penglihatan, halusinasi"
+
+msgid "Treat disease"
+msgstr "Mengobati penyakit"
+
+msgid "Doctor, nurse"
+msgstr "Dokter, perawat"
+
+msgid "Medicine"
+msgstr "Obat"
+
+msgid "Medicinal plants"
+msgstr "Tumbuh-tumbuhan obat"
+
+msgid "Hospital"
+msgstr "Rumah sakit"
+
+msgid "Traditional medicine"
+msgstr "Obat-obatan tradisional"
+
+msgid "Mental illness"
+msgstr "Sakit jiwa"
+
+msgid "Life"
+msgstr "Hidup"
+
+msgid "Marriage"
+msgstr "Pernikahan"
+
+msgid "Arrange a marriage"
+msgstr "Merancang sebuah pernikahan"
+
+msgid "Wedding"
+msgstr "Upacara pernikahan"
+
+msgid "Unmarried"
+msgstr "Tidak atau belum menikah"
+
+msgid "Divorce"
+msgstr "Bercerai"
+
+msgid "Romantic love"
+msgstr "Cinta asmara"
+
+msgid "Sexual relations"
+msgstr "Hubungan seksual"
+
+msgid "Virginity"
+msgstr "Keperawanan"
+
+msgid "Attract sexually"
+msgstr "Daya tarik hubungan seksual"
+
+msgid "Sexual immorality"
+msgstr "Kelainan seksual"
+
+msgid "Birth"
+msgstr "Kelahiran"
+
+msgid "Pregnancy"
+msgstr "Kehamilan"
+
+msgid "Fetus"
+msgstr "Janin"
+
+msgid "Miscarriage"
+msgstr "Kematian bayi"
+
+msgid "Labor and birth pains"
+msgstr "Sakit ketika bersalin"
+
+msgid "Help to give birth"
+msgstr "Membantu proses persalinan seseorang"
+
+msgid "Unusual birth"
+msgstr "Kelahiran yang tidak normal"
+
+msgid "Multiple births"
+msgstr "Melahirkan banyak anak"
+
+msgid "Fertile, infertile"
+msgstr "Subur, tidak subur"
+
+msgid "Birth ceremony"
+msgstr "Perayaan ulang tahun"
+
+msgid "Stage of life"
+msgstr "Tahap-tahap kehidupan"
+
+msgid "Baby"
+msgstr "Bayi"
+
+msgid "Care for a baby"
+msgstr "Mengasuh bayi"
+
+msgid "Child"
+msgstr "Anak kecil"
+
+msgid "Rear a child"
+msgstr "Membesarkan anak"
+
+msgid "Youth"
+msgstr "Masa muda"
+
+msgid "Adult"
+msgstr "Orang dewasa"
+
+msgid "Old person"
+msgstr "Orang yang lanjut usia"
+
+msgid "Grow, get bigger"
+msgstr "Bertumbuh, membesar"
+
+msgid "Initiation"
+msgstr "Upacara inisiasi"
+
+msgid "Peer group"
+msgstr "Teman sebaya"
+
+msgid "Male, female"
+msgstr "Laki-laki, perempuan"
+
+msgid "Man"
+msgstr "Pria"
+
+msgid "Woman"
+msgstr "Wanita"
+
+msgid "Die"
+msgstr "Meninggal dunia"
+
+msgid "Kill"
+msgstr "Membunuh"
+
+msgid "Corpse"
+msgstr "Mayat"
+
+msgid "Funeral"
+msgstr "Upacara pemakaman"
+
+msgid "Mourn"
+msgstr "Berkabung"
+
+msgid "Bury"
+msgstr "Kubur"
+
+msgid "Grave"
+msgstr "Kuburan/pusara/makam"
+
+msgid "Inherit"
+msgstr "Mewarisi"
+
+msgid "Life after death"
+msgstr "Kehidupan setelah kematian"
+
+msgid "Language and thought"
+msgstr "Bahasa dan pikiran"
+
+msgid "Soul, spirit"
+msgstr "Jiwa, roh"
+
+msgid "Personality"
+msgstr "Kepribadian"
+
+msgid "Mental state"
+msgstr "Keadaan jiwa"
+
+msgid "Alert"
+msgstr "Waspada"
+
+msgid "Notice"
+msgstr "Memperhatikan"
+
+msgid "Attention"
+msgstr "Perhatian"
+
+msgid "Ignore"
+msgstr "Mengabaikan"
+
+msgid "Think"
+msgstr "Berpikir"
+
+msgid "Mind"
+msgstr "Pikiran"
+
+msgid "Think about"
+msgstr "Memikirkan"
+
+msgid "Imagine"
+msgstr "Mengkhayal"
+
+msgid "Intelligent"
+msgstr "Cerdas"
+
+msgid "Stupid"
+msgstr "Bodoh"
+
+msgid "Logical"
+msgstr "Logis, masuk akal"
+
+msgid "Instinct"
+msgstr "Naluri"
+
+msgid "Learn"
+msgstr "Belajar"
+
+msgid "Study"
+msgstr "Mengkaji"
+
+msgid "Check"
+msgstr "Memeriksa"
+
+msgid "Evaluate, test"
+msgstr "Menilai, menguji"
+
+msgid "Guess"
+msgstr "Menebak"
+
+msgid "Solve"
+msgstr "Mengatasi atau memecahkan persoalan"
+
+msgid "Realize"
+msgstr "Menyadari"
+
+msgid "Willing to learn"
+msgstr "Kemauan belajar"
+
+msgid "Know"
+msgstr "Mengetahui"
+
+msgid "Known, unknown"
+msgstr "Diketahui, tidak diketahui"
+
+msgid "Area of knowledge"
+msgstr "Bidang pengetahuan"
+
+msgid "Secret"
+msgstr "Rahasia"
+
+msgid "Understand"
+msgstr "Mengerti"
+
+msgid "Misunderstand"
+msgstr "Salah paham"
+
+msgid "Understandable"
+msgstr "Dapat dimengerti"
+
+msgid "Mysterious"
+msgstr "Misterius"
+
+msgid "Opinion"
+msgstr "Pendapat"
+
+msgid "Believe"
+msgstr "Percaya"
+
+msgid "Trust"
+msgstr "Mempercayai seseorang"
+
+msgid "Disbelief"
+msgstr "Tidak mempercayai"
+
+msgid "Doubt"
+msgstr "Ragu-ragu"
+
+msgid "Agree with someone"
+msgstr "Setuju dengan seseorang"
+
+msgid "Disagree"
+msgstr "Tidak setuju"
+
+msgid "Protest"
+msgstr "Memprotes"
+
+msgid "Philosophy"
+msgstr "Filsafat"
+
+msgid "Attitude"
+msgstr "Sikap"
+
+msgid "Extreme belief"
+msgstr "Kepercayaan yang fanatik"
+
+msgid "Change your mind"
+msgstr "Mengubah pikiran"
+
+msgid "Approve of something"
+msgstr "Setuju untuk melakukan sesuatu"
+
+msgid "Remember"
+msgstr "Ingat"
+
+msgid "Forget"
+msgstr "Lupa"
+
+msgid "Recognize"
+msgstr "Mengenal"
+
+msgid "Memorize"
+msgstr "Menghafal"
+
+msgid "Remind"
+msgstr "Mengingatkan"
+
+msgid "Expect"
+msgstr "Mengharapkan"
+
+msgid "Hope"
+msgstr "Berharap"
+
+msgid "Hopeless"
+msgstr "Tidak ada harapan"
+
+msgid "Predict"
+msgstr "Meramal"
+
+msgid "Tendency"
+msgstr "Kecenderungan"
+
+msgid "Want"
+msgstr "Ingin"
+
+msgid "Decide, plan"
+msgstr "Memutuskan, merencanakan"
+
+msgid "Purpose, goal"
+msgstr "Tujuan, sasaran"
+
+msgid "Choose"
+msgstr "Memilih"
+
+msgid "Cast lots"
+msgstr "Membuang undi"
+
+msgid "Intend"
+msgstr "Bermaksud"
+
+msgid "Deliberately"
+msgstr "Dengan sengaja"
+
+msgid "Determined"
+msgstr "Nekat, bertekad"
+
+msgid "Stubborn"
+msgstr "Keras kepala"
+
+msgid "Lust"
+msgstr "Napsu"
+
+msgid "Request"
+msgstr "Meminta"
+
+msgid "Agree to do something"
+msgstr "Setuju melakukan sesuatu"
+
+msgid "Refuse to do something"
+msgstr "Menolak melakukan sesuatu"
+
+msgid "Intercede"
+msgstr "Menengahi atau memohon sesuatu bagi pihak lain"
+
+msgid "Willing"
+msgstr "Kemauan"
+
+msgid "Influence"
+msgstr "Pengaruh"
+
+msgid "Suggest"
+msgstr "Mengusulkan"
+
+msgid "Advise"
+msgstr "Nasihat"
+
+msgid "Persuade"
+msgstr "Membujuk"
+
+msgid "Insist"
+msgstr "Mendesak"
+
+msgid "Compel"
+msgstr "Memaksa"
+
+msgid "Control"
+msgstr "Menguasai"
+
+msgid "Warn"
+msgstr "Memperingatkan"
+
+msgid "Threaten"
+msgstr "Mengancam"
+
+msgid "Ask permission"
+msgstr "Meminta izin"
+
+msgid "Give permission"
+msgstr "Memberi izin"
+
+msgid "Refuse permission"
+msgstr "Menolak memberi izin"
+
+msgid "Exempt"
+msgstr "Membebaskan"
+
+msgid "Prevent"
+msgstr "Mencegah"
+
+msgid "Free to do what you want"
+msgstr "Bebas melakukan apa saja yang diinginkan"
+
+msgid "Offer"
+msgstr "Menawarkan"
+
+msgid "Accept"
+msgstr "Menerima"
+
+msgid "Reject"
+msgstr "Menolak"
+
+msgid "Emotion"
+msgstr "Perasaan hati"
+
+msgid "Feel good"
+msgstr "Merasa enak"
+
+msgid "Like, love"
+msgstr "Menyukai, mencintai"
+
+msgid "Enjoy doing something"
+msgstr "Senang melakukan sesuatu"
+
+msgid "Self-esteem"
+msgstr "Harga diri"
+
+msgid "Prefer"
+msgstr "Lebih suka"
+
+msgid "Popular"
+msgstr "Populer"
+
+msgid "Fashionable"
+msgstr "Modern"
+
+msgid "Contentment"
+msgstr "Kepuasan hati"
+
+msgid "Happy for"
+msgstr "Merasa senang atas"
+
+msgid "Pleased with"
+msgstr "Merasa senang dengan"
+
+msgid "Happy"
+msgstr "Senang"
+
+msgid "Relaxed"
+msgstr "Santai"
+
+msgid "Calm"
+msgstr "Tenang"
+
+msgid "Surprise"
+msgstr "Terkejut"
+
+msgid "Interested"
+msgstr "Tertarik"
+
+msgid "Excited"
+msgstr "Gembira"
+
+msgid "Enthusiastic"
+msgstr "Bersemangat"
+
+msgid "Obsessed"
+msgstr "Sangat tertarik"
+
+msgid "Attract"
+msgstr "Menarik"
+
+msgid "Indifferent"
+msgstr "Tidak tertarik"
+
+msgid "Uninterested, bored"
+msgstr "Tidak tertarik, bosan"
+
+msgid "Confident"
+msgstr "Percaya diri"
+
+msgid "Feel bad"
+msgstr "Merasa tidak enak"
+
+msgid "Sad"
+msgstr "Sedih"
+
+msgid "Dislike"
+msgstr "Tidak suka"
+
+msgid "Hate, detest"
+msgstr "Benci, sangat benci"
+
+msgid "Disgusted"
+msgstr "Jijik"
+
+msgid "Disappointed"
+msgstr "Kecewa"
+
+msgid "Lonely"
+msgstr "Kesepian"
+
+msgid "Upset"
+msgstr "Merasa terganggu"
+
+msgid "Shock"
+msgstr "Sangat terkejut"
+
+msgid "Jealous"
+msgstr "Iri hati, cemburu"
+
+msgid "Discontent"
+msgstr "Tidak puas"
+
+msgid "Sorry"
+msgstr "Menyesal"
+
+msgid "Ashamed"
+msgstr "Malu"
+
+msgid "Embarrassed"
+msgstr "Merasa dipermalukan"
+
+msgid "Angry"
+msgstr "Marah"
+
+msgid "Annoyed"
+msgstr "Terganggu"
+
+msgid "Afraid"
+msgstr "Takut"
+
+msgid "Worried"
+msgstr "Khawatir"
+
+msgid "Nervous"
+msgstr "Gugup"
+
+msgid "Shy, timid"
+msgstr "Malu, takut-takut"
+
+msgid "Confused"
+msgstr "Bingung"
+
+msgid "Communication"
+msgstr "Komunikasi"
+
+msgid "Say"
+msgstr "Berkata, mengatakan"
+
+msgid "Voice"
+msgstr "Suara"
+
+msgid "Shout"
+msgstr "Berteriak"
+
+msgid "Speak quietly"
+msgstr "Berbicara dengan perlahan"
+
+msgid "Speak a lot"
+msgstr "Banyak berbicara"
+
+msgid "Speak little"
+msgstr "Sedikit berbicara"
+
+msgid "Say nothing"
+msgstr "Tidak berbicara apa-apa"
+
+msgid "Speech style"
+msgstr "Gaya bicara"
+
+msgid "Speak well"
+msgstr "Pandai berbicara"
+
+msgid "Speak poorly"
+msgstr "Tidak pandai berbicara"
+
+msgid "Talk about a subject"
+msgstr "Membicarakan suatu pokok persoalan"
+
+msgid "Announce"
+msgstr "Mengumumkan"
+
+msgid "Describe"
+msgstr "Menggambarkan"
+
+msgid "Explain"
+msgstr "Menjelaskan"
+
+msgid "Mention"
+msgstr "Menyebutkan"
+
+msgid "Introduce"
+msgstr "Memperkenalkan"
+
+msgid "Repeat"
+msgstr "Mengulangi"
+
+msgid "Summarize"
+msgstr "Meringkas"
+
+msgid "Emphasize"
+msgstr "Menekankan"
+
+msgid "Be about, subject"
+msgstr "Tentang/mengenai, pokok persoalan"
+
+msgid "1"
+msgstr "Benar"
+
+msgid "Tell the truth"
+msgstr "Mengatakan kebenaran"
+
+msgid "Tell a lie"
+msgstr "Berbohong"
+
+msgid "Contradict"
+msgstr "Membantah"
+
+msgid "Expose falsehood"
+msgstr "Membuktikan kebohongan"
+
+msgid "Real"
+msgstr "Nyata"
+
+msgid "Exaggerate"
+msgstr "Membesar-besarkan"
+
+msgid "Speak with others"
+msgstr "Berbicara dengan orang lain"
+
+msgid "Call"
+msgstr "Memanggil"
+
+msgid "Contact"
+msgstr "Menghubungi"
+
+msgid "Greet"
+msgstr "Menyapa"
+
+msgid "Say farewell"
+msgstr "Mengucapkan selamat tinggal"
+
+msgid "Speak in unison"
+msgstr "Berbicara secara serentak"
+
+msgid "Ask"
+msgstr "Bertanya"
+
+msgid "Answer"
+msgstr "Menjawab"
+
+msgid "Disclose"
+msgstr "Menyingkapkan"
+
+msgid "Hide your thoughts"
+msgstr "Menyembunyikan pikiran"
+
+msgid "Debate"
+msgstr "Berdebat"
+
+msgid "Demonstrate"
+msgstr "Mempertunjukkan"
+
+msgid "Quarrel"
+msgstr "Bercekcok"
+
+msgid "Praise"
+msgstr "Memuji"
+
+msgid "Thank"
+msgstr "Berterima kasih"
+
+msgid "Flatter"
+msgstr "Menyanjung"
+
+msgid "Boast"
+msgstr "Membanggakan diri"
+
+msgid "Criticize"
+msgstr "Mengkritik"
+
+msgid "Blame"
+msgstr "Menyalahkan"
+
+msgid "Insult"
+msgstr "Menghina"
+
+msgid "Mock"
+msgstr "Mengolok-olok"
+
+msgid "Gossip"
+msgstr "Menggunjing"
+
+msgid "Complain"
+msgstr "Mengeluh"
+
+msgid "Promise"
+msgstr "Berjanji"
+
+msgid "Make speech"
+msgstr "Berpidato"
+
+msgid "Report"
+msgstr "Melaporkan"
+
+msgid "News, message"
+msgstr "Berita, pesan"
+
+msgid "Figurative"
+msgstr "Kata kiasan"
+
+msgid "Admit"
+msgstr "Mengakui"
+
+msgid "Language"
+msgstr "Bahasa"
+
+msgid "Word"
+msgstr "Kata"
+
+msgid "Information"
+msgstr "Informasi"
+
+msgid "Story"
+msgstr "Cerita"
+
+msgid "Fable, myth"
+msgstr "Dongeng, mitos"
+
+msgid "Saying, proverb"
+msgstr "Pepatah, peribahasa"
+
+msgid "Riddle"
+msgstr "Teka-teki"
+
+msgid "Poetry"
+msgstr "Puisi"
+
+msgid "History"
+msgstr "Sejarah"
+
+msgid "Verbal tradition"
+msgstr "Tradisi lisan"
+
+msgid "Foolish talk"
+msgstr "Omong kosong"
+
+msgid "Obscenity"
+msgstr "Kata-kata kotor"
+
+msgid "Sign, symbol"
+msgstr "Tanda, lambang"
+
+msgid "Gesture"
+msgstr "Gerak isyarat"
+
+msgid "Point at"
+msgstr "Menunjuk"
+
+msgid "Facial expression"
+msgstr "Ekspresi wajah"
+
+msgid "Laugh"
+msgstr "Tertawa"
+
+msgid "Cry, tear"
+msgstr "Menangis, air mata"
+
+msgid "Reading and writing"
+msgstr "Membaca dan menulis"
+
+msgid "Write"
+msgstr "Menulis"
+
+msgid "Written material"
+msgstr "Bahan-bahan tertulis"
+
+msgid "Read"
+msgstr "Membaca"
+
+msgid "Publish"
+msgstr "Menerbitkan"
+
+msgid "Record"
+msgstr "Mencatat"
+
+msgid "List"
+msgstr "Daftar"
+
+msgid "Letter"
+msgstr "Surat"
+
+msgid "Interpreting messages"
+msgstr "Menafsirkan pesan"
+
+msgid "Meaning"
+msgstr "Arti"
+
+msgid "Meaningless"
+msgstr "Tidak berarti"
+
+msgid "Unintelligible"
+msgstr "Tidak dapat dipahami"
+
+msgid "Show, indicate"
+msgstr "Memperlihatkan, menunjukkan"
+
+msgid "Mass communication"
+msgstr "Media massa"
+
+msgid "Radio, television"
+msgstr "Radio, televisi"
+
+msgid "Telephone"
+msgstr "Telepon"
+
+msgid "Newspaper"
+msgstr "Surat kabar"
+
+msgid "Movie"
+msgstr "Film"
+
+msgid "Recorded music"
+msgstr "Musik rekaman"
+
+msgid "Communication devices"
+msgstr "Alat komunikasi"
+
+msgid "Teach"
+msgstr "Mengajar"
+
+msgid "Show, explain"
+msgstr "Menunjukkan, menjelaskan"
+
+msgid "School"
+msgstr "Sekolah"
+
+msgid "Subject of teaching"
+msgstr "Mata pelajaran"
+
+msgid "Class, lesson"
+msgstr "Kelas, pelajaran"
+
+msgid "Correct"
+msgstr "Memperbaiki atau membetulkan"
+
+msgid "Science"
+msgstr "Ilmu pengetahuan"
+
+msgid "Test"
+msgstr "Ujian"
+
+msgid "Answer in a test"
+msgstr "Jawaban dalam ujian"
+
+msgid "Social behavior"
+msgstr "Perilaku sosial"
+
+msgid "Relationships"
+msgstr "Hubungan"
+
+msgid "Friend"
+msgstr "Teman, sahabat"
+
+msgid "Girlfriend, boyfriend"
+msgstr "Teman wanita, teman pria (pacar)"
+
+msgid "Types of people"
+msgstr "Jenis-jenis orang"
+
+msgid "Working relationship"
+msgstr "Hubungan kerja"
+
+msgid "Know someone"
+msgstr "Mengenal seseorang"
+
+msgid "Meet for the first time"
+msgstr "Berkenalan dengan seseorang untuk pertama kalinya"
+
+msgid "Neighbor"
+msgstr "Tetangga"
+
+msgid "Social class"
+msgstr "Lapisan masyarakat"
+
+msgid "Unity"
+msgstr "Kesatuan"
+
+msgid "Disunity"
+msgstr "Ketidaksatuan"
+
+msgid "Unfriendly"
+msgstr "Tidak ramah"
+
+msgid "Set self apart"
+msgstr "Memisahkan diri"
+
+msgid "Alone"
+msgstr "Sendirian"
+
+msgid "Independent person"
+msgstr "Orang yang mandiri"
+
+msgid "Private, public"
+msgstr "Pribadi, umum"
+
+msgid "Begin a relationship"
+msgstr "Memulai suatu hubungan"
+
+msgid "End a relationship"
+msgstr "Mengakhiri suatu hubungan"
+
+msgid "Show affection"
+msgstr "Menunjukkan kasih sayang"
+
+msgid "Kinship"
+msgstr "Hubungan keluarga"
+
+msgid "Related by birth"
+msgstr "Terbentuknya hubungan melalui kelahiran"
+
+msgid "Grandfather, grandmother"
+msgstr "Kakek, nenek"
+
+msgid "Father, mother"
+msgstr "Bapak, ibu"
+
+msgid "Brother, sister"
+msgstr "Saudara laki-laki, saudara perempuan"
+
+msgid "Son, daughter"
+msgstr "Anak laki-laki, anak perempuan"
+
+msgid "Grandson, granddaughter"
+msgstr "Cucu laki-laki, cucu perempuan"
+
+msgid "Uncle, aunt"
+msgstr "Paman, bibi"
+
+msgid "Cousin"
+msgstr "Sepupu"
+
+msgid "Nephew, niece"
+msgstr "Keponakan laki-laki, keponakan perempuan"
+
+msgid "Birth order"
+msgstr "Urutan kelahiran"
+
+msgid "Related by marriage"
+msgstr "Terbentuknya hubungan melalui pernikahan"
+
+msgid "Husband, wife"
+msgstr "Suami, istri"
+
+msgid "In-law"
+msgstr "Sanak saudara istri atau suami"
+
+msgid "Widow, widower"
+msgstr "Janda, duda"
+
+msgid "Orphan"
+msgstr "Anak yatim piatu"
+
+msgid "Illegitimate child"
+msgstr "Anak luar nikah"
+
+msgid "Adopt"
+msgstr "Mengangkat anak"
+
+msgid "Non-relative"
+msgstr "Tidak ada hubungan keluarga"
+
+msgid "Family, clan"
+msgstr "Keluarga, kaum, suku, marga"
+
+msgid "Race"
+msgstr "Ras/bangsa"
+
+msgid "Social activity"
+msgstr "Kegiatan bermasyarakat"
+
+msgid "Come together, form a group"
+msgstr "Berkumpul, berkelompok"
+
+msgid "Invite"
+msgstr "Mengundang"
+
+msgid "Encounter"
+msgstr "Berjumpa"
+
+msgid "Meet together"
+msgstr "Bertemu bersama"
+
+msgid "Visit"
+msgstr "Mengunjungi"
+
+msgid "Welcome, receive"
+msgstr "Menyambut, menerima"
+
+msgid "Show hospitality"
+msgstr "Menunjukkan keramah-tamahan"
+
+msgid "Meeting, assembly"
+msgstr "Rapat, pertemuan"
+
+msgid "Participate"
+msgstr "Berpartisipasi"
+
+msgid "Crowd, group"
+msgstr "Kerumunan, kelompok"
+
+msgid "Organization"
+msgstr "Organisasi"
+
+msgid "Join an organization"
+msgstr "Bergabung dengan suatu organisasi"
+
+msgid "Leave an organization"
+msgstr "Keluar dari suatu organisasi"
+
+msgid "Belong to an organization"
+msgstr "Menjadi bagian dari suatu organisasi"
+
+msgid "Social group"
+msgstr "Kelompok sosial"
+
+msgid "Social event"
+msgstr "Acara masyarakat"
+
+msgid "Ceremony"
+msgstr "Upacara"
+
+msgid "Festival, show"
+msgstr "Perayaan, pertunjukan"
+
+msgid "Celebrate"
+msgstr "Merayakan"
+
+msgid "Music"
+msgstr "Musik"
+
+msgid "Compose music"
+msgstr "Menciptakan musik"
+
+msgid "Play music"
+msgstr "Bermain musik"
+
+msgid "Sing"
+msgstr "Menyanyi"
+
+msgid "Musician"
+msgstr "Pemusik"
+
+msgid "Musical instrument"
+msgstr "Alat musik"
+
+msgid "Dance"
+msgstr "Menari"
+
+msgid "Drama"
+msgstr "Drama"
+
+msgid "Entertainment, recreation"
+msgstr "Hiburan, rekreasi"
+
+msgid "Game"
+msgstr "Permainan"
+
+msgid "Card game"
+msgstr "Permainan kartu"
+
+msgid "Chess"
+msgstr "Catur"
+
+msgid "Sports"
+msgstr "Olahraga"
+
+msgid "Football, soccer"
+msgstr "Sepak bola"
+
+msgid "Basketball"
+msgstr "Bola basket"
+
+msgid "Exercise"
+msgstr "Berolahraga"
+
+msgid "Gambling"
+msgstr "Berjudi"
+
+msgid "Play, fun"
+msgstr "Bermain dan bersenang-senang"
+
+msgid "Humor"
+msgstr "Humor, lelucon"
+
+msgid "Serious"
+msgstr "Serius"
+
+msgid "Holiday"
+msgstr "Hari libur"
+
+msgid "Free time"
+msgstr "Waktu luang"
+
+msgid "Behavior"
+msgstr "Perilaku"
+
+msgid "Good, moral"
+msgstr "Berperilaku baik, bermoral"
+
+msgid "Bad, immoral"
+msgstr "Berperilaku buruk, tidak bermoral"
+
+msgid "Meet a standard"
+msgstr "Memenuhi syarat"
+
+msgid "Below standard"
+msgstr "Tidak memenuhi syarat"
+
+msgid "Mature in behavior"
+msgstr "Bersikap matang"
+
+msgid "Immature in behavior"
+msgstr "Bersikap tidak matang"
+
+msgid "Sensible"
+msgstr "Berpikir dahulu sebelum bertindak"
+
+msgid "Reputation"
+msgstr "Reputasi"
+
+msgid "Patient"
+msgstr "Sabar"
+
+msgid "Impatient"
+msgstr "Tidak sabar"
+
+msgid "Bad-tempered"
+msgstr "Cepat marah"
+
+msgid "Admire someone"
+msgstr "Mengagumi seseorang"
+
+msgid "Despise someone"
+msgstr "Memandang rendah seseorang"
+
+msgid "Humble"
+msgstr "Rendah hati"
+
+msgid "Proud"
+msgstr "Bangga"
+
+msgid "Show off"
+msgstr "Suka pamer"
+
+msgid "Love"
+msgstr "Mencintai"
+
+msgid "Hate, ill will"
+msgstr "Membenci, memiliki niat jahat"
+
+msgid "Not care"
+msgstr "Tidak peduli"
+
+msgid "Abandon"
+msgstr "Meninggalkan"
+
+msgid "Do good to"
+msgstr "Melakukan perbuatan baik terhadap seseorang"
+
+msgid "Do evil to"
+msgstr "Melakukan perbuatan jahat terhadap seseorang"
+
+msgid "Help"
+msgstr "Membantu"
+
+msgid "Hinder"
+msgstr "Menghalangi"
+
+msgid "Cooperate with"
+msgstr "Bekerja sama"
+
+msgid "Compete with"
+msgstr "Bersaing"
+
+msgid "Altruistic, selfless"
+msgstr "Mementingkan orang lain, mementingkan diri sendiri"
+
+msgid "Selfish"
+msgstr "Mementingkan diri sendiri"
+
+msgid "Use a person"
+msgstr "Memanfaatkan orang lain"
+
+msgid "Share with"
+msgstr "Berbagi"
+
+msgid "Provide for, support"
+msgstr "Menyediakan, menopang"
+
+msgid "Care for"
+msgstr "Menjaga seseorang"
+
+msgid "Entrust to the care of"
+msgstr "Mempercayai seseorang untuk menjaga sesuatu"
+
+msgid "Meddle"
+msgstr "Mencampuri urusan orang lain"
+
+msgid "Spoil"
+msgstr "Merusak"
+
+msgid "Enter by force"
+msgstr "Masuk secara paksa"
+
+msgid "Kidnap"
+msgstr "Menculik"
+
+msgid "Cruel"
+msgstr "Kejam"
+
+msgid "Honest"
+msgstr "Jujur"
+
+msgid "Dishonest"
+msgstr "Tidak jujur"
+
+msgid "Faithful"
+msgstr "Setia"
+
+msgid "Reliable"
+msgstr "Dapat dipercaya"
+
+msgid "Unreliable"
+msgstr "Tidak dapat dipercaya"
+
+msgid "Deceive"
+msgstr "Menipu"
+
+msgid "Hypocrite"
+msgstr "Munafik"
+
+msgid "Self-controlled"
+msgstr "Pengendalian diri"
+
+msgid "Lack self-control"
+msgstr "Kurang pengendalian diri"
+
+msgid "Tidy"
+msgstr "Rapi"
+
+msgid "Untidy"
+msgstr "Tidak rapi"
+
+msgid "Mistake"
+msgstr "Kesalahan"
+
+msgid "Polite"
+msgstr "Sopan"
+
+msgid "Impolite"
+msgstr "Tidak sopan"
+
+msgid "Crazy"
+msgstr "Gila"
+
+msgid "Change behavior"
+msgstr "Mengubah perilaku"
+
+msgid "Conform"
+msgstr "Menyesuaikan diri"
+
+msgid "Culture"
+msgstr "Budaya"
+
+msgid "Custom"
+msgstr "Adat"
+
+msgid "Habit"
+msgstr "Kebiasaan"
+
+msgid "Prosperity, trouble"
+msgstr "Kemakmuran, kesusahan"
+
+msgid "Prosperity"
+msgstr "Kemakmuran"
+
+msgid "Trouble"
+msgstr "Kesusahan"
+
+msgid "Problem"
+msgstr "Masalah"
+
+msgid "Danger"
+msgstr "Bahaya"
+
+msgid "Accident"
+msgstr "Kecelakaan"
+
+msgid "Disaster"
+msgstr "Bencana"
+
+msgid "Separate, alone"
+msgstr "Terpisah, sendirian"
+
+msgid "Suffer"
+msgstr "Menderita"
+
+msgid "Respond to trouble"
+msgstr "Tindakan menghadapi kesusahan"
+
+msgid "Brave"
+msgstr "Berani"
+
+msgid "Cowardice"
+msgstr "Takut"
+
+msgid "Avoid"
+msgstr "Menghindari"
+
+msgid "Caution"
+msgstr "Berhati-hati"
+
+msgid "Solve a problem"
+msgstr "Mengatasi masalah"
+
+msgid "Endure"
+msgstr "Bertahan"
+
+msgid "Survive"
+msgstr "Bertahan hidup"
+
+msgid "Respond to someone in trouble"
+msgstr "Menanggapi seseorang yang sedang berada dalam kesusahan"
+
+msgid "Mercy"
+msgstr "Berbelas kasihan"
+
+msgid "Show sympathy, support"
+msgstr "Menunjukkan simpati, dukungan"
+
+msgid "Gentle"
+msgstr "Lemah lembut"
+
+msgid "Save from trouble"
+msgstr "Selamat dari kesusahan"
+
+msgid "Protect"
+msgstr "Melindungi"
+
+msgid "Free from bondage"
+msgstr "Bebas dari perbudakan"
+
+msgid "Relief"
+msgstr "Pembebasan"
+
+msgid "Risk"
+msgstr "Risiko"
+
+msgid "Chance"
+msgstr "Kebetulan"
+
+msgid "Lucky"
+msgstr "Beruntung"
+
+msgid "Unlucky"
+msgstr "Tidak beruntung"
+
+msgid "Authority"
+msgstr "Wewenang"
+
+msgid "Person in authority"
+msgstr "Seseorang yang berwenang"
+
+msgid "Have authority"
+msgstr "Memiliki wewenang"
+
+msgid "Exercise authority"
+msgstr "Menggunakan wewenang"
+
+msgid "Lead"
+msgstr "Memimpin"
+
+msgid "Command"
+msgstr "Memerintah"
+
+msgid "Discipline, train"
+msgstr "Mendisiplin, melatih"
+
+msgid "Appoint, delegate"
+msgstr "Mengangkat, menunjuk"
+
+msgid "Submit to authority"
+msgstr "Mematuhi pemerintah"
+
+msgid "Obey"
+msgstr "Menaati"
+
+msgid "Disobey"
+msgstr "Tidak menaati"
+
+msgid "Serve"
+msgstr "Melayani"
+
+msgid "Slave"
+msgstr "Budak"
+
+msgid "Follow, be a disciple"
+msgstr "Mengikuti, menjadi murid"
+
+msgid "Rebel against authority"
+msgstr "Memberontak melawan pemerintah"
+
+msgid "Independent"
+msgstr "Merdeka"
+
+msgid "Honor"
+msgstr "Menghormati"
+
+msgid "Title, name of honor"
+msgstr "Gelar, nama kehormatan"
+
+msgid "Lack respect"
+msgstr "Kurang ajar"
+
+msgid "Status"
+msgstr "Status sosial"
+
+msgid "High status"
+msgstr "Status sosial yang tinggi"
+
+msgid "Low status"
+msgstr "Status sosial yang rendah"
+
+msgid "Government"
+msgstr "Pemerintah"
+
+msgid "Ruler"
+msgstr "Penguasa"
+
+msgid "King's family"
+msgstr "Keluarga raja"
+
+msgid "Government official"
+msgstr "Pejabat pemerintah"
+
+msgid "Citizen"
+msgstr "Warga negara"
+
+msgid "Foreigner"
+msgstr "Orang asing"
+
+msgid "Government organization"
+msgstr "Organisasi pemerintah"
+
+msgid "Governing body"
+msgstr "Badan pemerintah"
+
+msgid "Rule"
+msgstr "Berkuasa"
+
+msgid "Subjugate"
+msgstr "Menaklukkan"
+
+msgid "Government functions"
+msgstr "Fungsi pemerintah"
+
+msgid "Police"
+msgstr "Polisi"
+
+msgid "Arrest"
+msgstr "Menangkap"
+
+msgid "Informal justice"
+msgstr "Penghakiman yang tidak resmi"
+
+msgid "Diplomacy"
+msgstr "Hubungan resmi antarbangsa"
+
+msgid "Represent"
+msgstr "Mewakili"
+
+msgid "Election"
+msgstr "Pemilihan umum"
+
+msgid "Politics"
+msgstr "Politik"
+
+msgid "Region"
+msgstr "Wilayah"
+
+msgid "Country"
+msgstr "Negara"
+
+msgid "City"
+msgstr "Kota"
+
+msgid "Countryside"
+msgstr "Desa"
+
+msgid "Community"
+msgstr "Masyarakat"
+
+msgid "Law"
+msgstr "Hukum"
+
+msgid "Laws"
+msgstr "Undang-undang"
+
+msgid "Pass laws"
+msgstr "Mengeluarkan undang-undang"
+
+msgid "Break the law"
+msgstr "Melanggar hukum"
+
+msgid "Court of law"
+msgstr "Pengadilan hukum"
+
+msgid "Legal personnel"
+msgstr "Pihak hukum dalam pengadilan"
+
+msgid "Trial"
+msgstr "Proses hukum"
+
+msgid "Investigate a crime"
+msgstr "Menyelidiki suatu kejahatan"
+
+msgid "Suspect"
+msgstr "Mencurigai"
+
+msgid "Accuse, confront"
+msgstr "Menuduh, mengajukan perkara"
+
+msgid "Defend against accusation"
+msgstr "Membela seseorang dari suatu tuduhan."
+
+msgid "Witness, testify"
+msgstr "Saksi, bersaksi"
+
+msgid "Drop charges"
+msgstr "Membatalkan dakwaan"
+
+msgid "Take oath"
+msgstr "Mengambil sumpah"
+
+msgid "Vindicate"
+msgstr "Mengesahkan kebenaran"
+
+msgid "Judge, render a verdict"
+msgstr "Menghakimi, menentukan keputusan"
+
+msgid "Acquit"
+msgstr "Membebaskan"
+
+msgid "Condemn, find guilty"
+msgstr "Menyalahkan, mencari kesalahan"
+
+msgid "Fault"
+msgstr "Kesalahan"
+
+msgid "Punish"
+msgstr "Menghukum"
+
+msgid "Reward"
+msgstr "Memberi penghargaan"
+
+msgid "Fine"
+msgstr "Denda"
+
+msgid "Imprison"
+msgstr "Memenjarakan"
+
+msgid "Execute"
+msgstr "Menghukum mati"
+
+msgid "Ostracize"
+msgstr "Mengasingkan"
+
+msgid "Pardon, release"
+msgstr "Mengampuni, membebaskan"
+
+msgid "Atone, restitution"
+msgstr "Menebus, mengganti rugi"
+
+msgid "Legal contract"
+msgstr "Perjanjian resmi"
+
+msgid "Covenant"
+msgstr "Perjanjian antara dua pihak"
+
+msgid "Break a contract"
+msgstr "Melanggar perjanjian"
+
+msgid "Justice"
+msgstr "Keadilan"
+
+msgid "Impartial"
+msgstr "Adil"
+
+msgid "Unfair"
+msgstr "Tidak adil"
+
+msgid "Deserve"
+msgstr "Berhak/pantas"
+
+msgid "Discriminate, be unfair"
+msgstr "Membedakan, berlaku tidak adil"
+
+msgid "Act harshly"
+msgstr "Bertindak kasar"
+
+msgid "Oppress"
+msgstr "Menindas"
+
+msgid "Conflict"
+msgstr "Perselisihan"
+
+msgid "Hostility"
+msgstr "Permusuhan"
+
+msgid "Oppose"
+msgstr "Menentang, melawan"
+
+msgid "Fight"
+msgstr "Berkelahi"
+
+msgid "Fight for something good"
+msgstr "Berkelahi untuk mendapatkan sesuatu yang baik"
+
+msgid "Fight against something bad"
+msgstr "Berkelahi karena menentang sesuatu yang buruk atau jahat"
+
+msgid "Attack"
+msgstr "Menyerang"
+
+msgid "Ambush"
+msgstr "Menghadang"
+
+msgid "Defend"
+msgstr "Membela"
+
+msgid "Revenge"
+msgstr "Membalas dendam"
+
+msgid "Riot"
+msgstr "Kerusuhan"
+
+msgid "Betray"
+msgstr "Mengkhianati"
+
+msgid "Violent"
+msgstr "Kekejaman"
+
+msgid "Enemy"
+msgstr "Musuh"
+
+msgid "War"
+msgstr "Perang"
+
+msgid "Defeat"
+msgstr "Mengalahkan"
+
+msgid "Win"
+msgstr "Menang"
+
+msgid "Lose a fight"
+msgstr "Kalah berkelahi"
+
+msgid "Surrender"
+msgstr "Menyerah"
+
+msgid "Prisoner of war"
+msgstr "Tawanan perang"
+
+msgid "Military organization"
+msgstr "Organisasi militer"
+
+msgid "Army"
+msgstr "Tentara angkatan darat"
+
+msgid "Navy"
+msgstr "Tentara angkatan laut"
+
+msgid "Air force"
+msgstr "Tentara angkatan udara"
+
+msgid "Soldier"
+msgstr "Tentara"
+
+msgid "Spy"
+msgstr "Mata-mata"
+
+msgid "Fort"
+msgstr "Benteng pertahanan"
+
+msgid "Weapon, shoot"
+msgstr "Senjata, menembak"
+
+msgid "Plunder"
+msgstr "Menjarah"
+
+msgid "Peace"
+msgstr "Damai"
+
+msgid "Rebuke"
+msgstr "Menegur kesalahan"
+
+msgid "Make an appeal"
+msgstr "Membujuk"
+
+msgid "Appease"
+msgstr "Menyuap"
+
+msgid "Negotiate"
+msgstr "Berunding"
+
+msgid "Renounce claim, concede"
+msgstr "Membatalkan tuntunan, melepaskan tuntutan"
+
+msgid "Repent"
+msgstr "Bertobat"
+
+msgid "Request forgiveness"
+msgstr "Meminta maaf"
+
+msgid "Forgive"
+msgstr "Memaafkan"
+
+msgid "Make peace"
+msgstr "Menjaga perdamaian"
+
+msgid "Stop fighting"
+msgstr "Berhenti berkelahi"
+
+msgid "Reconcile"
+msgstr "Berdamai"
+
+msgid "Religion"
+msgstr "Agama"
+
+msgid "God"
+msgstr "Tuhan"
+
+msgid "Supernatural being"
+msgstr "Kekuatan adikodrati"
+
+msgid "Theology"
+msgstr "Teologi"
+
+msgid "Sacred writings"
+msgstr "Tulisan-tulisan suci"
+
+msgid "Miracle, supernatural power"
+msgstr "Mukjizat, kekuatan adikodrati"
+
+msgid "Sorcery"
+msgstr "Sihir"
+
+msgid "Demon possession"
+msgstr "Kerasukan setan"
+
+msgid "Bless"
+msgstr "Berkat"
+
+msgid "Curse"
+msgstr "Kutuk"
+
+msgid "Destiny"
+msgstr "Nasib"
+
+msgid "Prophecy"
+msgstr "Nubuat"
+
+msgid "Omen, divination"
+msgstr "Menenung atau meramal"
+
+msgid "Practice religion"
+msgstr "Menjalankan agama"
+
+msgid "Devout"
+msgstr "Taat beragama"
+
+msgid "Pray"
+msgstr "Berdoa"
+
+msgid "Worship"
+msgstr "Beribadah"
+
+msgid "Religious ceremony"
+msgstr "Upacara keagamaan"
+
+msgid "Offering, sacrifice"
+msgstr "Persembahan, korban"
+
+msgid "Religious purification"
+msgstr "Penyucian secara keagamaan"
+
+msgid "Taboo"
+msgstr "Larangan atau pantangan"
+
+msgid "Salvation"
+msgstr "Keselamatan"
+
+msgid "Dedicate to religious use"
+msgstr "Pentahbisan untuk pelayanan keagamaan"
+
+msgid "Fasting"
+msgstr "Berpuasa"
+
+msgid "Heaven, hell"
+msgstr "Surga, neraka"
+
+msgid "Resurrection"
+msgstr "Kebangkitan"
+
+msgid "Religious organization"
+msgstr "Organisasi agama"
+
+msgid "Religious person"
+msgstr "Penganut agama"
+
+msgid "Christianity"
+msgstr "Agama Kristen"
+
+msgid "Islam"
+msgstr "Agama Islam"
+
+msgid "Hinduism"
+msgstr "Agama Hindu"
+
+msgid "Buddhism"
+msgstr "Agama Buddha"
+
+msgid "Judaism"
+msgstr "Agama Yahudi"
+
+msgid "Animism"
+msgstr "Animisme"
+
+msgid "Religious things"
+msgstr "Benda-benda agamawi"
+
+msgid "Idol"
+msgstr "Berhala"
+
+msgid "Place of worship"
+msgstr "Tempat ibadah"
+
+msgid "Irreligion"
+msgstr "Tidak beragama"
+
+msgid "Daily life"
+msgstr "Kehidupan sehari-hari"
+
+msgid "Household equipment"
+msgstr "Peralatan rumah tangga"
+
+msgid "Furniture"
+msgstr "Perabotan rumah tangga"
+
+msgid "Table"
+msgstr "Meja"
+
+msgid "Chair"
+msgstr "Kursi"
+
+msgid "Bed"
+msgstr "Tempat tidur"
+
+msgid "Cabinet"
+msgstr "Lemari"
+
+msgid "Household decoration"
+msgstr "Hiasan rumah"
+
+msgid "Food"
+msgstr "Makanan"
+
+msgid "Food preparation"
+msgstr "Mempersiapkan makanan"
+
+msgid "Cooking methods"
+msgstr "Cara memasak makanan"
+
+msgid "Steps in food preparation"
+msgstr "Langkah-langkah dalam mempersiapkan makanan"
+
+msgid "Remove shell, skin"
+msgstr "Mengupas kulit makanan"
+
+msgid "Pound in mortar and pestle"
+msgstr "Menumbuk makanan dengan menggunakan lesung dan alu"
+
+msgid "Grind flour"
+msgstr "Menggiling tepung"
+
+msgid "Cooking utensil"
+msgstr "Peralatan masak"
+
+msgid "Food storage"
+msgstr "Menyimpan makanan"
+
+msgid "Serve food"
+msgstr "Menyajikan makanan"
+
+msgid "Eat"
+msgstr "Makan"
+
+msgid "Bite, chew"
+msgstr "Menggigit, mengunyah"
+
+msgid "Meal"
+msgstr "Makanan (yang dimakan pada jam makan)"
+
+msgid "Feast"
+msgstr "Pesta"
+
+msgid "Manner of eating"
+msgstr "Cara makan"
+
+msgid "Hungry, thirsty"
+msgstr "Lapar, haus"
+
+msgid "Satiated, full"
+msgstr "Kenyang"
+
+msgid "Drink"
+msgstr "Minum"
+
+msgid "Eating utensil"
+msgstr "Peralatan makan"
+
+msgid "Fast, not eat"
+msgstr "Berpuasa, tidak makan"
+
+msgid "Types of food"
+msgstr "Jenis-jenis makanan"
+
+msgid "Food from plants"
+msgstr "Makanan dari tumbuhan"
+
+msgid "Food from seeds"
+msgstr "Makanan dari biji-bijian"
+
+msgid "Food from fruit"
+msgstr "Makanan dari buah-buahan"
+
+msgid "Food from vegetables"
+msgstr "Makanan dari sayuran"
+
+msgid "Food from leaves"
+msgstr "Makanan dari daun tumbuhan"
+
+msgid "Food from roots"
+msgstr "Makanan dari akar atau umbi-umbian"
+
+msgid "Food from animals"
+msgstr "Makanan dari daging binatang"
+
+msgid "Meat"
+msgstr "Daging"
+
+msgid "Milk products"
+msgstr "Makanan yang terbuat dari susu"
+
+msgid "Egg dishes"
+msgstr "Makanan yang terbuat dari telur"
+
+msgid "Cooking ingredients"
+msgstr "Bahan-bahan makanan untuk dimasak"
+
+msgid "Sugar"
+msgstr "Gula"
+
+msgid "Salt"
+msgstr "Garam"
+
+msgid "Spice"
+msgstr "Bumbu"
+
+msgid "Leaven"
+msgstr "Ragi"
+
+msgid "Cooking oil"
+msgstr "Minyak goreng"
+
+msgid "Prepared food"
+msgstr "Makanan yang sudah disiapkan/diolah"
+
+msgid "Prohibited food"
+msgstr "Makanan yang dilarang"
+
+msgid "Beverage"
+msgstr "Minuman"
+
+msgid "Alcoholic beverage"
+msgstr "Minuman keras"
+
+msgid "Alcohol preparation"
+msgstr "Membuat minuman keras"
+
+msgid "Drunk"
+msgstr "Mabuk"
+
+msgid "Tobacco"
+msgstr "Tembakau"
+
+msgid "Narcotic"
+msgstr "Narkotik"
+
+msgid "Stimulant"
+msgstr "Zat pemacu atau perangsang"
+
+msgid "Clothing"
+msgstr "Pakaian"
+
+msgid "Men's clothing"
+msgstr "Pakaian pria"
+
+msgid "Women's clothing"
+msgstr "Pakaian wanita"
+
+msgid "Traditional clothing"
+msgstr "Pakaian adat atau tradisional"
+
+msgid "Clothes for special occasions"
+msgstr "Pakaian untuk waktu-waktu tertentu"
+
+msgid "Clothes for special people"
+msgstr "Pakaian yang dikenakan oleh orang-orang tertentu"
+
+msgid "Parts of clothing"
+msgstr "Bagian-bagian dari pakaian"
+
+msgid "Wear clothing"
+msgstr "Memakai pakaian"
+
+msgid "Naked"
+msgstr "Telanjang"
+
+msgid "Style of clothing"
+msgstr "Gaya berpakaian"
+
+msgid "Adornment"
+msgstr "Perhiasan"
+
+msgid "Jewelry"
+msgstr "Barang-barang perhiasan"
+
+msgid "Cosmetics"
+msgstr "Kosmetik"
+
+msgid "Care for hair"
+msgstr "Perawatan rambut"
+
+msgid "Comb hair"
+msgstr "Menyisir rambut"
+
+msgid "Plait hair"
+msgstr "Mengepang rambut"
+
+msgid "Dye hair"
+msgstr "Menyemir rambut"
+
+msgid "Hairstyle"
+msgstr "Gaya rambut"
+
+msgid "Cut hair"
+msgstr "Memotong rambut"
+
+msgid "Shave"
+msgstr "Mencukur"
+
+msgid "Care for the teeth"
+msgstr "Perawatan gigi"
+
+msgid "Anoint the body"
+msgstr "Mengolesi tubuh"
+
+msgid "Ritual scar"
+msgstr "Goresan pada tubuh"
+
+msgid "Circumcision"
+msgstr "Penyunatan"
+
+msgid "Care for the fingernails"
+msgstr "Perawatan kuku jari tangan dan kaki"
+
+msgid "Fire"
+msgstr "Api"
+
+msgid "Light a fire"
+msgstr "Menyalakan api"
+
+msgid "Tend a fire"
+msgstr "Menjaga api (supaya tetap menyala)"
+
+msgid "Extinguish a fire"
+msgstr "Memadamkan api"
+
+msgid "Burn"
+msgstr "Membakar / menyala"
+
+msgid "What fires produce"
+msgstr "Hal-hal yang dihasilkan oleh api"
+
+msgid "Fuel"
+msgstr "Bahan bakar"
+
+msgid "Fireplace"
+msgstr "Perapian"
+
+msgid "Cleaning"
+msgstr "Membersihkan"
+
+msgid "Clean, dirty"
+msgstr "Bersih, kotor"
+
+msgid "Bathe"
+msgstr "Mandi"
+
+msgid "Wash dishes"
+msgstr "Mencuci piring"
+
+msgid "Wash clothes"
+msgstr "Mencuci pakaian"
+
+msgid "Sweep, rake"
+msgstr "Menyapu"
+
+msgid "Wipe, erase"
+msgstr "Menyeka, menghapus"
+
+msgid "Sleep"
+msgstr "Tidur"
+
+msgid "Go to sleep"
+msgstr "Pergi tidur"
+
+msgid "Dream"
+msgstr "Mimpi"
+
+msgid "Wake up"
+msgstr "Bangun tidur"
+
+msgid "Manage a house"
+msgstr "Mengatur rumah tangga"
+
+msgid "Live, stay"
+msgstr "Tinggal"
+
+msgid "Work and occupation"
+msgstr "Pekerjaan"
+
+msgid "Work"
+msgstr "Bekerja"
+
+msgid "Worker"
+msgstr "Pekerja"
+
+msgid "Expert"
+msgstr "Ahli"
+
+msgid "Method"
+msgstr "Cara kerja"
+
+msgid "Try, attempt"
+msgstr "Mencoba, berusaha"
+
+msgid "Use"
+msgstr "Menggunakan"
+
+msgid "Useful"
+msgstr "Bermanfaat"
+
+msgid "Useless"
+msgstr "Tidak berguna"
+
+msgid "Available"
+msgstr "Tersedia"
+
+msgid "Use up"
+msgstr "Menghabiskan"
+
+msgid "Take care of something"
+msgstr "Menjaga sesuatu"
+
+msgid "Waste"
+msgstr "Memboroskan"
+
+msgid "Work well"
+msgstr "Bekerja dengan baik"
+
+msgid "Careful"
+msgstr "Berhati-hati"
+
+msgid "Work hard"
+msgstr "Bekerja keras"
+
+msgid "Busy"
+msgstr "Sibuk"
+
+msgid "Power, force"
+msgstr "Kekuatan, tenaga"
+
+msgid "Complete, finish"
+msgstr "Menyelesaikan, mengakhiri"
+
+msgid "Ambitious"
+msgstr "Berambisi"
+
+msgid "Work poorly"
+msgstr "Bekerja dengan tidak beres"
+
+msgid "Careless, irresponsible"
+msgstr "Ceroboh, tidak bertanggung jawab"
+
+msgid "Lazy"
+msgstr "Malas"
+
+msgid "Give up"
+msgstr "Menyerah"
+
+msgid "Plan"
+msgstr "Rencana"
+
+msgid "Arrange an event"
+msgstr "Mengatur suatu acara"
+
+msgid "Cancel an event"
+msgstr "Membatalkan suatu acara"
+
+msgid "Prepare"
+msgstr "Menyiapkan"
+
+msgid "Prepare something for use"
+msgstr "Menyiapkan sesuatu untuk digunakan"
+
+msgid "Effective"
+msgstr "Efektif"
+
+msgid "Efficient"
+msgstr "Efisien"
+
+msgid "Opportunity"
+msgstr "Kesempatan"
+
+msgid "Difficult, impossible"
+msgstr "Sulit, mustahil"
+
+msgid "Easy, possible"
+msgstr "Mudah, mungkin"
+
+msgid "Succeed"
+msgstr "Berhasil"
+
+msgid "Fail"
+msgstr "Gagal"
+
+msgid "Advantage"
+msgstr "Keuntungan"
+
+msgid "Job satisfaction"
+msgstr "Kepuasan dalam bekerja"
+
+msgid "Unemployed, not working"
+msgstr "Menganggur, tidak bekerja"
+
+msgid "Made by hand"
+msgstr "Buatan tangan"
+
+msgid "Artificial"
+msgstr "Tiruan"
+
+msgid "Experienced"
+msgstr "Berpengalaman"
+
+msgid "Accustomed to"
+msgstr "Terbiasa"
+
+msgid "Agriculture"
+msgstr "Pertanian"
+
+msgid "Growing crops"
+msgstr "Menanam tumbuh-tumbuhan"
+
+msgid "Growing grain"
+msgstr "Menanam biji-bijian"
+
+msgid "Growing rice"
+msgstr "Menanam padi"
+
+msgid "Growing wheat"
+msgstr "Menanam gandum"
+
+msgid "Growing maize"
+msgstr "Menanam jagung"
+
+msgid "Growing roots"
+msgstr "Menanam umbi-umbian"
+
+msgid "Growing potatoes"
+msgstr "Menanam kentang"
+
+msgid "Growing cassava"
+msgstr "Menanam singkong"
+
+msgid "Growing vegetables"
+msgstr "Menanam sayur-sayuran"
+
+msgid "Growing fruit"
+msgstr "Menanam buah-buahan"
+
+msgid "Growing grapes"
+msgstr "Menanam anggur"
+
+msgid "Growing bananas"
+msgstr "Menanam pisang"
+
+msgid "Growing grass"
+msgstr "Menanam rumput"
+
+msgid "Growing sugarcane"
+msgstr "Menanam tebu"
+
+msgid "Growing tobacco"
+msgstr "Menanam tembakau"
+
+msgid "Growing flowers"
+msgstr "Menanam bunga"
+
+msgid "Growing trees"
+msgstr "Menanam pohon"
+
+msgid "Growing coconuts"
+msgstr "Menanam kelapa"
+
+msgid "Growing coffee"
+msgstr "Menanam kopi"
+
+msgid "Land preparation"
+msgstr "Mempersiapkan lahan"
+
+msgid "Clear a field"
+msgstr "Membersihkan lahan"
+
+msgid "Plow a field"
+msgstr "Membajak lahan"
+
+msgid "Fertilize a field"
+msgstr "Memupuk lahan"
+
+msgid "Plant a field"
+msgstr "Menanami lahan"
+
+msgid "Tend a field"
+msgstr "Menjaga lahan"
+
+msgid "Cut grass"
+msgstr "Memotong rumput"
+
+msgid "Uproot plants"
+msgstr "Mencabut tumbuhan"
+
+msgid "Irrigate"
+msgstr "Mengairi lahan"
+
+msgid "Trim plants"
+msgstr "Memangkas tanaman"
+
+msgid "Neglect plants"
+msgstr "Membiarkan tumbuhan"
+
+msgid "Harvest"
+msgstr "Memanen, menuai"
+
+msgid "First fruits"
+msgstr "Buah sulung, buah pertama"
+
+msgid "Crop failure"
+msgstr "Gagal panen"
+
+msgid "Gather wild plants"
+msgstr "Mengumpulkan tumbuhan liar"
+
+msgid "Plant product"
+msgstr "Hasil tumbuhan"
+
+msgid "Process harvest"
+msgstr "Mengolah hasil panen"
+
+msgid "Winnow grain"
+msgstr "Menampi biji-bijian"
+
+msgid "Mill grain"
+msgstr "Menggiling biji-bijian"
+
+msgid "Thresh"
+msgstr "Membuka kulit dari biji-bijian"
+
+msgid "Store the harvest"
+msgstr "Menyimpan hasil tuaian/panen"
+
+msgid "Farm worker"
+msgstr "Pekerja ladang"
+
+msgid "Agricultural tool"
+msgstr "Alat-alat pertanian"
+
+msgid "Farmland"
+msgstr "Tanah pertanian"
+
+msgid "Animal husbandry"
+msgstr "Peternakan hewan"
+
+msgid "Domesticated animal"
+msgstr "Hewan ternak"
+
+msgid "Cattle"
+msgstr "Sapi"
+
+msgid "Sheep"
+msgstr "Domba"
+
+msgid "Goat"
+msgstr "Kambing"
+
+msgid "Pig"
+msgstr "Babi"
+
+msgid "Dog"
+msgstr "Anjing"
+
+msgid "Cat"
+msgstr "Kucing"
+
+msgid "Beast of burden"
+msgstr "Binatang pengangkat beban"
+
+msgid "Tend herds in fields"
+msgstr "Menjaga kawanan ternak di ladang"
+
+msgid "Milk"
+msgstr "Memerah susu"
+
+msgid "Butcher, slaughter"
+msgstr "Tukang daging, tukang jagal"
+
+msgid "Wool production"
+msgstr "Produksi bulu domba"
+
+msgid "Poultry raising"
+msgstr "Menernak unggas"
+
+msgid "Chicken"
+msgstr "Ayam"
+
+msgid "Animal products"
+msgstr "Hasil binatang"
+
+msgid "Veterinary science"
+msgstr "Ilmu kedokteran hewan"
+
+msgid "Animal diseases"
+msgstr "Penyakit-penyakit binatang"
+
+msgid "Castrate animal"
+msgstr "Mengebiri binatang"
+
+msgid "Hunt and fish"
+msgstr "Memburu binatang dan menangkap ikan"
+
+msgid "Hunt"
+msgstr "Memburu"
+
+msgid "Track an animal"
+msgstr "Mengikuti jejak binatang"
+
+msgid "Trap"
+msgstr "Memerangkap"
+
+msgid "Hunting birds"
+msgstr "Memburu burung"
+
+msgid "Beekeeping"
+msgstr "Memelihara lebah"
+
+msgid "Fishing"
+msgstr "Menangkap ikan"
+
+msgid "Fish with net"
+msgstr "Menjala atau menjaring ikan"
+
+msgid "Fish with hooks"
+msgstr "Memancing ikan"
+
+msgid "Fishing equipment"
+msgstr "Perlengkapan untuk menangkap ikan"
+
+msgid "Things done to animals"
+msgstr "Hal-hal yang dilakukan terhadap binatang"
+
+msgid "Working with buildings"
+msgstr "Bekerja dengan bangunan"
+
+msgid "Building"
+msgstr "Bangunan"
+
+msgid "House"
+msgstr "Rumah"
+
+msgid "Types of houses"
+msgstr "Jenis-jenis rumah"
+
+msgid "Land, property"
+msgstr "Tanah, tanah milik seseorang"
+
+msgid "Yard"
+msgstr "Halaman"
+
+msgid "Fence, wall"
+msgstr "Pagar, tembok"
+
+msgid "Parts of a building"
+msgstr "Bagian-bagian dari sebuah bangunan"
+
+msgid "Wall"
+msgstr "Tembok atau dinding"
+
+msgid "Roof"
+msgstr "Atap"
+
+msgid "Floor"
+msgstr "Lantai"
+
+msgid "Door"
+msgstr "Pintu"
+
+msgid "Window"
+msgstr "Jendela"
+
+msgid "Foundation"
+msgstr "Fondasi rumah"
+
+msgid "Room"
+msgstr "Ruang atau kamar"
+
+msgid "Floor, story"
+msgstr "Tingkat, loteng"
+
+msgid "Building materials"
+msgstr "Bahan-bahan bangunan"
+
+msgid "Building equipment and maintenance"
+msgstr "Perlengkapan dan pemeliharaan bangunan"
+
+msgid "Infrastructure"
+msgstr "Prasarana"
+
+msgid "Road"
+msgstr "Jalan"
+
+msgid "Boundary"
+msgstr "Perbatasan"
+
+msgid "Occupation"
+msgstr "Pekerjaan"
+
+msgid "Working with cloth"
+msgstr "Bekerja dengan kain"
+
+msgid "Cloth"
+msgstr "Kain"
+
+msgid "Spinning thread"
+msgstr "Memintal benang"
+
+msgid "Knitting"
+msgstr "Merajut"
+
+msgid "Weaving cloth"
+msgstr "Menenun kain"
+
+msgid "Working with minerals"
+msgstr "Bekerja dengan bahan galian (barang tambang)"
+
+msgid "Mining"
+msgstr "Pertambangan"
+
+msgid "Smelting"
+msgstr "Peleburan"
+
+msgid "Working with metal"
+msgstr "Bekerja dengan logam"
+
+msgid "Working with clay"
+msgstr "Bekerja dengan tanah liat"
+
+msgid "Working with glass"
+msgstr "Bekerja dengan kaca"
+
+msgid "Working with oil and gas"
+msgstr "Bekerja dengan minyak dan gas"
+
+msgid "Working with stone"
+msgstr "Bekerja dengan batu"
+
+msgid "Working with bricks"
+msgstr "Bekerja dengan batu bata"
+
+msgid "Working with chemicals"
+msgstr "Bekerja dengan bahan kimia"
+
+msgid "Explode"
+msgstr "Meledak"
+
+msgid "Working with wood"
+msgstr "Bekerja dengan kayu"
+
+msgid "Lumbering"
+msgstr "Penebangan pohon"
+
+msgid "Wood"
+msgstr "Kayu"
+
+msgid "Working with paper"
+msgstr "Bekerja dengan kertas"
+
+msgid "Crafts"
+msgstr "Kerajinan tangan"
+
+msgid "Cordage"
+msgstr "Tali-temali"
+
+msgid "Weaving baskets and mats"
+msgstr "Menganyam keranjang dan keset kaki"
+
+msgid "Working with leather"
+msgstr "Bekerja dengan kulit"
+
+msgid "Working with bone"
+msgstr "Bekerja dengan tulang"
+
+msgid "Art"
+msgstr "Seni"
+
+msgid "Draw, paint"
+msgstr "Menggambar, melukis"
+
+msgid "Photography"
+msgstr "Fotografi"
+
+msgid "Sculpture"
+msgstr "Seni pahat"
+
+msgid "Working with land"
+msgstr "Bekerja dengan tanah"
+
+msgid "Working with water"
+msgstr "Bekerja dengan air"
+
+msgid "Plumber"
+msgstr "Tukang pipa"
+
+msgid "Conveying water"
+msgstr "Menyalurkan air"
+
+msgid "Controlling water"
+msgstr "Mengendalikan air"
+
+msgid "Working in the sea"
+msgstr "Bekerja di laut"
+
+msgid "Working with machines"
+msgstr "Bekerja dengan mesin"
+
+msgid "Working with electricity"
+msgstr "Bekerja dengan listrik"
+
+msgid "Tool"
+msgstr "Peralatan"
+
+msgid "Cutting tool"
+msgstr "Alat pemotong"
+
+msgid "Poking tool"
+msgstr "Alat pelubang atau penusuk"
+
+msgid "Digging tool"
+msgstr "Alat penggali"
+
+msgid "Pounding tool"
+msgstr "Alat pemukul"
+
+msgid "Carrying tool"
+msgstr "Alat pembawa barang"
+
+msgid "Lifting tool"
+msgstr "Alat pengangkat barang"
+
+msgid "Fastening tool"
+msgstr "Alat pengunci/pengikat"
+
+msgid "Holding tool"
+msgstr "Alat pemegang"
+
+msgid "Container"
+msgstr "Wadah"
+
+msgid "Bag"
+msgstr "Tas"
+
+msgid "Sheath"
+msgstr "Sarung senjata"
+
+msgid "Parts of tools"
+msgstr "Bagian-bagian dari peralatan"
+
+msgid "Machine"
+msgstr "Mesin"
+
+msgid "Finance"
+msgstr "Uang, keuangan"
+
+msgid "Have wealth"
+msgstr "Mempunyai harta atau kekayaan"
+
+msgid "Own, possess"
+msgstr "Mempunyai, memiliki"
+
+msgid "Rich"
+msgstr "Kaya"
+
+msgid "Poor"
+msgstr "Miskin"
+
+msgid "Store wealth"
+msgstr "Menyimpan harta atau kekayaan"
+
+msgid "Possession, property"
+msgstr "Kepunyaan, harta milik"
+
+msgid "Accumulate wealth"
+msgstr "Mengumpulkan harta"
+
+msgid "Produce wealth"
+msgstr "Menghasilkan harta"
+
+msgid "Make profit"
+msgstr "Usaha untuk mendapatkan keuntungan"
+
+msgid "Lose wealth"
+msgstr "Kehilangan harta"
+
+msgid "Frugal"
+msgstr "Hemat"
+
+msgid "Greedy"
+msgstr "Tamak"
+
+msgid "Collect"
+msgstr "Mengumpulkan"
+
+msgid "Earn"
+msgstr "Memperoleh bayaran atau upah"
+
+msgid "Share wealth"
+msgstr "Berbagi kekayaan"
+
+msgid "Give, donate"
+msgstr "Memberi, menyumbang"
+
+msgid "Generous"
+msgstr "Murah hati"
+
+msgid "Stingy"
+msgstr "Pelit atau kikir"
+
+msgid "Beg"
+msgstr "Mengemis"
+
+msgid "Financial transaction"
+msgstr "Transaksi keuangan"
+
+msgid "Buy"
+msgstr "Membeli"
+
+msgid "Sell"
+msgstr "Menjual"
+
+msgid "Price"
+msgstr "Harga"
+
+msgid "Expensive"
+msgstr "Mahal"
+
+msgid "Cheap"
+msgstr "Murah"
+
+msgid "Free of charge"
+msgstr "Gratis"
+
+msgid "Bargain"
+msgstr "Menawar"
+
+msgid "Pay"
+msgstr "Membayar"
+
+msgid "Hire, rent"
+msgstr "Menyewa"
+
+msgid "Spend"
+msgstr "Mengeluarkan, membelanjakan (uang)"
+
+msgid "Store, marketplace"
+msgstr "Toko, pasar"
+
+msgid "Exchange, trade"
+msgstr "Tukar-menukar, berdagang"
+
+msgid "Borrow"
+msgstr "Meminjam"
+
+msgid "Lend"
+msgstr "Meminjamkan"
+
+msgid "Give pledge, bond"
+msgstr "Perjanjian, surat jaminan"
+
+msgid "Owe"
+msgstr "Berutang"
+
+msgid "Repay debt"
+msgstr "Membayar utang"
+
+msgid "Credit"
+msgstr "Kredit"
+
+msgid "Money"
+msgstr "Uang"
+
+msgid "Monetary units"
+msgstr "Satuan mata uang"
+
+msgid "Accounting"
+msgstr "Pembukuan"
+
+msgid "Tax"
+msgstr "Pajak"
+
+msgid "Dishonest financial practices"
+msgstr "Perbuatan keuangan yang tidak jujur"
+
+msgid "Steal"
+msgstr "Mencuri"
+
+msgid "Cheat"
+msgstr "Menipu"
+
+msgid "Extort money"
+msgstr "Memeras uang"
+
+msgid "Take by force"
+msgstr "Mengambil secara paksa"
+
+msgid "Bribe"
+msgstr "Menyogok"
+
+msgid "Smuggle"
+msgstr "Menyelundup"
+
+msgid "Business organization"
+msgstr "Organisasi bisnis"
+
+msgid "Management"
+msgstr "Pengurusan atau manajemen"
+
+msgid "Work for someone"
+msgstr "Bekerja kepada seseorang"
+
+msgid "Marketing"
+msgstr "Pemasaran"
+
+msgid "Commerce"
+msgstr "Perdagangan"
+
+msgid "Economics"
+msgstr "Ekonomi"
+
+msgid "Insurance"
+msgstr "Asuransi"
+
+msgid "Physical actions"
+msgstr "Gerakan fisik"
+
+msgid "Posture"
+msgstr "Sikap tubuh"
+
+msgid "Stand"
+msgstr "Berdiri"
+
+msgid "Sit"
+msgstr "Duduk"
+
+msgid "Lie down"
+msgstr "Berbaring"
+
+msgid "Kneel"
+msgstr "Berlutut"
+
+msgid "Bow"
+msgstr "Membungkuk"
+
+msgid "Lean"
+msgstr "Bersandar"
+
+msgid "Straight posture"
+msgstr "Sikap berdiri yang tegak lurus"
+
+msgid "Relaxed posture"
+msgstr "Sikap berdiri yang santai"
+
+msgid "Bend down"
+msgstr "Membungkukkan badan"
+
+msgid "Move a part of the body"
+msgstr "Menggerakkan salah satu bagian tubuh"
+
+msgid "Move"
+msgstr "Bergerak"
+
+msgid "Manner of movement"
+msgstr "Cara bergerak"
+
+msgid "Walk"
+msgstr "Berjalan kaki"
+
+msgid "Run"
+msgstr "Berlari"
+
+msgid "Crawl"
+msgstr "Merangkak"
+
+msgid "Jump"
+msgstr "Melompat"
+
+msgid "Move quickly"
+msgstr "Bergerak dengan cepat"
+
+msgid "Move slowly"
+msgstr "Bergerak dengan lambat"
+
+msgid "Wander"
+msgstr "Berkeluyuran"
+
+msgid "Graceful"
+msgstr "Lemah gemulai"
+
+msgid "Clumsy"
+msgstr "Kikuk"
+
+msgid "Walk with difficulty"
+msgstr "Kesulitan waktu berjalan"
+
+msgid "Slip, slide"
+msgstr "Tergelincir, terpeleset"
+
+msgid "Steady, unsteady"
+msgstr "Berjalan tegak, berjalan tidak tegak"
+
+msgid "Balance"
+msgstr "Seimbang"
+
+msgid "Move noisily"
+msgstr "Bergerak dengan menimbulkan bunyi"
+
+msgid "Move in a direction"
+msgstr "Bergerak dengan menghadap arah tertentu"
+
+msgid "Move forward"
+msgstr "Bergerak maju"
+
+msgid "Move back"
+msgstr "Bergerak mundur"
+
+msgid "Move sideways"
+msgstr "Bergerak ke samping"
+
+msgid "Move up"
+msgstr "Bergerak naik ke atas"
+
+msgid "Move down"
+msgstr "Bergerak turun ke bawah"
+
+msgid "Fall"
+msgstr "Jatuh"
+
+msgid "Turn"
+msgstr "Belok"
+
+msgid "Move in a circle"
+msgstr "Berputar-putar secara melingkar"
+
+msgid "Move back and forth"
+msgstr "Bergerak maju dan mundur"
+
+msgid "Move straight without turning"
+msgstr "Bergerak lurus tanpa belok"
+
+msgid "Move toward something"
+msgstr "Bergerak menuju sesuatu"
+
+msgid "Move away"
+msgstr "Pergi menjauh dari sesuatu"
+
+msgid "Go"
+msgstr "Pergi"
+
+msgid "Come"
+msgstr "Datang"
+
+msgid "Leave"
+msgstr "Meninggalkan"
+
+msgid "Arrive"
+msgstr "Tiba, sampai"
+
+msgid "Move in"
+msgstr "Masuk"
+
+msgid "Move out"
+msgstr "Keluar"
+
+msgid "Move past, over, through"
+msgstr "Bergerak melewati, mendahului, atau melalui sesuatu"
+
+msgid "Return"
+msgstr "Kembali"
+
+msgid "Travel"
+msgstr "Bepergian"
+
+msgid "Travel by land"
+msgstr "Bepergian dengan menggunakan angkutan darat"
+
+msgid "Vehicle"
+msgstr "Kendaraan"
+
+msgid "Railroad"
+msgstr "Rel kereta api"
+
+msgid "Travel by water"
+msgstr "Bepergian dengan menggunakan angkutan air"
+
+msgid "Boat"
+msgstr "Kapal"
+
+msgid "Swim"
+msgstr "Berenang"
+
+msgid "Dive"
+msgstr "Menyelam"
+
+msgid "Fly"
+msgstr "Terbang"
+
+msgid "Travel in space"
+msgstr "Bepergian ke luar angkasa"
+
+msgid "Move to a new house"
+msgstr "Pindah ke rumah baru"
+
+msgid "Way, route"
+msgstr "Jalan, rute"
+
+msgid "Lose your way"
+msgstr "Sesat di jalan"
+
+msgid "Map"
+msgstr "Peta"
+
+msgid "Accompany"
+msgstr "Menemani"
+
+msgid "Go first"
+msgstr "Pergi dahulu"
+
+msgid "Follow"
+msgstr "Mengikuti"
+
+msgid "Guide"
+msgstr "Memandu"
+
+msgid "Move together"
+msgstr "Bergerak bersama-sama"
+
+msgid "Pursue"
+msgstr "Mengejar"
+
+msgid "Catch, capture"
+msgstr "Menangkap"
+
+msgid "Prevent from moving"
+msgstr "Mencegah supaya tidak bergerak"
+
+msgid "Escape"
+msgstr "Melarikan diri"
+
+msgid "Set free"
+msgstr "Membebaskan"
+
+msgid "Not moving"
+msgstr "Tidak bergerak"
+
+msgid "Stop moving"
+msgstr "Berhenti bergerak"
+
+msgid "Stay, remain"
+msgstr "Tinggal, tetap"
+
+msgid "Wait"
+msgstr "Menunggu"
+
+msgid "Send someone"
+msgstr "Mengutus seseorang"
+
+msgid "Move something"
+msgstr "Menggerakkan sesuatu"
+
+msgid "Carry"
+msgstr "Membawa"
+
+msgid "Throw"
+msgstr "Melempar"
+
+msgid "Catch"
+msgstr "Menangkap"
+
+msgid "Shake"
+msgstr "Mengguncang"
+
+msgid "Knock over"
+msgstr "Menabrak"
+
+msgid "Set upright"
+msgstr "Menegakkan sesuatu"
+
+msgid "Move something in a direction"
+msgstr "Menggerakkan sesuatu ke arah tertentu"
+
+msgid "Put in front"
+msgstr "Meletakkan di bagian depan"
+
+msgid "Put in back"
+msgstr "Meletakkan di bagian belakang"
+
+msgid "Put aside"
+msgstr "Meletakkan di bagian samping"
+
+msgid "Lift"
+msgstr "Mengangkat"
+
+msgid "Hang"
+msgstr "Menggantung"
+
+msgid "Lower something"
+msgstr "Menurunkan sesuatu"
+
+msgid "Put in"
+msgstr "Memasukkan"
+
+msgid "Take something out of something"
+msgstr "Mengeluarkan sesuatu dari suatu tempat"
+
+msgid "Pull"
+msgstr "Menarik"
+
+msgid "Push"
+msgstr "Mendorong"
+
+msgid "Take somewhere"
+msgstr "Membawa ke suatu tempat"
+
+msgid "Take something from somewhere"
+msgstr "Mengambil sesuatu dari suatu tempat"
+
+msgid "Return something"
+msgstr "Mengembalikan sesuatu"
+
+msgid "Send"
+msgstr "Mengirim"
+
+msgid "Chase away"
+msgstr "Mengusir"
+
+msgid "Drive along"
+msgstr "Menggerakkan seseorang atau sesuatu"
+
+msgid "Handle something"
+msgstr "Melakukan sesuatu dengan tangan"
+
+msgid "Touch"
+msgstr "Menyentuh"
+
+msgid "Pick up"
+msgstr "Memungut"
+
+msgid "Put down"
+msgstr "Meletakkan ke bawah"
+
+msgid "Hold"
+msgstr "Memegang"
+
+msgid "Actions of the hand"
+msgstr "Hal-hal yang bisa dilakukan dengan tangan"
+
+msgid "Support"
+msgstr "Menopang"
+
+msgid "Extend"
+msgstr "Memperluas"
+
+msgid "Turn something"
+msgstr "Membalikkan sesuatu"
+
+msgid "Open"
+msgstr "Membuka"
+
+msgid "Shut, close"
+msgstr "Menutup"
+
+msgid "Block, dam up"
+msgstr "Menghalangi, membendung"
+
+msgid "Limit"
+msgstr "Membatasi"
+
+msgid "Cover"
+msgstr "Menutupi"
+
+msgid "Uncover"
+msgstr "Membuka, menyingkap"
+
+msgid "Wrap"
+msgstr "Membungkus"
+
+msgid "Spread, smear"
+msgstr "Mengolesi, melumuri"
+
+msgid "Transport"
+msgstr "Transportasi"
+
+msgid "Have, be with"
+msgstr "Memiliki"
+
+msgid "Give, hand to"
+msgstr "Memberikan, menyerahkan"
+
+msgid "Receive"
+msgstr "Menerima"
+
+msgid "Get"
+msgstr "Mendapatkan"
+
+msgid "Distribute"
+msgstr "Membagikan"
+
+msgid "Keep something"
+msgstr "Menyimpan sesuatu"
+
+msgid "Leave something"
+msgstr "Meninggalkan sesuatu"
+
+msgid "Throw away"
+msgstr "Membuang"
+
+msgid "Not have"
+msgstr "Tidak memiliki"
+
+msgid "Arrange"
+msgstr "Menata (benda)"
+
+msgid "Gather"
+msgstr "Mengumpulkan"
+
+msgid "Separate, scatter"
+msgstr "Memisahkan, menghamburkan"
+
+msgid "Include"
+msgstr "Memasukkan"
+
+msgid "Special"
+msgstr "Khusus/istimewa"
+
+msgid "Join, attach"
+msgstr "Menggabungkan, melekatkan"
+
+msgid "Link, connect"
+msgstr "Menghubungkan, mengaitkan"
+
+msgid "Stick together"
+msgstr "Menempel"
+
+msgid "Add to something"
+msgstr "Menambahkan sesuatu"
+
+msgid "Remove, take apart"
+msgstr "Menghilangkan, melepaskan"
+
+msgid "Mix"
+msgstr "Mencampur"
+
+msgid "Pure, unmixed"
+msgstr "Murni, belum tercampur"
+
+msgid "Tie"
+msgstr "Mengikat"
+
+msgid "Rope, string"
+msgstr "Tali, benang"
+
+msgid "Tangle"
+msgstr "Kusut"
+
+msgid "Organize"
+msgstr "Mengatur"
+
+msgid "Disorganized"
+msgstr "Berantakan"
+
+msgid "Substitute"
+msgstr "Mengganti"
+
+msgid "Multiple things moving"
+msgstr "Pergerakan yang terjadi pada banyak benda"
+
+msgid "Simple, complicated"
+msgstr "Sederhana, rumit"
+
+msgid "Put"
+msgstr "Meletakkan"
+
+msgid "Load, pile"
+msgstr "Memuat, menumpuk"
+
+msgid "Fill, cover"
+msgstr "Mengisi, menutup"
+
+msgid "Hide"
+msgstr "Menyembunyikan"
+
+msgid "Search"
+msgstr "Mencari"
+
+msgid "Find"
+msgstr "Menemukan"
+
+msgid "Lose, misplace"
+msgstr "Hilang, salah tempat"
+
+msgid "Physical impact"
+msgstr "Pengaruh secara kasat mata"
+
+msgid "Hit"
+msgstr "Memukul atau menabrak"
+
+msgid "Aim at a target"
+msgstr "Membidik pada suatu sasaran"
+
+msgid "Kick"
+msgstr "Menendang"
+
+msgid "Press"
+msgstr "Menekan"
+
+msgid "Rub"
+msgstr "Menggosok (dengan lembut)"
+
+msgid "Grind"
+msgstr "Menggosok"
+
+msgid "Mark"
+msgstr "Menandai"
+
+msgid "Divide into pieces"
+msgstr "Membagi sesuatu menjadi banyak bagian"
+
+msgid "Break"
+msgstr "Pecah"
+
+msgid "Crack"
+msgstr "Retak"
+
+msgid "Cut"
+msgstr "Memotong"
+
+msgid "Tear, rip"
+msgstr "Merobek, menyobek"
+
+msgid "Make hole, opening"
+msgstr "Membuat lubang, celah"
+
+msgid "Dig"
+msgstr "Menggali"
+
+msgid "Break, wear out"
+msgstr "Rusak, usang"
+
+msgid "Damage"
+msgstr "Merusakkan"
+
+msgid "Tear down"
+msgstr "Merobohkan"
+
+msgid "Destroy"
+msgstr "Menghancurkan"
+
+msgid "Repair"
+msgstr "Memperbaiki"
+
+msgid "States"
+msgstr "Keadaan"
+
+msgid "Quantity"
+msgstr "Jumlah atau kuantitas"
+
+msgid "Number"
+msgstr "Angka"
+
+msgid "Cardinal numbers"
+msgstr "Bilangan pokok"
+
+msgid "One"
+msgstr "Satu"
+
+msgid "Two"
+msgstr "Dua"
+
+msgid "Ordinal numbers"
+msgstr "Bilangan urutan"
+
+msgid "Number of times"
+msgstr "Jumlah kekerapan terjadinya sesuatu"
+
+msgid "Multiples"
+msgstr "Perlipatgandaan"
+
+msgid "Numbered group"
+msgstr "Kelompok dengan jumlah tertentu"
+
+msgid "Fraction"
+msgstr "Bilangan pecahan"
+
+msgid "Number series"
+msgstr "Seri angka"
+
+msgid "Count"
+msgstr "Berhitung"
+
+msgid "Mathematics"
+msgstr "Matematika"
+
+msgid "Add numbers"
+msgstr "Penjumlahan"
+
+msgid "Subtract numbers"
+msgstr "Pengurangan"
+
+msgid "Multiply numbers"
+msgstr "Perkalian"
+
+msgid "Divide numbers"
+msgstr "Pembagian"
+
+msgid "Plural"
+msgstr "Bentuk jamak"
+
+msgid "Many, much"
+msgstr "Banyak"
+
+msgid "Few, little"
+msgstr "Sedikit"
+
+msgid "Group of things"
+msgstr "Sekelompok benda"
+
+msgid "More"
+msgstr "Lebih"
+
+msgid "Less"
+msgstr "Kurang"
+
+msgid "Increase"
+msgstr "Bertambah, meningkat"
+
+msgid "Decrease"
+msgstr "Berkurang, menurun"
+
+msgid "All"
+msgstr "Semua"
+
+msgid "Some"
+msgstr "Beberapa"
+
+msgid "None, nothing"
+msgstr "Tidak ada"
+
+msgid "Both"
+msgstr "Keduanya"
+
+msgid "Most, almost all"
+msgstr "Sebagian besar, hampir semuanya"
+
+msgid "Most, least"
+msgstr "Paling banyak/besar, paling sedikit/kecil"
+
+msgid "Almost"
+msgstr "Hampir"
+
+msgid "Only"
+msgstr "Hanya"
+
+msgid "Exact"
+msgstr "Persis"
+
+msgid "Approximate"
+msgstr "Kira-kira"
+
+msgid "Average"
+msgstr "Rata-rata"
+
+msgid "Whole, complete"
+msgstr "Semuanya, seluruhnya"
+
+msgid "Part"
+msgstr "Bagian"
+
+msgid "Piece"
+msgstr "Potongan"
+
+msgid "Enough"
+msgstr "Cukup"
+
+msgid "Extra"
+msgstr "Tambahan"
+
+msgid "Lack"
+msgstr "Kekurangan, tidak cukup"
+
+msgid "Need"
+msgstr "Memerlukan"
+
+msgid "Remain, remainder"
+msgstr "Sisa"
+
+msgid "Full"
+msgstr "Penuh"
+
+msgid "Empty"
+msgstr "Kosong"
+
+msgid "Big"
+msgstr "Besar"
+
+msgid "Small"
+msgstr "Kecil"
+
+msgid "Long"
+msgstr "Panjang"
+
+msgid "Short, not long"
+msgstr "Pendek, tidak panjang"
+
+msgid "Tall"
+msgstr "Tinggi"
+
+msgid "Short, not tall"
+msgstr "Pendek, tidak tinggi"
+
+msgid "Thick"
+msgstr "Tebal"
+
+msgid "Thin thing"
+msgstr "Benda yang tipis"
+
+msgid "Fat person"
+msgstr "Orang gemuk"
+
+msgid "Thin person"
+msgstr "Orang kurus"
+
+msgid "Wide"
+msgstr "Lebar"
+
+msgid "Narrow"
+msgstr "Sempit"
+
+msgid "Big area"
+msgstr "Tempat yang luas"
+
+msgid "Big container, volume"
+msgstr "Wadah besar, isi"
+
+msgid "Distance"
+msgstr "Jarak"
+
+msgid "Far"
+msgstr "Jauh"
+
+msgid "Near"
+msgstr "Dekat"
+
+msgid "High"
+msgstr "Tinggi"
+
+msgid "Low"
+msgstr "Rendah"
+
+msgid "Deep, shallow"
+msgstr "Dalam, dangkal"
+
+msgid "Fit, size"
+msgstr "Cocok, ukuran"
+
+msgid "Tight"
+msgstr "Sempit"
+
+msgid "Loose"
+msgstr "Longgar"
+
+msgid "Wedged in, stuck"
+msgstr "Terjepit, tersekat"
+
+msgid "Measure"
+msgstr "Mengukur"
+
+msgid "Weigh"
+msgstr "Menimbang"
+
+msgid "Heavy"
+msgstr "Berat"
+
+msgid "Light in weight"
+msgstr "Ringan"
+
+msgid "Quality"
+msgstr "Kualitas"
+
+msgid "Shape"
+msgstr "Bentuk"
+
+msgid "Point, dot"
+msgstr "Titik, bintik"
+
+msgid "Line"
+msgstr "Garis"
+
+msgid "Straight"
+msgstr "Lurus"
+
+msgid "Flat"
+msgstr "Datar, rata"
+
+msgid "Horizontal"
+msgstr "Arah mendatar"
+
+msgid "Vertical"
+msgstr "Arah tegak lurus"
+
+msgid "Leaning, sloping"
+msgstr "Miring, landai"
+
+msgid "Bend"
+msgstr "Bengkok"
+
+msgid "Roll up"
+msgstr "Menggulung"
+
+msgid "Twist, wring"
+msgstr "Memelintir, memeras"
+
+msgid "Fold"
+msgstr "Melipat"
+
+msgid "Round"
+msgstr "Bulat"
+
+msgid "Concave"
+msgstr "Cekung"
+
+msgid "Convex"
+msgstr "Cembung"
+
+msgid "Hollow"
+msgstr "Berlubang"
+
+msgid "Square"
+msgstr "Persegi empat"
+
+msgid "Pattern, design"
+msgstr "Pola, rancangan"
+
+msgid "Symmetrical"
+msgstr "Simetris"
+
+msgid "Stretch"
+msgstr "Merentangkan"
+
+msgid "Texture"
+msgstr "Tekstur"
+
+msgid "Smooth"
+msgstr "Licin"
+
+msgid "Rough"
+msgstr "Kasar"
+
+msgid "Sharp"
+msgstr "Tajam"
+
+msgid "Pointed"
+msgstr "Runcing"
+
+msgid "Blunt"
+msgstr "Tumpul"
+
+msgid "Furrow"
+msgstr "Alur"
+
+msgid "Light"
+msgstr "Cahaya"
+
+msgid "Shine"
+msgstr "Memancarkan sinar"
+
+msgid "Light source"
+msgstr "Sumber cahaya"
+
+msgid "Bright"
+msgstr "Terang"
+
+msgid "Dark"
+msgstr "Gelap"
+
+msgid "Shadow"
+msgstr "Bayangan"
+
+msgid "Color"
+msgstr "Warna"
+
+msgid "White"
+msgstr "Putih"
+
+msgid "Black"
+msgstr "Hitam"
+
+msgid "Gray"
+msgstr "Abu-abu"
+
+msgid "Colors of the spectrum"
+msgstr "Rentetan warna yang diuraikan oleh cahaya"
+
+msgid "Animal color, marking"
+msgstr "Warna dan corak pada bulu binatang"
+
+msgid "Change color"
+msgstr "Mengubah warna"
+
+msgid "Multicolored"
+msgstr "Warna-warni"
+
+msgid "Shiny"
+msgstr "Berkilau"
+
+msgid "Hot"
+msgstr "Panas"
+
+msgid "Cold"
+msgstr "Dingin"
+
+msgid "Type, kind"
+msgstr "Jenis"
+
+msgid "Nature, character"
+msgstr "Sifat asli, ciri-ciri"
+
+msgid "Compare"
+msgstr "Membandingkan"
+
+msgid "Same"
+msgstr "Sama"
+
+msgid "Like, similar"
+msgstr "Sama seperti, mirip"
+
+msgid "Different"
+msgstr "Berbeda"
+
+msgid "Other"
+msgstr "Lain"
+
+msgid "Various"
+msgstr "Berbagai macam"
+
+msgid "Opposite"
+msgstr "Berlawanan"
+
+msgid "Common"
+msgstr "Umum"
+
+msgid "Usual"
+msgstr "Biasa"
+
+msgid "Unusual"
+msgstr "Tidak biasa"
+
+msgid "Unique"
+msgstr "Unik, khas"
+
+msgid "Strange"
+msgstr "Aneh"
+
+msgid "Pattern, model"
+msgstr "Pola, model"
+
+msgid "Imitate"
+msgstr "Meniru"
+
+msgid "Copy"
+msgstr "Menyalin"
+
+msgid "Made of, material"
+msgstr "Terbuat dari, bahan"
+
+msgid "Strong, brittle"
+msgstr "Kuat, rapuh"
+
+msgid "Hard, firm"
+msgstr "Keras, kukuh"
+
+msgid "Stiff, flexible"
+msgstr "Kaku, luwes"
+
+msgid "Dense"
+msgstr "Tebal atau padat"
+
+msgid "Soft, flimsy"
+msgstr "Lembut, halus"
+
+msgid "Good"
+msgstr "Bagus atau baik"
+
+msgid "Bad"
+msgstr "Buruk atau jelek"
+
+msgid "Better"
+msgstr "Lebih bagus atau baik"
+
+msgid "Worse"
+msgstr "Lebih buruk atau jelek"
+
+msgid "Perfect"
+msgstr "Sempurna"
+
+msgid "Mediocre"
+msgstr "Pas-pasan, sedang-sedang saja"
+
+msgid "Important"
+msgstr "Penting"
+
+msgid "Basic"
+msgstr "Dasar"
+
+msgid "Improve"
+msgstr "Memperbaiki"
+
+msgid "Right, proper"
+msgstr "Benar, tepat"
+
+msgid "Wrong, unsuitable"
+msgstr "Salah, tidak tepat"
+
+msgid "Convenient"
+msgstr "Cocok, sesuai"
+
+msgid "Compatible"
+msgstr "Rukun"
+
+msgid "Decay"
+msgstr "Busuk"
+
+msgid "Rust"
+msgstr "Karat"
+
+msgid "Blemish"
+msgstr "Noda"
+
+msgid "Garbage"
+msgstr "Sampah"
+
+msgid "Preserve"
+msgstr "Memelihara"
+
+msgid "Value"
+msgstr "Nilai"
+
+msgid "Decorated"
+msgstr "Telah dihias"
+
+msgid "Simple, plain"
+msgstr "Sederhana, biasa"
+
+msgid "Glory"
+msgstr "Mulia/agung"
+
+msgid "Time"
+msgstr "Waktu"
+
+msgid "Period of time"
+msgstr "Jangka waktu"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Day"
+msgstr "Hari"
+
+msgid "Night"
+msgstr "Malam"
+
+msgid "Yesterday, today, tomorrow"
+msgstr "Kemarin, hari ini, besok"
+
+msgid "Time of the day"
+msgstr "Waktu dalam satu hari"
+
+msgid "Week"
+msgstr "Minggu"
+
+msgid "Days of the week"
+msgstr "Hari-hari dalam seminggu"
+
+msgid "Month"
+msgstr "Bulan"
+
+msgid "Months of the year"
+msgstr "Bulan-bulan dalam setahun"
+
+msgid "Season"
+msgstr "Musim"
+
+msgid "Year"
+msgstr "Tahun"
+
+msgid "Era"
+msgstr "Zaman"
+
+msgid "Special days"
+msgstr "Hari-hari khusus"
+
+msgid "Take time"
+msgstr "Menghabiskan waktu"
+
+msgid "A short time"
+msgstr "Waktu yang singkat"
+
+msgid "A long time"
+msgstr "Waktu yang lama"
+
+msgid "Forever"
+msgstr "Selamanya"
+
+msgid "Temporary"
+msgstr "Sementara"
+
+msgid "Indefinite time"
+msgstr "Waktu yang tak tentu"
+
+msgid "Telling time"
+msgstr "Membaca waktu"
+
+msgid "Plan a time"
+msgstr "Merencanakan waktu"
+
+msgid "Clock, watch"
+msgstr "Jam"
+
+msgid "Relative time"
+msgstr "Waktu yang berkaitan dengan suatu kejadian"
+
+msgid "Order, sequence"
+msgstr "Urutan, rentetan"
+
+msgid "Series"
+msgstr "Rangkaian"
+
+msgid "First"
+msgstr "Pertama kali"
+
+msgid "Next"
+msgstr "Kemudian"
+
+msgid "Last"
+msgstr "Terakhir"
+
+msgid "Regular"
+msgstr "Teratur"
+
+msgid "Alternate"
+msgstr "Bergantian"
+
+msgid "Before"
+msgstr "Sebelum"
+
+msgid "After"
+msgstr "Setelah"
+
+msgid "At the same time"
+msgstr "Pada saat bersamaan"
+
+msgid "During"
+msgstr "Selama"
+
+msgid "Right time"
+msgstr "Waktu yang tepat"
+
+msgid "Early"
+msgstr "Lebih awal"
+
+msgid "On time"
+msgstr "Tepat waktu"
+
+msgid "Late"
+msgstr "Terlambat"
+
+msgid "Delay"
+msgstr "Mengulur waktu"
+
+msgid "Postpone"
+msgstr "Menunda"
+
+msgid "Aspectual time"
+msgstr "Waktu ketika sesuatu terjadi"
+
+msgid "Start something"
+msgstr "Memulai sesuatu"
+
+msgid "Beginning"
+msgstr "Mulai"
+
+msgid "Stop something"
+msgstr "Menghentikan sesuatu"
+
+msgid "End"
+msgstr "Akhir"
+
+msgid "Until"
+msgstr "Sampai, hingga"
+
+msgid "Since, from"
+msgstr "Sejak, dari"
+
+msgid "Past"
+msgstr "Masa lampau"
+
+msgid "Recently"
+msgstr "Baru-baru ini"
+
+msgid "Present"
+msgstr "Masa sekarang"
+
+msgid "Now"
+msgstr "Sekarang"
+
+msgid "Future"
+msgstr "Masa depan"
+
+msgid "Soon"
+msgstr "Segera"
+
+msgid "Not yet"
+msgstr "Belum"
+
+msgid "Eventually"
+msgstr "Akhirnya"
+
+msgid "Immediately"
+msgstr "Segera"
+
+msgid "Age"
+msgstr "Umur atau usia"
+
+msgid "Young"
+msgstr "Muda"
+
+msgid "Old, not young"
+msgstr "Tua, tidak muda"
+
+msgid "New"
+msgstr "Baru"
+
+msgid "Old, not new"
+msgstr "Lama, tidak baru"
+
+msgid "Modern"
+msgstr "Mutakhir atau modern"
+
+msgid "Old fashioned"
+msgstr "Kuno"
+
+msgid "Once"
+msgstr "Satu kali"
+
+msgid "Again"
+msgstr "Lagi"
+
+msgid "Sometimes"
+msgstr "Kadang-kadang"
+
+msgid "Often"
+msgstr "Sering"
+
+msgid "All the time"
+msgstr "Sepanjang waktu"
+
+msgid "Every time"
+msgstr "Setiap kali"
+
+msgid "Never"
+msgstr "Tidak pernah"
+
+msgid "Continue, persevere"
+msgstr "Meneruskan, bertekun"
+
+msgid "Interrupt"
+msgstr "Menyela"
+
+msgid "Start again"
+msgstr "Memulai kembali"
+
+msgid "Interval"
+msgstr "Jarak waktu"
+
+msgid "Speed"
+msgstr "Kecepatan"
+
+msgid "Quick"
+msgstr "Cepat"
+
+msgid "Slow"
+msgstr "Lambat"
+
+msgid "Sudden"
+msgstr "Tiba-tiba"
+
+msgid "Location"
+msgstr "Tempat"
+
+msgid "Here, there"
+msgstr "Di sini, di sana"
+
+msgid "In front of"
+msgstr "Di depan"
+
+msgid "Behind"
+msgstr "Di belakang"
+
+msgid "Beside"
+msgstr "Di samping"
+
+msgid "Around"
+msgstr "Di sekeliling"
+
+msgid "Between"
+msgstr "Di antara"
+
+msgid "On"
+msgstr "Di atas"
+
+msgid "Above"
+msgstr "Di atas (di tempat yang tinggi)"
+
+msgid "Under, below"
+msgstr "Di bawah"
+
+msgid "Inside"
+msgstr "Di dalam"
+
+msgid "Out, outside"
+msgstr "Di luar"
+
+msgid "Touching, contact"
+msgstr "Bersentuhan, bersinggungan"
+
+msgid "Next to"
+msgstr "Di samping"
+
+msgid "Across"
+msgstr "Seberang"
+
+msgid "Indefinite location"
+msgstr "Tempat yang tidak tentu"
+
+msgid "Direction"
+msgstr "Arah"
+
+msgid "Forward"
+msgstr "Ke depan"
+
+msgid "Backward"
+msgstr "Ke belakang"
+
+msgid "Right, left"
+msgstr "Kanan, kiri"
+
+msgid "Up"
+msgstr "Ke atas"
+
+msgid "Down"
+msgstr "Ke bawah"
+
+msgid "Away from"
+msgstr "Menjauh dari"
+
+msgid "Towards"
+msgstr "Menuju"
+
+msgid "North, south, east, west"
+msgstr "Utara, selatan, timur, barat"
+
+msgid "Be at a place"
+msgstr "Berada di suatu tempat"
+
+msgid "Absent"
+msgstr "Tidak hadir"
+
+msgid "Area"
+msgstr "Tempat"
+
+msgid "Vicinity"
+msgstr "Sekitarnya"
+
+msgid "Occupy an area"
+msgstr "Menghuni suatu tempat"
+
+msgid "Space, room"
+msgstr "Tempat, ruang"
+
+msgid "Interval, space"
+msgstr "Jarak waktu, ruang"
+
+msgid "Spatial relations"
+msgstr "Hubungan ruang dan tempat"
+
+msgid "Contain"
+msgstr "Mengandung"
+
+msgid "Parts of things"
+msgstr "Bagian dari sesuatu"
+
+msgid "Front"
+msgstr "Depan"
+
+msgid "Back"
+msgstr "Belakang"
+
+msgid "Top"
+msgstr "Atas"
+
+msgid "Bottom"
+msgstr "Dasar"
+
+msgid "Side"
+msgstr "Samping"
+
+msgid "Inner part"
+msgstr "Bagian dalam"
+
+msgid "Outer part"
+msgstr "Bagian luar"
+
+msgid "Middle"
+msgstr "Tengah"
+
+msgid "Edge"
+msgstr "Tepi"
+
+msgid "End, point"
+msgstr "Akhir, ujung"
+
+msgid "Grammar"
+msgstr "Tata bahasa"
+
+msgid "General words"
+msgstr "Kata-kata umum"
+
+msgid "Be"
+msgstr "Adalah, merupakan"
+
+msgid "Exist"
+msgstr "Ada"
+
+msgid "Become, change state"
+msgstr "Menjadi, mengubah keadaan"
+
+msgid "Have, of"
+msgstr "Memiliki"
+
+msgid "Attribution"
+msgstr ""
+"Kata atribut (kata sifat atau kata benda yang menjelaskan frasa kata benda)"
+
+msgid "Do"
+msgstr "Melakukan"
+
+msgid "Happen"
+msgstr "Terjadi sesuatu"
+
+msgid "React, respond"
+msgstr "Bereaksi, menanggapi"
+
+msgid "Create"
+msgstr "Menciptakan"
+
+msgid "Design"
+msgstr "Merancang"
+
+msgid "Make"
+msgstr "Membuat"
+
+msgid "Change something"
+msgstr "Mengubah sesuatu"
+
+msgid "Event propositions"
+msgstr "Proposisi peristiwa"
+
+msgid "Thing"
+msgstr "Benda atau hal"
+
+msgid "Physical, non-physical"
+msgstr "Kasatmata, tidak kasatmata"
+
+msgid "Situation"
+msgstr "Situasi"
+
+msgid "General adjectives"
+msgstr "Kata sifat umum"
+
+msgid "General adverbs"
+msgstr "Kata keterangan umum"
+
+msgid "Part of speech"
+msgstr "Jenis kata"
+
+msgid "Adjectives"
+msgstr "Kata sifat"
+
+msgid "Adverbs"
+msgstr "Kata keterangan"
+
+msgid "Pronouns"
+msgstr "Kata ganti"
+
+msgid "Reflexive pronouns"
+msgstr "Kata ganti refleksif"
+
+msgid "Indefinite pronouns"
+msgstr "Kata ganti tak tentu"
+
+msgid "Relative pronouns"
+msgstr "Kata ganti penghubung"
+
+msgid "Question words"
+msgstr "Kata tanya"
+
+msgid "Demonstrative pronouns"
+msgstr "Kata ganti penunjuk"
+
+msgid "Personally"
+msgstr "Sendiri"
+
+msgid "Prepositions, postpositions"
+msgstr ""
+"Preposisi (kata depan), post-posisi (kata depan yang terletak di belakang "
+"kata benda yang diterangkan)"
+
+msgid "Conjunctions"
+msgstr "Kata penghubung"
+
+msgid "Phrase conjunctions"
+msgstr "Kata penghubung frasa"
+
+msgid "Clause conjunctions"
+msgstr "Kata penghubung klausa"
+
+msgid "Sentence conjunctions"
+msgstr "Kata penghubung kalimat"
+
+msgid "Particles"
+msgstr "Kata partikel"
+
+msgid "Classifiers"
+msgstr "Kata penggolong"
+
+msgid "Interjections"
+msgstr "Kata seru"
+
+msgid "Idiophones"
+msgstr "Ideofon (kata yang melambangkan bunyi sesuatu)"
+
+msgid "Affixes"
+msgstr "Kata imbuhan"
+
+msgid "Verb affixes"
+msgstr "Kata kerja berimbuhan"
+
+msgid "Noun affixes"
+msgstr "Kata benda berimbuhan"
+
+msgid "Derivational affixes"
+msgstr "Kata imbuhan derivatif"
+
+msgid "Very"
+msgstr "Sangat"
+
+msgid "Degree"
+msgstr "Tingkat"
+
+msgid "To a large degree"
+msgstr "Tingkat yang besar"
+
+msgid "To a small degree"
+msgstr "Tingkat yang kecil"
+
+msgid "To a larger degree"
+msgstr "Tingkat yang lebih tinggi/besar"
+
+msgid "To a smaller degree"
+msgstr "Tingkat yang lebih rendah/kecil"
+
+msgid "Completely"
+msgstr "Sepenuhnya, seluruhnya"
+
+msgid "Partly"
+msgstr "Sebagian"
+
+msgid "Do intensely"
+msgstr "Sangat sering dilakukan"
+
+msgid "Attribution of an attribute"
+msgstr "Penjelasan tambahan untuk sifat sesuatu atau seseorang"
+
+msgid "Semantic constituents related to verbs"
+msgstr "Konstituen atau unsur semantik yang berkaitan dengan kata kerja"
+
+msgid "Tense and aspect"
+msgstr ""
+"Kala (perbedaan bentuk kata kerja untuk menyatakan perbedaan waktu) dan "
+"aspek (kategori gramatikal kata kerja yang menunjukkan lama dan jenis "
+"perbuatan)."
+
+msgid "Tense"
+msgstr "Kala (perbedaan bentuk kata kerja untuk menyatakan perbedaan waktu)"
+
+msgid "Aspect--dynamic verbs"
+msgstr "Aspek - kata kerja dinamis"
+
+msgid "Aspect--stative verbs"
+msgstr "Aspek - kata kerja statif"
+
+msgid "Relational tenses"
+msgstr "Kala-kala yang saling berkaitan"
+
+msgid "Agent-oriented modalities"
+msgstr "Kata kerja bantu yang berorientasi pada subjek pelaku"
+
+msgid "Can"
+msgstr "Bisa"
+
+msgid "Can't"
+msgstr "Tidak bisa"
+
+msgid "Necessary"
+msgstr "Perlu"
+
+msgid "Moods"
+msgstr "Modus"
+
+msgid "Imperative"
+msgstr "Bentuk perintah"
+
+msgid "Hortative"
+msgstr "Hortatif (bersifat mengajak atau mendorong)"
+
+msgid "Interrogative"
+msgstr "Bentuk pertanyaan"
+
+msgid "Epistemic moods"
+msgstr "Modus epistemis"
+
+msgid "Certainly, definitely"
+msgstr "Pasti, tentu"
+
+msgid "Sure"
+msgstr "Yakin"
+
+msgid "Probably"
+msgstr ""
+"Kemungkinan (dugaan yang kemungkinan besar benar, karena didukung oleh "
+"berbagai bukti atau tanda yang kuat)"
+
+msgid "Possible"
+msgstr ""
+"Kemungkinan (bisa jadi benar dan bisa juga tidak benar, hanya dugaan saja)"
+
+msgid "Uncertain"
+msgstr "Tidak pasti"
+
+msgid "Unsure"
+msgstr "Tidak yakin"
+
+msgid "Think so"
+msgstr "Sepertinya begitu"
+
+msgid "Maybe"
+msgstr "Mungkin"
+
+msgid "Seem"
+msgstr "Rasanya, tampaknya"
+
+msgid "Just, almost not"
+msgstr "Hanya, hampir saja tidak"
+
+msgid "Don't think so, doubt it"
+msgstr "Sepertinya tidak begitu, ragu-ragu tentang hal itu"
+
+msgid "Impossible"
+msgstr "Tidak mungkin"
+
+msgid "Evidentials"
+msgstr "Bukti saksi"
+
+msgid "Evaluator"
+msgstr "Penilai"
+
+msgid "Yes"
+msgstr "Ya"
+
+msgid "No, not"
+msgstr "Tidak"
+
+msgid "Markers expecting an affirmative answer"
+msgstr "Mengharapkan jawaban yang positif"
+
+msgid "Markers expecting a negative answer"
+msgstr "Mengharapkan jawaban yang negatif"
+
+msgid "Subordinating particles"
+msgstr "Partikel untuk klausa terikat"
+
+msgid "Adverbial clauses"
+msgstr "Klausa adverbial"
+
+msgid "Case"
+msgstr "Kasus linguistik"
+
+msgid "Primary cases"
+msgstr "Kasus utama"
+
+msgid "Beneficiary of an event"
+msgstr "Pemeroleh dalam suatu kejadian"
+
+msgid "Instrument"
+msgstr "Alat"
+
+msgid "Means"
+msgstr "Cara"
+
+msgid "Way, manner"
+msgstr "Cara, sikap"
+
+msgid "Attendant circumstances"
+msgstr "Keadaan yang menjelaskan suatu kejadian"
+
+msgid "Spatial location of an event"
+msgstr "Tempat terjadinya suatu peristiwa"
+
+msgid "Source (of movement)"
+msgstr "Sumber"
+
+msgid "Path (of movement)"
+msgstr "Jalan/perantaraan yang dilalui oleh sesuatu"
+
+msgid "Goal (of movement)"
+msgstr "Sasaran (ke suatu tempat)"
+
+msgid "Origin (of a person)"
+msgstr "Tempat asal (seseorang)"
+
+msgid "Semantically similar events"
+msgstr "Peristiwa yang serupa secara semantik"
+
+msgid "Together"
+msgstr "Bersama"
+
+msgid "With, be with"
+msgstr "Dengan, bersama"
+
+msgid "With, do with someone"
+msgstr "Dengan, melakukan dengan seseorang"
+
+msgid "Each other"
+msgstr "Saling"
+
+msgid "In groups"
+msgstr "Secara berkelompok"
+
+msgid "Patient-related cases"
+msgstr "Kasus yang berkaitan dengan objek penderita"
+
+msgid "Beneficiary (of a patient)"
+msgstr "Pemeroleh (dari objek penderita)"
+
+msgid "Recipient (of a patient)"
+msgstr "Penerima (dari objek penderita)"
+
+msgid "With (a patient)"
+msgstr "Penyerta (objek penderita)"
+
+msgid "Connected with, related"
+msgstr "Berkaitan dengan, terkait dengan"
+
+msgid "Coordinate relations"
+msgstr "Hubungan koordinatif (kata penghubung)"
+
+msgid "And, also"
+msgstr "Dan, juga"
+
+msgid "Or, either"
+msgstr "Atau"
+
+msgid "Association"
+msgstr "Hubungan"
+
+msgid "Combinative relation"
+msgstr "Hubungan yang bersifat menggabungkan"
+
+msgid "But"
+msgstr "Tetapi"
+
+msgid "Except"
+msgstr "Kecuali"
+
+msgid "Instead"
+msgstr "Sebagai ganti, alih-alih"
+
+msgid "Dissociation"
+msgstr "Proses pemisahan"
+
+msgid "Distribution"
+msgstr "Persebaran"
+
+msgid "Equivalence"
+msgstr "Kesamaan"
+
+msgid "Dependency relations"
+msgstr "Hubungan ketergantungan"
+
+msgid "Derivation"
+msgstr "asal"
+
+msgid "Limitation of topic"
+msgstr "Pembatasan topik"
+
+msgid "In general"
+msgstr "Pada umumnya"
+
+msgid "Relations involving correspondences"
+msgstr ""
+"Hubungan yang melibatkan kesesuaian atau keselarasan dengan hal lainnya"
+
+msgid "Basis"
+msgstr "Dasar"
+
+msgid "Cause"
+msgstr "Penyebab"
+
+msgid "Reason"
+msgstr "Alasan"
+
+msgid "Without cause"
+msgstr "Tanpa sebab"
+
+msgid "Result"
+msgstr "Hasil"
+
+msgid "Without result"
+msgstr "Tanpa hasil"
+
+msgid "Purpose"
+msgstr "Tujuan"
+
+msgid "Without purpose"
+msgstr "Tanpa tujuan"
+
+msgid "Condition"
+msgstr "Pengandaian"
+
+msgid "Concession"
+msgstr "Konsesi (hasil yang tak terduga)"
+
+msgid "Discourse markers"
+msgstr "Penanda wacana"
+
+msgid "Markers of transition"
+msgstr "Penanda pengalihan pembicaraan"
+
+msgid "Markers of emphasis"
+msgstr "Penanda penekanan pada suatu frasa atau kalimat"
+
+msgid "Prompters of attention"
+msgstr "Meminta perhatian"
+
+msgid "Markers of direct address"
+msgstr "Penanda kata sapaan"
+
+msgid "Markers of identificational and explanatory clauses"
+msgstr "Penanda pengidentifikasian dan klausa penjelas sesuatu"
+
+msgid "Markers of focus"
+msgstr "Penanda fokus pada sesuatu"
+
+msgid "Hesitation fillers"
+msgstr "Kata-kata yang digunakan ketika seseorang ragu-ragu"
+
+msgid "Honorifics"
+msgstr "Sebutan kehormatan"
+
+msgid "Name"
+msgstr "Nama"
+
+msgid "Name of a person"
+msgstr "Nama orang"
+
+msgid "Personal names"
+msgstr "Nama diri"
+
+msgid "Family names"
+msgstr "Nama keluarga"
+
+msgid "Clan names"
+msgstr "Nama marga"
+
+msgid "Tribal names"
+msgstr "Nama suku"
+
+msgid "Names of languages"
+msgstr "Nama bahasa"
+
+msgid "Nickname"
+msgstr "Nama panggilan"
+
+msgid "Terms of endearment"
+msgstr "Nama panggilan kesayangan"
+
+msgid "Name of a place"
+msgstr "Nama tempat"
+
+msgid "Names of countries"
+msgstr "Nama negara"
+
+msgid "Names of regions"
+msgstr "Nama-nama wilayah"
+
+msgid "Names of cities"
+msgstr "Nama-nama kota"
+
+msgid "Names of streets"
+msgstr "Nama-nama jalan"
+
+msgid "Names of heavenly bodies"
+msgstr "Nama-nama benda angkasa"
+
+msgid "Names of continents"
+msgstr "Nama-nama benua"
+
+msgid "Names of mountains"
+msgstr "Nama-nama gunung"
+
+msgid "Names of oceans and lakes"
+msgstr "Nama-nama lautan/samudera dan danau"
+
+msgid "Names of rivers"
+msgstr "Nama-nama sungai"
+
+msgid "Name of a thing"
+msgstr "Nama benda"
+
+msgid "Names of animals"
+msgstr "Nama-nama binatang"
+
+msgid "Names of buildings"
+msgstr "Nama-nama bangunan"
+
+# @ sil_dictionary
+#: include/dictionary-search.php:173
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+"Karena singkatnya istilah yang Anda mencari, pencarian kata-kata parsial "
+"tidak termasuk."
+
+# @ sil_dictionary
+#: include/dictionary-search.php:175
+msgid "Click here to include searching through partial words."
+msgstr "Klik di sini untuk memasukkan kata-kata parsial dalam pencarian."
+
+#: include/infrastructure.php:114
+msgid "Webonary"
+msgstr ""
+
+#: include/infrastructure.php:121
+msgid ""
+"Webonary provides the admininstration tools and framework for using "
+"WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
+"target=\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:122
+msgid "Import Data"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:123
+msgid ""
+"You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
+"importer</a> by clicking on Import under the Tools menu."
+msgstr ""
+
+#: include/infrastructure.php:124
+msgid ""
+"Each dictionary entry is stored in a \"post.\" You will find the entries in "
+"the Posts menu."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:126
+msgid "Delete Data"
+msgstr ""
+
+#: include/infrastructure.php:131
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:135
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:145
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:146
+msgid "Delete"
+msgstr ""
+
+#: include/infrastructure.php:148
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/infrastructure.php:150
+msgid "Settings"
+msgstr ""
+
+#: include/infrastructure.php:152
+msgid "Publication status:"
+msgstr ""
+
+#: include/infrastructure.php:154
+msgid "no status set"
+msgstr ""
+
+#: include/infrastructure.php:155
+msgid "Rough draft"
+msgstr ""
+
+#: include/infrastructure.php:156
+msgid "Self-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:157
+msgid "Community-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:158
+msgid "Consultant approved"
+msgstr ""
+
+#: include/infrastructure.php:159
+msgid "Finished (no formal publication)"
+msgstr ""
+
+#: include/infrastructure.php:160
+msgid "Formally published"
+msgstr ""
+
+#: include/infrastructure.php:163
+msgid "Search Options:"
+msgstr ""
+
+#: include/infrastructure.php:167
+msgid "Always include searching through partial words."
+msgstr ""
+
+#: include/infrastructure.php:180
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/infrastructure.php:190
+msgid "Vernacular Language Code:"
+msgstr ""
+
+#: include/infrastructure.php:201 include/infrastructure.php:230
+#: include/infrastructure.php:270
+msgid "Language Name:"
+msgstr ""
+
+#: include/infrastructure.php:203
+msgid "Vernacular Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:205 include/infrastructure.php:255
+#: include/infrastructure.php:274
+msgid "(Letters separated by comma)"
+msgstr ""
+
+#: include/infrastructure.php:215
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/infrastructure.php:217
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/infrastructure.php:219
+msgid "Main reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:253
+msgid "Main Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:257
+msgid "If you have a second reversal index, enter the information here:"
+msgstr ""
+
+#: include/infrastructure.php:259
+msgid "Secondary reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Secondary Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Save"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:295 include/xhtml-importer.php:268
+#: include/xhtml-importer.php:383
+msgid "Finished!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:296
+msgid "OK"
+msgstr ""
+
+#: include/infrastructure.php:375
+msgid "Settings saved"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:447
+msgctxt "taxonomy general name"
+msgid "Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:448
+msgctxt "taxonomy singular name"
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:449
+msgid "Search Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:450
+msgid "All Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:451
+msgid "Parent Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:452
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:453
+msgid "Edit Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:454
+msgid "Update Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:455
+msgid "Add New Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:456
+msgid "New Semantic Domain Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:457
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:485
+msgctxt "taxonomy general name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:486
+msgctxt "taxonomy singular name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:487 include/infrastructure.php:495
+msgid "Parts of Speech"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:488 include/searchform_func.php:74
+msgid "All Parts of Speech"
+msgstr "Semua kelas kata"
+
+# @ default
+#: include/infrastructure.php:489
+msgid "Parent Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:490
+msgid "Parent Part of Speech:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:491
+msgid "Edit Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:492
+msgid "Update Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:493
+msgid "Add New Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:494
+msgid "New Part of Speech Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:522
+msgctxt "taxonomy general name"
+msgid "Languages"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:523
+msgctxt "taxonomy singular name"
+msgid "Language"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:525 include/searchform_func.php:49
+msgid "All Languages"
+msgstr "Semua bahasa"
+
+# @ default
+#: include/infrastructure.php:526
+msgid "Parent Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:527
+msgid "Parent Language:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:528
+msgid "Edit Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:529
+msgid "Update Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:530
+msgid "Add New Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:531
+msgid "New Language Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:559
+msgctxt "taxonomy general name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:560
+msgctxt "taxonomy singular name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:561 include/infrastructure.php:569
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:562
+msgid "All Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:563
+msgid "Parent Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:564
+msgid "Parent Website strings:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:565
+msgid "Edit Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:566
+msgid "Update Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:567
+msgid "Add New Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:568
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:92
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:285
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: include/xhtml-importer.php:287
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:437
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455 include/xhtml-importer.php:474
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: include/xhtml-importer.php:457
+msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:473
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:507
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:538
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: include/xhtml-importer.php:578
+msgid ""
+"The css file has been uploaded into your upload folder and renamed to "
+"imported-with-xhtml.css<br>"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:580
+msgid "There was an error uploading the file, please try again!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2091
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2092
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""

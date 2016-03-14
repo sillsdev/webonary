@@ -1,0 +1,5897 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SIL Dictionary v1.2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-29 21:47+0800\n"
+"PO-Revision-Date: 2015-10-29 22:01+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:108
+msgid "No entries exist for"
+msgstr "Aucune entrée n'existe pour "
+
+#: include/browseview_func.php:185
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:185
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:506
+msgid "No entries exist starting with this letter."
+msgstr "Aucune entrée n'existe avec cette lettre au début."
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/comments_func.php:92
+msgid "Comments Re-Sync"
+msgstr ""
+
+#: include/comments_func.php:93
+msgid ""
+"If you have the comments turned on, you need to re-sync your comments after "
+"re-importing of your posts."
+msgstr ""
+
+msgid "Universe, creation"
+msgstr "L’univers, la création"
+
+msgid "Sky"
+msgstr "Ciel"
+
+msgid "Sun"
+msgstr "Soleil"
+
+msgid "Moon"
+msgstr "Lune"
+
+msgid "Star"
+msgstr "Étoiles"
+
+msgid "Planet"
+msgstr "Planètes"
+
+msgid "Air"
+msgstr "Air"
+
+msgid "Blow air"
+msgstr "Souffle de l’air"
+
+msgid "Weather"
+msgstr "Temps"
+
+msgid "Wind"
+msgstr "Vent"
+
+msgid "Cloud"
+msgstr "Nuage"
+
+msgid "Rain"
+msgstr "Pluie"
+
+msgid "Snow, ice"
+msgstr "Neige, glace"
+
+msgid "Storm"
+msgstr "Tempête"
+
+msgid "Lightning, thunder"
+msgstr "Éclair, tonnerre"
+
+msgid "Flood"
+msgstr "Inondation"
+
+msgid "Drought"
+msgstr "Sécheresse"
+
+msgid "World"
+msgstr "Monde"
+
+msgid "Land"
+msgstr "Terre"
+
+msgid "Mountain"
+msgstr "Montagne"
+
+msgid "Volcano"
+msgstr "Volcan"
+
+msgid "Plain, plateau"
+msgstr "Plaine, plateau"
+
+msgid "Valley"
+msgstr "Vallée"
+
+msgid "Underground"
+msgstr "Sous-sol"
+
+msgid "Forest, grassland, desert"
+msgstr "Forêt, prairie, désert"
+
+msgid "Earthquake"
+msgstr "Tremblement de terre"
+
+msgid "Substance, matter"
+msgstr "Substance, matière"
+
+msgid "Soil, dirt"
+msgstr "Terre, boue"
+
+msgid "Rock"
+msgstr "Roche"
+
+msgid "Metal"
+msgstr "Métal"
+
+msgid "Mineral"
+msgstr "Minéraux"
+
+msgid "Jewel"
+msgstr "Pierres précieuses"
+
+msgid "Solid, liquid, gas"
+msgstr "Solide, liquide, gaz"
+
+msgid "Liquid"
+msgstr "Liquide"
+
+msgid "Oil"
+msgstr "Pétrole, huile, graisse"
+
+msgid "Gas"
+msgstr "Gaz"
+
+msgid "Water"
+msgstr "Eau"
+
+msgid "Bodies of water"
+msgstr "Étendues d’eau"
+
+msgid "Ocean, lake"
+msgstr "Océan, lac"
+
+msgid "Swamp"
+msgstr "Marécages"
+
+msgid "River"
+msgstr "Cours d’eau"
+
+msgid "Spring, well"
+msgstr "Source, puits"
+
+msgid "Island, shore"
+msgstr "Île, rivage"
+
+msgid "Movement of water"
+msgstr "Mouvement de l’eau"
+
+msgid "Flow"
+msgstr "Écoulement"
+
+msgid "Pour"
+msgstr "Se déverser, verser"
+
+msgid "Drip"
+msgstr "Goutter"
+
+msgid "Wave"
+msgstr "vagues"
+
+msgid "Calm, rough"
+msgstr "Calme, agité"
+
+msgid "Tide"
+msgstr "Marée"
+
+msgid "Wet"
+msgstr "Mouillé"
+
+msgid "Dry"
+msgstr "Sec"
+
+msgid "Be in water"
+msgstr "Être dans l’eau"
+
+msgid "Solutions of water"
+msgstr "Solutions aqueuses"
+
+msgid "Water quality"
+msgstr "Qualité de l’eau"
+
+msgid "Living things"
+msgstr "Êtres vivants"
+
+msgid "Dead things"
+msgstr "Les choses mortes"
+
+msgid "Spirits of things"
+msgstr "L’esprit des choses"
+
+msgid "Plant"
+msgstr "Végétaux"
+
+msgid "Tree"
+msgstr "Arbres"
+
+msgid "Bush, shrub"
+msgstr "Buissons, arbustes"
+
+msgid "Grass, herb, vine"
+msgstr "Herbes, plantes grimpantes"
+
+msgid "Moss, fungus, algae"
+msgstr "Mousses, champignons, algues"
+
+msgid "Parts of a plant"
+msgstr "Parties d’un végétal ou d’une plante"
+
+msgid "Growth of plants"
+msgstr "Croissance des végétaux ou plantes"
+
+msgid "Plant diseases"
+msgstr "Maladies des végétaux ou plantes"
+
+msgid "Animal"
+msgstr "Animaux"
+
+msgid "Types of animals"
+msgstr "Types d’animaux"
+
+msgid "Mammal"
+msgstr "Mammifère"
+
+msgid "Primate"
+msgstr "Primate"
+
+msgid "Carnivore"
+msgstr "Carnivore"
+
+msgid "Hoofed animals"
+msgstr "animal à sabots (ongulés)"
+
+msgid "Rodent"
+msgstr "Rongeur"
+
+msgid "Marsupial"
+msgstr "Marsupial"
+
+msgid "Anteater, aardvark"
+msgstr "Fourmilier, oryctérope"
+
+msgid "Sea mammal"
+msgstr "Mammifère marin"
+
+msgid "Bat"
+msgstr "Chauve-souris"
+
+msgid "Bird"
+msgstr "Oiseau"
+
+msgid "Reptile"
+msgstr "Reptile"
+
+msgid "Snake"
+msgstr "Serpent"
+
+msgid "Lizard"
+msgstr "Lézard"
+
+msgid "Turtle"
+msgstr "Tortue"
+
+msgid "Crocodile"
+msgstr "Crocodile"
+
+msgid "Amphibian"
+msgstr "Amphibien"
+
+msgid "Fish"
+msgstr "Poisson"
+
+msgid "Shark, ray"
+msgstr "Requin, raie"
+
+msgid "Insect"
+msgstr "Insecte"
+
+msgid "Spider"
+msgstr "Araignée"
+
+msgid "Small animals"
+msgstr "Animaux inférieurs"
+
+msgid "Parts of an animal"
+msgstr "Parties d’un animal"
+
+msgid "Parts of a bird"
+msgstr "Parties d’un oiseau"
+
+msgid "Parts of a reptile"
+msgstr "Parties d’un reptile"
+
+msgid "Parts of a fish"
+msgstr "Parties d’un poisson"
+
+msgid "Parts of an insect"
+msgstr "Parties d’un insecte"
+
+msgid "Parts of small animals"
+msgstr "Parties des animaux inférieurs"
+
+msgid "Animal life cycle"
+msgstr "Cycle de la vie animale"
+
+msgid "Egg"
+msgstr "oeuf"
+
+msgid "Animal actions"
+msgstr "Actions des animaux"
+
+msgid "Animal movement"
+msgstr "Mouvements des animaux"
+
+msgid "Animal eating"
+msgstr "Alimentation des animaux"
+
+msgid "Animal sounds"
+msgstr "Cri des animaux"
+
+msgid "Animal home"
+msgstr "Habitat de l’animal"
+
+msgid "Animal group"
+msgstr "Groupes d’animaux"
+
+msgid "Male and female animals"
+msgstr "Animaux mâles et femelles"
+
+msgid "Nature, environment"
+msgstr "Nature, environnement"
+
+msgid "Natural"
+msgstr "Naturel"
+
+msgid "Person"
+msgstr "La Personne"
+
+msgid "Body"
+msgstr "Le corps"
+
+msgid "Head"
+msgstr "Tête"
+
+msgid "Eye"
+msgstr "Oeil"
+
+msgid "Ear"
+msgstr "Oreille"
+
+msgid "Nose"
+msgstr "Nez"
+
+msgid "Mouth"
+msgstr "Bouche"
+
+msgid "Tooth"
+msgstr "Dent"
+
+msgid "Torso"
+msgstr "Torse"
+
+msgid "Limb"
+msgstr "Membre"
+
+msgid "Arm"
+msgstr "Bras"
+
+msgid "Leg"
+msgstr "Jambe"
+
+msgid "Finger, toe"
+msgstr "Doigt, orteil"
+
+msgid "Skin"
+msgstr "Peau"
+
+msgid "Hair"
+msgstr "Cheveux, poils"
+
+msgid "Bone, joint"
+msgstr "Os, articulation"
+
+msgid "Flesh"
+msgstr "Chair"
+
+msgid "Internal organs"
+msgstr "Organes internes"
+
+msgid "Heart"
+msgstr "Cœur"
+
+msgid "Stomach"
+msgstr "Estomac"
+
+msgid "Male organs"
+msgstr "Organes génitaux masculins"
+
+msgid "Female organs"
+msgstr "Organes génitaux féminins"
+
+msgid "Body functions"
+msgstr "Fonctions du corps"
+
+msgid "Breathe, breath"
+msgstr "Respirer, respiration"
+
+msgid "Cough, sneeze"
+msgstr "Tousser, éternuer"
+
+msgid "Spit, saliva"
+msgstr "Cracher, salive"
+
+msgid "Mucus"
+msgstr "Mucus"
+
+msgid "Bleed, blood"
+msgstr "Saigner, sang"
+
+msgid "Sweat"
+msgstr "Transpiration"
+
+msgid "Urinate, urine"
+msgstr "Uriner, urine"
+
+msgid "Defecate, feces"
+msgstr "Déféquer, matières fécales"
+
+msgid "Sense, perceive"
+msgstr "Sentir, percevoir"
+
+msgid "See"
+msgstr "Vue"
+
+msgid "Look"
+msgstr "Regarder"
+
+msgid "Watch"
+msgstr "Observer"
+
+msgid "Examine"
+msgstr "Examiner"
+
+msgid "Show, let someone see"
+msgstr "Montrer, faire voir à quelqu’un"
+
+msgid "Visible"
+msgstr "Visible"
+
+msgid "Appear"
+msgstr "Apparaître"
+
+msgid "Transparent"
+msgstr "Transparent"
+
+msgid "Reflect, mirror"
+msgstr "Réfléchir, refléter"
+
+msgid "Appearance"
+msgstr "Apparence"
+
+msgid "Beautiful"
+msgstr "Beau"
+
+msgid "Ugly"
+msgstr "Laid"
+
+msgid "Something used to see"
+msgstr "Quelque chose servant à voir"
+
+msgid "Hear"
+msgstr "Ouïe"
+
+msgid "Listen"
+msgstr "Écouter"
+
+msgid "Sound"
+msgstr "Son"
+
+msgid "Types of sounds"
+msgstr "Types de sons"
+
+msgid "Loud"
+msgstr "Fort"
+
+msgid "Quiet"
+msgstr "Doux"
+
+msgid "Taste"
+msgstr "Goût"
+
+msgid "Smell"
+msgstr "Odorat"
+
+msgid "Sense of touch"
+msgstr "Le toucher"
+
+msgid "Comfortable"
+msgstr "Confortable"
+
+msgid "Body condition"
+msgstr "Condition physique"
+
+msgid "Strong"
+msgstr "Fort"
+
+msgid "Weak"
+msgstr "Faible"
+
+msgid "Energetic"
+msgstr "Plein d’énergie"
+
+msgid "Tired"
+msgstr "Fatigué"
+
+msgid "Rest"
+msgstr "Se reposer"
+
+msgid "Healthy"
+msgstr "En bonne santé"
+
+msgid "Sick"
+msgstr "Malade"
+
+msgid "Recover from sickness"
+msgstr "Guérir"
+
+msgid "Disease"
+msgstr "Maladie"
+
+msgid "Malnutrition, starvation"
+msgstr "Malnutrition, famine"
+
+msgid "Skin disease"
+msgstr "Maladies de la peau"
+
+msgid "Stomach illness"
+msgstr "Troubles digestifs"
+
+msgid "Tooth decay"
+msgstr "Carie dentaire"
+
+msgid "Injure"
+msgstr "Blesser"
+
+msgid "Amputate"
+msgstr "Amputation"
+
+msgid "Poison"
+msgstr "Poison"
+
+msgid "Disabled"
+msgstr "Handicapé"
+
+msgid "Blind"
+msgstr "Aveugle"
+
+msgid "Poor eyesight"
+msgstr "Malvoyant"
+
+msgid "Deaf"
+msgstr "Sourd"
+
+msgid "Mute"
+msgstr "Muet"
+
+msgid "Birth defect"
+msgstr "Malformation congénitale"
+
+msgid "Cause of disease"
+msgstr "Cause de la maladie"
+
+msgid "Symptom of disease"
+msgstr "Symptôme de la maladie"
+
+msgid "Pain"
+msgstr "Douleur"
+
+msgid "Fever"
+msgstr "Fièvre"
+
+msgid "Swell"
+msgstr "Enflure"
+
+msgid "Lose consciousness"
+msgstr "Perte de conscience"
+
+msgid "Dazed, confused"
+msgstr "Hébété, confus"
+
+msgid "Vision, hallucination"
+msgstr "Vision, hallucination"
+
+msgid "Treat disease"
+msgstr "Traitement de la maladie"
+
+msgid "Doctor, nurse"
+msgstr "Docteur, infirmier (ère)"
+
+msgid "Medicine"
+msgstr "Médicaments"
+
+msgid "Medicinal plants"
+msgstr "Plantes médicinales"
+
+msgid "Hospital"
+msgstr "Hôpital"
+
+msgid "Traditional medicine"
+msgstr "Médecine traditionnelle"
+
+msgid "Mental illness"
+msgstr "Maladie mentale"
+
+msgid "Life"
+msgstr "La vie"
+
+msgid "Marriage"
+msgstr "Mariage"
+
+msgid "Arrange a marriage"
+msgstr "Arranger un mariage"
+
+msgid "Wedding"
+msgstr "Noces"
+
+msgid "Unmarried"
+msgstr "Non marié"
+
+msgid "Divorce"
+msgstr "Divorce"
+
+msgid "Romantic love"
+msgstr "Sentiment amoureux"
+
+msgid "Sexual relations"
+msgstr "Relations sexuelles"
+
+msgid "Virginity"
+msgstr "Virginité"
+
+msgid "Attract sexually"
+msgstr "Attirance sexuelle"
+
+msgid "Sexual immorality"
+msgstr "Inconduite sexuelle"
+
+msgid "Birth"
+msgstr "Naissance"
+
+msgid "Pregnancy"
+msgstr "Grossesse"
+
+msgid "Fetus"
+msgstr "Fœtus"
+
+msgid "Miscarriage"
+msgstr "Fausse couche"
+
+msgid "Labor and birth pains"
+msgstr "Travail et douleurs de l’accouchement"
+
+msgid "Help to give birth"
+msgstr "Aider à l’accouchement"
+
+msgid "Unusual birth"
+msgstr "Naissance anormale"
+
+msgid "Multiple births"
+msgstr "Naissances multiples"
+
+msgid "Fertile, infertile"
+msgstr "Fécond, stérile"
+
+msgid "Birth ceremony"
+msgstr "Cérémonie à l’occasion de la naissance"
+
+msgid "Stage of life"
+msgstr "Étapes de la vie"
+
+msgid "Baby"
+msgstr "Bébé"
+
+msgid "Care for a baby"
+msgstr "S’occuper d’un bébé"
+
+msgid "Child"
+msgstr "Enfant"
+
+msgid "Rear a child"
+msgstr "Élever un enfant"
+
+msgid "Youth"
+msgstr "Jeune, adolescent(e)"
+
+msgid "Adult"
+msgstr "Adulte"
+
+msgid "Old person"
+msgstr "Personne âgée"
+
+msgid "Grow, get bigger"
+msgstr "Croître, grandir"
+
+msgid "Initiation"
+msgstr "Initiation"
+
+msgid "Peer group"
+msgstr "Personnes de la même tranche d’âge"
+
+msgid "Male, female"
+msgstr "Masculin, féminin"
+
+msgid "Man"
+msgstr "Homme"
+
+msgid "Woman"
+msgstr "Femme"
+
+msgid "Die"
+msgstr "Mourir"
+
+msgid "Kill"
+msgstr "Tuer"
+
+msgid "Corpse"
+msgstr "Cadavre"
+
+msgid "Funeral"
+msgstr "Funérailles"
+
+msgid "Mourn"
+msgstr "Deuil"
+
+msgid "Bury"
+msgstr "Enterrer, ensevelir"
+
+msgid "Grave"
+msgstr "Tombe, tombeau"
+
+msgid "Inherit"
+msgstr "Hériter"
+
+msgid "Life after death"
+msgstr "La vie après la mort"
+
+msgid "Language and thought"
+msgstr "Le Langage et la pensée"
+
+msgid "Soul, spirit"
+msgstr "Âme, esprit"
+
+msgid "Personality"
+msgstr "Personnalité"
+
+msgid "Mental state"
+msgstr "État mental"
+
+msgid "Alert"
+msgstr "Vigilance"
+
+msgid "Notice"
+msgstr "Remarquer"
+
+msgid "Attention"
+msgstr "Attention"
+
+msgid "Ignore"
+msgstr "Ne pas prêter attention"
+
+msgid "Think"
+msgstr "Penser"
+
+msgid "Mind"
+msgstr "Intellect"
+
+msgid "Think about"
+msgstr "Réfléchir à"
+
+msgid "Imagine"
+msgstr "Imaginer"
+
+msgid "Intelligent"
+msgstr "Intelligent"
+
+msgid "Stupid"
+msgstr "Stupide"
+
+msgid "Logical"
+msgstr "Logique"
+
+msgid "Instinct"
+msgstr "Instinct"
+
+msgid "Learn"
+msgstr "Apprendre"
+
+msgid "Study"
+msgstr "Étudier"
+
+msgid "Check"
+msgstr "Vérifier"
+
+msgid "Evaluate, test"
+msgstr "Évaluer, tester"
+
+msgid "Guess"
+msgstr "Deviner"
+
+msgid "Solve"
+msgstr "Résoudre"
+
+msgid "Realize"
+msgstr "Prendre conscience"
+
+msgid "Willing to learn"
+msgstr "Désirer apprendre"
+
+msgid "Know"
+msgstr "Savoir"
+
+msgid "Known, unknown"
+msgstr "Connu, inconnu"
+
+msgid "Area of knowledge"
+msgstr "Champ de connaissance"
+
+msgid "Secret"
+msgstr "Secret"
+
+msgid "Understand"
+msgstr "Comprendre"
+
+msgid "Misunderstand"
+msgstr "Mal comprendre"
+
+msgid "Understandable"
+msgstr "Compréhensible"
+
+msgid "Mysterious"
+msgstr "Mystérieux"
+
+msgid "Opinion"
+msgstr "Opinion"
+
+msgid "Believe"
+msgstr "Croire"
+
+msgid "Trust"
+msgstr "Confiance"
+
+msgid "Disbelief"
+msgstr "Incrédulité"
+
+msgid "Doubt"
+msgstr "Douter"
+
+msgid "Agree with someone"
+msgstr "Être d’accord"
+
+msgid "Disagree"
+msgstr "Être en désaccord"
+
+msgid "Protest"
+msgstr "Protester"
+
+msgid "Philosophy"
+msgstr "Philosophie"
+
+msgid "Attitude"
+msgstr "Attitude"
+
+msgid "Extreme belief"
+msgstr "Radicalisme"
+
+msgid "Change your mind"
+msgstr "Changer d’avis"
+
+msgid "Approve of something"
+msgstr "Approuver quelque chose"
+
+msgid "Remember"
+msgstr "Se rappeler"
+
+msgid "Forget"
+msgstr "Oublier"
+
+msgid "Recognize"
+msgstr "Reconnaître"
+
+msgid "Memorize"
+msgstr "Mémoriser"
+
+msgid "Remind"
+msgstr "Rappeler"
+
+msgid "Expect"
+msgstr "S’attendre à"
+
+msgid "Hope"
+msgstr "Espérer"
+
+msgid "Hopeless"
+msgstr "Désespérer"
+
+msgid "Predict"
+msgstr "Prédire"
+
+msgid "Tendency"
+msgstr "Tendance"
+
+msgid "Want"
+msgstr "Volonté"
+
+msgid "Decide, plan"
+msgstr "Décider, projeter"
+
+msgid "Purpose, goal"
+msgstr "Objectif, but"
+
+msgid "Choose"
+msgstr "Choisir"
+
+msgid "Cast lots"
+msgstr "Tirer au sort"
+
+msgid "Intend"
+msgstr "Intention"
+
+msgid "Deliberately"
+msgstr "Délibérément"
+
+msgid "Determined"
+msgstr "Déterminé"
+
+msgid "Stubborn"
+msgstr "Entêté"
+
+msgid "Lust"
+msgstr "Convoitise"
+
+msgid "Request"
+msgstr "Demander"
+
+msgid "Agree to do something"
+msgstr "Accepter de faire quelque chose"
+
+msgid "Refuse to do something"
+msgstr "Refuser de faire quelque chose"
+
+msgid "Intercede"
+msgstr "Intercéder"
+
+msgid "Willing"
+msgstr "Etre disposé à"
+
+msgid "Influence"
+msgstr "Influencer"
+
+msgid "Suggest"
+msgstr "Suggérer"
+
+msgid "Advise"
+msgstr "Conseiller"
+
+msgid "Persuade"
+msgstr "Persuader"
+
+msgid "Insist"
+msgstr "Insister"
+
+msgid "Compel"
+msgstr "Contraindre"
+
+msgid "Control"
+msgstr "Commander"
+
+msgid "Warn"
+msgstr "Avertir"
+
+msgid "Threaten"
+msgstr "Menacer"
+
+msgid "Ask permission"
+msgstr "Demander la permission"
+
+msgid "Give permission"
+msgstr "Donner la permission"
+
+msgid "Refuse permission"
+msgstr "Refuser la permission"
+
+msgid "Exempt"
+msgstr "Exempter"
+
+msgid "Prevent"
+msgstr "Empêcher"
+
+msgid "Free to do what you want"
+msgstr "Etre libre de faire ce qu’on veut"
+
+msgid "Offer"
+msgstr "Offrir"
+
+msgid "Accept"
+msgstr "Accepter"
+
+msgid "Reject"
+msgstr "Refuser"
+
+msgid "Emotion"
+msgstr "Émotion"
+
+msgid "Feel good"
+msgstr "Se sentir bien"
+
+msgid "Like, love"
+msgstr "Aimer quelque chose ou quelqu’un"
+
+msgid "Enjoy doing something"
+msgstr "Aimer faire quelque chose"
+
+msgid "Self-esteem"
+msgstr "Estime de soi"
+
+msgid "Prefer"
+msgstr "Préférer"
+
+msgid "Popular"
+msgstr "Populaire"
+
+msgid "Fashionable"
+msgstr "A la mode"
+
+msgid "Contentment"
+msgstr "Contentement"
+
+msgid "Happy for"
+msgstr "Être heureux de"
+
+msgid "Pleased with"
+msgstr "Être satisfait de"
+
+msgid "Happy"
+msgstr "Heureux"
+
+msgid "Relaxed"
+msgstr "Être détendu"
+
+msgid "Calm"
+msgstr "Être calme"
+
+msgid "Surprise"
+msgstr "Surprise"
+
+msgid "Interested"
+msgstr "Intéressé"
+
+msgid "Excited"
+msgstr "Excité"
+
+msgid "Enthusiastic"
+msgstr "Enthousiaste"
+
+msgid "Obsessed"
+msgstr "Obsédé"
+
+msgid "Attract"
+msgstr "Attirer l’attention"
+
+msgid "Indifferent"
+msgstr "Être indifférent"
+
+msgid "Uninterested, bored"
+msgstr "Inintéressant, qui s’ennuie"
+
+msgid "Confident"
+msgstr "Assurance"
+
+msgid "Feel bad"
+msgstr "Se sentir mal"
+
+msgid "Sad"
+msgstr "Triste"
+
+msgid "Dislike"
+msgstr "Ne pas aimer"
+
+msgid "Hate, detest"
+msgstr "Haïr, détester"
+
+msgid "Disgusted"
+msgstr "Être dégoûté"
+
+msgid "Disappointed"
+msgstr "Être déçu"
+
+msgid "Lonely"
+msgstr "Être solitaire"
+
+msgid "Upset"
+msgstr "Être bouleversé"
+
+msgid "Shock"
+msgstr "Être choqué"
+
+msgid "Jealous"
+msgstr "Être jaloux"
+
+msgid "Discontent"
+msgstr "Être mécontent"
+
+msgid "Sorry"
+msgstr "Navré"
+
+msgid "Ashamed"
+msgstr "Honteux"
+
+msgid "Embarrassed"
+msgstr "Gêné"
+
+msgid "Angry"
+msgstr "En colère"
+
+msgid "Annoyed"
+msgstr "Irrité"
+
+msgid "Afraid"
+msgstr "Effrayé"
+
+msgid "Worried"
+msgstr "Inquiet"
+
+msgid "Nervous"
+msgstr "Nerveux"
+
+msgid "Shy, timid"
+msgstr "Timide"
+
+msgid "Confused"
+msgstr "Confus"
+
+msgid "Communication"
+msgstr "Communication"
+
+msgid "Say"
+msgstr "Dire"
+
+msgid "Voice"
+msgstr "Voix"
+
+msgid "Shout"
+msgstr "Crier"
+
+msgid "Speak quietly"
+msgstr "Parler doucement"
+
+msgid "Speak a lot"
+msgstr "Parler beaucoup"
+
+msgid "Speak little"
+msgstr "Parler peu"
+
+msgid "Say nothing"
+msgstr "Se taire"
+
+msgid "Speech style"
+msgstr "Registre de langue"
+
+msgid "Speak well"
+msgstr "Bien parler"
+
+msgid "Speak poorly"
+msgstr "Parler mal"
+
+msgid "Talk about a subject"
+msgstr "Parler d’un sujet"
+
+msgid "Announce"
+msgstr "Annoncer"
+
+msgid "Describe"
+msgstr "Décrire"
+
+msgid "Explain"
+msgstr "Expliquer"
+
+msgid "Mention"
+msgstr "Mentionner"
+
+msgid "Introduce"
+msgstr "Introduire"
+
+msgid "Repeat"
+msgstr "Répéter"
+
+msgid "Summarize"
+msgstr "Résumer"
+
+msgid "Emphasize"
+msgstr "Mettre l’accent sur"
+
+msgid "Be about, subject"
+msgstr "Avoir pour sujet"
+
+msgid "1"
+msgstr "Vérité"
+
+msgid "Tell the truth"
+msgstr "Dire la vérité"
+
+msgid "Tell a lie"
+msgstr "Mentir"
+
+msgid "Contradict"
+msgstr "Contredire"
+
+msgid "Expose falsehood"
+msgstr "Dévoiler un mensonge"
+
+msgid "Real"
+msgstr "Réel"
+
+msgid "Exaggerate"
+msgstr "Exagérer"
+
+msgid "Speak with others"
+msgstr "Parler avec d’autres"
+
+msgid "Call"
+msgstr "Appeler"
+
+msgid "Contact"
+msgstr "Contacter"
+
+msgid "Greet"
+msgstr "Saluer"
+
+msgid "Say farewell"
+msgstr "Dire au revoir"
+
+msgid "Speak in unison"
+msgstr "Parler d’une même voix"
+
+msgid "Ask"
+msgstr "Poser des questions"
+
+msgid "Answer"
+msgstr "Répondre"
+
+msgid "Disclose"
+msgstr "Divulguer"
+
+msgid "Hide your thoughts"
+msgstr "Dissimuler ses pensées"
+
+msgid "Debate"
+msgstr "Débattre"
+
+msgid "Demonstrate"
+msgstr "Démontrer"
+
+msgid "Quarrel"
+msgstr "Se disputer"
+
+msgid "Praise"
+msgstr "Louer"
+
+msgid "Thank"
+msgstr "Remercier"
+
+msgid "Flatter"
+msgstr "Flatter"
+
+msgid "Boast"
+msgstr "Se vanter"
+
+msgid "Criticize"
+msgstr "Critiquer"
+
+msgid "Blame"
+msgstr "Blâmer"
+
+msgid "Insult"
+msgstr "Insulter"
+
+msgid "Mock"
+msgstr "Se moquer"
+
+msgid "Gossip"
+msgstr "Faire des commérages"
+
+msgid "Complain"
+msgstr "Se plaindre"
+
+msgid "Promise"
+msgstr "Promettre"
+
+msgid "Make speech"
+msgstr "Faire un discours"
+
+msgid "Report"
+msgstr "Rapporter"
+
+msgid "News, message"
+msgstr "Nouvelles, message"
+
+msgid "Figurative"
+msgstr "Illustration"
+
+msgid "Admit"
+msgstr "Admettre"
+
+msgid "Language"
+msgstr "Langage"
+
+msgid "Word"
+msgstr "Mot"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Story"
+msgstr "Histoire"
+
+msgid "Fable, myth"
+msgstr "Fable, mythe"
+
+msgid "Saying, proverb"
+msgstr "Dicton, proverbe"
+
+msgid "Riddle"
+msgstr "Devinette"
+
+msgid "Poetry"
+msgstr "Poésie"
+
+msgid "History"
+msgstr "Récit historique"
+
+msgid "Verbal tradition"
+msgstr "Tradition orale"
+
+msgid "Foolish talk"
+msgstr "Propos stupides"
+
+msgid "Obscenity"
+msgstr "Obscénités"
+
+msgid "Sign, symbol"
+msgstr "Signe, symbole"
+
+msgid "Gesture"
+msgstr "Geste"
+
+msgid "Point at"
+msgstr "Désigner"
+
+msgid "Facial expression"
+msgstr "Expression du visage"
+
+msgid "Laugh"
+msgstr "Rire"
+
+msgid "Cry, tear"
+msgstr "Pleurer, larme"
+
+msgid "Reading and writing"
+msgstr "Lecture et écriture"
+
+msgid "Write"
+msgstr "Écrire"
+
+msgid "Written material"
+msgstr "Documents écrits"
+
+msgid "Read"
+msgstr "Lire"
+
+msgid "Publish"
+msgstr "Publier"
+
+msgid "Record"
+msgstr "Rapport écrit"
+
+msgid "List"
+msgstr "Énumérer"
+
+msgid "Letter"
+msgstr "Lettre"
+
+msgid "Interpreting messages"
+msgstr "Interprétation de messages"
+
+msgid "Meaning"
+msgstr "Signification"
+
+msgid "Meaningless"
+msgstr "Dénué de sens"
+
+msgid "Unintelligible"
+msgstr "Inintelligible"
+
+msgid "Show, indicate"
+msgstr "Montrer, indiquer"
+
+msgid "Mass communication"
+msgstr "Communication de masse"
+
+msgid "Radio, television"
+msgstr "Radio, télévision"
+
+msgid "Telephone"
+msgstr "Téléphone"
+
+msgid "Newspaper"
+msgstr "Journaux"
+
+msgid "Movie"
+msgstr "Film"
+
+msgid "Recorded music"
+msgstr "Musique enregistrée"
+
+msgid "Communication devices"
+msgstr "Outils de communication"
+
+msgid "Teach"
+msgstr "Enseignement"
+
+msgid "Show, explain"
+msgstr "Montrer, expliquer"
+
+msgid "School"
+msgstr "École"
+
+msgid "Subject of teaching"
+msgstr "Matière enseignée"
+
+msgid "Class, lesson"
+msgstr "Classe, leçon"
+
+msgid "Correct"
+msgstr "Corriger"
+
+msgid "Science"
+msgstr "Sciences"
+
+msgid "Test"
+msgstr "Évaluer"
+
+msgid "Answer in a test"
+msgstr "Répondre à une évaluation"
+
+msgid "Social behavior"
+msgstr "Les relations sociales"
+
+msgid "Relationships"
+msgstr "Relations humaines"
+
+msgid "Friend"
+msgstr "Ami"
+
+msgid "Girlfriend, boyfriend"
+msgstr "Petit(e) ami(e)"
+
+msgid "Types of people"
+msgstr "Types de personnes"
+
+msgid "Working relationship"
+msgstr "Relations professionnelles"
+
+msgid "Know someone"
+msgstr "Faire des connaissances"
+
+msgid "Meet for the first time"
+msgstr "Première rencontre"
+
+msgid "Neighbor"
+msgstr "Relations de voisinage"
+
+msgid "Social class"
+msgstr "Classe sociale"
+
+msgid "Unity"
+msgstr "Unité"
+
+msgid "Disunity"
+msgstr "Désunion"
+
+msgid "Unfriendly"
+msgstr "Inamical"
+
+msgid "Set self apart"
+msgstr "Se mettre à l’écart"
+
+msgid "Alone"
+msgstr "Seul"
+
+msgid "Independent person"
+msgstr "Personne indépendante"
+
+msgid "Private, public"
+msgstr "Privé, public"
+
+msgid "Begin a relationship"
+msgstr "Commencer une relation"
+
+msgid "End a relationship"
+msgstr "Mettre fin à une relation"
+
+msgid "Show affection"
+msgstr "Montrer de l’affection"
+
+msgid "Kinship"
+msgstr "Parenté"
+
+msgid "Related by birth"
+msgstr "Parenté par la naissance"
+
+msgid "Grandfather, grandmother"
+msgstr "Grand-père, grand-mère"
+
+msgid "Father, mother"
+msgstr "Père, mère"
+
+msgid "Brother, sister"
+msgstr "Frère, sœur"
+
+msgid "Son, daughter"
+msgstr "Fils, fille"
+
+msgid "Grandson, granddaughter"
+msgstr "Petit-fils, petite-fille"
+
+msgid "Uncle, aunt"
+msgstr "Oncle, tante"
+
+msgid "Cousin"
+msgstr "Cousin, cousine"
+
+msgid "Nephew, niece"
+msgstr "Neveu, nièce"
+
+msgid "Birth order"
+msgstr "Rang de naissance"
+
+msgid "Related by marriage"
+msgstr "Parenté par alliance"
+
+msgid "Husband, wife"
+msgstr "Mari, femme"
+
+msgid "In-law"
+msgstr "Par alliance"
+
+msgid "Widow, widower"
+msgstr "Veuf, veuve"
+
+msgid "Orphan"
+msgstr "Orphelin"
+
+msgid "Illegitimate child"
+msgstr "Enfant illégitime"
+
+msgid "Adopt"
+msgstr "Adopter"
+
+msgid "Non-relative"
+msgstr "Sans lien de parenté"
+
+msgid "Family, clan"
+msgstr "Famille, clan"
+
+msgid "Race"
+msgstr "Race"
+
+msgid "Social activity"
+msgstr "activités sociales"
+
+msgid "Come together, form a group"
+msgstr "Se réunir, former un groupe"
+
+msgid "Invite"
+msgstr "Inviter"
+
+msgid "Encounter"
+msgstr "Rencontrer"
+
+msgid "Meet together"
+msgstr "Se réunir"
+
+msgid "Visit"
+msgstr "Visite"
+
+msgid "Welcome, receive"
+msgstr "Accueillir, recevoir"
+
+msgid "Show hospitality"
+msgstr "Exercer l’hospitalité"
+
+msgid "Meeting, assembly"
+msgstr "Réunion, assemblée"
+
+msgid "Participate"
+msgstr "Participer"
+
+msgid "Crowd, group"
+msgstr "Foule, groupe"
+
+msgid "Organization"
+msgstr "Organisation"
+
+msgid "Join an organization"
+msgstr "Se joindre à une organisation"
+
+msgid "Leave an organization"
+msgstr "Quitter une organisation"
+
+msgid "Belong to an organization"
+msgstr "Faire partie d’une organisation"
+
+msgid "Social group"
+msgstr "Goupe social"
+
+msgid "Social event"
+msgstr "Rencontres sociales"
+
+msgid "Ceremony"
+msgstr "Cérémonie"
+
+msgid "Festival, show"
+msgstr "Festival, spectacle"
+
+msgid "Celebrate"
+msgstr "Célébrer"
+
+msgid "Music"
+msgstr "Musique"
+
+msgid "Compose music"
+msgstr "Composer"
+
+msgid "Play music"
+msgstr "Jouer de la musique"
+
+msgid "Sing"
+msgstr "Chanter"
+
+msgid "Musician"
+msgstr "Musicien"
+
+msgid "Musical instrument"
+msgstr "Instrument de musique"
+
+msgid "Dance"
+msgstr "Danse"
+
+msgid "Drama"
+msgstr "Théâtre"
+
+msgid "Entertainment, recreation"
+msgstr "Divertissement, récréation"
+
+msgid "Game"
+msgstr "Jeux"
+
+msgid "Card game"
+msgstr "Jeu de cartes"
+
+msgid "Chess"
+msgstr "Jeu d’échecs"
+
+msgid "Sports"
+msgstr "Sports"
+
+msgid "Football, soccer"
+msgstr "Football"
+
+msgid "Basketball"
+msgstr "Basketball"
+
+msgid "Exercise"
+msgstr "Exercice physique"
+
+msgid "Gambling"
+msgstr "Pari"
+
+msgid "Play, fun"
+msgstr "Jeu, amusement"
+
+msgid "Humor"
+msgstr "Humour"
+
+msgid "Serious"
+msgstr "Sérieux"
+
+msgid "Holiday"
+msgstr "Vacances"
+
+msgid "Free time"
+msgstr "Temps libre"
+
+msgid "Behavior"
+msgstr "Comportement"
+
+msgid "Good, moral"
+msgstr "Bon, moral"
+
+msgid "Bad, immoral"
+msgstr "Mauvais, immoral"
+
+msgid "Meet a standard"
+msgstr "Respecter la norme sociale"
+
+msgid "Below standard"
+msgstr "Ne pas respecter la norme sociale"
+
+msgid "Mature in behavior"
+msgstr "Mûr"
+
+msgid "Immature in behavior"
+msgstr "Immature"
+
+msgid "Sensible"
+msgstr "Sensé"
+
+msgid "Reputation"
+msgstr "Réputation"
+
+msgid "Patient"
+msgstr "Patient"
+
+msgid "Impatient"
+msgstr "Impatient"
+
+msgid "Bad-tempered"
+msgstr "Mauvais caractère"
+
+msgid "Admire someone"
+msgstr "Admirer quelqu’un"
+
+msgid "Despise someone"
+msgstr "Mépriser quelqu’un"
+
+msgid "Humble"
+msgstr "Humble"
+
+msgid "Proud"
+msgstr "Fier"
+
+msgid "Show off"
+msgstr "Frimer"
+
+msgid "Love"
+msgstr "Aimer"
+
+msgid "Hate, ill will"
+msgstr "Haïr, en vouloir à quelqu’un"
+
+msgid "Not care"
+msgstr "Être indifférent"
+
+msgid "Abandon"
+msgstr "Abandonner"
+
+msgid "Do good to"
+msgstr "Faire du bien à"
+
+msgid "Do evil to"
+msgstr "Faire du mal à"
+
+msgid "Help"
+msgstr "Aider"
+
+msgid "Hinder"
+msgstr "Empêcher"
+
+msgid "Cooperate with"
+msgstr "Collaborer"
+
+msgid "Compete with"
+msgstr "Concurrencer"
+
+msgid "Altruistic, selfless"
+msgstr "Altruiste, généreux"
+
+msgid "Selfish"
+msgstr "Ẻgoïste"
+
+msgid "Use a person"
+msgstr "Se servir de quelqu’un"
+
+msgid "Share with"
+msgstr "Partager"
+
+msgid "Provide for, support"
+msgstr "Pourvoir, soutenir"
+
+msgid "Care for"
+msgstr "Prendre soin de"
+
+msgid "Entrust to the care of"
+msgstr "Confier la garde de quelque chose à quelqu’un"
+
+msgid "Meddle"
+msgstr "Se mêler de"
+
+msgid "Spoil"
+msgstr "Gâcher"
+
+msgid "Enter by force"
+msgstr "Entrer de force"
+
+msgid "Kidnap"
+msgstr "Kidnapper"
+
+msgid "Cruel"
+msgstr "Cruel"
+
+msgid "Honest"
+msgstr "Honnête"
+
+msgid "Dishonest"
+msgstr "Malhonnête"
+
+msgid "Faithful"
+msgstr "Fidèle"
+
+msgid "Reliable"
+msgstr "Fiable, digne de confiance"
+
+msgid "Unreliable"
+msgstr "Pas digne de confiance"
+
+msgid "Deceive"
+msgstr "Trompeur"
+
+msgid "Hypocrite"
+msgstr "Hypocrite"
+
+msgid "Self-controlled"
+msgstr "Maîtrise de soi"
+
+msgid "Lack self-control"
+msgstr "Manque de maîtrise de soi"
+
+msgid "Tidy"
+msgstr "Ordonné"
+
+msgid "Untidy"
+msgstr "Désordonné"
+
+msgid "Mistake"
+msgstr "Erreur"
+
+msgid "Polite"
+msgstr "Poli"
+
+msgid "Impolite"
+msgstr "Impoli"
+
+msgid "Crazy"
+msgstr "Insensé"
+
+msgid "Change behavior"
+msgstr "Changer de comportement"
+
+msgid "Conform"
+msgstr "Se conformer"
+
+msgid "Culture"
+msgstr "Culture"
+
+msgid "Custom"
+msgstr "Coutume"
+
+msgid "Habit"
+msgstr "Habitude"
+
+msgid "Prosperity, trouble"
+msgstr "Prospérité, adversité"
+
+msgid "Prosperity"
+msgstr "Prospérité"
+
+msgid "Trouble"
+msgstr "Adversité"
+
+msgid "Problem"
+msgstr "Problème"
+
+msgid "Danger"
+msgstr "Danger"
+
+msgid "Accident"
+msgstr "Accident"
+
+msgid "Disaster"
+msgstr "Catastrophe"
+
+msgid "Separate, alone"
+msgstr "Séparé, seul"
+
+msgid "Suffer"
+msgstr "Souffrir"
+
+msgid "Respond to trouble"
+msgstr "Surmonter l’adversité"
+
+msgid "Brave"
+msgstr "Courage"
+
+msgid "Cowardice"
+msgstr "Lâcheté"
+
+msgid "Avoid"
+msgstr "Ẻviter les ennuis"
+
+msgid "Caution"
+msgstr "Prudence"
+
+msgid "Solve a problem"
+msgstr "Résoudre un problème"
+
+msgid "Endure"
+msgstr "Endurer"
+
+msgid "Survive"
+msgstr "Survivre"
+
+msgid "Respond to someone in trouble"
+msgstr "Aider quelqu’un dans l’adversité"
+
+msgid "Mercy"
+msgstr "Se montrer miséricordieux"
+
+msgid "Show sympathy, support"
+msgstr "Montrer de la sympathie, soutenir"
+
+msgid "Gentle"
+msgstr "Être bon"
+
+msgid "Save from trouble"
+msgstr "Tirer d'affaire"
+
+msgid "Protect"
+msgstr "Protéger"
+
+msgid "Free from bondage"
+msgstr "Libérer"
+
+msgid "Relief"
+msgstr "Secourir"
+
+msgid "Risk"
+msgstr "Risquer"
+
+msgid "Chance"
+msgstr "Hasard"
+
+msgid "Lucky"
+msgstr "Chanceux"
+
+msgid "Unlucky"
+msgstr "Malchanceux"
+
+msgid "Authority"
+msgstr "Autorité"
+
+msgid "Person in authority"
+msgstr "Personne en position d'autorité"
+
+msgid "Have authority"
+msgstr "Avoir autorité sur"
+
+msgid "Exercise authority"
+msgstr "Exercer l'autorité"
+
+msgid "Lead"
+msgstr "Diriger"
+
+msgid "Command"
+msgstr "Ordonner"
+
+msgid "Discipline, train"
+msgstr "Discipliner, former"
+
+msgid "Appoint, delegate"
+msgstr "Nommer, déléguer"
+
+msgid "Submit to authority"
+msgstr "Se soumettre à l'autorité"
+
+msgid "Obey"
+msgstr "Obéir"
+
+msgid "Disobey"
+msgstr "Désobéir"
+
+msgid "Serve"
+msgstr "Servir"
+
+msgid "Slave"
+msgstr "Esclave"
+
+msgid "Follow, be a disciple"
+msgstr "Suivre, être un disciple"
+
+msgid "Rebel against authority"
+msgstr "Se rebeller contre l'autorité"
+
+msgid "Independent"
+msgstr "Indépendant"
+
+msgid "Honor"
+msgstr "Honneur"
+
+msgid "Title, name of honor"
+msgstr "Titre, titre honorifique"
+
+msgid "Lack respect"
+msgstr "Manque de respect"
+
+msgid "Status"
+msgstr "Statut social"
+
+msgid "High status"
+msgstr "Situation sociale supérieure"
+
+msgid "Low status"
+msgstr "Position sociale inférieure"
+
+msgid "Government"
+msgstr "Gouvernement"
+
+msgid "Ruler"
+msgstr "Chef d’état"
+
+msgid "King's family"
+msgstr "Famille royale"
+
+msgid "Government official"
+msgstr "Représentant de l’État"
+
+msgid "Citizen"
+msgstr "Citoyen"
+
+msgid "Foreigner"
+msgstr "Étranger"
+
+msgid "Government organization"
+msgstr "Organisation gouvernementale"
+
+msgid "Governing body"
+msgstr "Instances dirigeantes"
+
+msgid "Rule"
+msgstr "Gouverner"
+
+msgid "Subjugate"
+msgstr "Soumettre"
+
+msgid "Government functions"
+msgstr "Fonctions du gouvernement"
+
+msgid "Police"
+msgstr "Police"
+
+msgid "Arrest"
+msgstr "Arrestation"
+
+msgid "Informal justice"
+msgstr "Justice populaire"
+
+msgid "Diplomacy"
+msgstr "Diplomatie"
+
+msgid "Represent"
+msgstr "Représenter quelqu’un"
+
+msgid "Election"
+msgstr "Élection"
+
+msgid "Politics"
+msgstr "La Politique"
+
+msgid "Region"
+msgstr "Région"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "City"
+msgstr "Localité"
+
+msgid "Countryside"
+msgstr "Campagne"
+
+msgid "Community"
+msgstr "Communauté"
+
+msgid "Law"
+msgstr "Loi"
+
+msgid "Laws"
+msgstr "Lois"
+
+msgid "Pass laws"
+msgstr "Voter des lois"
+
+msgid "Break the law"
+msgstr "Enfreindre la loi"
+
+msgid "Court of law"
+msgstr "Tribunal"
+
+msgid "Legal personnel"
+msgstr "Personnel judiciaire"
+
+msgid "Trial"
+msgstr "Procès"
+
+msgid "Investigate a crime"
+msgstr "Enquêter"
+
+msgid "Suspect"
+msgstr "Suspecter"
+
+msgid "Accuse, confront"
+msgstr "Accuser, confronter"
+
+msgid "Defend against accusation"
+msgstr "Défendre contre une accusation"
+
+msgid "Witness, testify"
+msgstr "Être témoin, témoigner"
+
+msgid "Drop charges"
+msgstr "Retirer un chef d’inculpation"
+
+msgid "Take oath"
+msgstr "Prêter serment"
+
+msgid "Vindicate"
+msgstr "Innocenter"
+
+msgid "Judge, render a verdict"
+msgstr "Juger, rendre un verdict"
+
+msgid "Acquit"
+msgstr "Acquitter"
+
+msgid "Condemn, find guilty"
+msgstr "Condamner, juger coupable"
+
+msgid "Fault"
+msgstr "Faute"
+
+msgid "Punish"
+msgstr "Punir"
+
+msgid "Reward"
+msgstr "Récompenser"
+
+msgid "Fine"
+msgstr "Amende"
+
+msgid "Imprison"
+msgstr "Emprisonner"
+
+msgid "Execute"
+msgstr "Exécuter"
+
+msgid "Ostracize"
+msgstr "Bannir"
+
+msgid "Pardon, release"
+msgstr "Pardonner, libérer"
+
+msgid "Atone, restitution"
+msgstr "Expier, dédommagement"
+
+msgid "Legal contract"
+msgstr "Contrat"
+
+msgid "Covenant"
+msgstr "Engagement"
+
+msgid "Break a contract"
+msgstr "Rompre un contrat"
+
+msgid "Justice"
+msgstr "Justice"
+
+msgid "Impartial"
+msgstr "Impartial"
+
+msgid "Unfair"
+msgstr "Injuste"
+
+msgid "Deserve"
+msgstr "Mériter"
+
+msgid "Discriminate, be unfair"
+msgstr "Discriminer, ne pas être équitable"
+
+msgid "Act harshly"
+msgstr "Agir durement"
+
+msgid "Oppress"
+msgstr "Opprimer"
+
+msgid "Conflict"
+msgstr "Conflit"
+
+msgid "Hostility"
+msgstr "Hostilité"
+
+msgid "Oppose"
+msgstr "Opposition"
+
+msgid "Fight"
+msgstr "Combattre"
+
+msgid "Fight for something good"
+msgstr "Se battre pour une bonne cause"
+
+msgid "Fight against something bad"
+msgstr "Se battre contre quelque chose de mal"
+
+msgid "Attack"
+msgstr "Attaquer"
+
+msgid "Ambush"
+msgstr "Embuscade"
+
+msgid "Defend"
+msgstr "Défendre"
+
+msgid "Revenge"
+msgstr "Se venger"
+
+msgid "Riot"
+msgstr "Émeute"
+
+msgid "Betray"
+msgstr "Trahir"
+
+msgid "Violent"
+msgstr "Violent"
+
+msgid "Enemy"
+msgstr "Ennemi"
+
+msgid "War"
+msgstr "Guerre"
+
+msgid "Defeat"
+msgstr "Vaincre"
+
+msgid "Win"
+msgstr "Remporter la victoire"
+
+msgid "Lose a fight"
+msgstr "Perdre une bataille"
+
+msgid "Surrender"
+msgstr "Capituler"
+
+msgid "Prisoner of war"
+msgstr "Prisonnier de guerre"
+
+msgid "Military organization"
+msgstr "Instances militaires"
+
+msgid "Army"
+msgstr "Armée"
+
+msgid "Navy"
+msgstr "Marine"
+
+msgid "Air force"
+msgstr "Aviation"
+
+msgid "Soldier"
+msgstr "Soldat"
+
+msgid "Spy"
+msgstr "Espion"
+
+msgid "Fort"
+msgstr "Fort"
+
+msgid "Weapon, shoot"
+msgstr "Arme, tir"
+
+msgid "Plunder"
+msgstr "Piller"
+
+msgid "Peace"
+msgstr "Paix"
+
+msgid "Rebuke"
+msgstr "réprimander"
+
+msgid "Make an appeal"
+msgstr "Lancer un appel"
+
+msgid "Appease"
+msgstr "Amadouer"
+
+msgid "Negotiate"
+msgstr "Négocier"
+
+msgid "Renounce claim, concede"
+msgstr "Renoncer à une revendication, concéder"
+
+msgid "Repent"
+msgstr "Se repentir"
+
+msgid "Request forgiveness"
+msgstr "Demander pardon"
+
+msgid "Forgive"
+msgstr "Pardonner"
+
+msgid "Make peace"
+msgstr "Faire la paix"
+
+msgid "Stop fighting"
+msgstr "Cesser les hostilités"
+
+msgid "Reconcile"
+msgstr "Se réconcilier"
+
+msgid "Religion"
+msgstr "Religion"
+
+msgid "God"
+msgstr "Dieu"
+
+msgid "Supernatural being"
+msgstr "Être surnaturel"
+
+msgid "Theology"
+msgstr "Théologie"
+
+msgid "Sacred writings"
+msgstr "Textes sacrés"
+
+msgid "Miracle, supernatural power"
+msgstr "Miracle, pouvoir surnaturel"
+
+msgid "Sorcery"
+msgstr "Sorcellerie"
+
+msgid "Demon possession"
+msgstr "Possession démoniaque"
+
+msgid "Bless"
+msgstr "Bénédiction"
+
+msgid "Curse"
+msgstr "Malédiction"
+
+msgid "Destiny"
+msgstr "Destinée"
+
+msgid "Prophecy"
+msgstr "Prophétie"
+
+msgid "Omen, divination"
+msgstr "Présage, divination"
+
+msgid "Practice religion"
+msgstr "Pratique religieuse"
+
+msgid "Devout"
+msgstr "Piété"
+
+msgid "Pray"
+msgstr "Prier"
+
+msgid "Worship"
+msgstr "Adoration"
+
+msgid "Religious ceremony"
+msgstr "Cérémonie religieuse"
+
+msgid "Offering, sacrifice"
+msgstr "Offrande, sacrifice"
+
+msgid "Religious purification"
+msgstr "Purification religieuse"
+
+msgid "Taboo"
+msgstr "Tabou"
+
+msgid "Salvation"
+msgstr "Salut"
+
+msgid "Dedicate to religious use"
+msgstr "Consacrer à un usage religieux"
+
+msgid "Fasting"
+msgstr "Jeûne"
+
+msgid "Heaven, hell"
+msgstr "Ciel, enfer"
+
+msgid "Resurrection"
+msgstr "Résurrection"
+
+msgid "Religious organization"
+msgstr "Organisation religieuse"
+
+msgid "Religious person"
+msgstr "Pratiquant"
+
+msgid "Christianity"
+msgstr "Christianisme"
+
+msgid "Islam"
+msgstr "Islam"
+
+msgid "Hinduism"
+msgstr "Hindouisme"
+
+msgid "Buddhism"
+msgstr "Bouddhisme"
+
+msgid "Judaism"
+msgstr "Judaïsme"
+
+msgid "Animism"
+msgstr "Animisme"
+
+msgid "Religious things"
+msgstr "Objet ou lieu religieux"
+
+msgid "Idol"
+msgstr "Idole"
+
+msgid "Place of worship"
+msgstr "Lieu de culte"
+
+msgid "Irreligion"
+msgstr "Irréligion"
+
+msgid "Daily life"
+msgstr "La maison"
+
+msgid "Household equipment"
+msgstr "Équipement de la maison"
+
+msgid "Furniture"
+msgstr "Mobilier"
+
+msgid "Table"
+msgstr "Table"
+
+msgid "Chair"
+msgstr "Siège"
+
+msgid "Bed"
+msgstr "Lit"
+
+msgid "Cabinet"
+msgstr "Meuble de rangement"
+
+msgid "Household decoration"
+msgstr "Décoration d’une maison"
+
+msgid "Food"
+msgstr "Nourriture"
+
+msgid "Food preparation"
+msgstr "Préparation de la nourriture"
+
+msgid "Cooking methods"
+msgstr "Façons de cuisiner"
+
+msgid "Steps in food preparation"
+msgstr "Étapes dans la préparation de la nourriture"
+
+msgid "Remove shell, skin"
+msgstr "Ôter la coquille, la peau"
+
+msgid "Pound in mortar and pestle"
+msgstr "Piler dans un mortier"
+
+msgid "Grind flour"
+msgstr "Faire de la farine"
+
+msgid "Cooking utensil"
+msgstr "Ustensile de cuisine"
+
+msgid "Food storage"
+msgstr "Conservation de la nourriture"
+
+msgid "Serve food"
+msgstr "Servir la nourriture"
+
+msgid "Eat"
+msgstr "Manger"
+
+msgid "Bite, chew"
+msgstr "Mordre, mâcher"
+
+msgid "Meal"
+msgstr "Repas"
+
+msgid "Feast"
+msgstr "Banquet"
+
+msgid "Manner of eating"
+msgstr "Façons de manger"
+
+msgid "Hungry, thirsty"
+msgstr "Avoir faim, avoir soif"
+
+msgid "Satiated, full"
+msgstr "Repu, rassasié"
+
+msgid "Drink"
+msgstr "Boire"
+
+msgid "Eating utensil"
+msgstr "Ustensiles pour manger"
+
+msgid "Fast, not eat"
+msgstr "Jeûner, ne pas manger"
+
+msgid "Types of food"
+msgstr "Types de nourriture et de boisson"
+
+msgid "Food from plants"
+msgstr "Nourriture d’origine végétale"
+
+msgid "Food from seeds"
+msgstr "Nourriture provenant de graines"
+
+msgid "Food from fruit"
+msgstr "Nourriture provenant de fruits"
+
+msgid "Food from vegetables"
+msgstr "Nourriture provenant de légumes"
+
+msgid "Food from leaves"
+msgstr "Nourriture provenant de feuilles"
+
+msgid "Food from roots"
+msgstr "Nourriture provenant de racines"
+
+msgid "Food from animals"
+msgstr "Nourriture d’origine animale"
+
+msgid "Meat"
+msgstr "Viande"
+
+msgid "Milk products"
+msgstr "Produits laitiers"
+
+msgid "Egg dishes"
+msgstr "Œufs"
+
+msgid "Cooking ingredients"
+msgstr "Ingrédients culinaires"
+
+msgid "Sugar"
+msgstr "Sucre"
+
+msgid "Salt"
+msgstr "Sel"
+
+msgid "Spice"
+msgstr "Épices"
+
+msgid "Leaven"
+msgstr "Levain"
+
+msgid "Cooking oil"
+msgstr "Huile de cuisine"
+
+msgid "Prepared food"
+msgstr "Plat"
+
+msgid "Prohibited food"
+msgstr "Aliments interdits"
+
+msgid "Beverage"
+msgstr "Boissons"
+
+msgid "Alcoholic beverage"
+msgstr "Boissons alcoolisées"
+
+msgid "Alcohol preparation"
+msgstr "Préparation alcoolisée"
+
+msgid "Drunk"
+msgstr "Alcoolique"
+
+msgid "Tobacco"
+msgstr "Tabac"
+
+msgid "Narcotic"
+msgstr "Drogue"
+
+msgid "Stimulant"
+msgstr "Stimulant"
+
+msgid "Clothing"
+msgstr "Vêtement"
+
+msgid "Men's clothing"
+msgstr "Vêtements pour hommes"
+
+msgid "Women's clothing"
+msgstr "Vêtements pour femmes"
+
+msgid "Traditional clothing"
+msgstr "Vêtements traditionnels"
+
+msgid "Clothes for special occasions"
+msgstr "Vêtements pour des occasions particulières"
+
+msgid "Clothes for special people"
+msgstr "Vêtements pour certaines personnes"
+
+msgid "Parts of clothing"
+msgstr "Eléments de vêtements"
+
+msgid "Wear clothing"
+msgstr "Porter des vêtements"
+
+msgid "Naked"
+msgstr "Nudité"
+
+msgid "Style of clothing"
+msgstr "Style vestimentaire"
+
+msgid "Adornment"
+msgstr "Parure"
+
+msgid "Jewelry"
+msgstr "Bijoux"
+
+msgid "Cosmetics"
+msgstr "Cosmétiques"
+
+msgid "Care for hair"
+msgstr "Soin des cheveux"
+
+msgid "Comb hair"
+msgstr "Se coiffer"
+
+msgid "Plait hair"
+msgstr "Tresser les cheveux"
+
+msgid "Dye hair"
+msgstr "Teindre les cheveux"
+
+msgid "Hairstyle"
+msgstr "Styles de coiffures"
+
+msgid "Cut hair"
+msgstr "Couper les cheveux"
+
+msgid "Shave"
+msgstr "Rasage"
+
+msgid "Care for the teeth"
+msgstr "Soin des dents"
+
+msgid "Anoint the body"
+msgstr "Oindre le corps"
+
+msgid "Ritual scar"
+msgstr "Incisions et tatouages rituels"
+
+msgid "Circumcision"
+msgstr "Circoncision"
+
+msgid "Care for the fingernails"
+msgstr "Soin des ongles"
+
+msgid "Fire"
+msgstr "Le feu"
+
+msgid "Light a fire"
+msgstr "Allumer un feu"
+
+msgid "Tend a fire"
+msgstr "Entretenir un feu"
+
+msgid "Extinguish a fire"
+msgstr "Eteindre un feu"
+
+msgid "Burn"
+msgstr "Brûler"
+
+msgid "What fires produce"
+msgstr "Ce que le feu produit"
+
+msgid "Fuel"
+msgstr "Combustible"
+
+msgid "Fireplace"
+msgstr "Cheminée"
+
+msgid "Cleaning"
+msgstr "Nettoyage"
+
+msgid "Clean, dirty"
+msgstr "Propre, sale"
+
+msgid "Bathe"
+msgstr "Se laver"
+
+msgid "Wash dishes"
+msgstr "Laver la vaisselle"
+
+msgid "Wash clothes"
+msgstr "Laver le linge"
+
+msgid "Sweep, rake"
+msgstr "Nettoyer le sol"
+
+msgid "Wipe, erase"
+msgstr "Essuyer, effacer"
+
+msgid "Sleep"
+msgstr "Sommeil"
+
+msgid "Go to sleep"
+msgstr "S’endormir"
+
+msgid "Dream"
+msgstr "Rêver"
+
+msgid "Wake up"
+msgstr "Se réveiller"
+
+msgid "Manage a house"
+msgstr "S’occuper d’une maison"
+
+msgid "Live, stay"
+msgstr "Vivre, demeurer"
+
+msgid "Work and occupation"
+msgstr "Le Travail et diverses activités"
+
+msgid "Work"
+msgstr "Travail"
+
+msgid "Worker"
+msgstr "Travailleur"
+
+msgid "Expert"
+msgstr "Spécialiste"
+
+msgid "Method"
+msgstr "Façon de faire"
+
+msgid "Try, attempt"
+msgstr "Essayer"
+
+msgid "Use"
+msgstr "Utiliser"
+
+msgid "Useful"
+msgstr "Utile"
+
+msgid "Useless"
+msgstr "Inutile"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Use up"
+msgstr "Utiliser complètement"
+
+msgid "Take care of something"
+msgstr "Prendre soin de quelque chose"
+
+msgid "Waste"
+msgstr "Gaspiller"
+
+msgid "Work well"
+msgstr "Bien travailler"
+
+msgid "Careful"
+msgstr "Être soigneux"
+
+msgid "Work hard"
+msgstr "Travailler dur"
+
+msgid "Busy"
+msgstr "Etre très occupé"
+
+msgid "Power, force"
+msgstr "Force"
+
+msgid "Complete, finish"
+msgstr "Terminer, finir"
+
+msgid "Ambitious"
+msgstr "Être ambitieux"
+
+msgid "Work poorly"
+msgstr "Mal travailler"
+
+msgid "Careless, irresponsible"
+msgstr "Être négligent, être irresponsable"
+
+msgid "Lazy"
+msgstr "Être paresseux"
+
+msgid "Give up"
+msgstr "Abandonner"
+
+msgid "Plan"
+msgstr "Planifier"
+
+msgid "Arrange an event"
+msgstr "Organiser"
+
+msgid "Cancel an event"
+msgstr "Annuler"
+
+msgid "Prepare"
+msgstr "Préparer"
+
+msgid "Prepare something for use"
+msgstr "Préparatifs"
+
+msgid "Effective"
+msgstr "Efficace"
+
+msgid "Efficient"
+msgstr "Occasion"
+
+msgid "Opportunity"
+msgstr "Opportunity"
+
+msgid "Difficult, impossible"
+msgstr "Difficile, impossible"
+
+msgid "Easy, possible"
+msgstr "Facile, possible"
+
+msgid "Succeed"
+msgstr "Réussir"
+
+msgid "Fail"
+msgstr "Ẻchouer"
+
+msgid "Advantage"
+msgstr "Avantage"
+
+msgid "Job satisfaction"
+msgstr "Satisfaction professionnelle"
+
+msgid "Unemployed, not working"
+msgstr "Chômage, absence de travail"
+
+msgid "Made by hand"
+msgstr "Fait main"
+
+msgid "Artificial"
+msgstr "Artificiel"
+
+msgid "Experienced"
+msgstr "Expérimenté"
+
+msgid "Accustomed to"
+msgstr "Habitué à"
+
+msgid "Agriculture"
+msgstr "Agriculture"
+
+msgid "Growing crops"
+msgstr "Cultiver des végétaux"
+
+msgid "Growing grain"
+msgstr "Cultiver des céréales"
+
+msgid "Growing rice"
+msgstr "Cultiver du riz"
+
+msgid "Growing wheat"
+msgstr "Cultiver du blé"
+
+msgid "Growing maize"
+msgstr "Cultiver du maïs"
+
+msgid "Growing roots"
+msgstr "Cultiver des tubercules"
+
+msgid "Growing potatoes"
+msgstr "Cultiver des pommes de terre"
+
+msgid "Growing cassava"
+msgstr "Cultiver du manioc"
+
+msgid "Growing vegetables"
+msgstr "Cultiver des légumes"
+
+msgid "Growing fruit"
+msgstr "Cultiver des fruits"
+
+msgid "Growing grapes"
+msgstr "Cultiver la vigne"
+
+msgid "Growing bananas"
+msgstr "Cultiver des bananes"
+
+msgid "Growing grass"
+msgstr "Cultiver des plantes"
+
+msgid "Growing sugarcane"
+msgstr "Cultiver de la canne à sucre"
+
+msgid "Growing tobacco"
+msgstr "Cultiver du tabac"
+
+msgid "Growing flowers"
+msgstr "Cultiver des fleurs"
+
+msgid "Growing trees"
+msgstr "Cultiver des arbres"
+
+msgid "Growing coconuts"
+msgstr "Cultiver des cocotiers"
+
+msgid "Growing coffee"
+msgstr "Cultiver des caféiers"
+
+msgid "Land preparation"
+msgstr "Préparer le sol"
+
+msgid "Clear a field"
+msgstr "Débroussailler un champ"
+
+msgid "Plow a field"
+msgstr "Labourer un champ"
+
+msgid "Fertilize a field"
+msgstr "Enrichir un champ"
+
+msgid "Plant a field"
+msgstr "Planter un champ"
+
+msgid "Tend a field"
+msgstr "Entretenir un champ"
+
+msgid "Cut grass"
+msgstr "Couper l’herbe"
+
+msgid "Uproot plants"
+msgstr "Arracher des plantes"
+
+msgid "Irrigate"
+msgstr "Arroser"
+
+msgid "Trim plants"
+msgstr "Tailler"
+
+msgid "Neglect plants"
+msgstr "Négliger les plantes"
+
+msgid "Harvest"
+msgstr "Récolter"
+
+msgid "First fruits"
+msgstr "Premiers fruits"
+
+msgid "Crop failure"
+msgstr "Mauvaise récolte"
+
+msgid "Gather wild plants"
+msgstr "Cueillette de plantes sauvages"
+
+msgid "Plant product"
+msgstr "Produits végétaux"
+
+msgid "Process harvest"
+msgstr "Utiliser la récolte"
+
+msgid "Winnow grain"
+msgstr "Battre la récolte"
+
+msgid "Mill grain"
+msgstr "Vanner"
+
+msgid "Thresh"
+msgstr "Moudre"
+
+msgid "Store the harvest"
+msgstr "Conserver la récolte"
+
+msgid "Farm worker"
+msgstr "Personnel agricole"
+
+msgid "Agricultural tool"
+msgstr "Outils agricoles"
+
+msgid "Farmland"
+msgstr "Terres agricoles"
+
+msgid "Animal husbandry"
+msgstr "Ẻlevage"
+
+msgid "Domesticated animal"
+msgstr "Animaux domestiques"
+
+msgid "Cattle"
+msgstr "Gros bétail"
+
+msgid "Sheep"
+msgstr "Mouton"
+
+msgid "Goat"
+msgstr "Chèvre"
+
+msgid "Pig"
+msgstr "Porc"
+
+msgid "Dog"
+msgstr "Chien"
+
+msgid "Cat"
+msgstr "Chat"
+
+msgid "Beast of burden"
+msgstr "Bête de somme"
+
+msgid "Tend herds in fields"
+msgstr "Garder des troupeaux"
+
+msgid "Milk"
+msgstr "Traire"
+
+msgid "Butcher, slaughter"
+msgstr "Abattre, dépecer"
+
+msgid "Wool production"
+msgstr "Production de la laine"
+
+msgid "Poultry raising"
+msgstr "Élevage de la volaille"
+
+msgid "Chicken"
+msgstr "Poules"
+
+msgid "Animal products"
+msgstr "Produits venant des animaux"
+
+msgid "Veterinary science"
+msgstr "Science vétérinaire"
+
+msgid "Animal diseases"
+msgstr "Maladie des animaux"
+
+msgid "Castrate animal"
+msgstr "Castrer un animal"
+
+msgid "Hunt and fish"
+msgstr "Chasse et pêche"
+
+msgid "Hunt"
+msgstr "Chasse"
+
+msgid "Track an animal"
+msgstr "Suivre à la trace"
+
+msgid "Trap"
+msgstr "Piège"
+
+msgid "Hunting birds"
+msgstr "Chasse aux oiseaux"
+
+msgid "Beekeeping"
+msgstr "Apiculture"
+
+msgid "Fishing"
+msgstr "Pêche"
+
+msgid "Fish with net"
+msgstr "Pêche au filet"
+
+msgid "Fish with hooks"
+msgstr "Pêche à la ligne"
+
+msgid "Fishing equipment"
+msgstr "Matériel de pêche"
+
+msgid "Things done to animals"
+msgstr "Ce qu'on fait aux animaux"
+
+msgid "Working with buildings"
+msgstr "Bâtiment et travaux publics"
+
+msgid "Building"
+msgstr "Bâtiments"
+
+msgid "House"
+msgstr "Maison"
+
+msgid "Types of houses"
+msgstr "Types de maisons"
+
+msgid "Land, property"
+msgstr "Terrain privé, propriété privée"
+
+msgid "Yard"
+msgstr "Cour"
+
+msgid "Fence, wall"
+msgstr "Clôture, mur"
+
+msgid "Parts of a building"
+msgstr "Parties d’un bâtiment"
+
+msgid "Wall"
+msgstr "Mur"
+
+msgid "Roof"
+msgstr "Toit"
+
+msgid "Floor"
+msgstr "Sol"
+
+msgid "Door"
+msgstr "Porte"
+
+msgid "Window"
+msgstr "Fenêtre"
+
+msgid "Foundation"
+msgstr "Fondations"
+
+msgid "Room"
+msgstr "Pièce"
+
+msgid "Floor, story"
+msgstr "Étage"
+
+msgid "Building materials"
+msgstr "Matériaux de construction"
+
+msgid "Building equipment and maintenance"
+msgstr "Entretien d’un bâtiment et matériel d'entretien"
+
+msgid "Infrastructure"
+msgstr "Infrastructure"
+
+msgid "Road"
+msgstr "Route"
+
+msgid "Boundary"
+msgstr "Délimitation"
+
+msgid "Occupation"
+msgstr "Diverses activités"
+
+msgid "Working with cloth"
+msgstr "Travail du textile"
+
+msgid "Cloth"
+msgstr "Tissu"
+
+msgid "Spinning thread"
+msgstr "Filer"
+
+msgid "Knitting"
+msgstr "Tricoter"
+
+msgid "Weaving cloth"
+msgstr "Tisser"
+
+msgid "Working with minerals"
+msgstr "Travail avec des matières minérales"
+
+msgid "Mining"
+msgstr "Travail de la mine"
+
+msgid "Smelting"
+msgstr "Fonderie"
+
+msgid "Working with metal"
+msgstr "Travail du métal"
+
+msgid "Working with clay"
+msgstr "Travail de l’argile"
+
+msgid "Working with glass"
+msgstr "Travail du verre"
+
+msgid "Working with oil and gas"
+msgstr "Travail avec le pétrole et le gaz"
+
+msgid "Working with stone"
+msgstr "Travail de la pierre"
+
+msgid "Working with bricks"
+msgstr "Travail avec des briques"
+
+msgid "Working with chemicals"
+msgstr "Travail avec des produits chimiques"
+
+msgid "Explode"
+msgstr "Exploser"
+
+msgid "Working with wood"
+msgstr "Travail du bois"
+
+msgid "Lumbering"
+msgstr "Exploitation forestière"
+
+msgid "Wood"
+msgstr "Bois"
+
+msgid "Working with paper"
+msgstr "Travail du papier"
+
+msgid "Crafts"
+msgstr "Artisanat"
+
+msgid "Cordage"
+msgstr "Cordage"
+
+msgid "Weaving baskets and mats"
+msgstr "Vannerie"
+
+msgid "Working with leather"
+msgstr "Travail du cuir"
+
+msgid "Working with bone"
+msgstr "Travail de l’os et de la corne"
+
+msgid "Art"
+msgstr "Art plastique"
+
+msgid "Draw, paint"
+msgstr "Dessin, peinture"
+
+msgid "Photography"
+msgstr "Photographie"
+
+msgid "Sculpture"
+msgstr "Sculpture"
+
+msgid "Working with land"
+msgstr "Travail de la terre"
+
+msgid "Working with water"
+msgstr "Travail associé à l’eau"
+
+msgid "Plumber"
+msgstr "Plomberie"
+
+msgid "Conveying water"
+msgstr "Transport de l’eau"
+
+msgid "Controlling water"
+msgstr "Gestion de l’eau"
+
+msgid "Working in the sea"
+msgstr "Travail en mer"
+
+msgid "Working with machines"
+msgstr "Travail avec des machines"
+
+msgid "Working with electricity"
+msgstr "Travail associé à l’électricité"
+
+msgid "Tool"
+msgstr "Outil"
+
+msgid "Cutting tool"
+msgstr "Outil coupant"
+
+msgid "Poking tool"
+msgstr "Outil pour faire des trous"
+
+msgid "Digging tool"
+msgstr "Outil pour creuser"
+
+msgid "Pounding tool"
+msgstr "Marteau et maillet"
+
+msgid "Carrying tool"
+msgstr "Objet de transport"
+
+msgid "Lifting tool"
+msgstr "Outil pour soulever une charge"
+
+msgid "Fastening tool"
+msgstr "Lien et liant"
+
+msgid "Holding tool"
+msgstr "Objet pour tenir quelque chose"
+
+msgid "Container"
+msgstr "Contenant"
+
+msgid "Bag"
+msgstr "Sac"
+
+msgid "Sheath"
+msgstr "Fourreau"
+
+msgid "Parts of tools"
+msgstr "Partie d’outil"
+
+msgid "Machine"
+msgstr "Machine"
+
+msgid "Finance"
+msgstr "Finance"
+
+msgid "Have wealth"
+msgstr "Avoir des richesses"
+
+msgid "Own, possess"
+msgstr "Posséder"
+
+msgid "Rich"
+msgstr "Être riche"
+
+msgid "Poor"
+msgstr "Être pauvre"
+
+msgid "Store wealth"
+msgstr "Mettre en réserve des richesses"
+
+msgid "Possession, property"
+msgstr "Possession, propriété"
+
+msgid "Accumulate wealth"
+msgstr "Accumuler des richesses"
+
+msgid "Produce wealth"
+msgstr "Produire des richesses"
+
+msgid "Make profit"
+msgstr "Faire des bénéfices"
+
+msgid "Lose wealth"
+msgstr "Perdre ses richesses"
+
+msgid "Frugal"
+msgstr "Être économe"
+
+msgid "Greedy"
+msgstr "Être avide"
+
+msgid "Collect"
+msgstr "Collectionner"
+
+msgid "Earn"
+msgstr "Gagner de l’argent"
+
+msgid "Share wealth"
+msgstr "Partager des richesses"
+
+msgid "Give, donate"
+msgstr "Donner, faire une donation"
+
+msgid "Generous"
+msgstr "Être généreux"
+
+msgid "Stingy"
+msgstr "Être avare"
+
+msgid "Beg"
+msgstr "Mendier"
+
+msgid "Financial transaction"
+msgstr "Transaction financière"
+
+msgid "Buy"
+msgstr "Acheter"
+
+msgid "Sell"
+msgstr "Vendre"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Expensive"
+msgstr "Cher"
+
+msgid "Cheap"
+msgstr "Bon marché"
+
+msgid "Free of charge"
+msgstr "Gratuit"
+
+msgid "Bargain"
+msgstr "Marchander"
+
+msgid "Pay"
+msgstr "Payer"
+
+msgid "Hire, rent"
+msgstr "Louer"
+
+msgid "Spend"
+msgstr "Dépenser"
+
+msgid "Store, marketplace"
+msgstr "Magasin, marché"
+
+msgid "Exchange, trade"
+msgstr "Échange, commerce"
+
+msgid "Borrow"
+msgstr "Emprunter"
+
+msgid "Lend"
+msgstr "Prêter"
+
+msgid "Give pledge, bond"
+msgstr "Gage, caution"
+
+msgid "Owe"
+msgstr "Devoir de l’argent"
+
+msgid "Repay debt"
+msgstr "Rembourser une dette"
+
+msgid "Credit"
+msgstr "Crédit"
+
+msgid "Money"
+msgstr "Argent"
+
+msgid "Monetary units"
+msgstr "Unité monétaire"
+
+msgid "Accounting"
+msgstr "Comptabilité"
+
+msgid "Tax"
+msgstr "Impôt et taxe"
+
+msgid "Dishonest financial practices"
+msgstr "pratique financière malhonnête"
+
+msgid "Steal"
+msgstr "Voler"
+
+msgid "Cheat"
+msgstr "Tromper"
+
+msgid "Extort money"
+msgstr "Extorquer de l’argent"
+
+msgid "Take by force"
+msgstr "Prendre de force"
+
+msgid "Bribe"
+msgstr "Corrompre"
+
+msgid "Smuggle"
+msgstr "Faire de la contrebande"
+
+msgid "Business organization"
+msgstr "Entreprise"
+
+msgid "Management"
+msgstr "Gestion"
+
+msgid "Work for someone"
+msgstr "Travailler pour autrui"
+
+msgid "Marketing"
+msgstr "Marketing"
+
+msgid "Commerce"
+msgstr "Commerce"
+
+msgid "Economics"
+msgstr "Économie"
+
+msgid "Insurance"
+msgstr "Assurance"
+
+msgid "Physical actions"
+msgstr "Les activités physiques"
+
+msgid "Posture"
+msgstr "Position"
+
+msgid "Stand"
+msgstr "Être debout"
+
+msgid "Sit"
+msgstr "Être assis"
+
+msgid "Lie down"
+msgstr "S’allonger"
+
+msgid "Kneel"
+msgstr "S’agenouiller"
+
+msgid "Bow"
+msgstr "Se prosterner"
+
+msgid "Lean"
+msgstr "S’appuyer"
+
+msgid "Straight posture"
+msgstr "Se tenir droit"
+
+msgid "Relaxed posture"
+msgstr "Position détendue"
+
+msgid "Bend down"
+msgstr "Se pencher"
+
+msgid "Move a part of the body"
+msgstr "Bouger une partie du corps"
+
+msgid "Move"
+msgstr "Déplacement"
+
+msgid "Manner of movement"
+msgstr "Mouvements"
+
+msgid "Walk"
+msgstr "Marcher"
+
+msgid "Run"
+msgstr "Courir"
+
+msgid "Crawl"
+msgstr "ramper"
+
+msgid "Jump"
+msgstr "Sauter"
+
+msgid "Move quickly"
+msgstr "Se déplacer rapidement"
+
+msgid "Move slowly"
+msgstr "Se déplacer lentement"
+
+msgid "Wander"
+msgstr "Errer"
+
+msgid "Graceful"
+msgstr "Se déplacer avec grâce"
+
+msgid "Clumsy"
+msgstr "Se déplacer maladroitement"
+
+msgid "Walk with difficulty"
+msgstr "Marcher avec difficulté"
+
+msgid "Slip, slide"
+msgstr "glisser"
+
+msgid "Steady, unsteady"
+msgstr "Stable, instable"
+
+msgid "Balance"
+msgstr "Équilibre"
+
+msgid "Move noisily"
+msgstr "Se déplacer en faisant du bruit"
+
+msgid "Move in a direction"
+msgstr "Se déplacer dans une direction"
+
+msgid "Move forward"
+msgstr "Avancer"
+
+msgid "Move back"
+msgstr "Reculer"
+
+msgid "Move sideways"
+msgstr "Se déplacer latéralement"
+
+msgid "Move up"
+msgstr "Monter"
+
+msgid "Move down"
+msgstr "Descendre"
+
+msgid "Fall"
+msgstr "Chute"
+
+msgid "Turn"
+msgstr "Tourner"
+
+msgid "Move in a circle"
+msgstr "Tourner en rond"
+
+msgid "Move back and forth"
+msgstr "Se déplacer d’avant en arrière"
+
+msgid "Move straight without turning"
+msgstr "Aller tout droit"
+
+msgid "Move toward something"
+msgstr "Se diriger vers quelque chose"
+
+msgid "Move away"
+msgstr "S’éloigner"
+
+msgid "Go"
+msgstr "Aller"
+
+msgid "Come"
+msgstr "Venir"
+
+msgid "Leave"
+msgstr "Partir"
+
+msgid "Arrive"
+msgstr "Arriver"
+
+msgid "Move in"
+msgstr "Entrer"
+
+msgid "Move out"
+msgstr "Sortir"
+
+msgid "Move past, over, through"
+msgstr "Passer, passer sur, passer au travers"
+
+msgid "Return"
+msgstr "Retourner"
+
+msgid "Travel"
+msgstr "Voyager"
+
+msgid "Travel by land"
+msgstr "Voyager par voie terrestre"
+
+msgid "Vehicle"
+msgstr "Véhicule"
+
+msgid "Railroad"
+msgstr "Chemin de fer"
+
+msgid "Travel by water"
+msgstr "Voyager par voie fluviale ou maritime"
+
+msgid "Boat"
+msgstr "Bateau"
+
+msgid "Swim"
+msgstr "Nager"
+
+msgid "Dive"
+msgstr "Plonger"
+
+msgid "Fly"
+msgstr "Voler"
+
+msgid "Travel in space"
+msgstr "Voyager dans l’espace"
+
+msgid "Move to a new house"
+msgstr "Déménager"
+
+msgid "Way, route"
+msgstr "Chemin, itinéraire"
+
+msgid "Lose your way"
+msgstr "Se perdre"
+
+msgid "Map"
+msgstr "Carte"
+
+msgid "Accompany"
+msgstr "Accompagner"
+
+msgid "Go first"
+msgstr "Aller en premier"
+
+msgid "Follow"
+msgstr "Suivre"
+
+msgid "Guide"
+msgstr "Guider"
+
+msgid "Move together"
+msgstr "Se déplacer ensemble"
+
+msgid "Pursue"
+msgstr "Poursuivre"
+
+msgid "Catch, capture"
+msgstr "Attraper, capturer"
+
+msgid "Prevent from moving"
+msgstr "Empêcher de bouger"
+
+msgid "Escape"
+msgstr "S’échapper"
+
+msgid "Set free"
+msgstr "Être libre"
+
+msgid "Not moving"
+msgstr "Rester immobile"
+
+msgid "Stop moving"
+msgstr "Cesser de bouger"
+
+msgid "Stay, remain"
+msgstr "Rester, demeurer"
+
+msgid "Wait"
+msgstr "Attendre"
+
+msgid "Send someone"
+msgstr "Envoyer quelqu’un"
+
+msgid "Move something"
+msgstr "Déplacer quelque chose"
+
+msgid "Carry"
+msgstr "Porter"
+
+msgid "Throw"
+msgstr "Lancer"
+
+msgid "Catch"
+msgstr "Attraper"
+
+msgid "Shake"
+msgstr "Secouer"
+
+msgid "Knock over"
+msgstr "Faire tomber, renverser"
+
+msgid "Set upright"
+msgstr "Mettre d’aplomb"
+
+msgid "Move something in a direction"
+msgstr "Déplacer quelque chose dans une direction"
+
+msgid "Put in front"
+msgstr "Mettre devant"
+
+msgid "Put in back"
+msgstr "Mettre derrière"
+
+msgid "Put aside"
+msgstr "Mettre à côté"
+
+msgid "Lift"
+msgstr "Mettre plus haut"
+
+msgid "Hang"
+msgstr "Suspendre"
+
+msgid "Lower something"
+msgstr "Mettre dessous, baisser"
+
+msgid "Put in"
+msgstr "Mettre dans"
+
+msgid "Take something out of something"
+msgstr "Sortir de quelque chose"
+
+msgid "Pull"
+msgstr "Tirer"
+
+msgid "Push"
+msgstr "Pousser"
+
+msgid "Take somewhere"
+msgstr "Amener quelque part"
+
+msgid "Take something from somewhere"
+msgstr "Emmener"
+
+msgid "Return something"
+msgstr "Ramener"
+
+msgid "Send"
+msgstr "Envoyer"
+
+msgid "Chase away"
+msgstr "Chasser"
+
+msgid "Drive along"
+msgstr "Conduire"
+
+msgid "Handle something"
+msgstr "Manipuler quelque chose"
+
+msgid "Touch"
+msgstr "Toucher"
+
+msgid "Pick up"
+msgstr "Ramasser"
+
+msgid "Put down"
+msgstr "Poser"
+
+msgid "Hold"
+msgstr "Tenir"
+
+msgid "Actions of the hand"
+msgstr "Mouvement de la main"
+
+msgid "Support"
+msgstr "Retenir"
+
+msgid "Extend"
+msgstr "Étendre"
+
+msgid "Turn something"
+msgstr "Faire pivoter quelque chose"
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Shut, close"
+msgstr "Fermer"
+
+msgid "Block, dam up"
+msgstr "Boucher, endiguer"
+
+msgid "Limit"
+msgstr "Limiter"
+
+msgid "Cover"
+msgstr "Couvrir"
+
+msgid "Uncover"
+msgstr "Découvrir"
+
+msgid "Wrap"
+msgstr "Envelopper"
+
+msgid "Spread, smear"
+msgstr "Recouvrir"
+
+msgid "Transport"
+msgstr "Transporter"
+
+msgid "Have, be with"
+msgstr "Avoir, détenir"
+
+msgid "Give, hand to"
+msgstr "Passer à"
+
+msgid "Receive"
+msgstr "Recevoir"
+
+msgid "Get"
+msgstr "Obtenir"
+
+msgid "Distribute"
+msgstr "Distribuer"
+
+msgid "Keep something"
+msgstr "Garder quelque chose"
+
+msgid "Leave something"
+msgstr "Laisser quelque chose"
+
+msgid "Throw away"
+msgstr "Jeter"
+
+msgid "Not have"
+msgstr "Ne pas avoir"
+
+msgid "Arrange"
+msgstr "Disposer"
+
+msgid "Gather"
+msgstr "Réunir"
+
+msgid "Separate, scatter"
+msgstr "Séparer, disperser"
+
+msgid "Include"
+msgstr "Inclure"
+
+msgid "Special"
+msgstr "Spécial"
+
+msgid "Join, attach"
+msgstr "Joindre, attacher"
+
+msgid "Link, connect"
+msgstr "Relier, connecter"
+
+msgid "Stick together"
+msgstr "Coller"
+
+msgid "Add to something"
+msgstr "Ajouter à"
+
+msgid "Remove, take apart"
+msgstr "Enlever, séparer"
+
+msgid "Mix"
+msgstr "Mélanger"
+
+msgid "Pure, unmixed"
+msgstr "Pur, sans mélange"
+
+msgid "Tie"
+msgstr "Attacher"
+
+msgid "Rope, string"
+msgstr "Corde, ficelle"
+
+msgid "Tangle"
+msgstr "Enchevêtrement"
+
+msgid "Organize"
+msgstr "Organiser"
+
+msgid "Disorganized"
+msgstr "Désorganisé"
+
+msgid "Substitute"
+msgstr "Substituer"
+
+msgid "Multiple things moving"
+msgstr "Déplacement simultané de plusieurs choses"
+
+msgid "Simple, complicated"
+msgstr "Simple, compliqué"
+
+msgid "Put"
+msgstr "Poser"
+
+msgid "Load, pile"
+msgstr "Chargement, tas"
+
+msgid "Fill, cover"
+msgstr "Remplir, couvrir"
+
+msgid "Hide"
+msgstr "Cacher"
+
+msgid "Search"
+msgstr "Chercher"
+
+msgid "Find"
+msgstr "Trouver"
+
+msgid "Lose, misplace"
+msgstr "Perdre, égarer"
+
+msgid "Physical impact"
+msgstr "Impact physique"
+
+msgid "Hit"
+msgstr "Frapper, heurter"
+
+msgid "Aim at a target"
+msgstr "Viser une cible"
+
+msgid "Kick"
+msgstr "Donner un coup de pied"
+
+msgid "Press"
+msgstr "Presser"
+
+msgid "Rub"
+msgstr "Frotter"
+
+msgid "Grind"
+msgstr "Moudre"
+
+msgid "Mark"
+msgstr "Marquer"
+
+msgid "Divide into pieces"
+msgstr "Diviser en morceaux"
+
+msgid "Break"
+msgstr "Briser"
+
+msgid "Crack"
+msgstr "Fendre"
+
+msgid "Cut"
+msgstr "Couper"
+
+msgid "Tear, rip"
+msgstr "Déchirer"
+
+msgid "Make hole, opening"
+msgstr "Faire un trou, une ouverture"
+
+msgid "Dig"
+msgstr "Creuser"
+
+msgid "Break, wear out"
+msgstr "Casser, user"
+
+msgid "Damage"
+msgstr "Endommager"
+
+msgid "Tear down"
+msgstr "Démolir"
+
+msgid "Destroy"
+msgstr "Détruire"
+
+msgid "Repair"
+msgstr "Réparer"
+
+msgid "States"
+msgstr "Les états (des choses ou des êtres)"
+
+msgid "Quantity"
+msgstr "Quantité"
+
+msgid "Number"
+msgstr "Nombre"
+
+msgid "Cardinal numbers"
+msgstr "Nombres cardinaux"
+
+msgid "One"
+msgstr "Un"
+
+msgid "Two"
+msgstr "Deux"
+
+msgid "Ordinal numbers"
+msgstr "Nombres ordinaux"
+
+msgid "Number of times"
+msgstr "Nombre de fois"
+
+msgid "Multiples"
+msgstr "Multiple"
+
+msgid "Numbered group"
+msgstr "Groupe dénombré"
+
+msgid "Fraction"
+msgstr "Fraction"
+
+msgid "Number series"
+msgstr "Autres mots indiquant des nombres"
+
+msgid "Count"
+msgstr "Compter"
+
+msgid "Mathematics"
+msgstr "Mathématiques"
+
+msgid "Add numbers"
+msgstr "Additionner des nombres"
+
+msgid "Subtract numbers"
+msgstr "Soustraire des nombres"
+
+msgid "Multiply numbers"
+msgstr "Multiplier des nombres"
+
+msgid "Divide numbers"
+msgstr "Diviser des nombres"
+
+msgid "Plural"
+msgstr "Pluriel"
+
+msgid "Many, much"
+msgstr "Beaucoup"
+
+msgid "Few, little"
+msgstr "Peu"
+
+msgid "Group of things"
+msgstr "Ensemble de choses"
+
+msgid "More"
+msgstr "Plus"
+
+msgid "Less"
+msgstr "Moins"
+
+msgid "Increase"
+msgstr "Augmentation"
+
+msgid "Decrease"
+msgstr "Diminution"
+
+msgid "All"
+msgstr "Tout, tous"
+
+msgid "Some"
+msgstr "Un certain nombre"
+
+msgid "None, nothing"
+msgstr "Aucun, rien"
+
+msgid "Both"
+msgstr "Les deux, à la fois"
+
+msgid "Most, almost all"
+msgstr "la plupart, presque tout"
+
+msgid "Most, least"
+msgstr "Le plus, le moins"
+
+msgid "Almost"
+msgstr "Presque"
+
+msgid "Only"
+msgstr "Seul, unique"
+
+msgid "Exact"
+msgstr "Exact"
+
+msgid "Approximate"
+msgstr "Approximativement"
+
+msgid "Average"
+msgstr "Moyenne"
+
+msgid "Whole, complete"
+msgstr "Totalité, complet"
+
+msgid "Part"
+msgstr "Partie"
+
+msgid "Piece"
+msgstr "Morceau"
+
+msgid "Enough"
+msgstr "Assez"
+
+msgid "Extra"
+msgstr "Supplément"
+
+msgid "Lack"
+msgstr "Manque"
+
+msgid "Need"
+msgstr "Besoin"
+
+msgid "Remain, remainder"
+msgstr "Reste"
+
+msgid "Full"
+msgstr "Plein"
+
+msgid "Empty"
+msgstr "Vide"
+
+msgid "Big"
+msgstr "Grande dimension"
+
+msgid "Small"
+msgstr "Petit"
+
+msgid "Long"
+msgstr "Long"
+
+msgid "Short, not long"
+msgstr "Court"
+
+msgid "Tall"
+msgstr "Grand"
+
+msgid "Short, not tall"
+msgstr "De petite taille"
+
+msgid "Thick"
+msgstr "Épais"
+
+msgid "Thin thing"
+msgstr "Objet mince"
+
+msgid "Fat person"
+msgstr "Personne forte"
+
+msgid "Thin person"
+msgstr "Personne mince"
+
+msgid "Wide"
+msgstr "Large"
+
+msgid "Narrow"
+msgstr "Étroit"
+
+msgid "Big area"
+msgstr "Grande surface"
+
+msgid "Big container, volume"
+msgstr "Grand contenant, volume"
+
+msgid "Distance"
+msgstr "Distance"
+
+msgid "Far"
+msgstr "Loin"
+
+msgid "Near"
+msgstr "Proche"
+
+msgid "High"
+msgstr "Haut"
+
+msgid "Low"
+msgstr "Bas"
+
+msgid "Deep, shallow"
+msgstr "Profond, peu profond"
+
+msgid "Fit, size"
+msgstr "À la bonne taille"
+
+msgid "Tight"
+msgstr "Serré"
+
+msgid "Loose"
+msgstr "Ample"
+
+msgid "Wedged in, stuck"
+msgstr "Coincé, bloqué"
+
+msgid "Measure"
+msgstr "Mesure"
+
+msgid "Weigh"
+msgstr "Poids"
+
+msgid "Heavy"
+msgstr "Lourd"
+
+msgid "Light in weight"
+msgstr "Léger"
+
+msgid "Quality"
+msgstr "Qualité"
+
+msgid "Shape"
+msgstr "Forme"
+
+msgid "Point, dot"
+msgstr "Point"
+
+msgid "Line"
+msgstr "Ligne"
+
+msgid "Straight"
+msgstr "Droit"
+
+msgid "Flat"
+msgstr "Plat"
+
+msgid "Horizontal"
+msgstr "Horizontal"
+
+msgid "Vertical"
+msgstr "Vertical"
+
+msgid "Leaning, sloping"
+msgstr "Incliné, penché"
+
+msgid "Bend"
+msgstr "Courber"
+
+msgid "Roll up"
+msgstr "Enrouler"
+
+msgid "Twist, wring"
+msgstr "Tourner, tordre"
+
+msgid "Fold"
+msgstr "Plier"
+
+msgid "Round"
+msgstr "Rond"
+
+msgid "Concave"
+msgstr "Concave"
+
+msgid "Convex"
+msgstr "Convexe"
+
+msgid "Hollow"
+msgstr "Creux"
+
+msgid "Square"
+msgstr "Carré"
+
+msgid "Pattern, design"
+msgstr "Modèle, motif"
+
+msgid "Symmetrical"
+msgstr "Symétrique"
+
+msgid "Stretch"
+msgstr "Étirer"
+
+msgid "Texture"
+msgstr "Texture"
+
+msgid "Smooth"
+msgstr "Doux"
+
+msgid "Rough"
+msgstr "Rugueux"
+
+msgid "Sharp"
+msgstr "Tranchant"
+
+msgid "Pointed"
+msgstr "Pointu"
+
+msgid "Blunt"
+msgstr "Émoussé"
+
+msgid "Furrow"
+msgstr "Sillon"
+
+msgid "Light"
+msgstr "Lumière"
+
+msgid "Shine"
+msgstr "Briller"
+
+msgid "Light source"
+msgstr "Source de lumière"
+
+msgid "Bright"
+msgstr "Lumineux"
+
+msgid "Dark"
+msgstr "Sombre"
+
+msgid "Shadow"
+msgstr "Ombre"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "White"
+msgstr "Blanc"
+
+msgid "Black"
+msgstr "Noir"
+
+msgid "Gray"
+msgstr "Gris"
+
+msgid "Colors of the spectrum"
+msgstr "Spectre chromatique"
+
+msgid "Animal color, marking"
+msgstr "Couleur des animaux, tache"
+
+msgid "Change color"
+msgstr "Changer de couleur"
+
+msgid "Multicolored"
+msgstr "Multicolore"
+
+msgid "Shiny"
+msgstr "Brillant"
+
+msgid "Hot"
+msgstr "Très chaud"
+
+msgid "Cold"
+msgstr "Froid"
+
+msgid "Type, kind"
+msgstr "Type, genre"
+
+msgid "Nature, character"
+msgstr "Nature, caractère"
+
+msgid "Compare"
+msgstr "Comparer"
+
+msgid "Same"
+msgstr "Même, le même"
+
+msgid "Like, similar"
+msgstr "Comme, similaire"
+
+msgid "Different"
+msgstr "Différent"
+
+msgid "Other"
+msgstr "Autre"
+
+msgid "Various"
+msgstr "Divers"
+
+msgid "Opposite"
+msgstr "Opposé"
+
+msgid "Common"
+msgstr "Commun"
+
+msgid "Usual"
+msgstr "Habituel"
+
+msgid "Unusual"
+msgstr "Inhabituel"
+
+msgid "Unique"
+msgstr "Unique"
+
+msgid "Strange"
+msgstr "Étrange"
+
+msgid "Pattern, model"
+msgstr "schéma, modèle"
+
+msgid "Imitate"
+msgstr "Imiter"
+
+msgid "Copy"
+msgstr "Copier"
+
+msgid "Made of, material"
+msgstr "Composé de, matière"
+
+msgid "Strong, brittle"
+msgstr "Solide, fragile"
+
+msgid "Hard, firm"
+msgstr "Dur, ferme"
+
+msgid "Stiff, flexible"
+msgstr "Raide, souple"
+
+msgid "Dense"
+msgstr "Dense"
+
+msgid "Soft, flimsy"
+msgstr "Mou, tendre"
+
+msgid "Good"
+msgstr "Bon"
+
+msgid "Bad"
+msgstr "Mauvais"
+
+msgid "Better"
+msgstr "Mieux"
+
+msgid "Worse"
+msgstr "Pire"
+
+msgid "Perfect"
+msgstr "Parfait"
+
+msgid "Mediocre"
+msgstr "Médiocre"
+
+msgid "Important"
+msgstr "Important"
+
+msgid "Basic"
+msgstr "Fondamental"
+
+msgid "Improve"
+msgstr "Améliorer"
+
+msgid "Right, proper"
+msgstr "Juste, bon"
+
+msgid "Wrong, unsuitable"
+msgstr "Faux, impropre"
+
+msgid "Convenient"
+msgstr "Commode"
+
+msgid "Compatible"
+msgstr "Compatible"
+
+msgid "Decay"
+msgstr "Décomposition"
+
+msgid "Rust"
+msgstr "Rouille"
+
+msgid "Blemish"
+msgstr "Défaut"
+
+msgid "Garbage"
+msgstr "Déchets"
+
+msgid "Preserve"
+msgstr "Conserver"
+
+msgid "Value"
+msgstr "Valeur"
+
+msgid "Decorated"
+msgstr "Décoré"
+
+msgid "Simple, plain"
+msgstr "Simple, ordinaire"
+
+msgid "Glory"
+msgstr "Prestige"
+
+msgid "Time"
+msgstr "Temps"
+
+msgid "Period of time"
+msgstr "Période de temps"
+
+msgid "Calendar"
+msgstr "Calendrier"
+
+msgid "Day"
+msgstr "Jour"
+
+msgid "Night"
+msgstr "Nuit"
+
+msgid "Yesterday, today, tomorrow"
+msgstr "Hier, aujourd'hui, demain"
+
+msgid "Time of the day"
+msgstr "Moment de la journée"
+
+msgid "Week"
+msgstr "Semaine"
+
+msgid "Days of the week"
+msgstr "Jours de la semaine"
+
+msgid "Month"
+msgstr "Mois"
+
+msgid "Months of the year"
+msgstr "Mois de l’année"
+
+msgid "Season"
+msgstr "Saison"
+
+msgid "Year"
+msgstr "Année"
+
+msgid "Era"
+msgstr "Ère"
+
+msgid "Special days"
+msgstr "Jours particuliers"
+
+msgid "Take time"
+msgstr "Prendre du temps"
+
+msgid "A short time"
+msgstr "Courte durée"
+
+msgid "A long time"
+msgstr "Longue durée"
+
+msgid "Forever"
+msgstr "Pour toujours"
+
+msgid "Temporary"
+msgstr "Temporaire"
+
+msgid "Indefinite time"
+msgstr "Moment non précisé"
+
+msgid "Telling time"
+msgstr "Expression du temps"
+
+msgid "Plan a time"
+msgstr "Planifier un évènement"
+
+msgid "Clock, watch"
+msgstr "Horloge, montre"
+
+msgid "Relative time"
+msgstr "Temps relatif"
+
+msgid "Order, sequence"
+msgstr "Ordre, succession"
+
+msgid "Series"
+msgstr "Série"
+
+msgid "First"
+msgstr "En premier"
+
+msgid "Next"
+msgstr "Ensuite"
+
+msgid "Last"
+msgstr "En dernier"
+
+msgid "Regular"
+msgstr "Régulièrement"
+
+msgid "Alternate"
+msgstr "Alternance"
+
+msgid "Before"
+msgstr "Avant"
+
+msgid "After"
+msgstr "Après"
+
+msgid "At the same time"
+msgstr "En même temps"
+
+msgid "During"
+msgstr "Pendant"
+
+msgid "Right time"
+msgstr "Bon moment"
+
+msgid "Early"
+msgstr "Tôt"
+
+msgid "On time"
+msgstr "À l’heure"
+
+msgid "Late"
+msgstr "Tard"
+
+msgid "Delay"
+msgstr "Retard"
+
+msgid "Postpone"
+msgstr "Reporter"
+
+msgid "Aspectual time"
+msgstr "Temps d’une étape"
+
+msgid "Start something"
+msgstr "Commencer quelque chose"
+
+msgid "Beginning"
+msgstr "Débuter"
+
+msgid "Stop something"
+msgstr "Arrêter quelque chose"
+
+msgid "End"
+msgstr "Terminer"
+
+msgid "Until"
+msgstr "Jusqu'à"
+
+msgid "Since, from"
+msgstr "Depuis, dès lors"
+
+msgid "Past"
+msgstr "Passé"
+
+msgid "Recently"
+msgstr "Récemment"
+
+msgid "Present"
+msgstr "Présent"
+
+msgid "Now"
+msgstr "Maintenant"
+
+msgid "Future"
+msgstr "Futur"
+
+msgid "Soon"
+msgstr "Bientôt"
+
+msgid "Not yet"
+msgstr "Pas encore"
+
+msgid "Eventually"
+msgstr "Finalement"
+
+msgid "Immediately"
+msgstr "Immédiatement"
+
+msgid "Age"
+msgstr "Âge"
+
+msgid "Young"
+msgstr "Jeune"
+
+msgid "Old, not young"
+msgstr "Vieux, pas jeune"
+
+msgid "New"
+msgstr "Nouveau"
+
+msgid "Old, not new"
+msgstr "Vieux, pas nouveau"
+
+msgid "Modern"
+msgstr "Moderne"
+
+msgid "Old fashioned"
+msgstr "Démodé"
+
+msgid "Once"
+msgstr "Une fois"
+
+msgid "Again"
+msgstr "Encore"
+
+msgid "Sometimes"
+msgstr "Parfois"
+
+msgid "Often"
+msgstr "Souvent"
+
+msgid "All the time"
+msgstr "Tout le temps"
+
+msgid "Every time"
+msgstr "Chaque fois que"
+
+msgid "Never"
+msgstr "Jamais"
+
+msgid "Continue, persevere"
+msgstr "Continuer, persévérer"
+
+msgid "Interrupt"
+msgstr "Interrompre"
+
+msgid "Start again"
+msgstr "Redémarrer"
+
+msgid "Interval"
+msgstr "Intervalle"
+
+msgid "Speed"
+msgstr "Vitesse"
+
+msgid "Quick"
+msgstr "Rapide"
+
+msgid "Slow"
+msgstr "Lent"
+
+msgid "Sudden"
+msgstr "Soudain"
+
+msgid "Location"
+msgstr "Localisation"
+
+msgid "Here, there"
+msgstr "Ici, là"
+
+msgid "In front of"
+msgstr "Devant"
+
+msgid "Behind"
+msgstr "Derrière"
+
+msgid "Beside"
+msgstr "À côté de"
+
+msgid "Around"
+msgstr "Autour"
+
+msgid "Between"
+msgstr "Entre"
+
+msgid "On"
+msgstr "Sur"
+
+msgid "Above"
+msgstr "Au-dessus"
+
+msgid "Under, below"
+msgstr "Sous, dessous"
+
+msgid "Inside"
+msgstr "À l’intérieur"
+
+msgid "Out, outside"
+msgstr "Dehors, à l’extérieur"
+
+msgid "Touching, contact"
+msgstr "Touchant, en contact"
+
+msgid "Next to"
+msgstr "Près de"
+
+msgid "Across"
+msgstr "De l’autre côté"
+
+msgid "Indefinite location"
+msgstr "Endroit imprécis"
+
+msgid "Direction"
+msgstr "Direction"
+
+msgid "Forward"
+msgstr "Vers l’avant"
+
+msgid "Backward"
+msgstr "Vers l’arrière"
+
+msgid "Right, left"
+msgstr "À droite, à gauche"
+
+msgid "Up"
+msgstr "Vers le haut"
+
+msgid "Down"
+msgstr "Vers le bas"
+
+msgid "Away from"
+msgstr "S’écarter de"
+
+msgid "Towards"
+msgstr "Vers"
+
+msgid "North, south, east, west"
+msgstr "Nord, sud, est, ouest"
+
+msgid "Be at a place"
+msgstr "Être à un endroit"
+
+msgid "Absent"
+msgstr "Absent"
+
+msgid "Area"
+msgstr "Région"
+
+msgid "Vicinity"
+msgstr "Alentours"
+
+msgid "Occupy an area"
+msgstr "Occuper une surface"
+
+msgid "Space, room"
+msgstr "Espace, place"
+
+msgid "Interval, space"
+msgstr "Intervalle, espace"
+
+msgid "Spatial relations"
+msgstr "Relations spatiales"
+
+msgid "Contain"
+msgstr "Contenir"
+
+msgid "Parts of things"
+msgstr "Parties de choses"
+
+msgid "Front"
+msgstr "Devant"
+
+msgid "Back"
+msgstr "Arrière"
+
+msgid "Top"
+msgstr "Dessus, en haut"
+
+msgid "Bottom"
+msgstr "Dessous"
+
+msgid "Side"
+msgstr "Côté"
+
+msgid "Inner part"
+msgstr "Partie intérieure"
+
+msgid "Outer part"
+msgstr "Partie exnérieure"
+
+msgid "Middle"
+msgstr "Milieu"
+
+msgid "Edge"
+msgstr "Bord"
+
+msgid "End, point"
+msgstr "Bout, pointe"
+
+msgid "Grammar"
+msgstr "La Grammaire"
+
+msgid "General words"
+msgstr "Termes génériques"
+
+msgid "Be"
+msgstr "Être"
+
+msgid "Exist"
+msgstr "Exister"
+
+msgid "Become, change state"
+msgstr "Devenir, changer d'état"
+
+msgid "Have, of"
+msgstr "Avoir, de"
+
+msgid "Attribution"
+msgstr "Qualification"
+
+msgid "Do"
+msgstr "Faire"
+
+msgid "Happen"
+msgstr "Se produire"
+
+msgid "React, respond"
+msgstr "Réagir, répondre"
+
+msgid "Create"
+msgstr "Créer"
+
+msgid "Design"
+msgstr "Concevoir"
+
+msgid "Make"
+msgstr "Fabriquer"
+
+msgid "Change something"
+msgstr "Changer quelque chose"
+
+msgid "Event propositions"
+msgstr "Propositions exprimant un fait"
+
+msgid "Thing"
+msgstr "Chose"
+
+msgid "Physical, non-physical"
+msgstr "Physique, non physique"
+
+msgid "Situation"
+msgstr "Situation"
+
+msgid "General adjectives"
+msgstr "Adjectifs génériques"
+
+msgid "General adverbs"
+msgstr "Adverbes génériques"
+
+msgid "Part of speech"
+msgstr "Parties du discours"
+
+msgid "Adjectives"
+msgstr "Adjectifs qualificatifs"
+
+msgid "Adverbs"
+msgstr "Adverbes"
+
+msgid "Pronouns"
+msgstr "Pronoms et déterminants"
+
+msgid "Reflexive pronouns"
+msgstr "Pronoms réfléchis"
+
+msgid "Indefinite pronouns"
+msgstr "Pronoms Indéfinis"
+
+msgid "Relative pronouns"
+msgstr "Pronoms relatifs"
+
+msgid "Question words"
+msgstr "Mots interrogatifs"
+
+msgid "Demonstrative pronouns"
+msgstr "Pronoms et déterminants démonstratifs"
+
+msgid "Personally"
+msgstr "En personne"
+
+msgid "Prepositions, postpositions"
+msgstr "Prépositions"
+
+msgid "Conjunctions"
+msgstr "Conjonctions"
+
+msgid "Phrase conjunctions"
+msgstr "Conjonctions de coordination"
+
+msgid "Clause conjunctions"
+msgstr "Conjonctions de subordination"
+
+msgid "Sentence conjunctions"
+msgstr "Relier des phrases entre elles"
+
+msgid "Particles"
+msgstr "Particules"
+
+msgid "Classifiers"
+msgstr "Classificateurs"
+
+msgid "Interjections"
+msgstr "Interjections"
+
+msgid "Idiophones"
+msgstr "Idéophones"
+
+msgid "Affixes"
+msgstr "Affixes"
+
+msgid "Verb affixes"
+msgstr "Affixes verbaux"
+
+msgid "Noun affixes"
+msgstr "Affixes nominaux"
+
+msgid "Derivational affixes"
+msgstr "Affixes de dérivation"
+
+msgid "Very"
+msgstr "Très"
+
+msgid "Degree"
+msgstr "Degré"
+
+msgid "To a large degree"
+msgstr "À grande échelle"
+
+msgid "To a small degree"
+msgstr "Faible mesure"
+
+msgid "To a larger degree"
+msgstr "Dans une part croissante"
+
+msgid "To a smaller degree"
+msgstr "En baisse"
+
+msgid "Completely"
+msgstr "Complètement"
+
+msgid "Partly"
+msgstr "Partiellement"
+
+msgid "Do intensely"
+msgstr "Faire intensément"
+
+msgid "Attribution of an attribute"
+msgstr "Modification d'un qualificatif"
+
+msgid "Semantic constituents related to verbs"
+msgstr "Constituants sémantiques verbaux"
+
+msgid "Tense and aspect"
+msgstr "Temps et aspect"
+
+msgid "Tense"
+msgstr "Temps"
+
+msgid "Aspect--dynamic verbs"
+msgstr "Aspect — verbes d’action"
+
+msgid "Aspect--stative verbs"
+msgstr "Aspect - verbes d’état"
+
+msgid "Relational tenses"
+msgstr "Temps relatifs"
+
+msgid "Agent-oriented modalities"
+msgstr "Modalités concernant l’agent"
+
+msgid "Can"
+msgstr "Pouvoir"
+
+msgid "Can't"
+msgstr "Ne pas pouvoir"
+
+msgid "Necessary"
+msgstr "Nécessité"
+
+msgid "Moods"
+msgstr "Mode"
+
+msgid "Imperative"
+msgstr "Impératif"
+
+msgid "Hortative"
+msgstr "Incitatif"
+
+msgid "Interrogative"
+msgstr "Interrogation"
+
+msgid "Epistemic moods"
+msgstr "Mode épistémique"
+
+msgid "Certainly, definitely"
+msgstr "Certainement, absolument"
+
+msgid "Sure"
+msgstr "Sûr"
+
+msgid "Probably"
+msgstr "Probablement"
+
+msgid "Possible"
+msgstr "Possible"
+
+msgid "Uncertain"
+msgstr "Incertain"
+
+msgid "Unsure"
+msgstr "Pas sûr"
+
+msgid "Think so"
+msgstr "Estimer que"
+
+msgid "Maybe"
+msgstr "Éventualité"
+
+msgid "Seem"
+msgstr "Sembler"
+
+msgid "Just, almost not"
+msgstr "De justesse, presque pas"
+
+msgid "Don't think so, doubt it"
+msgstr "Ne pas penser que, douter"
+
+msgid "Impossible"
+msgstr "Impossible"
+
+msgid "Evidentials"
+msgstr "Marqueurs évidentiels"
+
+msgid "Evaluator"
+msgstr "Évaluateur"
+
+msgid "Yes"
+msgstr "Assertion"
+
+msgid "No, not"
+msgstr "Négation"
+
+msgid "Markers expecting an affirmative answer"
+msgstr "Marqueurs qui annoncent une réponse affirmative"
+
+msgid "Markers expecting a negative answer"
+msgstr "Marqueurs qui annoncent une réponse négative"
+
+msgid "Subordinating particles"
+msgstr "Particules de subordination"
+
+msgid "Adverbial clauses"
+msgstr "Propositions adverbiales"
+
+msgid "Case"
+msgstr "Rôle sémantique"
+
+msgid "Primary cases"
+msgstr "Rôles sémantiques primaires"
+
+msgid "Beneficiary of an event"
+msgstr "Bénéficiaire d'un événement"
+
+msgid "Instrument"
+msgstr "Instrument"
+
+msgid "Means"
+msgstr "Moyen"
+
+msgid "Way, manner"
+msgstr "Mode, manière"
+
+msgid "Attendant circumstances"
+msgstr "Circonstances environnantes"
+
+msgid "Spatial location of an event"
+msgstr "Localisation spatiale d'un événement"
+
+msgid "Source (of movement)"
+msgstr "Origine d'un déplacement"
+
+msgid "Path (of movement)"
+msgstr "Trajectoire d'un déplacement"
+
+msgid "Goal (of movement)"
+msgstr "But d'un déplacement"
+
+msgid "Origin (of a person)"
+msgstr "Origine d'une personne"
+
+msgid "Semantically similar events"
+msgstr "Situations sémantiquement similaires"
+
+msgid "Together"
+msgstr "Actions communes"
+
+msgid "With, be with"
+msgstr "Avec, accompagner"
+
+msgid "With, do with someone"
+msgstr "Avec, agir avec quelqu’un"
+
+msgid "Each other"
+msgstr "L’un l’autre"
+
+msgid "In groups"
+msgstr "En groupe"
+
+msgid "Patient-related cases"
+msgstr "Situations liées à l’objet de l’action"
+
+msgid "Beneficiary (of a patient)"
+msgstr "Bénéficiaire (de l’objet de l’action)"
+
+msgid "Recipient (of a patient)"
+msgstr "Destinataire (de l’objet de l’action)"
+
+msgid "With (a patient)"
+msgstr "Avec (l’objet de l’action)"
+
+msgid "Connected with, related"
+msgstr "En relation avec"
+
+msgid "Coordinate relations"
+msgstr "Relations de coordination"
+
+msgid "And, also"
+msgstr "Et, aussi"
+
+msgid "Or, either"
+msgstr "Ou, soit...soit"
+
+msgid "Association"
+msgstr "Association"
+
+msgid "Combinative relation"
+msgstr "Combinaison"
+
+msgid "But"
+msgstr "Mais"
+
+msgid "Except"
+msgstr "Restriction"
+
+msgid "Instead"
+msgstr "Au lieu de"
+
+msgid "Dissociation"
+msgstr "Dissociation"
+
+msgid "Distribution"
+msgstr "Répartition"
+
+msgid "Equivalence"
+msgstr "Équivalence"
+
+msgid "Dependency relations"
+msgstr "Relations de dépendance"
+
+msgid "Derivation"
+msgstr "Dérivation"
+
+msgid "Limitation of topic"
+msgstr "Délimitation du sujet"
+
+msgid "In general"
+msgstr "En général"
+
+msgid "Relations involving correspondences"
+msgstr "Relation impliquant des correspondances"
+
+msgid "Basis"
+msgstr "Base"
+
+msgid "Cause"
+msgstr "Cause"
+
+msgid "Reason"
+msgstr "Raison"
+
+msgid "Without cause"
+msgstr "Sans cause"
+
+msgid "Result"
+msgstr "Résultat"
+
+msgid "Without result"
+msgstr "Sans résultat"
+
+msgid "Purpose"
+msgstr "But"
+
+msgid "Without purpose"
+msgstr "Sans but"
+
+msgid "Condition"
+msgstr "Condition"
+
+msgid "Concession"
+msgstr "Concession"
+
+msgid "Discourse markers"
+msgstr "Marqueurs du discours"
+
+msgid "Markers of transition"
+msgstr "Marqueurs de transition"
+
+msgid "Markers of emphasis"
+msgstr "Marqueurs de l’emphase"
+
+msgid "Prompters of attention"
+msgstr "Marqueurs pour attirer l’attention"
+
+msgid "Markers of direct address"
+msgstr "Marqueurs d’adresse directe"
+
+msgid "Markers of identificational and explanatory clauses"
+msgstr "Marqueurs de propositions déterminatives ou explicatives"
+
+msgid "Markers of focus"
+msgstr "Marqueurs de focalisation"
+
+msgid "Hesitation fillers"
+msgstr "Marqueurs de l’hésitation"
+
+msgid "Honorifics"
+msgstr "Marqueurs honorifiques"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name of a person"
+msgstr "Nom de personne"
+
+msgid "Personal names"
+msgstr "Prénom"
+
+msgid "Family names"
+msgstr "Nom de famille"
+
+msgid "Clan names"
+msgstr "Nom de clan"
+
+msgid "Tribal names"
+msgstr "Nom de tribu"
+
+msgid "Names of languages"
+msgstr "Nom de langue"
+
+msgid "Nickname"
+msgstr "Surnom"
+
+msgid "Terms of endearment"
+msgstr "Termes affectueux"
+
+msgid "Name of a place"
+msgstr "Nom désignant un lieu"
+
+msgid "Names of countries"
+msgstr "Nom de pays"
+
+msgid "Names of regions"
+msgstr "Nom de région"
+
+msgid "Names of cities"
+msgstr "Nom de ville"
+
+msgid "Names of streets"
+msgstr "Nom de rue"
+
+msgid "Names of heavenly bodies"
+msgstr "Nom de corps célestes"
+
+msgid "Names of continents"
+msgstr "Nom de continents"
+
+msgid "Names of mountains"
+msgstr "Nom de montagne"
+
+msgid "Names of oceans and lakes"
+msgstr "Nom d’océan et de lac"
+
+msgid "Names of rivers"
+msgstr "Noms de cours d’eau"
+
+msgid "Name of a thing"
+msgstr "Nom propre de chose"
+
+msgid "Names of animals"
+msgstr "Nom propre d’animal"
+
+msgid "Names of buildings"
+msgstr "Nom propre d’édifice"
+
+# @ sil_dictionary
+#: include/dictionary-search.php:173
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+"Parce que votre terme de recherche est court, on a omis la recherche de mots "
+"partiels."
+
+# @ sil_dictionary
+#: include/dictionary-search.php:175
+msgid "Click here to include searching through partial words."
+msgstr "Cliquer ici pour inclure la recherche de mots partiels."
+
+#: include/infrastructure.php:114
+msgid "Webonary"
+msgstr ""
+
+#: include/infrastructure.php:121
+msgid ""
+"Webonary provides the admininstration tools and framework for using "
+"WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
+"target=\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:122
+msgid "Import Data"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:123
+msgid ""
+"You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
+"importer</a> by clicking on Import under the Tools menu."
+msgstr ""
+
+#: include/infrastructure.php:124
+msgid ""
+"Each dictionary entry is stored in a \"post.\" You will find the entries in "
+"the Posts menu."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:126
+msgid "Delete Data"
+msgstr ""
+
+#: include/infrastructure.php:131
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:135
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:145
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:146
+msgid "Delete"
+msgstr ""
+
+#: include/infrastructure.php:148
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/infrastructure.php:150
+msgid "Settings"
+msgstr ""
+
+#: include/infrastructure.php:152
+msgid "Publication status:"
+msgstr ""
+
+#: include/infrastructure.php:154
+msgid "no status set"
+msgstr ""
+
+#: include/infrastructure.php:155
+msgid "Rough draft"
+msgstr ""
+
+#: include/infrastructure.php:156
+msgid "Self-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:157
+msgid "Community-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:158
+msgid "Consultant approved"
+msgstr ""
+
+#: include/infrastructure.php:159
+msgid "Finished (no formal publication)"
+msgstr ""
+
+#: include/infrastructure.php:160
+msgid "Formally published"
+msgstr ""
+
+#: include/infrastructure.php:163
+msgid "Search Options:"
+msgstr ""
+
+#: include/infrastructure.php:167
+msgid "Always include searching through partial words."
+msgstr ""
+
+#: include/infrastructure.php:180
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/infrastructure.php:190
+msgid "Vernacular Language Code:"
+msgstr ""
+
+#: include/infrastructure.php:201 include/infrastructure.php:230
+#: include/infrastructure.php:270
+msgid "Language Name:"
+msgstr ""
+
+#: include/infrastructure.php:203
+msgid "Vernacular Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:205 include/infrastructure.php:255
+#: include/infrastructure.php:274
+msgid "(Letters separated by comma)"
+msgstr ""
+
+#: include/infrastructure.php:215
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/infrastructure.php:217
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/infrastructure.php:219
+msgid "Main reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:253
+msgid "Main Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:257
+msgid "If you have a second reversal index, enter the information here:"
+msgstr ""
+
+#: include/infrastructure.php:259
+msgid "Secondary reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Secondary Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Save"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:295 include/xhtml-importer.php:268
+#: include/xhtml-importer.php:383
+msgid "Finished!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:296
+msgid "OK"
+msgstr ""
+
+#: include/infrastructure.php:375
+msgid "Settings saved"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:447
+msgctxt "taxonomy general name"
+msgid "Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:448
+msgctxt "taxonomy singular name"
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:449
+msgid "Search Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:450
+msgid "All Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:451
+msgid "Parent Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:452
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:453
+msgid "Edit Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:454
+msgid "Update Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:455
+msgid "Add New Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:456
+msgid "New Semantic Domain Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:457
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:485
+msgctxt "taxonomy general name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:486
+msgctxt "taxonomy singular name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:487 include/infrastructure.php:495
+msgid "Parts of Speech"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:488 include/searchform_func.php:74
+msgid "All Parts of Speech"
+msgstr "Toutes les catégories grammaticales"
+
+# @ default
+#: include/infrastructure.php:489
+msgid "Parent Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:490
+msgid "Parent Part of Speech:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:491
+msgid "Edit Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:492
+msgid "Update Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:493
+msgid "Add New Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:494
+msgid "New Part of Speech Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:522
+msgctxt "taxonomy general name"
+msgid "Languages"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:523
+msgctxt "taxonomy singular name"
+msgid "Language"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:525 include/searchform_func.php:49
+msgid "All Languages"
+msgstr "Toutes les langues"
+
+# @ default
+#: include/infrastructure.php:526
+msgid "Parent Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:527
+msgid "Parent Language:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:528
+msgid "Edit Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:529
+msgid "Update Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:530
+msgid "Add New Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:531
+msgid "New Language Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:559
+msgctxt "taxonomy general name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:560
+msgctxt "taxonomy singular name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:561 include/infrastructure.php:569
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:562
+msgid "All Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:563
+msgid "Parent Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:564
+msgid "Parent Website strings:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:565
+msgid "Edit Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:566
+msgid "Update Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:567
+msgid "Add New Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:568
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:92
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:285
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: include/xhtml-importer.php:287
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:437
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455 include/xhtml-importer.php:474
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: include/xhtml-importer.php:457
+msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:473
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:507
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:538
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: include/xhtml-importer.php:578
+msgid ""
+"The css file has been uploaded into your upload folder and renamed to "
+"imported-with-xhtml.css<br>"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:580
+msgid "There was an error uploading the file, please try again!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2091
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2092
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""

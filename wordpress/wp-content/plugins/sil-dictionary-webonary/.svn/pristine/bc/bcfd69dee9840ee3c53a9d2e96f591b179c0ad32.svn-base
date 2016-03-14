@@ -1,0 +1,449 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SIL Dictionary v1.2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2011-09-06 09:15-0000\n"
+"Last-Translator: Philip <wireless_phil@yahoo.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Nuosu Yi\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: include/infrastructure.php:26
+#: include/infrastructure.php:27
+#: include/infrastructure.php:52
+#: sil-dictionary.php:0
+#@ sil_dicitonary
+#@ sil_dictionary
+msgid "SIL Dictionary"
+msgstr ""
+
+#: include/infrastructure.php:60
+#@ sil_dictionary
+msgid "SIL Dictionary provides the admininstration tools and framework for using WordPress for dictionaries."
+msgstr ""
+
+#: include/infrastructure.php:62
+#@ sil_dictionary
+msgid "Import Data"
+msgstr ""
+
+#: include/infrastructure.php:63
+#@ sil_dictionary
+msgid "You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML importer</a> by clicking on Import under the Tools menu."
+msgstr ""
+
+#: include/infrastructure.php:65
+#@ sil_dictionary
+msgid "Edit Data"
+msgstr ""
+
+#: include/infrastructure.php:66
+#@ sil_dictionary
+msgid "Each dictionary entry is stored in a \"post.\" Individual entries can be added, edited, and deleted by going to the Posts menu and selecting the Posts menu item."
+msgstr ""
+
+#: include/infrastructure.php:67
+#@ sil_dictionary
+msgid "You can edit also lists. For example, to edit your list of languages, go to Posts and select Language."
+msgstr ""
+
+#: include/infrastructure.php:69
+#@ sil_dictionary
+msgid "Delete Data"
+msgstr ""
+
+#: include/infrastructure.php:70
+#@ sil_dictionary
+msgid "(Deleting this plugin will also remove all the data of the dictionary.)"
+msgstr ""
+
+#: include/infrastructure.php:71
+#@ default
+msgid "Lists and pages will be kept unless you check the following:"
+msgstr ""
+
+#: include/infrastructure.php:76
+#@ default
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+#: include/infrastructure.php:81
+#@ default
+msgid "Go to \"Pages\" if you want to delete a page you created."
+msgstr ""
+
+#: include/infrastructure.php:83
+#@ sil_dictionary
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+#: include/infrastructure.php:84
+#@ sil_dictionary
+msgid "Delete"
+msgstr ""
+
+#: include/infrastructure.php:95
+#: include/xhtml-importer.php:141
+#@ sil_dictionary
+msgid "Finished!"
+msgstr ""
+
+#: include/infrastructure.php:96
+#@ sil_dictionary
+msgid "OK"
+msgstr ""
+
+#: include/infrastructure.php:158
+#@ default
+msgctxt "taxonomy general name"
+msgid "Semantic Domains"
+msgstr ""
+
+#: include/infrastructure.php:159
+#@ default
+msgctxt "taxonomy singular name"
+msgid "Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:160
+#@ default
+msgid "Search Domains"
+msgstr ""
+
+#: include/infrastructure.php:161
+#@ default
+msgid "All Semantic Domains"
+msgstr ""
+
+#: include/infrastructure.php:162
+#@ default
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:163
+#@ default
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: include/infrastructure.php:164
+#@ default
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:165
+#@ default
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:166
+#@ default
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:167
+#@ default
+msgid "New Semantic Domain Name"
+msgstr ""
+
+#: include/infrastructure.php:168
+#@ default
+msgid "Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:196
+#@ default
+msgctxt "taxonomy general name"
+msgid "Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:197
+#@ default
+msgctxt "taxonomy singular name"
+msgid "Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:198
+#: include/infrastructure.php:206
+#@ default
+msgid "Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:199
+#: include/searchform_func.php:67
+#@ default
+#@ sil_dictionary
+msgid "All Parts of Speech"
+msgstr "ꅇꉹꈀꐥꌠ"
+
+#: include/infrastructure.php:200
+#@ default
+msgid "Parent Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:201
+#@ default
+msgid "Parent Part of Speech:"
+msgstr ""
+
+#: include/infrastructure.php:202
+#@ default
+msgid "Edit Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:203
+#@ default
+msgid "Update Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:204
+#@ default
+msgid "Add New Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:205
+#@ default
+msgid "New Part of Speech Name"
+msgstr ""
+
+#: include/infrastructure.php:233
+#@ default
+msgctxt "taxonomy general name"
+msgid "Languages"
+msgstr ""
+
+#: include/infrastructure.php:234
+#@ default
+msgctxt "taxonomy singular name"
+msgid "Language"
+msgstr ""
+
+#: include/infrastructure.php:235
+#: include/infrastructure.php:243
+#@ default
+msgid "Language"
+msgstr ""
+
+#: include/infrastructure.php:236
+#: include/searchform_func.php:47
+#@ default
+#@ sil_dictionary
+msgid "All Languages"
+msgstr "ꅇꉙꈀꐥꌠ"
+
+#: include/infrastructure.php:237
+#@ default
+msgid "Parent Language"
+msgstr ""
+
+#: include/infrastructure.php:238
+#@ default
+msgid "Parent Language:"
+msgstr ""
+
+#: include/infrastructure.php:239
+#@ default
+msgid "Edit Language"
+msgstr ""
+
+#: include/infrastructure.php:240
+#@ default
+msgid "Update Language"
+msgstr ""
+
+#: include/infrastructure.php:241
+#@ default
+msgid "Add New Language"
+msgstr ""
+
+#: include/infrastructure.php:242
+#@ default
+msgid "New Language Name"
+msgstr ""
+
+#: include/infrastructure.php:270
+#@ default
+msgctxt "taxonomy general name"
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:271
+#@ default
+msgctxt "taxonomy singular name"
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:272
+#: include/infrastructure.php:280
+#@ default
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:273
+#@ default
+msgid "All Website strings"
+msgstr ""
+
+#: include/infrastructure.php:274
+#@ default
+msgid "Parent Website strings"
+msgstr ""
+
+#: include/infrastructure.php:275
+#@ default
+msgid "Parent Website strings:"
+msgstr ""
+
+#: include/infrastructure.php:276
+#@ default
+msgid "Edit Website strings"
+msgstr ""
+
+#: include/infrastructure.php:277
+#@ default
+msgid "Update Website strings"
+msgstr ""
+
+#: include/infrastructure.php:278
+#@ default
+msgid "Add New Website strings"
+msgstr ""
+
+#: include/infrastructure.php:279
+#@ default
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:26
+#@ sil_dictionary
+msgid "Search"
+msgstr "ꎹꄻ"
+
+#: include/xhtml-importer.php:130
+#@ sil_dictionary
+msgid "Howdy! This importer allows you to import SIL FLEX XHTML data into your WordPress site."
+msgstr ""
+
+#: include/xhtml-importer.php:159
+#@ default
+msgid "Before you can upload your import file, you will need to fix the following error:"
+msgstr ""
+
+#: include/xhtml-importer.php:174
+#@ default
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+#: include/xhtml-importer.php:175
+#: include/xhtml-importer.php:183
+#, php-format
+#@ default
+msgid "Maximum size: %s"
+msgstr ""
+
+#: include/xhtml-importer.php:182
+#@ default
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+#: include/xhtml-importer.php:190
+#@ default
+msgid "Configured Dictionary"
+msgstr ""
+
+#: include/xhtml-importer.php:191
+#@ default
+msgid "Reversal Index"
+msgstr ""
+
+#: include/xhtml-importer.php:194
+#@ default
+msgid "Upload files and import"
+msgstr ""
+
+#: include/xhtml-importer.php:209
+#@ sil_dictionary
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+#: include/xhtml-importer.php:238
+#@ default
+msgid "The file is either empty, or uploads are disabled in your php.ini, or post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: include/xhtml-importer.php:266
+#@ default
+msgid "The file imported-with-xhtml.css already exists in your theme folder. If you want to replace it, you have to delete it manually before you import a new file."
+msgstr ""
+
+#: include/xhtml-importer.php:272
+#@ default
+msgid "The css file has been uploaded into your theme folder and renamed to imported-with-xhtml.css"
+msgstr ""
+
+#: include/xhtml-importer.php:274
+#@ default
+msgid "There was an error uploading the file, please try again!"
+msgstr ""
+
+#: include/xhtml-importer.php:891
+#@ sil_dictionary
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+#: include/xhtml-importer.php:892
+#@ sil_dictionary
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: sil-dictionary.php:0
+#@ sil_dictionary
+msgid "http://pathway.sil.org/webonary/"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: sil-dictionary.php:0
+#@ sil_dictionary
+msgid "SIL Dictionaries: Includes a dashboard, an import for XHTML, and multilingual dictionary search."
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: sil-dictionary.php:0
+#@ sil_dictionary
+msgid "SIL International"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: sil-dictionary.php:0
+#@ sil_dictionary
+msgid "http://www.sil.org/"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: sil-dictionary.php:0
+#@ sil_dictionary
+msgid "1.2.9"
+msgstr ""
+
+#: include/dictionary-search.php:91
+#@ sil_dictionary
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+
+#: include/dictionary-search.php:93
+#@ sil_dictionary
+msgid "Click here to include searching through partial words."
+msgstr ""
+

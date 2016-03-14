@@ -1,0 +1,36 @@
+
+#fallback {
+	display: none;
+}
+
+.audioButton {
+	background: url("../img/btn.gif") no-repeat 0 7px;
+	display: inline-block;
+	cursor: pointer;
+	padding: 10px 10px 10px 10px;
+	margin-bottom: -2px;
+	margin-right: 2px;
+	height: 7px;
+}
+
+.audioButton:hover {
+	background-position: 0 -33px;
+}
+
+.audioButton.playing {
+	background-position: 0 -73px;
+}
+
+.audioButton.playing:hover {
+	background-position: 0 -113px;
+}
+
+.audioButton.loading,
+.audioButton.loading:hover {
+	background: url("../img/loading.gif") no-repeat 0 7px;
+	text-indent: 0!important;
+}
+
+#player {
+	display: none;
+}

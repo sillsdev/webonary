@@ -1,0 +1,5895 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SIL Dictionary v1.2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-30 10:15+0800\n"
+"PO-Revision-Date: 2015-10-30 12:45+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:109
+msgid "No entries exist for"
+msgstr "को लागि कुनै शब्द छैन"
+
+#: include/browseview_func.php:186
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:186
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:507
+msgid "No entries exist starting with this letter."
+msgstr "यो अक्षरबाट शुरु हुने कुनै शब्द छैन।"
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/comments_func.php:92
+msgid "Comments Re-Sync"
+msgstr ""
+
+#: include/comments_func.php:93
+msgid ""
+"If you have the comments turned on, you need to re-sync your comments after "
+"re-importing of your posts."
+msgstr ""
+
+msgid "Universe, creation"
+msgstr "ब्रह्माण्ड, सिर्जना"
+
+msgid "Sky"
+msgstr "आकाश"
+
+msgid "Sun"
+msgstr "सूर्य"
+
+msgid "Moon"
+msgstr "चन्‍द्रमा"
+
+msgid "Star"
+msgstr "तारा"
+
+msgid "Planet"
+msgstr "ग्रह"
+
+msgid "Air"
+msgstr "हावा"
+
+msgid "Blow air"
+msgstr "हावा चल्‍नु"
+
+msgid "Weather"
+msgstr "मौसम"
+
+msgid "Wind"
+msgstr "बतास"
+
+msgid "Cloud"
+msgstr "बादल"
+
+msgid "Rain"
+msgstr "पानी"
+
+msgid "Snow, ice"
+msgstr "हिउँ, बरफ"
+
+msgid "Storm"
+msgstr "आँधी-बेह्री"
+
+msgid "Lightning, thunder"
+msgstr "चट्याङ्, गड्‌यङगुडुङ्‌"
+
+msgid "Flood"
+msgstr "बाढी"
+
+msgid "Drought"
+msgstr "खडेरी"
+
+msgid "World"
+msgstr "संसार"
+
+msgid "Land"
+msgstr "जमिन"
+
+msgid "Mountain"
+msgstr "हिमाल"
+
+msgid "Volcano"
+msgstr "ज्‍वालामुखी"
+
+msgid "Plain, plateau"
+msgstr "समतल"
+
+msgid "Valley"
+msgstr "बेँसी"
+
+msgid "Underground"
+msgstr "भूमिगत"
+
+msgid "Forest, grassland, desert"
+msgstr "जङ्‌गल, घाँसे मैदान, मरुभूमि"
+
+msgid "Earthquake"
+msgstr "भुइँचालो"
+
+msgid "Substance, matter"
+msgstr "पर्दाथ, वस्तु"
+
+msgid "Soil, dirt"
+msgstr "माटो, मैला"
+
+msgid "Rock"
+msgstr "चट्टान"
+
+msgid "Metal"
+msgstr "धातु"
+
+msgid "Mineral"
+msgstr "खनिज-पर्दाथ"
+
+msgid "Jewel"
+msgstr "गरगहना"
+
+msgid "Solid, liquid, gas"
+msgstr "ठोस, तरल, ग्‍याँस"
+
+msgid "Liquid"
+msgstr "तरल पर्दाथ"
+
+msgid "Oil"
+msgstr "तेल"
+
+msgid "Gas"
+msgstr "ग्‍याँस"
+
+msgid "Water"
+msgstr "पानी"
+
+msgid "Bodies of water"
+msgstr "पानीका भागहरू"
+
+msgid "Ocean, lake"
+msgstr "महासागर, ताल"
+
+msgid "Swamp"
+msgstr "सिम (भास)"
+
+msgid "River"
+msgstr "नदी"
+
+msgid "Spring, well"
+msgstr "मूल, कुवा"
+
+msgid "Island, shore"
+msgstr "टापु, किनार"
+
+msgid "Movement of water"
+msgstr "पानीको गति"
+
+msgid "Flow"
+msgstr "बग्‍नु"
+
+msgid "Pour"
+msgstr "खन्‍याउनु"
+
+msgid "Drip"
+msgstr "थोपा"
+
+msgid "Wave"
+msgstr "छाल"
+
+msgid "Calm, rough"
+msgstr "शान्त, उछ्रिङ्खल"
+
+msgid "Tide"
+msgstr "ज्‍वारभाटा"
+
+msgid "Wet"
+msgstr "भिजेको"
+
+msgid "Dry"
+msgstr "सुक्‍खा"
+
+msgid "Be in water"
+msgstr "पानीमा हुनु"
+
+msgid "Solutions of water"
+msgstr "पानीको घोलहरू"
+
+msgid "Water quality"
+msgstr "पानीको गुण"
+
+msgid "Living things"
+msgstr "सजीव वस्‍तुहरू"
+
+msgid "Dead things"
+msgstr "मृत चीजहरू"
+
+msgid "Spirits of things"
+msgstr "वस्‍तुको आत्‍मा"
+
+msgid "Plant"
+msgstr "वनस्‍पति"
+
+msgid "Tree"
+msgstr "रूख"
+
+msgid "Bush, shrub"
+msgstr "झाडी, पोथ्रापोथ्री"
+
+msgid "Grass, herb, vine"
+msgstr "झारपात, घाँसपात, लहरा"
+
+msgid "Moss, fungus, algae"
+msgstr "झ्‍याउ, ढुसी, लेउ"
+
+msgid "Parts of a plant"
+msgstr "वनस्‍पतिका भागहरू"
+
+msgid "Growth of plants"
+msgstr "वनस्‍पतिहरूको वृद्धि"
+
+msgid "Plant diseases"
+msgstr "वनस्‍पति रोग"
+
+msgid "Animal"
+msgstr "पशु"
+
+msgid "Types of animals"
+msgstr "पशुहरूको प्रकारहरू"
+
+msgid "Mammal"
+msgstr "स्‍तनधारी"
+
+msgid "Primate"
+msgstr "मानिसको उपवर्ग"
+
+msgid "Carnivore"
+msgstr "मांसहारी पशु"
+
+msgid "Hoofed animals"
+msgstr "खुर भएको जनावरहरू"
+
+msgid "Rodent"
+msgstr "लोखर्के"
+
+msgid "Marsupial"
+msgstr "बच्‍चालाई थैलामा हालेर हिड्‌ने (कंगारू)"
+
+msgid "Anteater, aardvark"
+msgstr "सालक"
+
+msgid "Sea mammal"
+msgstr "समुद्री स्‍तनपायी वा स्तनधारी"
+
+msgid "Bat"
+msgstr "चमेरा"
+
+msgid "Bird"
+msgstr "चरा"
+
+msgid "Reptile"
+msgstr "घस्रने जन्‍तुहरू"
+
+msgid "Snake"
+msgstr "सर्प"
+
+msgid "Lizard"
+msgstr "छेपारो"
+
+msgid "Turtle"
+msgstr "कछुवा"
+
+msgid "Crocodile"
+msgstr "गोही"
+
+msgid "Amphibian"
+msgstr "जलथल दुवैमा बस्‍ने प्राणी, उभयचर"
+
+msgid "Fish"
+msgstr "माछा"
+
+msgid "Shark, ray"
+msgstr "सार्क, रे (ठूला माछा)"
+
+msgid "Insect"
+msgstr "किरा-फट्याङ्‌ग्रा"
+
+msgid "Spider"
+msgstr "माकुरा"
+
+msgid "Small animals"
+msgstr "साना जनावरहरू"
+
+msgid "Parts of an animal"
+msgstr "पशुको भागहरू"
+
+msgid "Parts of a bird"
+msgstr "चराको अङ्गहरू"
+
+msgid "Parts of a reptile"
+msgstr "घस्रने प्राणीहरूको अङ्गहरू"
+
+msgid "Parts of a fish"
+msgstr "माछाको अङ्गहरू"
+
+msgid "Parts of an insect"
+msgstr "कीरा-फट्याङ्‌ग्राहरूको अङ्गहरू"
+
+msgid "Parts of small animals"
+msgstr "सानो जन्‍तुको अङ्गहरू"
+
+msgid "Animal life cycle"
+msgstr "पशुको जीवन चक्र"
+
+msgid "Egg"
+msgstr "अण्‍डा"
+
+msgid "Animal actions"
+msgstr "पशुको क्रियाकलापहरू"
+
+msgid "Animal movement"
+msgstr "जनावर हलचल"
+
+msgid "Animal eating"
+msgstr "पशुको खुवाइ"
+
+msgid "Animal sounds"
+msgstr "पशुको आवाज"
+
+msgid "Animal home"
+msgstr "पशुको घरहरू"
+
+msgid "Animal group"
+msgstr "पशु समूह"
+
+msgid "Male and female animals"
+msgstr "भाले र पोथी पशु"
+
+msgid "Nature, environment"
+msgstr "प्रकृति, वातावरण"
+
+msgid "Natural"
+msgstr "प्राकृतिक"
+
+msgid "Person"
+msgstr "व्‍यक्ति"
+
+msgid "Body"
+msgstr "शरीर"
+
+msgid "Head"
+msgstr "शिर"
+
+msgid "Eye"
+msgstr "आँखा"
+
+msgid "Ear"
+msgstr "कान"
+
+msgid "Nose"
+msgstr "नाक"
+
+msgid "Mouth"
+msgstr "मुख"
+
+msgid "Tooth"
+msgstr "दन्‍त"
+
+msgid "Torso"
+msgstr "जीउ (हात, खुट्टा र टाउको बाहेक)"
+
+msgid "Limb"
+msgstr "हात, खुट्‌टा"
+
+msgid "Arm"
+msgstr "पाखुरा"
+
+msgid "Leg"
+msgstr "खुट्टा"
+
+msgid "Finger, toe"
+msgstr "औंला, खुट्टाको बुढी औंला"
+
+msgid "Skin"
+msgstr "छाला"
+
+msgid "Hair"
+msgstr "कपाल"
+
+msgid "Bone, joint"
+msgstr "हड्डी, जोर्नी"
+
+msgid "Flesh"
+msgstr "मासु"
+
+msgid "Internal organs"
+msgstr "भित्री इन्‍द्रियहरू"
+
+msgid "Heart"
+msgstr "मुटु"
+
+msgid "Stomach"
+msgstr "पेट"
+
+msgid "Male organs"
+msgstr "पुरुषका अङ्गहरू"
+
+msgid "Female organs"
+msgstr "महिलाका अङ्गहरू"
+
+msgid "Body functions"
+msgstr "शरीरको कार्यहरू"
+
+msgid "Breathe, breath"
+msgstr "सास"
+
+msgid "Cough, sneeze"
+msgstr "खोक्‍नु, हाछिउँ गर्नु"
+
+msgid "Spit, saliva"
+msgstr "थक्‍नु,थुक"
+
+msgid "Mucus"
+msgstr "सिँगान"
+
+msgid "Bleed, blood"
+msgstr "रगत बग्‍नु, रगत"
+
+msgid "Sweat"
+msgstr "पसिना"
+
+msgid "Urinate, urine"
+msgstr "पिसाब फेर्नु, पिसाब"
+
+msgid "Defecate, feces"
+msgstr "दिसा गर्नु, दिसा"
+
+msgid "Sense, perceive"
+msgstr "ज्ञान, चेतना"
+
+msgid "See"
+msgstr "देख्‍नु"
+
+msgid "Look"
+msgstr "हेर्नु"
+
+msgid "Watch"
+msgstr "पहरा दिनु (हेर्नु)"
+
+msgid "Examine"
+msgstr "जाँच्‍नु"
+
+msgid "Show, let someone see"
+msgstr "देखाउनु, देखोस्"
+
+msgid "Visible"
+msgstr "देख्‍न सकिने"
+
+msgid "Appear"
+msgstr "देखा पर्नु"
+
+msgid "Transparent"
+msgstr "पारदर्शी"
+
+msgid "Reflect, mirror"
+msgstr "प्रतिबिम्‍बित हुनु, ऐना"
+
+msgid "Appearance"
+msgstr "रुपरंग"
+
+msgid "Beautiful"
+msgstr "सुन्‍दर"
+
+msgid "Ugly"
+msgstr "नराम्रो"
+
+msgid "Something used to see"
+msgstr "कुनैचीज हेर्न प्रयोग गर्ने वस्तु"
+
+msgid "Hear"
+msgstr "सुन्‍नु"
+
+msgid "Listen"
+msgstr "सुन्‍नु"
+
+msgid "Sound"
+msgstr "आवाज"
+
+msgid "Types of sounds"
+msgstr "आवाजको किसिम"
+
+msgid "Loud"
+msgstr "चर्को"
+
+msgid "Quiet"
+msgstr "शान्‍त"
+
+msgid "Taste"
+msgstr "स्वाद"
+
+msgid "Smell"
+msgstr "बास्‍ना"
+
+msgid "Sense of touch"
+msgstr "छुवाइको अनुभव"
+
+msgid "Comfortable"
+msgstr "सुबिधाजनक"
+
+msgid "Body condition"
+msgstr "शरीरको स्‍थिति"
+
+msgid "Strong"
+msgstr "बलियो"
+
+msgid "Weak"
+msgstr "कमजोर"
+
+msgid "Energetic"
+msgstr "बलवान"
+
+msgid "Tired"
+msgstr "थाकेको"
+
+msgid "Rest"
+msgstr "विश्राम"
+
+msgid "Healthy"
+msgstr "निरोगी"
+
+msgid "Sick"
+msgstr "बिरामी"
+
+msgid "Recover from sickness"
+msgstr "बिमारबाट निको हुनु"
+
+msgid "Disease"
+msgstr "रोग"
+
+msgid "Malnutrition, starvation"
+msgstr "कुपोषण, भोकै रहने काम"
+
+msgid "Skin disease"
+msgstr "छालाको रोग"
+
+msgid "Stomach illness"
+msgstr "पेटको रोग"
+
+msgid "Tooth decay"
+msgstr "दाँत मक्‍किनु"
+
+msgid "Injure"
+msgstr "चोट लागेको"
+
+msgid "Amputate"
+msgstr "अङ्गछेदन गर्नु"
+
+msgid "Poison"
+msgstr "विष"
+
+msgid "Disabled"
+msgstr "असामर्थ्‍य"
+
+msgid "Blind"
+msgstr "अन्‍धा"
+
+msgid "Poor eyesight"
+msgstr "आँखाको दृष्‍टि कमजोर"
+
+msgid "Deaf"
+msgstr "बहिरो"
+
+msgid "Mute"
+msgstr "बोल्‍न नसक्‍ने"
+
+msgid "Birth defect"
+msgstr "जन्‍म त्रुटि"
+
+msgid "Cause of disease"
+msgstr "रोगको कारण"
+
+msgid "Symptom of disease"
+msgstr "रोगका लक्षणहरू"
+
+msgid "Pain"
+msgstr "पीडा"
+
+msgid "Fever"
+msgstr "ज्‍वरो"
+
+msgid "Swell"
+msgstr "सुनिनु"
+
+msgid "Lose consciousness"
+msgstr "विवेक गुमाउनु"
+
+msgid "Dazed, confused"
+msgstr "अक्‍क न वक्‍क भएको"
+
+msgid "Vision, hallucination"
+msgstr "दृष्‍टि, दृष्‍टिभ्रम"
+
+msgid "Treat disease"
+msgstr "रोग उपचार"
+
+msgid "Doctor, nurse"
+msgstr "चिकित्‍सक, परिचारिका"
+
+msgid "Medicine"
+msgstr "औषधी"
+
+msgid "Medicinal plants"
+msgstr "औषधीका विरुवाहरू"
+
+msgid "Hospital"
+msgstr "अस्‍पताल"
+
+msgid "Traditional medicine"
+msgstr "परम्‍परागत औषधी"
+
+msgid "Mental illness"
+msgstr "मानसिक तवरले असक्‍त"
+
+msgid "Life"
+msgstr "जीवन"
+
+msgid "Marriage"
+msgstr "विवाह"
+
+msgid "Arrange a marriage"
+msgstr "विवाह प्रबन्‍ध गर्नु"
+
+msgid "Wedding"
+msgstr "विहे"
+
+msgid "Unmarried"
+msgstr "अविवाहित"
+
+msgid "Divorce"
+msgstr "पारपाचुके"
+
+msgid "Romantic love"
+msgstr "भावुक प्रेम"
+
+msgid "Sexual relations"
+msgstr "संभोग सम्‍बन्‍धहरू"
+
+msgid "Virginity"
+msgstr "कुमारीत्‍व"
+
+msgid "Attract sexually"
+msgstr "यौन आकर्षण"
+
+msgid "Sexual immorality"
+msgstr "अनैतिक यौन सम्‍बन्‍ध"
+
+msgid "Birth"
+msgstr "जन्‍म"
+
+msgid "Pregnancy"
+msgstr "गर्भाधारण"
+
+msgid "Fetus"
+msgstr "भ्रूण"
+
+msgid "Miscarriage"
+msgstr "गर्भपात"
+
+msgid "Labor and birth pains"
+msgstr "सुत्‍केरी व्‍यथा, बेथा"
+
+msgid "Help to give birth"
+msgstr "जन्‍माउन मद्दत गर्नु"
+
+msgid "Unusual birth"
+msgstr "असाधारण जन्‍म"
+
+msgid "Multiple births"
+msgstr "बहुजन्‍म"
+
+msgid "Fertile, infertile"
+msgstr "उर्वर, बाँझो"
+
+msgid "Birth ceremony"
+msgstr "जन्‍म समारोह"
+
+msgid "Stage of life"
+msgstr "जीवनका चरण"
+
+msgid "Baby"
+msgstr "शिशु"
+
+msgid "Care for a baby"
+msgstr "शिशुको रेखदेख"
+
+msgid "Child"
+msgstr "बालक"
+
+msgid "Rear a child"
+msgstr "बालक पालन-पोषण"
+
+msgid "Youth"
+msgstr "जवान"
+
+msgid "Adult"
+msgstr "वयस्क"
+
+msgid "Old person"
+msgstr "बृद्ध मान्‍छे"
+
+msgid "Grow, get bigger"
+msgstr "वृद्धि, ठूलो हुनु"
+
+msgid "Initiation"
+msgstr "संस्‍कार"
+
+msgid "Peer group"
+msgstr "दौंतरी समूह"
+
+msgid "Male, female"
+msgstr "पुरुष, स्‍त्री"
+
+msgid "Man"
+msgstr "मानिस"
+
+msgid "Woman"
+msgstr "आइमाई"
+
+msgid "Die"
+msgstr "मर्नु"
+
+msgid "Kill"
+msgstr "मार्नु"
+
+msgid "Corpse"
+msgstr "मुर्दा"
+
+msgid "Funeral"
+msgstr "अन्‍त्‍येष्‍टि"
+
+msgid "Mourn"
+msgstr "शोक गर्नु"
+
+msgid "Bury"
+msgstr "मुर्दा गाड्‌नु"
+
+msgid "Grave"
+msgstr "चिहान"
+
+msgid "Inherit"
+msgstr "अधिकार प्राप्‍त गर्नु"
+
+msgid "Life after death"
+msgstr "मृत्‍यु पछिको जीवन"
+
+msgid "Language and thought"
+msgstr "भाषा र सोचाइ"
+
+msgid "Soul, spirit"
+msgstr "प्राण, आत्‍मा"
+
+msgid "Personality"
+msgstr "व्‍यक्तित्‍व"
+
+msgid "Mental state"
+msgstr "मनको स्‍थिति"
+
+msgid "Alert"
+msgstr "सतर्क"
+
+msgid "Notice"
+msgstr "सूचना"
+
+msgid "Attention"
+msgstr "ध्‍यान"
+
+msgid "Ignore"
+msgstr "इन्‍कार गर्नु"
+
+msgid "Think"
+msgstr "सोच्‍नु"
+
+msgid "Mind"
+msgstr "मन"
+
+msgid "Think about"
+msgstr "बारेमा सोच्‍नु"
+
+msgid "Imagine"
+msgstr "कल्‍पना गर्नु"
+
+msgid "Intelligent"
+msgstr "बुद्धिमानी"
+
+msgid "Stupid"
+msgstr "मूर्ख"
+
+msgid "Logical"
+msgstr "तर्कसंगत"
+
+msgid "Instinct"
+msgstr "सहज"
+
+msgid "Learn"
+msgstr "सिक्‍नु"
+
+msgid "Study"
+msgstr "अध्‍यान"
+
+msgid "Check"
+msgstr "जाँच गर्नु"
+
+msgid "Evaluate, test"
+msgstr "मूल्‍याङ्कन गर्नु, जाँच"
+
+msgid "Guess"
+msgstr "अनुमान गर्नु"
+
+msgid "Solve"
+msgstr "सुल्‍झाउनु"
+
+msgid "Realize"
+msgstr "महशुस गर्नु"
+
+msgid "Willing to learn"
+msgstr "सिक्‍न चाहनु"
+
+msgid "Know"
+msgstr "जान्नु"
+
+msgid "Known, unknown"
+msgstr "चिनेको, नचिनेको"
+
+msgid "Area of knowledge"
+msgstr "ज्ञानको क्षेत्र"
+
+msgid "Secret"
+msgstr "गोप्य"
+
+msgid "Understand"
+msgstr "बुझ्‍नु"
+
+msgid "Misunderstand"
+msgstr "गलत अर्थ लाउनु"
+
+msgid "Understandable"
+msgstr "बुझ्‍न सकिने"
+
+msgid "Mysterious"
+msgstr "रहस्‍यात्मक"
+
+msgid "Opinion"
+msgstr "बिचार"
+
+msgid "Believe"
+msgstr "विश्‍वास गर्नु"
+
+msgid "Trust"
+msgstr "भरोसा"
+
+msgid "Disbelief"
+msgstr "विश्‍वास नगर्नु"
+
+msgid "Doubt"
+msgstr "शङ्का"
+
+msgid "Agree with someone"
+msgstr "कसैसँग सहमत हुनु"
+
+msgid "Disagree"
+msgstr "असहमत"
+
+msgid "Protest"
+msgstr "बिरोध गर्नु"
+
+msgid "Philosophy"
+msgstr "दर्शनशास्‍त्र"
+
+msgid "Attitude"
+msgstr "आचरण"
+
+msgid "Extreme belief"
+msgstr "कट्टर आस्था"
+
+msgid "Change your mind"
+msgstr "तपाईको मन बदल्‍नु"
+
+msgid "Approve of something"
+msgstr "प्रमाणित गर्नु"
+
+msgid "Remember"
+msgstr "सम्‍झनु"
+
+msgid "Forget"
+msgstr "बिर्सनु"
+
+msgid "Recognize"
+msgstr "पहिचान गर्नु"
+
+msgid "Memorize"
+msgstr "कण्‍ठस्‍त"
+
+msgid "Remind"
+msgstr "स्‍मरण गर्नु"
+
+msgid "Expect"
+msgstr "आशा गर्नु"
+
+msgid "Hope"
+msgstr "आशा"
+
+msgid "Hopeless"
+msgstr "निराश"
+
+msgid "Predict"
+msgstr "भविष्‍यवाणी"
+
+msgid "Tendency"
+msgstr "प्रवृत्ति (अभिप्राय)"
+
+msgid "Want"
+msgstr "चाहनु"
+
+msgid "Decide, plan"
+msgstr "निर्णय, योजना"
+
+msgid "Purpose, goal"
+msgstr "उदेश्‍य, लक्ष्‍य"
+
+msgid "Choose"
+msgstr "चुन्‍नु"
+
+msgid "Cast lots"
+msgstr "चिठ्ठा हाल्‍नु"
+
+msgid "Intend"
+msgstr "अभिप्राय"
+
+msgid "Deliberately"
+msgstr "जानी-जानीकन"
+
+msgid "Determined"
+msgstr "संकल्‍प"
+
+msgid "Stubborn"
+msgstr "हठी"
+
+msgid "Lust"
+msgstr "अभिलाषा"
+
+msgid "Request"
+msgstr "अनुरोध"
+
+msgid "Agree to do something"
+msgstr "सहमति दिनु"
+
+msgid "Refuse to do something"
+msgstr "केही गर्नलाई अस्‍वीकार गर्नु"
+
+msgid "Intercede"
+msgstr "मध्यस्त गर्नु"
+
+msgid "Willing"
+msgstr "इच्‍छुक"
+
+msgid "Influence"
+msgstr "प्रभाव"
+
+msgid "Suggest"
+msgstr "सुझाव"
+
+msgid "Advise"
+msgstr "सल्‍लाह"
+
+msgid "Persuade"
+msgstr "फकाउनु"
+
+msgid "Insist"
+msgstr "जिद्दी"
+
+msgid "Compel"
+msgstr "कर गर्नु"
+
+msgid "Control"
+msgstr "नियन्‍त्रण"
+
+msgid "Warn"
+msgstr "चेतावनी"
+
+msgid "Threaten"
+msgstr "धम्की"
+
+msgid "Ask permission"
+msgstr "अनुमति माग्‍नु"
+
+msgid "Give permission"
+msgstr "अनुमति दिनु"
+
+msgid "Refuse permission"
+msgstr "अनुमति इन्‍कार गर्नु"
+
+msgid "Exempt"
+msgstr "छुट दिनु"
+
+msgid "Prevent"
+msgstr "रोक्‍नु"
+
+msgid "Free to do what you want"
+msgstr "स्‍वतन्‍त्रता"
+
+msgid "Offer"
+msgstr "प्रस्‍ताव"
+
+msgid "Accept"
+msgstr "ग्रहण"
+
+msgid "Reject"
+msgstr "अस्‍वीकार"
+
+msgid "Emotion"
+msgstr "भावना"
+
+msgid "Feel good"
+msgstr "असल लाग्‍नु"
+
+msgid "Like, love"
+msgstr "मन पर्नु, माया गर्नु"
+
+msgid "Enjoy doing something"
+msgstr "केही गरेर आनन्‍द मनाउनु"
+
+msgid "Self-esteem"
+msgstr "स्‍वआदर गर्नु"
+
+msgid "Prefer"
+msgstr "सिफारिस गर्नु"
+
+msgid "Popular"
+msgstr "लोकप्रिय"
+
+msgid "Fashionable"
+msgstr "ढाँचा बढाउने (नक्कल पार्ने)"
+
+msgid "Contentment"
+msgstr "सन्‍तोष"
+
+msgid "Happy for"
+msgstr "खुशी हुनु"
+
+msgid "Pleased with"
+msgstr "खुशी पार्नु"
+
+msgid "Happy"
+msgstr "खुशी"
+
+msgid "Relaxed"
+msgstr "आराम"
+
+msgid "Calm"
+msgstr "शान्‍त"
+
+msgid "Surprise"
+msgstr "अचम्‍म"
+
+msgid "Interested"
+msgstr "अभिरुचि"
+
+msgid "Excited"
+msgstr "उत्तेजित"
+
+msgid "Enthusiastic"
+msgstr "उत्‍साहित"
+
+msgid "Obsessed"
+msgstr "एकत्रित भएको"
+
+msgid "Attract"
+msgstr "आकर्षण"
+
+msgid "Indifferent"
+msgstr "उदासीन"
+
+msgid "Uninterested, bored"
+msgstr "अरुचि, निरस"
+
+msgid "Confident"
+msgstr "आत्‍मविश्‍वास"
+
+msgid "Feel bad"
+msgstr "नकारात्‍मक मनको भावनाहरू"
+
+msgid "Sad"
+msgstr "दु:खी"
+
+msgid "Dislike"
+msgstr "मन नपर्नु"
+
+msgid "Hate, detest"
+msgstr "घृणा, तुच्‍छ ठान्‍नु"
+
+msgid "Disgusted"
+msgstr "घृणा"
+
+msgid "Disappointed"
+msgstr "निराश भएको"
+
+msgid "Lonely"
+msgstr "एकान्‍त"
+
+msgid "Upset"
+msgstr "अशान्त हुनु"
+
+msgid "Shock"
+msgstr "धक्‍का"
+
+msgid "Jealous"
+msgstr "डाह गर्ने"
+
+msgid "Discontent"
+msgstr "असन्‍तोष"
+
+msgid "Sorry"
+msgstr "खेद प्रकट"
+
+msgid "Ashamed"
+msgstr "सरम हुनु"
+
+msgid "Embarrassed"
+msgstr "आत्तिएको"
+
+msgid "Angry"
+msgstr "रीस"
+
+msgid "Annoyed"
+msgstr "चिढाउनु"
+
+msgid "Afraid"
+msgstr "डराउनु"
+
+msgid "Worried"
+msgstr "चिन्‍ता"
+
+msgid "Nervous"
+msgstr "घबराउनु"
+
+msgid "Shy, timid"
+msgstr "लाज मान्‍नु, कातर"
+
+msgid "Confused"
+msgstr "अलमलिनु"
+
+msgid "Communication"
+msgstr "सञ्चार गर्नु"
+
+msgid "Say"
+msgstr "भन्‍नु"
+
+msgid "Voice"
+msgstr "स्‍वर"
+
+msgid "Shout"
+msgstr "कराउनु"
+
+msgid "Speak quietly"
+msgstr "शान्तासंग बोल्‍नु"
+
+msgid "Speak a lot"
+msgstr "धेरै बोल्‍नु"
+
+msgid "Speak little"
+msgstr "थोरै बोल्‍नु"
+
+msgid "Say nothing"
+msgstr "चूपचाप रहनु"
+
+msgid "Speech style"
+msgstr "बोल्‍ने शैली"
+
+msgid "Speak well"
+msgstr "राम्रो बोल्‍नु"
+
+msgid "Speak poorly"
+msgstr "साधरण हिसाबले बोल्‍नु"
+
+msgid "Talk about a subject"
+msgstr "बिषय बारे छलफल"
+
+msgid "Announce"
+msgstr "उद्‍घोषण"
+
+msgid "Describe"
+msgstr "व्‍याख्‍या"
+
+msgid "Explain"
+msgstr "व्‍याख्‍या"
+
+msgid "Mention"
+msgstr "उल्‍लेख"
+
+msgid "Introduce"
+msgstr "परिचय गर्नु"
+
+msgid "Repeat"
+msgstr "दोहोर्‍याउनु"
+
+msgid "Summarize"
+msgstr "संक्षिप्‍त पार्न"
+
+msgid "Emphasize"
+msgstr "जोड दिनु"
+
+msgid "Be about, subject"
+msgstr "बारेमा हुनु, विषय"
+
+msgid "1"
+msgstr "सत्य"
+
+msgid "Tell the truth"
+msgstr "सत्‍य बोल्‍नु"
+
+msgid "Tell a lie"
+msgstr "झूटा बोल्‍नु"
+
+msgid "Contradict"
+msgstr "वादविवाद गर्नु"
+
+msgid "Expose falsehood"
+msgstr "झूटा देखाउनु"
+
+msgid "Real"
+msgstr "वास्‍तविक"
+
+msgid "Exaggerate"
+msgstr "लम्‍ब्‍याउनु"
+
+msgid "Speak with others"
+msgstr "अरूहरूसित बोल्‍नु"
+
+msgid "Call"
+msgstr "बोलाउनु"
+
+msgid "Contact"
+msgstr "सम्‍पर्क"
+
+msgid "Greet"
+msgstr "नमस्‍कार गर्नु"
+
+msgid "Say farewell"
+msgstr "बिदाइ भन्‍नु"
+
+msgid "Speak in unison"
+msgstr "एक स्‍वरमा बोल्‍नु"
+
+msgid "Ask"
+msgstr "सोध्‍नु"
+
+msgid "Answer"
+msgstr "उत्तर"
+
+msgid "Disclose"
+msgstr "खोल्नु (कुरा)"
+
+msgid "Hide your thoughts"
+msgstr "तपाईंका बिचारहरु लुकाउनु"
+
+msgid "Debate"
+msgstr "बिबाद गर्नु"
+
+msgid "Demonstrate"
+msgstr "प्रदर्शन"
+
+msgid "Quarrel"
+msgstr "झगडा"
+
+msgid "Praise"
+msgstr "प्रशंसा"
+
+msgid "Thank"
+msgstr "धन्‍यबाद"
+
+msgid "Flatter"
+msgstr "चिप्‍लो घस्‍नु"
+
+msgid "Boast"
+msgstr "घमण्‍ड गर्नु"
+
+msgid "Criticize"
+msgstr "आलोचना गर्नु"
+
+msgid "Blame"
+msgstr "दोष"
+
+msgid "Insult"
+msgstr "अपमान"
+
+msgid "Mock"
+msgstr "गिल्‍ला गर्नु"
+
+msgid "Gossip"
+msgstr "गफ गर्नु"
+
+msgid "Complain"
+msgstr "गुनासो"
+
+msgid "Promise"
+msgstr "प्रतिज्ञा गर्नु"
+
+msgid "Make speech"
+msgstr "वक्‍तव्‍य दिनु"
+
+msgid "Report"
+msgstr "प्रतिबेदन"
+
+msgid "News, message"
+msgstr "खबर, समाचार"
+
+msgid "Figurative"
+msgstr "आलङ्कारिक"
+
+msgid "Admit"
+msgstr "स्‍वीकार गर्नु"
+
+msgid "Language"
+msgstr "भाषा"
+
+msgid "Word"
+msgstr "शब्‍द"
+
+msgid "Information"
+msgstr "सूचना"
+
+msgid "Story"
+msgstr "कथा"
+
+msgid "Fable, myth"
+msgstr "कथा, पौराणीक कथा"
+
+msgid "Saying, proverb"
+msgstr "भनाई, टुक्‍का"
+
+msgid "Riddle"
+msgstr "गाउँखाने कथा"
+
+msgid "Poetry"
+msgstr "कविता"
+
+msgid "History"
+msgstr "इतिहास"
+
+msgid "Verbal tradition"
+msgstr "मौखिक परम्‍परा"
+
+msgid "Foolish talk"
+msgstr "मूर्ख बोली"
+
+msgid "Obscenity"
+msgstr "अश्लीलता"
+
+msgid "Sign, symbol"
+msgstr "चिन्‍ह, संकेत"
+
+msgid "Gesture"
+msgstr "हाउभाउ"
+
+msgid "Point at"
+msgstr "देखाउनु"
+
+msgid "Facial expression"
+msgstr "अनुहारको अभिव्‍यक्ति"
+
+msgid "Laugh"
+msgstr "हाँस्‍नु"
+
+msgid "Cry, tear"
+msgstr "रुनु, आँसु"
+
+msgid "Reading and writing"
+msgstr "पढाइ र लेखाइ"
+
+msgid "Write"
+msgstr "लेख्‍नु"
+
+msgid "Written material"
+msgstr "लिखित वस्‍तु"
+
+msgid "Read"
+msgstr "पढ्‌नु"
+
+msgid "Publish"
+msgstr "प्रकाशित गर्नु"
+
+msgid "Record"
+msgstr "अभिलेख"
+
+msgid "List"
+msgstr "सूची"
+
+msgid "Letter"
+msgstr "पत्र"
+
+msgid "Interpreting messages"
+msgstr "अनुवादित खबरहरू"
+
+msgid "Meaning"
+msgstr "अर्थ"
+
+msgid "Meaningless"
+msgstr "अनर्थ"
+
+msgid "Unintelligible"
+msgstr "अबोध"
+
+msgid "Show, indicate"
+msgstr "देखाउनु, जनाउनु"
+
+msgid "Mass communication"
+msgstr "आमसञ्चार वा मिडिया"
+
+msgid "Radio, television"
+msgstr "रेडियो, टेलिभिजन"
+
+msgid "Telephone"
+msgstr "दूरसञ्‍चार"
+
+msgid "Newspaper"
+msgstr "खबर पत्रिका"
+
+msgid "Movie"
+msgstr "चलचित्र"
+
+msgid "Recorded music"
+msgstr "रेकर्ड गरिएको संगित"
+
+msgid "Communication devices"
+msgstr "संचार उपकरणहरू"
+
+msgid "Teach"
+msgstr "सिकाउनु"
+
+msgid "Show, explain"
+msgstr "देखाउनु, बताउनु"
+
+msgid "School"
+msgstr "विद्यालय"
+
+msgid "Subject of teaching"
+msgstr "सिकाइने विषय"
+
+msgid "Class, lesson"
+msgstr "कक्षा, पाठ"
+
+msgid "Correct"
+msgstr "ठीक"
+
+msgid "Science"
+msgstr "विज्ञान"
+
+msgid "Test"
+msgstr "परीक्षा"
+
+msgid "Answer in a test"
+msgstr "परिक्षामा उत्तर"
+
+msgid "Social behavior"
+msgstr "सामाजिक व्‍यवहार"
+
+msgid "Relationships"
+msgstr "सम्‍बन्‍धहरू"
+
+msgid "Friend"
+msgstr "मित्रता"
+
+msgid "Girlfriend, boyfriend"
+msgstr "प्रेमी प्रेमिका"
+
+msgid "Types of people"
+msgstr "मानिसको प्रकार"
+
+msgid "Working relationship"
+msgstr "काम गर्ने सम्‍बन्‍धहरू"
+
+msgid "Know someone"
+msgstr "कसैलाई चिन्‍नु"
+
+msgid "Meet for the first time"
+msgstr "पहिलो चोटिको भेट"
+
+msgid "Neighbor"
+msgstr "छिमेकी"
+
+msgid "Social class"
+msgstr "सामाजिक वर्ग"
+
+msgid "Unity"
+msgstr "एकता"
+
+msgid "Disunity"
+msgstr "अनेकता"
+
+msgid "Unfriendly"
+msgstr "अमैत्रिक"
+
+msgid "Set self apart"
+msgstr "आफै छुट्टिएको समूह"
+
+msgid "Alone"
+msgstr "एकल"
+
+msgid "Independent person"
+msgstr "स्‍वतन्‍त्र मान्‍छे"
+
+msgid "Private, public"
+msgstr "व्‍यक्तिगत, सार्वजनिक"
+
+msgid "Begin a relationship"
+msgstr "सम्‍बन्‍ध शुरु हुनु"
+
+msgid "End a relationship"
+msgstr "सम्‍बन्‍ध अन्‍त्‍य गर्नु"
+
+msgid "Show affection"
+msgstr "स्‍नेह देखाउनु"
+
+msgid "Kinship"
+msgstr "नातेदार"
+
+msgid "Related by birth"
+msgstr "जन्‍म सम्‍बन्‍धित"
+
+msgid "Grandfather, grandmother"
+msgstr "बाजे, बज्‍यै"
+
+msgid "Father, mother"
+msgstr "बाबु, आमा"
+
+msgid "Brother, sister"
+msgstr "दाजु वा भाइ, दिदी वा बहिनी"
+
+msgid "Son, daughter"
+msgstr "छोरा, छोरी"
+
+msgid "Grandson, granddaughter"
+msgstr "नाति, नातिनी"
+
+msgid "Uncle, aunt"
+msgstr "काका, काकी"
+
+msgid "Cousin"
+msgstr "दाजुभाइ, दिदीबहिनी"
+
+msgid "Nephew, niece"
+msgstr "भान्‍जा, भान्‍जी"
+
+msgid "Birth order"
+msgstr "जन्‍म क्रम"
+
+msgid "Related by marriage"
+msgstr "विवाहद्वारा सम्‍बन्‍धित"
+
+msgid "Husband, wife"
+msgstr "श्रीमान, श्रीमती"
+
+msgid "In-law"
+msgstr "(मानिसहरूको विवाहद्वारा सम्‍बन्‍धित) साइनो"
+
+msgid "Widow, widower"
+msgstr "विधवा, विधुर"
+
+msgid "Orphan"
+msgstr "टुहुरो"
+
+msgid "Illegitimate child"
+msgstr "अवैध बालक"
+
+msgid "Adopt"
+msgstr "धर्मपुत्र लिनु"
+
+msgid "Non-relative"
+msgstr "असम्‍बन्‍धित"
+
+msgid "Family, clan"
+msgstr "परिवार, कुल, वंश"
+
+msgid "Race"
+msgstr "जाति"
+
+msgid "Social activity"
+msgstr "सामाजिक क्रियाकलाप"
+
+msgid "Come together, form a group"
+msgstr "जम्मा हुनु (समूह बनाउनु)"
+
+msgid "Invite"
+msgstr "निमन्‍त्रणा"
+
+msgid "Encounter"
+msgstr "आकस्‍मिक भेट"
+
+msgid "Meet together"
+msgstr "सँगै भेट्‌नु"
+
+msgid "Visit"
+msgstr "भेट्‌नु"
+
+msgid "Welcome, receive"
+msgstr "स्‍वागत, ग्रहण"
+
+msgid "Show hospitality"
+msgstr "अतिथि सत्‍कार देखाउनु"
+
+msgid "Meeting, assembly"
+msgstr "बैठक, सभा"
+
+msgid "Participate"
+msgstr "सहभागी हुनु"
+
+msgid "Crowd, group"
+msgstr "भीड, समूह"
+
+msgid "Organization"
+msgstr "संस्‍था"
+
+msgid "Join an organization"
+msgstr "संस्‍थामा सहभागी"
+
+msgid "Leave an organization"
+msgstr "संस्‍था छोड्‌नु"
+
+msgid "Belong to an organization"
+msgstr "संस्‍थासँग आवद्ध हुनु"
+
+msgid "Social group"
+msgstr "समाजिक समूह"
+
+msgid "Social event"
+msgstr "सामाजिक घटना"
+
+msgid "Ceremony"
+msgstr "समारोह"
+
+msgid "Festival, show"
+msgstr "चाड, प्रदर्शन"
+
+msgid "Celebrate"
+msgstr "उत्‍सव मनाउनु"
+
+msgid "Music"
+msgstr "संगीत"
+
+msgid "Compose music"
+msgstr "संगीत लेख्‍नु"
+
+msgid "Play music"
+msgstr "संगीत बजाउनु"
+
+msgid "Sing"
+msgstr "गाउनु"
+
+msgid "Musician"
+msgstr "संगीतकार"
+
+msgid "Musical instrument"
+msgstr "संगीतात्‍मक उपकरणहरू"
+
+msgid "Dance"
+msgstr "नाच्‍नु"
+
+msgid "Drama"
+msgstr "नाटक"
+
+msgid "Entertainment, recreation"
+msgstr "मनोरन्‍जन, आमोद-प्रमोद"
+
+msgid "Game"
+msgstr "खेल"
+
+msgid "Card game"
+msgstr "तास खेल"
+
+msgid "Chess"
+msgstr "सतरन्‍ज (चेस)"
+
+msgid "Sports"
+msgstr "खेलहरू"
+
+msgid "Football, soccer"
+msgstr "भकुण्‍डोखेल"
+
+msgid "Basketball"
+msgstr "बास्केटबल (खेल -१)"
+
+msgid "Exercise"
+msgstr "ब्‍यायाम, अभ्‍यास"
+
+msgid "Gambling"
+msgstr "जुवा"
+
+msgid "Play, fun"
+msgstr "खेल्‍नु, ठट्टा"
+
+msgid "Humor"
+msgstr "ठट्टा (चुट्किला)"
+
+msgid "Serious"
+msgstr "गम्‍भीर"
+
+msgid "Holiday"
+msgstr "बिदाको दिन, छुट्टीको दिन"
+
+msgid "Free time"
+msgstr "खाली समय"
+
+msgid "Behavior"
+msgstr "व्‍यवहार"
+
+msgid "Good, moral"
+msgstr "असल"
+
+msgid "Bad, immoral"
+msgstr "खराब, अनैतिक"
+
+msgid "Meet a standard"
+msgstr "स्‍तर भेट्टाउनु, मापदण्‍ड पुग्‍नु"
+
+msgid "Below standard"
+msgstr "स्‍तरदेखि मुनि"
+
+msgid "Mature in behavior"
+msgstr "पाकोरुपले कार्य गर्नु"
+
+msgid "Immature in behavior"
+msgstr "अपरिपक्‍व"
+
+msgid "Sensible"
+msgstr "ध्‍यानमग्‍न, सम्‍वेदनशील"
+
+msgid "Reputation"
+msgstr "असल मर्यादा हुनु"
+
+msgid "Patient"
+msgstr "धैर्यवान"
+
+msgid "Impatient"
+msgstr "अधिर, धैर्य नभएको"
+
+msgid "Bad-tempered"
+msgstr "नराम्रो रिसाहा"
+
+msgid "Admire someone"
+msgstr "राम्रो विचार गर्नु"
+
+msgid "Despise someone"
+msgstr "तुच्‍छ गरी विचार गर्नु"
+
+msgid "Humble"
+msgstr "नम्र"
+
+msgid "Proud"
+msgstr "घमण्‍ड"
+
+msgid "Show off"
+msgstr "देखाउनु"
+
+msgid "Love"
+msgstr "प्रेम"
+
+msgid "Hate, ill will"
+msgstr "कतै खराब अनुभव गर्नु"
+
+msgid "Not care"
+msgstr "ध्‍यान नदिनु"
+
+msgid "Abandon"
+msgstr "त्‍याग्‍नु"
+
+msgid "Do good to"
+msgstr "असल गर्नु"
+
+msgid "Do evil to"
+msgstr "खराब गर्नु"
+
+msgid "Help"
+msgstr "मद्दत"
+
+msgid "Hinder"
+msgstr "बाधा दिनु"
+
+msgid "Cooperate with"
+msgstr "सरसहयोग"
+
+msgid "Compete with"
+msgstr "प्रतियोगी हुनु"
+
+msgid "Altruistic, selfless"
+msgstr "परमार्थ, स्‍वार्थहीन"
+
+msgid "Selfish"
+msgstr "स्‍वार्थी"
+
+msgid "Use a person"
+msgstr "शोषण गर्नु"
+
+msgid "Share with"
+msgstr "भाग गर्नु"
+
+msgid "Provide for, support"
+msgstr "प्रदान गर्नु, सहयोग"
+
+msgid "Care for"
+msgstr "ध्‍यान दिनु"
+
+msgid "Entrust to the care of"
+msgstr "रेखदेखको लागि जिम्‍मा दिनु"
+
+msgid "Meddle"
+msgstr "हस्‍तक्षेप गर्नु"
+
+msgid "Spoil"
+msgstr "बिग्रनु"
+
+msgid "Enter by force"
+msgstr "जबरजस्‍तिसाथ प्रवेश गर्नु"
+
+msgid "Kidnap"
+msgstr "अपहरण्‍"
+
+msgid "Cruel"
+msgstr "निर्दयी"
+
+msgid "Honest"
+msgstr "इमान्‍दार"
+
+msgid "Dishonest"
+msgstr "बेइमान"
+
+msgid "Faithful"
+msgstr "विश्‍वासी, इमानदार"
+
+msgid "Reliable"
+msgstr "विश्‍वासनीय"
+
+msgid "Unreliable"
+msgstr "भर पर्न नसकिने, अविश्‍वसनीय"
+
+msgid "Deceive"
+msgstr "छल गर्नु"
+
+msgid "Hypocrite"
+msgstr "कप्‍टी, पाखण्‍डी जन"
+
+msgid "Self-controlled"
+msgstr "संयम"
+
+msgid "Lack self-control"
+msgstr "संयमको कमी"
+
+msgid "Tidy"
+msgstr "असल आचरण भएको, क्रमबद्ध"
+
+msgid "Untidy"
+msgstr "अस्‍तव्‍यस्‍त"
+
+msgid "Mistake"
+msgstr "गल्‍ती गर्नु"
+
+msgid "Polite"
+msgstr "भद्र"
+
+msgid "Impolite"
+msgstr "अशिष्‍ट, असभ्‍य"
+
+msgid "Crazy"
+msgstr "ज्‍यादै उत्‍साही, उन्‍मत्त"
+
+msgid "Change behavior"
+msgstr "व्‍यवहार परिवर्तन"
+
+msgid "Conform"
+msgstr "मान्‍नु, स्‍वीकार गर्नु"
+
+msgid "Culture"
+msgstr "संस्‍कृति"
+
+msgid "Custom"
+msgstr "रिवाज"
+
+msgid "Habit"
+msgstr "आदत"
+
+msgid "Prosperity, trouble"
+msgstr "सफलता, संकट"
+
+msgid "Prosperity"
+msgstr "सफलता"
+
+msgid "Trouble"
+msgstr "संकट"
+
+msgid "Problem"
+msgstr "समस्‍या"
+
+msgid "Danger"
+msgstr "खतरा"
+
+msgid "Accident"
+msgstr "दुर्घटना"
+
+msgid "Disaster"
+msgstr "भीषण दुर्घटना, विपत्ति"
+
+msgid "Separate, alone"
+msgstr "छुट्टै, एकल"
+
+msgid "Suffer"
+msgstr "दु:ख बेहोर्नु"
+
+msgid "Respond to trouble"
+msgstr "संकटलाई सामना गर्नु"
+
+msgid "Brave"
+msgstr "आँट"
+
+msgid "Cowardice"
+msgstr "कातरता"
+
+msgid "Avoid"
+msgstr "संकट टार्नु, संकट छल्‍नु"
+
+msgid "Caution"
+msgstr "साबधानी"
+
+msgid "Solve a problem"
+msgstr "समस्‍या समाधान गर्नु"
+
+msgid "Endure"
+msgstr "सहनु"
+
+msgid "Survive"
+msgstr "बाँचिरहनु, जीवित रहनु"
+
+msgid "Respond to someone in trouble"
+msgstr "संकटमा कसैलाई प्रश्‍नोत्तर गर्नु"
+
+msgid "Mercy"
+msgstr "दया हुनु"
+
+msgid "Show sympathy, support"
+msgstr "साहनुभूति देखाउनु, सहयोग दिनु"
+
+msgid "Gentle"
+msgstr "सभ्‍य"
+
+msgid "Save from trouble"
+msgstr "संकटदेखि बचाउनु"
+
+msgid "Protect"
+msgstr "खतरादेखि बचाउनु"
+
+msgid "Free from bondage"
+msgstr "बन्‍धनदेखि स्‍वतन्‍त्र पार्नु"
+
+msgid "Relief"
+msgstr "उद्धार"
+
+msgid "Risk"
+msgstr "जोखिम"
+
+msgid "Chance"
+msgstr "मौका"
+
+msgid "Lucky"
+msgstr "भाग्‍यमानी"
+
+msgid "Unlucky"
+msgstr "अभाग्‍यवश"
+
+msgid "Authority"
+msgstr "अधिकार"
+
+msgid "Person in authority"
+msgstr "अधिकारमा मान्‍छे"
+
+msgid "Have authority"
+msgstr "अधिकार हुनु"
+
+msgid "Exercise authority"
+msgstr "अधिकार अभ्‍यास"
+
+msgid "Lead"
+msgstr "अगुवाइ"
+
+msgid "Command"
+msgstr "आज्ञा"
+
+msgid "Discipline, train"
+msgstr "अनुशासन गर्नु, तालिम दिनु"
+
+msgid "Appoint, delegate"
+msgstr "नियुक्त गर्नु, प्रतिनिधि सदस्‍य"
+
+msgid "Submit to authority"
+msgstr "अधिकारलाई सुम्‍पनु"
+
+msgid "Obey"
+msgstr "आज्ञा पालन गर्नु"
+
+msgid "Disobey"
+msgstr "आज्ञा पालन नगर्नु"
+
+msgid "Serve"
+msgstr "सेवा गर्नु"
+
+msgid "Slave"
+msgstr "कमारा, सेवक"
+
+msgid "Follow, be a disciple"
+msgstr "पछ्याउनु, चेला हुनु"
+
+msgid "Rebel against authority"
+msgstr "अधिकार विरुद्व विद्रोह"
+
+msgid "Independent"
+msgstr "स्‍वतन्‍त्र"
+
+msgid "Honor"
+msgstr "मान"
+
+msgid "Title, name of honor"
+msgstr "उपाधि, मानको नाम"
+
+msgid "Lack respect"
+msgstr "सम्‍मान कमी"
+
+msgid "Status"
+msgstr "अवस्‍था"
+
+msgid "High status"
+msgstr "उच्‍च अवस्‍था"
+
+msgid "Low status"
+msgstr "निम्‍न अवस्‍था"
+
+msgid "Government"
+msgstr "सरकार"
+
+msgid "Ruler"
+msgstr "सर्बोच्‍च अधिकार"
+
+msgid "King's family"
+msgstr "राजाको परिवार"
+
+msgid "Government official"
+msgstr "सरकारी कार्यालयको"
+
+msgid "Citizen"
+msgstr "नागरिक"
+
+msgid "Foreigner"
+msgstr "विदेशी"
+
+msgid "Government organization"
+msgstr "सरकारी संस्‍था"
+
+msgid "Governing body"
+msgstr "साशन गर्ने व्‍यक्तिहरू"
+
+msgid "Rule"
+msgstr "नियम"
+
+msgid "Subjugate"
+msgstr "वशमा राख्‍नु"
+
+msgid "Government functions"
+msgstr "सरकारका कार्यहरू"
+
+msgid "Police"
+msgstr "प्रहरी, सुरक्षा कर्मी"
+
+msgid "Arrest"
+msgstr "गिरफ्‍तारी"
+
+msgid "Informal justice"
+msgstr "अनौपचारिक न्‍याय"
+
+msgid "Diplomacy"
+msgstr "कुटनीति"
+
+msgid "Represent"
+msgstr "प्रतिनिधि"
+
+msgid "Election"
+msgstr "चुनाव"
+
+msgid "Politics"
+msgstr "राजनीतिक दल"
+
+msgid "Region"
+msgstr "प्रान्‍त"
+
+msgid "Country"
+msgstr "राज्‍य"
+
+msgid "City"
+msgstr "सहर"
+
+msgid "Countryside"
+msgstr "गाउँ"
+
+msgid "Community"
+msgstr "समुदाय"
+
+msgid "Law"
+msgstr "कानून"
+
+msgid "Laws"
+msgstr "कानून"
+
+msgid "Pass laws"
+msgstr "कानूनहरू पारित गर्नु"
+
+msgid "Break the law"
+msgstr "कानून तोड्‌नु"
+
+msgid "Court of law"
+msgstr "कानूनको अदालत"
+
+msgid "Legal personnel"
+msgstr "वैधानिक कर्मचारी वर्ग"
+
+msgid "Trial"
+msgstr "वैधानिक प्रणाली"
+
+msgid "Investigate a crime"
+msgstr "अपराध अनुसन्‍धान"
+
+msgid "Suspect"
+msgstr "शङ्का गर्नु"
+
+msgid "Accuse, confront"
+msgstr "दोष लगाउनु, सामना गर्नु"
+
+msgid "Defend against accusation"
+msgstr "बचाउनु"
+
+msgid "Witness, testify"
+msgstr "गवाही दिनु, साक्षी दिनु"
+
+msgid "Drop charges"
+msgstr "आदेशहरू निकाल्‍नु"
+
+msgid "Take oath"
+msgstr "किरिया खानु, शपथ खानु"
+
+msgid "Vindicate"
+msgstr "साँचो देखाउनु, समर्थन गर्नु"
+
+msgid "Judge, render a verdict"
+msgstr "न्‍यायधीश, इन्‍साफ प्रदान गर्ने"
+
+msgid "Acquit"
+msgstr "रिहा गर्नु"
+
+msgid "Condemn, find guilty"
+msgstr "निन्‍दा गर्नु, दोषी भेट्टाउनु"
+
+msgid "Fault"
+msgstr "दोष"
+
+msgid "Punish"
+msgstr "दण्‍ड दिनु"
+
+msgid "Reward"
+msgstr "इनाम"
+
+msgid "Fine"
+msgstr "जरिमाना"
+
+msgid "Imprison"
+msgstr "कैद हाल्‍नु"
+
+msgid "Execute"
+msgstr "ज्‍यान सजाय दिनु"
+
+msgid "Ostracize"
+msgstr "निष्‍कासन, निर्वासन"
+
+msgid "Pardon, release"
+msgstr "क्षमा, छुटकारा"
+
+msgid "Atone, restitution"
+msgstr "प्रायश्‍चित, क्षतिपुर्ति"
+
+msgid "Legal contract"
+msgstr "वैधानिक प्रतिज्ञा-पत्र"
+
+msgid "Covenant"
+msgstr "करार"
+
+msgid "Break a contract"
+msgstr "प्रतिज्ञा-पत्र तोड्‌नु"
+
+msgid "Justice"
+msgstr "न्‍याय"
+
+msgid "Impartial"
+msgstr "निष्‍पक्ष"
+
+msgid "Unfair"
+msgstr "अनुचित"
+
+msgid "Deserve"
+msgstr "योग्‍य हुनु"
+
+msgid "Discriminate, be unfair"
+msgstr "भेद, अन्‍याय हुनु"
+
+msgid "Act harshly"
+msgstr "रूखो तरीकाले काम गर्नु"
+
+msgid "Oppress"
+msgstr "थिचोमिचो गर्नु"
+
+msgid "Conflict"
+msgstr "झगडा, विरोध"
+
+msgid "Hostility"
+msgstr "बिरोध"
+
+msgid "Oppose"
+msgstr "रोक्‌"
+
+msgid "Fight"
+msgstr "लडाइँ गर्नु"
+
+msgid "Fight for something good"
+msgstr "असल कुराको लागी लड्‌नु"
+
+msgid "Fight against something bad"
+msgstr "खराब कुराको लागी लड्‌नु"
+
+msgid "Attack"
+msgstr "हमला"
+
+msgid "Ambush"
+msgstr "ढुकेर हमला गर्नु"
+
+msgid "Defend"
+msgstr "हमलादेखि बचाउनु"
+
+msgid "Revenge"
+msgstr "बद्‌ला लिनु"
+
+msgid "Riot"
+msgstr "कोलाहल"
+
+msgid "Betray"
+msgstr "विश्‍वासघात गर्नु"
+
+msgid "Violent"
+msgstr "हिंसा"
+
+msgid "Enemy"
+msgstr "शत्रु"
+
+msgid "War"
+msgstr "लडाइँ"
+
+msgid "Defeat"
+msgstr "हराउनु"
+
+msgid "Win"
+msgstr "विजय"
+
+msgid "Lose a fight"
+msgstr "हार"
+
+msgid "Surrender"
+msgstr "आत्‍म समर्पण गर्नु"
+
+msgid "Prisoner of war"
+msgstr "लडाइँको कैदी"
+
+msgid "Military organization"
+msgstr "फौजी संस्‍थाहरू"
+
+msgid "Army"
+msgstr "सेना"
+
+msgid "Navy"
+msgstr "जलसेना"
+
+msgid "Air force"
+msgstr "हवाई सेना"
+
+msgid "Soldier"
+msgstr "योद्धा"
+
+msgid "Spy"
+msgstr "जासुस गर्नु"
+
+msgid "Fort"
+msgstr "किल्‍ला"
+
+msgid "Weapon, shoot"
+msgstr "हतियार, हान्‍नु"
+
+msgid "Plunder"
+msgstr "लुट्‌नु"
+
+msgid "Peace"
+msgstr "शान्‍ति"
+
+msgid "Rebuke"
+msgstr "गाली गर्नु, धम्‍की दिनु"
+
+msgid "Make an appeal"
+msgstr "अनुरोध गर्नु"
+
+msgid "Appease"
+msgstr "शान्‍त गराउनु, फुल्‍याउनु"
+
+msgid "Negotiate"
+msgstr "सहमत हुनु"
+
+msgid "Renounce claim, concede"
+msgstr "दाबी अस्‍वीकार गर्नु, साँचो ठान्‍नु"
+
+msgid "Repent"
+msgstr "पश्‍चात्ताप गर्नु"
+
+msgid "Request forgiveness"
+msgstr "क्षमाको लागि अनुरोध"
+
+msgid "Forgive"
+msgstr "क्षमा गर्नु, दिनु"
+
+msgid "Make peace"
+msgstr "शान्‍ति बनाउनु"
+
+msgid "Stop fighting"
+msgstr "झगडा रोक्‍नु"
+
+msgid "Reconcile"
+msgstr "पुन:मिलन"
+
+msgid "Religion"
+msgstr "धर्म"
+
+msgid "God"
+msgstr "परमेश्‍वर"
+
+msgid "Supernatural being"
+msgstr "अलौकिक"
+
+msgid "Theology"
+msgstr "धर्मशास्‍त्र, ईश्‍वरज्ञान"
+
+msgid "Sacred writings"
+msgstr "धार्मिक (पवित्र) लेखहरू"
+
+msgid "Miracle, supernatural power"
+msgstr "परोपकारी अलौकिक शक्ति"
+
+msgid "Sorcery"
+msgstr "इन्‍द्रजाल, टुना"
+
+msgid "Demon possession"
+msgstr "भूतको प्रभुत्‍व"
+
+msgid "Bless"
+msgstr "आशिष दिनु"
+
+msgid "Curse"
+msgstr "श्राप"
+
+msgid "Destiny"
+msgstr "भाग्‍य, कर्म"
+
+msgid "Prophecy"
+msgstr "भविष्यवाणी"
+
+msgid "Omen, divination"
+msgstr "साइत, जोखना हेराइ"
+
+msgid "Practice religion"
+msgstr "धर्म सम्‍पादन"
+
+msgid "Devout"
+msgstr "भक्तिपूर्ण, भक्ति"
+
+msgid "Pray"
+msgstr "प्रार्थना गर्नु"
+
+msgid "Worship"
+msgstr "आराधना गर्नु"
+
+msgid "Religious ceremony"
+msgstr "धार्मिक समारोह"
+
+msgid "Offering, sacrifice"
+msgstr "भेटी चढाउनु, बलिदान"
+
+msgid "Religious purification"
+msgstr "धार्मिक शुद्धिकरण"
+
+msgid "Taboo"
+msgstr "प्रतिबन्‍ध"
+
+msgid "Salvation"
+msgstr "मुक्ति"
+
+msgid "Dedicate to religious use"
+msgstr "धार्मिक प्रयोगको लागि अर्पण गर्नु"
+
+msgid "Fasting"
+msgstr "उपवास"
+
+msgid "Heaven, hell"
+msgstr "स्‍वर्ग, नरक"
+
+msgid "Resurrection"
+msgstr "पुनरुत्‍थान"
+
+msgid "Religious organization"
+msgstr "धार्मिक संस्‍था"
+
+msgid "Religious person"
+msgstr "धार्मिक अभ्‍यासकर्ता"
+
+msgid "Christianity"
+msgstr "ईसाई धर्म"
+
+msgid "Islam"
+msgstr "इस्लाम धर्म"
+
+msgid "Hinduism"
+msgstr "हिन्‍दु धर्म"
+
+msgid "Buddhism"
+msgstr "बुद्ध धर्म"
+
+msgid "Judaism"
+msgstr "यहूदी धर्म"
+
+msgid "Animism"
+msgstr "सबै वस्‍तु (जस्‍तै: रुख, ढुङ्गा आदि)-मा आत्‍मा हुन्‍छ भन्‍ने विश्‍वास (प्रकृतिपूजक)"
+
+msgid "Religious things"
+msgstr "धार्मिक वस्तु"
+
+msgid "Idol"
+msgstr "मूर्ति"
+
+msgid "Place of worship"
+msgstr "आराधनाको ठाउँ"
+
+msgid "Irreligion"
+msgstr "अधार्मिक"
+
+msgid "Daily life"
+msgstr "दैनिक जीवन"
+
+msgid "Household equipment"
+msgstr "घरायसी समानहरू"
+
+msgid "Furniture"
+msgstr "फर्निचर (सज्जा सामग्रीहरू)"
+
+msgid "Table"
+msgstr "टेबल"
+
+msgid "Chair"
+msgstr "कूर्सी"
+
+msgid "Bed"
+msgstr "खाट, ओछ्यान, पलङ"
+
+msgid "Cabinet"
+msgstr "दराज"
+
+msgid "Household decoration"
+msgstr "घरायसी सजावटहरू"
+
+msgid "Food"
+msgstr "खाना"
+
+msgid "Food preparation"
+msgstr "खाना तयारी"
+
+msgid "Cooking methods"
+msgstr "खाना पकाउने विधिहरू"
+
+msgid "Steps in food preparation"
+msgstr "खाना तयार गर्नुका चरणहरू"
+
+msgid "Remove shell, skin"
+msgstr "बोक्रा ताछ्‌नु, छाला ताछ्‌नु"
+
+msgid "Pound in mortar and pestle"
+msgstr "ओखल र ढिकीमा पिस्‍नु"
+
+msgid "Grind flour"
+msgstr "पीठो पिंध्‍नु"
+
+msgid "Cooking utensil"
+msgstr "पकाउने उपकरणहरू"
+
+msgid "Food storage"
+msgstr "अन्‍न भण्‍डार गर्नु"
+
+msgid "Serve food"
+msgstr "खाना बाँड्‌नु"
+
+msgid "Eat"
+msgstr "खानु"
+
+msgid "Bite, chew"
+msgstr "टोक्‍नु, चपाउनु"
+
+msgid "Meal"
+msgstr "भोजन"
+
+msgid "Feast"
+msgstr "भोज"
+
+msgid "Manner of eating"
+msgstr "खाने तरीका"
+
+msgid "Hungry, thirsty"
+msgstr "भोक लाग्‍नु, तिर्खा लाग्‍नु"
+
+msgid "Satiated, full"
+msgstr "सन्‍तुष्‍ट हुनु, अघाउनु"
+
+msgid "Drink"
+msgstr "पिउनु"
+
+msgid "Eating utensil"
+msgstr "खाने भाँडा"
+
+msgid "Fast, not eat"
+msgstr "उपवास, नखानु"
+
+msgid "Types of food"
+msgstr "खानाको प्रकार"
+
+msgid "Food from plants"
+msgstr "वनस्‍पतिहरूबाट खाना"
+
+msgid "Food from seeds"
+msgstr "बियाँबाट खाना"
+
+msgid "Food from fruit"
+msgstr "फलफूलबाट खाना"
+
+msgid "Food from vegetables"
+msgstr "सागसब्‍जीबाट खाना"
+
+msgid "Food from leaves"
+msgstr "पातहरूबाट खाना"
+
+msgid "Food from roots"
+msgstr "जराहरूबाट खाना"
+
+msgid "Food from animals"
+msgstr "पशुबाट खाना"
+
+msgid "Meat"
+msgstr "मासु"
+
+msgid "Milk products"
+msgstr "दुग्ध उत्‍पादनहरू"
+
+msgid "Egg dishes"
+msgstr "अण्‍डा"
+
+msgid "Cooking ingredients"
+msgstr "पकाउने कुराका अंशहरू"
+
+msgid "Sugar"
+msgstr "चिनी"
+
+msgid "Salt"
+msgstr "नुन"
+
+msgid "Spice"
+msgstr "मसला"
+
+msgid "Leaven"
+msgstr "मर्चा, खमिर"
+
+msgid "Cooking oil"
+msgstr "खाने तेल"
+
+msgid "Prepared food"
+msgstr "तयारी खाना"
+
+msgid "Prohibited food"
+msgstr "निषेधित खाना"
+
+msgid "Beverage"
+msgstr "पेयपदार्थहरू"
+
+msgid "Alcoholic beverage"
+msgstr "मादक पर्दाथहरू"
+
+msgid "Alcohol preparation"
+msgstr "मादक पर्दाथ बनाउने काम"
+
+msgid "Drunk"
+msgstr "रक्‍स्‍याहा"
+
+msgid "Tobacco"
+msgstr "सुर्ती"
+
+msgid "Narcotic"
+msgstr "अम्‍मल, मादक"
+
+msgid "Stimulant"
+msgstr "उत्तेजक"
+
+msgid "Clothing"
+msgstr "लुगाफाटा"
+
+msgid "Men's clothing"
+msgstr "पुरूषहरूको लुगाफाटा"
+
+msgid "Women's clothing"
+msgstr "महिलाहरूको लुगाफाटा"
+
+msgid "Traditional clothing"
+msgstr "परम्‍परागत लुगाफाटा"
+
+msgid "Clothes for special occasions"
+msgstr "बिशेष अवसरको निम्‍ति लुगा"
+
+msgid "Clothes for special people"
+msgstr "बिशेष मानिसको निम्‍ति लुगा"
+
+msgid "Parts of clothing"
+msgstr "लुगाको भागहरू"
+
+msgid "Wear clothing"
+msgstr "लुगा लगाउनु"
+
+msgid "Naked"
+msgstr "नाङ्गो"
+
+msgid "Style of clothing"
+msgstr "पहिरनका शैली, ढाँचा"
+
+msgid "Adornment"
+msgstr "सिङ्‌गार पटार, गहना"
+
+msgid "Jewelry"
+msgstr "गहना"
+
+msgid "Cosmetics"
+msgstr "सौन्दर्य-प्रसाधन (श्रृङ्गार सामाग्रीहरू)"
+
+msgid "Care for hair"
+msgstr "कपालको रेखदेख गर्नु"
+
+msgid "Comb hair"
+msgstr "केश कोर्नु"
+
+msgid "Plait hair"
+msgstr "केश बाट्‌नु"
+
+msgid "Dye hair"
+msgstr "केश रङ्गाउनु"
+
+msgid "Hairstyle"
+msgstr "केशको शैली"
+
+msgid "Cut hair"
+msgstr "केश कटाइ"
+
+msgid "Shave"
+msgstr "खौरनु"
+
+msgid "Care for the teeth"
+msgstr "दाँतलाई ध्‍यान राख्‍नु"
+
+msgid "Anoint the body"
+msgstr "जिउमा तेलले मालिस गर्नु"
+
+msgid "Ritual scar"
+msgstr "धर्म विधि सम्‍बन्‍धि चिनो लगाउने काम"
+
+msgid "Circumcision"
+msgstr "खतना"
+
+msgid "Care for the fingernails"
+msgstr "औँलाका नङ्‌हरूको लागि रेखदेख"
+
+msgid "Fire"
+msgstr "आगो"
+
+msgid "Light a fire"
+msgstr "आगो बाल्‍नु वा सल्‍काउनु"
+
+msgid "Tend a fire"
+msgstr "आगो जोगाउनु"
+
+msgid "Extinguish a fire"
+msgstr "आगो निभाउनु"
+
+msgid "Burn"
+msgstr "बाल्‍नु, जल्नुा"
+
+msgid "What fires produce"
+msgstr "आगोले के उत्‍पन्‍न गराउँछ?"
+
+msgid "Fuel"
+msgstr "इन्‍धन"
+
+msgid "Fireplace"
+msgstr "चुलो"
+
+msgid "Cleaning"
+msgstr "सफा गर्नु"
+
+msgid "Clean, dirty"
+msgstr "सफा, फोहोर"
+
+msgid "Bathe"
+msgstr "नुहाउनु"
+
+msgid "Wash dishes"
+msgstr "थालहरू धुनु"
+
+msgid "Wash clothes"
+msgstr "लुगा धुनु"
+
+msgid "Sweep, rake"
+msgstr "बडार्नु, सोहोर्नु"
+
+msgid "Wipe, erase"
+msgstr "पुछ्‌नु, मेटाउनु"
+
+msgid "Sleep"
+msgstr "सुत्‍नु"
+
+msgid "Go to sleep"
+msgstr "सुत्‍नलाई जानु"
+
+msgid "Dream"
+msgstr "सपना"
+
+msgid "Wake up"
+msgstr "बिँउझनु"
+
+msgid "Manage a house"
+msgstr "घर व्‍यवस्‍थापन गर्नु"
+
+msgid "Live, stay"
+msgstr "बस्‍नु, रहनु"
+
+msgid "Work and occupation"
+msgstr "काम र पेशा"
+
+msgid "Work"
+msgstr "काम"
+
+msgid "Worker"
+msgstr "कामदारहरू"
+
+msgid "Expert"
+msgstr "विशेषज्ञ"
+
+msgid "Method"
+msgstr "तरिका"
+
+msgid "Try, attempt"
+msgstr "कोसिस गर्नु"
+
+msgid "Use"
+msgstr "प्रयोग"
+
+msgid "Useful"
+msgstr "उपयुक्‍त"
+
+msgid "Useless"
+msgstr "बेकामको"
+
+msgid "Available"
+msgstr "प्राप्‍य, प्राप्‍त"
+
+msgid "Use up"
+msgstr "प्रयोग भएको"
+
+msgid "Take care of something"
+msgstr "चीजको वास्‍था गर्नु"
+
+msgid "Waste"
+msgstr "काम नलाग्‍ने वस्‍तु, फयाँकिएको वस्‍तु"
+
+msgid "Work well"
+msgstr "राम्ररी काम गर्नु"
+
+msgid "Careful"
+msgstr "होशियार"
+
+msgid "Work hard"
+msgstr "कडा काम गर्नु"
+
+msgid "Busy"
+msgstr "व्‍यस्‍त"
+
+msgid "Power, force"
+msgstr "शक्ति, वल"
+
+msgid "Complete, finish"
+msgstr "पुरा गर्नु, सिध्‍याउनु"
+
+msgid "Ambitious"
+msgstr "महत्‍वकांक्षी"
+
+msgid "Work poorly"
+msgstr "कमजोर हिसाबले काम गर्नु"
+
+msgid "Careless, irresponsible"
+msgstr "असावधान, अनुत्तरदायि"
+
+msgid "Lazy"
+msgstr "अल्‍छी"
+
+msgid "Give up"
+msgstr "छाड्‌नु, त्‍याग्‍नु"
+
+msgid "Plan"
+msgstr "योजना"
+
+msgid "Arrange an event"
+msgstr "सम्‍मेलन आयोजना गर्नु"
+
+msgid "Cancel an event"
+msgstr "घटना रद्द गर्नु"
+
+msgid "Prepare"
+msgstr "तयारी"
+
+msgid "Prepare something for use"
+msgstr "प्रयोगको लागि केही कुरा तयार गर्नु"
+
+msgid "Effective"
+msgstr "प्रभावकारी"
+
+msgid "Efficient"
+msgstr "निपुर्ण, प्रभावशाली"
+
+msgid "Opportunity"
+msgstr "मौका"
+
+msgid "Difficult, impossible"
+msgstr "कठिन, असम्‍भव"
+
+msgid "Easy, possible"
+msgstr "सजिलो, सम्‍भावित"
+
+msgid "Succeed"
+msgstr "सफल हुनु"
+
+msgid "Fail"
+msgstr "असफल"
+
+msgid "Advantage"
+msgstr "फाइदा"
+
+msgid "Job satisfaction"
+msgstr "कार्य सन्‍तुष्‍टि"
+
+msgid "Unemployed, not working"
+msgstr "बेरोजगार"
+
+msgid "Made by hand"
+msgstr "हातले बनाएको"
+
+msgid "Artificial"
+msgstr "कृतिम"
+
+msgid "Experienced"
+msgstr "अनुभवी"
+
+msgid "Accustomed to"
+msgstr "बानी भएको हुनु"
+
+msgid "Agriculture"
+msgstr "कृषि"
+
+msgid "Growing crops"
+msgstr "बढिरहेको बाली"
+
+msgid "Growing grain"
+msgstr "अन्‍न उब्‍जाउनु"
+
+msgid "Growing rice"
+msgstr "धान उत्पादन"
+
+msgid "Growing wheat"
+msgstr "गहुँ उपार्जन"
+
+msgid "Growing maize"
+msgstr "मकै उब्‍जाउनु"
+
+msgid "Growing roots"
+msgstr "जरा (जमिनमुनि लगाइने तरकारीहरू) उमार्नु"
+
+msgid "Growing potatoes"
+msgstr "आलु उपार्जन"
+
+msgid "Growing cassava"
+msgstr "तरुल उमार्नु"
+
+msgid "Growing vegetables"
+msgstr "सब्‍जी उमार्नु"
+
+msgid "Growing fruit"
+msgstr "फल फलाउनु"
+
+msgid "Growing grapes"
+msgstr "अङ्गूर फलाउनु"
+
+msgid "Growing bananas"
+msgstr "केरा उमार्नु"
+
+msgid "Growing grass"
+msgstr "घाँस उमार्नु"
+
+msgid "Growing sugarcane"
+msgstr "उखु उमार्नु"
+
+msgid "Growing tobacco"
+msgstr "सुर्ती उमार्नु"
+
+msgid "Growing flowers"
+msgstr "फूल उमार्नु"
+
+msgid "Growing trees"
+msgstr "रूखहरू उमार्नु"
+
+msgid "Growing coconuts"
+msgstr "नरिवल उमार्नु"
+
+msgid "Growing coffee"
+msgstr "कफि उमार्नु"
+
+msgid "Land preparation"
+msgstr "जमिनको तयारी"
+
+msgid "Clear a field"
+msgstr "खेत सफा गर्नु"
+
+msgid "Plow a field"
+msgstr "खेत जोत्‍नु"
+
+msgid "Fertilize a field"
+msgstr "खेत मल्नु"
+
+msgid "Plant a field"
+msgstr "खेत रोप्‍नु"
+
+msgid "Tend a field"
+msgstr "खेतको रेखदेख गर्नु"
+
+msgid "Cut grass"
+msgstr "घाँस काट्‌नु"
+
+msgid "Uproot plants"
+msgstr "वनस्‍पतिहरू उखेल्‍नु"
+
+msgid "Irrigate"
+msgstr "सिंचाइ गर्नु"
+
+msgid "Trim plants"
+msgstr "वनस्‍पतिहरू छाँट्‌नु"
+
+msgid "Neglect plants"
+msgstr "तिरष्कृत वनस्‍पतिहरू"
+
+msgid "Harvest"
+msgstr "खेती, बाली जम्‍मा गर्नु"
+
+msgid "First fruits"
+msgstr "अगौटे (पहिलो) फलहरू"
+
+msgid "Crop failure"
+msgstr "बाली नहुनु"
+
+msgid "Gather wild plants"
+msgstr "जङ्गली वनस्‍पतिहरू बटुल्‍नु"
+
+msgid "Plant product"
+msgstr "विरुवा उत्‍पादन गर्नु"
+
+msgid "Process harvest"
+msgstr "खेती विधि"
+
+msgid "Winnow grain"
+msgstr "अन्‍न बत्ताउनु"
+
+msgid "Mill grain"
+msgstr "अन्‍न घट्ट"
+
+msgid "Thresh"
+msgstr "दाउनु, झाँट्‌नु"
+
+msgid "Store the harvest"
+msgstr "खेती भण्डार गर्नु"
+
+msgid "Farm worker"
+msgstr "किसानहरू"
+
+msgid "Agricultural tool"
+msgstr "कृषि उपकरणहरू"
+
+msgid "Farmland"
+msgstr "खेतीयोग्य जमिन"
+
+msgid "Animal husbandry"
+msgstr "पशु पालन"
+
+msgid "Domesticated animal"
+msgstr "घरपालुवा जनावर"
+
+msgid "Cattle"
+msgstr "गाईवस्तु"
+
+msgid "Sheep"
+msgstr "भेडा"
+
+msgid "Goat"
+msgstr "बाख्रा"
+
+msgid "Pig"
+msgstr "सुँगुर"
+
+msgid "Dog"
+msgstr "कुकुरा"
+
+msgid "Cat"
+msgstr "बिरालो"
+
+msgid "Beast of burden"
+msgstr "भारी बोक्‍ने जन्‍तु"
+
+msgid "Tend herds in fields"
+msgstr "खेतमा हेरबिचार गर्नु"
+
+msgid "Milk"
+msgstr "दुध"
+
+msgid "Butcher, slaughter"
+msgstr "कसाइ, काटमार गर्नु"
+
+msgid "Wool production"
+msgstr "ऊन उत्‍पादन"
+
+msgid "Poultry raising"
+msgstr "घरेलु पंक्षी पाल्‍नु"
+
+msgid "Chicken"
+msgstr "कुखुरा"
+
+msgid "Animal products"
+msgstr "पशु उत्‍पादन"
+
+msgid "Veterinary science"
+msgstr "पशु चिकित्‍साविज्ञान"
+
+msgid "Animal diseases"
+msgstr "पशु रोगहरू"
+
+msgid "Castrate animal"
+msgstr "पशुलाई खसी पार्नु"
+
+msgid "Hunt and fish"
+msgstr "सिकार खेल्‍नु र माछा मार्नु"
+
+msgid "Hunt"
+msgstr "सिकार खेल्‍नु"
+
+msgid "Track an animal"
+msgstr "जनावरलाई पछ्याउनु"
+
+msgid "Trap"
+msgstr "पासो"
+
+msgid "Hunting birds"
+msgstr "चराहरूको सिकार खेल्‍ने"
+
+msgid "Beekeeping"
+msgstr "मौरी पालन"
+
+msgid "Fishing"
+msgstr "माछा मार्नु"
+
+msgid "Fish with net"
+msgstr "जालले माछा मार्नु"
+
+msgid "Fish with hooks"
+msgstr "बल्‍छीले माछा मार्नु"
+
+msgid "Fishing equipment"
+msgstr "माछा मार्ने समान"
+
+msgid "Things done to animals"
+msgstr "जनावरहरूलाई गरिने कार्यहरू"
+
+msgid "Working with buildings"
+msgstr "भवनहरूमा काम गर्नु"
+
+msgid "Building"
+msgstr "भवन"
+
+msgid "House"
+msgstr "घर"
+
+msgid "Types of houses"
+msgstr "घरहरूको प्रकार"
+
+msgid "Land, property"
+msgstr "व्‍यक्तिगत जमिनको सानो खण्‍ड, सम्‍पत्ति"
+
+msgid "Yard"
+msgstr "घरको बाहिर"
+
+msgid "Fence, wall"
+msgstr "बार, प्रखाल"
+
+msgid "Parts of a building"
+msgstr "भवनका भागहरू"
+
+msgid "Wall"
+msgstr "पर्खाल"
+
+msgid "Roof"
+msgstr "छत, छाना"
+
+msgid "Floor"
+msgstr "तला"
+
+msgid "Door"
+msgstr "ढोका"
+
+msgid "Window"
+msgstr "झ्‍याल"
+
+msgid "Foundation"
+msgstr "जग"
+
+msgid "Room"
+msgstr "कोठा"
+
+msgid "Floor, story"
+msgstr "तला"
+
+msgid "Building materials"
+msgstr "भवनको भौतिक वस्‍तुहरू"
+
+msgid "Building equipment and maintenance"
+msgstr "भवनको सरसमान र संरक्षण"
+
+msgid "Infrastructure"
+msgstr "भौतिक संरचना"
+
+msgid "Road"
+msgstr "सडक"
+
+msgid "Boundary"
+msgstr "सिमाना, साँध"
+
+msgid "Occupation"
+msgstr "पेशाहरू"
+
+msgid "Working with cloth"
+msgstr "लुगाको काम गर्नु"
+
+msgid "Cloth"
+msgstr "लुगा"
+
+msgid "Spinning thread"
+msgstr "धागो कात्‍नु"
+
+msgid "Knitting"
+msgstr "बुन्‍नु"
+
+msgid "Weaving cloth"
+msgstr "लुगा बुन्‍नु"
+
+msgid "Working with minerals"
+msgstr "खनिज-पर्दाथहरूको काम गर्नु"
+
+msgid "Mining"
+msgstr "धातु झिक्‍न भुईं खन्‍नु"
+
+msgid "Smelting"
+msgstr "खार्नु, गलाउनु"
+
+msgid "Working with metal"
+msgstr "धातुको काम गर्नु"
+
+msgid "Working with clay"
+msgstr "माटोको काम गर्नु"
+
+msgid "Working with glass"
+msgstr "काँचको काम गर्नु"
+
+msgid "Working with oil and gas"
+msgstr "तेल र ग्‍याँसको काम गर्नु"
+
+msgid "Working with stone"
+msgstr "ढुङ्गाको काम गर्नु"
+
+msgid "Working with bricks"
+msgstr "ईंटको काम गर्नु"
+
+msgid "Working with chemicals"
+msgstr "रसायनिक पर्दाथहरूको काम गर्नु"
+
+msgid "Explode"
+msgstr "पड्‌किनु"
+
+msgid "Working with wood"
+msgstr "काठको काम गर्नु"
+
+msgid "Lumbering"
+msgstr "काठ काट्‌नु"
+
+msgid "Wood"
+msgstr "काठ"
+
+msgid "Working with paper"
+msgstr "कागजको काम गर्नु"
+
+msgid "Crafts"
+msgstr "सीप, कला"
+
+msgid "Cordage"
+msgstr "धागो"
+
+msgid "Weaving baskets and mats"
+msgstr "डोको र गुन्द्री बुन्‍नु"
+
+msgid "Working with leather"
+msgstr "छालाको काम गर्नु"
+
+msgid "Working with bone"
+msgstr "हाडको काम गर्नु"
+
+msgid "Art"
+msgstr "कला"
+
+msgid "Draw, paint"
+msgstr "खिच्‍नु, रंगाउनु"
+
+msgid "Photography"
+msgstr "फोटोविज्ञान"
+
+msgid "Sculpture"
+msgstr "मूर्तिकला, शिल्‍पकला"
+
+msgid "Working with land"
+msgstr "जमिनको काम गर्नु"
+
+msgid "Working with water"
+msgstr "पानीको काम गर्नु"
+
+msgid "Plumber"
+msgstr "पानीको नालाको काम गर्ने"
+
+msgid "Conveying water"
+msgstr "पानी लैजाने काम"
+
+msgid "Controlling water"
+msgstr "पानी नियन्‍त्रण गर्नु"
+
+msgid "Working in the sea"
+msgstr "समुद्रमा काम गर्नु"
+
+msgid "Working with machines"
+msgstr "मेशिनहरूसित काम गर्नु"
+
+msgid "Working with electricity"
+msgstr "बिजुलीसित काम गर्नु"
+
+msgid "Tool"
+msgstr "सामान (उपकरण)"
+
+msgid "Cutting tool"
+msgstr "हातहतियार (काट्ने सामान)"
+
+msgid "Poking tool"
+msgstr "घोच्‍ने समान"
+
+msgid "Digging tool"
+msgstr "खन्‍ने हातहतियार"
+
+msgid "Pounding tool"
+msgstr "पिस्‍ने समान"
+
+msgid "Carrying tool"
+msgstr "बोक्‍ने समान"
+
+msgid "Lifting tool"
+msgstr "उठाउने वा उचाल्‍ने यन्‍त्र"
+
+msgid "Fastening tool"
+msgstr "फित्ता"
+
+msgid "Holding tool"
+msgstr "समात्‍ने वा पक्रने यन्‍त्र"
+
+msgid "Container"
+msgstr "चीजबीज राख्‍ने भाँडो"
+
+msgid "Bag"
+msgstr "झोला"
+
+msgid "Sheath"
+msgstr "म्‍यान, दाप"
+
+msgid "Parts of tools"
+msgstr "सामानहरूको भागहरू"
+
+msgid "Machine"
+msgstr "यन्‍त्र"
+
+msgid "Finance"
+msgstr "अर्थ-प्रबन्‍ध"
+
+msgid "Have wealth"
+msgstr "धन हुनु"
+
+msgid "Own, possess"
+msgstr "प्रभुत्‍व जमाउनु"
+
+msgid "Rich"
+msgstr "धनी"
+
+msgid "Poor"
+msgstr "गरिब"
+
+msgid "Store wealth"
+msgstr "दौलत संग्रह गर्नु"
+
+msgid "Possession, property"
+msgstr "सम्‍पत्ति"
+
+msgid "Accumulate wealth"
+msgstr "दौलत सन्‍चय गर्नु"
+
+msgid "Produce wealth"
+msgstr "दौलत बनाउनु"
+
+msgid "Make profit"
+msgstr "नाफा बनाउनु"
+
+msgid "Lose wealth"
+msgstr "धन गुमाउनु"
+
+msgid "Frugal"
+msgstr "कम खर्च गर्ने, किफायती"
+
+msgid "Greedy"
+msgstr "लोभी"
+
+msgid "Collect"
+msgstr "बटुल्‍नु"
+
+msgid "Earn"
+msgstr "कमाउनु"
+
+msgid "Share wealth"
+msgstr "दौलत बाँड्‌नु"
+
+msgid "Give, donate"
+msgstr "दिनु, चन्‍दा दिनु"
+
+msgid "Generous"
+msgstr "दानी, उदार"
+
+msgid "Stingy"
+msgstr "कन्‍जूस"
+
+msgid "Beg"
+msgstr "बिन्‍ती गर्नु"
+
+msgid "Financial transaction"
+msgstr "आर्थिक कारोबारहरू"
+
+msgid "Buy"
+msgstr "किन्‍नु"
+
+msgid "Sell"
+msgstr "बेच्‍नु"
+
+msgid "Price"
+msgstr "मोल राख्‍नु"
+
+msgid "Expensive"
+msgstr "महङ्गो"
+
+msgid "Cheap"
+msgstr "सस्‍तो"
+
+msgid "Free of charge"
+msgstr "सित्तैको, मोलविनाको"
+
+msgid "Bargain"
+msgstr "किनबेचको सम्‍झौता"
+
+msgid "Pay"
+msgstr "ऋण आदि तिर्नु"
+
+msgid "Hire, rent"
+msgstr "ज्‍याला, भाडा"
+
+msgid "Spend"
+msgstr "पैसा खर्च गर्नु"
+
+msgid "Store, marketplace"
+msgstr "भण्‍डार, बजार"
+
+msgid "Exchange, trade"
+msgstr "विनिमय, व्यापार"
+
+msgid "Borrow"
+msgstr "उधारो लिनु"
+
+msgid "Lend"
+msgstr "सापट दिनु"
+
+msgid "Give pledge, bond"
+msgstr "धितो राखेको चीज, धितो राख्‍नु"
+
+msgid "Owe"
+msgstr "ऋणी हुनु"
+
+msgid "Repay debt"
+msgstr "कर्जा फर्काउनु, तिर्नु"
+
+msgid "Credit"
+msgstr "जम्‍मा गर्नु, हिसाबको जम्‍मा"
+
+msgid "Money"
+msgstr "पैसा"
+
+msgid "Monetary units"
+msgstr "मुद्रा सम्‍बन्‍धि एकाईहरू"
+
+msgid "Accounting"
+msgstr "हिसाब गर्नु"
+
+msgid "Tax"
+msgstr "कर"
+
+msgid "Dishonest financial practices"
+msgstr "आर्थिक कामहरू बेइमान गर्नु"
+
+msgid "Steal"
+msgstr "चोर्नु"
+
+msgid "Cheat"
+msgstr "छल गर्नु"
+
+msgid "Extort money"
+msgstr "पैसा बलपूर्वक प्राप्‍त गर्नु, खोस्‍नु"
+
+msgid "Take by force"
+msgstr "बलपूर्वक लिनु"
+
+msgid "Bribe"
+msgstr "घुस"
+
+msgid "Smuggle"
+msgstr "चोरी व्यापार"
+
+msgid "Business organization"
+msgstr "ब्‍यापार संस्‍था"
+
+msgid "Management"
+msgstr "व्‍यवस्‍था"
+
+msgid "Work for someone"
+msgstr "परिश्रम"
+
+msgid "Marketing"
+msgstr "किनबेच"
+
+msgid "Commerce"
+msgstr "वाणिज्‍य"
+
+msgid "Economics"
+msgstr "अर्थशास्‍त्र"
+
+msgid "Insurance"
+msgstr "बिमा"
+
+msgid "Physical actions"
+msgstr "शारीरिक कार्यहरू"
+
+msgid "Posture"
+msgstr "चाल, भाव"
+
+msgid "Stand"
+msgstr "उभिनु"
+
+msgid "Sit"
+msgstr "बस्‍नु"
+
+msgid "Lie down"
+msgstr "ढल्‍कनु"
+
+msgid "Kneel"
+msgstr "घुँडा टेक्‍नु"
+
+msgid "Bow"
+msgstr "निहुरिनु"
+
+msgid "Lean"
+msgstr "झुकाउ, ढल्‍कनु"
+
+msgid "Straight posture"
+msgstr "सोझो चाल"
+
+msgid "Relaxed posture"
+msgstr "विश्राम गरेको चाल"
+
+msgid "Bend down"
+msgstr "तल झुक्‍नु"
+
+msgid "Move a part of the body"
+msgstr "शरीरको भाग चल्‍नु"
+
+msgid "Move"
+msgstr "चल्‍नु"
+
+msgid "Manner of movement"
+msgstr "चालचलनको ढाँचा"
+
+msgid "Walk"
+msgstr "हिँड्‌नु"
+
+msgid "Run"
+msgstr "कुद्‌नु"
+
+msgid "Crawl"
+msgstr "बामे सर्नु"
+
+msgid "Jump"
+msgstr "उफ्रनु"
+
+msgid "Move quickly"
+msgstr "छिटो चल्‍नु"
+
+msgid "Move slowly"
+msgstr "बिस्‍तारै चल्‍नु"
+
+msgid "Wander"
+msgstr "घुम्‍नु"
+
+msgid "Graceful"
+msgstr "मनोहर"
+
+msgid "Clumsy"
+msgstr "अनौठो, बेढङ्गको"
+
+msgid "Walk with difficulty"
+msgstr "ठेस लाग्‍नु, लरखराउनु"
+
+msgid "Slip, slide"
+msgstr "चिप्‍लनु"
+
+msgid "Steady, unsteady"
+msgstr "स्‍थिर, अस्‍थिर"
+
+msgid "Balance"
+msgstr "सन्‍तुलन"
+
+msgid "Move noisily"
+msgstr "हल्ला गर्दै चल्‍नु"
+
+msgid "Move in a direction"
+msgstr "दिशामा चल्‍नु"
+
+msgid "Move forward"
+msgstr "अगाडि चल्‍नु"
+
+msgid "Move back"
+msgstr "पछाडि चल्‍नु"
+
+msgid "Move sideways"
+msgstr "छेउतिर चल्‍नु"
+
+msgid "Move up"
+msgstr "माथि चल्‍नु"
+
+msgid "Move down"
+msgstr "तल सर्नु"
+
+msgid "Fall"
+msgstr "झर्नु"
+
+msgid "Turn"
+msgstr "फर्किनु, घुम्‍नु"
+
+msgid "Move in a circle"
+msgstr "चक्रमा चल्‍नु"
+
+msgid "Move back and forth"
+msgstr "अगाडि र पछाडि चल्‍नु"
+
+msgid "Move straight without turning"
+msgstr "नफर्की सीधा चल्‍नु"
+
+msgid "Move toward something"
+msgstr "केही वस्‍तुतिर चल्‍नु"
+
+msgid "Move away"
+msgstr "टाढा चल्‍नु"
+
+msgid "Go"
+msgstr "जानु"
+
+msgid "Come"
+msgstr "आउनु"
+
+msgid "Leave"
+msgstr "छोड्‌नु"
+
+msgid "Arrive"
+msgstr "पुग्‍नु"
+
+msgid "Move in"
+msgstr "सर्नु"
+
+msgid "Move out"
+msgstr "बाहिर सर्नु"
+
+msgid "Move past, over, through"
+msgstr "अतित वित्‍नु"
+
+msgid "Return"
+msgstr "फर्कनु"
+
+msgid "Travel"
+msgstr "यात्रा"
+
+msgid "Travel by land"
+msgstr "जमिन भएर यात्रा गर्नु"
+
+msgid "Vehicle"
+msgstr "बाहन"
+
+msgid "Railroad"
+msgstr "रेलको लिक"
+
+msgid "Travel by water"
+msgstr "पानी भएर यात्रा गर्नु"
+
+msgid "Boat"
+msgstr "डुङ्गा, नाउ"
+
+msgid "Swim"
+msgstr "पौडिनु"
+
+msgid "Dive"
+msgstr "डुबुल्‍की मार्नु, डुबुल्‍की"
+
+msgid "Fly"
+msgstr "आकाश भएर यात्रा गर्नु"
+
+msgid "Travel in space"
+msgstr "नक्षत्रमा यात्रा गर्नु"
+
+msgid "Move to a new house"
+msgstr "नयाँ घरमा सर्नु"
+
+msgid "Way, route"
+msgstr "बाटो, सडक, गोरेटो, घोडेटो, दिसा,दुरी"
+
+msgid "Lose your way"
+msgstr "बाटो हराउनु"
+
+msgid "Map"
+msgstr "नक्‍सा"
+
+msgid "Accompany"
+msgstr "सम्‍मिलित हुनु"
+
+msgid "Go first"
+msgstr "पहिले जानु"
+
+msgid "Follow"
+msgstr "पछ्याउनु"
+
+msgid "Guide"
+msgstr "बाटो देखाउनु"
+
+msgid "Move together"
+msgstr "सँगै हिड्‌नु"
+
+msgid "Pursue"
+msgstr "भाग्‍नु, पछ्याउनु"
+
+msgid "Catch, capture"
+msgstr "पकड्‌नु,"
+
+msgid "Prevent from moving"
+msgstr "दमन गर्ने काम"
+
+msgid "Escape"
+msgstr "भाग्‍नु, फुत्‍कनु"
+
+msgid "Set free"
+msgstr "मुक्त गर्नु"
+
+msgid "Not moving"
+msgstr "नचल्‍नु"
+
+msgid "Stop moving"
+msgstr "चल्‍न छोड्‌नु"
+
+msgid "Stay, remain"
+msgstr "रहनु, पछि छोडिनु"
+
+msgid "Wait"
+msgstr "पर्खनु"
+
+msgid "Send someone"
+msgstr "कसैलाई पठाउनु"
+
+msgid "Move something"
+msgstr "चल्‍नु"
+
+msgid "Carry"
+msgstr "बोक्‍नु"
+
+msgid "Throw"
+msgstr "फ्‍याँक्‍नु"
+
+msgid "Catch"
+msgstr "समात्‍नु"
+
+msgid "Shake"
+msgstr "हल्‍लाउनु"
+
+msgid "Knock over"
+msgstr "ढक्‌ढकाउनु"
+
+msgid "Set upright"
+msgstr "ठाडो उभ्‍याउनु"
+
+msgid "Move something in a direction"
+msgstr "कनै दिशामा केही वस्‍तु चल्‍नु"
+
+msgid "Put in front"
+msgstr "अगाडि लाउनु"
+
+msgid "Put in back"
+msgstr "पछाडि लाउनु"
+
+msgid "Put aside"
+msgstr "छेउ लाउनु"
+
+msgid "Lift"
+msgstr "उचाल्‍नु, उठाउनु"
+
+msgid "Hang"
+msgstr "झुन्‍ड्याउनु"
+
+msgid "Lower something"
+msgstr "केही वस्‍तु होचो पार्नु"
+
+msgid "Put in"
+msgstr "भित्र हाल्‍नु"
+
+msgid "Take something out of something"
+msgstr "बाहिर निकाल्‍नु"
+
+msgid "Pull"
+msgstr "तान्‍नु"
+
+msgid "Push"
+msgstr "घचेट्‌नु, ठेल्‍नु"
+
+msgid "Take somewhere"
+msgstr "कतै लानु"
+
+msgid "Take something from somewhere"
+msgstr "केही वस्‍तु हटाउनु"
+
+msgid "Return something"
+msgstr "केही वस्‍तु फर्कनु"
+
+msgid "Send"
+msgstr "पठाउनु"
+
+msgid "Chase away"
+msgstr "टाढा खेद्‌नु"
+
+msgid "Drive along"
+msgstr "खेद्‌नु"
+
+msgid "Handle something"
+msgstr "केही वस्‍तु हातमा लिनु"
+
+msgid "Touch"
+msgstr "छुनु"
+
+msgid "Pick up"
+msgstr "बटुल्‍नु, उठाउनु"
+
+msgid "Put down"
+msgstr "तल हाल्‍नु, झार्नु"
+
+msgid "Hold"
+msgstr "अँठ्याउनु"
+
+msgid "Actions of the hand"
+msgstr "हातको कार्यहरू"
+
+msgid "Support"
+msgstr "समर्थन"
+
+msgid "Extend"
+msgstr "फैलिनु"
+
+msgid "Turn something"
+msgstr "केही वस्‍तु फर्कनु"
+
+msgid "Open"
+msgstr "खुल्‍ला, खोल्‍नु"
+
+msgid "Shut, close"
+msgstr "बन्‍द गर्नु"
+
+msgid "Block, dam up"
+msgstr "छेक्‍नु, बार्नु"
+
+msgid "Limit"
+msgstr "सीमा, हद"
+
+msgid "Cover"
+msgstr "छोप्‍नु"
+
+msgid "Uncover"
+msgstr "उघार्नु"
+
+msgid "Wrap"
+msgstr "पट्याउनु, बेर्नु"
+
+msgid "Spread, smear"
+msgstr "फैलाउनु, दल्‍नु"
+
+msgid "Transport"
+msgstr "यातायात"
+
+msgid "Have, be with"
+msgstr "हुनु"
+
+msgid "Give, hand to"
+msgstr "दिनु"
+
+msgid "Receive"
+msgstr "प्राप्‍त गर्नु"
+
+msgid "Get"
+msgstr "पाउनु"
+
+msgid "Distribute"
+msgstr "बितरण गर्नु"
+
+msgid "Keep something"
+msgstr "केही वस्‍तु राख्‍नु"
+
+msgid "Leave something"
+msgstr "केही वस्‍तु छोड्‌नु"
+
+msgid "Throw away"
+msgstr "फाल्‍नु"
+
+msgid "Not have"
+msgstr "नहुनु"
+
+msgid "Arrange"
+msgstr "प्रबन्ध गर्नु, आयोजन गर्नु"
+
+msgid "Gather"
+msgstr "जम्‍मा गर्नु"
+
+msgid "Separate, scatter"
+msgstr "छुट्टै, छरपस्‍ट हुनु"
+
+msgid "Include"
+msgstr "समाबेश गर्नु"
+
+msgid "Special"
+msgstr "विशेष"
+
+msgid "Join, attach"
+msgstr "जोड्‌नु"
+
+msgid "Link, connect"
+msgstr "सम्‍बन्‍ध"
+
+msgid "Stick together"
+msgstr "खप्‍टिएको हुनु"
+
+msgid "Add to something"
+msgstr "केही जोड्‌नु"
+
+msgid "Remove, take apart"
+msgstr "हटाउनु"
+
+msgid "Mix"
+msgstr "मिसाउनु"
+
+msgid "Pure, unmixed"
+msgstr "शुद्ध, नमिसाएको"
+
+msgid "Tie"
+msgstr "बाँध्‍नु"
+
+msgid "Rope, string"
+msgstr "डोरी, फित्ता, तार"
+
+msgid "Tangle"
+msgstr "गाँठो पार्नु"
+
+msgid "Organize"
+msgstr "व्‍यवस्‍था"
+
+msgid "Disorganized"
+msgstr "विघटन गर्नु"
+
+msgid "Substitute"
+msgstr "बदली, प्रतिस्‍थापन"
+
+msgid "Multiple things moving"
+msgstr "धेरै चीजहरू चल्‍नु"
+
+msgid "Simple, complicated"
+msgstr "साधरण, जटिल"
+
+msgid "Put"
+msgstr "राख्‍नु"
+
+msgid "Load, pile"
+msgstr "भारी, थुप्रो"
+
+msgid "Fill, cover"
+msgstr "भर्नु, छोप्‍नु"
+
+msgid "Hide"
+msgstr "लुकाउनु"
+
+msgid "Search"
+msgstr "खोज्‍नु"
+
+msgid "Find"
+msgstr "भेट्टाउनु"
+
+msgid "Lose, misplace"
+msgstr "हराउनु"
+
+msgid "Physical impact"
+msgstr "शारीरिक धक्‍का"
+
+msgid "Hit"
+msgstr "हिर्काउनु, प्रहार गर्नु"
+
+msgid "Aim at a target"
+msgstr "निशानामा ताक्‍नु"
+
+msgid "Kick"
+msgstr "लात्ताले हान्‍नु"
+
+msgid "Press"
+msgstr "थिच्‍नु"
+
+msgid "Rub"
+msgstr "दल्‍नु"
+
+msgid "Grind"
+msgstr "पिंध्‍नु"
+
+msgid "Mark"
+msgstr "निशाना लाउनु"
+
+msgid "Divide into pieces"
+msgstr "टुक्राहरूमा बिभाजन गर्नु"
+
+msgid "Break"
+msgstr "तोड्‌नु"
+
+msgid "Crack"
+msgstr "चर्किनु"
+
+msgid "Cut"
+msgstr "काट्‌नु"
+
+msgid "Tear, rip"
+msgstr "फाट्‌नु, उधार्नु"
+
+msgid "Make hole, opening"
+msgstr "प्वाल बनाउने, खोल्ने"
+
+msgid "Dig"
+msgstr "खन्‍नु"
+
+msgid "Break, wear out"
+msgstr "तोड्‌नु, बिग्रदै जानु"
+
+msgid "Damage"
+msgstr "बिगार्नु"
+
+msgid "Tear down"
+msgstr "फटाउनु"
+
+msgid "Destroy"
+msgstr "बिगार्नु"
+
+msgid "Repair"
+msgstr "मर्मत गर्नु"
+
+msgid "States"
+msgstr "अवस्‍थाहरू"
+
+msgid "Quantity"
+msgstr "परिमाण"
+
+msgid "Number"
+msgstr "अङ्क"
+
+msgid "Cardinal numbers"
+msgstr "मूलभूत अङ्कहरू"
+
+msgid "One"
+msgstr "एक"
+
+msgid "Two"
+msgstr "दुई"
+
+msgid "Ordinal numbers"
+msgstr "क्रमसूचक अङ्कहरू"
+
+msgid "Number of times"
+msgstr "समयको संख्या"
+
+msgid "Multiples"
+msgstr "गुणाहरू"
+
+msgid "Numbered group"
+msgstr "संख्यात्मक गणना"
+
+msgid "Fraction"
+msgstr "भिन्‍न"
+
+msgid "Number series"
+msgstr "अंक श्रृंखला वा क्रमबद्ध"
+
+msgid "Count"
+msgstr "गणना"
+
+msgid "Mathematics"
+msgstr "गणित"
+
+msgid "Add numbers"
+msgstr "जोड"
+
+msgid "Subtract numbers"
+msgstr "घटाउ"
+
+msgid "Multiply numbers"
+msgstr "गुणन"
+
+msgid "Divide numbers"
+msgstr "भाग"
+
+msgid "Plural"
+msgstr "बहुवचन"
+
+msgid "Many, much"
+msgstr "धेरै"
+
+msgid "Few, little"
+msgstr "अलिकति"
+
+msgid "Group of things"
+msgstr "चीजहरूको समूह"
+
+msgid "More"
+msgstr "धेरै"
+
+msgid "Less"
+msgstr "कम"
+
+msgid "Increase"
+msgstr "वृद्धि"
+
+msgid "Decrease"
+msgstr "घट्‌नु"
+
+msgid "All"
+msgstr "सबै"
+
+msgid "Some"
+msgstr "केही"
+
+msgid "None, nothing"
+msgstr "कुनै पनि"
+
+msgid "Both"
+msgstr "दुवै"
+
+msgid "Most, almost all"
+msgstr "प्राय, सबै"
+
+msgid "Most, least"
+msgstr "धेरै, थोरै"
+
+msgid "Almost"
+msgstr "झण्‍डै"
+
+msgid "Only"
+msgstr "मात्र"
+
+msgid "Exact"
+msgstr "दुरुस्‍त"
+
+msgid "Approximate"
+msgstr "अन्‍दाजी"
+
+msgid "Average"
+msgstr "सालाखाला वा औसत"
+
+msgid "Whole, complete"
+msgstr "सारा"
+
+msgid "Part"
+msgstr "भाग"
+
+msgid "Piece"
+msgstr "टुक्रा"
+
+msgid "Enough"
+msgstr "प्रशस्‍त हुनु"
+
+msgid "Extra"
+msgstr "फाल्‍तु हुनु"
+
+msgid "Lack"
+msgstr "कमी हुनु"
+
+msgid "Need"
+msgstr "आवश्‍यक"
+
+msgid "Remain, remainder"
+msgstr "बाँकी रहेको"
+
+msgid "Full"
+msgstr "पूर्ण, पूरा"
+
+msgid "Empty"
+msgstr "खाली"
+
+msgid "Big"
+msgstr "ठूलो"
+
+msgid "Small"
+msgstr "सानो"
+
+msgid "Long"
+msgstr "लामो"
+
+msgid "Short, not long"
+msgstr "छोटो"
+
+msgid "Tall"
+msgstr "अग्‍लो"
+
+msgid "Short, not tall"
+msgstr "होंचो"
+
+msgid "Thick"
+msgstr "बाक्‍लो"
+
+msgid "Thin thing"
+msgstr "पातलो"
+
+msgid "Fat person"
+msgstr "मोटो"
+
+msgid "Thin person"
+msgstr "पातलो मान्‍छे"
+
+msgid "Wide"
+msgstr "फराकिलो"
+
+msgid "Narrow"
+msgstr "संकुचित"
+
+msgid "Big area"
+msgstr "ठूलो क्षेत्र"
+
+msgid "Big container, volume"
+msgstr "ग्रन्‍थ"
+
+msgid "Distance"
+msgstr "दुरी"
+
+msgid "Far"
+msgstr "टाढा"
+
+msgid "Near"
+msgstr "नजीक"
+
+msgid "High"
+msgstr "उच्‍च"
+
+msgid "Low"
+msgstr "होचो"
+
+msgid "Deep, shallow"
+msgstr "गहिरो"
+
+msgid "Fit, size"
+msgstr "उपयुक्त, आकार"
+
+msgid "Tight"
+msgstr "कसिएको"
+
+msgid "Loose"
+msgstr "खुकुलो"
+
+msgid "Wedged in, stuck"
+msgstr "किला ठोकेको, घुसार्नु"
+
+msgid "Measure"
+msgstr "नाप्‍नु"
+
+msgid "Weigh"
+msgstr "तौल"
+
+msgid "Heavy"
+msgstr "गह्रौँ"
+
+msgid "Light in weight"
+msgstr "तौलमा हलुका"
+
+msgid "Quality"
+msgstr "गुण"
+
+msgid "Shape"
+msgstr "आकार"
+
+msgid "Point, dot"
+msgstr "बिन्‍दु"
+
+msgid "Line"
+msgstr "रेखा"
+
+msgid "Straight"
+msgstr "सीधा"
+
+msgid "Flat"
+msgstr "च्‍याप्‍टो"
+
+msgid "Horizontal"
+msgstr "तेर्सो"
+
+msgid "Vertical"
+msgstr "ठाडो"
+
+msgid "Leaning, sloping"
+msgstr "झुकाउ, भिरालो"
+
+msgid "Bend"
+msgstr "बाङ्गो"
+
+msgid "Roll up"
+msgstr "बेह्रिएको"
+
+msgid "Twist, wring"
+msgstr "बटार्नु, निचोर्नु"
+
+msgid "Fold"
+msgstr "पट्‌याउनु"
+
+msgid "Round"
+msgstr "गोलो"
+
+msgid "Concave"
+msgstr "अवतल वा नतोदर (बीच खण्ड भित्रिएको वा पेट भित्र पसेको)"
+
+msgid "Convex"
+msgstr "बाहिरतिर उठेको वा उन्नतोदर"
+
+msgid "Hollow"
+msgstr "खुकुलो"
+
+msgid "Square"
+msgstr "वर्ग क्षेत्र"
+
+msgid "Pattern, design"
+msgstr "नमूना"
+
+msgid "Symmetrical"
+msgstr "एकैनासे"
+
+msgid "Stretch"
+msgstr "फैलाउनु, पसार्नु"
+
+msgid "Texture"
+msgstr "बुनोट, रचना"
+
+msgid "Smooth"
+msgstr "चिल्‍लो"
+
+msgid "Rough"
+msgstr "खस्रो"
+
+msgid "Sharp"
+msgstr "तिखो, धारिलो"
+
+msgid "Pointed"
+msgstr "औल्याँएको"
+
+msgid "Blunt"
+msgstr "भुत्ते"
+
+msgid "Furrow"
+msgstr "हलोको रेखा, सीता"
+
+msgid "Light"
+msgstr "चम्किलो"
+
+msgid "Shine"
+msgstr "चम्‍कनु"
+
+msgid "Light source"
+msgstr "प्रकाश स्रोत"
+
+msgid "Bright"
+msgstr "उज्‍यालो"
+
+msgid "Dark"
+msgstr "अँध्‍यारो"
+
+msgid "Shadow"
+msgstr "छाया"
+
+msgid "Color"
+msgstr "वर्ण वा रङ्ग"
+
+msgid "White"
+msgstr "सेतो"
+
+msgid "Black"
+msgstr "कालो"
+
+msgid "Gray"
+msgstr "खरानी रङ्ग"
+
+msgid "Colors of the spectrum"
+msgstr "देखिएको वस्‍तुको रङ्गहरू"
+
+msgid "Animal color, marking"
+msgstr "पशु रङ्ग, चिनो लाउनु"
+
+msgid "Change color"
+msgstr "रङ्ग थप्‍नु, रङ्गाउनु"
+
+msgid "Multicolored"
+msgstr "धेरैथरि रङ्गाएको"
+
+msgid "Shiny"
+msgstr "चम्‍किलो"
+
+msgid "Hot"
+msgstr "गर्मी"
+
+msgid "Cold"
+msgstr "चिसो"
+
+msgid "Type, kind"
+msgstr "प्रकार"
+
+msgid "Nature, character"
+msgstr "स्‍वभाव, चरित्र"
+
+msgid "Compare"
+msgstr "दाँज्‍नु"
+
+msgid "Same"
+msgstr "उस्‍तै"
+
+msgid "Like, similar"
+msgstr "उस्‍तै, मिल्‍दोजुल्‍दो"
+
+msgid "Different"
+msgstr "भिन्‍दै"
+
+msgid "Other"
+msgstr "अरू"
+
+msgid "Various"
+msgstr "विविध"
+
+msgid "Opposite"
+msgstr "उल्टो"
+
+msgid "Common"
+msgstr "साझा"
+
+msgid "Usual"
+msgstr "प्रचलित वा पाच्य"
+
+msgid "Unusual"
+msgstr "अप्रचलित वा अपाच्य"
+
+msgid "Unique"
+msgstr "अद्वितीय वस्‍तु"
+
+msgid "Strange"
+msgstr "अनौठो"
+
+msgid "Pattern, model"
+msgstr "आदर्श, नमूना"
+
+msgid "Imitate"
+msgstr "अनुकरण गर्नु"
+
+msgid "Copy"
+msgstr "नक्‍कल"
+
+msgid "Made of, material"
+msgstr "वस्तु"
+
+msgid "Strong, brittle"
+msgstr "बलियो, काफर"
+
+msgid "Hard, firm"
+msgstr "कडा, खँदिलो"
+
+msgid "Stiff, flexible"
+msgstr "कठिन, नम्र"
+
+msgid "Dense"
+msgstr "बाक्‍लो"
+
+msgid "Soft, flimsy"
+msgstr "नरम, निर्वल"
+
+msgid "Good"
+msgstr "राम्रो"
+
+msgid "Bad"
+msgstr "नराम्रो"
+
+msgid "Better"
+msgstr "अझ राम्रो, उत्‍कृष्‍ट"
+
+msgid "Worse"
+msgstr "खराब, अझ कम्‍ति"
+
+msgid "Perfect"
+msgstr "पूर्ण"
+
+msgid "Mediocre"
+msgstr "मामुली, मझौला"
+
+msgid "Important"
+msgstr "महत्‍वपूर्ण"
+
+msgid "Basic"
+msgstr "आधारभूत"
+
+msgid "Improve"
+msgstr "सुधार गर्नु"
+
+msgid "Right, proper"
+msgstr "सुहाउँदो"
+
+msgid "Wrong, unsuitable"
+msgstr "गल्‍ती, अयोग्‍य"
+
+msgid "Convenient"
+msgstr "सुविधाजनक"
+
+msgid "Compatible"
+msgstr "उपयुक्‍त"
+
+msgid "Decay"
+msgstr "कुहुनु, सड्‌नु"
+
+msgid "Rust"
+msgstr "खिया"
+
+msgid "Blemish"
+msgstr "खोट, दाग"
+
+msgid "Garbage"
+msgstr "मैला, फोहोर"
+
+msgid "Preserve"
+msgstr "कुहिन नदिनु, सुरक्षित राख्‍नु"
+
+msgid "Value"
+msgstr "महत्‍व"
+
+msgid "Decorated"
+msgstr "सिंगारिएको"
+
+msgid "Simple, plain"
+msgstr "साधरण, मामुली"
+
+msgid "Glory"
+msgstr "महिमा"
+
+msgid "Time"
+msgstr "समय"
+
+msgid "Period of time"
+msgstr "समयको अवधि"
+
+msgid "Calendar"
+msgstr "पात्रो"
+
+msgid "Day"
+msgstr "दिन"
+
+msgid "Night"
+msgstr "रात"
+
+msgid "Yesterday, today, tomorrow"
+msgstr "हिजो, आज, भोली"
+
+msgid "Time of the day"
+msgstr "दिनको समय"
+
+msgid "Week"
+msgstr "हप्‍ता, साता"
+
+msgid "Days of the week"
+msgstr "हप्‍ताका दिनहरू"
+
+msgid "Month"
+msgstr "महिना"
+
+msgid "Months of the year"
+msgstr "वर्षका महिनाहरू"
+
+msgid "Season"
+msgstr "मौसम"
+
+msgid "Year"
+msgstr "वर्ष"
+
+msgid "Era"
+msgstr "युग"
+
+msgid "Special days"
+msgstr "विशेष दिनहरू"
+
+msgid "Take time"
+msgstr "समय लिनु"
+
+msgid "A short time"
+msgstr "छोटो समय"
+
+msgid "A long time"
+msgstr "लामो समय"
+
+msgid "Forever"
+msgstr "सधैँ"
+
+msgid "Temporary"
+msgstr "अस्‍थायी"
+
+msgid "Indefinite time"
+msgstr "अनिश्‍चित समय"
+
+msgid "Telling time"
+msgstr "समय बताउनु"
+
+msgid "Plan a time"
+msgstr "कहिलेकाहीँ, अवसर"
+
+msgid "Clock, watch"
+msgstr "घडी"
+
+msgid "Relative time"
+msgstr "सम्‍बन्‍धित समय"
+
+msgid "Order, sequence"
+msgstr "अनुक्रम"
+
+msgid "Series"
+msgstr "श्रृंखला"
+
+msgid "First"
+msgstr "पहिलो"
+
+msgid "Next"
+msgstr "अर्को"
+
+msgid "Last"
+msgstr "अन्‍तिम"
+
+msgid "Regular"
+msgstr "नियमित"
+
+msgid "Alternate"
+msgstr "विकल्‍प"
+
+msgid "Before"
+msgstr "अगाडि"
+
+msgid "After"
+msgstr "पछि"
+
+msgid "At the same time"
+msgstr "उही समयमा"
+
+msgid "During"
+msgstr "मा"
+
+msgid "Right time"
+msgstr "ठीक समय"
+
+msgid "Early"
+msgstr "चाँडो"
+
+msgid "On time"
+msgstr "ठीक समयमा, बेलामा"
+
+msgid "Late"
+msgstr "ढिलो"
+
+msgid "Delay"
+msgstr "ढिलाइ"
+
+msgid "Postpone"
+msgstr "पछि सार्नु"
+
+msgid "Aspectual time"
+msgstr "अवस्‍था अनुसारको समय"
+
+msgid "Start something"
+msgstr "केही चीजको शुरुवात"
+
+msgid "Beginning"
+msgstr "आदि वा शुरु"
+
+msgid "Stop something"
+msgstr "रोक्‍नु, अन्‍त्‍य"
+
+msgid "End"
+msgstr "अन्‍त्य"
+
+msgid "Until"
+msgstr "सम्‍म"
+
+msgid "Since, from"
+msgstr "देखि"
+
+msgid "Past"
+msgstr "अतीत"
+
+msgid "Recently"
+msgstr "एकछिन अघि"
+
+msgid "Present"
+msgstr "वर्तमान"
+
+msgid "Now"
+msgstr "अहिले"
+
+msgid "Future"
+msgstr "भविष्‍यत्‌"
+
+msgid "Soon"
+msgstr "चाँडो"
+
+msgid "Not yet"
+msgstr "अझसम्‍म (नभएको)"
+
+msgid "Eventually"
+msgstr "आखिर"
+
+msgid "Immediately"
+msgstr "तुरुन्तै"
+
+msgid "Age"
+msgstr "उमेर"
+
+msgid "Young"
+msgstr "जवान"
+
+msgid "Old, not young"
+msgstr "बुढो"
+
+msgid "New"
+msgstr "नयाँ"
+
+msgid "Old, not new"
+msgstr "पुरानो"
+
+msgid "Modern"
+msgstr "आधुनिक"
+
+msgid "Old fashioned"
+msgstr "पुरानो ढाँचा"
+
+msgid "Once"
+msgstr "एकपल्‍ट"
+
+msgid "Again"
+msgstr "फेरि"
+
+msgid "Sometimes"
+msgstr "कहिलेकहीँ"
+
+msgid "Often"
+msgstr "बारम्‍बार"
+
+msgid "All the time"
+msgstr "हर समय"
+
+msgid "Every time"
+msgstr "प्रत्‍येक समय"
+
+msgid "Never"
+msgstr "कहिल्‍यै"
+
+msgid "Continue, persevere"
+msgstr "लगातार, टिक्‍नु"
+
+msgid "Interrupt"
+msgstr "हस्‍तक्षेप गर्नु"
+
+msgid "Start again"
+msgstr "फेरि प्रारम्‍भ हुनु"
+
+msgid "Interval"
+msgstr "मध्यान्तर"
+
+msgid "Speed"
+msgstr "वेग"
+
+msgid "Quick"
+msgstr "छिटो"
+
+msgid "Slow"
+msgstr "बिस्‍तारै, ढिलो"
+
+msgid "Sudden"
+msgstr "अचानक"
+
+msgid "Location"
+msgstr "स्‍थान"
+
+msgid "Here, there"
+msgstr "यहाँ, त्यहाँ"
+
+msgid "In front of"
+msgstr "अगाडि"
+
+msgid "Behind"
+msgstr "पछाडि"
+
+msgid "Beside"
+msgstr "छेउ"
+
+msgid "Around"
+msgstr "वरिपरि"
+
+msgid "Between"
+msgstr "बीचमा"
+
+msgid "On"
+msgstr "मा, माथि"
+
+msgid "Above"
+msgstr "माथि"
+
+msgid "Under, below"
+msgstr "मुनि, तल"
+
+msgid "Inside"
+msgstr "भित्र"
+
+msgid "Out, outside"
+msgstr "बाहिर"
+
+msgid "Touching, contact"
+msgstr "सम्‍पर्क"
+
+msgid "Next to"
+msgstr "निकटतम"
+
+msgid "Across"
+msgstr "पारी"
+
+msgid "Indefinite location"
+msgstr "अनिश्‍चत ठाउँ"
+
+msgid "Direction"
+msgstr "दिशा"
+
+msgid "Forward"
+msgstr "अगाडि सर्नु"
+
+msgid "Backward"
+msgstr "पछाडि सर्नु"
+
+msgid "Right, left"
+msgstr "दाहिने, देब्रे"
+
+msgid "Up"
+msgstr "माथि"
+
+msgid "Down"
+msgstr "तल"
+
+msgid "Away from"
+msgstr "देखि, बाट"
+
+msgid "Towards"
+msgstr "तिर, देखि टाढा"
+
+msgid "North, south, east, west"
+msgstr "उत्तर, दक्षिण,पूर्ब, पश्‍चिम"
+
+msgid "Be at a place"
+msgstr "ठाउँमा हुनु"
+
+msgid "Absent"
+msgstr "अनुपस्‍थित"
+
+msgid "Area"
+msgstr "क्षेत्र"
+
+msgid "Vicinity"
+msgstr "छेउ-छाउ"
+
+msgid "Occupy an area"
+msgstr "क्षेत्र ओगट्‌नु"
+
+msgid "Space, room"
+msgstr "खाली ठाउँ कोठा"
+
+msgid "Interval, space"
+msgstr "बीच-बीचमा आउने स्‍थान, खाली ठाउँ"
+
+msgid "Spatial relations"
+msgstr "विशेष सम्‍बन्‍धहरू"
+
+msgid "Contain"
+msgstr "सङ्ग्रहण"
+
+msgid "Parts of things"
+msgstr "(वस्तु) का भागहरू"
+
+msgid "Front"
+msgstr "सामु"
+
+msgid "Back"
+msgstr "पछाडि"
+
+msgid "Top"
+msgstr "शिखर"
+
+msgid "Bottom"
+msgstr "पिँध"
+
+msgid "Side"
+msgstr "छेउ"
+
+msgid "Inner part"
+msgstr "भित्री भाग"
+
+msgid "Outer part"
+msgstr "बाहिरी भाग"
+
+msgid "Middle"
+msgstr "मध्‍य"
+
+msgid "Edge"
+msgstr "धार"
+
+msgid "End, point"
+msgstr "अन्‍त्य"
+
+msgid "Grammar"
+msgstr "व्‍याकरण"
+
+msgid "General words"
+msgstr "सामान्‍य शब्‍दहरू"
+
+msgid "Be"
+msgstr "हुनु"
+
+msgid "Exist"
+msgstr "अस्तित्ववाचक"
+
+msgid "Become, change state"
+msgstr "हुनु, स्‍थिति परिवर्तन"
+
+msgid "Have, of"
+msgstr "को"
+
+msgid "Attribution"
+msgstr "गुणवाचक"
+
+msgid "Do"
+msgstr "गर्नु"
+
+msgid "Happen"
+msgstr "हुनु, घट्नु"
+
+msgid "React, respond"
+msgstr "प्रतिक्रिया गर्नु, उत्तर दिनु"
+
+msgid "Create"
+msgstr "सृजना गर्नु"
+
+msgid "Design"
+msgstr "आकार"
+
+msgid "Make"
+msgstr "बनाउनु"
+
+msgid "Change something"
+msgstr "केही कुरा परिवर्तन गर्नु"
+
+msgid "Event propositions"
+msgstr "घटना तर्कवाक्यहरू"
+
+msgid "Thing"
+msgstr "चिज वा वस्तु"
+
+msgid "Physical, non-physical"
+msgstr "भौतिक, अभौतिक"
+
+msgid "Situation"
+msgstr "अवस्‍था"
+
+msgid "General adjectives"
+msgstr "सामान्‍य विशेषणहरू"
+
+msgid "General adverbs"
+msgstr "सामान्‍य क्रियाविशेषणहरू"
+
+msgid "Part of speech"
+msgstr "शव्दवर्ग"
+
+msgid "Adjectives"
+msgstr "बिशेषणहरू"
+
+msgid "Adverbs"
+msgstr "क्रिया बिशेषणहरू"
+
+msgid "Pronouns"
+msgstr "सर्वनामहरू"
+
+msgid "Reflexive pronouns"
+msgstr "आत्मवोधक सर्वनामहरू"
+
+msgid "Indefinite pronouns"
+msgstr "अनिश्‍चयवाचक सर्वनामहरू"
+
+msgid "Relative pronouns"
+msgstr "सम्‍बन्‍धवाचक सर्वनामहरू"
+
+msgid "Question words"
+msgstr "प्रश्‍नार्थक शब्‍दहरू"
+
+msgid "Demonstrative pronouns"
+msgstr "दर्शकवाचक सर्वनामहरू"
+
+msgid "Personally"
+msgstr "व्‍यक्तिगत रुपले"
+
+msgid "Prepositions, postpositions"
+msgstr "विभक्ति, नामयोगी"
+
+msgid "Conjunctions"
+msgstr "संयोजक"
+
+msgid "Phrase conjunctions"
+msgstr "पदावली संयोजकहरू"
+
+msgid "Clause conjunctions"
+msgstr "उपवाक्‍य संयोजकहरू"
+
+msgid "Sentence conjunctions"
+msgstr "वाक्‍यगत संयोजकहरु"
+
+msgid "Particles"
+msgstr "निपात"
+
+msgid "Classifiers"
+msgstr "कोटिकार"
+
+msgid "Interjections"
+msgstr "बिष्मयादीवोधक"
+
+msgid "Idiophones"
+msgstr "अनुकरणात्मक (शब्द)"
+
+msgid "Affixes"
+msgstr "प्रत्‍ययहरू"
+
+msgid "Verb affixes"
+msgstr "क्रिया प्रत्ययहरू"
+
+msgid "Noun affixes"
+msgstr "नाम प्रत्ययहरू"
+
+msgid "Derivational affixes"
+msgstr "व्युत्पादक प्रत्ययहरू"
+
+msgid "Very"
+msgstr "धेरै"
+
+msgid "Degree"
+msgstr "अक्षांस"
+
+msgid "To a large degree"
+msgstr "ठूलो अक्षांस (मात्रा)"
+
+msgid "To a small degree"
+msgstr "थोरै मात्रा"
+
+msgid "To a larger degree"
+msgstr "ठूलो मात्रा (लाई)"
+
+msgid "To a smaller degree"
+msgstr "सानो मात्रा (लाई)"
+
+msgid "Completely"
+msgstr "पूर्णरुपले"
+
+msgid "Partly"
+msgstr "आंशिकरूपले"
+
+msgid "Do intensely"
+msgstr "सघन गराई"
+
+msgid "Attribution of an attribute"
+msgstr "विशेषकको विशेषता"
+
+msgid "Semantic constituents related to verbs"
+msgstr "क्रियासँग सम्वन्धित आर्थिक घटकहरू"
+
+msgid "Tense and aspect"
+msgstr "काल र पक्ष"
+
+msgid "Tense"
+msgstr "काल"
+
+msgid "Aspect--dynamic verbs"
+msgstr "पक्ष--गतिशिल क्रियाहरू"
+
+msgid "Aspect--stative verbs"
+msgstr "पक्ष--अवस्‍था क्रियाहरू"
+
+msgid "Relational tenses"
+msgstr "सम्‍बन्‍धित कालहरू"
+
+msgid "Agent-oriented modalities"
+msgstr "कर्तामा आधारित भावहरू"
+
+msgid "Can"
+msgstr "सक्‍नु"
+
+msgid "Can't"
+msgstr "नसक्‍नु"
+
+msgid "Necessary"
+msgstr "आवश्‍यक"
+
+msgid "Moods"
+msgstr "भाव"
+
+msgid "Imperative"
+msgstr "आज्ञार्थक"
+
+msgid "Hortative"
+msgstr "विन्तीबोधक"
+
+msgid "Interrogative"
+msgstr "प्रश्‍नवाचक"
+
+msgid "Epistemic moods"
+msgstr "मानसिक ज्ञान जनाउने भावहरू"
+
+msgid "Certainly, definitely"
+msgstr "निश्‍चय, पक्‍का"
+
+msgid "Sure"
+msgstr "निश्‍चय"
+
+msgid "Probably"
+msgstr "सम्‍भाब्‍य"
+
+msgid "Possible"
+msgstr "सम्‍भव"
+
+msgid "Uncertain"
+msgstr "अनिश्‍चित"
+
+msgid "Unsure"
+msgstr "अनिश्‍चय"
+
+msgid "Think so"
+msgstr "मान्नु"
+
+msgid "Maybe"
+msgstr "हुन सक्‍छ"
+
+msgid "Seem"
+msgstr "बोध हुनु, थाहा हुनु"
+
+msgid "Just, almost not"
+msgstr "झण्‍डै होइन"
+
+msgid "Don't think so, doubt it"
+msgstr "नसोचेको"
+
+msgid "Impossible"
+msgstr "असम्‍भव"
+
+msgid "Evidentials"
+msgstr "प्रत्यक्षताहरू"
+
+msgid "Evaluator"
+msgstr "मूल्‍याङ्कर्ता"
+
+msgid "Yes"
+msgstr "अँ, हो"
+
+msgid "No, not"
+msgstr "निषेध (हैन, छैन)"
+
+msgid "Markers expecting an affirmative answer"
+msgstr "सकारात्‍मक उत्तरको आशा गरिएका चिन्‍हहरू"
+
+msgid "Markers expecting a negative answer"
+msgstr "नकारात्‍मक उत्तरको आशा गरिएका चिन्‍हहरू"
+
+msgid "Subordinating particles"
+msgstr "आश्रयक"
+
+msgid "Adverbial clauses"
+msgstr "क्रियाविशेषण उपवाक्यहरू"
+
+msgid "Case"
+msgstr "कारक"
+
+msgid "Primary cases"
+msgstr "प्राथमिक कारकहरू"
+
+msgid "Beneficiary of an event"
+msgstr "कुनै घटनाको फाइदा"
+
+msgid "Instrument"
+msgstr "साधन"
+
+msgid "Means"
+msgstr "साधन"
+
+msgid "Way, manner"
+msgstr "ढङ्ग"
+
+msgid "Attendant circumstances"
+msgstr "अनुचरको अवस्‍थाहरू"
+
+msgid "Spatial location of an event"
+msgstr "कुनै घटनाको स्‍थान"
+
+msgid "Source (of movement)"
+msgstr "(गतिको) स्रोत"
+
+msgid "Path (of movement)"
+msgstr "(गतिको) बाटो"
+
+msgid "Goal (of movement)"
+msgstr "(गतिको) लक्ष्‍य"
+
+msgid "Origin (of a person)"
+msgstr "(व्यक्तिको) उत्‍पत्ति"
+
+msgid "Semantically similar events"
+msgstr "अर्थगतरूपले उस्तै घटनाहरू"
+
+msgid "Together"
+msgstr "सँगसँगै"
+
+msgid "With, be with"
+msgstr "सँगै"
+
+msgid "With, do with someone"
+msgstr "सँग"
+
+msgid "Each other"
+msgstr "एक-आपस"
+
+msgid "In groups"
+msgstr "समूहमा"
+
+msgid "Patient-related cases"
+msgstr "कर्मसम्‍बन्‍धि कुराहरू"
+
+msgid "Beneficiary (of a patient)"
+msgstr "(कर्मको) फाइदा"
+
+msgid "Recipient (of a patient)"
+msgstr "(कर्मको) प्राप्‍ति"
+
+msgid "With (a patient)"
+msgstr "(कर्मको) सहभागिता"
+
+msgid "Connected with, related"
+msgstr "तार्किक सम्‍बन्‍धहरू"
+
+msgid "Coordinate relations"
+msgstr "सह-सम्बन्धहरू"
+
+msgid "And, also"
+msgstr "र, पनि"
+
+msgid "Or, either"
+msgstr "वा, अथवा"
+
+msgid "Association"
+msgstr "सम्वन्ध"
+
+msgid "Combinative relation"
+msgstr "सह‍-सम्‍बन्‍ध"
+
+msgid "But"
+msgstr "तर"
+
+msgid "Except"
+msgstr "अपबाद"
+
+msgid "Instead"
+msgstr "सट्‌टामा"
+
+msgid "Dissociation"
+msgstr "विघटन"
+
+msgid "Distribution"
+msgstr "वितरण"
+
+msgid "Equivalence"
+msgstr "समानता"
+
+msgid "Dependency relations"
+msgstr "आश्रित सम्‍बन्‍धहरू"
+
+msgid "Derivation"
+msgstr "व्युत्पादन"
+
+msgid "Limitation of topic"
+msgstr "विषयको सीमा"
+
+msgid "In general"
+msgstr "सामान्‍य"
+
+msgid "Relations involving correspondences"
+msgstr "अन्तरसम्वन्धसँग सहभागी सम्‍बन्‍धहरू"
+
+msgid "Basis"
+msgstr "आधार"
+
+msgid "Cause"
+msgstr "कारण"
+
+msgid "Reason"
+msgstr "कारण"
+
+msgid "Without cause"
+msgstr "बिनाकारण"
+
+msgid "Result"
+msgstr "परिणाम"
+
+msgid "Without result"
+msgstr "परिणामविना"
+
+msgid "Purpose"
+msgstr "उद्देश्‍य"
+
+msgid "Without purpose"
+msgstr "उद्देश्‍यविना"
+
+msgid "Condition"
+msgstr "संकेतार्थक (वाक्‍यहरू)"
+
+msgid "Concession"
+msgstr "घटी-घटाउ"
+
+msgid "Discourse markers"
+msgstr "संकथनका चिन्हकहरू"
+
+msgid "Markers of transition"
+msgstr "संक्रमणका चिन्हकहरू"
+
+msgid "Markers of emphasis"
+msgstr "जोड दिने चिन्हहरू"
+
+msgid "Prompters of attention"
+msgstr "आकर्षणका उत्प्रेरकहरू"
+
+msgid "Markers of direct address"
+msgstr "सोझै संबोधनका चिन्हकहरू"
+
+msgid "Markers of identificational and explanatory clauses"
+msgstr "परिचयात्मक र ब्‍याख्‍यात्‍मक उपवाक्यहरूका चिन्हकहरू"
+
+msgid "Markers of focus"
+msgstr "केन्द्रकका चिन्हकहरू"
+
+msgid "Hesitation fillers"
+msgstr "हिचकिचाहट हुँदा आउने शब्दहरू"
+
+msgid "Honorifics"
+msgstr "आदरार्थीहरू"
+
+msgid "Name"
+msgstr "(व्‍यक्तिवाचक) नामहरू"
+
+msgid "Name of a person"
+msgstr "व्‍यक्तिगत नामहरू"
+
+msgid "Personal names"
+msgstr "व्यक्तिवाचक नामहरू"
+
+msgid "Family names"
+msgstr "पारिवारिक नामहरू"
+
+msgid "Clan names"
+msgstr "कुल नामहरू"
+
+msgid "Tribal names"
+msgstr "जातीय नामहरू"
+
+msgid "Names of languages"
+msgstr "भाषाका नामहरू"
+
+msgid "Nickname"
+msgstr "बोलाउने नाम"
+
+msgid "Terms of endearment"
+msgstr "प्रेमानुरागको शब्दहरू"
+
+msgid "Name of a place"
+msgstr "ठाउँको नामहरू"
+
+msgid "Names of countries"
+msgstr "देशका नामहरू"
+
+msgid "Names of regions"
+msgstr "प्रान्‍तहरूको नामहरू"
+
+msgid "Names of cities"
+msgstr "शहरहरूको नामहरू"
+
+msgid "Names of streets"
+msgstr "सडकका नामहरू"
+
+msgid "Names of heavenly bodies"
+msgstr "स्‍वर्गीय भागका नामहरू"
+
+msgid "Names of continents"
+msgstr "महादेशहरूको नामहरू"
+
+msgid "Names of mountains"
+msgstr "हिमालका नामहरू"
+
+msgid "Names of oceans and lakes"
+msgstr "तालहरू र सागरहरूको नामहरू"
+
+msgid "Names of rivers"
+msgstr "नदीहरूको नामहरू"
+
+msgid "Name of a thing"
+msgstr "चीजको नाउँ"
+
+msgid "Names of animals"
+msgstr "जनावरहरूको नामहरू"
+
+msgid "Names of buildings"
+msgstr "भवनका नामहरू"
+
+# @ sil_dictionary
+#: include/dictionary-search.php:173
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr "खोजी गरिएको अवधि छोटोपनको कारण, आंशिक खोजी टुटियो।"
+
+# @ sil_dictionary
+#: include/dictionary-search.php:175
+msgid "Click here to include searching through partial words."
+msgstr "आंशिक शब्दबाट खोजी गर्नको लागि यहाँ क्लिक गर्नुहोस्।"
+
+#: include/infrastructure.php:114
+msgid "Webonary"
+msgstr ""
+
+#: include/infrastructure.php:121
+msgid ""
+"Webonary provides the admininstration tools and framework for using "
+"WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
+"target=\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:122
+msgid "Import Data"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:123
+msgid ""
+"You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
+"importer</a> by clicking on Import under the Tools menu."
+msgstr ""
+
+#: include/infrastructure.php:124
+msgid ""
+"Each dictionary entry is stored in a \"post.\" You will find the entries in "
+"the Posts menu."
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:126
+msgid "Delete Data"
+msgstr ""
+
+#: include/infrastructure.php:131
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:135
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:145
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:146
+msgid "Delete"
+msgstr ""
+
+#: include/infrastructure.php:148
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/infrastructure.php:150
+msgid "Settings"
+msgstr ""
+
+#: include/infrastructure.php:152
+msgid "Publication status:"
+msgstr ""
+
+#: include/infrastructure.php:154
+msgid "no status set"
+msgstr ""
+
+#: include/infrastructure.php:155
+msgid "Rough draft"
+msgstr ""
+
+#: include/infrastructure.php:156
+msgid "Self-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:157
+msgid "Community-reviewed draft"
+msgstr ""
+
+#: include/infrastructure.php:158
+msgid "Consultant approved"
+msgstr ""
+
+#: include/infrastructure.php:159
+msgid "Finished (no formal publication)"
+msgstr ""
+
+#: include/infrastructure.php:160
+msgid "Formally published"
+msgstr ""
+
+#: include/infrastructure.php:163
+msgid "Search Options:"
+msgstr ""
+
+#: include/infrastructure.php:167
+msgid "Always include searching through partial words."
+msgstr ""
+
+#: include/infrastructure.php:180
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/infrastructure.php:190
+msgid "Vernacular Language Code:"
+msgstr ""
+
+#: include/infrastructure.php:201 include/infrastructure.php:230
+#: include/infrastructure.php:270
+msgid "Language Name:"
+msgstr ""
+
+#: include/infrastructure.php:203
+msgid "Vernacular Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:205 include/infrastructure.php:255
+#: include/infrastructure.php:274
+msgid "(Letters separated by comma)"
+msgstr ""
+
+#: include/infrastructure.php:215
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/infrastructure.php:217
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/infrastructure.php:219
+msgid "Main reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:253
+msgid "Main Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:257
+msgid "If you have a second reversal index, enter the information here:"
+msgstr ""
+
+#: include/infrastructure.php:259
+msgid "Secondary reversal index code:"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Secondary Reversal Index Alphabet:"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Save"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:295 include/xhtml-importer.php:268
+#: include/xhtml-importer.php:383
+msgid "Finished!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/infrastructure.php:296
+msgid "OK"
+msgstr ""
+
+#: include/infrastructure.php:375
+msgid "Settings saved"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:447
+msgctxt "taxonomy general name"
+msgid "Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:448
+msgctxt "taxonomy singular name"
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:449
+msgid "Search Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:450
+msgid "All Semantic Domains"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:451
+msgid "Parent Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:452
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:453
+msgid "Edit Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:454
+msgid "Update Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:455
+msgid "Add New Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:456
+msgid "New Semantic Domain Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:457
+msgid "Semantic Domain"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:485
+msgctxt "taxonomy general name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:486
+msgctxt "taxonomy singular name"
+msgid "Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:487 include/infrastructure.php:495
+msgid "Parts of Speech"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:488 include/searchform_func.php:74
+msgid "All Parts of Speech"
+msgstr "सबै शब्दवर्गहरू"
+
+# @ default
+#: include/infrastructure.php:489
+msgid "Parent Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:490
+msgid "Parent Part of Speech:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:491
+msgid "Edit Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:492
+msgid "Update Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:493
+msgid "Add New Part of Speech"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:494
+msgid "New Part of Speech Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:522
+msgctxt "taxonomy general name"
+msgid "Languages"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:523
+msgctxt "taxonomy singular name"
+msgid "Language"
+msgstr ""
+
+# @ default
+# @ sil_dictionary
+#: include/infrastructure.php:525 include/searchform_func.php:49
+msgid "All Languages"
+msgstr "सबै भाषाहरू"
+
+# @ default
+#: include/infrastructure.php:526
+msgid "Parent Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:527
+msgid "Parent Language:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:528
+msgid "Edit Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:529
+msgid "Update Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:530
+msgid "Add New Language"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:531
+msgid "New Language Name"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:559
+msgctxt "taxonomy general name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:560
+msgctxt "taxonomy singular name"
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:561 include/infrastructure.php:569
+msgid "Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:562
+msgid "All Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:563
+msgid "Parent Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:564
+msgid "Parent Website strings:"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:565
+msgid "Edit Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:566
+msgid "Update Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:567
+msgid "Add New Website strings"
+msgstr ""
+
+# @ default
+#: include/infrastructure.php:568
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:92
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:285
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: include/xhtml-importer.php:287
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:437
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:455 include/xhtml-importer.php:474
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: include/xhtml-importer.php:457
+msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:473
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:507
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:538
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: include/xhtml-importer.php:578
+msgid ""
+"The css file has been uploaded into your upload folder and renamed to "
+"imported-with-xhtml.css<br>"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:580
+msgid "There was an error uploading the file, please try again!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2091
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2092
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""
