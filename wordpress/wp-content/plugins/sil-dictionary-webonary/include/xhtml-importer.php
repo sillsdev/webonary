@@ -370,7 +370,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
-		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]/a|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
+		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
@@ -680,9 +680,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$headword_language = $headword->getAttribute( "lang" );
 					if(strlen(trim($headword_language)) == 0)
 					{
-						$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+						if(strlen(trim($headword_language)) == 0)
+						{
+							$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+						}
 					}
-						
+					
 					//import headword
 					$this->import_xhtml_search_string($post->ID, $headword->textContent, $this->headword_relevance, $headword_language, $subid);
 					//sub headwords
