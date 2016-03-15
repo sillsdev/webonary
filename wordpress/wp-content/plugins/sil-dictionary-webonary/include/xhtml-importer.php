@@ -1260,9 +1260,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 								$searchstring = $field->textContent;
 							}
 						}
-
+						
 						//if($Emphasized_Text->length == 0)
-						if($field->getAttribute("class") != "partofspeech" && !preg_match("/HeadWordRef/i", $field->getAttribute("class")))
+						if($field->getAttribute("class") != "partofspeech" && !preg_match("/HeadWordRef/i", $field->getAttribute("class")) && strpos($entry->saveXML($field), "href") == null)
 						{
 							//$newelement = $this->dom->createElement('a');
 							$newelement = $entry->createElement('span');
@@ -1275,7 +1275,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 								$allNodes .= $entry->saveXML($node);
 							}
 							$fragment = $entry->createDocumentFragment();
-							$url = get_bloginfo('wpurl') . "/?s=" . addslashes(trim($searchstring)) . "&partialsearch=1";
+							$url = get_bloginfo('wpurl') . "/?s=" . addslashes(trim($field->textContent)) . "&partialsearch=1";
 							$fragment->appendXML('<a href="' . htmlspecialchars($url) . '">' . $allNodes . '</a>');
 							$newelement->appendChild($fragment);
 								
