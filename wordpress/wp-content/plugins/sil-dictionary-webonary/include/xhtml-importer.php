@@ -371,7 +371,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
 		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
-		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]';
+		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[@class="subentry"]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
 		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"LexSense")]';
@@ -1462,6 +1462,15 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		foreach ( $fields as $field ) {
 			
 			$language = $field->getAttribute( "lang" );
+			
+			if(strlen(trim($language)) == 0)
+			{
+				if(strlen(trim($language)) == 0)
+				{
+					$language = $field->childNodes->item(0)->getAttribute( "lang" );
+				}
+			}
+				
 
 			$this->import_xhtml_search_string($post_id, $field->textContent, $relevance, $language, $subid);
 			if($subid > 0)
