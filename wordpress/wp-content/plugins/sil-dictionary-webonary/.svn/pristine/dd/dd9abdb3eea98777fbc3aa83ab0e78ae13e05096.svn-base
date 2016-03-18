@@ -1,3 +1,21 @@
+v. 5.4.2 18 March 2016 index subentry headwords for FLEx 8.3 exports
+v. 5.4.1 18 March 2016 Update github code through dashboard
+v. 5.4.0 15 March 2016 Testing commit
+v. 5.3.9 15 March 2016 Test
+v. 5.3.8 15 March 2016 headwords now only get converted to links if they haven't already been exported as a link
+v. 5.3.7 14 March 2016 fixed problem indexing minor entries
+v. 5.3.6 08 March 2016 fixed problem getting reversal guid
+v. 5.3.5 08 March 2016 css stylesheets should refresh based on timestamp
+v. 5.3.4 08 March 2016 zip file now ends in .zip (instead of .tmp)
+v. 5.3.3 07 March 2016 added span tag in front of semantic domain link 
+v. 5.3.2 04 March 2016 changed source from where images and audio files get copied
+v. 5.3.1 04 March 2016 faster reversal import, converting links to main headword for FLEx 8.3 exports
+v. 5.3.0 01 March 2016 import will now generate links for the Wordpress installation path instead of root path
+v. 5.2.9 01 March 2016 fixed issue with indexing examples sentences and translations for FLEx 8.3 export
+v. 5.2.8 29 February 2016 can now also index already converted posts
+v. 5.2.7 29 February 2016 fixed problem with search utf8mb4
+v. 5.2.6 26 February 2016 fixed wrong path for checking directories to remove
+v. 5.2.5 26 February 2016 added css to unset clear and white-space settings coming from FLEx
 v. 5.2.4 26 February 2016 fixed another bug concerning the import of reversal files from zip file
 v. 5.2.3 25 February 2016 fixed small bug introduced in last update
 v. 5.2.2 25 February 2016 all reversal files in zip file now get imported
