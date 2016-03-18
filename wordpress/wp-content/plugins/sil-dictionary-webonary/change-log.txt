@@ -1,3 +1,4 @@
+v. 5.4.1 18 March 2016 Update github code through dashboard
 v. 5.4.0 15 March 2016 Testing commit
 v. 5.3.9 15 March 2016 Test
 v. 5.3.8 15 March 2016 headwords now only get converted to links if they haven't already been exported as a link
