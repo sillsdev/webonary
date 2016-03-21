@@ -8,7 +8,7 @@ if (is_admin()) { // note the use of is_admin() to double check that this is hap
 			'raw_url' => 'https://raw.github.com/Webonary/sil-dictionary-webonary/master', // the GitHub raw url of your GitHub repo
 			'github_url' => 'https://github.com/Webonary/sil-dictionary-webonary', // the GitHub url of your GitHub repo
 			'zip_url' => 'https://github.com/Webonary/sil-dictionary-webonary/zipball/master', // the zip url of the GitHub repo
-			'sslverify' => true, // whether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
+			'sslverify' => false, // whether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
 			'requires' => '4.3', // which version of WordPress does your plugin require?
 			'tested' => '4.4.2', // which version of WordPress is your plugin tested up to?
 			'readme' => 'readme.txt', // which file to use as the readme for the version number
@@ -102,7 +102,7 @@ class WP_GitHub_Updater {
 		}
 
 		$this->set_defaults();
-
+		
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'api_check' ) );
 
 		// Hook into the plugin details screen
@@ -230,7 +230,7 @@ class WP_GitHub_Updater {
 	 */
 	public function get_new_version() {
 		$version = get_site_transient( md5($this->config['slug']).'_new_version' );
-
+		
 		if ( $this->overrule_transients() || ( !isset( $version ) || !$version || '' == $version ) ) {
 
 			$raw_response = $this->remote_get( trailingslashit( $this->config['raw_url'] ) . basename( $this->config['slug'] ) );
@@ -306,7 +306,7 @@ class WP_GitHub_Updater {
 			$github_data = $this->github_data;
 		} else {
 			$github_data = get_site_transient( md5($this->config['slug']).'_github_data' );
-				
+
 			if ( $this->overrule_transients() || ( ! isset( $github_data ) || ! $github_data || '' == $github_data ) ) {
 				
 				$github_data = $this->remote_get( $this->config['api_url'] );
