@@ -1,5 +1,6 @@
 <?php
 if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
+	
 	$config = array(
 			'slug' => plugin_basename(__FILE__), // this is the slug of your plugin
 			'proper_folder_name' => 'sil-dictionary-webonary', // this is the name of the folder your plugin lives in

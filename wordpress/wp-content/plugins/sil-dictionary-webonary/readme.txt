@@ -1,12 +1,12 @@
 === Plugin Name ===
-sil-dictionary webonary
+webonary
 Contributors: Steve Miller, Philip Perry, SIL International
 Tags: search, dictionary, multilingual, bilingual, ISO 639, language, font
 Requires at least: 4.3
 Tested up to: 4.4.2
 Stable tag: 1.3.7
 
-~Current Version:5.4.3~
+~Current Version:5.4.5~
 
 == Description ==
 Webonary gives language groups the ability to publish their bilingual or multilingual dictionaries on the web. 
