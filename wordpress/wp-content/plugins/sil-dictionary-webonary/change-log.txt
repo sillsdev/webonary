@@ -1,4 +1,5 @@
-v. 5.4.5 18 March 2016 updater test
+v. 5.4.6 21 March 2016 re-added updater
+v. 5.4.5 21 March 2016 removed updater
 v. 5.4.2 18 March 2016 index subentry headwords for FLEx 8.3 exports
 v. 5.4.1 18 March 2016 Update github code through dashboard
 v. 5.4.0 15 March 2016 Testing commit

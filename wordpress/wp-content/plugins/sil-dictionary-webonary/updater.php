@@ -283,6 +283,7 @@ class WP_GitHub_Updater {
 	 * @return mixed
 	 */
 	public function remote_get( $query ) {
+		
 		if ( ! empty( $this->config['access_token'] ) )
 			$query = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $query );
 
@@ -305,8 +306,9 @@ class WP_GitHub_Updater {
 			$github_data = $this->github_data;
 		} else {
 			$github_data = get_site_transient( md5($this->config['slug']).'_github_data' );
-
+				
 			if ( $this->overrule_transients() || ( ! isset( $github_data ) || ! $github_data || '' == $github_data ) ) {
+				
 				$github_data = $this->remote_get( $this->config['api_url'] );
 
 				if ( is_wp_error( $github_data ) )
