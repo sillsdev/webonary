@@ -1458,21 +1458,21 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
 		$fields = $xpath->query($query);
-
+		
 		foreach ( $fields as $field ) {
 			
 			$language = $field->getAttribute( "lang" );
-			
-			if(strlen(trim($language)) == 0)
+
+			//if(strlen(trim($language)) == 0 && property_exists($field->childNodes->item(0), 'lang'))
+			if(strlen(trim($language)) == 0 && $field->childNodes->item(0)->hasAttributes())
 			{
-				if(strlen(trim($language)) == 0)
-				{
-					$language = $field->childNodes->item(0)->getAttribute( "lang" );
-				}
+				$language = $field->childNodes->item(0)->getAttribute( "lang" );
 			}
 				
-
-			$this->import_xhtml_search_string($post_id, $field->textContent, $relevance, $language, $subid);
+			if(strlen(trim($language)) != 0)
+			{
+				$this->import_xhtml_search_string($post_id, $field->textContent, $relevance, $language, $subid);
+			}
 			if($subid > 0)
 			{
 				$subid++;
@@ -1858,7 +1858,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$xpath = new DOMXPath($doc);
 
-		$pos_terms = $xpath->query('//span[contains(@class, "partofspeech")]');
+		//only index pos under the main entry, not subentries
+		$pos_terms = $xpath->query('//div/span[@class = "senses"]//span[contains(@class, "partofspeech")]');
+		
+		echo $doc->saveXML($doc, LIBXML_NOEMPTYTAG) . "<br>";
+		echo var_dump($pos_terms) . "<hr>";
 
 		$i = 0;
 		//$parent_term_id = 0;

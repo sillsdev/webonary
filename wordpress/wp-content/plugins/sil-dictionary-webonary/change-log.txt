@@ -1,3 +1,5 @@
+v. 5.4.9 22 March 2016 part of speech no longer get indexed for subentries
+v. 5.4.8 21 March 2016 fixed bug with undefined lang attribute
 v. 5.4.7 21 March 2016 removed github updater
 v. 5.4.2 18 March 2016 index subentry headwords for FLEx 8.3 exports
 v. 5.4.1 18 March 2016 Update github code through dashboard
