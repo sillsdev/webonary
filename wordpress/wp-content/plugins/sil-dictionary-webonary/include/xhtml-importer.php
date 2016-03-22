@@ -1861,9 +1861,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		//only index pos under the main entry, not subentries
 		$pos_terms = $xpath->query('//div/span[@class = "senses"]//span[contains(@class, "partofspeech")]');
 		
-		echo $doc->saveXML($doc, LIBXML_NOEMPTYTAG) . "<br>";
-		echo var_dump($pos_terms) . "<hr>";
-
 		$i = 0;
 		//$parent_term_id = 0;
 		foreach ( $pos_terms as $pos_term ){
