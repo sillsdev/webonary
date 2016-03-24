@@ -874,6 +874,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		// <span class="headword" lang="ii">my headword<span class="xhomographnumber">1</span></span>
 		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
 		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
+		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
 		
 		$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
 		//$headword = $headwords->item( 0 )->nodeValue;
@@ -1085,117 +1086,24 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $doc;
 	} // function convert_fieldworks_images_to_wordpress()
 
+	function convert_fieldworks_video_to_wordpress ($doc) {
+		
+		$upload_dir = wp_upload_dir();
+		
+		$audioVisuals = $this->dom_xpath->query('//xhtml:span[@class = "mediafileso"]/*[@class = "CmFile"]', $doc);
+		
+		foreach ( $audioVisuals as $audioVisual ) {
+			
+			$href = $audioVisual->getAttribute( "href" );
+			
+			$replaced_src = str_ireplace("AudioVisual\\", $upload_dir['baseurl'] . "/AudioVisual/", $href);
+		
+			$audioVisual->setAttribute("href", $replaced_src);
+		}
+		
+		return $doc;
+	}
 
-	/**
-	 * Convert links exported by the FLEx Configured Dictionary Export into
-	 * links that WordPress understands, such as http://localhost/?p=61151.
-	 * In this case, 61151 is the ID in wp_posts for the entry.
-	 * @global $wpdb
-	 */
-	/*
-	function convert_fieldworks_links_to_wordpress ($pinged = "-") {
-		global $wpdb;
-
-		// link example:
-		//		<a href="#hvo14216">
-
-		$arrPosts = $this->get_posts($pinged);
-
-		$entrycount = 0;
-		foreach($arrPosts as $post)
-		{
-
-			$doc = new DomDocument();
-			$doc->preserveWhiteSpace = false;
-			$doc->loadXML($post->post_content);
-
-			$xpath = new DOMXPath($doc);
-
-			//$links = $xpath->query('//a//span[contains(@class,"crossref")]|//a//*[contains(@class,"HeadWordRef")]');
-			$links = $xpath->query('//a//span[contains(@class,"crossref")]|//a//*[contains(@class,"HeadWordRef")]');
-
-			$totalLinks = $links->length;
-			if($totalLinks > 0)
-			{
-				foreach ( $links as $link ) {
-					if(strtolower($link->getAttribute("class")) != "audiobutton" && strtolower($link->getAttribute("class")) != "image")
-					{
-						// Get the target hvo link to replace
-						//$href = $link->getAttribute( "href" );
-						$href = $link->parentNode->getAttribute( "href" );
-						$hvo = substr($href, 4);
-
-						// Now get the cross reference. Should only be one, but written to
-						// handle more if they come along.
-
-						//$cross_refs = $xpath->query( '//span[contains(@class,"crossref")]|.//*[contains(@class,"HeadWordRef")]', $link );
-
-						$sensenumbers = $xpath->query('//span[@class="xsensenumber"]', $link);
-						//$sensenumbers = $this->dom_xpath->query('//xhtml:span[@class="xsensenumber"]', $cross_ref);
-						foreach($sensenumbers as $sensenumber)
-						{
-							$sensenumber->parentNode->removeChild($sensenumber);
-						}
-						// Get the WordPress post ID for the link.
-						$flexid = str_replace("#", "", $href);
-						$post_id = (string) $this->get_post_id( $flexid );
-
-						if ( empty( $post_id ) && $pinged == "-")
-						{
-							//if pinged = "-" that could mean that the xhtml file was split and we import more later
-							//in this case the user can click on the button at the end to convert to a search link later
-							//in which case pinged will be either indexed or linksconverted
-						}
-						else if(substr($href, 0,3) == "?p=")
-						{
-							//link has already been converted
-						}
-						else
-						{
-							// Now replace the link to hvo wherever it appears with a link to
-							// WordPress ID The update command should look like this:
-							// UPDATE `nuosu`.`wp_posts` SET post_content =
-							//	REPLACE(post_content, 'href="#hvo14216"', 'href="index.php?p=61151"');
-							//if ( empty( $post_id ) )
-								//$post_id = 'id-not-found';
-							$sql = "UPDATE $wpdb->posts SET post_content = ";
-							$sql = $sql . "REPLACE(post_content, 'href=";
-							$sql = $sql . '"' . $href . '"';
-							$sql = $sql . "', 'href=";
-							$sql = $sql . '"';
-							if ( empty( $post_id ))
-							{
-								$sql = $sql . "/?s=" . addslashes($link->textContent) . "&amp;partialsearch=1";
-							}
-							else
-							{
-								$sql = $sql . "/?p=" . $post_id;
-							}
-							$sql = $sql . '"';
-							$sql = $sql . "') " .
-							" WHERE ID = " . $post->ID;
-
-							$wpdb->query( $sql );
-						}
-					}
-				} // foreach ( $links as $link )
-			}
-			$entrycount++;
-			$this->import_xhtml_show_progress($entrycount, count($arrPosts), "", "Step 1 of 2: Please wait... converting FLEx links for Wordpress.");
-
-		} //foreach $arrPosts as $post
-
-		//set pinged = flexlinks for all posts
-		$sql = "UPDATE $wpdb->posts
-			   INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID
-			   SET pinged = 'flexlinks'
-			   WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $this->get_category_id() . "
-			   AND post_status = 'publish' AND pinged = ''";
-
-		$wpdb->query( $sql );
-
-	} // function convert_fieldworks_links_to_wordpress()
-	*/
 	function convert_fields_to_links() {
 
 		global $wpdb;

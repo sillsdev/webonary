@@ -1,3 +1,4 @@
+v. 5.5.3 24 March 2016 implemented conversion of video links
 v. 5.5.2 24 March 2016 fixed number of entries bug
 v. 5.5.1 24 March 2016 added number of entries widget
 v. 5.5.0 24 March 2016 reversal import now also works for subentries
