@@ -1,3 +1,4 @@
+v. 5.5.1 24 March 2016 added number of entries widget
 v. 5.5.0 24 March 2016 reversal import now also works for subentries
 v. 5.4.9 22 March 2016 part of speech no longer get indexed for subentries
 v. 5.4.8 21 March 2016 fixed bug with undefined lang attribute

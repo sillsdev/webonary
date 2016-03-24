@@ -1592,13 +1592,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				" FROM " . $this->reversal_table_name;
 
 		$arrReversalsImported = $wpdb->get_results($sql);
-					
-		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed " .
-				" FROM " . $this->search_table_name .
-				" WHERE relevance >= 95 " .
-				" GROUP BY language_code ";
 		
-		$arrIndexed = $wpdb->get_results($sql);
+		$arrIndexed = $this->get_number_of_entries();
 		
 		if(count($arrPosts) > 0)
 		{
@@ -1778,6 +1773,22 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			return null;
 		}
+	}
+	
+	function get_number_of_entries()
+	{
+		global $wpdb;
+		
+		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed, name AS language_name " .
+				" FROM " . $this->search_table_name .
+				" INNER JOIN wp_7_terms ON wp_7_terms.slug = wp_7_sil_search.language_code " .
+				" WHERE relevance >= 95 " .
+				" GROUP BY language_code " .
+				" ORDER BY language_name ASC";
+		
+		$arrIndexed = $wpdb->get_results($sql);
+		
+		return $arrIndexed;
 	}
 
 	function get_posts($index = ""){

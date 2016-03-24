@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 5.5.0
+Version: v. 5.5.1
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -61,7 +61,8 @@ require_once( dirname( __FILE__ ) . '/include/browseview_func.php' );
 require_once( dirname( __FILE__ ) . '/include/comments_func.php' );
 // API for FLEx
 require_once( dirname( __FILE__ ) . '/include/api.php' );
-
+// Widgets
+require_once( dirname( __FILE__ ) . '/include/widgets.php' );
 /*
  * Infrastructure hooks
  */
