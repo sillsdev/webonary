@@ -1781,7 +1781,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed, name AS language_name " .
 				" FROM " . $this->search_table_name .
-				" INNER JOIN wp_7_terms ON wp_7_terms.slug = wp_7_sil_search.language_code " .
+				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->search_table_name . ".language_code " .
 				" WHERE relevance >= 95 " .
 				" GROUP BY language_code " .
 				" ORDER BY language_name ASC";
