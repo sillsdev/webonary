@@ -1817,8 +1817,25 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			FROM $wpdb->posts
 			WHERE post_name = '" . trim($flexid) . "'	collate " . COLLATION . "_bin AND post_status = 'publish'";
 		
-		$post_id = $wpdb->get_var($sql);
+		$row = $wpdb->get_row( $sql );
 
+		if(count($row) > 0)
+		{
+			$post_id = $wpdb->get_var($sql);
+		}
+		else
+		{
+			//only exists as subentry
+			//note that in this case it will find the postid to insert into the sil_search table,
+			//but the guid doesn't exist as a post_name. If a link can't be found, it will be searched for in post_content
+			//see dictionary-search.php -> my_404_override
+			$sql = "SELECT id
+			FROM $wpdb->posts
+			WHERE post_content LIKE '%" . trim($flexid) . "%'	collate " . COLLATION . "_bin AND post_status = 'publish'";
+			
+			$post_id = $wpdb->get_var($sql);
+		}
+		
 		return $post_id;
 	}
 
@@ -1840,6 +1857,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$subid = 0; //subid is no longer needed
 			$postid = $row->ID;
 		}
+		
 		return $postid;
 	}
 
@@ -2015,6 +2033,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		//$reversals = $this->dom_xpath->query( './xhtml:span[contains(@class, "reversal-form")]', $entry );
 		$reversals = $this->dom_xpath->query( './xhtml:span[contains(@class, "reversal-form")]|./xhtml:span[contains(@class, "reversalform")]');
 		$entries_count = null;
+		$reversal_xml = "";
 		
 		if($reversals->length > 0)
 		{
@@ -2093,26 +2112,27 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$post_id = $this->get_post_id_bytitle( $headword_text, $reversal_language, $subid);
 
-					if($post_id > 0)
-					{
-						$newelement = $doc->createElement('a');
-						//$newelement->appendChild($this->dom->createTextNode(addslashes(trim($field->textContent))));
-						$newelement->appendChild($doc->createTextNode(addslashes($headword->textContent)));
-						$newelement->setAttribute("href", "?p=" . $post_id);
-						$newelement->setAttribute("class", $headword->getAttribute("class"));
-						$newelement->setAttribute("lang", $headword->getAttribute("lang"));
-						$parent = $headword->parentNode;
-						$parent->replaceChild($newelement, $headword);
-					}
+					$newelement = $doc->createElement('a');
+					//$newelement->appendChild($this->dom->createTextNode(addslashes(trim($field->textContent))));
+					$newelement->appendChild($doc->createTextNode(addslashes($headword->textContent)));
+					$newelement->setAttribute("href", "?p=" . $post_id);
+					$newelement->setAttribute("class", $headword->getAttribute("class"));
+					$newelement->setAttribute("lang", $headword->getAttribute("lang"));
+					$parent = $headword->parentNode;
+					$parent->replaceChild($newelement, $headword);
 					
 					$reversal_xml = $doc->saveXML($doc, LIBXML_NOEMPTYTAG);
-						
-					$reversal_xml = stripslashes($reversal_xml);
 				}
 				
 				
 				if($headwordCount == $headwords->length)
 				{
+					if(strlen(trim($reversal_xml)) == 0)
+					{
+						$reversal_xml = $postentry;
+					}
+					$reversal_xml = stripslashes($reversal_xml);
+						
 					//$doc->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 					
 					$sql = "SELECT reversal_head FROM " . $this->reversal_table_name . " WHERE reversal_head = '" . addslashes($reversal_head) . "' AND language_code = '" . $reversal_language . "'";
@@ -2198,7 +2218,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	}
 
 	//-----------------------------------------------------------------------------//
-
+	
 	function sil_pathway_xhtml_Import()
 	{
 		/**
@@ -2232,6 +2252,7 @@ function pathway_xhtml_importer_init(){
 	 */
     load_plugin_textdomain('sil_dictionary', false, dirname(plugin_basename(__FILE__ )) .'/lang/');
 }
+
 
 //===================================================================================//
 
