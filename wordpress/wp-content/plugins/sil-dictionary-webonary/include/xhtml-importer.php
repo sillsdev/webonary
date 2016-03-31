@@ -1692,7 +1692,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->search_table_name . ".language_code " .
 				" WHERE relevance >= 95 " .
 				" GROUP BY language_code " .
-				" ORDER BY language_name ASC";
+				" ORDER BY COUNT(post_id) DESC";
 		
 		$arrIndexed = $wpdb->get_results($sql);
 		
@@ -1985,10 +1985,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					update_option("reversal1_langcode", $reversal_language);
 				}
 			}
-				
+			
 			//$headwords = $this->dom_xpath->query('./xhtml:span[@class = "senses"]/xhtml:span[@class = "sense"]/xhtml:span[@class = "headword"]|./xhtml:span[@class = "senses"]/xhtml:span[starts-with(@class, "headref")]', $entry );
-			$headwords = $this->dom_xpath->query('//xhtml:span[@class = "headword"]|//xhtml:span[starts-with(@class, "headref")]');
-				
+			$headwords = $this->dom_xpath->query('//xhtml:*[@class = "referringsense"]/*[@class = "headword"]|//xhtml:span[starts-with(@class, "headref")]');
+
+			
 			if(strpos($postentry, "reversalindexentry") > 0)
 			{
 				$reversal_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $postentry);
@@ -2013,6 +2014,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 				$post_name = "";
 				
+				//echo $doc->saveXML($headword, LIBXML_NOEMPTYTAG) . "<br>";
 				//for reversal exports from FLEx 8.3. onwards, the headwords are linked
 				//we check that it's a 8.3 export by searching for reversalindexentry as previously the class "entry" was used instead
 				if(strpos($postentry, "reversalindexentry") > 0)
