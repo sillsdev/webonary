@@ -129,7 +129,7 @@ if(isset($xhtmlFileURL))
 		if($entry_counter == 1)
 		{
 			echo "<div style=color:red>ERROR: No entries found.</div><br>";
-			return;
+			//return;
 		}
 	
 		$time_post = microtime(true);
