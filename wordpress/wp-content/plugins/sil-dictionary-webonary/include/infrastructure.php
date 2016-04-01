@@ -417,6 +417,7 @@ function install_sil_dictionary_infrastructure() {
 	create_search_tables();
 	create_reversal_tables();
 	set_options();
+	remove_double_terms();
 	set_field_sortorder();
 	//upload_stylesheet();
 	register_semantic_domains_taxonomy();
@@ -606,6 +607,16 @@ function register_webstrings_taxonomy () {
             'show_ui' => true
         )
     ) ;
+}
+
+function remove_double_terms () {
+	global $wpdb;
+	
+	//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
+	$sql = "DELETE t1 FROM $wpdb->terms t1, $wpdb->terms t2
+			WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug";
+	
+	$wpdb->query( $sql );
 }
 
 //-----------------------------------------------------------------------------//
