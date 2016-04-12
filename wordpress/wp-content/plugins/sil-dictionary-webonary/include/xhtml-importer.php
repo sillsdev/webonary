@@ -924,6 +924,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//but it will keep a link like this href="#" (important for playing audio)
 			$entry_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $entry_xml);
 			
+			//video character is in utf8mb4 which is currently not supported on the webonary server
+			//therefore we convert it into an image.
+			$entry_xml = str_replace("🎥", "<img src=\"" . get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/video.png\"/>", $entry_xml);
+			
 			$entry_xml = addslashes($entry_xml);
 			$entry_xml = stripslashes($entry_xml);
 			//$entry_xml = str_replace("'","&#39;",$entry_xml);

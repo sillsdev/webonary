@@ -1,3 +1,4 @@
+v. 5.5.7 12 April 2016 video character gets replaced into image
 v. 5.5.6 01 April 2016 continue even if no reversal entries found
 v. 5.5.5 01 April 2016 added function to remove duplicate language terms
 v. 5.5.4 31 March 2016 fixed reversal index import where wrong headwords got indexed
