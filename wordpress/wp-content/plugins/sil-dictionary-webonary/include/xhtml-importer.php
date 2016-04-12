@@ -370,7 +370,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
-		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
+		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[@class="subentry"]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
@@ -933,7 +933,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//$entry_xml = str_replace("'","&#39;",$entry_xml);
 
 			$post_parent = 0;
-			if (!preg_match("/class=\"entry\"/i", $entry_xml) && !preg_match("/class=\"headword-minor\"/i" , $entry_xml) && !preg_match("/class=\"minorentryvariant\"/i" , $entry_xml) && !preg_match("/class=\"minorentrycomplex\"/i" , $entry_xml))
+			if (!preg_match("/class=\"entry\"/i", $entry_xml) && !preg_match("/class=\"mainentrycomplex\"/i", $entry_xml) && !preg_match("/class=\"headword-minor\"/i" , $entry_xml) && !preg_match("/class=\"minorentryvariant\"/i" , $entry_xml) && !preg_match("/class=\"minorentrycomplex\"/i" , $entry_xml))
 			{
 				$post_parent = 1;
 				$entry_xml = str_replace("class=\"subentry\"","class=\"entry\"",$entry_xml);
@@ -1094,7 +1094,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 		$upload_dir = wp_upload_dir();
 		
-		$audioVisuals = $this->dom_xpath->query('//xhtml:span[@class = "mediafileso"]/*[@class = "CmFile"]', $doc);
+		$audioVisuals = $this->dom_xpath->query('//xhtml:span[starts-with(@class, "mediafile")]/*[@class = "CmFile"]', $doc);
 		
 		foreach ( $audioVisuals as $audioVisual ) {
 			

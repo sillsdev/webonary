@@ -96,7 +96,7 @@ if(isset($xhtmlFileURL))
 		{
 			//while ($reader->read() && $reader->getAttribute("class") !== 'entry' && $reader->getAttribute("class") !== 'minorentry');
 		
-			while ($reader->getAttribute("class") === 'entry' || $reader->getAttribute("class") === 'reversalindexentry' || $reader->getAttribute("class") === 'minorentry' || $reader->getAttribute("class") === 'minorentryvariant' || $reader->getAttribute("class") === 'minorentrycomplex')
+			while ($reader->getAttribute("class") === 'entry' || $reader->getAttribute("class") === 'mainentrycomplex' || $reader->getAttribute("class") === 'reversalindexentry' || $reader->getAttribute("class") === 'minorentry' || $reader->getAttribute("class") === 'minorentryvariant' || $reader->getAttribute("class") === 'minorentrycomplex')
 			{
 				$postentry =  $reader->readOuterXml();
 				
