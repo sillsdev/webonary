@@ -65,6 +65,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	public $variant_form_relevance = 60;
 	public $definition_word_relevance = 50;
 	public $semantic_domain_relevance = 40;
+	public $scientific_name = 35;
 	public $sense_crossref_relevance = 30;
 	public $custom_field_relevance = 20;
 	public $example_sentences_relevance = 10;
@@ -383,6 +384,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$arrFieldQueries[8] = $querystart . '[@class = "variantref-form"]';
 		$arrFieldQueries[9] = $querystart . '[@class = "variantref-form-sub"]';
 		$arrFieldQueries[10] = $querystart . '[@class = "sense-crossref"]';
+		$arrFieldQueries[11] = $querystart . '[@class = "scientificname"]|' . $querystart . '[@class = "scientific-name"]';
 
 		return $arrFieldQueries;
 	}
@@ -707,6 +709,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[9], $this->variant_form_relevance);
 					//cross references
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[10], $this->sense_crossref_relevance);
+					//scientific names
+					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[11], $this->scientific_name);
+						
 				}
 				else
 				{
