@@ -70,7 +70,8 @@ function sil_dictionary_custom_join($join) {
 		//search string gets trimmed and normalized to NFC
 		if (class_exists("Normalizer", $autoload = false))
 		{
-			$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_C);
+			//changed from FORM_C to FORM_D, as it wouldn't find shʉ́shÿó
+			$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_D);
 		}
 		else
 		{

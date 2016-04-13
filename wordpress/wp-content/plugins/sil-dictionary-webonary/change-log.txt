@@ -1,3 +1,4 @@
+v. 5.6.0 13 April 2016 changed normalizing for search to FORM_D
 v. 5.5.9 13 April 2016 scientific names now get indexed too
 v. 5.5.8 12 April 2016 mainentrycomplex entries now get imported, video links get converted no matter if the class is mediafilesos or mediafiles
 v. 5.5.7 12 April 2016 video character gets replaced into image
