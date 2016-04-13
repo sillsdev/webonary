@@ -61,6 +61,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 */
 
 	public $headword_relevance = 100;
+	public $plural = 80;
 	public $lexeme_form_relevance = 70;
 	public $variant_form_relevance = 60;
 	public $definition_word_relevance = 50;
@@ -373,11 +374,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
 		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[@class="subentry"]/*[@class="headword"]';
-		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]';
+		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
 		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"LexSense")]';
-		//$arrFieldQueries[4] = $querystart . '[@class = "definition-sub"]';
-		$arrFieldQueries[4] = $querystart . '[starts-with(@class,"definition-sub")]';
+		$arrFieldQueries[4] = $querystart . '[starts-with(@class,"definition-sub")]'; //REMOVE WITH FLEX 8.3
 		$arrFieldQueries[5] = $querystart . '[@class = "example"]/span[@lang]';
 		$arrFieldQueries[6] = $querystart . '[@class = "translation"]/span[@lang]';
 		$arrFieldQueries[7] = $querystart . '[starts-with(@class,"LexEntry-") and not(contains(@class, "LexEntry-publishRoot-DefinitionPub_L2"))]/span';
@@ -385,6 +385,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$arrFieldQueries[9] = $querystart . '[@class = "variantref-form-sub"]';
 		$arrFieldQueries[10] = $querystart . '[@class = "sense-crossref"]';
 		$arrFieldQueries[11] = $querystart . '[@class = "scientificname"]|' . $querystart . '[@class = "scientific-name"]';
+		$arrFieldQueries[12] = $querystart . '[@class = "plural"]';
 
 		return $arrFieldQueries;
 	}
@@ -711,7 +712,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[10], $this->sense_crossref_relevance);
 					//scientific names
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[11], $this->scientific_name);
-						
+					//plurals
+					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[12], $this->plural);
 				}
 				else
 				{
