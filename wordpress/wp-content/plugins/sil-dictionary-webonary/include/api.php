@@ -44,6 +44,8 @@ class Webonary_API_MyType {
 				//moving and renaming configured style sheet file
 				if(file_exists($zipFolderPath . "/configured.css"))
 				{
+					$this->set_fonts_fromCssFile($zipFolderPath . "/configured.css", $uploadPath);
+						
 					copy($zipFolderPath . "/configured.css", $uploadPath . "/imported-with-xhtml.css");
 					error_log("Renamed configured.css to " . $uploadPath . "/imported-with-xhtml.css");
 					unlink($zipFolderPath . "/configured.css");
@@ -52,6 +54,7 @@ class Webonary_API_MyType {
 				//copy reversal css files
 				foreach (glob($zipFolderPath . "/*.css") as $file) {
 					$filename = basename($file);
+						
 					if($filename != "configured.css")
 					{
 						copy($zipFolderPath . "/" . $filename, $uploadPath . "/". $filename);
@@ -196,6 +199,84 @@ class Webonary_API_MyType {
         	error_log("moved: " . $src . " to " . $dst);
     }
 
+    public function set_fonts_fromCssFile($file = "configured.css", $uploadPath)
+    {
+    	$css_string = file_get_contents($file);
+
+    	$arrFontName[0] = null;
+    	$arrFontStorage[0] = null;
+    	 
+    	$arrFontName[1] = "Charis SIL";
+    	$arrFontStorage[1] = "CharisSIL";
+    	
+    	$arrFontName[2] = "Charis SIL Compact";
+    	$arrFontStorage[2] = "CharisSIL";
+    	
+    	// Get the CSS that contains a font-family rule.
+    	$length = strlen($css_string);
+    	$porperty = 'font-family';
+    	$replacements = array();
+    	$x = 0;
+    	while (($last_position = strpos($css_string, $porperty, $last_position)) !== FALSE) {
+    		// Get closing bracket.
+    		$end = strpos($css_string, '}', $last_position);
+    		if ($end === FALSE) {
+    			$end = $length;
+    		}
+    		$end++;
+    
+    		// Get position of the last closing bracket (start of this section).
+    		$start = strrpos($css_string, '}', - ($length - $last_position));
+    		if ($start === FALSE) {
+    			$start = 0;
+    		}
+    		else {
+    			$start++;
+    		}
+    
+    		// Get closing ; in order to get the end of the declaration.
+    		$declaration_end = strpos($css_string, ';', $last_position);
+    
+    		// Get values.
+    		$start_of_values = strpos($css_string, ':', $last_position);
+    		$values_string = substr($css_string, $start_of_values + 1, $declaration_end - ($start_of_values + 1));
+    		// Parse values string into an array of values.
+    		$values_array = explode(',', $values_string);
+    
+    		$arrCSSFonts[$x] = str_replace("'", "", $values_array[0]);
+    
+    		// Values array has more than 1 value and first element is a quoted string.
+    
+    		// Advance position.
+    		$x++;
+    		$last_position = $end;
+    	}
+    	$arrUniqueCSSFonts = array_unique($arrCSSFonts);
+    	
+    	$fontFace = "";
+    	$arrFontStyles = array("R", "B", "I", "BI");
+    	foreach($arrUniqueCSSFonts as $userFont)
+    	{
+			$fontKey = array_search($userFont, $arrFontName);
+			
+			if($fontKey > 0)
+			{
+				foreach($arrFontStyles as $fontStyle)
+				{
+					$fontFace .= "@font-face {\n";
+					$fontFace .= "font-family: " . $userFont . "\n";
+					$fontFace .= "src: url(/wp-content/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff)\n";
+					$fontFace .= "}\n\n";
+				}
+			}
+    	}
+    	
+    	echo $fontFace;
+    	file_put_contents($uploadPath . "/custom.css" , $fontFace);
+    	
+    	return;
+    }
+    
 	public function verifyAdminPrivileges(&$email = "", &$userid = 0)
 	{
 		global $wpdb;

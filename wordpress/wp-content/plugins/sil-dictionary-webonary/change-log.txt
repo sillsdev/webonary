@@ -1,3 +1,5 @@
+v. 5.6.3 15 April 2016 api import now creates custome.css with links to font families 
+v. 5.6.2 14 April 2016 rearranged function names alphabetically in xhtml-importer.php
 v. 5.6.1 13 April 2016 added indexing of plurals
 v. 5.6.0 13 April 2016 changed normalizing for search to FORM_D
 v. 5.5.9 13 April 2016 scientific names now get indexed too
