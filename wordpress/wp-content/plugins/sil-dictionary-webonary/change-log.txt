@@ -1,3 +1,4 @@
+v. 5.6.5 18 April 2016 font-family linking, added semi-colon
 v. 5.6.4 18 April 2016 fixes and improvements with font-family linking
 v. 5.6.3 15 April 2016 api import now creates custom.css with links to font families 
 v. 5.6.2 14 April 2016 rearranged function names alphabetically in xhtml-importer.php
