@@ -272,11 +272,11 @@ class Webonary_API_MyType {
 						$fontFace .= "@font-face {\n";
 						$fontFace .= "font-family: " . $userFont . ";\n";
 						$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff);\n";
-						if($fontStyle == "B" || $fontFace == "BI")
+						if($fontStyle == "B" || $fontStyle == "BI")
 						{
 							$fontFace .= "font-weight: bold;\n";
 						}
-						if($fontStyle == "I" || $fontFace == "BI")
+						if($fontStyle == "I" || $fontStyle == "BI")
 						{
 							$fontFace .= "font-style: italic;\n";
 						}
