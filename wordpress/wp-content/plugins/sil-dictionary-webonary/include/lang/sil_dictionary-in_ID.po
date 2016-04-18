@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SIL Dictionary v1.2.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-30 10:15+0800\n"
-"PO-Revision-Date: 2015-11-16 11:59+0800\n"
+"POT-Creation-Date: 2016-04-18 14:09+0800\n"
+"PO-Revision-Date: 2016-04-18 14:09+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,19 +18,19 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: include/browseview_func.php:109
+#: include/browseview_func.php:121
 msgid "No entries exist for"
 msgstr "Tidak ada entri untuk"
 
-#: include/browseview_func.php:186
+#: include/browseview_func.php:198
 msgid "Page"
 msgstr ""
 
-#: include/browseview_func.php:186
+#: include/browseview_func.php:198
 msgid "of"
 msgstr ""
 
-#: include/browseview_func.php:507
+#: include/browseview_func.php:579
 msgid "No entries exist starting with this letter."
 msgstr "Tidak ada entri yang mulai dengan huruf ini."
 
@@ -48,5411 +48,7204 @@ msgid ""
 "re-importing of your posts."
 msgstr ""
 
+#: include/default_domains.php:2 include/semdomains_func.php:25
 msgid "Universe, creation"
 msgstr "Alam semesta, ciptaan"
 
+#: include/default_domains.php:3
 msgid "Sky"
 msgstr "Langit"
 
+#: include/default_domains.php:4
 msgid "Sun"
 msgstr "Matahari"
 
+#: include/default_domains.php:5
 msgid "Moon"
 msgstr "Bulan"
 
+#: include/default_domains.php:6
 msgid "Star"
 msgstr "Bintang"
 
+#: include/default_domains.php:7
 msgid "Planet"
 msgstr "Planet (bintang sayarah/siarah, bintang beredar)"
 
+#: include/default_domains.php:8
 msgid "Air"
 msgstr "Udara"
 
+#: include/default_domains.php:9
 msgid "Blow air"
 msgstr "Tiup"
 
+#: include/default_domains.php:10
 msgid "Weather"
 msgstr "Cuaca"
 
+#: include/default_domains.php:11
 msgid "Wind"
 msgstr "Angin"
 
+#: include/default_domains.php:12
 msgid "Cloud"
 msgstr "Awan"
 
+#: include/default_domains.php:13
 msgid "Rain"
 msgstr "Hujan"
 
+#: include/default_domains.php:14
 msgid "Snow, ice"
 msgstr "Salju, es"
 
+#: include/default_domains.php:15
 msgid "Storm"
 msgstr "Badai"
 
+#: include/default_domains.php:16
 msgid "Lightning, thunder"
 msgstr "Kilat, Guntur"
 
+#: include/default_domains.php:17
 msgid "Flood"
 msgstr "Banjir, air bah"
 
+#: include/default_domains.php:18
 msgid "Drought"
 msgstr "Kekeringan"
 
+#: include/default_domains.php:19
 msgid "World"
 msgstr "Dunia, bumi"
 
+#: include/default_domains.php:20
 msgid "Land"
 msgstr "Daratan"
 
+#: include/default_domains.php:21
 msgid "Mountain"
 msgstr "Gunung"
 
+#: include/default_domains.php:22
 msgid "Volcano"
 msgstr "Gunung api"
 
+#: include/default_domains.php:23
 msgid "Plain, plateau"
 msgstr "Tanah datar"
 
+#: include/default_domains.php:24
 msgid "Valley"
 msgstr "Lembah"
 
+#: include/default_domains.php:25
 msgid "Underground"
 msgstr "Di bawah tanah"
 
+#: include/default_domains.php:26
 msgid "Forest, grassland, desert"
 msgstr "Hutan, rumput-rumput, padang gurun"
 
+#: include/default_domains.php:27
 msgid "Earthquake"
 msgstr "Gempa bumi"
 
+#: include/default_domains.php:28
 msgid "Substance, matter"
 msgstr "Bahan, zat"
 
+#: include/default_domains.php:29
 msgid "Soil, dirt"
 msgstr "Tanah"
 
+#: include/default_domains.php:30
 msgid "Rock"
 msgstr "Batu"
 
+#: include/default_domains.php:31
 msgid "Metal"
 msgstr "Logam"
 
+#: include/default_domains.php:32
 msgid "Mineral"
 msgstr "Barang tambang"
 
+#: include/default_domains.php:33
 msgid "Jewel"
 msgstr "Permata"
 
+#: include/default_domains.php:34
 msgid "Solid, liquid, gas"
 msgstr "Zat padat, zat cair, zat gas"
 
+#: include/default_domains.php:35
 msgid "Liquid"
 msgstr "Zat cair"
 
+#: include/default_domains.php:36
 msgid "Oil"
 msgstr "Minyak, oli, BBM (Bahan Bakar Minyak)"
 
+#: include/default_domains.php:37
 msgid "Gas"
 msgstr "Gas"
 
+#: include/default_domains.php:38
 msgid "Water"
 msgstr "Air"
 
+#: include/default_domains.php:39
 msgid "Bodies of water"
 msgstr "Kumpulan air"
 
+#: include/default_domains.php:40
 msgid "Ocean, lake"
 msgstr "Laut, danau"
 
+#: include/default_domains.php:41
 msgid "Swamp"
 msgstr "Rawa"
 
+#: include/default_domains.php:42
 msgid "River"
 msgstr "Sungai"
 
+#: include/default_domains.php:43
 msgid "Spring, well"
 msgstr "Mata air, sumur, perigi"
 
+#: include/default_domains.php:44
 msgid "Island, shore"
 msgstr "Pulau, pantai"
 
+#: include/default_domains.php:45
 msgid "Movement of water"
 msgstr "Gerakan air"
 
+#: include/default_domains.php:46
 msgid "Flow"
 msgstr "Mengalir"
 
+#: include/default_domains.php:47
 msgid "Pour"
 msgstr "Menuangkan"
 
+#: include/default_domains.php:48
 msgid "Drip"
 msgstr "Menetes"
 
+#: include/default_domains.php:49
 msgid "Wave"
 msgstr "Ombak"
 
+#: include/default_domains.php:50
 msgid "Calm, rough"
 msgstr "Teduh, berombak"
 
+#: include/default_domains.php:51
 msgid "Tide"
 msgstr "Pasang surut"
 
+#: include/default_domains.php:52
 msgid "Wet"
 msgstr "Basah"
 
+#: include/default_domains.php:53
 msgid "Dry"
 msgstr "Kering"
 
+#: include/default_domains.php:54
 msgid "Be in water"
 msgstr "Berada di dalam air"
 
+#: include/default_domains.php:55
 msgid "Solutions of water"
 msgstr "Larutan air"
 
+#: include/default_domains.php:56
 msgid "Water quality"
 msgstr "Kondisi air"
 
+#: include/default_domains.php:57
 msgid "Living things"
 msgstr "Benda hidup"
 
+#: include/default_domains.php:58
 msgid "Dead things"
 msgstr "Makhluk mati"
 
+#: include/default_domains.php:59
 msgid "Spirits of things"
 msgstr "Nyawa, roh"
 
+#: include/default_domains.php:60
 msgid "Plant"
 msgstr "Tumbuhan"
 
+#: include/default_domains.php:61
 msgid "Tree"
 msgstr "Pohon"
 
+#: include/default_domains.php:62
 msgid "Bush, shrub"
 msgstr "Semak"
 
+#: include/default_domains.php:63
 msgid "Grass, herb, vine"
 msgstr "Rumput, herba, tumbuhan merambat"
 
+#: include/default_domains.php:64
 msgid "Moss, fungus, algae"
 msgstr "Lumut, ganggang, jamur"
 
+#: include/default_domains.php:65
 msgid "Parts of a plant"
 msgstr "Bagian-bagian tumbuhan"
 
+#: include/default_domains.php:66
 msgid "Growth of plants"
 msgstr "Pertumbuhan pada tumbuhan"
 
+#: include/default_domains.php:67
 msgid "Plant diseases"
 msgstr "Penyakit tumbuhan"
 
+#: include/default_domains.php:68
 msgid "Animal"
 msgstr "Binatang"
 
+#: include/default_domains.php:69
 msgid "Types of animals"
 msgstr "Jenis-jenis binatang"
 
+#: include/default_domains.php:70
 msgid "Mammal"
 msgstr "Binatang menyusui"
 
+#: include/default_domains.php:71
 msgid "Primate"
 msgstr "Binatang Primata"
 
+#: include/default_domains.php:72
 msgid "Carnivore"
 msgstr "Binatang pemakan daging"
 
+#: include/default_domains.php:73
 msgid "Hoofed animals"
 msgstr "Binatang berkuku besar"
 
+#: include/default_domains.php:74
 msgid "Rodent"
 msgstr "Binatang pengerat"
 
+#: include/default_domains.php:75
 msgid "Marsupial"
 msgstr "Binatang berkantong"
 
+#: include/default_domains.php:76
 msgid "Anteater, aardvark"
 msgstr "Tenggiling"
 
+#: include/default_domains.php:77
 msgid "Sea mammal"
 msgstr "Binatang menyusui yang hidup di laut"
 
+#: include/default_domains.php:78
 msgid "Bat"
 msgstr "Kelelawar"
 
+#: include/default_domains.php:79
 msgid "Bird"
 msgstr "Burung"
 
+#: include/default_domains.php:80
 msgid "Reptile"
 msgstr "Binatang melata / reptil"
 
+#: include/default_domains.php:81
 msgid "Snake"
 msgstr "Ular"
 
+#: include/default_domains.php:82
 msgid "Lizard"
 msgstr "Kadal"
 
+#: include/default_domains.php:83
 msgid "Turtle"
 msgstr "Kura-kura, penyu"
 
+#: include/default_domains.php:84
 msgid "Crocodile"
 msgstr "Buaya"
 
+#: include/default_domains.php:85
 msgid "Amphibian"
 msgstr "Amfibi"
 
+#: include/default_domains.php:86
 msgid "Fish"
 msgstr "Ikan"
 
+#: include/default_domains.php:87
 msgid "Shark, ray"
 msgstr "Ikan hiu, ikan pari"
 
+#: include/default_domains.php:88
 msgid "Insect"
 msgstr "Serangga"
 
+#: include/default_domains.php:89
 msgid "Spider"
 msgstr "Laba-laba"
 
+#: include/default_domains.php:90
 msgid "Small animals"
 msgstr "Binatang kecil lainnya"
 
+#: include/default_domains.php:91
 msgid "Parts of an animal"
 msgstr "Bagian-bagian binatang"
 
+#: include/default_domains.php:92
 msgid "Parts of a bird"
 msgstr "Bagian-bagian burung"
 
+#: include/default_domains.php:93
 msgid "Parts of a reptile"
 msgstr "Bagian-bagian binatang melata (reptil)"
 
+#: include/default_domains.php:94
 msgid "Parts of a fish"
 msgstr "Bagian-bagian ikan"
 
+#: include/default_domains.php:95
 msgid "Parts of an insect"
 msgstr "Bagian-bagian serangga"
 
+#: include/default_domains.php:96
 msgid "Parts of small animals"
 msgstr "Bagian-bagian binatang kecil lainnya"
 
+#: include/default_domains.php:97
 msgid "Animal life cycle"
 msgstr "Siklus/perputaran hidup binatang"
 
+#: include/default_domains.php:98
 msgid "Egg"
 msgstr "Telur"
 
+#: include/default_domains.php:99
 msgid "Animal actions"
 msgstr "Tingkah laku binatang"
 
+#: include/default_domains.php:100
 msgid "Animal movement"
 msgstr "Gerakan binatang"
 
+#: include/default_domains.php:101
 msgid "Animal eating"
 msgstr "Cara makan binatang"
 
+#: include/default_domains.php:102
 msgid "Animal sounds"
 msgstr "Suara binatang"
 
+#: include/default_domains.php:103
 msgid "Animal home"
 msgstr "Lingkungan hidup binatang"
 
+#: include/default_domains.php:104
 msgid "Animal group"
 msgstr "Kelompok binatang"
 
+#: include/default_domains.php:105
 msgid "Male and female animals"
 msgstr "Jantan, betina"
 
+#: include/default_domains.php:106
 msgid "Nature, environment"
 msgstr "Alam, lingkungan"
 
+#: include/default_domains.php:107
 msgid "Natural"
 msgstr "Alami"
 
+#: include/default_domains.php:108 include/semdomains_func.php:26
 msgid "Person"
 msgstr "Orang"
 
+#: include/default_domains.php:109
 msgid "Body"
 msgstr "Tubuh, badan"
 
+#: include/default_domains.php:110
 msgid "Head"
 msgstr "Kepala"
 
+#: include/default_domains.php:111
 msgid "Eye"
 msgstr "Mata"
 
+#: include/default_domains.php:112
 msgid "Ear"
 msgstr "Telinga"
 
+#: include/default_domains.php:113
 msgid "Nose"
 msgstr "Hidung"
 
+#: include/default_domains.php:114
 msgid "Mouth"
 msgstr "Mulut"
 
+#: include/default_domains.php:115
 msgid "Tooth"
 msgstr "Gigi"
 
+#: include/default_domains.php:116
 msgid "Torso"
 msgstr "Badan (tidak termasuk kaki, tangan, kepala)"
 
+#: include/default_domains.php:117
 msgid "Limb"
 msgstr "Anggota badan"
 
+#: include/default_domains.php:118
 msgid "Arm"
 msgstr "Tangan"
 
+#: include/default_domains.php:119
 msgid "Leg"
 msgstr "Kaki"
 
+#: include/default_domains.php:120
 msgid "Finger, toe"
 msgstr "Jari"
 
+#: include/default_domains.php:121
 msgid "Skin"
 msgstr "Kulit (manusia, binatang)"
 
+#: include/default_domains.php:122
 msgid "Hair"
 msgstr "Rambut dan bulu manusia"
 
+#: include/default_domains.php:123
 msgid "Bone, joint"
 msgstr "Tulang, persendian"
 
+#: include/default_domains.php:124
 msgid "Flesh"
 msgstr "Daging"
 
+#: include/default_domains.php:125
 msgid "Internal organs"
 msgstr "Anggota tubuh bagian dalam"
 
+#: include/default_domains.php:126
 msgid "Heart"
 msgstr "Jantung"
 
+#: include/default_domains.php:127
 msgid "Stomach"
 msgstr "Perut"
 
+#: include/default_domains.php:128
 msgid "Male organs"
 msgstr ""
 "Alat kelamin laki-laki (Anggota tubuh yang khusus dimiliki oleh laki-laki)"
 
+#: include/default_domains.php:129
 msgid "Female organs"
 msgstr ""
 "Alat kelamin perempuan (Anggota tubuh yang khusus dimiliki oleh perempuan)"
 
+#: include/default_domains.php:130
 msgid "Body functions"
 msgstr "Fungsi-fungsi tubuh"
 
+#: include/default_domains.php:131
 msgid "Breathe, breath"
 msgstr "Napas, bernapas"
 
+#: include/default_domains.php:132
 msgid "Cough, sneeze"
 msgstr "Batuk, bersin"
 
+#: include/default_domains.php:133
 msgid "Spit, saliva"
 msgstr "Air ludah, air liur"
 
+#: include/default_domains.php:134
 msgid "Mucus"
 msgstr "Ingus"
 
+#: include/default_domains.php:135
 msgid "Bleed, blood"
 msgstr "Darah, berdarah"
 
+#: include/default_domains.php:136
 msgid "Sweat"
 msgstr "Keringat"
 
+#: include/default_domains.php:137
 msgid "Urinate, urine"
 msgstr "Buang air kecil, air kencing"
 
+#: include/default_domains.php:138
 msgid "Defecate, feces"
 msgstr "Buang air besar, tinja/tahi"
 
+#: include/default_domains.php:139
 msgid "Sense, perceive"
 msgstr "Pancaindra, merasa"
 
+#: include/default_domains.php:140
 msgid "See"
 msgstr "Melihat"
 
+#: include/default_domains.php:141
 msgid "Look"
 msgstr "Memandang"
 
+#: include/default_domains.php:142
 msgid "Watch"
 msgstr "Memperhatikan"
 
+#: include/default_domains.php:143
 msgid "Examine"
 msgstr "Meneliti"
 
+#: include/default_domains.php:144
 msgid "Show, let someone see"
 msgstr "Menunjukkan, memperlihatkan sesuatu kepada seseorang"
 
+#: include/default_domains.php:145
 msgid "Visible"
 msgstr "Dapat dilihat"
 
+#: include/default_domains.php:146
 msgid "Appear"
 msgstr "Muncul, tampak"
 
+#: include/default_domains.php:147
 msgid "Transparent"
 msgstr "Tembus pandang"
 
+#: include/default_domains.php:148
 msgid "Reflect, mirror"
 msgstr "Pantulan, cermin"
 
+#: include/default_domains.php:149
 msgid "Appearance"
 msgstr "Tampak, wujud"
 
+#: include/default_domains.php:150
 msgid "Beautiful"
 msgstr "Cantik"
 
+#: include/default_domains.php:151
 msgid "Ugly"
 msgstr "Jelek"
 
+#: include/default_domains.php:152
 msgid "Something used to see"
 msgstr "Sesuatu yang digunakan untuk melihat"
 
+#: include/default_domains.php:153
 msgid "Hear"
 msgstr "Mendengar"
 
+#: include/default_domains.php:154
 msgid "Listen"
 msgstr "Mendengarkan"
 
+#: include/default_domains.php:155
 msgid "Sound"
 msgstr "Bunyi"
 
+#: include/default_domains.php:156
 msgid "Types of sounds"
 msgstr "Jenis-jenis bunyi"
 
+#: include/default_domains.php:157
 msgid "Loud"
 msgstr "Keras"
 
+#: include/default_domains.php:158
 msgid "Quiet"
 msgstr "Tenang"
 
+#: include/default_domains.php:159
 msgid "Taste"
 msgstr "Rasa"
 
+#: include/default_domains.php:160
 msgid "Smell"
 msgstr "Bau"
 
+#: include/default_domains.php:161
 msgid "Sense of touch"
 msgstr "Indra peraba"
 
+#: include/default_domains.php:162
 msgid "Comfortable"
 msgstr "Nyaman"
 
+#: include/default_domains.php:163
 msgid "Body condition"
 msgstr "Kondisi tubuh"
 
+#: include/default_domains.php:164
 msgid "Strong"
 msgstr "Kuat"
 
+#: include/default_domains.php:165
 msgid "Weak"
 msgstr "Lemah"
 
+#: include/default_domains.php:166
 msgid "Energetic"
 msgstr "Penuh semangat"
 
+#: include/default_domains.php:167
 msgid "Tired"
 msgstr "Lelah"
 
+#: include/default_domains.php:168
 msgid "Rest"
 msgstr "Istirahat"
 
+#: include/default_domains.php:169
 msgid "Healthy"
 msgstr "Sehat"
 
+#: include/default_domains.php:170
 msgid "Sick"
 msgstr "Sakit"
 
+#: include/default_domains.php:171
 msgid "Recover from sickness"
 msgstr "Sembuh dari sakit"
 
+#: include/default_domains.php:172
 msgid "Disease"
 msgstr "Penyakit"
 
+#: include/default_domains.php:173
 msgid "Malnutrition, starvation"
 msgstr "Kekurangan makanan, kelaparan"
 
+#: include/default_domains.php:174
 msgid "Skin disease"
 msgstr "Penyakit kulit"
 
+#: include/default_domains.php:175
 msgid "Stomach illness"
 msgstr "Penyakit perut"
 
+#: include/default_domains.php:176
 msgid "Tooth decay"
 msgstr "Kerusakan gigi"
 
+#: include/default_domains.php:177
 msgid "Injure"
 msgstr "Luka"
 
+#: include/default_domains.php:178
 msgid "Amputate"
 msgstr "Kehilangan kaki atau tangan (amputasi)"
 
+#: include/default_domains.php:179
 msgid "Poison"
 msgstr "Racun dan bisa"
 
+#: include/default_domains.php:180
 msgid "Disabled"
 msgstr "Cacat"
 
+#: include/default_domains.php:181
 msgid "Blind"
 msgstr "Buta"
 
+#: include/default_domains.php:182
 msgid "Poor eyesight"
 msgstr "Penglihatan kabur"
 
+#: include/default_domains.php:183
 msgid "Deaf"
 msgstr "Pekak dan tuli"
 
+#: include/default_domains.php:184
 msgid "Mute"
 msgstr "Bisu"
 
+#: include/default_domains.php:185
 msgid "Birth defect"
 msgstr "Cacat bawaan atau cacat sejak lahir"
 
+#: include/default_domains.php:186
 msgid "Cause of disease"
 msgstr "Penyebab penyakit"
 
+#: include/default_domains.php:187
 msgid "Symptom of disease"
 msgstr "Gejala penyakit"
 
+#: include/default_domains.php:188
 msgid "Pain"
 msgstr "Rasa sakit"
 
+#: include/default_domains.php:189
 msgid "Fever"
 msgstr "Demam"
 
+#: include/default_domains.php:190
 msgid "Swell"
 msgstr "Bengkak"
 
+#: include/default_domains.php:191
 msgid "Lose consciousness"
 msgstr "Hilang kesadaran"
 
+#: include/default_domains.php:192
 msgid "Dazed, confused"
 msgstr "Linglung, bingung"
 
+#: include/default_domains.php:193
 msgid "Vision, hallucination"
 msgstr "Penglihatan, halusinasi"
 
+#: include/default_domains.php:194
 msgid "Treat disease"
 msgstr "Mengobati penyakit"
 
+#: include/default_domains.php:195
 msgid "Doctor, nurse"
 msgstr "Dokter, perawat"
 
+#: include/default_domains.php:196
 msgid "Medicine"
 msgstr "Obat"
 
+#: include/default_domains.php:197
 msgid "Medicinal plants"
 msgstr "Tumbuh-tumbuhan obat"
 
+#: include/default_domains.php:198
 msgid "Hospital"
 msgstr "Rumah sakit"
 
+#: include/default_domains.php:199
 msgid "Traditional medicine"
 msgstr "Obat-obatan tradisional"
 
+#: include/default_domains.php:200
 msgid "Mental illness"
 msgstr "Sakit jiwa"
 
+#: include/default_domains.php:201
 msgid "Life"
 msgstr "Hidup"
 
+#: include/default_domains.php:202
 msgid "Marriage"
 msgstr "Pernikahan"
 
+#: include/default_domains.php:203
 msgid "Arrange a marriage"
 msgstr "Merancang sebuah pernikahan"
 
+#: include/default_domains.php:204
 msgid "Wedding"
 msgstr "Upacara pernikahan"
 
+#: include/default_domains.php:205
 msgid "Unmarried"
 msgstr "Tidak atau belum menikah"
 
+#: include/default_domains.php:206
 msgid "Divorce"
 msgstr "Bercerai"
 
+#: include/default_domains.php:207
 msgid "Romantic love"
 msgstr "Cinta asmara"
 
+#: include/default_domains.php:208
 msgid "Sexual relations"
 msgstr "Hubungan seksual"
 
+#: include/default_domains.php:209
 msgid "Virginity"
 msgstr "Keperawanan"
 
+#: include/default_domains.php:210
 msgid "Attract sexually"
 msgstr "Daya tarik hubungan seksual"
 
+#: include/default_domains.php:211
 msgid "Sexual immorality"
 msgstr "Kelainan seksual"
 
+#: include/default_domains.php:212
 msgid "Birth"
 msgstr "Kelahiran"
 
+#: include/default_domains.php:213
 msgid "Pregnancy"
 msgstr "Kehamilan"
 
+#: include/default_domains.php:214
 msgid "Fetus"
 msgstr "Janin"
 
+#: include/default_domains.php:215
 msgid "Miscarriage"
 msgstr "Kematian bayi"
 
+#: include/default_domains.php:216
 msgid "Labor and birth pains"
 msgstr "Sakit ketika bersalin"
 
+#: include/default_domains.php:217
 msgid "Help to give birth"
 msgstr "Membantu proses persalinan seseorang"
 
+#: include/default_domains.php:218
 msgid "Unusual birth"
 msgstr "Kelahiran yang tidak normal"
 
+#: include/default_domains.php:219
 msgid "Multiple births"
 msgstr "Melahirkan banyak anak"
 
+#: include/default_domains.php:220
 msgid "Fertile, infertile"
 msgstr "Subur, tidak subur"
 
+#: include/default_domains.php:221
 msgid "Birth ceremony"
 msgstr "Perayaan ulang tahun"
 
+#: include/default_domains.php:222
 msgid "Stage of life"
 msgstr "Tahap-tahap kehidupan"
 
+#: include/default_domains.php:223
 msgid "Baby"
 msgstr "Bayi"
 
+#: include/default_domains.php:224
 msgid "Care for a baby"
 msgstr "Mengasuh bayi"
 
+#: include/default_domains.php:225
 msgid "Child"
 msgstr "Anak kecil"
 
+#: include/default_domains.php:226
 msgid "Rear a child"
 msgstr "Membesarkan anak"
 
+#: include/default_domains.php:227
 msgid "Youth"
 msgstr "Masa muda"
 
+#: include/default_domains.php:228
 msgid "Adult"
 msgstr "Orang dewasa"
 
+#: include/default_domains.php:229
 msgid "Old person"
 msgstr "Orang yang lanjut usia"
 
+#: include/default_domains.php:230
 msgid "Grow, get bigger"
 msgstr "Bertumbuh, membesar"
 
+#: include/default_domains.php:231
 msgid "Initiation"
 msgstr "Upacara inisiasi"
 
+#: include/default_domains.php:232
 msgid "Peer group"
 msgstr "Teman sebaya"
 
+#: include/default_domains.php:233
 msgid "Male, female"
 msgstr "Laki-laki, perempuan"
 
+#: include/default_domains.php:234
 msgid "Man"
 msgstr "Pria"
 
+#: include/default_domains.php:235
 msgid "Woman"
 msgstr "Wanita"
 
+#: include/default_domains.php:236
 msgid "Die"
 msgstr "Meninggal dunia"
 
+#: include/default_domains.php:237
 msgid "Kill"
 msgstr "Membunuh"
 
+#: include/default_domains.php:238
 msgid "Corpse"
 msgstr "Mayat"
 
+#: include/default_domains.php:239
 msgid "Funeral"
 msgstr "Upacara pemakaman"
 
+#: include/default_domains.php:240
 msgid "Mourn"
 msgstr "Berkabung"
 
+#: include/default_domains.php:241
 msgid "Bury"
 msgstr "Kubur"
 
+#: include/default_domains.php:242
 msgid "Grave"
 msgstr "Kuburan/pusara/makam"
 
+#: include/default_domains.php:243
 msgid "Inherit"
 msgstr "Mewarisi"
 
+#: include/default_domains.php:244
 msgid "Life after death"
 msgstr "Kehidupan setelah kematian"
 
+#: include/default_domains.php:245 include/semdomains_func.php:27
 msgid "Language and thought"
 msgstr "Bahasa dan pikiran"
 
+#: include/default_domains.php:246
 msgid "Soul, spirit"
 msgstr "Jiwa, roh"
 
+#: include/default_domains.php:247
 msgid "Personality"
 msgstr "Kepribadian"
 
+#: include/default_domains.php:248
 msgid "Mental state"
 msgstr "Keadaan jiwa"
 
+#: include/default_domains.php:249
 msgid "Alert"
 msgstr "Waspada"
 
+#: include/default_domains.php:250
 msgid "Notice"
 msgstr "Memperhatikan"
 
+#: include/default_domains.php:251
 msgid "Attention"
 msgstr "Perhatian"
 
+#: include/default_domains.php:252
 msgid "Ignore"
 msgstr "Mengabaikan"
 
+#: include/default_domains.php:253
 msgid "Think"
 msgstr "Berpikir"
 
+#: include/default_domains.php:254
 msgid "Mind"
 msgstr "Pikiran"
 
+#: include/default_domains.php:255
 msgid "Think about"
 msgstr "Memikirkan"
 
+#: include/default_domains.php:256
 msgid "Imagine"
 msgstr "Mengkhayal"
 
+#: include/default_domains.php:257
 msgid "Intelligent"
 msgstr "Cerdas"
 
+#: include/default_domains.php:258
 msgid "Stupid"
 msgstr "Bodoh"
 
+#: include/default_domains.php:259
 msgid "Logical"
 msgstr "Logis, masuk akal"
 
+#: include/default_domains.php:260
 msgid "Instinct"
 msgstr "Naluri"
 
+#: include/default_domains.php:261
 msgid "Learn"
 msgstr "Belajar"
 
+#: include/default_domains.php:262
 msgid "Study"
 msgstr "Mengkaji"
 
+#: include/default_domains.php:263
 msgid "Check"
 msgstr "Memeriksa"
 
+#: include/default_domains.php:264
 msgid "Evaluate, test"
 msgstr "Menilai, menguji"
 
+#: include/default_domains.php:265
 msgid "Guess"
 msgstr "Menebak"
 
+#: include/default_domains.php:266
 msgid "Solve"
 msgstr "Mengatasi atau memecahkan persoalan"
 
+#: include/default_domains.php:267
 msgid "Realize"
 msgstr "Menyadari"
 
+#: include/default_domains.php:268
 msgid "Willing to learn"
 msgstr "Kemauan belajar"
 
+#: include/default_domains.php:269
 msgid "Know"
 msgstr "Mengetahui"
 
+#: include/default_domains.php:270
 msgid "Known, unknown"
 msgstr "Diketahui, tidak diketahui"
 
+#: include/default_domains.php:271
 msgid "Area of knowledge"
 msgstr "Bidang pengetahuan"
 
+#: include/default_domains.php:272
 msgid "Secret"
 msgstr "Rahasia"
 
+#: include/default_domains.php:273
 msgid "Understand"
 msgstr "Mengerti"
 
+#: include/default_domains.php:274
 msgid "Misunderstand"
 msgstr "Salah paham"
 
+#: include/default_domains.php:275
 msgid "Understandable"
 msgstr "Dapat dimengerti"
 
+#: include/default_domains.php:276
 msgid "Mysterious"
 msgstr "Misterius"
 
+#: include/default_domains.php:277
 msgid "Opinion"
 msgstr "Pendapat"
 
+#: include/default_domains.php:278
 msgid "Believe"
 msgstr "Percaya"
 
+#: include/default_domains.php:279
 msgid "Trust"
 msgstr "Mempercayai seseorang"
 
+#: include/default_domains.php:280
 msgid "Disbelief"
 msgstr "Tidak mempercayai"
 
+#: include/default_domains.php:281
 msgid "Doubt"
 msgstr "Ragu-ragu"
 
+#: include/default_domains.php:282
 msgid "Agree with someone"
 msgstr "Setuju dengan seseorang"
 
+#: include/default_domains.php:283
 msgid "Disagree"
 msgstr "Tidak setuju"
 
+#: include/default_domains.php:284
 msgid "Protest"
 msgstr "Memprotes"
 
+#: include/default_domains.php:285
 msgid "Philosophy"
 msgstr "Filsafat"
 
+#: include/default_domains.php:286
 msgid "Attitude"
 msgstr "Sikap"
 
+#: include/default_domains.php:287
 msgid "Extreme belief"
 msgstr "Kepercayaan yang fanatik"
 
+#: include/default_domains.php:288
 msgid "Change your mind"
 msgstr "Mengubah pikiran"
 
+#: include/default_domains.php:289
 msgid "Approve of something"
 msgstr "Setuju untuk melakukan sesuatu"
 
+#: include/default_domains.php:290
 msgid "Remember"
 msgstr "Ingat"
 
+#: include/default_domains.php:291
 msgid "Forget"
 msgstr "Lupa"
 
+#: include/default_domains.php:292
 msgid "Recognize"
 msgstr "Mengenal"
 
+#: include/default_domains.php:293
 msgid "Memorize"
 msgstr "Menghafal"
 
+#: include/default_domains.php:294
 msgid "Remind"
 msgstr "Mengingatkan"
 
+#: include/default_domains.php:295
 msgid "Expect"
 msgstr "Mengharapkan"
 
+#: include/default_domains.php:296
 msgid "Hope"
 msgstr "Berharap"
 
+#: include/default_domains.php:297
 msgid "Hopeless"
 msgstr "Tidak ada harapan"
 
+#: include/default_domains.php:298
 msgid "Predict"
 msgstr "Meramal"
 
+#: include/default_domains.php:299
 msgid "Tendency"
 msgstr "Kecenderungan"
 
+#: include/default_domains.php:300
 msgid "Want"
 msgstr "Ingin"
 
+#: include/default_domains.php:301
 msgid "Decide, plan"
 msgstr "Memutuskan, merencanakan"
 
+#: include/default_domains.php:302
 msgid "Purpose, goal"
 msgstr "Tujuan, sasaran"
 
+#: include/default_domains.php:303
 msgid "Choose"
 msgstr "Memilih"
 
+#: include/default_domains.php:304
 msgid "Cast lots"
 msgstr "Membuang undi"
 
+#: include/default_domains.php:305
 msgid "Intend"
 msgstr "Bermaksud"
 
+#: include/default_domains.php:306
 msgid "Deliberately"
 msgstr "Dengan sengaja"
 
+#: include/default_domains.php:307
 msgid "Determined"
 msgstr "Nekat, bertekad"
 
+#: include/default_domains.php:308
 msgid "Stubborn"
 msgstr "Keras kepala"
 
+#: include/default_domains.php:309
 msgid "Lust"
 msgstr "Napsu"
 
+#: include/default_domains.php:310
 msgid "Request"
 msgstr "Meminta"
 
+#: include/default_domains.php:311
 msgid "Agree to do something"
 msgstr "Setuju melakukan sesuatu"
 
+#: include/default_domains.php:312
 msgid "Refuse to do something"
 msgstr "Menolak melakukan sesuatu"
 
+#: include/default_domains.php:313
 msgid "Intercede"
 msgstr "Menengahi atau memohon sesuatu bagi pihak lain"
 
+#: include/default_domains.php:314
 msgid "Willing"
 msgstr "Kemauan"
 
+#: include/default_domains.php:315
 msgid "Influence"
 msgstr "Pengaruh"
 
+#: include/default_domains.php:316
 msgid "Suggest"
 msgstr "Mengusulkan"
 
+#: include/default_domains.php:317
 msgid "Advise"
 msgstr "Nasihat"
 
+#: include/default_domains.php:318
 msgid "Persuade"
 msgstr "Membujuk"
 
+#: include/default_domains.php:319
 msgid "Insist"
 msgstr "Mendesak"
 
+#: include/default_domains.php:320
 msgid "Compel"
 msgstr "Memaksa"
 
+#: include/default_domains.php:321
 msgid "Control"
 msgstr "Menguasai"
 
+#: include/default_domains.php:322
 msgid "Warn"
 msgstr "Memperingatkan"
 
+#: include/default_domains.php:323
 msgid "Threaten"
 msgstr "Mengancam"
 
+#: include/default_domains.php:324
 msgid "Ask permission"
 msgstr "Meminta izin"
 
+#: include/default_domains.php:325
 msgid "Give permission"
 msgstr "Memberi izin"
 
+#: include/default_domains.php:326
 msgid "Refuse permission"
 msgstr "Menolak memberi izin"
 
+#: include/default_domains.php:327
 msgid "Exempt"
 msgstr "Membebaskan"
 
+#: include/default_domains.php:328
 msgid "Prevent"
 msgstr "Mencegah"
 
+#: include/default_domains.php:329
 msgid "Free to do what you want"
 msgstr "Bebas melakukan apa saja yang diinginkan"
 
+#: include/default_domains.php:330
 msgid "Offer"
 msgstr "Menawarkan"
 
+#: include/default_domains.php:331
 msgid "Accept"
 msgstr "Menerima"
 
+#: include/default_domains.php:332
 msgid "Reject"
 msgstr "Menolak"
 
+#: include/default_domains.php:333
 msgid "Emotion"
 msgstr "Perasaan hati"
 
+#: include/default_domains.php:334
 msgid "Feel good"
 msgstr "Merasa enak"
 
+#: include/default_domains.php:335
 msgid "Like, love"
 msgstr "Menyukai, mencintai"
 
+#: include/default_domains.php:336
 msgid "Enjoy doing something"
 msgstr "Senang melakukan sesuatu"
 
+#: include/default_domains.php:337
 msgid "Self-esteem"
 msgstr "Harga diri"
 
+#: include/default_domains.php:338
 msgid "Prefer"
 msgstr "Lebih suka"
 
+#: include/default_domains.php:339
 msgid "Popular"
 msgstr "Populer"
 
+#: include/default_domains.php:340
 msgid "Fashionable"
 msgstr "Modern"
 
+#: include/default_domains.php:341
 msgid "Contentment"
 msgstr "Kepuasan hati"
 
+#: include/default_domains.php:342
 msgid "Happy for"
 msgstr "Merasa senang atas"
 
+#: include/default_domains.php:343
 msgid "Pleased with"
 msgstr "Merasa senang dengan"
 
+#: include/default_domains.php:344
 msgid "Happy"
 msgstr "Senang"
 
+#: include/default_domains.php:345
 msgid "Relaxed"
 msgstr "Santai"
 
+#: include/default_domains.php:346
 msgid "Calm"
 msgstr "Tenang"
 
+#: include/default_domains.php:347
 msgid "Surprise"
 msgstr "Terkejut"
 
+#: include/default_domains.php:348
 msgid "Interested"
 msgstr "Tertarik"
 
+#: include/default_domains.php:349
 msgid "Excited"
 msgstr "Gembira"
 
+#: include/default_domains.php:350
 msgid "Enthusiastic"
 msgstr "Bersemangat"
 
+#: include/default_domains.php:351
 msgid "Obsessed"
 msgstr "Sangat tertarik"
 
+#: include/default_domains.php:352
 msgid "Attract"
 msgstr "Menarik"
 
+#: include/default_domains.php:353
 msgid "Indifferent"
 msgstr "Tidak tertarik"
 
+#: include/default_domains.php:354
 msgid "Uninterested, bored"
 msgstr "Tidak tertarik, bosan"
 
+#: include/default_domains.php:355
 msgid "Confident"
 msgstr "Percaya diri"
 
+#: include/default_domains.php:356
 msgid "Feel bad"
 msgstr "Merasa tidak enak"
 
+#: include/default_domains.php:357
 msgid "Sad"
 msgstr "Sedih"
 
+#: include/default_domains.php:358
 msgid "Dislike"
 msgstr "Tidak suka"
 
+#: include/default_domains.php:359
 msgid "Hate, detest"
 msgstr "Benci, sangat benci"
 
+#: include/default_domains.php:360
 msgid "Disgusted"
 msgstr "Jijik"
 
+#: include/default_domains.php:361
 msgid "Disappointed"
 msgstr "Kecewa"
 
+#: include/default_domains.php:362
 msgid "Lonely"
 msgstr "Kesepian"
 
+#: include/default_domains.php:363
 msgid "Upset"
 msgstr "Merasa terganggu"
 
+#: include/default_domains.php:364
 msgid "Shock"
 msgstr "Sangat terkejut"
 
+#: include/default_domains.php:365
 msgid "Jealous"
 msgstr "Iri hati, cemburu"
 
+#: include/default_domains.php:366
 msgid "Discontent"
 msgstr "Tidak puas"
 
+#: include/default_domains.php:367
 msgid "Sorry"
 msgstr "Menyesal"
 
+#: include/default_domains.php:368
 msgid "Ashamed"
 msgstr "Malu"
 
+#: include/default_domains.php:369
 msgid "Embarrassed"
 msgstr "Merasa dipermalukan"
 
+#: include/default_domains.php:370
 msgid "Angry"
 msgstr "Marah"
 
+#: include/default_domains.php:371
 msgid "Annoyed"
 msgstr "Terganggu"
 
+#: include/default_domains.php:372
 msgid "Afraid"
 msgstr "Takut"
 
+#: include/default_domains.php:373
 msgid "Worried"
 msgstr "Khawatir"
 
+#: include/default_domains.php:374
 msgid "Nervous"
 msgstr "Gugup"
 
+#: include/default_domains.php:375
 msgid "Shy, timid"
 msgstr "Malu, takut-takut"
 
+#: include/default_domains.php:376
 msgid "Confused"
 msgstr "Bingung"
 
+#: include/default_domains.php:377
 msgid "Communication"
 msgstr "Komunikasi"
 
+#: include/default_domains.php:378
 msgid "Say"
 msgstr "Berkata, mengatakan"
 
+#: include/default_domains.php:379
 msgid "Voice"
 msgstr "Suara"
 
+#: include/default_domains.php:380
 msgid "Shout"
 msgstr "Berteriak"
 
+#: include/default_domains.php:381
 msgid "Speak quietly"
 msgstr "Berbicara dengan perlahan"
 
+#: include/default_domains.php:382
 msgid "Speak a lot"
 msgstr "Banyak berbicara"
 
+#: include/default_domains.php:383
 msgid "Speak little"
 msgstr "Sedikit berbicara"
 
+#: include/default_domains.php:384
 msgid "Say nothing"
 msgstr "Tidak berbicara apa-apa"
 
+#: include/default_domains.php:385
 msgid "Speech style"
 msgstr "Gaya bicara"
 
+#: include/default_domains.php:386
 msgid "Speak well"
 msgstr "Pandai berbicara"
 
+#: include/default_domains.php:387
 msgid "Speak poorly"
 msgstr "Tidak pandai berbicara"
 
+#: include/default_domains.php:388
 msgid "Talk about a subject"
 msgstr "Membicarakan suatu pokok persoalan"
 
+#: include/default_domains.php:389
 msgid "Announce"
 msgstr "Mengumumkan"
 
+#: include/default_domains.php:390
 msgid "Describe"
 msgstr "Menggambarkan"
 
+#: include/default_domains.php:391
 msgid "Explain"
 msgstr "Menjelaskan"
 
+#: include/default_domains.php:392
 msgid "Mention"
 msgstr "Menyebutkan"
 
+#: include/default_domains.php:393
 msgid "Introduce"
 msgstr "Memperkenalkan"
 
+#: include/default_domains.php:394
 msgid "Repeat"
 msgstr "Mengulangi"
 
+#: include/default_domains.php:395
 msgid "Summarize"
 msgstr "Meringkas"
 
+#: include/default_domains.php:396
 msgid "Emphasize"
 msgstr "Menekankan"
 
+#: include/default_domains.php:397
 msgid "Be about, subject"
 msgstr "Tentang/mengenai, pokok persoalan"
 
+#: include/default_domains.php:398
 msgid "1"
 msgstr "Benar"
 
+#: include/default_domains.php:399
 msgid "Tell the truth"
 msgstr "Mengatakan kebenaran"
 
+#: include/default_domains.php:400
 msgid "Tell a lie"
 msgstr "Berbohong"
 
+#: include/default_domains.php:401
 msgid "Contradict"
 msgstr "Membantah"
 
+#: include/default_domains.php:402
 msgid "Expose falsehood"
 msgstr "Membuktikan kebohongan"
 
+#: include/default_domains.php:403
 msgid "Real"
 msgstr "Nyata"
 
+#: include/default_domains.php:404
 msgid "Exaggerate"
 msgstr "Membesar-besarkan"
 
+#: include/default_domains.php:405
 msgid "Speak with others"
 msgstr "Berbicara dengan orang lain"
 
+#: include/default_domains.php:406
 msgid "Call"
 msgstr "Memanggil"
 
+#: include/default_domains.php:407
 msgid "Contact"
 msgstr "Menghubungi"
 
+#: include/default_domains.php:408
 msgid "Greet"
 msgstr "Menyapa"
 
+#: include/default_domains.php:409
 msgid "Say farewell"
 msgstr "Mengucapkan selamat tinggal"
 
+#: include/default_domains.php:410
 msgid "Speak in unison"
 msgstr "Berbicara secara serentak"
 
+#: include/default_domains.php:411
 msgid "Ask"
 msgstr "Bertanya"
 
+#: include/default_domains.php:412
 msgid "Answer"
 msgstr "Menjawab"
 
+#: include/default_domains.php:413
 msgid "Disclose"
 msgstr "Menyingkapkan"
 
+#: include/default_domains.php:414
 msgid "Hide your thoughts"
 msgstr "Menyembunyikan pikiran"
 
+#: include/default_domains.php:415
 msgid "Debate"
 msgstr "Berdebat"
 
+#: include/default_domains.php:416
 msgid "Demonstrate"
 msgstr "Mempertunjukkan"
 
+#: include/default_domains.php:417
 msgid "Quarrel"
 msgstr "Bercekcok"
 
+#: include/default_domains.php:418
 msgid "Praise"
 msgstr "Memuji"
 
+#: include/default_domains.php:419
 msgid "Thank"
 msgstr "Berterima kasih"
 
+#: include/default_domains.php:420
 msgid "Flatter"
 msgstr "Menyanjung"
 
+#: include/default_domains.php:421
 msgid "Boast"
 msgstr "Membanggakan diri"
 
+#: include/default_domains.php:422
 msgid "Criticize"
 msgstr "Mengkritik"
 
+#: include/default_domains.php:423
 msgid "Blame"
 msgstr "Menyalahkan"
 
+#: include/default_domains.php:424
 msgid "Insult"
 msgstr "Menghina"
 
+#: include/default_domains.php:425
 msgid "Mock"
 msgstr "Mengolok-olok"
 
+#: include/default_domains.php:426
 msgid "Gossip"
 msgstr "Menggunjing"
 
+#: include/default_domains.php:427
 msgid "Complain"
 msgstr "Mengeluh"
 
+#: include/default_domains.php:428
 msgid "Promise"
 msgstr "Berjanji"
 
+#: include/default_domains.php:429
 msgid "Make speech"
 msgstr "Berpidato"
 
+#: include/default_domains.php:430
 msgid "Report"
 msgstr "Melaporkan"
 
+#: include/default_domains.php:431
 msgid "News, message"
 msgstr "Berita, pesan"
 
+#: include/default_domains.php:432
 msgid "Figurative"
 msgstr "Kata kiasan"
 
+#: include/default_domains.php:433
 msgid "Admit"
 msgstr "Mengakui"
 
+#: include/default_domains.php:434 include/infrastructure.php:549
+#: include/infrastructure.php:557
 msgid "Language"
 msgstr "Bahasa"
 
+#: include/default_domains.php:435
 msgid "Word"
 msgstr "Kata"
 
+#: include/default_domains.php:436
 msgid "Information"
 msgstr "Informasi"
 
+#: include/default_domains.php:437
 msgid "Story"
 msgstr "Cerita"
 
+#: include/default_domains.php:438
 msgid "Fable, myth"
 msgstr "Dongeng, mitos"
 
+#: include/default_domains.php:439
 msgid "Saying, proverb"
 msgstr "Pepatah, peribahasa"
 
+#: include/default_domains.php:440
 msgid "Riddle"
 msgstr "Teka-teki"
 
+#: include/default_domains.php:441
 msgid "Poetry"
 msgstr "Puisi"
 
+#: include/default_domains.php:442
 msgid "History"
 msgstr "Sejarah"
 
+#: include/default_domains.php:443
 msgid "Verbal tradition"
 msgstr "Tradisi lisan"
 
+#: include/default_domains.php:444
 msgid "Foolish talk"
 msgstr "Omong kosong"
 
+#: include/default_domains.php:445
 msgid "Obscenity"
 msgstr "Kata-kata kotor"
 
+#: include/default_domains.php:446
 msgid "Sign, symbol"
 msgstr "Tanda, lambang"
 
+#: include/default_domains.php:447
 msgid "Gesture"
 msgstr "Gerak isyarat"
 
+#: include/default_domains.php:448
 msgid "Point at"
 msgstr "Menunjuk"
 
+#: include/default_domains.php:449
 msgid "Facial expression"
 msgstr "Ekspresi wajah"
 
+#: include/default_domains.php:450
 msgid "Laugh"
 msgstr "Tertawa"
 
+#: include/default_domains.php:451
 msgid "Cry, tear"
 msgstr "Menangis, air mata"
 
+#: include/default_domains.php:452
 msgid "Reading and writing"
 msgstr "Membaca dan menulis"
 
+#: include/default_domains.php:453
 msgid "Write"
 msgstr "Menulis"
 
+#: include/default_domains.php:454
 msgid "Written material"
 msgstr "Bahan-bahan tertulis"
 
+#: include/default_domains.php:455
 msgid "Read"
 msgstr "Membaca"
 
+#: include/default_domains.php:456
 msgid "Publish"
 msgstr "Menerbitkan"
 
+#: include/default_domains.php:457
 msgid "Record"
 msgstr "Mencatat"
 
+#: include/default_domains.php:458
 msgid "List"
 msgstr "Daftar"
 
+#: include/default_domains.php:459
 msgid "Letter"
 msgstr "Surat"
 
+#: include/default_domains.php:460
 msgid "Interpreting messages"
 msgstr "Menafsirkan pesan"
 
+#: include/default_domains.php:461
 msgid "Meaning"
 msgstr "Arti"
 
+#: include/default_domains.php:462
 msgid "Meaningless"
 msgstr "Tidak berarti"
 
+#: include/default_domains.php:463
 msgid "Unintelligible"
 msgstr "Tidak dapat dipahami"
 
+#: include/default_domains.php:464
 msgid "Show, indicate"
 msgstr "Memperlihatkan, menunjukkan"
 
+#: include/default_domains.php:465
 msgid "Mass communication"
 msgstr "Media massa"
 
+#: include/default_domains.php:466
 msgid "Radio, television"
 msgstr "Radio, televisi"
 
+#: include/default_domains.php:467
 msgid "Telephone"
 msgstr "Telepon"
 
+#: include/default_domains.php:468
 msgid "Newspaper"
 msgstr "Surat kabar"
 
+#: include/default_domains.php:469
 msgid "Movie"
 msgstr "Film"
 
+#: include/default_domains.php:470
 msgid "Recorded music"
 msgstr "Musik rekaman"
 
+#: include/default_domains.php:471
 msgid "Communication devices"
 msgstr "Alat komunikasi"
 
+#: include/default_domains.php:472
 msgid "Teach"
 msgstr "Mengajar"
 
+#: include/default_domains.php:473
 msgid "Show, explain"
 msgstr "Menunjukkan, menjelaskan"
 
+#: include/default_domains.php:474
 msgid "School"
 msgstr "Sekolah"
 
+#: include/default_domains.php:475
 msgid "Subject of teaching"
 msgstr "Mata pelajaran"
 
+#: include/default_domains.php:476
 msgid "Class, lesson"
 msgstr "Kelas, pelajaran"
 
+#: include/default_domains.php:477
 msgid "Correct"
 msgstr "Memperbaiki atau membetulkan"
 
+#: include/default_domains.php:478
 msgid "Science"
 msgstr "Ilmu pengetahuan"
 
+#: include/default_domains.php:479
 msgid "Test"
 msgstr "Ujian"
 
+#: include/default_domains.php:480
 msgid "Answer in a test"
 msgstr "Jawaban dalam ujian"
 
+#: include/default_domains.php:481 include/semdomains_func.php:28
 msgid "Social behavior"
 msgstr "Perilaku sosial"
 
+#: include/default_domains.php:482
 msgid "Relationships"
 msgstr "Hubungan"
 
+#: include/default_domains.php:483
 msgid "Friend"
 msgstr "Teman, sahabat"
 
+#: include/default_domains.php:484
 msgid "Girlfriend, boyfriend"
 msgstr "Teman wanita, teman pria (pacar)"
 
+#: include/default_domains.php:485
 msgid "Types of people"
 msgstr "Jenis-jenis orang"
 
+#: include/default_domains.php:486
 msgid "Working relationship"
 msgstr "Hubungan kerja"
 
+#: include/default_domains.php:487
 msgid "Know someone"
 msgstr "Mengenal seseorang"
 
+#: include/default_domains.php:488
 msgid "Meet for the first time"
 msgstr "Berkenalan dengan seseorang untuk pertama kalinya"
 
+#: include/default_domains.php:489
 msgid "Neighbor"
 msgstr "Tetangga"
 
+#: include/default_domains.php:490
 msgid "Social class"
 msgstr "Lapisan masyarakat"
 
+#: include/default_domains.php:491
 msgid "Unity"
 msgstr "Kesatuan"
 
+#: include/default_domains.php:492
 msgid "Disunity"
 msgstr "Ketidaksatuan"
 
+#: include/default_domains.php:493
 msgid "Unfriendly"
 msgstr "Tidak ramah"
 
+#: include/default_domains.php:494
 msgid "Set self apart"
 msgstr "Memisahkan diri"
 
+#: include/default_domains.php:495
 msgid "Alone"
 msgstr "Sendirian"
 
+#: include/default_domains.php:496
 msgid "Independent person"
 msgstr "Orang yang mandiri"
 
+#: include/default_domains.php:497
 msgid "Private, public"
 msgstr "Pribadi, umum"
 
+#: include/default_domains.php:498
 msgid "Begin a relationship"
 msgstr "Memulai suatu hubungan"
 
+#: include/default_domains.php:499
 msgid "End a relationship"
 msgstr "Mengakhiri suatu hubungan"
 
+#: include/default_domains.php:500
 msgid "Show affection"
 msgstr "Menunjukkan kasih sayang"
 
+#: include/default_domains.php:501
 msgid "Kinship"
 msgstr "Hubungan keluarga"
 
+#: include/default_domains.php:502
 msgid "Related by birth"
 msgstr "Terbentuknya hubungan melalui kelahiran"
 
+#: include/default_domains.php:503
 msgid "Grandfather, grandmother"
 msgstr "Kakek, nenek"
 
+#: include/default_domains.php:504
 msgid "Father, mother"
 msgstr "Bapak, ibu"
 
+#: include/default_domains.php:505
 msgid "Brother, sister"
 msgstr "Saudara laki-laki, saudara perempuan"
 
+#: include/default_domains.php:506
 msgid "Son, daughter"
 msgstr "Anak laki-laki, anak perempuan"
 
+#: include/default_domains.php:507
 msgid "Grandson, granddaughter"
 msgstr "Cucu laki-laki, cucu perempuan"
 
+#: include/default_domains.php:508
 msgid "Uncle, aunt"
 msgstr "Paman, bibi"
 
+#: include/default_domains.php:509
 msgid "Cousin"
 msgstr "Sepupu"
 
+#: include/default_domains.php:510
 msgid "Nephew, niece"
 msgstr "Keponakan laki-laki, keponakan perempuan"
 
+#: include/default_domains.php:511
 msgid "Birth order"
 msgstr "Urutan kelahiran"
 
+#: include/default_domains.php:512
 msgid "Related by marriage"
 msgstr "Terbentuknya hubungan melalui pernikahan"
 
+#: include/default_domains.php:513
 msgid "Husband, wife"
 msgstr "Suami, istri"
 
+#: include/default_domains.php:514
 msgid "In-law"
 msgstr "Sanak saudara istri atau suami"
 
+#: include/default_domains.php:515
 msgid "Widow, widower"
 msgstr "Janda, duda"
 
+#: include/default_domains.php:516
 msgid "Orphan"
 msgstr "Anak yatim piatu"
 
+#: include/default_domains.php:517
 msgid "Illegitimate child"
 msgstr "Anak luar nikah"
 
+#: include/default_domains.php:518
 msgid "Adopt"
 msgstr "Mengangkat anak"
 
+#: include/default_domains.php:519
 msgid "Non-relative"
 msgstr "Tidak ada hubungan keluarga"
 
+#: include/default_domains.php:520
 msgid "Family, clan"
 msgstr "Keluarga, kaum, suku, marga"
 
+#: include/default_domains.php:521
 msgid "Race"
 msgstr "Ras/bangsa"
 
+#: include/default_domains.php:522
 msgid "Social activity"
 msgstr "Kegiatan bermasyarakat"
 
+#: include/default_domains.php:523
 msgid "Come together, form a group"
 msgstr "Berkumpul, berkelompok"
 
+#: include/default_domains.php:524
 msgid "Invite"
 msgstr "Mengundang"
 
+#: include/default_domains.php:525
 msgid "Encounter"
 msgstr "Berjumpa"
 
+#: include/default_domains.php:526
 msgid "Meet together"
 msgstr "Bertemu bersama"
 
+#: include/default_domains.php:527
 msgid "Visit"
 msgstr "Mengunjungi"
 
+#: include/default_domains.php:528
 msgid "Welcome, receive"
 msgstr "Menyambut, menerima"
 
+#: include/default_domains.php:529
 msgid "Show hospitality"
 msgstr "Menunjukkan keramah-tamahan"
 
+#: include/default_domains.php:530
 msgid "Meeting, assembly"
 msgstr "Rapat, pertemuan"
 
+#: include/default_domains.php:531
 msgid "Participate"
 msgstr "Berpartisipasi"
 
+#: include/default_domains.php:532
 msgid "Crowd, group"
 msgstr "Kerumunan, kelompok"
 
+#: include/default_domains.php:533
 msgid "Organization"
 msgstr "Organisasi"
 
+#: include/default_domains.php:534
 msgid "Join an organization"
 msgstr "Bergabung dengan suatu organisasi"
 
+#: include/default_domains.php:535
 msgid "Leave an organization"
 msgstr "Keluar dari suatu organisasi"
 
+#: include/default_domains.php:536
 msgid "Belong to an organization"
 msgstr "Menjadi bagian dari suatu organisasi"
 
+#: include/default_domains.php:537
 msgid "Social group"
 msgstr "Kelompok sosial"
 
+#: include/default_domains.php:538
 msgid "Social event"
 msgstr "Acara masyarakat"
 
+#: include/default_domains.php:539
 msgid "Ceremony"
 msgstr "Upacara"
 
+#: include/default_domains.php:540
 msgid "Festival, show"
 msgstr "Perayaan, pertunjukan"
 
+#: include/default_domains.php:541
 msgid "Celebrate"
 msgstr "Merayakan"
 
+#: include/default_domains.php:542
 msgid "Music"
 msgstr "Musik"
 
+#: include/default_domains.php:543
 msgid "Compose music"
 msgstr "Menciptakan musik"
 
+#: include/default_domains.php:544
 msgid "Play music"
 msgstr "Bermain musik"
 
+#: include/default_domains.php:545
 msgid "Sing"
 msgstr "Menyanyi"
 
+#: include/default_domains.php:546
 msgid "Musician"
 msgstr "Pemusik"
 
+#: include/default_domains.php:547
 msgid "Musical instrument"
 msgstr "Alat musik"
 
+#: include/default_domains.php:548
 msgid "Dance"
 msgstr "Menari"
 
+#: include/default_domains.php:549
 msgid "Drama"
 msgstr "Drama"
 
+#: include/default_domains.php:550
 msgid "Entertainment, recreation"
 msgstr "Hiburan, rekreasi"
 
+#: include/default_domains.php:551
 msgid "Game"
 msgstr "Permainan"
 
+#: include/default_domains.php:552
 msgid "Card game"
 msgstr "Permainan kartu"
 
+#: include/default_domains.php:553
 msgid "Chess"
 msgstr "Catur"
 
+#: include/default_domains.php:554
 msgid "Sports"
 msgstr "Olahraga"
 
+#: include/default_domains.php:555
 msgid "Football, soccer"
 msgstr "Sepak bola"
 
+#: include/default_domains.php:556
 msgid "Basketball"
 msgstr "Bola basket"
 
+#: include/default_domains.php:557
 msgid "Exercise"
 msgstr "Berolahraga"
 
+#: include/default_domains.php:558
 msgid "Gambling"
 msgstr "Berjudi"
 
+#: include/default_domains.php:559
 msgid "Play, fun"
 msgstr "Bermain dan bersenang-senang"
 
+#: include/default_domains.php:560
 msgid "Humor"
 msgstr "Humor, lelucon"
 
+#: include/default_domains.php:561
 msgid "Serious"
 msgstr "Serius"
 
+#: include/default_domains.php:562
 msgid "Holiday"
 msgstr "Hari libur"
 
+#: include/default_domains.php:563
 msgid "Free time"
 msgstr "Waktu luang"
 
+#: include/default_domains.php:564
 msgid "Behavior"
 msgstr "Perilaku"
 
+#: include/default_domains.php:565
 msgid "Good, moral"
 msgstr "Berperilaku baik, bermoral"
 
+#: include/default_domains.php:566
 msgid "Bad, immoral"
 msgstr "Berperilaku buruk, tidak bermoral"
 
+#: include/default_domains.php:567
 msgid "Meet a standard"
 msgstr "Memenuhi syarat"
 
+#: include/default_domains.php:568
 msgid "Below standard"
 msgstr "Tidak memenuhi syarat"
 
+#: include/default_domains.php:569
 msgid "Mature in behavior"
 msgstr "Bersikap matang"
 
+#: include/default_domains.php:570
 msgid "Immature in behavior"
 msgstr "Bersikap tidak matang"
 
+#: include/default_domains.php:571
 msgid "Sensible"
 msgstr "Berpikir dahulu sebelum bertindak"
 
+#: include/default_domains.php:572
 msgid "Reputation"
 msgstr "Reputasi"
 
+#: include/default_domains.php:573
 msgid "Patient"
 msgstr "Sabar"
 
+#: include/default_domains.php:574
 msgid "Impatient"
 msgstr "Tidak sabar"
 
+#: include/default_domains.php:575
 msgid "Bad-tempered"
 msgstr "Cepat marah"
 
+#: include/default_domains.php:576
 msgid "Admire someone"
 msgstr "Mengagumi seseorang"
 
+#: include/default_domains.php:577
 msgid "Despise someone"
 msgstr "Memandang rendah seseorang"
 
+#: include/default_domains.php:578
 msgid "Humble"
 msgstr "Rendah hati"
 
+#: include/default_domains.php:579
 msgid "Proud"
 msgstr "Bangga"
 
+#: include/default_domains.php:580
 msgid "Show off"
 msgstr "Suka pamer"
 
+#: include/default_domains.php:581
 msgid "Love"
 msgstr "Mencintai"
 
+#: include/default_domains.php:582
 msgid "Hate, ill will"
 msgstr "Membenci, memiliki niat jahat"
 
+#: include/default_domains.php:583
 msgid "Not care"
 msgstr "Tidak peduli"
 
+#: include/default_domains.php:584
 msgid "Abandon"
 msgstr "Meninggalkan"
 
+#: include/default_domains.php:585
 msgid "Do good to"
 msgstr "Melakukan perbuatan baik terhadap seseorang"
 
+#: include/default_domains.php:586
 msgid "Do evil to"
 msgstr "Melakukan perbuatan jahat terhadap seseorang"
 
+#: include/default_domains.php:587
 msgid "Help"
 msgstr "Membantu"
 
+#: include/default_domains.php:588
 msgid "Hinder"
 msgstr "Menghalangi"
 
+#: include/default_domains.php:589
 msgid "Cooperate with"
 msgstr "Bekerja sama"
 
+#: include/default_domains.php:590
 msgid "Compete with"
 msgstr "Bersaing"
 
+#: include/default_domains.php:591
 msgid "Altruistic, selfless"
 msgstr "Mementingkan orang lain, mementingkan diri sendiri"
 
+#: include/default_domains.php:592
 msgid "Selfish"
 msgstr "Mementingkan diri sendiri"
 
+#: include/default_domains.php:593
 msgid "Use a person"
 msgstr "Memanfaatkan orang lain"
 
+#: include/default_domains.php:594
 msgid "Share with"
 msgstr "Berbagi"
 
+#: include/default_domains.php:595
 msgid "Provide for, support"
 msgstr "Menyediakan, menopang"
 
+#: include/default_domains.php:596
 msgid "Care for"
 msgstr "Menjaga seseorang"
 
+#: include/default_domains.php:597
 msgid "Entrust to the care of"
 msgstr "Mempercayai seseorang untuk menjaga sesuatu"
 
+#: include/default_domains.php:598
 msgid "Meddle"
 msgstr "Mencampuri urusan orang lain"
 
+#: include/default_domains.php:599
 msgid "Spoil"
 msgstr "Merusak"
 
+#: include/default_domains.php:600
 msgid "Enter by force"
 msgstr "Masuk secara paksa"
 
+#: include/default_domains.php:601
 msgid "Kidnap"
 msgstr "Menculik"
 
+#: include/default_domains.php:602
 msgid "Cruel"
 msgstr "Kejam"
 
+#: include/default_domains.php:603
 msgid "Honest"
 msgstr "Jujur"
 
+#: include/default_domains.php:604
 msgid "Dishonest"
 msgstr "Tidak jujur"
 
+#: include/default_domains.php:605
 msgid "Faithful"
 msgstr "Setia"
 
+#: include/default_domains.php:606
 msgid "Reliable"
 msgstr "Dapat dipercaya"
 
+#: include/default_domains.php:607
 msgid "Unreliable"
 msgstr "Tidak dapat dipercaya"
 
+#: include/default_domains.php:608
 msgid "Deceive"
 msgstr "Menipu"
 
+#: include/default_domains.php:609
 msgid "Hypocrite"
 msgstr "Munafik"
 
+#: include/default_domains.php:610
 msgid "Self-controlled"
 msgstr "Pengendalian diri"
 
+#: include/default_domains.php:611
 msgid "Lack self-control"
 msgstr "Kurang pengendalian diri"
 
+#: include/default_domains.php:612
 msgid "Tidy"
 msgstr "Rapi"
 
+#: include/default_domains.php:613
 msgid "Untidy"
 msgstr "Tidak rapi"
 
+#: include/default_domains.php:614
 msgid "Mistake"
 msgstr "Kesalahan"
 
+#: include/default_domains.php:615
 msgid "Polite"
 msgstr "Sopan"
 
+#: include/default_domains.php:616
 msgid "Impolite"
 msgstr "Tidak sopan"
 
+#: include/default_domains.php:617
 msgid "Crazy"
 msgstr "Gila"
 
+#: include/default_domains.php:618
 msgid "Change behavior"
 msgstr "Mengubah perilaku"
 
+#: include/default_domains.php:619
 msgid "Conform"
 msgstr "Menyesuaikan diri"
 
+#: include/default_domains.php:620
 msgid "Culture"
 msgstr "Budaya"
 
+#: include/default_domains.php:621
 msgid "Custom"
 msgstr "Adat"
 
+#: include/default_domains.php:622
 msgid "Habit"
 msgstr "Kebiasaan"
 
+#: include/default_domains.php:623
 msgid "Prosperity, trouble"
 msgstr "Kemakmuran, kesusahan"
 
+#: include/default_domains.php:624
 msgid "Prosperity"
 msgstr "Kemakmuran"
 
+#: include/default_domains.php:625
 msgid "Trouble"
 msgstr "Kesusahan"
 
+#: include/default_domains.php:626
 msgid "Problem"
 msgstr "Masalah"
 
+#: include/default_domains.php:627
 msgid "Danger"
 msgstr "Bahaya"
 
+#: include/default_domains.php:628
 msgid "Accident"
 msgstr "Kecelakaan"
 
+#: include/default_domains.php:629
 msgid "Disaster"
 msgstr "Bencana"
 
+#: include/default_domains.php:630
 msgid "Separate, alone"
 msgstr "Terpisah, sendirian"
 
+#: include/default_domains.php:631
 msgid "Suffer"
 msgstr "Menderita"
 
+#: include/default_domains.php:632
 msgid "Respond to trouble"
 msgstr "Tindakan menghadapi kesusahan"
 
+#: include/default_domains.php:633
 msgid "Brave"
 msgstr "Berani"
 
+#: include/default_domains.php:634
 msgid "Cowardice"
 msgstr "Takut"
 
+#: include/default_domains.php:635
 msgid "Avoid"
 msgstr "Menghindari"
 
+#: include/default_domains.php:636
 msgid "Caution"
 msgstr "Berhati-hati"
 
+#: include/default_domains.php:637
 msgid "Solve a problem"
 msgstr "Mengatasi masalah"
 
+#: include/default_domains.php:638
 msgid "Endure"
 msgstr "Bertahan"
 
+#: include/default_domains.php:639
 msgid "Survive"
 msgstr "Bertahan hidup"
 
+#: include/default_domains.php:640
 msgid "Respond to someone in trouble"
 msgstr "Menanggapi seseorang yang sedang berada dalam kesusahan"
 
+#: include/default_domains.php:641
 msgid "Mercy"
 msgstr "Berbelas kasihan"
 
+#: include/default_domains.php:642
 msgid "Show sympathy, support"
 msgstr "Menunjukkan simpati, dukungan"
 
+#: include/default_domains.php:643
 msgid "Gentle"
 msgstr "Lemah lembut"
 
+#: include/default_domains.php:644
 msgid "Save from trouble"
 msgstr "Selamat dari kesusahan"
 
+#: include/default_domains.php:645
 msgid "Protect"
 msgstr "Melindungi"
 
+#: include/default_domains.php:646
 msgid "Free from bondage"
 msgstr "Bebas dari perbudakan"
 
+#: include/default_domains.php:647
 msgid "Relief"
 msgstr "Pembebasan"
 
+#: include/default_domains.php:648
 msgid "Risk"
 msgstr "Risiko"
 
+#: include/default_domains.php:649
 msgid "Chance"
 msgstr "Kebetulan"
 
+#: include/default_domains.php:650
 msgid "Lucky"
 msgstr "Beruntung"
 
+#: include/default_domains.php:651
 msgid "Unlucky"
 msgstr "Tidak beruntung"
 
+#: include/default_domains.php:652
 msgid "Authority"
 msgstr "Wewenang"
 
+#: include/default_domains.php:653
 msgid "Person in authority"
 msgstr "Seseorang yang berwenang"
 
+#: include/default_domains.php:654
 msgid "Have authority"
 msgstr "Memiliki wewenang"
 
+#: include/default_domains.php:655
 msgid "Exercise authority"
 msgstr "Menggunakan wewenang"
 
+#: include/default_domains.php:656
 msgid "Lead"
 msgstr "Memimpin"
 
+#: include/default_domains.php:657
 msgid "Command"
 msgstr "Memerintah"
 
+#: include/default_domains.php:658
 msgid "Discipline, train"
 msgstr "Mendisiplin, melatih"
 
+#: include/default_domains.php:659
 msgid "Appoint, delegate"
 msgstr "Mengangkat, menunjuk"
 
+#: include/default_domains.php:660
 msgid "Submit to authority"
 msgstr "Mematuhi pemerintah"
 
+#: include/default_domains.php:661
 msgid "Obey"
 msgstr "Menaati"
 
+#: include/default_domains.php:662
 msgid "Disobey"
 msgstr "Tidak menaati"
 
+#: include/default_domains.php:663
 msgid "Serve"
 msgstr "Melayani"
 
+#: include/default_domains.php:664
 msgid "Slave"
 msgstr "Budak"
 
+#: include/default_domains.php:665
 msgid "Follow, be a disciple"
 msgstr "Mengikuti, menjadi murid"
 
+#: include/default_domains.php:666
 msgid "Rebel against authority"
 msgstr "Memberontak melawan pemerintah"
 
+#: include/default_domains.php:667
 msgid "Independent"
 msgstr "Merdeka"
 
+#: include/default_domains.php:668
 msgid "Honor"
 msgstr "Menghormati"
 
+#: include/default_domains.php:669
 msgid "Title, name of honor"
 msgstr "Gelar, nama kehormatan"
 
+#: include/default_domains.php:670
 msgid "Lack respect"
 msgstr "Kurang ajar"
 
+#: include/default_domains.php:671
 msgid "Status"
 msgstr "Status sosial"
 
+#: include/default_domains.php:672
 msgid "High status"
 msgstr "Status sosial yang tinggi"
 
+#: include/default_domains.php:673
 msgid "Low status"
 msgstr "Status sosial yang rendah"
 
+#: include/default_domains.php:674
 msgid "Government"
 msgstr "Pemerintah"
 
+#: include/default_domains.php:675
 msgid "Ruler"
 msgstr "Penguasa"
 
+#: include/default_domains.php:676
 msgid "King's family"
 msgstr "Keluarga raja"
 
+#: include/default_domains.php:677
 msgid "Government official"
 msgstr "Pejabat pemerintah"
 
+#: include/default_domains.php:678
 msgid "Citizen"
 msgstr "Warga negara"
 
+#: include/default_domains.php:679
 msgid "Foreigner"
 msgstr "Orang asing"
 
+#: include/default_domains.php:680
 msgid "Government organization"
 msgstr "Organisasi pemerintah"
 
+#: include/default_domains.php:681
 msgid "Governing body"
 msgstr "Badan pemerintah"
 
+#: include/default_domains.php:682
 msgid "Rule"
 msgstr "Berkuasa"
 
+#: include/default_domains.php:683
 msgid "Subjugate"
 msgstr "Menaklukkan"
 
+#: include/default_domains.php:684
 msgid "Government functions"
 msgstr "Fungsi pemerintah"
 
+#: include/default_domains.php:685
 msgid "Police"
 msgstr "Polisi"
 
+#: include/default_domains.php:686
 msgid "Arrest"
 msgstr "Menangkap"
 
+#: include/default_domains.php:687
 msgid "Informal justice"
 msgstr "Penghakiman yang tidak resmi"
 
+#: include/default_domains.php:688
 msgid "Diplomacy"
 msgstr "Hubungan resmi antarbangsa"
 
+#: include/default_domains.php:689
 msgid "Represent"
 msgstr "Mewakili"
 
+#: include/default_domains.php:690
 msgid "Election"
 msgstr "Pemilihan umum"
 
+#: include/default_domains.php:691
 msgid "Politics"
 msgstr "Politik"
 
+#: include/default_domains.php:692
 msgid "Region"
 msgstr "Wilayah"
 
+#: include/default_domains.php:693
 msgid "Country"
 msgstr "Negara"
 
+#: include/default_domains.php:694
 msgid "City"
 msgstr "Kota"
 
+#: include/default_domains.php:695
 msgid "Countryside"
 msgstr "Desa"
 
+#: include/default_domains.php:696
 msgid "Community"
 msgstr "Masyarakat"
 
+#: include/default_domains.php:697
 msgid "Law"
 msgstr "Hukum"
 
+#: include/default_domains.php:698
 msgid "Laws"
 msgstr "Undang-undang"
 
+#: include/default_domains.php:699
 msgid "Pass laws"
 msgstr "Mengeluarkan undang-undang"
 
+#: include/default_domains.php:700
 msgid "Break the law"
 msgstr "Melanggar hukum"
 
+#: include/default_domains.php:701
 msgid "Court of law"
 msgstr "Pengadilan hukum"
 
+#: include/default_domains.php:702
 msgid "Legal personnel"
 msgstr "Pihak hukum dalam pengadilan"
 
+#: include/default_domains.php:703
 msgid "Trial"
 msgstr "Proses hukum"
 
+#: include/default_domains.php:704
 msgid "Investigate a crime"
 msgstr "Menyelidiki suatu kejahatan"
 
+#: include/default_domains.php:705
 msgid "Suspect"
 msgstr "Mencurigai"
 
+#: include/default_domains.php:706
 msgid "Accuse, confront"
 msgstr "Menuduh, mengajukan perkara"
 
+#: include/default_domains.php:707
 msgid "Defend against accusation"
 msgstr "Membela seseorang dari suatu tuduhan."
 
+#: include/default_domains.php:708
 msgid "Witness, testify"
 msgstr "Saksi, bersaksi"
 
+#: include/default_domains.php:709
 msgid "Drop charges"
 msgstr "Membatalkan dakwaan"
 
+#: include/default_domains.php:710
 msgid "Take oath"
 msgstr "Mengambil sumpah"
 
+#: include/default_domains.php:711
 msgid "Vindicate"
 msgstr "Mengesahkan kebenaran"
 
+#: include/default_domains.php:712
 msgid "Judge, render a verdict"
 msgstr "Menghakimi, menentukan keputusan"
 
+#: include/default_domains.php:713
 msgid "Acquit"
 msgstr "Membebaskan"
 
+#: include/default_domains.php:714
 msgid "Condemn, find guilty"
 msgstr "Menyalahkan, mencari kesalahan"
 
+#: include/default_domains.php:715
 msgid "Fault"
 msgstr "Kesalahan"
 
+#: include/default_domains.php:716
 msgid "Punish"
 msgstr "Menghukum"
 
+#: include/default_domains.php:717
 msgid "Reward"
 msgstr "Memberi penghargaan"
 
+#: include/default_domains.php:718
 msgid "Fine"
 msgstr "Denda"
 
+#: include/default_domains.php:719
 msgid "Imprison"
 msgstr "Memenjarakan"
 
+#: include/default_domains.php:720
 msgid "Execute"
 msgstr "Menghukum mati"
 
+#: include/default_domains.php:721
 msgid "Ostracize"
 msgstr "Mengasingkan"
 
+#: include/default_domains.php:722
 msgid "Pardon, release"
 msgstr "Mengampuni, membebaskan"
 
+#: include/default_domains.php:723
 msgid "Atone, restitution"
 msgstr "Menebus, mengganti rugi"
 
+#: include/default_domains.php:724
 msgid "Legal contract"
 msgstr "Perjanjian resmi"
 
+#: include/default_domains.php:725
 msgid "Covenant"
 msgstr "Perjanjian antara dua pihak"
 
+#: include/default_domains.php:726
 msgid "Break a contract"
 msgstr "Melanggar perjanjian"
 
+#: include/default_domains.php:727
 msgid "Justice"
 msgstr "Keadilan"
 
+#: include/default_domains.php:728
 msgid "Impartial"
 msgstr "Adil"
 
+#: include/default_domains.php:729
 msgid "Unfair"
 msgstr "Tidak adil"
 
+#: include/default_domains.php:730
 msgid "Deserve"
 msgstr "Berhak/pantas"
 
+#: include/default_domains.php:731
 msgid "Discriminate, be unfair"
 msgstr "Membedakan, berlaku tidak adil"
 
+#: include/default_domains.php:732
 msgid "Act harshly"
 msgstr "Bertindak kasar"
 
+#: include/default_domains.php:733
 msgid "Oppress"
 msgstr "Menindas"
 
+#: include/default_domains.php:734
 msgid "Conflict"
 msgstr "Perselisihan"
 
+#: include/default_domains.php:735
 msgid "Hostility"
 msgstr "Permusuhan"
 
+#: include/default_domains.php:736
 msgid "Oppose"
 msgstr "Menentang, melawan"
 
+#: include/default_domains.php:737
 msgid "Fight"
 msgstr "Berkelahi"
 
+#: include/default_domains.php:738
 msgid "Fight for something good"
 msgstr "Berkelahi untuk mendapatkan sesuatu yang baik"
 
+#: include/default_domains.php:739
 msgid "Fight against something bad"
 msgstr "Berkelahi karena menentang sesuatu yang buruk atau jahat"
 
+#: include/default_domains.php:740
 msgid "Attack"
 msgstr "Menyerang"
 
+#: include/default_domains.php:741
 msgid "Ambush"
 msgstr "Menghadang"
 
+#: include/default_domains.php:742
 msgid "Defend"
 msgstr "Membela"
 
+#: include/default_domains.php:743
 msgid "Revenge"
 msgstr "Membalas dendam"
 
+#: include/default_domains.php:744
 msgid "Riot"
 msgstr "Kerusuhan"
 
+#: include/default_domains.php:745
 msgid "Betray"
 msgstr "Mengkhianati"
 
+#: include/default_domains.php:746
 msgid "Violent"
 msgstr "Kekejaman"
 
+#: include/default_domains.php:747
 msgid "Enemy"
 msgstr "Musuh"
 
+#: include/default_domains.php:748
 msgid "War"
 msgstr "Perang"
 
+#: include/default_domains.php:749
 msgid "Defeat"
 msgstr "Mengalahkan"
 
+#: include/default_domains.php:750
 msgid "Win"
 msgstr "Menang"
 
+#: include/default_domains.php:751
 msgid "Lose a fight"
 msgstr "Kalah berkelahi"
 
+#: include/default_domains.php:752
 msgid "Surrender"
 msgstr "Menyerah"
 
+#: include/default_domains.php:753
 msgid "Prisoner of war"
 msgstr "Tawanan perang"
 
+#: include/default_domains.php:754
 msgid "Military organization"
 msgstr "Organisasi militer"
 
+#: include/default_domains.php:755
 msgid "Army"
 msgstr "Tentara angkatan darat"
 
+#: include/default_domains.php:756
 msgid "Navy"
 msgstr "Tentara angkatan laut"
 
+#: include/default_domains.php:757
 msgid "Air force"
 msgstr "Tentara angkatan udara"
 
+#: include/default_domains.php:758
 msgid "Soldier"
 msgstr "Tentara"
 
+#: include/default_domains.php:759
 msgid "Spy"
 msgstr "Mata-mata"
 
+#: include/default_domains.php:760
 msgid "Fort"
 msgstr "Benteng pertahanan"
 
+#: include/default_domains.php:761
 msgid "Weapon, shoot"
 msgstr "Senjata, menembak"
 
+#: include/default_domains.php:762
 msgid "Plunder"
 msgstr "Menjarah"
 
+#: include/default_domains.php:763
 msgid "Peace"
 msgstr "Damai"
 
+#: include/default_domains.php:764
 msgid "Rebuke"
 msgstr "Menegur kesalahan"
 
+#: include/default_domains.php:765
 msgid "Make an appeal"
 msgstr "Membujuk"
 
+#: include/default_domains.php:766
 msgid "Appease"
 msgstr "Menyuap"
 
+#: include/default_domains.php:767
 msgid "Negotiate"
 msgstr "Berunding"
 
+#: include/default_domains.php:768
 msgid "Renounce claim, concede"
 msgstr "Membatalkan tuntunan, melepaskan tuntutan"
 
+#: include/default_domains.php:769
 msgid "Repent"
 msgstr "Bertobat"
 
+#: include/default_domains.php:770
 msgid "Request forgiveness"
 msgstr "Meminta maaf"
 
+#: include/default_domains.php:771
 msgid "Forgive"
 msgstr "Memaafkan"
 
+#: include/default_domains.php:772
 msgid "Make peace"
 msgstr "Menjaga perdamaian"
 
+#: include/default_domains.php:773
 msgid "Stop fighting"
 msgstr "Berhenti berkelahi"
 
+#: include/default_domains.php:774
 msgid "Reconcile"
 msgstr "Berdamai"
 
+#: include/default_domains.php:775
 msgid "Religion"
 msgstr "Agama"
 
+#: include/default_domains.php:776
 msgid "God"
 msgstr "Tuhan"
 
+#: include/default_domains.php:777
 msgid "Supernatural being"
 msgstr "Kekuatan adikodrati"
 
+#: include/default_domains.php:778
 msgid "Theology"
 msgstr "Teologi"
 
+#: include/default_domains.php:779
 msgid "Sacred writings"
 msgstr "Tulisan-tulisan suci"
 
+#: include/default_domains.php:780
 msgid "Miracle, supernatural power"
 msgstr "Mukjizat, kekuatan adikodrati"
 
+#: include/default_domains.php:781
 msgid "Sorcery"
 msgstr "Sihir"
 
+#: include/default_domains.php:782
 msgid "Demon possession"
 msgstr "Kerasukan setan"
 
+#: include/default_domains.php:783
 msgid "Bless"
 msgstr "Berkat"
 
+#: include/default_domains.php:784
 msgid "Curse"
 msgstr "Kutuk"
 
+#: include/default_domains.php:785
 msgid "Destiny"
 msgstr "Nasib"
 
+#: include/default_domains.php:786
 msgid "Prophecy"
 msgstr "Nubuat"
 
+#: include/default_domains.php:787
 msgid "Omen, divination"
 msgstr "Menenung atau meramal"
 
+#: include/default_domains.php:788
 msgid "Practice religion"
 msgstr "Menjalankan agama"
 
+#: include/default_domains.php:789
 msgid "Devout"
 msgstr "Taat beragama"
 
+#: include/default_domains.php:790
 msgid "Pray"
 msgstr "Berdoa"
 
+#: include/default_domains.php:791
 msgid "Worship"
 msgstr "Beribadah"
 
+#: include/default_domains.php:792
 msgid "Religious ceremony"
 msgstr "Upacara keagamaan"
 
+#: include/default_domains.php:793
 msgid "Offering, sacrifice"
 msgstr "Persembahan, korban"
 
+#: include/default_domains.php:794
 msgid "Religious purification"
 msgstr "Penyucian secara keagamaan"
 
+#: include/default_domains.php:795
 msgid "Taboo"
 msgstr "Larangan atau pantangan"
 
+#: include/default_domains.php:796
 msgid "Salvation"
 msgstr "Keselamatan"
 
+#: include/default_domains.php:797
 msgid "Dedicate to religious use"
 msgstr "Pentahbisan untuk pelayanan keagamaan"
 
+#: include/default_domains.php:798
 msgid "Fasting"
 msgstr "Berpuasa"
 
+#: include/default_domains.php:799
 msgid "Heaven, hell"
 msgstr "Surga, neraka"
 
+#: include/default_domains.php:800
 msgid "Resurrection"
 msgstr "Kebangkitan"
 
+#: include/default_domains.php:801
 msgid "Religious organization"
 msgstr "Organisasi agama"
 
+#: include/default_domains.php:802
 msgid "Religious person"
 msgstr "Penganut agama"
 
+#: include/default_domains.php:803
 msgid "Christianity"
 msgstr "Agama Kristen"
 
+#: include/default_domains.php:804
 msgid "Islam"
 msgstr "Agama Islam"
 
+#: include/default_domains.php:805
 msgid "Hinduism"
 msgstr "Agama Hindu"
 
+#: include/default_domains.php:806
 msgid "Buddhism"
 msgstr "Agama Buddha"
 
+#: include/default_domains.php:807
 msgid "Judaism"
 msgstr "Agama Yahudi"
 
+#: include/default_domains.php:808
 msgid "Animism"
 msgstr "Animisme"
 
+#: include/default_domains.php:809
 msgid "Religious things"
 msgstr "Benda-benda agamawi"
 
+#: include/default_domains.php:810
 msgid "Idol"
 msgstr "Berhala"
 
+#: include/default_domains.php:811
 msgid "Place of worship"
 msgstr "Tempat ibadah"
 
+#: include/default_domains.php:812
 msgid "Irreligion"
 msgstr "Tidak beragama"
 
+#: include/default_domains.php:813 include/semdomains_func.php:29
 msgid "Daily life"
 msgstr "Kehidupan sehari-hari"
 
+#: include/default_domains.php:814
 msgid "Household equipment"
 msgstr "Peralatan rumah tangga"
 
+#: include/default_domains.php:815
 msgid "Furniture"
 msgstr "Perabotan rumah tangga"
 
+#: include/default_domains.php:816
 msgid "Table"
 msgstr "Meja"
 
+#: include/default_domains.php:817
 msgid "Chair"
 msgstr "Kursi"
 
+#: include/default_domains.php:818
 msgid "Bed"
 msgstr "Tempat tidur"
 
+#: include/default_domains.php:819
 msgid "Cabinet"
 msgstr "Lemari"
 
+#: include/default_domains.php:820
 msgid "Household decoration"
 msgstr "Hiasan rumah"
 
+#: include/default_domains.php:821
 msgid "Food"
 msgstr "Makanan"
 
+#: include/default_domains.php:822
 msgid "Food preparation"
 msgstr "Mempersiapkan makanan"
 
+#: include/default_domains.php:823
 msgid "Cooking methods"
 msgstr "Cara memasak makanan"
 
+#: include/default_domains.php:824
 msgid "Steps in food preparation"
 msgstr "Langkah-langkah dalam mempersiapkan makanan"
 
+#: include/default_domains.php:825
 msgid "Remove shell, skin"
 msgstr "Mengupas kulit makanan"
 
+#: include/default_domains.php:826
 msgid "Pound in mortar and pestle"
 msgstr "Menumbuk makanan dengan menggunakan lesung dan alu"
 
+#: include/default_domains.php:827
 msgid "Grind flour"
 msgstr "Menggiling tepung"
 
+#: include/default_domains.php:828
 msgid "Cooking utensil"
 msgstr "Peralatan masak"
 
+#: include/default_domains.php:829
 msgid "Food storage"
 msgstr "Menyimpan makanan"
 
+#: include/default_domains.php:830
 msgid "Serve food"
 msgstr "Menyajikan makanan"
 
+#: include/default_domains.php:831
 msgid "Eat"
 msgstr "Makan"
 
+#: include/default_domains.php:832
 msgid "Bite, chew"
 msgstr "Menggigit, mengunyah"
 
+#: include/default_domains.php:833
 msgid "Meal"
 msgstr "Makanan (yang dimakan pada jam makan)"
 
+#: include/default_domains.php:834
 msgid "Feast"
 msgstr "Pesta"
 
+#: include/default_domains.php:835
 msgid "Manner of eating"
 msgstr "Cara makan"
 
+#: include/default_domains.php:836
 msgid "Hungry, thirsty"
 msgstr "Lapar, haus"
 
+#: include/default_domains.php:837
 msgid "Satiated, full"
 msgstr "Kenyang"
 
+#: include/default_domains.php:838
 msgid "Drink"
 msgstr "Minum"
 
+#: include/default_domains.php:839
 msgid "Eating utensil"
 msgstr "Peralatan makan"
 
+#: include/default_domains.php:840
 msgid "Fast, not eat"
 msgstr "Berpuasa, tidak makan"
 
+#: include/default_domains.php:841
 msgid "Types of food"
 msgstr "Jenis-jenis makanan"
 
+#: include/default_domains.php:842
 msgid "Food from plants"
 msgstr "Makanan dari tumbuhan"
 
+#: include/default_domains.php:843
 msgid "Food from seeds"
 msgstr "Makanan dari biji-bijian"
 
+#: include/default_domains.php:844
 msgid "Food from fruit"
 msgstr "Makanan dari buah-buahan"
 
+#: include/default_domains.php:845
 msgid "Food from vegetables"
 msgstr "Makanan dari sayuran"
 
+#: include/default_domains.php:846
 msgid "Food from leaves"
 msgstr "Makanan dari daun tumbuhan"
 
+#: include/default_domains.php:847
 msgid "Food from roots"
 msgstr "Makanan dari akar atau umbi-umbian"
 
+#: include/default_domains.php:848
 msgid "Food from animals"
 msgstr "Makanan dari daging binatang"
 
+#: include/default_domains.php:849
 msgid "Meat"
 msgstr "Daging"
 
+#: include/default_domains.php:850
 msgid "Milk products"
 msgstr "Makanan yang terbuat dari susu"
 
+#: include/default_domains.php:851
 msgid "Egg dishes"
 msgstr "Makanan yang terbuat dari telur"
 
+#: include/default_domains.php:852
 msgid "Cooking ingredients"
 msgstr "Bahan-bahan makanan untuk dimasak"
 
+#: include/default_domains.php:853
 msgid "Sugar"
 msgstr "Gula"
 
+#: include/default_domains.php:854
 msgid "Salt"
 msgstr "Garam"
 
+#: include/default_domains.php:855
 msgid "Spice"
 msgstr "Bumbu"
 
+#: include/default_domains.php:856
 msgid "Leaven"
 msgstr "Ragi"
 
+#: include/default_domains.php:857
 msgid "Cooking oil"
 msgstr "Minyak goreng"
 
+#: include/default_domains.php:858
 msgid "Prepared food"
 msgstr "Makanan yang sudah disiapkan/diolah"
 
+#: include/default_domains.php:859
 msgid "Prohibited food"
 msgstr "Makanan yang dilarang"
 
+#: include/default_domains.php:860
 msgid "Beverage"
 msgstr "Minuman"
 
+#: include/default_domains.php:861
 msgid "Alcoholic beverage"
 msgstr "Minuman keras"
 
+#: include/default_domains.php:862
 msgid "Alcohol preparation"
 msgstr "Membuat minuman keras"
 
+#: include/default_domains.php:863
 msgid "Drunk"
 msgstr "Mabuk"
 
+#: include/default_domains.php:864
 msgid "Tobacco"
 msgstr "Tembakau"
 
+#: include/default_domains.php:865
 msgid "Narcotic"
 msgstr "Narkotik"
 
+#: include/default_domains.php:866
 msgid "Stimulant"
 msgstr "Zat pemacu atau perangsang"
 
+#: include/default_domains.php:867
 msgid "Clothing"
 msgstr "Pakaian"
 
+#: include/default_domains.php:868
 msgid "Men's clothing"
 msgstr "Pakaian pria"
 
+#: include/default_domains.php:869
 msgid "Women's clothing"
 msgstr "Pakaian wanita"
 
+#: include/default_domains.php:870
 msgid "Traditional clothing"
 msgstr "Pakaian adat atau tradisional"
 
+#: include/default_domains.php:871
 msgid "Clothes for special occasions"
 msgstr "Pakaian untuk waktu-waktu tertentu"
 
+#: include/default_domains.php:872
 msgid "Clothes for special people"
 msgstr "Pakaian yang dikenakan oleh orang-orang tertentu"
 
+#: include/default_domains.php:873
 msgid "Parts of clothing"
 msgstr "Bagian-bagian dari pakaian"
 
+#: include/default_domains.php:874
 msgid "Wear clothing"
 msgstr "Memakai pakaian"
 
+#: include/default_domains.php:875
 msgid "Naked"
 msgstr "Telanjang"
 
+#: include/default_domains.php:876
 msgid "Style of clothing"
 msgstr "Gaya berpakaian"
 
+#: include/default_domains.php:877
 msgid "Adornment"
 msgstr "Perhiasan"
 
+#: include/default_domains.php:878
 msgid "Jewelry"
 msgstr "Barang-barang perhiasan"
 
+#: include/default_domains.php:879
 msgid "Cosmetics"
 msgstr "Kosmetik"
 
+#: include/default_domains.php:880
 msgid "Care for hair"
 msgstr "Perawatan rambut"
 
+#: include/default_domains.php:881
 msgid "Comb hair"
 msgstr "Menyisir rambut"
 
+#: include/default_domains.php:882
 msgid "Plait hair"
 msgstr "Mengepang rambut"
 
+#: include/default_domains.php:883
 msgid "Dye hair"
 msgstr "Menyemir rambut"
 
+#: include/default_domains.php:884
 msgid "Hairstyle"
 msgstr "Gaya rambut"
 
+#: include/default_domains.php:885
 msgid "Cut hair"
 msgstr "Memotong rambut"
 
+#: include/default_domains.php:886
 msgid "Shave"
 msgstr "Mencukur"
 
+#: include/default_domains.php:887
 msgid "Care for the teeth"
 msgstr "Perawatan gigi"
 
+#: include/default_domains.php:888
 msgid "Anoint the body"
 msgstr "Mengolesi tubuh"
 
+#: include/default_domains.php:889
 msgid "Ritual scar"
 msgstr "Goresan pada tubuh"
 
+#: include/default_domains.php:890
 msgid "Circumcision"
 msgstr "Penyunatan"
 
+#: include/default_domains.php:891
 msgid "Care for the fingernails"
 msgstr "Perawatan kuku jari tangan dan kaki"
 
+#: include/default_domains.php:892
 msgid "Fire"
 msgstr "Api"
 
+#: include/default_domains.php:893
 msgid "Light a fire"
 msgstr "Menyalakan api"
 
+#: include/default_domains.php:894
 msgid "Tend a fire"
 msgstr "Menjaga api (supaya tetap menyala)"
 
+#: include/default_domains.php:895
 msgid "Extinguish a fire"
 msgstr "Memadamkan api"
 
+#: include/default_domains.php:896
 msgid "Burn"
 msgstr "Membakar / menyala"
 
+#: include/default_domains.php:897
 msgid "What fires produce"
 msgstr "Hal-hal yang dihasilkan oleh api"
 
+#: include/default_domains.php:898
 msgid "Fuel"
 msgstr "Bahan bakar"
 
+#: include/default_domains.php:899
 msgid "Fireplace"
 msgstr "Perapian"
 
+#: include/default_domains.php:900
 msgid "Cleaning"
 msgstr "Membersihkan"
 
+#: include/default_domains.php:901
 msgid "Clean, dirty"
 msgstr "Bersih, kotor"
 
+#: include/default_domains.php:902
 msgid "Bathe"
 msgstr "Mandi"
 
+#: include/default_domains.php:903
 msgid "Wash dishes"
 msgstr "Mencuci piring"
 
+#: include/default_domains.php:904
 msgid "Wash clothes"
 msgstr "Mencuci pakaian"
 
+#: include/default_domains.php:905
 msgid "Sweep, rake"
 msgstr "Menyapu"
 
+#: include/default_domains.php:906
 msgid "Wipe, erase"
 msgstr "Menyeka, menghapus"
 
+#: include/default_domains.php:907
 msgid "Sleep"
 msgstr "Tidur"
 
+#: include/default_domains.php:908
 msgid "Go to sleep"
 msgstr "Pergi tidur"
 
+#: include/default_domains.php:909
 msgid "Dream"
 msgstr "Mimpi"
 
+#: include/default_domains.php:910
 msgid "Wake up"
 msgstr "Bangun tidur"
 
+#: include/default_domains.php:911
 msgid "Manage a house"
 msgstr "Mengatur rumah tangga"
 
+#: include/default_domains.php:912
 msgid "Live, stay"
 msgstr "Tinggal"
 
+#: include/default_domains.php:913 include/semdomains_func.php:30
 msgid "Work and occupation"
 msgstr "Pekerjaan"
 
+#: include/default_domains.php:914
 msgid "Work"
 msgstr "Bekerja"
 
+#: include/default_domains.php:915
 msgid "Worker"
 msgstr "Pekerja"
 
+#: include/default_domains.php:916
 msgid "Expert"
 msgstr "Ahli"
 
+#: include/default_domains.php:917
 msgid "Method"
 msgstr "Cara kerja"
 
+#: include/default_domains.php:918
 msgid "Try, attempt"
 msgstr "Mencoba, berusaha"
 
+#: include/default_domains.php:919
 msgid "Use"
 msgstr "Menggunakan"
 
+#: include/default_domains.php:920
 msgid "Useful"
 msgstr "Bermanfaat"
 
+#: include/default_domains.php:921
 msgid "Useless"
 msgstr "Tidak berguna"
 
+#: include/default_domains.php:922
 msgid "Available"
 msgstr "Tersedia"
 
+#: include/default_domains.php:923
 msgid "Use up"
 msgstr "Menghabiskan"
 
+#: include/default_domains.php:924
 msgid "Take care of something"
 msgstr "Menjaga sesuatu"
 
+#: include/default_domains.php:925
 msgid "Waste"
 msgstr "Memboroskan"
 
+#: include/default_domains.php:926
 msgid "Work well"
 msgstr "Bekerja dengan baik"
 
+#: include/default_domains.php:927
 msgid "Careful"
 msgstr "Berhati-hati"
 
+#: include/default_domains.php:928
 msgid "Work hard"
 msgstr "Bekerja keras"
 
+#: include/default_domains.php:929
 msgid "Busy"
 msgstr "Sibuk"
 
+#: include/default_domains.php:930
 msgid "Power, force"
 msgstr "Kekuatan, tenaga"
 
+#: include/default_domains.php:931
 msgid "Complete, finish"
 msgstr "Menyelesaikan, mengakhiri"
 
+#: include/default_domains.php:932
 msgid "Ambitious"
 msgstr "Berambisi"
 
+#: include/default_domains.php:933
 msgid "Work poorly"
 msgstr "Bekerja dengan tidak beres"
 
+#: include/default_domains.php:934
 msgid "Careless, irresponsible"
 msgstr "Ceroboh, tidak bertanggung jawab"
 
+#: include/default_domains.php:935
 msgid "Lazy"
 msgstr "Malas"
 
+#: include/default_domains.php:936
 msgid "Give up"
 msgstr "Menyerah"
 
+#: include/default_domains.php:937
 msgid "Plan"
 msgstr "Rencana"
 
+#: include/default_domains.php:938
 msgid "Arrange an event"
 msgstr "Mengatur suatu acara"
 
+#: include/default_domains.php:939
 msgid "Cancel an event"
 msgstr "Membatalkan suatu acara"
 
+#: include/default_domains.php:940
 msgid "Prepare"
 msgstr "Menyiapkan"
 
+#: include/default_domains.php:941
 msgid "Prepare something for use"
 msgstr "Menyiapkan sesuatu untuk digunakan"
 
+#: include/default_domains.php:942
 msgid "Effective"
 msgstr "Efektif"
 
+#: include/default_domains.php:943
 msgid "Efficient"
 msgstr "Efisien"
 
+#: include/default_domains.php:944
 msgid "Opportunity"
 msgstr "Kesempatan"
 
+#: include/default_domains.php:945
 msgid "Difficult, impossible"
 msgstr "Sulit, mustahil"
 
+#: include/default_domains.php:946
 msgid "Easy, possible"
 msgstr "Mudah, mungkin"
 
+#: include/default_domains.php:947
 msgid "Succeed"
 msgstr "Berhasil"
 
+#: include/default_domains.php:948
 msgid "Fail"
 msgstr "Gagal"
 
+#: include/default_domains.php:949
 msgid "Advantage"
 msgstr "Keuntungan"
 
+#: include/default_domains.php:950
 msgid "Job satisfaction"
 msgstr "Kepuasan dalam bekerja"
 
+#: include/default_domains.php:951
 msgid "Unemployed, not working"
 msgstr "Menganggur, tidak bekerja"
 
+#: include/default_domains.php:952
 msgid "Made by hand"
 msgstr "Buatan tangan"
 
+#: include/default_domains.php:953
 msgid "Artificial"
 msgstr "Tiruan"
 
+#: include/default_domains.php:954
 msgid "Experienced"
 msgstr "Berpengalaman"
 
+#: include/default_domains.php:955
 msgid "Accustomed to"
 msgstr "Terbiasa"
 
+#: include/default_domains.php:956
 msgid "Agriculture"
 msgstr "Pertanian"
 
+#: include/default_domains.php:957
 msgid "Growing crops"
 msgstr "Menanam tumbuh-tumbuhan"
 
+#: include/default_domains.php:958
 msgid "Growing grain"
 msgstr "Menanam biji-bijian"
 
+#: include/default_domains.php:959
 msgid "Growing rice"
 msgstr "Menanam padi"
 
+#: include/default_domains.php:960
 msgid "Growing wheat"
 msgstr "Menanam gandum"
 
+#: include/default_domains.php:961
 msgid "Growing maize"
 msgstr "Menanam jagung"
 
+#: include/default_domains.php:962
 msgid "Growing roots"
 msgstr "Menanam umbi-umbian"
 
+#: include/default_domains.php:963
 msgid "Growing potatoes"
 msgstr "Menanam kentang"
 
+#: include/default_domains.php:964
 msgid "Growing cassava"
 msgstr "Menanam singkong"
 
+#: include/default_domains.php:965
 msgid "Growing vegetables"
 msgstr "Menanam sayur-sayuran"
 
+#: include/default_domains.php:966
 msgid "Growing fruit"
 msgstr "Menanam buah-buahan"
 
+#: include/default_domains.php:967
 msgid "Growing grapes"
 msgstr "Menanam anggur"
 
+#: include/default_domains.php:968
 msgid "Growing bananas"
 msgstr "Menanam pisang"
 
+#: include/default_domains.php:969
 msgid "Growing grass"
 msgstr "Menanam rumput"
 
+#: include/default_domains.php:970
 msgid "Growing sugarcane"
 msgstr "Menanam tebu"
 
+#: include/default_domains.php:971
 msgid "Growing tobacco"
 msgstr "Menanam tembakau"
 
+#: include/default_domains.php:972
 msgid "Growing flowers"
 msgstr "Menanam bunga"
 
+#: include/default_domains.php:973
 msgid "Growing trees"
 msgstr "Menanam pohon"
 
+#: include/default_domains.php:974
 msgid "Growing coconuts"
 msgstr "Menanam kelapa"
 
+#: include/default_domains.php:975
 msgid "Growing coffee"
 msgstr "Menanam kopi"
 
+#: include/default_domains.php:976
 msgid "Land preparation"
 msgstr "Mempersiapkan lahan"
 
+#: include/default_domains.php:977
 msgid "Clear a field"
 msgstr "Membersihkan lahan"
 
+#: include/default_domains.php:978
 msgid "Plow a field"
 msgstr "Membajak lahan"
 
+#: include/default_domains.php:979
 msgid "Fertilize a field"
 msgstr "Memupuk lahan"
 
+#: include/default_domains.php:980
 msgid "Plant a field"
 msgstr "Menanami lahan"
 
+#: include/default_domains.php:981
 msgid "Tend a field"
 msgstr "Menjaga lahan"
 
+#: include/default_domains.php:982
 msgid "Cut grass"
 msgstr "Memotong rumput"
 
+#: include/default_domains.php:983
 msgid "Uproot plants"
 msgstr "Mencabut tumbuhan"
 
+#: include/default_domains.php:984
 msgid "Irrigate"
 msgstr "Mengairi lahan"
 
+#: include/default_domains.php:985
 msgid "Trim plants"
 msgstr "Memangkas tanaman"
 
+#: include/default_domains.php:986
 msgid "Neglect plants"
 msgstr "Membiarkan tumbuhan"
 
+#: include/default_domains.php:987
 msgid "Harvest"
 msgstr "Memanen, menuai"
 
+#: include/default_domains.php:988
 msgid "First fruits"
 msgstr "Buah sulung, buah pertama"
 
+#: include/default_domains.php:989
 msgid "Crop failure"
 msgstr "Gagal panen"
 
+#: include/default_domains.php:990
 msgid "Gather wild plants"
 msgstr "Mengumpulkan tumbuhan liar"
 
+#: include/default_domains.php:991
 msgid "Plant product"
 msgstr "Hasil tumbuhan"
 
+#: include/default_domains.php:992
 msgid "Process harvest"
 msgstr "Mengolah hasil panen"
 
+#: include/default_domains.php:993
 msgid "Winnow grain"
 msgstr "Menampi biji-bijian"
 
+#: include/default_domains.php:994
 msgid "Mill grain"
 msgstr "Menggiling biji-bijian"
 
+#: include/default_domains.php:995
 msgid "Thresh"
 msgstr "Membuka kulit dari biji-bijian"
 
+#: include/default_domains.php:996
 msgid "Store the harvest"
 msgstr "Menyimpan hasil tuaian/panen"
 
+#: include/default_domains.php:997
 msgid "Farm worker"
 msgstr "Pekerja ladang"
 
+#: include/default_domains.php:998
 msgid "Agricultural tool"
 msgstr "Alat-alat pertanian"
 
+#: include/default_domains.php:999
 msgid "Farmland"
 msgstr "Tanah pertanian"
 
+#: include/default_domains.php:1000
 msgid "Animal husbandry"
 msgstr "Peternakan hewan"
 
+#: include/default_domains.php:1001
 msgid "Domesticated animal"
 msgstr "Hewan ternak"
 
+#: include/default_domains.php:1002
 msgid "Cattle"
 msgstr "Sapi"
 
+#: include/default_domains.php:1003
 msgid "Sheep"
 msgstr "Domba"
 
+#: include/default_domains.php:1004
 msgid "Goat"
 msgstr "Kambing"
 
+#: include/default_domains.php:1005
 msgid "Pig"
 msgstr "Babi"
 
+#: include/default_domains.php:1006
 msgid "Dog"
 msgstr "Anjing"
 
+#: include/default_domains.php:1007
 msgid "Cat"
 msgstr "Kucing"
 
+#: include/default_domains.php:1008
 msgid "Beast of burden"
 msgstr "Binatang pengangkat beban"
 
+#: include/default_domains.php:1009
 msgid "Tend herds in fields"
 msgstr "Menjaga kawanan ternak di ladang"
 
+#: include/default_domains.php:1010
 msgid "Milk"
 msgstr "Memerah susu"
 
+#: include/default_domains.php:1011
 msgid "Butcher, slaughter"
 msgstr "Tukang daging, tukang jagal"
 
+#: include/default_domains.php:1012
 msgid "Wool production"
 msgstr "Produksi bulu domba"
 
+#: include/default_domains.php:1013
 msgid "Poultry raising"
 msgstr "Menernak unggas"
 
+#: include/default_domains.php:1014
 msgid "Chicken"
 msgstr "Ayam"
 
+#: include/default_domains.php:1015
 msgid "Animal products"
 msgstr "Hasil binatang"
 
+#: include/default_domains.php:1016
 msgid "Veterinary science"
 msgstr "Ilmu kedokteran hewan"
 
+#: include/default_domains.php:1017
 msgid "Animal diseases"
 msgstr "Penyakit-penyakit binatang"
 
+#: include/default_domains.php:1018
 msgid "Castrate animal"
 msgstr "Mengebiri binatang"
 
+#: include/default_domains.php:1019
 msgid "Hunt and fish"
 msgstr "Memburu binatang dan menangkap ikan"
 
+#: include/default_domains.php:1020
 msgid "Hunt"
 msgstr "Memburu"
 
+#: include/default_domains.php:1021
 msgid "Track an animal"
 msgstr "Mengikuti jejak binatang"
 
+#: include/default_domains.php:1022
 msgid "Trap"
 msgstr "Memerangkap"
 
+#: include/default_domains.php:1023
 msgid "Hunting birds"
 msgstr "Memburu burung"
 
+#: include/default_domains.php:1024
 msgid "Beekeeping"
 msgstr "Memelihara lebah"
 
+#: include/default_domains.php:1025
 msgid "Fishing"
 msgstr "Menangkap ikan"
 
+#: include/default_domains.php:1026
 msgid "Fish with net"
 msgstr "Menjala atau menjaring ikan"
 
+#: include/default_domains.php:1027
 msgid "Fish with hooks"
 msgstr "Memancing ikan"
 
+#: include/default_domains.php:1028
 msgid "Fishing equipment"
 msgstr "Perlengkapan untuk menangkap ikan"
 
+#: include/default_domains.php:1029
 msgid "Things done to animals"
 msgstr "Hal-hal yang dilakukan terhadap binatang"
 
+#: include/default_domains.php:1030
 msgid "Working with buildings"
 msgstr "Bekerja dengan bangunan"
 
+#: include/default_domains.php:1031
 msgid "Building"
 msgstr "Bangunan"
 
+#: include/default_domains.php:1032
 msgid "House"
 msgstr "Rumah"
 
+#: include/default_domains.php:1033
 msgid "Types of houses"
 msgstr "Jenis-jenis rumah"
 
+#: include/default_domains.php:1034
 msgid "Land, property"
 msgstr "Tanah, tanah milik seseorang"
 
+#: include/default_domains.php:1035
 msgid "Yard"
 msgstr "Halaman"
 
+#: include/default_domains.php:1036
 msgid "Fence, wall"
 msgstr "Pagar, tembok"
 
+#: include/default_domains.php:1037
 msgid "Parts of a building"
 msgstr "Bagian-bagian dari sebuah bangunan"
 
+#: include/default_domains.php:1038
 msgid "Wall"
 msgstr "Tembok atau dinding"
 
+#: include/default_domains.php:1039
 msgid "Roof"
 msgstr "Atap"
 
+#: include/default_domains.php:1040
 msgid "Floor"
 msgstr "Lantai"
 
+#: include/default_domains.php:1041
 msgid "Door"
 msgstr "Pintu"
 
+#: include/default_domains.php:1042
 msgid "Window"
 msgstr "Jendela"
 
+#: include/default_domains.php:1043
 msgid "Foundation"
 msgstr "Fondasi rumah"
 
+#: include/default_domains.php:1044
 msgid "Room"
 msgstr "Ruang atau kamar"
 
+#: include/default_domains.php:1045
 msgid "Floor, story"
 msgstr "Tingkat, loteng"
 
+#: include/default_domains.php:1046
 msgid "Building materials"
 msgstr "Bahan-bahan bangunan"
 
+#: include/default_domains.php:1047
 msgid "Building equipment and maintenance"
 msgstr "Perlengkapan dan pemeliharaan bangunan"
 
+#: include/default_domains.php:1048
 msgid "Infrastructure"
 msgstr "Prasarana"
 
+#: include/default_domains.php:1049
 msgid "Road"
 msgstr "Jalan"
 
+#: include/default_domains.php:1050
 msgid "Boundary"
 msgstr "Perbatasan"
 
+#: include/default_domains.php:1051
 msgid "Occupation"
 msgstr "Pekerjaan"
 
+#: include/default_domains.php:1052
 msgid "Working with cloth"
 msgstr "Bekerja dengan kain"
 
+#: include/default_domains.php:1053
 msgid "Cloth"
 msgstr "Kain"
 
+#: include/default_domains.php:1054
 msgid "Spinning thread"
 msgstr "Memintal benang"
 
+#: include/default_domains.php:1055
 msgid "Knitting"
 msgstr "Merajut"
 
+#: include/default_domains.php:1056
 msgid "Weaving cloth"
 msgstr "Menenun kain"
 
+#: include/default_domains.php:1057
 msgid "Working with minerals"
 msgstr "Bekerja dengan bahan galian (barang tambang)"
 
+#: include/default_domains.php:1058
 msgid "Mining"
 msgstr "Pertambangan"
 
+#: include/default_domains.php:1059
 msgid "Smelting"
 msgstr "Peleburan"
 
+#: include/default_domains.php:1060
 msgid "Working with metal"
 msgstr "Bekerja dengan logam"
 
+#: include/default_domains.php:1061
 msgid "Working with clay"
 msgstr "Bekerja dengan tanah liat"
 
+#: include/default_domains.php:1062
 msgid "Working with glass"
 msgstr "Bekerja dengan kaca"
 
+#: include/default_domains.php:1063
 msgid "Working with oil and gas"
 msgstr "Bekerja dengan minyak dan gas"
 
+#: include/default_domains.php:1064
 msgid "Working with stone"
 msgstr "Bekerja dengan batu"
 
+#: include/default_domains.php:1065
 msgid "Working with bricks"
 msgstr "Bekerja dengan batu bata"
 
+#: include/default_domains.php:1066
 msgid "Working with chemicals"
 msgstr "Bekerja dengan bahan kimia"
 
+#: include/default_domains.php:1067
 msgid "Explode"
 msgstr "Meledak"
 
+#: include/default_domains.php:1068
 msgid "Working with wood"
 msgstr "Bekerja dengan kayu"
 
+#: include/default_domains.php:1069
 msgid "Lumbering"
 msgstr "Penebangan pohon"
 
+#: include/default_domains.php:1070
 msgid "Wood"
 msgstr "Kayu"
 
+#: include/default_domains.php:1071
 msgid "Working with paper"
 msgstr "Bekerja dengan kertas"
 
+#: include/default_domains.php:1072
 msgid "Crafts"
 msgstr "Kerajinan tangan"
 
+#: include/default_domains.php:1073
 msgid "Cordage"
 msgstr "Tali-temali"
 
+#: include/default_domains.php:1074
 msgid "Weaving baskets and mats"
 msgstr "Menganyam keranjang dan keset kaki"
 
+#: include/default_domains.php:1075
 msgid "Working with leather"
 msgstr "Bekerja dengan kulit"
 
+#: include/default_domains.php:1076
 msgid "Working with bone"
 msgstr "Bekerja dengan tulang"
 
+#: include/default_domains.php:1077
 msgid "Art"
 msgstr "Seni"
 
+#: include/default_domains.php:1078
 msgid "Draw, paint"
 msgstr "Menggambar, melukis"
 
+#: include/default_domains.php:1079
 msgid "Photography"
 msgstr "Fotografi"
 
+#: include/default_domains.php:1080
 msgid "Sculpture"
 msgstr "Seni pahat"
 
+#: include/default_domains.php:1081
 msgid "Working with land"
 msgstr "Bekerja dengan tanah"
 
+#: include/default_domains.php:1082
 msgid "Working with water"
 msgstr "Bekerja dengan air"
 
+#: include/default_domains.php:1083
 msgid "Plumber"
 msgstr "Tukang pipa"
 
+#: include/default_domains.php:1084
 msgid "Conveying water"
 msgstr "Menyalurkan air"
 
+#: include/default_domains.php:1085
 msgid "Controlling water"
 msgstr "Mengendalikan air"
 
+#: include/default_domains.php:1086
 msgid "Working in the sea"
 msgstr "Bekerja di laut"
 
+#: include/default_domains.php:1087
 msgid "Working with machines"
 msgstr "Bekerja dengan mesin"
 
+#: include/default_domains.php:1088
 msgid "Working with electricity"
 msgstr "Bekerja dengan listrik"
 
+#: include/default_domains.php:1089
 msgid "Tool"
 msgstr "Peralatan"
 
+#: include/default_domains.php:1090
 msgid "Cutting tool"
 msgstr "Alat pemotong"
 
+#: include/default_domains.php:1091
 msgid "Poking tool"
 msgstr "Alat pelubang atau penusuk"
 
+#: include/default_domains.php:1092
 msgid "Digging tool"
 msgstr "Alat penggali"
 
+#: include/default_domains.php:1093
 msgid "Pounding tool"
 msgstr "Alat pemukul"
 
+#: include/default_domains.php:1094
 msgid "Carrying tool"
 msgstr "Alat pembawa barang"
 
+#: include/default_domains.php:1095
 msgid "Lifting tool"
 msgstr "Alat pengangkat barang"
 
+#: include/default_domains.php:1096
 msgid "Fastening tool"
 msgstr "Alat pengunci/pengikat"
 
+#: include/default_domains.php:1097
 msgid "Holding tool"
 msgstr "Alat pemegang"
 
+#: include/default_domains.php:1098
 msgid "Container"
 msgstr "Wadah"
 
+#: include/default_domains.php:1099
 msgid "Bag"
 msgstr "Tas"
 
+#: include/default_domains.php:1100
 msgid "Sheath"
 msgstr "Sarung senjata"
 
+#: include/default_domains.php:1101
 msgid "Parts of tools"
 msgstr "Bagian-bagian dari peralatan"
 
+#: include/default_domains.php:1102
 msgid "Machine"
 msgstr "Mesin"
 
+#: include/default_domains.php:1103
 msgid "Finance"
 msgstr "Uang, keuangan"
 
+#: include/default_domains.php:1104
 msgid "Have wealth"
 msgstr "Mempunyai harta atau kekayaan"
 
+#: include/default_domains.php:1105
 msgid "Own, possess"
 msgstr "Mempunyai, memiliki"
 
+#: include/default_domains.php:1106
 msgid "Rich"
 msgstr "Kaya"
 
+#: include/default_domains.php:1107
 msgid "Poor"
 msgstr "Miskin"
 
+#: include/default_domains.php:1108
 msgid "Store wealth"
 msgstr "Menyimpan harta atau kekayaan"
 
+#: include/default_domains.php:1109
 msgid "Possession, property"
 msgstr "Kepunyaan, harta milik"
 
+#: include/default_domains.php:1110
 msgid "Accumulate wealth"
 msgstr "Mengumpulkan harta"
 
+#: include/default_domains.php:1111
 msgid "Produce wealth"
 msgstr "Menghasilkan harta"
 
+#: include/default_domains.php:1112
 msgid "Make profit"
 msgstr "Usaha untuk mendapatkan keuntungan"
 
+#: include/default_domains.php:1113
 msgid "Lose wealth"
 msgstr "Kehilangan harta"
 
+#: include/default_domains.php:1114
 msgid "Frugal"
 msgstr "Hemat"
 
+#: include/default_domains.php:1115
 msgid "Greedy"
 msgstr "Tamak"
 
+#: include/default_domains.php:1116
 msgid "Collect"
 msgstr "Mengumpulkan"
 
+#: include/default_domains.php:1117
 msgid "Earn"
 msgstr "Memperoleh bayaran atau upah"
 
+#: include/default_domains.php:1118
 msgid "Share wealth"
 msgstr "Berbagi kekayaan"
 
+#: include/default_domains.php:1119
 msgid "Give, donate"
 msgstr "Memberi, menyumbang"
 
+#: include/default_domains.php:1120
 msgid "Generous"
 msgstr "Murah hati"
 
+#: include/default_domains.php:1121
 msgid "Stingy"
 msgstr "Pelit atau kikir"
 
+#: include/default_domains.php:1122
 msgid "Beg"
 msgstr "Mengemis"
 
+#: include/default_domains.php:1123
 msgid "Financial transaction"
 msgstr "Transaksi keuangan"
 
+#: include/default_domains.php:1124
 msgid "Buy"
 msgstr "Membeli"
 
+#: include/default_domains.php:1125
 msgid "Sell"
 msgstr "Menjual"
 
+#: include/default_domains.php:1126
 msgid "Price"
 msgstr "Harga"
 
+#: include/default_domains.php:1127
 msgid "Expensive"
 msgstr "Mahal"
 
+#: include/default_domains.php:1128
 msgid "Cheap"
 msgstr "Murah"
 
+#: include/default_domains.php:1129
 msgid "Free of charge"
 msgstr "Gratis"
 
+#: include/default_domains.php:1130
 msgid "Bargain"
 msgstr "Menawar"
 
+#: include/default_domains.php:1131
 msgid "Pay"
 msgstr "Membayar"
 
+#: include/default_domains.php:1132
 msgid "Hire, rent"
 msgstr "Menyewa"
 
+#: include/default_domains.php:1133
 msgid "Spend"
 msgstr "Mengeluarkan, membelanjakan (uang)"
 
+#: include/default_domains.php:1134
 msgid "Store, marketplace"
 msgstr "Toko, pasar"
 
+#: include/default_domains.php:1135
 msgid "Exchange, trade"
 msgstr "Tukar-menukar, berdagang"
 
+#: include/default_domains.php:1136
 msgid "Borrow"
 msgstr "Meminjam"
 
+#: include/default_domains.php:1137
 msgid "Lend"
 msgstr "Meminjamkan"
 
+#: include/default_domains.php:1138
 msgid "Give pledge, bond"
 msgstr "Perjanjian, surat jaminan"
 
+#: include/default_domains.php:1139
 msgid "Owe"
 msgstr "Berutang"
 
+#: include/default_domains.php:1140
 msgid "Repay debt"
 msgstr "Membayar utang"
 
+#: include/default_domains.php:1141
 msgid "Credit"
 msgstr "Kredit"
 
+#: include/default_domains.php:1142
 msgid "Money"
 msgstr "Uang"
 
+#: include/default_domains.php:1143
 msgid "Monetary units"
 msgstr "Satuan mata uang"
 
+#: include/default_domains.php:1144
 msgid "Accounting"
 msgstr "Pembukuan"
 
+#: include/default_domains.php:1145
 msgid "Tax"
 msgstr "Pajak"
 
+#: include/default_domains.php:1146
 msgid "Dishonest financial practices"
 msgstr "Perbuatan keuangan yang tidak jujur"
 
+#: include/default_domains.php:1147
 msgid "Steal"
 msgstr "Mencuri"
 
+#: include/default_domains.php:1148
 msgid "Cheat"
 msgstr "Menipu"
 
+#: include/default_domains.php:1149
 msgid "Extort money"
 msgstr "Memeras uang"
 
+#: include/default_domains.php:1150
 msgid "Take by force"
 msgstr "Mengambil secara paksa"
 
+#: include/default_domains.php:1151
 msgid "Bribe"
 msgstr "Menyogok"
 
+#: include/default_domains.php:1152
 msgid "Smuggle"
 msgstr "Menyelundup"
 
+#: include/default_domains.php:1153
 msgid "Business organization"
 msgstr "Organisasi bisnis"
 
+#: include/default_domains.php:1154
 msgid "Management"
 msgstr "Pengurusan atau manajemen"
 
+#: include/default_domains.php:1155
 msgid "Work for someone"
 msgstr "Bekerja kepada seseorang"
 
+#: include/default_domains.php:1156
 msgid "Marketing"
 msgstr "Pemasaran"
 
+#: include/default_domains.php:1157
 msgid "Commerce"
 msgstr "Perdagangan"
 
+#: include/default_domains.php:1158
 msgid "Economics"
 msgstr "Ekonomi"
 
+#: include/default_domains.php:1159
 msgid "Insurance"
 msgstr "Asuransi"
 
+#: include/default_domains.php:1160 include/semdomains_func.php:31
 msgid "Physical actions"
 msgstr "Gerakan fisik"
 
+#: include/default_domains.php:1161
 msgid "Posture"
 msgstr "Sikap tubuh"
 
+#: include/default_domains.php:1162
 msgid "Stand"
 msgstr "Berdiri"
 
+#: include/default_domains.php:1163
 msgid "Sit"
 msgstr "Duduk"
 
+#: include/default_domains.php:1164
 msgid "Lie down"
 msgstr "Berbaring"
 
+#: include/default_domains.php:1165
 msgid "Kneel"
 msgstr "Berlutut"
 
+#: include/default_domains.php:1166
 msgid "Bow"
 msgstr "Membungkuk"
 
+#: include/default_domains.php:1167
 msgid "Lean"
 msgstr "Bersandar"
 
+#: include/default_domains.php:1168
 msgid "Straight posture"
 msgstr "Sikap berdiri yang tegak lurus"
 
+#: include/default_domains.php:1169
 msgid "Relaxed posture"
 msgstr "Sikap berdiri yang santai"
 
+#: include/default_domains.php:1170
 msgid "Bend down"
 msgstr "Membungkukkan badan"
 
+#: include/default_domains.php:1171
 msgid "Move a part of the body"
 msgstr "Menggerakkan salah satu bagian tubuh"
 
+#: include/default_domains.php:1172
 msgid "Move"
 msgstr "Bergerak"
 
+#: include/default_domains.php:1173
 msgid "Manner of movement"
 msgstr "Cara bergerak"
 
+#: include/default_domains.php:1174
 msgid "Walk"
 msgstr "Berjalan kaki"
 
+#: include/default_domains.php:1175
 msgid "Run"
 msgstr "Berlari"
 
+#: include/default_domains.php:1176
 msgid "Crawl"
 msgstr "Merangkak"
 
+#: include/default_domains.php:1177
 msgid "Jump"
 msgstr "Melompat"
 
+#: include/default_domains.php:1178
 msgid "Move quickly"
 msgstr "Bergerak dengan cepat"
 
+#: include/default_domains.php:1179
 msgid "Move slowly"
 msgstr "Bergerak dengan lambat"
 
+#: include/default_domains.php:1180
 msgid "Wander"
 msgstr "Berkeluyuran"
 
+#: include/default_domains.php:1181
 msgid "Graceful"
 msgstr "Lemah gemulai"
 
+#: include/default_domains.php:1182
 msgid "Clumsy"
 msgstr "Kikuk"
 
+#: include/default_domains.php:1183
 msgid "Walk with difficulty"
 msgstr "Kesulitan waktu berjalan"
 
+#: include/default_domains.php:1184
 msgid "Slip, slide"
 msgstr "Tergelincir, terpeleset"
 
+#: include/default_domains.php:1185
 msgid "Steady, unsteady"
 msgstr "Berjalan tegak, berjalan tidak tegak"
 
+#: include/default_domains.php:1186
 msgid "Balance"
 msgstr "Seimbang"
 
+#: include/default_domains.php:1187
 msgid "Move noisily"
 msgstr "Bergerak dengan menimbulkan bunyi"
 
+#: include/default_domains.php:1188
 msgid "Move in a direction"
 msgstr "Bergerak dengan menghadap arah tertentu"
 
+#: include/default_domains.php:1189
 msgid "Move forward"
 msgstr "Bergerak maju"
 
+#: include/default_domains.php:1190
 msgid "Move back"
 msgstr "Bergerak mundur"
 
+#: include/default_domains.php:1191
 msgid "Move sideways"
 msgstr "Bergerak ke samping"
 
+#: include/default_domains.php:1192
 msgid "Move up"
 msgstr "Bergerak naik ke atas"
 
+#: include/default_domains.php:1193
 msgid "Move down"
 msgstr "Bergerak turun ke bawah"
 
+#: include/default_domains.php:1194
 msgid "Fall"
 msgstr "Jatuh"
 
+#: include/default_domains.php:1195
 msgid "Turn"
 msgstr "Belok"
 
+#: include/default_domains.php:1196
 msgid "Move in a circle"
 msgstr "Berputar-putar secara melingkar"
 
+#: include/default_domains.php:1197
 msgid "Move back and forth"
 msgstr "Bergerak maju dan mundur"
 
+#: include/default_domains.php:1198
 msgid "Move straight without turning"
 msgstr "Bergerak lurus tanpa belok"
 
+#: include/default_domains.php:1199
 msgid "Move toward something"
 msgstr "Bergerak menuju sesuatu"
 
+#: include/default_domains.php:1200
 msgid "Move away"
 msgstr "Pergi menjauh dari sesuatu"
 
+#: include/default_domains.php:1201
 msgid "Go"
 msgstr "Pergi"
 
+#: include/default_domains.php:1202
 msgid "Come"
 msgstr "Datang"
 
+#: include/default_domains.php:1203
 msgid "Leave"
 msgstr "Meninggalkan"
 
+#: include/default_domains.php:1204
 msgid "Arrive"
 msgstr "Tiba, sampai"
 
+#: include/default_domains.php:1205
 msgid "Move in"
 msgstr "Masuk"
 
+#: include/default_domains.php:1206
 msgid "Move out"
 msgstr "Keluar"
 
+#: include/default_domains.php:1207
 msgid "Move past, over, through"
 msgstr "Bergerak melewati, mendahului, atau melalui sesuatu"
 
+#: include/default_domains.php:1208
 msgid "Return"
 msgstr "Kembali"
 
+#: include/default_domains.php:1209
 msgid "Travel"
 msgstr "Bepergian"
 
+#: include/default_domains.php:1210
 msgid "Travel by land"
 msgstr "Bepergian dengan menggunakan angkutan darat"
 
+#: include/default_domains.php:1211
 msgid "Vehicle"
 msgstr "Kendaraan"
 
+#: include/default_domains.php:1212
 msgid "Railroad"
 msgstr "Rel kereta api"
 
+#: include/default_domains.php:1213
 msgid "Travel by water"
 msgstr "Bepergian dengan menggunakan angkutan air"
 
+#: include/default_domains.php:1214
 msgid "Boat"
 msgstr "Kapal"
 
+#: include/default_domains.php:1215
 msgid "Swim"
 msgstr "Berenang"
 
+#: include/default_domains.php:1216
 msgid "Dive"
 msgstr "Menyelam"
 
+#: include/default_domains.php:1217
 msgid "Fly"
 msgstr "Terbang"
 
+#: include/default_domains.php:1218
 msgid "Travel in space"
 msgstr "Bepergian ke luar angkasa"
 
+#: include/default_domains.php:1219
 msgid "Move to a new house"
 msgstr "Pindah ke rumah baru"
 
+#: include/default_domains.php:1220
 msgid "Way, route"
 msgstr "Jalan, rute"
 
+#: include/default_domains.php:1221
 msgid "Lose your way"
 msgstr "Sesat di jalan"
 
+#: include/default_domains.php:1222
 msgid "Map"
 msgstr "Peta"
 
+#: include/default_domains.php:1223
 msgid "Accompany"
 msgstr "Menemani"
 
+#: include/default_domains.php:1224
 msgid "Go first"
 msgstr "Pergi dahulu"
 
+#: include/default_domains.php:1225
 msgid "Follow"
 msgstr "Mengikuti"
 
+#: include/default_domains.php:1226
 msgid "Guide"
 msgstr "Memandu"
 
+#: include/default_domains.php:1227
 msgid "Move together"
 msgstr "Bergerak bersama-sama"
 
+#: include/default_domains.php:1228
 msgid "Pursue"
 msgstr "Mengejar"
 
+#: include/default_domains.php:1229
 msgid "Catch, capture"
 msgstr "Menangkap"
 
+#: include/default_domains.php:1230
 msgid "Prevent from moving"
 msgstr "Mencegah supaya tidak bergerak"
 
+#: include/default_domains.php:1231
 msgid "Escape"
 msgstr "Melarikan diri"
 
+#: include/default_domains.php:1232
 msgid "Set free"
 msgstr "Membebaskan"
 
+#: include/default_domains.php:1233
 msgid "Not moving"
 msgstr "Tidak bergerak"
 
+#: include/default_domains.php:1234
 msgid "Stop moving"
 msgstr "Berhenti bergerak"
 
+#: include/default_domains.php:1235
 msgid "Stay, remain"
 msgstr "Tinggal, tetap"
 
+#: include/default_domains.php:1236
 msgid "Wait"
 msgstr "Menunggu"
 
+#: include/default_domains.php:1237
 msgid "Send someone"
 msgstr "Mengutus seseorang"
 
+#: include/default_domains.php:1238
 msgid "Move something"
 msgstr "Menggerakkan sesuatu"
 
+#: include/default_domains.php:1239
 msgid "Carry"
 msgstr "Membawa"
 
+#: include/default_domains.php:1240
 msgid "Throw"
 msgstr "Melempar"
 
+#: include/default_domains.php:1241
 msgid "Catch"
 msgstr "Menangkap"
 
+#: include/default_domains.php:1242
 msgid "Shake"
 msgstr "Mengguncang"
 
+#: include/default_domains.php:1243
 msgid "Knock over"
 msgstr "Menabrak"
 
+#: include/default_domains.php:1244
 msgid "Set upright"
 msgstr "Menegakkan sesuatu"
 
+#: include/default_domains.php:1245
 msgid "Move something in a direction"
 msgstr "Menggerakkan sesuatu ke arah tertentu"
 
+#: include/default_domains.php:1246
 msgid "Put in front"
 msgstr "Meletakkan di bagian depan"
 
+#: include/default_domains.php:1247
 msgid "Put in back"
 msgstr "Meletakkan di bagian belakang"
 
+#: include/default_domains.php:1248
 msgid "Put aside"
 msgstr "Meletakkan di bagian samping"
 
+#: include/default_domains.php:1249
 msgid "Lift"
 msgstr "Mengangkat"
 
+#: include/default_domains.php:1250
 msgid "Hang"
 msgstr "Menggantung"
 
+#: include/default_domains.php:1251
 msgid "Lower something"
 msgstr "Menurunkan sesuatu"
 
+#: include/default_domains.php:1252
 msgid "Put in"
 msgstr "Memasukkan"
 
+#: include/default_domains.php:1253
 msgid "Take something out of something"
 msgstr "Mengeluarkan sesuatu dari suatu tempat"
 
+#: include/default_domains.php:1254
 msgid "Pull"
 msgstr "Menarik"
 
+#: include/default_domains.php:1255
 msgid "Push"
 msgstr "Mendorong"
 
+#: include/default_domains.php:1256
 msgid "Take somewhere"
 msgstr "Membawa ke suatu tempat"
 
+#: include/default_domains.php:1257
 msgid "Take something from somewhere"
 msgstr "Mengambil sesuatu dari suatu tempat"
 
+#: include/default_domains.php:1258
 msgid "Return something"
 msgstr "Mengembalikan sesuatu"
 
+#: include/default_domains.php:1259
 msgid "Send"
 msgstr "Mengirim"
 
+#: include/default_domains.php:1260
 msgid "Chase away"
 msgstr "Mengusir"
 
+#: include/default_domains.php:1261
 msgid "Drive along"
 msgstr "Menggerakkan seseorang atau sesuatu"
 
+#: include/default_domains.php:1262
 msgid "Handle something"
 msgstr "Melakukan sesuatu dengan tangan"
 
+#: include/default_domains.php:1263
 msgid "Touch"
 msgstr "Menyentuh"
 
+#: include/default_domains.php:1264
 msgid "Pick up"
 msgstr "Memungut"
 
+#: include/default_domains.php:1265
 msgid "Put down"
 msgstr "Meletakkan ke bawah"
 
+#: include/default_domains.php:1266
 msgid "Hold"
 msgstr "Memegang"
 
+#: include/default_domains.php:1267
 msgid "Actions of the hand"
 msgstr "Hal-hal yang bisa dilakukan dengan tangan"
 
+#: include/default_domains.php:1268
 msgid "Support"
 msgstr "Menopang"
 
+#: include/default_domains.php:1269
 msgid "Extend"
 msgstr "Memperluas"
 
+#: include/default_domains.php:1270
 msgid "Turn something"
 msgstr "Membalikkan sesuatu"
 
+#: include/default_domains.php:1271
 msgid "Open"
 msgstr "Membuka"
 
+#: include/default_domains.php:1272
 msgid "Shut, close"
 msgstr "Menutup"
 
+#: include/default_domains.php:1273
 msgid "Block, dam up"
 msgstr "Menghalangi, membendung"
 
+#: include/default_domains.php:1274
 msgid "Limit"
 msgstr "Membatasi"
 
+#: include/default_domains.php:1275
 msgid "Cover"
 msgstr "Menutupi"
 
+#: include/default_domains.php:1276
 msgid "Uncover"
 msgstr "Membuka, menyingkap"
 
+#: include/default_domains.php:1277
 msgid "Wrap"
 msgstr "Membungkus"
 
+#: include/default_domains.php:1278
 msgid "Spread, smear"
 msgstr "Mengolesi, melumuri"
 
+#: include/default_domains.php:1279
 msgid "Transport"
 msgstr "Transportasi"
 
+#: include/default_domains.php:1280
 msgid "Have, be with"
 msgstr "Memiliki"
 
+#: include/default_domains.php:1281
 msgid "Give, hand to"
 msgstr "Memberikan, menyerahkan"
 
+#: include/default_domains.php:1282
 msgid "Receive"
 msgstr "Menerima"
 
+#: include/default_domains.php:1283
 msgid "Get"
 msgstr "Mendapatkan"
 
+#: include/default_domains.php:1284
 msgid "Distribute"
 msgstr "Membagikan"
 
+#: include/default_domains.php:1285
 msgid "Keep something"
 msgstr "Menyimpan sesuatu"
 
+#: include/default_domains.php:1286
 msgid "Leave something"
 msgstr "Meninggalkan sesuatu"
 
+#: include/default_domains.php:1287
 msgid "Throw away"
 msgstr "Membuang"
 
+#: include/default_domains.php:1288
 msgid "Not have"
 msgstr "Tidak memiliki"
 
+#: include/default_domains.php:1289
 msgid "Arrange"
 msgstr "Menata (benda)"
 
+#: include/default_domains.php:1290
 msgid "Gather"
 msgstr "Mengumpulkan"
 
+#: include/default_domains.php:1291
 msgid "Separate, scatter"
 msgstr "Memisahkan, menghamburkan"
 
+#: include/default_domains.php:1292
 msgid "Include"
 msgstr "Memasukkan"
 
+#: include/default_domains.php:1293
 msgid "Special"
 msgstr "Khusus/istimewa"
 
+#: include/default_domains.php:1294
 msgid "Join, attach"
 msgstr "Menggabungkan, melekatkan"
 
+#: include/default_domains.php:1295
 msgid "Link, connect"
 msgstr "Menghubungkan, mengaitkan"
 
+#: include/default_domains.php:1296
 msgid "Stick together"
 msgstr "Menempel"
 
+#: include/default_domains.php:1297
 msgid "Add to something"
 msgstr "Menambahkan sesuatu"
 
+#: include/default_domains.php:1298
 msgid "Remove, take apart"
 msgstr "Menghilangkan, melepaskan"
 
+#: include/default_domains.php:1299
 msgid "Mix"
 msgstr "Mencampur"
 
+#: include/default_domains.php:1300
 msgid "Pure, unmixed"
 msgstr "Murni, belum tercampur"
 
+#: include/default_domains.php:1301
 msgid "Tie"
 msgstr "Mengikat"
 
+#: include/default_domains.php:1302
 msgid "Rope, string"
 msgstr "Tali, benang"
 
+#: include/default_domains.php:1303
 msgid "Tangle"
 msgstr "Kusut"
 
+#: include/default_domains.php:1304
 msgid "Organize"
 msgstr "Mengatur"
 
+#: include/default_domains.php:1305
 msgid "Disorganized"
 msgstr "Berantakan"
 
+#: include/default_domains.php:1306
 msgid "Substitute"
 msgstr "Mengganti"
 
+#: include/default_domains.php:1307
 msgid "Multiple things moving"
 msgstr "Pergerakan yang terjadi pada banyak benda"
 
+#: include/default_domains.php:1308
 msgid "Simple, complicated"
 msgstr "Sederhana, rumit"
 
+#: include/default_domains.php:1309
 msgid "Put"
 msgstr "Meletakkan"
 
+#: include/default_domains.php:1310
 msgid "Load, pile"
 msgstr "Memuat, menumpuk"
 
+#: include/default_domains.php:1311
 msgid "Fill, cover"
 msgstr "Mengisi, menutup"
 
+#: include/default_domains.php:1312
 msgid "Hide"
 msgstr "Menyembunyikan"
 
+#: include/default_domains.php:1313 include/searchform_func.php:28
 msgid "Search"
 msgstr "Mencari"
 
+#: include/default_domains.php:1314
 msgid "Find"
 msgstr "Menemukan"
 
+#: include/default_domains.php:1315
 msgid "Lose, misplace"
 msgstr "Hilang, salah tempat"
 
+#: include/default_domains.php:1316
 msgid "Physical impact"
 msgstr "Pengaruh secara kasat mata"
 
+#: include/default_domains.php:1317
 msgid "Hit"
 msgstr "Memukul atau menabrak"
 
+#: include/default_domains.php:1318
 msgid "Aim at a target"
 msgstr "Membidik pada suatu sasaran"
 
+#: include/default_domains.php:1319
 msgid "Kick"
 msgstr "Menendang"
 
+#: include/default_domains.php:1320
 msgid "Press"
 msgstr "Menekan"
 
+#: include/default_domains.php:1321
 msgid "Rub"
 msgstr "Menggosok (dengan lembut)"
 
+#: include/default_domains.php:1322
 msgid "Grind"
 msgstr "Menggosok"
 
+#: include/default_domains.php:1323
 msgid "Mark"
 msgstr "Menandai"
 
+#: include/default_domains.php:1324
 msgid "Divide into pieces"
 msgstr "Membagi sesuatu menjadi banyak bagian"
 
+#: include/default_domains.php:1325
 msgid "Break"
 msgstr "Pecah"
 
+#: include/default_domains.php:1326
 msgid "Crack"
 msgstr "Retak"
 
+#: include/default_domains.php:1327
 msgid "Cut"
 msgstr "Memotong"
 
+#: include/default_domains.php:1328
 msgid "Tear, rip"
 msgstr "Merobek, menyobek"
 
+#: include/default_domains.php:1329
 msgid "Make hole, opening"
 msgstr "Membuat lubang, celah"
 
+#: include/default_domains.php:1330
 msgid "Dig"
 msgstr "Menggali"
 
+#: include/default_domains.php:1331
 msgid "Break, wear out"
 msgstr "Rusak, usang"
 
+#: include/default_domains.php:1332
 msgid "Damage"
 msgstr "Merusakkan"
 
+#: include/default_domains.php:1333
 msgid "Tear down"
 msgstr "Merobohkan"
 
+#: include/default_domains.php:1334
 msgid "Destroy"
 msgstr "Menghancurkan"
 
+#: include/default_domains.php:1335
 msgid "Repair"
 msgstr "Memperbaiki"
 
+#: include/default_domains.php:1336 include/semdomains_func.php:32
 msgid "States"
 msgstr "Keadaan"
 
+#: include/default_domains.php:1337
 msgid "Quantity"
 msgstr "Jumlah atau kuantitas"
 
+#: include/default_domains.php:1338
 msgid "Number"
 msgstr "Angka"
 
+#: include/default_domains.php:1339
 msgid "Cardinal numbers"
 msgstr "Bilangan pokok"
 
+#: include/default_domains.php:1340
 msgid "One"
 msgstr "Satu"
 
+#: include/default_domains.php:1341
 msgid "Two"
 msgstr "Dua"
 
+#: include/default_domains.php:1342
 msgid "Ordinal numbers"
 msgstr "Bilangan urutan"
 
+#: include/default_domains.php:1343
 msgid "Number of times"
 msgstr "Jumlah kekerapan terjadinya sesuatu"
 
+#: include/default_domains.php:1344
 msgid "Multiples"
 msgstr "Perlipatgandaan"
 
+#: include/default_domains.php:1345
 msgid "Numbered group"
 msgstr "Kelompok dengan jumlah tertentu"
 
+#: include/default_domains.php:1346
 msgid "Fraction"
 msgstr "Bilangan pecahan"
 
+#: include/default_domains.php:1347
 msgid "Number series"
 msgstr "Seri angka"
 
+#: include/default_domains.php:1348
 msgid "Count"
 msgstr "Berhitung"
 
+#: include/default_domains.php:1349
 msgid "Mathematics"
 msgstr "Matematika"
 
+#: include/default_domains.php:1350
 msgid "Add numbers"
 msgstr "Penjumlahan"
 
+#: include/default_domains.php:1351
 msgid "Subtract numbers"
 msgstr "Pengurangan"
 
+#: include/default_domains.php:1352
 msgid "Multiply numbers"
 msgstr "Perkalian"
 
+#: include/default_domains.php:1353
 msgid "Divide numbers"
 msgstr "Pembagian"
 
+#: include/default_domains.php:1354
 msgid "Plural"
 msgstr "Bentuk jamak"
 
+#: include/default_domains.php:1355
 msgid "Many, much"
 msgstr "Banyak"
 
+#: include/default_domains.php:1356
 msgid "Few, little"
 msgstr "Sedikit"
 
+#: include/default_domains.php:1357
 msgid "Group of things"
 msgstr "Sekelompok benda"
 
+#: include/default_domains.php:1358
 msgid "More"
 msgstr "Lebih"
 
+#: include/default_domains.php:1359
 msgid "Less"
 msgstr "Kurang"
 
+#: include/default_domains.php:1360
 msgid "Increase"
 msgstr "Bertambah, meningkat"
 
+#: include/default_domains.php:1361
 msgid "Decrease"
 msgstr "Berkurang, menurun"
 
+#: include/default_domains.php:1362
 msgid "All"
 msgstr "Semua"
 
+#: include/default_domains.php:1363
 msgid "Some"
 msgstr "Beberapa"
 
+#: include/default_domains.php:1364
 msgid "None, nothing"
 msgstr "Tidak ada"
 
+#: include/default_domains.php:1365
 msgid "Both"
 msgstr "Keduanya"
 
+#: include/default_domains.php:1366
 msgid "Most, almost all"
 msgstr "Sebagian besar, hampir semuanya"
 
+#: include/default_domains.php:1367
 msgid "Most, least"
 msgstr "Paling banyak/besar, paling sedikit/kecil"
 
+#: include/default_domains.php:1368
 msgid "Almost"
 msgstr "Hampir"
 
+#: include/default_domains.php:1369
 msgid "Only"
 msgstr "Hanya"
 
+#: include/default_domains.php:1370
 msgid "Exact"
 msgstr "Persis"
 
+#: include/default_domains.php:1371
 msgid "Approximate"
 msgstr "Kira-kira"
 
+#: include/default_domains.php:1372
 msgid "Average"
 msgstr "Rata-rata"
 
+#: include/default_domains.php:1373
 msgid "Whole, complete"
 msgstr "Semuanya, seluruhnya"
 
+#: include/default_domains.php:1374
 msgid "Part"
 msgstr "Bagian"
 
+#: include/default_domains.php:1375
 msgid "Piece"
 msgstr "Potongan"
 
+#: include/default_domains.php:1376
 msgid "Enough"
 msgstr "Cukup"
 
+#: include/default_domains.php:1377
 msgid "Extra"
 msgstr "Tambahan"
 
+#: include/default_domains.php:1378
 msgid "Lack"
 msgstr "Kekurangan, tidak cukup"
 
+#: include/default_domains.php:1379
 msgid "Need"
 msgstr "Memerlukan"
 
+#: include/default_domains.php:1380
 msgid "Remain, remainder"
 msgstr "Sisa"
 
+#: include/default_domains.php:1381
 msgid "Full"
 msgstr "Penuh"
 
+#: include/default_domains.php:1382
 msgid "Empty"
 msgstr "Kosong"
 
+#: include/default_domains.php:1383
 msgid "Big"
 msgstr "Besar"
 
+#: include/default_domains.php:1384
 msgid "Small"
 msgstr "Kecil"
 
+#: include/default_domains.php:1385
 msgid "Long"
 msgstr "Panjang"
 
+#: include/default_domains.php:1386
 msgid "Short, not long"
 msgstr "Pendek, tidak panjang"
 
+#: include/default_domains.php:1387
 msgid "Tall"
 msgstr "Tinggi"
 
+#: include/default_domains.php:1388
 msgid "Short, not tall"
 msgstr "Pendek, tidak tinggi"
 
+#: include/default_domains.php:1389
 msgid "Thick"
 msgstr "Tebal"
 
+#: include/default_domains.php:1390
 msgid "Thin thing"
 msgstr "Benda yang tipis"
 
+#: include/default_domains.php:1391
 msgid "Fat person"
 msgstr "Orang gemuk"
 
+#: include/default_domains.php:1392
 msgid "Thin person"
 msgstr "Orang kurus"
 
+#: include/default_domains.php:1393
 msgid "Wide"
 msgstr "Lebar"
 
+#: include/default_domains.php:1394
 msgid "Narrow"
 msgstr "Sempit"
 
+#: include/default_domains.php:1395
 msgid "Big area"
 msgstr "Tempat yang luas"
 
+#: include/default_domains.php:1396
 msgid "Big container, volume"
 msgstr "Wadah besar, isi"
 
+#: include/default_domains.php:1397
 msgid "Distance"
 msgstr "Jarak"
 
+#: include/default_domains.php:1398
 msgid "Far"
 msgstr "Jauh"
 
+#: include/default_domains.php:1399
 msgid "Near"
 msgstr "Dekat"
 
+#: include/default_domains.php:1400
 msgid "High"
 msgstr "Tinggi"
 
+#: include/default_domains.php:1401
 msgid "Low"
 msgstr "Rendah"
 
+#: include/default_domains.php:1402
 msgid "Deep, shallow"
 msgstr "Dalam, dangkal"
 
+#: include/default_domains.php:1403
 msgid "Fit, size"
 msgstr "Cocok, ukuran"
 
+#: include/default_domains.php:1404
 msgid "Tight"
 msgstr "Sempit"
 
+#: include/default_domains.php:1405
 msgid "Loose"
 msgstr "Longgar"
 
+#: include/default_domains.php:1406
 msgid "Wedged in, stuck"
 msgstr "Terjepit, tersekat"
 
+#: include/default_domains.php:1407
 msgid "Measure"
 msgstr "Mengukur"
 
+#: include/default_domains.php:1408
 msgid "Weigh"
 msgstr "Menimbang"
 
+#: include/default_domains.php:1409
 msgid "Heavy"
 msgstr "Berat"
 
+#: include/default_domains.php:1410
 msgid "Light in weight"
 msgstr "Ringan"
 
+#: include/default_domains.php:1411
 msgid "Quality"
 msgstr "Kualitas"
 
+#: include/default_domains.php:1412
 msgid "Shape"
 msgstr "Bentuk"
 
+#: include/default_domains.php:1413
 msgid "Point, dot"
 msgstr "Titik, bintik"
 
+#: include/default_domains.php:1414
 msgid "Line"
 msgstr "Garis"
 
+#: include/default_domains.php:1415
 msgid "Straight"
 msgstr "Lurus"
 
+#: include/default_domains.php:1416
 msgid "Flat"
 msgstr "Datar, rata"
 
+#: include/default_domains.php:1417
 msgid "Horizontal"
 msgstr "Arah mendatar"
 
+#: include/default_domains.php:1418
 msgid "Vertical"
 msgstr "Arah tegak lurus"
 
+#: include/default_domains.php:1419
 msgid "Leaning, sloping"
 msgstr "Miring, landai"
 
+#: include/default_domains.php:1420
 msgid "Bend"
 msgstr "Bengkok"
 
+#: include/default_domains.php:1421
 msgid "Roll up"
 msgstr "Menggulung"
 
+#: include/default_domains.php:1422
 msgid "Twist, wring"
 msgstr "Memelintir, memeras"
 
+#: include/default_domains.php:1423
 msgid "Fold"
 msgstr "Melipat"
 
+#: include/default_domains.php:1424
 msgid "Round"
 msgstr "Bulat"
 
+#: include/default_domains.php:1425
 msgid "Concave"
 msgstr "Cekung"
 
+#: include/default_domains.php:1426
 msgid "Convex"
 msgstr "Cembung"
 
+#: include/default_domains.php:1427
 msgid "Hollow"
 msgstr "Berlubang"
 
+#: include/default_domains.php:1428
 msgid "Square"
 msgstr "Persegi empat"
 
+#: include/default_domains.php:1429
 msgid "Pattern, design"
 msgstr "Pola, rancangan"
 
+#: include/default_domains.php:1430
 msgid "Symmetrical"
 msgstr "Simetris"
 
+#: include/default_domains.php:1431
 msgid "Stretch"
 msgstr "Merentangkan"
 
+#: include/default_domains.php:1432
 msgid "Texture"
 msgstr "Tekstur"
 
+#: include/default_domains.php:1433
 msgid "Smooth"
 msgstr "Licin"
 
+#: include/default_domains.php:1434
 msgid "Rough"
 msgstr "Kasar"
 
+#: include/default_domains.php:1435
 msgid "Sharp"
 msgstr "Tajam"
 
+#: include/default_domains.php:1436
 msgid "Pointed"
 msgstr "Runcing"
 
+#: include/default_domains.php:1437
 msgid "Blunt"
 msgstr "Tumpul"
 
+#: include/default_domains.php:1438
 msgid "Furrow"
 msgstr "Alur"
 
+#: include/default_domains.php:1439
 msgid "Light"
 msgstr "Cahaya"
 
+#: include/default_domains.php:1440
 msgid "Shine"
 msgstr "Memancarkan sinar"
 
+#: include/default_domains.php:1441
 msgid "Light source"
 msgstr "Sumber cahaya"
 
+#: include/default_domains.php:1442
 msgid "Bright"
 msgstr "Terang"
 
+#: include/default_domains.php:1443
 msgid "Dark"
 msgstr "Gelap"
 
+#: include/default_domains.php:1444
 msgid "Shadow"
 msgstr "Bayangan"
 
+#: include/default_domains.php:1445
 msgid "Color"
 msgstr "Warna"
 
+#: include/default_domains.php:1446
 msgid "White"
 msgstr "Putih"
 
+#: include/default_domains.php:1447
 msgid "Black"
 msgstr "Hitam"
 
+#: include/default_domains.php:1448
 msgid "Gray"
 msgstr "Abu-abu"
 
+#: include/default_domains.php:1449
 msgid "Colors of the spectrum"
 msgstr "Rentetan warna yang diuraikan oleh cahaya"
 
+#: include/default_domains.php:1450
 msgid "Animal color, marking"
 msgstr "Warna dan corak pada bulu binatang"
 
+#: include/default_domains.php:1451
 msgid "Change color"
 msgstr "Mengubah warna"
 
+#: include/default_domains.php:1452
 msgid "Multicolored"
 msgstr "Warna-warni"
 
+#: include/default_domains.php:1453
 msgid "Shiny"
 msgstr "Berkilau"
 
+#: include/default_domains.php:1454
 msgid "Hot"
 msgstr "Panas"
 
+#: include/default_domains.php:1455
 msgid "Cold"
 msgstr "Dingin"
 
+#: include/default_domains.php:1456
 msgid "Type, kind"
 msgstr "Jenis"
 
+#: include/default_domains.php:1457
 msgid "Nature, character"
 msgstr "Sifat asli, ciri-ciri"
 
+#: include/default_domains.php:1458
 msgid "Compare"
 msgstr "Membandingkan"
 
+#: include/default_domains.php:1459
 msgid "Same"
 msgstr "Sama"
 
+#: include/default_domains.php:1460
 msgid "Like, similar"
 msgstr "Sama seperti, mirip"
 
+#: include/default_domains.php:1461
 msgid "Different"
 msgstr "Berbeda"
 
+#: include/default_domains.php:1462
 msgid "Other"
 msgstr "Lain"
 
+#: include/default_domains.php:1463
 msgid "Various"
 msgstr "Berbagai macam"
 
+#: include/default_domains.php:1464
 msgid "Opposite"
 msgstr "Berlawanan"
 
+#: include/default_domains.php:1465
 msgid "Common"
 msgstr "Umum"
 
+#: include/default_domains.php:1466
 msgid "Usual"
 msgstr "Biasa"
 
+#: include/default_domains.php:1467
 msgid "Unusual"
 msgstr "Tidak biasa"
 
+#: include/default_domains.php:1468
 msgid "Unique"
 msgstr "Unik, khas"
 
+#: include/default_domains.php:1469
 msgid "Strange"
 msgstr "Aneh"
 
+#: include/default_domains.php:1470
 msgid "Pattern, model"
 msgstr "Pola, model"
 
+#: include/default_domains.php:1471
 msgid "Imitate"
 msgstr "Meniru"
 
+#: include/default_domains.php:1472
 msgid "Copy"
 msgstr "Menyalin"
 
+#: include/default_domains.php:1473
 msgid "Made of, material"
 msgstr "Terbuat dari, bahan"
 
+#: include/default_domains.php:1474
 msgid "Strong, brittle"
 msgstr "Kuat, rapuh"
 
+#: include/default_domains.php:1475
 msgid "Hard, firm"
 msgstr "Keras, kukuh"
 
+#: include/default_domains.php:1476
 msgid "Stiff, flexible"
 msgstr "Kaku, luwes"
 
+#: include/default_domains.php:1477
 msgid "Dense"
 msgstr "Tebal atau padat"
 
+#: include/default_domains.php:1478
 msgid "Soft, flimsy"
 msgstr "Lembut, halus"
 
+#: include/default_domains.php:1479
 msgid "Good"
 msgstr "Bagus atau baik"
 
+#: include/default_domains.php:1480
 msgid "Bad"
 msgstr "Buruk atau jelek"
 
+#: include/default_domains.php:1481
 msgid "Better"
 msgstr "Lebih bagus atau baik"
 
+#: include/default_domains.php:1482
 msgid "Worse"
 msgstr "Lebih buruk atau jelek"
 
+#: include/default_domains.php:1483
 msgid "Perfect"
 msgstr "Sempurna"
 
+#: include/default_domains.php:1484
 msgid "Mediocre"
 msgstr "Pas-pasan, sedang-sedang saja"
 
+#: include/default_domains.php:1485
 msgid "Important"
 msgstr "Penting"
 
+#: include/default_domains.php:1486
 msgid "Basic"
 msgstr "Dasar"
 
+#: include/default_domains.php:1487
 msgid "Improve"
 msgstr "Memperbaiki"
 
+#: include/default_domains.php:1488
 msgid "Right, proper"
 msgstr "Benar, tepat"
 
+#: include/default_domains.php:1489
 msgid "Wrong, unsuitable"
 msgstr "Salah, tidak tepat"
 
+#: include/default_domains.php:1490
 msgid "Convenient"
 msgstr "Cocok, sesuai"
 
+#: include/default_domains.php:1491
 msgid "Compatible"
 msgstr "Rukun"
 
+#: include/default_domains.php:1492
 msgid "Decay"
 msgstr "Busuk"
 
+#: include/default_domains.php:1493
 msgid "Rust"
 msgstr "Karat"
 
+#: include/default_domains.php:1494
 msgid "Blemish"
 msgstr "Noda"
 
+#: include/default_domains.php:1495
 msgid "Garbage"
 msgstr "Sampah"
 
+#: include/default_domains.php:1496
 msgid "Preserve"
 msgstr "Memelihara"
 
+#: include/default_domains.php:1497
 msgid "Value"
 msgstr "Nilai"
 
+#: include/default_domains.php:1498
 msgid "Decorated"
 msgstr "Telah dihias"
 
+#: include/default_domains.php:1499
 msgid "Simple, plain"
 msgstr "Sederhana, biasa"
 
+#: include/default_domains.php:1500
 msgid "Glory"
 msgstr "Mulia/agung"
 
+#: include/default_domains.php:1501
 msgid "Time"
 msgstr "Waktu"
 
+#: include/default_domains.php:1502
 msgid "Period of time"
 msgstr "Jangka waktu"
 
+#: include/default_domains.php:1503
 msgid "Calendar"
 msgstr "Kalender"
 
+#: include/default_domains.php:1504
 msgid "Day"
 msgstr "Hari"
 
+#: include/default_domains.php:1505
 msgid "Night"
 msgstr "Malam"
 
+#: include/default_domains.php:1506
 msgid "Yesterday, today, tomorrow"
 msgstr "Kemarin, hari ini, besok"
 
+#: include/default_domains.php:1507
 msgid "Time of the day"
 msgstr "Waktu dalam satu hari"
 
+#: include/default_domains.php:1508
 msgid "Week"
 msgstr "Minggu"
 
+#: include/default_domains.php:1509
 msgid "Days of the week"
 msgstr "Hari-hari dalam seminggu"
 
+#: include/default_domains.php:1510
 msgid "Month"
 msgstr "Bulan"
 
+#: include/default_domains.php:1511
 msgid "Months of the year"
 msgstr "Bulan-bulan dalam setahun"
 
+#: include/default_domains.php:1512
 msgid "Season"
 msgstr "Musim"
 
+#: include/default_domains.php:1513
 msgid "Year"
 msgstr "Tahun"
 
+#: include/default_domains.php:1514
 msgid "Era"
 msgstr "Zaman"
 
+#: include/default_domains.php:1515
 msgid "Special days"
 msgstr "Hari-hari khusus"
 
+#: include/default_domains.php:1516
 msgid "Take time"
 msgstr "Menghabiskan waktu"
 
+#: include/default_domains.php:1517
 msgid "A short time"
 msgstr "Waktu yang singkat"
 
+#: include/default_domains.php:1518
 msgid "A long time"
 msgstr "Waktu yang lama"
 
+#: include/default_domains.php:1519
 msgid "Forever"
 msgstr "Selamanya"
 
+#: include/default_domains.php:1520
 msgid "Temporary"
 msgstr "Sementara"
 
+#: include/default_domains.php:1521
 msgid "Indefinite time"
 msgstr "Waktu yang tak tentu"
 
+#: include/default_domains.php:1522
 msgid "Telling time"
 msgstr "Membaca waktu"
 
+#: include/default_domains.php:1523
 msgid "Plan a time"
 msgstr "Merencanakan waktu"
 
+#: include/default_domains.php:1524
 msgid "Clock, watch"
 msgstr "Jam"
 
+#: include/default_domains.php:1525
 msgid "Relative time"
 msgstr "Waktu yang berkaitan dengan suatu kejadian"
 
+#: include/default_domains.php:1526
 msgid "Order, sequence"
 msgstr "Urutan, rentetan"
 
+#: include/default_domains.php:1527
 msgid "Series"
 msgstr "Rangkaian"
 
+#: include/default_domains.php:1528
 msgid "First"
 msgstr "Pertama kali"
 
+#: include/default_domains.php:1529
 msgid "Next"
 msgstr "Kemudian"
 
+#: include/default_domains.php:1530
 msgid "Last"
 msgstr "Terakhir"
 
+#: include/default_domains.php:1531
 msgid "Regular"
 msgstr "Teratur"
 
+#: include/default_domains.php:1532
 msgid "Alternate"
 msgstr "Bergantian"
 
+#: include/default_domains.php:1533
 msgid "Before"
 msgstr "Sebelum"
 
+#: include/default_domains.php:1534
 msgid "After"
 msgstr "Setelah"
 
+#: include/default_domains.php:1535
 msgid "At the same time"
 msgstr "Pada saat bersamaan"
 
+#: include/default_domains.php:1536
 msgid "During"
 msgstr "Selama"
 
+#: include/default_domains.php:1537
 msgid "Right time"
 msgstr "Waktu yang tepat"
 
+#: include/default_domains.php:1538
 msgid "Early"
 msgstr "Lebih awal"
 
+#: include/default_domains.php:1539
 msgid "On time"
 msgstr "Tepat waktu"
 
+#: include/default_domains.php:1540
 msgid "Late"
 msgstr "Terlambat"
 
+#: include/default_domains.php:1541
 msgid "Delay"
 msgstr "Mengulur waktu"
 
+#: include/default_domains.php:1542
 msgid "Postpone"
 msgstr "Menunda"
 
+#: include/default_domains.php:1543
 msgid "Aspectual time"
 msgstr "Waktu ketika sesuatu terjadi"
 
+#: include/default_domains.php:1544
 msgid "Start something"
 msgstr "Memulai sesuatu"
 
+#: include/default_domains.php:1545
 msgid "Beginning"
 msgstr "Mulai"
 
+#: include/default_domains.php:1546
 msgid "Stop something"
 msgstr "Menghentikan sesuatu"
 
+#: include/default_domains.php:1547
 msgid "End"
 msgstr "Akhir"
 
+#: include/default_domains.php:1548
 msgid "Until"
 msgstr "Sampai, hingga"
 
+#: include/default_domains.php:1549
 msgid "Since, from"
 msgstr "Sejak, dari"
 
+#: include/default_domains.php:1550
 msgid "Past"
 msgstr "Masa lampau"
 
+#: include/default_domains.php:1551
 msgid "Recently"
 msgstr "Baru-baru ini"
 
+#: include/default_domains.php:1552
 msgid "Present"
 msgstr "Masa sekarang"
 
+#: include/default_domains.php:1553
 msgid "Now"
 msgstr "Sekarang"
 
+#: include/default_domains.php:1554
 msgid "Future"
 msgstr "Masa depan"
 
+#: include/default_domains.php:1555
 msgid "Soon"
 msgstr "Segera"
 
+#: include/default_domains.php:1556
 msgid "Not yet"
 msgstr "Belum"
 
+#: include/default_domains.php:1557
 msgid "Eventually"
 msgstr "Akhirnya"
 
+#: include/default_domains.php:1558
 msgid "Immediately"
 msgstr "Segera"
 
+#: include/default_domains.php:1559
 msgid "Age"
 msgstr "Umur atau usia"
 
+#: include/default_domains.php:1560
 msgid "Young"
 msgstr "Muda"
 
+#: include/default_domains.php:1561
 msgid "Old, not young"
 msgstr "Tua, tidak muda"
 
+#: include/default_domains.php:1562
 msgid "New"
 msgstr "Baru"
 
+#: include/default_domains.php:1563
 msgid "Old, not new"
 msgstr "Lama, tidak baru"
 
+#: include/default_domains.php:1564
 msgid "Modern"
 msgstr "Mutakhir atau modern"
 
+#: include/default_domains.php:1565
 msgid "Old fashioned"
 msgstr "Kuno"
 
+#: include/default_domains.php:1566
 msgid "Once"
 msgstr "Satu kali"
 
+#: include/default_domains.php:1567
 msgid "Again"
 msgstr "Lagi"
 
+#: include/default_domains.php:1568
 msgid "Sometimes"
 msgstr "Kadang-kadang"
 
+#: include/default_domains.php:1569
 msgid "Often"
 msgstr "Sering"
 
+#: include/default_domains.php:1570
 msgid "All the time"
 msgstr "Sepanjang waktu"
 
+#: include/default_domains.php:1571
 msgid "Every time"
 msgstr "Setiap kali"
 
+#: include/default_domains.php:1572
 msgid "Never"
 msgstr "Tidak pernah"
 
+#: include/default_domains.php:1573
 msgid "Continue, persevere"
 msgstr "Meneruskan, bertekun"
 
+#: include/default_domains.php:1574
 msgid "Interrupt"
 msgstr "Menyela"
 
+#: include/default_domains.php:1575
 msgid "Start again"
 msgstr "Memulai kembali"
 
+#: include/default_domains.php:1576
 msgid "Interval"
 msgstr "Jarak waktu"
 
+#: include/default_domains.php:1577
 msgid "Speed"
 msgstr "Kecepatan"
 
+#: include/default_domains.php:1578
 msgid "Quick"
 msgstr "Cepat"
 
+#: include/default_domains.php:1579
 msgid "Slow"
 msgstr "Lambat"
 
+#: include/default_domains.php:1580
 msgid "Sudden"
 msgstr "Tiba-tiba"
 
+#: include/default_domains.php:1581
 msgid "Location"
 msgstr "Tempat"
 
+#: include/default_domains.php:1582
 msgid "Here, there"
 msgstr "Di sini, di sana"
 
+#: include/default_domains.php:1583
 msgid "In front of"
 msgstr "Di depan"
 
+#: include/default_domains.php:1584
 msgid "Behind"
 msgstr "Di belakang"
 
+#: include/default_domains.php:1585
 msgid "Beside"
 msgstr "Di samping"
 
+#: include/default_domains.php:1586
 msgid "Around"
 msgstr "Di sekeliling"
 
+#: include/default_domains.php:1587
 msgid "Between"
 msgstr "Di antara"
 
+#: include/default_domains.php:1588
 msgid "On"
 msgstr "Di atas"
 
+#: include/default_domains.php:1589
 msgid "Above"
 msgstr "Di atas (di tempat yang tinggi)"
 
+#: include/default_domains.php:1590
 msgid "Under, below"
 msgstr "Di bawah"
 
+#: include/default_domains.php:1591
 msgid "Inside"
 msgstr "Di dalam"
 
+#: include/default_domains.php:1592
 msgid "Out, outside"
 msgstr "Di luar"
 
+#: include/default_domains.php:1593
 msgid "Touching, contact"
 msgstr "Bersentuhan, bersinggungan"
 
+#: include/default_domains.php:1594
 msgid "Next to"
 msgstr "Di samping"
 
+#: include/default_domains.php:1595
 msgid "Across"
 msgstr "Seberang"
 
+#: include/default_domains.php:1596
 msgid "Indefinite location"
 msgstr "Tempat yang tidak tentu"
 
+#: include/default_domains.php:1597
 msgid "Direction"
 msgstr "Arah"
 
+#: include/default_domains.php:1598
 msgid "Forward"
 msgstr "Ke depan"
 
+#: include/default_domains.php:1599
 msgid "Backward"
 msgstr "Ke belakang"
 
+#: include/default_domains.php:1600
 msgid "Right, left"
 msgstr "Kanan, kiri"
 
+#: include/default_domains.php:1601
 msgid "Up"
 msgstr "Ke atas"
 
+#: include/default_domains.php:1602
 msgid "Down"
 msgstr "Ke bawah"
 
+#: include/default_domains.php:1603
 msgid "Away from"
 msgstr "Menjauh dari"
 
+#: include/default_domains.php:1604
 msgid "Towards"
 msgstr "Menuju"
 
+#: include/default_domains.php:1605
 msgid "North, south, east, west"
 msgstr "Utara, selatan, timur, barat"
 
+#: include/default_domains.php:1606
 msgid "Be at a place"
 msgstr "Berada di suatu tempat"
 
+#: include/default_domains.php:1607
 msgid "Absent"
 msgstr "Tidak hadir"
 
+#: include/default_domains.php:1608
 msgid "Area"
 msgstr "Tempat"
 
+#: include/default_domains.php:1609
 msgid "Vicinity"
 msgstr "Sekitarnya"
 
+#: include/default_domains.php:1610
 msgid "Occupy an area"
 msgstr "Menghuni suatu tempat"
 
+#: include/default_domains.php:1611
 msgid "Space, room"
 msgstr "Tempat, ruang"
 
+#: include/default_domains.php:1612
 msgid "Interval, space"
 msgstr "Jarak waktu, ruang"
 
+#: include/default_domains.php:1613
 msgid "Spatial relations"
 msgstr "Hubungan ruang dan tempat"
 
+#: include/default_domains.php:1614
 msgid "Contain"
 msgstr "Mengandung"
 
+#: include/default_domains.php:1615
 msgid "Parts of things"
 msgstr "Bagian dari sesuatu"
 
+#: include/default_domains.php:1616
 msgid "Front"
 msgstr "Depan"
 
+#: include/default_domains.php:1617
 msgid "Back"
 msgstr "Belakang"
 
+#: include/default_domains.php:1618
 msgid "Top"
 msgstr "Atas"
 
+#: include/default_domains.php:1619
 msgid "Bottom"
 msgstr "Dasar"
 
+#: include/default_domains.php:1620
 msgid "Side"
 msgstr "Samping"
 
+#: include/default_domains.php:1621
 msgid "Inner part"
 msgstr "Bagian dalam"
 
+#: include/default_domains.php:1622
 msgid "Outer part"
 msgstr "Bagian luar"
 
+#: include/default_domains.php:1623
 msgid "Middle"
 msgstr "Tengah"
 
+#: include/default_domains.php:1624
 msgid "Edge"
 msgstr "Tepi"
 
+#: include/default_domains.php:1625
 msgid "End, point"
 msgstr "Akhir, ujung"
 
+#: include/default_domains.php:1626 include/semdomains_func.php:33
 msgid "Grammar"
 msgstr "Tata bahasa"
 
+#: include/default_domains.php:1627
 msgid "General words"
 msgstr "Kata-kata umum"
 
+#: include/default_domains.php:1628
 msgid "Be"
 msgstr "Adalah, merupakan"
 
+#: include/default_domains.php:1629
 msgid "Exist"
 msgstr "Ada"
 
+#: include/default_domains.php:1630
 msgid "Become, change state"
 msgstr "Menjadi, mengubah keadaan"
 
+#: include/default_domains.php:1631
 msgid "Have, of"
 msgstr "Memiliki"
 
+#: include/default_domains.php:1632
 msgid "Attribution"
 msgstr ""
 "Kata atribut (kata sifat atau kata benda yang menjelaskan frasa kata benda)"
 
+#: include/default_domains.php:1633
 msgid "Do"
 msgstr "Melakukan"
 
+#: include/default_domains.php:1634
 msgid "Happen"
 msgstr "Terjadi sesuatu"
 
+#: include/default_domains.php:1635
 msgid "React, respond"
 msgstr "Bereaksi, menanggapi"
 
+#: include/default_domains.php:1636
 msgid "Create"
 msgstr "Menciptakan"
 
+#: include/default_domains.php:1637
 msgid "Design"
 msgstr "Merancang"
 
+#: include/default_domains.php:1638
 msgid "Make"
 msgstr "Membuat"
 
+#: include/default_domains.php:1639
 msgid "Change something"
 msgstr "Mengubah sesuatu"
 
+#: include/default_domains.php:1640
 msgid "Event propositions"
 msgstr "Proposisi peristiwa"
 
+#: include/default_domains.php:1641
 msgid "Thing"
 msgstr "Benda atau hal"
 
+#: include/default_domains.php:1642
 msgid "Physical, non-physical"
 msgstr "Kasatmata, tidak kasatmata"
 
+#: include/default_domains.php:1643
 msgid "Situation"
 msgstr "Situasi"
 
+#: include/default_domains.php:1644
 msgid "General adjectives"
 msgstr "Kata sifat umum"
 
+#: include/default_domains.php:1645
 msgid "General adverbs"
 msgstr "Kata keterangan umum"
 
+#: include/default_domains.php:1646
 msgid "Part of speech"
 msgstr "Jenis kata"
 
+#: include/default_domains.php:1647
 msgid "Adjectives"
 msgstr "Kata sifat"
 
+#: include/default_domains.php:1648
 msgid "Adverbs"
 msgstr "Kata keterangan"
 
+#: include/default_domains.php:1649
 msgid "Pronouns"
 msgstr "Kata ganti"
 
+#: include/default_domains.php:1650
 msgid "Reflexive pronouns"
 msgstr "Kata ganti refleksif"
 
+#: include/default_domains.php:1651
 msgid "Indefinite pronouns"
 msgstr "Kata ganti tak tentu"
 
+#: include/default_domains.php:1652
 msgid "Relative pronouns"
 msgstr "Kata ganti penghubung"
 
+#: include/default_domains.php:1653
 msgid "Question words"
 msgstr "Kata tanya"
 
+#: include/default_domains.php:1654
 msgid "Demonstrative pronouns"
 msgstr "Kata ganti penunjuk"
 
+#: include/default_domains.php:1655
 msgid "Personally"
 msgstr "Sendiri"
 
+#: include/default_domains.php:1656
 msgid "Prepositions, postpositions"
 msgstr ""
 "Preposisi (kata depan), post-posisi (kata depan yang terletak di belakang "
 "kata benda yang diterangkan)"
 
+#: include/default_domains.php:1657
 msgid "Conjunctions"
 msgstr "Kata penghubung"
 
+#: include/default_domains.php:1658
 msgid "Phrase conjunctions"
 msgstr "Kata penghubung frasa"
 
+#: include/default_domains.php:1659
 msgid "Clause conjunctions"
 msgstr "Kata penghubung klausa"
 
+#: include/default_domains.php:1660
 msgid "Sentence conjunctions"
 msgstr "Kata penghubung kalimat"
 
+#: include/default_domains.php:1661
 msgid "Particles"
 msgstr "Kata partikel"
 
+#: include/default_domains.php:1662
 msgid "Classifiers"
 msgstr "Kata penggolong"
 
+#: include/default_domains.php:1663
 msgid "Interjections"
 msgstr "Kata seru"
 
+#: include/default_domains.php:1664
 msgid "Idiophones"
 msgstr "Ideofon (kata yang melambangkan bunyi sesuatu)"
 
+#: include/default_domains.php:1665
 msgid "Affixes"
 msgstr "Kata imbuhan"
 
+#: include/default_domains.php:1666
 msgid "Verb affixes"
 msgstr "Kata kerja berimbuhan"
 
+#: include/default_domains.php:1667
 msgid "Noun affixes"
 msgstr "Kata benda berimbuhan"
 
+#: include/default_domains.php:1668
 msgid "Derivational affixes"
 msgstr "Kata imbuhan derivatif"
 
+#: include/default_domains.php:1669
 msgid "Very"
 msgstr "Sangat"
 
+#: include/default_domains.php:1670
 msgid "Degree"
 msgstr "Tingkat"
 
+#: include/default_domains.php:1671
 msgid "To a large degree"
 msgstr "Tingkat yang besar"
 
+#: include/default_domains.php:1672
 msgid "To a small degree"
 msgstr "Tingkat yang kecil"
 
+#: include/default_domains.php:1673
 msgid "To a larger degree"
 msgstr "Tingkat yang lebih tinggi/besar"
 
+#: include/default_domains.php:1674
 msgid "To a smaller degree"
 msgstr "Tingkat yang lebih rendah/kecil"
 
+#: include/default_domains.php:1675
 msgid "Completely"
 msgstr "Sepenuhnya, seluruhnya"
 
+#: include/default_domains.php:1676
 msgid "Partly"
 msgstr "Sebagian"
 
+#: include/default_domains.php:1677
 msgid "Do intensely"
 msgstr "Sangat sering dilakukan"
 
+#: include/default_domains.php:1678
 msgid "Attribution of an attribute"
 msgstr "Penjelasan tambahan untuk sifat sesuatu atau seseorang"
 
+#: include/default_domains.php:1679
 msgid "Semantic constituents related to verbs"
 msgstr "Konstituen atau unsur semantik yang berkaitan dengan kata kerja"
 
+#: include/default_domains.php:1680
 msgid "Tense and aspect"
 msgstr ""
 "Kala (perbedaan bentuk kata kerja untuk menyatakan perbedaan waktu) dan "
 "aspek (kategori gramatikal kata kerja yang menunjukkan lama dan jenis "
 "perbuatan)."
 
+#: include/default_domains.php:1681
 msgid "Tense"
 msgstr "Kala (perbedaan bentuk kata kerja untuk menyatakan perbedaan waktu)"
 
+#: include/default_domains.php:1682
 msgid "Aspect--dynamic verbs"
 msgstr "Aspek - kata kerja dinamis"
 
+#: include/default_domains.php:1683
 msgid "Aspect--stative verbs"
 msgstr "Aspek - kata kerja statif"
 
+#: include/default_domains.php:1684
 msgid "Relational tenses"
 msgstr "Kala-kala yang saling berkaitan"
 
+#: include/default_domains.php:1685
 msgid "Agent-oriented modalities"
 msgstr "Kata kerja bantu yang berorientasi pada subjek pelaku"
 
+#: include/default_domains.php:1686
 msgid "Can"
 msgstr "Bisa"
 
+#: include/default_domains.php:1687
 msgid "Can't"
 msgstr "Tidak bisa"
 
+#: include/default_domains.php:1688
 msgid "Necessary"
 msgstr "Perlu"
 
+#: include/default_domains.php:1689
 msgid "Moods"
 msgstr "Modus"
 
+#: include/default_domains.php:1690
 msgid "Imperative"
 msgstr "Bentuk perintah"
 
+#: include/default_domains.php:1691
 msgid "Hortative"
 msgstr "Hortatif (bersifat mengajak atau mendorong)"
 
+#: include/default_domains.php:1692
 msgid "Interrogative"
 msgstr "Bentuk pertanyaan"
 
+#: include/default_domains.php:1693
 msgid "Epistemic moods"
 msgstr "Modus epistemis"
 
+#: include/default_domains.php:1694
 msgid "Certainly, definitely"
 msgstr "Pasti, tentu"
 
+#: include/default_domains.php:1695
 msgid "Sure"
 msgstr "Yakin"
 
+#: include/default_domains.php:1696
 msgid "Probably"
 msgstr ""
 "Kemungkinan (dugaan yang kemungkinan besar benar, karena didukung oleh "
 "berbagai bukti atau tanda yang kuat)"
 
+#: include/default_domains.php:1697
 msgid "Possible"
 msgstr ""
 "Kemungkinan (bisa jadi benar dan bisa juga tidak benar, hanya dugaan saja)"
 
+#: include/default_domains.php:1698
 msgid "Uncertain"
 msgstr "Tidak pasti"
 
+#: include/default_domains.php:1699
 msgid "Unsure"
 msgstr "Tidak yakin"
 
+#: include/default_domains.php:1700
 msgid "Think so"
 msgstr "Sepertinya begitu"
 
+#: include/default_domains.php:1701
 msgid "Maybe"
 msgstr "Mungkin"
 
+#: include/default_domains.php:1702
 msgid "Seem"
 msgstr "Rasanya, tampaknya"
 
+#: include/default_domains.php:1703
 msgid "Just, almost not"
 msgstr "Hanya, hampir saja tidak"
 
+#: include/default_domains.php:1704
 msgid "Don't think so, doubt it"
 msgstr "Sepertinya tidak begitu, ragu-ragu tentang hal itu"
 
+#: include/default_domains.php:1705
 msgid "Impossible"
 msgstr "Tidak mungkin"
 
+#: include/default_domains.php:1706
 msgid "Evidentials"
 msgstr "Bukti saksi"
 
+#: include/default_domains.php:1707
 msgid "Evaluator"
 msgstr "Penilai"
 
+#: include/default_domains.php:1708
 msgid "Yes"
 msgstr "Ya"
 
+#: include/default_domains.php:1709
 msgid "No, not"
 msgstr "Tidak"
 
+#: include/default_domains.php:1710
 msgid "Markers expecting an affirmative answer"
 msgstr "Mengharapkan jawaban yang positif"
 
+#: include/default_domains.php:1711
 msgid "Markers expecting a negative answer"
 msgstr "Mengharapkan jawaban yang negatif"
 
+#: include/default_domains.php:1712
 msgid "Subordinating particles"
 msgstr "Partikel untuk klausa terikat"
 
+#: include/default_domains.php:1713
 msgid "Adverbial clauses"
 msgstr "Klausa adverbial"
 
+#: include/default_domains.php:1714
 msgid "Case"
 msgstr "Kasus linguistik"
 
+#: include/default_domains.php:1715
 msgid "Primary cases"
 msgstr "Kasus utama"
 
+#: include/default_domains.php:1716
 msgid "Beneficiary of an event"
 msgstr "Pemeroleh dalam suatu kejadian"
 
+#: include/default_domains.php:1717
 msgid "Instrument"
 msgstr "Alat"
 
+#: include/default_domains.php:1718
 msgid "Means"
 msgstr "Cara"
 
+#: include/default_domains.php:1719
 msgid "Way, manner"
 msgstr "Cara, sikap"
 
+#: include/default_domains.php:1720
 msgid "Attendant circumstances"
 msgstr "Keadaan yang menjelaskan suatu kejadian"
 
+#: include/default_domains.php:1721
 msgid "Spatial location of an event"
 msgstr "Tempat terjadinya suatu peristiwa"
 
+#: include/default_domains.php:1722
 msgid "Source (of movement)"
 msgstr "Sumber"
 
+#: include/default_domains.php:1723
 msgid "Path (of movement)"
 msgstr "Jalan/perantaraan yang dilalui oleh sesuatu"
 
+#: include/default_domains.php:1724
 msgid "Goal (of movement)"
 msgstr "Sasaran (ke suatu tempat)"
 
+#: include/default_domains.php:1725
 msgid "Origin (of a person)"
 msgstr "Tempat asal (seseorang)"
 
+#: include/default_domains.php:1726
 msgid "Semantically similar events"
 msgstr "Peristiwa yang serupa secara semantik"
 
+#: include/default_domains.php:1727
 msgid "Together"
 msgstr "Bersama"
 
+#: include/default_domains.php:1728
 msgid "With, be with"
 msgstr "Dengan, bersama"
 
+#: include/default_domains.php:1729
 msgid "With, do with someone"
 msgstr "Dengan, melakukan dengan seseorang"
 
+#: include/default_domains.php:1730
 msgid "Each other"
 msgstr "Saling"
 
+#: include/default_domains.php:1731
 msgid "In groups"
 msgstr "Secara berkelompok"
 
+#: include/default_domains.php:1732
 msgid "Patient-related cases"
 msgstr "Kasus yang berkaitan dengan objek penderita"
 
+#: include/default_domains.php:1733
 msgid "Beneficiary (of a patient)"
 msgstr "Pemeroleh (dari objek penderita)"
 
+#: include/default_domains.php:1734
 msgid "Recipient (of a patient)"
 msgstr "Penerima (dari objek penderita)"
 
+#: include/default_domains.php:1735
 msgid "With (a patient)"
 msgstr "Penyerta (objek penderita)"
 
+#: include/default_domains.php:1736
 msgid "Connected with, related"
 msgstr "Berkaitan dengan, terkait dengan"
 
+#: include/default_domains.php:1737
 msgid "Coordinate relations"
 msgstr "Hubungan koordinatif (kata penghubung)"
 
+#: include/default_domains.php:1738
 msgid "And, also"
 msgstr "Dan, juga"
 
+#: include/default_domains.php:1739
 msgid "Or, either"
 msgstr "Atau"
 
+#: include/default_domains.php:1740
 msgid "Association"
 msgstr "Hubungan"
 
+#: include/default_domains.php:1741
 msgid "Combinative relation"
 msgstr "Hubungan yang bersifat menggabungkan"
 
+#: include/default_domains.php:1742
 msgid "But"
 msgstr "Tetapi"
 
+#: include/default_domains.php:1743
 msgid "Except"
 msgstr "Kecuali"
 
+#: include/default_domains.php:1744
 msgid "Instead"
 msgstr "Sebagai ganti, alih-alih"
 
+#: include/default_domains.php:1745
 msgid "Dissociation"
 msgstr "Proses pemisahan"
 
+#: include/default_domains.php:1746
 msgid "Distribution"
 msgstr "Persebaran"
 
+#: include/default_domains.php:1747
 msgid "Equivalence"
 msgstr "Kesamaan"
 
+#: include/default_domains.php:1748
 msgid "Dependency relations"
 msgstr "Hubungan ketergantungan"
 
+#: include/default_domains.php:1749
 msgid "Derivation"
 msgstr "asal"
 
+#: include/default_domains.php:1750
 msgid "Limitation of topic"
 msgstr "Pembatasan topik"
 
+#: include/default_domains.php:1751
 msgid "In general"
 msgstr "Pada umumnya"
 
+#: include/default_domains.php:1752
 msgid "Relations involving correspondences"
 msgstr ""
 "Hubungan yang melibatkan kesesuaian atau keselarasan dengan hal lainnya"
 
+#: include/default_domains.php:1753
 msgid "Basis"
 msgstr "Dasar"
 
+#: include/default_domains.php:1754
 msgid "Cause"
 msgstr "Penyebab"
 
+#: include/default_domains.php:1755
 msgid "Reason"
 msgstr "Alasan"
 
+#: include/default_domains.php:1756
 msgid "Without cause"
 msgstr "Tanpa sebab"
 
+#: include/default_domains.php:1757
 msgid "Result"
 msgstr "Hasil"
 
+#: include/default_domains.php:1758
 msgid "Without result"
 msgstr "Tanpa hasil"
 
+#: include/default_domains.php:1759
 msgid "Purpose"
 msgstr "Tujuan"
 
+#: include/default_domains.php:1760
 msgid "Without purpose"
 msgstr "Tanpa tujuan"
 
+#: include/default_domains.php:1761
 msgid "Condition"
 msgstr "Pengandaian"
 
+#: include/default_domains.php:1762
 msgid "Concession"
 msgstr "Konsesi (hasil yang tak terduga)"
 
+#: include/default_domains.php:1763
 msgid "Discourse markers"
 msgstr "Penanda wacana"
 
+#: include/default_domains.php:1764
 msgid "Markers of transition"
 msgstr "Penanda pengalihan pembicaraan"
 
+#: include/default_domains.php:1765
 msgid "Markers of emphasis"
 msgstr "Penanda penekanan pada suatu frasa atau kalimat"
 
+#: include/default_domains.php:1766
 msgid "Prompters of attention"
 msgstr "Meminta perhatian"
 
+#: include/default_domains.php:1767
 msgid "Markers of direct address"
 msgstr "Penanda kata sapaan"
 
+#: include/default_domains.php:1768
 msgid "Markers of identificational and explanatory clauses"
 msgstr "Penanda pengidentifikasian dan klausa penjelas sesuatu"
 
+#: include/default_domains.php:1769
 msgid "Markers of focus"
 msgstr "Penanda fokus pada sesuatu"
 
+#: include/default_domains.php:1770
 msgid "Hesitation fillers"
 msgstr "Kata-kata yang digunakan ketika seseorang ragu-ragu"
 
+#: include/default_domains.php:1771
 msgid "Honorifics"
 msgstr "Sebutan kehormatan"
 
+#: include/default_domains.php:1772
 msgid "Name"
 msgstr "Nama"
 
+#: include/default_domains.php:1773
 msgid "Name of a person"
 msgstr "Nama orang"
 
+#: include/default_domains.php:1774
 msgid "Personal names"
 msgstr "Nama diri"
 
+#: include/default_domains.php:1775
 msgid "Family names"
 msgstr "Nama keluarga"
 
+#: include/default_domains.php:1776
 msgid "Clan names"
 msgstr "Nama marga"
 
+#: include/default_domains.php:1777
 msgid "Tribal names"
 msgstr "Nama suku"
 
+#: include/default_domains.php:1778
 msgid "Names of languages"
 msgstr "Nama bahasa"
 
+#: include/default_domains.php:1779
 msgid "Nickname"
 msgstr "Nama panggilan"
 
+#: include/default_domains.php:1780
 msgid "Terms of endearment"
 msgstr "Nama panggilan kesayangan"
 
+#: include/default_domains.php:1781
 msgid "Name of a place"
 msgstr "Nama tempat"
 
+#: include/default_domains.php:1782
 msgid "Names of countries"
 msgstr "Nama negara"
 
+#: include/default_domains.php:1783
 msgid "Names of regions"
 msgstr "Nama-nama wilayah"
 
+#: include/default_domains.php:1784
 msgid "Names of cities"
 msgstr "Nama-nama kota"
 
+#: include/default_domains.php:1785
 msgid "Names of streets"
 msgstr "Nama-nama jalan"
 
+#: include/default_domains.php:1786
 msgid "Names of heavenly bodies"
 msgstr "Nama-nama benda angkasa"
 
+#: include/default_domains.php:1787
 msgid "Names of continents"
 msgstr "Nama-nama benua"
 
+#: include/default_domains.php:1788
 msgid "Names of mountains"
 msgstr "Nama-nama gunung"
 
+#: include/default_domains.php:1789
 msgid "Names of oceans and lakes"
 msgstr "Nama-nama lautan/samudera dan danau"
 
+#: include/default_domains.php:1790
 msgid "Names of rivers"
 msgstr "Nama-nama sungai"
 
+#: include/default_domains.php:1791
 msgid "Name of a thing"
 msgstr "Nama benda"
 
+#: include/default_domains.php:1792
 msgid "Names of animals"
 msgstr "Nama-nama binatang"
 
+#: include/default_domains.php:1793
 msgid "Names of buildings"
 msgstr "Nama-nama bangunan"
 
 # @ sil_dictionary
-#: include/dictionary-search.php:173
+#: include/dictionary-search.php:191
 msgid "Because of the brevity of your search term, partial search was omitted."
 msgstr ""
 "Karena singkatnya istilah yang Anda mencari, pencarian kata-kata parsial "
 "tidak termasuk."
 
 # @ sil_dictionary
-#: include/dictionary-search.php:175
+#: include/dictionary-search.php:193
 msgid "Click here to include searching through partial words."
 msgstr "Klik di sini untuk memasukkan kata-kata parsial dalam pencarian."
 
-#: include/infrastructure.php:114
+#: include/infrastructure.php:118
 msgid "Webonary"
 msgstr ""
 
-#: include/infrastructure.php:121
+#: include/infrastructure.php:125
 msgid ""
 "Webonary provides the admininstration tools and framework for using "
 "WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
@@ -5460,373 +7253,377 @@ msgid ""
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:122
+#: include/infrastructure.php:126
 msgid "Import Data"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:123
+#: include/infrastructure.php:127
 msgid ""
 "You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
 "importer</a> by clicking on Import under the Tools menu."
 msgstr ""
 
-#: include/infrastructure.php:124
+#: include/infrastructure.php:128
 msgid ""
 "Each dictionary entry is stored in a \"post.\" You will find the entries in "
 "the Posts menu."
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:126
+#: include/infrastructure.php:130
 msgid "Delete Data"
 msgstr ""
 
-#: include/infrastructure.php:131
+#: include/infrastructure.php:135
 msgid "Lists are kept unless you check the following:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:135
+#: include/infrastructure.php:139
 msgid "Delete lists such as Part of Speech?"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:145
+#: include/infrastructure.php:149
 msgid "Are you sure you want to delete the dictionary data?"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:146
+#: include/infrastructure.php:150
 msgid "Delete"
 msgstr ""
 
-#: include/infrastructure.php:148
+#: include/infrastructure.php:152
 msgid "(deletes all posts in the category \"webonary\")"
 msgstr ""
 
-#: include/infrastructure.php:150
+#: include/infrastructure.php:154
 msgid "Settings"
 msgstr ""
 
-#: include/infrastructure.php:152
+#: include/infrastructure.php:156
 msgid "Publication status:"
 msgstr ""
 
-#: include/infrastructure.php:154
+#: include/infrastructure.php:158
 msgid "no status set"
 msgstr ""
 
-#: include/infrastructure.php:155
+#: include/infrastructure.php:159
 msgid "Rough draft"
 msgstr ""
 
-#: include/infrastructure.php:156
+#: include/infrastructure.php:160
 msgid "Self-reviewed draft"
 msgstr ""
 
-#: include/infrastructure.php:157
+#: include/infrastructure.php:161
 msgid "Community-reviewed draft"
 msgstr ""
 
-#: include/infrastructure.php:158
+#: include/infrastructure.php:162
 msgid "Consultant approved"
 msgstr ""
 
-#: include/infrastructure.php:159
+#: include/infrastructure.php:163
 msgid "Finished (no formal publication)"
 msgstr ""
 
-#: include/infrastructure.php:160
+#: include/infrastructure.php:164
 msgid "Formally published"
 msgstr ""
 
-#: include/infrastructure.php:163
+#: include/infrastructure.php:167
 msgid "Search Options:"
 msgstr ""
 
-#: include/infrastructure.php:167
+#: include/infrastructure.php:171
 msgid "Always include searching through partial words."
 msgstr ""
 
-#: include/infrastructure.php:180
+#: include/infrastructure.php:182
 msgid "Display subentries as main entries"
 msgstr ""
 
-#: include/infrastructure.php:190
+#: include/infrastructure.php:193
 msgid "Vernacular Language Code:"
 msgstr ""
 
-#: include/infrastructure.php:201 include/infrastructure.php:230
-#: include/infrastructure.php:270
+#: include/infrastructure.php:204 include/infrastructure.php:242
+#: include/infrastructure.php:282
 msgid "Language Name:"
 msgstr ""
 
-#: include/infrastructure.php:203
+#: include/infrastructure.php:206
 msgid "Vernacular Alphabet:"
 msgstr ""
 
-#: include/infrastructure.php:205 include/infrastructure.php:255
-#: include/infrastructure.php:274
+#: include/infrastructure.php:208 include/infrastructure.php:267
+#: include/infrastructure.php:286
 msgid "(Letters separated by comma)"
 msgstr ""
 
-#: include/infrastructure.php:215
+#: include/infrastructure.php:218
 msgid ""
 "Include characters with diacritics (e.g. words starting with ä, à, etc. will "
 "all display under a)"
 msgstr ""
 
-#: include/infrastructure.php:217
+#: include/infrastructure.php:220
 msgid "Reversal Indexes:"
 msgstr ""
 
-#: include/infrastructure.php:219
+#: include/infrastructure.php:225
+msgid "Display:"
+msgstr ""
+
+#: include/infrastructure.php:231
 msgid "Main reversal index code:"
 msgstr ""
 
-#: include/infrastructure.php:253
+#: include/infrastructure.php:265
 msgid "Main Reversal Index Alphabet:"
 msgstr ""
 
-#: include/infrastructure.php:257
+#: include/infrastructure.php:269
 msgid "If you have a second reversal index, enter the information here:"
 msgstr ""
 
-#: include/infrastructure.php:259
+#: include/infrastructure.php:271
 msgid "Secondary reversal index code:"
 msgstr ""
 
-#: include/infrastructure.php:272
+#: include/infrastructure.php:284
 msgid "Secondary Reversal Index Alphabet:"
 msgstr ""
 
-#: include/infrastructure.php:276
+#: include/infrastructure.php:288
 msgid "Save"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:295 include/xhtml-importer.php:268
-#: include/xhtml-importer.php:383
+#: include/infrastructure.php:307 include/xhtml-importer.php:272
+#: include/xhtml-importer.php:360
 msgid "Finished!"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:296
+#: include/infrastructure.php:308
 msgid "OK"
 msgstr ""
 
-#: include/infrastructure.php:375
+#: include/infrastructure.php:388
 msgid "Settings saved"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:447
+#: include/infrastructure.php:472
 msgctxt "taxonomy general name"
 msgid "Semantic Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:448
+#: include/infrastructure.php:473
 msgctxt "taxonomy singular name"
 msgid "Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:449
+#: include/infrastructure.php:474
 msgid "Search Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:450
+#: include/infrastructure.php:475
 msgid "All Semantic Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:451
+#: include/infrastructure.php:476
 msgid "Parent Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:452
+#: include/infrastructure.php:477
 msgid "Parent Semantic Domain:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:453
+#: include/infrastructure.php:478
 msgid "Edit Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:454
+#: include/infrastructure.php:479
 msgid "Update Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:455
+#: include/infrastructure.php:480
 msgid "Add New Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:456
+#: include/infrastructure.php:481
 msgid "New Semantic Domain Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:457
+#: include/infrastructure.php:482
 msgid "Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:485
+#: include/infrastructure.php:510
 msgctxt "taxonomy general name"
 msgid "Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:486
+#: include/infrastructure.php:511
 msgctxt "taxonomy singular name"
 msgid "Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:487 include/infrastructure.php:495
+#: include/infrastructure.php:512 include/infrastructure.php:520
 msgid "Parts of Speech"
 msgstr ""
 
 # @ default
 # @ sil_dictionary
-#: include/infrastructure.php:488 include/searchform_func.php:74
+#: include/infrastructure.php:513 include/searchform_func.php:74
 msgid "All Parts of Speech"
 msgstr "Semua kelas kata"
 
 # @ default
-#: include/infrastructure.php:489
+#: include/infrastructure.php:514
 msgid "Parent Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:490
+#: include/infrastructure.php:515
 msgid "Parent Part of Speech:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:491
+#: include/infrastructure.php:516
 msgid "Edit Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:492
+#: include/infrastructure.php:517
 msgid "Update Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:493
+#: include/infrastructure.php:518
 msgid "Add New Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:494
+#: include/infrastructure.php:519
 msgid "New Part of Speech Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:522
+#: include/infrastructure.php:547
 msgctxt "taxonomy general name"
 msgid "Languages"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:523
+#: include/infrastructure.php:548
 msgctxt "taxonomy singular name"
 msgid "Language"
 msgstr ""
 
 # @ default
 # @ sil_dictionary
-#: include/infrastructure.php:525 include/searchform_func.php:49
+#: include/infrastructure.php:550 include/searchform_func.php:49
 msgid "All Languages"
 msgstr "Semua bahasa"
 
 # @ default
-#: include/infrastructure.php:526
+#: include/infrastructure.php:551
 msgid "Parent Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:527
+#: include/infrastructure.php:552
 msgid "Parent Language:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:528
+#: include/infrastructure.php:553
 msgid "Edit Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:529
+#: include/infrastructure.php:554
 msgid "Update Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:530
+#: include/infrastructure.php:555
 msgid "Add New Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:531
+#: include/infrastructure.php:556
 msgid "New Language Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:559
+#: include/infrastructure.php:584
 msgctxt "taxonomy general name"
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:560
+#: include/infrastructure.php:585
 msgctxt "taxonomy singular name"
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:561 include/infrastructure.php:569
+#: include/infrastructure.php:586 include/infrastructure.php:594
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:562
+#: include/infrastructure.php:587
 msgid "All Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:563
+#: include/infrastructure.php:588
 msgid "Parent Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:564
+#: include/infrastructure.php:589
 msgid "Parent Website strings:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:565
+#: include/infrastructure.php:590
 msgid "Edit Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:566
+#: include/infrastructure.php:591
 msgid "Update Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:567
+#: include/infrastructure.php:592
 msgid "Add New Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:568
+#: include/infrastructure.php:593
 msgid "New Website strings Name"
 msgstr ""
 
@@ -5834,14 +7631,31 @@ msgstr ""
 msgid "Found in Semantic Domains:"
 msgstr ""
 
+#: include/widgets.php:9
+msgid "Display Number of Dictionary Entries"
+msgstr ""
+
+#: include/widgets.php:11
+#, fuzzy
+msgid "Number of Dictionary Entries"
+msgstr "Nama negara"
+
+#: include/widgets.php:19
+msgid "Title:"
+msgstr ""
+
+#: include/widgets.php:35
+msgid "Number of Entries"
+msgstr "Jumlah entri"
+
 # @ sil_dictionary
-#: include/xhtml-importer.php:285
+#: include/xhtml-importer.php:289
 msgid ""
 "Howdy! This importer allows you to import SIL FLEX XHTML data into your "
 "WordPress site."
 msgstr ""
 
-#: include/xhtml-importer.php:287
+#: include/xhtml-importer.php:291
 msgid ""
 "Before re-importing, it's best to delete your existing entries. Go to <a "
 "href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
@@ -5849,61 +7663,64 @@ msgid ""
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:437
+#: include/xhtml-importer.php:1053
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:455
+#: include/xhtml-importer.php:1071
 msgid "Choose an XHTML file from your computer:"
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:455 include/xhtml-importer.php:474
+#: include/xhtml-importer.php:1071 include/xhtml-importer.php:1082
 #, php-format
 msgid "Maximum size: %s"
 msgstr ""
 
-#: include/xhtml-importer.php:457
+#: include/xhtml-importer.php:1073
 msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:473
+#: include/xhtml-importer.php:1081
 msgid "Choose a CSS file from your computer (optional):"
 msgstr ""
 
+#: include/xhtml-importer.php:1095
+#, fuzzy
+msgid "Language Code:"
+msgstr "Bahasa"
+
 # @ sil_dictionary
-#: include/xhtml-importer.php:507
+#: include/xhtml-importer.php:1138
 msgid "Import SIL FLEX XHTML"
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:538
+#: include/xhtml-importer.php:2049
 msgid ""
 "The file is either empty, or uploads are disabled in your php.ini, or "
 "post_max_size is defined as smaller than upload_max_filesize in php.ini."
 msgstr ""
 
-#: include/xhtml-importer.php:578
-msgid ""
-"The css file has been uploaded into your upload folder and renamed to "
-"imported-with-xhtml.css<br>"
+#: include/xhtml-importer.php:2099
+msgid "The css file has been uploaded into your upload folder:<br>"
 msgstr ""
 
 # @ default
-#: include/xhtml-importer.php:580
+#: include/xhtml-importer.php:2102
 msgid "There was an error uploading the file, please try again!"
 msgstr ""
 
 # @ sil_dictionary
-#: include/xhtml-importer.php:2091
+#: include/xhtml-importer.php:2144
 msgid "SIL FLEX XHTML"
 msgstr ""
 
 # @ sil_dictionary
-#: include/xhtml-importer.php:2092
+#: include/xhtml-importer.php:2145
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""

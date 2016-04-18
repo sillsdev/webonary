@@ -212,6 +212,9 @@ class Webonary_API_MyType {
     	$arrFontName[2] = "Charis SIL Compact";
     	$arrFontStorage[2] = "CharisSIL";
     	
+    	$arrFontName[3] = "Andika";
+    	$arrFontStorage[3] = "Andika";
+    	
     	// Get the CSS that contains a font-family rule.
     	$length = strlen($css_string);
     	$porperty = 'font-family';
@@ -263,15 +266,25 @@ class Webonary_API_MyType {
 			{
 				foreach($arrFontStyles as $fontStyle)
 				{
-					$fontFace .= "@font-face {\n";
-					$fontFace .= "font-family: " . $userFont . "\n";
-					$fontFace .= "src: url(/wp-content/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff)\n";
-					$fontFace .= "}\n\n";
+					//echo WP_CONTENT_DIR . "/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff\n";
+					if(file_exists(WP_CONTENT_DIR . "/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff"))
+					{
+						$fontFace .= "@font-face {\n";
+						$fontFace .= "font-family: " . $userFont . ";\n";
+						$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff)\n";
+						if($fontStyle == "B" || $fontFace == "BI")
+						{
+							$fontFace .= "font-weight: bold;\n";
+						}
+						if($fontStyle == "I" || $fontFace == "BI")
+						{
+							$fontFace .= "font-style: italic;\n";
+						}
+						$fontFace .= "}\n\n";
+					}
 				}
 			}
     	}
-    	
-    	echo $fontFace;
     	file_put_contents($uploadPath . "/custom.css" , $fontFace);
     	
     	return;
