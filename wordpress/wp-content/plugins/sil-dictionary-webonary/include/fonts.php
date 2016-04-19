@@ -3,14 +3,26 @@
 //a custom css
 class fontMonagment
 {
-	public function get_fonts_fromCssFile($file)
+	public function getFontsAvailable(&$arrFontName, &$arrFontStorage)
 	{
-		$css_string = file_get_contents($file);
-		 
+		$arrFontName[0] = null;
+		$arrFontStorage[0] = null;
+		
+		$arrFontName[1] = "Charis SIL";
+		$arrFontStorage[1] = "CharisSIL";
+		
+		$arrFontName[2] = "Charis SIL Compact";
+		$arrFontStorage[2] = "CharisSIL";
+		
+		$arrFontName[3] = "Andika";
+		$arrFontStorage[3] = "Andika";
+	}
+	
+	public function get_fonts_fromCssText($css_string)
+	{
 		// Get the CSS that contains a font-family rule.
 		$length = strlen($css_string);
 		$porperty = 'font-family';
-		$replacements = array();
 		$x = 0;
 		while (($last_position = strpos($css_string, $porperty, $last_position)) !== FALSE) {
 			// Get closing bracket.
@@ -38,7 +50,7 @@ class fontMonagment
 			// Parse values string into an array of values.
 			$values_array = explode(',', $values_string);
 			 
-			$arrCSSFonts[$x] = str_replace("'", "", $values_array[0]);
+			$arrCSSFonts[$x] = trim(str_replace("'", "", $values_array[0]));
 			 
 			// Values array has more than 1 value and first element is a quoted string.
 			 
@@ -47,26 +59,23 @@ class fontMonagment
 			$last_position = $end;
 		}
 		$arrUniqueCSSFonts = array_unique($arrCSSFonts);
+		
+		sort($arrUniqueCSSFonts);
 		 
 		return $arrUniqueCSSFonts;
 	}
-	
+
+	//////////////////////
+	// creates custom.css
+	//////////////////////
 	public function set_fontFaces($file = "configured.css", $uploadPath)
 	{
-		$arrUniqueCSSFonts = $this->get_fonts_fromCssFile($file);
-		 
-		$arrFontName[0] = null;
-		$arrFontStorage[0] = null;
-	
-		$arrFontName[1] = "Charis SIL";
-		$arrFontStorage[1] = "CharisSIL";
-		 
-		$arrFontName[2] = "Charis SIL Compact";
-		$arrFontStorage[2] = "CharisSIL";
-		 
-		$arrFontName[3] = "Andika";
-		$arrFontStorage[3] = "Andika";
-		 
+		$css_string = file_get_contents($file);
+		$arrUniqueCSSFonts = $this->get_fonts_fromCssText($css_string);
+		
+		$this->getFontsAvailable($arrName, $arrStorage);
+		$arrFontName = $arrName;
+		$arrFontStorage = $arrStorage;
 		 
 		$fontFace = "";
 		$arrFontStyles = array("R", "B", "I", "BI");

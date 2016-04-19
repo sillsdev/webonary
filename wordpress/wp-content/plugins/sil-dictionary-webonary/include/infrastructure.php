@@ -170,6 +170,37 @@ function user_input() {
 							<?php checked('1', get_option('include_partial_words')); ?> />
 							<?php _e('Always include searching through partial words.'); ?>
 				<p>
+				<h3>Fonts</h3>
+				<p>
+				<?php
+				$upload_dir = wp_upload_dir();
+				
+				$fontClass = new fontMonagment();
+				$css_string = file_get_contents($upload_dir['baseurl'] . '/imported-with-xhtml.css');
+				$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+				
+				$fontFacesFile = file_get_contents($upload_dir['baseurl'] . '/custom.css');
+				$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
+				
+				$options = get_option('themezee_options');
+				$arrFontFacesZeeOptions = $fontClass->get_fonts_fromCssText($options['themeZee_custom_css']);
+
+				foreach($arrUniqueCSSFonts as $userFont)
+				{
+					echo "<h3>" . $userFont . "</h3>";
+					if(in_array($userFont, $arrFontFacesFile))
+					{
+						echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a><br>";
+					}
+					if(in_array($userFont, $arrFontFacesZeeOptions))
+					{
+						echo "linked in <a href=\"wp-admin/themes.php?page=themezee\">zeeDisplay Options</a><br>";
+					}
+					
+					echo "<br>";
+				}
+				?>
+				<p>
 				<h3>Browse Views</h3>
 				<p>
 				<?php
