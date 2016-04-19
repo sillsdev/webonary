@@ -29,10 +29,8 @@ class number_of_entries extends WP_Widget {
 		
 		extract($args);
 		
-		
-		
 		$title = apply_filters('widget_title',
-				empty($instance['title']) ? __('Number of Entries') : $instance['title'],  $instance, $this->id_base);
+				empty($instance['title']) ? __('Number of Entries', 'sil_dictionary') : $instance['title'],  $instance, $this->id_base);
 		
 		
 		
