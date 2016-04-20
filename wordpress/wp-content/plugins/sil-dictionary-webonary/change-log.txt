@@ -1,3 +1,4 @@
+v. 5.6.9 20 April 2016 work on fonts and better looking dashboard
 v. 5.6.8 19 April 2016 display available fonts on Webonary Settings page
 v. 5.6.7 19 April 2016 put font methods into own class
 v. 5.6.6 18 April 2016 fixed fontFace instead of fontStyle bug

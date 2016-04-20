@@ -50,7 +50,8 @@ class fontMonagment
 			// Parse values string into an array of values.
 			$values_array = explode(',', $values_string);
 			 
-			$arrCSSFonts[$x] = trim(str_replace("'", "", $values_array[0]));
+			$fontName = trim(str_replace("'", "", $values_array[0]));
+			$arrCSSFonts[$x] = str_replace('"', '', $fontName);
 			 
 			// Values array has more than 1 value and first element is a quoted string.
 			 
@@ -58,11 +59,22 @@ class fontMonagment
 			$x++;
 			$last_position = $end;
 		}
-		$arrUniqueCSSFonts = array_unique($arrCSSFonts);
-		
-		sort($arrUniqueCSSFonts);
+		$arrUniqueCSSFonts = null;
+		if(count($arrCSSFonts) > 0)
+		{
+			$arrUniqueCSSFonts = array_unique($arrCSSFonts);
+			
+			sort($arrUniqueCSSFonts);
+		}
 		 
 		return $arrUniqueCSSFonts;
+	}
+	
+	public function get_system_fonts()
+	{
+		$arrSystemFonts = array("Arial", "Helvetica", "Times New Roman");
+		
+		return  $arrSystemFonts;
 	}
 
 	//////////////////////

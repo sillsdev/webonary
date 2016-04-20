@@ -18,12 +18,6 @@ if ( ! defined('ABSPATH') )
 
 //---------------------------------------------------------------------------//
 
-/**
-* Set up the SIL Dictionary in WordPress Dashboard Tools
- */
-function add_admin_menu() {
-	add_menu_page( "Webonary", "Webonary", true, "webonary", "sil_dictionary_main",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
-}
 
 function ajaxlanguage()
 {
@@ -76,12 +70,6 @@ function get_LanguageCodes($languageCode = null) {
 	return $wpdb->get_results($sql);;
 }
 
-//---------------------------------------------------------------------------//
-
-function sil_dictionary_main() {
-	run_user_action();
-	user_input();
-}
 
 //---------------------------------------------------------------------------//
 
@@ -347,78 +335,7 @@ function user_input() {
 	<?php
 }
 
-//---------------------------------------------------------------------------//
 
-/**
- * Do what the user said to do.
- */
-function run_user_action() {
-	global $wpdb;
-
-    if ( ! empty( $_POST['delete_data'])) {
-        clean_out_dictionary_data();
-    }
-    if ( ! empty( $_POST['save_settings'])) {
-    	update_option("publicationStatus", $_POST['publicationStatus']);
-    	update_option("include_partial_words", $_POST['include_partial_words']);
-    	$displaySubentriesAsMainEntries = 'no';
-    	if(isset($_POST['DisplaySubentriesAsMainEntries']))
-    	{
-    		$displaySubentriesAsMainEntries = 1;
-    	}
-    	update_option("DisplaySubentriesAsMainEntries", $displaySubentriesAsMainEntries);
-    	update_option("languagecode", $_POST['languagecode']);
-    	update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
-    	
-    	$IncludeCharactersWithDiacritics = 'no';
-    	if(isset($_POST['IncludeCharactersWithDiacritics']))
-    	{
-    		$IncludeCharactersWithDiacritics = 1;
-    	}
-    	update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
-    	
-		update_option("reversalType", $_POST['reversalType']);
-    	update_option("reversal1_langcode", $_POST['reversal1_langcode']);
-    	update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
-    	update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
-    	update_option("reversal2_langcode", $_POST['reversal2_langcode']);
-
-    	if(trim(strlen($_POST['txtVernacularName'])) == 0)
-    	{
-    		echo "<br><span style=\"color:red\">Please fill out the textfields for the language names, as they will appear in a dropdown below the searcbhox.</span><br>";
-    	}
-
-    	$arrLanguages[0]['name'] = "txtVernacularName";
-    	$arrLanguages[0]['code'] = "languagecode";
-    	$arrLanguages[1]['name'] = "txtReversalName";
-    	$arrLanguages[1]['code'] = "reversal_langcode";
-    	$arrLanguages[2]['name'] = "txtReversal2Name";
-    	$arrLanguages[2]['code'] = "reversal2_langcode";
-
-    	foreach($arrLanguages as $language)
-    	{
-    		if(strlen(trim($_POST[$language['code']])) != 0)
-    		{
-		    	$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')
-		  		ON DUPLICATE KEY UPDATE name = '" . $_POST[$language['name']]  . "'";
-
-		    	$wpdb->query( $sql );
-
-		    	$lastid = $wpdb->insert_id;
-
-		    	if($lastid != 0)
-		    	{
-			    	$sql = "INSERT INTO  $wpdb->term_taxonomy (term_id, taxonomy,description,count) VALUES (" . $lastid . ", 'sil_writing_systems', '" . $_POST[$language['name']] . "',999999)
-			  		ON DUPLICATE KEY UPDATE description = '" . $_POST[$language['name']]  . "'";
-
-		    		$wpdb->query( $sql );
-		    	}
-    		}
-    	}
-
-    	echo "<br>" . _e('Settings saved');
-    }
-}
 
 //---------------------------------------------------------------------------//
 
