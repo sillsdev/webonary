@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 5.7.0
+Version: v. 5.7.1
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -51,8 +51,6 @@ define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
 require_once( dirname( __FILE__ ) . '/include/configuration.php' );
 //setting and getting font information
 require_once( dirname( __FILE__ ) . '/include/fonts.php' );
-// Infractstructure management: add and remove custom table(s) and custom taxonomies.
-require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
 // Code for searching on dictionaries.
 require_once( dirname( __FILE__ ) . '/include/dictionary-search.php' );
 // Code for the XHMTL importer.
@@ -67,23 +65,25 @@ require_once( dirname( __FILE__ ) . '/include/comments_func.php' );
 require_once( dirname( __FILE__ ) . '/include/api.php' );
 // Widgets
 require_once( dirname( __FILE__ ) . '/include/widgets.php' );
-/*
- * Infrastructure hooks
- */
 
-// Menu in the WordPress Dashboard, under tools.
-add_action( 'admin_menu', 'add_admin_menu' );
+if(is_admin() ){
+	// Infractstructure management: add and remove custom table(s) and custom taxonomies.
+	require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
 
-// I looked for a register_install_hook, but given the way WordPress plugins
-// can be implemented, I'm not sure it would work right even if I did find one.
-// The register_activation_hook() appears not to work for some reason. But the
-// site won't start up that much any way, and it doesn't hurt anything to call
-// it more than once.
-add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );
-
-// Take out the custom data when uninstalling the plugin.
-register_uninstall_hook( __FILE__, 'uninstall_sil_dictionary_infrastructure' );
-
+	
+	// Menu in the WordPress Dashboard, under tools.
+	add_action( 'admin_menu', 'add_admin_menu' );
+	
+	// I looked for a register_install_hook, but given the way WordPress plugins
+	// can be implemented, I'm not sure it would work right even if I did find one.
+	// The register_activation_hook() appears not to work for some reason. But the
+	// site won't start up that much any way, and it doesn't hurt anything to call
+	// it more than once.
+	add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );
+	
+	// Take out the custom data when uninstalling the plugin.
+	register_uninstall_hook( __FILE__, 'uninstall_sil_dictionary_infrastructure' );
+}
 /*
  * Search hooks
  */

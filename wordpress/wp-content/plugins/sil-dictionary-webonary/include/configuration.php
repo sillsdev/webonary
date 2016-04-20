@@ -33,6 +33,44 @@ function admin_section_end($nm, $button_name=null, $button_class='button-primary
 	echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
 }
 
+function ajaxlanguage()
+{
+	global $wpdb;
+
+	$sql = "SELECT name
+	FROM $wpdb->terms
+	WHERE slug = '" . $_POST['languagecode'] . "'";
+
+	$languagename = $wpdb->get_var( $sql);
+
+
+	echo $languagename;
+	die();
+}
+
+add_action( 'wp_ajax_getAjaxlanguage', 'ajaxlanguage' );
+add_action( 'wp_ajax_nopriv_getAjaxlanguage', 'ajaxlanguage' );
+
+function get_LanguageCodes($languageCode = null) {
+	global $wpdb;
+
+	$sql = "SELECT language_code, name
+		FROM " . $wpdb->prefix . "sil_search
+		LEFT JOIN " . $wpdb->terms . " ON " . $wpdb->terms . ".slug = " . $wpdb->prefix . "sil_search.language_code";
+	if(isset($languageCode))
+	{
+		$sql .= " WHERE language_code = '" . $languageCode . "' ";
+	}
+	else
+	{
+		$sql .= " WHERE language_code != '' ";
+	}
+	$sql .= " GROUP BY language_code
+		ORDER BY language_code";
+
+	return $wpdb->get_results($sql);;
+}
+
 /**
  * Do what the user said to do.
  */
@@ -106,7 +144,6 @@ function save_configurations() {
 
 function webonary_conf_dashboard() {
 	save_configurations();
-	//wp_enqueue_script( 'admin-options', plugins_url( 'js/options.js', __FILE__ ), array());
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<div class="wrap">

@@ -736,7 +736,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$countLinksConverted = 0;
 
-		$catid = get_category_id();
+		$catid = $this->get_category_id();
 
 		if($catid == NULL)
 		{

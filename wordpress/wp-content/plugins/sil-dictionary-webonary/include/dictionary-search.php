@@ -370,5 +370,29 @@ function my_404_override() {
 }
 add_filter('template_redirect', 'my_404_override' );
 
-
+add_action('wp_head', 'webonary_css');
+function webonary_css()
+{
+	?>
+<style>
+	a:hover {text-decoration:none;}
+	a:hover span {text-decoration:none}
+	
+	.entry{
+		clear:none;
+		white-space:unset;
+	}
+	
+	.minorentrycomplex{
+		clear:none;
+		white-space:unset;
+	}
+	
+.minorentryvariant{
+		clear:none;
+		white-space:unset;
+	}
+</style>
+<?php
+}
 ?>
