@@ -1523,7 +1523,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		foreach ( $semantic_domains as $semantic_domain ){
 		
 			$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]', $semantic_domain);
-			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]', $semantic_domain);
+			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]/span[not(@class = "Writing_System_Abbreviation")][2]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
 			
 			$sc = 0;
 			foreach($sd_names as $sd_name)
@@ -1539,6 +1539,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$sd_number_text = str_replace("(", "", $sd_number_text);
 					$sd_number_text = trim(str_replace("-", "", $sd_number_text));
 				}
+				
 				$domain_class = $sd_name->getAttribute("class");
 
 				$arrTerm = wp_insert_term(

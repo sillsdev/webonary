@@ -27,7 +27,7 @@ function admin_section_start($nm) {
 
 function admin_section_end($nm, $button_name=null, $button_class='button-primary') {
 	if(!$button_name) $button_name = __('Save Changes', 'sil_dictionary');
-	echo '<p class="submit"><input type="submit" name="submit"';
+	echo '<p class="submit"><input type="submit" name="save_settings"';
 	if($button_class) echo ' class="'.$button_class.'"';
 	echo ' value="'.$button_name.'" /></p>';
 	echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
@@ -345,9 +345,6 @@ function webonary_conf_dashboard() {
 				<?php _e('Secondary Reversal Index Alphabet:'); ?>
 				<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
 				<?php _e('(Letters separated by comma)'); ?>
-				<p>
-				<input type="submit" name="save_settings" value="<?php _e('Save', 'sil_dictionary'); ?>">
-				</p>
 				<?php
 				/*
 				?>
@@ -365,8 +362,8 @@ function webonary_conf_dashboard() {
 			else {
 				?>
 				<p>
-					<?php _e('Finished!', 'sil_dictionary'); ?>
-					<input type="submit" name="finished_deleting" value="<?php _e('OK', 'sil_dictionary'); ?>">
+					<?php _e('Finished deleting!', 'sil_dictionary'); ?>
+					<input type="submit" name="finished_deleting" value="<?php _e('Back to Import', 'sil_dictionary'); ?>">
 				</p>
 				<?php
 			}
