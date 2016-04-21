@@ -1500,6 +1500,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	function import_xhtml_semantic_domain( $doc, $post_id, $subentry, $convertToLinks){
 
 		global $wpdb;
+		
+		//$entry_xml = preg_replace('/<span class="Writing_System_Abbreviation"(.*?)<\\/span>/', '', $entry_xml);
+		
 		$xpath = new DOMXPath($doc);
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
@@ -1523,8 +1526,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		foreach ( $semantic_domains as $semantic_domain ){
 		
 			$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]', $semantic_domain);
-			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]/span[not(@class = "Writing_System_Abbreviation")][2]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
-			
+			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
+			///span[not(@class = "Writing_System_Abbreviation")]
 			$sc = 0;
 			foreach($sd_names as $sd_name)
 			{
@@ -1533,6 +1536,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$domain_name = str_replace(")", "", $domain_name);
 				
 				$sd_number_text = $domain_name;
+
 				if(isset($sd_numbers->item($sc)->textContent))
 				{
 					$sd_number_text = str_replace("[", "", $sd_numbers->item($sc)->textContent);
