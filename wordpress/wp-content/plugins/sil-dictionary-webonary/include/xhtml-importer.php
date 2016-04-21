@@ -115,7 +115,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			if($this->api == false && $this->verbose == false)
 			{
-				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?import=pathway-xhtml\">Click here to view the import status</a><br>";
+				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
 			}
 			flush();
 			
@@ -145,7 +145,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			if($this->api == false && $this->verbose == false)
 			{
-				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?import=pathway-xhtml\">Click here to view the import status</a><br>";
+				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
 			}
 			flush();
 			
@@ -214,7 +214,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				
 				if($this->api == false && $this->verbose == false)
 				{
-					echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?import=pathway-xhtml\">Click here to view the import status</a><br>";
+					echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
 				}
 				flush();
 
@@ -290,9 +290,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				'sil_dictionary' ) . '<br>';
 		echo  __('Before re-importing, it\'s best to delete your existing entries. Go to <a href="../wp-admin/admin.php?page=webonary">Webonary</a>... \'Delete Data\' to do this.') . '</p>';
 		?>
-		<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
-		<strong>Import Status:</strong> <?php echo $a; echo $this->get_import_status(); ?>
-		</div>
 		<?php
 	}
 
@@ -872,7 +869,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 				$status .= "</div>";
 				$status .= "<br style=\"clear:both;\">";
-				$status .= "After importing, go to <strong><a href=\"../wp-admin/admin.php?page=webonary\">Webonary</a></strong> to configure more settings.";
 				
 			}
 			

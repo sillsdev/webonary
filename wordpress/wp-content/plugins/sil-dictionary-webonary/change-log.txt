@@ -1,3 +1,4 @@
+v. 5.7.3 21 April 2016 more work on better looking dashboard
 v. 5.7.2 21 April 2016 reverted bug fix with not including language code for semantic domains as this caused other issues 
 v. 5.7.1 20 April 2016 tidying up code in infrastructure.php, etc.
 v. 5.7.0 20 April 2016 semantic domain import bug fix
