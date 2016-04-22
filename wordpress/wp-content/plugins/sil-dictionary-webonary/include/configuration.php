@@ -178,7 +178,6 @@ function webonary_conf_dashboard() {
 	}
 	</script>
 		<div id="icon-tools" class="icon32"></div>
-		<form id="configuration-form" method="post" action="">
 			<?php
 			/*
 			 * Standard UI
@@ -194,11 +193,15 @@ function webonary_conf_dashboard() {
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
 			
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
+			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
+				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
 			<strong>Import Status:</strong> <?php echo $a; echo $import->get_import_status(); ?>
+			</form>
 			</div>
 			
 			<p><?php _e('<a href="admin.php?import=pathway-xhtml" style="font-size:16px;">Click here to import your FLEx data</a>', 'sil_dictionary'); ?></p>
 	
+			<form id="configuration-form" method="post" action="">
 			<p>
 			<?php _e('Publication status:'); ?>
 			<select name=publicationStatus>
