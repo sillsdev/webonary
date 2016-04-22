@@ -1,3 +1,4 @@
+v. 5.7.7 22 April 2016 improved Font page
 v. 5.7.6 22 April 2016 fixed form issue with new dashboard
 v. 5.7.5 22 April 2016 fixed bug with not displaying language and pos dropdown anymore
 v. 5.7.4 22 April 2016 fixed issue with collation

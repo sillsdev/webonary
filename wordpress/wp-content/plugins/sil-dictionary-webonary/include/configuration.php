@@ -417,8 +417,14 @@ function webonary_conf_dashboard() {
 				{
 					if(in_array($userFont, $arrFontFacesZeeOptions))
 					{
+						echo "linked in <a href=\"wp-admin/themes.php?page=themezee\">zeeDisplay Options</a>";
+						if($fontLinked)
+						{
+							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</font>";
+						}
 						$fontLinked = true;
-						echo "linked in <a href=\"wp-admin/themes.php?page=themezee\">zeeDisplay Options</a><br>";
+								
+						echo "<br>";
 					}
 				}
 				if(!$fontLinked)
