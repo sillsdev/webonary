@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 5.7.4
+Version: v. 5.7.5
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -67,6 +67,8 @@ else
  */
  //To update code from Github through Wordpress Dashboard
 //require_once( dirname( __FILE__ ) . '/updater.php');
+// Infractstructure management: add and remove custom table(s) and custom taxonomies.
+require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
 // Configure Webonary Settings
 require_once( dirname( __FILE__ ) . '/include/configuration.php' );
 //setting and getting font information
@@ -87,10 +89,6 @@ require_once( dirname( __FILE__ ) . '/include/api.php' );
 require_once( dirname( __FILE__ ) . '/include/widgets.php' );
 
 if(is_admin() ){
-	// Infractstructure management: add and remove custom table(s) and custom taxonomies.
-	require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
-
-	
 	// Menu in the WordPress Dashboard, under tools.
 	add_action( 'admin_menu', 'add_admin_menu' );
 	

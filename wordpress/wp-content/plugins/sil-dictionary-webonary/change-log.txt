@@ -1,4 +1,5 @@
-v. 5.7.4 22 APRIL 2016 fixed issue with collation
+v. 5.7.5 22 April 2016 fixed bug with not displaying language and pos dropdown anymore
+v. 5.7.4 22 April 2016 fixed issue with collation
 v. 5.7.3 21 April 2016 more work on better looking dashboard
 v. 5.7.2 21 April 2016 reverted bug fix with not including language code for semantic domains as this caused other issues 
 v. 5.7.1 20 April 2016 tidying up code in infrastructure.php, etc.

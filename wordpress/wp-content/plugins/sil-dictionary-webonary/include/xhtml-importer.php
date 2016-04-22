@@ -202,7 +202,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$xhtml_file = $result['file'];
 
 				// Get the CSS file
-				$result = $this->upload_files('css', $_POST['filetype'], $_POST['languagecode']);
+				$languagecode = "";
+				if(isset($_POST['languagecode']))
+				{
+					$languagecode = $_POST['languagecode'];
+				}
+				$result = $this->upload_files('css', $_POST['filetype'], $languagecode);
 				if (is_wp_error( $result ))
 					echo $result->get_error_message();
 				$css_file = $result['file'];
