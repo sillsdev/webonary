@@ -2097,6 +2097,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				*/
 			error_reporting(E_ALL);
 			if((copy($from_path, $target_path) || $from_path == $target_path) && $hasError == false) {
+				
+				$fontClass = new fontMonagment();
+				$fontClass->set_fontFaces($target_path, $upload_dir['path']);
+				
 				_e('The css file has been uploaded into your upload folder:<br>' . $target_path . '<br>');
 			} else{
 				echo "<span style=color:red;>";

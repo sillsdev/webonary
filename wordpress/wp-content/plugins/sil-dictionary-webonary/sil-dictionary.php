@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 5.7.3
+Version: v. 5.7.4
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -41,6 +41,26 @@ global $wpdb;
 define( 'SIL_DICTIONARY_USER_CAPABILITY', '10' );
 define('SEARCHTABLE', $wpdb->prefix . 'sil_search');
 define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
+
+global $wpdb;
+
+$sql = "SELECT DATABASE();";
+$dbName = $wpdb->get_var($sql);
+
+$sql = "select COLLATION_NAME from information_schema.columns where TABLE_SCHEMA = '" . $dbName . "' and TABLE_NAME = '". $wpdb->prefix . "posts' and COLUMN_NAME = 'post_title'";
+
+$postsCollation = $wpdb->get_var($sql);
+
+if (version_compare(mysql_get_server_info(), '5.5.3') >= 0 && ($postsCollation == "utf8mb4_general_ci" || $postsCollation == "utf8mb4_unicode_ci"))
+{
+	define('COLLATION', "UTF8MB4");
+	define('FULLCOLLATION', "utf8mb4_unicode_ci");
+}
+else
+{
+	define('COLLATION', "UTF8");
+	define('FULLCOLLATION', "utf8_general_ci");
+}
 
 /*
  * Dependencies

@@ -24,25 +24,7 @@ if ( ! defined('ABSPATH') )
  * Install the SIL dictionary infrastructure if needed.
  */
 function install_sil_dictionary_infrastructure() {
-	global $wpdb;
 	
-	$sql = "SELECT DATABASE();";
-	$dbName = $wpdb->get_var($sql);
-	
-	$sql = "select COLLATION_NAME from information_schema.columns where TABLE_SCHEMA = '" . $dbName . "' and TABLE_NAME = '". $wpdb->prefix . "posts' and COLUMN_NAME = 'post_title'";
-	
-	$postsCollation = $wpdb->get_var($sql);
-
-	if (version_compare(mysql_get_server_info(), '5.5.3') >= 0 && ($postsCollation == "utf8mb4_general_ci" || $postsCollation == "utf8mb4_unicode_ci"))
-	{
-		define('COLLATION', "UTF8MB4");
-		define('FULLCOLLATION', "utf8mb4_unicode_ci");
-	}
-	else
-	{
-		define('COLLATION', "UTF8");
-		define('FULLCOLLATION', "utf8_general_ci");
-	}
 	create_search_tables();
 	create_reversal_tables();
 	set_options();

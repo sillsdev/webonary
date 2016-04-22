@@ -16,6 +16,9 @@ class fontMonagment
 		
 		$arrFontName[3] = "Andika";
 		$arrFontStorage[3] = "Andika";
+		
+		$arrFontName[4] = "Andika Compact";
+		$arrFontStorage[4] = "Andika";
 	}
 	
 	public function get_fonts_fromCssText($css_string)
@@ -23,6 +26,7 @@ class fontMonagment
 		// Get the CSS that contains a font-family rule.
 		$length = strlen($css_string);
 		$porperty = 'font-family';
+		$last_position = 0;
 		$x = 0;
 		while (($last_position = strpos($css_string, $porperty, $last_position)) !== FALSE) {
 			// Get closing bracket.

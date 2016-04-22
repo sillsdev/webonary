@@ -61,7 +61,7 @@ function($){
 		switchTabTo(anchor,hash);
 	}
 	$(window).bind('hashchange', function(e){ onHashChange(); });
-	onHashChange('#general');
+	onHashChange('#import');
 });
 
 /* // Unnecessary as Show/Hide is obsolete
