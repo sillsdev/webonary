@@ -90,6 +90,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	function start()
 	{
 		global $wpdb;
+		global $current_user;
 		
 		/* @todo See if there is a better way to do this than these steps */
 		if ( empty ( $_GET['step'] ) )
@@ -121,6 +122,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			
 			$file = $this->get_latest_xhtmlfile();
 			$xhtmlFileURL = $file->url;
+			$userid = $current_user->ID;
 			require("run_import.php");
 			
 			return;
@@ -151,6 +153,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			
 			$file = $this->get_latest_xhtmlfile();
 			$xhtmlFileURL = $file->url;
+			$userid = $current_user->ID;
 			require("run_import.php");
 
 			return;
@@ -228,6 +231,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$xhtmlFileURL = $file->url;
 				}
+				$userid = $current_user->ID;
 				require("run_import.php");
 				
 				

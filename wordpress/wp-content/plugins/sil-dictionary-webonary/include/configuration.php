@@ -397,9 +397,13 @@ function webonary_conf_dashboard() {
 		$options = get_option('themezee_options');
 		$arrFontFacesZeeOptions = $fontClass->get_fonts_fromCssText($options['themeZee_custom_css']);
 
+		$fontClass->getFontsAvailable($arrFontName, $arrFontStorage, $arrHasSubFonts);
+		
 		foreach($arrUniqueCSSFonts as $userFont)
 		{
 			$userFont = trim($userFont);
+			
+			$fontKey = array_search($userFont, $arrFontName);
 			
 			if(!strstr($userFont, "default font"))
 			{
@@ -420,13 +424,25 @@ function webonary_conf_dashboard() {
 						echo "linked in <a href=\"wp-admin/themes.php?page=themezee\">zeeDisplay Options</a>";
 						if($fontLinked)
 						{
-							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</font>";
+							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";
 						}
 						$fontLinked = true;
 								
 						echo "<br>";
 					}
 				}
+				
+				if($fontLinked)
+				{
+					if($fontKey > 0)
+					{
+						if($arrHasSubFonts[$fontKey])
+						{
+							echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://scripts.sil.org/FontSubsets\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+						}
+					}
+				}
+				
 				if(!$fontLinked)
 				{
 					$arrSystemFonts = $fontClass->get_system_fonts();
@@ -436,7 +452,16 @@ function webonary_conf_dashboard() {
 					}
 					else
 					{
-						echo "<strong style=\"color:red;\">Font not linked. Please contact the Webonary support team.</strong>";
+						echo "<strong style=\"color:red;\">";
+						if($fontKey > 0)
+						{
+							echo "Font not linked. Please reupload the css file to get it linked.";
+						}
+						else
+						{
+							echo "Font not found in the repository. Please ask Webonary Support to add it.";
+						}
+						echo "</strong>";
 					}
 				}
 				echo "<p></p>";
