@@ -181,7 +181,7 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 			$currentPage = 1;
 		}
 	}
-	$totalPages = round($totalEntries / $entriesPerPage, 0);
+	$totalPages = ceil($totalEntries / $entriesPerPage);
 	if(($totalEntries / $entriesPerPage) > $totalPages)
 	{
 		$totalPages++;
