@@ -17,6 +17,22 @@ function webonary_searchform() {
 			<div class="normalSearch">
 				<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
 				<!-- search text box -->
+				<?php
+				$specialCharWidget = new special_characters();
+				$settings = $specialCharWidget->get_settings();
+				echo var_dump($settings) . "<br>";
+				$arrChar = explode(",", $settings[4]['characters']);
+				foreach($arrChar as $char)
+				{
+				?>
+				<input
+					id="spbutton" type="button" width="20" class="button"
+					value="<?php echo $char; ?>" onClick="addchar(this)"
+					style="padding: 5px">
+							<?php
+				}
+				echo "<br>";
+				?>
 				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40>
 	
 				<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->

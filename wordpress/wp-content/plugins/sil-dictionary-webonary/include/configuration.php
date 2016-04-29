@@ -6,6 +6,21 @@ function add_admin_menu() {
 	add_menu_page( "Webonary", "Webonary", true, "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
 }
 
+function on_admin_bar(){
+	global $wp_admin_bar;
+
+	$wp_admin_bar->add_menu(array(
+			'id' => 'Webonary',
+			'title' => 'Webonary',
+			'parent' => 'site-name',
+			'href' => admin_url('/admin.php?page=webonary'),
+	));
+
+	$wp_admin_bar->remove_menu( "themes" );
+	$wp_admin_bar->remove_menu( "widgets" );
+	$wp_admin_bar->remove_menu( "menus" );
+}
+
 function get_admin_sections() {
 	//$q_config['admin_sections'] = array();
 	//$admin_sections = &$q_config['admin_sections'];
@@ -24,10 +39,12 @@ function admin_section_start($nm) {
 }
 
 function admin_section_end($nm, $button_name=null, $button_class='button-primary') {
-	if(!$button_name) $button_name = __('Save Changes', 'sil_dictionary');
-	echo '<p class="submit"><input type="submit" name="save_settings"';
-	if($button_class) echo ' class="'.$button_class.'"';
-	echo ' value="'.$button_name.'" /></p>';
+	if(isset($button_name))
+	{
+		echo '<p class="submit" style="float:left;"><input type="submit" name="save_settings"';
+		if($button_class) echo ' class="'.$button_class.'"';
+		echo ' value="'.$button_name.'" /></p><br><br>';
+	}
 	echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
 }
 
@@ -140,13 +157,23 @@ function save_configurations() {
 	}
 }
 
-function webonary_conf_dashboard() {
+function webonary_conf_dashboard()
+{
+	webonary_conf_widget(true);
+}
+function webonary_conf_widget($showTitle = false) {
 	save_configurations();
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<div class="wrap">
-	<h2><?php _e( 'Webonary', 'webonary' ); ?></h2>
-	<?php _e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries.<br>See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
+	<?php
+	if($showTitle)
+	{
+	?>
+		<h2><?php _e( 'Webonary', 'webonary' ); ?></h2>
+	<?php
+	}
+	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
 	
 	<?php
 	$admin_sections = get_admin_sections();
@@ -190,6 +217,7 @@ function webonary_conf_dashboard() {
 			
 			$import = new sil_pathway_xhtml_Import();
 			?>
+			<p>
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
 			
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
@@ -236,18 +264,18 @@ function webonary_conf_dashboard() {
 				<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
 			</p>
 	
-			<?php admin_section_end('import'); ?>
+			<?php admin_section_end('import', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////////
 			admin_section_start('search');
 			?>
-			
+			<p>
 			<h3><?php _e('Search Options');?></h3>
 			<input name="include_partial_words" type="checkbox" value="1"
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
-			<p>
-			<?php admin_section_end('search'); ?>
+			</p>
+			<?php admin_section_end('search', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////
 			admin_section_start('browse');
@@ -377,11 +405,13 @@ function webonary_conf_dashboard() {
 			<?php
 			*/
 		?>
-		<?php admin_section_end('browse'); ?>
+		</p>
+		<?php admin_section_end('browse', 'Save Changes'); ?>
 		<?php
 		//////////////////////////////////////////////////////////////////////////
 		admin_section_start('fonts');
 		?>
+		<p>
 		<h3>Fonts</h3>
 		<p>
 		<?php
@@ -421,7 +451,7 @@ function webonary_conf_dashboard() {
 				{
 					if(in_array($userFont, $arrFontFacesZeeOptions))
 					{
-						echo "linked in <a href=\"wp-admin/themes.php?page=themezee\">zeeDisplay Options</a>";
+						echo "linked in <a href=\"wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
 						if($fontLinked)
 						{
 							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";

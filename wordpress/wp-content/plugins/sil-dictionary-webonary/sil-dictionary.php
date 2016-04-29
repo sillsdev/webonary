@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 5.8.0
+Version: v. 5.8.1
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -72,6 +72,7 @@ require_once( dirname( __FILE__ ) . '/include/widgets.php' );
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
 	add_action( 'admin_menu', 'add_admin_menu' );
+	add_action('admin_bar_menu', 'on_admin_bar', 35);
 	
 	// I looked for a register_install_hook, but given the way WordPress plugins
 	// can be implemented, I'm not sure it would work right even if I did find one.
