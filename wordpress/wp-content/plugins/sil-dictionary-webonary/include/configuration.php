@@ -99,6 +99,7 @@ function save_configurations() {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
 		update_option("special_characters", $_POST['characters']);
+		update_option("inputFont", $_POST['inputFont']);
 		
 		$displaySubentriesAsMainEntries = 'no';
 		if(isset($_POST['DisplaySubentriesAsMainEntries']))
@@ -165,6 +166,12 @@ function webonary_conf_dashboard()
 }
 function webonary_conf_widget($showTitle = false) {
 	save_configurations();
+	
+	$upload_dir = wp_upload_dir();
+	
+	$fontClass = new fontMonagment();
+	$css_string = file_get_contents($upload_dir['baseurl'] . '/imported-with-xhtml.css');
+	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<div class="wrap">
@@ -294,6 +301,21 @@ function webonary_conf_widget($showTitle = false) {
 			Seperate the characters by comma:
 			<input type="input" name="characters" type="checkbox" value="<?php echo $special_characters; ?>">
 			</p>
+			<b>Font to use for the search field and character buttons:</b>
+			<br>
+			<select name=inputFont>
+			<option value=""></option>
+			<?php
+			$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+			foreach($arrUniqueCSSFonts as $font)
+			{
+			?>
+				<option value="<?php echo $font;?>" <?php if($font == get_option("inputFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+			<?php
+			}
+			?>
+			</select>
+			<br>
 			<?php admin_section_end('search', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////
@@ -434,12 +456,6 @@ function webonary_conf_widget($showTitle = false) {
 		<h3>Fonts</h3>
 		<p>
 		<?php
-		$upload_dir = wp_upload_dir();
-		
-		$fontClass = new fontMonagment();
-		$css_string = file_get_contents($upload_dir['baseurl'] . '/imported-with-xhtml.css');
-		$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-		
 		$fontFacesFile = file_get_contents($upload_dir['baseurl'] . '/custom.css');
 		$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
 		
@@ -470,7 +486,7 @@ function webonary_conf_widget($showTitle = false) {
 				{
 					if(in_array($userFont, $arrFontFacesZeeOptions))
 					{
-						echo "linked in <a href=\"wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
+						echo "linked in <a href=\"/wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
 						if($fontLinked)
 						{
 							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";

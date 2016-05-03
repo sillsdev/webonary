@@ -13,6 +13,21 @@ function searchform_init() {
 function webonary_searchform() {
 	global $wpdb;
 ?>
+		<?php
+		if(get_option('inputFont') != "")
+		{
+		?>
+			<style>
+			input, textarea {
+				font-family: "<?php echo get_option('inputFont'); ?>";
+			}
+			#s {
+			font-family: "<?php echo get_option('inputFont'); ?>";
+			}
+			</style>
+		<?php
+		}
+		?>
 		 <form name="searchform" id="searchform" method="get" action="<?php bloginfo('url'); ?>">
 			<div class="normalSearch">
 				<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
