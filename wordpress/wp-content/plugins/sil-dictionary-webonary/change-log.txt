@@ -1,3 +1,4 @@
+v. 5.8.2 3 May 2016 added input field for special characters
 v. 5.8.1 29 April 2016 added Webonary to Wordpress dashboard
 v. 5.8.0 27 April 2016 fixed rounding issue for page numbers (using ceil instead of round)
 v. 5.7.9 26 April 2016 added better font instructions

@@ -98,6 +98,8 @@ function save_configurations() {
 	if ( ! empty( $_POST['save_settings'])) {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
+		update_option("special_characters", $_POST['characters']);
+		
 		$displaySubentriesAsMainEntries = 'no';
 		if(isset($_POST['DisplaySubentriesAsMainEntries']))
 		{
@@ -274,6 +276,23 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="include_partial_words" type="checkbox" value="1"
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
+			</p>
+			<?php
+			$charWidget = new special_characters();
+			$settings = $charWidget->get_settings();
+			$settings = reset($settings);
+			$special_characters = get_option('special_characters');
+			if((trim($special_characters)) == "")
+			{
+				$special_characters = $settings['characters'];
+			}
+			?>
+			<p>
+			<strong><?php _e('Special character input buttons');?></strong>
+			<br>
+			These will appear above the search field.<br>
+			Seperate the characters by comma:
+			<input type="input" name="characters" type="checkbox" value="<?php echo $special_characters; ?>">
 			</p>
 			<?php admin_section_end('search', 'Save Changes'); ?>
 			<?php

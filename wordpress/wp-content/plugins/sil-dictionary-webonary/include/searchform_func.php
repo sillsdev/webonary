@@ -18,18 +18,56 @@ function webonary_searchform() {
 				<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
 				<!-- search text box -->
 				<?php
-				$specialCharWidget = new special_characters();
-				$settings = $specialCharWidget->get_settings();
-				echo var_dump($settings) . "<br>";
-				$arrChar = explode(",", $settings[4]['characters']);
-				foreach($arrChar as $char)
+				$special_characters = get_option('special_characters');
+				if((trim($special_characters)) != "")
 				{
 				?>
-				<input
-					id="spbutton" type="button" width="20" class="button"
-					value="<?php echo $char; ?>" onClick="addchar(this)"
-					style="padding: 5px">
-							<?php
+				<script LANGUAGE="JavaScript">
+				<!--
+				function addchar(button)
+				{
+					var searchfield = document.getElementById('s');
+					var currentPos = theCursorPosition(searchfield);
+					var origValue = searchfield.value;
+					var newValue = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
+					 
+					searchfield.value = newValue;
+		
+					searchfield.focus();
+								
+				    return true;
+				}
+		
+				function theCursorPosition(ofThisInput) {
+					// set a fallback cursor location
+					var theCursorLocation = 0;
+		
+					// find the cursor location via IE method...
+					if (document.selection) {
+						ofThisInput.focus();
+						var theSelectionRange = document.selection.createRange();
+						theSelectionRange.moveStart('character', -ofThisInput.value.length);
+						theCursorLocation = theSelectionRange.text.length;
+					} else if (ofThisInput.selectionStart || ofThisInput.selectionStart == '0') {
+						// or the FF way
+						theCursorLocation = ofThisInput.selectionStart;
+					}
+					return theCursorLocation;
+				}
+				
+				-->
+				</script>
+			<?php
+					$arrChar = explode(",", $special_characters);
+					foreach($arrChar as $char)
+					{
+					?>
+					<input
+						id="spbutton" type="button" width="20" class="button"
+						value="<?php echo $char; ?>" onClick="addchar(this)"
+						style="padding: 5px">
+								<?php
+					}
 				}
 				echo "<br>";
 				?>
