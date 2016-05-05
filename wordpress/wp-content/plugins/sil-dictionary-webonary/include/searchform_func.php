@@ -147,7 +147,21 @@ function webonary_searchform() {
 				?>
 			</div>
 		</form>
+		<br>
+		<h2 class="widgettitle"><?php echo gettext("Number of Entries"); ?></h2>
 		<?php
+		$import = new sil_pathway_xhtml_Import();
+		
+		$arrIndexed = $import->get_number_of_entries();
+		
+		$numberOfEntriesText = "";
+		foreach($arrIndexed as $indexed)
+		{
+			$numberOfEntriesText .= $indexed->language_name . ":&nbsp;". $indexed->totalIndexed;
+			$numberOfEntriesText .= "<br>";
+		}
+		echo $numberOfEntriesText;
+		
 		if(strlen(trim($_GET['s'])) > 0)
 		{
 			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');

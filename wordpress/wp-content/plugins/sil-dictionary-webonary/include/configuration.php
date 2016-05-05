@@ -315,7 +315,7 @@ function webonary_conf_widget($showTitle = false) {
 			}
 			?>
 			</select>
-			<br>
+			<br><br>
 			<?php admin_section_end('search', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////
