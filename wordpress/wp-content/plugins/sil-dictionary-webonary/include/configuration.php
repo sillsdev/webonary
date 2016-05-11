@@ -98,6 +98,7 @@ function save_configurations() {
 	if ( ! empty( $_POST['save_settings'])) {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
+		update_option("normalization", $_POST['normalization']);
 		update_option("special_characters", $_POST['characters']);
 		update_option("inputFont", $_POST['inputFont']);
 		
@@ -122,6 +123,9 @@ function save_configurations() {
 		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
 		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
 		update_option("reversal2_langcode", $_POST['reversal2_langcode']);
+		update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
+		update_option("reversal3_langcode", $_POST['reversal3_langcode']);
+		
 
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
 		{
@@ -284,6 +288,19 @@ function webonary_conf_widget($showTitle = false) {
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
 			</p>
+			<p>
+			<strong>Normalization:</strong>
+			<br>
+			<select name="normalization">
+				<option value="FORM_C" <?php if(get_option("normalization") == "FORM_C") { echo "selected"; } ?>>FORM C</option>
+				<option value="FORM_D" <?php if(get_option("normalization") == "FORM_D") { echo "selected"; } ?>>FORM D</option>
+			</select>
+			<br>
+			See <a href="http://unicode.org/reports/tr15/" target="_blank">here</a> for more info on normalization of composite characters.
+			<br>
+			By default Webonary uses FORM C. If your search for a word that contains
+			a composite character doesn't return a result, try FORM D.
+			</p>
 			<?php
 			$charWidget = new special_characters();
 			$settings = $charWidget->get_settings();
@@ -418,7 +435,7 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="reversal1_alphabet" type="text" size=50 value="<?php echo $reversal1alphabet; ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			<hr>
-			 <i><?php _e('If you have a second reversal index, enter the information here:'); ?></i>
+			 <i><?php _e('2. Reversal index'); ?></i> Shortcode: [reversalindex2]
 			 <p>
 			<?php _e('Secondary reversal index code:'); ?>
 			<select id=reversal2Langcode name="reversal2_langcode" onchange="getLanguageName('reversal2Langcode', 'reversal2Name');">
@@ -435,6 +452,26 @@ function webonary_conf_widget($showTitle = false) {
 			<p>
 			<?php _e('Secondary Reversal Index Alphabet:'); ?>
 			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
+			<?php _e('(Letters separated by comma)'); ?>
+			
+			<hr>
+			 <i><?php _e('3. Reversal index'); ?></i> Shortcode: [reversalindex3]
+			 <p>
+			<?php _e('Third reversal index code:'); ?>
+			<select id=reversal3Langcode name="reversal3_langcode" onchange="getLanguageName('reversal3Langcode', 'reversal3Name');">
+				<option value=""></option>
+				<?php
+				$x = 0;
+				foreach($arrLanguageCodes as $languagecode) {?>
+					<option value="<?php echo $languagecode->language_code; ?>" <?php if(get_option('reversal3_langcode') == $languagecode->language_code) { $n = $x; ?>selected<?php }?>><?php echo $languagecode->language_code; ?></option>
+				<?php
+				$x++;
+				} ?>
+			</select>
+			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
+			<p>
+			<?php _e('Secondary Reversal Index Alphabet:'); ?>
+			<input name="reversal3_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			<?php
 			/*

@@ -148,7 +148,7 @@ function webonary_searchform() {
 			</div>
 		</form>
 		<br>
-		<h2 class="widgettitle"><?php echo gettext("Number of Entries"); ?></h2>
+		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
 		$import = new sil_pathway_xhtml_Import();
 		

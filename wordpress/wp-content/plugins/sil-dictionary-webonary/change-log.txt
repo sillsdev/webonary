@@ -1,3 +1,4 @@
+v. 5.8.5 11 May 2016 added option to choose normalization (FORM C or FORM D)
 v. 5.8.4 5 May 2016 "Number of Entries" is no longer a widget, but fix under the search form
 v. 5.8.3 3 May 2016 added option to add font for search field and special character buttons
 v. 5.8.2 3 May 2016 added input field for special characters

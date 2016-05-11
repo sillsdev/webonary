@@ -153,7 +153,16 @@ function displayAlphabet($alphas, $languagecode)
 	$display .= "<div style=\"text-align:center;\"><div style=\"display:inline-block;\">";
 	foreach($alphas as $letter)
 	{
-    	$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter><a href=\"?letter=" . stripslashes($letter) . "&key=" . $languagecode . "\">" . stripslashes($letter) . "</a></span></div>";
+		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
+		if(trim($letter[0]) == "")
+		{
+			$display .= "<a href=\"wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Click here to add an alphabet.</a>";
+		}
+		else
+		{
+	    	$display .= "<a href=\"?letter=" . stripslashes($letter) . "&key=" . $languagecode . "\">" . stripslashes($letter) . "</a>";
+		}
+		$display .= "</span></div>";
 	}
 	$display .= "</div></div>";
 	$display .=  "<div style=clear:both></div>";

@@ -1658,6 +1658,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					{
 						update_option("reversal2_langcode", $reversal_language);
 					}
+					
+					if(strlen(get_option('reversal2_langcode')) > 0 && get_option('reversal2_langcode') != $reversal_language)
+					{
+						update_option("reversal3_langcode", $reversal_language);
+					}
 				}
 				else
 				{
