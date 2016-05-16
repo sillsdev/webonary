@@ -1754,16 +1754,15 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						$pinyinstring = str_replace("（", " ", $reversal_head);
 						$pinyinstring = str_replace("）", "", $pinyinstring);
 						$pinyin = pinyin($pinyinstring);
-						echo "#" . substr($pinyin, 0, 1) . "<br>";
 						$reversal_browsehead = remove_accents($pinyin);
 					}
 					
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
-								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (language_code, reversal_head, reversal_content)
-								VALUES('%s', '%s', '%s')",
-								$reversal_language, $reversal_browsehead, $reversal_xml);
+								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (language_code, reversal_head, reversal_content, sortorder)
+								VALUES('%s', '%s', '%s', %d)",
+								$reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter);
 					}
 					else
 					{

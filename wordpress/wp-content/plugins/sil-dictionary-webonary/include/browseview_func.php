@@ -321,7 +321,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		$sql .= " reversal_head LIKE  '" . $letter . "%' AND ";
 	}
 	$sql .=	" language_code = '" . $reversalLangcode . "' " .
-	" ORDER BY reversal_head ASC";
+	" ORDER BY sortorder, reversal_head ASC";
 	if($page > 1)
 	{
 		$startFrom = ($page - 1) * 50;

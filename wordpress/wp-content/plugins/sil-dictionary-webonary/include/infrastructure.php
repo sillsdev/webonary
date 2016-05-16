@@ -63,7 +63,8 @@ function create_reversal_tables () {
 	$sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
-		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ", ";
+		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
+		`sortorder` INT NOT NULL DEFAULT '0', ";
 		$sql .= " PRIMARY KEY (`language_code`, `reversal_head` ( 150 ))
 		) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 		
