@@ -261,16 +261,25 @@ function webonary_conf_widget($showTitle = false) {
 				<strong style=color:red;>You are not in your testing environment!</strong>
 				<br>
 			<?php } ?>
-			<p><?php _e('Lists are kept unless you check the following:'); ?><br>
-				<label for="delete_taxonomies">
-					<input name="delete_taxonomies" type="checkbox" id="delete_taxonomies" value="1"
-						<?php checked('1', get_option('delete_taxonomies')); ?> />
-					<?php _e('Delete lists such as Part of Speech?') ?>
-				</label>
-				<label for="delete_pages">
-					<!--<input name="delete_pages" type="checkbox" id="delete_pages" value="1"
-						<?php checked('1', get_option('delete_pages')); ?> />-->
-				</label><br />
+			<?php
+			if($_GET['delete_taxonomies'] == 1)
+			{
+				_e('Lists are kept unless you check the following:'); ?><br>
+					<label for="delete_taxonomies">
+						<input name="delete_taxonomies" type="checkbox" id="delete_taxonomies" value="1"
+							<?php checked('1', get_option('delete_taxonomies')); ?> />
+						<?php _e('Delete lists such as Part of Speech?') ?>
+					</label>
+					<br>
+			<?php
+			}
+			else
+			{
+			?>
+				<input type="hidden" name="delete_taxonomies" value="1">
+			<?php
+			}
+			?>
 				<?php _e('Are you sure you want to delete the dictionary data?', 'sil_dictionary'); ?>
 				<input type="submit" name="delete_data" value="<?php _e('Delete', 'sil_dictionary'); ?>">
 				<br>

@@ -1744,12 +1744,26 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					
 					$existing_entry = $wpdb->get_var($sql);
 					
+					//If the reversal language is set to Chinese and
+					//the extension pinyin from https://github.com/duguying/pinyin-php is installed
+					//the Chinese headwords get converted to pinyin, so that the reversal browse view
+					//will work
+					if($reversal_language == "zh-CN" && extension_loaded("pinyin"))
+					{
+						//the pinyin extension doesn't work correctly with brackets
+						$pinyinstring = str_replace("（", " ", $reversal_head);
+						$pinyinstring = str_replace("）", "", $pinyinstring);
+						$pinyin = pinyin($pinyinstring);
+						echo "#" . substr($pinyin, 0, 1) . "<br>";
+						$reversal_browsehead = remove_accents($pinyin);
+					}
+					
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
 								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (language_code, reversal_head, reversal_content)
 								VALUES('%s', '%s', '%s')",
-								$reversal_language, $reversal_head, $reversal_xml);
+								$reversal_language, $reversal_browsehead, $reversal_xml);
 					}
 					else
 					{
@@ -1757,7 +1771,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 								"UPDATE " . $this->reversal_table_name . "
 								SET reversal_content = '%s'
 								WHERE reversal_head = '%s' AND language_code = '%s'",
-								$reversal_xml, $reversal_head, $reversal_language);
+								$reversal_xml, $reversal_browsehead, $reversal_language);
 					}
 					
 					$wpdb->query( $sql );

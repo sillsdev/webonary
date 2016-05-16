@@ -148,6 +148,7 @@ function webonary_searchform() {
 			</div>
 		</form>
 		<br>
+		<div style="padding:3px; border:none;">
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
 		$import = new sil_pathway_xhtml_Import();
@@ -161,7 +162,9 @@ function webonary_searchform() {
 			$numberOfEntriesText .= "<br>";
 		}
 		echo $numberOfEntriesText;
-		
+		?>
+		</div>
+		<?php
 		if(strlen(trim($_GET['s'])) > 0)
 		{
 			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
