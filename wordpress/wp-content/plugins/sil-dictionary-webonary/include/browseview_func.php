@@ -313,6 +313,9 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 {
 	global $wpdb;
 	
+	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
+	$sortorderExists = (count($result))?TRUE:FALSE;
+	
 	$sql = "SELECT reversal_content " .
 	" FROM " . REVERSALTABLE  .
 	" WHERE ";
@@ -320,8 +323,15 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 	{
 		$sql .= " reversal_head LIKE  '" . $letter . "%' AND ";
 	}
-	$sql .=	" language_code = '" . $reversalLangcode . "' " .
-	" ORDER BY sortorder, reversal_head ASC";
+	$sql .=	" language_code = '" . $reversalLangcode . "' ";
+	if($sortorderExists)
+	{
+		$sql .= " ORDER BY sortorder, reversal_head ASC";
+	}
+	else
+	{
+		$sql .= " ORDER BY reversal_head ASC";
+	}
 	if($page > 1)
 	{
 		$startFrom = ($page - 1) * 50;
