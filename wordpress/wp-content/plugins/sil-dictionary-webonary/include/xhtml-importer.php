@@ -1748,6 +1748,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					//the extension pinyin from https://github.com/duguying/pinyin-php is installed
 					//the Chinese headwords get converted to pinyin, so that the reversal browse view
 					//will work
+					$reversal_browsehead = $reversal_head;
 					if($reversal_language == "zh-CN" && extension_loaded("pinyin"))
 					{
 						//the pinyin extension doesn't work correctly with brackets

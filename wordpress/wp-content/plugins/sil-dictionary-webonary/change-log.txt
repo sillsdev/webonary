@@ -1,3 +1,4 @@
+v. 5.8.9 19 May 2016 fixed reversal import issue
 v. 5.8.8 18 May 2016 fixed problem with missing sortorder for browsview
 v. 5.8.7 16 May 2016 added sortorder to reversal table
 v. 5.8.6 16 May 2016 The headwords for Chinese reversal exports now get imported as pinyin so that browse view works. 
