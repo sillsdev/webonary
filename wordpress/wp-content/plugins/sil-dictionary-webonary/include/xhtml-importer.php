@@ -874,6 +874,15 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				foreach($arrIndexed as $indexed)
 				{
 					$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
+
+					$arrReversalsFiltered = array_filter($arrReversalsImported, function($el) use($indexed) { return $el->language_code == $indexed->language_code; });
+					
+					if(count($arrReversalsFiltered) > $indexed->totalIndexed)
+					{
+						$missingReversals = count($arrReversalsFiltered) - $indexed->totalIndexed;
+						//$status .= " <span style=\"color:red;\">Some entries couldn't be indexed</span>";
+					}
+						
 					$status .= "</div></div>";
 				}
 				$status .= "</div>";
@@ -952,13 +961,29 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->search_table_name . ".language_code " .
 				" WHERE relevance >= 95 " .
 				" GROUP BY language_code " .
-				" ORDER BY COUNT(post_id) DESC";
+				" ORDER BY name ASC";
 		
 		$arrIndexed = $wpdb->get_results($sql);
 		
+		$x = 0;
+		foreach($arrIndexed as $indexed)
+		{
+			$sql = " SELECT search_strings " .
+				" FROM " . $this->search_table_name .
+				" WHERE language_code = '" . $indexed->language_code . "' " .
+				" AND relevance =100 " .
+				" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
+				
+			$arrIndexGrouped = $wpdb->get_results($sql);
+			
+			$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
+			
+			$x++;
+		}
+		
 		return $arrIndexed;
 	}
-
+	
 	function get_posts($index = ""){
 		global $wpdb;
 
@@ -1740,7 +1765,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						
 					//$doc->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 					
-					$sql = "SELECT reversal_head FROM " . $this->reversal_table_name . " WHERE reversal_head = '" . addslashes($reversal_head) . "' AND language_code = '" . $reversal_language . "'";
+					$sql = "SELECT reversal_head FROM " . $this->reversal_table_name . " WHERE reversal_head = '" . addslashes($reversal_head) . "' collate " . COLLATION . "_bin AND language_code = '" . $reversal_language . "'";
 					
 					$existing_entry = $wpdb->get_var($sql);
 					
