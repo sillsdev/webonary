@@ -1708,7 +1708,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			foreach ( $headwords as $headword )
 			{
 					
-				$entry = $this->convert_homographs($doc, "Homograph-Number");
+				///$entry = $this->convert_homographs($doc, "Homograph-Number");
 					
 				//the Sense-Reference-Number doesn't exist in search_strings field, so in order for it not to be searched, it has to be removed
 				$sensereferences = $this->dom_xpath->query('//xhtml:span[@class="Sense-Reference-Number"]', $headword);
@@ -1726,8 +1726,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				//echo $doc->saveXML($headword, LIBXML_NOEMPTYTAG) . "<br>";
 				//for reversal exports from FLEx 8.3. onwards, the headwords are linked
 				//we check that it's a 8.3 export by searching for reversalindexentry as previously the class "entry" was used instead
+				$id = $headwordCount;
 				if(strpos($postentry, "reversalindexentry") > 0)
 				{
+					$entry = $this->dom_xpath->query('//xhtml:span[@class="reversalform"]/..', $doc)->item(0);
+					$id = $entry->getAttribute( "id" );
 					if($headword->childNodes->length > 0)
 					{
 						$href = $headword->childNodes->item(0)->getAttribute( "href" );
@@ -1765,7 +1768,19 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						
 					//$doc->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 					
-					$sql = "SELECT reversal_head FROM " . $this->reversal_table_name . " WHERE reversal_head = '" . addslashes($reversal_head) . "' collate " . COLLATION . "_bin AND language_code = '" . $reversal_language . "'";
+					$sql = "SELECT id, reversal_head FROM " . $this->reversal_table_name;
+					$sql .= " WHERE ";
+					if(strpos($postentry, "reversalindexentry") > 0)
+					{
+						$sql .= " id = '" . $id . "' ";
+					
+					}
+					else
+						
+					{
+						$sql .= " reversal_head = '" . addslashes($reversal_head) . "' collate " . COLLATION . "_bin ";
+					}
+					$sql .= "AND language_code = '" . $reversal_language . "'";
 					
 					$existing_entry = $wpdb->get_var($sql);
 					
@@ -1786,17 +1801,17 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
-								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (language_code, reversal_head, reversal_content, sortorder)
-								VALUES('%s', '%s', '%s', %d)",
-								$reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter);
+								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder)
+								VALUES('%s', '%s', '%s', '%s', %d)",
+								$id, $reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter);
 					}
 					else
 					{
 						$sql = $wpdb->prepare(
 								"UPDATE " . $this->reversal_table_name . "
 								SET reversal_content = '%s'
-								WHERE reversal_head = '%s' AND language_code = '%s'",
-								$reversal_xml, $reversal_browsehead, $reversal_language);
+								WHERE reversal_head = '%s' AND language_code = '%s' AND $id = '%s'",
+								$reversal_xml, $reversal_browsehead, $reversal_language, $id);
 					}
 					
 					$wpdb->query( $sql );

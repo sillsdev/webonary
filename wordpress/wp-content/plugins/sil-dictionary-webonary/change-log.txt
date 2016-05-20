@@ -1,3 +1,4 @@
+v. 5.9.1 20 May 2016 added id to table wp_sil_reversals
 v. 5.9.0 19 May 2016 now displaying number of reversal headwords, instead of number of linked senses
 v. 5.8.9 19 May 2016 fixed reversal import issue
 v. 5.8.8 18 May 2016 fixed problem with missing sortorder for browsview

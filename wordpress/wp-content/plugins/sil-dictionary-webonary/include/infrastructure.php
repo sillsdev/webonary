@@ -61,13 +61,15 @@ function create_reversal_tables () {
 
 	$table = REVERSALTABLE;
 	$sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
+		`id` varchar(20) NOT NULL,
 		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`sortorder` INT NOT NULL DEFAULT '0' ";
-		//$sql .= ", PRIMARY KEY (`language_code`, `reversal_head` ( 150 ))";
+		$sql .= ", KEY (`id`)";
 		$sql .= ") CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 		
+	//echo $sql . "<br>";
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 }
