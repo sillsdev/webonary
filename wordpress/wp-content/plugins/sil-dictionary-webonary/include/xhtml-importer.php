@@ -964,21 +964,45 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				" ORDER BY name ASC";
 		
 		$arrIndexed = $wpdb->get_results($sql);
+
+		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
+				" FROM " . $this->reversal_table_name .
+				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->reversal_table_name . ".language_code " .
+				" ORDER BY name ASC";
 		
-		$x = 0;
+		$arrReversals = $wpdb->get_results($sql);
+		
+		$r = 0;
+		$s = 0;
 		foreach($arrIndexed as $indexed)
 		{
-			$sql = " SELECT search_strings " .
-				" FROM " . $this->search_table_name .
-				" WHERE language_code = '" . $indexed->language_code . "' " .
-				" AND relevance =100 " .
-				" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
+			if($arrReversals[$s]->language_code == $indexed->language_code)
+			{
+				$arrIndexed[$r]->totalIndexed = $arrReversals[$s]->totalIndexed;
+				$s++;
+			}
+			$r++;
+		}
+		
+		//legacy code, to count approximate number of reversals before we imported reversal entries into
+		//the reversal table
+		if(count($arrReversals) == 0 && count($arrIndexed) > 0)
+		{
+			$x = 0;
+			foreach($arrIndexed as $indexed)
+			{
+				$sql = " SELECT search_strings " .
+					" FROM " . $this->search_table_name .
+					" WHERE language_code = '" . $indexed->language_code . "' " .
+					" AND relevance =100 " .
+					" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
+					
+				$arrIndexGrouped = $wpdb->get_results($sql);
 				
-			$arrIndexGrouped = $wpdb->get_results($sql);
-			
-			$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
-			
-			$x++;
+				$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
+				
+				$x++;
+			}
 		}
 		
 		return $arrIndexed;
