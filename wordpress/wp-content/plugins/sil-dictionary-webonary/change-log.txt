@@ -1,3 +1,4 @@
+v. 5.9.4 20 May 2016 fixed wrong entry number for vernacular count 
 v. 5.9.3 20 May 2016 now number of reversal entries (for newer Webonary sites) coming from reversal table instead of index table  
 v. 5.9.2 20 May 2016 fixed wrong id while indexing reversals
 v. 5.9.1 20 May 2016 added id to table wp_sil_reversals

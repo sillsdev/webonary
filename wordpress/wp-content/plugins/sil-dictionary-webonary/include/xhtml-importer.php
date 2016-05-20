@@ -968,6 +968,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
 				" FROM " . $this->reversal_table_name .
 				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->reversal_table_name . ".language_code " .
+				" GROUP BY language_code " .
 				" ORDER BY name ASC";
 		
 		$arrReversals = $wpdb->get_results($sql);
@@ -989,18 +990,21 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		if(count($arrReversals) == 0 && count($arrIndexed) > 0)
 		{
 			$x = 0;
+			$count_posts = count($this->get_posts(''));
 			foreach($arrIndexed as $indexed)
 			{
 				$sql = " SELECT search_strings " .
 					" FROM " . $this->search_table_name .
 					" WHERE language_code = '" . $indexed->language_code . "' " .
-					" AND relevance =100 " .
+					" AND relevance >= 95 " .
 					" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
 					
 				$arrIndexGrouped = $wpdb->get_results($sql);
 				
-				$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
-				
+				if($count_posts != $indexed->totalIndexed && ($count_posts + 1) != $indexed->totalIndexed)
+				{
+					$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
+				}
 				$x++;
 			}
 		}
