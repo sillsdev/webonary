@@ -66,7 +66,7 @@ function create_reversal_tables () {
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`sortorder` INT NOT NULL DEFAULT '0' ";
-		$sql .= ", KEY (`id`)";
+		$sql .= ", UNIQUE KEY (`id`)";
 		$sql .= ") CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 		
 	//echo $sql . "<br>";

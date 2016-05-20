@@ -1726,7 +1726,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				//echo $doc->saveXML($headword, LIBXML_NOEMPTYTAG) . "<br>";
 				//for reversal exports from FLEx 8.3. onwards, the headwords are linked
 				//we check that it's a 8.3 export by searching for reversalindexentry as previously the class "entry" was used instead
-				$id = $headwordCount;
+				$id = $entry_counter;
 				if(strpos($postentry, "reversalindexentry") > 0)
 				{
 					$entry = $this->dom_xpath->query('//xhtml:span[@class="reversalform"]/..', $doc)->item(0);
