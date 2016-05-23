@@ -4,6 +4,8 @@
  */
 function add_admin_menu() {
 	add_menu_page( "Webonary", "Webonary", true, "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
+	add_plugins_page('Missing Senses', 'Missing Senses', 'none', 'missingsenses', 'report_missing_senses');
+	remove_submenu_page('plugins.php', 'missingsenses');
 }
 
 function on_admin_bar(){
@@ -84,6 +86,34 @@ function get_LanguageCodes($languageCode = null) {
 		ORDER BY language_code";
 
 	return $wpdb->get_results($sql);;
+}
+
+//display the senses that don't get linked in the reversal browse view
+function report_missing_senses()
+{
+	global $wpdb;
+?>
+	<div class="wrap">
+		<h2>Missing Senses for the <?php echo $_GET['language'];?> browse view</h2>
+		These senses will not get found when clicking on them in the browse view.<br>
+		Please check in the FLEx dictionary view, if they show up there.
+		<ul>
+		<?php
+		$sql = " SELECT search_strings " .
+				" FROM " . $wpdb->prefix . "sil_search" .
+				" WHERE post_id = 0 AND language_code = '" . $_GET['languageCode'] . "'";
+		
+		$arrMissing = $wpdb->get_results($sql);
+		
+		foreach($arrMissing as $missing)
+		{
+			echo "<li>" . $missing->search_strings . "</li>";
+		}
+		?>
+		</ul>
+		<a href="admin.php?page=webonary">Back to the Webonary settings</a>
+	</div>
+<?php
 }
 
 /**

@@ -875,14 +875,20 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
 
-					$arrReversalsFiltered = array_filter($arrReversalsImported, function($el) use($indexed) { return $el->language_code == $indexed->language_code; });
+					$arrReversalsFiltered = array_filter($arrReversalsImported, function($el) { return $el->post_id == 0; });
 					
-					if(count($arrReversalsFiltered) > $indexed->totalIndexed)
+					$sql = "SELECT COUNT(language_code) AS missing " .
+							" FROM " . $this->search_table_name .
+							" WHERE post_id = 0 AND language_code = '" . $indexed->language_code . "'" .
+							" GROUP BY language_code";
+					
+					$missingReversals = $wpdb->get_var($sql);
+					
+					if($missingReversals > 0)
 					{
-						$missingReversals = count($arrReversalsFiltered) - $indexed->totalIndexed;
-						//$status .= " <span style=\"color:red;\">Some entries couldn't be indexed</span>";
+						$status .= " <a href=\"plugins.php?page=missingsenses&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">" . $missingReversals . " senses were not found</a>";
 					}
-						
+					
 					$status .= "</div></div>";
 				}
 				$status .= "</div>";
@@ -1845,14 +1851,13 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$wpdb->query( $sql );
 					
 				}
-				if($post_id > 0)
-				{
-					$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, 0);
-				}
-				else
+				if($post_id == 0)
 				{
 					echo "PostId for '" . $headword_text . "' not found.<br>";
+					//we want to display the sense, not the reversal word in the "missing senses" report
+					$reversal_head = $headword_text;
 				}
+				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, 0);
 		
 				$headwordCount++;
 			}
