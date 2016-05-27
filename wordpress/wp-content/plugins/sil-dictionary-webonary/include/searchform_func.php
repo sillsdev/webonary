@@ -34,6 +34,7 @@ function webonary_searchform() {
 				<!-- search text box -->
 				<?php
 				$special_characters = get_option('special_characters');
+				$special_characters = str_replace("empty", "", $special_characters);
 				if((trim($special_characters)) != "")
 				{
 				?>

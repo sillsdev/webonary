@@ -4,8 +4,8 @@
  */
 function add_admin_menu() {
 	add_menu_page( "Webonary", "Webonary", true, "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
-	add_plugins_page('Missing Senses', 'Missing Senses', 'none', 'missingsenses', 'report_missing_senses');
-	remove_submenu_page('plugins.php', 'missingsenses');
+	add_submenu_page('webonary', 'Missing Senses', 'Missing Senses', 'none', 'missingsenses', 'report_missing_senses');
+	//remove_submenu_page('plugins.php', 'missingsenses');
 }
 
 function on_admin_bar(){
@@ -129,7 +129,12 @@ function save_configurations() {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
 		update_option("normalization", $_POST['normalization']);
-		update_option("special_characters", $_POST['characters']);
+		$special_characters = $_POST['characters'];
+		if(trim($special_characters) == "")
+		{
+			$special_characters = "empty";
+		}
+		update_option("special_characters", $special_characters);
 		update_option("inputFont", $_POST['inputFont']);
 		
 		$displaySubentriesAsMainEntries = 'no';
@@ -345,16 +350,17 @@ function webonary_conf_widget($showTitle = false) {
 			$settings = $charWidget->get_settings();
 			$settings = reset($settings);
 			$special_characters = get_option('special_characters');
-			if((trim($special_characters)) == "")
+			if(trim($special_characters) == "" && !isset($_POST['characters']) && trim($special_characters) != "empty")
 			{
 				$special_characters = $settings['characters'];
 			}
+			$special_characters = str_replace("empty", "", $special_characters);
 			?>
 			<p>
 			<strong><?php _e('Special character input buttons');?></strong>
 			<br>
 			These will appear above the search field.<br>
-			Seperate the characters by comma:
+			Separate the characters by comma:
 			<input type="input" name="characters" type="checkbox" value="<?php echo $special_characters; ?>">
 			</p>
 			<b>Font to use for the search field and character buttons:</b>
