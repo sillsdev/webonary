@@ -1,3 +1,4 @@
+v. 5.9.7 27 May 2016 missing senses report now displays for normal admin too
 v. 5.9.6 27 May 2016 fixed bug with saving special characters
 v. 5.9.5 23 May 2016 added missing senses report for reversal entries
 v. 5.9.4 20 May 2016 fixed wrong entry number for vernacular count 

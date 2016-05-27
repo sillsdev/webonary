@@ -886,7 +886,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					
 					if($missingReversals > 0)
 					{
-						$status .= " <a href=\"?page=missingsenses&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">" . $missingReversals . " senses were not found</a>";
+						$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">" . $missingReversals . " senses were not found</a>";
 					}
 					
 					$status .= "</div></div>";
