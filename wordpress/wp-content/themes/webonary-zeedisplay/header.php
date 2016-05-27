@@ -71,6 +71,7 @@ $options = get_option('themezee_options');
 				<div id="topnavi">
 					<?php
 					// Get Top Navigation out of Theme Options
+					
 						wp_nav_menu(array(
 							'theme_location' => 'top_navi',
 							'container' => false,
@@ -81,6 +82,7 @@ $options = get_option('themezee_options');
 							'link_after' => '',
 							'depth' => 0,
 							'fallback_cb' => ''));
+					
 					?>
 				</div>
 			</div>
@@ -136,6 +138,8 @@ $options = get_option('themezee_options');
 						'link_after' => '',
 						'depth' => 0,
 						'fallback_cb' => ''));
+					
+						
 				?>
 			</div>
 		<?php } ?>

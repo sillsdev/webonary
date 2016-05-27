@@ -137,7 +137,7 @@ function themezee_stylesheets() {
 	}
 	wp_enqueue_style( 'zee_stylesheet');
 
-	//wp_register_style('custom_stylesheet', '/files/custom.css');
+	wp_register_style('custom_stylesheet', '/files/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_stylesheet');
 }
 function themezee_enqueue_scripts() {
@@ -402,4 +402,10 @@ class Sub_Menu_Walker_Nav_Menu extends Walker_Nav_Menu {
 		}
 	}
 }
+
+function crunchify_disable_comment_url($fields) {
+	unset($fields['url']);
+	return $fields;
+}
+add_filter('comment_form_default_fields','crunchify_disable_comment_url');
 ?>

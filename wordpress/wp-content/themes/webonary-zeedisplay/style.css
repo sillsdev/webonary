@@ -2,7 +2,7 @@
 Theme Name: webonary-zeedisplay
 Theme URI: http://www.webonary.org
 Description: A Webonary theme created for dictionaries based on the theme zeeDisplay. See: http://themezee.com/zeeDisplay
-Version: 2.9.2
+Version: 2.9.5
 Author: SIL International
 Author URI: http://www.sil.org/
 Tags:  dictionary, two-columns, light, custom-background, custom-menu, threaded-comments, translation-ready, theme-options, fixed-width, custom-colors
@@ -142,7 +142,7 @@ ul.qtrans_language_chooser li.active { display:none }
   position: relative;
 }
 #sidebar ul li h2 {
-  color: #0066ee;
+  color: #85005b;
   height: 25px;
   line-height: 25px;
   font-size: 1.3em;

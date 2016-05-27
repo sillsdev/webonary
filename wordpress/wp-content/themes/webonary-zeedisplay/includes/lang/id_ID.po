@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webonary-zeedisplay v2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-15 11:55-0600\n"
-"PO-Revision-Date: 2014-09-15 11:55-0600\n"
+"POT-Creation-Date: 2016-05-05 09:47+0800\n"
+"PO-Revision-Date: 2016-05-05 10:00+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: id_ID\n"
@@ -19,26 +19,8 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-# @ dictrans
-#: 404.php:10
-msgid "404 Error: Not found"
-msgstr ""
-
-# @ dictrans
-#: 404.php:13
-msgid ""
-"The page you trying to reach does not exist, or has been moved. Please use "
-"the menus or the search box to find what you are looking for"
-msgstr ""
-
-# @ dictrans
-#: 404.php:18 page-sitemap.php:27
-msgid "Latest Posts"
-msgstr ""
-
-# @ dictrans
-#: 404.php:29 page-sitemap.php:38
-msgid "Pages"
+#: 404.php:12
+msgid "Entry not found."
 msgstr ""
 
 # @ dictrans
@@ -77,20 +59,44 @@ msgstr ""
 msgid "% comments"
 msgstr ""
 
-#: footer.php:43
+#: footer.php:42
 msgid "Terms of Service"
 msgstr ""
 
 # @ dictrans
-#: functions.php:207
+#: functions.php:211
 msgid "Search Bar Popups"
 msgstr ""
 
 # @ searchform
-#: functions.php:209
+#: functions.php:213
 msgid ""
 "If a widget placed here has links, those links will appear above the search "
 "field on the main screen."
+msgstr ""
+
+#: functions.php:335
+msgid "To view this protected post, enter the password below:"
+msgstr ""
+
+#: functions.php:337
+msgid ""
+"If you do not have a password, you may request it using the <a href=\"/help/"
+"contact-us/\">contact form</a>."
+msgstr ""
+
+#: functions.php:338
+msgid "Password:"
+msgstr ""
+
+# @ dictrans
+#: page-sitemap.php:27
+msgid "Latest Posts"
+msgstr ""
+
+# @ dictrans
+#: page-sitemap.php:38
+msgid "Pages"
 msgstr ""
 
 # @ dictrans
@@ -108,13 +114,17 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: search.php:33
+#: search.php:34
 #, php-format
 msgid "Search results for \"%s\""
 msgstr ""
 
+#: search.php:59
+msgid "Comments"
+msgstr ""
+
 # @ dictrans
-#: search.php:71
+#: search.php:72
 msgid ""
 "No matches. Please try again, or use the navigation menus to find what you "
 "search for."
@@ -140,16 +150,8 @@ msgstr ""
 msgid "Next Entries &raquo;"
 msgstr ""
 
-# @ dictrans
-#: includes/admin/theme-admin.php:5 includes/admin/theme-admin.php:31
-msgid "Options"
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-admin.php:33
-msgid ""
-"It is completely optional, but if you like the Theme I would appreciate it "
-"if you keep the credit link at the bottom."
+#: includes/admin/theme-admin.php:31
+msgid "Theme Options"
 msgstr ""
 
 # @ dictrans
@@ -208,59 +210,28 @@ msgid "Theme Settings"
 msgstr ""
 
 # @ dictrans
-#: includes/admin/theme-settings.php:41
-msgid "Paste the full Image URL of your logo."
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:47
-msgid "Meta Description"
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:48
-msgid "Enter the description displayed by search engines."
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:54
-msgid "Meta Keywords"
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:55
-msgid "Enter some keywords for better indexing."
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:62
+#: includes/admin/theme-settings.php:56
 msgid "Footer Content"
 msgstr ""
 
 # @ dictrans
-#: includes/admin/theme-settings.php:63
+#: includes/admin/theme-settings.php:57
 msgid "Enter here the content which is displayed in the footer."
 msgstr ""
 
 # @ dictrans
-#: includes/admin/theme-settings.php:69
-msgid "Right Footer Content"
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:70
-msgid ""
-"Enter here the content which is displayed in the right side of the footer."
-msgstr ""
-
-# @ dictrans
-#: includes/admin/theme-settings.php:93
+#: includes/admin/theme-settings.php:90
 msgid "Custom CSS"
 msgstr ""
 
 # @ dictrans
-#: includes/admin/theme-settings.php:94
+#: includes/admin/theme-settings.php:91
 msgid "Insert your own custom css code into the head of the theme."
+msgstr ""
+
+# @ dictrans
+#: includes/admin/theme-settings.php:98
+msgid "Paste the full Image URL of your logo."
 msgstr ""
 
 # @ dictrans

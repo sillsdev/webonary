@@ -68,7 +68,7 @@ function openImage(image)
 			
 		<?php else : ?>
 			<div class="post">
-				<div class="entry">
+				<div>
 					<p><?php _e('No matches. Please try again, or use the navigation menus to find what you search for.', ZEE_LANG); ?></p>
 				</div>
 			</div>

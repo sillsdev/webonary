@@ -2,7 +2,7 @@
 
 add_action('admin_menu', 'themezee_admin_add_page');
 function themezee_admin_add_page() {
-	add_theme_page("Other Options (footer, etc.)", "Other Options<br>(footer, etc.)", 'edit_theme_options', 'themezee', 'themezee_options_page');
+	add_theme_page("Footer", "Footer", 'edit_theme_options', 'themezee', 'themezee_options_page');
 }
 
 // Display admin options page
@@ -30,7 +30,7 @@ function themezee_options_page() {
 		<div class="icon32" id="icon-themes"></div>
 		<h2><?php _e('Theme Options', ZEE_LANG); ?></h2>
 		
-			<form class="zee_form" action="options.php" method="post">
+			<form class="zee_form" action="options.php?customcss=<?php echo $_GET['customcss']; ?>" method="post">
 				
 				<p><input name="Submit" class="button-primary" type="submit" value="<?php esc_attr_e('Save Changes', ZEE_LANG); ?>" /></p>
 				
@@ -82,7 +82,13 @@ function themezee_display_setting( $setting = array() ) {
 			echo "</select>";
 			echo '<br/><label>'.$setting['desc'].'</label>';
 		break;
-		
+		case 'showCustomCSS':
+			echo "<textarea id='".$setting['id']."' name='themezee_options[".$setting['id']."]' rows='5'>" . esc_attr($options[$setting['id']]) . "</textarea>";
+			echo '<br/><label>'.$setting['desc'].'</label>';
+		break;
+		case 'hideCustomCSS':
+			echo "<input id='".$setting['id']."' name='themezee_options[".$setting['id']."]' type='hidden' value='". esc_attr($options[$setting['id']]) ."' />";
+		break;
 		case 'radio':
 			foreach ( $setting['choices'] as $value => $label ) {
 				echo "<input id='".$setting['id']."'";
@@ -132,7 +138,10 @@ function themezee_register_settings(){
 	
 	// Create Setting Fields
 	foreach ($settings as $setting) {
-		add_settings_field($setting['id'], $setting['name'], 'themezee_display_setting', 'themezee', $setting['section'], $setting);
+		if($setting['id'] != "themeZee_custom_css" || $_GET['customcss'] == 1)
+		{
+			add_settings_field($setting['id'], $setting['name'], 'themezee_display_setting', 'themezee', $setting['section'], $setting);
+		}
 	}
 }
 

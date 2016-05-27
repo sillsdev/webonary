@@ -27,6 +27,7 @@
 	
 ### MAIN SETTINGS
 #######################################################################################
+  /*
 	$settings[] = array("name" => "Mode",
 					"desc" => "",
 					"id" => "themeZee_blog_mode",
@@ -51,7 +52,7 @@
 			"type" => "textarea",
 			"section" => "themeZee_main");
 	
-							
+	*/
 	$settings[] = array("name" => __('Footer Content', ZEE_LANG),
 					"desc" => __('Enter here the content which is displayed in the footer.', ZEE_LANG),
 					"id" => "themeZee_footer",
@@ -84,13 +85,18 @@
 					"type" => "colorpicker",
 					"section" => "themeZee_main");
 	*/
+	
+	$customcss = "hideCustomCSS";
+	if($_GET['customcss'] == 1)
+	{
+		$customcss = "showCustomCSS";
+	}
 	$settings[] = array("name" => __('Custom CSS', ZEE_LANG),
 					"desc" => __('Insert your own custom css code into the head of the theme.', ZEE_LANG),
 					"id" => "themeZee_custom_css",
 					"std" => "",
-					"type" => "textarea",
+					"type" => $customcss,
 					"section" => "themeZee_main");
-
 	$settings[] = array("name" => "",
 					"desc" => __('Paste the full Image URL of your logo.', ZEE_LANG),
 					"id" => "themeZee_logo",
