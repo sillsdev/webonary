@@ -517,6 +517,14 @@ function reversalindex($display, $chosenLetter, $langcode)
 
 	$display .=  "</div><br>";
 
+	if(isset($_GET['p']))
+	{
+		if($_GET['p'] == 0)
+		{
+			$display = "<p>" . gettext("Entry not found");
+		}
+	}
+	
 	return $display;
 }
 

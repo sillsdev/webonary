@@ -230,10 +230,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				if(isset($file))
 				{
 					$xhtmlFileURL = $file->url;
+					$userid = $current_user->ID;
+					require("run_import.php");
 				}
-				$userid = $current_user->ID;
-				require("run_import.php");
-				
 				
 				/*
 				?>
@@ -1684,6 +1683,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$this->dom_xpath = new DOMXPath($doc);
 		$this->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
+		$doc = $this->convert_homographs($doc, "Homograph-Number");
 		//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 			
 		// Should be only 1 reversal at most per entry.
