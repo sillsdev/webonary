@@ -1455,13 +1455,16 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$fields = $xpath->query($query);
 		
 		foreach ( $fields as $field ) {
-			
+
 			$language = $field->getAttribute( "lang" );
 
 			//if(strlen(trim($language)) == 0 && property_exists($field->childNodes->item(0), 'lang'))
-			if(strlen(trim($language)) == 0 && $field->childNodes->item(0)->hasAttributes())
+			if($field->childNodes->length > 0)
 			{
-				$language = $field->childNodes->item(0)->getAttribute( "lang" );
+				if(strlen(trim($language)) == 0 && $field->childNodes->item(0)->hasAttributes())
+				{
+					$language = $field->childNodes->item(0)->getAttribute( "lang" );
+				}
 			}
 				
 			if(strlen(trim($language)) != 0)

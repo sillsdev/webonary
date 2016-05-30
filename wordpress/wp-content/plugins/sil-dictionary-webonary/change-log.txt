@@ -1,3 +1,4 @@
+v. 5.9.9 27 May 2016 bug fix, skip empty field during import
 v. 5.9.8 27 May 2016 reversal import now also converts homonyms to subscript
 v. 5.9.7 27 May 2016 missing senses report now displays for normal admin too
 v. 5.9.6 27 May 2016 fixed bug with saving special characters
