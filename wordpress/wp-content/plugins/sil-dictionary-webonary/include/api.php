@@ -209,7 +209,8 @@ class Webonary_API_MyType {
 		if(isset($user->ID))
 		{
 			$sql = "SELECT meta_value AS userrole FROM wp_usermeta " .
-				   " WHERE user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities'";
+				   " WHERE (user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities') OR " .
+				   	" (user_id = " . $user->ID . " AND meta_key = 'wp_capabilities')";
 
 
 			$roleSerialized = $wpdb->get_var($sql);
