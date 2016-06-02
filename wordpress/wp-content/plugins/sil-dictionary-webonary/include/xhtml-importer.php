@@ -1779,7 +1779,16 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						{
 							$href = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( "href" );
 						}
-						$post_id = $this->get_post_id(str_replace("#", "", $href));
+						//if href still is empty...
+						if(strlen(trim($href)) == 0)
+						{
+							$href = $headword->childNodes->item(0)->childNodes->item(0)->childNodes->item(0)->getAttribute( "href" );
+						}
+						
+						if(strlen(trim($href)) != 0)
+						{
+							$post_id = $this->get_post_id(str_replace("#", "", $href));
+						}
 					}
 				}
 				else
