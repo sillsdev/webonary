@@ -697,7 +697,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			SELECT term_id
 			FROM $wpdb->terms
 			WHERE slug LIKE 'webonary'");
-	
+
+		if(!isset($catid))
+		{
+			$catid = 0;
+		}
+		
 		return $catid;
 	}
 
@@ -1022,10 +1027,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		// @todo: If $headword_text has a double quote in it, this
 		// will probably fail.
-		$sql = "SELECT ID, post_title, post_content, post_parent, menu_order
-			FROM $wpdb->posts
-			INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID
-			WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $this->get_category_id();
+		$sql = "SELECT ID, post_title, post_content, post_parent, menu_order " .
+			" FROM $wpdb->posts " .
+			" INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID " .
+			" WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $this->get_category_id();
 		//using pinged field for not yet indexed
 		$sql .= " AND post_status = 'publish'";
 		if(strlen($index) > 0 && $index != "-")

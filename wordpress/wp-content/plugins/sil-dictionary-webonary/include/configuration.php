@@ -32,6 +32,10 @@ function get_admin_sections() {
 	$admin_sections['search'] = __('Search', 'sil_dictionary');
 	$admin_sections['browse'] = __('Browse Views', 'sil_dictionary');
 	$admin_sections['fonts'] = __('Fonts', 'sil_dictionary');
+	if(is_super_admin())
+	{
+		$admin_sections['notes'] = __('Notes', 'sil_dictionary');
+	}
 	
 	return $admin_sections;
 }
@@ -193,6 +197,12 @@ function save_configurations() {
 					$wpdb->query( $sql );
 				}
 			}
+		}
+		
+		if(isset($_POST['txtNotes']))
+		{
+			echo "Saving Notes<br>";
+			update_option("notes", $_POST['txtNotes']);
 		}
 
 		echo "<br>" . _e('Settings saved');
@@ -616,7 +626,18 @@ function webonary_conf_widget($showTitle = false) {
 		}
 		?>
 		<?php admin_section_end('fonts'); ?>
-
+		<?php
+		//////////////////////////////////////////////////////////////////////////
+		admin_section_start('notes');
+		?>
+		<p>
+		<h3>Notes</h3>
+		<p>
+		<span style="color:red">These notes are only visible to super admins.</span>
+		<p>
+		<textarea name=txtNotes cols=60 rows=8><?php echo stripslashes(get_option("notes"));?></textarea>
+		<?php admin_section_end('notes', 'Save Changes'); ?>
+		
 		</div><?php //<!-- /tabs-container --> ?>
 		</form>
 	</div>
