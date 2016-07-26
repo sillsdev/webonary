@@ -1,3 +1,4 @@
+v. 6.0.4 26 July 2016 added entry update date below search field
 v. 6.0.3 01 July 2016 added note field for super admins
 v. 6.0.2 02 June 2016 fixed an issue with indexing reversals 
 v. 6.0.1 31 May 2016 fixed an issue with importing more than 1 reversal index

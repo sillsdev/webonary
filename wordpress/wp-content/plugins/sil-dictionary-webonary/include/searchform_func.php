@@ -163,6 +163,9 @@ function webonary_searchform() {
 			$numberOfEntriesText .= "<br>";
 		}
 		echo $numberOfEntriesText;
+		echo "<br>";
+		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+		echo gettext("Last update:") . " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		?>
 		</div>
 		<?php
