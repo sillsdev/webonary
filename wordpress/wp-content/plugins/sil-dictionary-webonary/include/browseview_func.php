@@ -340,7 +340,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		
 	$arrReversals = $wpdb->get_results($sql);
 	
-	if(count($arrReversals) == 0 || $displayXHTML == false)
+	if(count($arrReversals) == 0)
 	{
 		//just get headwords (legacy code, as we didn't use to display the xhtml for reversals)
 		$sql = "SELECT a.post_id, a.search_strings AS English, b.search_strings AS Vernacular " .
@@ -443,10 +443,6 @@ function reversalindex($display, $chosenLetter, $langcode)
 	}
 	
 	$displayXHTML = true;
-	if(get_option('reversalType') == "minimal")
-	{
-		$displayXHTML = false;
-	}
 	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML);
 	
 	$display .= "<h1 align=center>" . $chosenLetter . "</h1><br>";

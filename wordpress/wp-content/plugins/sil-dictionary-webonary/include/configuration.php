@@ -89,7 +89,7 @@ function get_LanguageCodes($languageCode = null) {
 	$sql .= " GROUP BY language_code
 		ORDER BY language_code";
 
-	return $wpdb->get_results($sql);;
+	return $wpdb->get_results($sql);
 }
 
 //display the senses that don't get linked in the reversal browse view
@@ -157,7 +157,6 @@ function save_configurations() {
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
 		 
-		update_option("reversalType", $_POST['reversalType']);
 		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
 		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
 		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
@@ -446,12 +445,7 @@ function webonary_conf_widget($showTitle = false) {
 			<?php
 			$displayXHTML = true;
 			getReversalEntries("", 0, get_option('reversal1_langcode'), $displayXHTML);
-			_e('Display:'); ?>
-			<select name="reversalType">
-				<option value="full">Full FLEx Reversal view</option>
-				<option value="minimal" <?php if(!$displayXHTML || get_option("reversalType") == "minimal") { echo "selected"; }?>>Minimal Index view</option>
-			</select>
-			<p>
+			?>
 			<?php _e('Main reversal index code:'); ?>
 			<select id=reversalLangcode name="reversal1_langcode" onchange="getLanguageName('reversalLangcode', 'reversalName');">
 				<option value=""></option>

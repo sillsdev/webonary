@@ -153,6 +153,7 @@ class fontMonagment
 		$length = strlen($css_string);
 		$porperty = 'font-family';
 		$last_position = 0;
+		$arrCSSFonts = null;
 		$x = 0;
 		while (($last_position = strpos($css_string, $porperty, $last_position)) !== FALSE) {
 			// Get closing bracket.
@@ -221,35 +222,37 @@ class fontMonagment
 		 
 		$fontFace = "";
 		$arrFontStyles = array("R", "B", "I", "BI");
-		foreach($arrUniqueCSSFonts as $userFont)
+		if(count($arrUniqueCSSFonts) > 0)
 		{
-			$fontKey = array_search($userFont, $arrFontName);
-				
-			if($fontKey > 0)
+			foreach($arrUniqueCSSFonts as $userFont)
 			{
-				foreach($arrFontStyles as $fontStyle)
+				$fontKey = array_search($userFont, $arrFontName);
+					
+				if($fontKey > 0)
 				{
-					//echo WP_CONTENT_DIR . "/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff\n";
-					if(file_exists(WP_CONTENT_DIR . "/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff"))
+					foreach($arrFontStyles as $fontStyle)
 					{
-						$fontFace .= "@font-face {\n";
-						$fontFace .= "font-family: " . $userFont . ";\n";
-						$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff);\n";
-						if($fontStyle == "B" || $fontStyle == "BI")
+						//echo WP_CONTENT_DIR . "/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff\n";
+						if(file_exists(WP_CONTENT_DIR . "/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff"))
 						{
-							$fontFace .= "font-weight: bold;\n";
+							$fontFace .= "@font-face {\n";
+							$fontFace .= "font-family: " . $userFont . ";\n";
+							$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff);\n";
+							if($fontStyle == "B" || $fontStyle == "BI")
+							{
+								$fontFace .= "font-weight: bold;\n";
+							}
+							if($fontStyle == "I" || $fontStyle == "BI")
+							{
+								$fontFace .= "font-style: italic;\n";
+							}
+							$fontFace .= "}\n\n";
 						}
-						if($fontStyle == "I" || $fontStyle == "BI")
-						{
-							$fontFace .= "font-style: italic;\n";
-						}
-						$fontFace .= "}\n\n";
 					}
 				}
 			}
+			file_put_contents($uploadPath . "/custom.css" , $fontFace);
 		}
-		file_put_contents($uploadPath . "/custom.css" , $fontFace);
-		 
 		return;
 	}
 }
