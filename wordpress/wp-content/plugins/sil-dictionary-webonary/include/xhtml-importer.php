@@ -1254,8 +1254,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
 		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
 		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
-	
+		
 		$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
+				
 		//$headword = $headwords->item( 0 )->nodeValue;
 		foreach ( $headwords as $headword ) {
 				
@@ -1282,7 +1283,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 	
 			$headword_text = $headword->textContent;
-				
+							
 			$flexid = "";
 			//if($this->dom_xpath->query('//xhtml:div[@id]', $entry)->length > 0)
 			//{
@@ -1882,8 +1883,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 				$headwordCount++;
 			}
+			$entry_counter++;
 		}
-		$entry_counter++;
 		
 		return $entry_counter;
 	}

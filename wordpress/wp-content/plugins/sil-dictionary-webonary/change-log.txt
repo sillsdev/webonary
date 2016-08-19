@@ -1,3 +1,4 @@
+v. 6.0.8 19 August 2016 "No entries found" message now also displays for reversal indexes if reversal headword wasn't found.
 v. 6.0.7 3 August 2016 removed "minimal reversal index" option from settings. Only displays if full reversal data doesn't exist.
 v. 6.0.6 28 July 2016 only show entry update if date set.
 v. 6.0.5 27 July 2016 only shows entry update if entries exists.
