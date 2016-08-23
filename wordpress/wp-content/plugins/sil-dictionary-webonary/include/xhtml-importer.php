@@ -1277,7 +1277,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				update_option("languagecode", $headword_language);
 			}
 	
+			//REMOVE WITH FLEx8.3 - xhomographnumber class doesn't exist anymore
 			$doc = $this->convert_homographs($doc, "xhomographnumber");
+			
 			$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
 				
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
@@ -1311,14 +1313,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$entry_xml = addslashes($entry_xml);
 			$entry_xml = stripslashes($entry_xml);
 			//$entry_xml = str_replace("'","&#39;",$entry_xml);
-	
+
 			$post_parent = 0;
-			if (!preg_match("/class=\"entry\"/i", $entry_xml) && !preg_match("/class=\"mainentrycomplex\"/i", $entry_xml) && !preg_match("/class=\"headword-minor\"/i" , $entry_xml) && !preg_match("/class=\"minorentryvariant\"/i" , $entry_xml) && !preg_match("/class=\"minorentrycomplex\"/i" , $entry_xml))
-			{
-				$post_parent = 1;
-				$entry_xml = str_replace("class=\"subentry\"","class=\"entry\"",$entry_xml);
-				$entry_xml = str_replace("class=\"headword-sub\"","class=\"headword\"",$entry_xml);
-			}
+			
 			/*
 			 * Insert the new entry into wp_posts
 			 */
