@@ -387,7 +387,10 @@ function webonary_css()
 		clear:none;
 		white-space:unset;
 	}
-	
+	.reversalindexentry {
+		clear:none !important;
+		white-space:unset !important;
+	}
 	.minorentrycomplex{
 		clear:none;
 		white-space:unset;
