@@ -103,6 +103,13 @@ function sil_dictionary_custom_join($join) {
 			$subquery_where .= " WHERE " . $search_table_name . ".language_code = '$key' ";
 		$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
 
+		//by default d à, ä, etc. are handled as the same letters when searching
+		$collateSearch = "";
+		if(get_option('distinguish_diacritics') == 1)
+		{
+			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+		}
+		
 		if(isset($wp_query->query_vars['letter']))
 		{
 			$letter = trim($wp_query->query_vars['letter']);
@@ -133,14 +140,14 @@ function sil_dictionary_custom_join($join) {
 		else if ( is_CJK( $search ) || mb_strlen($search) > 3 || $partialsearch == 1)
 		{
 			$subquery_where .= $search_table_name . ".search_strings LIKE '%" .
-				addslashes( $search ) . "%'";
+				addslashes( $search ) . "%' " . $collateSearch;
 		}
 		else
 		{
 			if(mb_strlen($search) > 1)
 			{
             	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
-					addslashes( $search ) . "[[:>:]]'";
+					addslashes( $search ) . "[[:>:]]' " . $collateSearch;
 			}
 		}
 		//if($_GET['tax'] < 1)

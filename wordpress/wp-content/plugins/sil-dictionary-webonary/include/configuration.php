@@ -132,6 +132,7 @@ function save_configurations() {
 	if ( ! empty( $_POST['save_settings'])) {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
+		update_option("distinguish_diacritics", $_POST['distinguish_diacritics']);
 		update_option("normalization", $_POST['normalization']);
 		$special_characters = $_POST['characters'];
 		if(trim($special_characters) == "")
@@ -222,6 +223,11 @@ function webonary_conf_widget($showTitle = false) {
 	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
+	<style>
+	#dashboard-widgets a {
+		text-decoration: underline;
+	}
+	</style>
 	<div class="wrap">
 	<?php
 	if($showTitle)
@@ -340,6 +346,10 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="include_partial_words" type="checkbox" value="1"
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
+			<br>
+			<input name="distinguish_diacritics" type="checkbox" value="1"
+						<?php checked('1', get_option('distinguish_diacritics')); ?> />
+						<?php _e('Distinguish diacritic letters'); ?>
 			</p>
 			<p>
 			<strong>Normalization:</strong>
