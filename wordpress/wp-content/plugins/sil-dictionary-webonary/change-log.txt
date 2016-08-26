@@ -1,3 +1,4 @@
+v. 6.1.3 27 August 2016 added lexemeform as a possible headword for reversal imports
 v. 6.1.2 26 August 2016 fixed issue that on reindexing all posts got reindexed, even the ones that had already been indexed.
 v. 6.1.1 25 August 2016 one can now set under the search tab if diacritics should be distinguished
 v. 6.1.0 24 August 2016 added reversal css white-space:unset

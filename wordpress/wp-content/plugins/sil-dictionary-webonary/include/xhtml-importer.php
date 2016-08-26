@@ -1736,14 +1736,17 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 			
 			//$headwords = $this->dom_xpath->query('./xhtml:span[@class = "senses"]/xhtml:span[@class = "sense"]/xhtml:span[@class = "headword"]|./xhtml:span[@class = "senses"]/xhtml:span[starts-with(@class, "headref")]', $entry );
-			$headwords = $this->dom_xpath->query('//xhtml:*[@class = "referringsense"]/*[@class = "headword"]|//xhtml:span[starts-with(@class, "headref")]');
+			$headwords = $this->dom_xpath->query('//xhtml:*[@class = "referringsense"]/*[@class = "headword" or @class = "lexemeform"]|//xhtml:span[starts-with(@class, "headref")]');
 
+			if($headwords->length == 0)
+			{
+				echo "No senses found for '" . $reversal_head . "'<br>\n";
+			}
 			
 			if(strpos($postentry, "reversalindexentry") > 0)
 			{
 				$reversal_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $postentry);
 			}
-			
 			$sql = "SELECT id FROM " . $this->reversal_table_name . " ORDER BY id+0 DESC LIMIT 0,1 ";
 							
 			$lastid = $wpdb->get_var($sql);
@@ -1751,7 +1754,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$headwordCount = 1;
 			foreach ( $headwords as $headword )
 			{
-					
 				///$entry = $this->convert_homographs($doc, "Homograph-Number");
 					
 				//the Sense-Reference-Number doesn't exist in search_strings field, so in order for it not to be searched, it has to be removed
