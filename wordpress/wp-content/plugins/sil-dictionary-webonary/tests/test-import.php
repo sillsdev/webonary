@@ -15,7 +15,7 @@ class ImportTest extends WP_UnitTestCase {
 	 */
 	function test_import() {
 
-		$exampleFile = "tests/test-data.xhtml";
+		$exampleFile = "tests/test-configured.xhtml";
 		$xhtmlFileURL = "tests/test.xhtml";
 		//copy test data to test folder
 		copy($exampleFile, $xhtmlFileURL);

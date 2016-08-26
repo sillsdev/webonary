@@ -2010,7 +2010,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	
 		if ( $search_table_exists ) {
 			////$arrPosts = $this->get_posts('flexlinks');
-			$arrPosts = $this->get_posts('');
+			$arrPosts = $this->get_posts('-');
 				
 			$subid = 1;
 			/*
