@@ -10,9 +10,6 @@
  */
 class ImportTest extends WP_UnitTestCase {
 
-	/**
-	 * A single example test.
-	 */
 	function test_import() {
 
 		$exampleFile = "tests/test-configured.xhtml";
@@ -47,5 +44,26 @@ class ImportTest extends WP_UnitTestCase {
 		//check if can find link to the synonym adaw
 		$postSynLinkPos = strpos($arrPosts[0]->post_content, '<a href="http://example.org/g15713a4a-ddbb-47a5-991b-88b10c25d1db">adaw</a>');
 		$this->assertGreaterThan(0, $postSynLinkPos);
+		
+		
+		///////////////////
+		// IMPORT REVERSAL
+		//////////////////
+		
+		$exampleFile = "tests/test-reversal-en.xhtml";
+		$xhtmlFileURL = "tests/test-reversal.xhtml";
+		//copy test data to test folder
+		copy($exampleFile, $xhtmlFileURL);
+		
+		$filetype = "reversal";
+		$abspath = str_replace("tests", "", __DIR__);
+		require($abspath . "processes/import_entries.php");
+		
+		//import entry "abadaw"
+		$import = new sil_pathway_xhtml_Import();
+				
+		$arrIndexed = $import->get_number_of_entries();
+		$this->assertEquals(1, $arrIndexed[0]->totalIndexed);
+		$this->assertEquals("en", $arrIndexed[0]->language_code);
 	}
 }

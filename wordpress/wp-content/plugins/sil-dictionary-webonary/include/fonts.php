@@ -146,7 +146,7 @@ class fontMonagment
 		$arrHasSubFonts[33] = false;
 
 		$arrFontName[34] = "Abyssinica SIL";
-		$arrFontStorage[34] = "AbyssinicaSIL-R.woff";
+		$arrFontStorage[34] = "AbyssinicaSIL-R";
 		$arrHasSubFonts[34] = false;
 	}
 	
