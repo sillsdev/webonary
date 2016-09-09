@@ -144,7 +144,10 @@ class fontMonagment
 		$arrFontName[33] = "Annapurna SIL Nepal";
 		$arrFontStorage[33] = "AnnapurnaSILNepal";
 		$arrHasSubFonts[33] = false;
-		
+
+		$arrFontName[34] = "Abyssinica SIL";
+		$arrFontStorage[34] = "AbyssinicaSIL-R.woff";
+		$arrHasSubFonts[34] = false;
 	}
 	
 	public function get_fonts_fromCssText($css_string)
