@@ -146,8 +146,12 @@ class fontMonagment
 		$arrHasSubFonts[33] = false;
 
 		$arrFontName[34] = "Abyssinica SIL";
-		$arrFontStorage[34] = "AbyssinicaSIL-R";
+		$arrFontStorage[34] = "AbyssinicaSIL";
 		$arrHasSubFonts[34] = false;
+		
+		$arrFontName[35] = "Scheherazade";
+		$arrFontStorage[35] = "Scheherazade";
+		$arrHasSubFonts[35] = false;
 	}
 	
 	public function get_fonts_fromCssText($css_string)

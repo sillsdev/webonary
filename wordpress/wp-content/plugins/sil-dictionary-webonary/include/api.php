@@ -75,7 +75,16 @@ class Webonary_API_MyType {
 					//then copy everything under AudioVisual and pictures
 					$this->recursiveCopy($zipFolderPath . "/AudioVisual", $uploadPath . "/AudioVisual");
 					$this->recursiveRemoveDir($zipFolderPath . "/AudioVisual");
-					$this->recursiveCopy($zipFolderPath . "/pictures", $uploadPath . "/images/thumbnail");
+					$this->recursiveCopy($zipFolderPath . "/pictures", $uploadPath . "/images/original");
+					if(file_exists($zipFolderPath . "/pictures/thumbnail"))
+					{
+						$this->recursiveCopy($zipFolderPath . "/pictures/thumbnail", $uploadPath . "/images/thumbnail");
+					}
+					else
+					{
+						$this->resize_image ( $uploadPath . "/images/original", 96, 96, $uploadPath . "/images/thumbnail" );
+					}
+						
 					$this->recursiveRemoveDir($zipFolderPath . "/pictures");
 						
 				}
@@ -198,6 +207,33 @@ class Webonary_API_MyType {
         } else if (file_exists ( $src ))
             copy ( $src, $dst );
         	error_log("moved: " . $src . " to " . $dst);
+    }
+    
+    function resize_image($src, $w, $h, $dst) {
+    	
+    	if(!file_exists($dst))
+    	{
+    		mkdir ( $dst );
+    	}
+    	$files = scandir ( $src );
+    	foreach ( $files as $file )
+    	{
+    		if ($file != "." && $file != "..")
+    		{
+    			list($width, $height) = getimagesize($src . "/"  . $file);
+    			 
+    			$r = $width / $height;
+    			$newwidth = $h*$r;
+    			$newheight = $h;
+    			
+    			$src_image = imagecreatefromjpeg($src . "/" . $file);
+    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
+    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
+    			
+    			imagejpeg($dst_image, $dst . "/" . $file, 90);
+    			echo $dst . "/" . $file . "\n";
+    		}
+    	}
     }
     
 	public function verifyAdminPrivileges(&$email = "", &$userid = 0)
