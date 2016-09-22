@@ -99,7 +99,7 @@ function report_missing_senses()
 ?>
 	<div class="wrap">
 		<h2>Missing Senses for the <?php echo $_GET['language'];?> browse view</h2>
-		These senses will not get found when clicking on them in the browse view.<br>
+		One or more senses will not get found for the following entries when clicking on them in the browse view.<br>
 		Please check in the FLEx dictionary view, if they show up there.
 		<ul>
 		<?php

@@ -152,6 +152,10 @@ class fontMonagment
 		$arrFontName[35] = "Scheherazade";
 		$arrFontStorage[35] = "Scheherazade";
 		$arrHasSubFonts[35] = false;
+		
+		$arrFontName[36] = "Padauk";
+		$arrFontStorage[36] = "Padauk";
+		$arrHasSubFonts[36] = false;
 	}
 	
 	public function get_fonts_fromCssText($css_string)

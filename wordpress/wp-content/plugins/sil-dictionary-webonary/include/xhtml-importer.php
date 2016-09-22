@@ -890,7 +890,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					
 					if($missingReversals > 0)
 					{
-						$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">" . $missingReversals . " senses were not found</a>";
+						$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
 					}
 					
 					$status .= "</div></div>";
@@ -1698,6 +1698,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$entries_count = null;
 		$reversal_xml = "";
 		
+		echo "#" . $reversals->item(0)->textContent . "#" . "<br>";
+		
 		if($reversals->length > 0)
 		{
 			$reversal_head = trim($reversals->item(0)->textContent);
@@ -1766,7 +1768,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$headword_text = trim($headword->textContent);
 		
 				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $reversal_head . " (" . $headword_text . ")",  "Step 2 of 2: Indexing reversal entries"  );
-		
+				
 				$post_name = "";
 				
 				//echo $doc->saveXML($headword, LIBXML_NOEMPTYTAG) . "<br>";
@@ -1811,7 +1813,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					
 					$reversal_xml = $doc->saveXML($doc, LIBXML_NOEMPTYTAG);
 				}
-				
 				
 				if($headwordCount == $headwords->length)
 				{
@@ -1868,7 +1869,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 								WHERE reversal_head = '%s' AND language_code = '%s' AND $id = '%s'",
 								$reversal_xml, $reversal_browsehead, $reversal_language, $id);
 					}
-					
+
 					$wpdb->query( $sql );
 					
 				}
@@ -1876,7 +1877,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					echo "PostId for '" . $headword_text . "' not found.<br>";
 					//we want to display the sense, not the reversal word in the "missing senses" report
-					$reversal_head = $headword_text;
+					////$reversal_head = $headword_text;
 				}
 				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, 0);
 		
