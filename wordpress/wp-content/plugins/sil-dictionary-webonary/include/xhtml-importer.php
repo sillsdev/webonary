@@ -1698,8 +1698,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$entries_count = null;
 		$reversal_xml = "";
 		
-		echo "#" . $reversals->item(0)->textContent . "#" . "<br>";
-		
 		if($reversals->length > 0)
 		{
 			$reversal_head = trim($reversals->item(0)->textContent);

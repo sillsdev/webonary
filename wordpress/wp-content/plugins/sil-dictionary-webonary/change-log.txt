@@ -1,3 +1,4 @@
+v. 6.1.8 28 September 2016 added SimSun as system font. Removed cell cursor styling from browse view letter selection.
 v. 6.1.7 22 September 2016 fixed bug with importing reversals where senses were missing
 v. 6.1.6 17 September 2016 thumbnails now get created automatically when using direct export from FLEx
 v. 6.1.5 9 September 2016 fixed mistake after adding Abyssinica SIL font

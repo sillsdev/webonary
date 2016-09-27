@@ -146,7 +146,7 @@ function displayAlphabet($alphas, $languagecode)
 {
 ?>
 	<style type="text/css">
-	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;cursor:pointer;cursor:hand;border:1px solid silver; float:left; position: relative;}
+	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; float:left; position: relative;}
 	</style>
 <?php
 	$display = "<br>";
