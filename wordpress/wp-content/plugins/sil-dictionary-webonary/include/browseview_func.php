@@ -44,6 +44,7 @@ function categories_func( $atts )
      The variable foldersTree creates its structure with calls to gFld, insFld, and insDoc -->
     <?php
     //if(get_option("useSemDomainNumbers") == 0 || 1 == 1)
+    /*
     if(get_option("useSemDomainNumbers") == 0)
     {
     ?>
@@ -52,6 +53,7 @@ function categories_func( $atts )
     }
     else
     {
+    	*/
     	require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
     	
     	$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
@@ -60,16 +62,28 @@ function categories_func( $atts )
 		" WHERE taxonomy = 'sil_semantic_domains'" .
 		" ORDER BY slug ASC";
     	
-    	$arrDomains = $wpdb->get_results($sql);
+    	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
+    	
+    	//if no semantic domains were imported, use the default domains defined in default_domains.php
+    	if(count($arrDomains) == 0)
+    	{
+    		$d = 0;
+    		foreach ($defaultDomain as $key => $value)
+			{
+				$arrDomains[$d]['slug'] = str_replace(".", "-", rtrim($key, "."));
+				$arrDomains[$d]['name'] = $value;
+				$d++;
+			}
+    	}
     	
     	//echo "<script language=\"JavaScript\">";
     	
     	foreach($arrDomains as $domain)
     	{
-    		//echo $domain->slug . " " . $domain->name . "<br>";
+    		//echo $domain['slug'] . " " . $domain['name'] . "\n";
     		
-    		$currentSemDomain =  $domain->slug . " " . $domain->name;
-    		$domainNumber = $domain->slug;
+    		$currentSemDomain =  $domain['slug'] . " " . $domain['name'];
+    		$domainNumber = $domain['slug'];
     		$levelOfDomain = substr_count("$domainNumber","-") + 1;
     			
     		printRootDomainIfNeeded($domainNumber);
@@ -97,7 +111,7 @@ function categories_func( $atts )
     	}
     	
     	echo "</script>";
-    }
+    //}
 	?>
 	<!-- Build the browser's objects and display default view of the tree. -->
 	<script language="JavaScript">
