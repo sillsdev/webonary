@@ -138,6 +138,7 @@ if(isset($xhtmlFileURL))
 		echo $exec_time . "<br>";
 	}
 	
+	$headers[] = 'From: Webonary <webonary@sil.org>';
 	if($filetype == "configured")
 	{
 		update_option("totalConfiguredEntries", ($entry_counter - 1));
@@ -152,7 +153,7 @@ if(isset($xhtmlFileURL))
 		$message = "The import of the vernacular (configured) xhtml export is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 		
-		wp_mail( $current_user->user_email, 'Import complete', $message);
+		wp_mail( $current_user->user_email, 'Import complete', $message, $headers);
 		
 		echo "Import finished\n";
 	}
@@ -168,7 +169,7 @@ if(isset($xhtmlFileURL))
 		$message = "The reversal import is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 			
-		wp_mail( $current_user->user_email, 'Reversal Import complete', $message);
+		wp_mail( $current_user->user_email, 'Reversal Import complete', $message, $headers);
 	}
 	
 	

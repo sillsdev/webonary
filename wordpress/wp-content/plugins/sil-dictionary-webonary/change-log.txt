@@ -1,3 +1,4 @@
+v. 6.2.0 29 September 2016 Added from header for sending emails
 v. 6.1.9 28 September 2016 The semantic domain view now uses the default domains from default_domains.php instead of categoryNodes_en.js if no domains were imported
 v. 6.1.8 28 September 2016 added SimSun as system font. Removed cell cursor styling from browse view letter selection.
 v. 6.1.7 22 September 2016 fixed bug with importing reversals where senses were missing
