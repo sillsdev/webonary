@@ -170,6 +170,12 @@ function webonary_searchform() {
 		{
 			echo gettext("Last update:") . " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
+		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%" . get_bloginfo('wpurl') . "%'");
+		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
+		{
+			echo "<br>";
+			echo gettext("Date published:") . " " . strftime("%b %e, %Y", strtotime($publishedDate));
+		}
 		?>
 		</div>
 		<?php
