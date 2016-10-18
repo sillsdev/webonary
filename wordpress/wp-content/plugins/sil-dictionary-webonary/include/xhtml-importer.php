@@ -601,27 +601,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		update_option("importStatus", "importFinished");
 	}
 
-	function convert_homographs($doc, $classname, $querystart = ".//xhtml:span")
-	{
-		$arrHomographs = $this->dom_xpath->query( $querystart . '[@class="' . $classname . '"]', $doc );
-		foreach($arrHomographs as $homograph)
-		{
-			$numbers = array("1", "2", "3", "4", "5");
-			$homographs = array("₁", "₂", "₃", "₄", "₅");
-
-			$newHomograph = str_replace($numbers, $homographs, $homograph->textContent);
-
-			$newNode = $doc->createElement('span', $newHomograph);
-			$newNode->setAttribute('class', 'xhomographnumber');
-
-			// fetch and replace the old element
-			//$oldNode = $dom->getElementById('old_div');
-			$parent = $homograph->parentNode;
-			$parent->replaceChild($newNode, $homograph);
-		}
-
-		return $doc;
-	}
 	function convert_semantic_domains_to_links($post_id, $doc, $field, $termid) {
 		global $wpdb;
 
@@ -1277,9 +1256,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				update_option("languagecode", $headword_language);
 			}
 	
-			//REMOVE WITH FLEx8.3 - xhomographnumber class doesn't exist anymore
-			$doc = $this->convert_homographs($doc, "xhomographnumber");
-			
 			$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
 				
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
@@ -1689,7 +1665,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$this->dom_xpath = new DOMXPath($doc);
 		$this->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$doc = $this->convert_homographs($doc, "Homograph-Number");
 		//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 			
 		// Should be only 1 reversal at most per entry.
@@ -1754,7 +1729,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$headwordCount = 1;
 			foreach ( $headwords as $headword )
 			{
-				///$entry = $this->convert_homographs($doc, "Homograph-Number");
 					
 				//the Sense-Reference-Number doesn't exist in search_strings field, so in order for it not to be searched, it has to be removed
 				$sensereferences = $this->dom_xpath->query('//xhtml:span[@class="Sense-Reference-Number"]', $headword);
@@ -1903,7 +1877,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$this->dom_xpath = new DOMXPath($doc);
 		$this->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$doc = $this->convert_homographs($doc, "xhomographnumber");
 		//$entries = $this->dom_xpath->query('//xhtml:div[@class="entry"]');
 		//$entry = $this->dom_xpath->query('./xhtml:span[@class="headword"]|./xhtml:span[@class="headword-minor"]|./xhtml:span[@class="headword-sub"]');
 		$headwords = $this->dom_xpath->query( './xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
