@@ -655,7 +655,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[@class="subentry"]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
-		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"LexSense")]';
+		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"gloss")]/span|' . $querystart . '[starts-with(@class,"LexSense")]';
 		$arrFieldQueries[4] = $querystart . '[starts-with(@class,"definition-sub")]'; //REMOVE WITH FLEX 8.3
 		$arrFieldQueries[5] = $querystart . '[@class = "example"]/span[@lang]';
 		$arrFieldQueries[6] = $querystart . '[@class = "translation"]/span[@lang]';
