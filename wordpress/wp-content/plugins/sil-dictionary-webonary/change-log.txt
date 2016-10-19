@@ -1,3 +1,4 @@
+v. 6.2.3 19 October 2016 audio folder only gets deleted if new audio folder exists && png/gif images now also get converted to thumbnails
 v. 6.2.2 18 October 2016 removed the conversion of homograph numbers into small numbers as this is now done by css
 v. 6.2.1 04 October 2016 added "Date published" below "Number of Entries"
 v. 6.2.0 29 September 2016 Added from header for sending emails

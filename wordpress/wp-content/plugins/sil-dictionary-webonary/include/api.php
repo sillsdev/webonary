@@ -70,8 +70,11 @@ class Webonary_API_MyType {
 					//first delete any existing files
 					$this->recursiveRemoveDir($uploadPath . "/images/thumbnail");
 					$this->recursiveRemoveDir($uploadPath . "/images/original");
-					$this->recursiveRemoveDir($uploadPath . "/audio");
-					$this->recursiveRemoveDir($uploadPath . "/AudioVisual");
+					if(file_exists($zipFolderPath . "/AudioVisual"))
+					{
+						$this->recursiveRemoveDir($uploadPath . "/audio");
+						$this->recursiveRemoveDir($uploadPath . "/AudioVisual");
+					}
 					//then copy everything under AudioVisual and pictures
 					$this->recursiveCopy($zipFolderPath . "/AudioVisual", $uploadPath . "/AudioVisual");
 					$this->recursiveRemoveDir($zipFolderPath . "/AudioVisual");
@@ -226,11 +229,42 @@ class Webonary_API_MyType {
     			$newwidth = $h*$r;
     			$newheight = $h;
     			
-    			$src_image = imagecreatefromjpeg($src . "/" . $file);
-    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
-    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
-    			
-    			imagejpeg($dst_image, $dst . "/" . $file, 90);
+    			if($newheight <= $height && $newwidth <= $width)
+    			{
+	    			$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+	
+	    			if($ext == "png")
+	    			{
+	    				$src_image = imagecreatefrompng($src . "/" . $file);
+	    			}
+	    			elseif($ext == "gif")
+	    			{
+	    				$src_image = imagecreatefromgif($src . "/" . $file);
+	    			}
+	    			else
+	    			{
+	    				$src_image = imagecreatefromjpeg($src . "/" . $file);
+	    			}
+	    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
+	    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
+	    			
+	    			if($ext == "png")
+	    			{
+	    				imagepng($dst_image, $dst . "/" . $file);
+	    			}
+	    			elseif($ext == "gif")
+	    			{
+	    				imagegif($dst_image, $dst . "/" . $file);
+	    			}
+	    			else
+	    			{
+	    				imagejpeg($dst_image, $dst . "/" . $file, 90);
+	    			}
+    			}
+    			else
+    			{
+    				copy ( $src . "/" . $file, $dst . "/" . $file );
+    			}
     			echo $dst . "/" . $file . "\n";
     		}
     	}
