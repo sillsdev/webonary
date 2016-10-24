@@ -1,3 +1,4 @@
+v. 6.2.5 24 October 2016 message on import encouraging users to update to FLEx 8.3.
 v. 6.2.4 19 October 2016 now also indexes the "gloss" class
 v. 6.2.3 19 October 2016 audio folder only gets deleted if new audio folder exists && png/gif images now also get converted to thumbnails
 v. 6.2.2 18 October 2016 removed the conversion of homograph numbers into small numbers as this is now done by css

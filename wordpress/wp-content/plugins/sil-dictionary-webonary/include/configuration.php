@@ -636,6 +636,7 @@ function webonary_conf_widget($showTitle = false) {
 		?>
 		<p>
 		<h3>Notes</h3>
+		Site ID: <?php echo get_current_blog_id(); ?>
 		<p>
 		<span style="color:red">These notes are only visible to super admins.</span>
 		<p>
