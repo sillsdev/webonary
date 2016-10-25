@@ -20,6 +20,19 @@
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
+function SearchFilter($query) {
+	// If 's' request variable is set but empty
+	if(isset($_GET['s']) && strlen($_GET['tax']) == 0)
+	{
+		if (strlen(trim($_GET['s'])) == 0){
+			$query->query_vars['s'] = NULL;
+		}
+	}
+	
+	return $query;
+}
+add_filter('pre_get_posts','SearchFilter');
+
 //---------------------------------------------------------------------------//
 function sil_dictionary_select_fields() {
 	global $wp_query, $wpdb;
@@ -211,8 +224,7 @@ function sil_dictionary_custom_message()
 function sil_dictionary_custom_where($where) {
 	global $wp_query, $wp_version, $wpdb;
 	$search_table_name = SEARCHTABLE;
-	
-	if( !empty($wp_query->query_vars['s'])) {
+	if( strlen(trim($wp_query->query_vars['s'])) > 0) {
 		$search = $wp_query->query_vars['s'];
 		$key = $_GET['key'];
 		if(!isset($key))
@@ -221,6 +233,7 @@ function sil_dictionary_custom_where($where) {
 		}
 		$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
 	}
+	
 	if(isset($wp_query->query_vars['letter']))
 	{
 		if($wp_query->query_vars['DisplaySubentriesAsMainEntries'] == false)
@@ -237,7 +250,7 @@ function sil_dictionary_custom_where($where) {
 			$where .= " AND $wpdb->term_relationships.term_taxonomy_id = " . $_GET['tax'];
 		}
 	}
-
+	
 	if(isset($wp_query->query_vars['semdomain']))
 	{
 		if(strlen($wp_query->query_vars['semdomain']) > 0)
@@ -253,6 +266,7 @@ function sil_dictionary_custom_where($where) {
 			}
 		}
 	}
+	
 	return $where;
 }
 

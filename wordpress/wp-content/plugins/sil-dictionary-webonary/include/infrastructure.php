@@ -43,10 +43,13 @@ function install_sil_dictionary_infrastructure() {
 		define('FULLCOLLATION', "utf8_general_ci");
 	}
 	
-	create_search_tables();
-	create_reversal_tables();
-	set_options();
-	remove_double_terms();
+	if(is_admin())
+	{
+		create_search_tables();
+		create_reversal_tables();
+		set_options();
+		remove_double_terms();
+	}
 	set_field_sortorder();
 	//upload_stylesheet();
 	register_semantic_domains_taxonomy();
