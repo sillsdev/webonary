@@ -31,6 +31,10 @@ global $wpdb;
 
 if(isset($xhtmlFileURL))
 {
+	$path_parts = pathinfo($xhtmlFileURL);
+	
+	$uploadPath = $path_parts['dirname'];
+	
 	$import = new sil_pathway_xhtml_Import();
 	
 	$import->api = $api;
@@ -92,14 +96,51 @@ if(isset($xhtmlFileURL))
 		//while ($reader->read() && $reader->getAttribute("class") !== 'letData');
 	
 		//while ($reader->getAttribute("class") === 'letData')
+		$arrLetters = array();
+		$a = 0;
 		while( $reader->read() )
 		{
 			//while ($reader->read() && $reader->getAttribute("class") !== 'entry' && $reader->getAttribute("class") !== 'minorentry');
 		
+			while($reader->getAttribute("class") == 'letter')
+			{
+				$letterHead = $reader->readInnerXml();
+				if($letterHead != "?")
+				{
+					if(strpos($letterHead, " ") > 0)
+					{
+						$letters = explode(" ", $letterHead);
+					
+						$letter = $letters[1];
+					}
+					else
+					{
+						$letter = $letterHead;
+					}
+					
+					if (!in_array($letter, $arrLetters)) {
+						$arrLetters[$a] = $letter;
+						$a++;
+					}
+				}
+				$reader->next("div");
+			}
+			
 			while ($reader->getAttribute("class") === 'entry' || $reader->getAttribute("class") === 'mainentrycomplex' || $reader->getAttribute("class") === 'reversalindexentry' || $reader->getAttribute("class") === 'minorentry' || $reader->getAttribute("class") === 'minorentryvariant' || $reader->getAttribute("class") === 'minorentrycomplex')
 			{
 				$postentry =  $reader->readOuterXml();
 				
+				if($entry_counter == 1)
+				{
+					$id = $reader->getAttribute("id");
+					
+					if(strlen($id) < 10)
+					{
+						echo "<span style=\"color:red; font-weight:bold;\">It looks like you are using an older version of FLEx. Please upgrade to FLEx 8.3.<br>In the future importing older versions of FLEx xhtml won't be supported by Webonary.</span><br>";
+						flush();
+					}
+					
+				}
 				//$reader->next("div");
 				
 				if(trim($postentry) != "")
@@ -125,6 +166,18 @@ if(isset($xhtmlFileURL))
 				$reader->next("div");
 			}
 		}
+	
+		$alphabet = "";
+		$s = 1;
+		foreach($arrLetters as $l)
+		{
+			$alphabet .= $l;
+			if($s < count($arrLetters))
+			{
+				$alphabet .= ",";
+			}
+			$s++;
+		}
 		
 		if($entry_counter == 1)
 		{
@@ -141,6 +194,13 @@ if(isset($xhtmlFileURL))
 	$headers[] = 'From: Webonary <webonary@sil.org>';
 	if($filetype == "configured")
 	{
+		similar_text(get_option('vernacular_alphabet'), $alphabet, $perSimilarAlphabet);
+		
+		if($perSimilarAlphabet < 60)
+		{
+			update_option("vernacular_alphabet", $alphabet);
+		}
+		
 		update_option("totalConfiguredEntries", ($entry_counter - 1));
 			
 		////$import->convert_fieldworks_links_to_wordpress();
@@ -163,6 +223,34 @@ if(isset($xhtmlFileURL))
 	}
 	elseif ( $filetype == 'reversal')
 	{
+		//reversal1_langcode
+		if(isset($_POST['languagecode']))
+		{
+			$reversalLang = $_POST['languagecode'];
+		}
+		else
+		{
+			$reversalLang = str_replace($uploadPath . "/reversal_", "", $xhtmlFileURL);
+			$reversalLang = str_replace(".xhtml", "", $reversalLang);
+		}
+		
+		$reversalAlphabetOption = "reversal1_alphabet";
+		if(get_option('reversal1_langcode') != $reversalLang)
+		{
+			$reversalAlphabetOption = "reversal2_alphabet";
+			
+			if(get_option('reversal2_langcode') != $reversalLang)
+			{
+				$reversalAlphabetOption = "reversal3_alphabet";
+			}
+		}
+		similar_text(get_option($reversalAlphabetOption), $alphabet, $perSimilarAlphabet);
+		
+		if($perSimilarAlphabet < 60)
+		{
+			update_option($reversalAlphabetOption, $alphabet);
+		}
+		
 		update_option("importStatus", "importFinished");
 		//$import->index_reversals();
 			
@@ -174,6 +262,7 @@ if(isset($xhtmlFileURL))
 	
 	
 	$file = $import->get_latest_xhtmlfile();
+	
 	if(isset($file))
 	{
 		if(substr($file->url, strlen($file->url) - 5, 5) == "xhtml")
@@ -188,10 +277,6 @@ if(isset($xhtmlFileURL))
 		unlink($xhtmlFileURL);
 		$unlinkedFile = $xhtmlFileURL;
 		error_log("unlinked: " . $xhtmlFileURL);
-		
-		$path_parts = pathinfo($xhtmlFileURL);
-		
-		$uploadPath = $path_parts['dirname']; //str_replace("configured.xhtml", "", $xhtmlFileURL);
 		
 		error_log("Upload Path: " . $uploadPath . "\n");
 		

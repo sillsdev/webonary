@@ -509,7 +509,7 @@ function webonary_conf_widget($showTitle = false) {
 			</select>
 			<?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
 			<p>
-			<?php _e('Secondary Reversal Index Alphabet:'); ?>
+			<?php _e('Third Reversal Index Alphabet:'); ?>
 			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			

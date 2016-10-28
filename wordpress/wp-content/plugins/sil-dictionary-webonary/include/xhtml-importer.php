@@ -806,7 +806,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				else
 				{
 					$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
-					$status .= " You will receive an email when the import has completed.";
+					$status .= " You will receive an email when the import has completed. You don't need to stay online.";
 					$status .= "<br>";
 	
 					if(get_option("importStatus") == "indexing")
@@ -1240,11 +1240,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$h = 0;
 		foreach ( $headwords as $headword ) {
 			
-			if($entry_counter == 1 && $h == 0 && $headword->getAttribute("class") != "mainheadword")
-			{
-				echo "<span style=\"color:red; font-weight:bold;\">It looks like you are using an older version of FLEx. Please upgrade to FLEx 8.3.<br>In the future importing older versions of FLEx xhtml won't be supported by Webonary.</span><br>";
-				flush();
-			}
 			$headword_language = $headword->getAttribute( "lang" );
 			if(strlen(trim($headword_language)) == 0)
 			{
@@ -1256,7 +1251,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$headword_language = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( "lang" );
 				}
 			}
-				
+			
 			if($entry_counter == 1)
 			{
 				update_option("languagecode", $headword_language);
@@ -1349,8 +1344,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				////sleep(1);
 			}
-				
-			$entry_counter++;
+			
+			if($h > 0)
+			{
+				$entry_counter++;
+			}
 	
 			return $entry_counter;
 		}

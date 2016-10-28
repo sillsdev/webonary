@@ -224,14 +224,17 @@ function sil_dictionary_custom_message()
 function sil_dictionary_custom_where($where) {
 	global $wp_query, $wp_version, $wpdb;
 	$search_table_name = SEARCHTABLE;
-	if( strlen(trim($wp_query->query_vars['s'])) > 0) {
-		$search = $wp_query->query_vars['s'];
-		$key = $_GET['key'];
-		if(!isset($key))
-		{
-			$key = $wp_query->query_vars['langcode'];
+	if(isset($wp_query->query_vars['s']))
+	{
+		if( strlen(trim($wp_query->query_vars['s'])) > 0) {
+			$search = $wp_query->query_vars['s'];
+			$key = $_GET['key'];
+			if(!isset($key))
+			{
+				$key = $wp_query->query_vars['langcode'];
+			}
+			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
 		}
-		$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
 	}
 	
 	if(isset($wp_query->query_vars['letter']))
