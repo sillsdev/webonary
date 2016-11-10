@@ -1281,6 +1281,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
 			//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
 			//but it will keep a link like this href="#" (important for playing audio)
+			
+			//first make sure audio href only contains a hastag (or any href with onclick after it)
+			$entry_xml = preg_replace('/href="(#)([^"]+)" onclick/', 'href="#" onclick', $entry_xml);
+					
 			$entry_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $entry_xml);
 				
 			//video character is in utf8mb4 which is currently not supported on the webonary server

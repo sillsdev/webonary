@@ -1,3 +1,4 @@
+v. 6.2.8 09 November 2016 fixed import problem with converting code for audio button
 v. 6.2.7 28 October 2016 alphabet now gets automatically imported (but doesn't overwrite existing alphabet, unless completely different)
 v. 6.2.6 25 October 2016 took some measures to improve performance. Empty search query no longer possible.
 v. 6.2.5 24 October 2016 message on import encouraging users to update to FLEx 8.3.

@@ -102,6 +102,10 @@ class Webonary_API_MyType {
 	
 					$filetype = "configured";
 					$xhtmlFileURL = $fileConfigured;
+					
+					//This message tells FLEx that the upload dialog can now be closed.
+					echo "Upload successful\n";
+					
 					require("run_import.php");
 				}
 			}
@@ -146,8 +150,6 @@ class Webonary_API_MyType {
 			return false;
 		}
 
-		echo "Upload successful\n";
-		
 		error_log("zip file: " . $uploadPath . "/" . $_FILES['file']['name']);
 		error_log(WP_CONTENT_DIR . "/archives");
 		
