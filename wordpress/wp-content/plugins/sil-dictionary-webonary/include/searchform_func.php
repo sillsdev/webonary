@@ -12,8 +12,7 @@ function searchform_init() {
 
 function webonary_searchform() {
 	global $wpdb;
-?>
-		<?php
+
 		if(get_option('inputFont') != "")
 		{
 		?>

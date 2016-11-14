@@ -31,8 +31,8 @@ function install_sil_dictionary_infrastructure() {
 	$sql = "select COLLATION_NAME from information_schema.columns where TABLE_SCHEMA = '" . $dbName . "' and TABLE_NAME = '". $wpdb->prefix . "posts' and COLUMN_NAME = 'post_title'";
 	
 	$postsCollation = $wpdb->get_var($sql);
-	
-	if (version_compare(mysql_get_server_info(), '5.5.3') >= 0 && ($postsCollation == "utf8mb4_general_ci" || $postsCollation == "utf8mb4_unicode_ci"))
+
+	if (version_compare($wpdb->db_version(), '5.5.3') >= 0 && ($postsCollation == "utf8mb4_general_ci" || $postsCollation == "utf8mb4_unicode_ci"))
 	{
 		define('COLLATION', "UTF8MB4");
 		define('FULLCOLLATION', "utf8mb4_unicode_ci");

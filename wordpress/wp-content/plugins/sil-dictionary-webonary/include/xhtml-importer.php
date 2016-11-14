@@ -79,13 +79,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	public $dom_xpath;
 
 	//-----------------------------------------------------------------------------//
-
-	function sil_pathway_xhtml_Import()
-	{
-		/**
-		 * Empty function
-		 */
-	}
 	
 	function start()
 	{
