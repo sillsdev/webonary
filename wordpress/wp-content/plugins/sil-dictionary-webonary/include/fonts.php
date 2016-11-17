@@ -214,7 +214,7 @@ class fontMonagment
 	
 	public function get_system_fonts()
 	{
-		$arrSystemFonts = array("Arial", "Arial Black", "Helvetica", "Times New Roman", "SimSun");
+		$arrSystemFonts = array("Arial", "Arial Black", "Helvetica", "Times New Roman", "SimSun", "Tahoma");
 		
 		return  $arrSystemFonts;
 	}
