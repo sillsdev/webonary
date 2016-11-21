@@ -551,6 +551,8 @@ function webonary_conf_widget($showTitle = false) {
 		<p>
 		<h3>Fonts</h3>
 		<p>
+		See <a href="http://www.webonary.org/help/setting-up-a-font/" target="_blank">Setting up a Font</a>.
+		<hr>
 		<?php
 		$fontFacesFile = file_get_contents($upload_dir['baseurl'] . '/custom.css');
 		$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
@@ -599,7 +601,7 @@ function webonary_conf_widget($showTitle = false) {
 					{
 						if($arrHasSubFonts[$fontKey])
 						{
-							echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://scripts.sil.org/FontSubsets\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+							echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
 						}
 					}
 				}
