@@ -422,6 +422,10 @@ function webonary_css()
 		clear:none;
 		white-space:unset;
 	}
+.mainentrysubentries .mainentrysubentry{
+		clear:none;
+		white-space:unset;
+	}
 </style>
 <?php
 }

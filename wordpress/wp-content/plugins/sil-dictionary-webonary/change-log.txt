@@ -1,3 +1,4 @@
+v. 6.3.3 12 December 2016 added css to unset clear and white-space settings for mainentrysubentry
 v. 6.3.2 21 November 2016 added link to font help
 v. 6.3.1 21 November 2016 browse view now lists letters starting with special characters like *,-,~,=
 v. 6.3.0 17 November 2016 Tahoma gets listed as system font
