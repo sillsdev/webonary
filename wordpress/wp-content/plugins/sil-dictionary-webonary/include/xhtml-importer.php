@@ -224,7 +224,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$xhtmlFileURL = $file->url;
 					$userid = $current_user->ID;
-					require("run_import.php");
+					//require("run_import.php");
+					
+					$argv = null;
+					require(ABSPATH . "wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php");
 				}
 				
 				/*

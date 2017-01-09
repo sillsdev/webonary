@@ -98,6 +98,7 @@ if(isset($xhtmlFileURL))
 		//while ($reader->getAttribute("class") === 'letData')
 		$arrLetters = array();
 		$a = 0;
+		$isNewFLExExport = true;
 		while( $reader->read() )
 		{
 			//while ($reader->read() && $reader->getAttribute("class") !== 'entry' && $reader->getAttribute("class") !== 'minorentry');
@@ -134,8 +135,9 @@ if(isset($xhtmlFileURL))
 				{
 					$id = $reader->getAttribute("id");
 					
-					if(strlen($id) < 10)
+					if(strlen($id) < 10 && $isNewFLExExport == true)
 					{
+						$isNewFLExExport = false;
 						echo "<span style=\"color:red; font-weight:bold;\">It looks like you are using an older version of FLEx. Please upgrade to FLEx 8.3.<br>In the future importing older versions of FLEx xhtml won't be supported by Webonary.</span><br>";
 						flush();
 					}
@@ -143,6 +145,7 @@ if(isset($xhtmlFileURL))
 				}
 				//$reader->next("div");
 				
+				//if(trim($postentry) != "" && $isNewFLExExport == true)
 				if(trim($postentry) != "")
 				{
 					if($filetype == 'stem')

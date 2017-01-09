@@ -22,7 +22,7 @@ if ( ! defined('ABSPATH') )
 
 function SearchFilter($query) {
 	// If 's' request variable is set but empty
-	if(isset($_GET['s']) && strlen($_GET['tax']) == 0)
+	if(isset($_GET['s']))
 	{
 		if (strlen(trim($_GET['s'])) == 0){
 			$query->query_vars['s'] = NULL;
