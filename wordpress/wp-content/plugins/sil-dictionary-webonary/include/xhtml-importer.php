@@ -941,14 +941,15 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		global $wpdb;
 		
-		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed, name AS language_name " .
+		//gets the language codes for all entries plus number of indexed entries
+		//(number of reversal entries is not exact, which is why we get reversal entries eeparate)
+		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed " .
 				" FROM " . $this->search_table_name .
-				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->search_table_name . ".language_code " .
 				" WHERE relevance >= 95 " .
-				" GROUP BY language_code " .
-				" ORDER BY name ASC";
+				" GROUP BY language_code ";
 		
 		$arrIndexed = $wpdb->get_results($sql);
+		
 
 		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
 				" FROM " . $this->reversal_table_name .
@@ -962,6 +963,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$s = 0;
 		foreach($arrIndexed as $indexed)
 		{
+			$sqlLangName = "SELECT name as language_name " .
+			" FROM $wpdb->terms " .
+			" WHERE slug = '" . $indexed->language_code . "'";
+			
+			$language_name = $wpdb->get_var($sqlLangName);
+			
+			$arrIndexed[$r]->language_name = $language_name;
+			
 			if($arrReversals[$s]->language_code == $indexed->language_code)
 			{
 				$arrIndexed[$r]->totalIndexed = $arrReversals[$s]->totalIndexed;
