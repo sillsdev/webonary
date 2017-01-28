@@ -1,5 +1,5 @@
 <?php
-if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt"))
+if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") && isset($argv))
 {
 	define('WP_INSTALLING', true);
 	require($argv[1] . "wp-load.php");

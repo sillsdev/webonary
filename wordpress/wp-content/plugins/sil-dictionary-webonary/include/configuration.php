@@ -236,6 +236,15 @@ function webonary_conf_widget($showTitle = false) {
 		<h2><?php _e( 'Webonary', 'webonary' ); ?></h2>
 	<?php
 	}
+	?>
+	<div style="border-color:red; border-width: 2px; border-style:solid; font-size:16px; padding:2px;">
+	<ol>
+	<li>Due to a Wordpress security update the direct upload to Webonary inside FLEx hasn't been working lately. A new version of FLEx that fixes this issue is now available for download:
+	<a href="http://software.sil.org/fieldworks/download/fw-833/" target="_blank">http://software.sil.org/fieldworks/download/fw-833/</a>
+	</li>
+	</ol>
+	</div>
+	<?php
 	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
 	
 	<?php
