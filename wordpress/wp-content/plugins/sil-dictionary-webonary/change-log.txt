@@ -1,3 +1,7 @@
+v. 6.4.1 06 April 2017 fixed issue that stylesheets didn't get loaded when using https
+v. 6.4.0 27 March 2017 if no letter chosen in vernacular browse view it will display first letter of alphabet
+v. 6.3.9 14 March 2017 font can now be set for letters in vernacular browse view 
+v. 6.3.8 09 March 2017 removed comment icon from displaying in dictionary entries
 v. 6.3.6 28 January 2017 updated message about new FLEx version that fixes upload issue
 v. 6.3.5 10 January 2017 split query for get_number_of_entries into sub queries for better performance
 v. 6.3.4 9 January 2017 Fixed problem of looking for an empty search query while searching for taxonomy

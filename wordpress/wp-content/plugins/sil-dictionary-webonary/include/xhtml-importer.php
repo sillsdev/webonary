@@ -224,10 +224,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$xhtmlFileURL = $file->url;
 					$userid = $current_user->ID;
-					//require("run_import.php");
+					require("run_import.php");
 					
-					$argv = null;
-					require(ABSPATH . "wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php");
+					//$argv = null;
+					//require(ABSPATH . "wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php");
 				}
 				
 				/*
@@ -647,7 +647,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 	
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
-		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
+		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/span[@class="lexemeform"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[@class="subentry"]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
@@ -1239,7 +1239,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
 		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
 		
-		$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
+		$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="lexemeform"]|./xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
 				
 		//$headword = $headwords->item( 0 )->nodeValue;
 		$h = 0;
@@ -1262,7 +1262,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				update_option("languagecode", $headword_language);
 			}
 	
-			$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
+			$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..|//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
 				
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 	

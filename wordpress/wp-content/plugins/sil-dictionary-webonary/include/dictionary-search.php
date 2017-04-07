@@ -41,7 +41,8 @@ function sil_dictionary_select_fields() {
 	if( !is_page())
 	{
 		$upload_dir = wp_upload_dir();
-		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		//wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
 	}
 	
@@ -135,7 +136,7 @@ function sil_dictionary_custom_join($join) {
 				$collate = "";
 			}
 			
-			$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '^(=|-|\\\*|~)?[" . addslashes($letter) . addslashes(strtoupper($letter)) . "]' " . $collate . ")" .
+			$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '^(=|-|\\\*|~)?" . addslashes($letter) . "' " . $collate . ")" .
 			" AND relevance >= 95 AND language_code = '$key' ";
 
 			$arrNoLetters = explode(",",  $noletters);
@@ -426,6 +427,10 @@ function webonary_css()
 		clear:none;
 		white-space:unset;
 	}
+span.comment {
+	background: none;
+	padding: 0px;
+}
 </style>
 <?php
 }

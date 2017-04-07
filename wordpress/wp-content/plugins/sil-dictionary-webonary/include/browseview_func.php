@@ -161,6 +161,19 @@ function displayAlphabet($alphas, $languagecode)
 ?>
 	<style type="text/css">
 	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; float:left; position: relative;}
+	<?php
+	if(get_option('vernacularLettersFont') != "")
+	{
+	?>
+	.lpTitleLetter  {
+		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
+	}
+	#chosenLetterHead {
+		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
+	}
+	<?php
+	}
+	?>
 	</style>
 <?php
 	$display = "<br>";
@@ -447,7 +460,7 @@ function reversalindex($display, $chosenLetter, $langcode)
 	</style>
 <?php
 	$upload_dir = wp_upload_dir();
-	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/reversal_' . $langcode . '.css?time=' . date("U"));
+	wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
 	wp_enqueue_style( 'reversal_stylesheet');
 
 	$page = $_GET['pagenr'];
@@ -550,27 +563,39 @@ function getVernacularHeadword($postid, $languagecode)
 	
 }
 
+function get_letter($firstLetterOfAlphabet = "") {
+	if (!isset($_GET['letter'])) {
+		return $firstLetterOfAlphabet;
+	}
+	$chosenLetter = stripslashes(trim($_GET['letter']));
+	// REVIEW: Do we really want to silently fail if this is not true? CP 2017-02
+	if (class_exists("Normalizer", $autoload = false))
+	{
+		$normalization = Normalizer::FORM_C;
+		if(get_option("normalization") == "FORM_D")
+		{
+			$normalization = Normalizer::FORM_D;
+		}
+		$chosenLetter = normalizer_normalize($chosenLetter, $normalization);
+	}
+	return $chosenLetter;
+}
+
 function vernacularalphabet_func( $atts )
 {
 	$upload_dir = wp_upload_dir();
-	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+	//wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+	wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
 	wp_enqueue_style( 'configured_stylesheet');
 	
 	$languagecode = get_option('languagecode');
 	
 	$alphas = explode(",",  get_option('vernacular_alphabet'));
-	
-	if(isset($_GET['letter']))
-	{
-		$chosenLetter = stripslashes($_GET['letter']);
-	}
-	else {
-		$chosenLetter = stripslashes($alphas[0]);
-	}
-		
+
+	$chosenLetter = get_letter($alphas[0]);
 	
 	$display = displayAlphabet($alphas, $languagecode);
-	$display .= "<div align=center><h1>" . $chosenLetter . "</h1></div><br>";
+	$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
 
 	if(empty($languagecode))
 	{
@@ -583,8 +608,6 @@ function vernacularalphabet_func( $atts )
 	$noLetters = "";
 	foreach($alphas as $alpha)
 	{
-		//$alpha = stripslashes($alpha);
-		$chosenLetter = trim($chosenLetter);
 		$alpha = trim($alpha);
 		
 		if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))

@@ -141,6 +141,7 @@ function save_configurations() {
 		}
 		update_option("special_characters", $special_characters);
 		update_option("inputFont", $_POST['inputFont']);
+		update_option("vernacularLettersFont", $_POST['vernacularLettersFont']);
 		
 		$displaySubentriesAsMainEntries = 'no';
 		if(isset($_POST['DisplaySubentriesAsMainEntries']))
@@ -221,12 +222,34 @@ function webonary_conf_widget($showTitle = false) {
 	$fontClass = new fontMonagment();
 	$css_string = file_get_contents($upload_dir['baseurl'] . '/imported-with-xhtml.css');
 	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
+	wp_enqueue_style( 'custom_css');
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<style>
 	#dashboard-widgets a {
 		text-decoration: underline;
 	}
+	<?php
+	if(get_option('inputFont') != "")
+	{
+	?>
+	#characters {
+		font-family: "<?php echo get_option('inputFont'); ?>";
+	}
+	<?php
+	}
+	?>
+	<?php
+	if(get_option('vernacularLettersFont') != "")
+	{
+	?>
+	#vernacularAlphabet {
+		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
+	}
+	<?php
+	}
+	?>
 	</style>
 	<div class="wrap">
 	<?php
@@ -237,13 +260,6 @@ function webonary_conf_widget($showTitle = false) {
 	<?php
 	}
 	?>
-	<div style="border-color:red; border-width: 2px; border-style:solid; font-size:16px; padding:2px;">
-	<ol>
-	<li>Due to a Wordpress security update the direct upload to Webonary inside FLEx hasn't been working lately. A new version of FLEx that fixes this issue is now available for download:
-	<a href="http://software.sil.org/fieldworks/download/fw-833/" target="_blank">http://software.sil.org/fieldworks/download/fw-833/</a>
-	</li>
-	</ol>
-	</div>
 	<?php
 	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
 	
@@ -314,7 +330,6 @@ function webonary_conf_widget($showTitle = false) {
 				<option value=6 <?php selected(get_option('publicationStatus'), 6); ?>><?php _e('Formally published'); ?></option>
 			</select>
 			<p>
-	
 			<h3><?php _e( 'Delete Data', 'sil_dictionary' ); ?></h3>
 			<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 				<strong style=color:red;>You are not in your testing environment!</strong>
@@ -389,7 +404,7 @@ function webonary_conf_widget($showTitle = false) {
 			<br>
 			These will appear above the search field.<br>
 			Separate the characters by comma:
-			<input type="input" name="characters" type="checkbox" value="<?php echo $special_characters; ?>">
+			<input type="input" name="characters" id=characters type="checkbox" value="<?php echo $special_characters; ?>">
 			</p>
 			<b>Font to use for the search field and character buttons:</b>
 			<br>
@@ -446,7 +461,7 @@ function webonary_conf_widget($showTitle = false) {
 			<?php _e('Language Name:'); ?> <input  id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet:'); ?>
-			<input name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
+			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			<p>
 			<?php
@@ -456,6 +471,20 @@ function webonary_conf_widget($showTitle = false) {
 				$IncludeCharactersWithDiacritics = 1;
 			}
 			?>
+			Font to use for the vernacular letters in browse view:
+			<select name=vernacularLettersFont>
+			<option value=""></option>
+			<?php
+			$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+			foreach($arrUniqueCSSFonts as $font)
+			{
+			?>
+				<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+			<?php
+			}
+			?>
+			</select>
+			<p>
 			<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 			<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
 			<p>
@@ -563,9 +592,12 @@ function webonary_conf_widget($showTitle = false) {
 		See <a href="http://www.webonary.org/help/setting-up-a-font/" target="_blank">Setting up a Font</a>.
 		<hr>
 		<?php
-		$fontFacesFile = file_get_contents($upload_dir['baseurl'] . '/custom.css');
-		$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
-		
+		$arrFontFacesFile = array();
+		$customCSSFilePath = $upload_dir['basedir'] . '/custom.css';
+		if (file_exists($customCSSFilePath)) {
+			$fontFacesFile = file_get_contents($customCSSFilePath);
+			$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
+		}
 		$options = get_option('themezee_options');
 		$arrFontFacesZeeOptions = $fontClass->get_fonts_fromCssText($options['themeZee_custom_css']);
 

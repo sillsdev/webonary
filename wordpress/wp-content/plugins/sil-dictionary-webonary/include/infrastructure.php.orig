@@ -38,7 +38,11 @@ function install_sil_dictionary_infrastructure() {
 		// Review: The forced use of collation is fragile, and unlikely to do what is expected. Certainly their are many combinations that are not compatible. CP 2017-02
 		// Proposal: Remove all forced collation and pre populate index exemplars CP 2017-02
 		define('COLLATION', "UTF8MB4");
+<<<<<<< Updated upstream
 		define('FULLCOLLATION', "utf8mb4_general_ci");
+=======
+		define('FULLCOLLATION', "utf8_general_ci");
+>>>>>>> Stashed changes
 	}
 	else
 	{
@@ -66,7 +70,7 @@ function create_reversal_tables () {
 	global $wpdb;
 
 	$table = REVERSALTABLE;
-	$sql = "CREATE TABLE `" . $table . "` (
+	$sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 		`id` varchar(20) NOT NULL,
 		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
@@ -84,15 +88,15 @@ function create_search_tables () {
 	global $wpdb;
 
 	$table = SEARCHTABLE;
-	$sql = "CREATE TABLE `" . $table . "` (
+	$sql = "CREATE TABLE IF NOT EXISTS " . $table . " (
 		`post_id` bigint(20) NOT NULL,
-		`language_code` varchar(20),
+		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`relevance` tinyint,
-		`search_strings` longtext,
+		`search_strings` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`subid` INT NOT NULL DEFAULT  '0',
-		`sortorder` INT NOT NULL DEFAULT '0',
-		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 )),
-		INDEX relevance_idx (relevance)
+		`sortorder` INT NOT NULL DEFAULT '0', ";
+		$sql .= " PRIMARY KEY (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 )), ";
+		$sql .= " INDEX (relevance)
 		) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );

@@ -138,15 +138,14 @@ if(isset($xhtmlFileURL))
 					if(strlen($id) < 10 && $isNewFLExExport == true)
 					{
 						$isNewFLExExport = false;
-						echo "<span style=\"color:red; font-weight:bold;\">It looks like you are using an older version of FLEx. Please upgrade to FLEx 8.3.<br>In the future importing older versions of FLEx xhtml won't be supported by Webonary.</span><br>";
+						echo "<span style=\"color:red; font-weight:bold;\">Older FLEx xhtml exports are no longer supported by the Webonary importer. Please upgrade to FLEx 8.3.</span><br>";
 						flush();
 					}
 					
 				}
 				//$reader->next("div");
 				
-				//if(trim($postentry) != "" && $isNewFLExExport == true)
-				if(trim($postentry) != "")
+				if(trim($postentry) != "" && $isNewFLExExport == true)
 				{
 					if($filetype == 'stem')
 					{

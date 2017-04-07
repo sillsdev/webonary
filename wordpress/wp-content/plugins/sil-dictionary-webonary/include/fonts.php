@@ -156,6 +156,10 @@ class fontMonagment
 		$arrFontName[36] = "Padauk";
 		$arrFontStorage[36] = "Padauk";
 		$arrHasSubFonts[36] = false;
+
+		$arrFontName[37] = "Nokyung";
+		$arrFontStorage[37] = "Nokyung.ttf";
+		$arrHasSubFonts[37] = false;
 	}
 	
 	public function get_fonts_fromCssText($css_string)
@@ -244,11 +248,18 @@ class fontMonagment
 					foreach($arrFontStyles as $fontStyle)
 					{
 						//echo WP_CONTENT_DIR . "/uploads/font/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff\n";
-						if(file_exists(WP_CONTENT_DIR . "/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff"))
+						$extension = ".woff";
+						if(strpos($arrFontStorage[$fontKey], ".ttf") > 0)
+						{
+							$arrFontStorage[$fontKey] = str_replace(".ttf", "", $arrFontStorage[$fontKey]);
+							$extension = ".ttf";
+						}
+						
+						if(file_exists(WP_CONTENT_DIR . "/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . $extension))
 						{
 							$fontFace .= "@font-face {\n";
 							$fontFace .= "font-family: " . $userFont . ";\n";
-							$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . ".woff);\n";
+							$fontFace .= "src: url(/wp-content/uploads/fonts/" . $arrFontStorage[$fontKey] . "-" . $fontStyle . $extension . ");\n";
 							if($fontStyle == "B" || $fontStyle == "BI")
 							{
 								$fontFace .= "font-weight: bold;\n";
