@@ -1,5 +1,5 @@
 <?php 
-add_action('wp_head', 'themezee_include_custom_css');
+// add_action('wp_head', 'themezee_include_custom_css');
 function themezee_include_custom_css() {
 	
 	echo '<style type="text/css">';

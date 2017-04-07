@@ -87,7 +87,7 @@
 	*/
 	
 	$customcss = "hideCustomCSS";
-	if($_GET['customcss'] == 1)
+	if (isset($_GET['customcss']) && $_GET['customcss'] == 1)
 	{
 		$customcss = "showCustomCSS";
 	}
@@ -100,7 +100,7 @@
 	$settings[] = array("name" => "",
 					"desc" => __('Paste the full Image URL of your logo.', ZEE_LANG),
 					"id" => "themeZee_logo",
-					"std" => $default_logo,
+					"std" => "", // $default_logo, // default_logo has been commented out above, so is commented here also CP 2017-02
 					"type" => "logo",
 					"section" => "themeZee_main");
 	

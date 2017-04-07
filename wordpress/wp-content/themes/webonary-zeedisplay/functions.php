@@ -148,7 +148,7 @@ function themezee_enqueue_scripts() {
 	 wp_enqueue_script('zee_jquery-cycle');
 	 */
 	wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', ( 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js' ), false, null, true );
+    wp_register_script( 'jquery', ( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js' ), false, null, true );
     wp_enqueue_script( 'jquery' );
 	wp_enqueue_script('zee_slidemenu');
 	wp_enqueue_script('highlight');

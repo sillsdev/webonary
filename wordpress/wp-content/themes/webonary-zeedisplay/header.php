@@ -32,9 +32,11 @@ $options = get_option('themezee_options');
 	<?php webonary_zeedisplay_link_style_sheets() ?>
 
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
+<!-- wp_head -->
 	<?php wp_head();
 	$upload_dir = wp_upload_dir();
 	?>
+<!-- wp_head end -->
 </head>
 <body <?php body_class(); ?> style="text-align:center">
 <div align="center">

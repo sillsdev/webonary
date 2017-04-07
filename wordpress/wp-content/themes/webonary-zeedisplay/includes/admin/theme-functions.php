@@ -4,7 +4,7 @@ add_action('wp_print_styles', 'theme_color_style');
 function theme_color_style() { 
 	$options = get_option('themezee_options');
 	
-	if ( $options['themeZee_stylesheet'] != '' and $options['themeZee_stylesheet'] <> 'custom-color' ) {
+	if (isset($options['themeZee_stylesheet']) && $options['themeZee_stylesheet'] != '' && $options['themeZee_stylesheet'] != 'custom-color' ) {
 		$stylesheet = get_template_directory_uri() . '/includes/styles/' . $options['themeZee_stylesheet'];
 		wp_register_style('zee_color_style', $stylesheet, array('zee_stylesheet'));
 		wp_enqueue_style( 'zee_color_style');
