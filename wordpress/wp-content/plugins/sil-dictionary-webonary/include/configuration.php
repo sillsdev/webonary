@@ -36,7 +36,7 @@ function get_admin_sections() {
 	{
 		$admin_sections['notes'] = __('Notes', 'sil_dictionary');
 	}
-	
+
 	return $admin_sections;
 }
 
@@ -106,9 +106,9 @@ function report_missing_senses()
 		$sql = " SELECT search_strings " .
 				" FROM " . $wpdb->prefix . "sil_search" .
 				" WHERE post_id = 0 AND language_code = '" . $_GET['languageCode'] . "'";
-		
+
 		$arrMissing = $wpdb->get_results($sql);
-		
+
 		foreach($arrMissing as $missing)
 		{
 			echo "<li>" . $missing->search_strings . "</li>";
@@ -142,7 +142,7 @@ function save_configurations() {
 		update_option("special_characters", $special_characters);
 		update_option("inputFont", $_POST['inputFont']);
 		update_option("vernacularLettersFont", $_POST['vernacularLettersFont']);
-		
+
 		$displaySubentriesAsMainEntries = 'no';
 		if(isset($_POST['DisplaySubentriesAsMainEntries']))
 		{
@@ -151,21 +151,21 @@ function save_configurations() {
 		update_option("DisplaySubentriesAsMainEntries", $displaySubentriesAsMainEntries);
 		update_option("languagecode", $_POST['languagecode']);
 		update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
-		 
+
 		$IncludeCharactersWithDiacritics = 'no';
 		if(isset($_POST['IncludeCharactersWithDiacritics']))
 		{
 			$IncludeCharactersWithDiacritics = 1;
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
-		 
+
 		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
 		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
 		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
 		update_option("reversal2_langcode", $_POST['reversal2_langcode']);
 		update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
 		update_option("reversal3_langcode", $_POST['reversal3_langcode']);
-		
+
 
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
 		{
@@ -199,7 +199,7 @@ function save_configurations() {
 				}
 			}
 		}
-		
+
 		if(isset($_POST['txtNotes']))
 		{
 			echo "Saving Notes<br>";
@@ -216,11 +216,16 @@ function webonary_conf_dashboard()
 }
 function webonary_conf_widget($showTitle = false) {
 	save_configurations();
-	
+
 	$upload_dir = wp_upload_dir();
-	
+
 	$fontClass = new fontMonagment();
-	$css_string = file_get_contents($upload_dir['baseurl'] . '/imported-with-xhtml.css');
+	$css_string = null;
+	$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
+	if(file_exists($configured_css_file))
+	{
+		$css_string = file_get_contents($configured_css_file);
+	}
 	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
 	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_css');
@@ -262,7 +267,7 @@ function webonary_conf_widget($showTitle = false) {
 	?>
 	<?php
 	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
-	
+
 	<?php
 	$admin_sections = get_admin_sections();
 	echo '<h2 class="nav-tab-wrapper">'.PHP_EOL;
@@ -270,9 +275,9 @@ function webonary_conf_widget($showTitle = false) {
 		echo '<a class="nav-tab" href="#'.$slug.'" title="'.sprintf(__('Click to switch to %s', 'sil_dictionary'), $name).'">'.$name.'</a>'.PHP_EOL;
 	}
 	echo '</h2>'.PHP_EOL;
-	
+
 	$arrLanguageCodes = get_LanguageCodes();
-	
+
 	// enctype="multipart/form-data"
 	?>
 	<script>
@@ -302,21 +307,21 @@ function webonary_conf_widget($showTitle = false) {
 			<?php
 			//////////////////////////////////////////////////////////////////////////////
 			admin_section_start('import');
-			
+
 			$import = new sil_pathway_xhtml_Import();
 			?>
 			<p>
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
-			
+
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
 				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
 			<strong>Import Status:</strong> <?php echo $a; echo $import->get_import_status(); ?>
 			</form>
 			</div>
-			
+
 			<p><?php _e('<a href="admin.php?import=pathway-xhtml" style="font-size:16px;">Click here to import your FLEx data</a>', 'sil_dictionary'); ?></p>
-	
+
 			<form id="configuration-form" method="post" action="">
 			<p>
 			<?php _e('Publication status:'); ?>
@@ -359,7 +364,7 @@ function webonary_conf_widget($showTitle = false) {
 				<br>
 				<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
 			</p>
-	
+
 			<?php admin_section_end('import', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////////
@@ -389,9 +394,14 @@ function webonary_conf_widget($showTitle = false) {
 			a composite character doesn't return a result, try FORM D.
 			</p>
 			<?php
-			$charWidget = new special_characters();
-			$settings = $charWidget->get_settings();
-			$settings = reset($settings);
+			if(class_exists(special_characters))
+			{
+				//this is here for legacy purposes. The special characters used to be Widget in a separate plugin.
+				//we need to get those characters for older ditionary sites and display them in the dashboard.
+				$charWidget = new special_characters();
+				$settings = $charWidget->get_settings();
+				$settings = reset($settings);
+			}
 			$special_characters = get_option('special_characters');
 			if(trim($special_characters) == "" && !isset($_POST['characters']) && trim($special_characters) != "empty")
 			{
@@ -412,11 +422,14 @@ function webonary_conf_widget($showTitle = false) {
 			<option value=""></option>
 			<?php
 			$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-			foreach($arrUniqueCSSFonts as $font)
+			if(isset($arrUniqueCSSFonts))
 			{
-			?>
-				<option value="<?php echo $font;?>" <?php if($font == get_option("inputFont")) { echo "selected"; } ?>><?php echo $font;?></option>
-			<?php
+				foreach($arrUniqueCSSFonts as $font)
+				{
+				?>
+					<option value="<?php echo $font;?>" <?php if($font == get_option("inputFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+				<?php
+				}
 			}
 			?>
 			</select>
@@ -476,11 +489,14 @@ function webonary_conf_widget($showTitle = false) {
 			<option value=""></option>
 			<?php
 			$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-			foreach($arrUniqueCSSFonts as $font)
+			if(isset($arrUniqueCSSFonts))
 			{
-			?>
-				<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
-			<?php
+				foreach($arrUniqueCSSFonts as $font)
+				{
+				?>
+					<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+				<?php
+				}
 			}
 			?>
 			</select>
@@ -550,7 +566,7 @@ function webonary_conf_widget($showTitle = false) {
 			<?php _e('Secondary Reversal Index Alphabet:'); ?>
 			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
-			
+
 			<hr>
 			 <i><?php _e('3. Reversal index'); ?></i> Shortcode: [reversalindex3]
 			 <p>
@@ -602,73 +618,76 @@ function webonary_conf_widget($showTitle = false) {
 		$arrFontFacesZeeOptions = $fontClass->get_fonts_fromCssText($options['themeZee_custom_css']);
 
 		$fontClass->getFontsAvailable($arrFontName, $arrFontStorage, $arrHasSubFonts);
-		
-		foreach($arrUniqueCSSFonts as $userFont)
+
+		if(isset($arrUniqueCSSFonts))
 		{
-			$userFont = trim($userFont);
-			
-			$fontKey = array_search($userFont, $arrFontName);
-			
-			if(!strstr($userFont, "default font"))
+			foreach($arrUniqueCSSFonts as $userFont)
 			{
-				echo "<strong>" . $userFont . "</strong><br>";
-				$fontLinked = false;
-				if(count($arrFontFacesFile) > 0)
+				$userFont = trim($userFont);
+
+				$fontKey = array_search($userFont, $arrFontName);
+
+				if(!strstr($userFont, "default font"))
 				{
-					if(in_array($userFont, $arrFontFacesFile))
+					echo "<strong>" . $userFont . "</strong><br>";
+					$fontLinked = false;
+					if(count($arrFontFacesFile) > 0)
 					{
-						$fontLinked = true;
-						echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a><br>";
-					}
-				}
-				if(count($arrFontFacesZeeOptions) > 0)
-				{
-					if(in_array($userFont, $arrFontFacesZeeOptions))
-					{
-						echo "linked in <a href=\"/wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
-						if($fontLinked)
+						if(in_array($userFont, $arrFontFacesFile))
 						{
-							echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";
-						}
-						$fontLinked = true;
-								
-						echo "<br>";
-					}
-				}
-				
-				if($fontLinked)
-				{
-					if($fontKey > 0)
-					{
-						if($arrHasSubFonts[$fontKey])
-						{
-							echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+							$fontLinked = true;
+							echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a><br>";
 						}
 					}
-				}
-				
-				if(!$fontLinked)
-				{
-					$arrSystemFonts = $fontClass->get_system_fonts();
-					if(in_array($userFont, $arrSystemFonts))
+					if(count($arrFontFacesZeeOptions) > 0)
 					{
-						echo "This is a system font that most computers already have installed.";
+						if(in_array($userFont, $arrFontFacesZeeOptions))
+						{
+							echo "linked in <a href=\"/wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
+							if($fontLinked)
+							{
+								echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";
+							}
+							$fontLinked = true;
+
+							echo "<br>";
+						}
 					}
-					else
+
+					if($fontLinked)
 					{
-						echo "<strong style=\"color:red;\">";
 						if($fontKey > 0)
 						{
-							echo "Font not linked. Please reupload the css file to get it linked.";
+							if($arrHasSubFonts[$fontKey])
+							{
+								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+							}
+						}
+					}
+
+					if(!$fontLinked)
+					{
+						$arrSystemFonts = $fontClass->get_system_fonts();
+						if(in_array($userFont, $arrSystemFonts))
+						{
+							echo "This is a system font that most computers already have installed.";
 						}
 						else
 						{
-							echo "Font not found in the repository. Please ask Webonary Support to add it.";
+							echo "<strong style=\"color:red;\">";
+							if($fontKey > 0)
+							{
+								echo "Font not linked. Please reupload the css file to get it linked.";
+							}
+							else
+							{
+								echo "Font not found in the repository. Please ask Webonary Support to add it.";
+							}
+							echo "</strong>";
 						}
-						echo "</strong>";
 					}
+					echo "<p></p>";
 				}
-				echo "<p></p>";
 			}
 		}
 		?>
@@ -685,10 +704,9 @@ function webonary_conf_widget($showTitle = false) {
 		<p>
 		<textarea name=txtNotes cols=60 rows=8><?php echo stripslashes(get_option("notes"));?></textarea>
 		<?php admin_section_end('notes', 'Save Changes'); ?>
-		
+
 		</div><?php //<!-- /tabs-container --> ?>
 		</form>
 	</div>
 	<?php
 }
-
