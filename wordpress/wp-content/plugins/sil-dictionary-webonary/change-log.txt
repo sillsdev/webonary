@@ -1,3 +1,4 @@
+v. 6.4.3 18 April 2017 gets collation info for new tables from Wordpress 
 v. 6.4.2 11 April 2017 fixed some errors that appeared for new setups 
 v. 6.4.1 06 April 2017 fixed issue that stylesheets didn't get loaded when using https
 v. 6.4.0 27 March 2017 if no letter chosen in vernacular browse view it will display first letter of alphabet

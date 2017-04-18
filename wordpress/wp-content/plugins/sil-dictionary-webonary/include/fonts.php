@@ -160,6 +160,10 @@ class fontMonagment
 		$arrFontName[37] = "Nokyung";
 		$arrFontStorage[37] = "Nokyung.ttf";
 		$arrHasSubFonts[37] = false;
+		
+		$arrFontName[38] = "Taogu";
+		$arrFontStorage[38] = "Taogu.ttf";
+		$arrHasSubFonts[38] = false;
 	}
 	
 	public function get_fonts_fromCssText($css_string)

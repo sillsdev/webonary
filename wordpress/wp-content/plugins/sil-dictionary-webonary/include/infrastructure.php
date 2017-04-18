@@ -24,6 +24,7 @@ if ( ! defined('ABSPATH') )
  */
 function install_sil_dictionary_infrastructure() {
 	global $wpdb;
+	global $blog_id;
 	
 	$sql = "SELECT DATABASE();";
 	$dbName = $wpdb->get_var($sql);
@@ -33,6 +34,10 @@ function install_sil_dictionary_infrastructure() {
 	$postsCollation = $wpdb->get_var($sql);
 
 	// The collation for all webonary databases is required to be utf8mb4_general_ci on all versions of mySQL that support it.
+	
+	define('COLLATION', $wpdb->charset);
+	define('FULLCOLLATION', $wpdb->collate);
+	/*
 	if (version_compare($wpdb->db_version(), '5.5.3') >= 0)
 	{
 		// Review: The forced use of collation is fragile, and unlikely to do what is expected. Certainly their are many combinations that are not compatible. CP 2017-02
@@ -45,7 +50,7 @@ function install_sil_dictionary_infrastructure() {
 		define('COLLATION', "UTF8");
 		define('FULLCOLLATION', "utf8_general_ci");
 	}
-	
+	*/
 	if(is_admin())
 	{
 		create_search_tables();
