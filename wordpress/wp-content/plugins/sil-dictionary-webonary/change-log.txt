@@ -1,3 +1,4 @@
+v. 6.4.4 4 May 2017 semantic domain numbers now also get converted into a link, like the text
 v. 6.4.3 18 April 2017 gets collation info for new tables from Wordpress 
 v. 6.4.2 11 April 2017 fixed some errors that appeared for new setups 
 v. 6.4.1 06 April 2017 fixed issue that stylesheets didn't get loaded when using https
