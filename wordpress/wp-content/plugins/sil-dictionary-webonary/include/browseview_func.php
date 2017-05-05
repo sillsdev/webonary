@@ -60,7 +60,7 @@ function categories_func( $atts )
 		" FROM " . $wpdb->prefix . "terms " .
 		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
 		" WHERE taxonomy = 'sil_semantic_domains'" .
-		" ORDER BY slug ASC";
+		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, SUBSTR(slug, LOCATE('-',slug)) ASC"; //this creates a numeric sort
     	
     	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
     	

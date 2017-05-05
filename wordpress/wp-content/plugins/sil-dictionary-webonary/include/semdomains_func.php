@@ -30,11 +30,12 @@ $roots = array( 'no 0 domain',
 		' aux1 = insFld(foldersTree, gFld("6. ' . __('Work and occupation', 'sil_dictionary') . '", "c0900.htm"))',
 		' aux1 = insFld(foldersTree, gFld("7. ' . __('Physical actions', 'sil_dictionary') . '", "c1141.htm"))',
 		' aux1 = insFld(foldersTree, gFld("8. ' . __('States', 'sil_dictionary') . '", "c1314.htm"))',
-		' aux1 = insFld(foldersTree, gFld("9. ' . __('Grammar', 'sil_dictionary') . '", "c1599.htm"))'
+		' aux1 = insFld(foldersTree, gFld("9. ' . __('Grammar', 'sil_dictionary') . '", "c1599.htm"))',
+		' aux1 = insFld(foldersTree, gFld("10. ' . __('Custom Domains', 'sil_dictionary') . '", "c1599.htm"))'
 		);
 		
 $rootDomainPrinted = array('no zero domain',
-		'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no');
+		'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no');
 
 require_once( dirname( __FILE__ ) . '/default_domains.php' );
 
@@ -124,6 +125,7 @@ function buildTreeToSupportThisItem($domainNumber, $levelOfDomain)
 		//$strToPrint = "#" . $domainNrToPrint . "#";
 		
 		$currentDigits[$i] = $currentDomainDigits[$i];
+
 		if ($currentDomainDigits[$i] > $lastSemDom[$i])
 		{
 			//print "about to print $strToPrint as output <br>";
@@ -150,7 +152,7 @@ function printRootDomainIfNeeded($domainNumber)
 	global $lastSemDomLevel;
 	global $rootDomainPrinted;
 	global $roots;
-	$rootDomain = substr($domainNumber, 0, 1);
+	$rootDomain = str_replace("-", "", substr($domainNumber, 0, 2));
 	//print "rootDomain:$rootDomain rootDomainPrinted:$rootDomainPrinted[$rootDomain] ";
 	if ($rootDomainPrinted[$rootDomain] =="no")
 	{
