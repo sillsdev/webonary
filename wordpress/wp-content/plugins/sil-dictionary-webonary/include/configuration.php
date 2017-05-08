@@ -158,7 +158,14 @@ function save_configurations() {
 			$IncludeCharactersWithDiacritics = 1;
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
-
+		
+		$vernacularRightToLeft = 'no';
+		if(isset($_POST['vernacularRightToLeft']))
+		{
+			$vernacularRightToLeft = 1;
+		}
+		update_option("vernacularRightToLeft", $vernacularRightToLeft);
+				
 		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
 		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
 		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
@@ -336,6 +343,7 @@ function webonary_conf_widget($showTitle = false) {
 			</select>
 			<p>
 			<h3><?php _e( 'Delete Data', 'sil_dictionary' ); ?></h3>
+			<br>
 			<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 				<strong style=color:red;>You are not in your testing environment!</strong>
 				<br>
@@ -500,6 +508,9 @@ function webonary_conf_widget($showTitle = false) {
 			}
 			?>
 			</select>
+			
+			<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+			
 			<p>
 			<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 			<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
@@ -615,7 +626,6 @@ function webonary_conf_widget($showTitle = false) {
 			$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
 		}
 		$options = get_option('themezee_options');
-		$arrFontFacesZeeOptions = $fontClass->get_fonts_fromCssText($options['themeZee_custom_css']);
 
 		$fontClass->getFontsAvailable($arrFontName, $arrFontStorage, $arrHasSubFonts);
 
@@ -637,20 +647,6 @@ function webonary_conf_widget($showTitle = false) {
 						{
 							$fontLinked = true;
 							echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a><br>";
-						}
-					}
-					if(count($arrFontFacesZeeOptions) > 0)
-					{
-						if(in_array($userFont, $arrFontFacesZeeOptions))
-						{
-							echo "linked in <a href=\"/wp-admin/themes.php?page=themezee&customcss=1\">zeeDisplay Options</a>";
-							if($fontLinked)
-							{
-								echo " <span style=\"font-weight:bold;\">(you should remove the custom css from here, as it's now in the file custom.css - once is enough...)</span>";
-							}
-							$fontLinked = true;
-
-							echo "<br>";
 						}
 					}
 

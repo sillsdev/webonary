@@ -1,3 +1,4 @@
+v. 6.4.6 8 May 2017 added configuration settings for right-to-left
 v. 6.4.5 5 May 2017 semantic domain tree order is now numeric and custom domains higher than 9 now display
 v. 6.4.4 4 May 2017 semantic domain numbers now also get converted into a link, like the text
 v. 6.4.3 18 April 2017 gets collation info for new tables from Wordpress 

@@ -162,6 +162,12 @@ function displayAlphabet($alphas, $languagecode)
 	<style type="text/css">
 	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; float:left; position: relative;}
 	<?php
+	if(get_option('vernacularRightToLeft') == 1)
+	{
+	?>
+		.lpTitleLetterCell {float:right;}
+	<?php
+	}
 	if(get_option('vernacularLettersFont') != "")
 	{
 	?>
@@ -178,6 +184,9 @@ function displayAlphabet($alphas, $languagecode)
 <?php
 	$display = "<br>";
 	$display .= "<div style=\"text-align:center;\"><div style=\"display:inline-block;\">";
+	
+	$letterCells = "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>" . str_replace(",", "</span></div><div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>", get_option('vernacular_alphabet')) . "</span></div><br>";
+	
 	foreach($alphas as $letter)
 	{
 		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
