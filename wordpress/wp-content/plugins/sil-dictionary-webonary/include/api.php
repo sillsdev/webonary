@@ -98,7 +98,7 @@ class Webonary_API_MyType {
 					remove_entries('flexlinks');
 					
 					//deletes data that comes with the posts, but gets stored separately (e.g. "parts of speech")
-					clean_out_dictionary_data();
+					clean_out_dictionary_data(1);
 	
 					$filetype = "configured";
 					$xhtmlFileURL = $fileConfigured;

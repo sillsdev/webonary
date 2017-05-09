@@ -268,9 +268,12 @@ function remove_double_terms () {
  * Uninstall the custom infrastsructure set up here by the plugin
  */
 
-function clean_out_dictionary_data () {
+function clean_out_dictionary_data ($delete_taxonomies = null) {
 
-	$delete_taxonomies = $_POST['delete_taxonomies'];
+	if($delete_taxonomies == null)
+	{
+		$delete_taxonomies = $_POST['delete_taxonomies'];
+	}
 
 	//deletes the xhtml file, if still there because import didn't get completed
 	$import = new sil_pathway_xhtml_Import();
