@@ -1,3 +1,4 @@
+v. 6.4.8 16 May 2017 fixed bug with import of minor entry headwords
 v. 6.4.7 9 May 2017 all taxonomies now get deleted too when using API
 v. 6.4.6 8 May 2017 added configuration settings for right-to-left
 v. 6.4.5 5 May 2017 semantic domain tree order is now numeric and custom domains higher than 9 now display

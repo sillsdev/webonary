@@ -1199,7 +1199,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 * Import entries for the Configured Dictionary.
 	 * @global <type> $wpdb
 	 */
-	function import_xhtml_entries ($postentry, $entry_counter, $menu_order) {
+	function import_xhtml_entries ($postentry, $entry_counter, $menu_order, $isNewFLExExport = true) {
 		global $wpdb;
 	
 		$doc = new DomDocument();
@@ -1239,7 +1239,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
 		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
 		
-		$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="lexemeform"]|./xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
+		if($isNewFLExExport)
+		{
+			$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="lexemeform"]');
+		}
+		else
+		{
+			$headwords = $this->dom_xpath->query( './xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
+		}
 				
 		//$headword = $headwords->item( 0 )->nodeValue;
 		$h = 0;
@@ -1262,7 +1269,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				update_option("languagecode", $headword_language);
 			}
 	
-			$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..|//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
+			if($isNewFLExExport)
+			{
+				$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..', $doc)->item(0);
+			}
+			else
+			{
+				$entry = $this->dom_xpath->query('//xhtml:span[@class="headword"]/..|//xhtml:span[@class="headword_L2"]/..|//xhtml:span[@class="headword-minor"]/..|//xhtml:div[@class="minorentries"]/span[@class="headword-minor"]/..|//xhtml:span[@class="headword-sub"]/..', $doc)->item(0);
+			}
 				
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 	
