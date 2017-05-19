@@ -79,9 +79,6 @@ class Webonary_API_MyType {
 					$this->recursiveCopy($zipFolderPath . "/AudioVisual", $uploadPath . "/AudioVisual");
 					$this->recursiveRemoveDir($zipFolderPath . "/AudioVisual");
 					
-					if (is_dir ( $src )) {
-						mkdir ( $uploadPath . "/images" );
-					}
 					$this->recursiveCopy($zipFolderPath . "/pictures", $uploadPath . "/images/original");
 					if(file_exists($zipFolderPath . "/pictures/thumbnail"))
 					{
@@ -213,9 +210,10 @@ class Webonary_API_MyType {
             foreach ( $files as $file )
                 if ($file != "." && $file != "..")
                     $this->recursiveCopy ( "$src/$file", "$dst/$file" );
-        } else if (file_exists ( $src ))
+        } else if (file_exists ( $src )) {
             copy ( $src, $dst );
         	error_log("moved: " . $src . " to " . $dst);
+        }
     }
     
     function resize_image($src, $w, $h, $dst) {
