@@ -78,6 +78,10 @@ class Webonary_API_MyType {
 					//then copy everything under AudioVisual and pictures
 					$this->recursiveCopy($zipFolderPath . "/AudioVisual", $uploadPath . "/AudioVisual");
 					$this->recursiveRemoveDir($zipFolderPath . "/AudioVisual");
+					
+					if (is_dir ( $src )) {
+						mkdir ( $uploadPath . "/images" );
+					}
 					$this->recursiveCopy($zipFolderPath . "/pictures", $uploadPath . "/images/original");
 					if(file_exists($zipFolderPath . "/pictures/thumbnail"))
 					{
