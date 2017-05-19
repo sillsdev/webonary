@@ -479,7 +479,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input  id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input disabled="disabled" id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet:'); ?>
 			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
@@ -532,7 +532,7 @@ function webonary_conf_widget($showTitle = false) {
 					$x++;
 					} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversalName type="text"  disabled="disabled" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]->name; } ?>">
 			<p>
 			<?php
 			if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
@@ -572,7 +572,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversal2Name disabled="disabled" type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
 			<p>
 			<?php _e('Secondary Reversal Index Alphabet:'); ?>
 			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
@@ -592,7 +592,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" disabled="disabled" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
 			<p>
 			<?php _e('Third Reversal Index Alphabet:'); ?>
 			<input name="reversal3_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>" />
