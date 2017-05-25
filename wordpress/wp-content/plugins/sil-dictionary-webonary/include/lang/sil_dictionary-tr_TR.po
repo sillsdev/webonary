@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Webonary\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-24 16:37+0800\n"
-"PO-Revision-Date: 2017-05-24 16:39+0800\n"
+"PO-Revision-Date: 2017-05-25 17:23+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -7646,11 +7646,11 @@ msgstr "Girdi sayısı"
 
 #: include/searchform_func.php:170
 msgid "Last update:"
-msgstr ""
+msgstr "Son güncelleme:"
 
 #: include/searchform_func.php:176
 msgid "Date published:"
-msgstr ""
+msgstr "Yayınlama tarihi:"
 
 #: include/searchform_func.php:191
 msgid "Found in Semantic Domains:"
