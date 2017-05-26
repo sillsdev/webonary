@@ -1,3 +1,4 @@
+v. 6.5.5 26 May 2017 added indexing subentries for FLEx 8.3 exports
 v. 6.5.4 25 May 2017 Turkish localization
 v. 6.5.3 25 May 2017 added status images for Turkish
 v. 6.5.2 25 May 2017 added localization for Turkish
