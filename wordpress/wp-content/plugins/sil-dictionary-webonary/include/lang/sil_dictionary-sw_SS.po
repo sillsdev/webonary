@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Webonary\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-24 10:50+0800\n"
-"PO-Revision-Date: 2016-10-26 11:25+0800\n"
+"PO-Revision-Date: 2017-05-31 13:27+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -5702,7 +5702,7 @@ msgstr ""
 # @ sil_dictionary
 #: include/infrastructure.php:145 include/searchform_func.php:144
 msgid "All Parts of Speech"
-msgstr "Aina zote za semi"
+msgstr "Aina zote za usemi"
 
 # @ default
 #: include/infrastructure.php:146
