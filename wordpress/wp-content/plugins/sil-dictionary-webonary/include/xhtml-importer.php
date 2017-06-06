@@ -945,7 +945,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		//(number of reversal entries is not exact, which is why we get reversal entries eeparate)
 		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed " .
 				" FROM " . $this->search_table_name .
-				" WHERE relevance >= 95 " .
+				" WHERE relevance == 100 " .
 				" GROUP BY language_code ";
 		
 		$arrIndexed = $wpdb->get_results($sql);
