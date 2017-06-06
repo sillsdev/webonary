@@ -1247,10 +1247,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			$headwords = $this->dom_xpath->query( './xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
 		}
-						
+		
 		//$headword = $headwords->item( 0 )->nodeValue;
 		$h = 0;
-		foreach ( $headwords as $headword ) {
+		$headword = $headwords->item(0);
+		//foreach ( $headwords as $headword ) {
 			
 			$headword_language = $headword->getAttribute( "lang" );
 			if(strlen(trim($headword_language)) == 0)
@@ -1281,11 +1282,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 	
 			$headword_text = $headword->textContent;
-							
+			
 			$flexid = "";
 			//if($this->dom_xpath->query('//xhtml:div[@id]', $entry)->length > 0)
 			//{
 			$flexid = $entry->getAttribute("id");
+
 			//}
 				
 			if(strlen(trim($flexid)) == 0)
@@ -1361,7 +1363,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			 */
 			$this->import_xhtml_show_progress( $entry_counter, null, $headword_text, "Step 1 of 2: Importing Post Entries" );
 			$h++;
-			} // foreach ( $headwords as $headword )
+			//} // foreach ( $headwords as $headword )
 	
 			if($entry_counter % 50 == 0)
 			{
