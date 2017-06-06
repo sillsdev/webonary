@@ -1,3 +1,4 @@
+v. 6.5.8 6 June 2017 readded default domains
 v. 6.5.7 6 June 2017 removed default domains
 v. 6.5.6 31 May 2017 edited Swahili translation
 v. 6.5.5 26 May 2017 added indexing subentries for FLEx 8.3 exports
