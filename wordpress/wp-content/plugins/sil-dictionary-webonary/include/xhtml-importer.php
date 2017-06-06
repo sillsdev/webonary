@@ -1241,13 +1241,13 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 		if($isNewFLExExport)
 		{
-			$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="lexemeform"]');
+			$headwords = $this->dom_xpath->query( './xhtml:span[@class="mainheadword"]|./xhtml:span[@class="lexemeform"]|./xhtml:span[@class="headword"]');
 		}
 		else
 		{
 			$headwords = $this->dom_xpath->query( './xhtml:span[@class="headword"]|./xhtml:span[@class="headword_L2"]|./xhtml:span[@class="headword-minor"]|./*[@class="headword-sub"]');
 		}
-				
+						
 		//$headword = $headwords->item( 0 )->nodeValue;
 		$h = 0;
 		foreach ( $headwords as $headword ) {
@@ -1271,7 +1271,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	
 			if($isNewFLExExport)
 			{
-				$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..', $doc)->item(0);
+				$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..|//xhtml:span[@class="headword"]/..', $doc)->item(0);
 			}
 			else
 			{
