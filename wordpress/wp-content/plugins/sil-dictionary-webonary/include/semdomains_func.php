@@ -37,7 +37,7 @@ $roots = array( 'no 0 domain',
 $rootDomainPrinted = array('no zero domain',
 		'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no');
 
-require_once( dirname( __FILE__ ) . '/default_domains.php' );
+//require_once( dirname( __FILE__ ) . '/default_domains.php' );
 
 //define a way to keep track of which semantic domain parents have been processed already.
 //eg is we have 1.3.1.1 and the odomerter says 1,3,0,0,0,0 then we need to first output 1,3,1
