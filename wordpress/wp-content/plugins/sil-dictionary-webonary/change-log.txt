@@ -1,3 +1,4 @@
+v. 6.6.0 6 June 2017 added Lipo translations
 v. 6.5.9 6 June 2017 fixed issue with minorentries no longer gettting imported
 v. 6.5.8 6 June 2017 readded default domains
 v. 6.5.7 6 June 2017 removed default domains
