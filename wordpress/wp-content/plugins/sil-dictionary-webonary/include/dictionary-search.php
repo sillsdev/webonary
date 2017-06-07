@@ -135,8 +135,9 @@ function sil_dictionary_custom_join($join) {
 			{
 				$collate = "";
 			}
-			
-			$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '^(=|-|\\\*|~)?" . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '^(=|-|\\\*|~)?" . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
+
+			$regex = "^(=|-|\\\*|~)?";
+			$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
 			" AND relevance >= 95 AND language_code = '$key' ";
 
 			$arrNoLetters = explode(",",  $noletters);
