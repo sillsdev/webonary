@@ -1,4 +1,4 @@
-v. 6.6.4 7 June 2017 browser views now work with both upper and lowercase letters
+v. 6.6.4 7 June 2017 browse views now work with both upper and lowercase letters
 v. 6.6.3 6 June 2017 fixed bug introduced in number_of_entries query
 v. 6.6.2 6 June 2017 changed number_of_entries to only count entries with releveance 100 
 v. 6.6.1 6 June 2017 removed foreach loop for headwords in import_xhtml_entries
