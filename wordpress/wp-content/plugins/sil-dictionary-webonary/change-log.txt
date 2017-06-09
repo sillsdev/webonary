@@ -1,3 +1,4 @@
+v. 6.6.7 9 June 2017 fixed issue with language names not getting saved in browse view configuration
 v. 6.6.6 9 June 2017 added option for custom semantic domain tree
 v. 6.6.5 7 June 2017 cleaned code for regex expression
 v. 6.6.4 7 June 2017 browse views now work with both upper and lowercase letters

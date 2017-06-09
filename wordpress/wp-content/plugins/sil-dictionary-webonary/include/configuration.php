@@ -189,28 +189,50 @@ function save_configurations() {
 		$arrLanguages[0]['name'] = "txtVernacularName";
 		$arrLanguages[0]['code'] = "languagecode";
 		$arrLanguages[1]['name'] = "txtReversalName";
-		$arrLanguages[1]['code'] = "reversal_langcode";
+		$arrLanguages[1]['code'] = "reversal1_langcode";
 		$arrLanguages[2]['name'] = "txtReversal2Name";
 		$arrLanguages[2]['code'] = "reversal2_langcode";
+		$arrLanguages[3]['name'] = "txtReversal3Name";
+		$arrLanguages[3]['code'] = "reversal3_langcode";
+		
 
 		foreach($arrLanguages as $language)
 		{
 			if(strlen(trim($_POST[$language['code']])) != 0)
 			{
-				$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')
-		  		ON DUPLICATE KEY UPDATE name = '" . $_POST[$language['name']]  . "'";
-
-				$wpdb->query( $sql );
-
-				$lastid = $wpdb->insert_id;
-
-				if($lastid != 0)
+				$sql = "SELECT term_id, name
+				FROM $wpdb->terms
+				WHERE slug = '" . $_POST[$language['code']] . "'";
+				
+				$arrLanguageNames = $wpdb->get_results($sql);
+				
+				if(count($arrLanguageNames) > 0)
 				{
-					$sql = "INSERT INTO  $wpdb->term_taxonomy (term_id, taxonomy,description,count) VALUES (" . $lastid . ", 'sil_writing_systems', '" . $_POST[$language['name']] . "',999999)
-			  		ON DUPLICATE KEY UPDATE description = '" . $_POST[$language['name']]  . "'";
-
-					$wpdb->query( $sql );
+					$sql = "UPDATE $wpdb->terms SET name = '" . $_POST[$language['name']]  . "' WHERE slug = '" . $_POST[$language['code']]  . "'";
+					$termid = $arrLanguageNames[0]->term_id;
 				}
+				else
+				{
+					$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')";
+					$termid = $wpdb->insert_id;
+				}
+				
+				$wpdb->query( $sql );
+				
+				
+
+				echo $term_id . "<br>";
+
+				if(count($arrLanguageNames) > 0)
+				{
+					$sql = "UPDATE $wpdb->term_taxonomy SET description = '" . $_POST[$language['name']] . "' WHERE term_id = " . $termid;
+				}
+				else
+				{
+					$sql = "INSERT INTO  $wpdb->term_taxonomy (term_id, taxonomy,description,count) VALUES (" . $term_id . ", 'sil_writing_systems', '" . $_POST[$language['name']] . "',999999)";
+				}
+				
+				$wpdb->query( $sql );
 			}
 		}
 
@@ -486,7 +508,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input disabled="disabled" id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet:'); ?>
 			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
@@ -540,7 +562,7 @@ function webonary_conf_widget($showTitle = false) {
 					$x++;
 					} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversalName type="text"  disabled="disabled" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]->name; } ?>">
 			<p>
 			<?php
 			if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
@@ -580,7 +602,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal2Name disabled="disabled" type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
 			<p>
 			<?php _e('Secondary Reversal Index Alphabet:'); ?>
 			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
@@ -600,7 +622,7 @@ function webonary_conf_widget($showTitle = false) {
 				$x++;
 				} ?>
 			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" disabled="disabled" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
+			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
 			<p>
 			<?php _e('Third Reversal Index Alphabet:'); ?>
 			<input name="reversal3_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>" />
