@@ -159,6 +159,13 @@ function save_configurations() {
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
 		
+		$displayCustomDomains = 'no';
+		if(isset($_POST['displayCustomDomains']))
+		{
+			$displayCustomDomains = 1;
+		}
+		update_option("displayCustomDomains", $displayCustomDomains);
+		
 		$vernacularRightToLeft = 'no';
 		if(isset($_POST['vernacularRightToLeft']))
 		{
@@ -485,13 +492,7 @@ function webonary_conf_widget($showTitle = false) {
 			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			<p>
-			<?php
-			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
-			if($IncludeCharactersWithDiacritics != "no" && !isset($IncludeCharactersWithDiacritics))
-			{
-				$IncludeCharactersWithDiacritics = 1;
-			}
-			?>
+		
 			Font to use for the vernacular letters in browse view:
 			<select name=vernacularLettersFont>
 			<option value=""></option>
@@ -512,6 +513,13 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
 			
 			<p>
+			<?php
+			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
+			if($IncludeCharactersWithDiacritics != "no" && !isset($IncludeCharactersWithDiacritics))
+			{
+				$IncludeCharactersWithDiacritics = 1;
+			}
+			?>
 			<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 			<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
 			<p>
@@ -598,6 +606,19 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="reversal3_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>" />
 			<?php _e('(Letters separated by comma)'); ?>
 			<?php
+			if(is_super_admin())
+			{
+				$displayCustomDomains = get_option('displayCustomDomains');
+				if($displayCustomDomains != "no" && !isset($displayCustomDomains))
+				{
+					$displayCustomDomains = 1;
+				}
+			?>
+				<h3>Semantic Domains</h3>
+				<input name="displayCustomDomains" type="checkbox" value="0" <?php checked('1', $displayCustomDomains); ?> />
+				<?php _e('Display custom domains');?>
+			<?php
+			}
 			/*
 			?>
 			<h3><?php _e('Comments');?></h3>
