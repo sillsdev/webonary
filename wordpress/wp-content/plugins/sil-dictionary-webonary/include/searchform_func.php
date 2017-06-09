@@ -103,12 +103,32 @@ function webonary_searchform() {
 					$key = $_GET['key'];
 				}
 	
-				$catalog_terms = get_terms('sil_writing_systems');
-	
+				
+				//$catalog_terms = get_terms('sil_writing_systems');
+				$arrLanguages = get_LanguageCodes();
+				$arrVernacularLanguage = get_LanguageCodes(get_option('languagecode'));
+				?>
+				<select name="key" class="webonary_searchform_language_select">
+				<option value="">
+				<?php _e('All Languages','sil_dictionary'); ?>
+				</option>
+				<?php
+				foreach ($arrLanguages as $language)
+				{
+					if($language->name != $arrVernacularLanguage[0]->name || ($language->name == $arrVernacularLanguage[0]->name && $language->language_code == get_option('languagecode')))
+					{
+				?>
+					<option value="<?php echo $language->language_code; ?>"
+						<?php if($key == $language->language_code) {?>selected<?php }?>>
+						<?php echo $language->name; ?>
+					</option>
+					<?php
+					}
+				}
+				?>
+				</select>
+				<?php
 				/*
-				 * Set up language options. The first option is for all
-				 * languages. Then the list is retrieved.
-				 */
 				if ($catalog_terms) {
 					?>
 					<!-- If you need to control the width of the dropdown, use the
@@ -131,7 +151,7 @@ function webonary_searchform() {
 					<br>
 					<?php
 				}
-	
+				*/
 				/*
 				 * Set up the Parts of Speech
 				 */
