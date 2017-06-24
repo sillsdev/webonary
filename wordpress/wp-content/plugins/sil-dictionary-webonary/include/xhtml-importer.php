@@ -733,7 +733,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") " .
 		" GROUP BY pinged " .
 		" ORDER BY post_date DESC";
-				
+
 		$arrPosts = $wpdb->get_results($sql);
 		
 		$sql = " SELECT * " .
@@ -1026,7 +1026,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		 $sql .= " AND pinged = ''";
 		}
 		$sql .= " ORDER BY menu_order ASC";
-
+		
 		return $wpdb->get_results($sql);
 	}
 
