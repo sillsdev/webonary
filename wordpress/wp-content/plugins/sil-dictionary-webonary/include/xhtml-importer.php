@@ -383,7 +383,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				foreach($audiofiles as $audiofile)
 				{
 
-					$filename = "/audio/" . str_replace("\\", "/", trim($audiofile));
+					$filename = "/AudioVisual/" . str_replace("\\", "/", trim($audiofile));
 					if (!file_exists($upload_dir['path'] . $filename))
 					{
 						echo "file " .  $upload_dir['baseurl'] . $filename . " doesn't exist<br>";

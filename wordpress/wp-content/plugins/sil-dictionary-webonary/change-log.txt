@@ -1,3 +1,4 @@
+v. 6.7.0 28 June 2017 changed path from "audio" to "AudioVisual"
 v. 6.6.9 24 June 2017 German localization
 v. 6.6.8 9 June 2017 fixed issue with language names appearing multiple times in dropdown
 v. 6.6.7 9 June 2017 fixed issue with language names not getting saved in browse view configuration
