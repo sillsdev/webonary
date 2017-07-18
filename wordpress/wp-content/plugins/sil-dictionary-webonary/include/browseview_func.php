@@ -119,7 +119,6 @@ function categories_func( $atts )
 	</script>
 <?php
 	$display .= "<div id=searchresults>";
-	
 	$semnumber = rtrim(str_replace(".", "-", $_REQUEST["semnumber"]), "-");
 	$arrPosts = null;
 	if(isset($_REQUEST["semnumber"]))

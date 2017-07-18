@@ -261,7 +261,7 @@ function sil_dictionary_custom_where($where) {
 		$wp_query->is_search = true;
 		$where .= " AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains'";
 			if(get_option("useSemDomainNumbers") == 1) {
-				$where .= " AND $wpdb->terms.slug LIKE '" . $wp_query->query_vars['semnumber'] ."%'";
+				$where .= " AND $wpdb->terms.slug  REGEXP '^" . $wp_query->query_vars['semnumber'] ."([-]|$)'";
 			}
 			else
 			{

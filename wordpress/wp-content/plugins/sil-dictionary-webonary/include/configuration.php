@@ -159,12 +159,7 @@ function save_configurations() {
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
 		
-		$displayCustomDomains = 'no';
-		if(isset($_POST['displayCustomDomains']))
-		{
-			$displayCustomDomains = 1;
-		}
-		update_option("displayCustomDomains", $displayCustomDomains);
+		update_option("displayCustomDomains", $_POST['displayCustomDomains']);
 		
 		$vernacularRightToLeft = 'no';
 		if(isset($_POST['vernacularRightToLeft']))
@@ -631,14 +626,18 @@ function webonary_conf_widget($showTitle = false) {
 			if(is_super_admin())
 			{
 				$displayCustomDomains = get_option('displayCustomDomains');
+				/*
 				if($displayCustomDomains != "no" && !isset($displayCustomDomains))
 				{
 					$displayCustomDomains = 1;
 				}
+				*/
 			?>
 				<h3>Semantic Domains</h3>
-				<input name="displayCustomDomains" type="checkbox" value="0" <?php checked('1', $displayCustomDomains); ?> />
-				<?php _e('Display custom domains');?>
+				<select name="displayCustomDomains">
+					<option value="default" <?php selected($displayCustomDomains, "default"); ?>>Default View</option>
+					<option value="yakan" <?php selected($displayCustomDomains, "yakan"); ?>>Yakan (Philippines)</option>
+				</select>
 			<?php
 			}
 			/*

@@ -297,7 +297,7 @@ function linkFolderHTML(isTextLink)
 
   if (this.hreference) 
   { 
-	searchlink = "?semdomain=" + this.desc.replace(/'/g, '&lsquo;').replace(/[0-9]|[.]/g, '').trim() + "&semnumber=" + this.desc.match(/\d[.]/g).join(''); // + "&nodeid=" + this.id; 
+	searchlink = "?semdomain=" + this.desc.replace(/'/g, '&lsquo;').replace(/[0-9]|[.]/g, '').trim() + "&semnumber=" + this.desc.match(/\d{1,2}[.]/g).join(''); // + "&nodeid=" + this.id; 
 	  //searchlink = "#";
 	if (USEFRAMES)
 	  docW = docW + "<a class=categorylink onclick=\"displayEntry('" + this.desc.replace(/'/g, '\'').replace(/[0-9]|[.]/g, '').trim() + "', '" + this.desc.match(/\d[.]/g).join('') + "');\" href='" + searchlink + "' "
