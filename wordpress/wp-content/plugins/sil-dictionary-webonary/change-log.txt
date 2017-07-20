@@ -1,3 +1,4 @@
+v. 6.7.3 20 July 2017 words with diacritics now get included again in browse view if checked, removed mysql regex expression 
 v. 6.7.2 18 July 2017 added custom semantic domains for Yakan 
 v. 6.7.1 14 July 2017 added status images for German
 v. 6.7.0 28 June 2017 changed path from "audio" to "AudioVisual"

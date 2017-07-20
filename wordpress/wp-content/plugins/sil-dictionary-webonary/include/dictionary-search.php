@@ -136,9 +136,14 @@ function sil_dictionary_custom_join($join) {
 				$collate = "";
 			}
 
-			$regex = "^(=|-|\\\*|~)?";
-			$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
-			" AND relevance >= 95 AND language_code = '$key' ";
+			//$regex = "^(=|-|\\\*|~)?";
+			//$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex  . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
+			$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' ";
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' ";
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' ";
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' ";
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%')";
+			$subquery_where .= " AND relevance >= 95 AND language_code = '$key' ";
 
 			$arrNoLetters = explode(",",  $noletters);
 			foreach($arrNoLetters as $noLetter)
