@@ -96,6 +96,8 @@ function sil_dictionary_custom_join($join) {
 		{
 			$search = trim($wp_query->query_vars['s']);
 		}
+		$search = strtolower($search);
+
 		$key = $_GET['key'];
 		if(!isset($key))
 		{
@@ -157,7 +159,7 @@ function sil_dictionary_custom_join($join) {
 		}
 		else if ( is_CJK( $search ) || mb_strlen($search) > 3 || $partialsearch == 1)
 		{
-			$subquery_where .= $search_table_name . ".search_strings LIKE '%" .
+			$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
 				addslashes( $search ) . "%' " . $collateSearch;
 		}
 		else
