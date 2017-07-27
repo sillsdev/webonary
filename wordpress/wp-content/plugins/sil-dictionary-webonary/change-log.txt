@@ -1,3 +1,4 @@
+v. 6.7.5 27 July 2017 diacritics now get distinguished again in browse view
 v. 6.7.4 25 July 2017 fixed issue where search query wasn't case insensitive (when diacritic characters needed to be disthinguished)
 v. 6.7.3 20 July 2017 words with diacritics now get included again in browse view if checked, removed mysql regex expression 
 v. 6.7.2 18 July 2017 added custom semantic domains for Yakan 

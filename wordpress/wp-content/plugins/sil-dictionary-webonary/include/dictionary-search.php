@@ -132,19 +132,20 @@ function sil_dictionary_custom_join($join) {
 			$noletters = trim($wp_query->query_vars['noletters']);
 
 			//by default we use collate utf8_bin and à, ä, etc. are handled as different letters
-			$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+			$collate = ""; //"COLLATE 'UTF8_BIN'";
+
 			if(get_option('IncludeCharactersWithDiacritics') == 1)
 			{
-				$collate = "";
+				$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
 			}
-
+			
 			//$regex = "^(=|-|\\\*|~)?";
 			//$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex  . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
-			$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' ";
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' ";
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' ";
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' ";
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%')";
+			$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' " . $collate;
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' " . $collate;
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' " . $collate;
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' " . $collate;
+			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%'"  . $collate . ")";
 			$subquery_where .= " AND relevance >= 95 AND language_code = '$key' ";
 
 			$arrNoLetters = explode(",",  $noletters);
