@@ -132,11 +132,10 @@ function sil_dictionary_custom_join($join) {
 			$noletters = trim($wp_query->query_vars['noletters']);
 
 			//by default we use collate utf8_bin and à, ä, etc. are handled as different letters
-			$collate = ""; //"COLLATE 'UTF8_BIN'";
-
+			$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
 			if(get_option('IncludeCharactersWithDiacritics') == 1)
 			{
-				$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+				$collate = "";
 			}
 			
 			//$regex = "^(=|-|\\\*|~)?";
