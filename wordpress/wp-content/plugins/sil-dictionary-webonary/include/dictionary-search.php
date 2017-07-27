@@ -140,12 +140,16 @@ function sil_dictionary_custom_join($join) {
 			
 			//$regex = "^(=|-|\\\*|~)?";
 			//$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex  . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
-			$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' " . $collate;
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' " . $collate;
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' " . $collate;
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' " . $collate;
-			$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%'"  . $collate . ")";
-			$subquery_where .= " AND relevance >= 95 AND language_code = '$key' ";
+			if(get_has_browseletters() == 0)
+			{
+				$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' " . $collate;
+				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' " . $collate;
+				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' " . $collate;
+				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' " . $collate;
+				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%'"  . $collate . ")";
+				$subquery_where .= " AND ";
+			}
+			$subquery_where .= " relevance >= 95 AND language_code = '$key' ";
 
 			$arrNoLetters = explode(",",  $noletters);
 			foreach($arrNoLetters as $noLetter)
@@ -241,6 +245,21 @@ function sil_dictionary_custom_where($where) {
 				$key = $wp_query->query_vars['langcode'];
 			}
 			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
+			
+			$letter = trim($wp_query->query_vars['letter']);
+			if(strlen(trim($letter)) > 0)
+			{
+				$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+				if(get_option('IncludeCharactersWithDiacritics') == 1)
+				{
+					$collate = "";
+				}
+				
+				if(get_has_browseletters() > 0)
+				{
+					$where .= " AND $wpdb->posts.post_content_filtered = '" . $letter ."' " . $collate . " AND $wpdb->posts.post_content_filtered != '' ";
+				}
+			}
 		}
 	}
 	
@@ -375,6 +394,18 @@ function no_standard_sort($k) {
 		$k->query_vars['order'] = 'none';
 	}
 }
+
+function get_has_browseletters()
+{
+	global $wpdb;
+
+	$sql = "SELECT COUNT(post_content_filtered) AS numberOfLetters " .
+			" FROM " . $wpdb->posts .
+			" WHERE pinged = 'linksconverted' AND post_content_filtered <> ''";
+
+	return $wpdb->get_var($sql);
+}
+
 
 function get_post_id_bycontent($query)
 {

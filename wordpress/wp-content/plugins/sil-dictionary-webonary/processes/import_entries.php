@@ -159,7 +159,7 @@ if(isset($xhtmlFileURL))
 					else
 					{
 						//filetype = configured
-						$entry_counter = $import->import_xhtml_entries($postentry, $entry_counter, $menu_order, $isNewFLExExport);
+						$entry_counter = $import->import_xhtml_entries($postentry, $entry_counter, $menu_order, $isNewFLExExport, $letter);
 					}
 					
 					$menu_order++;

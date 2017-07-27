@@ -1199,7 +1199,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 * Import entries for the Configured Dictionary.
 	 * @global <type> $wpdb
 	 */
-	function import_xhtml_entries ($postentry, $entry_counter, $menu_order, $isNewFLExExport = true) {
+	function import_xhtml_entries ($postentry, $entry_counter, $menu_order, $isNewFLExExport = true, $browseletter = "") {
 		global $wpdb;
 	
 		$doc = new DomDocument();
@@ -1331,9 +1331,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			if($post_id == NULL)
 			{
 				$sql = $wpdb->prepare(
-						"INSERT INTO ". $wpdb->posts . " (post_date, post_title, post_content, post_status, post_parent, post_name, comment_status, menu_order)
-				VALUES (NOW(), '%s', '%s', 'publish', %d, '%s', '%s', %d)",
-						trim($headword_text), $entry_xml, $post_parent, $flexid, get_option('default_comment_status'), $menu_order );
+						"INSERT INTO ". $wpdb->posts . " (post_date, post_title, post_content, post_status, post_parent, post_name, comment_status, menu_order, post_content_filtered)
+				VALUES (NOW(), '%s', '%s', 'publish', %d, '%s', '%s', %d, '%s')",
+						trim($headword_text), $entry_xml, $post_parent, $flexid, get_option('default_comment_status'), $menu_order, $browseletter );
 	
 				$wpdb->query( $sql );
 	
