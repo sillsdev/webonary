@@ -618,13 +618,16 @@ function vernacularalphabet_func( $atts )
 	{
 		$alpha = trim($alpha);
 		
-		if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
+		if($chosenLetter != "?")
 		{
-			if(strlen($noLetters) > 0)
+			if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
 			{
-				$noLetters .= ",";
+				if(strlen($noLetters) > 0)
+				{
+					$noLetters .= ",";
+				}
+				$noLetters .= $alpha;
 			}
-			$noLetters .= $alpha;
 		}
 	}
 

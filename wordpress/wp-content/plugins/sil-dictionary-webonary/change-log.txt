@@ -1,3 +1,4 @@
+v. 6.7.8 31 July 2017 entries without headword now also get imported
 v. 6.7.7 27 July 2017 letter head now gets stored in post_content_filtered which is used for generating browse view
 v. 6.7.6 27 July 2017 fixed bug
 v. 6.7.5 27 July 2017 diacritics now get distinguished again in browse view

@@ -1252,27 +1252,32 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$h = 0;
 		$headword = $headwords->item(0);
 		//foreach ( $headwords as $headword ) {
-			
-			$headword_language = $headword->getAttribute( "lang" );
-			if(strlen(trim($headword_language)) == 0)
-			{
-				$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
 	
-				//if span with language attribute is inside a link
+		if($entry_counter == 1)
+		{
+		
+			if(isset($headword))
+			{
+				$headword_language = $headword->getAttribute( "lang" );
 				if(strlen(trim($headword_language)) == 0)
 				{
-					$headword_language = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( "lang" );
+					$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+		
+					//if span with language attribute is inside a link
+					if(strlen(trim($headword_language)) == 0)
+					{
+						$headword_language = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( "lang" );
+					}
 				}
-			}
 			
-			if($entry_counter == 1)
-			{
 				update_option("languagecode", $headword_language);
 			}
-	
+		}
+				
 			if($isNewFLExExport)
 			{
-				$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..|//xhtml:span[@class="headword"]/..', $doc)->item(0);
+				//$entry = $this->dom_xpath->query('//xhtml:span[@class="mainheadword"]/..|//xhtml:span[@class="lexemeform"]/..|//xhtml:span[@class="headword"]/..', $doc)->item(0);
+				$entry = $this->dom_xpath->query('//xhtml:div[@class="entry"]|//xhtml:div[@class="mainentrycomplex"]|//xhtml:div[@class="minorentryvariant"]|//xhtml:div[@class="minorentrycomplex"]', $doc)->item(0);
 			}
 			else
 			{
@@ -1281,13 +1286,16 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				
 			//$entry = $this->dom_xpath->query('//div', $doc)->item(0);
 	
-			$headword_text = $headword->textContent;
+			$headword_text = "?";
+			if(isset($headword))
+			{
+				$headword_text = $headword->textContent;
+			}
 			
 			$flexid = "";
 			//if($this->dom_xpath->query('//xhtml:div[@id]', $entry)->length > 0)
 			//{
 			$flexid = $entry->getAttribute("id");
-
 			//}
 				
 			if(strlen(trim($flexid)) == 0)
@@ -1298,6 +1306,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$entry->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 				
 			$entry_xml = $doc->saveXML($entry, LIBXML_NOEMPTYTAG);
+			
+			//echo $entry_xml . "<hr>";
 				
 			//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
 			//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
@@ -2072,19 +2082,29 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	
 				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $post->post_title, "Step 2 of 2: Indexing Search Strings");
 	
-				if(isset($headword) && $post->post_parent == 0)
+				//if(isset($headword) && $post->post_parent == 0)
+				if($post->post_parent == 0)
 				{
-					$headword_language = $headword->getAttribute( "lang" );
-					if(strlen(trim($headword_language)) == 0)
+					if(isset($headword))
 					{
+						$headword_text = $headword->textContent;
+						$headword_language = $headword->getAttribute( "lang" );
 						if(strlen(trim($headword_language)) == 0)
 						{
-							$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+							if(strlen(trim($headword_language)) == 0)
+							{
+								$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+							}
 						}
+					}
+					else
+					{
+						$headword_text = "?";
+						$headword_language = get_option("languagecode");
 					}
 						
 					//import headword
-					$this->import_xhtml_search_string($post->ID, $headword->textContent, $this->headword_relevance, $headword_language, $subid);
+					$this->import_xhtml_search_string($post->ID, $headword_text, $this->headword_relevance, $headword_language, $subid);
 					//sub headwords
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[1], ($this->headword_relevance - 5), $subid);
 					//lexeme forms
@@ -2113,9 +2133,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$subentry = true;
 				}
-	
-				$headword_text = trim($headword->textContent);
-	
+				
 				//this is used for the browse view sort order
 				$sql = "UPDATE " . $this->search_table_name . " SET sortorder = " . $post->menu_order . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . COLLATION . "_BIN' AND relevance >= 95 AND sortorder = 0" ;
 				$wpdb->query( $sql );

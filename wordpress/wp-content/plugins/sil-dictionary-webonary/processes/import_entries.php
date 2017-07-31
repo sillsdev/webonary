@@ -106,8 +106,11 @@ if(isset($xhtmlFileURL))
 			while($reader->getAttribute("class") == 'letter')
 			{
 				$letterHead = $reader->readInnerXml();
-				if($letterHead != "?")
-				{
+				$letterLanguage = $reader->getAttribute("lang");
+				update_option("languagecode", $letterLanguage);
+				
+				//if($letterHead != "?")
+				//{
 					if(strpos($letterHead, " ") > 0)
 					{
 						$letters = explode(" ", $letterHead);
@@ -123,7 +126,7 @@ if(isset($xhtmlFileURL))
 						$arrLetters[$a] = $letter;
 						$a++;
 					}
-				}
+				//}
 				$reader->next("div");
 			}
 			
