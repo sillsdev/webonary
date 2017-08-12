@@ -152,7 +152,10 @@ if(isset($xhtmlFileURL))
 					if($filetype == 'stem')
 					{
 						$entry_counter = $import->import_xhtml_stem_indexes($postentry, $entry_counter);
-						update_option("languagecode", $letterLanguage);
+						if(strlen($letterLanguage) > 0)
+						{
+							update_option("languagecode", $letterLanguage);
+						}
 					}
 					elseif($filetype == 'reversal')
 					{
@@ -163,7 +166,10 @@ if(isset($xhtmlFileURL))
 					{
 						//filetype = configured
 						$entry_counter = $import->import_xhtml_entries($postentry, $entry_counter, $menu_order, $isNewFLExExport, $letter);
-						update_option("languagecode", $letterLanguage);
+						if(strlen($letterLanguage) > 0)
+						{
+							update_option("languagecode", $letterLanguage);
+						}
 					}
 					
 					$menu_order++;

@@ -603,6 +603,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$newelement = $doc->createElement('span');
 		
 		$allNodes = "";
+		
 		foreach($field->childNodes as $node)
 		{
 			$allNodes .= $doc->saveXML($node);
@@ -625,7 +626,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		" WHERE ID = " . $post_id;
 
 		$wpdb->query( $sql );
-
 	}
 
 	/**
@@ -1652,8 +1652,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						$i++;
 					}
 				}
-
-				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+				if($sd_numbers->length > 0)
+				{
+					$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+				}
 				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
 
 				if(isset($termid))
