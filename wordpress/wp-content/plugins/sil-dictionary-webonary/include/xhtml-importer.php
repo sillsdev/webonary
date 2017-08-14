@@ -1609,7 +1609,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		
 		foreach ( $semantic_domains as $semantic_domain ){
 		
-			$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]', $semantic_domain);
+			$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
 			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
 			///span[not(@class = "Writing_System_Abbreviation")]
 			$sc = 0;
@@ -1654,7 +1654,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 				if($sd_numbers->length > 0)
 				{
-					$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+					if($sd_numbers->item($sc) != null)
+					{
+						$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+					}
 				}
 				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
 

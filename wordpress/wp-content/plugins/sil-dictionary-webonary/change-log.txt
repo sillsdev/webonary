@@ -1,3 +1,4 @@
+v. 6.8.1 14 August 2017 fixed more issues with importing semantic domains
 v. 6.8.0 12 August 2017 fixed import bug that occurred when no semantic domain numbers were set
 v. 6.7.9 2 August 2017 fixed bug concerning the setting of language code 
 v. 6.7.8 31 July 2017 entries without headword now also get imported
