@@ -270,6 +270,11 @@ function remove_double_terms () {
 
 function clean_out_dictionary_data ($delete_taxonomies = null) {
 
+	if ( is_plugin_active( 'wp-super-cache/wp-cache.php' ) )
+	{
+		prune_super_cache( get_supercache_dir(), true );
+	}
+	
 	if($delete_taxonomies == null)
 	{
 		$delete_taxonomies = $_POST['delete_taxonomies'];
