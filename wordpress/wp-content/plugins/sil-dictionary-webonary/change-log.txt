@@ -1,14 +1,15 @@
+v. 6.8.3 5 September 2017 fixed formatting bug caused by missing closing tag for audio link
 v. 6.8.2 15 August 2017 cache gets cleared when deleting entries
 v. 6.8.1 14 August 2017 fixed more issues with importing semantic domains
 v. 6.8.0 12 August 2017 fixed import bug that occurred when no semantic domain numbers were set
-v. 6.7.9 2 August 2017 fixed bug concerning the setting of language code 
+v. 6.7.9 2 August 2017 fixed bug concerning the setting of language code
 v. 6.7.8 31 July 2017 entries without headword now also get imported
 v. 6.7.7 27 July 2017 letter head now gets stored in post_content_filtered which is used for generating browse view
 v. 6.7.6 27 July 2017 fixed bug
 v. 6.7.5 27 July 2017 diacritics now get distinguished again in browse view
 v. 6.7.4 25 July 2017 fixed issue where search query wasn't case insensitive (when diacritic characters needed to be disthinguished)
-v. 6.7.3 20 July 2017 words with diacritics now get included again in browse view if checked, removed mysql regex expression 
-v. 6.7.2 18 July 2017 added custom semantic domains for Yakan 
+v. 6.7.3 20 July 2017 words with diacritics now get included again in browse view if checked, removed mysql regex expression
+v. 6.7.2 18 July 2017 added custom semantic domains for Yakan
 v. 6.7.1 14 July 2017 added status images for German
 v. 6.7.0 28 June 2017 changed path from "audio" to "AudioVisual"
 v. 6.6.9 24 June 2017 German localization
@@ -18,7 +19,7 @@ v. 6.6.6 9 June 2017 added option for custom semantic domain tree
 v. 6.6.5 7 June 2017 cleaned code for regex expression
 v. 6.6.4 7 June 2017 browse views now work with both upper and lowercase letters
 v. 6.6.3 6 June 2017 fixed bug introduced in number_of_entries query
-v. 6.6.2 6 June 2017 changed number_of_entries to only count entries with releveance 100 
+v. 6.6.2 6 June 2017 changed number_of_entries to only count entries with releveance 100
 v. 6.6.1 6 June 2017 removed foreach loop for headwords in import_xhtml_entries
 v. 6.6.0 6 June 2017 added Lipo translations
 v. 6.5.9 6 June 2017 fixed issue with minorentries no longer gettting imported
@@ -37,11 +38,11 @@ v. 6.4.7 9 May 2017 all taxonomies now get deleted too when using API
 v. 6.4.6 8 May 2017 added configuration settings for right-to-left
 v. 6.4.5 5 May 2017 semantic domain tree order is now numeric and custom domains higher than 9 now display
 v. 6.4.4 4 May 2017 semantic domain numbers now also get converted into a link, like the text
-v. 6.4.3 18 April 2017 gets collation info for new tables from Wordpress 
-v. 6.4.2 11 April 2017 fixed some errors that appeared for new setups 
+v. 6.4.3 18 April 2017 gets collation info for new tables from Wordpress
+v. 6.4.2 11 April 2017 fixed some errors that appeared for new setups
 v. 6.4.1 06 April 2017 fixed issue that stylesheets didn't get loaded when using https
 v. 6.4.0 27 March 2017 if no letter chosen in vernacular browse view it will display first letter of alphabet
-v. 6.3.9 14 March 2017 font can now be set for letters in vernacular browse view 
+v. 6.3.9 14 March 2017 font can now be set for letters in vernacular browse view
 v. 6.3.8 09 March 2017 removed comment icon from displaying in dictionary entries
 v. 6.3.6 28 January 2017 updated message about new FLEx version that fixes upload issue
 v. 6.3.5 10 January 2017 split query for get_number_of_entries into sub queries for better performance
@@ -77,7 +78,7 @@ v. 6.0.6 28 July 2016 only show entry update if date set.
 v. 6.0.5 27 July 2016 only shows entry update if entries exists.
 v. 6.0.4 26 July 2016 added entry update date below search field
 v. 6.0.3 01 July 2016 added note field for super admins
-v. 6.0.2 02 June 2016 fixed an issue with indexing reversals 
+v. 6.0.2 02 June 2016 fixed an issue with indexing reversals
 v. 6.0.1 31 May 2016 fixed an issue with importing more than 1 reversal index
 v. 6.0.0 30 May 2016 superadmin can now use API to import
 v. 5.9.9 30 May 2016 bug fix, skip empty field during import
@@ -85,15 +86,15 @@ v. 5.9.8 27 May 2016 reversal import now also converts homonyms to subscript
 v. 5.9.7 27 May 2016 missing senses report now displays for normal admin too
 v. 5.9.6 27 May 2016 fixed bug with saving special characters
 v. 5.9.5 23 May 2016 added missing senses report for reversal entries
-v. 5.9.4 20 May 2016 fixed wrong entry number for vernacular count 
-v. 5.9.3 20 May 2016 now number of reversal entries (for newer Webonary sites) coming from reversal table instead of index table  
+v. 5.9.4 20 May 2016 fixed wrong entry number for vernacular count
+v. 5.9.3 20 May 2016 now number of reversal entries (for newer Webonary sites) coming from reversal table instead of index table
 v. 5.9.2 20 May 2016 fixed wrong id while indexing reversals
 v. 5.9.1 20 May 2016 added id to table wp_sil_reversals
 v. 5.9.0 19 May 2016 now displaying number of reversal headwords, instead of number of linked senses
 v. 5.8.9 19 May 2016 fixed reversal import issue
 v. 5.8.8 18 May 2016 fixed problem with missing sortorder for browsview
 v. 5.8.7 16 May 2016 added sortorder to reversal table
-v. 5.8.6 16 May 2016 The headwords for Chinese reversal exports now get imported as pinyin so that browse view works. 
+v. 5.8.6 16 May 2016 The headwords for Chinese reversal exports now get imported as pinyin so that browse view works.
 v. 5.8.5 11 May 2016 added option to choose normalization (FORM C or FORM D)
 v. 5.8.4 5 May 2016 "Number of Entries" is no longer a widget, but fix under the search form
 v. 5.8.3 3 May 2016 added option to add font for search field and special character buttons
@@ -107,7 +108,7 @@ v. 5.7.6 22 April 2016 fixed form issue with new dashboard
 v. 5.7.5 22 April 2016 fixed bug with not displaying language and pos dropdown anymore
 v. 5.7.4 22 April 2016 fixed issue with collation
 v. 5.7.3 21 April 2016 more work on better looking dashboard
-v. 5.7.2 21 April 2016 reverted bug fix with not including language code for semantic domains as this caused other issues 
+v. 5.7.2 21 April 2016 reverted bug fix with not including language code for semantic domains as this caused other issues
 v. 5.7.1 20 April 2016 tidying up code in infrastructure.php, etc.
 v. 5.7.0 20 April 2016 semantic domain import bug fix
 v. 5.6.9 20 April 2016 work on fonts and better looking dashboard
@@ -116,7 +117,7 @@ v. 5.6.7 19 April 2016 put font methods into own class
 v. 5.6.6 18 April 2016 fixed fontFace instead of fontStyle bug
 v. 5.6.5 18 April 2016 font-family linking, added semi-colon
 v. 5.6.4 18 April 2016 fixes and improvements with font-family linking
-v. 5.6.3 15 April 2016 api import now creates custom.css with links to font families 
+v. 5.6.3 15 April 2016 api import now creates custom.css with links to font families
 v. 5.6.2 14 April 2016 rearranged function names alphabetically in xhtml-importer.php
 v. 5.6.1 13 April 2016 added indexing of plurals
 v. 5.6.0 13 April 2016 changed normalizing for search to FORM_D
@@ -142,7 +143,7 @@ v. 5.3.7 14 March 2016 fixed problem indexing minor entries
 v. 5.3.6 08 March 2016 fixed problem getting reversal guid
 v. 5.3.5 08 March 2016 css stylesheets should refresh based on timestamp
 v. 5.3.4 08 March 2016 zip file now ends in .zip (instead of .tmp)
-v. 5.3.3 07 March 2016 added span tag in front of semantic domain link 
+v. 5.3.3 07 March 2016 added span tag in front of semantic domain link
 v. 5.3.2 04 March 2016 changed source from where images and audio files get copied
 v. 5.3.1 04 March 2016 faster reversal import, converting links to main headword for FLEx 8.3 exports
 v. 5.3.0 01 March 2016 import will now generate links for the Wordpress installation path instead of root path
@@ -161,42 +162,42 @@ v. 5.1.8 22 February 2016 API sends email when import has been completed.
 v. 5.1.7 22 February 2016 fixed running reversal imports in API
 v. 5.1.6 22 February 2016 headword language is now also found if inside a link
 v. 5.1.5 22 February 2016 recursiveCopy now only creates directory if it doesn't exist
-v. 5.1.4 22 February 2016 API now also removes AudioVisual directory 
+v. 5.1.4 22 February 2016 API now also removes AudioVisual directory
 v. 5.1.3 19 February 2016 copying zip file to archive directory
 v. 5.1.2 18 February 2016 added translatins for Bunong and Khmer
 v. 5.1.1 18 February 2016 audio files from FLEx 8.3. now play
-v. 5.1.0 18 February 2016 changed the position of headword span tags, changed how images and audio files get converted for FLEx 8.3 exports 
+v. 5.1.0 18 February 2016 changed the position of headword span tags, changed how images and audio files get converted for FLEx 8.3 exports
 v. 5.0.9 16 February 2016 added span tags to headword link
 v. 5.0.8 12 February 2016 simpler way of handling FLEx links
 v. 5.0.7 8 February 2016 oops, missed that function get_category_id also exists in xhtml-importer.php
 v. 5.0.6 8 February 2016 category "webonary". lookup for slug instead of name
 v. 5.0.5 5 February 2016 alpha version of importing FLEx 8.3 exports
 v. 5.0.4 26 January 2016 trimming $chosenLetter
-v. 5.0.3 22 January 2016 fixed bug with homographs in reversal import. Now also shows entries in full view even if post id not found  
+v. 5.0.3 22 January 2016 fixed bug with homographs in reversal import. Now also shows entries in full view even if post id not found
 v. 5.0.2 05 January 2016 reversal import now also updates, fixed bug with apostrophs
 v. 5.0.1 04 January 2016 Now using xmlReader for importing data
-v. 5.0.0 15 December 2015 Webonary now can display the FLEx reversal view (reversals need to be imported again) 
-v. 4.9.9 23 November 2015 style sheet imported-with-xhtml.css is no longer linked in the theme webonary-zeedisplay, but in the plugin itself. So it now only gets included in the browse views and search pages  
+v. 5.0.0 15 December 2015 Webonary now can display the FLEx reversal view (reversals need to be imported again)
+v. 4.9.9 23 November 2015 style sheet imported-with-xhtml.css is no longer linked in the theme webonary-zeedisplay, but in the plugin itself. So it now only gets included in the browse views and search pages
 v. 4.9.8 20 November 2015 fixed issue that I missed in previous update
 v. 4.9.7 20 November 2015 removed option "Display subentries as main entries"
 v. 4.9.6 18 November 2015 fixed bug so that semantic domains for subentries and minor entries now also convert to links
 v. 4.9.5 17 November 2015 language code for dictionary stage pictures now always in lower case
 v. 4.9.4 17 November 2015 added dictionary stage pictures for Indonesian
 v. 4.9.3 16 November 2015 updated Indonesian semantic domains
-v. 4.9.2 16 November 2015 added translations and semantic domains for Indonesian 
+v. 4.9.2 16 November 2015 added translations and semantic domains for Indonesian
 v. 4.9.1 30 October 2015 shows English default domain names if English selected, but domain names are in another language
 v. 4.9.0 30 October 2015 added languages for semantic domains. Will now show depending on selected language.
 v. 4.8.9 30 October 2015 semantic domains will now show the default domain names for the top branches.
 v. 4.8.8 30 October 2015 fixed bug with semantic domain browse view
 v. 4.8.7 23 October 2015 added language files for Malay and Rungus
-v. 4.8.6 02 October 2015 fixed something to that it will still import on servers without the tidy extension activated 
+v. 4.8.6 02 October 2015 fixed something to that it will still import on servers without the tidy extension activated
 v. 4.8.5 02 October 2015 using the tidy extension to format the reversal index and import it line by line
 v. 4.8.4 30 September 2015 fixed bug introduced with previous change
 v. 4.8.3 25 September 2015 fixed problem with displaying entries if DisplaySubentriesAsMainEntries was not checked
-v. 4.8.2 21 September 2015 fixed an issue with the generated semantic domain browse view 
+v. 4.8.2 21 September 2015 fixed an issue with the generated semantic domain browse view
 v. 4.8.1 9 September 2015 One's own semantic domains will now display in the browse view
 v. 4.8.0 3 September 2015 fixed collation bug
-v. 4.7.9 2 September 2015 different collation setting if mysql older than version 5.5.3 
+v. 4.7.9 2 September 2015 different collation setting if mysql older than version 5.5.3
 v. 4.7.8 1 September 2015 now compatible with Wordpress 4.3, make sure you update Wordpress, as Webonary is not backwards compatible
 v. 4.7.7 21 August 2015 links reversals in browse view direct to main entry
 v. 4.7.6 21 August 2015 xhtml files now get imported line by line instead of loading the whole file into memory. Should improve server performance.
@@ -208,7 +209,7 @@ v. 4.7.0 19 June 2015 displays warning message for super admins to not delete da
 v. 4.6.9 19 June 2015 added message about deleting entries before re-importing
 v. 4.6.8 18 June 2015 fixed false message "It appears the import has timed out"
 v. 4.6.7 15 June 2015 the semantic domain number should now always import no matter what position the span-tag is.
-v. 4.6.6 3 June 2015 added SQL statement and first output for generating semantic domain list 
+v. 4.6.6 3 June 2015 added SQL statement and first output for generating semantic domain list
 v. 4.6.5 3 June 2015 Fixed wrong count of semantic domain numbers (see previous change)
 v. 4.6.4 3 June 2015 A warning message will show on the import page if semantic domains were imported without including the sd numbers.
 v. 4.6.3 2 June 2015 changed option hasSemDomainNumbers to useSemDomainNumbers, as using the semantic domain numbers won't always work accurately with older imports
@@ -216,7 +217,7 @@ v. 4.6.2 2 June 2015 fixed a problem with importing the semantic domain numbers 
 v. 4.6.1 2 June 2015 semantic domains weren't displaying anymore for French/Spanish since we changed to qTranslate X. Now using qTranslate X method to find language.
 v. 4.6.0 7 May 2015 added option "Include characters with diacritics (e.g. words starting with �, �, etc. will all display under a)"
 v. 4.5.9 27 April 2015 The "Retry converting FLEx links" button now only displays when you add &convertlinks=1 in the URL for the import page
-v. 4.5.8 27 April 2015 "Restart Import" button now only displays if last imported post is older than 5 seconds. 
+v. 4.5.8 27 April 2015 "Restart Import" button now only displays if last imported post is older than 5 seconds.
 v. 4.5.7 27 April 2015 won't display the import status until set
 v. 4.5.6 22 April 2015 set argv = null for when import isn't run with exec
 v. 4.5.5 21 April 2015 running external process works now also for the API
@@ -253,7 +254,7 @@ v. 4.2.4 22 November 2014 testing sortorder (output to error_log)
 v. 4.2.3 22 November 2014 fixed problem of not indexing if timed out (missing step parameter)
 v. 4.2.2 22 November 2014 pinged 'flexlinks' gets set for all imported posts
 v. 4.2.1 21 November 2014 now only converting FLEx links that haven't been converted yet if importing more than one file.
-v. 4.2.0 21 November 2014 indexing now shows proper number on status page, if importing more than one file. 
+v. 4.2.0 21 November 2014 indexing now shows proper number on status page, if importing more than one file.
 v. 4.1.9 7 November 2014 ubaplayer.js now no longer loads on front page
 v. 4.1.8 6 November 2014 added note about sort order in import dialog
 v. 4.1.7 6 November 2014 added <br>-tag between language and pos-dropdowns
@@ -277,13 +278,13 @@ v. 4.0.0 15 September 2014 "Found in Semantic Domains" results now get grouped.
 v. 3.9.9 14 September 2014 added semantic domains for Nepali
 v. 3.9.8 13 September 2014 fixed problem with trying to load non-existent categoryNodes.js
 v. 3.9.7 11 September 2014 added reversalindex1 to browser settings (this replaces shortcode englishalphabet)
-v. 3.9.6 11 September 2014 added Webonary settings page to top-level menu	
+v. 3.9.6 11 September 2014 added Webonary settings page to top-level menu
 v. 3.9.5 11 September 2014 fixed issue of letters starting with a (even if a doesn't exist) in reversal view
 v. 3.9.4 25 August 2014 renamed plugin name to Webonary
 v. 3.9.3 22 August 2014 fixed category bug if qTranslate wasn't enabled and updated French semantic domain translations
-v. 3.9.2 21 August 2014 added id "searchresults" to reversal browse view 
+v. 3.9.2 21 August 2014 added id "searchresults" to reversal browse view
 v. 3.9.1 19 August 2014 added French publication status images
-v. 3.9.0 15 August 2014 changed publication status images (color) 
+v. 3.9.0 15 August 2014 changed publication status images (color)
 v. 3.8.9 11 August 2014 fixed apostrophe problem for semantic domains
 v. 3.8.8 11 August 2014 added French semantic domains
 v. 3.8.7 30 July 2014 added a note about the theme in the wordpress.org installation section
@@ -293,14 +294,14 @@ v. 3.8.4 04 June 2014 added LIBXML_NOEMPTYTAG to save_xml, so that empty tags ge
 v. 3.8.3 04 June 2014 removed some debugging information
 v. 3.8.2 02 June 2014 long "part of speech" strings now get cut off during import
 v. 3.8.1 02 June 2014 importing post_name mistanly was inserted as number instead of a string
-v. 3.8.0 02 June 2014 added a first version of the FLEx API & fixed some bugs I found 
+v. 3.8.0 02 June 2014 added a first version of the FLEx API & fixed some bugs I found
 v. 3.7.8 28 Mai 2014 fixed problem with DictStat image not displaying
 v. 3.7.7 28 Mai 2014 fixed problem with not showing category browse view correctly in Chrome (in file ftiens4.js)
 v. 3.7.6 27 May 2014 added DictStat images for Nepali + changed searchform_func.php
 v. 3.7.5 20 May 2014 added Nepali translations
 v. 3.7.4 20 May 2014 changed sql statement for importing of post entries, as mqTranslate plugin caused problems on updating
 v. 3.7.3 19 May 2014 sortorder now gets set at the same time as entries are imported
-v. 3.7.2 16 May 2014 removed margin-left again, as it was too much left on some pages 
+v. 3.7.2 16 May 2014 removed margin-left again, as it was too much left on some pages
 v. 3.7.1 16 May 2014 also added margin-left -3px to audioButton
 v. 3.7.0 16 May 2014 added margin-right to audioButton
 v. 3.6.9 16 May 2014 changed blank.gif in audiolibs to just be 1 Pixel big. Bigger image caused problems
@@ -310,7 +311,7 @@ v. 3.6.6 14 May 2014 changed category view to load posts static instead of with 
 v. 3.6.5 9 May 2014 headword for reversal index no longer needs to be under class "senses"
 v. 3.6.4 5 May 2014 fixed import and search problem with semantic domains
 v. 3.6.3 30 April 2014 removed $wpdb->prepare that was causing problems with missing second argument
-v. 3.6.2 25 April 2014 fixed problem that would not find termid for semantic domains in Chinese 
+v. 3.6.2 25 April 2014 fixed problem that would not find termid for semantic domains in Chinese
 v. 3.6.1 24 April 2014 forgot to change sql-statement for the previous change
 v. 3.6.0 21 April 2014 semantic domains are now searched by numbers instead of name
 v. 3.5.9 21 April 2014 added more French translations
@@ -328,7 +329,7 @@ v. 3.4.8 21 January 2014 fixed path problem occuring in previous update
 v. 3.4.7 21 January 2014 importer prints a message if an audio file doesn't exist
 v. 3.4.6 20 January 2014 trying if adding "loading" class to ubaPlayer still causes issues
 v. 3.4.5 20 January 2014 if there are multiple audio files per entry, you can now split them with a semicolon
-v. 3.4.4 17 January 2014 fixed links for audio files and images (got messed up in v. 3.3.8) 
+v. 3.4.4 17 January 2014 fixed links for audio files and images (got messed up in v. 3.3.8)
 v. 3.4.3 16 January 2014 use entrycounter instead of linkcounter
 v. 3.4.2 16 January 2014 added addslashes for href (convert_fieldworks_links_to_wordpress)
 v. 3.4.1 15 January 2014 fixed linecounter
@@ -384,16 +385,16 @@ v. 2.9.2 19 August 2013 replacing class=headword-sub to class=headword now works
 v. 2.9.1 16 August 2013 reverted change of v. 2.8.8: currently can't replace headword-sub with headword, as this will cause problems with indexing search strings
 v. 2.9.0 16 August 2013 submitted changed ftiens.js to repository
 v. 2.8.9 16 Agust 2013 fixed css font problem for category links
-v. 2.8.8 16 August 2013 also replacing class=headword-sub to class=headword 
-v. 2.8.7 15 August 2013 replacing class=subentry to class=entry, if no class "entry" exists, so that we don't have to mess with css-file. 
+v. 2.8.8 16 August 2013 also replacing class=headword-sub to class=headword
+v. 2.8.7 15 August 2013 replacing class=subentry to class=entry, if no class "entry" exists, so that we don't have to mess with css-file.
 v. 2.8.6 14 August 2013 added javascript to hide subentries in category browse view
 v. 2.8.5 12 August 2013 removed echo output
 v. 2.8.4 12 August 2013 fixed problems with definitions when converting links
 v. 2.8.3 09 August 2013	fixed problem with converting links concerning class Emphasized_Text
 v. 2.8.2 07 August 2013 added slashes for getDuplicate sql select
 v. 2.8.1 07 August 2013 checking for duplicate semantic domains per post_id before inserting, to avoid error message
-v. 2.8.0 07 August 2013 converting links is now a seperate step 
-v. 2.7.9 01 August 2013 using subentries as headword instead of minor-entries for semantic domains (see version 2.7.5) 
+v. 2.8.0 07 August 2013 converting links is now a seperate step
+v. 2.7.9 01 August 2013 using subentries as headword instead of minor-entries for semantic domains (see version 2.7.5)
 v. 2.7.8 25 July 2013 fixed homographs
 v. 2.7.7 24 July 2013 removed debugging info
 v. 2.7.6 24 July 2013 fixed some problem with converting minor entries to links & search doesn't anymore look in table search_strings when searching for taxonomies
@@ -405,20 +406,20 @@ v. 2.7.1 05 July 2013 Fixed problem with xpath query for headword-minor in getAr
 v. 2.7.0 21 June 2013 fixed problem with missing language code for reversal indexes (when more than one reversal index)
 v. 2.6.9 13 June 2013 trim semantic domains on insert
 v. 2.6.8 11 June 2013 removed echo sql
-v. 2.6.7 11 June 2013 fixed sql error for creating PRIMARY KEYS 
+v. 2.6.7 11 June 2013 fixed sql error for creating PRIMARY KEYS
 v. 2.6.6 11 June 2013 solved problem with empty reversal entries
 v. 2.6.5 10 June 2013 duplicates shouldn't anymore be inserted (using INSERT IGNORE + set PRIMARY KEYS)
 v. 2.6.4 10 June 2013 Wordpress automatically converts apostroph to &#8217; on display, changed importer to convert it to &#39;
 v. 2.6.3 10 June 2013 importer now trims spaces for audio files.
 v. 2.6.2 06 June 2013 fixed problem of not finding all audio files on import
-v. 2.6.1 05 June 2013 added headword minor import for sort order (import_xhtml_stem_indexes) 
+v. 2.6.1 05 June 2013 added headword minor import for sort order (import_xhtml_stem_indexes)
 v. 2.6.0 05 June 2013 center page numbers in browse view
 v. 2.5.9 05 June 2013 browse view page number display: using same style sheet as for search view, and with next/prev links
 v. 2.5.8 03 June 2013 added conversion for HeadWordRef links
 v. 2.5.7 02 June 2013 centered browseview alphabet
 v. 2.5.6 02 June 2013 convert homograph numbers into small numbers
 v. 2.5.5 31 Mai 2013 added convert_fieldworks_audio_to_wordpress
-v. 2.5.4 31 Mai 2013 there was a problem importing minorentries, since they were under class minorentry. Solved this by looking for the parent of headword instead of searching for entry-class 
+v. 2.5.4 31 Mai 2013 there was a problem importing minorentries, since they were under class minorentry. Solved this by looking for the parent of headword instead of searching for entry-class
 v. 2.5.3 29 Mai 2013 changed codecs back to mp3, as ogg won't play in IE. Removed "loading" class to fix Firefox bug
 v. 2.5.2 29 Mai 2013 changed codecs from mp3 to ogg, so that it gets supported in Firefox
 v. 2.5.1 29 Mai 2013 removed some test code from jquery.ubaplayer.js
@@ -429,7 +430,7 @@ v. 2.4.6 23 Mai 2013 reverted last change, normalizing wasn't a problem
 v. 2.4.5 23 Mai 2013 normalizing headword in get_post_id_bytitle, so that words with accents get found in reversal import
 v. 2.4.4 22 Mai 2013 added addslashes to get_post_id_bytitle sql statement
 v. 2.4.3 21 Mai 2013 don't anymore display page number in browse view if there is only 1 page.
-v. 2.4.2 21 Mai 2013 the link &partialsearch caused problems while indexing searchstrings. Replace & with html code. 
+v. 2.4.2 21 Mai 2013 the link &partialsearch caused problems while indexing searchstrings. Replace & with html code.
 v. 2.4.1 21 Mai 2013 giving error message for reversal import if postid is not found
 v. 2.4.0 21 Mai 2013 check for empty entries
 v. 2.3.9 20 Mai 2013 fixed issue when searching for and linking to cross references
@@ -448,7 +449,7 @@ v. 2.2.7 20 April 2013 updated path to category image files
 v. 2.2.6 20 April 2013 updated path to js files
 v. 2.2.5 19 April 2013 updated import "sort order" link
 v. 2.2.4 18 April 2013 added category browse view
-v. 2.2.3 18 April 2013 remove square brackets for import of semantic domains 
+v. 2.2.3 18 April 2013 remove square brackets for import of semantic domains
 v. 2.2.2 17 April 2013 fixed sort order problem with umlauts
 v. 2.2.1 16 April 2013 fixed duplicate error on alter sortorder
 v. 2.2.0 15 April 2013 normalization doesn't solve umlaut problem, using COLLATE 'UTF8_BIN' instead
@@ -478,7 +479,7 @@ v. 1.9.3 27 March 2013 corrected browse view SQL statement
 v. 1.9.2 27 March 2013 added browse view functionality for English
 v. 1.9.1 26 March 2013 Improved reversal import, added subid to sil_search table
 v. 1.9.0 25 March 2013 Error in reversal import, fixed finding post_id
-v. 1.8.9 21 March 2013 Excluded custom order for browse view 
+v. 1.8.9 21 March 2013 Excluded custom order for browse view
 v. 1.8.8 21 March 2013 Added browse query (for alphabet)
 v. 1.8.7 20 March 2013 Corrected textdomain (sil_dictionary)
 v. 1.8.6 12 March 2013 Removed copying style.css to upload folder (use custom.css instead)
@@ -502,7 +503,7 @@ v. 1.6.9 08 August 2012 changed path for pictures
 v. 1.6.7 08 August 2012 fixed another SQL error in function set_options
 v. 1.6.6 08 August 2012 corrected some SQL error in function set_options
 v. 1.6.5 08 August 2012 now ignores case for replace picture path
-v. 1.6.4 08 August 2012 created function set_options for changing the default upload options 
+v. 1.6.4 08 August 2012 created function set_options for changing the default upload options
 v. 1.6.3 08 August 2012 testing blog id
 v. 1.6.2 08 August 2012 added upload_stylesheet function
 v. 1.6.1 08 August 2012 target path for css is now same as from path
@@ -511,14 +512,14 @@ v. 1.5.9 08 August 2012 uploading imported-with-xhtml.css into upload folder sho
 v. 1.5.3 07 August 2012 imported-with-xhtml.css now gets saved into the upload directory
 v. 1.5.2 04 August 2012 changed upload path again
 v. 1.5.1 04 August 2012 changed css upload path to work with multisite wordpress installation
-v. 1.5.0 01 August 2012 search strings used to be merged into one field. They now get seperated. Removed " ON DUPLICATE KEY UPDATE search_strings = CONCAT(search_strings, ' ',  '%s') " from INSERT. Removed primary keys. 
+v. 1.5.0 01 August 2012 search strings used to be merged into one field. They now get seperated. Removed " ON DUPLICATE KEY UPDATE search_strings = CONCAT(search_strings, ' ',  '%s') " from INSERT. Removed primary keys.
 v. 1.4.9 31 July 2012 Changed to show no matches for empty searches
 v. 1.4.8 31 July 2012 For reversal import: removed Sense-Reference-Number from headword search
 v. 1.4.7 25 July 2012 added import of headref_L2 for the reversal importing
 v. 1.4.6 09 July 2012 import sense-crossref-sub
 v. 1.4.4 09 July 2012 if user searches just for a single character, nothing is returned except that he clicks on partial search
 v. 1.4.3 27 June 2012 made path for images dynamic
-v. 1.4.2 26 June 2012 made the plugin to work on multisite Wordpress installations (changed table names)  
+v. 1.4.2 26 June 2012 made the plugin to work on multisite Wordpress installations (changed table names)
 v. 1.4.1 25 June 2012 Changed picture folder from "pic" to "pictures"
 v. 1.4.0 25 June 2012 Reverted last change. Instead, the normal apostroph searchstring gets added to sil_multilingual_search table during import
 v. 1.3.9 25 June 2012 Replace searchstring apostrophe (U+02BC MODIFIER LETTER APOSTROPHE ) with normal apostroph

@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 6.8.2
+Version: v. 6.8.3
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -73,14 +73,14 @@ require_once( dirname( __FILE__ ) . '/include/widgets.php' );
 	// Menu in the WordPress Dashboard, under tools.
 	add_action( 'admin_menu', 'add_admin_menu' );
 	add_action('admin_bar_menu', 'on_admin_bar', 35);
-	
+
 	// I looked for a register_install_hook, but given the way WordPress plugins
 	// can be implemented, I'm not sure it would work right even if I did find one.
 	// The register_activation_hook() appears not to work for some reason. But the
 	// site won't start up that much any way, and it doesn't hurt anything to call
 	// it more than once.
 	add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );
-	
+
 	// Take out the custom data when uninstalling the plugin.
 	register_uninstall_hook( __FILE__, 'uninstall_sil_dictionary_infrastructure' );
 //}
