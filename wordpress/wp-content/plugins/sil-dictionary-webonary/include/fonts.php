@@ -166,7 +166,7 @@ class fontMonagment
 		$arrHasSubFonts[38] = false;
 
 		$arrFontName[39] = "BJCree UNI";
-		$arrFontStorage[39] = "Bycrus.woff";
+		$arrFontStorage[39] = "Bycrus";
 		$arrHasSubFonts[39] = false;
 	}
 
