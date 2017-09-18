@@ -28,7 +28,7 @@ function SearchFilter($query) {
 			$query->query_vars['s'] = NULL;
 		}
 	}
-	
+
 	return $query;
 }
 add_filter('pre_get_posts','SearchFilter');
@@ -37,15 +37,15 @@ add_filter('pre_get_posts','SearchFilter');
 function sil_dictionary_select_fields() {
 	global $wp_query, $wpdb;
 	$search_table_name = SEARCHTABLE;
-	
+
 	if( !is_page())
 	{
 		$upload_dir = wp_upload_dir();
-		//wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-		wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		//wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
 	}
-	
+
 	if(  !empty($wp_query->query_vars['s']) && isset($wp_query->query_vars['letter']))
 	{
 		return $wpdb->posts.".*, " . $search_table_name . ".search_strings";
@@ -125,7 +125,7 @@ function sil_dictionary_custom_join($join) {
 		{
 			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
 		}
-		
+
 		if(isset($wp_query->query_vars['letter']))
 		{
 			$letter = trim($wp_query->query_vars['letter']);
@@ -137,7 +137,7 @@ function sil_dictionary_custom_join($join) {
 			{
 				$collate = "";
 			}
-			
+
 			//$regex = "^(=|-|\\\*|~)?";
 			//$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex  . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
 			if(get_has_browseletters() == 0)
@@ -208,7 +208,7 @@ function sil_dictionary_custom_join($join) {
 			$join .= " INNER JOIN  $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
 		}
 	}
-	
+
 	return $join;
 }
 
@@ -245,7 +245,7 @@ function sil_dictionary_custom_where($where) {
 				$key = $wp_query->query_vars['langcode'];
 			}
 			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
-			
+
 			$letter = trim($wp_query->query_vars['letter']);
 			if(strlen(trim($letter)) > 0)
 			{
@@ -254,7 +254,7 @@ function sil_dictionary_custom_where($where) {
 				{
 					$collate = "";
 				}
-				
+
 				if(get_has_browseletters() > 0)
 				{
 					$where .= " AND $wpdb->posts.post_content_filtered = '" . $letter ."' " . $collate . " AND $wpdb->posts.post_content_filtered != '' ";
@@ -262,7 +262,7 @@ function sil_dictionary_custom_where($where) {
 			}
 		}
 	}
-	
+
 	if(isset($wp_query->query_vars['letter']))
 	{
 		if($wp_query->query_vars['DisplaySubentriesAsMainEntries'] == false)
@@ -270,7 +270,7 @@ function sil_dictionary_custom_where($where) {
 			$where .= " AND " . $search_table_name. ".search_strings = " . $wpdb->posts . ".post_title ";
 		}
 	}
-	
+
 	if(isset($_GET['tax']))
 	{
 		if($_GET['tax'] > 1)
@@ -279,7 +279,7 @@ function sil_dictionary_custom_where($where) {
 			$where .= " AND $wpdb->term_relationships.term_taxonomy_id = " . $_GET['tax'];
 		}
 	}
-	
+
 	if(isset($wp_query->query_vars['semdomain']))
 	{
 		if(strlen($wp_query->query_vars['semdomain']) > 0)
@@ -295,7 +295,7 @@ function sil_dictionary_custom_where($where) {
 			}
 		}
 	}
-	
+
 	return $where;
 }
 
@@ -410,11 +410,11 @@ function get_has_browseletters()
 function get_post_id_bycontent($query)
 {
 	global $wpdb;
-	
+
 	$sql = "SELECT ID " .
 			" FROM " . $wpdb->posts .
 			" WHERE post_content LIKE '%" . $query . "%'";
-	
+
 	return $wpdb->get_var($sql);
 }
 function my_404_override() {
@@ -423,14 +423,14 @@ function my_404_override() {
 	if(is_404())
 	{
 		$postname = get_query_var('name');
-		
+
 		$postid = get_post_id_bycontent($postname);
-		
+
 		if(isset($postid))
 		{
 			status_header( 200 );
 			$wp_query->is_404=false;
-				
+
 			query_posts('p=' . $postid);
 		}
 	}
@@ -444,7 +444,7 @@ function webonary_css()
 <style>
 	a:hover {text-decoration:none;}
 	a:hover span {text-decoration:none}
-	
+
 	.entry{
 		clear:none;
 		white-space:unset;
@@ -457,7 +457,7 @@ function webonary_css()
 		clear:none;
 		white-space:unset;
 	}
-	
+
 .minorentryvariant{
 		clear:none;
 		white-space:unset;

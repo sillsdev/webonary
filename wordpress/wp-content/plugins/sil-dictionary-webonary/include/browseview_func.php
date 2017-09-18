@@ -2,13 +2,13 @@
 function categories_func( $atts )
 {
 	global $wpdb;
-	
+
 	$display = "";
-	
+
 	$postsperpage = 25;
-	
+
 	$qTransLang = "en";
-	
+
 	if (function_exists('qtranxf_init_language'))
 	{
 		if(qtranxf_getLanguage() != "en")
@@ -36,7 +36,7 @@ function categories_func( $atts )
 		}
 	</style>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
-	
+
 	<!-- Infrastructure code for the tree -->
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js" type="text/javascript"></script>
 
@@ -55,15 +55,15 @@ function categories_func( $atts )
     {
     	*/
     	require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
-    	
+
     	$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
 		" FROM " . $wpdb->prefix . "terms " .
 		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
 		" WHERE taxonomy = 'sil_semantic_domains'" .
 		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, SUBSTR(slug, LOCATE('-',slug)) ASC"; //this creates a numeric sort
-    	
+
     	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
-    	
+
     	//if no semantic domains were imported, use the default domains defined in default_domains.php
     	if(count($arrDomains) == 0)
     	{
@@ -75,24 +75,24 @@ function categories_func( $atts )
 				$d++;
 			}
     	}
-    	
+
     	//echo "<script language=\"JavaScript\">";
-    	
+
     	foreach($arrDomains as $domain)
     	{
     		//echo $domain['slug'] . " " . $domain['name'] . "\n";
-    		
+
     		$currentSemDomain =  $domain['slug'] . " " . $domain['name'];
     		$domainNumber = $domain['slug'];
     		$levelOfDomain = substr_count("$domainNumber","-") + 1;
-    			
+
     		printRootDomainIfNeeded($domainNumber);
-    			
+
     		buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
-    			
+
     		$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
     		$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
-    		
+
     		if($qTransLang == "en")
     		{
     			if(isset($defaultDomain[$domainNumberModified]))
@@ -109,7 +109,7 @@ function categories_func( $atts )
     		$currentDigits = explode('-', $domainNumber);
     		setLastSemDom($currentDigits);
     	}
-    	
+
     	echo "</script>";
     //}
 	?>
@@ -141,16 +141,16 @@ function categories_func( $atts )
 				$display .= "<div class=post>" . $mypost->post_content . "</div>";
 		}
 	}
-	
+
 	global $wp_query;
 	$totalEntries = $wp_query->found_posts;
 	$display .= displayPagenumbers($semnumber, $totalEntries, $postsperpage,  $_REQUEST["semdomain"] , "semnumber", $_REQUEST['pagenr']);
 
 	$display .= "</div>";
-	
+
  	wp_reset_query();
 	return $display;
-	
+
 }
 add_shortcode( 'categories', 'categories_func' );
 
@@ -183,9 +183,9 @@ function displayAlphabet($alphas, $languagecode)
 <?php
 	$display = "<br>";
 	$display .= "<div style=\"text-align:center;\"><div style=\"display:inline-block;\">";
-	
+
 	$letterCells = "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>" . str_replace(",", "</span></div><div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>", get_option('vernacular_alphabet')) . "</span></div><br>";
-	
+
 	foreach($alphas as $letter)
 	{
 		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
@@ -201,22 +201,22 @@ function displayAlphabet($alphas, $languagecode)
 	}
 	$display .= "</div></div>";
 	$display .=  "<div style=clear:both></div>";
-	
+
 	return $display;
-	
+
 }
 
 function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
 {
 ?>
 	<link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
-	
+
 <?php
 	if(!isset($requestname))
 	{
 		$requestname = "letter";
 	}
-	 
+
 	if(!$currentPage)
 	{
 		$currentPage = $_GET['pagenr'];
@@ -270,7 +270,7 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 				$start = 2;
 			}
 		}
-		
+
 		for($page = $start; $page <= $totalPages; $page++)
 		{
 			$class = "";
@@ -316,11 +316,11 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 }
 
 function englishalphabet_func( $atts, $content, $tag ) {
-	
+
 	if(strlen(trim(get_option('reversal1_alphabet'))) == 0)
 	{
 		$languagecode = "en";
-		
+
 		if(isset($_GET['letter']))
 		{
 			$chosenLetter = $_GET['letter'];
@@ -328,29 +328,29 @@ function englishalphabet_func( $atts, $content, $tag ) {
 		else {
 			$chosenLetter = "a";
 		}
-		
+
 		$alphas = range('a', 'z');
 		$display = displayAlphabet($alphas, $languagecode);
-		
+
 		$display = reversalindex($display, $chosenLetter, $languagecode);
 	}
 	else
 	{
 		$display = reversalalphabet_func(null, "", "reversalindex1");
 	}
-		
+
  return $display;
 }
 
 add_shortcode( 'englishalphabet', 'englishalphabet_func');
- 
+
 function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHTML = true)
 {
 	global $wpdb;
-	
+
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
 	$sortorderExists = (count($result))?TRUE:FALSE;
-	
+
 	$sql = "SELECT reversal_content " .
 	" FROM " . REVERSALTABLE  .
 	" WHERE ";
@@ -372,9 +372,9 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		$startFrom = ($page - 1) * 50;
 		$sql .= " LIMIT " . $startFrom .", 50";
 	}
-		
+
 	$arrReversals = $wpdb->get_results($sql);
-	
+
 	if(count($arrReversals) == 0)
 	{
 		//just get headwords (legacy code, as we didn't use to display the xhtml for reversals)
@@ -393,14 +393,14 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 			$startFrom = ($page - 1) * 50;
 			$sql .= " LIMIT " . $startFrom .", 50";
 		}
-		
+
 		$arrReversals = $wpdb->get_results($sql);
 		if(count($arrReversals) > 0)
 		{
 			$displayXHTML = false;
 		}
 	}
-	
+
 	return $arrReversals;
 }
 
@@ -422,9 +422,9 @@ function reversalalphabet_func($atts, $content, $tag)
 			$reversalnr = 2;
 		}
 	}
-	
+
 	$alphas = explode(",",  get_option('reversal'. $reversalnr . '_alphabet'));
-	
+
 	if(isset($_GET['letter']))
 	{
 		$chosenLetter = stripslashes($_GET['letter']);
@@ -432,12 +432,12 @@ function reversalalphabet_func($atts, $content, $tag)
 	else {
 		$chosenLetter = stripslashes($alphas[0]);
 	}
-		
+
 	$alphas = explode(",",  get_option('reversal' . $reversalnr . '_alphabet'));
 	$display = displayAlphabet($alphas, get_option('reversal' . $reversalnr . '_langcode'));
-	
+
 	$display = reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'));
-		
+
 	return $display;
 }
 
@@ -468,7 +468,8 @@ function reversalindex($display, $chosenLetter, $langcode)
 	</style>
 <?php
 	$upload_dir = wp_upload_dir();
-	wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
+	//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
+	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/reversal_' . $langcode . '.css?time=' . date("U"));
 	wp_enqueue_style( 'reversal_stylesheet');
 
 	$page = $_GET['pagenr'];
@@ -476,10 +477,10 @@ function reversalindex($display, $chosenLetter, $langcode)
 	{
 		$page = 1;
 	}
-	
+
 	$displayXHTML = true;
 	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML);
-	
+
 	$display .= "<h1 align=center>" . $chosenLetter . "</h1><br>";
 
 	if($displayXHTML)
@@ -490,7 +491,7 @@ function reversalindex($display, $chosenLetter, $langcode)
 	{
 		$display .=  "<div align=center id=searchresults>";
 	}
-	
+
 	$background = "even";
 	$count = 0;
 	foreach($arrReversals as $reversal)
@@ -503,7 +504,7 @@ function reversalindex($display, $chosenLetter, $langcode)
 		{
 			$display .=  "<div id=searchresult class=" . $background . " style=\"clear:both;\">";
 				$display .=  "<div id=englishcol>";
-	
+
 				if($reversal->English != $englishWord)
 				{
 					$display .=  $reversal->English;
@@ -517,7 +518,7 @@ function reversalindex($display, $chosenLetter, $langcode)
 
 				 $display .=  "</div>";
 			//$display .=  "<div style=clear:both></div>";
-			
+
 			if($background == "even")
 			{
 				$background = "odd";
@@ -533,7 +534,7 @@ function reversalindex($display, $chosenLetter, $langcode)
     		break;
     	}
 	}
-	
+
 	if(!isset($_GET['totalEntries']))
 	{
 		$totalEntries = count($arrReversals);
@@ -555,20 +556,20 @@ function reversalindex($display, $chosenLetter, $langcode)
 			$display = "<p>" . gettext("Entry not found");
 		}
 	}
-	
+
 	return $display;
 }
 
 function getVernacularHeadword($postid, $languagecode)
 {
 	global $wpdb;
-	
+
 	$sql = "SELECT search_strings " .
 	" FROM " . SEARCHTABLE .
 	" WHERE post_id = " . $postid . " AND relevance = 100 AND language_code = '" . $languagecode . "'";
 
 	return $wpdb->get_var($sql);
-	
+
 }
 
 function get_letter($firstLetterOfAlphabet = "") {
@@ -592,16 +593,17 @@ function get_letter($firstLetterOfAlphabet = "") {
 function vernacularalphabet_func( $atts )
 {
 	$upload_dir = wp_upload_dir();
-	//wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-	wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
+	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+	//files path alias doesn't seem to work on every Wordpress installation
+	//wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
 	wp_enqueue_style( 'configured_stylesheet');
-	
+
 	$languagecode = get_option('languagecode');
-	
+
 	$alphas = explode(",",  get_option('vernacular_alphabet'));
 
 	$chosenLetter = get_letter($alphas[0]);
-	
+
 	$display = displayAlphabet($alphas, $languagecode);
 	$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
 
@@ -610,14 +612,14 @@ function vernacularalphabet_func( $atts )
 		$display .=  "No language code provided. Please import your dictionary.";
 		return $display;
 	}
-	
+
 	//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
 	//words starting with kp should not appear
 	$noLetters = "";
 	foreach($alphas as $alpha)
 	{
 		$alpha = trim($alpha);
-		
+
 		if($chosenLetter != "?")
 		{
 			if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
@@ -632,7 +634,7 @@ function vernacularalphabet_func( $atts )
 	}
 
 	$display .= "<div id=searchresults>";
-    
+
 	$displaySubentriesAsMinorEntries = true;
 	if(get_option('DisplaySubentriesAsMainEntries') == 'no')
 	{
@@ -642,15 +644,15 @@ function vernacularalphabet_func( $atts )
 	{
 		$displaySubentriesAsMinorEntries = true;
 	}
-	
+
 	$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=25&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
-	
+
 	if(count($arrPosts) == 0)
 	{
 		$display .= __('No entries exist starting with this letter.', 'sil_dictionary');
 	}
-	
-	
+
+
 	foreach($arrPosts as $mypost)
 	{
 		if(trim($mypost->post_title) != trim($mypost->search_strings) && $displaySubentriesAsMinorEntries == true)
@@ -669,7 +671,7 @@ function vernacularalphabet_func( $atts )
 			*/
 		}
 	}
-	
+
 	$display .= "</div>";
 
 	if(!isset($_GET['totalEntries']))
@@ -681,11 +683,11 @@ function vernacularalphabet_func( $atts )
 	{
 		$totalEntries = $_GET['totalEntries'];
 	}
-		
+
 	$display .= "<div align=center><br>";
 	$display .= displayPagenumbers($chosenLetter, $totalEntries, 25, $languagecode);
 	$display .= "</div><br>";
-	
+
  	wp_reset_query();
 	return $display;
 }
