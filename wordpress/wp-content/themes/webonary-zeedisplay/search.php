@@ -11,7 +11,7 @@ function openImage(image)
  	<div align=center><?php if(isMobile()) { echo "<br>"; get_sidebar(); } ?></div>
  	<div style="padding: 10px 25px;">
 	<div id="content" <?php if(!isMobile()) { ?>style="width: 100%"<?php } ?>">
-	
+
 		<?php
 		if(strlen($_GET['s']) > 0)
 		{
@@ -27,7 +27,7 @@ function openImage(image)
 			{
 				$searchquery = get_term($_GET['tax'], "sil_semantic_domains")->name;
 			}
-			
+
 		}
 		?>
 		<?php if(!isMobile()) { get_sidebar(); } ?>
@@ -65,7 +65,7 @@ function openImage(image)
 		</div>
 			<?php if(function_exists('wp_page_numbers')) { wp_page_numbers(); } ?>
 			<?php //webonary_zeedisplay_page_navigation();	?>
-			
+
 		<?php else : ?>
 			<div class="post">
 				<div>

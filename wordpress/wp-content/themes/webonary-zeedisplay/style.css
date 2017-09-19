@@ -2,7 +2,7 @@
 Theme Name: webonary-zeedisplay
 Theme URI: http://www.webonary.org
 Description: A Webonary theme created for dictionaries based on the theme zeeDisplay. See: http://themezee.com/zeeDisplay
-Version: 2.9.5
+Version: 3.0.0
 Author: SIL International
 Author URI: http://www.sil.org/
 Tags:  dictionary, two-columns, light, custom-background, custom-menu, threaded-comments, translation-ready, theme-options, fixed-width, custom-colors
@@ -92,10 +92,10 @@ input, textarea {
     position: static;
     text-align: left;
   padding: 0;
-  background: #85005B;  
-  width: 100%;  
+  background: #85005B;
+  width: 100%;
 }
-#navtitle {  
+#navtitle {
   color: #FFFFFF;
   padding: 12px 0 8px 20px;
   font-size: 1.6em;;
@@ -121,6 +121,7 @@ ul.qtrans_language_chooser li.active { display:none }
   float: left;
   position: relative;
   display:block;
+  width: 60%;
 }
 /*
 .fullwidth {
@@ -132,11 +133,10 @@ ul.qtrans_language_chooser li.active { display:none }
 }
 /*============================ SIDEBAR ============================*/
 #sidebar {
-  min-width: 290px;	
-  max-width: 320px;
+  width: 38%;
   padding-top: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-left: 1%;
+  padding-right: 1%;
   float: right;
   text-align: left;
   position: relative;
@@ -379,7 +379,7 @@ background: url(images/button_hover.png) repeat-x #eee;
   padding: 10px 20px 10px 20px;
 }
 .pageentry h1 {
-  line-height: 1em;
+  line-height: 1.5em;
   font-size: 1.8em;
   margin: 10px 0 0 0;
   font-family: "Arial Unicode MS", sans-serif;
@@ -800,14 +800,14 @@ blockquote:after{
   margin: 0 0 10px 0;
   padding: 3px 5px 3px 10px;
   height: 100%;
-  line-height: 1.2em;  
+  line-height: 1.2em;
   font-family: tahoma, arial;
   color: #fff;
 }
 
 .pink
 {
-  background: #85005B;    
+  background: #85005B;
 }
 .blue
 {
@@ -854,7 +854,7 @@ blockquote:after{
  * The languages drop down box was too wide for a loooong language name.
  */
 .webonary_searchform_language_select {
-  width:250px;
+  max-width:250px;
 }
 
 .pageentry p {
@@ -881,3 +881,20 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .alignleft {float:left; }
 .aligncenter {display: block; margin-left: auto; margin-right: auto}
 span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-family:"Times New Roman","Lucida Sans Unicode","Arial Unicode MS",Arial,sans-serif;color:black;}
+
+@media only screen and (max-width : 550px) {
+
+	#sidebar {
+		float: left;
+		width: 98%;
+		text-align: center;
+	}
+
+	#content {
+		width: 100%;
+	}
+
+	#navlanguage {
+		margin-top: 25px;
+	}
+}

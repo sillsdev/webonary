@@ -13,14 +13,14 @@ else
 
 <?php get_header(); ?>
 
-	<div align=center><?php if(isMobile()) { echo "<br>"; get_sidebar(); } ?></div>
+	<div style="100%;">
+	<?php get_sidebar(); ?>
+	<div id="content">
 
-	<div id="content" <?php if(!isMobile()) { ?>style="min-width:530px; width:530px;"<?php } ?>>
-		
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			
+
 			<div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
-				
+
 					<?php if (! is_front_page()) { ?>
 					<h2><?php the_title(); ?></h2>
 					<?php } ?>
@@ -36,12 +36,11 @@ else
 		<?php endwhile; ?>
 
 		<?php endif; ?>
-		
+
 		<?php comments_template(); ?>
-		
+
 	</div>
- 
-	<?php if(!isMobile()) { get_sidebar(); } ?>
+	</div>
 <?php get_footer();
 }
 ?>

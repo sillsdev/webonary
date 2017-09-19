@@ -1,61 +1,59 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: zeeDisplay\n"
+"Project-Id-Version: webonary-zeedisplay v2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-24 11:15+0100\n"
-"PO-Revision-Date: 2017-06-24 11:22+0100\n"
+"POT-Creation-Date: 2017-06-06 15:25+0800\n"
+"PO-Revision-Date: 2017-06-06 15:29+0800\n"
 "Last-Translator: \n"
-"Language-Team: themezee.com\n"
-"Language: de_DE\n"
+"Language-Team: \n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../../\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-# @ zeeDisplay
 #: 404.php:12
-#, fuzzy
 msgid "Entry not found."
-msgstr "404 Fehler: Seite nicht gefunden"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: archive.php:5 archive.php:6 archive.php:7
 msgid "Archive for"
-msgstr "Archiv für"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: archive.php:8
 msgid "Tag Archive for"
-msgstr "Tag Archiv für"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: archive.php:9 page-sitemap.php:48
 msgid "Archives"
-msgstr "Archive"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: comments.php:8
 msgid "Enter password to view comments."
-msgstr "Passwort erforderlich, um Kommentare zu sehen."
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: comments.php:16 includes/entry.php:15
 msgid "No comments"
-msgstr "Keine Kommentare"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: comments.php:16 includes/entry.php:15
 msgid "One comment"
-msgstr "Ein Kommentar"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: comments.php:16 includes/entry.php:15
 #, php-format
 msgid "% comments"
@@ -63,14 +61,14 @@ msgstr ""
 
 #: footer.php:42
 msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
+msgstr "𖼠𖽙𖾐 𖼳𖽙𖾐 𖼞𖽳𖾐 𖼳𖽪𖾐 𖼮𖽨𖾐"
 
-# @ zeeDisplay
+# @ dictrans
 #: functions.php:211
-#, fuzzy
 msgid "Search Bar Popups"
-msgstr "Suchergebnisse"
+msgstr ""
 
+# @ searchform
 #: functions.php:213
 msgid ""
 "If a widget placed here has links, those links will appear above the search "
@@ -91,169 +89,166 @@ msgstr ""
 msgid "Password:"
 msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: page-sitemap.php:27
 msgid "Latest Posts"
-msgstr "Letzte Artikel"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: page-sitemap.php:38
 msgid "Pages"
-msgstr "Seiten"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: page-sitemap.php:43
 msgid "Categories"
-msgstr "Kategorien"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: page-sitemap.php:53
 msgid "Posts by Category"
-msgstr "Artikel per Kategorie"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: page-sitemap.php:56
 msgid "Category"
-msgstr "Kategorie"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: search.php:34
 #, php-format
 msgid "Search results for \"%s\""
-msgstr "Suchergebnisse für \"%s\""
+msgstr "𖼰𖽙𖾐 𖽂𖽙𖾐 𖼺𖽪𖾐： \"%s\""
 
-# @ zeeDisplay
 #: search.php:59
 msgid "Comments"
-msgstr "Kommentare"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: search.php:72
 msgid ""
 "No matches. Please try again, or use the navigation menus to find what you "
 "search for."
 msgstr ""
-"Kein Treffer. Bitte versuchen Sie es erneut, oder verwenden Sie die "
-"Navigations-Menüs um zu finden, wonach Sie suchen."
+"𖼰𖽙𖾐 𖽂𖽙𖾐 𖼄𖽔 𖼊𖽙𖾐！ 𖼹𖽦𖾑 𖼊𖽑𖽡 𖼂𖽦𖾑 𖼳𖽶 𖼐𖽦𖾐 𖼮𖽑𖽳𖾐． 𖼄𖽔 𖼣𖽻𖾐 𖼊𖽡𖾑𖽑 𖼣𖽻𖾐， 𖼺𖽪𖾑 𖼄𖽙𖾐 𖼺𖽺𖾐 𖼮𖽨𖾐 "
+"𖼖𖽙𖾐 𖼮𖽑𖽻𖾐 𖼺𖽺𖾑，𖼐𖽑𖽡𖾐 𖼖𖽡𖾐 𖼊𖽡 𖼮𖽑𖽻 𖼺𖽪𖾐 𖼊𖽑𖽺 𖼰𖽙𖾐 𖼐𖽦𖾐 𖼊𖽙𖾐．"
 
-# @ zeeDisplay
+# @ dictrans
 #: slide.php:8 slide.php:9
 msgid "featured"
 msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/entry.php:31
 msgid "Read more"
-msgstr "Weiterlesen"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/navigation.php:17
 msgid "&laquo; Previous Entries"
 msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/navigation.php:18
 msgid "Next Entries &raquo;"
 msgstr ""
 
-# @ zeeDisplay
 #: includes/admin/theme-admin.php:31
-#, fuzzy
 msgid "Theme Options"
-msgstr "Theme Einstellungen"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:4
 msgid "Brown"
-msgstr "Braun"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:5
 msgid "Darkblue"
-msgstr "Dunkelblau"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:6
 msgid "Darkgreen"
-msgstr "Dunkelgrün"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:7
 msgid "Green"
-msgstr "Grün"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:8
 msgid "Grey"
-msgstr "Grau"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:9
 msgid "Orange"
-msgstr "Orange"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:10
 msgid "Purple"
-msgstr "Lila"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:11
 msgid "Red"
-msgstr "Rot"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:12
 msgid "Standard"
-msgstr "Standard"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:13
 msgid "Custom Color"
-msgstr "Eigene Farbe"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:22
 msgid "Theme Settings"
-msgstr "Theme Einstellungen"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:56
 msgid "Footer Content"
-msgstr "Footer Inhalt"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:57
 msgid "Enter here the content which is displayed in the footer."
-msgstr "Hier Inhalt eingeben, der im Footer angezeigt wird."
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:94
 msgid "Custom CSS"
-msgstr "Eigenes CSS"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:95
 msgid "Insert your own custom css code into the head of the theme."
-msgstr "Trage hier deinen eigenen CSS Code in den Kopfbereich des Themes ein."
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/admin/theme-settings.php:101
 msgid "Paste the full Image URL of your logo."
-msgstr "Trage hier die volle Bild URL zu deinem Logo ein."
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/plugins/theme_ads_widget.php:5
 msgid "Show your 125x125 Ad Spots"
-msgstr "Anzeige deiner 125x125 Banner"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/plugins/theme_ads_widget.php:56
 #: includes/plugins/theme_socialmedia_widget.php:96
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
-# @ zeeDisplay
+# @ dictrans
 #: includes/plugins/theme_socialmedia_widget.php:5
 msgid "Show your Social Media Buttons"
-msgstr "SocialMedia Buttons anzeigen"
+msgstr ""

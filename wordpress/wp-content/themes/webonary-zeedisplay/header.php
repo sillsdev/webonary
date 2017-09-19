@@ -15,19 +15,14 @@ $options = get_option('themezee_options');
 	}
 	?>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
+
 	<title><?php bloginfo('name'); if(is_home() || is_front_page()) { echo ' - '; bloginfo('description'); } else { wp_title(); } ?></title>
 
-	<?php
-	if(!isMobile()) {  ?>
-		<style type="text/css">
-		#topnavi {
-			position: static; float: right; margin-right: 10px;
-		}
-		</style>
-	<?php
+	<style type="text/css">
+	#topnavi {
+		position: static; float: right; margin-right: 10px;
 	}
-	?>
+	</style>
 
 	<?php webonary_zeedisplay_link_style_sheets() ?>
 
@@ -69,11 +64,11 @@ $options = get_option('themezee_options');
 				</div>
 			</div>
 			<?php endif; ?>
-			
+
 				<div id="topnavi">
 					<?php
 					// Get Top Navigation out of Theme Options
-					
+
 						wp_nav_menu(array(
 							'theme_location' => 'top_navi',
 							'container' => false,
@@ -84,7 +79,7 @@ $options = get_option('themezee_options');
 							'link_after' => '',
 							'depth' => 0,
 							'fallback_cb' => ''));
-					
+
 					?>
 				</div>
 			</div>
@@ -121,11 +116,11 @@ $options = get_option('themezee_options');
 					?>
 				</div>
 			<?php } ?>
-				
+
 	<?php if (has_nav_menu('top_navi')){?>
 		<div id="navbar" <?php if(!isMobile()) { ?>style=max-width: 900px; <?php } ?>><div id="navtitle"  <?php if(!isMobile()) { ?>style=padding: 12px 0 8px 70px;<?php } ?>><?php bloginfo('name'); ?></div></div>
 	<?php } ?>
-	
+
 		<?php if (has_nav_menu('main_navi')){?>
 			<div id="navi">
 				<?php
@@ -140,14 +135,14 @@ $options = get_option('themezee_options');
 						'link_after' => '',
 						'depth' => 0,
 						'fallback_cb' => ''));
-					
-						
+
+
 				?>
 			</div>
 		<?php } ?>
-	
+
 		<div style="clear: both;"></div>
-		
+
 	<?php if( get_header_image() != '') : ?>
 		<div id="custom_header">
 			<img src="<?php echo get_header_image(); ?>" style="width:100%;"/>
