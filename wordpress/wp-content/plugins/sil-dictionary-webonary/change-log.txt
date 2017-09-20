@@ -1,3 +1,4 @@
+v. 6.9.0 20 September 2017 changed test db to use utf8mb4 for character set
 v. 6.8.9 20 September 2017 changed path for tmp/wordpress-tests-lib
 v. 6.8.8 20 September 2017 changed small issue with sending emails that caused unit test to fail
 v. 6.8.7 20 September 2017 now indexes citation form

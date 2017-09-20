@@ -19,6 +19,22 @@ require_once $_tests_dir . '/includes/functions.php';
  */
 function _manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/sil-dictionary.php';
+
+	global $wpdb;
+
+	define('COLLATION', $wpdb->charset);
+	define('FULLCOLLATION', $wpdb->collate);
+
+	$sql = "ALTER DATABASE " . $wpdb->dbname .
+	" CHARACTER SET utf8mb4 " .
+	" COLLATE utf8mb4_general_ci";
+
+	echo $sql . "\n";
+
+	$wpdb->query($sql);
+
+	create_search_tables();
+	create_reversal_tables();
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

@@ -25,16 +25,16 @@ if ( ! defined('ABSPATH') )
 function install_sil_dictionary_infrastructure() {
 	global $wpdb;
 	global $blog_id;
-	
+
 	$sql = "SELECT DATABASE();";
 	$dbName = $wpdb->get_var($sql);
-	
+
 	$sql = "select COLLATION_NAME from information_schema.columns where TABLE_SCHEMA = '" . $dbName . "' and TABLE_NAME = '". $wpdb->prefix . "posts' and COLUMN_NAME = 'post_title'";
-	
+
 	$postsCollation = $wpdb->get_var($sql);
 
 	// The collation for all webonary databases is required to be utf8mb4_general_ci on all versions of mySQL that support it.
-	
+
 	define('COLLATION', $wpdb->charset);
 	define('FULLCOLLATION', $wpdb->collate);
 	/*
@@ -79,7 +79,7 @@ function create_reversal_tables () {
 		`sortorder` INT NOT NULL DEFAULT '0' ";
 		$sql .= ", UNIQUE KEY (`id`)";
 		$sql .= ") CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
-		
+
 	//echo $sql . "<br>";
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
@@ -99,6 +99,7 @@ function create_search_tables () {
 		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 )),
 		INDEX relevance_idx (relevance)
 		) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
+
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 }
@@ -199,7 +200,7 @@ function register_language_taxonomy () {
         'new_item_name' => __( 'New Language Name' ),
         'menu_name' => __( 'Language' ),
     );
-    
+
     register_taxonomy(
         'sil_writing_systems',
         'post',
@@ -254,11 +255,11 @@ function register_webstrings_taxonomy () {
 
 function remove_double_terms () {
 	global $wpdb;
-	
+
 	//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
 	$sql = "DELETE t1 FROM $wpdb->terms t1, $wpdb->terms t2
 			WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug";
-	
+
 	$wpdb->query( $sql );
 }
 
@@ -274,7 +275,7 @@ function clean_out_dictionary_data ($delete_taxonomies = null) {
 	{
 		prune_super_cache( get_supercache_dir(), true );
 	}
-	
+
 	if($delete_taxonomies == null)
 	{
 		$delete_taxonomies = $_POST['delete_taxonomies'];
@@ -317,7 +318,7 @@ function remove_entries ($pinged = null) {
 	global $wpdb;
 
 	$import = new sil_pathway_xhtml_Import();
-	
+
 	$catid = $import->get_category_id();
 
 	//just posts in category "webonary"
@@ -330,21 +331,21 @@ function remove_entries ($pinged = null) {
 	}
 
 	$wpdb->query( $sql );
-	
+
 	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_reversal";
 	$wpdb->query( $sql );
 
 	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_reversals";
 	$wpdb->query( $sql );
-	
+
 	create_reversal_tables();
-	
+
 	$sql = "DELETE FROM " . $wpdb->prefix . "term_relationships WHERE term_taxonomy_id = " . $catid;
 	if(isset($pinged))
 	{
 		$sql .= " AND object_id NOT IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'post')";
 	}
-	
+
 	$return_value = $wpdb->get_var( $sql );
 }
 
