@@ -61,6 +61,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 */
 
 	public $headword_relevance = 100;
+	public $citationform = 90;
 	public $plural = 80;
 	public $lexeme_form_relevance = 70;
 	public $variant_form_relevance = 60;
@@ -661,6 +662,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$arrFieldQueries[10] = $querystart . '[@class = "sense-crossref"]';
 		$arrFieldQueries[11] = $querystart . '[@class = "scientificname"]|' . $querystart . '[@class = "scientific-name"]';
 		$arrFieldQueries[12] = $querystart . '[@class = "plural"]';
+		$arrFieldQueries[13] = $querystart . '[@class = "citationform"]';
 
 		return $arrFieldQueries;
 	}
@@ -2136,6 +2138,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[11], $this->scientific_name);
 					//plurals
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[12], $this->plural);
+					//citation form
+					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[13], $this->citationform);
+
 				}
 				else
 				{
