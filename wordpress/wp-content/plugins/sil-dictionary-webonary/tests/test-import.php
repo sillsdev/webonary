@@ -66,5 +66,25 @@ class ImportTest extends WP_UnitTestCase {
 		$arrIndexed = $import->get_number_of_entries();
 		$this->assertEquals(1, $arrIndexed[0]->totalIndexed);
 		$this->assertEquals("en", $arrIndexed[0]->language_code);
+
+		//////////////////////
+		// CHECK CONFIGURATION
+		//////////////////////
+
+		update_option("IncludeCharactersWithDiacritics", 1);
+
+		$browseview = vernacularalphabet_func(null);
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadHTML($browseview);
+
+		$xpath = new DOMXPath($doc);
+		//$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$headwords = $xpath->query('//div[@class="entry"]/span[@class="mainheadword"]')->item(0);
+
+		echo $headwords->textContent;
+
 	}
 }

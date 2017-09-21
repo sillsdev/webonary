@@ -1,1 +1,2 @@
-1) if "Include characters with diacritics" is checked for vernacular browse view, words starting with accents should display (e.g. à must display under a) 
+1) if "Include characters with diacritics" is checked for vernacular browse view, words starting with accents
+should display (e.g. à must display under a)
