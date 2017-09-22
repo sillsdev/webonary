@@ -168,6 +168,10 @@ class fontMonagment
 		$arrFontName[39] = "BJCree UNI";
 		$arrFontStorage[39] = "Bycrus";
 		$arrHasSubFonts[39] = false;
+
+		$arrFontName[40] = "Taogu-OT";
+		$arrFontStorage[40] = "Taogu-OT.ttf";
+		$arrHasSubFonts[39] = false;
 	}
 
 	public function get_fonts_fromCssText($css_string)
