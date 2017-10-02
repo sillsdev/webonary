@@ -158,16 +158,16 @@ function save_configurations() {
 			$IncludeCharactersWithDiacritics = 1;
 		}
 		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
-		
+
 		update_option("displayCustomDomains", $_POST['displayCustomDomains']);
-		
+
 		$vernacularRightToLeft = 'no';
 		if(isset($_POST['vernacularRightToLeft']))
 		{
 			$vernacularRightToLeft = 1;
 		}
 		update_option("vernacularRightToLeft", $vernacularRightToLeft);
-				
+
 		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
 		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
 		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
@@ -189,7 +189,7 @@ function save_configurations() {
 		$arrLanguages[2]['code'] = "reversal2_langcode";
 		$arrLanguages[3]['name'] = "txtReversal3Name";
 		$arrLanguages[3]['code'] = "reversal3_langcode";
-		
+
 
 		foreach($arrLanguages as $language)
 		{
@@ -198,9 +198,9 @@ function save_configurations() {
 				$sql = "SELECT term_id, name
 				FROM $wpdb->terms
 				WHERE slug = '" . $_POST[$language['code']] . "'";
-				
+
 				$arrLanguageNames = $wpdb->get_results($sql);
-				
+
 				if(count($arrLanguageNames) > 0)
 				{
 					$sql = "UPDATE $wpdb->terms SET name = '" . $_POST[$language['name']]  . "' WHERE slug = '" . $_POST[$language['code']]  . "'";
@@ -211,10 +211,10 @@ function save_configurations() {
 					$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')";
 					$termid = $wpdb->insert_id;
 				}
-				
+
 				$wpdb->query( $sql );
-				
-				
+
+
 
 				echo $term_id . "<br>";
 
@@ -226,7 +226,7 @@ function save_configurations() {
 				{
 					$sql = "INSERT INTO  $wpdb->term_taxonomy (term_id, taxonomy,description,count) VALUES (" . $term_id . ", 'sil_writing_systems', '" . $_POST[$language['name']] . "',999999)";
 				}
-				
+
 				$wpdb->query( $sql );
 			}
 		}
@@ -506,10 +506,10 @@ function webonary_conf_widget($showTitle = false) {
 			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet:'); ?>
-			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" />
-			<?php _e('(Letters separated by comma)'); ?>
+			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" disabled=disabled />
+			<?php _e('(configure in FLEx)'); ?>
 			<p>
-		
+
 			Font to use for the vernacular letters in browse view:
 			<select name=vernacularLettersFont>
 			<option value=""></option>
@@ -526,9 +526,9 @@ function webonary_conf_widget($showTitle = false) {
 			}
 			?>
 			</select>
-			
+
 			<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-			
+
 			<p>
 			<?php
 			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
