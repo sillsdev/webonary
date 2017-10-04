@@ -1624,66 +1624,66 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$domain_name = str_replace("]", "", $sd_name->textContent);
 				$domain_name = str_replace(")", "", $domain_name);
 
-				$sd_number_text = $domain_name;
+				$sd_number_text = "";
 
 				if(isset($sd_numbers->item($sc)->textContent))
 				{
 					$sd_number_text = str_replace("[", "", $sd_numbers->item($sc)->textContent);
 					$sd_number_text = str_replace("(", "", $sd_number_text);
 					$sd_number_text = trim(str_replace("-", "", $sd_number_text));
-				}
 
-				$domain_class = $sd_name->getAttribute("class");
+					$domain_class = $sd_name->getAttribute("class");
 
-				$arrTerm = wp_insert_term(
-					$domain_name,
-					$this->semantic_domains_taxonomy,
-					array(
-						'description' => trim($domain_name),
-						'slug' => $sd_number_text
-					));
+					$arrTerm = wp_insert_term(
+						$domain_name,
+						$this->semantic_domains_taxonomy,
+						array(
+							'description' => trim($domain_name),
+							'slug' => $sd_number_text
+						));
 
-					$termid = $wpdb->get_var("
-						SELECT term_id
-						FROM $wpdb->terms
-						WHERE slug = '" . str_replace(".", "-", $sd_number_text) . "'");
+						$termid = $wpdb->get_var("
+							SELECT term_id
+							FROM $wpdb->terms
+							WHERE slug = '" . str_replace(".", "-", $sd_number_text) . "'");
 
-				if($termid == NULL || $termid == 0)
-				{
-					if (array_key_exists('term_id', $arrTerm))
+					if($termid == NULL || $termid == 0)
 					{
-						$termid = $arrTerm['term_id'];
-						$terms[$i] = $termid;
-						$i++;
+						if (array_key_exists('term_id', $arrTerm))
+						{
+							$termid = $arrTerm['term_id'];
+							$terms[$i] = $termid;
+							$i++;
+						}
 					}
-				}
-				if($sd_numbers->length > 0)
-				{
-					if($sd_numbers->item($sc) != null)
+					if($sd_numbers->length > 0)
 					{
-						$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+						if($sd_numbers->item($sc) != null)
+						{
+							$this->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item($sc), $termid);
+						}
 					}
-				}
-				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
-
-				if(isset($termid))
-				{
-					$wpdb->query( "INSERT INTO $wpdb->term_relationships (object_id, term_taxonomy_id) VALUES (" . $post_id . ", " . $termid . ") ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" );
-				}
-				/*
-				if($convertToLinks == true)
-				{
 					$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
-				}
-				else
-				{
-					$x = 0;
-					wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true );
-				}
-				*/
-				$arrTerm = null;
 
-				$sc++;
+					if(isset($termid))
+					{
+						$wpdb->query( "INSERT INTO $wpdb->term_relationships (object_id, term_taxonomy_id) VALUES (" . $post_id . ", " . $termid . ") ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" );
+					}
+					/*
+					if($convertToLinks == true)
+					{
+						$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
+					}
+					else
+					{
+						$x = 0;
+						wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true );
+					}
+					*/
+					$arrTerm = null;
+
+					$sc++;
+				}
 			}
 		}
 
