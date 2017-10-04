@@ -82,32 +82,42 @@ function categories_func( $atts )
     	{
     		//echo $domain['slug'] . " " . $domain['name'] . "\n";
 
-    		$currentSemDomain =  $domain['slug'] . " " . $domain['name'];
+    		$slug = $domain['slug'];
     		$domainNumber = $domain['slug'];
-    		$levelOfDomain = substr_count("$domainNumber","-") + 1;
 
-    		printRootDomainIfNeeded($domainNumber);
+    		$domainNumberAsInt = preg_replace('/-/', '', $domainNumber);
 
-    		buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
-
-    		$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
-    		$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
-
-    		if($qTransLang == "en")
+    		if(is_numeric($domainNumberAsInt))
     		{
-    			if(isset($defaultDomain[$domainNumberModified]))
-    			{
-    				$domainName = $defaultDomain[$domainNumberModified];
-    			}
+	    		$currentSemDomain =  $slug . " " . $domain['name'];
+
+	    		$levelOfDomain = substr_count("$domainNumber","-") + 1;
+
+	    		printRootDomainIfNeeded($domainNumber);
+
+	    		buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
+
+	    		$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
+
+	    		$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
+
+	    		if($qTransLang == "en")
+	    		{
+	    			if(isset($defaultDomain[$domainNumberModified]))
+	    			{
+	    				$domainName = $defaultDomain[$domainNumberModified];
+	    			}
+	    		}
+	    		else
+	    		{
+	    			$domainName = __($domainName, 'sil_dictionary');
+	    		}
+	    		$newString = "$domainNumberModified" . " " . $domainName;
+	    		outputSemDomAsJava($levelOfDomain, $newString);
+	    		$currentDigits = explode('-', $domainNumber);
+	    		setLastSemDom($currentDigits);
     		}
-    		else
-    		{
-    			$domainName = __($domainName, 'sil_dictionary');
-    		}
-    		$newString = "$domainNumberModified" . " " . $domainName;
-    		outputSemDomAsJava($levelOfDomain, $newString);
-    		$currentDigits = explode('-', $domainNumber);
-    		setLastSemDom($currentDigits);
+
     	}
 
     	echo "</script>";

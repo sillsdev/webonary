@@ -24,10 +24,10 @@ global $lastSemDomLevel;
 if(get_option('displayCustomDomains') == "yakan")
 {
 	require_once( dirname( __FILE__ ) . '/default_domains-yakan.php' );
-	
+
 	$rootDomainPrinted = array('no zero domain',
 			'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no','no','no','no','no','no','no','no','no','no','no','no','no','no','no','no','no','no','no');
-	
+
 	$roots = array( 'no 0 domain',
 			' aux1 = insFld(foldersTree, gFld("1. ' . __('PLANTS') . '", "c0001.htm"))',
 			' aux1 = insFld(foldersTree, gFld("2. ' . __('ANIMALS (CREATURES ON LAND)', 'sil_dictionary') . '", "c0002.htm"))',
@@ -63,15 +63,15 @@ if(get_option('displayCustomDomains') == "yakan")
 			' aux1 = insFld(foldersTree, gFld("32. ' . __('WAYS OF TYING THINGS', 'sil_dictionary') . '", "c0032.htm"))',
 			' aux1 = insFld(foldersTree, gFld("33. ' . __('SEEING', 'sil_dictionary') . '", "c0033.htm"))'
 	);
-	
+
 }
 else
 {
 	require_once( dirname( __FILE__ ) . '/default_domains.php' );
-	
+
 	$rootDomainPrinted = array('no zero domain',
 			'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no');
-	
+
 	$roots = array( 'no 0 domain',
 			' aux1 = insFld(foldersTree, gFld("1. ' . __('Universe, creation', 'sil_dictionary') . '", "c0001.htm"))',
 			' aux1 = insFld(foldersTree, gFld("2. ' . __('Person', 'sil_dictionary') . '", "c0105.htm"))',
@@ -84,7 +84,7 @@ else
 			' aux1 = insFld(foldersTree, gFld("9. ' . __('Grammar', 'sil_dictionary') . '", "c1599.htm"))',
 			' aux1 = insFld(foldersTree, gFld("10. ' . __('Custom Domains', 'sil_dictionary') . '", "c1599.htm"))'
 	);
-	
+
 }
 //define a way to keep track of which semantic domain parents have been processed already.
 //eg is we have 1.3.1.1 and the odomerter says 1,3,0,0,0,0 then we need to first output 1,3,1
@@ -168,9 +168,9 @@ function buildTreeToSupportThisItem($domainNumber, $levelOfDomain)
 		*/
 
 		$strToPrint = $domainNrToPrint . " " . $defaultDomain[$domainNrToPrint]; //$defaultDomain[$key][1];
-		
+
 		//$strToPrint = "#" . $domainNrToPrint . "#";
-		
+
 		$currentDigits[$i] = $currentDomainDigits[$i];
 
 		if ($currentDomainDigits[$i] > $lastSemDom[$i])
@@ -219,7 +219,7 @@ function outputSemDomAsJava($levelOfDomain, $newString)
 	{
 		$levelMinus1 = 1;
 	}
-	
+
 	if($levelOfDomain > 1)
 	{
 		print 'aux' . (string)$levelOfDomain . '= insFld(aux' . $levelMinus1 . ', gFld("';

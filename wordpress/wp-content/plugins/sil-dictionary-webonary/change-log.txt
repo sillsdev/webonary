@@ -1,3 +1,4 @@
+v. 6.9.6 4 October 2017 for creating creating domain tree, filtering out abbrevations that use words instead of numbers
 v. 6.9.5 2 October 2017	disabled configuring for vernacular browse view letters
 v. 6.9.4 22 September 2017 added Taego-OT font to repository
 v. 6.9.3 21 September 2017 changed Portuguese status image files
