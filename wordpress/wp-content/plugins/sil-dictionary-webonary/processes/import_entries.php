@@ -75,6 +75,8 @@ if(isset($xhtmlFileURL))
 
 		$header = "";
 		$isHead = false;
+		$letter = "";
+		$letterLanguage = "";
 
 		$postentry = "";
 		$isEntry = false;

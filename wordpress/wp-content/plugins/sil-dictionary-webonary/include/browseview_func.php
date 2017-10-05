@@ -417,20 +417,25 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 add_shortcode( 'reversalindex1', 'reversalalphabet_func' );
 add_shortcode( 'reversalindex2', 'reversalalphabet_func' );
 add_shortcode( 'reversalindex3', 'reversalalphabet_func' );
+add_shortcode( 'reversalindex4', 'reversalalphabet_func' );
 
 function reversalalphabet_func($atts, $content, $tag)
 {
-	$reversalnr = 1;
-	if($tag != "reversalindex1")
+	if($tag == "reversalindex2")
 	{
-		if($tag != "reversalindex2")
-		{
-			$reversalnr = 3;
-		}
-		else
-		{
-			$reversalnr = 2;
-		}
+		$reversalnr = 2;
+	}
+	else if($tag == "reversalindex3")
+	{
+		$reversalnr = 3;
+	}
+	else if($tag == "reversalindex4")
+	{
+		$reversalnr = 4;
+	}
+	else
+	{
+		$reversalnr = 1;
 	}
 
 	$alphas = explode(",",  get_option('reversal'. $reversalnr . '_alphabet'));
@@ -450,9 +455,6 @@ function reversalalphabet_func($atts, $content, $tag)
 
 	return $display;
 }
-
-add_shortcode( 'reversalindex2', 'reversalalphabet_func' );
-add_shortcode( 'reversalindex3', 'reversalalphabet_func' );
 
 function reversalindex($display, $chosenLetter, $langcode)
 {
