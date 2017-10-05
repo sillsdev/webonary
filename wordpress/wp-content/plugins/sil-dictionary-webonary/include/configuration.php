@@ -150,7 +150,7 @@ function save_configurations() {
 		}
 		update_option("DisplaySubentriesAsMainEntries", $displaySubentriesAsMainEntries);
 		update_option("languagecode", $_POST['languagecode']);
-		update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
+		//update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
 
 		$IncludeCharactersWithDiacritics = 'no';
 		if(isset($_POST['IncludeCharactersWithDiacritics']))
@@ -506,8 +506,7 @@ function webonary_conf_widget($showTitle = false) {
 			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet:'); ?>
-			<input id=vernacularAlphabet name="vernacular_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>" disabled=disabled />
-			<?php _e('(configure in FLEx)'); ?>
+			<?php echo stripslashes(get_option('vernacular_alphabet')); ?> <?php _e('(configure in FLEx)'); ?>
 			<p>
 
 			Font to use for the vernacular letters in browse view:
