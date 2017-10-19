@@ -210,12 +210,15 @@ if(isset($xhtmlFileURL))
 	);
 	if($filetype == "configured")
 	{
+		/*
 		similar_text(get_option('vernacular_alphabet'), $alphabet, $perSimilarAlphabet);
 
 		if($perSimilarAlphabet < 60)
 		{
 			update_option("vernacular_alphabet", $alphabet);
 		}
+		*/
+		update_option("vernacular_alphabet", $alphabet);
 
 		update_option("totalConfiguredEntries", ($entry_counter - 1));
 

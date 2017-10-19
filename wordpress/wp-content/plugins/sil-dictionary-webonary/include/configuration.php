@@ -505,8 +505,8 @@ function webonary_conf_widget($showTitle = false) {
 			</select>
 			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
-			<?php _e('Vernacular Alphabet:'); ?>
-			<?php echo stripslashes(get_option('vernacular_alphabet')); ?> <?php _e('(configure in FLEx)'); ?>
+			<?php _e('Vernacular Alphabet'); ?> (<a href="http://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+			<?php echo stripslashes(get_option('vernacular_alphabet')); ?>
 			<p>
 
 			Font to use for the vernacular letters in browse view:
