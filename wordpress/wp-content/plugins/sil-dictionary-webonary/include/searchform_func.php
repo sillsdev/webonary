@@ -45,18 +45,18 @@ function webonary_searchform() {
 					var currentPos = theCursorPosition(searchfield);
 					var origValue = searchfield.value;
 					var newValue = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
-					 
+
 					searchfield.value = newValue;
-		
+
 					searchfield.focus();
-								
+
 				    return true;
 				}
-		
+
 				function theCursorPosition(ofThisInput) {
 					// set a fallback cursor location
 					var theCursorLocation = 0;
-		
+
 					// find the cursor location via IE method...
 					if (document.selection) {
 						ofThisInput.focus();
@@ -69,7 +69,7 @@ function webonary_searchform() {
 					}
 					return theCursorLocation;
 				}
-				
+
 				-->
 				</script>
 			<?php
@@ -87,12 +87,12 @@ function webonary_searchform() {
 				echo "<br>";
 				?>
 				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40>
-	
+
 				<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
 				<?php if (function_exists('qtrans_getLanguage')) {?>
 					<input type="hidden" id="lang" name="lang" value="<?php echo qtrans_getLanguage(); ?>"/>
 				<?php }?>
-	
+
 				<!-- search button -->
 				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
 				<br>
@@ -102,8 +102,8 @@ function webonary_searchform() {
 				{
 					$key = $_GET['key'];
 				}
-	
-				
+
+
 				//$catalog_terms = get_terms('sil_writing_systems');
 				$arrLanguages = get_LanguageCodes();
 				$arrVernacularLanguage = get_LanguageCodes(get_option('languagecode'));
@@ -156,7 +156,7 @@ function webonary_searchform() {
 				 * Set up the Parts of Speech
 				 */
 				$parts_of_speech = get_terms('sil_parts_of_speech');
-				
+
 				if($parts_of_speech)
 				{
 					wp_dropdown_categories("show_option_none=" .
@@ -172,9 +172,9 @@ function webonary_searchform() {
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
 		$import = new sil_pathway_xhtml_Import();
-		
+
 		$arrIndexed = $import->get_number_of_entries();
-		
+
 		$numberOfEntriesText = "";
 		foreach($arrIndexed as $indexed)
 		{
@@ -189,7 +189,11 @@ function webonary_searchform() {
 		{
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
-		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%" . get_bloginfo('wpurl') . "%'");
+
+		$siteurlNoHttp = str_replace("https", "", get_bloginfo('wpurl'));
+		$siteurlNoHttp = str_replace("http", "", get_bloginfo('wpurl'));
+
+		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%" . $siteurlNoHttp . "%'");
 		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
 		{
 			echo "<br>";
@@ -203,7 +207,7 @@ function webonary_searchform() {
 			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
 			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . trim($_GET['s']) . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
     		$sem_domains = $wpdb->get_results( $query );
-    		
+
 			if(count($sem_domains) > 0 && count($sem_domains) <= 10)
 			{
 				echo "<p>&nbsp;</p>";
@@ -274,7 +278,7 @@ function add_footer()
 				$language = qtranxf_getLanguage();
 			}
 		?>
-		
+
 		<div align=center><img src="<?php getDictStageImage($publicationStatus, $language); ?>" style="padding: 5px; max-width: 100%;"></div>
 	<?php
 		}
