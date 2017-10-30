@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: zeeDisplay\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-21 11:09+0800\n"
-"PO-Revision-Date: 2017-09-21 11:10+0800\n"
+"PO-Revision-Date: 2017-09-21 11:23+0800\n"
 "Last-Translator: \n"
 "Language-Team: themezee.com\n"
 "Language: de_DE\n"
@@ -21,39 +21,38 @@ msgstr ""
 
 # @ zeeDisplay
 #: 404.php:12
-#, fuzzy
 msgid "Entry not found."
-msgstr "404 Fehler: Seite nicht gefunden"
+msgstr ""
 
 # @ zeeDisplay
 #: archive.php:5 archive.php:6 archive.php:7
 msgid "Archive for"
-msgstr "Archiv für"
+msgstr ""
 
 # @ zeeDisplay
 #: archive.php:8
 msgid "Tag Archive for"
-msgstr "Tag Archiv für"
+msgstr ""
 
 # @ zeeDisplay
 #: archive.php:9 page-sitemap.php:48
 msgid "Archives"
-msgstr "Archive"
+msgstr ""
 
 # @ zeeDisplay
 #: comments.php:8
 msgid "Enter password to view comments."
-msgstr "Passwort erforderlich, um Kommentare zu sehen."
+msgstr ""
 
 # @ zeeDisplay
 #: comments.php:16 includes/entry.php:15
 msgid "No comments"
-msgstr "Keine Kommentare"
+msgstr ""
 
 # @ zeeDisplay
 #: comments.php:16 includes/entry.php:15
 msgid "One comment"
-msgstr "Ein Kommentar"
+msgstr ""
 
 # @ zeeDisplay
 #: comments.php:16 includes/entry.php:15
@@ -63,13 +62,12 @@ msgstr ""
 
 #: footer.php:64
 msgid "Terms of Service"
-msgstr "Nutzungsbedingungen"
+msgstr "Termos de serviço"
 
 # @ zeeDisplay
 #: functions.php:210
-#, fuzzy
 msgid "Search Bar Popups"
-msgstr "Suchergebnisse"
+msgstr ""
 
 #: functions.php:212
 msgid ""
@@ -94,27 +92,27 @@ msgstr ""
 # @ zeeDisplay
 #: page-sitemap.php:27
 msgid "Latest Posts"
-msgstr "Letzte Artikel"
+msgstr ""
 
 # @ zeeDisplay
 #: page-sitemap.php:38
 msgid "Pages"
-msgstr "Seiten"
+msgstr ""
 
 # @ zeeDisplay
 #: page-sitemap.php:43
 msgid "Categories"
-msgstr "Kategorien"
+msgstr ""
 
 # @ zeeDisplay
 #: page-sitemap.php:53
 msgid "Posts by Category"
-msgstr "Artikel per Kategorie"
+msgstr ""
 
 # @ zeeDisplay
 #: page-sitemap.php:56
 msgid "Category"
-msgstr "Kategorie"
+msgstr ""
 
 # @ zeeDisplay
 #: search.php:34
@@ -144,7 +142,7 @@ msgstr ""
 # @ zeeDisplay
 #: includes/entry.php:31
 msgid "Read more"
-msgstr "Weiterlesen"
+msgstr ""
 
 # @ zeeDisplay
 #: includes/navigation.php:17
@@ -158,14 +156,13 @@ msgstr ""
 
 # @ zeeDisplay
 #: includes/admin/theme-admin.php:31
-#, fuzzy
 msgid "Theme Options"
-msgstr "Theme Einstellungen"
+msgstr ""
 
 # @ zeeDisplay
 #: includes/admin/theme-settings.php:4
 msgid "Brown"
-msgstr "Braun"
+msgstr "Brau"
 
 # @ zeeDisplay
 #: includes/admin/theme-settings.php:5
@@ -215,7 +212,7 @@ msgstr "Eigene Farbe"
 # @ zeeDisplay
 #: includes/admin/theme-settings.php:22
 msgid "Theme Settings"
-msgstr "Theme Einstellungen"
+msgstr ""
 
 # @ zeeDisplay
 #: includes/admin/theme-settings.php:56
@@ -251,7 +248,7 @@ msgstr "Anzeige deiner 125x125 Banner"
 #: includes/plugins/theme_ads_widget.php:56
 #: includes/plugins/theme_socialmedia_widget.php:96
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 # @ zeeDisplay
 #: includes/plugins/theme_socialmedia_widget.php:5
