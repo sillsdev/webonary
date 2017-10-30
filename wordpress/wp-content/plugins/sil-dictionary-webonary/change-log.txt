@@ -1,4 +1,4 @@
-v. 7.0.1 30 October 2017 Fixed issue that published date didn't display with https urls
+v. 7.0.2 30 October 2017 Fixed issue that published date didn't display with https urls
 v. 7.0.0 19 October 2017 vernacular alphabet now always gets created new on upload
 v. 6.9.9 5 October 2017 removed update for vernacular alphabet
 v. 6.9.8 5 October 2017 added shortcode reversalindex4

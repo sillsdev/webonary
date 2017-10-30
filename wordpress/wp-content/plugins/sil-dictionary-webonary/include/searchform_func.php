@@ -190,8 +190,8 @@ function webonary_searchform() {
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
 
-		$siteurlNoHttp = str_replace("https", "", get_bloginfo('wpurl'));
-		$siteurlNoHttp = str_replace("http", "", get_bloginfo('wpurl'));
+		$siteurlNoHttp = str_replace("https://", "", get_bloginfo('wpurl'));
+		$siteurlNoHttp = str_replace("http://", "", $siteurlNoHttp);
 
 		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%" . $siteurlNoHttp . "%'");
 		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
