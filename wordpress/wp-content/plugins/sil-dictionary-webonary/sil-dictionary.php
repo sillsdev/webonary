@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 7.0.2
+Version: v. 7.0.3
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -68,6 +68,8 @@ require_once( dirname( __FILE__ ) . '/include/comments_func.php' );
 require_once( dirname( __FILE__ ) . '/include/api.php' );
 // Widgets
 require_once( dirname( __FILE__ ) . '/include/widgets.php' );
+//modify the post content
+require_once( dirname( __FILE__ ) . '/include/modifycontent.php' );
 
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
@@ -98,4 +100,18 @@ add_action('search_message', 'sil_dictionary_custom_message');
 add_action('pre_get_posts','no_standard_sort');
 
 add_action( 'preprocess_comment' , 'preprocess_comment_add_type' );
+
+function add_rewrite_rules($aRules) {
+	echo "rewrite rules<br>";
+	$aNewRules = array('^/([^/]+)/?$' => 'index.php?clean=$matches[1]');
+	$aRules = $aNewRules + $aRules;
+	return $aRules;
+}
+
+add_filter('post_rewrite_rules', 'add_rewrite_rules');
+function add_query_vars($qvars) {
+	$qvars[] = "clean";
+	return $qvars;
+}
+add_filter('query_vars', 'add_query_vars');
 

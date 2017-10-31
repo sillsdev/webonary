@@ -675,7 +675,8 @@ function vernacularalphabet_func( $atts )
 		}
 		else if(trim($mypost->post_title) == trim($mypost->search_strings) )
 		{
-			$display .= "<div class=\"post\">" . $mypost->post_content . "</div>";
+			$the_content = addLangQuery($mypost->post_content);
+			$display .= "<div class=\"post\">" . $the_content . "</div>";
 			/*
 			if( comments_open($mypost->ID) ) {
 				$display .= "<a href=\"/" . $mypost->post_name. "\" rel=bookmark><u>Comments (" . get_comments_number($mypost->ID) . ")</u></a>";
