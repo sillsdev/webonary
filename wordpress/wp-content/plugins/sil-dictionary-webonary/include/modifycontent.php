@@ -11,7 +11,7 @@ function addLangQuery($content)
 		//Loop through each <a> tag in the dom and change the href property
 		foreach($doc->getElementsByTagName('a') as $anchor) {
 			$link = $anchor->getAttribute('href');
-			if(strpos("?", $link) > 0)
+			if(strpos($link, "?") > 0)
 			{
 				$link .= '&lang=' . $_GET['lang'];
 			}
