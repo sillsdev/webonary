@@ -6,7 +6,7 @@ function addLangQuery($content)
 		$doc = new DOMDocument();
 
 		// load the string into the DOM (this is your page's HTML), see below for more info
-		$doc->loadHTML($content);
+		$doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
 		//Loop through each <a> tag in the dom and change the href property
 		foreach($doc->getElementsByTagName('a') as $anchor) {
@@ -26,5 +26,5 @@ function addLangQuery($content)
 
 	return $content;
 }
-
+remove_filter('the_content', 'wptexturize');
 add_filter( 'the_content', 'addLangQuery');
