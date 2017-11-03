@@ -112,7 +112,7 @@ $options = get_option('themezee_options');
 			<?php } ?>
 
 	<?php if (has_nav_menu('top_navi')){?>
-		<div id="navbar" <?php if(!isMobile()) { ?>style=max-width: 900px; <?php } ?>><div id="navtitle"  <?php if(!isMobile()) { ?>style=padding: 12px 0 8px 70px;<?php } ?>><?php bloginfo('name'); ?></div></div>
+		<div id="navbar" <?php if(!isMobile()) { ?>style="max-width: 900px;" <?php } ?>><div id="navtitle"  <?php if(!isMobile()) { ?>style="padding: 12px 0 8px 10px;"<?php } ?>><?php bloginfo('name'); ?></div></div>
 	<?php } ?>
 
 		<?php if (has_nav_menu('main_navi')){?>
