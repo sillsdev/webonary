@@ -128,8 +128,8 @@ function sil_dictionary_custom_join($join) {
 
 		if(isset($wp_query->query_vars['letter']))
 		{
-			$letter = trim($wp_query->query_vars['letter']);
-			$noletters = trim($wp_query->query_vars['noletters']);
+			$letter = addslashes(trim($wp_query->query_vars['letter']));
+			$noletters = addslashes(trim($wp_query->query_vars['noletters']));
 
 			//by default we use collate utf8_bin and à, ä, etc. are handled as different letters
 			$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
@@ -246,7 +246,7 @@ function sil_dictionary_custom_where($where) {
 			}
 			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
 
-			$letter = trim($wp_query->query_vars['letter']);
+			$letter = addslashes(trim($wp_query->query_vars['letter']));
 			if(strlen(trim($letter)) > 0)
 			{
 				$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";

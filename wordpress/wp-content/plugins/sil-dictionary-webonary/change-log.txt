@@ -1,3 +1,4 @@
+v. 7.0.7 06 November 2017 slashes get added so that searching for apostrophe in browse view works
 v. 7.0.6 03 November 2017 fixed modifycontent to preserve whitespace
 v. 7.0.5 31. October 2017 fixed encoding issue with madifying content
 v. 7.0.4 31 October 2017 lang query string (qTranslate X) gets added to content links
