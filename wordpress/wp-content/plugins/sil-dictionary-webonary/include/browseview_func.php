@@ -205,7 +205,12 @@ function displayAlphabet($alphas, $languagecode)
 		}
 		else
 		{
-	    	$display .= "<a href=\"?letter=" . stripslashes($letter) . "&key=" . $languagecode . "\">" . stripslashes($letter) . "</a>";
+			$lang = "";
+			if(isset($_GET['lang']))
+			{
+				$lang = "&lang=" . $_GET['lang'];
+			}
+	    	$display .= "<a href=\"?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
 		}
 		$display .= "</span></div>";
 	}
@@ -246,7 +251,13 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		$display .= "<div  id='wp_page_numbers'><ul>";
 		$nextpage = "&gt;";
 		$prevpage = "&lt;";
-		$url = "?" . $requestname . "=" . $chosenLetter . "&key=" . $languagecode . "&totalEntries=" . $totalEntries;
+		$lang = "";
+		if(isset($_GET['lang']))
+		{
+			$lang = "&lang=" . $_GET['lang'];
+		}
+
+		$url = "?" . $requestname . "=" . $chosenLetter . "&key=" . $languagecode . "&totalEntries=" . $totalEntries . $lang;
 
 		$limit_pages = 10;
 		$display .= "<li class=page_info>" . gettext("Page") . " " . $currentPage . " " . gettext("of") . " " . $totalPages . "</li>";
