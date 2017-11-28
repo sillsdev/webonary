@@ -1,3 +1,4 @@
+v. 7.1.0 28 November 2017 added dictionary stage pictures for Urdu
 v. 7.0.9 15 November 2017 Bangla localization
 v. 7.0.8 07 November 2017 added lang query to browse view letters and page numbers
 v. 7.0.7 06 November 2017 slashes get added so that searching for apostrophe in browse view works
