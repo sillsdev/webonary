@@ -1,3 +1,4 @@
+v. 7.1.1 1 December 2017 changed path for css files to https
 v. 7.1.0 28 November 2017 added dictionary stage pictures for Urdu
 v. 7.0.9 15 November 2017 Bangla localization
 v. 7.0.8 07 November 2017 added lang query to browse view letters and page numbers
