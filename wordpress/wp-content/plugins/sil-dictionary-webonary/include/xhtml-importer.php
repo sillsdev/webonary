@@ -1647,11 +1647,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 							FROM $wpdb->terms
 							WHERE slug = '" . str_replace(".", "-", $sd_number_text) . "'");
 
+						echo "termid: " . $termid . "\n";
+
 					if($termid == NULL || $termid == 0)
 					{
 						if (array_key_exists('term_id', $arrTerm))
 						{
 							$termid = $arrTerm['term_id'];
+							$taxonomyid = $arrTerm['term_taxonomy_id'];
 							$terms[$i] = $termid;
 							$i++;
 						}
@@ -1667,7 +1670,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					if(isset($termid))
 					{
-						$wpdb->query( "INSERT INTO $wpdb->term_relationships (object_id, term_taxonomy_id) VALUES (" . $post_id . ", " . $termid . ") ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" );
+						//$wpdb->query( "INSERT INTO $wpdb->term_relationships (object_id, term_taxonomy_id) VALUES (" . $post_id . ", " . $this->semantic_domains_taxonomy . ") ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" );
+						wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true);
 					}
 					/*
 					if($convertToLinks == true)
@@ -2162,7 +2166,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				if ( $semantic_domains_taxonomy_exists )
 				{
 					$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, false);
-					$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, true);
+					//$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, true);
 				}
 				/*
 				 * Load parts of speech (POS)

@@ -195,9 +195,9 @@ function sil_dictionary_custom_join($join) {
 	{
 		if( $tax > 1 || strlen($wp_query->query_vars['semdomain']) > 0) {
 			$join .= " LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
-			$join .= " INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_id ";
+			$join .= " INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id ";
 			if(get_option("useSemDomainNumbers") == 1) {
-				$join .= " INNER JOIN $wpdb->terms ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->terms.term_id ";
+				$join .= " INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id ";
 			}
 		}
 	}
