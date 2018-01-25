@@ -41,7 +41,7 @@ function sil_dictionary_select_fields() {
 	if( !is_page())
 	{
 		$upload_dir = wp_upload_dir();
-		wp_register_style('configured_stylesheet', str_replace('http','https', $upload_dir['baseurl']) . '/imported-with-xhtml.css?time=' . date("U"));
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 		//wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
 	}
