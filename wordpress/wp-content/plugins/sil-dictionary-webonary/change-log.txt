@@ -1,3 +1,4 @@
+v. 7.1.3 25 January 2018 removed the replace with https code
 v. 7.1.2 5 December 2017 fixed bug wrong domains in semantic domain tree
 v. 7.1.1 1 December 2017 changed path for css files to https
 v. 7.1.0 28 November 2017 added dictionary stage pictures for Urdu

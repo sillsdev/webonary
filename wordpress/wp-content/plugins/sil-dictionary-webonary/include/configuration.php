@@ -252,13 +252,13 @@ function webonary_conf_widget($showTitle = false) {
 
 	$fontClass = new fontMonagment();
 	$css_string = null;
-	$configured_css_file = str_replace('http','https', $upload_dir['basedir']) . '/imported-with-xhtml.css';
+	$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
 	if(file_exists($configured_css_file))
 	{
 		$css_string = file_get_contents($configured_css_file);
 	}
 	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-	wp_register_style('custom_css', str_replace('http','https', $upload_dir['baseurl']) . '/custom.css?time=' . date("U"));
+	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_css');
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
