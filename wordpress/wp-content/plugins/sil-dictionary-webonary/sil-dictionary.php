@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 7.1.3
+Version: v. 7.1.4
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -102,7 +102,7 @@ add_action('pre_get_posts','no_standard_sort');
 add_action( 'preprocess_comment' , 'preprocess_comment_add_type' );
 
 function add_rewrite_rules($aRules) {
-	echo "rewrite rules<br>";
+	//echo "rewrite rules<br>";
 	$aNewRules = array('^/([^/]+)/?$' => 'index.php?clean=$matches[1]');
 	$aRules = $aNewRules + $aRules;
 	return $aRules;
