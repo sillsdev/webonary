@@ -384,6 +384,7 @@ function set_field_sortorder() {
 		return false;
 	}
 	$sql = " ALTER TABLE " . $wpdb->prefix . "sil_search ADD sortorder INT NOT NULL DEFAULT  '0'";
+
 	$wpdb->query( $sql );
 }
 

@@ -1870,7 +1870,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					//the Chinese headwords get converted to pinyin, so that the reversal browse view
 					//will work
 					$reversal_browsehead = $reversal_head;
-					if($reversal_language == "zh-CN" && extension_loaded("pinyin"))
+					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN") && extension_loaded("pinyin"))
 					{
 						//the pinyin extension doesn't work correctly with brackets
 						$pinyinstring = str_replace("（", " ", $reversal_head);
