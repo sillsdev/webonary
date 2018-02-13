@@ -209,6 +209,10 @@ class fontMonagment
 		$arrFontStorage[49] = "GentiumPlusViet";
 		$arrHasSubFonts[49] = false;
 
+		$arrFontName[50] = "Sawndip";
+		$arrFontStorage[50] = "Sawndip";
+		$arrHasSubFonts[50] = false;
+
 	}
 
 	public function get_fonts_fromCssText($css_string)
