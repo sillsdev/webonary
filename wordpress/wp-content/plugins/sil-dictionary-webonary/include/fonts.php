@@ -172,6 +172,43 @@ class fontMonagment
 		$arrFontName[40] = "Taogu-OT";
 		$arrFontStorage[40] = "Taogu-OT.ttf";
 		$arrHasSubFonts[39] = false;
+
+		$arrFontName[41] = "Gentium Plus";
+		$arrFontStorage[41] = "GentiumPlus";
+		$arrHasSubFonts[41] = true;
+
+		$arrFontName[42] = "Gentium Plus Afr";
+		$arrFontStorage[42] = "Gentium PlusAfr";
+		$arrHasSubFonts[42] = false;
+
+		$arrFontName[43] = "Gentium Plus Am";
+		$arrFontStorage[43] = "Gentium PlusAm";
+		$arrHasSubFonts[43] = false;
+
+		$arrFontName[44] = "Gentium Plus APac";
+		$arrFontStorage[44] = "GentiumPlusAPac";
+		$arrHasSubFonts[44] = false;
+
+		$arrFontName[45] = "Gentium Plus Cyr";
+		$arrFontStorage[45] = "GentiumPlusCyr";
+		$arrHasSubFonts[45] = false;
+
+		$arrFontName[46] = "Gentium Plus CyrE";
+		$arrFontStorage[46] = "GentiumPlusCyrE";
+		$arrHasSubFonts[46] = false;
+
+		$arrFontName[47] = "Gentium Plus Eur";
+		$arrFontStorage[47] = "GentiumPlusEur";
+		$arrHasSubFonts[47] = false;
+
+		$arrFontName[48] = "Gentium Plus Phon";
+		$arrFontStorage[48] = "GentiumPlusPhon";
+		$arrHasSubFonts[48] = false;
+
+		$arrFontName[49] = "Gentium Plus Viet";
+		$arrFontStorage[49] = "GentiumPlusViet";
+		$arrHasSubFonts[49] = false;
+
 	}
 
 	public function get_fonts_fromCssText($css_string)

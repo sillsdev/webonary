@@ -2227,6 +2227,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		if($extension == "css")
 		{
 			$upload_dir = wp_upload_dir();
+			echo "upload_dir: " . $upload_dir['url'] . "<br>";
 			$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
 			if($filetype == "reversal")
 			{
