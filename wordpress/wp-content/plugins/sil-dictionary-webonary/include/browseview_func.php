@@ -380,7 +380,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		$sql .= " reversal_head LIKE  '" . $letter . "%' AND ";
 	}
 	$sql .=	" language_code = '" . $reversalLangcode . "' ";
-	if($sortorderExists)
+	if($sortorderExists && $reversalLangcode != "zh-CN" && $reversalLangcode != "zh-Hans-CN")
 	{
 		$sql .= " ORDER BY sortorder, reversal_head ASC";
 	}

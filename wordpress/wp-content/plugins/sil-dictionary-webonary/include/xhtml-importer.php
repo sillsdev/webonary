@@ -13,7 +13,7 @@
  * @subpackage Importer
  * @since 3.1
  */
-
+use Overtrue\Pinyin\Pinyin;
 set_time_limit(0);
 
 // don't load directly
@@ -1865,18 +1865,18 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					$existing_entry = $wpdb->get_var($sql);
 
-					//If the reversal language is set to Chinese and
-					//the extension pinyin from https://github.com/duguying/pinyin-php is installed
+					//If the reversal language is set to Chinese
 					//the Chinese headwords get converted to pinyin, so that the reversal browse view
-					//will work
+					//will work see https://github.com/overtrue/pinyin
 					$reversal_browsehead = $reversal_head;
-					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN") && extension_loaded("pinyin"))
+					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN"))
 					{
-						//the pinyin extension doesn't work correctly with brackets
-						$pinyinstring = str_replace("（", " ", $reversal_head);
-						$pinyinstring = str_replace("）", "", $pinyinstring);
-						$pinyin = pinyin($pinyinstring);
-						$reversal_browsehead = remove_accents($pinyin);
+						require_once( dirname( __FILE__ ) . '/pinyin/src/Pinyin.php' );
+						require_once( dirname( __FILE__ ) . '/pinyin/src/DictLoaderInterface.php' );
+						require_once( dirname( __FILE__ ) . '/pinyin/src/FileDictLoader.php' );
+
+						$pinyin = new Pinyin();
+						$reversal_browsehead = $pinyin->sentence($reversal_head);
 					}
 
 					if($existing_entry == NULL)
