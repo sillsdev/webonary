@@ -1,3 +1,4 @@
+v. 7.1.9 05 March 2017 sorts Chinese reversal browseview by pinyin rather than sortorder from FLEx
 v. 7.1.8 05 March 2017 using php pinyin library instead of extension
 v. 7.1.7 13 February 2018 added Sawndip font to repository
 v. 7.1.6 13 February 2018 added language code zh-Hans-CN for pinyin conversion
