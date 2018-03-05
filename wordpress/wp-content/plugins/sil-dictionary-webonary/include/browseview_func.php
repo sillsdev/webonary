@@ -377,7 +377,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 	" WHERE ";
 	if($letter != "")
 	{
-		$sql .= " reversal_head LIKE  '" . $letter . "%' AND ";
+		$sql .= " reversal_head LIKE  '" . $letter . "%' COLLATE " . COLLATION . "_BIN AND ";
 	}
 	$sql .=	" language_code = '" . $reversalLangcode . "' ";
 	if($sortorderExists && $reversalLangcode != "zh-CN" && $reversalLangcode != "zh-Hans-CN")
