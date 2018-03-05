@@ -406,7 +406,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		$sql .= " AND a.language_code =  '" . $reversalLangcode . "' " .
 		" AND b.language_code = '" . get_option('languagecode') . "' " .
 		" AND a.relevance >=95 AND b.relevance >= 95 " .
-		" AND a.search_strings LIKE  '" . $letter . "%' " .
+		" AND a.search_strings LIKE  '" . $letter . "%' COLLATE " . COLLATION . "_BIN " .
 		" GROUP BY a.post_id, a.search_strings " .
 		" ORDER BY a.search_strings ";
 		if($page > 1)
