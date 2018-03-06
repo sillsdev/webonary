@@ -21,8 +21,9 @@ jQuery(document).ready(function($) {
         wrapper: '#responsive-menu-wrapper',
         closeOnBodyClick: 'off',
         closeOnLinkClick: 'off',
-        itemTriggerSubMenu: 'off',
+        itemTriggerSubMenu: 'on',
         linkElement: '.responsive-menu-item-link',
+        subMenuTransitionTime: 200,
         openMenu: function() {
             $(this.trigger).addClass(this.activeClass);
             $('html').addClass(this.openClass);
@@ -57,7 +58,7 @@ jQuery(document).ready(function($) {
             this.isOpen ? this.closeMenu() : this.openMenu();
         },
         triggerSubArrow: function(subarrow) {
-            var sub_menu = $(subarrow).parent().next('.responsive-menu-submenu');
+            var sub_menu = $(subarrow).parent().siblings('.responsive-menu-submenu');
             var self = this;
             if(this.accordion == 'on') {
                 /* Get Top Most Parent and the siblings */

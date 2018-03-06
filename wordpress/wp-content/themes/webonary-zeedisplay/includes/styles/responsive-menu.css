@@ -248,7 +248,7 @@ button#responsive-menu-button,
     .responsive-menu-inner::after {
          width: 25px;
          height: 3px;
-         background-color: #ffffff;
+         background-color: #6E6262;
          border-radius: 4px;
          position: absolute;
          transition-property: transform;
@@ -259,7 +259,7 @@ button#responsive-menu-button,
     .responsive-menu-open .responsive-menu-inner,
     .responsive-menu-open .responsive-menu-inner::before,
     .responsive-menu-open .responsive-menu-inner::after {
-        background-color: #ffffff;
+        background-color: #6E6262;
     }
 
     button#responsive-menu-button:hover .responsive-menu-inner,
@@ -274,7 +274,7 @@ button#responsive-menu-button,
     button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner,
     button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner::before,
     button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner::after {
-        background-color: #ffffff;
+        background-color: #6E6262;
     }
 
     .responsive-menu-inner::before,
@@ -314,7 +314,7 @@ button#responsive-menu-button,
         width: 55px;
         height: 55px;
         position: fixed;
-        top: 30px;
+        top: 0px;
         right: 1%;
                     background: #f2eded
             }
@@ -331,15 +331,15 @@ button#responsive-menu-button,
         }
 
     button#responsive-menu-button .responsive-menu-box {
-        color: #ffffff;
+        color: #6E6262;
     }
 
     .responsive-menu-open button#responsive-menu-button .responsive-menu-box {
-        color: #ffffff;
+        color: #6E6262;
     }
 
     .responsive-menu-label {
-        color: #ffffff;
+        color: #6E6262;
         font-size: 14px;
         line-height: 13px;
             }
@@ -356,19 +356,19 @@ button#responsive-menu-button,
         left: 0;
         transition: transform 0.5s;
         text-align: left;
-                                            background: #212121;
+                                            background: #F1F1F1;
             }
 
     #responsive-menu-container #responsive-menu-wrapper {
-        background: #212121;
+        background: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu-additional-content {
-        color: #ffffff;
+        color: #6E6262;
     }
 
     #responsive-menu-container .responsive-menu-search-box {
-        background: #ffffff;
+        background: #FFFFFF;
         border: 2px solid #dadada;
         color: #333333;
     }
@@ -398,28 +398,28 @@ button#responsive-menu-button,
     }
 
     #responsive-menu-container #responsive-menu-title {
-        background-color: #212121;
-        color: #ffffff;
+        background-color: #F1F1F1;
+        color: #6E6262;
         font-size: 13px;
     }
 
     #responsive-menu-container #responsive-menu-title a {
-        color: #ffffff;
+        color: #6E6262;
         font-size: 13px;
         text-decoration: none;
     }
 
     #responsive-menu-container #responsive-menu-title a:hover {
-        color: #ffffff;
+        color: #6E6262;
     }
 
     #responsive-menu-container #responsive-menu-title:hover {
-        background-color: #212121;
-        color: #ffffff;
+        background-color: #F1F1F1;
+        color: #6E6262;
     }
 
     #responsive-menu-container #responsive-menu-title:hover a {
-        color: #ffffff;
+        color: #6E6262;
     }
 
     #responsive-menu-container #responsive-menu-title #responsive-menu-title-image {
@@ -429,7 +429,7 @@ button#responsive-menu-button,
     }
 
     #responsive-menu-container #responsive-menu > li.responsive-menu-item:first-child > a {
-        border-top: 1px solid #212121;
+        border-top: 1px solid #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item .responsive-menu-item-link {
@@ -438,20 +438,20 @@ button#responsive-menu-button,
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a {
         line-height: 40px;
-        border-bottom: 1px solid #212121;
-        color: #ffffff;
-        background-color: #212121;
+        border-bottom: 1px solid #F1F1F1;
+        color: #6E6262;
+        background-color: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a:hover {
-        color: #ffffff;
-        background-color: #3f3f3f;
-        border-color: #212121;
+        color: #FFFFFF;
+        background-color: #ADADAD;
+        border-color: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a:hover .responsive-menu-subarrow {
-        color: #ffffff;
-        border-color: #3f3f3f;
+        color: #6E6262;
+        border-color: #ADADAD;
         background-color: #3f3f3f;
     }
 
@@ -460,39 +460,39 @@ button#responsive-menu-button,
         height: 40px;
         line-height: 40px;
         width: 40px;
-        color: #ffffff;
-        border-left: 1px solid #212121;
-        background-color: #212121;
+        color: #6E6262;
+        border-left: 1px solid #F1F1F1;
+        background-color: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active {
-        color: #ffffff;
-        border-color: #212121;
-        background-color: #212121;
+        color: #6E6262;
+        border-color: #F1F1F1;
+        background-color: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active:hover {
-        color: #ffffff;
-        border-color: #3f3f3f;
-        background-color: #3f3f3f;
+        color: #6E6262;
+        border-color: #ADADAD;
+        background-color: #ADADAD;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow:hover {
-        color: #ffffff;
-        border-color: #3f3f3f;
-        background-color: #3f3f3f;
+        color: #6E6262;
+        border-color: #ADADAD;
+        background-color: #ADADAD;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-current-item > .responsive-menu-item-link {
-        background-color: #212121;
-        color: #ffffff;
-        border-color: #212121;
+        background-color: #F1F1F1;
+        color: #6E6262;
+        border-color: #F1F1F1;
     }
 
     #responsive-menu-container #responsive-menu li.responsive-menu-current-item > .responsive-menu-item-link:hover {
-        background-color: #3f3f3f;
-        color: #ffffff;
-        border-color: #3f3f3f;
+        background-color: #ADADAD;
+        color: #6E6262;
+        border-color: #ADADAD;
     }
 
             #topnavi {

@@ -13,7 +13,7 @@ else
 
 <?php get_header(); ?>
 
-	<div style="100%;">
+	<div style="100%;" id="page">
 	<?php get_sidebar(); ?>
 	<div id="content">
 

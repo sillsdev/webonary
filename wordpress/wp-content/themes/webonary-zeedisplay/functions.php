@@ -115,38 +115,36 @@ function ml_media_upload_dir($upload) {
 add_action('wp_print_styles', 'themezee_stylesheets');
 add_action('init', 'themezee_register_scripts');
 function themezee_register_scripts() {
-	/*
+
 	 wp_register_script('zee_jquery-ui-min', get_template_directory_uri() .'/includes/js/jquery-ui-1.8.11.custom.min.js', array('jquery'));
+	/*
 	 wp_register_script('zee_jquery-easing', get_template_directory_uri() .'/includes/js/jquery.easing.1.3.js', array('jquery', 'zee_jquery-ui-min'));
 	 wp_register_script('zee_jquery-cycle', get_template_directory_uri() .'/includes/js/jquery.cycle.all.min.js', array('jquery', 'zee_jquery-easing'));
 	 */
-	//wp_register_script('responsiveMenu', get_template_directory_uri() .'/includes/js/responsive-menu.js', array('jquery'));
+	wp_register_script('responsiveMenu', get_template_directory_uri() .'/includes/js/responsive-menu.js?v=1', array('jquery'));
 	wp_register_script('zee_slidemenu', get_template_directory_uri() .'/includes/js/jquery.slidemenu.js', array('jquery'));
 	wp_register_script('highlight', get_template_directory_uri() .'/includes/js/jquery-highlight-min1.js', array('jquery'));
 }
 add_action('wp_enqueue_scripts', 'themezee_enqueue_scripts');
 
 function themezee_stylesheets() {
-	wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css');
+	wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css?v=1.3');
 	wp_enqueue_style( 'zee_stylesheet');
 
-	//wp_register_style('repsonive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/styles/responsive-menu.css');
+	wp_register_style('repsonive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/styles/responsive-menu.css?v=1');
 	wp_enqueue_style( 'repsonive_menu_stylesheet');
 
 	wp_register_style('custom_stylesheet', '/files/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_stylesheet');
 }
 function themezee_enqueue_scripts() {
-	/*
+
 	 wp_enqueue_script('jquery');
+	 /*
 	 wp_enqueue_script('zee_jquery-ui-min');
 	 wp_enqueue_script('zee_jquery-easing');
 	 wp_enqueue_script('zee_jquery-cycle');
 	 */
-	wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', ( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js' ), false, null, true );
-    wp_enqueue_script( 'jquery' );
-
     wp_enqueue_script( 'responsiveMenu' );
 
 	wp_enqueue_script('zee_slidemenu');

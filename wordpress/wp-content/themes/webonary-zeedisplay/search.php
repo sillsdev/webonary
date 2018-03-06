@@ -10,7 +10,7 @@ function openImage(image)
 
  	<div align=center><?php if(isMobile()) { echo "<br>"; get_sidebar(); } ?></div>
  	<div style="padding: 10px 25px;">
-	<div id="content" <?php if(!isMobile()) { ?>style="width: 100%"<?php } ?>">
+	<div id="content">
 
 		<?php
 		if(strlen($_GET['s']) > 0)
@@ -31,7 +31,7 @@ function openImage(image)
 		}
 		?>
 		<?php if(!isMobile()) { get_sidebar(); } ?>
-		<h2 class="arh" <?php if(!isMobile()) { ?>style="width:50%"<?php } ?>"><?php printf( __('Search results for "%s"', ZEE_LANG), $searchquery);?></h2>
+		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $searchquery);?></h2>
 		<p><?php if (function_exists(sil_dictionary_custom_message)) { sil_dictionary_custom_message(); } ?></p>
 		<?php if (have_posts()) :
 		//search string are normalized to NFC
