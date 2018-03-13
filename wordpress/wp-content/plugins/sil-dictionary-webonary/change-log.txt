@@ -1,3 +1,4 @@
+v. 7.2.3 13 March 2018 added Azerbaijani publication status images
 v. 7.2.2 06 March 2018 added translations for Azerbaijani
 v. 7.2.1 05 March 2018 added collation for legacy reversal browse view lookup
 v. 7.2.0 05 March 2018 added collation for reversal browseview lookup
