@@ -143,6 +143,7 @@ function save_configurations() {
 		update_option("inputFont", $_POST['inputFont']);
 		update_option("vernacularLettersFont", $_POST['vernacularLettersFont']);
 
+		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
 		$displaySubentriesAsMainEntries = 'no';
 		if(isset($_POST['DisplaySubentriesAsMainEntries']))
 		{
@@ -152,6 +153,7 @@ function save_configurations() {
 		update_option("languagecode", $_POST['languagecode']);
 		//update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
 
+		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
 		$IncludeCharactersWithDiacritics = 'no';
 		if(isset($_POST['IncludeCharactersWithDiacritics']))
 		{
@@ -534,10 +536,12 @@ function webonary_conf_widget($showTitle = false) {
 			if($IncludeCharactersWithDiacritics != "no" && !isset($IncludeCharactersWithDiacritics))
 			{
 				$IncludeCharactersWithDiacritics = 1;
-			}
 			?>
 			<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 			<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
+			<?php
+			}
+			?>
 			<p>
 			<b><?php _e('Reversal Indexes:'); ?></b>
 			<p>
