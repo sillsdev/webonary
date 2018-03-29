@@ -533,7 +533,7 @@ function webonary_conf_widget($showTitle = false) {
 			<p>
 			<?php
 			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
-			if($IncludeCharactersWithDiacritics == "1")
+			if($IncludeCharactersWithDiacritics == 1)
 			{
 				$IncludeCharactersWithDiacritics = 1;
 			?>

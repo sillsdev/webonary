@@ -1,4 +1,5 @@
-v. 7.2.4 19 March 2019 IncludeCharactersWithDiacritics option can no longer be set for browse views (just unset)
+v. 7.2.5 29 March 2018 fixed issue that caused clicking on sound audio to jump to top
+v. 7.2.4 19 March 2018 IncludeCharactersWithDiacritics option can no longer be set for browse views (just unset)
 v. 7.2.3 13 March 2018 added Azerbaijani publication status images
 v. 7.2.2 06 March 2018 added translations for Azerbaijani
 v. 7.2.1 05 March 2018 added collation for legacy reversal browse view lookup
