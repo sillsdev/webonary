@@ -201,7 +201,7 @@ function displayAlphabet($alphas, $languagecode)
 		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
 		if(trim($letter[0]) == "")
 		{
-			$display .= "<a href=\"" . get_site_url() . "/wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Click here to add an alphabet.</a>";
+			$display .= "<a href=\"" . get_site_url() . "/wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Alphabet not configured</a>";
 		}
 		else
 		{
