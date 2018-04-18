@@ -266,21 +266,42 @@ function getDictStageImage($publicationStatus, $language)
 
 function add_footer()
 {
-?>
-	<?php
-	if(get_option('publicationStatus'))
+	global $post;
+	$post_slug = $post->post_name;
+	if(is_front_page() || $post_slug == "browse")
 	{
-		$publicationStatus = get_option('publicationStatus');
-		if(is_front_page() && $publicationStatus > 0) {
+		$arrLanguageCodes = get_LanguageCodes();
 
-			$language = "";
-			if (function_exists('qtranxf_getLanguage')) {
-				$language = qtranxf_getLanguage();
-			}
+		$letter = null;
+		if(isset($_GET['letter']))
+		{
+			$letter = $_GET['letter'];
+		}
 		?>
+		<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
+			<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
+			  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
+			    <?php printf("Browse %s", $arrLanguageCodes[0]->name); ?>
+			  </span>
+			</div>
+			<?php echo vernacularalphabet_func($letter); ?>
+		</div>
 
-		<div align=center><img src="<?php getDictStageImage($publicationStatus, $language); ?>" style="padding: 5px; max-width: 100%;"></div>
-	<?php
+		<?php
+		if(get_option('publicationStatus') && $post_slug != "browse")
+		{
+			$publicationStatus = get_option('publicationStatus');
+			if($publicationStatus > 0) {
+
+				$language = "";
+				if (function_exists('qtranxf_getLanguage')) {
+					$language = qtranxf_getLanguage();
+				}
+			?>
+
+			<div align=center><img src="<?php getDictStageImage($publicationStatus, $language); ?>" style="padding: 5px; max-width: 100%;"></div>
+		<?php
+			}
 		}
 	}
 	?>

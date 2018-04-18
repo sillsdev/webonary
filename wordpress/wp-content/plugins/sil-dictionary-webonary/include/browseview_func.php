@@ -210,7 +210,7 @@ function displayAlphabet($alphas, $languagecode)
 			{
 				$lang = "&lang=" . $_GET['lang'];
 			}
-	    	$display .= "<a href=\"?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
+	    	$display .= "<a href=\"browse?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
 		}
 		$display .= "</span></div>";
 	}
@@ -628,90 +628,94 @@ function vernacularalphabet_func( $atts )
 	$chosenLetter = get_letter($alphas[0]);
 
 	$display = displayAlphabet($alphas, $languagecode);
-	$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
 
-	if(empty($languagecode))
+	//just displaying letters, not entries (for homepage)
+	if($atts != null)
 	{
-		$display .=  "No language code provided. Please import your dictionary.";
-		return $display;
-	}
+		$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
 
-	//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
-	//words starting with kp should not appear
-	$noLetters = "";
-	foreach($alphas as $alpha)
-	{
-		$alpha = trim($alpha);
-
-		if($chosenLetter != "?")
+		if(empty($languagecode))
 		{
-			if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
+			$display .=  "No language code provided. Please import your dictionary.";
+			return $display;
+		}
+
+		//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
+		//words starting with kp should not appear
+		$noLetters = "";
+		foreach($alphas as $alpha)
+		{
+			$alpha = trim($alpha);
+
+			if($chosenLetter != "?")
 			{
-				if(strlen($noLetters) > 0)
+				if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
 				{
-					$noLetters .= ",";
+					if(strlen($noLetters) > 0)
+					{
+						$noLetters .= ",";
+					}
+					$noLetters .= $alpha;
 				}
-				$noLetters .= $alpha;
 			}
 		}
-	}
 
-	$display .= "<div id=searchresults>";
+		$display .= "<div id=searchresults>";
 
-	$displaySubentriesAsMinorEntries = true;
-	if(get_option('DisplaySubentriesAsMainEntries') == 'no')
-	{
-		$displaySubentriesAsMinorEntries = false;
-	}
-	if(get_option('DisplaySubentriesAsMainEntries') == 1)
-	{
 		$displaySubentriesAsMinorEntries = true;
-	}
-
-	$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=25&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
-
-	if(count($arrPosts) == 0)
-	{
-		$display .= __('No entries exist starting with this letter.', 'sil_dictionary');
-	}
-
-
-	foreach($arrPosts as $mypost)
-	{
-		if(trim($mypost->post_title) != trim($mypost->search_strings) && $displaySubentriesAsMinorEntries == true)
+		if(get_option('DisplaySubentriesAsMainEntries') == 'no')
 		{
-			$headword = getVernacularHeadword($mypost->ID, $languagecode);
-			$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
-			$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
+			$displaySubentriesAsMinorEntries = false;
 		}
-		else if(trim($mypost->post_title) == trim($mypost->search_strings) )
+		if(get_option('DisplaySubentriesAsMainEntries') == 1)
 		{
-			$the_content = addLangQuery($mypost->post_content);
-			$display .= "<div class=\"post\">" . $the_content . "</div>";
-			/*
-			if( comments_open($mypost->ID) ) {
-				$display .= "<a href=\"/" . $mypost->post_name. "\" rel=bookmark><u>Comments (" . get_comments_number($mypost->ID) . ")</u></a>";
+			$displaySubentriesAsMinorEntries = true;
+		}
+
+		$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=25&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
+
+		if(count($arrPosts) == 0)
+		{
+			$display .= __('No entries exist starting with this letter.', 'sil_dictionary');
+		}
+
+
+		foreach($arrPosts as $mypost)
+		{
+			if(trim($mypost->post_title) != trim($mypost->search_strings) && $displaySubentriesAsMinorEntries == true)
+			{
+				$headword = getVernacularHeadword($mypost->ID, $languagecode);
+				$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
+				$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
 			}
-			*/
+			else if(trim($mypost->post_title) == trim($mypost->search_strings) )
+			{
+				$the_content = addLangQuery($mypost->post_content);
+				$display .= "<div class=\"post\">" . $the_content . "</div>";
+				/*
+				if( comments_open($mypost->ID) ) {
+					$display .= "<a href=\"/" . $mypost->post_name. "\" rel=bookmark><u>Comments (" . get_comments_number($mypost->ID) . ")</u></a>";
+				}
+				*/
+			}
 		}
+
+		$display .= "</div>";
+
+		if(!isset($_GET['totalEntries']))
+		{
+			global $wp_query;
+			$totalEntries = $wp_query->found_posts;
+		}
+		else
+		{
+			$totalEntries = $_GET['totalEntries'];
+		}
+
+		$display .= "<div align=center><br>";
+		$display .= displayPagenumbers($chosenLetter, $totalEntries, 25, $languagecode);
+		$display .= "</div><br>";
 	}
-
-	$display .= "</div>";
-
-	if(!isset($_GET['totalEntries']))
-	{
-		global $wp_query;
-		$totalEntries = $wp_query->found_posts;
-	}
-	else
-	{
-		$totalEntries = $_GET['totalEntries'];
-	}
-
-	$display .= "<div align=center><br>";
-	$display .= displayPagenumbers($chosenLetter, $totalEntries, 25, $languagecode);
-	$display .= "</div><br>";
-
  	wp_reset_query();
 	return $display;
 }

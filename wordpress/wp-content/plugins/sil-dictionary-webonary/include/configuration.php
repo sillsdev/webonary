@@ -299,7 +299,7 @@ function webonary_conf_widget($showTitle = false) {
 	}
 	?>
 	<?php
-	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="http://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
+	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
 
 	<?php
 	$admin_sections = get_admin_sections();
@@ -507,7 +507,7 @@ function webonary_conf_widget($showTitle = false) {
 			</select>
 			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
 			<p>
-			<?php _e('Vernacular Alphabet'); ?> (<a href="http://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+			<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
 			<?php echo stripslashes(get_option('vernacular_alphabet')); ?>
 			<p>
 
@@ -661,7 +661,7 @@ function webonary_conf_widget($showTitle = false) {
 		<p>
 		<h3>Fonts</h3>
 		<p>
-		See <a href="http://www.webonary.org/help/setting-up-a-font/" target="_blank">Setting up a Font</a>.
+		See <a href="https://www.webonary.org/help/setting-up-a-font/" target="_blank">Setting up a Font</a>.
 		<hr>
 		<?php
 		$arrFontFacesFile = array();
@@ -701,7 +701,7 @@ function webonary_conf_widget($showTitle = false) {
 						{
 							if($arrHasSubFonts[$fontKey])
 							{
-								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"http://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
 							}
 						}
 					}

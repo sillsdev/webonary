@@ -716,7 +716,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				$status .= "<br>";
 				$status .= "<span style=\"color:red;\">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check \"Abbrevation\" under Senses/Semantic Domains.</span><br>";
-				$status .= "Tip: You can hide the domain numbers from displaying, <a href=\" http://www.webonary.org/help/tips-tricks/\" target=_\"blank\">see here</a>.";
+				$status .= "Tip: You can hide the domain numbers from displaying, <a href=\" https://www.webonary.org/help/tips-tricks/\" target=_\"blank\">see here</a>.";
 				$status .= "<hr>";
 			}
 		}
@@ -777,7 +777,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$importFinished = true;
 			}
 			*/
-			$status .= "<form method=\"post\" action=\"" . $_SERVER['REQUEST_URI'] . "\">";
+			//$status .= "<form method=\"post\" action=\"" . $_SERVER['REQUEST_URI'] . "\">";
 			if(get_option("importStatus") == "importFinished")
 			{
 				if($posts->post_date != NULL)
@@ -877,7 +877,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			}
 
-			$status .= "</form>";
+			//$status .= "</form>";
 
 			return $status;
 		}
@@ -1167,7 +1167,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			<p>
 				<input type="radio" name="filetype" value="configured" onChange="toggleConfigured();" CHECKED/> <?php esc_attr_e('Configured Dictionary'); ?><BR>
 				<input type="radio" name="filetype" value="reversal" onChange="toggleReversal();" /> <?php esc_attr_e('Reversal Index'); ?><BR>
-				<input type="radio" name="filetype" value="stem" onChange="toggleReversal();" /> *<?php esc_attr_e('Sort Order'); ?> <a href="http://webonary.org/data-transfer/#sortorder" target="_blank">only if sort order is different than configured view</a><BR>
+				<input type="radio" name="filetype" value="stem" onChange="toggleReversal();" /> *<?php esc_attr_e('Sort Order'); ?> <a href="https://webonary.org/data-transfer/#sortorder" target="_blank">only if sort order is different than configured view</a><BR>
 			</p>
 			<p>
 			<input type="hidden" name="chkConvertToLinks" value="1">

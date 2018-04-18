@@ -1,3 +1,4 @@
+v. 7.2.7 18 April 2018 added browse view letters to homepage
 v. 7.2.6 29 March 2018 changed "alphabet not configured" message
 v. 7.2.5 29 March 2018 fixed issue that caused clicking on sound audio to jump to top
 v. 7.2.4 19 March 2018 IncludeCharactersWithDiacritics option can no longer be set for browse views (just unset)
