@@ -277,11 +277,20 @@ function add_footer()
 		{
 			$letter = $_GET['letter'];
 		}
+		$x = 0;
+		foreach($arrLanguageCodes as $languagecode)
+		{
+			 if(get_option('languagecode') == $languagecode->language_code)
+			 {
+			 	$i = $x;
+			 }
+			$x++;
+		}
 		?>
 		<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
 			<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
 			  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
-			    <?php printf("Browse %s", $arrLanguageCodes[0]->name); ?>
+			    <?php printf("Browse %s", $arrLanguageCodes[$i]->name); ?>
 			  </span>
 			</div>
 			<?php echo vernacularalphabet_func($letter); ?>
