@@ -89,6 +89,8 @@ function sil_dictionary_custom_join($join) {
 			{
 				$normalization = Normalizer::FORM_D;
 			}
+
+			//$normalization = Normalizer::NFD;
 			$search = normalizer_normalize(trim($wp_query->query_vars['s']), $normalization);
 			//$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_D);
 		}

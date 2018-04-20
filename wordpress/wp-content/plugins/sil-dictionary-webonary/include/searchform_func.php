@@ -272,7 +272,7 @@ function add_footer()
 	{
 		$arrLanguageCodes = get_LanguageCodes();
 
-		$letter = null;
+		$letter = "frontpage";
 		if(isset($_GET['letter']))
 		{
 			$letter = $_GET['letter'];

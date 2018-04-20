@@ -167,6 +167,7 @@ add_shortcode( 'categories', 'categories_func' );
 
 function displayAlphabet($alphas, $languagecode)
 {
+	global $wpdb;
 ?>
 	<style type="text/css">
 	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; float:left; position: relative;}
@@ -210,7 +211,15 @@ function displayAlphabet($alphas, $languagecode)
 			{
 				$lang = "&lang=" . $_GET['lang'];
 			}
-	    	$display .= "<a href=\"browse?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
+			$permalink = "";
+			if(is_front_page())
+			{
+				$sql = "SELECT * FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
+				$post_id = $wpdb->get_var($sql);
+
+				$permalink = get_permalink($post_id);
+			}
+	    	$display .= "<a href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
 		}
 		$display .= "</span></div>";
 	}
@@ -630,7 +639,7 @@ function vernacularalphabet_func( $atts )
 	$display = displayAlphabet($alphas, $languagecode);
 
 	//just displaying letters, not entries (for homepage)
-	if($atts != null)
+	if($atts != "frontpage")
 	{
 		$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
 
