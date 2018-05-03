@@ -37,8 +37,25 @@ function webonary_searchform() {
 				if((trim($special_characters)) != "")
 				{
 				?>
+				<style>
+				select {
+					padding: 5px;
+				}
+				</style>
 				<script LANGUAGE="JavaScript">
 				<!--
+				window.onload = function(e)
+				{
+					<?php
+					if($_GET['displayAdvancedSearch'] == 1)
+					{
+					?>
+					displayAdvancedSearch();
+					<?php
+					}
+					?>
+				}
+
 				function addchar(button)
 				{
 					var searchfield = document.getElementById('s');
@@ -70,6 +87,19 @@ function webonary_searchform() {
 					return theCursorLocation;
 				}
 
+				function displayAdvancedSearch()
+				{
+					document.getElementById("advancedSearch").style.display = 'block';
+					document.getElementById("advancedSearchLink").style.display = 'none';
+					document.getElementById("displayAdvancedSearch").value = "1";
+				}
+
+				function hideAdvancedSearch()
+				{
+					document.getElementById("advancedSearch").style.display = 'none';
+					document.getElementById("advancedSearchLink").style.display = 'block';
+					document.getElementById("displayAdvancedSearch").value = "0";
+				}
 				-->
 				</script>
 			<?php
@@ -96,75 +126,87 @@ function webonary_searchform() {
 				<!-- search button -->
 				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
 				<br>
-				<?php
-				$key = $_POST['key'];
-				if(!isset($_POST['key']))
-				{
-					$key = $_GET['key'];
-				}
-
-
-				//$catalog_terms = get_terms('sil_writing_systems');
-				$arrLanguages = get_LanguageCodes();
-				$arrVernacularLanguage = get_LanguageCodes(get_option('languagecode'));
-				?>
-				<select name="key" class="webonary_searchform_language_select">
-				<option value="">
-				<?php _e('All Languages','sil_dictionary'); ?>
-				</option>
-				<?php
-				foreach ($arrLanguages as $language)
-				{
-					if($language->name != $arrVernacularLanguage[0]->name || ($language->name == $arrVernacularLanguage[0]->name && $language->language_code == get_option('languagecode')))
-					{
-				?>
-					<option value="<?php echo $language->language_code; ?>"
-						<?php if($key == $language->language_code) {?>selected<?php }?>>
-						<?php echo $language->name; ?>
-					</option>
+				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch()" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php echo _e('Advanced Search', 'sil_dictionary'); ?></a>
+				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
+				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
+				<br style="margin-bottom: 6px;">
 					<?php
+					$key = $_POST['key'];
+					if(!isset($_POST['key']))
+					{
+						$key = $_GET['key'];
 					}
-				}
-				?>
-				</select>
-				<?php
-				/*
-				if ($catalog_terms) {
+
+
+					//$catalog_terms = get_terms('sil_writing_systems');
+					$arrLanguages = get_LanguageCodes();
+					$arrVernacularLanguage = get_LanguageCodes(get_option('languagecode'));
 					?>
-					<!-- If you need to control the width of the dropdown, use the
-					class webonary_searchform_language_select in your theme .css -->
 					<select name="key" class="webonary_searchform_language_select">
 					<option value="">
-						<?php _e('All Languages','sil_dictionary'); ?>
+					<?php _e('All Languages','sil_dictionary'); ?>
 					</option>
 					<?php
-					foreach ($catalog_terms as $catalog_term)
-					{ ?>
-						<option value="<?php echo $catalog_term->slug; ?>"
-							<?php if($key == $catalog_term->slug) {?>selected<?php }?>>
-							<?php echo $catalog_term->name; ?>
+					foreach ($arrLanguages as $language)
+					{
+						if($language->name != $arrVernacularLanguage[0]->name || ($language->name == $arrVernacularLanguage[0]->name && $language->language_code == get_option('languagecode')))
+						{
+					?>
+						<option value="<?php echo $language->language_code; ?>"
+							<?php if($key == $language->language_code) {?>selected<?php }?>>
+							<?php echo $language->name; ?>
 						</option>
 						<?php
+						}
 					}
 					?>
 					</select>
+					<?php
+
+					/*
+					 * Set up the Parts of Speech
+					 */
+					$parts_of_speech = get_terms('sil_parts_of_speech');
+
+					if($parts_of_speech)
+					{
+						wp_dropdown_categories("show_option_none=" .
+							__('All Parts of Speech','sil_dictionary') .
+							"&show_count=1&selected=" . $_GET['tax'] .
+							"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech");
+					}
+					?>
 					<br>
 					<?php
-				}
-				*/
-				/*
-				 * Set up the Parts of Speech
-				 */
-				$parts_of_speech = get_terms('sil_parts_of_speech');
+					$checkedWholeWords = "";
 
-				if($parts_of_speech)
-				{
-					wp_dropdown_categories("show_option_none=" .
-						__('All Parts of Speech','sil_dictionary') .
-						"&show_count=1&selected=" . $_GET['tax'] .
-						"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech");
-				}
-				?>
+					if(isset($_GET['search']))
+					{
+						if(isset($_GET['match_whole_words']))
+						{
+							$checkedWholeWords = "checked";
+						}
+					}
+					else
+					{
+						if(get_option('include_partial_words') == 0)
+						{
+							$checkedWholeWords = "checked";
+						}
+					}
+					?>
+					<input name="match_whole_words" value="1" <?php echo $checkedWholeWords; ?> type="checkbox"> Match whole words
+					<br>
+					<?php
+					$match_accents = false;
+					if(isset($_GET['match_accents']))
+					{
+						$match_accents = true;
+					}
+					?>
+					<input name="match_accents" <?php checked('1', $match_accents); ?> type="checkbox"> Match accents and tones
+					<input id=displayAdvancedSearch name="displayAdvancedSearch" type="hidden" value="0">
+				</div>
 			</div>
 		</form>
 		<br>

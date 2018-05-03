@@ -132,8 +132,11 @@ function save_configurations() {
 	if ( ! empty( $_POST['save_settings'])) {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
-		update_option("distinguish_diacritics", $_POST['distinguish_diacritics']);
-		update_option("normalization", $_POST['normalization']);
+		//update_option("distinguish_diacritics", $_POST['distinguish_diacritics']);
+		if(isset($_POST['normalization']))
+		{
+			update_option("normalization", $_POST['normalization']);
+		}
 		$special_characters = $_POST['characters'];
 		if(trim($special_characters) == "")
 		{
@@ -405,29 +408,40 @@ function webonary_conf_widget($showTitle = false) {
 			admin_section_start('search');
 			?>
 			<p>
-			<h3><?php _e('Search Options');?></h3>
+			<h3><?php _e('Default Search Options');?></h3>
 			<input name="include_partial_words" type="checkbox" value="1"
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
 			<br>
+			<?php
+			/*
+			?>
 			<input name="distinguish_diacritics" type="checkbox" value="1"
 						<?php checked('1', get_option('distinguish_diacritics')); ?> />
 						<?php _e('Distinguish diacritic letters'); ?>
 			</p>
+			<?php */ ?>
 			<p>
-			<strong>Normalization:</strong>
-			<br>
-			<select name="normalization">
-				<option value="FORM_C" <?php if(get_option("normalization") == "FORM_C") { echo "selected"; } ?>>FORM C</option>
-				<option value="FORM_D" <?php if(get_option("normalization") == "FORM_D") { echo "selected"; } ?>>FORM D</option>
-			</select>
-			<br>
-			See <a href="http://unicode.org/reports/tr15/" target="_blank">here</a> for more info on normalization of composite characters.
-			<br>
-			By default Webonary uses FORM C. If your search for a word that contains
-			a composite character doesn't return a result, try FORM D.
-			</p>
 			<?php
+			//this is only for legacy purposes.
+			//Now the import will convert all text to NFC, so this is no longer needed for newer imports
+			if(get_option("normalization") != null)
+			{
+			?>
+				<strong>Normalization:</strong>
+				<br>
+				<select name="normalization">
+					<option value="FORM_C" <?php if(get_option("normalization") == "FORM_C") { echo "selected"; } ?>>FORM C</option>
+					<option value="FORM_D" <?php if(get_option("normalization") == "FORM_D") { echo "selected"; } ?>>FORM D</option>
+				</select>
+				<br>
+				See <a href="http://unicode.org/reports/tr15/" target="_blank">here</a> for more info on normalization of composite characters.
+				<br>
+				By default Webonary uses FORM C. If your search for a word that contains
+				a composite character doesn't return a result, try FORM D.
+				</p>
+			<?php
+			}
 			if(class_exists(special_characters))
 			{
 				//this is here for legacy purposes. The special characters used to be Widget in a separate plugin.
@@ -547,7 +561,7 @@ function webonary_conf_widget($showTitle = false) {
 			<p>
 			<?php
 			$displayXHTML = true;
-			getReversalEntries("", 0, get_option('reversal1_langcode'), $displayXHTML);
+			//getReversalEntries("", 0, get_option('reversal1_langcode'), $displayXHTML, "");
 			?>
 			<?php _e('Main reversal index code:'); ?>
 			<select id=reversalLangcode name="reversal1_langcode" onchange="getLanguageName('reversalLangcode', 'reversalName');">

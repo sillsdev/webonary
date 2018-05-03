@@ -1273,6 +1273,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 
 				update_option("languagecode", $headword_language);
+
+				//we no longer make the user change the normalization. All text is now normalized on import to NFC
+				update_option("normalization", null);
 			}
 		}
 
@@ -1291,7 +1294,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$headword_text = "?";
 			if(isset($headword))
 			{
-				$headword_text = $headword->textContent;
+				$headword_text = normalizer_normalize($headword->textContent, Normalizer::NFC );
 			}
 
 			$flexid = "";
@@ -1330,7 +1333,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			$entry_xml = addslashes($entry_xml);
 			$entry_xml = stripslashes($entry_xml);
+			$entry_xml = normalizer_normalize($entry_xml, Normalizer::NFC );
 			//$entry_xml = str_replace("'","&#39;",$entry_xml);
+
+			$browseletter = normalizer_normalize($browseletter, Normalizer::NFC );
 
 			$post_parent = 0;
 
@@ -1522,6 +1528,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		// and that's why I concatenated the table name.
 		if(strlen(trim($search_string)) > 0)
 		{
+			$search_string = normalizer_normalize($search_string, Normalizer::NFC );
 			$sql = $wpdb->prepare(
 				"INSERT IGNORE INTO `". $this->search_table_name . "` (post_id, language_code, search_strings, relevance, subid)
 				VALUES (%d, '%s', '%s', %d, %d)",

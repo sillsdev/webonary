@@ -374,19 +374,26 @@ function englishalphabet_func( $atts, $content, $tag ) {
 
 add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
-function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHTML = true)
+function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHTML = true, $reversalnr)
 {
 	global $wpdb;
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
 	$sortorderExists = (count($result))?TRUE:FALSE;
 
+	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
+	$collate = "COLLATE " . COLLATION . "_BIN";
+	if((!preg_match('/[^a-z]/', $alphabet)))
+	{
+		$collate = "";
+	}
+
 	$sql = "SELECT reversal_content " .
 	" FROM " . REVERSALTABLE  .
 	" WHERE ";
 	if($letter != "")
 	{
-		$sql .= " reversal_head LIKE  '" . $letter . "%' COLLATE " . COLLATION . "_BIN AND ";
+		$sql .= " reversal_head LIKE  '" . $letter . "%' " . $collate . " AND ";
 	}
 	$sql .=	" language_code = '" . $reversalLangcode . "' ";
 	if($sortorderExists && $reversalLangcode != "zh-CN" && $reversalLangcode != "zh-Hans-CN")
@@ -415,7 +422,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 		$sql .= " AND a.language_code =  '" . $reversalLangcode . "' " .
 		" AND b.language_code = '" . get_option('languagecode') . "' " .
 		" AND a.relevance >=95 AND b.relevance >= 95 " .
-		" AND a.search_strings LIKE  '" . $letter . "%' COLLATE " . COLLATION . "_BIN " .
+		" AND a.search_strings LIKE  '" . $letter . "%' " . $collate .
 		" GROUP BY a.post_id, a.search_strings " .
 		" ORDER BY a.search_strings ";
 		if($page > 1)
@@ -471,12 +478,12 @@ function reversalalphabet_func($atts, $content, $tag)
 	$alphas = explode(",",  get_option('reversal' . $reversalnr . '_alphabet'));
 	$display = displayAlphabet($alphas, get_option('reversal' . $reversalnr . '_langcode'));
 
-	$display = reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'));
+	$display = reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'), $reversalnr);
 
 	return $display;
 }
 
-function reversalindex($display, $chosenLetter, $langcode)
+function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 {
 ?>
 	<style type="text/css">
@@ -511,7 +518,7 @@ function reversalindex($display, $chosenLetter, $langcode)
 	}
 
 	$displayXHTML = true;
-	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML);
+	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML, $reversalnr);
 
 	$display .= "<h1 align=center>" . $chosenLetter . "</h1><br>";
 

@@ -1,3 +1,6 @@
+v. 7.3.1 3 May 2018 parts of speech dropdown search working again
+v. 7.3.0 2 May 2018 added advanced search
+v. 7.2.9 2 May 2018 base characters can now be used to search composed characters
 v. 7.2.8 20 April 2018 fixed bug with browse view
 v. 7.2.7 18 April 2018 added browse view letters to homepage
 v. 7.2.6 29 March 2018 changed "alphabet not configured" message

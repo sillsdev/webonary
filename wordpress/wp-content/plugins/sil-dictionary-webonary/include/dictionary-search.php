@@ -105,15 +105,18 @@ function sil_dictionary_custom_join($join) {
 		{
 			$key = $wp_query->query_vars['langcode'];
 		}
-		$partialsearch = $_GET['partialsearch'];
-		if(!isset($_GET['partialsearch']))
+		$match_whole_words = 0;
+		if(isset($_GET['match_whole_words']))
 		{
-			$partialsearch = get_option("include_partial_words");
+			if($_GET['match_whole_words'] == 1)
+			{
+				$match_whole_words = 1;
+			}
 		}
 
 		if(strlen($search) == 0 && $_GET['tax'] > 1)
 		{
-			$partialsearch = 1;
+			$match_whole_words = 0;
 		}
 
 		$subquery_where = "";
@@ -163,18 +166,54 @@ function sil_dictionary_custom_join($join) {
 				}
 			}
 		}
-		else if ( is_CJK( $search ) || mb_strlen($search) > 3 || $partialsearch == 1)
+
+		//using search form
+		if(!isset($wp_query->query_vars['letter']))
 		{
-			$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
-				addslashes( $search ) . "%' " . $collateSearch;
-		}
-		else
-		{
-			if(mb_strlen($search) > 1)
+			$match_accents = false;
+			if(isset($_GET['match_accents']))
 			{
-            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
-					addslashes( $search ) . "[[:>:]]' " . $collateSearch;
+				$match_accents = true;
 			}
+
+			$searchquery = $search;
+			//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
+			if(preg_match('/([aeiou])/', $search) && $match_accents == false)
+			{
+				//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
+				$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+				//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
+				//the mysql regular expression can't find words with  accented characters if we don't include them
+				$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
+				$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
+				$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
+				$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
+				$searchquery = preg_replace('/([ə])/u', '(ə', $searchquery);
+				$searchquery = preg_replace('/([i])/u', '(ı|ī|í||ǐ|ĭ|ì|î|î|į|ï|ï|i', $searchquery);
+				$searchquery = preg_replace('/([o])/u', '(ō|ō̂|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ǫ́|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+				$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
+				$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+				//for vowels we add [^a-z]* which will search for any character that comes after the normal character
+				//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
+				$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+			}
+
+			if ( (is_CJK( $search ) || mb_strlen($search) > 3) && $match_whole_words == 0)
+			{
+
+				/* $subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
+					addslashes( $search ) . "%' " . $collateSearch; */
+				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+			}
+			else
+			{
+				if(mb_strlen($search) > 1)
+				{
+	            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
+						$searchquery . "[[:>:]]' " . $collateSearch;
+				}
+			}
+			//echo $subquery_where . "<br>";
 		}
 		//if($_GET['tax'] < 1)
 		//{
@@ -207,7 +246,8 @@ function sil_dictionary_custom_join($join) {
 	{
 		if($_GET['tax'] > 1)
 		{
-			$join .= " INNER JOIN  $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
+			$join .= " INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
+			$join .= " INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id";
 		}
 	}
 
@@ -216,19 +256,23 @@ function sil_dictionary_custom_join($join) {
 
 function sil_dictionary_custom_message()
 {
-	$partialsearch = $_GET['partialsearch'];
-	if(!isset($_GET['partialsearch']))
+	$match_whole_words = 0;
+	if(isset($_GET['match_whole_words']))
 	{
-		$partialsearch = get_option("include_partial_words");
+		if($_GET['match_whole_words'] == 1)
+		{
+			$match_whole_words = 1;
+		}
 	}
 
 	mb_internal_encoding("UTF-8");
-	if(!is_CJK($_GET['s']) && mb_strlen($_GET['s']) > 0 && mb_strlen($_GET['s']) <= 3 && $partialsearch != 1)
+	if(!is_CJK($_GET['s']) && mb_strlen($_GET['s']) > 0 && mb_strlen($_GET['s']) <= 3 && $match_whole_words == 1)
 	{
 		//echo getstring("partial-search-omitted");
 		_e('Because of the brevity of your search term, partial search was omitted.', 'sil_dictionary');
 		echo "<br>";
-		echo '<a href="?' . $_SERVER["QUERY_STRING"] . '&partialsearch=1">'; _e('Click here to include searching through partial words.', 'sil_dictionary'); echo '</a>';
+		$replacedQueryString = str_replace("match_whole_words=1", "match_whole_words=0", $_SERVER["QUERY_STRING"]);
+		echo '<a href="?' . $replacedQueryString . '" style="text-decoration: underline;">'; _e('Click here to include searching through partial words.', 'sil_dictionary'); echo '</a>';
 	}
 }
 
@@ -278,7 +322,7 @@ function sil_dictionary_custom_where($where) {
 		if($_GET['tax'] > 1)
 		{
 			$wp_query->is_search = true;
-			$where .= " AND $wpdb->term_relationships.term_taxonomy_id = " . $_GET['tax'];
+			$where .= " AND $wpdb->term_taxonomy.term_id = " . $_GET['tax'];
 		}
 	}
 
@@ -308,7 +352,7 @@ function sil_dictionary_custom_order_by($orderby) {
 	$search_table_name = SEARCHTABLE;
 
 	$orderby = "";
-	if(  !empty($wp_query->query_vars['s']) && !isset($wp_query->query_vars['letter']) && $_GET['tax'] < 1) {
+	if(  !empty($wp_query->query_vars['s']) && !isset($wp_query->query_vars['letter'])) {
 		$orderby = $search_table_name . ".relevance DESC, CHAR_LENGTH(" . $search_table_name . ".search_strings) ASC, ";
 	}
 
