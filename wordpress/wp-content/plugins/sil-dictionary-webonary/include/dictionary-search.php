@@ -189,7 +189,7 @@ function sil_dictionary_custom_join($join) {
 				$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
 				$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
 				$searchquery = preg_replace('/([ə])/u', '(ə', $searchquery);
-				$searchquery = preg_replace('/([i])/u', '(ı|ī|í||ǐ|ĭ|ì|î|î|į|ï|ï|i', $searchquery);
+				$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|i', $searchquery);
 				$searchquery = preg_replace('/([o])/u', '(ō|ō̂|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ǫ́|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
 				$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
 				$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
