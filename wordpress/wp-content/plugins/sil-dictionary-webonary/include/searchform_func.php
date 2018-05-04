@@ -336,7 +336,7 @@ function add_footer()
 		<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
 			<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
 			  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
-			    <?php printf("Browse %s", $arrLanguageCodes[$i]->name); ?>
+			    <?php _e($browse_title); ?>
 			  </span>
 			</div>
 			<?php echo vernacularalphabet_func($letter); ?>
