@@ -214,7 +214,7 @@ function displayAlphabet($alphas, $languagecode)
 			$permalink = "";
 			if(is_front_page())
 			{
-				$sql = "SELECT * FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
+				$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 				$post_id = $wpdb->get_var($sql);
 
 				$permalink = get_permalink($post_id);

@@ -308,7 +308,7 @@ function getDictStageImage($publicationStatus, $language)
 
 function add_footer()
 {
-	global $post;
+	global $post, $wpdb;
 	$post_slug = $post->post_name;
 	if(is_front_page() || $post_slug == "browse")
 	{
@@ -328,11 +328,15 @@ function add_footer()
 			 }
 			$x++;
 		}
+
+		$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
+		$browse_title = $wpdb->get_var($sql);
+
 		?>
 		<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
 			<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
 			  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
-			    <?php printf("Browse %s", $arrLanguageCodes[$i]->name); ?>
+			    <?php echo $browse_title; ?>
 			  </span>
 			</div>
 			<?php echo vernacularalphabet_func($letter); ?>
