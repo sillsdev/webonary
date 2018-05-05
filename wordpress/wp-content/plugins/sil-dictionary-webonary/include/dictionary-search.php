@@ -198,7 +198,16 @@ function sil_dictionary_custom_join($join) {
 				$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
 			}
 
-			if ( (is_CJK( $search ) || mb_strlen($search) > 3) && $match_whole_words == 0)
+			if(!isset($_GET['partialsearch']))
+			{
+				$partialsearch = get_option("include_partial_words");
+			}
+			if(strlen($search) == 0 && $_GET['tax'] > 1)
+			{
+				$partialsearch = 1;
+			}
+
+			if (is_CJK( $search ) || mb_strlen($search) > 3 || $match_whole_words == 0 || $partialsearch == 1)
 			{
 
 				/* $subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
@@ -265,14 +274,23 @@ function sil_dictionary_custom_message()
 		}
 	}
 
-	mb_internal_encoding("UTF-8");
-	if(!is_CJK($_GET['s']) && mb_strlen($_GET['s']) > 0 && mb_strlen($_GET['s']) <= 3 && $match_whole_words == 1)
+	$partialsearch = $_GET['partialsearch'];
+	if(!isset($_GET['partialsearch']))
 	{
-		//echo getstring("partial-search-omitted");
-		_e('Because of the brevity of your search term, partial search was omitted.', 'sil_dictionary');
-		echo "<br>";
-		$replacedQueryString = str_replace("match_whole_words=1", "match_whole_words=0", $_SERVER["QUERY_STRING"]);
-		echo '<a href="?' . $replacedQueryString . '" style="text-decoration: underline;">'; _e('Click here to include searching through partial words.', 'sil_dictionary'); echo '</a>';
+		$partialsearch = get_option("include_partial_words");
+	}
+
+	mb_internal_encoding("UTF-8");
+	if($partialsearch != 1)
+	{
+		if(!is_CJK($_GET['s']) && mb_strlen($_GET['s']) > 0 && (mb_strlen($_GET['s']) <= 3 || $match_whole_words == 1))
+		{
+			//echo getstring("partial-search-omitted");
+			_e('Because of the brevity of your search term, partial search was omitted.', 'sil_dictionary');
+			echo "<br>";
+			$replacedQueryString = str_replace("match_whole_words=1", "match_whole_words=0", $_SERVER["QUERY_STRING"]);
+			echo '<a href="?partialsearch=1&' . $replacedQueryString . '" style="text-decoration: underline;">'; _e('Click here to include searching through partial words.', 'sil_dictionary'); echo '</a>';
+		}
 	}
 }
 
