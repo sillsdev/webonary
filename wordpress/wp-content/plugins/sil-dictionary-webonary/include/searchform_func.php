@@ -12,6 +12,37 @@ function searchform_init() {
 
 function webonary_searchform() {
 	global $wpdb;
+	?>
+	<script LANGUAGE="JavaScript">
+	<!--
+	window.onload = function(e)
+	{
+		<?php
+		if($_GET['displayAdvancedSearch'] == 1)
+		{
+		?>
+		displayAdvancedSearch();
+		<?php
+		}
+		?>
+	}
+
+	function displayAdvancedSearch()
+	{
+		document.getElementById("advancedSearch").style.display = 'block';
+		document.getElementById("advancedSearchLink").style.display = 'none';
+		document.getElementById("displayAdvancedSearch").value = "1";
+	}
+
+	function hideAdvancedSearch()
+	{
+		document.getElementById("advancedSearch").style.display = 'none';
+		document.getElementById("advancedSearchLink").style.display = 'block';
+		document.getElementById("displayAdvancedSearch").value = "0";
+	}
+	-->
+	</script>
+	<?php
 
 		if(get_option('inputFont') != "")
 		{
@@ -44,17 +75,6 @@ function webonary_searchform() {
 				</style>
 				<script LANGUAGE="JavaScript">
 				<!--
-				window.onload = function(e)
-				{
-					<?php
-					if($_GET['displayAdvancedSearch'] == 1)
-					{
-					?>
-					displayAdvancedSearch();
-					<?php
-					}
-					?>
-				}
 
 				function addchar(button)
 				{
@@ -85,20 +105,6 @@ function webonary_searchform() {
 						theCursorLocation = ofThisInput.selectionStart;
 					}
 					return theCursorLocation;
-				}
-
-				function displayAdvancedSearch()
-				{
-					document.getElementById("advancedSearch").style.display = 'block';
-					document.getElementById("advancedSearchLink").style.display = 'none';
-					document.getElementById("displayAdvancedSearch").value = "1";
-				}
-
-				function hideAdvancedSearch()
-				{
-					document.getElementById("advancedSearch").style.display = 'none';
-					document.getElementById("advancedSearchLink").style.display = 'block';
-					document.getElementById("displayAdvancedSearch").value = "0";
 				}
 				-->
 				</script>
