@@ -2112,9 +2112,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						$headword_language = $headword->getAttribute( "lang" );
 						if(strlen(trim($headword_language)) == 0)
 						{
-							if(strlen(trim($headword_language)) == 0)
+							$itemNr = 0;
+							while(strlen(trim($headword_language)) == 0)
 							{
-								$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+								$headword_language = $headword->childNodes->item($itemNr)->getAttribute( "lang" );
+								$itemNr++;
 							}
 						}
 					}
@@ -2122,6 +2124,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					{
 						$headword_text = "?";
 						$headword_language = get_option("languagecode");
+					}
+
+					if(strlen(trim($headword_language)) == 0)
+					{
+						echo "<span style=color:red;>";
+							echo $headword_text . ": ";
+							echo "No language attribute found<br>";
+						echo "</span>";
 					}
 
 					//import headword
