@@ -1,3 +1,4 @@
+v. 7.3.7 18 May 2018 reversal browse views are now also grouped by letter head coming from the xhtml file
 v. 7.3.6 11 May 2018 fixed issue where headword language attribute wasn't found due to audio tag
 v. 7.3.5 5 May 2018 fixed issue with "Advanced Search" link not working
 v. 7.3.4 5 May 2018 fixed partial search bug

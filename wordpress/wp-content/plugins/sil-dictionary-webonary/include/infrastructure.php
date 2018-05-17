@@ -76,7 +76,8 @@ function create_reversal_tables () {
 		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
-		`sortorder` INT NOT NULL DEFAULT '0' ";
+		`sortorder` INT NOT NULL DEFAULT '0',
+		`browseletter` varchar(5) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION .
 		$sql .= ", UNIQUE KEY (`id`)";
 		$sql .= ") CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 
@@ -291,6 +292,14 @@ function clean_out_dictionary_data ($delete_taxonomies = null) {
 
 	// Remove all the old dictionary entries.
 	remove_entries();
+
+	//delete options
+	delete_option("reversal1_langcode");
+	delete_option("reversal1_alphabet");
+	delete_option("reversal2_langcode");
+	delete_option("reversal2_alphabet");
+	delete_option("reversal3_langcode");
+	delete_option("reversal3_alphabet");
 
 	// Uninstall the custom table(s) and taxonomies.
 	if ($delete_taxonomies == 1)

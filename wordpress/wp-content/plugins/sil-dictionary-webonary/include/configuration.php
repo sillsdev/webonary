@@ -89,7 +89,7 @@ function get_LanguageCodes($languageCode = null) {
 	$sql .= " GROUP BY language_code
 		ORDER BY language_code";
 
-	return $wpdb->get_results($sql);
+	return $wpdb->get_results($sql, 'ARRAY_A');
 }
 
 //display the senses that don't get linked in the reversal browse view
@@ -174,10 +174,10 @@ function save_configurations() {
 		update_option("vernacularRightToLeft", $vernacularRightToLeft);
 
 		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
-		update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
-		update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
+		//update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
+		//update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
 		update_option("reversal2_langcode", $_POST['reversal2_langcode']);
-		update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
+		//update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
 		update_option("reversal3_langcode", $_POST['reversal3_langcode']);
 
 
@@ -489,6 +489,7 @@ function webonary_conf_widget($showTitle = false) {
 			?>
 			<p>
 			<h3>Browse Views</h3>
+			See <a href="https://www.webonary.org/help/creating-browse-views/" target="_blank">Help with creating Browse Views</a>
 			<p>
 			<?php
 			$DisplaySubentriesAsMainEntries = get_option('DisplaySubentriesAsMainEntries');
@@ -504,22 +505,15 @@ function webonary_conf_widget($showTitle = false) {
 			if(count($arrLanguageCodes) == 0)
 			{
 			?>
-				<span style="color:red">You need to first import your xhtml file before you can select a language code.</span>
+				<span style="color:red">You need to first import your dictionary.</span>
 				<p>
 			<?php
+				return;
 			}
-			_e('Vernacular Language Code:'); ?>
-			<select id=vernacularLanguagecode name="languagecode" onchange="getLanguageName('vernacularLanguagecode', 'vernacularName');">
-				<option value=""></option>
-				<?php
-				$x = 0;
-				foreach($arrLanguageCodes as $languagecode) {?>
-					<option value="<?php echo $languagecode->language_code; ?>" <?php if(get_option('languagecode') == $languagecode->language_code) { $i = $x; ?>selected<?php }?>><?php echo $languagecode->language_code; ?></option>
-				<?php
-				$x++;
-				} ?>
-			</select>
-			<?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]->name; } ?>">
+			?>
+			<i><?php _e('Vernacular Browse view:'); ?></i><br>
+			<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
+			<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
 			<p>
 			<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
 			<?php echo stripslashes(get_option('vernacular_alphabet')); ?>
@@ -561,84 +555,83 @@ function webonary_conf_widget($showTitle = false) {
 			<p>
 			<?php
 			$displayXHTML = true;
-			//getReversalEntries("", 0, get_option('reversal1_langcode'), $displayXHTML, "");
-			?>
-			<?php _e('Main reversal index code:'); ?>
-			<select id=reversalLangcode name="reversal1_langcode" onchange="getLanguageName('reversalLangcode', 'reversalName');">
-				<option value=""></option>
-				<?php
-					$x = 0;
-					foreach($arrLanguageCodes as $languagecode) {?>
-					<option value="<?php echo $languagecode->language_code; ?>" <?php if(get_option('reversal1_langcode') == $languagecode->language_code) { $k = $x; ?>selected<?php }?>><?php echo $languagecode->language_code; ?></option>
-				<?php
-					$x++;
-					} ?>
-			</select>
-			<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]->name; } ?>">
-			<p>
-			<?php
-			if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
+			$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
+
+			if(count($reversalEntries) == 0)
 			{
-				$reversal1alphabet = "";
-				$alphas = range('a', 'z');
-				$i = 1;
-				foreach($alphas as $letter)
-				{
-					$reversal1alphabet .= $letter;
-					if($i != count($alphas))
-					{
-						$reversal1alphabet .= ",";
-					}
-					$i++;
-				}
+				echo "No reversal indexes imported.";
 			}
 			else
 			{
-				$reversal1alphabet = stripslashes(get_option('reversal1_alphabet'));
+				$k = array_search(get_option('reversal1_langcode'), array_column($arrLanguageCodes, 'language_code'));
+				if($k)
+				{
+				?>
+					<i><?php _e('1. Reversal index'); ?></i><br>
+					Shortcode: [reversalindex1]
+					<p>
+					<strong>[<?php echo get_option('reversal1_langcode'); ?>]</strong>
+					<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+					<p>
+					<?php
+					if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
+					{
+						$reversal1alphabet = "";
+						$alphas = range('a', 'z');
+						$i = 1;
+						foreach($alphas as $letter)
+						{
+							$reversal1alphabet .= $letter;
+							if($i != count($alphas))
+							{
+								$reversal1alphabet .= ",";
+							}
+							$i++;
+						}
+					}
+					else
+					{
+						$reversal1alphabet = stripslashes(get_option('reversal1_alphabet'));
+					}
+					?>
+					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+					<?php echo $reversal1alphabet; ?>
+
+				<?php
+				}
+				if(strlen(get_option('reversal2_langcode')) > 0)
+				{
+				?>
+				<hr>
+				 <i><?php _e('2. Reversal index'); ?></i><br>
+				 Shortcode: [reversalindex2]
+				 <p>
+				 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+				<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+				<p>
+				<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+				<?php echo stripslashes(get_option('reversal2_alphabet')); ?>
+				<?php
+				}
+				?>
+				<?php
+				if(strlen(get_option('reversal3_langcode')) > 0)
+				{
+				?>
+				<hr>
+				 <i><?php _e('3. Reversal index'); ?></i><br>
+				 Shortcode: [reversalindex3]
+				 <p>
+				 <?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+				<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+				<p>
+				<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+				<?php echo stripslashes(get_option('reversal3_alphabet')); ?>
+				<?php
+				}
 			}
 			?>
-			<?php _e('Main Reversal Index Alphabet:'); ?>
-			<input name="reversal1_alphabet" type="text" size=50 value="<?php echo $reversal1alphabet; ?>" />
-			<?php _e('(Letters separated by comma)'); ?>
-			<hr>
-			 <i><?php _e('2. Reversal index'); ?></i> Shortcode: [reversalindex2]
-			 <p>
-			<?php _e('Secondary reversal index code:'); ?>
-			<select id=reversal2Langcode name="reversal2_langcode" onchange="getLanguageName('reversal2Langcode', 'reversal2Name');">
-				<option value=""></option>
-				<?php
-				$x = 0;
-				foreach($arrLanguageCodes as $languagecode) {?>
-					<option value="<?php echo $languagecode->language_code; ?>" <?php if(get_option('reversal2_langcode') == $languagecode->language_code) { $n = $x; ?>selected<?php }?>><?php echo $languagecode->language_code; ?></option>
-				<?php
-				$x++;
-				} ?>
-			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
-			<p>
-			<?php _e('Secondary Reversal Index Alphabet:'); ?>
-			<input name="reversal2_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>" />
-			<?php _e('(Letters separated by comma)'); ?>
 
-			<hr>
-			 <i><?php _e('3. Reversal index'); ?></i> Shortcode: [reversalindex3]
-			 <p>
-			<?php _e('Third reversal index code:'); ?>
-			<select id=reversal3Langcode name="reversal3_langcode" onchange="getLanguageName('reversal3Langcode', 'reversal3Name');">
-				<option value=""></option>
-				<?php
-				$x = 0;
-				foreach($arrLanguageCodes as $languagecode) {?>
-					<option value="<?php echo $languagecode->language_code; ?>" <?php if(get_option('reversal3_langcode') == $languagecode->language_code) { $n = $x; ?>selected<?php }?>><?php echo $languagecode->language_code; ?></option>
-				<?php
-				$x++;
-				} ?>
-			</select>
-			<?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$n]->name; } ?>">
-			<p>
-			<?php _e('Third Reversal Index Alphabet:'); ?>
-			<input name="reversal3_alphabet" type="text" size=50 value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>" />
-			<?php _e('(Letters separated by comma)'); ?>
 			<?php
 			if(is_super_admin())
 			{

@@ -470,6 +470,17 @@ function get_has_browseletters()
 	return $wpdb->get_var($sql);
 }
 
+function get_has_reversalbrowseletters()
+{
+	global $wpdb;
+
+	$sql = "SELECT COUNT(browseletter) AS numberOfLetters " .
+			" FROM " . REVERSALTABLE .
+			" WHERE browseletter <> ''";
+
+	return $wpdb->get_var($sql);
+}
+
 
 function get_post_id_bycontent($query)
 {

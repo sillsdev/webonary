@@ -374,7 +374,7 @@ function englishalphabet_func( $atts, $content, $tag ) {
 
 add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
-function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHTML = true, $reversalnr)
+function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
 	global $wpdb;
 
@@ -383,19 +383,31 @@ function getReversalEntries($letter = "", $page, $reversalLangcode, &$displayXHT
 
 	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
 	$collate = "COLLATE " . COLLATION . "_BIN";
-	if((!preg_match('/[^a-z]/', $alphabet)))
-	{
-		$collate = "";
-	}
 
 	$sql = "SELECT reversal_content " .
 	" FROM " . REVERSALTABLE  .
-	" WHERE ";
+	" WHERE 1 = 1 ";
 	if($letter != "")
 	{
-		$sql .= " reversal_head LIKE  '" . $letter . "%' " . $collate . " AND ";
+		//new imports use the letter header from FLEx for grouping
+		if(get_has_reversalbrowseletters() > 0)
+		{
+			$sql .= " AND browseletter =  '" . $letter . "' " . $collate;
+		}
+		else
+		{
+			if((!preg_match('/[^a-z]/', $alphabet)))
+			{
+				$collate = "";
+			}
+
+			$sql .= " AND reversal_head LIKE  '" . $letter . "%' " . $collate;
+		}
 	}
-	$sql .=	" language_code = '" . $reversalLangcode . "' ";
+	if(strlen($reversalLangcode) > 0)
+	{
+		$sql .=	" AND language_code = '" . $reversalLangcode . "' ";
+	}
 	if($sortorderExists && $reversalLangcode != "zh-CN" && $reversalLangcode != "zh-Hans-CN")
 	{
 		$sql .= " ORDER BY sortorder, reversal_head ASC";

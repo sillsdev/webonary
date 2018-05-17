@@ -1151,10 +1151,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					<option value=""></option>
 					<?php
 					foreach($arrLanguageCodes as $languagecode) {
-						if(strlen(trim($languagecode->language_code)) > 0)
+						if(strlen(trim($languagecode['language_code'])) > 0)
 						{
 					?>
-						<option value="<?php echo $languagecode->language_code; ?>"><?php echo $languagecode->language_code; ?></option>
+						<option value="<?php echo $languagecode['language_code']; ?>"><?php echo $languagecode['language_code']; ?></option>
 					<?php
 						}
 					} ?>
@@ -1717,7 +1717,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 * not add any new lexical entries, but it will make entries in the search
 	 * table.
 	 */
-	function import_xhtml_reversal_indexes ($postentry = null, $entry_counter = null) {
+	function import_xhtml_reversal_indexes ($postentry = null, $entry_counter = null, $browseletter = "") {
 		global $wpdb;
 
 		$doc = new DomDocument();
@@ -1733,6 +1733,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$reversals = $this->dom_xpath->query( './xhtml:span[contains(@class, "reversal-form")]|./xhtml:span[contains(@class, "reversalform")]');
 		$entries_count = null;
 		$reversal_xml = "";
+		$browseletter = normalizer_normalize($browseletter, Normalizer::NFC );
 
 		if($reversals->length > 0)
 		{
@@ -1890,17 +1891,18 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
-								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder)
-								VALUES('%s', '%s', '%s', '%s', %d)",
-								$id, $reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter);
+								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder, browseletter)
+								VALUES('%s', '%s', '%s', '%s', %d, '%s')",
+								$id, $reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter, $browseletter);
 					}
 					else
 					{
 						$sql = $wpdb->prepare(
 								"UPDATE " . $this->reversal_table_name . "
-								SET reversal_content = '%s'
+								SET reversal_content = '%s',
+								browseletter = '%s'
 								WHERE reversal_head = '%s' AND language_code = '%s' AND $id = '%s'",
-								$reversal_xml, $reversal_browsehead, $reversal_language, $id);
+								$reversal_xml, $browseletter, $reversal_browsehead, $reversal_language, $id);
 					}
 
 					$wpdb->query( $sql );

@@ -164,7 +164,7 @@ if(isset($xhtmlFileURL))
 					elseif($filetype == 'reversal')
 					{
 						$import->reversal_table_name = $wpdb->prefix . 'sil_reversals';
-						$entry_counter = $import->import_xhtml_reversal_indexes($postentry, $entry_counter);
+						$entry_counter = $import->import_xhtml_reversal_indexes($postentry, $entry_counter, $letter);
 					}
 					else
 					{

@@ -155,12 +155,12 @@ function webonary_searchform() {
 					<?php
 					foreach ($arrLanguages as $language)
 					{
-						if($language->name != $arrVernacularLanguage[0]->name || ($language->name == $arrVernacularLanguage[0]->name && $language->language_code == get_option('languagecode')))
+						if($language['name'] != $arrVernacularLanguage[0]['name'] || ($language['name'] == $arrVernacularLanguage[0]['name'] && $language['language_code'] == get_option('languagecode')))
 						{
 					?>
-						<option value="<?php echo $language->language_code; ?>"
-							<?php if($key == $language->language_code) {?>selected<?php }?>>
-							<?php echo $language->name; ?>
+						<option value="<?php echo $language['language_code']; ?>"
+							<?php if($key == $language['language_code']) {?>selected<?php }?>>
+							<?php echo $language['name']; ?>
 						</option>
 						<?php
 						}
