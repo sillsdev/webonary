@@ -564,7 +564,8 @@ function webonary_conf_widget($showTitle = false) {
 			else
 			{
 				$k = array_search(get_option('reversal1_langcode'), array_column($arrLanguageCodes, 'language_code'));
-				if($k)
+
+				if($k >= 0)
 				{
 				?>
 					<i><?php _e('1. Reversal index'); ?></i><br>
