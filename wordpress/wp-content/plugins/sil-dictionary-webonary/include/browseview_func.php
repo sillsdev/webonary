@@ -719,9 +719,7 @@ function vernacularalphabet_func( $atts )
 			else if(trim($mypost->post_title) == trim($mypost->search_strings) )
 			{
 				$the_content = addLangQuery($mypost->post_content);
-
-				////////JUST TESTING //////
-				$the_content = normalizer_normalize($the_content, Normalizer::NFC );
+				$the_content = normalizer_normalize($headword->textContent, Normalizer::NFC );
 				$display .= "<div class=\"post\">" . $the_content . "</div>";
 				/*
 				if( comments_open($mypost->ID) ) {

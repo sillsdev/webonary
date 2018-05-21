@@ -512,7 +512,13 @@ function my_404_override() {
 }
 add_filter('template_redirect', 'my_404_override' );
 
-add_action('wp_head', 'webonary_css');
+function filter_the_content_in_the_main_loop( $content ) {
+
+	$content = normalizer_normalize($content, Normalizer::NFC );
+	return $content;
+}
+add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
+
 function webonary_css()
 {
 	?>
@@ -565,4 +571,5 @@ if(get_option('vernacularRightToLeft') == 1)
 </style>
 <?php
 }
+add_action('wp_head', 'webonary_css');
 ?>
