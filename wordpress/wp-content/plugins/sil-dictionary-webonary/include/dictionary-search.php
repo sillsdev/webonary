@@ -517,7 +517,7 @@ function filter_the_content_in_the_main_loop( $content ) {
 	$content = normalizer_normalize($content, Normalizer::NFC );
 	return $content;
 }
-add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
+//add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
 
 function webonary_css()
 {
