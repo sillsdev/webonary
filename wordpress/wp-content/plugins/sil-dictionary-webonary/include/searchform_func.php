@@ -201,7 +201,7 @@ function webonary_searchform() {
 						}
 					}
 					?>
-					<input name="match_whole_words" value="1" <?php echo $checkedWholeWords; ?> type="checkbox"> Match whole words
+					<input name="match_whole_words" value="1" <?php echo $checkedWholeWords; ?> type="checkbox"> <?php _e('Match whole words', 'sil_dictionary'); ?>
 					<br>
 					<?php
 					$match_accents = false;
@@ -210,7 +210,7 @@ function webonary_searchform() {
 						$match_accents = true;
 					}
 					?>
-					<input name="match_accents" <?php checked('1', $match_accents); ?> type="checkbox"> Match accents and tones
+					<input name="match_accents" <?php checked('1', $match_accents); ?> type="checkbox"> <?php _e('Match accents and tones', 'sil_dictionary'); ?>
 					<input id=displayAdvancedSearch name="displayAdvancedSearch" type="hidden" value="0">
 				</div>
 			</div>

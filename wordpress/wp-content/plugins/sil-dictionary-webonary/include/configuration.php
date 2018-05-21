@@ -153,7 +153,7 @@ function save_configurations() {
 			$displaySubentriesAsMainEntries = 1;
 		}
 		update_option("DisplaySubentriesAsMainEntries", $displaySubentriesAsMainEntries);
-		update_option("languagecode", $_POST['languagecode']);
+		//update_option("languagecode", $_POST['languagecode']);
 		//update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
@@ -372,6 +372,14 @@ function webonary_conf_widget($showTitle = false) {
 			</select>
 			<p>
 			<h3><?php _e( 'Delete Data', 'sil_dictionary' ); ?></h3>
+			<br>
+			<script>
+			console.log("<?php echo htmlentities("àü634962867402384562a̱ 'ó"); ?>");
+			</script>
+			<?php
+			echo htmlentities("àü634962867402384562a̱ 'ó") . "<br>";
+			echo htmlentities('àü634962867402384562', ENT_COMPAT, 'UTF-8');
+			?>
 			<br>
 			<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 				<strong style=color:red;>You are not in your testing environment!</strong>

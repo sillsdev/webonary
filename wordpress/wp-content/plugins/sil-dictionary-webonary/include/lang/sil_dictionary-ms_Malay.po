@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Webonary\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-18 14:34+0800\n"
-"PO-Revision-Date: 2018-05-18 14:37+0800\n"
+"POT-Creation-Date: 2018-05-18 14:47+0800\n"
+"PO-Revision-Date: 2018-05-18 14:53+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -7295,6 +7295,14 @@ msgstr "Semua Bahasa"
 #: include/searchform_func.php:180 include/infrastructure.php:158
 msgid "All Parts of Speech"
 msgstr "Semua Golongan Kata"
+
+#: include/searchform_func.php:204
+msgid "Match whole words"
+msgstr ""
+
+#: include/searchform_func.php:213
+msgid "Match accents and tones"
+msgstr ""
 
 #: include/searchform_func.php:220
 msgid "Number of Entries"
