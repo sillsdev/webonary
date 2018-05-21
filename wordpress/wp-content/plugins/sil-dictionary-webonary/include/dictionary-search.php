@@ -198,6 +198,8 @@ function sil_dictionary_custom_join($join) {
 				$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
 			}
 
+			$searchquery = str_replace("'", "\'", $searchquery);
+
 			if(!isset($_GET['partialsearch']))
 			{
 				$partialsearch = get_option("include_partial_words");

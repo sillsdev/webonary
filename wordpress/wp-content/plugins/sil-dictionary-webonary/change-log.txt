@@ -1,3 +1,4 @@
+v. 7.4.0 21 May 2018 added backslash to search query, so that words with apostroph get found
 v. 7.3.9 21 May 2018 normalize posts to NFC (fixes audio link issue)
 v. 7.3.8 18 May 2018 added translations and status images for Malay
 v. 7.3.7 17 May 2018 reversal browse views are now also grouped by letter head coming from the xhtml file
