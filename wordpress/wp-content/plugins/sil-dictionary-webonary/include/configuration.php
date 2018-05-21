@@ -373,14 +373,6 @@ function webonary_conf_widget($showTitle = false) {
 			<p>
 			<h3><?php _e( 'Delete Data', 'sil_dictionary' ); ?></h3>
 			<br>
-			<script>
-			console.log("<?php echo htmlentities("àü634962867402384562a̱ 'ó"); ?>");
-			</script>
-			<?php
-			echo htmlentities("àü634962867402384562a̱ 'ó") . "<br>";
-			echo htmlentities('àü634962867402384562', ENT_COMPAT, 'UTF-8');
-			?>
-			<br>
 			<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 				<strong style=color:red;>You are not in your testing environment!</strong>
 				<br>
