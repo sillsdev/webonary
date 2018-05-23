@@ -189,7 +189,7 @@ function sil_dictionary_custom_join($join) {
 				$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
 				$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
 				$searchquery = preg_replace('/([ə])/u', '(ə', $searchquery);
-				$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|i', $searchquery);
+				$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
 				$searchquery = preg_replace('/([o])/u', '(ō|ō̂|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ǫ́|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
 				$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
 				$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
@@ -200,16 +200,33 @@ function sil_dictionary_custom_join($join) {
 
 			$searchquery = str_replace("'", "\'", $searchquery);
 
+			if(mb_strlen($search) <= 3)
+			{
+				$match_whole_words = 1;
+			}
 			if(!isset($_GET['partialsearch']))
 			{
 				$partialsearch = get_option("include_partial_words");
+				if($partialsearch == 1 && $_GET['match_whole_words'] == 0)
+				{
+					$match_whole_words = 0;
+				}
+			}
+			else
+			{
+				if($_GET['partialsearch'] == 1)
+				{
+					$partialsearch = 1;
+					$match_whole_words = 0;
+				}
 			}
 			if(strlen($search) == 0 && $_GET['tax'] > 1)
 			{
 				$partialsearch = 1;
+				$match_whole_words = 0;
 			}
 
-			if (is_CJK( $search ) || mb_strlen($search) > 3 || $match_whole_words == 0 || $partialsearch == 1)
+			if (is_CJK( $search ) || $match_whole_words == 0)
 			{
 
 				/* $subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
