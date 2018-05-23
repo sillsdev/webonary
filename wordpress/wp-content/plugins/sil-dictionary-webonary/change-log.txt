@@ -1,3 +1,4 @@
+v. 7.4.4 23 May 2018 fixed small design issue
 v. 7.4.3 23 May 2018 search query now matches an optional number at the end (e.g. mbuu1)
 v. 7.4.2 23 May 2018 added special character ɨ to search query
 v. 7.4.1 23 May 2018 fixed bug searching through partial words even though "Match whole words" was checked

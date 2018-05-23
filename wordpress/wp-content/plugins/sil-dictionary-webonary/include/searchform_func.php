@@ -135,7 +135,7 @@ function webonary_searchform() {
 				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch()" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php echo _e('Advanced Search', 'sil_dictionary'); ?></a>
 				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
-				<br style="margin-bottom: 6px;">
+				<p style="margin-bottom: 6px;"></p>
 					<?php
 					$key = $_POST['key'];
 					if(!isset($_POST['key']))
