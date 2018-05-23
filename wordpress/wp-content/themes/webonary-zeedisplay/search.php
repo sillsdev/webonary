@@ -82,12 +82,16 @@ function openImage(image)
 <?php
 if(strlen(trim($query)) > 0)
 {
+	$lenient = true;
+	if(isset($_GET['match_accents']))
+	{
+		$lenient = false;
+	}
 ?>
 <script language=JavaScript>
 <!--
  	//highlightSearchTerms('<?php echo trim(str_replace("'", "#", the_title())); ?>');
-	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', true);
-	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', true);
+	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', <?php echo $lenient; ?>);
 //-->
 </script>
 <?php

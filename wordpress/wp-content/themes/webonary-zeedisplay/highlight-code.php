@@ -14,7 +14,7 @@ function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
     highlightStartTag = "<span class=hilite>";
     highlightEndTag = "</span>";
   }
-  
+
   // find all occurences of the search term in the given text,
   // and add some "highlight" tags to them (we're not using a
   // regular expression search, because we want to filter out
@@ -24,7 +24,7 @@ function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
   var i = -1;
   var lcSearchTerm = searchTerm.toLowerCase();
   var lcBodyText = bodyText.toLowerCase();
-    
+
   while (bodyText.length > 0) {
     i = lcBodyText.indexOf(lcSearchTerm, i+1);
     if (i < 0)
@@ -44,7 +44,7 @@ function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag)
       }
     }
   }
-  
+
   return newText;
 }
 
@@ -67,14 +67,14 @@ function highlightSearchTerms(searchText, treatAsPhrase, warnOnFailure, highligh
   } else {
     searchArray = searchText.split(" ");
   }
-  
+
   if (!document.body || typeof(document.body.innerHTML) == "undefined") {
     if (warnOnFailure) {
       alert("Sorry, for some reason the text of this page is unavailable. Searching will not work.");
     }
     return false;
   }
-  
+
   var bodyText = document.getElementById('searchresults').innerHTML;
   for (var i = 0; i < searchArray.length; i++) {
 	if(searchArray[i].length > 0)
@@ -82,7 +82,7 @@ function highlightSearchTerms(searchText, treatAsPhrase, warnOnFailure, highligh
     	bodyText = doHighlight(bodyText, searchArray[i], highlightStartTag, highlightEndTag);
 	}
   }
-  
+
   //document.body.innerHTML = bodyText;
   document.getElementById('searchresults').innerHTML = bodyText;
   return true;

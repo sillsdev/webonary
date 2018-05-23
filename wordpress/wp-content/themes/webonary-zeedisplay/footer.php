@@ -11,6 +11,7 @@ function popitup(url) {
 // -->
 </script>
 	<div style="clear: both;"></div>
+
 <button id="responsive-menu-button"
 	class="responsive-menu-button responsive-menu-boring
          responsive-menu-accessible"
@@ -142,4 +143,6 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 </body>
 </html>
 <?php
-		//echo var_dump($wpdb->queries); ?>
+		//echo var_dump($wpdb->queries);
+		//error_log(printf($wpdb->queries));
+?>

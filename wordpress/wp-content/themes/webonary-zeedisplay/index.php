@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-		<div id="content" <?php if(!isMobile()) { ?>style="width:530px"<?php } ?>>
+		<div id="content">
 		<?php
 		if(isMobile()) {
 			get_sidebar();
@@ -15,7 +15,7 @@
 		if(is_home() and isset($options['themeZee_show_slider']) and $options['themeZee_show_slider'] == 'true') {
 				locate_template('/slide.php', true);
 			}
-			
+
 		/*
 		 * If the slider is turned off, we'll display entries as normal.
 		 */
@@ -40,7 +40,7 @@
 			}
 			?>
 		</div>
-		
+
 	<?php
 	if(!isMobile()) {
 		get_sidebar();

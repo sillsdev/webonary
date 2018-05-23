@@ -2,16 +2,15 @@
 require("highlight-code.php");
 ?>
 	<div style="padding: 10px 25px;">
-	<div id="content" <?php if(!isMobile()) { ?>style="width:530px"<?php } ?>>
+	<div id="content">
 
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		
-			<div id="searchresults" <?php post_class(); ?>>
-			
-				<h2><?php //the_title(); ?></h2>
-					
-				<?php webonary_zeedisplay_display_entry_header(); ?>
 
+			<div id="searchresults" <?php post_class(); ?>>
+
+				<h2><?php //the_title(); ?></h2>
+
+				<?php webonary_zeedisplay_display_entry_header(); ?>
 				<div class="postentry">
 					<?php the_post_thumbnail('medium', array('class' => 'alignleft')); ?>
 					<?php the_content(); ?>
@@ -19,7 +18,7 @@ require("highlight-code.php");
 					<?php wp_link_pages(); ?>
 					<!-- <?php trackback_rdf(); ?> -->
 				</div>
-				
+
 				<?php webonary_zeedisplay_display_entry_footer(); ?>
 
 			</div>
@@ -27,9 +26,9 @@ require("highlight-code.php");
 		<?php endwhile; ?>
 
 		<?php endif; ?>
-			
+
 		<?php comments_template(); ?>
-		
+
 	</div>
 	</div>
 		<?php get_sidebar(); ?>

@@ -123,7 +123,8 @@ function themezee_register_scripts() {
 	 */
 	wp_register_script('responsiveMenu', get_template_directory_uri() .'/includes/js/responsive-menu.js?v=1', array('jquery'));
 	wp_register_script('zee_slidemenu', get_template_directory_uri() .'/includes/js/jquery.slidemenu.js', array('jquery'));
-	wp_register_script('highlight', get_template_directory_uri() .'/includes/js/jquery-highlight-min1.js', array('jquery'));
+	//wp_register_script('highlight', get_template_directory_uri() .'/includes/js/jquery-highlight-min-old.js', array('jquery'));
+	wp_register_script('highlight', get_template_directory_uri() .'/includes/js/jquery-highlight1.js?v=1', array('jquery'));
 }
 add_action('wp_enqueue_scripts', 'themezee_enqueue_scripts');
 
