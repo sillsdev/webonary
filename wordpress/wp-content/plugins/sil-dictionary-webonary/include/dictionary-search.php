@@ -238,7 +238,7 @@ function sil_dictionary_custom_join($join) {
 				if(mb_strlen($search) > 1)
 				{
 	            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
-						$searchquery . "[[:>:]]' " . $collateSearch;
+						$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
 				}
 			}
 			//echo $subquery_where . "<br>";
