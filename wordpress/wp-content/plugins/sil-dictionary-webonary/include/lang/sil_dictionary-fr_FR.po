@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SIL Dictionary v1.2.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 12:57+0800\n"
-"PO-Revision-Date: 2016-04-19 13:10+0800\n"
+"POT-Creation-Date: 2018-06-01 11:08+0800\n"
+"PO-Revision-Date: 2018-06-01 11:09+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,37 +18,89 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: include/browseview_func.php:121
-msgid "No entries exist for"
-msgstr "Aucune entrée n'existe pour "
-
-#: include/browseview_func.php:198
-msgid "Page"
+# @ sil_dictionary
+#: include/xhtml-importer.php:277 include/xhtml-importer.php:362
+msgid "Finished!"
 msgstr ""
 
-#: include/browseview_func.php:198
-msgid "of"
-msgstr ""
-
-#: include/browseview_func.php:579
-msgid "No entries exist starting with this letter."
-msgstr "Aucune entrée n'existe avec cette lettre au début."
-
-#: include/comments_func.php:25
-msgid "Re-syncing comments"
-msgstr ""
-
-#: include/comments_func.php:92
-msgid "Comments Re-Sync"
-msgstr ""
-
-#: include/comments_func.php:93
+# @ sil_dictionary
+#: include/xhtml-importer.php:294
 msgid ""
-"If you have the comments turned on, you need to re-sync your comments after "
-"re-importing of your posts."
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
 msgstr ""
 
-#: include/default_domains.php:2 include/semdomains_func.php:25
+#: include/xhtml-importer.php:296
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:1107
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:1125
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:1125 include/xhtml-importer.php:1136
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: include/xhtml-importer.php:1127
+msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:1135
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+#: include/xhtml-importer.php:1149
+#, fuzzy
+msgid "Language Code:"
+msgstr "Langage"
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:1192
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:2228
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: include/xhtml-importer.php:2283
+msgid "The css file has been uploaded into your upload folder:<br>"
+msgstr ""
+
+# @ default
+#: include/xhtml-importer.php:2286
+msgid "There was an error uploading the file, please try again!"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2328
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+# @ sil_dictionary
+#: include/xhtml-importer.php:2329
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""
+
+#: include/default_domains.php:2 include/semdomains_func.php:76
 msgid "Universe, creation"
 msgstr "L’univers, la création"
 
@@ -120,7 +172,7 @@ msgstr "Sécheresse"
 msgid "World"
 msgstr "Monde"
 
-#: include/default_domains.php:20
+#: include/default_domains.php:20 include/default_domains-yakan.php:88
 msgid "Land"
 msgstr "Terre"
 
@@ -196,7 +248,7 @@ msgstr "Gaz"
 msgid "Water"
 msgstr "Eau"
 
-#: include/default_domains.php:39
+#: include/default_domains.php:39 include/default_domains-yakan.php:70
 msgid "Bodies of water"
 msgstr "Étendues d’eau"
 
@@ -384,7 +436,7 @@ msgstr "Crocodile"
 msgid "Amphibian"
 msgstr "Amphibien"
 
-#: include/default_domains.php:86
+#: include/default_domains.php:86 include/default_domains-yakan.php:57
 msgid "Fish"
 msgstr "Poisson"
 
@@ -472,7 +524,7 @@ msgstr "Nature, environnement"
 msgid "Natural"
 msgstr "Naturel"
 
-#: include/default_domains.php:108 include/semdomains_func.php:26
+#: include/default_domains.php:108 include/semdomains_func.php:77
 msgid "Person"
 msgstr "La Personne"
 
@@ -496,7 +548,7 @@ msgstr "Oreille"
 msgid "Nose"
 msgstr "Nez"
 
-#: include/default_domains.php:114
+#: include/default_domains.php:114 include/default_domains-yakan.php:130
 msgid "Mouth"
 msgstr "Bouche"
 
@@ -524,11 +576,12 @@ msgstr "Jambe"
 msgid "Finger, toe"
 msgstr "Doigt, orteil"
 
-#: include/default_domains.php:121
+#: include/default_domains.php:121 include/default_domains-yakan.php:121
+#: include/default_domains-yakan.php:127
 msgid "Skin"
 msgstr "Peau"
 
-#: include/default_domains.php:122
+#: include/default_domains.php:122 include/default_domains-yakan.php:120
 msgid "Hair"
 msgstr "Cheveux, poils"
 
@@ -548,7 +601,7 @@ msgstr "Organes internes"
 msgid "Heart"
 msgstr "Cœur"
 
-#: include/default_domains.php:127
+#: include/default_domains.php:127 include/default_domains-yakan.php:131
 msgid "Stomach"
 msgstr "Estomac"
 
@@ -796,7 +849,7 @@ msgstr "Symptôme de la maladie"
 msgid "Pain"
 msgstr "Douleur"
 
-#: include/default_domains.php:189
+#: include/default_domains.php:189 include/default_domains-yakan.php:134
 msgid "Fever"
 msgstr "Fièvre"
 
@@ -1020,7 +1073,7 @@ msgstr "Hériter"
 msgid "Life after death"
 msgstr "La vie après la mort"
 
-#: include/default_domains.php:245 include/semdomains_func.php:27
+#: include/default_domains.php:245 include/semdomains_func.php:78
 msgid "Language and thought"
 msgstr "Le Langage et la pensée"
 
@@ -1776,8 +1829,8 @@ msgstr "Illustration"
 msgid "Admit"
 msgstr "Admettre"
 
-#: include/default_domains.php:434 include/infrastructure.php:549
-#: include/infrastructure.php:557
+#: include/default_domains.php:434 include/infrastructure.php:194
+#: include/infrastructure.php:202
 msgid "Language"
 msgstr "Langage"
 
@@ -1965,7 +2018,7 @@ msgstr "Évaluer"
 msgid "Answer in a test"
 msgstr "Répondre à une évaluation"
 
-#: include/default_domains.php:481 include/semdomains_func.php:28
+#: include/default_domains.php:481 include/semdomains_func.php:79
 msgid "Social behavior"
 msgstr "Les relations sociales"
 
@@ -3293,7 +3346,7 @@ msgstr "Lieu de culte"
 msgid "Irreligion"
 msgstr "Irréligion"
 
-#: include/default_domains.php:813 include/semdomains_func.php:29
+#: include/default_domains.php:813 include/semdomains_func.php:80
 msgid "Daily life"
 msgstr "La maison"
 
@@ -3301,7 +3354,7 @@ msgstr "La maison"
 msgid "Household equipment"
 msgstr "Équipement de la maison"
 
-#: include/default_domains.php:815
+#: include/default_domains.php:815 include/default_domains-yakan.php:191
 msgid "Furniture"
 msgstr "Mobilier"
 
@@ -3533,7 +3586,7 @@ msgstr "Vêtements pour des occasions particulières"
 msgid "Clothes for special people"
 msgstr "Vêtements pour certaines personnes"
 
-#: include/default_domains.php:873
+#: include/default_domains.php:873 include/default_domains-yakan.php:220
 msgid "Parts of clothing"
 msgstr "Eléments de vêtements"
 
@@ -3553,7 +3606,7 @@ msgstr "Style vestimentaire"
 msgid "Adornment"
 msgstr "Parure"
 
-#: include/default_domains.php:878
+#: include/default_domains.php:878 include/default_domains-yakan.php:218
 msgid "Jewelry"
 msgstr "Bijoux"
 
@@ -3693,7 +3746,7 @@ msgstr "S’occuper d’une maison"
 msgid "Live, stay"
 msgstr "Vivre, demeurer"
 
-#: include/default_domains.php:913 include/semdomains_func.php:30
+#: include/default_domains.php:913 include/semdomains_func.php:81
 msgid "Work and occupation"
 msgstr "Le Travail et diverses activités"
 
@@ -4173,7 +4226,7 @@ msgstr "Bâtiments"
 msgid "House"
 msgstr "Maison"
 
-#: include/default_domains.php:1033
+#: include/default_domains.php:1033 include/default_domains-yakan.php:189
 msgid "Types of houses"
 msgstr "Types de maisons"
 
@@ -4225,7 +4278,7 @@ msgstr "Pièce"
 msgid "Floor, story"
 msgstr "Étage"
 
-#: include/default_domains.php:1046
+#: include/default_domains.php:1046 include/default_domains-yakan.php:192
 msgid "Building materials"
 msgstr "Matériaux de construction"
 
@@ -4681,7 +4734,7 @@ msgstr "Économie"
 msgid "Insurance"
 msgstr "Assurance"
 
-#: include/default_domains.php:1160 include/semdomains_func.php:31
+#: include/default_domains.php:1160 include/semdomains_func.php:82
 msgid "Physical actions"
 msgstr "Les activités physiques"
 
@@ -5293,7 +5346,8 @@ msgstr "Remplir, couvrir"
 msgid "Hide"
 msgstr "Cacher"
 
-#: include/default_domains.php:1313 include/searchform_func.php:28
+#: include/default_domains.php:1313 include/searchform_func.php:133
+#: include/configuration.php:32
 msgid "Search"
 msgstr "Chercher"
 
@@ -5385,7 +5439,7 @@ msgstr "Détruire"
 msgid "Repair"
 msgstr "Réparer"
 
-#: include/default_domains.php:1336 include/semdomains_func.php:32
+#: include/default_domains.php:1336 include/semdomains_func.php:83
 msgid "States"
 msgstr "Les états (des choses ou des êtres)"
 
@@ -5397,7 +5451,7 @@ msgstr "Quantité"
 msgid "Number"
 msgstr "Nombre"
 
-#: include/default_domains.php:1339
+#: include/default_domains.php:1339 include/default_domains-yakan.php:82
 msgid "Cardinal numbers"
 msgstr "Nombres cardinaux"
 
@@ -5409,7 +5463,7 @@ msgstr "Un"
 msgid "Two"
 msgstr "Deux"
 
-#: include/default_domains.php:1342
+#: include/default_domains.php:1342 include/default_domains-yakan.php:83
 msgid "Ordinal numbers"
 msgstr "Nombres ordinaux"
 
@@ -6545,7 +6599,7 @@ msgstr "Bord"
 msgid "End, point"
 msgstr "Bout, pointe"
 
-#: include/default_domains.php:1626 include/semdomains_func.php:33
+#: include/default_domains.php:1626 include/semdomains_func.php:84
 msgid "Grammar"
 msgstr "La Grammaire"
 
@@ -7217,498 +7271,1454 @@ msgstr "Nom propre d’animal"
 msgid "Names of buildings"
 msgstr "Nom propre d’édifice"
 
+#: include/searchform_func.php:135
+msgid "Advanced Search"
+msgstr "Recherche avancée"
+
+#: include/searchform_func.php:137
+msgid "Hide Advanced Search"
+msgstr "Cacher 'Recherche avancée'"
+
+# @ default
 # @ sil_dictionary
-#: include/dictionary-search.php:191
+#: include/searchform_func.php:153 include/infrastructure.php:195
+msgid "All Languages"
+msgstr "Toutes les langues"
+
+# @ default
+# @ sil_dictionary
+#: include/searchform_func.php:180 include/infrastructure.php:158
+msgid "All Parts of Speech"
+msgstr "Toutes les catégories grammaticales"
+
+#: include/searchform_func.php:204
+msgid "Match whole words"
+msgstr "Chercher mots entiers"
+
+#: include/searchform_func.php:213
+msgid "Match accents and tones"
+msgstr "Recherche incl. diacritiques"
+
+#: include/searchform_func.php:220
+msgid "Number of Entries"
+msgstr "Nombre d'entrées"
+
+#: include/searchform_func.php:238
+msgid "Last update:"
+msgstr ""
+
+#: include/searchform_func.php:248
+#, fuzzy
+msgid "Date published:"
+msgstr "Privé, public"
+
+#: include/searchform_func.php:263
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+# @ sil_dictionary
+#: include/dictionary-search.php:308
 msgid "Because of the brevity of your search term, partial search was omitted."
 msgstr ""
 "Parce que votre terme de recherche est court, on a omis la recherche de mots "
 "partiels."
 
 # @ sil_dictionary
-#: include/dictionary-search.php:193
+#: include/dictionary-search.php:311
 msgid "Click here to include searching through partial words."
 msgstr "Cliquer ici pour inclure la recherche de mots partiels."
 
-#: include/infrastructure.php:118
+#: include/configuration.php:31
+msgid "Data (Import)"
+msgstr ""
+
+#: include/configuration.php:33
+msgid "Browse Views"
+msgstr ""
+
+#: include/configuration.php:34
+msgid "Fonts"
+msgstr ""
+
+#: include/configuration.php:37
+#, fuzzy
+msgid "Notes"
+msgstr "Protester"
+
+#: include/configuration.php:245
+msgid "Settings saved"
+msgstr ""
+
+#: include/configuration.php:300
 msgid "Webonary"
 msgstr ""
 
-#: include/infrastructure.php:125
+#: include/configuration.php:305
 msgid ""
 "Webonary provides the admininstration tools and framework for using "
-"WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
+"WordPress for dictionaries. See <a href=\"https://www.webonary.org/help\" "
 "target=\"_blank\">Webonary Support</a> for help."
 msgstr ""
 
+#: include/configuration.php:311
+#, php-format
+msgid "Click to switch to %s"
+msgstr ""
+
 # @ sil_dictionary
-#: include/infrastructure.php:126
+#: include/configuration.php:350
 msgid "Import Data"
 msgstr ""
 
-# @ sil_dictionary
-#: include/infrastructure.php:127
+#: include/configuration.php:359
 msgid ""
-"You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
-"importer</a> by clicking on Import under the Tools menu."
+"<a href=\"admin.php?import=pathway-xhtml\" style=\"font-size:16px;\">Click "
+"here to import your FLEx data</a>"
 msgstr ""
 
-#: include/infrastructure.php:128
-msgid ""
-"Each dictionary entry is stored in a \"post.\" You will find the entries in "
-"the Posts menu."
+#: include/configuration.php:363
+msgid "Publication status:"
+msgstr ""
+
+#: include/configuration.php:365
+msgid "no status set"
+msgstr ""
+
+#: include/configuration.php:366
+msgid "Rough draft"
+msgstr ""
+
+#: include/configuration.php:367
+msgid "Self-reviewed draft"
+msgstr ""
+
+#: include/configuration.php:368
+msgid "Community-reviewed draft"
+msgstr ""
+
+#: include/configuration.php:369
+msgid "Consultant approved"
+msgstr ""
+
+#: include/configuration.php:370
+msgid "Finished (no formal publication)"
+msgstr ""
+
+#: include/configuration.php:371
+msgid "Formally published"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:130
+#: include/configuration.php:374
 msgid "Delete Data"
 msgstr ""
 
-#: include/infrastructure.php:135
+#: include/configuration.php:383
 msgid "Lists are kept unless you check the following:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:139
+#: include/configuration.php:387
 msgid "Delete lists such as Part of Speech?"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:149
+#: include/configuration.php:399
 msgid "Are you sure you want to delete the dictionary data?"
 msgstr ""
 
 # @ sil_dictionary
-#: include/infrastructure.php:150
+#: include/configuration.php:400
 msgid "Delete"
 msgstr ""
 
-#: include/infrastructure.php:152
+#: include/configuration.php:402
 msgid "(deletes all posts in the category \"webonary\")"
 msgstr ""
 
-#: include/infrastructure.php:154
-msgid "Settings"
+#: include/configuration.php:411
+msgid "Default Search Options"
 msgstr ""
 
-#: include/infrastructure.php:156
-msgid "Publication status:"
-msgstr ""
-
-#: include/infrastructure.php:158
-msgid "no status set"
-msgstr ""
-
-#: include/infrastructure.php:159
-msgid "Rough draft"
-msgstr ""
-
-#: include/infrastructure.php:160
-msgid "Self-reviewed draft"
-msgstr ""
-
-#: include/infrastructure.php:161
-msgid "Community-reviewed draft"
-msgstr ""
-
-#: include/infrastructure.php:162
-msgid "Consultant approved"
-msgstr ""
-
-#: include/infrastructure.php:163
-msgid "Finished (no formal publication)"
-msgstr ""
-
-#: include/infrastructure.php:164
-msgid "Formally published"
-msgstr ""
-
-#: include/infrastructure.php:167
-msgid "Search Options:"
-msgstr ""
-
-#: include/infrastructure.php:171
+#: include/configuration.php:414
 msgid "Always include searching through partial words."
 msgstr ""
 
-#: include/infrastructure.php:182
+#: include/configuration.php:461
+msgid "Special character input buttons"
+msgstr ""
+
+#: include/configuration.php:501
 msgid "Display subentries as main entries"
 msgstr ""
 
-#: include/infrastructure.php:193
-msgid "Vernacular Language Code:"
+#: include/configuration.php:514
+msgid "Vernacular Browse view:"
 msgstr ""
 
-#: include/infrastructure.php:204 include/infrastructure.php:242
-#: include/infrastructure.php:282
+#: include/configuration.php:516 include/configuration.php:575
+#: include/configuration.php:611 include/configuration.php:627
 msgid "Language Name:"
 msgstr ""
 
-#: include/infrastructure.php:206
-msgid "Vernacular Alphabet:"
+#: include/configuration.php:518
+msgid "Vernacular Alphabet"
 msgstr ""
 
-#: include/infrastructure.php:208 include/infrastructure.php:267
-#: include/infrastructure.php:286
-msgid "(Letters separated by comma)"
+#: include/configuration.php:518 include/configuration.php:598
+#: include/configuration.php:613 include/configuration.php:629
+msgid "configure in FLEx"
 msgstr ""
 
-#: include/infrastructure.php:218
+#: include/configuration.php:539
+msgid "Display right-to-left"
+msgstr ""
+
+#: include/configuration.php:549
 msgid ""
 "Include characters with diacritics (e.g. words starting with ä, à, etc. will "
 "all display under a)"
 msgstr ""
 
-#: include/infrastructure.php:220
+#: include/configuration.php:554
 msgid "Reversal Indexes:"
 msgstr ""
 
-#: include/infrastructure.php:225
-msgid "Display:"
+#: include/configuration.php:571
+msgid "1. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:231
-msgid "Main reversal index code:"
+#: include/configuration.php:598 include/configuration.php:613
+#: include/configuration.php:629
+msgid "Alphabet:"
 msgstr ""
 
-#: include/infrastructure.php:265
-msgid "Main Reversal Index Alphabet:"
+#: include/configuration.php:607
+msgid "2. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:269
-msgid "If you have a second reversal index, enter the information here:"
+#: include/configuration.php:623
+msgid "3. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:271
-msgid "Secondary reversal index code:"
+#: include/browseview_func.php:144
+msgid "No entries exist for"
+msgstr "Aucune entrée n'existe pour "
+
+#: include/browseview_func.php:272
+msgid "Page"
 msgstr ""
 
-#: include/infrastructure.php:284
-msgid "Secondary Reversal Index Alphabet:"
+#: include/browseview_func.php:272
+msgid "of"
 msgstr ""
 
-#: include/infrastructure.php:288
-msgid "Save"
+#: include/browseview_func.php:607
+msgid "Entry not found"
 msgstr ""
 
-# @ sil_dictionary
-#: include/infrastructure.php:307 include/xhtml-importer.php:272
-#: include/xhtml-importer.php:360
-msgid "Finished!"
+#: include/browseview_func.php:707
+msgid "No entries exist starting with this letter."
+msgstr "Aucune entrée n'existe avec cette lettre au début."
+
+#: include/semdomains_func.php:32 include/default_domains-yakan.php:2
+msgid "PLANTS"
 msgstr ""
 
-# @ sil_dictionary
-#: include/infrastructure.php:308
-msgid "OK"
+#: include/semdomains_func.php:33 include/default_domains-yakan.php:26
+msgid "ANIMALS (CREATURES ON LAND)"
 msgstr ""
 
-#: include/infrastructure.php:388
-msgid "Settings saved"
+#: include/semdomains_func.php:34 include/default_domains-yakan.php:49
+msgid "BIRDS"
+msgstr ""
+
+#: include/semdomains_func.php:35 include/default_domains-yakan.php:56
+msgid "FISH AND THINGS OF THE SEA"
+msgstr ""
+
+#: include/semdomains_func.php:36 include/default_domains-yakan.php:65
+msgid "NATURAL PHENOMENA"
+msgstr ""
+
+#: include/semdomains_func.php:37 include/default_domains-yakan.php:73
+msgid "SEA AND NAVIGATION"
+msgstr ""
+
+#: include/semdomains_func.php:38 include/default_domains-yakan.php:80
+msgid "NUMBERS"
+msgstr ""
+
+#: include/semdomains_func.php:39 include/default_domains-yakan.php:87
+msgid "AGRICULTURE"
+msgstr ""
+
+#: include/semdomains_func.php:40 include/default_domains-yakan.php:98
+msgid "RICE CULTIVATION"
+msgstr ""
+
+#: include/semdomains_func.php:41 include/default_domains-yakan.php:106
+msgid "COCONUT CULTIVATION"
+msgstr ""
+
+#: include/semdomains_func.php:42 include/default_domains-yakan.php:113
+msgid "BODY PARTS AND FUNCTIONS"
+msgstr ""
+
+#: include/semdomains_func.php:43 include/default_domains-yakan.php:125
+msgid "SICKNESSES/MEDICAL TERMS"
+msgstr ""
+
+#: include/semdomains_func.php:44 include/default_domains-yakan.php:139
+msgid "DEATH"
+msgstr ""
+
+#: include/semdomains_func.php:45 include/default_domains-yakan.php:142
+msgid "SUPERNATURAL/RELIGION"
+msgstr ""
+
+#: include/semdomains_func.php:46 include/default_domains-yakan.php:166
+msgid "WEDDINGS AND OTHER CEREMONIES"
+msgstr ""
+
+#: include/semdomains_func.php:47 include/default_domains-yakan.php:173
+msgid "RELATIONSHIPS"
+msgstr ""
+
+#: include/semdomains_func.php:48 include/default_domains-yakan.php:177
+msgid "LAW AND JUDGING"
+msgstr ""
+
+#: include/semdomains_func.php:49 include/default_domains-yakan.php:183
+msgid "TYPES OF CONVEYANCES"
+msgstr ""
+
+#: include/semdomains_func.php:50 include/default_domains-yakan.php:188
+msgid "TYPES OF HOUSES AND CARPENTRY"
+msgstr ""
+
+#: include/semdomains_func.php:51 include/default_domains-yakan.php:196
+msgid "IMPLEMENTS"
+msgstr ""
+
+#: include/semdomains_func.php:52 include/default_domains-yakan.php:207
+msgid "FOOD ITEMS"
+msgstr ""
+
+#: include/semdomains_func.php:53 include/default_domains-yakan.php:214
+msgid "EATING"
+msgstr ""
+
+#: include/semdomains_func.php:54 include/default_domains-yakan.php:216
+msgid "CLOTHING AND SEWING"
+msgstr ""
+
+#: include/semdomains_func.php:55 include/default_domains-yakan.php:224
+msgid "WEAVING"
+msgstr ""
+
+#: include/semdomains_func.php:56 include/default_domains-yakan.php:229
+msgid "COLOR TERMS"
+msgstr ""
+
+#: include/semdomains_func.php:57 include/default_domains-yakan.php:233
+msgid "CONCERNING HAIR"
+msgstr ""
+
+#: include/semdomains_func.php:58 include/default_domains-yakan.php:238
+msgid "GAMES AND TOYS"
+msgstr ""
+
+#: include/semdomains_func.php:59 include/default_domains-yakan.php:239
+msgid "SOUNDS"
+msgstr ""
+
+#: include/semdomains_func.php:60 include/default_domains-yakan.php:240
+msgid "WAYS OF CUTTING"
+msgstr ""
+
+#: include/semdomains_func.php:61 include/default_domains-yakan.php:241
+msgid "WAYS OF SPEAKING AND THINKING"
+msgstr ""
+
+#: include/semdomains_func.php:62 include/default_domains-yakan.php:242
+msgid "WAYS OF WALKING"
+msgstr ""
+
+#: include/semdomains_func.php:63 include/default_domains-yakan.php:243
+msgid "WAYS OF TYING THINGS"
+msgstr ""
+
+#: include/semdomains_func.php:64 include/default_domains-yakan.php:244
+msgid "SEEING"
+msgstr ""
+
+#: include/semdomains_func.php:85
+#, fuzzy
+msgid "Custom Domains"
+msgstr "Coutume"
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/comments_func.php:92
+msgid "Comments Re-Sync"
+msgstr ""
+
+#: include/comments_func.php:93
+msgid ""
+"If you have the comments turned on, you need to re-sync your comments after "
+"re-importing of your posts."
+msgstr ""
+
+#: include/default_domains-yakan.php:3
+msgid "Trees and fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:4
+msgid "Trees, forest"
+msgstr ""
+
+#: include/default_domains-yakan.php:5
+#, fuzzy
+msgid "Trees, fruit"
+msgstr "Premiers fruits"
+
+#: include/default_domains-yakan.php:6
+#, fuzzy
+msgid "Other fruit"
+msgstr "Autre"
+
+#: include/default_domains-yakan.php:7
+msgid "Bananas"
+msgstr ""
+
+#: include/default_domains-yakan.php:8
+msgid "Palms"
+msgstr ""
+
+#: include/default_domains-yakan.php:9
+msgid "Bamboo and grasses"
+msgstr ""
+
+#: include/default_domains-yakan.php:10
+msgid "Bamboo"
+msgstr ""
+
+#: include/default_domains-yakan.php:11
+msgid "Canes, reeds and grasses"
+msgstr ""
+
+#: include/default_domains-yakan.php:12
+msgid "Grains"
+msgstr ""
+
+#: include/default_domains-yakan.php:13
+msgid "Tubers"
+msgstr ""
+
+#: include/default_domains-yakan.php:14
+#, fuzzy
+msgid "Vegetables"
+msgstr "Cultiver des légumes"
+
+#: include/default_domains-yakan.php:15
+msgid "Vegetables, leafy"
+msgstr ""
+
+#: include/default_domains-yakan.php:16
+msgid "Vegetables (fruit, roots, bulbs)"
+msgstr ""
+
+#: include/default_domains-yakan.php:17
+#, fuzzy
+msgid "Flowering plants"
+msgstr "Tailler"
+
+#: include/default_domains-yakan.php:18
+msgid "Vines"
+msgstr ""
+
+#: include/default_domains-yakan.php:19
+msgid "Fungi"
+msgstr ""
+
+#: include/default_domains-yakan.php:20
+#, fuzzy
+msgid "Other plants"
+msgstr "Cueillette de plantes sauvages"
+
+#: include/default_domains-yakan.php:21
+msgid "Adjectives used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:22
+msgid "Verbs used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:23
+#, fuzzy
+msgid "Parts of plants or fruit"
+msgstr "Parties d’un végétal ou d’une plante"
+
+#: include/default_domains-yakan.php:24
+msgid "Stages of development of plants and fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:25
+#, fuzzy
+msgid "Uses of wood"
+msgstr "Types de nourriture et de boisson"
+
+#: include/default_domains-yakan.php:27
+#, fuzzy
+msgid "Mammals"
+msgstr "Mammifère"
+
+#: include/default_domains-yakan.php:28
+#, fuzzy
+msgid "Large mammals"
+msgstr "Mammifère marin"
+
+#: include/default_domains-yakan.php:29
+#, fuzzy
+msgid "Rodents and bats"
+msgstr "Temps et aspect"
+
+#: include/default_domains-yakan.php:30
+msgid "Amphibians and lizards"
+msgstr ""
+
+#: include/default_domains-yakan.php:31
+#, fuzzy
+msgid "Snakes"
+msgstr "Serpent"
+
+#: include/default_domains-yakan.php:32
+msgid "Creeping, crawling, and flying creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:33
+msgid "Beetles"
+msgstr ""
+
+#: include/default_domains-yakan.php:34
+msgid "Jumping insects"
+msgstr ""
+
+#: include/default_domains-yakan.php:35
+#, fuzzy
+msgid "Small insects"
+msgstr "Animaux inférieurs"
+
+#: include/default_domains-yakan.php:36
+msgid "Flying insects"
+msgstr ""
+
+#: include/default_domains-yakan.php:37
+msgid "Flies"
+msgstr ""
+
+#: include/default_domains-yakan.php:38
+msgid "Bees"
+msgstr ""
+
+#: include/default_domains-yakan.php:39
+msgid "Ants"
+msgstr ""
+
+#: include/default_domains-yakan.php:40
+msgid "Butterflies and worm-like creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:41
+msgid "Moths and butterflies"
+msgstr ""
+
+#: include/default_domains-yakan.php:42
+msgid "Caterpillars"
+msgstr ""
+
+#: include/default_domains-yakan.php:43
+msgid "Worms"
+msgstr ""
+
+#: include/default_domains-yakan.php:44
+msgid "Centipedes"
+msgstr ""
+
+#: include/default_domains-yakan.php:45
+#, fuzzy
+msgid "Spiders"
+msgstr "Araignée"
+
+#: include/default_domains-yakan.php:46
+#, fuzzy
+msgid "Other creatures"
+msgstr "Attraper, capturer"
+
+#: include/default_domains-yakan.php:47
+#, fuzzy
+msgid "Parts of animals"
+msgstr "Parties d’un animal"
+
+#: include/default_domains-yakan.php:48
+msgid "Verbs used in connection w/ animals"
+msgstr ""
+
+#: include/default_domains-yakan.php:50
+msgid "Birds, various species"
+msgstr ""
+
+#: include/default_domains-yakan.php:51
+#, fuzzy
+msgid "Parrots"
+msgstr "Étroit"
+
+#: include/default_domains-yakan.php:52
+msgid "Birds of prey"
+msgstr ""
+
+#: include/default_domains-yakan.php:53
+#, fuzzy
+msgid "Domesticated birds"
+msgstr "Animaux domestiques"
+
+#: include/default_domains-yakan.php:54
+#, fuzzy
+msgid "Parts of birds"
+msgstr "Parties d’un oiseau"
+
+#: include/default_domains-yakan.php:55
+msgid "Verbs and adjectives used in connection w/ birds"
+msgstr ""
+
+#: include/default_domains-yakan.php:58
+#, fuzzy
+msgid "Shellfish"
+msgstr "Ẻgoïste"
+
+#: include/default_domains-yakan.php:59
+msgid "Crustaceans"
+msgstr ""
+
+#: include/default_domains-yakan.php:60
+msgid "Corals"
+msgstr ""
+
+#: include/default_domains-yakan.php:61
+msgid "Seaweeds"
+msgstr ""
+
+#: include/default_domains-yakan.php:62
+msgid "Other sea creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:63
+msgid "Parts of fish and other sea creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:64
+#, fuzzy
+msgid "Fish poisons"
+msgstr "Pêche"
+
+#: include/default_domains-yakan.php:66
+#, fuzzy
+msgid "World and time"
+msgstr "Planifier un évènement"
+
+#: include/default_domains-yakan.php:67
+msgid "Sky and things therein"
+msgstr ""
+
+#: include/default_domains-yakan.php:68
+msgid "Weather and natural calamities"
+msgstr ""
+
+#: include/default_domains-yakan.php:69
+#, fuzzy
+msgid "Topography"
+msgstr "Photographie"
+
+#: include/default_domains-yakan.php:71
+msgid "Soil, stone, fire"
+msgstr ""
+
+#: include/default_domains-yakan.php:72
+msgid "Metals, etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:74
+#, fuzzy
+msgid "Types of boats and ships"
+msgstr "Types de sons"
+
+#: include/default_domains-yakan.php:75
+#, fuzzy
+msgid "Parts of boats and ships"
+msgstr "Parties d’un animal"
+
+#: include/default_domains-yakan.php:76
+msgid "Verbs used in connection w/ boats and ships"
+msgstr ""
+
+#: include/default_domains-yakan.php:77
+msgid "Sea, shore and other locations"
+msgstr ""
+
+#: include/default_domains-yakan.php:78
+msgid "Fishing nets and other devices"
+msgstr ""
+
+#: include/default_domains-yakan.php:79
+msgid "Verbs used in connection w/ fishing"
+msgstr ""
+
+#: include/default_domains-yakan.php:81
+#, fuzzy
+msgid "Number units"
+msgstr "Autres mots indiquant des nombres"
+
+#: include/default_domains-yakan.php:84
+#, fuzzy
+msgid "Persons"
+msgstr "La Personne"
+
+#: include/default_domains-yakan.php:85
+msgid "Units in counting"
+msgstr ""
+
+#: include/default_domains-yakan.php:86
+#, fuzzy
+msgid "Other numbers"
+msgstr "Nombres ordinaux"
+
+#: include/default_domains-yakan.php:89
+msgid "Things planted, seeds etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:90
+msgid "Adjectives and verbs used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:91
+msgid "Verbs used in connection w/ agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:92
+msgid "Implements, agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:93
+msgid "Ceremonies, agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:94
+#, fuzzy
+msgid "Things to scare animals away"
+msgstr "Ce qu'on fait aux animaux"
+
+#: include/default_domains-yakan.php:95
+#, fuzzy
+msgid "Farm structures"
+msgstr "Infrastructure"
+
+#: include/default_domains-yakan.php:96
+#, fuzzy
+msgid "Concerning farm animals"
+msgstr "Nourriture d’origine animale"
+
+#: include/default_domains-yakan.php:97
+#, fuzzy
+msgid "Other, agriculture"
+msgstr "Agriculture"
+
+#: include/default_domains-yakan.php:99
+msgid "Fields"
+msgstr ""
+
+#: include/default_domains-yakan.php:100
+#, fuzzy
+msgid "Parts of the plant"
+msgstr "Parties d’un végétal ou d’une plante"
+
+#: include/default_domains-yakan.php:101 include/default_domains-yakan.php:108
+#, fuzzy
+msgid "Stages of development"
+msgstr "Étapes de la vie"
+
+#: include/default_domains-yakan.php:102
+msgid "Verbs and adjectives used in connection w/ rice"
+msgstr ""
+
+#: include/default_domains-yakan.php:103
+msgid "Ceremonies and related things"
+msgstr ""
+
+#: include/default_domains-yakan.php:104
+msgid "Implements for processing"
+msgstr ""
+
+#: include/default_domains-yakan.php:105
+#, fuzzy
+msgid "Varieties of rice"
+msgstr "Parties d’un reptile"
+
+#: include/default_domains-yakan.php:107
+#, fuzzy
+msgid "Varieties of coconut"
+msgstr "Marqueurs de focalisation"
+
+#: include/default_domains-yakan.php:109
+#, fuzzy
+msgid "Parts of trees and nuts"
+msgstr "Parties d’un insecte"
+
+#: include/default_domains-yakan.php:110
+msgid "Verbs used in connection w/ coconuts"
+msgstr ""
+
+#: include/default_domains-yakan.php:111
+msgid "Nouns used in connection w/ coconuts"
+msgstr ""
+
+#: include/default_domains-yakan.php:112
+#, fuzzy
+msgid "Use of the leaf"
+msgstr "Moment de la journée"
+
+#: include/default_domains-yakan.php:114
+msgid "External body parts"
+msgstr ""
+
+#: include/default_domains-yakan.php:115
+#, fuzzy
+msgid "Internal body parts"
+msgstr "Organes internes"
+
+#: include/default_domains-yakan.php:116 include/default_domains-yakan.php:128
+msgid "Eyes"
+msgstr ""
+
+#: include/default_domains-yakan.php:117
+msgid "Teeth and mouth etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:118
+msgid "Arms, hands and fingers"
+msgstr ""
+
+#: include/default_domains-yakan.php:119
+#, fuzzy
+msgid "Legs and feet"
+msgstr "Temps et aspect"
+
+#: include/default_domains-yakan.php:122
+#, fuzzy
+msgid "Secretions"
+msgstr "Secret"
+
+#: include/default_domains-yakan.php:123
+#, fuzzy
+msgid "Functions"
+msgstr "Conjonctions"
+
+#: include/default_domains-yakan.php:124
+msgid "Other, body parts and functions"
+msgstr ""
+
+#: include/default_domains-yakan.php:126
+msgid "Various sicknesses and general medical terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:129
+msgid "Ears"
+msgstr ""
+
+#: include/default_domains-yakan.php:132
+msgid "Feet"
+msgstr ""
+
+#: include/default_domains-yakan.php:133
+msgid "Hands"
+msgstr ""
+
+#: include/default_domains-yakan.php:135
+msgid "Childbearing and sexual functions"
+msgstr ""
+
+#: include/default_domains-yakan.php:136
+#, fuzzy
+msgid "Treatment"
+msgstr "Menacer"
+
+#: include/default_domains-yakan.php:137
+msgid "Adjectives and verbs used in connection w/ sickness"
+msgstr ""
+
+#: include/default_domains-yakan.php:138
+msgid "Other, sicknesses/medical terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:140
+msgid "Nouns used in connection w/ death"
+msgstr ""
+
+#: include/default_domains-yakan.php:141
+msgid "Verbs used in connection w/ death"
+msgstr ""
+
+#: include/default_domains-yakan.php:143
+#, fuzzy
+msgid "Supernatural beings and apparitions"
+msgstr "Être surnaturel"
+
+#: include/default_domains-yakan.php:144
+#, fuzzy
+msgid "Parts of supernatural beings"
+msgstr "Être surnaturel"
+
+#: include/default_domains-yakan.php:145
+msgid "Men, titles, etc., occupations"
+msgstr ""
+
+#: include/default_domains-yakan.php:146
+#, fuzzy
+msgid "adherent."
+msgstr "Être indifférent"
+
+#: include/default_domains-yakan.php:147
+msgid "Parts of men (thought, soul, etc.)"
+msgstr ""
+
+#: include/default_domains-yakan.php:148
+msgid "Time, months"
+msgstr ""
+
+#: include/default_domains-yakan.php:149
+#, fuzzy
+msgid "Places and buildings"
+msgstr "Nom propre d’édifice"
+
+#: include/default_domains-yakan.php:150
+#, fuzzy
+msgid "Religion general"
+msgstr "En général"
+
+#: include/default_domains-yakan.php:151
+msgid "Arabic phrases"
+msgstr ""
+
+#: include/default_domains-yakan.php:152
+msgid "Books and parts of books"
+msgstr ""
+
+#: include/default_domains-yakan.php:153
+#, fuzzy
+msgid "Ceremonies"
+msgstr "Cérémonie"
+
+#: include/default_domains-yakan.php:154
+#, fuzzy
+msgid "Offerings, gifts, tithes"
+msgstr "Offrande, sacrifice"
+
+#: include/default_domains-yakan.php:155
+msgid "Charms"
+msgstr ""
+
+#: include/default_domains-yakan.php:156
+msgid "Omens"
+msgstr ""
+
+#: include/default_domains-yakan.php:157
+msgid "Spells, casting spells, effects"
+msgstr ""
+
+#: include/default_domains-yakan.php:158
+#, fuzzy
+msgid "Objects"
+msgstr "Refuser"
+
+#: include/default_domains-yakan.php:159
+msgid "‘Things’ that come to people (luck, disaster, etc.)"
+msgstr ""
+
+#: include/default_domains-yakan.php:160
+msgid "Verbs used in connection w/ religion in general"
+msgstr ""
+
+#: include/default_domains-yakan.php:161
+msgid "Verbs used in connection w/ Islamic worship"
+msgstr ""
+
+#: include/default_domains-yakan.php:162
+msgid "Activities to know or control the supernatural"
+msgstr ""
+
+#: include/default_domains-yakan.php:163
+#, fuzzy
+msgid "Supernatural power/knowledge"
+msgstr "Être surnaturel"
+
+#: include/default_domains-yakan.php:164
+msgid "Adjectives used in connection w/ religion"
+msgstr ""
+
+#: include/default_domains-yakan.php:165
+#, fuzzy
+msgid "Other, supernatural/religion"
+msgstr "Être surnaturel"
+
+#: include/default_domains-yakan.php:167
+msgid "Verbs used in connection w/ weddings"
+msgstr ""
+
+#: include/default_domains-yakan.php:168
+msgid "People involved in weddings"
+msgstr ""
+
+#: include/default_domains-yakan.php:169
+msgid "Types of gifts, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:170
+#, fuzzy
+msgid "Things concerning the feast"
+msgstr "Ce qu'on fait aux animaux"
+
+#: include/default_domains-yakan.php:171
+msgid "Decorations, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:172
+msgid "Other, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:174
+#, fuzzy
+msgid "Types of relationships"
+msgstr "Commencer une relation"
+
+#: include/default_domains-yakan.php:175
+msgid "Adjectives used in connection w/ relationships"
+msgstr ""
+
+#: include/default_domains-yakan.php:176
+msgid "Verbs used in connnection w/ relationships"
+msgstr ""
+
+#: include/default_domains-yakan.php:178
+msgid "Law and judges"
+msgstr ""
+
+#: include/default_domains-yakan.php:179
+msgid "Offenders and offences"
+msgstr ""
+
+#: include/default_domains-yakan.php:180
+msgid "Verbs and adjectives used in connection w/ legal cases"
+msgstr ""
+
+#: include/default_domains-yakan.php:181
+msgid "Penalties"
+msgstr ""
+
+#: include/default_domains-yakan.php:182
+msgid "Other, law and judging"
+msgstr ""
+
+#: include/default_domains-yakan.php:184
+#, fuzzy
+msgid "Vehicles"
+msgstr "Véhicule"
+
+#: include/default_domains-yakan.php:185
+#, fuzzy
+msgid "Parts of motor vehicles"
+msgstr "Partie d’outil"
+
+#: include/default_domains-yakan.php:186
+msgid "Verbs used in connection w/ motor vehicles"
+msgstr ""
+
+#: include/default_domains-yakan.php:187
+msgid "Other, types of conveyances"
+msgstr ""
+
+#: include/default_domains-yakan.php:190
+#, fuzzy
+msgid "Parts of houses"
+msgstr "Partie d’outil"
+
+#: include/default_domains-yakan.php:193
+msgid "Other, types of houses and carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:194
+msgid "Verbs used in connection w/ carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:195
+msgid "Adjectives used in connection w/ carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:197
+#, fuzzy
+msgid "Tools"
+msgstr "Outil"
+
+#: include/default_domains-yakan.php:198
+msgid "Bladed weapons and implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:199
+#, fuzzy
+msgid "Parts of bladed weapons and implements"
+msgstr "Parties d’un animal"
+
+#: include/default_domains-yakan.php:200
+msgid "Firearms and other shooting implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:201
+msgid "Weapons for hitting/beating"
+msgstr ""
+
+#: include/default_domains-yakan.php:202
+msgid "Measuring devices"
+msgstr ""
+
+#: include/default_domains-yakan.php:203
+#, fuzzy
+msgid "Household implements / items"
+msgstr "Équipement de la maison"
+
+#: include/default_domains-yakan.php:204
+#, fuzzy
+msgid "Containers"
+msgstr "Contenant"
+
+#: include/default_domains-yakan.php:205
+#, fuzzy
+msgid "Traps"
+msgstr "Piège"
+
+#: include/default_domains-yakan.php:206
+#, fuzzy
+msgid "Other, implements"
+msgstr "Cueillette de plantes sauvages"
+
+#: include/default_domains-yakan.php:208
+msgid "Baked goods and sweets"
+msgstr ""
+
+#: include/default_domains-yakan.php:209
+msgid "Rice and other staples"
+msgstr ""
+
+#: include/default_domains-yakan.php:210
+#, fuzzy
+msgid "Seafood"
+msgstr "Servir la nourriture"
+
+#: include/default_domains-yakan.php:211
+msgid "Things used in cooking"
+msgstr ""
+
+#: include/default_domains-yakan.php:212
+#, fuzzy
+msgid "General terms"
+msgstr "Adverbes génériques"
+
+#: include/default_domains-yakan.php:213
+#, fuzzy
+msgid "Cooking terms"
+msgstr "Ustensile de cuisine"
+
+#: include/default_domains-yakan.php:215
+msgid "Verbs used in connection w/ eating"
+msgstr ""
+
+#: include/default_domains-yakan.php:217
+#, fuzzy
+msgid "Items of clothing"
+msgstr "Eléments de vêtements"
+
+#: include/default_domains-yakan.php:219
+#, fuzzy
+msgid "Things used in sewing"
+msgstr "Quelque chose servant à voir"
+
+#: include/default_domains-yakan.php:221
+#, fuzzy
+msgid "Types of cloth"
+msgstr "Types de nourriture et de boisson"
+
+#: include/default_domains-yakan.php:222
+msgid "Verbs and adjectives used in connection w/ sewing and dressing"
+msgstr ""
+
+#: include/default_domains-yakan.php:223
+msgid "Other, clothing and sewing"
+msgstr ""
+
+#: include/default_domains-yakan.php:225
+#, fuzzy
+msgid "Types of weaving"
+msgstr "Types d’animaux"
+
+#: include/default_domains-yakan.php:226
+#, fuzzy
+msgid "Parts of a loom"
+msgstr "Parties d’un végétal ou d’une plante"
+
+#: include/default_domains-yakan.php:227
+#, fuzzy
+msgid "Parts of a pattern"
+msgstr "Parties d’un végétal ou d’une plante"
+
+#: include/default_domains-yakan.php:228
+msgid "Verbs used in connection w/ weaving"
+msgstr ""
+
+#: include/default_domains-yakan.php:230
+#, fuzzy
+msgid "Colors"
+msgstr "Couleur"
+
+#: include/default_domains-yakan.php:231
+msgid "Other words used in connection w/ color"
+msgstr ""
+
+#: include/default_domains-yakan.php:232
+msgid "Adjectives used in connection w/ color"
+msgstr ""
+
+#: include/default_domains-yakan.php:234
+msgid "Things used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:235
+msgid "Adjectives used in connecton w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:236
+msgid "Verbs used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:237
+msgid "Nouns used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:245
+msgid "Verbs used in connection w/ seeing"
+msgstr ""
+
+#: include/default_domains-yakan.php:246
+msgid "Adjectives used in connection w/ seeing"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:472
+#: include/infrastructure.php:117
 msgctxt "taxonomy general name"
 msgid "Semantic Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:473
+#: include/infrastructure.php:118
 msgctxt "taxonomy singular name"
 msgid "Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:474
+#: include/infrastructure.php:119
 msgid "Search Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:475
+#: include/infrastructure.php:120
 msgid "All Semantic Domains"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:476
+#: include/infrastructure.php:121
 msgid "Parent Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:477
+#: include/infrastructure.php:122
 msgid "Parent Semantic Domain:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:478
+#: include/infrastructure.php:123
 msgid "Edit Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:479
+#: include/infrastructure.php:124
 msgid "Update Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:480
+#: include/infrastructure.php:125
 msgid "Add New Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:481
+#: include/infrastructure.php:126
 msgid "New Semantic Domain Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:482
+#: include/infrastructure.php:127
 msgid "Semantic Domain"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:510
+#: include/infrastructure.php:155
 msgctxt "taxonomy general name"
 msgid "Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:511
+#: include/infrastructure.php:156
 msgctxt "taxonomy singular name"
 msgid "Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:512 include/infrastructure.php:520
+#: include/infrastructure.php:157 include/infrastructure.php:165
 msgid "Parts of Speech"
 msgstr ""
 
 # @ default
-# @ sil_dictionary
-#: include/infrastructure.php:513 include/searchform_func.php:74
-msgid "All Parts of Speech"
-msgstr "Toutes les catégories grammaticales"
-
-# @ default
-#: include/infrastructure.php:514
+#: include/infrastructure.php:159
 msgid "Parent Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:515
+#: include/infrastructure.php:160
 msgid "Parent Part of Speech:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:516
+#: include/infrastructure.php:161
 msgid "Edit Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:517
+#: include/infrastructure.php:162
 msgid "Update Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:518
+#: include/infrastructure.php:163
 msgid "Add New Part of Speech"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:519
+#: include/infrastructure.php:164
 msgid "New Part of Speech Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:547
+#: include/infrastructure.php:192
 msgctxt "taxonomy general name"
 msgid "Languages"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:548
+#: include/infrastructure.php:193
 msgctxt "taxonomy singular name"
 msgid "Language"
 msgstr ""
 
 # @ default
-# @ sil_dictionary
-#: include/infrastructure.php:550 include/searchform_func.php:49
-msgid "All Languages"
-msgstr "Toutes les langues"
-
-# @ default
-#: include/infrastructure.php:551
+#: include/infrastructure.php:196
 msgid "Parent Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:552
+#: include/infrastructure.php:197
 msgid "Parent Language:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:553
+#: include/infrastructure.php:198
 msgid "Edit Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:554
+#: include/infrastructure.php:199
 msgid "Update Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:555
+#: include/infrastructure.php:200
 msgid "Add New Language"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:556
+#: include/infrastructure.php:201
 msgid "New Language Name"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:584
+#: include/infrastructure.php:229
 msgctxt "taxonomy general name"
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:585
+#: include/infrastructure.php:230
 msgctxt "taxonomy singular name"
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:586 include/infrastructure.php:594
+#: include/infrastructure.php:231 include/infrastructure.php:239
 msgid "Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:587
+#: include/infrastructure.php:232
 msgid "All Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:588
+#: include/infrastructure.php:233
 msgid "Parent Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:589
+#: include/infrastructure.php:234
 msgid "Parent Website strings:"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:590
+#: include/infrastructure.php:235
 msgid "Edit Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:591
+#: include/infrastructure.php:236
 msgid "Update Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:592
+#: include/infrastructure.php:237
 msgid "Add New Website strings"
 msgstr ""
 
 # @ default
-#: include/infrastructure.php:593
+#: include/infrastructure.php:238
 msgid "New Website strings Name"
 msgstr ""
 
-#: include/searchform_func.php:92
-msgid "Found in Semantic Domains:"
-msgstr ""
-
-#: include/widgets.php:9
-msgid "Display Number of Dictionary Entries"
-msgstr ""
-
-#: include/widgets.php:11
 #, fuzzy
-msgid "Number of Dictionary Entries"
-msgstr "Nom de pays"
-
-#: include/widgets.php:19
-msgid "Title:"
-msgstr ""
-
-#: include/widgets.php:33
-msgid "Number of Entries"
-msgstr "Nombre d'entrées"
-
-# @ sil_dictionary
-#: include/xhtml-importer.php:289
-msgid ""
-"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
-"WordPress site."
-msgstr ""
-
-#: include/xhtml-importer.php:291
-msgid ""
-"Before re-importing, it's best to delete your existing entries. Go to <a "
-"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
-"to do this."
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:1053
-msgid ""
-"Before you can upload your import file, you will need to fix the following "
-"error:"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:1071
-msgid "Choose an XHTML file from your computer:"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:1071 include/xhtml-importer.php:1082
-#, php-format
-msgid "Maximum size: %s"
-msgstr ""
-
-#: include/xhtml-importer.php:1073
-msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:1081
-msgid "Choose a CSS file from your computer (optional):"
-msgstr ""
-
-#: include/xhtml-importer.php:1095
-#, fuzzy
-msgid "Language Code:"
-msgstr "Langage"
-
-# @ sil_dictionary
-#: include/xhtml-importer.php:1138
-msgid "Import SIL FLEX XHTML"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:2049
-msgid ""
-"The file is either empty, or uploads are disabled in your php.ini, or "
-"post_max_size is defined as smaller than upload_max_filesize in php.ini."
-msgstr ""
-
-#: include/xhtml-importer.php:2099
-msgid "The css file has been uploaded into your upload folder:<br>"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer.php:2102
-msgid "There was an error uploading the file, please try again!"
-msgstr ""
-
-# @ sil_dictionary
-#: include/xhtml-importer.php:2144
-msgid "SIL FLEX XHTML"
-msgstr ""
-
-# @ sil_dictionary
-#: include/xhtml-importer.php:2145
-msgid "Import posts from an SIL FLEX XHTML file."
-msgstr ""
+#~ msgid "Number of Dictionary Entries"
+#~ msgstr "Nom de pays"

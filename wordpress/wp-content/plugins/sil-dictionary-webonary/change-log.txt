@@ -1,3 +1,4 @@
+v. 7.4.5 1 June 2018 added French translations for Advanced Search
 v. 7.4.4 23 May 2018 fixed small design issue
 v. 7.4.3 23 May 2018 search query now matches an optional number at the end (e.g. mbuu1)
 v. 7.4.2 23 May 2018 added special character ɨ to search query
