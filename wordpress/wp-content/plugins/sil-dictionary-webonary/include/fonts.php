@@ -213,6 +213,10 @@ class fontMonagment
 		$arrFontStorage[50] = "Sawndip";
 		$arrHasSubFonts[50] = false;
 
+		$arrFontName[51] = "Hispa";
+		$arrFontStorage[51] = "Hispa.ttf";
+		$arrHasSubFonts[51] = false;
+
 	}
 
 	public function get_fonts_fromCssText($css_string)

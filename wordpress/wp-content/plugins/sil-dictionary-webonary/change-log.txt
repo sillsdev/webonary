@@ -1,3 +1,4 @@
+v. 7.4.7 11 June 2018 added Hispa font
 v. 7.4.6 5 June 2018 added more French translations
 v. 7.4.5 1 June 2018 added French translations for Advanced Search
 v. 7.4.4 23 May 2018 fixed small design issue
