@@ -23,7 +23,7 @@ function categories_func( $atts )
 ?>
 	<style>
 	   TD {font-size: 9pt; font-family: arial,helvetica; text-decoration: none; font-weight: bold;}
-	   a.categorylink {text-decoration: none; color: navy; font-size: 15px;}
+	   a.categorylink {text-decoration: none; color: navy; font-size: 15px; padding: 3px;}
 	   #domRoot {
 	   	float:left; width:250px; margin-left: 20px; margin-top: 5px;
 	   }
@@ -146,6 +146,7 @@ function categories_func( $atts )
 	}
 	else
 	{
+		$display .= "<h3>" . $_REQUEST["semnumber"]  . " " . $_REQUEST["semdomain"] . "</h3>";
 		foreach($arrPosts as $mypost)
 		{
 				$display .= "<div class=post>" . $mypost->post_content . "</div>";
