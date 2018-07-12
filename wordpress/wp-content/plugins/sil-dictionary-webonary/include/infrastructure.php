@@ -37,6 +37,7 @@ function install_sil_dictionary_infrastructure() {
 
 	define('COLLATION', $wpdb->charset);
 	define('FULLCOLLATION', $wpdb->collate);
+
 	/*
 	if (version_compare($wpdb->db_version(), '5.5.3') >= 0)
 	{

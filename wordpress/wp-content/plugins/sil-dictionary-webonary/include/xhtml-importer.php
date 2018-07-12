@@ -1773,7 +1773,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 
 			//$headwords = $this->dom_xpath->query('./xhtml:span[@class = "senses"]/xhtml:span[@class = "sense"]/xhtml:span[@class = "headword"]|./xhtml:span[@class = "senses"]/xhtml:span[starts-with(@class, "headref")]', $entry );
-			$headwords = $this->dom_xpath->query('//xhtml:*[@class = "referringsense"]/*[@class = "headword" or @class = "lexemeform"]|//xhtml:span[starts-with(@class, "headref")]');
+			$headwords = $this->dom_xpath->query('//xhtml:*[@class = "referringsense" or @class="sensesr"]/*[@class = "headword" or @class = "lexemeform"]|//xhtml:span[starts-with(@class, "headref")]');
 
 			if($headwords->length == 0)
 			{
@@ -1808,7 +1808,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				//echo $doc->saveXML($headword, LIBXML_NOEMPTYTAG) . "<br>";
 				//for reversal exports from FLEx 8.3. onwards, the headwords are linked
 				//we check that it's a 8.3 export by searching for reversalindexentry as previously the class "entry" was used instead
-				$id = $lastid + $entry_counter;
+				if(is_numeric($lastid))
+				{
+					$id = $lastid + $entry_counter;
+				}
 				if(strpos($postentry, "reversalindexentry") > 0)
 				{
 					$entry = $this->dom_xpath->query('//xhtml:span[@class="reversalform"]/..', $doc)->item(0);
