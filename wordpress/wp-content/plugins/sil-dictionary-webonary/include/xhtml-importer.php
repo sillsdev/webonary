@@ -1141,7 +1141,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			</div>
 			<?php
 			$arrLanguageCodes = get_LanguageCodes();
-			if(count($arrLanguageCodes) > 2)
+			if(count($arrLanguageCodes) > 1)
 			{
 			?>
 			<div id=langCode style="display:none;">

@@ -1,3 +1,4 @@
+v. 7.5.0 2 August 2018 changed display of selection for reversal import through web interface
 v. 7.4.9 12 July 2018 reversal entries now also get found under the class "sensesr"
 v. 7.4.8 18 June 2018 highlighting and displaying name for semantic domains
 v. 7.4.7 11 June 2018 added Hispa font
