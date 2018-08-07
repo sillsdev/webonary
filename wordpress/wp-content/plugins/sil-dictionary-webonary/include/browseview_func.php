@@ -432,9 +432,12 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 		" FROM " . SEARCHTABLE . " a ";
 		$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_id = b.post_id "; // AND a.subid = b.subid " .
 		//$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_name = b.post_name ";
-		$sql .= " AND a.language_code =  '" . $reversalLangcode . "' " .
-		" AND b.language_code = '" . get_option('languagecode') . "' " .
-		" AND a.relevance >=95 AND b.relevance >= 95 " .
+		if(strlen($reversalLangcode) > 0)
+		{
+			$sql .= " AND a.language_code =  '" . $reversalLangcode . "' " .
+			" AND b.language_code = '" . get_option('languagecode') . "' ";
+		}
+		$sql .= " AND a.relevance >=95 AND b.relevance >= 95 " .
 		" AND a.search_strings LIKE  '" . $letter . "%' " . $collate .
 		" GROUP BY a.post_id, a.search_strings " .
 		" ORDER BY a.search_strings ";

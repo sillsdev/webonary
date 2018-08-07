@@ -1,3 +1,4 @@
+v. 7.5.1 7 August 2018 fixed issue that reversal indexes weren't displaying in the configuration for old Webonary sites
 v. 7.5.0 2 August 2018 changed display of selection for reversal import through web interface
 v. 7.4.9 12 July 2018 reversal entries now also get found under the class "sensesr"
 v. 7.4.8 18 June 2018 highlighting and displaying name for semantic domains
