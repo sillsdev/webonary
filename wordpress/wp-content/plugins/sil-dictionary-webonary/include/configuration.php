@@ -626,17 +626,27 @@ function webonary_conf_widget($showTitle = false) {
 				if(strlen(get_option('reversal2_langcode')) > 0)
 				{
 				?>
-				<hr>
-				 <i><?php _e('2. Reversal index'); ?></i><br>
-				 Shortcode: [reversalindex2]
-				 <p>
-				 <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
-				 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-				<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-				<p>
-				<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-				<?php echo stripslashes(get_option('reversal2_alphabet')); ?>
-				<?php
+					<hr>
+					 <i><?php _e('2. Reversal index'); ?></i><br>
+					 Shortcode: [reversalindex2]
+					 <p>
+					 <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
+					 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+					<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+					<p>
+					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+					<?php
+					if(is_super_admin())
+					{
+					?>
+						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+						<input type="text" size=50 name="reversal2_alphabet" value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
+					<?php
+					}
+					else
+					{
+					 	echo stripslashes(get_option('reversal2_alphabet'));
+					}
 				}
 				?>
 				<?php
@@ -652,8 +662,18 @@ function webonary_conf_widget($showTitle = false) {
 				<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
 				<p>
 				<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-				<?php echo stripslashes(get_option('reversal3_alphabet')); ?>
-				<?php
+									<?php
+					if(is_super_admin())
+					{
+					?>
+						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+						<input type="text" size=50 name="reversal3_alphabet" value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>">
+					<?php
+					}
+					else
+					{
+					 	echo stripslashes(get_option('reversal3_alphabet'));
+					}
 				}
 			}
 			?>
