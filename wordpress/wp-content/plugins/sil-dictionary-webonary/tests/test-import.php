@@ -10,6 +10,22 @@
  */
 class ImportTest extends WP_UnitTestCase {
 
+	function test_convert_fieldworks_audio_to_wordpress() {
+		$this->assertEquals("en", "en");
+	}
+
+	function test_convert_fieldworks_images_to_wordpress()
+	{
+		$entry = '<div  xmlns="http://www.w3.org/1999/xhtml" class="entry" id="g05e110fb-fb35-42e5-bd3d-7ae9a7d03989"> <span class="mainheadword"> <span lang="txo-Qaaa-x-Toto"> <a href="#g05e110fb-fb35-42e5-bd3d-7ae9a7d03989">abc</a> </span> <span lang="txo-Latn-fonipa-x-emic"> <a href="#g05e110fb-fb35-42e5-bd3d-7ae9a7d03989">dingbako layrung</a> </span> <span lang="txo-Beng-fonipa-x-emic"> <a href="#g05e110fb-fb35-42e5-bd3d-7ae9a7d03989">দিংবাকো লায়রুং</a> </span> </span> <span class="senses"> <span class="sharedgrammaticalinfo"> <span class="morphosyntaxanalysis"> <span class="partofspeech"> <span lang="en">n</span> </span> </span> </span> <span class="sensecontent"> <span class="sense" entryguid="g05e110fb-fb35-42e5-bd3d-7ae9a7d03989"> <span class="gloss"> <span lang="en">dragonfly</span> </span> </span> </span> </span> <span class="pictures"> <div class="picture"> <img class="thumbnail" src="pictures/AOR_4-3r.png" id="gf2e6b06b-7433-41b5-a071-38af8b37fd83"/> </div> </span> </div>';
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry);
+
+		$import = new sil_pathway_xhtml_Import();
+		$converted = $import->convert_fieldworks_images_to_wordpress($doc);
+	}
+	/*
 	function test_import() {
 
 		$exampleFile = "tests/test-configured.xhtml";
@@ -87,4 +103,5 @@ class ImportTest extends WP_UnitTestCase {
 		echo $headwords->textContent;
 
 	}
+	*/
 }

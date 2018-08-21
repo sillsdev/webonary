@@ -1,3 +1,8 @@
 See https://pippinsplugins.com/unit-tests-wordpress-plugins-setting-up-testing-suite/
 
 Once setup, one can go to the directory where the Webonary plugin is and run "phpunit" in the command line.
+
+If phpunit doesn't return anything, first run the following in the plugin directory:
+
+bash bin/install-wp-tests.sh webonary_test root 'root' localhost latest
+

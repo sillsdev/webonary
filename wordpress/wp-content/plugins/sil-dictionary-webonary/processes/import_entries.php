@@ -224,7 +224,6 @@ if(isset($xhtmlFileURL))
 
 		update_option("totalConfiguredEntries", ($entry_counter - 1));
 
-		////$import->convert_fieldworks_links_to_wordpress();
 		update_option("importStatus", "indexing");
 
 		$import->index_searchstrings();

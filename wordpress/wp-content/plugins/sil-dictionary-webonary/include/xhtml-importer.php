@@ -154,16 +154,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		}
 
-		/*
-		if(isset($_POST['btnConvertFLExLinks']))
-		{
-		?>
-			<DIV ID="flushme">Converting FLEx links to Webonary links... </DIV>
-		<?php
-			$this->verbose = true;
-			$this->convert_fieldworks_links_to_wordpress($_POST['pinged']);
-		}
-		*/
 		if(isset($_POST['btnMakeLinks']))
 		{
 		?>
@@ -226,30 +216,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$xhtmlFileURL = $file->url;
 					$userid = $current_user->ID;
 					require("run_import.php");
-
-					//$argv = null;
-					//require(ABSPATH . "wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php");
 				}
 
-				/*
-				?>
-				<DIV ID="flushme">importing...</DIV>
-				<?php
-
-				$file = $this->get_latest_xhtmlfile();
-				if(isset($file))
-				{
-					$xhtml_file = file_get_contents($file->url);
-				}
-				$result = $this->import_xhtml($xhtml_file, false, $this->verbose);
-
-				$this->goodbye($xhtml_file, $css_file);
-
-				if(isset($file))
-				{
-					//##wp_delete_attachment( $file->ID );
-				}
-				*/
 				break;
 			/*
 			 * for indexing the search strings (configured dictionary)
@@ -423,6 +391,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	function convert_fieldworks_images_to_wordpress ($doc) {
 		global $wpdb;
 
+		echo "----------------\n";
+		echo $doc->saveXML() . "\n";
+		echo "----------------\n";
 		// image example (with link):
 		//<a href="javascript:openImage('mouse.png')"><img src="wp-content/uploads/images/thumbnail/mouse.png" /></a>
 
@@ -452,6 +423,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		} // foreach ( $images as $image )
 
+		echo $doc->saveXML() . "\n";
+		echo "****************\n";
 		return $doc;
 	} // function convert_fieldworks_images_to_wordpress()
 

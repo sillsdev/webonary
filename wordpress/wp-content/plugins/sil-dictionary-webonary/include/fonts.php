@@ -217,6 +217,11 @@ class fontMonagment
 		$arrFontStorage[51] = "Hispa.ttf";
 		$arrHasSubFonts[51] = false;
 
+		$arrFontName[52] = "AndikaNewBasicW";
+		$arrFontStorage[52] = "AndikaNewBasic";
+		$arrHasSubFonts[52] = false;
+
+
 	}
 
 	public function get_fonts_fromCssText($css_string)

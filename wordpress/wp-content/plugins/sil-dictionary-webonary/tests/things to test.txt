@@ -1,3 +1,7 @@
 1) if "Include characters with diacritics" is checked for vernacular browse view, words starting with accents
 should display (e.g. à must display under a)
 2) check that words that start with double consonents and have their own letter header, e.g. "gg" get displayed
+
+Other tests:
+phpmd . html codesize --reportfile ~/Downloads/phpmd.html
+http://web-techno.net/code-quality-check-tools-php/
