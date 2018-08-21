@@ -391,9 +391,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	function convert_fieldworks_images_to_wordpress ($doc) {
 		global $wpdb;
 
-		echo "----------------\n";
-		echo $doc->saveXML() . "\n";
-		echo "----------------\n";
 		// image example (with link):
 		//<a href="javascript:openImage('mouse.png')"><img src="wp-content/uploads/images/thumbnail/mouse.png" /></a>
 
@@ -423,8 +420,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		} // foreach ( $images as $image )
 
-		echo $doc->saveXML() . "\n";
-		echo "****************\n";
 		return $doc;
 	} // function convert_fieldworks_images_to_wordpress()
 

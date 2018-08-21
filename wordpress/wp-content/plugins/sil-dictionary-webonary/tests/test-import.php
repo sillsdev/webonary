@@ -23,6 +23,9 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->loadXML($entry);
 
 		$import = new sil_pathway_xhtml_Import();
+		$import->dom_xpath = new DOMXPath($doc);
+		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
 		$converted = $import->convert_fieldworks_images_to_wordpress($doc);
 	}
 	/*
