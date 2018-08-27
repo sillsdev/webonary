@@ -1,3 +1,4 @@
+v. 7.5.4 27 August 2018 added LateefRegOT-LateefKasLow.ttf font to repository
 v. 7.5.3 21 August 2018 added AndikaNewBasicW font to repository
 v. 7.5.2 16 August 2018 fixed issue that language name didn't get saved in dashboard. Super admins can edit alphabet.
 v. 7.5.1 7 August 2018 fixed issue that reversal indexes weren't displaying in the configuration for old Webonary sites

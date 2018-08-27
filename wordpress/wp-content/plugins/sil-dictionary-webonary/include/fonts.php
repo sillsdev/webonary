@@ -221,7 +221,9 @@ class fontMonagment
 		$arrFontStorage[52] = "AndikaNewBasic";
 		$arrHasSubFonts[52] = false;
 
-
+		$arrFontName[53] = "Lateef Lateef KasLow";
+		$arrFontStorage[53] = "LateefRegOT-LateefKasLow.ttf";
+		$arrHasSubFonts[53] = false;
 	}
 
 	public function get_fonts_fromCssText($css_string)
