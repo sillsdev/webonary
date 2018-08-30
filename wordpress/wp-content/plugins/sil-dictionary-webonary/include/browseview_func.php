@@ -171,14 +171,8 @@ function displayAlphabet($alphas, $languagecode)
 	global $wpdb;
 ?>
 	<style type="text/css">
-	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; float:left; position: relative;}
+	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; position: relative;}
 	<?php
-	if(get_option('vernacularRightToLeft') == 1)
-	{
-	?>
-		.lpTitleLetterCell {float:right;}
-	<?php
-	}
 	if(get_option('vernacularLettersFont') != "")
 	{
 	?>
@@ -224,6 +218,7 @@ function displayAlphabet($alphas, $languagecode)
 		}
 		$display .= "</span></div>";
 	}
+
 	$display .= "</div></div>";
 	$display .=  "<div style=clear:both></div>";
 
@@ -377,6 +372,27 @@ add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
+?>
+	<style>
+	<?php
+	if(get_option('reversal' . $reversalnr . 'RightToLeft') == 1)
+	{
+	?>
+		#searchresults {
+		text-align: right;
+		}
+		.lpTitleLetterCell {float:right;}
+	<?php
+	}
+	else
+	{
+	?>
+	.lpTitleLetterCell {float:left;}
+	<?php
+	}
+	?>
+	</style>
+<?php
 	global $wpdb;
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
@@ -502,7 +518,7 @@ function reversalalphabet_func($atts, $content, $tag)
 function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 {
 ?>
-	<style type="text/css">
+	<style>
 	#searchresult {
 		width:70%;
 		min-width: 270px;
@@ -647,6 +663,23 @@ function get_letter($firstLetterOfAlphabet = "") {
 
 function vernacularalphabet_func( $atts )
 {
+?>
+	<style>
+		.lpTitleLetterCell {float:left;}
+	</style>
+	<?php
+	if(get_option('vernacularRightToLeft') == 1)
+	{
+	?>
+		<style>
+		#searchresults {
+		text-align: right;
+		}
+		.lpTitleLetterCell {float:right;}
+		</style>
+	<?php
+	}
+
 	$upload_dir = wp_upload_dir();
 	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 	//files path alias doesn't seem to work on every Wordpress installation

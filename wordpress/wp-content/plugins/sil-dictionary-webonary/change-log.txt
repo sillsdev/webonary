@@ -1,3 +1,4 @@
+v. 7.5.5 30 August 2018 "right to left" can now be individually configured for each browse view
 v. 7.5.4 27 August 2018 added LateefRegOT-LateefKasLow.ttf font to repository
 v. 7.5.3 21 August 2018 added AndikaNewBasicW font to repository
 v. 7.5.2 16 August 2018 fixed issue that language name didn't get saved in dashboard. Super admins can edit alphabet.

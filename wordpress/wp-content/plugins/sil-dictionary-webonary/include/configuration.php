@@ -186,6 +186,27 @@ function save_configurations() {
 			update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
 		}
 
+		$reversal1RightToLeft = 'no';
+		if(isset($_POST['reversal1RightToLeft']))
+		{
+			$reversal1RightToLeft = 1;
+		}
+		update_option("reversal1RightToLeft", $reversal1RightToLeft);
+
+		$reversal2RightToLeft = 'no';
+		if(isset($_POST['reversal2RightToLeft']))
+		{
+			$reversal2RightToLeft = 1;
+		}
+		update_option("reversal2RightToLeft", $reversal2RightToLeft);
+
+		$reversal3RightToLeft = 'no';
+		if(isset($_POST['reversal3RightToLeft']))
+		{
+			$reversal3RightToLeft = 1;
+		}
+		update_option("reversal3RightToLeft", $reversal3RightToLeft);
+
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
 		{
 			echo "<br><span style=\"color:red\">Please fill out the textfields for the language names, as they will appear in a dropdown below the searcbhox.</span><br>";
@@ -622,6 +643,9 @@ function webonary_conf_widget($showTitle = false) {
 					{
 						echo $reversal1alphabet;
 					}
+					?>
+					<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal1RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+					<?php
 				}
 				if(strlen(get_option('reversal2_langcode')) > 0)
 				{
@@ -647,6 +671,9 @@ function webonary_conf_widget($showTitle = false) {
 					{
 					 	echo stripslashes(get_option('reversal2_alphabet'));
 					}
+					?>
+					<input name="reversal2RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal2RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+					<?php
 				}
 				?>
 				<?php
@@ -674,6 +701,9 @@ function webonary_conf_widget($showTitle = false) {
 					{
 					 	echo stripslashes(get_option('reversal3_alphabet'));
 					}
+					?>
+					<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal3RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+					<?php
 				}
 			}
 			?>

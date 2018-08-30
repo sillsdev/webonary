@@ -43,7 +43,16 @@ function webonary_searchform() {
 	-->
 	</script>
 	<?php
-
+		if(get_option('vernacularRightToLeft') == 1)
+		{
+		?>
+		<style>
+		#spbutton {
+		 float: right;
+		}
+		</style>
+		<?php
+		}
 		if(get_option('inputFont') != "")
 		{
 		?>

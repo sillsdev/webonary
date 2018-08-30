@@ -571,7 +571,7 @@ span.comment {
 	padding: 0px;
 }
 <?php
-if(get_option('vernacularRightToLeft') == 1)
+if(get_option('vernacularRightToLeft') == 1 && isset($_GET['s']))
 {
 ?>
 	#searchresults {
