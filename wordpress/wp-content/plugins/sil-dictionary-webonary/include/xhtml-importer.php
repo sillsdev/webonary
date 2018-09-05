@@ -2220,6 +2220,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$upload_dir = wp_upload_dir();
 			echo "upload_dir: " . $upload_dir['url'] . "<br>";
 			$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
+
+			if($filename == "ProjectDictionaryOverrides.css")
+			{
+				$target_path = $upload_dir['path'] . "/ProjectDictionaryOverrides.css";
+			}
 			if($filetype == "reversal")
 			{
 				if($reversalLang == "")

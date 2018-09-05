@@ -20,7 +20,7 @@ class Webonary_API_MyType {
 	public function import($_headers)
 	{
 		$authenticated = $this->verifyAdminPrivileges($email, $userid);
-		
+
 		$message = "The export to Webonary is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 
@@ -28,9 +28,10 @@ class Webonary_API_MyType {
 
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
-			
+			$uploadDirectory = $arrDirectory['basedir'];
+
 			$zipFolderPath = $uploadPath . "/" . str_replace(".zip", "", $_FILES['file']['name']);
-			
+
 			$unzipped = $this->unzip($_FILES['file'], $uploadPath, $zipFolderPath);
 
 			//program can be closed now, the import will run in the background
@@ -46,16 +47,21 @@ class Webonary_API_MyType {
 				{
 					$fontClass = new fontMonagment();
 					$fontClass->set_fontFaces($zipFolderPath . "/configured.css", $uploadPath);
-						
+
 					copy($zipFolderPath . "/configured.css", $uploadPath . "/imported-with-xhtml.css");
 					error_log("Renamed configured.css to " . $uploadPath . "/imported-with-xhtml.css");
+
+					if(file_exists($uploadDirectory . "/ProjectDictionaryOverrides.css"))
+					{
+						copy($zipFolderPath . "/ProjectDictionaryOverrides.css", $uploadPath . "/ProjectDictionaryOverrides.css");
+					}
 					unlink($zipFolderPath . "/configured.css");
 				}
-				
+
 				//copy reversal css files
 				foreach (glob($zipFolderPath . "/*.css") as $file) {
 					$filename = basename($file);
-						
+
 					if($filename != "configured.css")
 					{
 						copy($zipFolderPath . "/" . $filename, $uploadPath . "/". $filename);
@@ -63,7 +69,7 @@ class Webonary_API_MyType {
 						unlink($file);
 					}
 				}
-				
+
 				//copy folder files (which includes audio and image folders and files)
 				if(file_exists($uploadPath))
 				{
@@ -78,7 +84,7 @@ class Webonary_API_MyType {
 					//then copy everything under AudioVisual and pictures
 					$this->recursiveCopy($zipFolderPath . "/AudioVisual", $uploadPath . "/AudioVisual");
 					$this->recursiveRemoveDir($zipFolderPath . "/AudioVisual");
-					
+
 					$this->recursiveCopy($zipFolderPath . "/pictures", $uploadPath . "/images/original");
 					if(file_exists($zipFolderPath . "/pictures/thumbnail"))
 					{
@@ -88,25 +94,25 @@ class Webonary_API_MyType {
 					{
 						$this->resize_image ( $uploadPath . "/images/original", 96, 96, $uploadPath . "/images/thumbnail" );
 					}
-						
+
 					$this->recursiveRemoveDir($zipFolderPath . "/pictures");
-						
+
 				}
 
 				if(isset($xhtmlConfigured))
 				{
 					//we first delete all existing posts (in category Webonary)
 					remove_entries('flexlinks');
-					
+
 					//deletes data that comes with the posts, but gets stored separately (e.g. "parts of speech")
 					clean_out_dictionary_data(1);
-	
+
 					$filetype = "configured";
 					$xhtmlFileURL = $fileConfigured;
-					
+
 					//This message tells FLEx that the upload dialog can now be closed.
 					echo "Upload successful\n";
-					
+
 					require("run_import.php");
 				}
 			}
@@ -121,7 +127,7 @@ class Webonary_API_MyType {
 				//get deleted as we are now running the import in an external process and the files would otherwise be missing
 				//$this->recursiveRemoveDir($zipFolderPath);
 			}
-			
+
 			/* //THIS DOESN'T GET DISPLAYED BY FLEx
 			echo "You can now close this window. Import is running in the background...\n";
 			echo "Go to this website to view the import progress: " . get_site_url() . "/wp-admin/admin.php?page=webonary\n\n";
@@ -153,7 +159,7 @@ class Webonary_API_MyType {
 
 		error_log("zip file: " . $uploadPath . "/" . $_FILES['file']['name']);
 		error_log(WP_CONTENT_DIR . "/archives");
-		
+
 		if(file_exists(WP_CONTENT_DIR . "/archives"))
 		{
 			error_log("copy zip file");
@@ -215,9 +221,9 @@ class Webonary_API_MyType {
         	error_log("moved: " . $src . " to " . $dst);
         }
     }
-    
+
     function resize_image($src, $w, $h, $dst) {
-    	
+
     	if(!file_exists($dst))
     	{
     		mkdir ( $dst );
@@ -228,15 +234,15 @@ class Webonary_API_MyType {
     		if ($file != "." && $file != "..")
     		{
     			list($width, $height) = getimagesize($src . "/"  . $file);
-    			 
+
     			$r = $width / $height;
     			$newwidth = $h*$r;
     			$newheight = $h;
-    			
+
     			if($newheight <= $height && $newwidth <= $width)
     			{
 	    			$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-	
+
 	    			if($ext == "png")
 	    			{
 	    				$src_image = imagecreatefrompng($src . "/" . $file);
@@ -251,7 +257,7 @@ class Webonary_API_MyType {
 	    			}
 	    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
 	    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
-	    			
+
 	    			if($ext == "png")
 	    			{
 	    				imagepng($dst_image, $dst . "/" . $file);
@@ -273,7 +279,7 @@ class Webonary_API_MyType {
     		}
     	}
     }
-    
+
 	public function verifyAdminPrivileges(&$email = "", &$userid = 0)
 	{
 		global $wpdb;

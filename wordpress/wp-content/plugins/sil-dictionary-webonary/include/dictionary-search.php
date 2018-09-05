@@ -42,8 +42,19 @@ function sil_dictionary_select_fields() {
 	{
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-		//wp_register_style('configured_stylesheet', '/files/imported-with-xhtml.css?time=' . date("U"));
+		$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
+		if(file_exists($overrides_css))
+		{
+			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
+		}
 		wp_enqueue_style( 'configured_stylesheet');
+
+		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
+		{
+			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+			wp_enqueue_style( 'overrides_stylesheet');
+		}
+
 	}
 
 	if(  !empty($wp_query->query_vars['s']) && isset($wp_query->query_vars['letter']))
