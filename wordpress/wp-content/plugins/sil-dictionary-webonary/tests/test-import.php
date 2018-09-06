@@ -50,18 +50,29 @@ class ImportTest extends WP_UnitTestCase {
 
 	function test_convert_fields_to_links()
 	{
+		//convert_fields_to_links no longer needed - will remove
 		global $wpdb;
 		$pathway_import = new sil_pathway_xhtml_Import();
 
+		$insertContent = "<div class=\"entry\" id=\"gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\"><span class=\"mainheadword\"><span lang=\"msb\"><a href=\"http://webonary.localhost/lubwisi/gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\">abadaw</a></span></span><span class=\"pronunciations\"><span class=\"pronunciation\"><span class=\"form\"><span lang=\"msb\">abadáw</span></span></span></span><span class=\"senses\"><span class=\"sensecontent\"><span class=\"sense\" entryguid=\"gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\"><span class=\"morphosyntaxanalysis\"><span class=\"graminfoabbrev\"><span lang=\"en\">interj </span></span></span><span class=\"definitionorgloss\"><span lang=\"en\">wow! An exclamation of surprise</span></span><span class=\"examplescontents\"><span class=\"examplescontent\"><span class=\"example\"><span lang=\"msb\">Abadaw! Nakita ta ikaw kaupod an imo tsik.</span></span><span class=\"translationcontents\"><span class=\"translationcontent\"><span class=\"translation\"><span lang=\"en\">Wow! You, together-with your chick (girl friend), were-able-to-be-seen by me.</span></span></span></span></span></span><span class=\"lexsensereferences\"><span class=\"lexsensereference\"><span class=\"ownertype_abbreviation\"><span lang=\"en\">syn</span></span><span class=\"configtargets\"><span class=\"configtarget\"><span class=\"headword\"><span lang=\"msb\"><a href=\"http://webonary.localhost/lubwisi/g15713a4a-ddbb-47a5-991b-88b10c25d1db\">adaw</a></span></span></span></span></span></span></span></span></span></div>";
+
 		$sql = "INSERT INTO ". $wpdb->posts . " (pinged, post_date, post_title, post_content, post_status, post_parent, post_name, comment_status, menu_order, post_content_filtered)
-				VALUES ('indexed', NOW(), 'abadaw', '<div class=\"entry\" id=\"gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\"><span class=\"mainheadword\"><span lang=\"msb\"><a href=\"http://webonary.localhost/lubwisi/gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\">abadaw</a></span></span><span class=\"pronunciations\"><span class=\"pronunciation\"><span class=\"form\"><span lang=\"msb\">abadáw</span></span></span></span><span class=\"senses\"><span class=\"sensecontent\"><span class=\"sense\" entryguid=\"gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a\"><span class=\"morphosyntaxanalysis\"><span class=\"graminfoabbrev\"><span lang=\"en\">interj </span></span></span><span class=\"definitionorgloss\"><span lang=\"en\">wow! An exclamation of surprise</span></span><span class=\"examplescontents\"><span class=\"examplescontent\"><span class=\"example\"><span lang=\"msb\">Abadaw! Nakita ta ikaw kaupod an imo tsik.</span></span><span class=\"translationcontents\"><span class=\"translationcontent\"><span class=\"translation\"><span lang=\"en\">Wow! You, together-with your chick (girl friend), were-able-to-be-seen by me.</span></span></span></span></span></span><span class=\"lexsensereferences\"><span class=\"lexsensereference\"><span class=\"ownertype_abbreviation\"><span lang=\"en\">syn</span></span><span class=\"configtargets\"><span class=\"configtarget\"><span class=\"headword\"><span lang=\"msb\"><a href=\"http://webonary.localhost/lubwisi/g15713a4a-ddbb-47a5-991b-88b10c25d1db\">adaw</a></span></span></span></span></span></span></span></span></span></div>', 'publish', 0, 'gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a', 'open', 19, '')";
+				VALUES ('indexed', NOW(), 'abadaw', '" . $insertContent . "', 'publish', 0, 'gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a', 'open', 19, '')";
 
 		$wpdb->query($sql);
 
 		$post_id = $wpdb->insert_id;
 		wp_set_object_terms( $post_id, "webonary", 'category' );
 
-		//$arrPosts = $pathway_import->get_posts("indexed");
+		$pathway_import->convert_fields_to_links();
 
+		$arrPosts = $pathway_import->get_posts("linksconverted");
+		$this->assertEquals(count($arrPosts), 1);
+
+		$converted = preg_replace( "/\r|\n/", "", $arrPosts[0]->post_content);
+		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a"><span class="mainheadword"><span lang="msb"><a href="http://webonary.localhost/lubwisi/gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a">abadaw</a></span></span><span class="pronunciations"><span class="pronunciation"><span class="form"><span lang="msb">abadáw</span></span></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="gd7350bd4-b0eb-4d29-8f32-a6f1ef70fc2a"><span class="morphosyntaxanalysis"><span class="graminfoabbrev"><span lang="en">interj </span></span></span><span class="definitionorgloss"><span lang="en">wow! An exclamation of surprise</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="msb">Abadaw! Nakita ta ikaw kaupod an imo tsik.</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">Wow! You, together-with your chick (girl friend), were-able-to-be-seen by me.</span></span></span></span></span></span><span class="lexsensereferences"><span class="lexsensereference"><span class="ownertype_abbreviation"><span lang="en">syn</span></span><span class="configtargets"><span class="configtarget"><span class="headword"><span lang="msb"><a href="http://webonary.localhost/lubwisi/g15713a4a-ddbb-47a5-991b-88b10c25d1db">adaw</a></span></span></span></span></span></span></span></span></span></div>';
+
+		$this->assertEquals($converted, $expected);
+		//convert_fields_to_links no longer needed - will remove
 	}
 }

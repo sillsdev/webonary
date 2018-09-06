@@ -441,6 +441,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $doc;
 	}
 
+
 	function convert_fields_to_links() {
 
 		global $wpdb;
@@ -473,78 +474,37 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			foreach($arrFieldQueries as $fieldQuery)
 			{
-				if (!preg_match("/sense-crossref/i", $fieldQuery))
+				$fields = $xpath->query($fieldQuery);
+
+				foreach($fields as $field)
 				{
-					$fields = $xpath->query($fieldQuery);
-
-					foreach($fields as $field)
+					$searchstring = $field->textContent;
+					if(is_numeric(substr($searchstring, (strlen($searchstring) - 1), 1)))
 					{
-						$Emphasized_Text = null;
-						$searchstring = $field->textContent;
-						if(is_numeric(substr($searchstring, (strlen($searchstring) - 1), 1)))
+						$searchstring = substr($searchstring, 0, (strlen($searchstring) - 1));
+					}
+
+					if($field->getAttribute("class") != "partofspeech" && !preg_match("/HeadWordRef/i", $field->getAttribute("class")) && strpos($entry->saveXML($field), "href") == null)
+					{
+						//$newelement = $this->dom->createElement('a');
+						$newelement = $entry->createElement('span');
+						//$newelement->appendChild($entry->createTextNode("<span>" . addslashes($field->textContent) . "</span>"));
+						//$newelement->appendChild($entry->createElement('span', addslashes($field->textContent)));
+
+						$allNodes = "";
+						foreach($field->childNodes as $node)
 						{
-							$searchstring = substr($searchstring, 0, (strlen($searchstring) - 1));
+							$allNodes .= $entry->saveXML($node);
 						}
+						$fragment = $entry->createDocumentFragment();
+						$url = get_bloginfo('wpurl') . "/?s=" . addslashes(trim($field->textContent)) . "&partialsearch=1";
+						$fragment->appendXML('<a href="' . htmlspecialchars($url) . '">' . $allNodes . '</a>');
+						$newelement->appendChild($fragment);
 
-						if($field->getAttribute("class") == "definition" || $field->getAttribute("class") == "definition-sub")
-						{
-							$Emphasized_Text = $xpath->query('//span[@class = "Emphasized_Text"]');
+						$newelement->setAttribute("class", $field->getAttribute("class"));
 
-							if($Emphasized_Text->length > 0)
-							{
-								if($field->getAttribute("class") == "definition-sub")
-								{
-									$newField = $xpath->query('//span[@class="definition-sub"]/node()[not(@class = "Emphasized_Text")]');
-								}
-								else
-								{
-									$newField = $xpath->query('//span[@class="definition"]/node()[not(@class = "Emphasized_Text")]');
-								}
-
-								$field = $newField->item(0);
-								$searchstring = $field->textContent;
-							}
-						}
-
-						//if($Emphasized_Text->length == 0)
-						if($field->getAttribute("class") != "partofspeech" && !preg_match("/HeadWordRef/i", $field->getAttribute("class")) && strpos($entry->saveXML($field), "href") == null)
-						{
-							//$newelement = $this->dom->createElement('a');
-							$newelement = $entry->createElement('span');
-							//$newelement->appendChild($entry->createTextNode("<span>" . addslashes($field->textContent) . "</span>"));
-							//$newelement->appendChild($entry->createElement('span', addslashes($field->textContent)));
-
-							$allNodes = "";
-							foreach($field->childNodes as $node)
-							{
-								$allNodes .= $entry->saveXML($node);
-							}
-							$fragment = $entry->createDocumentFragment();
-							$url = get_bloginfo('wpurl') . "/?s=" . addslashes(trim($field->textContent)) . "&partialsearch=1";
-							$fragment->appendXML('<a href="' . htmlspecialchars($url) . '">' . $allNodes . '</a>');
-							$newelement->appendChild($fragment);
-
-							//$newelement->setAttribute("href", "/?s=" . addslashes(trim($searchstring)) . "&partialsearch=1");
-							if(isset($Emphasized_Text))
-							{
-								$newelement->setAttribute("class", "definition");
-							}
-							else
-							{
-								$newelement->setAttribute("class", $field->getAttribute("class"));
-							}
-							////$newelement->setAttribute("lang", $field->getAttribute("lang"));
-							/*
-							if($Emphasized_Text->length > 0)
-							{
-								$Emphasized_Text->item(0)->insertBefore($newelement);
-								$newelement = $Emphasized_Text->item(0);
-							}
-							*/
-
-							$parent = $field->parentNode;
-							$parent->replaceChild($newelement, $field);
-						}
+						$parent = $field->parentNode;
+						$parent->replaceChild($newelement, $field);
 					}
 				}
 			}
@@ -620,14 +580,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[starts-with(@class,"subentry")]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
-		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"gloss")]/span|' . $querystart . '[starts-with(@class,"LexSense")]';
+		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span';
 		$arrFieldQueries[4] = $querystart . '[starts-with(@class,"definition-sub")]'; //REMOVE WITH FLEX 8.3
 		$arrFieldQueries[5] = $querystart . '[@class = "example"]/span[@lang]';
 		$arrFieldQueries[6] = $querystart . '[@class = "translation"]/span[@lang]';
 		$arrFieldQueries[7] = $querystart . '[starts-with(@class,"LexEntry-") and not(contains(@class, "LexEntry-publishRoot-DefinitionPub_L2"))]/span';
 		$arrFieldQueries[8] = $querystart . '[@class = "variantref-form"]';
 		$arrFieldQueries[9] = $querystart . '[@class = "variantref-form-sub"]';
-		$arrFieldQueries[10] = $querystart . '[@class = "sense-crossref"]';
+		$arrFieldQueries[10] = $querystart . '[@class = "lexsensereference"]//span[@lang]';
 		$arrFieldQueries[11] = $querystart . '[@class = "scientificname"]|' . $querystart . '[@class = "scientific-name"]';
 		$arrFieldQueries[12] = $querystart . '[@class = "plural"]';
 		$arrFieldQueries[13] = $querystart . '[@class = "citationform"]';
