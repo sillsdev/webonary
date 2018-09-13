@@ -495,7 +495,7 @@ function get_has_browseletters()
 
 	$sql = "SELECT COUNT(post_content_filtered) AS numberOfLetters " .
 			" FROM " . $wpdb->posts .
-			" WHERE pinged = 'linksconverted' AND post_content_filtered <> ''";
+			" WHERE pinged = 'linksconverted' OR pinged = 'indexed' AND post_content_filtered <> ''";
 
 	return $wpdb->get_var($sql);
 }

@@ -154,15 +154,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		}
 
-		if(isset($_POST['btnMakeLinks']))
-		{
-		?>
-			<DIV ID="flushme">Converting headwords to links... </DIV>
-		<?php
-			$this->verbose = true;
-			$this->convert_fields_to_links();
-		}
-
 		switch ($step) {
 			/*
 			 * First, greet the user and prompt for files.
@@ -236,18 +227,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 
 				break;
-			case 3 :
-				?>
-				<DIV ID="flushme">converting links...</DIV>
-				<?php
-				$this->convert_fields_to_links();
-
-				echo '<p>' . __( 'Finished!', 'sil_dictionary' ) . '</p>';
-				echo '<p>&nbsp;</p>';
-				echo '<p>After importing, go to <strong><a href="../wp-admin/admin.php?page=webonary">Webonary</a></strong> to configure more settings.</p>';
-			?>
-			<?php
-				break;
 			}
 			$this->footer();
 	}
@@ -296,30 +275,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						echo '</form>';
 					echo '</p>';
 				}
-				if($_GET['step'] == 2 && $_POST['chkConvertToLinks'] > 0)
-				{
-					echo '<strong>Next step: </strong>';
-					echo '<p>';
-						echo '<form enctype="multipart/form-data" id="import-upload-form" method="post" action="' . esc_attr(wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=3", 'import-upload')) . '">';
-							echo '<input type="hidden" name="chkShowProgress" value=' . $_POST['chkShowProgress'] . '></input>';
-							echo '<input type="submit" class="button" name="btnIndex" value="Convert Links"/>';
-							if(isset($_POST['chkConvertToLinks']))
-							{
-								echo '<input type="hidden" name="chkConvertToLinks" value=' . $_POST['chkConvertToLinks'] . '></input>';
-							}
-						echo '</form>';
-					echo '</p>';
-				}
 			}
 			else
 			{
 				if(isset($xhtml_file))
 				{
 					$this->index_searchstrings();
-					if($_POST['chkConvertToLinks'] > 0)
-					{
-						$this->convert_fields_to_links();
-					}
 				}
 			}
 
@@ -441,90 +402,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $doc;
 	}
 
-
-	function convert_fields_to_links() {
-
-		global $wpdb;
-
-		$arrPosts = $this->get_posts("indexed");
-
-		$entry_counter = 1;
-		$entries_count = count($arrPosts);
-
-		foreach($arrPosts as $post)
-		{
-			$post_id = $post->ID;
-
-			$entry = new DomDocument();
-			$entry->preserveWhiteSpace = false;
-			$entry->loadXML($post->post_content);
-			$xpath = new DOMXPath($entry);
-
-			$this->import_xhtml_show_progress( $entry_counter, $entries_count, $post->post_title, "Converting Links");
-
-			$sql = "UPDATE $wpdb->posts SET pinged = 'linksconverted' WHERE ID = " . $post_id;
-			$wpdb->query( $sql );
-
-			$arrAllQueries = $this->getArrFieldQueries(true);
-
-			//we convert the headwords to links by default
-			//clicking on a headword will lead to a page with a comment form (if comments are activated)
-			$arrFieldQueries[0] = $arrAllQueries[0];
-			$arrFieldQueries[1] = $arrAllQueries[1];
-
-			foreach($arrFieldQueries as $fieldQuery)
-			{
-				$fields = $xpath->query($fieldQuery);
-
-				foreach($fields as $field)
-				{
-					$searchstring = $field->textContent;
-					if(is_numeric(substr($searchstring, (strlen($searchstring) - 1), 1)))
-					{
-						$searchstring = substr($searchstring, 0, (strlen($searchstring) - 1));
-					}
-
-					if($field->getAttribute("class") != "partofspeech" && !preg_match("/HeadWordRef/i", $field->getAttribute("class")) && strpos($entry->saveXML($field), "href") == null)
-					{
-						//$newelement = $this->dom->createElement('a');
-						$newelement = $entry->createElement('span');
-						//$newelement->appendChild($entry->createTextNode("<span>" . addslashes($field->textContent) . "</span>"));
-						//$newelement->appendChild($entry->createElement('span', addslashes($field->textContent)));
-
-						$allNodes = "";
-						foreach($field->childNodes as $node)
-						{
-							$allNodes .= $entry->saveXML($node);
-						}
-						$fragment = $entry->createDocumentFragment();
-						$url = get_bloginfo('wpurl') . "/?s=" . addslashes(trim($field->textContent)) . "&partialsearch=1";
-						$fragment->appendXML('<a href="' . htmlspecialchars($url) . '">' . $allNodes . '</a>');
-						$newelement->appendChild($fragment);
-
-						$newelement->setAttribute("class", $field->getAttribute("class"));
-
-						$parent = $field->parentNode;
-						$parent->replaceChild($newelement, $field);
-					}
-				}
-			}
-			$entry_xml = $entry->saveXML( $entry );
-
-			$sql = "UPDATE $wpdb->posts " .
-			" SET post_content = '" . addslashes(stripslashes($entry_xml)) . "'" .
-			" WHERE ID = " . $post_id;
-
-			$wpdb->query( $sql );
-
-			if($entry_counter % 50 == 0)
-			{
-				////sleep(1);
-			}
-
-			$entry_counter++;
-		}
-		update_option("importStatus", "importFinished");
-	}
 
 	function convert_semantic_domains_to_links($post_id, $doc, $field, $termid) {
 		global $wpdb;
@@ -712,15 +589,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time)";
 					$status .= "<br>";
-
-					/*
-					if($_GET['convertlinks'] == 1)
-					{
-						$status .= "<input type=hidden name=chkConvertFLExLinks value=1>";
-						$status .= "<input type=hidden name=pinged value=linksconverted>";
-						$status .= "<br><input type=\"submit\" name=\"btnConvertFLExLinks\" value=\"Retry converting FLEx links\">&nbsp;&nbsp;&nbsp;";
-					}
-					*/
 				}
 			}
 			else
@@ -740,13 +608,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
 
 						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
-					}
-					elseif(get_option("importStatus") == "convertlinks")
-					{
-						$status .= "Converting Links " . $countLinksConverted . " of " . get_option("totalConfiguredEntries") . " entries";
-
-						$status .= "<input type=hidden name=chkConvertToLinks value=1>";
-						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnMakeLinks\" value=\"Turn headwords into links\"/>";
 					}
 					elseif(get_option("importStatus") == "configured")
 					{
@@ -2133,7 +1994,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$entry_counter++;
 			}
 
-			update_option("importStatus", "convertlinks");
+			update_option("importStatus", "importFinished");
 		}
 	}
 
