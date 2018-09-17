@@ -424,7 +424,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$parent = $field->parentNode;
 		$parent->replaceChild($newelement, $field);
 
-
 		$entry_xml = $doc->saveXML( $doc );
 
 		$sql = "UPDATE $wpdb->posts " .
@@ -1387,22 +1386,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		global $wpdb;
 
-		//$entry_xml = preg_replace('/<span class="Writing_System_Abbreviation"(.*?)<\\/span>/', '', $entry_xml);
-
 		$xpath = new DOMXPath($doc);
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		/*
-		if($subentry)
-		{
-			$semantic_domains = $xpath->query('//span[@class = "semantic-domains-sub"]//span[@class = "semantic-domain-name-sub"]');
-		}
-		else
-		{
-			//$semantic_domain_terms = $xpath->query('//span[@class = "semantic-domains"]//span[starts-with(@class, "semantic-domain-name")]');
-			$semantic_domains = $xpath->query('//span[@class = "semantic-domains"]|//span[@class = "semanticdomains"]');
-		}
-		*/
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 
 		$i = 0;
@@ -1466,20 +1452,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					if(isset($termid))
 					{
-						//$wpdb->query( "INSERT INTO $wpdb->term_relationships (object_id, term_taxonomy_id) VALUES (" . $post_id . ", " . $this->semantic_domains_taxonomy . ") ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)" );
 						wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true);
 					}
-					/*
-					if($convertToLinks == true)
-					{
-						$this->convert_semantic_domains_to_links($post_id, $doc, $sd_name, $termid);
-					}
-					else
-					{
-						$x = 0;
-						wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true );
-					}
-					*/
+
 					$arrTerm = null;
 
 					$sc++;

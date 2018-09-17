@@ -48,4 +48,36 @@ class ImportTest extends WP_UnitTestCase {
 		$this->assertEquals($converted, $expected);
 	}
 
+	function test_convert_semantic_domains_to_links()
+	{
+		global $wpdb;
+
+		$entry_xml = '<div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span lang="en">9.7</span></span><span class="name"><span lang="en">Name</span></span></span></span></span></span></span></div>';
+		$headword_text = "Zealot";
+		$post_parent = 0;
+		$flexid = "gabca4e11-59cd-4c7e-a3f3-b504e9665e83";
+
+
+		$sql = $wpdb->prepare(
+				"INSERT INTO ". $wpdb->posts . " (post_date, post_title, post_content, post_status, post_parent, post_name, comment_status, menu_order, post_content_filtered)
+				VALUES (NOW(), '%s', '%s', 'publish', %d, '%s', '%s', %d, '%s')",
+				trim($headword_text), $entry_xml, $post_parent, $flexid, "open", 19, "z" );
+
+		$wpdb->query( $sql );
+
+		/*
+		$import = new sil_pathway_xhtml_Import();
+		$import->dom_xpath = new DOMXPath($doc);
+		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $field, $termid)->saveXML();
+		*/
+
+		//convert 1
+		//<div class="\&quot;entry\&quot;" id="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;mainheadword\&quot;"><span lang="\&quot;ify\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;">Zealot</a></span></span><span class="\&quot;senses\&quot;"><span class="\&quot;sharedgrammaticalinfo\&quot;"><span class="\&quot;morphosyntaxanalysis\&quot;"><span class="\&quot;partofspeech\&quot;"><span lang="\&quot;en\&quot;">Prop.N</span></span></span></span><span class="\&quot;sensecontent\&quot;"><span class="\&quot;sense\&quot;" entryguid="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;definitionorgloss\&quot;"><span lang="\&quot;en\&quot;">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="\&quot;examplescontents\&quot;"><span class="\&quot;examplescontent\&quot;"><span class="\&quot;example\&quot;"><span lang="\&quot;ify\&quot;">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="\&quot;translationcontents\&quot;"><span class="\&quot;translationcontent\&quot;"><span class="\&quot;translation\&quot;"><span lang="\&quot;en\&quot;">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="\&quot;semanticdomains\&quot;"><span class="\&quot;semanticdomain\&quot;"><span class="\&quot;abbreviation\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">9.7</a></span></span><span class="\&quot;name\&quot;"><span lang="\&quot;en\&quot;">Name</span></span></span></span></span></span></span></div>
+
+		//convert 2
+		//<div class="\&quot;entry\&quot;" id="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;mainheadword\&quot;"><span lang="\&quot;ify\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;">Zealot</a></span></span><span class="\&quot;senses\&quot;"><span class="\&quot;sharedgrammaticalinfo\&quot;"><span class="\&quot;morphosyntaxanalysis\&quot;"><span class="\&quot;partofspeech\&quot;"><span lang="\&quot;en\&quot;">Prop.N</span></span></span></span><span class="\&quot;sensecontent\&quot;"><span class="\&quot;sense\&quot;" entryguid="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;definitionorgloss\&quot;"><span lang="\&quot;en\&quot;">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="\&quot;examplescontents\&quot;"><span class="\&quot;examplescontent\&quot;"><span class="\&quot;example\&quot;"><span lang="\&quot;ify\&quot;">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="\&quot;translationcontents\&quot;"><span class="\&quot;translationcontent\&quot;"><span class="\&quot;translation\&quot;"><span lang="\&quot;en\&quot;">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="\&quot;semanticdomains\&quot;"><span class="\&quot;semanticdomain\&quot;"><span class="\&quot;abbreviation\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">9.7</a></span></span><span class="\&quot;name\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">Name</a></span></span></span></span></span></span></span></div>
+	}
+
 }
