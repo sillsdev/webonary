@@ -431,6 +431,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		" WHERE ID = " . $post_id;
 
 		$wpdb->query( $sql );
+
+		return $entry_xml;
 	}
 
 	/**

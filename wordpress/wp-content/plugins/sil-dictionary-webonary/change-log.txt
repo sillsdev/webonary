@@ -1,3 +1,4 @@
+v. 7.6.0 27 September 2018 fixed bug wrongly displaying reversal entries
 v. 7.5.9 17 September 2018 fixed bug introduced in last version regarding alphabet and browse view
 v. 7.5.8 13 September 2018 removed convert_fields_to_links as this is no longer needed with FLEx 8.3 exports
 v. 7.5.7 6 September 2018 lexsensereference now gets indexed

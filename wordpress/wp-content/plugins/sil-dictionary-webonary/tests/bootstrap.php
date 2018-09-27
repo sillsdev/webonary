@@ -25,11 +25,13 @@ function _manually_load_plugin() {
 	define('COLLATION', $wpdb->charset);
 	define('FULLCOLLATION', $wpdb->collate);
 
+	remove_entries();
+
 	$sql = "ALTER DATABASE " . $wpdb->dbname .
 	" CHARACTER SET utf8mb4 " .
 	" COLLATE utf8mb4_general_ci";
 
-	echo $sql . "\n";
+	//echo $sql . "\n";
 
 	$wpdb->query($sql);
 

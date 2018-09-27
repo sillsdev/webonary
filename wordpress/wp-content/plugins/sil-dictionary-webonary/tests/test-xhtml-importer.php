@@ -65,19 +65,51 @@ class ImportTest extends WP_UnitTestCase {
 
 		$wpdb->query( $sql );
 
-		/*
+		$post_id = $wpdb->insert_id;
+
+		//convert 1  (Semantic Domain Numbers)
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry_xml);
+
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
 		$import = new sil_pathway_xhtml_Import();
 		$import->dom_xpath = new DOMXPath($doc);
 		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $field, $termid)->saveXML();
-		*/
+		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
+		$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
 
-		//convert 1
-		//<div class="\&quot;entry\&quot;" id="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;mainheadword\&quot;"><span lang="\&quot;ify\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;">Zealot</a></span></span><span class="\&quot;senses\&quot;"><span class="\&quot;sharedgrammaticalinfo\&quot;"><span class="\&quot;morphosyntaxanalysis\&quot;"><span class="\&quot;partofspeech\&quot;"><span lang="\&quot;en\&quot;">Prop.N</span></span></span></span><span class="\&quot;sensecontent\&quot;"><span class="\&quot;sense\&quot;" entryguid="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;definitionorgloss\&quot;"><span lang="\&quot;en\&quot;">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="\&quot;examplescontents\&quot;"><span class="\&quot;examplescontent\&quot;"><span class="\&quot;example\&quot;"><span lang="\&quot;ify\&quot;">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="\&quot;translationcontents\&quot;"><span class="\&quot;translationcontent\&quot;"><span class="\&quot;translation\&quot;"><span lang="\&quot;en\&quot;">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="\&quot;semanticdomains\&quot;"><span class="\&quot;semanticdomain\&quot;"><span class="\&quot;abbreviation\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">9.7</a></span></span><span class="\&quot;name\&quot;"><span lang="\&quot;en\&quot;">Name</span></span></span></span></span></span></span></div>
+		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item(0), 2);
+		$converted = preg_replace( "/\r|\n/", "", $converted );
+		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span lang="en">Name</span></span></span></span></span></span></span></div>';
+		$this->assertEquals($converted, $expected);
 
-		//convert 2
-		//<div class="\&quot;entry\&quot;" id="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;mainheadword\&quot;"><span lang="\&quot;ify\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;">Zealot</a></span></span><span class="\&quot;senses\&quot;"><span class="\&quot;sharedgrammaticalinfo\&quot;"><span class="\&quot;morphosyntaxanalysis\&quot;"><span class="\&quot;partofspeech\&quot;"><span lang="\&quot;en\&quot;">Prop.N</span></span></span></span><span class="\&quot;sensecontent\&quot;"><span class="\&quot;sense\&quot;" entryguid="\&quot;gabca4e11-59cd-4c7e-a3f3-b504e9665e83\&quot;"><span class="\&quot;definitionorgloss\&quot;"><span lang="\&quot;en\&quot;">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="\&quot;examplescontents\&quot;"><span class="\&quot;examplescontent\&quot;"><span class="\&quot;example\&quot;"><span lang="\&quot;ify\&quot;">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="\&quot;translationcontents\&quot;"><span class="\&quot;translationcontent\&quot;"><span class="\&quot;translation\&quot;"><span lang="\&quot;en\&quot;">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="\&quot;semanticdomains\&quot;"><span class="\&quot;semanticdomain\&quot;"><span class="\&quot;abbreviation\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">9.7</a></span></span><span class="\&quot;name\&quot;"><span class="\&quot;\&quot;"><a href="\&quot;http://webonary.localhost/lubwisi/?s=&amp;partialsearch=1&amp;tax=19326\&quot;">Name</a></span></span></span></span></span></span></span></div>
+		//convert 2 (Semantic Domain Names)
+		$converted = '<div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span lang="en">Name</span></span></span></span></span></span></span></div>';
+		$convertedNoXML = preg_replace( '/\<\?xml version="1.0" encoding="UTF-8"\?\>/', '', $converted );
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($convertedNoXML);
+
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$import = new sil_pathway_xhtml_Import();
+		$import->dom_xpath = new DOMXPath($doc);
+		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
+		$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
+
+		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_names->item(0), 2);
+		$converted = preg_replace( "/\r|\n/", "", $converted );
+
+		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">Name</a></span></span></span></span></span></span></span></div>';
+		$this->assertEquals($converted, $expected);
 	}
 
 }

@@ -73,7 +73,7 @@ function create_reversal_tables () {
 
 	$table = REVERSALTABLE;
 	$sql = "CREATE TABLE `" . $table . "` (
-		`id` varchar(20) NOT NULL,
+		`id` varchar(50) NOT NULL,
 		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
@@ -305,7 +305,6 @@ function clean_out_dictionary_data ($delete_taxonomies = null) {
 	// Uninstall the custom table(s) and taxonomies.
 	if ($delete_taxonomies == 1)
 		unregister_custom_taxonomies();
-	uninstall_custom_tables();
 
 	// Reinstall custom table(s) and taxonomies.
 	create_search_tables();
@@ -341,6 +340,10 @@ function remove_entries ($pinged = null) {
 	}
 
 	$wpdb->query( $sql );
+
+	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_search";
+	$wpdb->query( $sql );
+
 
 	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_reversal";
 	$wpdb->query( $sql );
@@ -457,30 +460,6 @@ function unregister_custom_taxonomy ( $taxonomy ) {
 	}
 }
 
-//-----------------------------------------------------------------------------//
-
-/**
- * Uninstall custom tables set up by the plugin.
- */
-
-function uninstall_custom_tables () {
-	uninstall_custom_table( SEARCHTABLE );
-	uninstall_custom_table( SEARCHTABLE );
-}
-
-//-----------------------------------------------------------------------------//
-
-/**
- * Uninstall a custom table.
- * @global <type> $wpdb
- * @param <string> $table =
- */
-
-function uninstall_custom_table ( $table ) {
-	global $wpdb;
-	$sql = "DROP TABLE IF EXISTS " . $table . ";";
-	$return_value = $wpdb->get_var( $sql );
-}
 
 //-----------------------------------------------------------------------------//
 
@@ -488,14 +467,7 @@ function uninstall_custom_table ( $table ) {
  * Unistall custom tables, taxonomies, etc. on plugin uninstall
  */
 function uninstall_sil_dictionary_infrastructure () {
-
-	// Remove all the old dictionary entries.
-	//DANGEROUS, this would remove all the posts, if somebody doesn't migrate the posts to pages
-	//remove_entries();
-
-	// Uninstall the custom table(s) and taxonomies.
-	unregister_custom_taxonomies();
-	uninstall_custom_tables();
+	clean_out_dictionary_data(1);
 }
 
 add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );

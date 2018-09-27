@@ -372,6 +372,10 @@ add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
+	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
+	{
+		return null;
+	}
 ?>
 	<style>
 	<?php
@@ -464,10 +468,12 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 		}
 
 		$arrReversals = $wpdb->get_results($sql);
+
 		if(count($arrReversals) > 0)
 		{
 			$displayXHTML = false;
 		}
+
 	}
 
 	return $arrReversals;
@@ -551,6 +557,11 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 
 	$displayXHTML = true;
 	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML, $reversalnr);
+	if($arrReversals == null)
+	{
+		$display .= "No reversal entries imported.";
+		return $display;
+	}
 
 	$display .= "<h1 align=center>" . $chosenLetter . "</h1><br>";
 
