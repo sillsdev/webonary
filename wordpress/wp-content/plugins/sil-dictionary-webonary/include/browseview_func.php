@@ -372,10 +372,6 @@ add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
-	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
-	{
-		return null;
-	}
 ?>
 	<style>
 	<?php
@@ -397,6 +393,11 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	?>
 	</style>
 <?php
+	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
+	{
+		return null;
+	}
+
 	global $wpdb;
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
