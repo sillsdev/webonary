@@ -171,7 +171,7 @@ function displayAlphabet($alphas, $languagecode)
 	global $wpdb;
 ?>
 	<style type="text/css">
-	.lpTitleLetterCell {min-width:31px; height: 23x; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; position: relative;}
+	.lpTitleLetterCell {min-width:31px; height: 23px; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; position: relative;}
 	<?php
 	if(get_option('vernacularLettersFont') != "")
 	{
