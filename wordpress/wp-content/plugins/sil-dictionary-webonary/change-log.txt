@@ -1,3 +1,4 @@
+v. 7.6.2 02 October 2018 "gloss" entries now get indexed
 v. 7.6.1 02 October 2018 fixed issue where headword consists of two languages
 v. 7.6.0 27 September 2018 fixed bug wrongly displaying reversal entries
 v. 7.5.9 17 September 2018 fixed bug introduced in last version regarding alphabet and browse view
