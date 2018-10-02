@@ -762,22 +762,27 @@ function vernacularalphabet_func( $atts )
 
 		foreach($arrPosts as $mypost)
 		{
-			if(trim($mypost->post_title) != trim($mypost->search_strings) && $displaySubentriesAsMinorEntries == true)
+			//legacy
+			if($displaySubentriesAsMinorEntries == true)
 			{
-				$headword = getVernacularHeadword($mypost->ID, $languagecode);
-				$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
-				$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
+				if(trim($mypost->post_title) != trim($mypost->search_strings))
+				{
+					$headword = getVernacularHeadword($mypost->ID, $languagecode);
+					$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
+					$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
+				}
+				if(trim($mypost->post_id) == $mypost->search_strings )
+				{
+					$the_content = addLangQuery($mypost->post_content);
+					$the_content = normalizer_normalize($the_content, Normalizer::NFC );
+					$display .= "<div class=\"post\">" . $the_content . "</div>";
+				}
 			}
-			if($displaySubentriesAsMinorEntries == false)
+			else
 			{
 				$the_content = addLangQuery($mypost->post_content);
 				$the_content = normalizer_normalize($the_content, Normalizer::NFC );
 				$display .= "<div class=\"post\">" . $the_content . "</div>";
-				/*
-				if( comments_open($mypost->ID) ) {
-					$display .= "<a href=\"/" . $mypost->post_name. "\" rel=bookmark><u>Comments (" . get_comments_number($mypost->ID) . ")</u></a>";
-				}
-				*/
 			}
 		}
 
