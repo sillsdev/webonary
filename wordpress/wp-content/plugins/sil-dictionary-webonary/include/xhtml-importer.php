@@ -742,7 +742,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$arrIndexed = $wpdb->get_results($sql);
 
-
 		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
 				" FROM " . $this->reversal_table_name .
 				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->reversal_table_name . ".language_code " .
@@ -755,6 +754,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$s = 0;
 		foreach($arrIndexed as $indexed)
 		{
+
 			$sqlLangName = "SELECT name as language_name " .
 			" FROM $wpdb->terms " .
 			" WHERE slug = '" . $indexed->language_code . "'";

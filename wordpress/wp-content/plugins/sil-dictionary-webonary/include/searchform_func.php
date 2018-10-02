@@ -233,10 +233,15 @@ function webonary_searchform() {
 		$arrIndexed = $import->get_number_of_entries();
 
 		$numberOfEntriesText = "";
+		$language_name = "";
 		foreach($arrIndexed as $indexed)
 		{
-			$numberOfEntriesText .= $indexed->language_name . ":&nbsp;". $indexed->totalIndexed;
-			$numberOfEntriesText .= "<br>";
+			if($indexed->language_name != $language_name)
+			{
+				$numberOfEntriesText .= $indexed->language_name . ":&nbsp;". $indexed->totalIndexed;
+				$numberOfEntriesText .= "<br>";
+			}
+			$language_name = $indexed->language_name;
 		}
 		echo $numberOfEntriesText;
 		echo "<br>";
