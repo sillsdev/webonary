@@ -771,7 +771,7 @@ function vernacularalphabet_func( $atts )
 					$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
 					$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
 				}
-				if(trim($mypost->post_id) == $mypost->search_strings )
+				else
 				{
 					$the_content = addLangQuery($mypost->post_content);
 					$the_content = normalizer_normalize($the_content, Normalizer::NFC );
