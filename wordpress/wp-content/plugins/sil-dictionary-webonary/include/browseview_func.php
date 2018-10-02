@@ -768,7 +768,8 @@ function vernacularalphabet_func( $atts )
 				$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
 				$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
 			}
-
+			if($displaySubentriesAsMinorEntries == false)
+			{
 				$the_content = addLangQuery($mypost->post_content);
 				$the_content = normalizer_normalize($the_content, Normalizer::NFC );
 				$display .= "<div class=\"post\">" . $the_content . "</div>";
@@ -777,6 +778,7 @@ function vernacularalphabet_func( $atts )
 					$display .= "<a href=\"/" . $mypost->post_name. "\" rel=bookmark><u>Comments (" . get_comments_number($mypost->ID) . ")</u></a>";
 				}
 				*/
+			}
 		}
 
 		$display .= "</div>";

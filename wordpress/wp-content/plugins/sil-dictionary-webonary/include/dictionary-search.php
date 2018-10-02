@@ -357,6 +357,7 @@ function sil_dictionary_custom_where($where) {
 		}
 	}
 
+	/*
 	if(isset($wp_query->query_vars['letter']))
 	{
 		if($wp_query->query_vars['DisplaySubentriesAsMainEntries'] == false)
@@ -364,7 +365,7 @@ function sil_dictionary_custom_where($where) {
 			$where .= " AND " . $search_table_name. ".search_strings = " . $wpdb->posts . ".post_title ";
 		}
 	}
-
+	*/
 	if(isset($_GET['tax']))
 	{
 		if($_GET['tax'] > 1)
