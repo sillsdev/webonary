@@ -10,6 +10,7 @@ add_action( 'wp_json_server_before_serve', 'webonary_api_init' );
 
 class Webonary_API_MyType {
     public function register_routes( $routes ) {
+    	//creates a route like this: https://test.webonary.org/wp-json/webonary/import
         $routes['/webonary/import'] = array(
         	array( array( $this, 'import'), WP_JSON_Server::CREATABLE | WP_JSON_Server::ACCEPT_RAW ),
         );
@@ -128,11 +129,6 @@ class Webonary_API_MyType {
 				//$this->recursiveRemoveDir($zipFolderPath);
 			}
 
-			/* //THIS DOESN'T GET DISPLAYED BY FLEx
-			echo "You can now close this window. Import is running in the background...\n";
-			echo "Go to this website to view the import progress: " . get_site_url() . "/wp-admin/admin.php?page=webonary\n\n";
-			echo "You will receive an email when the import has completed.\n";
-			*/
 			return "";
 		}
 		else

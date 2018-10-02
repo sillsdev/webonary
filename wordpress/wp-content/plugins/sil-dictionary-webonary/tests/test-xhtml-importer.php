@@ -112,4 +112,9 @@ class ImportTest extends WP_UnitTestCase {
 		$this->assertEquals($converted, $expected);
 	}
 
+	function test_index_searchstrings()
+	{
+		//index_searchstrings
+	}
+
 }

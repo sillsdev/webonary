@@ -454,7 +454,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 
 		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
-		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]|//div[@class="entry"]/span[@class="lexemeform"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
+		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]/span|//div[@class="entry"]/span[@class="lexemeform"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
 		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[starts-with(@class,"subentry")]/*[@class="headword"]';
 		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
 		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
@@ -1815,25 +1815,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$semantic_domains_taxonomy_exists = taxonomy_exists( $this->semantic_domains_taxonomy );
 
 		if ( $search_table_exists ) {
-			////$arrPosts = $this->get_posts('flexlinks');
 			$arrPosts = $this->get_posts('-');
 
 			$subid = 1;
-			/*
-				$sortorder = $wpdb->get_var( "
-				SELECT sortorder
-				FROM $this->search_table_name
-				WHERE relevance >= 95 ORDER BY sortorder DESC LIMIT 0, 1");
-
-				if($sortorder == null || $sortorder == 0)
-				{
-				$sortorder = 1;
-				}
-				else
-				{
-				$sortorder++;
-				}
-				*/
 
 			$entry_counter = 1;
 			$entries_count = count($arrPosts);
@@ -1844,14 +1828,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				$subentry = false;
 				if ( $post->ID ){
-					/*
-						$oldSortorder = $wpdb->get_var( "SELECT sortorder FROM $this->search_table_name WHERE relevance >= 95 AND post_id = " . $post->ID . " AND sortorder <> 0");
-
-						if(isset($oldSortorder))
-						{
-						$sortorder = $oldSortorder;
-						}
-						*/
 
 					$sql = $wpdb->prepare("DELETE FROM `". $this->search_table_name . "` WHERE post_id = %d", $post->ID);
 
@@ -1874,7 +1850,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $post->post_title, "Step 2 of 2: Indexing Search Strings");
 
-				//if(isset($headword) && $post->post_parent == 0)
 				if($post->post_parent == 0)
 				{
 					if(isset($headword))
@@ -1906,7 +1881,8 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					}
 
 					//import headword
-					$this->import_xhtml_search_string($post->ID, $headword_text, $this->headword_relevance, $headword_language, $subid);
+					//$this->import_xhtml_search_string($post->ID, $headword_text, $this->headword_relevance, $headword_language, $subid);
+					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[0], ($this->headword_relevance), $subid);
 					//sub headwords
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[1], ($this->headword_relevance - 5), $subid);
 					//lexeme forms
@@ -1939,33 +1915,22 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$subentry = true;
 				}
 
-				//this is used for the browse view sort order
-				$sql = "UPDATE " . $this->search_table_name . " SET sortorder = " . $post->menu_order . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . COLLATION . "_BIN' AND relevance >= 95 AND sortorder = 0" ;
+				//this is used for the browse view sort order, no longer needed for
+				$sql = "UPDATE " . $this->search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
 				$wpdb->query( $sql );
 
-				//this is used for the search sort order
 				/*
-				$sql = "UPDATE " . $wpdb->posts . " SET menu_order = " . $sortorder . " WHERE post_title = '" . addslashes($headword_text) . "' collate utf8_bin AND menu_order = 0";
-				$wpdb->query( $sql );
-				*/
-				/*
-				 * Load semantic domains
+				 * Import semantic domains
 				*/
 				if ( $semantic_domains_taxonomy_exists )
 				{
 					$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, false);
-					//$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, true);
 				}
 				/*
-				 * Load parts of speech (POS)
+				 * Import parts of speech (POS)
 				 */
 				if ( $pos_taxonomy_exists )
 					$this->import_xhtml_part_of_speech($doc, $post->ID);
-
-				if($entry_counter % 50 == 0)
-				{
-					////sleep(1);
-				}
 
 				$subid++;
 				$entry_counter++;
