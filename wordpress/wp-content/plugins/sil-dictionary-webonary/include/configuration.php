@@ -267,6 +267,11 @@ function save_configurations() {
 		if(isset($_POST['noSearchForm']))
 		{
 			$noSearchForm = $_POST['noSearchForm'];
+			if ( is_plugin_active( 'wp-super-cache/wp-cache.php' ) && $noSearchForm == 1)
+			{
+				prune_super_cache( get_supercache_dir(), true );
+			}
+
 		}
 		update_option("noSearch", $noSearchForm);
 
