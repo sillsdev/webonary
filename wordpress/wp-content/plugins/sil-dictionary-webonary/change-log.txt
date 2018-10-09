@@ -1,3 +1,4 @@
+v. 7.6.5 09 October 2018 fixed issue that caused browse view on front page to display too slow
 v. 7.6.4 09 October 2018 added option to hide search form
 v. 7.6.3 02 October 2018 removed double display of language name on front page
 v. 7.6.2 02 October 2018 "gloss" entries now get indexed

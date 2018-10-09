@@ -192,6 +192,15 @@ function displayAlphabet($alphas, $languagecode)
 
 	$letterCells = "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>" . str_replace(",", "</span></div><div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>", get_option('vernacular_alphabet')) . "</span></div><br>";
 
+	$permalink = "";
+	if(is_front_page())
+	{
+		$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
+		$post_id = $wpdb->get_var($sql);
+
+		$permalink = get_permalink($post_id);
+	}
+
 	foreach($alphas as $letter)
 	{
 		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
@@ -206,15 +215,8 @@ function displayAlphabet($alphas, $languagecode)
 			{
 				$lang = "&lang=" . $_GET['lang'];
 			}
-			$permalink = "";
-			if(is_front_page())
-			{
-				$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
-				$post_id = $wpdb->get_var($sql);
 
-				$permalink = get_permalink($post_id);
-			}
-	    	$display .= "<a href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
+			$display .= "<a href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
 		}
 		$display .= "</span></div>";
 	}

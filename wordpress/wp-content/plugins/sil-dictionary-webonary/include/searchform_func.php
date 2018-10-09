@@ -358,9 +358,6 @@ function add_footer()
 			$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 
 			$browse_title = $wpdb->get_var($sql);
-
-			//$before = microtime(true);
-
 			?>
 			<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
 				<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
@@ -372,9 +369,6 @@ function add_footer()
 			</div>
 
 			<?php
-			//$after = microtime(true);
-			//echo ($after-$before) . "<br>";
-
 		}
 		if(get_option('publicationStatus') && $post_slug != "browse")
 		{
