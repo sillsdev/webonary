@@ -538,210 +538,212 @@ function webonary_conf_widget($showTitle = false) {
 				<span style="color:red">You need to first import your dictionary.</span>
 				<p>
 			<?php
-				return;
 			}
-			?>
-			<i><?php _e('Vernacular Browse view:'); ?></i><br>
-			<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
-			<input type="hidden" name="languagecode" value="<?php echo get_option('languagecode'); ?>">
-			<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
-			<p>
-			<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-			<?php
-			if(is_super_admin())
+			if(count($arrLanguageCodes) > 0)
 			{
 			?>
-				<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-				<input type="text" name="vernacular_alphabet" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>">
-			<?php
-			}
-			else
-			{
-				echo stripslashes(get_option('vernacular_alphabet'));
-			}?>
-			<p>
-
-			Font to use for the vernacular letters in browse view:
-			<select name=vernacularLettersFont>
-			<option value=""></option>
-			<?php
-			$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-			if(isset($arrUniqueCSSFonts))
-			{
-				foreach($arrUniqueCSSFonts as $font)
-				{
-				?>
-					<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
-				<?php
-				}
-			}
-			?>
-			</select>
-
-			<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-
-			<p>
-			<?php
-			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
-			if($IncludeCharactersWithDiacritics == 1)
-			{
-				$IncludeCharactersWithDiacritics = 1;
-			?>
-			<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
-			<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
-			<?php
-			}
-			?>
-			<p>
-			<b><?php _e('Reversal Indexes:'); ?></b>
-			<p>
-			<?php
-			$displayXHTML = true;
-			$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
-
-			if(count($reversalEntries) == 0)
-			{
-				echo "No reversal indexes imported.";
-			}
-			else
-			{
-				$k = array_search(get_option('reversal1_langcode'), array_column($arrLanguageCodes, 'language_code'));
-
-				if($k >= 0)
-				{
-				?>
-					<i><?php _e('1. Reversal index'); ?></i><br>
-					Shortcode: [reversalindex1]
-					<p>
-					<input type="hidden" name="reversal1_langcode" value="<?php echo get_option('reversal1_langcode'); ?>">
-					<strong>[<?php echo get_option('reversal1_langcode'); ?>]</strong>
-					<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-					<p>
-					<?php
-					if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
-					{
-						$reversal1alphabet = "";
-						$alphas = range('a', 'z');
-						$i = 1;
-						foreach($alphas as $letter)
-						{
-							$reversal1alphabet .= $letter;
-							if($i != count($alphas))
-							{
-								$reversal1alphabet .= ",";
-							}
-							$i++;
-						}
-					}
-					else
-					{
-						$reversal1alphabet = stripslashes(get_option('reversal1_alphabet'));
-					}
-					?>
-					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-					<?php
-					if(is_super_admin())
-					{
-					?>
-						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-						<input type="text" size=50 name="reversal1_alphabet" value="<?php echo $reversal1alphabet; ?>">
-					<?php
-					}
-					else
-					{
-						echo $reversal1alphabet;
-					}
-					?>
-					<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal1RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-					<?php
-				}
-				if(strlen(get_option('reversal2_langcode')) > 0)
-				{
-				?>
-					<hr>
-					 <i><?php _e('2. Reversal index'); ?></i><br>
-					 Shortcode: [reversalindex2]
-					 <p>
-					 <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
-					 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-					<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-					<p>
-					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-					<?php
-					if(is_super_admin())
-					{
-					?>
-						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-						<input type="text" size=50 name="reversal2_alphabet" value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
-					<?php
-					}
-					else
-					{
-					 	echo stripslashes(get_option('reversal2_alphabet'));
-					}
-					?>
-					<input name="reversal2RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal2RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-					<?php
-				}
-				?>
-				<?php
-				if(strlen(get_option('reversal3_langcode')) > 0)
-				{
-				?>
-				<hr>
-				 <i><?php _e('3. Reversal index'); ?></i><br>
-				 Shortcode: [reversalindex3]
-				 <p>
-				 <input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
-				 <?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-				<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+				<i><?php _e('Vernacular Browse view:'); ?></i><br>
+				<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
+				<input type="hidden" name="languagecode" value="<?php echo get_option('languagecode'); ?>">
+				<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
 				<p>
-				<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-									<?php
-					if(is_super_admin())
-					{
-					?>
-						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-						<input type="text" size=50 name="reversal3_alphabet" value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>">
-					<?php
-					}
-					else
-					{
-					 	echo stripslashes(get_option('reversal3_alphabet'));
-					}
-					?>
-					<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal3RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-					<?php
-				}
-			}
-			?>
-
-			<?php
-			if(is_super_admin())
-			{
-				$displayCustomDomains = get_option('displayCustomDomains');
-				/*
-				if($displayCustomDomains != "no" && !isset($displayCustomDomains))
+				<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+				<?php
+				if(is_super_admin())
 				{
-					$displayCustomDomains = 1;
+				?>
+					<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+					<input type="text" name="vernacular_alphabet" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>">
+				<?php
 				}
-				*/
-			?>
-				<h3>Semantic Domains</h3>
-				<select name="displayCustomDomains">
-					<option value="default" <?php selected($displayCustomDomains, "default"); ?>>Default View</option>
-					<option value="yakan" <?php selected($displayCustomDomains, "yakan"); ?>>Yakan (Philippines)</option>
+				else
+				{
+					echo stripslashes(get_option('vernacular_alphabet'));
+				}?>
+				<p>
+
+				Font to use for the vernacular letters in browse view:
+				<select name=vernacularLettersFont>
+				<option value=""></option>
+				<?php
+				$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+				if(isset($arrUniqueCSSFonts))
+				{
+					foreach($arrUniqueCSSFonts as $font)
+					{
+					?>
+						<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+					<?php
+					}
+				}
+				?>
 				</select>
-			<?php
+
+				<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+
+				<p>
+				<?php
+				$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
+				if($IncludeCharactersWithDiacritics == 1)
+				{
+					$IncludeCharactersWithDiacritics = 1;
+				?>
+				<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
+				<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
+				<?php
+				}
+				?>
+				<p>
+				<b><?php _e('Reversal Indexes:'); ?></b>
+				<p>
+				<?php
+				$displayXHTML = true;
+				$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
+
+				if(count($reversalEntries) == 0)
+				{
+					echo "No reversal indexes imported.";
+				}
+				else
+				{
+					$k = array_search(get_option('reversal1_langcode'), array_column($arrLanguageCodes, 'language_code'));
+
+					if($k >= 0)
+					{
+					?>
+						<i><?php _e('1. Reversal index'); ?></i><br>
+						Shortcode: [reversalindex1]
+						<p>
+						<input type="hidden" name="reversal1_langcode" value="<?php echo get_option('reversal1_langcode'); ?>">
+						<strong>[<?php echo get_option('reversal1_langcode'); ?>]</strong>
+						<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+						<p>
+						<?php
+						if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
+						{
+							$reversal1alphabet = "";
+							$alphas = range('a', 'z');
+							$i = 1;
+							foreach($alphas as $letter)
+							{
+								$reversal1alphabet .= $letter;
+								if($i != count($alphas))
+								{
+									$reversal1alphabet .= ",";
+								}
+								$i++;
+							}
+						}
+						else
+						{
+							$reversal1alphabet = stripslashes(get_option('reversal1_alphabet'));
+						}
+						?>
+						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+						<?php
+						if(is_super_admin())
+						{
+						?>
+							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+							<input type="text" size=50 name="reversal1_alphabet" value="<?php echo $reversal1alphabet; ?>">
+						<?php
+						}
+						else
+						{
+							echo $reversal1alphabet;
+						}
+						?>
+						<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal1RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+						<?php
+					}
+					if(strlen(get_option('reversal2_langcode')) > 0)
+					{
+					?>
+						<hr>
+						 <i><?php _e('2. Reversal index'); ?></i><br>
+						 Shortcode: [reversalindex2]
+						 <p>
+						 <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
+						 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+						<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+						<p>
+						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+						<?php
+						if(is_super_admin())
+						{
+						?>
+							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+							<input type="text" size=50 name="reversal2_alphabet" value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
+						<?php
+						}
+						else
+						{
+						 	echo stripslashes(get_option('reversal2_alphabet'));
+						}
+						?>
+						<input name="reversal2RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal2RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+						<?php
+					}
+					?>
+					<?php
+					if(strlen(get_option('reversal3_langcode')) > 0)
+					{
+					?>
+					<hr>
+					 <i><?php _e('3. Reversal index'); ?></i><br>
+					 Shortcode: [reversalindex3]
+					 <p>
+					 <input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
+					 <?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+					<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+					<p>
+					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+										<?php
+						if(is_super_admin())
+						{
+						?>
+							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+							<input type="text" size=50 name="reversal3_alphabet" value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>">
+						<?php
+						}
+						else
+						{
+						 	echo stripslashes(get_option('reversal3_alphabet'));
+						}
+						?>
+						<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal3RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+						<?php
+					}
+				}
+				?>
+
+				<?php
+				if(is_super_admin())
+				{
+					$displayCustomDomains = get_option('displayCustomDomains');
+					/*
+					if($displayCustomDomains != "no" && !isset($displayCustomDomains))
+					{
+						$displayCustomDomains = 1;
+					}
+					*/
+				?>
+					<h3>Semantic Domains</h3>
+					<select name="displayCustomDomains">
+						<option value="default" <?php selected($displayCustomDomains, "default"); ?>>Default View</option>
+						<option value="yakan" <?php selected($displayCustomDomains, "yakan"); ?>>Yakan (Philippines)</option>
+					</select>
+				<?php
+				}
+				/*
+				?>
+				<h3><?php _e('Comments');?></h3>
+				If you have the comments turned on, you need to re-sync your comments after re-importing of your posts.
+				<p>
+				<a href="admin.php?import=comments-resync">Re-sync comments</a>
+				<?php
+				*/
 			}
-			/*
-			?>
-			<h3><?php _e('Comments');?></h3>
-			If you have the comments turned on, you need to re-sync your comments after re-importing of your posts.
-			<p>
-			<a href="admin.php?import=comments-resync">Re-sync comments</a>
-			<?php
-			*/
 		?>
 		</p>
 		<?php admin_section_end('browse', 'Save Changes'); ?>
