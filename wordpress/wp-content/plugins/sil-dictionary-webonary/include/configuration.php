@@ -34,7 +34,7 @@ function get_admin_sections() {
 	$admin_sections['fonts'] = __('Fonts', 'sil_dictionary');
 	if(is_super_admin())
 	{
-		$admin_sections['notes'] = __('Notes', 'sil_dictionary');
+		$admin_sections['superadmin'] = __('Super Admin', 'sil_dictionary');
 	}
 
 	return $admin_sections;
@@ -260,9 +260,17 @@ function save_configurations() {
 
 		if(isset($_POST['txtNotes']))
 		{
-			echo "Saving Notes<br>";
 			update_option("notes", $_POST['txtNotes']);
 		}
+
+		$noSearchForm = 0;
+		if(isset($_POST['noSearchForm']))
+		{
+			$noSearchForm = $_POST['noSearchForm'];
+		}
+		update_option("noSearch", $noSearchForm);
+
+
 
 		echo "<br>" . _e('Settings saved');
 	}
@@ -818,7 +826,7 @@ function webonary_conf_widget($showTitle = false) {
 		<?php admin_section_end('fonts'); ?>
 		<?php
 		//////////////////////////////////////////////////////////////////////////
-		admin_section_start('notes');
+		admin_section_start('superadmin');
 		?>
 		<p>
 		<h3>Notes</h3>
@@ -827,7 +835,10 @@ function webonary_conf_widget($showTitle = false) {
 		<span style="color:red">These notes are only visible to super admins.</span>
 		<p>
 		<textarea name=txtNotes cols=60 rows=8><?php echo stripslashes(get_option("notes"));?></textarea>
-		<?php admin_section_end('notes', 'Save Changes'); ?>
+		<p>
+		Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option("noSearch")); ?> />
+		<p>
+		<?php admin_section_end('superadmin', 'Save Changes'); ?>
 
 		</div><?php //<!-- /tabs-container --> ?>
 		</form>

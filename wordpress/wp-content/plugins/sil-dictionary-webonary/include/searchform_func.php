@@ -12,6 +12,10 @@ function searchform_init() {
 
 function webonary_searchform() {
 	global $wpdb;
+	if(get_option('noSearch') == 1)
+	{
+		return false;
+	}
 	?>
 	<script LANGUAGE="JavaScript">
 	<!--
@@ -332,37 +336,46 @@ function add_footer()
 	$post_slug = $post->post_name;
 	if(is_front_page() || $post_slug == "browse")
 	{
-		$arrLanguageCodes = get_LanguageCodes();
-
-		$letter = "frontpage";
-		if(isset($_GET['letter']))
+		if(get_option('noSearch') != 1)
 		{
-			$letter = $_GET['letter'];
-		}
-		$x = 0;
-		foreach($arrLanguageCodes as $languagecode)
-		{
-			 if(get_option('languagecode') == $languagecode->language_code)
-			 {
-			 	$i = $x;
-			 }
-			$x++;
-		}
+			$arrLanguageCodes = get_LanguageCodes();
 
-		$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
-		$browse_title = $wpdb->get_var($sql);
+			$letter = "frontpage";
+			if(isset($_GET['letter']))
+			{
+				$letter = $_GET['letter'];
+			}
+			$x = 0;
+			foreach($arrLanguageCodes as $languagecode)
+			{
+				 if(get_option('languagecode') == $languagecode->language_code)
+				 {
+				 	$i = $x;
+				 }
+				$x++;
+			}
 
-		?>
-		<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
-			<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
-			  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
-			    <?php _e($browse_title); ?>
-			  </span>
+			$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
+
+			$browse_title = $wpdb->get_var($sql);
+
+			//$before = microtime(true);
+
+			?>
+			<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
+				<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
+				  <span style="font-size: 16px; background-color: #FFFFFF; padding: 0 10px;">
+				    <?php _e($browse_title); ?>
+				  </span>
+				</div>
+				<?php echo vernacularalphabet_func($letter); ?>
 			</div>
-			<?php echo vernacularalphabet_func($letter); ?>
-		</div>
 
-		<?php
+			<?php
+			//$after = microtime(true);
+			//echo ($after-$before) . "<br>";
+
+		}
 		if(get_option('publicationStatus') && $post_slug != "browse")
 		{
 			$publicationStatus = get_option('publicationStatus');
