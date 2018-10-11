@@ -1263,6 +1263,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 */
 	function import_xhtml_search( $doc, $post_id, $query, $relevance, $subid = 0 ) {
 
+		$arrStringsForIndexing = array();
 		if($relevance == ($this->headword_relevance - 5))
 		{
 			$subid++;
@@ -1274,6 +1275,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$fields = $xpath->query($query);
 
+		$index = 0;
 		foreach ( $fields as $field ) {
 
 			$language = $field->getAttribute( "lang" );
@@ -1289,7 +1291,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			if(strlen(trim($language)) != 0)
 			{
+				$arrStringsForIndexing[$index] = $field->textContent;
+
 				$this->import_xhtml_search_string($post_id, $field->textContent, $relevance, $language, $subid);
+				$index++;
 			}
 			if($subid > 0)
 			{
@@ -1297,6 +1302,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 		}
 
+		return $arrStringsForIndexing;
 	}
 
 	//-----------------------------------------------------------------------------//
@@ -1908,7 +1914,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[12], $this->plural);
 					//citation form
 					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[13], $this->citationform);
-
 				}
 				else
 				{

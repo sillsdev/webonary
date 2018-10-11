@@ -112,9 +112,99 @@ class ImportTest extends WP_UnitTestCase {
 		$this->assertEquals($converted, $expected);
 	}
 
-	function test_index_searchstrings()
+	function test_import_xhtml_search_Sangesari()
 	{
-		//index_searchstrings
+		$import = new sil_pathway_xhtml_Import();
+
+		$entry_xml = '<div class="entry" id="g6d6ec840-6075-4b3a-9958-b445c9bc02d5"><span class="mainheadword"><span lang="sgr"><a href="#g6d6ec840-6075-4b3a-9958-b445c9bc02d5">ärt</a></span><span lang="sgr-Xpeo-IR"><a href="#g6d6ec840-6075-4b3a-9958-b445c9bc02d5">آرت</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n.</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="g6d6ec840-6075-4b3a-9958-b445c9bc02d5"><span class="gloss"><span lang="en">flour</span><span lang="fa"><span dir="rtl">آرد</span></span></span></span></span></span></div>';
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry_xml);
+
+		$arrFieldQueries = $import->getArrFieldQueries(2);
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+
+		$this->assertEquals($arrStringsForIndexing[0], "ärt");
+		$this->assertEquals($arrStringsForIndexing[1], "آرت");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
+
+		$this->assertEquals($arrStringsForIndexing[0], "flour");
 	}
 
+	function test_import_xhtml_search_Nafaanra()
+	{
+		$import = new sil_pathway_xhtml_Import();
+
+		$entry_xml = '<div class="entry" id="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="mainheadword"><span lang="nfr"><a href="#gc0a52176-c8fc-4376-b889-0b475a6fe70c">abani</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="definitionorgloss"><span lang="en">government</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="nfr">Ala Ghana abani tia sro pan titi.</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This year there is food help from the Government.</span></span></span></span></span></span></span></span></span></div>';
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry_xml);
+
+		$arrFieldQueries = $import->getArrFieldQueries(2);
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+		$this->assertEquals($arrStringsForIndexing[0], "abani");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
+		$this->assertEquals($arrStringsForIndexing[0], "government");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[5], $import->example_sentences_relevance);
+		$this->assertEquals($arrStringsForIndexing[0], "Ala Ghana abani tia sro pan titi.");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[6], $import->example_sentences_relevance);
+		$this->assertEquals($arrStringsForIndexing[0], "This year there is food help from the Government.");
+	}
+
+	function test_import_xhtml_search_Agutaynen()
+	{
+		$import = new sil_pathway_xhtml_Import();
+
+		$entry_xml = '<div class="entry" id="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="mainheadword"><span lang="agn"><a href="#g175a8442-7a8d-4171-8f3b-9603e85cf91d">abol</a></span></span><span class="senses"><span class="sensecontent"><span class="sensenumber">1</span><span class="sense" entryguid="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="morphosyntaxanalysis"><span class="graminfoabbrev"><span lang="en">adj</span></span></span><span class="grammarnote"><span lang="en">mābol, kābol</span></span><span class="tagalog"><span lang="tl">mapurol</span></span><span class="definitionorgloss"><span lang="en">Dull, as of a blade.</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="agn"><span lang="agn">Baiden mo kay tang gedo, doro rag </span><span style="font-weight:bold;" lang="agn">kābol. </span></span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en"><span lang="en">Please sharpen my bolo, it is already very </span><span style="font-weight:bold;" lang="en">dull. </span></span></span></span></span></span></span></span></span><span class="sensecontent"><span class="sensenumber">2</span><span class="sense" entryguid="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="morphosyntaxanalysis"><span class="graminfoabbrev"><span lang="en">vt</span></span></span><span class="grammarnote"><span lang="en"><span lang="en">Undergoer: </span><span style="font-weight:bold;" lang="en">-on</span></span></span><span class="definitionorgloss"><span lang="en">To make a blade dull by misusing it.</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="agn"><span lang="agn">Indi kay </span><span style="font-weight:bold;" lang="agn">abolon</span><span lang="agn"> mo tang gonsingo!</span></span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en"><span lang="en">Please don\'t </span><span style="font-weight:bold;" lang="en">make</span><span lang="en"> my scissors </span><span style="font-weight:bold;" lang="en">dull! </span></span></span></span></span></span></span><span class="lexsensereferences"><span class="lexsensereference"><span class="ownertype_abbreviation"><span lang="en">ant</span></span><span class="configtargets"><span class="configtarget"><span class="headword"><span lang="agn"><span lang="agn"><a href="#gd2672515-c472-48e4-9823-4e031e13aca1">matarem </a></span><span style="font-weight:bold;" lang="en"><a href="#gd2672515-c472-48e4-9823-4e031e13aca1">1</a></span></span></span></span></span></span></span></span></span></span></div>';
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry_xml);
+
+		$arrFieldQueries = $import->getArrFieldQueries(2);
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+
+		$this->assertEquals($arrStringsForIndexing[0], "abol");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
+
+		$this->assertEquals($arrStringsForIndexing[0], "Dull, as of a blade.");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[5], $import->example_sentences_relevance);
+		$this->assertEquals(trim($arrStringsForIndexing[0]), "Baiden mo kay tang gedo, doro rag kābol.");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[6], $import->example_sentences_relevance);
+		$this->assertEquals(trim($arrStringsForIndexing[0]), "Please sharpen my bolo, it is already very dull.");
+	}
+
+	function test_import_xhtml_search_Iranun_Sabah()
+	{
+		$import = new sil_pathway_xhtml_Import();
+
+		$entry_xml = '<div class="entry" id="gcb70fdbe-9ce6-4529-977c-e2cdf0098890"><span class="mainheadword"><span lang="ill"><a href="#gcb70fdbe-9ce6-4529-977c-e2cdf0098890">balik</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gcb70fdbe-9ce6-4529-977c-e2cdf0098890"><span class="scientificname"><span lang="en">Clarias batrachus</span></span><span class="definition"><span class="writingsystemprefix">Eng</span><span lang="en">catfish</span><span class="writingsystemprefix">Mal</span><span lang="ms">ikan keli</span></span><span class="lexsensereferences"><span class="lexsensereference"><span class="configtargets"><span class="configtarget"><span class="headword"><span lang="ill"><span lang="ill"><a href="#g998a1ace-ec98-425b-ac0e-0cb14be67d46">seda\'</a></span><span style="font-weight:bold;font-size:58%;position:relative;top:0.3em;" lang="ill"><a href="#g998a1ace-ec98-425b-ac0e-0cb14be67d46">1</a></span></span></span></span></span></span></span></span></span></span><span class="pictures"><div class="picture"><img class="thumbnail" src="pictures\Clarias gariepinus catfish balik North African catfish intruduced mm.jpg" id="g0c73f08e-4c2c-4f58-9afb-8dc57bb65ad8" /><div class="captionContent"><span class="caption"><span lang="ill">Mabulmaddin Shaiddin</span></span></div></div></span></div>';
+
+		$doc = new DomDocument();
+		$doc->preserveWhiteSpace = false;
+		$doc->loadXML($entry_xml);
+
+		$arrFieldQueries = $import->getArrFieldQueries(2);
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+		$this->assertEquals($arrStringsForIndexing[0], "balik");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
+		$this->assertEquals($arrStringsForIndexing[0], "catfish");
+		$this->assertEquals($arrStringsForIndexing[1], "ikan keli");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[11], $import->scientific_name);
+		$this->assertEquals($arrStringsForIndexing[0], "Clarias batrachus");
+
+		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[10], $import->sense_crossref_relevance);
+		$this->assertEquals($arrStringsForIndexing[0], "seda'1");
+	}
 }
