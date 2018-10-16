@@ -46,6 +46,7 @@ if(isset($xhtmlFileURL))
 	$reader->open($xhtmlFileURL);
 
 
+	update_option("hasComposedCharacters", 0);
 	update_option("importStatus", $filetype);
 
 	/*

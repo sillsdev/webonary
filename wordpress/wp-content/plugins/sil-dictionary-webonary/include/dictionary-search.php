@@ -199,9 +199,9 @@ function sil_dictionary_custom_join($join) {
 				$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
 				$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
 				$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-				$searchquery = preg_replace('/([ə])/u', '(ə', $searchquery);
+				$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
 				$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-				$searchquery = preg_replace('/([o])/u', '(ō|ō̂|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ǫ́|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+				$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
 				$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
 				$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
 				//for vowels we add [^a-z]* which will search for any character that comes after the normal character
@@ -240,9 +240,15 @@ function sil_dictionary_custom_join($join) {
 			if (is_CJK( $search ) || $match_whole_words == 0)
 			{
 
-				/* $subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
-					addslashes( $search ) . "%' " . $collateSearch; */
-				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+				if(get_option("hasComposedCharacters") == 1)
+				{
+					$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+				}
+				else
+				{
+					$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
+						addslashes( $search ) . "%' " . $collateSearch;
+				}
 			}
 			else
 			{
