@@ -95,7 +95,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			'ś' => 's', 'î' => 'i', 'ű' => 'u', 'ć' => 'c', 'ę' => 'e', 'ŵ' => 'w', 'ṫ' => 't',
 			'ū' => 'u', 'č' => 'c', 'ö' => 'oe', 'è' => 'e', 'ŷ' => 'y', 'ą' => 'a', 'ł' => 'l',
 			'ų' => 'u', 'ů' => 'u', 'ş' => 's', 'ğ' => 'g', 'ļ' => 'l', 'ƒ' => 'f', 'ž' => 'z',
-			'ẃ' => 'w', 'ḃ' => 'b', 'å' => 'a', 'ì' => 'i', 'ï' => 'i', 'ḋ' => 'd', 'ť' => 't',
+			'ẃ' => 'w', 'ḃ' => 'b', 'ɓ' => 'b', 'å' => 'a', 'ì' => 'i', 'ï' => 'i', 'ḋ' => 'd', 'ť' => 't',
 			'ŗ' => 'r', 'ä' => 'ae', 'í' => 'i', 'ŕ' => 'r', 'ê' => 'e', 'ü' => 'ue', 'ò' => 'o', 'ꝍ' => 'o',
 			'ē' => 'e', 'ñ' => 'n', 'ń' => 'n', 'ĥ' => 'h', 'ĝ' => 'g', 'đ' => 'd', 'ĵ' => 'j',
 			'ÿ' => 'y', 'ũ' => 'u', 'ŭ' => 'u', 'ư' => 'u', 'ţ' => 't', 'ý' => 'y', 'ő' => 'o', 'ʉ' => 'u',
@@ -118,7 +118,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			'Â' => 'A', 'Ľ' => 'L', 'Ẅ' => 'W', 'Ż' => 'Z', 'Ī' => 'I', 'Ã' => 'A', 'Ġ' => 'G',
 			'Ṁ' => 'M', 'Ō' => 'O', 'Ĩ' => 'I', 'Ù' => 'U', 'Į' => 'I', 'Ź' => 'Z', 'Á' => 'A',
 			'Û' => 'U', 'Þ' => 'Th', 'Ð' => 'Dh', 'Æ' => 'Ae', 'Ĕ' => 'E', '…' => '...', '’' => '\'',
-			'–' => '-', '“' => '"', 'ʼ' => '\''
+			'–' => '-', '“' => '"', 'ʼ' => '\'', 'ʾ' => '\''
 	);
 
 	//-----------------------------------------------------------------------------//
@@ -1369,7 +1369,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			if(mb_strlen(trim($search_string), "utf-8") != mb_strlen(trim($search_string), "auto") && preg_match('/([aeiou])/', $search_string)
 					&& strtr($search_string, $this->UTF8_ACCENTS) == $search_string)
 			{
-				echo $search_string . ":" . mb_strlen(trim($search_string), "utf-8") . "|" . mb_strlen(trim($search_string), "auto") . "<br>";
+				//echo $search_string . ":" . mb_strlen(trim($search_string), "utf-8") . "|" . mb_strlen(trim($search_string), "auto") . "<br>";
 				update_option("hasComposedCharacters", 1);
 			}
 			$search_string = normalizer_normalize($search_string, Normalizer::NFC );

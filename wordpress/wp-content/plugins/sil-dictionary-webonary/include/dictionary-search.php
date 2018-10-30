@@ -117,9 +117,9 @@ function sil_dictionary_custom_join($join) {
 			$key = $wp_query->query_vars['langcode'];
 		}
 		$match_whole_words = 0;
-		if(isset($_GET['match_whole_words']))
+		if(isset($wp_query->query_vars['match_whole_words']))
 		{
-			if($_GET['match_whole_words'] == 1)
+			if($wp_query->query_vars['match_whole_words'] == 1)
 			{
 				$match_whole_words = 1;
 			}
@@ -182,7 +182,7 @@ function sil_dictionary_custom_join($join) {
 		if(!isset($wp_query->query_vars['letter']))
 		{
 			$match_accents = false;
-			if(isset($_GET['match_accents']))
+			if(isset($wp_query->query_vars['match_accents']))
 			{
 				$match_accents = true;
 			}
@@ -218,7 +218,7 @@ function sil_dictionary_custom_join($join) {
 			if(!isset($_GET['partialsearch']))
 			{
 				$partialsearch = get_option("include_partial_words");
-				if($partialsearch == 1 && $_GET['match_whole_words'] == 0)
+				if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
 				{
 					$match_whole_words = 0;
 				}
@@ -258,7 +258,6 @@ function sil_dictionary_custom_join($join) {
 						$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
 				}
 			}
-			//echo $subquery_where . "<br>";
 		}
 		//if($_GET['tax'] < 1)
 		//{
@@ -304,7 +303,7 @@ function sil_dictionary_custom_message()
 	$match_whole_words = 0;
 	if(isset($_GET['match_whole_words']))
 	{
-		if($_GET['match_whole_words'] == 1)
+		if($wp_query->query_vars['match_whole_words'] == 1)
 		{
 			$match_whole_words = 1;
 		}

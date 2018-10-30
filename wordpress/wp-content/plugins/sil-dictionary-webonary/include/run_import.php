@@ -3,7 +3,7 @@
 	{
 		$blogid = get_current_blog_id();
 		$command = "php -f " . ABSPATH . "wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php " . ABSPATH . " " . $blogid . " " . $filetype . " " . $xhtmlFileURL . " " . $userid;
-	
+
 		exec($command . ' > /tmp/webonaryimport_' . $blogid . '_' . $filetype . '.txt 2>&1 &');
 	}
 	else

@@ -374,27 +374,6 @@ add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
-?>
-	<style>
-	<?php
-	if(get_option('reversal' . $reversalnr . 'RightToLeft') == 1)
-	{
-	?>
-		#searchresults {
-		text-align: right;
-		}
-		.lpTitleLetterCell {float:right;}
-	<?php
-	}
-	else
-	{
-	?>
-	.lpTitleLetterCell {float:left;}
-	<?php
-	}
-	?>
-	</style>
-<?php
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
 	{
 		return null;
@@ -545,6 +524,25 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	}
 	.odd { background: #CCCCCC; };
 	.even { background: #FFF; };
+	</style>
+	<style>
+	<?php
+	if(get_option('reversal' . $reversalnr . 'RightToLeft') == 1)
+	{
+	?>
+		#searchresults {
+		text-align: right;
+		}
+		.lpTitleLetterCell {float:right;}
+	<?php
+	}
+	else
+	{
+	?>
+	.lpTitleLetterCell {float:left;}
+	<?php
+	}
+	?>
 	</style>
 <?php
 	$upload_dir = wp_upload_dir();

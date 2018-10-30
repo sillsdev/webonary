@@ -10,8 +10,16 @@ function searchform_init() {
     load_plugin_textdomain('sil_dictionary', false, dirname(plugin_basename(__FILE__ )).'/lang/');
 }
 
+function custom_query_vars_filter($vars) {
+	$vars[] .= 'match_accents';
+	$vars[] .= 'match_whole_words';
+	return $vars;
+}
+add_filter( 'query_vars', 'custom_query_vars_filter' );
+
 function webonary_searchform() {
 	global $wpdb;
+
 	if(get_option('noSearch') == 1)
 	{
 		return false;
