@@ -224,6 +224,10 @@ class fontMonagment
 		$arrFontName[53] = "Lateef Lateef KasLow";
 		$arrFontStorage[53] = "LateefRegOT-LateefKasLow.ttf";
 		$arrHasSubFonts[53] = false;
+
+		$arrFontName[54] = "aUI";
+		$arrFontStorage[54] = "aUI";
+		$arrHasSubFonts[54] = false;
 	}
 
 	public function get_fonts_fromCssText($css_string)
