@@ -14,7 +14,8 @@ class Slug_Custom_Route extends WP_REST_Controller {
 				),
 				array(
 						'methods'         => WP_REST_Server::CREATABLE,
-						'callback'        => array( $this, 'create_item' )
+						'callback'        => array( $this, 'create_item' ),
+						'args'            => $this->get_endpoint_args_for_item_schema( true ),
 				)
 		);
 	}
