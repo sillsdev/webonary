@@ -1,3 +1,4 @@
+v. 7.7.1 2 November 2018 fixed bug causing empty search to do weird things
 v. 7.7.0 2 November 2018 fixed issue of language name not displaying in dropdown selection
 v. 7.6.9 1 November 2018 added aUI font to repository
 v. 7.6.8 30 October 2018 added query_vars_filter, added search tests

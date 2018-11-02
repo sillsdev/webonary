@@ -20,18 +20,6 @@
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
-function SearchFilter($query) {
-	// If 's' request variable is set but empty
-	if(isset($_GET['s']))
-	{
-		if (strlen(trim($_GET['s'])) == 0){
-			$query->query_vars['s'] = NULL;
-		}
-	}
-
-	return $query;
-}
-add_filter('pre_get_posts','SearchFilter');
 
 //---------------------------------------------------------------------------//
 function sil_dictionary_select_fields() {
