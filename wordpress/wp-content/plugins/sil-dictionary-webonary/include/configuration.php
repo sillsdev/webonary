@@ -86,7 +86,7 @@ function get_LanguageCodes($languageCode = null) {
 	{
 		$sql .= " WHERE language_code != '' ";
 	}
-	$sql .= " GROUP BY name
+	$sql .= " GROUP BY language_code
 		ORDER BY language_code";
 
 	return $wpdb->get_results($sql, 'ARRAY_A');
