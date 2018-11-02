@@ -26,8 +26,9 @@ class Slug_Custom_Route extends WP_REST_Controller {
 	}
 	function create_item( $request ) {
 
+		$data = array('something');
 		//$item = $this->prepare_item_for_database( $request );
-		return new WP_REST_Response( $request, 200 );
+		return new WP_REST_Response( $data, 200 );
 	}
 
 }
