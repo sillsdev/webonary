@@ -1,4 +1,26 @@
 <?php
+
+	add_action( 'rest_api_init', 'register_routes');
+	function register_routes() {
+		$namespace = 'webonary';
+		$base = 'import2';
+		register_rest_route( $namespace, '/' . $base, array(
+			array(
+					'methods'         => WP_REST_Server::CREATABLE,
+					'callback'        => 'create_item' //array( $this, 'create_item' )
+			),
+			) );
+	}
+
+	function create_item( $request ) {
+
+		//$item = $this->prepare_item_for_database( $request );
+		echo "Import this: " . $request;
+
+	}
+
+//////////////////////////////////////////////////////////////
+
 function webonary_api_init() {
 	global $webonary_api_mytype;
 
