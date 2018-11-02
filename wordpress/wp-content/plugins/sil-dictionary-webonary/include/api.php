@@ -1,23 +1,37 @@
 <?php
+$testclass = new Slug_Custom_Route();
+add_action( 'rest_api_init', array( $testclass, 'register_routes' ) );
 
-	add_action( 'rest_api_init', 'register_routes');
+class Slug_Custom_Route extends WP_REST_Controller {
 	function register_routes() {
 		$namespace = 'webonary';
 		$base = 'import2';
 		register_rest_route( $namespace, '/' . $base, array(
-			array(
-					'methods'         => WP_REST_Server::CREATABLE,
-					'callback'        => 'create_item' //array( $this, 'create_item' )
-			),
-			) );
+				array(
+						'methods'             => WP_REST_Server::READABLE,
+						'callback'            => array( $this, 'get_items' ),
+						),
+				),
+				array(
+						'methods'         => WP_REST_Server::CREATABLE,
+						'callback'        => array( $this, 'create_item' )
+				)
+		);
 	}
 
+	function get_items($request)
+	{
+		$data = array('dogs', 'cats');
+		return new WP_REST_Response( $data, 200 );
+	}
 	function create_item( $request ) {
 
 		//$item = $this->prepare_item_for_database( $request );
-		echo "Import this: " . $request;
-
+		return new WP_REST_Response( $request, 200 );
 	}
+
+}
+////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////
 
