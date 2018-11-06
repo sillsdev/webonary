@@ -85,6 +85,8 @@ class Webonary_API_MyType {
 
 	public function import($_headers)
 	{
+		$username = "";
+		$password = "";
 		$myHeader = $_headers->get_headers();
 		if(isset(myHeader['authorization']))
 		{
