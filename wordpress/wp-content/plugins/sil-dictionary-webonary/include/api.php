@@ -70,11 +70,9 @@ class Webonary_API_MyType {
     	$namespace = 'webonary';
     	$base = 'import2';
 
-    	$apiClass = new Webonary_API_MyType();
-
     	register_rest_route( $namespace, '/' . $base, array(
     			'methods' => 'POST',
-    			'callback' => array( $apiClass, 'import' ),
+    			'callback' => array( $this, 'import' ),
     		)
     	);
     }
