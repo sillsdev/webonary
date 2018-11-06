@@ -353,10 +353,12 @@ class Webonary_API_MyType {
 
 		if(!empty($username))
 		{
+			echo $username . "#" . $password . "\n";
 			$user = wp_authenticate($username, $password );
 		}
 		else
 		{
+			echo "--\n";
 			$user = wp_authenticate( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
 		}
 
