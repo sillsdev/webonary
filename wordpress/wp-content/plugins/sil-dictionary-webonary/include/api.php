@@ -108,6 +108,8 @@ class Webonary_API_MyType {
 			$uploadPath = $arrDirectory['path'];
 			$uploadDirectory = $arrDirectory['basedir'];
 
+			echo $uploadPath . "\n";
+
 			$zipFolderPath = $uploadPath . "/" . str_replace(".zip", "", $_FILES['file']['name']);
 
 			$unzipped = $this->unzip($_FILES['file'], $uploadPath, $zipFolderPath);
@@ -379,7 +381,6 @@ class Webonary_API_MyType {
 
 			if($userrole['administrator'] == true)
 			{
-				echo "return\n";
 				return true;
 			}
 			else
