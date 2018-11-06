@@ -86,11 +86,13 @@ class Webonary_API_MyType {
 	public function import($_headers)
 	{
 		$myHeader = $_headers->get_headers();
-		$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
-		echo "userstring: " . $userstring . "\n";
-		$arrUser = explode(":", $userstring);
-		$username = $arrUser[0];
-		$password = $arrUser[1];
+		if(isset(myHeader['authorization']))
+		{
+			$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
+			$arrUser = explode(":", $userstring);
+			$username = $arrUser[0];
+			$password = $arrUser[1];
+		}
 
 		$authenticated = $this->verifyAdminPrivileges($username, $password);
 
