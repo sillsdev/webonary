@@ -87,9 +87,9 @@ class Webonary_API_MyType {
 	{
 		$username = "";
 		$password = "";
-		echo var_dump($_headers);
-		if($_headers)
+		if(!empty($_headers['WP_REST_Request']))
 		{
+			echo "NEW API\n";
 			$myHeader = $_headers->get_headers();
 			$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
 			$arrUser = explode(":", $userstring);
