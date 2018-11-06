@@ -66,17 +66,21 @@ class Webonary_API_MyType {
         return $routes;
     }
 
-    function register_new_routes($headers) {
+    function register_new_routes() {
 
-    	echo var_dump($headers);
     	$namespace = 'webonary';
     	$base = 'import2';
 
     	register_rest_route( $namespace, '/' . $base, array(
     			'methods' => 'POST',
-    			'callback' => array( $this, 'import' ),
+    			'callback' => array( $this, 'import2' ),
     		)
     	);
+    }
+
+    public function import2(WP_REST_Request $request)
+    {
+    	echo var_dump($request);
     }
 
 	public function import($_headers)
