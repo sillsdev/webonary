@@ -80,14 +80,14 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	$this->import($request);
+    	$this->import($request, true);
     }
 
-	public function import($_headers)
+	public function import($_headers, $newAPI = false)
 	{
 		$username = "";
 		$password = "";
-		if(!empty($_headers[0]['WP_REST_Request']))
+		if($newAPI)
 		{
 			echo "NEW API\n";
 			$myHeader = $_headers->get_headers();
