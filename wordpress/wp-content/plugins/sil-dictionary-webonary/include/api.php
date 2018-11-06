@@ -2,7 +2,7 @@
 //$testclass = new Slug_Custom_Route();
 $apiClass = new Webonary_API_MyType();
 
-add_action( 'rest_api_init', array( $apiClass, 'register_routes' ) );
+add_action( 'rest_api_init', array( $apiClass, 'register_new_routes' ) );
 
 /*
 class Slug_Custom_Route extends WP_REST_Controller {
