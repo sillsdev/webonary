@@ -360,7 +360,6 @@ class Webonary_API_MyType {
 		if(!empty($username))
 		{
 			$user = wp_authenticate($username, $password );
-			echo var_dump($user);
 		}
 		else
 		{
@@ -380,6 +379,7 @@ class Webonary_API_MyType {
 
 			if($userrole['administrator'] == true)
 			{
+				echo "return\n";
 				return true;
 			}
 			else
