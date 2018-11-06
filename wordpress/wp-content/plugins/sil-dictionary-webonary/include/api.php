@@ -80,7 +80,7 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	echo var_dump($request);
+    	$this->import($request);
     }
 
 	public function import($_headers)
