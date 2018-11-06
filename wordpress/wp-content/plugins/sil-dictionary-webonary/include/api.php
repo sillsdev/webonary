@@ -358,7 +358,8 @@ class Webonary_API_MyType {
 		}
 		else
 		{
-			echo "--\n";
+			echo $_SERVER['PHP_AUTH_USER'] . "|" . $_SERVER['PHP_AUTH_PW'] . "\n";
+
 			$user = wp_authenticate( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
 		}
 
