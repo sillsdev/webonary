@@ -66,7 +66,9 @@ class Webonary_API_MyType {
         return $routes;
     }
 
-    function register_new_routes() {
+    function register_new_routes($headers) {
+
+    	echo var_dump($headers);
     	$namespace = 'webonary';
     	$base = 'import2';
 
@@ -79,7 +81,6 @@ class Webonary_API_MyType {
 
 	public function import($_headers)
 	{
-		echo $email . "#" . $userid . "\n";
 		$authenticated = $this->verifyAdminPrivileges($email, $userid);
 
 		$message = "The export to Webonary is completed.\n";
