@@ -87,7 +87,8 @@ class Webonary_API_MyType {
 	{
 		$username = "";
 		$password = "";
-		if($_headers->get_headers())
+		echo var_dump($_headers);
+		if($_headers)
 		{
 			$myHeader = $_headers->get_headers();
 			$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
