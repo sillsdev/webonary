@@ -87,7 +87,7 @@ class Webonary_API_MyType {
 	{
 		$username = "";
 		$password = "";
-		if(!empty($_headers['WP_REST_Request']))
+		if(!empty($_headers[0]['WP_REST_Request']))
 		{
 			echo "NEW API\n";
 			$myHeader = $_headers->get_headers();
