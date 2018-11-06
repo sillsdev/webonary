@@ -79,6 +79,7 @@ class Webonary_API_MyType {
 
 	public function import($_headers)
 	{
+		echo $email . "#" . $userid . "\n";
 		$authenticated = $this->verifyAdminPrivileges($email, $userid);
 
 		$message = "The export to Webonary is completed.\n";
