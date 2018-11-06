@@ -80,15 +80,18 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	echo $headers = $request->get_headers();
-    	//echo $headers['authorization'][0] . "\n";
-    	echo base64_decode(str_replace("Basic ", "", $headers['authorization'][0])) . "\n";
-    	//$this->import($request);
+    	$this->import($request);
     }
 
 	public function import($_headers)
 	{
-		$authenticated = $this->verifyAdminPrivileges($email, $userid);
+		$myHeader = $_headers->get_headers();
+		$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
+		$arrUser = explode(":", $userstring);
+		$username = $arrUser[0];
+		$password = $arrUser[1];
+
+		$authenticated = $this->verifyAdminPrivileges($username, $password);
 
 		$message = "The export to Webonary is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
@@ -344,11 +347,19 @@ class Webonary_API_MyType {
     	}
     }
 
-	public function verifyAdminPrivileges(&$email = "", &$userid = 0)
+	public function verifyAdminPrivileges($username, $password)
 	{
 		global $wpdb;
 
-		$user = wp_authenticate( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
+		if(!empty($username))
+		{
+			$user = wp_authenticate($username, $password );
+		}
+		else
+		{
+			$user = wp_authenticate( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
+		}
+
 
 		if(isset($user->ID))
 		{
@@ -362,9 +373,6 @@ class Webonary_API_MyType {
 
 			if($userrole['administrator'] == true)
 			{
-				$user_info = get_userdata($user->ID);
-				$userid = $user->ID;
-				$email = $user_info->user_email;
 				return true;
 			}
 			else
