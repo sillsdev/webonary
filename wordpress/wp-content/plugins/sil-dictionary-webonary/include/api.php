@@ -82,7 +82,7 @@ class Webonary_API_MyType {
     {
     	echo $headers = $request->get_headers();
     	//echo $headers['authorization'][0] . "\n";
-    	echo base64_decode($headers['authorization'][0]) . "\n";
+    	echo base64_decode(str_replace("Basic ", "", $headers['authorization'][0])) . "\n";
     	//$this->import($request);
     }
 
