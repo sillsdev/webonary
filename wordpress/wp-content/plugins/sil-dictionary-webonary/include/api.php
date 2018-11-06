@@ -6,6 +6,13 @@ class Slug_Custom_Route extends WP_REST_Controller {
 	function register_routes() {
 		$namespace = 'webonary';
 		$base = 'import2';
+
+		register_rest_route( $namespace, '/' . $base, array(
+				'methods' => 'POST',
+				'callback' => array( $this, 'create_item' ),
+			)
+		);
+		/*
 		register_rest_route( $namespace, '/' . $base, array(
 				array(
 						'methods'             => WP_REST_Server::READABLE,
@@ -18,6 +25,7 @@ class Slug_Custom_Route extends WP_REST_Controller {
 						'args'            => $this->get_endpoint_args_for_item_schema( true ),
 				)
 		);
+		*/
 	}
 
 	function get_items($request)
