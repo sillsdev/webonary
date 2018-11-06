@@ -1,20 +1,20 @@
 <?php
-$testclass = new Slug_Custom_Route();
-add_action( 'rest_api_init', array( $testclass, 'register_routes' ) );
+//$testclass = new Slug_Custom_Route();
+$apiClass = new Webonary_API_MyType();
 
+add_action( 'rest_api_init', array( $apiClass, 'register_routes' ) );
+
+/*
 class Slug_Custom_Route extends WP_REST_Controller {
 	function register_routes() {
 		$namespace = 'webonary';
 		$base = 'import2';
 
-		$apiClass = new Webonary_API_MyType();
-
 		register_rest_route( $namespace, '/' . $base, array(
 				'methods' => 'POST',
-				'callback' => array( $apiClass, 'import' ),
+				'callback' => array( $this, 'import' ),
 			)
 		);
-		/*
 		register_rest_route( $namespace, '/' . $base, array(
 				array(
 						'methods'             => WP_REST_Server::READABLE,
@@ -27,7 +27,6 @@ class Slug_Custom_Route extends WP_REST_Controller {
 						'args'            => $this->get_endpoint_args_for_item_schema( true ),
 				)
 		);
-		*/
 	}
 
 	function get_items($request)
@@ -43,6 +42,7 @@ class Slug_Custom_Route extends WP_REST_Controller {
 	}
 
 }
+*/
 ////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////
@@ -64,6 +64,19 @@ class Webonary_API_MyType {
         );
 
         return $routes;
+    }
+
+    function register_new_routes() {
+    	$namespace = 'webonary';
+    	$base = 'import2';
+
+    	$apiClass = new Webonary_API_MyType();
+
+    	register_rest_route( $namespace, '/' . $base, array(
+    			'methods' => 'POST',
+    			'callback' => array( $apiClass, 'import' ),
+    		)
+    	);
     }
 
 	public function import($_headers)
