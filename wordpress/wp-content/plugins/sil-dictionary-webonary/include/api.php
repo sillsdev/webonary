@@ -7,9 +7,11 @@ class Slug_Custom_Route extends WP_REST_Controller {
 		$namespace = 'webonary';
 		$base = 'import2';
 
+		$apiClass = new Webonary_API_MyType();
+
 		register_rest_route( $namespace, '/' . $base, array(
 				'methods' => 'POST',
-				'callback' => array( $this, 'create_item' ),
+				'callback' => array( $apiClass, 'import' ),
 			)
 		);
 		/*
