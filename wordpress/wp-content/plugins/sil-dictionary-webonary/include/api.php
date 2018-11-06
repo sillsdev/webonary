@@ -80,8 +80,9 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	echo $request['authorization'] . "\n";
-    	echo base64_decode($request['authorization']) . "\n";
+    	echo $headers = $request->get_headers();
+    	echo $headers['authorization'] . "\n";
+    	echo base64_decode($headers['authorization']) . "\n";
     	//$this->import($request);
     }
 
