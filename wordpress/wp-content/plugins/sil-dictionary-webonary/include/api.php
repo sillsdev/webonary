@@ -72,7 +72,7 @@ class Webonary_API_MyType {
     	$base = 'import2';
 
     	register_rest_route( $namespace, '/' . $base, array(
-    			'methods' => 'POST' | WP_REST_Server::CREATABLE | WP_REST_Server::get_raw_data(),
+    			'methods' => 'POST' | WP_REST_Server::CREATABLE,
     			'callback' => array( $this, 'import2' ),
     		)
     	);
@@ -224,6 +224,11 @@ class Webonary_API_MyType {
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
 	public function unzip($zipfile, $uploadPath, $zipFolderPath)
 	{
+		if (!function_exists('wp_handle_upload'))
+		{
+			require_once( ABSPATH . '/wp-admin/includes/file.php' );
+		}
+
 		$overrides = array( 'test_form' => false, 'test_type' => false );
 		$file = wp_handle_upload($zipfile, $overrides);
 
