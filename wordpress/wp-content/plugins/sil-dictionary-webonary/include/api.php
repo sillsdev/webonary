@@ -80,7 +80,6 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	echo var_dump($_FILES);
     	$this->import($request, true);
     }
 
@@ -95,6 +94,8 @@ class Webonary_API_MyType {
 			$arrUser = explode(":", $userstring);
 			$username = $arrUser[0];
 			$password = $arrUser[1];
+			$_headers->set_file_params( $_FILES );
+			$_headers->set_body($this->get_raw_data());
 		}
 
 		$authenticated = $this->verifyAdminPrivileges($username, $password);
