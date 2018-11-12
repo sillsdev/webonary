@@ -80,9 +80,9 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	$this->import($request, true);
-
     	echo "file: " . $_FILES['file']['name'] . "\n";
+
+    	$this->import($request, true);
     }
 
 	public function import($_headers, $newAPI = false)
