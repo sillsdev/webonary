@@ -81,6 +81,8 @@ class Webonary_API_MyType {
     public function import2(WP_REST_Request $request)
     {
     	$this->import($request, true);
+
+    	echo "file: " . $_FILES['file']['name'] . "\n";
     }
 
 	public function import($_headers, $newAPI = false)
@@ -89,7 +91,6 @@ class Webonary_API_MyType {
 		$password = "";
 		if($newAPI)
 		{
-			echo "NEW API\n";
 			$myHeader = $_headers->get_headers();
 			$userstring = base64_decode(str_replace("Basic ", "", $myHeader['authorization'][0]));
 			$arrUser = explode(":", $userstring);
@@ -107,8 +108,6 @@ class Webonary_API_MyType {
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
 			$uploadDirectory = $arrDirectory['basedir'];
-
-			echo $uploadPath . "\n";
 
 			$zipFolderPath = $uploadPath . "/" . str_replace(".zip", "", $_FILES['file']['name']);
 

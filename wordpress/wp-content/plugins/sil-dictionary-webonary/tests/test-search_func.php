@@ -78,4 +78,5 @@ class SearchTest extends WP_UnitTestCase {
 		//should return this as second, since word is in example sentence, so result comes lower down
 		$this->assertEquals($arrPosts[1]->post_title, "abani");
 	}
+
 }
