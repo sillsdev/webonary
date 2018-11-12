@@ -72,7 +72,7 @@ class Webonary_API_MyType {
     	$base = 'import2';
 
     	register_rest_route( $namespace, '/' . $base, array(
-    			'methods' => 'POST' | WP_REST_Server::CREATABLE,
+    			'methods' => 'POST' | WP_REST_Server::CREATABLE | WP_REST_Server::get_raw_data(),
     			'callback' => array( $this, 'import2' ),
     		)
     	);
@@ -80,8 +80,10 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
+    	/*
     	$request->set_file_params( $_FILES );
     	$request->set_body(WP_REST_Server::get_raw_data());
+    	*/
 
     	$this->import($request, true);
     }
