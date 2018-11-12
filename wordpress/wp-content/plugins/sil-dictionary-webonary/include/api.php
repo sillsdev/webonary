@@ -80,8 +80,6 @@ class Webonary_API_MyType {
 
     public function import2(WP_REST_Request $request)
     {
-    	echo "file: " . $_FILES['file']['name'] . "\n";
-
     	$this->import($request, true);
     }
 
@@ -106,6 +104,7 @@ class Webonary_API_MyType {
 		if($authenticated){
 
 			$arrDirectory = wp_upload_dir();
+			echo var_dump($arrDirectory);
 			$uploadPath = $arrDirectory['path'];
 			$uploadDirectory = $arrDirectory['basedir'];
 
