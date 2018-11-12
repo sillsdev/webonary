@@ -94,8 +94,10 @@ class Webonary_API_MyType {
 			$arrUser = explode(":", $userstring);
 			$username = $arrUser[0];
 			$password = $arrUser[1];
-			$_headers->set_file_params( $_FILES );
-			$_headers->set_body($this->get_raw_data());
+			$request = new WP_REST_Request( $_SERVER['REQUEST_METHOD'], '/' );
+			$request->set_file_params( $_FILES );
+			$request->set_body($_headers->get_raw_data());
+			$this->dispatch( $request );
 		}
 
 		$authenticated = $this->verifyAdminPrivileges($username, $password);
