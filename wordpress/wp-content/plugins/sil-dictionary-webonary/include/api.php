@@ -5,48 +5,6 @@ $apiClass = new Webonary_API_MyType();
 add_action( 'rest_api_init', array( $apiClass, 'register_new_routes' ) );
 
 /*
-class Slug_Custom_Route extends WP_REST_Controller {
-	function register_routes() {
-		$namespace = 'webonary';
-		$base = 'import2';
-
-		register_rest_route( $namespace, '/' . $base, array(
-				'methods' => 'POST',
-				'callback' => array( $this, 'import' ),
-			)
-		);
-		register_rest_route( $namespace, '/' . $base, array(
-				array(
-						'methods'             => WP_REST_Server::READABLE,
-						'callback'            => array( $this, 'get_items' ),
-						),
-				),
-				array(
-						'methods'         => WP_REST_Server::CREATABLE,
-						'callback'        => array( $this, 'create_item' ),
-						'args'            => $this->get_endpoint_args_for_item_schema( true ),
-				)
-		);
-	}
-
-	function get_items($request)
-	{
-		$data = array('dogs', 'cats');
-		return new WP_REST_Response( $data, 200 );
-	}
-	function create_item( $request ) {
-
-		$data = array('something');
-		//$item = $this->prepare_item_for_database( $request );
-		return new WP_REST_Response( $data, 200 );
-	}
-
-}
-*/
-////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////
-
 function webonary_api_init() {
 	global $webonary_api_mytype;
 
@@ -55,8 +13,10 @@ function webonary_api_init() {
 }
 
 add_action( 'wp_json_server_before_serve', 'webonary_api_init' );
+*/
 
 class Webonary_API_MyType {
+	/*
     public function register_routes( $routes ) {
     	//creates a route like this: https://test.webonary.org/wp-json/webonary/import
         $routes['/webonary/import'] = array(
@@ -65,30 +25,26 @@ class Webonary_API_MyType {
 
         return $routes;
     }
-
+	*/
     function register_new_routes() {
 
     	$namespace = 'webonary';
-    	$base = 'import2';
+    	$base = 'import';
 
     	register_rest_route( $namespace, '/' . $base, array(
     			'methods' => 'POST' | WP_REST_Server::CREATABLE,
-    			'callback' => array( $this, 'import2' ),
+    			'callback' => array( $this, 'import' ),
     		)
     	);
     }
 
+    /*
     public function import2(WP_REST_Request $request)
     {
-    	/*
-    	$request->set_file_params( $_FILES );
-    	$request->set_body(WP_REST_Server::get_raw_data());
-    	*/
-
     	$this->import($request, true);
     }
-
-	public function import($_headers, $newAPI = false)
+	*/
+	public function import($_headers, $newAPI = true)
 	{
 		$username = "";
 		$password = "";
