@@ -220,7 +220,7 @@ class Webonary_API_MyType {
 	public function unzip($zipfile, $uploadPath, $zipFolderPath)
 	{
 		$overrides = array( 'test_form' => false, 'test_type' => false );
-		echo "zipfile: " . $zipfile . "\n";
+		echo var_dump($zipfile) . "\n";
 		$file = wp_handle_upload($zipfile, $overrides);
 
 		if (isset( $file['error']))
