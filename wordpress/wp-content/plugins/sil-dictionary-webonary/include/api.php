@@ -81,7 +81,7 @@ class Webonary_API_MyType {
     public function import2(WP_REST_Request $request)
     {
     	$request->set_file_params( $_FILES );
-    	$request->set_body($this->get_raw_data());
+    	$request->set_body(WP_REST_Server::get_raw_data());
 
     	$this->import($request, true);
     }
