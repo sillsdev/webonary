@@ -20,6 +20,19 @@
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
+	/*
+	function SearchFilter($query) {
+		// If 's' request variable is set but empty
+		if(isset($_GET['s']))
+		{
+			if (strlen(trim($_GET['s'])) == 0){
+				$query->query_vars['s'] = '-';
+			}
+		}
+		return $query;
+	}
+	add_filter('pre_get_posts','SearchFilter');
+	*/
 
 //---------------------------------------------------------------------------//
 function sil_dictionary_select_fields() {
@@ -346,6 +359,14 @@ function sil_dictionary_custom_where($where) {
 				{
 					$where .= " AND $wpdb->posts.post_content_filtered = '" . $letter ."' " . $collate . " AND $wpdb->posts.post_content_filtered != '' ";
 				}
+			}
+		}
+		else
+		{
+			//to make sure no search results are returned with empty query
+			if($_GET['tax'] < 1 && isset($wp_query->query_vars['search']))
+			{
+				$where .= " AND 1 = 2 ";
 			}
 		}
 	}

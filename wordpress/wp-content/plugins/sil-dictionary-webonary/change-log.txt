@@ -1,4 +1,5 @@
-v. 7.7.2 2 November 2018 API testing
+v. 7.7.3 13 November 2018 fixed issue with empty search string
+v. 7.7.2 2 November 2018 Upload to Webonary from FLEx now uses built-in API
 v. 7.7.1 2 November 2018 fixed bug causing empty search to do weird things
 v. 7.7.0 2 November 2018 fixed issue of language name not displaying in dropdown selection
 v. 7.6.9 1 November 2018 added aUI font to repository
