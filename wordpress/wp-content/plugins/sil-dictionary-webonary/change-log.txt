@@ -1,3 +1,4 @@
+v. 7.7.4 19 November 2018 changed the thumbnail generation size from 96px to 200px
 v. 7.7.3 13 November 2018 fixed issue with empty search string
 v. 7.7.2 2 November 2018 Upload to Webonary from FLEx now uses built-in API
 v. 7.7.1 2 November 2018 fixed bug causing empty search to do weird things
