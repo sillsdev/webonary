@@ -130,7 +130,7 @@ class Webonary_API_MyType {
 					}
 					else
 					{
-						$this->resize_image ( $uploadPath . "/images/original", 200, 200, $uploadPath . "/images/thumbnail" );
+						$this->resize_image ( $uploadPath . "/images/original", 150, 150, $uploadPath . "/images/thumbnail" );
 					}
 
 					$this->recursiveRemoveDir($zipFolderPath . "/pictures");
