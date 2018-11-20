@@ -4,29 +4,9 @@ $apiClass = new Webonary_API_MyType();
 
 add_action( 'rest_api_init', array( $apiClass, 'register_new_routes' ) );
 
-/*
-function webonary_api_init() {
-	global $webonary_api_mytype;
-
-	$webonary_api_mytype = new Webonary_API_MyType();
-	add_filter( 'json_endpoints', array( $webonary_api_mytype, 'register_routes' ) );
-}
-
-add_action( 'wp_json_server_before_serve', 'webonary_api_init' );
-*/
-
 class Webonary_API_MyType {
-	/*
-    public function register_routes( $routes ) {
-    	//creates a route like this: https://test.webonary.org/wp-json/webonary/import
-        $routes['/webonary/import'] = array(
-        	array( array( $this, 'import'), WP_JSON_Server::CREATABLE | WP_JSON_Server::ACCEPT_RAW ),
-        );
 
-        return $routes;
-    }
-	*/
-    function register_new_routes() {
+	function register_new_routes() {
 
     	$namespace = 'webonary';
     	$base = 'import';
@@ -38,12 +18,6 @@ class Webonary_API_MyType {
     	);
     }
 
-    /*
-    public function import2(WP_REST_Request $request)
-    {
-    	$this->import($request, true);
-    }
-	*/
 	public function import($_headers, $newAPI = true)
 	{
 		$username = "";

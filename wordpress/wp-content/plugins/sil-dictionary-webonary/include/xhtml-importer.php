@@ -49,15 +49,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	public $verbose;
 
 	/*
-	 * Table and taxonomy attributes
-	 */
-
-	public $search_table_name = SEARCHTABLE;
-	public $reversal_table_name = REVERSALTABLE;
-	public $pos_taxonomy = 'sil_parts_of_speech';
-	public $semantic_domains_taxonomy = 'sil_semantic_domains';
-
-	/*
 	 * Relevance level attributes
 	 */
 
@@ -515,241 +506,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $arrFieldQueries;
 	}
 
-	function get_category_id() {
-		global $wpdb;
-
-		$catid = $wpdb->get_var( "
-			SELECT term_id
-			FROM $wpdb->terms
-			WHERE slug LIKE 'webonary'");
-
-		if(!isset($catid))
-		{
-			$catid = 0;
-		}
-
-		return $catid;
-	}
-
-	function get_duplicate($postid, $searchstring, $relevance, $lang) {
-		global $wpdb;
-
-		$isDuplicate = false;
-
-		$duplicatePostId = $wpdb->get_var( "
-			SELECT post_id
-			FROM $this->search_table_name
-			WHERE post_id = " . $postid . " AND search_strings = '" . addslashes($searchstring) .
-			"' AND relevance = ". $relevance . " AND language_code = '" . $lang . "'");
-
-		if($duplicatePostId == $postid)
-		{
-			$isDuplicate = true;
-		}
-
-		return $isDuplicate;
-	}
-
-	function get_import_status() {
-		global $wpdb;
-		$status = "";
-
-		if(get_option("useSemDomainNumbers") == 0)
-		{
-			$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix  . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
-
-			$sdCount = $wpdb->get_var($sql);
-
-			if($sdCount > 0)
-			{
-				$status .= "<br>";
-				$status .= "<span style=\"color:red;\">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check \"Abbrevation\" under Senses/Semantic Domains.</span><br>";
-				$status .= "Tip: You can hide the domain numbers from displaying, <a href=\" https://www.webonary.org/help/tips-tricks/\" target=_\"blank\">see here</a>.";
-				$status .= "<hr>";
-			}
-		}
-
-		$countLinksConverted = 0;
-
-		$catid = $this->get_category_id();
-
-		if($catid == NULL)
-		{
-			$catid = 0;
-		}
-
-		$sql = "SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged FROM " . $wpdb->prefix . "posts " .
-		" WHERE post_type IN ('post', 'revision') AND " .
-		" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") " .
-		" GROUP BY pinged " .
-		" ORDER BY post_date DESC";
-
-		$arrPosts = $wpdb->get_results($sql);
-
-		$sql = " SELECT * " .
-				" FROM " . $this->reversal_table_name;
-
-		$arrReversalsImported = $wpdb->get_results($sql);
-
-		$arrIndexed = $this->get_number_of_entries();
-
-		if(count($arrPosts) > 0)
-		{
-			$countIndexed = 0;
-			$totalImportedPosts = count($this->get_posts());
-
-			foreach($arrPosts as $posts)
-			{
-				if($posts->pinged == "indexed")
-				{
-					$countIndexed = $posts->entryCount;
-				}
-				elseif($posts->pinged == "linksconverted")
-				{
-
-					$countLinksConverted = $posts->entryCount;
-				}
-				else
-				{
-
-					$countImported = $posts->entryCount;
-				}
-			}
-
-			$countIndexed = $countIndexed + $countLinksConverted;
-
-			/*
-			$importFinished = false;
-			if($countIndexed == $totalImportedPosts || $countLinksConverted == $totalImportedPosts)
-			{
-				$importFinished = true;
-			}
-			*/
-			//$status .= "<form method=\"post\" action=\"" . $_SERVER['REQUEST_URI'] . "\">";
-			if(get_option("importStatus") == "importFinished")
-			{
-				if($posts->post_date != NULL)
-				{
-					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time)";
-					$status .= "<br>";
-				}
-			}
-			else
-			{
-				if(!get_option("importStatus"))
-				{
-					echo "The import status will display here.<br>";
-				}
-				else
-				{
-					$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
-					$status .= " You will receive an email when the import has completed. You don't need to stay online.";
-					$status .= "<br>";
-
-					if(get_option("importStatus") == "indexing")
-					{
-						$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
-
-						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
-					}
-					elseif(get_option("importStatus") == "configured")
-					{
-						$status .= $countImported . " entries imported";
-
-						if($arrPosts[0]->timediff > 5)
-						{
-							$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
-						}
-					}
-					elseif(get_option("importStatus") == "importingReversals")
-					{
-						$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
-
-						$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
-					}
-					elseif(get_option("importStatus") == "indexingReversals" && count($arrReversalsImported) > 0)
-					{
-						$status .= "<strong>Indexing reversal entries.</strong>";
-
-						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnIndexReversals\" value=\"Index reversal entries (" . count($arrReversalsImported)  . " left)\"/>";
-					}
-				}
-			}
-
-			if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts || $countLinksConverted == $totalImportedPosts))
-			{
-				$status .= "<br>";
-				$status .= "<div style=\"float: left;\">";
-					$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
-				$status .= "</div>";
-				$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
-				$x = 0;
-				foreach($arrIndexed as $indexed)
-				{
-					$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
-
-					$arrReversalsFiltered = array_filter($arrReversalsImported, function($el) { return $el->post_id == 0; });
-
-					$sql = "SELECT COUNT(language_code) AS missing " .
-							" FROM " . $this->search_table_name .
-							" WHERE post_id = 0 AND language_code = '" . $indexed->language_code . "'" .
-							" GROUP BY language_code";
-
-					$missingReversals = $wpdb->get_var($sql);
-
-					if($missingReversals > 0)
-					{
-						$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
-					}
-
-					$status .= "</div></div>";
-				}
-				$status .= "</div>";
-				$status .= "<br style=\"clear:both;\">";
-
-			}
-
-			//$status .= "</form>";
-
-			return $status;
-		}
-		else
-		{
-			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
-		}
-
-		$sql = "SELECT post_date, pinged FROM " . $wpdb->prefix . "posts ".
-		" WHERE post_type IN ('post', 'revision') AND ".
-		" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") ".
-		" AND pinged = 'indexed' ".
-		" ORDER BY post_date DESC";
-
-		$arrIndexed = $wpdb->get_results($sql);
-
-		if(count($arrPosts) > 0 || count($arrIndexed) > 0)
-		{
-			if($arrPosts[0]->pinged != "indexed")
-			{
-				$entries = count($arrPosts);
-				if(count($arrIndexed) > 0)
-				{
-					$entries = get_option("totalConfiguredEntries") - count($arrIndexed);
-				}
-
-				$status .= $entries . " of " . get_option("totalConfiguredEntries") . " entries imported (not yet indexed)<br>";
-			}
-			else
-			{
-				$status .= "Indexing " . count($arrIndexed) . " of " . get_option("totalConfiguredEntries") . " entries<br>";
-			}
-			return $status;
-		}
-		else
-		{
-			return "No entries have been imported yet.";
-		}
-	}
-
 	function get_latest_xhtmlfile(){
 		global $wpdb;
 
@@ -769,99 +525,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			return null;
 		}
-	}
-
-	function get_number_of_entries()
-	{
-		global $wpdb;
-
-		//gets the language codes for all entries plus number of indexed entries
-		//(number of reversal entries is not exact, which is why we get reversal entries eeparate)
-		$sql = " SELECT language_code, COUNT(post_id) AS totalIndexed " .
-				" FROM " . $this->search_table_name .
-				" WHERE relevance = 100 " .
-				" GROUP BY language_code ";
-
-		$arrIndexed = $wpdb->get_results($sql);
-
-		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
-				" FROM " . $this->reversal_table_name .
-				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . $this->reversal_table_name . ".language_code " .
-				" GROUP BY language_code " .
-				" ORDER BY name ASC";
-
-		$arrReversals = $wpdb->get_results($sql);
-
-		$r = 0;
-		$s = 0;
-		foreach($arrIndexed as $indexed)
-		{
-
-			$sqlLangName = "SELECT name as language_name " .
-			" FROM $wpdb->terms " .
-			" WHERE slug = '" . $indexed->language_code . "'";
-
-			$language_name = $wpdb->get_var($sqlLangName);
-
-			$arrIndexed[$r]->language_name = $language_name;
-
-			if($arrReversals[$s]->language_code == $indexed->language_code)
-			{
-				$arrIndexed[$r]->totalIndexed = $arrReversals[$s]->totalIndexed;
-				$s++;
-			}
-			$r++;
-		}
-
-		//legacy code, to count approximate number of reversals before we imported reversal entries into
-		//the reversal table
-		if(count($arrReversals) == 0 && count($arrIndexed) > 0)
-		{
-			$x = 0;
-			$count_posts = count($this->get_posts(''));
-			foreach($arrIndexed as $indexed)
-			{
-				$sql = " SELECT search_strings " .
-					" FROM " . $this->search_table_name .
-					" WHERE language_code = '" . $indexed->language_code . "' " .
-					" AND relevance >= 95 " .
-					" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
-
-				$arrIndexGrouped = $wpdb->get_results($sql);
-
-				if($count_posts != $indexed->totalIndexed && ($count_posts + 1) != $indexed->totalIndexed)
-				{
-					$arrIndexed[$x]->totalIndexed = count($arrIndexGrouped);
-				}
-				$x++;
-			}
-		}
-
-		return $arrIndexed;
-	}
-
-	function get_posts($index = ""){
-		global $wpdb;
-
-		// @todo: If $headword_text has a double quote in it, this
-		// will probably fail.
-		$sql = "SELECT ID, post_title, post_content, post_parent, menu_order " .
-			" FROM $wpdb->posts " .
-			" INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID " .
-			" WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $this->get_category_id();
-		//using pinged field for not yet indexed
-		$sql .= " AND post_status = 'publish'";
-		if(strlen($index) > 0 && $index != "-")
-		{
-		 $sql .= " AND pinged = '" . $index . "'";
-		}
-		if($index == "-")
-		{
-		 $sql .= " AND pinged = ''";
-		}
-		$sql .= " ORDER BY menu_order ASC";
-
-		return $wpdb->get_results($sql);
 	}
 
 	/**
@@ -1062,6 +725,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 		}
 
+		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
+		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
+		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
+
 		// Find the headword. Should be only 1 headword at most. The
 		// $headword->textContent picks up the value of both the headword and
 		// the homograph number. This is presumably because the XML DOM
@@ -1069,9 +736,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		// within the element node." The XHTML for an entry with homograph
 		// number looks like this:
 		// <span class="headword" lang="ii">my headword<span class="xhomographnumber">1</span></span>
-		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
-		$doc = $this->convert_fieldworks_audio_to_wordpress($doc);
-		$doc = $this->convert_fieldworks_video_to_wordpress($doc);
 
 		if($isNewFLExExport)
 		{
@@ -1129,11 +793,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$headword_text = normalizer_normalize($headword->textContent, Normalizer::NFC );
 			}
 
-			$flexid = "";
-			//if($this->dom_xpath->query('//xhtml:div[@id]', $entry)->length > 0)
-			//{
 			$flexid = $entry->getAttribute("id");
-			//}
 
 			if(strlen(trim($flexid)) == 0)
 			{
@@ -1143,8 +803,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$entry->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 
 			$entry_xml = $doc->saveXML($entry, LIBXML_NOEMPTYTAG);
-
-			//echo $entry_xml . "<hr>";
 
 			//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
 			//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
@@ -1158,10 +816,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			//make all links that are not using onclick (e.g. have format "#">) use the url path
 			$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . get_bloginfo('wpurl') . '/\\2">', $entry_xml);
-
-			//video character is in utf8mb4 which is currently not supported on the webonary server
-			//therefore we convert it into an image.
-			//$entry_xml = str_replace("🎥", "<img src=\"" . get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/video.png\"/>", $entry_xml);
 
 			$entry_xml = addslashes($entry_xml);
 			$entry_xml = stripslashes($entry_xml);
@@ -1374,7 +1028,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 			$search_string = normalizer_normalize($search_string, Normalizer::NFC );
 			$sql = $wpdb->prepare(
-				"INSERT IGNORE INTO `". $this->search_table_name . "` (post_id, language_code, search_strings, relevance, subid)
+				"INSERT IGNORE INTO `". Config::$search_table_name . "` (post_id, language_code, search_strings, relevance, subid)
 				VALUES (%d, '%s', '%s', %d, %d)",
 				$post_id, $language_code, trim($search_string), $relevance, $subid );
 
@@ -1416,14 +1070,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			wp_insert_term(
 				$pos_name,
-				$this->pos_taxonomy,
+				Config::$pos_taxonomy,
 				array(
 					'description' => $pos_name,
 					'slug' => $pos_name
 				)
 			);
 
-			wp_set_object_terms( $post_id, $pos_name, $this->pos_taxonomy, true);
+			wp_set_object_terms( $post_id, $pos_name, Config::$pos_taxonomy, true);
 		}
 	}
 
@@ -1475,7 +1129,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					$arrTerm = wp_insert_term(
 						$domain_name,
-						$this->semantic_domains_taxonomy,
+						Config::$semantic_domains_taxonomy,
 						array(
 							'description' => trim($domain_name),
 							'slug' => $sd_number_text
@@ -1508,7 +1162,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					if(isset($termid))
 					{
-						wp_set_object_terms( $post_id, $domain_name, $this->semantic_domains_taxonomy, true);
+						wp_set_object_terms( $post_id, $domain_name, Config::$semantic_domains_taxonomy, true);
 					}
 
 					$arrTerm = null;
@@ -1604,7 +1258,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				$reversal_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $postentry);
 			}
-			$sql = "SELECT id FROM " . $this->reversal_table_name . " ORDER BY id+0 DESC LIMIT 0,1 ";
+			$sql = "SELECT id FROM " . Config::$reversal_table_name . " ORDER BY id+0 DESC LIMIT 0,1 ";
 
 			$lastid = $wpdb->get_var($sql);
 
@@ -1681,7 +1335,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					//$doc->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 
-					$sql = "SELECT id, reversal_head FROM " . $this->reversal_table_name;
+					$sql = "SELECT id, reversal_head FROM " . Config::$reversal_table_name;
 					$sql .= " WHERE ";
 					if(strpos($postentry, "reversalindexentry") > 0)
 					{
@@ -1714,14 +1368,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
-								"INSERT IGNORE INTO `". $this->reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder, browseletter)
+								"INSERT IGNORE INTO `". Config::$reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder, browseletter)
 								VALUES('%s', '%s', '%s', '%s', %d, '%s')",
 								$id, $reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter, $browseletter);
 					}
 					else
 					{
 						$sql = $wpdb->prepare(
-								"UPDATE " . $this->reversal_table_name . "
+								"UPDATE " . Config::$reversal_table_name . "
 								SET reversal_content = '%s',
 								browseletter = '%s'
 								WHERE reversal_head = '%s' AND language_code = '%s' AND $id = '%s'",
@@ -1771,7 +1425,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$headword_text = trim($entry->textContent);
 
 		//this is used for the browse view sort order
-		$sql = "UPDATE " . $this->search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . COLLATION . "_BIN' AND relevance >= 95";
+		$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . COLLATION . "_BIN' AND relevance >= 95";
 		$wpdb->query( $sql );
 
 		//this is used for the search sort order
@@ -1864,12 +1518,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		global $wpdb;
 
-		$search_table_exists = $wpdb->get_var( "show tables like '$this->search_table_name'" ) == $this->search_table_name;
-		$pos_taxonomy_exists = taxonomy_exists( $this->pos_taxonomy );
-		$semantic_domains_taxonomy_exists = taxonomy_exists( $this->semantic_domains_taxonomy );
+		$search_table_exists = $wpdb->get_var( "show tables like '" . Config::$search_table_name . "'" ) == Config::$search_table_name;
+		$pos_taxonomy_exists = taxonomy_exists( Config::$pos_taxonomy );
+		$semantic_domains_taxonomy_exists = taxonomy_exists( Config::$semantic_domains_taxonomy );
 
 		if ( $search_table_exists ) {
-			$arrPosts = $this->get_posts('-');
+			$arrPosts = Info::posts('-');
 
 			$subid = 1;
 
@@ -1883,7 +1537,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$subentry = false;
 				if ( $post->ID ){
 
-					$sql = $wpdb->prepare("DELETE FROM `". $this->search_table_name . "` WHERE post_id = %d", $post->ID);
+					$sql = $wpdb->prepare("DELETE FROM `". Config::$search_table_name . "` WHERE post_id = %d", $post->ID);
 
 					$wpdb->query( $sql );
 					//set as indexed
@@ -1969,7 +1623,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 
 				//this is used for the browse view sort order, no longer needed for
-				$sql = "UPDATE " . $this->search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
+				$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
 				$wpdb->query( $sql );
 
 				/*

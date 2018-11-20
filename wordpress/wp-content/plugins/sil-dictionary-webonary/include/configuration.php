@@ -1,4 +1,15 @@
 <?php
+class Config
+{
+	/*
+	 * Table and taxonomy attributes
+	 */
+
+	public static $search_table_name = SEARCHTABLE;
+	public static $reversal_table_name = REVERSALTABLE;
+	public static $pos_taxonomy = 'sil_parts_of_speech';
+	public static $semantic_domains_taxonomy = 'sil_semantic_domains';
+}
 /**
  * Set up the SIL Dictionary in WordPress Dashboard Tools
  */
@@ -387,7 +398,7 @@ function webonary_conf_widget($showTitle = false) {
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
 				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
-			<strong>Import Status:</strong> <?php echo $a; echo $import->get_import_status(); ?>
+			<strong>Import Status:</strong> <?php echo $a; echo Info::import_status(); ?>
 			</form>
 			</div>
 

@@ -240,9 +240,7 @@ function webonary_searchform() {
 		<div style="padding:3px; border:none;">
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
-		$import = new sil_pathway_xhtml_Import();
-
-		$arrIndexed = $import->get_number_of_entries();
+		$arrIndexed = Info::number_of_entries();
 
 		$numberOfEntriesText = "";
 		$language_name = "";

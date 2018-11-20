@@ -328,7 +328,7 @@ function remove_entries ($pinged = null) {
 
 	$import = new sil_pathway_xhtml_Import();
 
-	$catid = $import->get_category_id();
+	$catid = Info::category_id();
 
 	//just posts in category "webonary"
 	$sql = "DELETE FROM " . $wpdb->prefix . "posts " .
