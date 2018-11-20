@@ -57,7 +57,7 @@ if(isset($xhtmlFileURL))
 	 */
 
 
-	//Config::$search_table_name = $wpdb->prefix . 'sil_search';
+	Config::$search_table_name = $wpdb->prefix . 'sil_search';
 
 	$current_user = wp_get_current_user();
 
