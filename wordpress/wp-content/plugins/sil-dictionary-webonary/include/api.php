@@ -255,32 +255,37 @@ class Webonary_API_MyType {
     			{
 	    			$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
-	    			if($ext == "png")
-	    			{
-	    				$src_image = imagecreatefrompng($src . "/" . $file);
-	    			}
-	    			elseif($ext == "gif")
-	    			{
-	    				$src_image = imagecreatefromgif($src . "/" . $file);
-	    			}
-	    			else
-	    			{
-	    				$src_image = imagecreatefromjpeg($src . "/" . $file);
-	    			}
-	    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
-	    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
+	    			try {
+		    			if($ext == "png")
+		    			{
+		    				$src_image = imagecreatefrompng($src . "/" . $file);
+		    			}
+		    			elseif($ext == "gif")
+		    			{
+		    				$src_image = imagecreatefromgif($src . "/" . $file);
+		    			}
+		    			else
+		    			{
+		    				$src_image = imagecreatefromjpeg($src . "/" . $file);
+		    			}
+		    			$dst_image  = imagecreatetruecolor($newwidth, $newheight);
+		    			imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
 
-	    			if($ext == "png")
-	    			{
-	    				imagepng($dst_image, $dst . "/" . $file);
+		    			if($ext == "png")
+		    			{
+		    				imagepng($dst_image, $dst . "/" . $file);
+		    			}
+		    			elseif($ext == "gif")
+		    			{
+		    				imagegif($dst_image, $dst . "/" . $file);
+		    			}
+		    			else
+		    			{
+		    				imagejpeg($dst_image, $dst . "/" . $file, 90);
+		    			}
 	    			}
-	    			elseif($ext == "gif")
-	    			{
-	    				imagegif($dst_image, $dst . "/" . $file);
-	    			}
-	    			else
-	    			{
-	    				imagejpeg($dst_image, $dst . "/" . $file, 90);
+	    			catch(Exception $e) {
+	    				echo 'There was an error converting image file to thumbnail: ' .$e->getMessage();
 	    			}
     			}
     			else
