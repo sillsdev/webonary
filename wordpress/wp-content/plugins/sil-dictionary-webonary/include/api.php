@@ -31,12 +31,13 @@ class Webonary_API_MyType {
 			$password = $arrUser[1];
 		}
 
-		$authenticated = $this->verifyAdminPrivileges($username, $password);
+		$user = $this->verifyAdminPrivileges($username, $password);
 
 		$message = "The export to Webonary is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 
-		if($authenticated){
+		if(isset($user)){
+			$userid = $user->ID;
 
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
@@ -323,7 +324,8 @@ class Webonary_API_MyType {
 
 			if($userrole['administrator'] == true)
 			{
-				return true;
+				$user_info = get_userdata($user->ID);
+				return $user_info;
 			}
 			else
 			{
