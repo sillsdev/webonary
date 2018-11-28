@@ -45,27 +45,18 @@ class Info
 			$catid = 0;
 		}
 
-		$sql = "SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged FROM " . $wpdb->prefix . "posts " .
-				" WHERE post_type IN ('post', 'revision') AND " .
-				" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") " .
-				" GROUP BY pinged " .
-				" ORDER BY post_date DESC";
+		$arrPostCount = Info::postCountByImportStatus($catid);
 
-		$arrPosts = $wpdb->get_results($sql);
-
-		$sql = " SELECT * " .
-				" FROM " . Config::$reversal_table_name;
-
-		$arrReversalsImported = $wpdb->get_results($sql);
+		$arrReversalsImported = Info::reversalPosts();
 
 		$arrIndexed = Info::number_of_entries();
 
-		if(count($arrPosts) > 0)
+		if(count($arrPostCount) > 0)
 		{
 			$countIndexed = 0;
 			$totalImportedPosts = count(Info::posts());
 
-			foreach($arrPosts as $posts)
+			foreach($arrPostCount as $posts)
 			{
 				if($posts->pinged == "indexed")
 				{
@@ -85,6 +76,11 @@ class Info
 
 			$countIndexed = $countIndexed + $countLinksConverted;
 
+			if(!get_option("importStatus"))
+			{
+				return "The import status will display here.<br>";
+			}
+
 			if(get_option("importStatus") == "importFinished")
 			{
 				if($posts->post_date != NULL)
@@ -95,44 +91,41 @@ class Info
 			}
 			else
 			{
-				if(!get_option("importStatus"))
+				$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
+				$status .= " You will receive an email when the import has completed. You don't need to stay online.";
+				$status .= "<br>";
+			}
+
+			if(get_option("importStatus") == "indexing")
+			{
+				$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
+
+				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
+				return $status;
+			}
+			if(get_option("importStatus") == "configured")
+			{
+				$status .= $countImported . " entries imported";
+
+				if($arrPostCount[0]->timediff > 5)
 				{
-					echo "The import status will display here.<br>";
+					$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
+					return $status;
 				}
-				else
-				{
-					$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
-					$status .= " You will receive an email when the import has completed. You don't need to stay online.";
-					$status .= "<br>";
+			}
+			if(get_option("importStatus") == "importingReversals")
+			{
+				$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
 
-					if(get_option("importStatus") == "indexing")
-					{
-						$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
+				$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
+				return $status;
+			}
+			if(get_option("importStatus") == "indexingReversals" && count($arrReversalsImported) > 0)
+			{
+				$status .= "<strong>Indexing reversal entries.</strong>";
 
-						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
-					}
-					elseif(get_option("importStatus") == "configured")
-					{
-						$status .= $countImported . " entries imported";
-
-						if($arrPosts[0]->timediff > 5)
-						{
-							$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
-						}
-					}
-					elseif(get_option("importStatus") == "importingReversals")
-					{
-						$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
-
-						$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
-					}
-					elseif(get_option("importStatus") == "indexingReversals" && count($arrReversalsImported) > 0)
-					{
-						$status .= "<strong>Indexing reversal entries.</strong>";
-
-						$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnIndexReversals\" value=\"Index reversal entries (" . count($arrReversalsImported)  . " left)\"/>";
-					}
-				}
+				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnIndexReversals\" value=\"Index reversal entries (" . count($arrReversalsImported)  . " left)\"/>";
+				return $status;
 			}
 
 			if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts || $countLinksConverted == $totalImportedPosts))
@@ -185,11 +178,11 @@ class Info
 
 		$arrIndexed = $wpdb->get_results($sql);
 
-		if(count($arrPosts) > 0 || count($arrIndexed) > 0)
+		if(count($arrPostCount) > 0 || count($arrIndexed) > 0)
 		{
-			if($arrPosts[0]->pinged != "indexed")
+			if($arrPostCount[0]->pinged != "indexed")
 			{
-				$entries = count($arrPosts);
+				$entries = count($arrPostCount);
 				if(count($arrIndexed) > 0)
 				{
 					$entries = get_option("totalConfiguredEntries") - count($arrIndexed);
@@ -300,6 +293,33 @@ class Info
 		$sql .= " ORDER BY menu_order ASC";
 
 		return $wpdb->get_results($sql);
+	}
+
+	public static function postCountByImportStatus($catid)
+	{
+		global $wpdb;
+
+		$sql = "SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged FROM " . $wpdb->prefix . "posts " .
+				" WHERE post_type IN ('post', 'revision') AND " .
+				" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") " .
+				" GROUP BY pinged " .
+				" ORDER BY post_date DESC";
+
+		$arrPostCount = $wpdb->get_results($sql);
+
+		return $arrPostCount;
+	}
+
+	public static function reversalPosts()
+	{
+		global $wpdb;
+
+		$sql = " SELECT * " .
+				" FROM " . Config::$reversal_table_name;
+
+		$arrReversalsImported = $wpdb->get_results($sql);
+
+		return $arrReversalsImported;
 	}
 
 }
