@@ -231,6 +231,8 @@ if(isset($xhtmlFileURL))
 
 		$import->index_searchstrings();
 
+		update_option("hasComposedCharacters", $import->hasComposedCharacters());
+
 		$message = "The import of the vernacular (configured) xhtml export is completed.\n";
 		$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
 
