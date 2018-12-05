@@ -288,7 +288,7 @@ function webonary_searchform() {
 				echo "</strong>";
 				echo "<ul>";
 				foreach ($sem_domains as $sem_domain ) {
-				  echo '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->description . '</a></li>';
+				  echo '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>';
 				}
 				echo "</ul>";
 			}
