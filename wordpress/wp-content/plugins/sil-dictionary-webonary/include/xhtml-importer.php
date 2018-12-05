@@ -1439,9 +1439,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 				if($post_id == 0)
 				{
-					echo "PostId for '" . $headword_text . "' not found.<br>";
-					//we want to display the sense, not the reversal word in the "missing senses" report
-					////$reversal_head = $headword_text;
+					error_log("PostId for '" . $headword_text . "' not found.");
 				}
 				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, 0);
 

@@ -36,8 +36,6 @@ class Info
 			}
 		}
 
-		$countLinksConverted = 0;
-
 		$catid = Info::category_id();
 
 		if($catid == NULL)
@@ -62,19 +60,12 @@ class Info
 				{
 					$countIndexed = $posts->entryCount;
 				}
-				elseif($posts->pinged == "linksconverted")
-				{
-
-					$countLinksConverted = $posts->entryCount;
-				}
 				else
 				{
 
 					$countImported = $posts->entryCount;
 				}
 			}
-
-			$countIndexed = $countIndexed + $countLinksConverted;
 
 			if(!get_option("importStatus"))
 			{
@@ -87,6 +78,7 @@ class Info
 				{
 					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time)";
 					$status .= "<br>";
+
 				}
 			}
 			else
@@ -105,71 +97,45 @@ class Info
 			}
 			if(get_option("importStatus") == "configured")
 			{
-				$status .= $countImported . " entries imported";
+				$status .= $countImported . " entries imported (not yet indexed)";
 
 				if($arrPostCount[0]->timediff > 5)
 				{
 					$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
-					return $status;
 				}
+				return $status;
+
 			}
-			if(get_option("importStatus") == "importingReversals")
+			if(get_option("importStatus") == "reversal")
 			{
 				$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
 
 				$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
 				return $status;
 			}
-			if(get_option("importStatus") == "indexingReversals" && count($arrReversalsImported) > 0)
-			{
-				$status .= "<strong>Indexing reversal entries.</strong>";
 
-				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnIndexReversals\" value=\"Index reversal entries (" . count($arrReversalsImported)  . " left)\"/>";
-				return $status;
-			}
-
-			if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts || $countLinksConverted == $totalImportedPosts))
+			if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
 			{
 				$status .= "<br>";
 				$status .= "<div style=\"float: left;\">";
 				$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
 				$status .= "</div>";
 				$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
-				$x = 0;
-				foreach($arrIndexed as $indexed)
-				{
-					$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
 
-					$arrReversalsFiltered = array_filter($arrReversalsImported, function($el) { return $el->post_id == 0; });
+				$status .= Info::reversalsMissing($arrIndexed, $arrReversalsImported);
 
-					$sql = "SELECT COUNT(language_code) AS missing " .
-							" FROM " . Config::$search_table_name .
-							" WHERE post_id = 0 AND language_code = '" . $indexed->language_code . "'" .
-							" GROUP BY language_code";
-
-					$missingReversals = $wpdb->get_var($sql);
-
-					if($missingReversals > 0)
-					{
-						$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
-					}
-
-					$status .= "</div></div>";
-				}
 				$status .= "</div>";
 				$status .= "<br style=\"clear:both;\">";
 
+				return $status;
 			}
-
-			//$status .= "</form>";
-
-			return $status;
 		}
 		else
 		{
 			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
 		}
 
+		/*
 		$sql = "SELECT post_date, pinged FROM " . $wpdb->prefix . "posts ".
 				" WHERE post_type IN ('post', 'revision') AND ".
 				" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") ".
@@ -192,7 +158,7 @@ class Info
 			}
 			else
 			{
-				$status .= "Indexing " . count($arrIndexed) . " of " . get_option("totalConfiguredEntries") . " entries<br>";
+				$status .= "#Indexing " . count($arrIndexed) . " of " . get_option("totalConfiguredEntries") . " entries<br>";
 			}
 			return $status;
 		}
@@ -200,6 +166,7 @@ class Info
 		{
 			return "No entries have been imported yet.";
 		}
+		*/
 	}
 
 	public static function number_of_entries()
@@ -308,6 +275,34 @@ class Info
 		$arrPostCount = $wpdb->get_results($sql);
 
 		return $arrPostCount;
+	}
+
+	public static function reversalsMissing($arrIndexed, $arrReversalsImported)
+	{
+		global $wpdb;
+
+		$status = "";
+		foreach($arrIndexed as $indexed)
+		{
+			$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
+
+			array_filter($arrReversalsImported, function($el) { return $el->post_id == 0; });
+
+			$sql = "SELECT COUNT(language_code) AS missing " .
+					" FROM " . Config::$search_table_name .
+					" WHERE post_id = 0 AND language_code = '" . $indexed->language_code . "'" .
+					" GROUP BY language_code";
+
+			$missingReversals = $wpdb->get_var($sql);
+
+			if($missingReversals > 0)
+			{
+				$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
+			}
+
+			$status .= "</div></div>";
+		}
+		return $status;
 	}
 
 	public static function reversalPosts()

@@ -80,6 +80,23 @@ class InfoTest extends WP_UnitTestCase {
 		$this->assertEquals("government", $arrReversalsImported[0]->reversal_head);
 	}
 
+	function test_reversalsMissig()
+	{
+		$entry_xml2 = '<div xmlns="http://www.w3.org/1999/xhtml" class="entry" id="g167f9b2d-aee4-4a19-80db-65b5ceedf7f2"><span class="mainheadword"><span lang="nfr"><a href="#g167f9b2d-aee4-4a19-80db-65b5ceedf7f2">aliire</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="g167f9b2d-aee4-4a19-80db-65b5ceedf7f2"><span class="definitionorgloss"><span lang="en">food</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="nfr">Nyiɛkpɔɔ u o kaan o blenyini aliire.</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">God gives us our daily food.</span></span></span></span></span></span></span></span></span></div>';
+
+		$import = new sil_pathway_xhtml_Import();
+		$import->import_xhtml_entries($entry_xml2, 0, 0, true);
+		$import->index_searchstrings();
+
+		$reversal_xml = '<div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="gc9f30d9e-d675-492d-9179-f8c2bacfd95c"><span class="reversalform"><span lang="en">government</span></span><span class="referringsenses"><span class="sensecontent"><span class="referringsense" entryguid="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="headword"><span lang="nfr"><a href="#gc0a52176-c8fc-4376-b889-0b475a6fe70c">abani</a></span></span></span></span></span></div>';
+		$import->import_xhtml_reversal_indexes($reversal_xml);
+
+		$arrIndexed = Info::number_of_entries();
+		$arrReversalsImported = Info::reversalPosts();
+
+		$status = Info::reversalsMissing($arrIndexed, $arrReversalsImported);
+		$this->assertContains("missing senses for 1 entries", $status);
+	}
 
 
 }

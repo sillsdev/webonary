@@ -1,3 +1,4 @@
+v. 7.8.1 5 Deccember 2018 refactored import_status
 v. 7.8.0 5 December 2018 "found in semantic domains" now also displays the number
 v. 7.7.9 29 November 2018 added function hasComposedCharacters
 v. 7.7.8 28 November 2018 refactoring of import_status
