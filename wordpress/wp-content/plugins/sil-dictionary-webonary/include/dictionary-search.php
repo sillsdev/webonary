@@ -35,27 +35,31 @@ if ( ! defined('ABSPATH') )
 	*/
 
 //---------------------------------------------------------------------------//
+
+function my_enqueue_css() {
+	$upload_dir = wp_upload_dir();
+	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+	$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
+	if(file_exists($overrides_css))
+	{
+		wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
+	}
+	wp_enqueue_style( 'configured_stylesheet');
+
+	if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
+	{
+		wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+		wp_enqueue_style( 'overrides_stylesheet');
+	}
+}
+
 function sil_dictionary_select_fields() {
 	global $wp_query, $wpdb;
 	$search_table_name = SEARCHTABLE;
 
 	if( !is_page())
 	{
-		$upload_dir = wp_upload_dir();
-		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-		$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
-		if(file_exists($overrides_css))
-		{
-			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
-		}
-		wp_enqueue_style( 'configured_stylesheet');
-
-		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
-		{
-			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
-			wp_enqueue_style( 'overrides_stylesheet');
-		}
-
+		add_action('wp_enqueue_scripts', 'my_enqueue_css', 1000);
 	}
 
 	if(  !empty($wp_query->query_vars['s']) && isset($wp_query->query_vars['letter']))
