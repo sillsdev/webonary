@@ -203,7 +203,7 @@ function displayAlphabet($alphas, $languagecode)
 
 	foreach($alphas as $letter)
 	{
-		$display .= "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>";
+		$display .= "<div class=\"lpTitleLetterCell\"><span>";
 		if(trim($letter[0]) == "")
 		{
 			$display .= "<a href=\"" . get_site_url() . "/wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Alphabet not configured</a>";
@@ -216,7 +216,7 @@ function displayAlphabet($alphas, $languagecode)
 				$lang = "&lang=" . $_GET['lang'];
 			}
 
-			$display .= "<a href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
+			$display .= "<a class=lpTitleLetter href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
 		}
 		$display .= "</span></div>";
 	}
