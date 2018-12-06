@@ -112,7 +112,8 @@ function ml_media_upload_dir($upload) {
 }
 
 //Load Styles and Scripts
-add_action('wp_print_styles', 'themezee_stylesheets');
+//add_action('wp_print_styles', 'themezee_stylesheets');
+add_action('wp_enqueue_scripts', 'themezee_stylesheets', 1);
 add_action('init', 'themezee_register_scripts');
 function themezee_register_scripts() {
 
@@ -129,7 +130,7 @@ function themezee_register_scripts() {
 add_action('wp_enqueue_scripts', 'themezee_enqueue_scripts');
 
 function themezee_stylesheets() {
-	wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css?v=1.3');
+	wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css?v=1.4');
 	wp_enqueue_style( 'zee_stylesheet');
 
 	wp_register_style('repsonive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/styles/responsive-menu.css?v=1');
@@ -229,14 +230,6 @@ register_nav_menu( 'top_navi', 'Top Navigation' );
 locate_template('/includes/plugins/theme_socialmedia_widget.php', true);
 locate_template('/includes/plugins/theme_ads_widget.php', true);
 
-//this function will give back all posts if user enters an empty string
-function my_request_filter( $query_vars ) {
-	if( isset( $_GET['s'] ) && empty( $_GET['s'] ) ) {
-		$query_vars['s'] = " ";
-	}
-	return $query_vars;
-}
-
 // Functions for correct html5 Validation
 function themezee_html5_gallery($content)
 {
@@ -265,8 +258,6 @@ function themezee_html5_elements($content)
 }
 add_filter('the_content', 'themezee_html5_elements');
 add_filter('comment_text', 'themezee_html5_elements');
-
-add_filter( 'request', 'my_request_filter' );
 
 /*==============================================================================
  /* Webonary functions

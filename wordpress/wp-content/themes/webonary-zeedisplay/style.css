@@ -2,7 +2,7 @@
 Theme Name: webonary-zeedisplay
 Theme URI: http://www.webonary.org
 Description: A Webonary theme created for dictionaries based on the theme zeeDisplay. See: http://themezee.com/zeeDisplay
-Version: 3.1.0
+Version: 3.1.1
 Author: SIL International
 Author URI: http://www.sil.org/
 Tags:  dictionary, two-columns, light, custom-background, custom-menu, threaded-comments, translation-ready, theme-options, fixed-width, custom-colors
@@ -19,8 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /*============================ RESET ============================*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, applet, object, iframe, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, font, img, ins, kbd, q, s, samp,
 small, strike, sub, sup, tt, var,
@@ -79,6 +78,13 @@ input, textarea {
   color: #333;
   font-family: "Arial Unicode MS", serif;
 }
+img {
+	max-width: 100%;
+}
+.image img {
+	max-width: none;
+}
+
 /*============================ STRUCTURE ============================*/
 #wrap {
   clear: both;
@@ -374,7 +380,7 @@ background: url(images/button_hover.png) repeat-x #eee;
 }
 .page h2 {
   font-family: "Arial Unicode MS", san-serif;
-  //font-size: 1.8em;
+  /* font-size: 1.8em; */
 }
 .post h2 a:link, .post h2 a:visited {
   color:#0066ee;
@@ -839,7 +845,7 @@ blockquote:after{
   margin: 0;
   text-align: left;
 }
-#footer span { color:#fff;}
+#footer span { color:#fff; font-size: 12px !important;}
 #footer div { color:#fff;}
 #footer sup { color:#fff;}
 
@@ -911,6 +917,7 @@ span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-fa
 
 	#content {
 		width: 100%;
+		max-width: 100%;
 	}
 
 	#navlanguage {
@@ -926,3 +933,4 @@ span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-fa
 		padding: 10px 10px;
 	}
 }
+
