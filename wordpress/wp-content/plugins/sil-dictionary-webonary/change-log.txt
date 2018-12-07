@@ -1,3 +1,4 @@
+v. 7.8.3 7 December 2018 fixed bug causing ProjectDictionaryOverrides.css not to be overwritten
 v. 7.8.2 6 December 2018 changed load order of imported-with-xhtml.css (loads after theme's style.css)
 v. 7.8.1 5 December 2018 refactored import_status
 v. 7.8.0 5 December 2018 "found in semantic domains" now also displays the number

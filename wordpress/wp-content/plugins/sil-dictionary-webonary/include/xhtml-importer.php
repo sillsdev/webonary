@@ -1709,15 +1709,20 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	// in production settings. The post_max_size apparently needs to be at least as big as the
 	// upload_max_files setting. If the file size is bigger than the limit, the server simply will not
 	// upload it, and there is no indication to the user as to what happened.
-
 	function upload_files( $which_file, $filetype = "",  $reversalLang = "") {
 		global $wpdb;
+		$upload_dir = wp_upload_dir();
 
 		$hasError = false;
 
 		if ( !isset($_FILES[$which_file]) ) {
 			$file['error'] = __( 'The file is either empty, or uploads are disabled in your php.ini, or post_max_size is defined as smaller than upload_max_filesize in php.ini.' );
 			return $file;
+		}
+
+		if( $_FILES[$which_file]["name"] == "ProjectDictionaryOverrides.css" || $_FILES[$which_file]["name"] == "ProjectReversalOverrides.css" )
+		{
+			unlink($upload_dir['path'] . "/" .  $_FILES[$which_file]["name"]);
 		}
 
 		$overrides = array( 'test_form' => false, 'test_type' => false );
@@ -1730,15 +1735,13 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$url = $file['url'];
 		$type = $file['type'];
 		$file = addslashes( $file['file'] );
-		$filename = basename( $file );
+		$filename = $_FILES[$which_file]["name"];
 
 		$info = pathinfo($file);
 		$extension = $info['extension'];
 
 		if($extension == "css")
 		{
-			$upload_dir = wp_upload_dir();
-			echo "upload_dir: " . $upload_dir['url'] . "<br>";
 			$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
 
 			if($filename == "ProjectDictionaryOverrides.css")
@@ -1807,6 +1810,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 
 		return array( 'file' => $file, 'id' => $id );
+	}
+
+	function my_cust_filename($dir, $name, $ext){
+		echo "<b>" . $name.$ext . "</b><br>";
+		return $name.$ext;
 	}
 
 } // class
