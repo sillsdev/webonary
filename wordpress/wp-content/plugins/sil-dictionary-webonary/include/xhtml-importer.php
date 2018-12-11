@@ -1172,7 +1172,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				$semantic_domain_language = $sd_number->getAttribute("lang");
 
-				$sd_number_text = "";
+				$sd_number_text = str_replace("[", "", $sd_number->textContent);
+				$sd_number_text = str_replace("(", "", $sd_number_text);
+				$sd_number_text = trim(str_replace("-", "", $sd_number_text));
 
 				$domain_name = $sd_number_text;
 				if(isset($sd_names->item($sc)->textContent))
@@ -1182,9 +1184,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					$domain_name = str_replace(")", "", $domain_name);
 
 				}
-				$sd_number_text = str_replace("[", "", $sd_number->textContent);
-				$sd_number_text = str_replace("(", "", $sd_number_text);
-				$sd_number_text = trim(str_replace("-", "", $sd_number_text));
 
 				$arrTerm = wp_insert_term(
 					$domain_name,
