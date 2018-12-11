@@ -20,6 +20,10 @@ function categories_func( $atts )
 			}
 		}
 	}
+
+	$upload_dir = wp_upload_dir();
+	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+	wp_enqueue_style( 'configured_stylesheet');
 ?>
 	<style>
 	   TD {font-size: 9pt; font-family: arial,helvetica; text-decoration: none; font-weight: bold;}
