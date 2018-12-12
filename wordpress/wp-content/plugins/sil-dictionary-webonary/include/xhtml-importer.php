@@ -1727,9 +1727,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$overrides = array( 'test_form' => false, 'test_type' => false );
 		$file = wp_handle_upload( $_FILES[$which_file], $overrides );
 
-
 		if ( isset( $file['error'] ) )
+		{
 			return $file;
+		}
 
 		$url = $file['url'];
 		$type = $file['type'];
