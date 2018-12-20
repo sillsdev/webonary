@@ -734,7 +734,7 @@ function vernacularalphabet_func( $atts )
 
 			if($chosenLetter != "?")
 			{
-				if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha))
+				if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha) && strtoupper($chosenLetter) != strtoupper($alpha))
 				{
 					if(strlen($noLetters) > 0)
 					{
