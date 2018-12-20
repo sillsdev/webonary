@@ -1,3 +1,4 @@
+v. 7.7.6 20 December 2018 changed grouping to fix issue with subentries in browse view
 v. 7.8.5 12 December 2018 $xhtmlFileURL gets replaced when running in Docker
 v. 7.8.4 11 December 2018 semantic domains now import even if only domain numbers are checked
 v. 7.8.3 7 December 2018 fixed bug causing ProjectDictionaryOverrides.css not to be overwritten

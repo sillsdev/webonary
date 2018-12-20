@@ -130,43 +130,11 @@ class Info
 				return $status;
 			}
 		}
-		else
+
+		if(count($arrPostCount) == 0)
 		{
 			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
 		}
-
-		/*
-		$sql = "SELECT post_date, pinged FROM " . $wpdb->prefix . "posts ".
-				" WHERE post_type IN ('post', 'revision') AND ".
-				" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") ".
-				" AND pinged = 'indexed' ".
-				" ORDER BY post_date DESC";
-
-		$arrIndexed = $wpdb->get_results($sql);
-
-		if(count($arrPostCount) > 0 || count($arrIndexed) > 0)
-		{
-			if($arrPostCount[0]->pinged != "indexed")
-			{
-				$entries = count($arrPostCount);
-				if(count($arrIndexed) > 0)
-				{
-					$entries = get_option("totalConfiguredEntries") - count($arrIndexed);
-				}
-
-				$status .= $entries . " of " . get_option("totalConfiguredEntries") . " entries imported (not yet indexed)<br>";
-			}
-			else
-			{
-				$status .= "#Indexing " . count($arrIndexed) . " of " . get_option("totalConfiguredEntries") . " entries<br>";
-			}
-			return $status;
-		}
-		else
-		{
-			return "No entries have been imported yet.";
-		}
-		*/
 	}
 
 	public static function number_of_entries()
