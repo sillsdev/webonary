@@ -9,13 +9,27 @@ class Webonary_API_MyType {
 	function register_new_routes() {
 
     	$namespace = 'webonary';
-    	$base = 'import';
 
-    	register_rest_route( $namespace, '/' . $base, array(
+    	register_rest_route( $namespace, '/import', array(
     			'methods' => 'POST' | WP_REST_Server::CREATABLE,
     			'callback' => array( $this, 'import' ),
     		)
     	);
+
+    	register_rest_route( $namespace, '/query/(?P<term>\w+)', array(
+    			'methods' => 'GET' | WP_REST_Server::READABLE,
+    			'callback' => array( $this, 'query' ),
+    			'args'                => array(),
+		    )
+    	);
+
+    }
+
+    public function query($request)
+    {
+    	$data = array( 'some', 'response', 'data', $request['term']);
+
+    	return new WP_REST_Response( $data, 200 );
     }
 
 	public function import($_headers, $newAPI = true)

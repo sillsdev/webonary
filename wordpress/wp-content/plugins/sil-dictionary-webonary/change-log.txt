@@ -1,3 +1,4 @@
+v. 7.7.8 27 December 2018 experimenting with custom API endpoint for queries
 v. 7.7.7 20 December 2018 added option to distinguish words starting with lower-case and upper-case in browse view
 v. 7.7.6 20 December 2018 changed grouping to fix issue with subentries in browse view
 v. 7.8.5 12 December 2018 $xhtmlFileURL gets replaced when running in Docker
