@@ -1,5 +1,5 @@
 <?php
-class Info
+class Webonary_Info
 {
 	public static function category_id() {
 		global $wpdb;
@@ -36,23 +36,23 @@ class Info
 			}
 		}
 
-		$catid = Info::category_id();
+		$catid = self::category_id();
 
 		if($catid == NULL)
 		{
 			$catid = 0;
 		}
 
-		$arrPostCount = Info::postCountByImportStatus($catid);
+		$arrPostCount = self::postCountByImportStatus($catid);
 
-		$arrReversalsImported = Info::reversalPosts();
+		$arrReversalsImported = self::reversalPosts();
 
-		$arrIndexed = Info::number_of_entries();
+		$arrIndexed = self::number_of_entries();
 
 		if(count($arrPostCount) > 0)
 		{
 			$countIndexed = 0;
-			$totalImportedPosts = count(Info::posts());
+			$totalImportedPosts = count(self::posts());
 
 			foreach($arrPostCount as $posts)
 			{
@@ -122,7 +122,7 @@ class Info
 				$status .= "</div>";
 				$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
 
-				$status .= Info::reversalsMissing($arrIndexed, $arrReversalsImported);
+				$status .= self::reversalsMissing($arrIndexed, $arrReversalsImported);
 
 				$status .= "</div>";
 				$status .= "<br style=\"clear:both;\">";
@@ -184,7 +184,7 @@ class Info
 		if(count($arrReversals) == 0 && count($arrIndexed) > 0)
 		{
 			$x = 0;
-			$count_posts = count(Info::posts(''));
+			$count_posts = count(self::posts(''));
 			foreach($arrIndexed as $indexed)
 			{
 				$sql = " SELECT search_strings " .
@@ -214,7 +214,7 @@ class Info
 		$sql = "SELECT ID, post_title, post_content, post_parent, menu_order " .
 		" FROM $wpdb->posts " .
 		" INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID " .
-		" WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . Info::category_id();
+		" WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . self::category_id();
 		//using pinged field for not yet indexed
 		$sql .= " AND post_status = 'publish'";
 		if(strlen($index) > 0 && $index != "-")

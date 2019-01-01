@@ -398,7 +398,7 @@ function webonary_conf_widget($showTitle = false) {
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
 				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
-			<strong>Import Status:</strong> <?php echo Info::import_status(); ?>
+			<strong>Import Status:</strong> <?php echo Webonary_Info::import_status(); ?>
 			</form>
 			</div>
 

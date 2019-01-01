@@ -1,6 +1,7 @@
-v. 7.7.8 27 December 2018 experimenting with custom API endpoint for queries
-v. 7.7.7 20 December 2018 added option to distinguish words starting with lower-case and upper-case in browse view
-v. 7.7.6 20 December 2018 changed grouping to fix issue with subentries in browse view
+v. 7.8.9 1 January 2019 did some refactoring, created class Webonary_Utility
+v. 7.8.8 27 December 2018 experimenting with custom API endpoint for queries
+v. 7.8.7 20 December 2018 added option to distinguish words starting with lower-case and upper-case in browse view
+v. 7.8.6 20 December 2018 changed grouping to fix issue with subentries in browse view
 v. 7.8.5 12 December 2018 $xhtmlFileURL gets replaced when running in Docker
 v. 7.8.4 11 December 2018 semantic domains now import even if only domain numbers are checked
 v. 7.8.3 7 December 2018 fixed bug causing ProjectDictionaryOverrides.css not to be overwritten

@@ -530,6 +530,19 @@ function get_has_reversalbrowseletters()
 	return $wpdb->get_var($sql);
 }
 
+function get_indexed_entries($query)
+{
+	global $wpdb;
+
+	$sql = "SELECT post_id, language_code, relevance, search_strings " .
+	" FROM " . SEARCHTABLE .
+	" WHERE search_strings LIKE '%" . $query . "%' " .
+	"ORDER BY relevance DESC";
+
+	$arrIndexed = $wpdb->get_results($sql);
+
+	return $arrIndexed;
+}
 
 function get_post_id_bycontent($query)
 {

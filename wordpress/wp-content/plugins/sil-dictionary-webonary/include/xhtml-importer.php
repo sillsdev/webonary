@@ -1572,7 +1572,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$semantic_domains_taxonomy_exists = taxonomy_exists( Config::$semantic_domains_taxonomy );
 
 		if ( $search_table_exists ) {
-			$arrPosts = Info::posts('-');
+			$arrPosts = Webonary_Info::posts('-');
 
 			$subid = 1;
 

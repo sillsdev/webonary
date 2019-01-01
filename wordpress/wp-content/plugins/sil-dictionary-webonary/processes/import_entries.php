@@ -7,6 +7,7 @@ if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") 
 	switch_to_blog($argv[2]);
 	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/configuration.php");
 	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/class_info.php");
+	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/class_utilities.php");
 
 	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/infrastructure.php");
 	install_sil_dictionary_infrastructure();

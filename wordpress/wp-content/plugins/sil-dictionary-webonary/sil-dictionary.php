@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 7.8.8
+Version: v. 7.8.9
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -49,6 +49,7 @@ define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
  //To update code from Github through Wordpress Dashboard
 //require_once( dirname( __FILE__ ) . '/updater.php');
 require_once( dirname( __FILE__ ) . '/include/class_info.php' );
+require_once( dirname( __FILE__ ) . '/include/class_utilities.php' );
 // Infractstructure management: add and remove custom table(s) and custom taxonomies.
 require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
 // Configure Webonary Settings
