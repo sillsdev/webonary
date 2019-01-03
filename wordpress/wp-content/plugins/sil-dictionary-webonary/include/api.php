@@ -16,7 +16,10 @@ class Webonary_API_MyType {
     		)
     	);
 
-    	register_rest_route( $namespace, '/query/(?P<term>\w+)', array(
+    	//this allows one to make a query like this:
+    	//http://webonary.localhost/lubwisi/wp-json/webonary/query/dog/en
+    	//language parameter is optional
+    	register_rest_route( $namespace, '/query/(?P<term>\w+)(?:/(?P<lang>\w+))?', array(
     			'methods' => 'GET' | WP_REST_Server::READABLE,
     			'callback' => array( $this, 'query' ),
     			'args'                => array(),
@@ -27,7 +30,7 @@ class Webonary_API_MyType {
 
     public function query($request)
     {
-    	$data = get_indexed_entries($request['term']);
+    	$data = get_indexed_entries($request['term'], $request['lang']);
 
     	return new WP_REST_Response( $data, 200 );
     }

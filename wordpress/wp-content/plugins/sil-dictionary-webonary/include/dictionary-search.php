@@ -530,14 +530,18 @@ function get_has_reversalbrowseletters()
 	return $wpdb->get_var($sql);
 }
 
-function get_indexed_entries($query)
+function get_indexed_entries($query, $language)
 {
 	global $wpdb;
 
 	$sql = "SELECT post_id, language_code, relevance, search_strings " .
 	" FROM " . SEARCHTABLE .
-	" WHERE search_strings LIKE '%" . $query . "%' " .
-	"ORDER BY relevance DESC";
+	" WHERE search_strings LIKE '%" . $query . "%' ";
+	if(!empty($language))
+	{
+		$sql .= " AND language_code = '" . $language . "'";
+	}
+	$sql .= "ORDER BY relevance DESC";
 
 	$arrIndexed = $wpdb->get_results($sql);
 
