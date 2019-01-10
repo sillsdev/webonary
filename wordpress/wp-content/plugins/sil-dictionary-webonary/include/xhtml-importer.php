@@ -1414,6 +1414,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 						$pinyin = new Pinyin();
 						$reversal_browsehead = $pinyin->sentence($reversal_head);
+						$browseletter = substr($reversal_browsehead, 0, 1);
 					}
 
 					if($existing_entry == NULL)

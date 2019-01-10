@@ -1,4 +1,6 @@
 <?php
+use Overtrue\Pinyin\Pinyin;
+
 if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") && isset($argv))
 {
 	define('WP_INSTALLING', true);
@@ -119,6 +121,17 @@ if(isset($xhtmlFileURL))
 			{
 				$letterHead = $reader->readInnerXml();
 				$letterLanguage = $reader->getAttribute("lang");
+
+				if(($letterLanguage == "zh-CN" || $letterLanguage == "zh-Hans-CN"))
+				{
+					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php' );
+					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php' );
+					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php' );
+
+					$pinyin = new Pinyin();
+					$letterHead = $pinyin->sentence($letterHead);
+					$letterHead = substr($letterHead, 0, 1);
+				}
 
 				//if($letterHead != "?")
 				//{

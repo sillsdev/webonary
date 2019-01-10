@@ -852,7 +852,7 @@ function webonary_conf_widget($showTitle = false) {
 		<p>
 		<span style="color:red">These notes are only visible to super admins.</span>
 		<p>
-		<textarea name=txtNotes cols=60 rows=8><?php echo stripslashes(get_option("notes"));?></textarea>
+		<textarea name=txtNotes cols=50 rows=6><?php echo stripslashes(get_option("notes"));?></textarea>
 		<p>
 		Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option("noSearch")); ?> />
 		<p>
