@@ -131,6 +131,7 @@ if(isset($xhtmlFileURL))
 					$pinyin = new Pinyin();
 					$letterHead = $pinyin->sentence($letterHead);
 					$letterHead = substr($letterHead, 0, 1);
+					$letterHead = strtolower($letterHead);
 				}
 
 				//if($letterHead != "?")
