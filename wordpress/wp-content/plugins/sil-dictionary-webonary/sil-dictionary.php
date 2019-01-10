@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 7.9.2
+Version: v. 7.9.3
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -39,9 +39,9 @@ global $wpdb;
 
 // User capability. I don't know why this value works in add_management_page. May want to revisit this.
 define( 'SIL_DICTIONARY_USER_CAPABILITY', '10' );
+define('FONTFOLDER', "/wp-content/uploads/fonts/");
 define('SEARCHTABLE', $wpdb->prefix . 'sil_search');
 define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
-
 
 /*
  * Dependencies

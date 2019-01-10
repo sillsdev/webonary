@@ -789,7 +789,7 @@ function webonary_conf_widget($showTitle = false) {
 			{
 				$userFont = trim($userFont);
 
-				$fontKey = array_search($userFont, $arrFont["name"]);
+				$fontKey = array_search($userFont, array_column($arrFont, 'name'));
 
 				if(!strstr($userFont, "default font"))
 				{
@@ -806,9 +806,9 @@ function webonary_conf_widget($showTitle = false) {
 
 					if($fontLinked)
 					{
-						if($fontKey > 0)
+						if($fontKey !== false)
 						{
-							if($arrFont["hasSubFonts"][$fontKey])
+							if($arrFont[$fontKey]["hasSubFonts"])
 							{
 								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
 							}
