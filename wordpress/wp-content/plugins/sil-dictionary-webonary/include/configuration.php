@@ -781,7 +781,7 @@ function webonary_conf_widget($showTitle = false) {
 		}
 		$options = get_option('themezee_options');
 
-		$fontClass->getFontsAvailable($arrFontName, $arrFontStorage, $arrHasSubFonts);
+		$arrFont = $fontClass->getFontsAvailable();
 
 		if(isset($arrUniqueCSSFonts))
 		{
@@ -789,7 +789,7 @@ function webonary_conf_widget($showTitle = false) {
 			{
 				$userFont = trim($userFont);
 
-				$fontKey = array_search($userFont, $arrFontName);
+				$fontKey = array_search($userFont, $arrFont["name"]);
 
 				if(!strstr($userFont, "default font"))
 				{
@@ -808,7 +808,7 @@ function webonary_conf_widget($showTitle = false) {
 					{
 						if($fontKey > 0)
 						{
-							if($arrHasSubFonts[$fontKey])
+							if($arrFont["hasSubFonts"][$fontKey])
 							{
 								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
 							}
