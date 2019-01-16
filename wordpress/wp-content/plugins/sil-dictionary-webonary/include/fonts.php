@@ -157,7 +157,7 @@ class fontManagment
 				$inp = file_get_contents(ABSPATH . FONTFOLDER . 'fonts.json');
 				$tempArray = json_decode($inp);
 
-				$hasFont = array_search($fontname, array_column($tempArray, 'fontname'));
+				$hasFont = array_search($_POST["fontname"], array_column($tempArray, 'name'));
 				if(!$hasFont)
 				{
 					array_push($tempArray, $arrFont);
