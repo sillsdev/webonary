@@ -812,8 +812,4 @@ function vernacularalphabet_func( $atts )
 
 add_shortcode( 'vernacularalphabet', 'vernacularalphabet_func' );
 
-function viewIndexedEntries()
-{
-	echo "test";
-}
 ?>

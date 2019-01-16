@@ -1,7 +1,7 @@
 <?php
 //This class has functions for reading out the font family names from a css file and writing the font faces into
 //a custom css
-class fontMonagment
+class fontManagment
 {
 	public function getFontsAvailable()
 	{
@@ -55,7 +55,8 @@ class fontMonagment
 			$last_position = $end;
 		}
 		$arrUniqueCSSFonts = null;
-		if(count($arrCSSFonts) > 0)
+
+		if(isset($arrCSSFonts))
 		{
 			$arrUniqueCSSFonts = array_unique($arrCSSFonts);
 
@@ -117,5 +118,86 @@ class fontMonagment
 			file_put_contents($uploadPath . "/custom.css" , $fontFace);
 		}
 		return;
+	}
+
+	public function uploadFont()
+	{
+		$filetype = strtolower(pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_EXTENSION));
+		$filename = str_replace(" ", "", $_POST["fontname"]);
+		$fontType = "R";
+		if($_POST['fonttype'] == "bold")
+		{
+			$fontType = "B";
+		}
+		if($_POST['fonttype'] == "cursive")
+		{
+			$fontType = "I";
+		}
+
+		$filenameFull = $filename . "-" . $fontType . "." . $filetype;
+		$target_file = ABSPATH . FONTFOLDER . $filenameFull;
+		$uploadOk = 1;
+
+		echo "<h3>";
+		// Allow certain file formats
+		if($filetype != "woff" && $filetype != "ttf") {
+			echo "Sorry, only woff and ttf files are allowed.";
+			$uploadOk = 0;
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 1) {
+			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+
+				$arrFont["name"] = $_POST["fontname"];
+				$arrFont["filename"] = $filename;
+				$arrFont["hasSubFonts"] = false;
+				$arrFont["type"] = $filetype;
+
+				$inp = file_get_contents(ABSPATH . FONTFOLDER . 'fonts.json');
+				$tempArray = json_decode($inp);
+
+				$hasFont = array_search($fontname, array_column($tempArray, 'fontname'));
+				if(!$hasFont)
+				{
+					array_push($tempArray, $arrFont);
+					$jsonData = json_encode($tempArray);
+					file_put_contents(ABSPATH . FONTFOLDER . 'fonts.json', $jsonData);
+				}
+
+				$upload_dir = wp_upload_dir();
+				$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
+				$this->set_fontFaces($target_path, $upload_dir['path']);
+
+			} else {
+				echo "Sorry, there was an error uploading your file.";
+			}
+		}
+		echo "</h3>";
+		echo "<hr>";
+	}
+	public function uploadFontForm()
+	{
+		$submitNumber = array_pop(array_keys($_REQUEST['uploadButton']));
+	?>
+		<a name="uploadfont"></a>
+		<h1>Upload Font</h1>
+		<h3><?php echo $_POST['fontname'][$submitNumber]; ?></h3>
+		<p></p>
+		<form action="#" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="fontname" value="<?php echo $_POST['fontname'][$submitNumber]; ?>">
+			Type:
+			<select name="fonttype">
+				<option value="regular">regular</option>
+				<option value="bold">bold</option>
+				<option value="cursive">cursive</option>
+			</select>
+			<p></p>
+		    Font file: <input type="file" name="fileToUpload">
+		   	<p></p>
+		    <input type="submit" value="Upload Font" name="uploadFont">
+		</form>
+		<hr>
+	<?php
 	}
 }

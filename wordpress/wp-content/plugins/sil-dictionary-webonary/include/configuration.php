@@ -301,7 +301,7 @@ function webonary_conf_widget($showTitle = false) {
 
 	$upload_dir = wp_upload_dir();
 
-	$fontClass = new fontMonagment();
+	$fontClass = new fontManagment();
 	$css_string = null;
 	$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
 	if(file_exists($configured_css_file))
@@ -311,6 +311,16 @@ function webonary_conf_widget($showTitle = false) {
 	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
 	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_css');
+
+	if(is_super_admin() && isset($_POST['uploadButton']))
+	{
+		$fontClass->uploadFontForm();
+	}
+
+	if(isset($_POST['uploadFont']))
+	{
+		$fontClass->uploadFont();
+	}
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<style>
@@ -785,6 +795,7 @@ function webonary_conf_widget($showTitle = false) {
 
 		if(isset($arrUniqueCSSFonts))
 		{
+			$fontNr = 0;
 			foreach($arrUniqueCSSFonts as $userFont)
 			{
 				$userFont = trim($userFont);
@@ -800,7 +811,7 @@ function webonary_conf_widget($showTitle = false) {
 						if(in_array($userFont, $arrFontFacesFile))
 						{
 							$fontLinked = true;
-							echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a><br>";
+							echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a>";
 						}
 					}
 
@@ -810,7 +821,7 @@ function webonary_conf_widget($showTitle = false) {
 						{
 							if($arrFont[$fontKey]["hasSubFonts"])
 							{
-								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span><br>";
+								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span>";
 							}
 						}
 					}
@@ -836,6 +847,16 @@ function webonary_conf_widget($showTitle = false) {
 							echo "</strong>";
 						}
 					}
+
+					if(is_super_admin() && !in_array($userFont, $arrSystemFonts))
+					{
+					?>
+							<input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
+							<input type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
+					<?php
+						$fontNr++;
+					}
+
 					echo "<p></p>";
 				}
 			}
