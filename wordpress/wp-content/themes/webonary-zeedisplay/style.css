@@ -133,7 +133,7 @@ ul.qtrans_language_chooser li.active { display:none }
   float: left;
   position: relative;
   display:block;
-  width: 100%;
+  width: 60%;
 }
 /*
 .fullwidth {
@@ -436,7 +436,7 @@ background: url(images/button_hover.png) repeat-x #eee;
   font-family: Arial, Tahoma;
 }
 .arh {
-  width: 50%;
+  width: 80%;
   font-size: 1.4em;
   color:#444;
   padding: 10px 15px;

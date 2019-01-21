@@ -8,7 +8,6 @@ function openImage(image)
 }
 </script>
 
- 	<div align=center><?php if(isMobile()) { echo "<br>"; get_sidebar(); } ?></div>
  	<div style="padding: 10px 25px;">
 	<div id="content">
 
@@ -30,9 +29,8 @@ function openImage(image)
 
 		}
 		?>
-		<?php if(!isMobile()) { get_sidebar(); } ?>
 		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $searchquery);?></h2>
-		<p><?php if (function_exists(sil_dictionary_custom_message)) { sil_dictionary_custom_message(); } ?></p>
+		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
 		<?php if (have_posts()) :
 		//search string are normalized to NFC
 		if (class_exists("Normalizer", $autoload = false))
@@ -75,6 +73,8 @@ function openImage(image)
 
 		<?php endif; ?>
 	</div>
+	<?php get_sidebar(); ?>
+
 	</div>
 <?php //if(!isMobile()) { get_sidebar(); } ?>
 <?php get_footer();
