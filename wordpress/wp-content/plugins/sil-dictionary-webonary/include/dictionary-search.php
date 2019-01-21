@@ -624,9 +624,6 @@ if(get_option('vernacularRightToLeft') == 1 && isset($_GET['s']))
 	#searchresults {
 	text-align: right;
 	}
-	.postentry {
-	width: 60%;
-	}
 	.entry {
 		white-space: unset !important;
 	}

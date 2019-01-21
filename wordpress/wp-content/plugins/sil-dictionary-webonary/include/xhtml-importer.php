@@ -442,7 +442,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 	function getArrFieldQueries($step = 0)
 	{
-		if($_GET['step'] >= 2 || $step >= 2)
+		if(isset($_GET['step']))
+		{
+			$step = $_GET['step'];
+		}
+		if($step >= 2)
 		{
 			$querystart = "//span";
 		}
