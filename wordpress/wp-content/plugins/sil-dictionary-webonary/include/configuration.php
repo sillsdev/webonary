@@ -14,6 +14,16 @@ class Config
  * Set up the SIL Dictionary in WordPress Dashboard Tools
  */
 function add_admin_menu() {
+
+	$data = get_userdata( get_current_user_id() );
+
+	if ( is_object( $data) && $data->nickname == "philonline" ) {
+		$current_user_caps = $data->allcaps;
+
+		// print it to the screen
+		echo '<pre>' . print_r( $current_user_caps, true ) . '</pre>';
+	}
+
 	//menu item only visible for editors, not authors. Hence capapility set to "delete_others_pages"
 	add_menu_page( "Webonary", "Webonary", 'delete_others_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
 	add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
