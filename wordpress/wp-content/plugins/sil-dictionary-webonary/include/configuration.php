@@ -14,8 +14,8 @@ class Config
  * Set up the SIL Dictionary in WordPress Dashboard Tools
  */
 function add_admin_menu() {
-	//menu item only visible for editors, not authors. Hence capapility set to "moderate_comments"
-	add_menu_page( "Webonary", "Webonary", 'moderate_comments', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
+	//menu item only visible for editors, not authors. Hence capapility set to "delete_others_pages"
+	add_menu_page( "Webonary", "Webonary", 'delete_others_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
 	add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
 	remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
 }
