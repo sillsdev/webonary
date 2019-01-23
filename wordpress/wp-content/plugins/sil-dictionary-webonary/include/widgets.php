@@ -1,8 +1,10 @@
 <?php
 function webonary_add_dashboard_widgets() {
 
-	//has to have at least role of editor
-	if(current_user_can('delete_others_pages'))
+	$data = get_userdata( get_current_user_id() );
+	$role = ( array ) $data->roles;
+
+	if ( $role[0] == "editor" || $role[0] == "admin")
 	{
 		wp_add_dashboard_widget(
 				'webonary_dashboard_widget',         // Widget slug.
