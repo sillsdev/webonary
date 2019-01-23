@@ -1,3 +1,4 @@
+v. 7.9.7 23 January 2019 allowing editors to upload dictionary data
 v. 7.9.6 23 January 2019 made Webonary menu item visible for editors
 v. 7.9.5 21 January 2019 removed fixed width for right-to-left postentry
 v. 7.9.4 16 January 2019 super admins can now upload fonts to the repository
