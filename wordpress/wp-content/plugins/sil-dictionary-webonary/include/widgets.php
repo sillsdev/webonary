@@ -4,7 +4,7 @@ function webonary_add_dashboard_widgets() {
 	$data = get_userdata( get_current_user_id() );
 	$role = ( array ) $data->roles;
 
-	if ( $role[0] == "editor" || $role[0] == "admin")
+	if ( $role[0] == "editor" || $role[0] == "administrator")
 	{
 		wp_add_dashboard_widget(
 				'webonary_dashboard_widget',         // Widget slug.
