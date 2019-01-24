@@ -197,7 +197,7 @@ class Webonary_Utility
 			$roleSerialized = $wpdb->get_var($sql);
 			$userrole = unserialize($roleSerialized);
 
-			if($userrole['editor'] == true)
+			if($userrole['editor'] == true || $userrole['administrator'] == true)
 			{
 				$user_info = get_userdata($user->ID);
 				return $user_info;
