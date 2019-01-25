@@ -56,7 +56,7 @@ class Webonary_Info
 
 			foreach($arrPostCount as $posts)
 			{
-				if($posts->pinged == "indexed")
+				if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
 				{
 					$countIndexed = $posts->entryCount;
 				}

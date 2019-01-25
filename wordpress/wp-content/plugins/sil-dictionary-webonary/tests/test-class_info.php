@@ -59,7 +59,7 @@ class InfoTest extends WP_UnitTestCase {
 		}
 
 		$import->index_searchstrings();
-		if(assert)
+		if($assert)
 		{
 			$this->assertEquals("", $arrPostCount[0]->indexed);
 		}

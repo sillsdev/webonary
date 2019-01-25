@@ -10,6 +10,7 @@ function disable_plugins($plugins){
 }
 if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") && isset($argv))
 {
+	define('SHORTINIT', true);
 	define('WP_INSTALLING', true);
 
 	require($argv[1] . "wp-load.php");

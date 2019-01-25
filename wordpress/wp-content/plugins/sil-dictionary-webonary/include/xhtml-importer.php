@@ -511,7 +511,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$row = $wpdb->get_row( $sql );
 
-		if(count($row) > 0)
+		if(!empty($row))
 		{
 			$post_id = $wpdb->get_var($sql);
 		}
