@@ -1,3 +1,4 @@
+v. 7.9.9 28 January 2019 mistakenly committed experimental version. Undid this.
 v. 7.9.8 25 January 2019 counts entries on Dashboard also if pinged is "linksconverted" (for legacy purposes)
 v. 7.9.7 23 January 2019 allowing editors to upload dictionary data
 v. 7.9.6 23 January 2019 made Webonary menu item visible for editors
