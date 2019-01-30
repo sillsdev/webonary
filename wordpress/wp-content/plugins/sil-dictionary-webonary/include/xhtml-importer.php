@@ -789,6 +789,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$notRoman++;
 				}
+				echo $search_string . "#<br>";
 				$countComposedCharacters++;
 			}
 		}
