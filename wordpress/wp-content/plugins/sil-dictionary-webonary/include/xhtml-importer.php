@@ -53,13 +53,13 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 */
 
 	public $headword_relevance = 100;
-	public $citationform = 90;
-	public $plural = 80;
+	public $citationform_relevance = 90;
+	public $plural_relevance = 80;
 	public $lexeme_form_relevance = 70;
 	public $variant_form_relevance = 60;
 	public $definition_word_relevance = 50;
 	public $semantic_domain_relevance = 40;
-	public $scientific_name = 35;
+	public $scientific_name_relevance = 35;
 	public $sense_crossref_relevance = 30;
 	public $custom_field_relevance = 20;
 	public $example_sentences_relevance = 10;
@@ -553,6 +553,61 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $postid;
 	}
 
+	function get_relevance($classname)
+	{
+		$relevance = 0;
+
+		if($classname == "mainheadword" || $classname == "lexemeform")
+		{
+			$relevance = $this->headword_relevance;
+		}
+		if($classname == "headword-sub" || $classname == "subentry_headword")
+		{
+			$relevance = $this->headword_relevance - 5;
+		}
+		if($classname == "LexemeForm" || $classname == "lexemeform")
+		{
+			$relevance = $this->lexeme_form_relevance;
+		}
+		if($classname == "definition" || $classname == "gloss" || $classname == "definitionorgloss")
+		{
+			$relevance = $this->definition_word_relevance;
+		}
+		if($classname == "definition-sub")
+		{
+			$relevance = $this->definition_word_relevance - 5;
+		}
+		if($classname == "example")
+		{
+			$relevance = $this->example_sentences_relevance;
+		}
+		if($classname == "translation")
+		{
+			$relevance = $this->example_sentences_relevance;
+		}
+		if($classname == "variantref-form")
+		{
+			$relevance = $this->variant_form_relevance;
+		}
+		if($classname == "lexsensereference")
+		{
+			$relevance = $this->sense_crossref_relevance;
+		}
+		if($classname == "scientificname")
+		{
+			$relevance = $this->scientific_name_relevance;
+		}
+		if($classname == "plural")
+		{
+			$relevance = $this->plural_relevance;
+		}
+		if($classname == "citationform")
+		{
+			$relevance = $this->citationform_relevance;
+		}
+
+		return $relevance;
+	}
 	function get_user_input() {
 
 		$bytes = apply_filters( 'import_upload_size_limit', wp_max_upload_size() );
@@ -1015,57 +1070,38 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		}
 	}
 
-	//-----------------------------------------------------------------------------//
-
-	/**
-	 * Load the search table for the entry.
-	 * @param <type> $entry = XHTML of the dictionary entry
-	 * @param <type> $post_id = ID of the WordPress post.
-	 * @param <type> $query = the xhtml query
-	 * @param <type> $relevance = weighted importance of this particular string for search results
-	 */
-	function import_xhtml_search( $doc, $post_id, $query, $relevance, $subid = 0 ) {
-
-		$arrStringsForIndexing = array();
-		if($relevance == ($this->headword_relevance - 5))
-		{
-			$subid++;
-		}
-		//$fields = $this->dom_xpath->query( $query, $entry );
-
+	function import_xhtml_classes($postid, $doc)
+	{
 		$xpath = new DOMXPath($doc);
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$fields = $xpath->query($query);
+		$fields = $xpath->query("//span[@class]");
 
-		$index = 0;
-		foreach ( $fields as $field ) {
+		$searchstring = "";
+		$lang = "";
 
-			$language = $field->getAttribute( "lang" );
+		$arrResults = [];
+		$i = 0;
+		foreach($fields as $field)
+		{
+			$langContent = $xpath->query("span[@lang]", $field);
 
-			//if(strlen(trim($language)) == 0 && property_exists($field->childNodes->item(0), 'lang'))
-			if($field->childNodes->length > 0)
+			$classname = $field->getAttribute("class");
+
+			$relevance = $this->get_relevance($classname);
+
+			foreach($langContent as $content)
 			{
-				if(strlen(trim($language)) == 0 && $field->childNodes->item(0)->hasAttributes())
-				{
-					$language = $field->childNodes->item(0)->getAttribute( "lang" );
-				}
+				$searchstring = $content->textContent;
+				$lang = $content->getAttribute("lang");
+				$arrResult[$classname][$lang][$i] = $searchstring;
+				$this->import_xhtml_search_string($postid, $searchstring, $relevance, $lang, $classname);
 			}
 
-			if(strlen(trim($language)) != 0)
-			{
-				$arrStringsForIndexing[$index] = $field->textContent;
-
-				$this->import_xhtml_search_string($post_id, $field->textContent, $relevance, $language, $subid);
-				$index++;
-			}
-			if($subid > 0)
-			{
-				$subid++;
-			}
+			$i++;
 		}
 
-		return $arrStringsForIndexing;
+		return $arrResult;
 	}
 
 	//-----------------------------------------------------------------------------//
@@ -1078,7 +1114,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 * @param <type> $search_string = string we want to search for in the post
 	 * @param <int> $relevance = weighted importance of this particular string for search results
 	 */
-	function import_xhtml_search_string( $post_id, $search_string, $relevance, $language_code, $subid = 0) {
+	function import_xhtml_search_string( $post_id, $search_string, $relevance, $language_code, $classname, $subid = 0) {
 		global $wpdb;
 
 		//$language_code = $field->getAttribute("lang");
@@ -1089,9 +1125,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			$search_string = normalizer_normalize($search_string, Normalizer::NFC );
 			$sql = $wpdb->prepare(
-				"INSERT IGNORE INTO `". Config::$search_table_name . "` (post_id, language_code, search_strings, relevance, subid)
-				VALUES (%d, '%s', '%s', %d, %d)",
-				$post_id, $language_code, trim($search_string), $relevance, $subid );
+				"INSERT IGNORE INTO `". Config::$search_table_name . "` (post_id, language_code, search_strings, relevance, class, subid)
+				VALUES (%d, '%s', '%s', %d, '%s', %d)",
+				$post_id, $language_code, trim($search_string), $relevance, $classname, $subid );
 
 				//ON DUPLICATE KEY UPDATE search_strings = CONCAT(search_strings, ' ',  '%s');",
 
@@ -1103,7 +1139,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		if(strstr($search_string,"’"))
 		{
 			$mySearch_string = str_replace("’", "'", $search_string);
-			$this->import_xhtml_search_string( $post_id, $mySearch_string, $relevance, $language_code, $subid);
+			$this->import_xhtml_search_string( $post_id, $mySearch_string, $relevance, $language_code, $classname, $subid);
 		}
 	}
 
@@ -1445,7 +1481,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					error_log("PostId for '" . $headword_text . "' not found.");
 				}
-				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, 0);
+				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, "reversalform", 0);
 
 				$headwordCount++;
 			}
@@ -1642,34 +1678,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						echo "</span>";
 					}
 
-					//import headword
-					//$this->import_xhtml_search_string($post->ID, $headword_text, $this->headword_relevance, $headword_language, $subid);
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[0], ($this->headword_relevance), $subid);
-					//sub headwords
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[1], ($this->headword_relevance - 5), $subid);
-					//lexeme forms
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[2], $this->lexeme_form_relevance);
-					//definitions
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[3], $this->definition_word_relevance);
-					//sub definitions
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[4], ($this->definition_word_relevance - 5));
-					//example sentences
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[5], $this->example_sentences_relevance);
-					//Translation of example sentences
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[6], $this->example_sentences_relevance);
-					//custom fields
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[7], $this->custom_field_relevance);
-					//variant forms
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[8], $this->variant_form_relevance);
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[9], $this->variant_form_relevance);
-					//cross references
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[10], $this->sense_crossref_relevance);
-					//scientific names
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[11], $this->scientific_name);
-					//plurals
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[12], $this->plural);
-					//citation form
-					$this->import_xhtml_search($doc, $post->ID, $arrFieldQueries[13], $this->citationform);
+					$this->import_xhtml_classes($post->ID, $doc);
 				}
 				else
 				{

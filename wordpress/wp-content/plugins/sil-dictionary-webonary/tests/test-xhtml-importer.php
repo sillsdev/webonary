@@ -122,15 +122,12 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrFieldQueries = $import->getArrFieldQueries(2);
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
 
-		$this->assertEquals($arrStringsForIndexing[0], "ärt");
-		$this->assertEquals($arrStringsForIndexing[1], "آرت");
+		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr"][0], "ärt");
+		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr-Xpeo-IR"][0], "آرت");
 
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
-
-		$this->assertEquals($arrStringsForIndexing[0], "flour");
+		$this->assertEquals($arrStringsForIndexing["gloss"]["en"][7], "flour");
 	}
 
 	function test_import_xhtml_search_Nafaanra()
@@ -143,18 +140,12 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrFieldQueries = $import->getArrFieldQueries(2);
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
-		$this->assertEquals($arrStringsForIndexing[0], "abani");
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
 
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
-		$this->assertEquals($arrStringsForIndexing[0], "government");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[5], $import->example_sentences_relevance);
-		$this->assertEquals($arrStringsForIndexing[0], "Ala Ghana abani tia sro pan titi.");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[6], $import->example_sentences_relevance);
-		$this->assertEquals($arrStringsForIndexing[0], "This year there is food help from the Government.");
+		$this->assertEquals($arrStringsForIndexing["mainheadword"]["nfr"][0], "abani");
+		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][7], "government");
+		$this->assertEquals($arrStringsForIndexing["example"]["nfr"][10], "Ala Ghana abani tia sro pan titi.");
+		$this->assertEquals($arrStringsForIndexing["translation"]["en"][13], "This year there is food help from the Government.");
 	}
 
 	function test_import_xhtml_search_Agutaynen()
@@ -167,20 +158,12 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrFieldQueries = $import->getArrFieldQueries(2);
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
 
-		$this->assertEquals($arrStringsForIndexing[0], "abol");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
-
-		$this->assertEquals($arrStringsForIndexing[0], "Dull, as of a blade.");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[5], $import->example_sentences_relevance);
-		$this->assertEquals(trim($arrStringsForIndexing[0]), "Baiden mo kay tang gedo, doro rag kābol.");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[6], $import->example_sentences_relevance);
-		$this->assertEquals(trim($arrStringsForIndexing[0]), "Please sharpen my bolo, it is already very dull.");
+		$this->assertEquals($arrStringsForIndexing["mainheadword"]["agn"][0], "abol");
+		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][9], "Dull, as of a blade.");
+		$this->assertEquals(trim($arrStringsForIndexing["example"]["agn"][12]), "Baiden mo kay tang gedo, doro rag kābol.");
+		$this->assertEquals(trim($arrStringsForIndexing["translation"]["en"][15]), "Please sharpen my bolo, it is already very dull.");
 	}
 
 	function test_import_xhtml_search_Iranun_Sabah()
@@ -193,18 +176,12 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrFieldQueries = $import->getArrFieldQueries(2);
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[0], ($import->headword_relevance), 1);
-		$this->assertEquals($arrStringsForIndexing[0], "balik");
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
 
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[3], $import->definition_word_relevance);
-		$this->assertEquals($arrStringsForIndexing[0], "catfish");
-		$this->assertEquals($arrStringsForIndexing[1], "ikan keli");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[11], $import->scientific_name);
-		$this->assertEquals($arrStringsForIndexing[0], "Clarias batrachus");
-
-		$arrStringsForIndexing = $import->import_xhtml_search($doc, 1, $arrFieldQueries[10], $import->sense_crossref_relevance);
-		$this->assertEquals($arrStringsForIndexing[0], "seda'1");
+		$this->assertEquals($arrStringsForIndexing["mainheadword"]["ill"][0], "balik");
+		$this->assertEquals($arrStringsForIndexing["definition"]["en"][8], "catfish");
+		$this->assertEquals($arrStringsForIndexing["definition"]["ms"][8], "ikan keli");
+		$this->assertEquals($arrStringsForIndexing["scientificname"]["en"][7], "Clarias batrachus");
+		$this->assertEquals($arrStringsForIndexing["headword"]["ill"][15], "seda'1");
 	}
 }
