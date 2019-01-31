@@ -557,7 +557,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		$relevance = 0;
 
-		if($classname == "mainheadword" || $classname == "lexemeform")
+		if($classname == "mainheadword" || $classname == "lexemeform" || $classname == "headword")
 		{
 			$relevance = $this->headword_relevance;
 		}
@@ -789,7 +789,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				{
 					$notRoman++;
 				}
-				echo $search_string . "#<br>";
 				$countComposedCharacters++;
 			}
 		}
