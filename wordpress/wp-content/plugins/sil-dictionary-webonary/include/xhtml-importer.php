@@ -553,11 +553,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		return $postid;
 	}
 
-	function get_relevance($classname)
+	function get_relevance($classname, $classnameLong)
 	{
 		$relevance = 0;
 
-		if($classname == "mainheadword" || $classname == "lexemeform" || $classname == "headword")
+		if($classname == "mainheadword" || $classname == "lexemeform" || ($classname == "headword" && strpos($classnameLong, "minorentry") > 0))
 		{
 			$relevance = $this->headword_relevance;
 		}
@@ -1077,6 +1077,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$fields = $xpath->query("//span[@class]");
 
+		$classnameLong = "";
 		$searchstring = "";
 		$lang = "";
 
@@ -1087,8 +1088,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$langContent = $xpath->query("span[@lang]", $field);
 
 			$classname = $field->getAttribute("class");
+			$classnameLong .= $classname . "_";
 
-			$relevance = $this->get_relevance($classname);
+			$relevance = $this->get_relevance($classname, $classnameLong);
 
 			foreach($langContent as $content)
 			{

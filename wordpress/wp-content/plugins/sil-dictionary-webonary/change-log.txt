@@ -1,3 +1,4 @@
+v. 8.0.2 1 February 2019 all headwords that are a minorentry get a relevance of 100, but not subentries, etc.
 v. 8.0.1 31 January 2019 variant headwords get indexed again
 v. 8.0.0 30 January 2019 all classes (including custom fields) now get imported
 v. 7.9.9 28 January 2019 mistakenly committed experimental version. Undid this.
