@@ -557,7 +557,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		$relevance = 0;
 
-		if($classname == "mainheadword" || $classname == "lexemeform" || ($classname == "headword" && strpos($classnameLong, "minorentry") >= 0))
+		if($classname == "mainheadword" || $classname == "lexemeform" || ($classname == "headword" && strpos($classnameLong, "minorentry") !== false))
 		{
 			$relevance = $this->headword_relevance;
 		}
