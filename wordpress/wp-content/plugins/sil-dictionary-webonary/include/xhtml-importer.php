@@ -557,7 +557,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		$relevance = 0;
 
-		if($classname == "mainheadword" || $classname == "lexemeform" || ($classname == "headword" && strpos($classnameLong, "minorentry") > 0))
+		if($classname == "mainheadword" || $classname == "lexemeform" || ($classname == "headword" && strpos($classnameLong, "minorentry") >= 0))
 		{
 			$relevance = $this->headword_relevance;
 		}
@@ -565,10 +565,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			$relevance = $this->headword_relevance - 5;
 		}
+		/*
 		if($classname == "LexemeForm" || $classname == "lexemeform")
 		{
 			$relevance = $this->lexeme_form_relevance;
 		}
+		*/
 		if($classname == "definition" || $classname == "gloss" || $classname == "definitionorgloss")
 		{
 			$relevance = $this->definition_word_relevance;
