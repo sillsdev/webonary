@@ -376,6 +376,15 @@ function englishalphabet_func( $atts, $content, $tag ) {
 
 add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
+function getPostsPerPage()
+{
+	$posts_per_page = 25;
+	if(get_option( 'posts_per_page' ) > $posts_per_page)
+	{
+		$posts_per_page = get_option('posts_per_page');
+	}
+}
+
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
@@ -679,6 +688,7 @@ function get_letter($firstLetterOfAlphabet = "") {
 
 function vernacularalphabet_func( $atts )
 {
+	$posts_per_page = getPostsPerPage();
 ?>
 	<style>
 		.lpTitleLetterCell {float:left;}
@@ -757,7 +767,7 @@ function vernacularalphabet_func( $atts )
 			$displaySubentriesAsMinorEntries = true;
 		}
 
-		$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=25&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
+		$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
 
 		if(count($arrPosts) == 0)
 		{
@@ -803,7 +813,7 @@ function vernacularalphabet_func( $atts )
 		}
 
 		$display .= "<div align=center><br>";
-		$display .= displayPagenumbers($chosenLetter, $totalEntries, 25, $languagecode);
+		$display .= displayPagenumbers($chosenLetter, $totalEntries, $posts_per_page, $languagecode);
 		$display .= "</div><br>";
 	}
  	wp_reset_query();

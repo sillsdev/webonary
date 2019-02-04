@@ -1,3 +1,4 @@
+v. 8.0.4 4 February 2019 posts per page can be made bigger than 25 (default)
 v. 8.0.3 4 February 2019 added form for changing relevance
 v. 8.0.2 1 February 2019 all headwords that are a minorentry get a relevance of 100, but not subentries, etc.
 v. 8.0.1 31 January 2019 variant headwords get indexed again
