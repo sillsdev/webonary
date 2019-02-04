@@ -1710,7 +1710,25 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$entry_counter++;
 			}
 
+			$this->update_relevance();
 			update_option("importStatus", "importFinished");
+		}
+	}
+
+	function update_relevance()
+	{
+		global $wpdb;
+
+		$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
+
+		$arrClasses = $wpdb->get_results ("SELECT class, relevance FROM $tableCustomRelevance");
+
+		if (count ($arrClasses) > 0) {
+			foreach($arrClasses as $class)
+			{
+				echo "UPDATE " . Config::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'<br>";
+				$wpdb->query ("UPDATE " . Config::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'");
+			}
 		}
 	}
 

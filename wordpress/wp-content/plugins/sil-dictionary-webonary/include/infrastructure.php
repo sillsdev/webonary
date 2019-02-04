@@ -96,10 +96,10 @@ function create_search_tables () {
 		`language_code` varchar(20),
 		`relevance` tinyint,
 		`search_strings` longtext,
-		`class` varchar(100),
+		`class` varchar(50),
 		`subid` INT NOT NULL DEFAULT  '0',
 		`sortorder` INT NOT NULL DEFAULT '0',
-		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 )),
+		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 ), `class` (50)),
 		INDEX relevance_idx (relevance)
 		) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
 

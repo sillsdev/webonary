@@ -110,6 +110,106 @@ function get_LanguageCodes($languageCode = null) {
 	return $wpdb->get_results($sql, 'ARRAY_A');
 }
 
+function relevanceForm()
+{
+	global $wpdb;
+
+	$sql = "SELECT class AS classname, relevance
+		FROM " . $wpdb->prefix . "sil_search
+		GROUP BY class
+		ORDER BY relevance DESC";
+
+	$arrClasses = $wpdb->get_results($sql);
+
+?>
+<form action="admin.php?page=webonary#search" method="post" enctype="multipart/form-data">
+<h1>Relevance Settings for Fields</h1>
+<p>
+The search returns results based on relevance. That is, if the word you are looking for is found in a headword, that will be more important than finding the word in a definition for another word.
+</p>
+<p>
+Normally you don't need to change anything here. But if you import a custom field, it will be imported with a relevance of zero in which case you have the option to change the relevance setting.
+</p>
+<?php
+	echo "<ul>";
+	foreach($arrClasses as $class)
+	{
+		if(strpos($class->classname, "abbr") !== false || strpos($class->classname, "partofspeech") !== false || (strpos($class->classname, "headword") !== false && $class->relevance == 0))
+		{
+			continue;
+		}
+		echo "<li><div><strong>" . $class->classname . ": </strong></div>";
+		if($class->relevance == 100 && strpos($class->classname, "headword") !== false)
+		{
+			echo $class->relevance;
+		}
+		else
+		{
+		?>
+			<div>
+			<input type="hidden" name=classname[] value="<?php echo $class->classname; ?>">
+			<input type="text" name=relevance[] size=5 value="<?php echo $class->relevance; ?>">
+			</div>
+		<?php
+		}
+		echo "</li>";
+	}
+	echo "</ul>";
+	?>
+<p>
+	<input type="submit" name="btnSaveRelevance" value="Save">
+</p>
+</form>
+<?php
+}
+
+function relevanceSave()
+{
+	global $wpdb;
+
+	$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
+	$sql = "CREATE TABLE IF NOT EXISTS " . $tableCustomRelevance . "(
+			`class` varchar(50),
+			`relevance` tinyint,
+			PRIMARY KEY  (`class`)
+			)";
+
+	dbDelta( $sql );
+
+	$r = 0;
+	foreach($_POST['classname'] as $class)
+	{
+
+		if($_POST['relevance'][$r] < 0 || $_POST['relevance'][$r] > 100 || !is_numeric($_POST['relevance'][$r]))
+		{
+			echo "<span style=\"color: red;\">Relevance has to be >= 0 and <= 100 for all fields!</span><br>";
+			return false;
+		}
+		//echo $class . ": " . $_POST['relevance'][$r] . "<br>";
+
+		$wpdb->query ("UPDATE " . $wpdb->prefix . "sil_search SET relevance = ". $_POST['relevance'][$r] ." WHERE class = '".$class."'");
+
+		$result = $wpdb->get_results ("SELECT relevance FROM $tableCustomRelevance WHERE class = '".$class."'");
+
+		if (count ($result) > 0) {
+			$wpdb->query ("UPDATE $tableCustomRelevance SET relevance = ". $_POST['relevance'][$r] ." WHERE class = '".$class."'");
+		} else {
+			$wpdb->query ("INSERT INTO $tableCustomRelevance (class, relevance) VALUES ('".$class."'," . $_POST['relevance'][$r] . ")");
+		}
+
+		$wpdb->query($sql);
+		$r++;
+	}
+
+	$wpdb->print_error();
+
+	if($wpdb->last_error === '')
+	{
+		echo "<h3>Relevance Settings were saved.</h3>";
+	}
+	echo "<hr>";
+}
+
 //display the senses that don't get linked in the reversal browse view
 function report_missing_senses()
 {
@@ -324,9 +424,19 @@ function webonary_conf_widget($showTitle = false) {
 		$fontClass->uploadFontForm();
 	}
 
+	if(isset($_GET['changerelevance']))
+	{
+		relevanceForm();
+	}
+
 	if(isset($_POST['uploadFont']))
 	{
 		$fontClass->uploadFont();
+	}
+
+	if(isset($_POST['btnSaveRelevance']))
+	{
+		relevanceSave();
 	}
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
@@ -544,6 +654,8 @@ function webonary_conf_widget($showTitle = false) {
 			}
 			?>
 			</select>
+			<br><br>
+			<a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
 			<br><br>
 			<?php admin_section_end('search', 'Save Changes'); ?>
 			<?php
