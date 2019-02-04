@@ -131,9 +131,10 @@ The search returns results based on relevance. That is, if the word you are look
 Normally you don't need to change anything here. But if you import a custom field, it will be imported with a relevance of zero in which case you have the option to change the relevance setting.
 </p>
 <?php
-	if(count($arrClasses) == 0)
+	if(!isset($arrClasses))
 	{
 		echo "<strong>You need to reimport this dictionary if you want to change the relevance settings.</strong>";
+		return false;
 	}
 	echo "<ul>";
 	foreach($arrClasses as $class)
