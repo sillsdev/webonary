@@ -139,12 +139,12 @@ Normally you don't need to change anything here. But if you import a custom fiel
 	echo "<ul>";
 	foreach($arrClasses as $class)
 	{
-		if(strpos($class->classname, "abbr") !== false || strpos($class->classname, "partofspeech") !== false || (strpos($class->classname, "headword") !== false && $class->relevance == 0))
+		if(strpos($class->classname, "abbr") !== false || strpos($class->classname, "partofspeech") !== false || strpos($class->classname, "name") !== false || (strpos($class->classname, "headword") !== false && $class->relevance == 0))
 		{
 			continue;
 		}
 		echo "<li><div><strong>" . $class->classname . ": </strong></div>";
-		if($class->relevance == 100 && strpos($class->classname, "headword") !== false)
+		if($class->relevance == 100 && strpos($class->classname, "headword") !== false && strpos($class->classname, "lexemeform") && strpos($class->classname, "reversalform"))
 		{
 			echo $class->relevance;
 		}
