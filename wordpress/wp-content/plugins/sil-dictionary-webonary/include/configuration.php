@@ -144,7 +144,7 @@ Normally you don't need to change anything here. But if you import a custom fiel
 			continue;
 		}
 		echo "<li><div><strong>" . $class->classname . ": </strong></div>";
-		if($class->relevance == 100 && strpos($class->classname, "headword") !== false && strpos($class->classname, "lexemeform") && strpos($class->classname, "reversalform"))
+		if($class->relevance == 100 && (strpos($class->classname, "headword") !== false || strpos($class->classname, "lexemeform") || strpos($class->classname, "reversalform"))
 		{
 			echo $class->relevance;
 		}
