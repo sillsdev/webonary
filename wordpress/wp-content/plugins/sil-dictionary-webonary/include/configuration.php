@@ -185,9 +185,9 @@ function relevanceSave()
 	foreach($_POST['classname'] as $class)
 	{
 
-		if($_POST['relevance'][$r] < 0 || $_POST['relevance'][$r] > 100 || !is_numeric($_POST['relevance'][$r]))
+		if($_POST['relevance'][$r] < 0 || $_POST['relevance'][$r] > 99 || !is_numeric($_POST['relevance'][$r]))
 		{
-			echo "<span style=\"color: red;\">Relevance has to be >= 0 and <= 100 for all fields!</span><br>";
+			echo "<span style=\"color: red;\">Relevance has to be >= 0 and < 100 for all fields!</span><br>";
 			return false;
 		}
 		//echo $class . ": " . $_POST['relevance'][$r] . "<br>";
