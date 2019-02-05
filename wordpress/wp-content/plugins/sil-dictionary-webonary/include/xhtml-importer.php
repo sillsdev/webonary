@@ -1726,7 +1726,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		if (count ($arrClasses) > 0) {
 			foreach($arrClasses as $class)
 			{
-				echo "UPDATE " . Config::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'<br>";
 				$wpdb->query ("UPDATE " . Config::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'");
 			}
 		}
