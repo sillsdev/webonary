@@ -255,6 +255,7 @@ function save_configurations() {
 	if ( ! empty( $_POST['save_settings'])) {
 		update_option("publicationStatus", $_POST['publicationStatus']);
 		update_option("include_partial_words", $_POST['include_partial_words']);
+		update_option("searchSomposedCharacters", $_POST['search_composed_characters']);
 		//update_option("distinguish_diacritics", $_POST['distinguish_diacritics']);
 		if(isset($_POST['normalization']))
 		{
@@ -592,15 +593,15 @@ function webonary_conf_widget($showTitle = false) {
 						<?php _e('Always include searching through partial words.'); ?>
 			<br>
 			<?php
-			/*
-			?>
-			<input name="distinguish_diacritics" type="checkbox" value="1"
-						<?php checked('1', get_option('distinguish_diacritics')); ?> />
-						<?php _e('Distinguish diacritic letters'); ?>
-			</p>
-			<?php */ ?>
-			<p>
+			if(get_option('hasComposedCharacters') == 1)
+			{
+			 ?>
+			 <input name="search_composed_characters" type="checkbox" value="1"
+						<?php checked('1', get_option('searchSomposedCharacters')); ?> />
+						Search for composed characters using base characters (<a href="https://www.webonary.org/searching-for-composed-characters-using-base-characters/" target="_blank">help</a>)
+			<br>
 			<?php
+			}
 			//this is only for legacy purposes.
 			//Now the import will convert all text to NFC, so this is no longer needed for newer imports
 			if(get_option("normalization") != null)

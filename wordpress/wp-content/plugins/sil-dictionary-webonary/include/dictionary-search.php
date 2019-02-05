@@ -245,7 +245,7 @@ function sil_dictionary_custom_join($join) {
 			if (is_CJK( $search ) || $match_whole_words == 0)
 			{
 
-				if(get_option("hasComposedCharacters") == 1)
+				if(get_option("searchSomposedCharacters") == 1)
 				{
 					$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
 				}
