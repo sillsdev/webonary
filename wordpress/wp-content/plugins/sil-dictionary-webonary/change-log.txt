@@ -1,3 +1,4 @@
+v. 8.0.6 6 February 2019 fixed "Advanced Search" link issue in Safari
 v. 8.0.5 5 February 2019 added option "Search for composed characters using base characters"
 v. 8.0.4 4 February 2019 posts per page can be made bigger than 25 (default)
 v. 8.0.3 4 February 2019 added form for changing relevance

@@ -30,7 +30,7 @@ function webonary_searchform() {
 	window.onload = function(e)
 	{
 		<?php
-		if($_GET['displayAdvancedSearch'] == 1)
+		if($_GET['displayAdvancedSearchName'] == 1)
 		{
 		?>
 		displayAdvancedSearch();
@@ -43,14 +43,14 @@ function webonary_searchform() {
 	{
 		document.getElementById("advancedSearch").style.display = 'block';
 		document.getElementById("advancedSearchLink").style.display = 'none';
-		document.getElementById("displayAdvancedSearch").value = "1";
+		document.getElementById("displayAdvancedSearchId").value = "1";
 	}
 
 	function hideAdvancedSearch()
 	{
 		document.getElementById("advancedSearch").style.display = 'none';
 		document.getElementById("advancedSearchLink").style.display = 'block';
-		document.getElementById("displayAdvancedSearch").value = "0";
+		document.getElementById("displayAdvancedSearchId").value = "0";
 	}
 	-->
 	</script>
@@ -153,7 +153,7 @@ function webonary_searchform() {
 				<!-- search button -->
 				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
 				<br>
-				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch()" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php echo _e('Advanced Search', 'sil_dictionary'); ?></a>
+				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch();" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php echo _e('Advanced Search', 'sil_dictionary'); ?></a>
 				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
@@ -232,7 +232,7 @@ function webonary_searchform() {
 					}
 					?>
 					<input name="match_accents" <?php checked('1', $match_accents); ?> type="checkbox"> <?php _e('Match accents and tones', 'sil_dictionary'); ?>
-					<input id=displayAdvancedSearch name="displayAdvancedSearch" type="hidden" value="0">
+					<input id=displayAdvancedSearchId name="displayAdvancedSearchName" type="hidden" value="0">
 				</div>
 			</div>
 		</form>
