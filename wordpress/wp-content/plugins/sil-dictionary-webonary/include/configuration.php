@@ -173,13 +173,6 @@ function relevanceSave()
 	global $wpdb;
 
 	$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
-	$sql = "CREATE TABLE IF NOT EXISTS " . $tableCustomRelevance . "(
-			`class` varchar(50),
-			`relevance` tinyint,
-			PRIMARY KEY  (`class`)
-			)";
-
-	dbDelta( $sql );
 
 	$r = 0;
 	foreach($_POST['classname'] as $class)

@@ -62,14 +62,7 @@ function sil_dictionary_select_fields() {
 		add_action('wp_enqueue_scripts', 'my_enqueue_css', 1000);
 	}
 
-	if(  !empty($wp_query->query_vars['s']) && isset($wp_query->query_vars['letter']))
-	{
-		return $wpdb->posts.".*, " . $search_table_name . ".search_strings";
-	}
-	else
-	{
-		return $wpdb->posts.".*";
-	}
+	return $wpdb->posts.".*";
 }
 function sil_dictionary_select_distinct() {
 	return "DISTINCTROW";
@@ -147,135 +140,96 @@ function sil_dictionary_custom_join($join) {
 			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
 		}
 
-		if(isset($wp_query->query_vars['letter']))
+		//using search form
+		$match_accents = false;
+		if(isset($wp_query->query_vars['match_accents']))
 		{
-			$letter = addslashes(trim($wp_query->query_vars['letter']));
-			$noletters = addslashes(trim($wp_query->query_vars['noletters']));
-
-			//by default we use collate utf8_bin and à, ä, etc. are handled as different letters
-			$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
-			if(get_option('IncludeCharactersWithDiacritics') == 1)
-			{
-				$collate = "";
-			}
-
-			//$regex = "^(=|-|\\\*|~)?";
-			//$subquery_where .= "(" . $search_table_name . ".search_strings REGEXP '" . $regex  . addslashes(strtolower($letter)) . "' " . $collate . " OR " . $search_table_name . ".search_strings REGEXP '" . $regex . addslashes(strtoupper($letter)) . "' " . $collate . ")" .
-			if(get_has_browseletters() == 0)
-			{
-				$subquery_where .=  "(" . $search_table_name . ".search_strings LIKE '" . $letter . "%' " . $collate;
-				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '-" . $letter . "%' " . $collate;
-				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '*" . $letter . "%' " . $collate;
-				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '=" . $letter . "%' " . $collate;
-				$subquery_where .=  " OR " . $search_table_name . ".search_strings LIKE '" . $letter . "%'"  . $collate . ")";
-				$subquery_where .= " AND ";
-			}
-			$subquery_where .= " relevance >= 95 AND language_code = '$key' ";
-
-			$arrNoLetters = explode(",",  $noletters);
-			foreach($arrNoLetters as $noLetter)
-			{
-				if(strlen($noLetter) > 0)
-				{
-					$subquery_where .= " AND " . $search_table_name . ".search_strings NOT LIKE '" . $noLetter ."%' " . $collate .
-					" AND " . $search_table_name . ".search_strings NOT LIKE '" . strtoupper($noLetter) ."%' " . $collate;
-				}
-			}
+			$match_accents = true;
 		}
 
-		//using search form
-		if(!isset($wp_query->query_vars['letter']))
+		$searchquery = $search;
+		//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
+		if(preg_match('/([aeiou])/', $search) && $match_accents == false)
 		{
-			$match_accents = false;
-			if(isset($wp_query->query_vars['match_accents']))
-			{
-				$match_accents = true;
-			}
+			//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
+			$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+			//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
+			//the mysql regular expression can't find words with  accented characters if we don't include them
+			$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
+			$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
+			$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
+			$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
+			$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
+			$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
+			$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+			$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
+			$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+			//for vowels we add [^a-z]* which will search for any character that comes after the normal character
+			//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
+			$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+		}
 
-			$searchquery = $search;
-			//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-			if(preg_match('/([aeiou])/', $search) && $match_accents == false)
-			{
-				//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
-				$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
-				//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
-				//the mysql regular expression can't find words with  accented characters if we don't include them
-				$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
-				$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
-				$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
-				$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-				$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
-				$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-				$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
-				$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
-				$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
-				//for vowels we add [^a-z]* which will search for any character that comes after the normal character
-				//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
-				$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
-			}
+		$searchquery = str_replace("'", "\'", $searchquery);
 
-			$searchquery = str_replace("'", "\'", $searchquery);
-
-			if(mb_strlen($search) <= 3)
+		if(mb_strlen($search) <= 3)
+		{
+			$match_whole_words = 1;
+		}
+		if(!isset($_GET['partialsearch']))
+		{
+			$partialsearch = get_option("include_partial_words");
+			if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
 			{
-				$match_whole_words = 1;
+				$match_whole_words = 0;
 			}
-			if(!isset($_GET['partialsearch']))
-			{
-				$partialsearch = get_option("include_partial_words");
-				if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
-				{
-					$match_whole_words = 0;
-				}
-			}
-			else
-			{
-				if($_GET['partialsearch'] == 1)
-				{
-					$partialsearch = 1;
-					$match_whole_words = 0;
-				}
-			}
-			if(strlen($search) == 0 && $_GET['tax'] > 1)
+		}
+		else
+		{
+			if($_GET['partialsearch'] == 1)
 			{
 				$partialsearch = 1;
 				$match_whole_words = 0;
 			}
+		}
+		if(strlen($search) == 0 && $_GET['tax'] > 1)
+		{
+			$partialsearch = 1;
+			$match_whole_words = 0;
+		}
 
-			if (is_CJK( $search ) || $match_whole_words == 0)
+		if (is_CJK( $search ) || $match_whole_words == 0)
+		{
+
+			if(get_option("searchSomposedCharacters") == 1)
 			{
-
-				if(get_option("searchSomposedCharacters") == 1)
-				{
-					$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
-				}
-				else
-				{
-					$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
-						addslashes( $search ) . "%' " . $collateSearch;
-				}
+				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
 			}
 			else
 			{
-				if(mb_strlen($search) > 1)
-				{
-	            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
-						$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
-				}
+				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
+					addslashes( $search ) . "%' " . $collateSearch;
 			}
 		}
-		//if($_GET['tax'] < 1)
-		//{
-			$subquery =
-				" (SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings, sortorder " .
-				"FROM " . $search_table_name .
-				$subquery_where .
-				" GROUP BY post_id, language_code, sortorder " .
-				" ORDER BY relevance DESC) ";
+		else
+		{
+			if(mb_strlen($search) > 1)
+			{
+            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
+					$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
+			}
+		}
 
-			$join = " JOIN " . $subquery . $search_table_name . " ON $wpdb->posts.ID = " . $search_table_name . ".post_id ";
-		//}
+		$subquery = "";
+		$subquery =
+			" (SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings, sortorder " .
+			"FROM " . $search_table_name .
+			$subquery_where .
+			" GROUP BY post_id, language_code, sortorder " .
+			" ORDER BY relevance DESC) ";
+
+		$join = " JOIN " . $subquery . $search_table_name . " ON $wpdb->posts.ID = " . $search_table_name . ".post_id ";
 	}
+
 	$tax = 0;
 	if(isset($_GET['tax']))
 	{
@@ -349,21 +303,6 @@ function sil_dictionary_custom_where($where) {
 				$key = $wp_query->query_vars['langcode'];
 			}
 			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
-
-			$letter = addslashes(trim($wp_query->query_vars['letter']));
-			if(strlen(trim($letter)) > 0)
-			{
-				$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
-				if(get_option('IncludeCharactersWithDiacritics') == 1)
-				{
-					$collate = "";
-				}
-
-				if(get_has_browseletters() > 0)
-				{
-					$where .= " AND $wpdb->posts.post_content_filtered = '" . $letter ."' " . $collate . " AND $wpdb->posts.post_content_filtered != '' ";
-				}
-			}
 		}
 		else
 		{
@@ -375,15 +314,6 @@ function sil_dictionary_custom_where($where) {
 		}
 	}
 
-	/*
-	if(isset($wp_query->query_vars['letter']))
-	{
-		if($wp_query->query_vars['DisplaySubentriesAsMainEntries'] == false)
-		{
-			$where .= " AND " . $search_table_name. ".search_strings = " . $wpdb->posts . ".post_title ";
-		}
-	}
-	*/
 	if(isset($_GET['tax']))
 	{
 		if($_GET['tax'] > 1)
@@ -419,21 +349,14 @@ function sil_dictionary_custom_order_by($orderby) {
 	$search_table_name = SEARCHTABLE;
 
 	$orderby = "";
-	if(  !empty($wp_query->query_vars['s']) && !isset($wp_query->query_vars['letter'])) {
+	if(  !empty($wp_query->query_vars['s']))
+	{
 		$orderby = $search_table_name . ".relevance DESC, CHAR_LENGTH(" . $search_table_name . ".search_strings) ASC, ";
 	}
 
 	if( !empty($wp_query->query_vars['s']) && $_GET['tax'] < 1)
 	{
-		if(isset($wp_query->query_vars['letter']))
-		{
-			$orderby .= $search_table_name . ".sortorder ASC, " . $search_table_name . ".search_strings ASC";
-		}
-		else
-		{
 			$orderby .= "menu_order ASC, " . $search_table_name . ".search_strings ASC";
-		}
-		//$orderby .= " $wpdb->posts.post_title ASC";
 	}
 
 	if(isset($wp_query->query_vars['semdomain']) || isset($_GET['tax']))
@@ -506,28 +429,6 @@ function no_standard_sort($k) {
 		$k->query_vars['orderby'] = 'none';
 		$k->query_vars['order'] = 'none';
 	}
-}
-
-function get_has_browseletters()
-{
-	global $wpdb;
-
-	$sql = "SELECT COUNT(post_content_filtered) AS numberOfLetters " .
-			" FROM " . $wpdb->posts .
-			" WHERE (pinged = 'linksconverted' OR pinged = 'indexed') AND post_content_filtered <> ''";
-
-	return $wpdb->get_var($sql);
-}
-
-function get_has_reversalbrowseletters()
-{
-	global $wpdb;
-
-	$sql = "SELECT COUNT(browseletter) AS numberOfLetters " .
-			" FROM " . REVERSALTABLE .
-			" WHERE browseletter <> ''";
-
-	return $wpdb->get_var($sql);
 }
 
 function get_indexed_entries($query, $language)

@@ -376,6 +376,18 @@ function englishalphabet_func( $atts, $content, $tag ) {
 
 add_shortcode( 'englishalphabet', 'englishalphabet_func');
 
+
+function get_has_reversalbrowseletters()
+{
+	global $wpdb;
+
+	$sql = "SELECT COUNT(browseletter) AS numberOfLetters " .
+			" FROM " . REVERSALTABLE .
+			" WHERE browseletter <> ''";
+
+	return $wpdb->get_var($sql);
+}
+
 function getPostsPerPage()
 {
 	$posts_per_page = 25;
@@ -383,6 +395,8 @@ function getPostsPerPage()
 	{
 		$posts_per_page = get_option('posts_per_page');
 	}
+
+	return $posts_per_page;
 }
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
@@ -656,6 +670,87 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	return $display;
 }
 
+function getNoLetters($chosenLetter, $alphas)
+{
+	//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
+	//words starting with kp should not appear
+	$noLetters = "";
+	foreach($alphas as $alpha)
+	{
+		$alpha = trim($alpha);
+
+		if($chosenLetter != "?")
+		{
+			if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha) && strtoupper($chosenLetter) != strtoupper($alpha))
+			{
+				if(strlen($noLetters) > 0)
+				{
+					$noLetters .= ",";
+				}
+				$noLetters .= $alpha;
+			}
+		}
+	}
+	return $noLetters;
+}
+
+function getVernacularEntries($letter = "", $langcode = "", $page)
+{
+	global $wpdb;
+
+	$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+	if(get_option('IncludeCharactersWithDiacritics') == 1)
+	{
+		$collate = "";
+	}
+
+	$startFrom = 0;
+	$postsperpage = getPostsPerPage();
+	if($page > 1)
+	{
+		$startFrom = ($page - 1) * $postsperpage;
+	}
+
+	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content ";
+    $sql .= " FROM $wpdb->posts ";
+	$sql  .= " WHERE post_content_filtered = '" . $letter ."' " . $collate . " AND post_content_filtered != '' ";
+	$sql .= " ORDER BY menu_order ASC";
+	$sql .= " LIMIT " . $startFrom .", " . $postsperpage;
+
+	$arrEntries = $wpdb->get_results($sql);
+
+	//for legacy browse views, where we didn't use the fields post_content_filtered and menu_order
+	if(count($arrEntries) == 0)
+	{
+
+		$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_title, post_content, search_strings ";
+		$sql .= " FROM $wpdb->posts ";
+		$sql .= " JOIN " . SEARCHTABLE . " ON $wpdb->posts.ID = " . SEARCHTABLE . ".post_id ";
+		$sql .= " WHERE LOWER(search_strings) LIKE '" . strtolower($letter) . "%' " . $collate . " AND language_code = '" . $langcode . "' AND relevance >= 95";
+
+		$alphas = explode(",",  get_option('vernacular_alphabet'));
+		$chosenLetter = get_letter($alphas[0]);
+
+		$noletters = getNoLetters($chosenLetter, $alphas);
+		$arrNoLetters = explode(",",  $noletters);
+		foreach($arrNoLetters as $noLetter)
+		{
+			if(strlen($noLetter) > 0)
+			{
+				$sql .= " AND " . SEARCHTABLE . ".search_strings NOT LIKE '" . $noLetter ."%' " . $collate .
+				" AND " . SEARCHTABLE . ".search_strings NOT LIKE '" . strtoupper($noLetter) ."%' " . $collate;
+			}
+		}
+
+		$sql .= " ORDER BY sortorder ASC, search_strings ASC";
+		$sql .= " LIMIT " . $startFrom .", " . $postsperpage;
+
+		$arrEntries = $wpdb->get_results($sql);
+	}
+
+	return $arrEntries;
+}
+
 function getVernacularHeadword($postid, $languagecode)
 {
 	global $wpdb;
@@ -688,7 +783,7 @@ function get_letter($firstLetterOfAlphabet = "") {
 
 function vernacularalphabet_func( $atts )
 {
-	$posts_per_page = getPostsPerPage();
+	global $wpdb;
 ?>
 	<style>
 		.lpTitleLetterCell {float:left;}
@@ -735,26 +830,6 @@ function vernacularalphabet_func( $atts )
 			return $display;
 		}
 
-		//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
-		//words starting with kp should not appear
-		$noLetters = "";
-		foreach($alphas as $alpha)
-		{
-			$alpha = trim($alpha);
-
-			if($chosenLetter != "?")
-			{
-				if(preg_match("/" . $chosenLetter . "/i", $alpha) && $chosenLetter != stripslashes($alpha) && strtoupper($chosenLetter) != strtoupper($alpha))
-				{
-					if(strlen($noLetters) > 0)
-					{
-						$noLetters .= ",";
-					}
-					$noLetters .= $alpha;
-				}
-			}
-		}
-
 		$display .= "<div id=searchresults>";
 
 		$displaySubentriesAsMinorEntries = true;
@@ -767,7 +842,20 @@ function vernacularalphabet_func( $atts )
 			$displaySubentriesAsMinorEntries = true;
 		}
 
-		$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
+		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
+		$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $_GET['pagenr']);
+
+		if(!isset($_GET['totalEntries']))
+		{
+			$sql = "SELECT FOUND_ROWS()";
+
+			$totalEntries = $wpdb->get_var($sql);
+		}
+		else
+		{
+			$totalEntries = $_GET['totalEntries'];
+		}
+
 
 		if(count($arrPosts) == 0)
 		{
@@ -802,18 +890,8 @@ function vernacularalphabet_func( $atts )
 
 		$display .= "</div>";
 
-		if(!isset($_GET['totalEntries']))
-		{
-			global $wp_query;
-			$totalEntries = $wp_query->found_posts;
-		}
-		else
-		{
-			$totalEntries = $_GET['totalEntries'];
-		}
-
 		$display .= "<div align=center><br>";
-		$display .= displayPagenumbers($chosenLetter, $totalEntries, $posts_per_page, $languagecode);
+		$display .= displayPagenumbers($chosenLetter, $totalEntries, getPostsPerPage(), $languagecode);
 		$display .= "</div><br>";
 	}
  	wp_reset_query();

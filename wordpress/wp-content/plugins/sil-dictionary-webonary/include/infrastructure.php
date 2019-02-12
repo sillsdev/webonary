@@ -54,6 +54,7 @@ function install_sil_dictionary_infrastructure() {
 	*/
 	if(is_admin())
 	{
+		create_custom_relevance();
 		create_search_tables();
 		create_reversal_tables();
 		set_options();
@@ -65,6 +66,23 @@ function install_sil_dictionary_infrastructure() {
 	register_part_of_speech_taxonomy();
 	register_language_taxonomy();
 	register_webstrings_taxonomy();
+}
+
+//---------------------------------------------------------------------------//
+
+function create_custom_relevance() {
+	global $wpdb;
+
+	$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
+	$sql = "CREATE TABLE IF NOT EXISTS " . $tableCustomRelevance . "(
+			`class` varchar(50),
+			`relevance` tinyint,
+			PRIMARY KEY  (`class`)
+			)";
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+	dbDelta( $sql );
+
 }
 
 //---------------------------------------------------------------------------//
