@@ -1,3 +1,4 @@
+v. 8.0.8 14 February 2018 added link to archive file
 v. 8.0.7 12 February 2018 put vernacular browse view queries inside browseview_func.php and removed from dictionary_search.php
 v. 8.0.6 6 February 2019 fixed "Advanced Search" link issue in Safari
 v. 8.0.5 5 February 2019 added option "Search for composed characters using base characters"

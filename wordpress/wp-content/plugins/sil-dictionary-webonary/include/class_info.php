@@ -76,7 +76,19 @@ class Webonary_Info
 			{
 				if($posts->post_date != NULL)
 				{
-					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time)";
+					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
+					$status .= "Download data sent from FLEx: ";
+
+					$subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
+					$archiveFile = $subdomain . ".zip";
+					if(file_exists("/wp-content/archives/" . $archiveFile))
+					{
+						$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
+					}
+					else
+					{
+						$status .= "no longer available";
+					}
 					$status .= "<br>";
 
 				}
