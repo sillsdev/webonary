@@ -81,8 +81,7 @@ class Webonary_Info
 
 					$subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
 					$archiveFile = $subdomain . ".zip";
-					$status .= "/wp-content/archives/" . $archiveFile . " ";
-					if(file_exists("/wp-content/archives/" . $archiveFile))
+					if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/wp-content/archives/" . $archiveFile))
 					{
 						$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
 					}
