@@ -440,41 +440,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		echo '</div>';
 	}
 
-	function getArrFieldQueries($step = 0)
-	{
-		if(isset($_GET['step']))
-		{
-			$step = $_GET['step'];
-		}
-		if($step >= 2)
-		{
-			$querystart = "//span";
-		}
-		else
-		{
-			$querystart = ".//xhtml:span";
-		}
-
-		//$arrFieldQueries[0] = $querystart . '[@class="headword"]|//*[@class="headword_L2"]|//*[@class="headword-minor"]';
-		$arrFieldQueries[0] = '//div[@class="entry"]/span[@class="mainheadword"]/span|//div[@class="entry"]/span[@class="lexemeform"]|//div[@class="mainentrycomplex"]/span[@class="headword"]|//div[@class="entry"]/*[@class="headword"]|//div[@class="minorentry"]/span[@class="headword"]|//div[@class="minorentryvariant"]/span[@class="headword"]|//div[@class="minorentrycomplex"]/span[@class="headword"]|./*[@class="headword_L2"]|//span[@class="headword-minor"]';
-		$arrFieldQueries[1] = $querystart . '[@class = "headword-sub"]|' . $querystart . '[starts-with(@class,"subentry")]/*[@class="headword"]';
-		$arrFieldQueries[2] = $querystart . '[contains(@class, "LexemeForm")]|' . $querystart . '[contains(@class, "lexemeform")]';
-		//$arrFieldQueries[3] = $querystart . '[@class = "definition"]|//*[@class = "definition_L2"]|//*[@class = "definition-minor"]';
-		$arrFieldQueries[3] = $querystart . '[starts-with(@class,"definition")]/span|' . $querystart . '[starts-with(@class,"gloss")]/span';
-		$arrFieldQueries[4] = $querystart . '[starts-with(@class,"definition-sub")]'; //REMOVE WITH FLEX 8.3
-		$arrFieldQueries[5] = $querystart . '[@class = "example"]/span[@lang]';
-		$arrFieldQueries[6] = $querystart . '[@class = "translation"]/span[@lang]';
-		$arrFieldQueries[7] = $querystart . '[starts-with(@class,"LexEntry-") and not(contains(@class, "LexEntry-publishRoot-DefinitionPub_L2"))]/span';
-		$arrFieldQueries[8] = $querystart . '[@class = "variantref-form"]';
-		$arrFieldQueries[9] = $querystart . '[@class = "variantref-form-sub"]';
-		$arrFieldQueries[10] = $querystart . '[@class = "lexsensereference"]//span[@lang]';
-		$arrFieldQueries[11] = $querystart . '[@class = "scientificname"]|' . $querystart . '[@class = "scientific-name"]';
-		$arrFieldQueries[12] = $querystart . '[@class = "plural"]';
-		$arrFieldQueries[13] = $querystart . '[@class = "citationform"]';
-
-		return $arrFieldQueries;
-	}
-
 	function get_latest_xhtmlfile(){
 		global $wpdb;
 
@@ -836,17 +801,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$reversals = $this->dom_xpath->query( '(./xhtml:span[contains(@class, "reversal-form")])[1]|(./xhtml:span[contains(@class, "reversalform")])[1]' );
 			if ( $reversals->length > 0 )
 				return;
-
-			//inform the user about which fields are available
-			$arrFieldQueries = $this->getArrFieldQueries(2);
-			foreach($arrFieldQueries as $fieldQuery)
-			{
-				$fields = $this->dom_xpath->query($fieldQuery);
-				if($fields->length == 0 && isset($_POST['chkShowDebug']))
-				{
-					echo "No entries found for the query " . $fieldQuery . "<br>";
-				}
-			}
 		}
 
 		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
@@ -1646,42 +1600,10 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$xpath = new DOMXPath($doc);
 				$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-				$arrFieldQueries = $this->getArrFieldQueries(2);
-
-				$headword = $xpath->query($arrFieldQueries[0])->item(0);
-
 				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $post->post_title, "Step 2 of 2: Indexing Search Strings");
 
 				if($post->post_parent == 0)
 				{
-					if(isset($headword))
-					{
-						$headword_text = $headword->textContent;
-						$headword_language = $headword->getAttribute( "lang" );
-						if(strlen(trim($headword_language)) == 0)
-						{
-							$itemNr = 0;
-							while(strlen(trim($headword_language)) == 0)
-							{
-								$headword_language = $headword->childNodes->item($itemNr)->getAttribute( "lang" );
-								$itemNr++;
-							}
-						}
-					}
-					else
-					{
-						$headword_text = "?";
-						$headword_language = get_option("languagecode");
-					}
-
-					if(strlen(trim($headword_language)) == 0)
-					{
-						echo "<span style=color:red;>";
-							echo $headword_text . ": ";
-							echo "No language attribute found<br>";
-						echo "</span>";
-					}
-
 					$this->import_xhtml_classes($post->ID, $doc);
 				}
 				else

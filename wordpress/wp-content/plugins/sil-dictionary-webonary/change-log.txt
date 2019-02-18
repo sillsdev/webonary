@@ -1,3 +1,4 @@
+v. 8.0.9 18 February 2018 removed getArrFieldQueries method as well as headword indexing that are no longer needed
 v. 8.0.8 14 February 2018 added link to archive file
 v. 8.0.7 12 February 2018 put vernacular browse view queries inside browseview_func.php and removed from dictionary_search.php
 v. 8.0.6 6 February 2019 fixed "Advanced Search" link issue in Safari
