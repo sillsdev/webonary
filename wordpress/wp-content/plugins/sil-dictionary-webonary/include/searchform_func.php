@@ -364,6 +364,11 @@ function add_footer()
 			$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 
 			$browse_title = $wpdb->get_var($sql);
+
+			$alphabetDisplay = vernacularalphabet_func($letter);
+
+			if(strlen($alphabetDisplay) > 0)
+			{
 			?>
 			<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 10px;">
 				<div style="width: 100%; height: 12px; border-bottom: 1px solid black; text-align: center">
@@ -371,10 +376,11 @@ function add_footer()
 				    <?php _e($browse_title); ?>
 				  </span>
 				</div>
-				<?php echo vernacularalphabet_func($letter); ?>
+				<?php echo $alphabetDisplay; ?>
 			</div>
 
 			<?php
+			}
 		}
 		if(get_option('publicationStatus') && $post_slug != "browse")
 		{

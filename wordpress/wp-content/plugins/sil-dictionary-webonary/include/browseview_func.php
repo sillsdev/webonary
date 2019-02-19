@@ -173,6 +173,11 @@ add_shortcode( 'categories', 'categories_func' );
 function displayAlphabet($alphas, $languagecode)
 {
 	global $wpdb;
+
+	if(trim($alphas[0]) == "" && is_front_page())
+	{
+		return "";
+	}
 ?>
 	<style type="text/css">
 	.lpTitleLetterCell {min-width:31px; height: 23px; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; position: relative;}
@@ -208,7 +213,7 @@ function displayAlphabet($alphas, $languagecode)
 	foreach($alphas as $letter)
 	{
 		$display .= "<div class=\"lpTitleLetterCell\"><span>";
-		if(trim($letter[0]) == "")
+		if(trim($letter[0]) == "" && !is_front_page())
 		{
 			$display .= "<a href=\"" . get_site_url() . "/wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Alphabet not configured</a>";
 		}
