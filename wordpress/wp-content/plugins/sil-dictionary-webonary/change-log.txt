@@ -1,3 +1,4 @@
+v. 8.1.2 20 February 2019 made language_code database field bigger
 v. 8.1.1 20 February 2019 fixed CSS issue so that individual entries can show right-to-left
 v. 8.1.0 19 February 2019 "Alphabet not configured" message no longer displays on front-page
 v. 8.0.9 18 February 2018 removed getArrFieldQueries method as well as headword indexing that are no longer needed

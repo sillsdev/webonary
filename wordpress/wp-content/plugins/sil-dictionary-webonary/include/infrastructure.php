@@ -92,7 +92,7 @@ function create_reversal_tables () {
 	$table = REVERSALTABLE;
 	$sql = "CREATE TABLE `" . $table . "` (
 		`id` varchar(50) NOT NULL,
-		`language_code` varchar(20) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
+		`language_code` varchar(30) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
 		`sortorder` INT NOT NULL DEFAULT '0',
@@ -111,7 +111,7 @@ function create_search_tables () {
 	$table = SEARCHTABLE;
 	$sql = "CREATE TABLE `" . $table . "` (
 		`post_id` bigint(20) NOT NULL,
-		`language_code` varchar(20),
+		`language_code` varchar(30),
 		`relevance` tinyint,
 		`search_strings` longtext,
 		`class` varchar(50),
