@@ -126,7 +126,8 @@ class Webonary_Info
 				return $status;
 			}
 
-			if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
+			//if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
+			if(get_option("importStatus") == "importFinished")
 			{
 				$status .= "<br>";
 				$status .= "<div style=\"float: left;\">";
