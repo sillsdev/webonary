@@ -37,8 +37,6 @@ class Webonary_Info
 			}
 		}
 
-		return $status . "|";
-
 		$catid = self::category_id();
 
 		if($catid == NULL)
@@ -48,6 +46,10 @@ class Webonary_Info
 
 		$arrPostCount = self::postCountByImportStatus($catid);
 
+		if(get_current_blog_id() == 397)
+		{
+			return $status . $arrPostCount;
+		}
 		$arrReversalsImported = self::reversalPosts();
 
 		$arrIndexed = self::number_of_entries();
