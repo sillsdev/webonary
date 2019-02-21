@@ -162,9 +162,9 @@ class Webonary_Info
 
 		$arrIndexed = $wpdb->get_results($sql);
 
-		$sql = " SELECT language_code, COUNT(language_code) AS totalIndexed " .
+		$sql = " SELECT language_code, name as language_name, COUNT(language_code) AS totalIndexed " .
 				" FROM " . Config::$reversal_table_name .
-				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . Config::$reversal_table_name . ".language_code " .
+				" RIGHT JOIN $wpdb->terms ON $wpdb->terms.slug = " . Config::$reversal_table_name . ".language_code " .
 				" GROUP BY language_code " .
 				" ORDER BY name ASC, language_code ASC";
 
@@ -174,7 +174,6 @@ class Webonary_Info
 		$s = 0;
 		foreach($arrIndexed as $indexed)
 		{
-
 			$sqlLangName = "SELECT name as language_name " .
 					" FROM $wpdb->terms " .
 					" WHERE slug = '" . $indexed->language_code . "'" .
