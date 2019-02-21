@@ -55,6 +55,11 @@ class Webonary_Info
 			$countIndexed = 0;
 			$totalImportedPosts = count(self::posts());
 
+			if(get_current_blog_id() == 397)
+			{
+				return "|" . get_option("importStatus") . "|" . $totalImportedPosts;
+			}
+
 			foreach($arrPostCount as $posts)
 			{
 				if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
@@ -71,11 +76,6 @@ class Webonary_Info
 			if(!get_option("importStatus"))
 			{
 				return "The import status will display here.<br>";
-			}
-
-			if(get_current_blog_id() == 397)
-			{
-				return "|" . get_option("importStatus") . "|";
 			}
 
 			if(get_option("importStatus") == "importFinished")
