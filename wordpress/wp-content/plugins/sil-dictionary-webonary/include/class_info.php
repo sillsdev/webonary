@@ -48,7 +48,7 @@ class Webonary_Info
 
 		if(get_current_blog_id() == 397)
 		{
-			return $status . count($arrPostCount);
+			return $catid . ":" . count($arrPostCount);
 		}
 		$arrReversalsImported = self::reversalPosts();
 
