@@ -52,7 +52,7 @@ class Webonary_Info
 
 		if(get_current_blog_id() == 397)
 		{
-			return "|" . get_option("importStatus") . "|" . count($arrIndexed);
+			return count($arrPostCount);
 		}
 
 		if(count($arrPostCount) > 0)
