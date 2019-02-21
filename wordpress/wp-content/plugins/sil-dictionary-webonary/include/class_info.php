@@ -75,6 +75,7 @@ class Webonary_Info
 
 			if(get_option("importStatus") == "importFinished")
 			{
+				return $status . "|";
 				if($posts->post_date != NULL)
 				{
 					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
@@ -149,7 +150,6 @@ class Webonary_Info
 		{
 			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
 		}
-		return $status;
 	}
 
 	public static function number_of_entries()
