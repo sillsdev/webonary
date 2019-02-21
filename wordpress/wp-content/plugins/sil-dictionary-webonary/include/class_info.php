@@ -46,10 +46,6 @@ class Webonary_Info
 
 		$arrPostCount = self::postCountByImportStatus($catid);
 
-		if(get_current_blog_id() == 397)
-		{
-			return $catid . ":" . count($arrPostCount);
-		}
 		$arrReversalsImported = self::reversalPosts();
 
 		$arrIndexed = self::number_of_entries();
@@ -75,6 +71,11 @@ class Webonary_Info
 			if(!get_option("importStatus"))
 			{
 				return "The import status will display here.<br>";
+			}
+
+			if(get_current_blog_id() == 397)
+			{
+				return "|" . get_option("importStatus") . "|";
 			}
 
 			if(get_option("importStatus") == "importFinished")
