@@ -53,12 +53,13 @@ class Webonary_Info
 		if(count($arrPostCount) > 0)
 		{
 			$countIndexed = 0;
-			$totalImportedPosts = count(self::posts());
 
+			/*
 			if(get_current_blog_id() == 397)
 			{
-				return count($arrPostCount) . "|" . $totalImportedPosts;
+				return $status;
 			}
+			*/
 
 			foreach($arrPostCount as $posts)
 			{
@@ -108,6 +109,8 @@ class Webonary_Info
 
 			if(get_option("importStatus") == "indexing")
 			{
+				$totalImportedPosts = count(self::posts());
+
 				$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
 
 				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
