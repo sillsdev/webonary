@@ -19,11 +19,9 @@ class Webonary_Info
 
 	public static function import_status() {
 		global $wpdb;
-		echo "|";
+		$status = "";
 		try
 		{
-			$status = "";
-
 			if(get_option("useSemDomainNumbers") == 0)
 			{
 				$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix  . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
