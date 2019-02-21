@@ -54,13 +54,6 @@ class Webonary_Info
 		{
 			$countIndexed = 0;
 
-			/*
-			if(get_current_blog_id() == 397)
-			{
-				return $status;
-			}
-			*/
-
 			foreach($arrPostCount as $posts)
 			{
 				if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
