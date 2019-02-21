@@ -50,15 +50,15 @@ class Webonary_Info
 
 		$arrIndexed = self::number_of_entries();
 
+		if(get_current_blog_id() == 397)
+		{
+			return "|" . get_option("importStatus") . "|" . count($arrIndexed);
+		}
+
 		if(count($arrPostCount) > 0)
 		{
 			$countIndexed = 0;
 			$totalImportedPosts = count(self::posts());
-
-			if(get_current_blog_id() == 397)
-			{
-				return "|" . get_option("importStatus") . "|" . $totalImportedPosts;
-			}
 
 			foreach($arrPostCount as $posts)
 			{
