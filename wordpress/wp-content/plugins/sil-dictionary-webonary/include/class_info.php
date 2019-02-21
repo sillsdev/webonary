@@ -19,142 +19,137 @@ class Webonary_Info
 
 	public static function import_status() {
 		global $wpdb;
-		$status = "";
-		try
+
+		$status = ".";
+
+		if(get_option("useSemDomainNumbers") == 0)
 		{
-			if(get_option("useSemDomainNumbers") == 0)
+			$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix  . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
+
+			$sdCount = $wpdb->get_var($sql);
+
+			if($sdCount > 0)
 			{
-				$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix  . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
-
-				$sdCount = $wpdb->get_var($sql);
-
-				if($sdCount > 0)
-				{
-					$status .= "<br>";
-					$status .= "<span style=\"color:red;\">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check \"Abbrevation\" under Senses/Semantic Domains.</span><br>";
-					$status .= "Tip: You can hide the domain numbers from displaying, <a href=\" https://www.webonary.org/help/tips-tricks/\" target=_\"blank\">see here</a>.";
-					$status .= "<hr>";
-				}
+				$status .= "<br>";
+				$status .= "<span style=\"color:red;\">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check \"Abbrevation\" under Senses/Semantic Domains.</span><br>";
+				$status .= "Tip: You can hide the domain numbers from displaying, <a href=\" https://www.webonary.org/help/tips-tricks/\" target=_\"blank\">see here</a>.";
+				$status .= "<hr>";
 			}
+		}
 
-			$catid = self::category_id();
+		$catid = self::category_id();
 
-			if($catid == NULL)
+		if($catid == NULL)
+		{
+			$catid = 0;
+		}
+
+		$arrPostCount = self::postCountByImportStatus($catid);
+
+		$arrReversalsImported = self::reversalPosts();
+
+		$arrIndexed = self::number_of_entries();
+
+		if(count($arrPostCount) > 0)
+		{
+			$countIndexed = 0;
+			$totalImportedPosts = count(self::posts());
+
+			foreach($arrPostCount as $posts)
 			{
-				$catid = 0;
-			}
-
-			$arrPostCount = self::postCountByImportStatus($catid);
-
-			$arrReversalsImported = self::reversalPosts();
-
-			$arrIndexed = self::number_of_entries();
-
-			if(count($arrPostCount) > 0)
-			{
-				$countIndexed = 0;
-				$totalImportedPosts = count(self::posts());
-
-				foreach($arrPostCount as $posts)
+				if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
 				{
-					if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
-					{
-						$countIndexed = $posts->entryCount;
-					}
-					else
-					{
-
-						$countImported = $posts->entryCount;
-					}
-				}
-
-				if(!get_option("importStatus"))
-				{
-					return "The import status will display here.<br>";
-				}
-
-				if(get_option("importStatus") == "importFinished")
-				{
-					if($posts->post_date != NULL)
-					{
-						$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
-						$status .= "Download data sent from FLEx: ";
-
-						$subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
-						$archiveFile = $subdomain . ".zip";
-						if(file_exists(WP_CONTENT_DIR . "/archives/" . $archiveFile))
-						{
-							$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
-						}
-						else
-						{
-							$status .= "no longer available";
-						}
-						$status .= "<br>";
-
-					}
+					$countIndexed = $posts->entryCount;
 				}
 				else
 				{
-					$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
-					$status .= " You will receive an email when the import has completed. You don't need to stay online.";
-					$status .= "<br>";
-				}
 
-				if(get_option("importStatus") == "indexing")
-				{
-					$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
-
-					$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
-					return $status;
-				}
-				if(get_option("importStatus") == "configured")
-				{
-					$status .= $countImported . " entries imported (not yet indexed)";
-
-					if($arrPostCount[0]->timediff > 5)
-					{
-						$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
-					}
-					return $status;
-
-				}
-				if(get_option("importStatus") == "reversal")
-				{
-					$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
-
-					$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
-					return $status;
-				}
-
-				//if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
-				if(get_option("importStatus") == "importFinished")
-				{
-					$status .= "<br>";
-					$status .= "<div style=\"float: left;\">";
-					$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
-					$status .= "</div>";
-					$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
-
-					$status .= self::reversalsMissing($arrIndexed, $arrReversalsImported);
-
-					$status .= "</div>";
-					$status .= "<br style=\"clear:both;\">";
-
-					return $status;
+					$countImported = $posts->entryCount;
 				}
 			}
 
-			if(count($arrPostCount) == 0)
+			if(!get_option("importStatus"))
 			{
-				return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
+				return "The import status will display here.<br>";
+			}
+
+			if(get_option("importStatus") == "importFinished")
+			{
+				if($posts->post_date != NULL)
+				{
+					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
+					$status .= "Download data sent from FLEx: ";
+
+					$subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
+					$archiveFile = $subdomain . ".zip";
+					if(file_exists(WP_CONTENT_DIR . "/archives/" . $archiveFile))
+					{
+						$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
+					}
+					else
+					{
+						$status .= "no longer available";
+					}
+					$status .= "<br>";
+
+				}
+			}
+			else
+			{
+				$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
+				$status .= " You will receive an email when the import has completed. You don't need to stay online.";
+				$status .= "<br>";
+			}
+
+			if(get_option("importStatus") == "indexing")
+			{
+				$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
+
+				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
+				return $status;
+			}
+			if(get_option("importStatus") == "configured")
+			{
+				$status .= $countImported . " entries imported (not yet indexed)";
+
+				if($arrPostCount[0]->timediff > 5)
+				{
+					$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
+				}
+				return $status;
+
+			}
+			if(get_option("importStatus") == "reversal")
+			{
+				$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
+
+				$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
+				return $status;
+			}
+
+			//if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
+			if(get_option("importStatus") == "importFinished")
+			{
+				$status .= "<br>";
+				$status .= "<div style=\"float: left;\">";
+				$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
+				$status .= "</div>";
+				$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
+
+				$status .= self::reversalsMissing($arrIndexed, $arrReversalsImported);
+
+				$status .= "</div>";
+				$status .= "<br style=\"clear:both;\">";
+
+				return $status;
 			}
 		}
-		catch (Exception $ex)
+
+		if(count($arrPostCount) == 0)
 		{
-			echo $ex;
+			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
 		}
-		return "#" . $status;
+		return $status;
 	}
 
 	public static function number_of_entries()
