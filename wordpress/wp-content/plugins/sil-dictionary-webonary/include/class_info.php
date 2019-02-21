@@ -166,7 +166,7 @@ class Webonary_Info
 				" FROM " . Config::$reversal_table_name .
 				" INNER JOIN $wpdb->terms ON $wpdb->terms.slug = " . Config::$reversal_table_name . ".language_code " .
 				" GROUP BY language_code " .
-				" ORDER BY name ASC";
+				" ORDER BY name ASC, language_code ASC";
 
 		$arrReversals = $wpdb->get_results($sql);
 
@@ -177,7 +177,8 @@ class Webonary_Info
 
 			$sqlLangName = "SELECT name as language_name " .
 					" FROM $wpdb->terms " .
-					" WHERE slug = '" . $indexed->language_code . "'";
+					" WHERE slug = '" . $indexed->language_code . "'" .
+					" ORDER BY name ASC, slug ASC";
 
 			$language_name = $wpdb->get_var($sqlLangName);
 
