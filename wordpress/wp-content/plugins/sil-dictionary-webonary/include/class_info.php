@@ -37,6 +37,8 @@ class Webonary_Info
 			}
 		}
 
+		return $status . "|";
+
 		$catid = self::category_id();
 
 		if($catid == NULL)
@@ -75,7 +77,6 @@ class Webonary_Info
 
 			if(get_option("importStatus") == "importFinished")
 			{
-				return $status . "|";
 				if($posts->post_date != NULL)
 				{
 					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
