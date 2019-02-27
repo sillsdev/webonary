@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 8.1.6
+Version: v. 8.1.7
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -30,7 +30,12 @@ License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
  //don't display notices like undefined variables
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-
+/*
+add_action( 'plugins_loaded', function()
+{
+	error_log("webonary\n", 3, "/tmp/my-errors.log");
+});
+*/
 // don't load directly
 if ( ! defined('ABSPATH') )
 	die( '-1' );

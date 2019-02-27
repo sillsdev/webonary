@@ -65,6 +65,7 @@ function sil_dictionary_select_fields() {
 	return $wpdb->posts.".*";
 }
 function sil_dictionary_select_distinct() {
+
 	return "DISTINCTROW";
 }
 
@@ -133,13 +134,6 @@ function sil_dictionary_custom_join($join) {
 			$subquery_where .= " WHERE " . $search_table_name . ".language_code = '$key' ";
 		$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
 
-		//by default d à, ä, etc. are handled as the same letters when searching
-		$collateSearch = "";
-		if(get_option('distinguish_diacritics') == 1)
-		{
-			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
-		}
-
 		//using search form
 		$match_accents = false;
 		if(isset($wp_query->query_vars['match_accents']))
@@ -147,9 +141,16 @@ function sil_dictionary_custom_join($join) {
 			$match_accents = true;
 		}
 
+		//by default d à, ä, etc. are handled as the same letters when searching
+		$collateSearch = "";
+		if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
+		{
+			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+		}
+
 		$searchquery = $search;
 		//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-		if(preg_match('/([aeiou])/', $search) && $match_accents == false)
+		if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
 		{
 			//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
 			$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
@@ -199,7 +200,6 @@ function sil_dictionary_custom_join($join) {
 
 		if (is_CJK( $search ) || $match_whole_words == 0)
 		{
-
 			if(get_option("searchSomposedCharacters") == 1)
 			{
 				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
