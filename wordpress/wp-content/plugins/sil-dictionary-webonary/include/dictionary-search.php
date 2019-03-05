@@ -53,211 +53,10 @@ function my_enqueue_css() {
 	}
 }
 
-function sil_dictionary_select_fields() {
-	global $wp_query, $wpdb;
-	$search_table_name = SEARCHTABLE;
-
-	if( !is_page())
-	{
-		add_action('wp_enqueue_scripts', 'my_enqueue_css', 1000);
-	}
-
-	return $wpdb->posts.".*";
-}
-function sil_dictionary_select_distinct() {
-
-	return "DISTINCTROW";
-}
-
 //---------------------------------------------------------------------------//
 
-function sil_dictionary_custom_join($join) {
-	global $wp_query, $wpdb;
-	$search_table_name = SEARCHTABLE;
 
-	/*
-	 * The query I'm going for will hopefully end up looking something like this
-	 * example:
-	 * SELECT id, language_code, relevance, post_title
-	 * FROM wp_posts p
-	 * JOIN (
-	 *	SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings
-	 *	FROM sil_multilingual_search
-	 *	WHERE search_strings like '%sleeping%'
-	 *	GROUP BY post_id, language_code
-	 *	ORDER BY relevance DESC
-	 *	) sil_multilingual_search ON sil_multilingual_search.post_id = p.id
-	 * ORDER BY relevance DESC, post_title;
-	 */
-	mb_internal_encoding("UTF-8");
-	if( !empty($wp_query->query_vars['s'])) {
-		//search string gets trimmed and normalized to NFC
-		if (class_exists("Normalizer", $autoload = false))
-		{
-			$normalization = Normalizer::FORM_C;
-			if(get_option("normalization") == "FORM_D")
-			{
-				$normalization = Normalizer::FORM_D;
-			}
-
-			//$normalization = Normalizer::NFD;
-			$search = normalizer_normalize(trim($wp_query->query_vars['s']), $normalization);
-			//$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_D);
-		}
-		else
-		{
-			$search = trim($wp_query->query_vars['s']);
-		}
-		$search = strtolower($search);
-
-		$key = $_GET['key'];
-		if(!isset($key))
-		{
-			$key = $wp_query->query_vars['langcode'];
-		}
-		$match_whole_words = 0;
-		if(isset($wp_query->query_vars['match_whole_words']))
-		{
-			if($wp_query->query_vars['match_whole_words'] == 1)
-			{
-				$match_whole_words = 1;
-			}
-		}
-
-		if(strlen($search) == 0 && $_GET['tax'] > 1)
-		{
-			$match_whole_words = 0;
-		}
-
-		$subquery_where = "";
-		if( strlen( trim( $key ) ) > 0)
-			$subquery_where .= " WHERE " . $search_table_name . ".language_code = '$key' ";
-		$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
-
-		//using search form
-		$match_accents = false;
-		if(isset($wp_query->query_vars['match_accents']))
-		{
-			$match_accents = true;
-		}
-
-		//by default d à, ä, etc. are handled as the same letters when searching
-		$collateSearch = "";
-		if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
-		{
-			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
-		}
-
-		$searchquery = $search;
-		//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-		if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
-		{
-			//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
-			$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
-			//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
-			//the mysql regular expression can't find words with  accented characters if we don't include them
-			$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
-			$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
-			$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
-			$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-			$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
-			$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-			$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
-			$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
-			$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
-			//for vowels we add [^a-z]* which will search for any character that comes after the normal character
-			//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
-			$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
-		}
-
-		$searchquery = str_replace("'", "\'", $searchquery);
-
-		if(mb_strlen($search) <= 3)
-		{
-			$match_whole_words = 1;
-		}
-		if(!isset($_GET['partialsearch']))
-		{
-			$partialsearch = get_option("include_partial_words");
-			if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
-			{
-				$match_whole_words = 0;
-			}
-		}
-		else
-		{
-			if($_GET['partialsearch'] == 1)
-			{
-				$partialsearch = 1;
-				$match_whole_words = 0;
-			}
-		}
-		if(strlen($search) == 0 && $_GET['tax'] > 1)
-		{
-			$partialsearch = 1;
-			$match_whole_words = 0;
-		}
-
-		if (is_CJK( $search ) || $match_whole_words == 0)
-		{
-			if(get_option("searchSomposedCharacters") == 1)
-			{
-				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
-			}
-			else
-			{
-				$subquery_where .= " LOWER(" . $search_table_name . ".search_strings) LIKE '%" .
-					addslashes( $search ) . "%' " . $collateSearch;
-			}
-		}
-		else
-		{
-			if(mb_strlen($search) > 1)
-			{
-            	$subquery_where .= $search_table_name . ".search_strings REGEXP '[[:<:]]" .
-					$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
-			}
-		}
-
-		$subquery = "";
-		$subquery =
-			" (SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings, sortorder " .
-			"FROM " . $search_table_name .
-			$subquery_where .
-			" GROUP BY post_id, language_code, sortorder " .
-			" ORDER BY relevance DESC) ";
-
-		$join = " JOIN " . $subquery . $search_table_name . " ON $wpdb->posts.ID = " . $search_table_name . ".post_id ";
-	}
-
-	$tax = 0;
-	if(isset($_GET['tax']))
-	{
-		$tax = $_GET['tax'];
-	}
-	if(isset($wp_query->query_vars['semdomain']))
-	{
-		if( $tax > 1 || strlen($wp_query->query_vars['semdomain']) > 0) {
-			$join .= " LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
-			$join .= " INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id ";
-			if(get_option("useSemDomainNumbers") == 1) {
-				$join .= " INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id ";
-			}
-		}
-	}
-	if(isset($_GET['tax']))
-	{
-		if($_GET['tax'] > 1)
-		{
-			$join .= " INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id ";
-			$join .= " INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id";
-		}
-	}
-
-	return $join;
-}
-
-function sil_dictionary_custom_message()
+function filter_partial_search_message()
 {
 	$match_whole_words = 0;
 	if(isset($_GET['match_whole_words']))
@@ -288,87 +87,6 @@ function sil_dictionary_custom_message()
 	}
 }
 
-//---------------------------------------------------------------------------//
-
-function sil_dictionary_custom_where($where) {
-	global $wp_query, $wp_version, $wpdb;
-	$search_table_name = SEARCHTABLE;
-	if(isset($wp_query->query_vars['s']))
-	{
-		if( strlen(trim($wp_query->query_vars['s'])) > 0) {
-			$search = $wp_query->query_vars['s'];
-			$key = $_GET['key'];
-			if(!isset($key))
-			{
-				$key = $wp_query->query_vars['langcode'];
-			}
-			$where = ($wp_version >= 2.1) ? ' AND post_type = \'post\' AND post_status = \'publish\'' : ' AND post_status = \'publish\'';
-		}
-		else
-		{
-			//to make sure no search results are returned with empty query
-			if($_GET['tax'] < 1 && isset($wp_query->query_vars['search']))
-			{
-				$where .= " AND 1 = 2 ";
-			}
-		}
-	}
-
-	if(isset($_GET['tax']))
-	{
-		if($_GET['tax'] > 1)
-		{
-			$wp_query->is_search = true;
-			$where .= " AND $wpdb->term_taxonomy.term_id = " . $_GET['tax'];
-		}
-	}
-
-	if(isset($wp_query->query_vars['semdomain']))
-	{
-		if(strlen($wp_query->query_vars['semdomain']) > 0)
-		{
-		$wp_query->is_search = true;
-		$where .= " AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains'";
-			if(get_option("useSemDomainNumbers") == 1) {
-				$where .= " AND $wpdb->terms.slug  REGEXP '^" . $wp_query->query_vars['semnumber'] ."([-]|$)'";
-			}
-			else
-			{
-				$where .= " AND $wpdb->term_taxonomy.description = '" . $wp_query->query_vars['semdomain'] ."'";
-			}
-		}
-	}
-
-	return $where;
-}
-
-//---------------------------------------------------------------------------//
-
-function sil_dictionary_custom_order_by($orderby) {
-	global $wp_query, $wp_version, $wpdb;
-	$search_table_name = SEARCHTABLE;
-
-	$orderby = "";
-	if(  !empty($wp_query->query_vars['s']))
-	{
-		$orderby = $search_table_name . ".relevance DESC, CHAR_LENGTH(" . $search_table_name . ".search_strings) ASC, ";
-	}
-
-	if( !empty($wp_query->query_vars['s']) && $_GET['tax'] < 1)
-	{
-			$orderby .= "menu_order ASC, " . $search_table_name . ".search_strings ASC";
-	}
-
-	if(isset($wp_query->query_vars['semdomain']) || isset($_GET['tax']))
-	{
-		if(strlen($wp_query->query_vars['semdomain']) > 0 || $_GET['tax'] > 1)
-		{
-			$orderby .= "menu_order ASC, post_title ASC";
-		}
-	}
-
-	return $orderby;
-}
 
 //---------------------------------------------------------------------------//
 
@@ -485,6 +203,207 @@ function filter_the_content_in_the_main_loop( $content ) {
 	return $content;
 }
 add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
+
+function get_subquery_where()
+{
+	global $wp_query;
+
+	mb_internal_encoding("UTF-8");
+
+	if( empty($wp_query->query_vars['s'])) {
+		return "";
+	}
+	//search string gets trimmed and normalized to NFC
+	if (class_exists("Normalizer", $autoload = false))
+	{
+		$normalization = Normalizer::FORM_C;
+		if(get_option("normalization") == "FORM_D")
+		{
+			$normalization = Normalizer::FORM_D;
+		}
+
+		//$normalization = Normalizer::NFD;
+		$search = normalizer_normalize(trim($wp_query->query_vars['s']), $normalization);
+		//$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_D);
+	}
+	else
+	{
+		$search = trim($wp_query->query_vars['s']);
+	}
+	$search = strtolower($search);
+
+	$key = $_GET['key'];
+	if(!isset($key))
+	{
+		$key = $wp_query->query_vars['langcode'];
+	}
+	$match_whole_words = 0;
+	if(isset($wp_query->query_vars['match_whole_words']))
+	{
+		if($wp_query->query_vars['match_whole_words'] == 1)
+		{
+			$match_whole_words = 1;
+		}
+	}
+
+	if(strlen($search) == 0 && $_GET['tax'] > 1)
+	{
+		$match_whole_words = 0;
+	}
+
+	$subquery_where = "";
+	if( strlen( trim( $key ) ) > 0)
+		$subquery_where .= " WHERE " . SEARCHTABLE . ".language_code = '$key' ";
+		$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
+
+		//using search form
+		$match_accents = false;
+		if(isset($wp_query->query_vars['match_accents']))
+		{
+			$match_accents = true;
+		}
+
+		//by default d à, ä, etc. are handled as the same letters when searching
+		$collateSearch = "";
+		if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
+		{
+			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+		}
+
+		$searchquery = $search;
+		//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
+		if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
+		{
+			//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
+			$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+			//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
+			//the mysql regular expression can't find words with  accented characters if we don't include them
+			$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
+			$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
+			$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
+			$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
+			$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
+			$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
+			$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+			$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
+			$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+			//for vowels we add [^a-z]* which will search for any character that comes after the normal character
+			//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
+			$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+		}
+
+		$searchquery = str_replace("'", "\'", $searchquery);
+
+		if(mb_strlen($search) <= 3)
+		{
+			$match_whole_words = 1;
+		}
+		if(!isset($_GET['partialsearch']))
+		{
+			$partialsearch = get_option("include_partial_words");
+			if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
+			{
+				$match_whole_words = 0;
+			}
+		}
+		else
+		{
+			if($_GET['partialsearch'] == 1)
+			{
+				$partialsearch = 1;
+				$match_whole_words = 0;
+			}
+		}
+		if(strlen($search) == 0 && $_GET['tax'] > 1)
+		{
+			$partialsearch = 1;
+			$match_whole_words = 0;
+		}
+
+		if (is_CJK( $search ) || $match_whole_words == 0)
+		{
+			if(get_option("searchSomposedCharacters") == 1)
+			{
+				$subquery_where .= " LOWER(" . SEARCHTABLE . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+			}
+			else
+			{
+				$subquery_where .= " LOWER(" . SEARCHTABLE . ".search_strings) LIKE '%" .
+						addslashes( $search ) . "%' " . $collateSearch;
+			}
+		}
+		else
+		{
+			if(mb_strlen($search) > 1)
+			{
+				$subquery_where .= SEARCHTABLE . ".search_strings REGEXP '[[:<:]]" .
+						$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
+			}
+		}
+
+	return $subquery_where;
+}
+
+function replace_default_search_filter($input)
+{
+	global $wp_query, $wpdb;
+
+	if ( is_search() && (isset($_GET['s']) || isset($wp_query->query_vars['s'])))
+	{
+		$searchWord = isset($_GET['s']) ? $_GET['s'] : $wp_query->query_vars['s'];
+
+		$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
+		" FROM $wpdb->posts  JOIN " .
+		" (SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings, sortorder " .
+		" FROM " . SEARCHTABLE;
+		$sqlQuery .= get_subquery_where();
+		$sqlQuery .= " GROUP BY post_id, language_code, sortorder " .
+				" ORDER BY relevance DESC) " .
+				SEARCHTABLE . " ON $wpdb->posts.ID = " . SEARCHTABLE . ".post_id  " .
+				" WHERE 1=1  AND post_type = 'post' AND post_status = 'publish' ";
+		if(empty($searchWord))
+		{
+			//to make sure no search results are returned with empty query
+			$sqlQuery .= " AND 1 = 2 ";
+		}
+		$sqlQuery .= " ORDER BY relevance DESC, CHAR_LENGTH(search_strings) ASC, menu_order ASC, search_strings ASC ";
+
+				$input = $sqlQuery;
+	}
+
+	if(isset($wp_query->query_vars['semdomain']))
+	{
+		$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
+		" FROM $wpdb->posts " .
+		" LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
+		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
+		" INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id  " .
+		" WHERE 1=1  AND $wpdb->posts.post_type = 'post' " .
+		" AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains' AND $wpdb->terms.slug REGEXP '^" . $wp_query->query_vars['semnumber'] ."([-]|$)' " .
+		" ORDER BY menu_order ASC, post_title";
+
+		$input = $sqlQuery;
+
+	}
+
+	if(isset($_GET['tax']))
+	{
+		if($_GET['tax'] > 1)
+		{
+			$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
+			" FROM $wpdb->posts " .
+			" INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
+			" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
+			" WHERE 1=1  AND $wpdb->posts.post_type IN ('post') AND $wpdb->term_taxonomy.term_id = " . $_GET['tax'] .
+			" ORDER BY menu_order ASC, post_title ASC";
+
+			$input = $sqlQuery;
+		}
+	}
+
+	return $input;
+
+}
 
 function webonary_css()
 {

@@ -133,14 +133,19 @@ if(isset($xhtmlFileURL))
 
 				if(($letterLanguage == "zh-CN" || $letterLanguage == "zh-Hans-CN"))
 				{
-					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php' );
-					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php' );
-					require_once( ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php' );
+					error_log("*PINYIN*");
+					error_log("ARGV1: " . $argv[1]);
+					error_log("letterhead: " . $letterHead);
+					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php' );
+					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php' );
+					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php' );
 
 					$pinyin = new Pinyin();
 					$letterHead = $pinyin->sentence($letterHead);
 					$letterHead = substr($letterHead, 0, 1);
 					$letterHead = strtolower($letterHead);
+
+					error_log("letterhead pinyin: " . $letterHead);
 				}
 
 				//if($letterHead != "?")
@@ -359,7 +364,7 @@ if(isset($xhtmlFileURL))
 				$xhtmlFileURL = $fileReversal1;
 				error_log($filetype . "#" . $xhtmlFileURL);
 
-				require(ABSPATH . "wp-content/plugins/sil-dictionary-webonary/include/run_import.php");
+				require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/run_import.php");
 			}
 		}
 		else
