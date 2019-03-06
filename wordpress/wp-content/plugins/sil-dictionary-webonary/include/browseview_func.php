@@ -579,7 +579,13 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 <?php
 	$upload_dir = wp_upload_dir();
 	//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
-	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/reversal_' . str_replace("-", "_", $langcode) . '.css?time=' . date("U"));
+	$reversalCSSFile = 'reversal_' . $langcode . '.css';
+	if(!file_exists($upload_dir['baseurl'] . '/' . $reversalCSSFile))
+	{
+		$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
+	}
+
+	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
 	wp_enqueue_style( 'reversal_stylesheet');
 
 	$page = $_GET['pagenr'];
