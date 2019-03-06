@@ -133,9 +133,6 @@ if(isset($xhtmlFileURL))
 
 				if(($letterLanguage == "zh-CN" || $letterLanguage == "zh-Hans-CN"))
 				{
-					error_log("*PINYIN*");
-					error_log("ARGV1: " . $argv[1]);
-					error_log("letterhead: " . $letterHead);
 					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php' );
 					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php' );
 					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php' );
@@ -144,8 +141,6 @@ if(isset($xhtmlFileURL))
 					$letterHead = $pinyin->sentence($letterHead);
 					$letterHead = substr($letterHead, 0, 1);
 					$letterHead = strtolower($letterHead);
-
-					error_log("letterhead pinyin: " . $letterHead);
 				}
 
 				//if($letterHead != "?")
@@ -161,7 +156,7 @@ if(isset($xhtmlFileURL))
 						$letter = $letterHead;
 					}
 
-					if (!in_array($letter, $arrLetters)) {
+					if (!in_array($letter, $arrLetters) && strlen(trim($letter)) > 0) {
 						$arrLetters[$a] = $letter;
 						$a++;
 					}
@@ -288,9 +283,11 @@ if(isset($xhtmlFileURL))
 		{
 			$reversalLang = str_replace($uploadPath . "/reversal_", "", $xhtmlFileURL);
 			$reversalLang = str_replace(".xhtml", "", $reversalLang);
+			$reversalLang = str_replace("_", "-", $reversalLang);
 		}
 
 		$reversalAlphabetOption = "reversal1_alphabet";
+
 		if(get_option('reversal1_langcode') != $reversalLang)
 		{
 			$reversalAlphabetOption = "reversal2_alphabet";

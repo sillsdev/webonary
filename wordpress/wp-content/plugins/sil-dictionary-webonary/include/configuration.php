@@ -719,7 +719,7 @@ function webonary_conf_widget($showTitle = false) {
 				}
 				?>
 				</select>
-
+				<p>
 				<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
 
 				<p>
