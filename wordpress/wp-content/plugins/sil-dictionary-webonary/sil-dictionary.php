@@ -9,7 +9,7 @@ Author: SIL International
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
-Version: v. 8.2.0
+Version: v. 8.2.1
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
@@ -98,6 +98,7 @@ require_once( dirname( __FILE__ ) . '/include/modifycontent.php' );
 /*
  * Search hook
  */
+add_filter('search_message', 'sil_dictionary_custom_message');
 
 add_filter('posts_request','replace_default_search_filter');
 
@@ -107,7 +108,6 @@ if( !is_page())
 }
 
 
-add_action('search_message', 'filter_partial_search_message');
 //add_action('pre_get_posts','no_standard_sort');
 add_action( 'preprocess_comment' , 'preprocess_comment_add_type' );
 

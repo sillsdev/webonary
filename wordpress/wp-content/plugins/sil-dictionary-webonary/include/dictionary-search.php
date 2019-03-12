@@ -56,15 +56,15 @@ function my_enqueue_css() {
 //---------------------------------------------------------------------------//
 
 
-function filter_partial_search_message()
+function sil_dictionary_custom_message()
 {
-	$match_whole_words = 0;
-	if(isset($_GET['match_whole_words']))
+	global $wp_query;
+
+	$match_whole_words = is_match_whole_words(mb_strlen($_GET['s']));
+
+	if($match_whole_words == 0)
 	{
-		if($wp_query->query_vars['match_whole_words'] == 1)
-		{
-			$match_whole_words = 1;
-		}
+		return false;
 	}
 
 	$partialsearch = $_GET['partialsearch'];
@@ -98,6 +98,43 @@ function filter_partial_search_message()
 function is_CJK( $string ) {
     $regex = '/' . implode( '|', get_CJK_unicode_ranges() ) . '/u';
     return preg_match( $regex, $string );
+}
+
+function is_match_whole_words($search)
+{
+	global $wp_query;
+
+	$match_whole_words = 0;
+	if(isset($wp_query->query_vars['match_whole_words']))
+	{
+		if($wp_query->query_vars['match_whole_words'] == 1)
+		{
+			$match_whole_words = 1;
+		}
+	}
+
+	if(!isset($_GET['partialsearch']))
+	{
+		$partialsearch = get_option("include_partial_words");
+		if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
+		{
+			$match_whole_words = 0;
+		}
+	}
+	else
+	{
+		if($_GET['partialsearch'] == 1)
+		{
+			$match_whole_words = 0;
+		}
+	}
+
+	if(strlen($search) == 0 && $_GET['tax'] > 1)
+	{
+		$match_whole_words = 0;
+	}
+
+	return $match_whole_words;
 }
 
 //---------------------------------------------------------------------------//
@@ -237,19 +274,6 @@ function get_subquery_where()
 	{
 		$key = $wp_query->query_vars['langcode'];
 	}
-	$match_whole_words = 0;
-	if(isset($wp_query->query_vars['match_whole_words']))
-	{
-		if($wp_query->query_vars['match_whole_words'] == 1)
-		{
-			$match_whole_words = 1;
-		}
-	}
-
-	if(strlen($search) == 0 && $_GET['tax'] > 1)
-	{
-		$match_whole_words = 0;
-	}
 
 	$subquery_where = "";
 	if( strlen( trim( $key ) ) > 0)
@@ -294,31 +318,7 @@ function get_subquery_where()
 
 		$searchquery = str_replace("'", "\'", $searchquery);
 
-		if(mb_strlen($search) <= 3)
-		{
-			$match_whole_words = 1;
-		}
-		if(!isset($_GET['partialsearch']))
-		{
-			$partialsearch = get_option("include_partial_words");
-			if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
-			{
-				$match_whole_words = 0;
-			}
-		}
-		else
-		{
-			if($_GET['partialsearch'] == 1)
-			{
-				$partialsearch = 1;
-				$match_whole_words = 0;
-			}
-		}
-		if(strlen($search) == 0 && $_GET['tax'] > 1)
-		{
-			$partialsearch = 1;
-			$match_whole_words = 0;
-		}
+		$match_whole_words = is_match_whole_words($search);
 
 		if (is_CJK( $search ) || $match_whole_words == 0)
 		{
@@ -368,7 +368,7 @@ function replace_default_search_filter($input)
 		}
 		$sqlQuery .= " ORDER BY relevance DESC, CHAR_LENGTH(search_strings) ASC, menu_order ASC, search_strings ASC ";
 
-				$input = $sqlQuery;
+		$input = $sqlQuery;
 	}
 
 	if(isset($wp_query->query_vars['semdomain']))
