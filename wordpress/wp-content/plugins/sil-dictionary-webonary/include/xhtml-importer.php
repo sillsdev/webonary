@@ -1075,8 +1075,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	function import_xhtml_search_string( $post_id, $search_string, $relevance, $language_code, $classname, $subid = 0) {
 		global $wpdb;
 
-		//$language_code = $field->getAttribute("lang");
-
 		// $wdbt->prepare likes to add single quotes around string replacements,
 		// and that's why I concatenated the table name.
 		if(strlen(trim($search_string)) > 0)
@@ -1442,6 +1440,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$this->import_xhtml_search_string( $post_id, $reversal_head, $this->headword_relevance, $reversal_language, "reversalform", 0);
 
 				$headwordCount++;
+
 			}
 			$entry_counter++;
 		}

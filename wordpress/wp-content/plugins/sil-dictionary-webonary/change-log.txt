@@ -1,3 +1,4 @@
+v. 8.2.2 18 March 2019 changed way we check if browseletter column exists
 v. 8.2.1 12 March 2019 refactored search and fixed partial search issue
 v. 8.2.0 6 March 2019 fixed reversal css file issue with using hyphen instead of underscore
 v. 8.1.9 6 March 2019 fixed issue importing reversal alphabet if hyphen in language code

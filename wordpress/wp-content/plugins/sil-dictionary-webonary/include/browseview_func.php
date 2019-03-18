@@ -386,11 +386,10 @@ function get_has_reversalbrowseletters()
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT(browseletter) AS numberOfLetters " .
-			" FROM " . REVERSALTABLE .
-			" WHERE browseletter <> ''";
+	$result = $wpdb->get_results("SHOW COLUMNS FROM " . REVERSALTABLE . " LIKE 'browseletter'");
+	$exists = (count($result))?TRUE:FALSE;
 
-	return $wpdb->get_var($sql);
+	return $exists;
 }
 
 function getPostsPerPage()
@@ -425,7 +424,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	if($letter != "")
 	{
 		//new imports use the letter header from FLEx for grouping
-		if(get_has_reversalbrowseletters() > 0)
+		if(get_has_reversalbrowseletters())
 		{
 			$sql .= " AND browseletter =  '" . $letter . "' " . $collate;
 		}
