@@ -873,6 +873,7 @@ function webonary_conf_widget($showTitle = false) {
 					<select name="displayCustomDomains">
 						<option value="default" <?php selected($displayCustomDomains, "default"); ?>>Default View</option>
 						<option value="yakan" <?php selected($displayCustomDomains, "yakan"); ?>>Yakan (Philippines)</option>
+						<option value="spanishfoods" <?php selected($displayCustomDomains, "spanishfoods"); ?>>Spanish Foods</option>
 					</select>
 				<?php
 				}

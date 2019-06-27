@@ -376,8 +376,10 @@ if(isset($xhtmlFileURL))
 			try
 			{
 				error_log("Email sent to " . $email);
-				$headers = 'From: Webonary <webonary@sil.org>' . "\r\n";
-				mail($email, 'Webonary Export completed', $message, $headers);
+				$headers = array(
+						'From: Webonary <wordpress@webonary.org>'
+				);
+				wp_mail($email, 'Webonary Export completed', $message, $headers);
 			}
 			catch(Exception $e) {
 				error_log("Error: " . $e->getMessage());

@@ -65,6 +65,17 @@ if(get_option('displayCustomDomains') == "yakan")
 	);
 
 }
+else if(get_option('displayCustomDomains') == "spanishfoods")
+{
+	require_once( dirname( __FILE__ ) . '/default_domains-SpanishFoods.php' );
+
+	$rootDomainPrinted = array('no zero domain', 'no');
+
+	$roots = array( 'no 0 domain',
+			' aux1 = insFld(foldersTree, gFld("1. ' . __('FOODS') . '", "c0001.htm"))'
+	);
+
+}
 else
 {
 	require_once( dirname( __FILE__ ) . '/default_domains.php' );
