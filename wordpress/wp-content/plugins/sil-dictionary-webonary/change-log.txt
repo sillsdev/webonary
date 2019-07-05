@@ -1,3 +1,4 @@
+v. 8.2.5 5 July 2019 replace __( to _e( for translating for some of the entries
 v. 8.2.4 5 July 2019 fixed sorting for custom domains
 v. 8.2.3 27 June 2019 added custom semantic domains for Spanish Food
 v. 8.2.2 18 March 2019 changed way we check if browseletter column exists
