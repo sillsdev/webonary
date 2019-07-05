@@ -114,7 +114,7 @@ function categories_func( $atts )
 	    		}
 	    		else
 	    		{
-	    			$domainName = _e($domainName, 'sil_dictionary');
+	    			$domainName = __($domainName, 'sil_dictionary');
 	    		}
 	    		$newString = "$domainNumberModified" . " " . $domainName;
 	    		outputSemDomAsJava($levelOfDomain, $newString);
