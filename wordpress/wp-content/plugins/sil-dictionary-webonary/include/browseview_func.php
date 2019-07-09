@@ -145,7 +145,7 @@ function categories_func( $atts )
 	{
 		if(strlen(trim($_REQUEST["semdomain"])) > 0)
 		{
-			$display .= _e('No entries exist for', 'sil_dictionary') . ' "' . $_REQUEST["semdomain"] . '"';
+			$display .= __('No entries exist for', 'sil_dictionary') . ' "' . $_REQUEST["semdomain"] . '"';
 		}
 	}
 	else
