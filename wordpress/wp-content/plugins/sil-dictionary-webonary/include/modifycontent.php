@@ -22,7 +22,10 @@ function addLangQuery($content)
 			{
 				$link .= '?lang=' . $_GET['lang'];
 			}
-			$anchor->setAttribute('href', $link);
+			if(!strpos($link, ".apk"))
+			{
+				$anchor->setAttribute('href', $link);
+			}
 		}
 		$content = $doc->saveHTML();
 	}
