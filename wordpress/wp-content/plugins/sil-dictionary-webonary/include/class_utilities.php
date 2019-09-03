@@ -123,6 +123,8 @@ class Webonary_Utility
 			{
 				list($width, $height) = getimagesize($src . "/"  . $file);
 
+				echo $width . "#" . $height . "\n";
+
 				$r = $width / $height;
 				$newwidth = $h*$r;
 				$newheight = $h;
