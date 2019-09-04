@@ -4,6 +4,7 @@ class Webonary_Info
 	public static function category_id() {
 		global $wpdb;
 
+		/** @noinspection SqlResolve */
 		$catid = $wpdb->get_var( "
 				SELECT term_id
 				FROM $wpdb->terms
@@ -24,7 +25,8 @@ class Webonary_Info
 
 		if(get_option("useSemDomainNumbers") == 0)
 		{
-			$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix  . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
+			/** @noinspection SqlResolve */
+			$sql = "SELECT COUNT(taxonomy) AS sdCount FROM " . $wpdb->prefix . "term_taxonomy WHERE taxonomy LIKE 'sil_semantic_domains'";
 
 			$sdCount = $wpdb->get_var($sql);
 
@@ -50,105 +52,97 @@ class Webonary_Info
 
 		$arrIndexed = self::number_of_entries();
 
-		if(count($arrPostCount) > 0)
+		if(count($arrPostCount) == 0)
+			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
+
+		$countIndexed = 0;
+
+		foreach($arrPostCount as $posts)
 		{
-			$countIndexed = 0;
-
-			foreach($arrPostCount as $posts)
+			if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
 			{
-				if($posts->pinged == "indexed" || $posts->pinged == "linksconverted")
-				{
-					$countIndexed = $posts->entryCount;
-				}
-				else
-				{
-
-					$countImported = $posts->entryCount;
-				}
-			}
-
-			if(!get_option("importStatus"))
-			{
-				return "The import status will display here.<br>";
-			}
-
-			if(get_option("importStatus") == "importFinished")
-			{
-				if($posts->post_date != NULL)
-				{
-					$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
-					$status .= "Download data sent from FLEx: ";
-
-					$subdomain = array_shift((explode('.', $_SERVER['HTTP_HOST'])));
-					$archiveFile = $subdomain . ".zip";
-					if(file_exists(WP_CONTENT_DIR . "/archives/" . $archiveFile))
-					{
-						$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
-					}
-					else
-					{
-						$status .= "no longer available";
-					}
-					$status .= "<br>";
-
-				}
+				$countIndexed = $posts->entryCount;
 			}
 			else
 			{
-				$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
-				$status .= " You will receive an email when the import has completed. You don't need to stay online.";
-				$status .= "<br>";
-			}
-
-			if(get_option("importStatus") == "indexing")
-			{
-				$totalImportedPosts = count(self::posts());
-
-				$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
-
-				$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
-				return $status;
-			}
-			if(get_option("importStatus") == "configured")
-			{
-				$status .= $countImported . " entries imported (not yet indexed)";
-
-				if($arrPostCount[0]->timediff > 5)
-				{
-					$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
-				}
-				return $status;
-
-			}
-			if(get_option("importStatus") == "reversal")
-			{
-				$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
-
-				$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
-				return $status;
-			}
-
-			//if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
-			if(get_option("importStatus") == "importFinished")
-			{
-				$status .= "<br>";
-				$status .= "<div style=\"float: left;\">";
-				$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
-				$status .= "</div>";
-				$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
-
-				$status .= self::reversalsMissing($arrIndexed, $arrReversalsImported);
-
-				$status .= "</div>";
-				$status .= "<br style=\"clear:both;\">";
-
-				return $status;
+				$countImported = $posts->entryCount;
 			}
 		}
 
-		if(count($arrPostCount) == 0)
+		if(!get_option("importStatus"))
 		{
-			return "No entries have been imported yet. <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a>";
+			return "The import status will display here.<br>";
+		}
+
+		if(get_option("importStatus") == "importFinished")
+		{
+			if($posts->post_date != NULL)
+			{
+				$status .= "Last import of configured xhtml was at " . $posts->post_date . " (server time).<br>";
+				$status .= "Download data sent from FLEx: ";
+
+				$subdomain = explode('.', $_SERVER['HTTP_HOST'])[0];
+				$archiveFile = $subdomain . ".zip";
+				if(file_exists(WP_CONTENT_DIR . "/archives/" . $archiveFile))
+				{
+					$status .= "<a href=\"/wp-content/archives/" . $archiveFile . "\">" . $archiveFile . "</a>";
+				}
+				else
+				{
+					$status .= "no longer available";
+				}
+				$status .= "<br>";
+			}
+		}
+		else
+		{
+			$status .= "Importing... <a href=\"" . $_SERVER['REQUEST_URI']  . "\">refresh page</a><br>";
+			$status .= " You will receive an email when the import has completed. You don't need to stay online.";
+			$status .= "<br>";
+		}
+
+		if(get_option("importStatus") == "indexing")
+		{
+			$totalImportedPosts = count(self::posts());
+
+			$status .= "Indexing " . $countIndexed . " of " . $totalImportedPosts . " entries";
+
+			$status .= "<br>If you believe indexing has timed out, click here: <input type=\"submit\" name=\"btnReindex\" value=\"Index Search Strings\"/>";
+			return $status;
+		}
+		if(get_option("importStatus") == "configured")
+		{
+			$status .= $countImported . " entries imported (not yet indexed)";
+
+			if($arrPostCount[0]->timediff > 5)
+			{
+				$status .= "<br>It appears the import has timed out, click here: <input type=\"submit\" name=\"btnRestartImport\" value=\"Restart Import\">";
+			}
+			return $status;
+		}
+		if(get_option("importStatus") == "reversal")
+		{
+			$status .= "<strong>Importing reversals. So far imported: " . count($arrReversalsImported) . " entries.</strong>";
+
+			$status .= "<br>If you believe the import has timed out, click here: <input type=\"submit\" name=\"btnRestartReversalImport\" value=\"Restart Reversal Import\">";
+			return $status;
+		}
+
+		//if(count($arrIndexed) > 0 && ($countIndexed == $totalImportedPosts))
+		if(get_option("importStatus") == "importFinished")
+		{
+			$status .= "<br>";
+			$status .= "<div style=\"float: left;\">";
+			$status .= "<strong>Number of indexed entries (by language code):</strong><br>";
+			$status .= "</div>";
+			$status .= "<div style=\"min-width:50px; float: left; margin-left: 5px;\">";
+
+			$status .= self::reversalsMissing($arrIndexed, $arrReversalsImported);
+
+			$status .= "</div>";
+			$status .= "<br style=\"clear:both;\">";
+
+			return $status;
 		}
 	}
 
@@ -206,7 +200,7 @@ class Webonary_Info
 						" FROM " . Config::$search_table_name .
 						" WHERE language_code = '" . $indexed->language_code . "' " .
 						" AND relevance >= 95 " .
-						" GROUP BY search_strings COLLATE " . COLLATION . "_BIN";
+						" GROUP BY search_strings COLLATE " . MYSQL_CHARSET . "_BIN";
 
 				$arrIndexGrouped = $wpdb->get_results($sql);
 
@@ -249,11 +243,19 @@ class Webonary_Info
 	{
 		global $wpdb;
 
-		$sql = "SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged FROM " . $wpdb->prefix . "posts " .
-				" WHERE post_type IN ('post', 'revision') AND " .
-				" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .") " .
-				" GROUP BY pinged " .
-				" ORDER BY post_date DESC";
+		/** @noinspection SqlResolve */
+		$sql = <<<SQL
+SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged
+FROM {$wpdb->prefix}posts
+WHERE post_type IN ('post', 'revision')
+  AND ID IN (
+	  SELECT object_id
+	  FROM {$wpdb->prefix}term_relationships
+	  WHERE term_taxonomy_id = {$catid}
+  )
+GROUP BY pinged
+ORDER BY post_date DESC
+SQL;
 
 		$arrPostCount = $wpdb->get_results($sql);
 
@@ -268,8 +270,6 @@ class Webonary_Info
 		foreach($arrIndexed as $indexed)
 		{
 			$status .= "<div style=\"clear:both;\"><div style=\"text-align:right; float:left;\"><nobr>" . $indexed->language_code . ":</nobr></div><div style=\"float:left;\">&nbsp;". $indexed->totalIndexed;
-
-			array_filter($arrReversalsImported, function($el) { return $el->post_id == 0; });
 
 			$sql = "SELECT COUNT(language_code) AS missing " .
 					" FROM " . Config::$search_table_name .

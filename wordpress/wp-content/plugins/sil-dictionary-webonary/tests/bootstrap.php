@@ -22,9 +22,6 @@ function _manually_load_plugin() {
 
 	global $wpdb;
 
-	define('COLLATION', $wpdb->charset);
-	define('FULLCOLLATION', $wpdb->collate);
-
 	remove_entries();
 
 	$sql = "ALTER DATABASE " . $wpdb->dbname .

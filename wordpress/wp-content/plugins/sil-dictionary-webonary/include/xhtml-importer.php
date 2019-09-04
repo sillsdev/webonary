@@ -472,7 +472,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$sql = "SELECT id
 			FROM $wpdb->posts
-			WHERE post_name = '" . trim($flexid) . "'	collate " . COLLATION . "_bin AND post_status = 'publish'";
+			WHERE post_name = '" . trim($flexid) . "'	collate " . MYSQL_CHARSET . "_bin AND post_status = 'publish'";
 
 		$row = $wpdb->get_row( $sql );
 
@@ -488,7 +488,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			//see dictionary-search.php -> my_404_override
 			$sql = "SELECT id
 			FROM $wpdb->posts
-			WHERE post_content LIKE '%" . trim($flexid) . "%'	collate " . COLLATION . "_bin AND post_status = 'publish'";
+			WHERE post_content LIKE '%" . trim($flexid) . "%'	collate " . MYSQL_CHARSET . "_bin AND post_status = 'publish'";
 
 			$post_id = $wpdb->get_var($sql);
 		}
@@ -503,7 +503,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		// will probably fail.
 		$sql = "SELECT ID
 			FROM $wpdb->posts
-			WHERE post_title = '" . addslashes(trim($headword)) . "' collate " . COLLATION . "_bin ";
+			WHERE post_title = '" . addslashes(trim($headword)) . "' collate " . MYSQL_CHARSET . "_bin ";
 
 		$row = $wpdb->get_row( $sql );
 
@@ -1392,7 +1392,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					else
 
 					{
-						$sql .= " reversal_head = '" . addslashes($reversal_head) . "' collate " . COLLATION . "_bin ";
+						$sql .= " reversal_head = '" . addslashes($reversal_head) . "' collate " . MYSQL_CHARSET . "_bin ";
 					}
 					$sql .= "AND language_code = '" . $reversal_language . "'";
 
@@ -1472,11 +1472,11 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$headword_text = trim($entry->textContent);
 
 		//this is used for the browse view sort order
-		$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . COLLATION . "_BIN' AND relevance >= 95";
+		$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . MYSQL_CHARSET . "_BIN' AND relevance >= 95";
 		$wpdb->query( $sql );
 
 		//this is used for the search sort order
-		$sql = "UPDATE " . $wpdb->posts . " SET menu_order = " . $entry_counter . " WHERE post_title = '" . addslashes($headword_text) . "' collate " . COLLATION . "_bin";
+		$sql = "UPDATE " . $wpdb->posts . " SET menu_order = " . $entry_counter . " WHERE post_title = '" . addslashes($headword_text) . "' collate " . MYSQL_CHARSET . "_bin";
 		$wpdb->query( $sql );
 
 		/*

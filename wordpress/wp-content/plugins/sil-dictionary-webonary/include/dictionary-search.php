@@ -37,6 +37,10 @@ if ( ! defined('ABSPATH') )
 //---------------------------------------------------------------------------//
 
 function my_enqueue_css() {
+
+	if (is_page())
+		return;
+
 	$upload_dir = wp_upload_dir();
 	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 	$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
@@ -96,8 +100,8 @@ function sil_dictionary_custom_message()
  * @return <boolean> = whether the string has Chinese/Japanese/Korean characters.
  */
 function is_CJK( $string ) {
-    $regex = '/' . implode( '|', get_CJK_unicode_ranges() ) . '/u';
-    return preg_match( $regex, $string );
+	$regex = '/' . implode( '|', get_CJK_unicode_ranges() ) . '/u';
+	return preg_match( $regex, $string );
 }
 
 function is_match_whole_words($search)
@@ -146,7 +150,7 @@ function is_match_whole_words($search)
  * @return array
  */
 function get_CJK_unicode_ranges() {
-    return array(
+	return array(
 		"[\x{2E80}-\x{2EFF}]",      # CJK Radicals Supplement
 		"[\x{2F00}-\x{2FDF}]",      # Kangxi Radicals
 		"[\x{2FF0}-\x{2FFF}]",      # Ideographic Description Characters
@@ -171,7 +175,7 @@ function get_CJK_unicode_ranges() {
 		"[\x{1D300}-\x{1D35F}]",    # Tai Xuan Jing Symbols
 		"[\x{20000}-\x{2A6DF}]",    # CJK Unified Ideographs Extension B
 		"[\x{2F800}-\x{2FA1F}]"     # CJK Compatibility Ideographs Supplement
-    );
+	);
 }
 
 //---------------------------------------------------------------------------//
@@ -269,10 +273,14 @@ function get_subquery_where()
 	}
 	$search = strtolower($search);
 
-	$key = $_GET['key'];
-	if(!isset($key))
-	{
+	if(!empty($_GET['key'])) {
+		$key = $_GET['key'];
+	}
+	elseif(!empty($wp_query->query_vars['langcode'])) {
 		$key = $wp_query->query_vars['langcode'];
+	}
+	else {
+		$key = '';
 	}
 
 	$subquery_where = "";
@@ -291,7 +299,7 @@ function get_subquery_where()
 		$collateSearch = "";
 		if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
 		{
-			$collateSearch = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+			$collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 		}
 
 		$searchquery = $search;

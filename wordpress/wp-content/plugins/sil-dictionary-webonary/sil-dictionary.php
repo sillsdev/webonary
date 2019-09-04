@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Webonary
-Plugin URI: http://www.webonary.org
+Plugin URI: https://www.webonary.org
 Description: Webonary gives language groups the ability to publish their bilingual or multilingual dictionaries on the web.
 The SIL Dictionary plugin has several components. It includes a dashboard, an import for XHTML (export from Fieldworks Language Explorer), and multilingual dictionary search.
 Author: SIL International
@@ -28,25 +28,15 @@ License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @package WordPress
  * @since 3.1
  */
- //don't display notices like undefined variables
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-/*
-add_action( 'plugins_loaded', function()
-{
-	error_log("webonary\n", 3, "/tmp/my-errors.log");
-});
-*/
+
+include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
+
 // don't load directly
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
+/** @var wpdb $wpdb */
 global $wpdb;
-
-// User capability. I don't know why this value works in add_management_page. May want to revisit this.
-define( 'SIL_DICTIONARY_USER_CAPABILITY', '10' );
-define('FONTFOLDER', "/wp-content/uploads/fonts/");
-define('SEARCHTABLE', $wpdb->prefix . 'sil_search');
-define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
 
 /*
  * Dependencies
@@ -55,7 +45,7 @@ define('REVERSALTABLE', $wpdb->prefix . 'sil_reversals');
 //require_once( dirname( __FILE__ ) . '/updater.php');
 require_once( dirname( __FILE__ ) . '/include/class_info.php' );
 require_once( dirname( __FILE__ ) . '/include/class_utilities.php' );
-// Infractstructure management: add and remove custom table(s) and custom taxonomies.
+// Infrastructure management: add and remove custom table(s) and custom taxonomies.
 require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
 // Configure Webonary Settings
 require_once( dirname( __FILE__ ) . '/include/configuration.php' );
@@ -69,7 +59,7 @@ require_once( dirname( __FILE__ ) . '/include/xhtml-importer.php' );
 require_once( dirname( __FILE__ ) . '/include/searchform_func.php' );
 // Creates the browse view based on shortcodes
 require_once( dirname( __FILE__ ) . '/include/browseview_func.php' );
-// Adds functiionality to save the post_name in comment_type and resync comments
+// Adds functionality to save the post_name in comment_type and resync comments
 require_once( dirname( __FILE__ ) . '/include/comments_func.php' );
 // API for FLEx
 require_once( dirname( __FILE__ ) . '/include/api.php' );
@@ -102,10 +92,8 @@ add_filter('search_message', 'sil_dictionary_custom_message');
 
 add_filter('posts_request','replace_default_search_filter');
 
-if( !is_page())
-{
-	add_action('wp_enqueue_scripts', 'my_enqueue_css', 1000);
-}
+// this executes just before wordpress determines which template page to load
+add_action( 'template_redirect', 'my_enqueue_css' );
 
 
 //add_action('pre_get_posts','no_standard_sort');
@@ -119,9 +107,10 @@ function add_rewrite_rules($aRules) {
 }
 
 add_filter('post_rewrite_rules', 'add_rewrite_rules');
+
 function add_query_vars($qvars) {
 	$qvars[] = "clean";
 	return $qvars;
 }
-add_filter('query_vars', 'add_query_vars');
 
+add_filter('query_vars', 'add_query_vars');
