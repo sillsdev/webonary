@@ -416,7 +416,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	$sortorderExists = (count($result))?TRUE:FALSE;
 
 	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
-	$collate = "COLLATE " . COLLATION . "_BIN";
+	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN";
 
 	$sql = "SELECT reversal_content " .
 	" FROM " . REVERSALTABLE  .
@@ -708,7 +708,7 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 {
 	global $wpdb;
 
-	$collate = "COLLATE " . COLLATION . "_BIN"; //"COLLATE 'UTF8_BIN'";
+	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 	if(get_option('IncludeCharactersWithDiacritics') == 1)
 	{
 		$collate = "";

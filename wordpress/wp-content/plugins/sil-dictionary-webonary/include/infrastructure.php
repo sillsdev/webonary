@@ -23,35 +23,7 @@ if ( ! defined('ABSPATH') )
  * Install the SIL dictionary infrastructure if needed.
  */
 function install_sil_dictionary_infrastructure() {
-	global $wpdb;
-	global $blog_id;
 
-	$sql = "SELECT DATABASE();";
-	$dbName = $wpdb->get_var($sql);
-
-	$sql = "select COLLATION_NAME from information_schema.columns where TABLE_SCHEMA = '" . $dbName . "' and TABLE_NAME = '". $wpdb->prefix . "posts' and COLUMN_NAME = 'post_title'";
-
-	$postsCollation = $wpdb->get_var($sql);
-
-	// The collation for all webonary databases is required to be utf8mb4_general_ci on all versions of mySQL that support it.
-
-	define('COLLATION', $wpdb->charset);
-	define('FULLCOLLATION', $wpdb->collate);
-
-	/*
-	if (version_compare($wpdb->db_version(), '5.5.3') >= 0)
-	{
-		// Review: The forced use of collation is fragile, and unlikely to do what is expected. Certainly their are many combinations that are not compatible. CP 2017-02
-		// Proposal: Remove all forced collation and pre populate index exemplars CP 2017-02
-		define('COLLATION', "UTF8MB4");
-		define('FULLCOLLATION', "utf8mb4_general_ci");
-	}
-	else
-	{
-		define('COLLATION', "UTF8");
-		define('FULLCOLLATION', "utf8_general_ci");
-	}
-	*/
 	if(is_admin())
 	{
 		create_custom_relevance();
@@ -87,21 +59,24 @@ function create_custom_relevance() {
 
 //---------------------------------------------------------------------------//
 function create_reversal_tables () {
-	global $wpdb;
 
 	$table = REVERSALTABLE;
-	$sql = "CREATE TABLE `" . $table . "` (
-		`id` varchar(50) NOT NULL,
-		`language_code` varchar(30) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
-		`reversal_head` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
-		`reversal_content` longtext CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ",
-		`sortorder` INT NOT NULL DEFAULT '0',
-		`browseletter` varchar(5) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION .
-		$sql .= ", UNIQUE KEY (`id`)";
-		$sql .= ") CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
+	$char_set = MYSQL_CHARSET;
+	$collate = MYSQL_COLLATION;
 
-	//echo $sql . "<br>";
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	$sql = <<<SQL
+CREATE TABLE `{$table}` (
+  `id` VARCHAR(50) NOT NULL,
+  `language_code` VARCHAR(30),
+  `reversal_head` LONGTEXT,
+  `reversal_content` LONGTEXT,
+  `sortorder` INT NOT NULL DEFAULT '0',
+  `browseletter` VARCHAR(5),
+  UNIQUE KEY idx_{$table}_id (`id`)
+) DEFAULT CHARSET={$char_set} COLLATE={$collate};
+SQL;
+
+	include_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
 }
 
@@ -119,7 +94,7 @@ function create_search_tables () {
 		`sortorder` INT NOT NULL DEFAULT '0',
 		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 ), `class` (50)),
 		INDEX relevance_idx (relevance)
-		) CHARACTER SET " . COLLATION . " COLLATE " . FULLCOLLATION . ";";
+		) CHARACTER SET " . MYSQL_CHARSET . " COLLATE " . MYSQL_COLLATION . ";";
 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	dbDelta( $sql );
@@ -133,33 +108,33 @@ function create_search_tables () {
 
 function register_semantic_domains_taxonomy () {
 
-    $labels = array(
-        'name' => _x( 'Semantic Domains', 'taxonomy general name' ),
-        'singular_name' => _x( 'Semantic Domain', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Search Domains' ),
-        'all_items' => __( 'All Semantic Domains' ),
-        'parent_item' => __( 'Parent Semantic Domain' ),
-        'parent_item_colon' => __( 'Parent Semantic Domain:' ),
-        'edit_item' => __( 'Edit Semantic Domain' ),
-        'update_item' => __( 'Update Semantic Domain' ),
-        'add_new_item' => __( 'Add New Semantic Domain' ),
-        'new_item_name' => __( 'New Semantic Domain Name' ),
-        'menu_name' => __( 'Semantic Domain' ),
-    );
+	$labels = array(
+		'name' => _x( 'Semantic Domains', 'taxonomy general name' ),
+		'singular_name' => _x( 'Semantic Domain', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Search Domains' ),
+		'all_items' => __( 'All Semantic Domains' ),
+		'parent_item' => __( 'Parent Semantic Domain' ),
+		'parent_item_colon' => __( 'Parent Semantic Domain:' ),
+		'edit_item' => __( 'Edit Semantic Domain' ),
+		'update_item' => __( 'Update Semantic Domain' ),
+		'add_new_item' => __( 'Add New Semantic Domain' ),
+		'new_item_name' => __( 'New Semantic Domain Name' ),
+		'menu_name' => __( 'Semantic Domain' ),
+	);
 
-    register_taxonomy(
-        'sil_semantic_domains',
-        'post',
-        array(
-            'hierarchical' => false,
-            'labels' => $labels,
-            'update_count_callback' => '_update_post_term_count',
-            'query_var' => true,
-            'rewrite' => true,
-            'public' => true,
-            'show_ui' => true
-        )
-    ) ;
+	register_taxonomy(
+		'sil_semantic_domains',
+		'post',
+		array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => true,
+			'public' => true,
+			'show_ui' => true
+		)
+	) ;
 }
 
 //-----------------------------------------------------------------------------//
@@ -171,33 +146,33 @@ function register_semantic_domains_taxonomy () {
 
 function register_part_of_speech_taxonomy () {
 
-    $labels = array(
-        'name' =>  _x( 'Part of Speech', 'taxonomy general name' ),
-        'singular_name' => _x( 'Part of Speech', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Parts of Speech' ),
-        'all_items' => __( 'All Parts of Speech' ),
-        'parent_item' => __( 'Parent Part of Speech' ),
-        'parent_item_colon' => __( 'Parent Part of Speech:' ),
-        'edit_item' => __( 'Edit Part of Speech' ),
-        'update_item' => __( 'Update Part of Speech' ),
-        'add_new_item' => __( 'Add New Part of Speech' ),
-        'new_item_name' => __( 'New Part of Speech Name' ),
-        'menu_name' => __( "Parts of Speech"),
-    );
+	$labels = array(
+		'name' =>  _x( 'Part of Speech', 'taxonomy general name' ),
+		'singular_name' => _x( 'Part of Speech', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Parts of Speech' ),
+		'all_items' => __( 'All Parts of Speech' ),
+		'parent_item' => __( 'Parent Part of Speech' ),
+		'parent_item_colon' => __( 'Parent Part of Speech:' ),
+		'edit_item' => __( 'Edit Part of Speech' ),
+		'update_item' => __( 'Update Part of Speech' ),
+		'add_new_item' => __( 'Add New Part of Speech' ),
+		'new_item_name' => __( 'New Part of Speech Name' ),
+		'menu_name' => __( "Parts of Speech"),
+	);
 
-    register_taxonomy(
-        'sil_parts_of_speech',
-        'post',
-        array(
-            'hierarchical' => false,
-            'labels' => $labels,
-            'update_count_callback' => '_update_post_term_count',
-            'query_var' => true,
-            'rewrite' => true,
-            'public' => true,
-            'show_ui' => true
-        )
-    ) ;
+	register_taxonomy(
+		'sil_parts_of_speech',
+		'post',
+		array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => true,
+			'public' => true,
+			'show_ui' => true
+		)
+	) ;
 }
 
 //-----------------------------------------------------------------------------//
@@ -208,33 +183,33 @@ function register_part_of_speech_taxonomy () {
 
 function register_language_taxonomy () {
 
-    $labels = array(
-        'name' => _x( 'Languages', 'taxonomy general name' ),
-        'singular_name' => _x( 'Language', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Language' ),
-        'all_items' => __( 'All Languages' ),
-        'parent_item' => __( 'Parent Language' ),
-        'parent_item_colon' => __( 'Parent Language:' ),
-        'edit_item' => __( 'Edit Language' ),
-        'update_item' => __( 'Update Language' ),
-        'add_new_item' => __( 'Add New Language' ),
-        'new_item_name' => __( 'New Language Name' ),
-        'menu_name' => __( 'Language' ),
-    );
+	$labels = array(
+		'name' => _x( 'Languages', 'taxonomy general name' ),
+		'singular_name' => _x( 'Language', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Language' ),
+		'all_items' => __( 'All Languages' ),
+		'parent_item' => __( 'Parent Language' ),
+		'parent_item_colon' => __( 'Parent Language:' ),
+		'edit_item' => __( 'Edit Language' ),
+		'update_item' => __( 'Update Language' ),
+		'add_new_item' => __( 'Add New Language' ),
+		'new_item_name' => __( 'New Language Name' ),
+		'menu_name' => __( 'Language' ),
+	);
 
-    register_taxonomy(
-        'sil_writing_systems',
-        'post',
-        array(
-            'hierarchical' => false,
-            'labels' => $labels,
-            'update_count_callback' => '_update_post_term_count',
-            'query_var' => true,
-            'rewrite' => true,
-            'public' => true,
-            'show_ui' => true
-        )
-    ) ;
+	register_taxonomy(
+		'sil_writing_systems',
+		'post',
+		array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => true,
+			'public' => true,
+			'show_ui' => true
+		)
+	) ;
 }
 
 //-----------------------------------------------------------------------------//
@@ -245,40 +220,41 @@ function register_language_taxonomy () {
 
 function register_webstrings_taxonomy () {
 
-    $labels = array(
-        'name' => _x( 'Website strings', 'taxonomy general name' ),
-        'singular_name' => _x( 'Website strings', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Website strings' ),
-        'all_items' => __( 'All Website strings' ),
-        'parent_item' => __( 'Parent Website strings' ),
-        'parent_item_colon' => __( 'Parent Website strings:' ),
-        'edit_item' => __( 'Edit Website strings' ),
-        'update_item' => __( 'Update Website strings' ),
-        'add_new_item' => __( 'Add New Website strings' ),
-        'new_item_name' => __( 'New Website strings Name' ),
-        'menu_name' => __( 'Website strings' ),
-    );
+	$labels = array(
+		'name' => _x( 'Website strings', 'taxonomy general name' ),
+		'singular_name' => _x( 'Website strings', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Website strings' ),
+		'all_items' => __( 'All Website strings' ),
+		'parent_item' => __( 'Parent Website strings' ),
+		'parent_item_colon' => __( 'Parent Website strings:' ),
+		'edit_item' => __( 'Edit Website strings' ),
+		'update_item' => __( 'Update Website strings' ),
+		'add_new_item' => __( 'Add New Website strings' ),
+		'new_item_name' => __( 'New Website strings Name' ),
+		'menu_name' => __( 'Website strings' ),
+	);
 
-    register_taxonomy(
-        'sil_webstrings',
-        'post',
-        array(
-            'hierarchical' => false,
-            'labels' => $labels,
-            'update_count_callback' => '_update_post_term_count',
-            'query_var' => true,
-            'rewrite' => true,
-            'public' => true,
-            'show_ui' => true
-        )
-    ) ;
+	register_taxonomy(
+		'sil_webstrings',
+		'post',
+		array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'update_count_callback' => '_update_post_term_count',
+			'query_var' => true,
+			'rewrite' => true,
+			'public' => true,
+			'show_ui' => true
+		)
+	) ;
 }
 
 function remove_double_terms () {
 	global $wpdb;
 
 	//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
-	$sql = "DELETE t1 FROM $wpdb->terms t1, $wpdb->terms t2
+	/** @noinspection SqlResolve */
+	$sql = "DELETE t1 FROM {$wpdb->terms} t1, {$wpdb->terms} t2
 			WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug";
 
 	$wpdb->query( $sql );
@@ -338,11 +314,11 @@ function clean_out_dictionary_data ($delete_taxonomies = null) {
 
 /**
  * Remove all posts and revisions, leaving other post types
- * @global  $wpdb
- * @return <type>
+ *
+ * @param null $pinged
+ * @global $wpdb
  */
-
-function remove_entries ($pinged = null) {
+function remove_entries($pinged = null) {
 	global $wpdb;
 
 	$import = new sil_pathway_xhtml_Import();
@@ -350,35 +326,42 @@ function remove_entries ($pinged = null) {
 	$catid = Webonary_Info::category_id();
 
 	//just posts in category "webonary"
-	$sql = "DELETE FROM " . $wpdb->prefix . "posts " .
-	" WHERE post_type IN ('post', 'revision') AND " .
-	" ID IN (SELECT object_id FROM " . $wpdb->prefix . "term_relationships WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . $catid .")";
+	/** @noinspection SqlResolve */
+	$sql = <<<SQL
+DELETE FROM {$wpdb->prefix}posts
+WHERE post_type IN ('post', 'revision') 
+  AND ID IN (
+      SELECT object_id FROM {$wpdb->prefix}term_relationships 
+       WHERE {$wpdb->prefix}term_relationships.term_taxonomy_id = {$catid})
+SQL;
+
 	if(isset($pinged))
 	{
-		$sql .= " AND pinged = '" . $pinged . "'";
+		$sql .= " AND pinged = '{$pinged}'";
 	}
 
 	$wpdb->query( $sql );
 
-	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_search";
+	$sql = 'DROP TABLE IF EXISTS ' . SEARCHTABLE;
 	$wpdb->query( $sql );
 
 
-	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_reversal";
+	$sql = 'DROP TABLE IF EXISTS ' . $wpdb->prefix . 'sil_reversal';
 	$wpdb->query( $sql );
 
-	$sql = "DROP TABLE IF EXISTS " . $wpdb->prefix . "sil_reversals";
+	$sql = 'DROP TABLE IF EXISTS ' . REVERSALTABLE;
 	$wpdb->query( $sql );
 
 	create_reversal_tables();
 
+	/** @noinspection SqlResolve */
 	$sql = "DELETE FROM " . $wpdb->prefix . "term_relationships WHERE term_taxonomy_id = " . $catid;
 	if(isset($pinged))
 	{
 		$sql .= " AND object_id NOT IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'post')";
 	}
 
-	$return_value = $wpdb->get_var( $sql );
+	$wpdb->query( $sql );
 }
 
 //-----------------------------------------------------------------------------//
@@ -415,6 +398,7 @@ function set_field_sortorder() {
 	{
 		return false;
 	}
+	/** @noinspection SqlResolve */
 	$sql = " ALTER TABLE " . $wpdb->prefix . "sil_search ADD sortorder INT NOT NULL DEFAULT  '0'";
 
 	$wpdb->query( $sql );
@@ -441,6 +425,7 @@ function strrpos_count($haystack, $needle, $count)
 function unregister_custom_taxonomies () {
 	global $wpdb;
 
+	/** @noinspection SqlResolve */
 	$sql = "UPDATE $wpdb->term_taxonomy SET count = 1 WHERE count = 0";
 	$wpdb->query( $sql);
 
@@ -450,6 +435,7 @@ function unregister_custom_taxonomies () {
 	unregister_custom_taxonomy ( 'sil_webstrings' );
 
 	//delete all relationships
+	/** @noinspection SqlResolve */
 	$del = "DELETE FROM $wpdb->term_relationships WHERE term_taxonomy_id = 1 ";
 	$wpdb->query( $del);
 }
