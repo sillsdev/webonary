@@ -1,8 +1,8 @@
 <?php
 
-/*
+/**
 Plugin Name: Webonary
-Plugin URI: https://www.webonary.org
+Plugin URI: https://github.com/sillsdev/sil-dictionary-webonary
 Description: Webonary gives language groups the ability to publish their bilingual or multilingual dictionaries on the web.
 The SIL Dictionary plugin has several components. It includes a dashboard, an import for XHTML (export from Fieldworks Language Explorer), and multilingual dictionary search.
 Author: SIL International
@@ -10,11 +10,8 @@ Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
 Version: v. 8.3.8
-License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+License: MIT
 */
-
-/* @todo Change the above Plugin URI */
-/* @todo Change the licensing above and below. If GPL2, see WP plugin doc about license. */
 
 /**
  * SIL Dictionary
@@ -38,35 +35,62 @@ if ( ! defined('ABSPATH') )
 /** @var wpdb $wpdb */
 global $wpdb;
 
-/*
- * Dependencies
- */
- //To update code from Github through Wordpress Dashboard
-//require_once( dirname( __FILE__ ) . '/updater.php');
-require_once( dirname( __FILE__ ) . '/include/class_info.php' );
-require_once( dirname( __FILE__ ) . '/include/class_utilities.php' );
+/** @var string $webonary_class_path */
+$webonary_class_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'webonary';
+
+//region Dependencies
+function webonary_autoloader($class_name)
+{
+	global $webonary_class_path;
+
+	$pos = strpos($class_name, 'Webonary_');
+
+	// class name must begin with "Webonary_"
+	if ($pos === false || $pos != 0)
+		return null;
+
+	$class_file = substr($class_name, 9) . '.php';
+
+	$success = include_once($webonary_class_path . DIRECTORY_SEPARATOR . $class_file);
+
+	if ($success === false)
+		return new WP_Error('Failed', 'Not able to include ' . $class_name);
+
+	return null;
+}
+
+/** @noinspection PhpUnhandledExceptionInspection */
+spl_autoload_register('webonary_autoloader');
+
+$this_dir = dirname(__FILE__);
+
+// To update code from Github through Wordpress Dashboard
+//include_once $this_dir . '/updater.php';
+include_once $this_dir . '/include/class_info.php';
+include_once $this_dir . '/include/class_utilities.php';
 // Infrastructure management: add and remove custom table(s) and custom taxonomies.
-require_once( dirname( __FILE__ ) . '/include/infrastructure.php' );
+include_once $this_dir . '/include/infrastructure.php';
 // Configure Webonary Settings
-require_once( dirname( __FILE__ ) . '/include/configuration.php' );
+include_once $this_dir . '/include/configuration.php';
 //setting and getting font information
-require_once( dirname( __FILE__ ) . '/include/fonts.php' );
+include_once $this_dir . '/include/fonts.php';
 // Code for searching on dictionaries.
-require_once( dirname( __FILE__ ) . '/include/dictionary-search.php' );
+include_once $this_dir . '/include/dictionary-search.php';
 // Code for the XHMTL importer.
-require_once( dirname( __FILE__ ) . '/include/xhtml-importer.php' );
+include_once $this_dir . '/include/xhtml-importer.php';
 // A replacement for the search box.
-require_once( dirname( __FILE__ ) . '/include/searchform_func.php' );
+include_once $this_dir . '/include/searchform_func.php';
 // Creates the browse view based on shortcodes
-require_once( dirname( __FILE__ ) . '/include/browseview_func.php' );
+include_once $this_dir . '/include/browseview_func.php';
 // Adds functionality to save the post_name in comment_type and resync comments
-require_once( dirname( __FILE__ ) . '/include/comments_func.php' );
+include_once $this_dir . '/include/comments_func.php';
 // API for FLEx
-require_once( dirname( __FILE__ ) . '/include/api.php' );
+include_once $this_dir . '/include/api.php';
 // Widgets
-require_once( dirname( __FILE__ ) . '/include/widgets.php' );
-//modify the post content
-require_once( dirname( __FILE__ ) . '/include/modifycontent.php' );
+include_once $this_dir . '/include/widgets.php';
+// modify the post content
+include_once $this_dir . '/include/modifycontent.php';
+//endregion
 
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
@@ -85,9 +109,7 @@ require_once( dirname( __FILE__ ) . '/include/modifycontent.php' );
 //}
 
 
-/*
- * Search hook
- */
+/* Search hook */
 add_filter('search_message', 'sil_dictionary_custom_message');
 
 add_filter('posts_request','replace_default_search_filter');
