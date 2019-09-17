@@ -265,7 +265,7 @@ function webonary_searchform() {
 		$siteurlNoHttp = str_replace("https://", "", get_bloginfo('wpurl'));
 		$siteurlNoHttp = str_replace("http://", "", $siteurlNoHttp);
 
-		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%" . $siteurlNoHttp . "%'");
+		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '" . trim($siteurlNoHttp) . "'");
 		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
 		{
 			echo "<br>";
