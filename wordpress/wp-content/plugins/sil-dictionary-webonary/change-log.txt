@@ -1,3 +1,4 @@
+v. 8.3.2 20 Sept 2019 fixed query for published date
 v. 8.3.1 17 Sept 2019 fixed grouping issue
 v. 8.3.0 17 Sept 2019 fixed issue that potentially showed non-published dictionary
 v. 8.2.9 11 Sept 2019 merged Phil H's refactorings
