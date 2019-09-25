@@ -94,6 +94,7 @@ class Webonary_API_MyType {
 
 					if($filename != "configured.css")
 					{
+						$filename = str_replace('-', '_', $filename);
 						copy($zipFolderPath . "/" . $filename, $uploadPath . "/". $filename);
 						error_log("moved " . $zipFolderPath . "/" . $filename . " to " . $uploadPath . "/" . $filename);
 						unlink($file);
