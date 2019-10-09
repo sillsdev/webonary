@@ -33,7 +33,7 @@ if ( ! defined('ABSPATH') )
 	die( '-1' );
 
 /** @var wpdb $wpdb */
-global $wpdb;
+global $wpdb, $webonary_class_path;
 
 /** @var string $webonary_class_path */
 $webonary_class_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'webonary';
@@ -49,7 +49,7 @@ function webonary_autoloader($class_name)
 	if ($pos === false || $pos != 0)
 		return null;
 
-	$class_file = substr($class_name, 9) . '.php';
+	$class_file = $class_name . '.php';
 
 	$success = include_once($webonary_class_path . DIRECTORY_SEPARATOR . $class_file);
 
@@ -64,10 +64,6 @@ spl_autoload_register('webonary_autoloader');
 
 $this_dir = dirname(__FILE__);
 
-// To update code from Github through Wordpress Dashboard
-//include_once $this_dir . '/updater.php';
-include_once $this_dir . '/include/class_info.php';
-include_once $this_dir . '/include/class_utilities.php';
 // Infrastructure management: add and remove custom table(s) and custom taxonomies.
 include_once $this_dir . '/include/infrastructure.php';
 // Configure Webonary Settings
@@ -94,8 +90,8 @@ include_once $this_dir . '/include/modifycontent.php';
 
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
-	add_action( 'admin_menu', 'add_admin_menu' );
-	add_action('admin_bar_menu', 'on_admin_bar', 35);
+	add_action('admin_menu', 'Webonary_Configuration::add_admin_menu');
+	add_action('admin_bar_menu', 'Webonary_Configuration::on_admin_bar', 35);
 
 	// I looked for a register_install_hook, but given the way WordPress plugins
 	// can be implemented, I'm not sure it would work right even if I did find one.

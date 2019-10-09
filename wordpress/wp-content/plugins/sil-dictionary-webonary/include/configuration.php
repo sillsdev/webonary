@@ -1,172 +1,8 @@
 <?php
-class Config
-{
-	/*
-	 * Table and taxonomy attributes
-	 */
 
-	public static $search_table_name = SEARCHTABLE;
-	public static $reversal_table_name = REVERSALTABLE;
-	public static $pos_taxonomy = 'sil_parts_of_speech';
-	public static $semantic_domains_taxonomy = 'sil_semantic_domains';
-}
-/**
- * Set up the SIL Dictionary in WordPress Dashboard Tools
- */
-function add_admin_menu() {
+add_action( 'wp_ajax_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
+add_action( 'wp_ajax_nopriv_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
 
-	$data = get_userdata( get_current_user_id() );
-	$role = ( array ) $data->roles;
-
-	if ( $role[0] == "editor" || $role[0] == "administrator" || is_super_admin())
-	{
-		add_menu_page( "Webonary", "Webonary", 'edit_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
-		add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
-		remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
-	}
-}
-
-function on_admin_bar(){
-	global $wp_admin_bar;
-
-	$wp_admin_bar->add_menu(array(
-			'id' => 'Webonary',
-			'title' => 'Webonary',
-			'parent' => 'site-name',
-			'href' => admin_url('/admin.php?page=webonary'),
-	));
-
-	$wp_admin_bar->remove_menu( "themes" );
-	$wp_admin_bar->remove_menu( "widgets" );
-	$wp_admin_bar->remove_menu( "menus" );
-}
-
-function get_admin_sections() {
-	//$q_config['admin_sections'] = array();
-	//$admin_sections = &$q_config['admin_sections'];
-	$admin_sections = array();
-
-	$admin_sections['import'] = __('Data (Import)', 'sil_dictionary');
-	$admin_sections['search'] = __('Search', 'sil_dictionary');
-	$admin_sections['browse'] = __('Browse Views', 'sil_dictionary');
-	$admin_sections['fonts'] = __('Fonts', 'sil_dictionary');
-	if(is_super_admin())
-	{
-		$admin_sections['superadmin'] = __('Super Admin', 'sil_dictionary');
-	}
-
-	return $admin_sections;
-}
-
-function admin_section_start($nm) {
-	echo '<div id="tab-'.$nm.'" class="hidden">'.PHP_EOL;
-}
-
-function admin_section_end($nm, $button_name=null, $button_class='button-primary') {
-	if(isset($button_name))
-	{
-		echo '<p class="submit" style="float:left;"><input type="submit" name="save_settings"';
-		if($button_class) echo ' class="'.$button_class.'"';
-		echo ' value="'.$button_name.'" /></p><br><br>';
-	}
-	echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
-}
-
-function ajaxlanguage()
-{
-	global $wpdb;
-
-	$sql = "SELECT name
-	FROM $wpdb->terms
-	WHERE slug = '" . $_POST['languagecode'] . "'";
-
-	$languagename = $wpdb->get_var( $sql);
-
-
-	echo $languagename;
-	die();
-}
-
-add_action( 'wp_ajax_getAjaxlanguage', 'ajaxlanguage' );
-add_action( 'wp_ajax_nopriv_getAjaxlanguage', 'ajaxlanguage' );
-
-function get_LanguageCodes($languageCode = null) {
-	global $wpdb;
-
-	$sql = "SELECT language_code, name
-		FROM " . $wpdb->prefix . "sil_search
-		LEFT JOIN " . $wpdb->terms . " ON " . $wpdb->terms . ".slug = " . $wpdb->prefix . "sil_search.language_code";
-	if(isset($languageCode))
-	{
-		$sql .= " WHERE language_code = '" . $languageCode . "' ";
-	}
-	else
-	{
-		$sql .= " WHERE language_code != '' ";
-	}
-	$sql .= " GROUP BY language_code, name
-		ORDER BY language_code";
-
-	return $wpdb->get_results($sql, 'ARRAY_A');
-}
-
-function relevanceForm()
-{
-	global $wpdb;
-
-	$sql = "SELECT class AS classname, relevance
-		FROM " . $wpdb->prefix . "sil_search
-		GROUP BY class
-		ORDER BY relevance DESC";
-
-	$arrClasses = $wpdb->get_results($sql);
-
-?>
-<form action="admin.php?page=webonary#search" method="post" enctype="multipart/form-data">
-<h1>Relevance Settings for Fields</h1>
-<p>
-The search returns results based on relevance. That is, if the word you are looking for is found in a headword, that will be more important than finding the word in a definition for another word.
-</p>
-<p>
-Normally you don't need to change anything here. But if you import a custom field, it will be imported with a relevance of zero in which case you have the option to change the relevance setting.
-</p>
-<?php
-	if(!isset($arrClasses[0]->classname))
-	{
-		echo "<strong>You need to reimport this dictionary if you want to change the relevance settings.</strong>";
-		return false;
-	}
-	echo "<ul>";
-	foreach($arrClasses as $class)
-	{
-		if(strpos($class->classname, "abbr") !== false || strpos($class->classname, "partofspeech") !== false || strpos($class->classname, "name") !== false || (strpos($class->classname, "headword") !== false && $class->relevance == 0))
-		{
-			continue;
-		}
-		echo "<li><div><strong>" . $class->classname . ": </strong></div>";
-		if($class->relevance == 100 && (strpos($class->classname, "headword") !== false || strpos($class->classname, "lexemeform") !== false || strpos($class->classname, "reversalform") !== false))
-		{
-			echo $class->relevance;
-		}
-		else
-		{
-		?>
-			<div>
-			<input type="hidden" name=classname[] value="<?php echo $class->classname; ?>">
-			<input type="text" name=relevance[] size=5 value="<?php echo $class->relevance; ?>">
-			</div>
-		<?php
-		}
-		echo "</li>";
-	}
-	echo "</ul>";
-	?>
-<p>
-	<input type="submit" name="btnSaveRelevance" value="Save">
-</p>
-</form>
-<?php
-}
 
 function relevanceSave()
 {
@@ -425,7 +261,7 @@ function webonary_conf_widget($showTitle = false) {
 
 	if(isset($_GET['changerelevance']))
 	{
-		relevanceForm();
+		echo Webonary_Configuration::relevanceForm();
 	}
 
 	if(isset($_POST['uploadFont']))
@@ -477,14 +313,14 @@ function webonary_conf_widget($showTitle = false) {
 	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
 
 	<?php
-	$admin_sections = get_admin_sections();
+	$admin_sections = Webonary_Configuration::get_admin_sections();
 	echo '<h2 class="nav-tab-wrapper">'.PHP_EOL;
 	foreach( $admin_sections as $slug => $name ){
 		echo '<a class="nav-tab" href="#'.$slug.'" title="'.sprintf(__('Click to switch to %s', 'sil_dictionary'), $name).'">'.$name.'</a>'.PHP_EOL;
 	}
 	echo '</h2>'.PHP_EOL;
 
-	$arrLanguageCodes = get_LanguageCodes();
+	$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
 
 	// enctype="multipart/form-data"
 	?>
@@ -514,7 +350,7 @@ function webonary_conf_widget($showTitle = false) {
 			<div class="tabs-content"><?php //<!-- tabs-container --> ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////////
-			admin_section_start('import');
+			Webonary_Configuration::admin_section_start('import');
 
 			$import = new sil_pathway_xhtml_Import();
 			?>
@@ -571,10 +407,10 @@ function webonary_conf_widget($showTitle = false) {
 				<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
 			</p>
 
-			<?php admin_section_end('import', 'Save Changes'); ?>
+			<?php Webonary_Configuration::admin_section_end('import', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////////
-			admin_section_start('search');
+			Webonary_Configuration::admin_section_start('search');
 			?>
 			<p>
 			<h3><?php _e('Default Search Options');?></h3>
@@ -653,10 +489,10 @@ function webonary_conf_widget($showTitle = false) {
 			<br><br>
 			<a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
 			<br><br>
-			<?php admin_section_end('search', 'Save Changes'); ?>
+			<?php Webonary_Configuration::admin_section_end('search', 'Save Changes'); ?>
 			<?php
 			//////////////////////////////////////////////////////////////////////////
-			admin_section_start('browse');
+			Webonary_Configuration::admin_section_start('browse');
 			?>
 			<p>
 			<h3>Browse Views</h3>
@@ -888,10 +724,10 @@ function webonary_conf_widget($showTitle = false) {
 			}
 		?>
 		</p>
-		<?php admin_section_end('browse', 'Save Changes'); ?>
+		<?php Webonary_Configuration::admin_section_end('browse', 'Save Changes'); ?>
 		<?php
 		//////////////////////////////////////////////////////////////////////////
-		admin_section_start('fonts');
+		Webonary_Configuration::admin_section_start('fonts');
 		?>
 		<p>
 		<h3>Fonts</h3>
@@ -978,10 +814,10 @@ function webonary_conf_widget($showTitle = false) {
 			}
 		}
 		?>
-		<?php admin_section_end('fonts'); ?>
+		<?php Webonary_Configuration::admin_section_end('fonts'); ?>
 		<?php
 		//////////////////////////////////////////////////////////////////////////
-		admin_section_start('superadmin');
+		Webonary_Configuration::admin_section_start('superadmin');
 		?>
 		<p>
 		<h3>Notes</h3>
@@ -993,7 +829,7 @@ function webonary_conf_widget($showTitle = false) {
 		<p>
 		Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option("noSearch")); ?> />
 		<p>
-		<?php admin_section_end('superadmin', 'Save Changes'); ?>
+		<?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
 
 		</div><?php //<!-- /tabs-container --> ?>
 		</form>

@@ -626,7 +626,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			</p>
 			</div>
 			<?php
-			$arrLanguageCodes = get_LanguageCodes();
+			$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
 			if(count($arrLanguageCodes) > 1)
 			{
 			?>
@@ -738,7 +738,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 		$hasComposedCharacters = 0;
 
-		$sql = "SELECT * FROM " . Config::$search_table_name;
+		$sql = "SELECT * FROM " . Webonary_Configuration::$search_table_name;
 
 		$arrIndex = $wpdb->get_results($sql);
 
@@ -1081,7 +1081,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		{
 			$search_string = normalizer_normalize($search_string, Normalizer::NFC );
 			$sql = $wpdb->prepare(
-				"INSERT IGNORE INTO `". Config::$search_table_name . "` (post_id, language_code, search_strings, relevance, class, subid)
+				"INSERT IGNORE INTO `". Webonary_Configuration::$search_table_name . "` (post_id, language_code, search_strings, relevance, class, subid)
 				VALUES (%d, '%s', '%s', %d, '%s', %d)",
 				$post_id, $language_code, trim($search_string), $relevance, $classname, $subid );
 
@@ -1123,14 +1123,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			wp_insert_term(
 				$pos_name,
-				Config::$pos_taxonomy,
+				Webonary_Configuration::$pos_taxonomy,
 				array(
 					'description' => $pos_name,
 					'slug' => $pos_name
 				)
 			);
 
-			wp_set_object_terms( $post_id, $pos_name, Config::$pos_taxonomy, true);
+			wp_set_object_terms( $post_id, $pos_name, Webonary_Configuration::$pos_taxonomy, true);
 		}
 	}
 
@@ -1183,7 +1183,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 				$arrTerm = wp_insert_term(
 					$domain_name,
-					Config::$semantic_domains_taxonomy,
+					Webonary_Configuration::$semantic_domains_taxonomy,
 					array(
 						'description' => trim($domain_name),
 						'slug' => $sd_number_text
@@ -1210,7 +1210,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 				if(isset($termid))
 				{
-					wp_set_object_terms( $post_id, $domain_name, Config::$semantic_domains_taxonomy, true);
+					wp_set_object_terms( $post_id, $domain_name, Webonary_Configuration::$semantic_domains_taxonomy, true);
 				}
 
 				$arrTerm = null;
@@ -1305,7 +1305,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				$reversal_xml = preg_replace('/href="(#)([^"]+)"/', 'href="' . get_bloginfo('wpurl') . '/\\2"', $postentry);
 			}
-			$sql = "SELECT id FROM " . Config::$reversal_table_name . " ORDER BY id+0 DESC LIMIT 0,1 ";
+			$sql = "SELECT id FROM " . Webonary_Configuration::$reversal_table_name . " ORDER BY id+0 DESC LIMIT 0,1 ";
 
 			$lastid = $wpdb->get_var($sql);
 
@@ -1382,7 +1382,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 					//$doc->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
 
-					$sql = "SELECT id, reversal_head FROM " . Config::$reversal_table_name;
+					$sql = "SELECT id, reversal_head FROM " . Webonary_Configuration::$reversal_table_name;
 					$sql .= " WHERE ";
 					if(strpos($postentry, "reversalindexentry") > 0)
 					{
@@ -1416,14 +1416,14 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 					if($existing_entry == NULL)
 					{
 						$sql = $wpdb->prepare(
-								"INSERT IGNORE INTO `". Config::$reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder, browseletter)
+								"INSERT IGNORE INTO `". Webonary_Configuration::$reversal_table_name . "` (id, language_code, reversal_head, reversal_content, sortorder, browseletter)
 								VALUES('%s', '%s', '%s', '%s', %d, '%s')",
 								$id, $reversal_language, $reversal_browsehead, $reversal_xml, $entry_counter, $browseletter);
 					}
 					else
 					{
 						$sql = $wpdb->prepare(
-								"UPDATE " . Config::$reversal_table_name . "
+								"UPDATE " . Webonary_Configuration::$reversal_table_name . "
 								SET reversal_content = '%s',
 								browseletter = '%s'
 								WHERE reversal_head = '%s' AND language_code = '%s' AND $id = '%s'",
@@ -1472,7 +1472,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		$headword_text = trim($entry->textContent);
 
 		//this is used for the browse view sort order
-		$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . MYSQL_CHARSET . "_BIN' AND relevance >= 95";
+		$sql = "UPDATE " . Webonary_Configuration::$search_table_name . " SET sortorder = " . $entry_counter . " WHERE search_strings = '" . addslashes($headword_text) . "' COLLATE '" . MYSQL_CHARSET . "_BIN' AND relevance >= 95";
 		$wpdb->query( $sql );
 
 		//this is used for the search sort order
@@ -1565,9 +1565,9 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	{
 		global $wpdb;
 
-		$search_table_exists = $wpdb->get_var( "show tables like '" . Config::$search_table_name . "'" ) == Config::$search_table_name;
-		$pos_taxonomy_exists = taxonomy_exists( Config::$pos_taxonomy );
-		$semantic_domains_taxonomy_exists = taxonomy_exists( Config::$semantic_domains_taxonomy );
+		$search_table_exists = $wpdb->get_var( "show tables like '" . Webonary_Configuration::$search_table_name . "'" ) == Webonary_Configuration::$search_table_name;
+		$pos_taxonomy_exists = taxonomy_exists( Webonary_Configuration::$pos_taxonomy );
+		$semantic_domains_taxonomy_exists = taxonomy_exists( Webonary_Configuration::$semantic_domains_taxonomy );
 
 		if ( $search_table_exists ) {
 			$arrPosts = Webonary_Info::posts('-');
@@ -1590,7 +1590,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				$subentry = false;
 				if ( $post->ID ){
 
-					$sql = $wpdb->prepare("DELETE FROM `". Config::$search_table_name . "` WHERE post_id = %d", $post->ID);
+					$sql = $wpdb->prepare("DELETE FROM `". Webonary_Configuration::$search_table_name . "` WHERE post_id = %d", $post->ID);
 
 					$wpdb->query( $sql );
 					//set as indexed
@@ -1617,7 +1617,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 
 				//this is used for the browse view sort order, no longer needed for
-				$sql = "UPDATE " . Config::$search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
+				$sql = "UPDATE " . Webonary_Configuration::$search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
 				$wpdb->query( $sql );
 
 				/*
@@ -1653,7 +1653,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		if (count ($arrClasses) > 0) {
 			foreach($arrClasses as $class)
 			{
-				$wpdb->query ("UPDATE " . Config::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'");
+				$wpdb->query ("UPDATE " . Webonary_Configuration::$search_table_name . " SET relevance = ". $class->relevance ." WHERE class = '".$class->class."'");
 			}
 		}
 	}
@@ -1714,7 +1714,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			{
 				if($reversalLang == "")
 				{
-					$arrLanguageCodes = get_LanguageCodes();
+					$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
 					if(count($arrLanguageCodes) <= 2)
 					{
 						$reversalLang = get_option('reversal1_langcode');

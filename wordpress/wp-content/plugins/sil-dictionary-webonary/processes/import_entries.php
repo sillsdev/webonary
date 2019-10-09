@@ -71,7 +71,7 @@ if(isset($xhtmlFileURL))
 	 */
 
 
-	Config::$search_table_name = $wpdb->prefix . 'sil_search';
+	Webonary_Configuration::$search_table_name = $wpdb->prefix . 'sil_search';
 
 	$current_user = wp_get_current_user();
 
@@ -194,7 +194,7 @@ if(isset($xhtmlFileURL))
 					}
 					elseif($filetype == 'reversal')
 					{
-						Config::$reversal_table_name = $wpdb->prefix . 'sil_reversals';
+						Webonary_Configuration::$reversal_table_name = $wpdb->prefix . 'sil_reversals';
 						$entry_counter = $import->import_xhtml_reversal_indexes($postentry, $entry_counter, $letter);
 					}
 					else

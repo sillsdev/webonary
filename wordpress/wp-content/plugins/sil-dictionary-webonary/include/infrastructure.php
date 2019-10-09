@@ -17,13 +17,11 @@ if ( ! defined('ABSPATH') )
 	die( '-1' );
 
 
-//---------------------------------------------------------------------------//
-
 /**
  * Install the SIL dictionary infrastructure if needed.
  */
-function install_sil_dictionary_infrastructure() {
-
+function install_sil_dictionary_infrastructure()
+{
 	if(is_admin())
 	{
 		create_custom_relevance();
@@ -40,26 +38,28 @@ function install_sil_dictionary_infrastructure() {
 	register_webstrings_taxonomy();
 }
 
-//---------------------------------------------------------------------------//
-
-function create_custom_relevance() {
+function create_custom_relevance()
+{
 	global $wpdb;
 
 	$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
-	$sql = "CREATE TABLE IF NOT EXISTS " . $tableCustomRelevance . "(
-			`class` varchar(50),
-			`relevance` tinyint,
-			PRIMARY KEY  (`class`)
-			)";
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	$char_set = MYSQL_CHARSET;
+	$collate = MYSQL_COLLATION;
+
+	$sql = <<<SQL
+CREATE TABLE IF NOT EXISTS {$tableCustomRelevance} (
+  `class` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `relevance` TINYINT
+) DEFAULT CHARSET={$char_set} COLLATE={$collate};
+SQL;
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
 	dbDelta( $sql );
-
 }
 
-//---------------------------------------------------------------------------//
-function create_reversal_tables () {
-
+function create_reversal_tables ()
+{
 	$table = REVERSALTABLE;
 	$char_set = MYSQL_CHARSET;
 	$collate = MYSQL_COLLATION;
@@ -76,38 +76,39 @@ CREATE TABLE `{$table}` (
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
 
-	include_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	include_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 }
 
-function create_search_tables () {
-	global $wpdb;
-
+function create_search_tables ()
+{
 	$table = SEARCHTABLE;
-	$sql = "CREATE TABLE `" . $table . "` (
-		`post_id` bigint(20) NOT NULL,
-		`language_code` varchar(30),
-		`relevance` tinyint,
-		`search_strings` longtext,
-		`class` varchar(50),
-		`subid` INT NOT NULL DEFAULT  '0',
-		`sortorder` INT NOT NULL DEFAULT '0',
-		PRIMARY KEY  (`post_id`, `language_code`, `relevance`, `search_strings` ( 150 ), `class` (50)),
-		INDEX relevance_idx (relevance)
-		) CHARACTER SET " . MYSQL_CHARSET . " COLLATE " . MYSQL_COLLATION . ";";
+	$char_set = MYSQL_CHARSET;
+	$collate = MYSQL_COLLATION;
 
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	$sql = <<<SQL
+CREATE TABLE `{$table}` (
+  `post_id` bigint(20) NOT NULL,
+  `language_code` varchar(30),
+  `relevance` tinyint,
+  `search_strings` longtext,
+  `class` varchar(50),
+  `subid` INT NOT NULL DEFAULT  '0',
+  `sortorder` INT NOT NULL DEFAULT '0',
+  PRIMARY KEY (`post_id`, `language_code`, `relevance`, `search_strings` (150), `class` (50)),
+  INDEX relevance_idx (relevance)
+) DEFAULT CHARSET={$char_set} COLLATE={$collate};
+SQL;
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 }
-
-//---------------------------------------------------------------------------//
 
 /**
  * Provide a taxonomy for semantic domains in an online dictionary.
  */
-
-function register_semantic_domains_taxonomy () {
-
+function register_semantic_domains_taxonomy ()
+{
 	$labels = array(
 		'name' => _x( 'Semantic Domains', 'taxonomy general name' ),
 		'singular_name' => _x( 'Semantic Domain', 'taxonomy singular name' ),
@@ -134,18 +135,14 @@ function register_semantic_domains_taxonomy () {
 			'public' => true,
 			'show_ui' => true
 		)
-	) ;
+	);
 }
-
-//-----------------------------------------------------------------------------//
 
 /**
  * Provide a taxonomy for Part of Speech (POS) in an online dictionary.
  */
-
-
-function register_part_of_speech_taxonomy () {
-
+function register_part_of_speech_taxonomy ()
+{
 	$labels = array(
 		'name' =>  _x( 'Part of Speech', 'taxonomy general name' ),
 		'singular_name' => _x( 'Part of Speech', 'taxonomy singular name' ),
@@ -172,17 +169,14 @@ function register_part_of_speech_taxonomy () {
 			'public' => true,
 			'show_ui' => true
 		)
-	) ;
+	);
 }
-
-//-----------------------------------------------------------------------------//
 
 /**
  * Provide a taxonomy for the Language Selection in an online dictionary.
  */
-
-function register_language_taxonomy () {
-
+function register_language_taxonomy ()
+{
 	$labels = array(
 		'name' => _x( 'Languages', 'taxonomy general name' ),
 		'singular_name' => _x( 'Language', 'taxonomy singular name' ),
@@ -209,17 +203,14 @@ function register_language_taxonomy () {
 			'public' => true,
 			'show_ui' => true
 		)
-	) ;
+	);
 }
-
-//-----------------------------------------------------------------------------//
 
 /**
  * Provide a taxonomy for strings that need translation
  */
-
-function register_webstrings_taxonomy () {
-
+function register_webstrings_taxonomy ()
+{
 	$labels = array(
 		'name' => _x( 'Website strings', 'taxonomy general name' ),
 		'singular_name' => _x( 'Website strings', 'taxonomy singular name' ),
@@ -246,45 +237,43 @@ function register_webstrings_taxonomy () {
 			'public' => true,
 			'show_ui' => true
 		)
-	) ;
+	);
 }
 
-function remove_double_terms () {
+function remove_double_terms ()
+{
 	global $wpdb;
 
 	//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
 	/** @noinspection SqlResolve */
-	$sql = "DELETE t1 FROM {$wpdb->terms} t1, {$wpdb->terms} t2
-			WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug";
+	$sql = <<<SQL
+DELETE t1 FROM {$wpdb->terms} t1, {$wpdb->terms} t2
+WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug
+SQL;
 
-	$wpdb->query( $sql );
+	$wpdb->query($sql);
 }
 
-//-----------------------------------------------------------------------------//
-
 /**
- * Uninstall the custom infrastsructure set up here by the plugin
+ * Uninstall the custom infrastructure set up here by the plugin
+ * @param null $delete_taxonomies
  */
+function clean_out_dictionary_data ($delete_taxonomies = null)
+{
 
-function clean_out_dictionary_data ($delete_taxonomies = null) {
-
-	if ( is_plugin_active( 'wp-super-cache/wp-cache.php' ) )
-	{
-		prune_super_cache( get_supercache_dir(), true );
+	if (is_plugin_active('wp-super-cache/wp-cache.php')) {
+		/** @noinspection PhpUndefinedFunctionInspection */
+		prune_super_cache(get_supercache_dir(), true);
 	}
 
 	if($delete_taxonomies == null)
-	{
 		$delete_taxonomies = $_POST['delete_taxonomies'];
-	}
 
 	//deletes the xhtml file, if still there because import didn't get completed
 	$import = new sil_pathway_xhtml_Import();
 	$file = $import->get_latest_xhtmlfile();
 	if(isset($file->ID))
-	{
 		wp_delete_attachment( $file->ID );
-	}
 
 	// Remove all the old dictionary entries.
 	remove_entries();
@@ -310,20 +299,20 @@ function clean_out_dictionary_data ($delete_taxonomies = null) {
 	}
  }
 
-//-----------------------------------------------------------------------------//
-
 /**
  * Remove all posts and revisions, leaving other post types
  *
  * @param null $pinged
  * @global $wpdb
  */
-function remove_entries($pinged = null) {
+function remove_entries($pinged = null)
+{
 	global $wpdb;
 
-	$import = new sil_pathway_xhtml_Import();
+	$cat_id = Webonary_Info::category_id();
 
-	$catid = Webonary_Info::category_id();
+	if ($cat_id == 0)
+		return;
 
 	//just posts in category "webonary"
 	/** @noinspection SqlResolve */
@@ -332,49 +321,45 @@ DELETE FROM {$wpdb->prefix}posts
 WHERE post_type IN ('post', 'revision') 
   AND ID IN (
       SELECT object_id FROM {$wpdb->prefix}term_relationships 
-       WHERE {$wpdb->prefix}term_relationships.term_taxonomy_id = {$catid})
+      WHERE {$wpdb->prefix}term_relationships.term_taxonomy_id = {$cat_id})
 SQL;
 
 	if(isset($pinged))
-	{
 		$sql .= " AND pinged = '{$pinged}'";
-	}
 
-	$wpdb->query( $sql );
+	$wpdb->query($sql);
 
 	$sql = 'DROP TABLE IF EXISTS ' . SEARCHTABLE;
-	$wpdb->query( $sql );
-
+	$wpdb->query($sql);
 
 	$sql = 'DROP TABLE IF EXISTS ' . $wpdb->prefix . 'sil_reversal';
-	$wpdb->query( $sql );
+	$wpdb->query($sql);
 
 	$sql = 'DROP TABLE IF EXISTS ' . REVERSALTABLE;
-	$wpdb->query( $sql );
+	$wpdb->query($sql);
 
 	create_reversal_tables();
 
 	/** @noinspection SqlResolve */
-	$sql = "DELETE FROM " . $wpdb->prefix . "term_relationships WHERE term_taxonomy_id = " . $catid;
+	$sql = 'DELETE FROM ' . $wpdb->prefix . 'term_relationships WHERE term_taxonomy_id = ' . $cat_id;
 	if(isset($pinged))
-	{
-		$sql .= " AND object_id NOT IN (SELECT ID FROM $wpdb->posts WHERE post_type = 'post')";
-	}
+		$sql .= " AND object_id NOT IN (SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post')";
 
 	$wpdb->query( $sql );
 }
 
-//-----------------------------------------------------------------------------//
-
-function set_options () {
+function set_options ()
+{
 	global $wpdb;
-	global $blog_id;
 
-	$sql = "UPDATE " . $wpdb->prefix . "options " .
-		 " SET option_value = 0 " .
-		 " WHERE option_name = 'uploads_use_yearmonth_folders'";
+	/** @noinspection SqlResolve */
+	$sql = <<<SQL
+UPDATE {$wpdb->prefix}options
+SET option_value = 0
+WHERE option_name = 'uploads_use_yearmonth_folders'
+SQL;
 
-	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 
 	/*
@@ -390,18 +375,20 @@ function set_options () {
 	*/
 }
 
-function set_field_sortorder() {
+function set_field_sortorder()
+{
 	global $wpdb;
 
-	$sql = " SHOW columns FROM " . $wpdb->prefix . "sil_search WHERE Field = 'sortorder'";
+	$sql = 'SHOW columns FROM ' . $wpdb->prefix . 'sil_search WHERE Field = \'sortorder\'';
 	if($wpdb->get_row($sql))
-	{
 		return false;
-	}
+
 	/** @noinspection SqlResolve */
 	$sql = " ALTER TABLE " . $wpdb->prefix . "sil_search ADD sortorder INT NOT NULL DEFAULT  '0'";
 
-	$wpdb->query( $sql );
+	$wpdb->query($sql);
+
+	return true;
 }
 
 function strrpos_count($haystack, $needle, $count)
@@ -421,12 +408,12 @@ function strrpos_count($haystack, $needle, $count)
 /**
  * Uninstall custom taxonomies set up here by the plugin.
  */
-
-function unregister_custom_taxonomies () {
+function unregister_custom_taxonomies ()
+{
 	global $wpdb;
 
 	/** @noinspection SqlResolve */
-	$sql = "UPDATE $wpdb->term_taxonomy SET count = 1 WHERE count = 0";
+	$sql = "UPDATE {$wpdb->term_taxonomy} SET count = 1 WHERE count = 0";
 	$wpdb->query( $sql);
 
 	unregister_custom_taxonomy ( 'sil_semantic_domains' );
@@ -440,42 +427,51 @@ function unregister_custom_taxonomies () {
 	$wpdb->query( $del);
 }
 
-//-----------------------------------------------------------------------------//
-
 /**
  * Remove a custom (not builtin) taxonomy.
- * @global <type> $wp_taxonomies
- * @param <string> $taxonomy = The taxonomy to remove
- * @link http://core.trac.wordpress.org/ticket/12629
+ *
+ * Adapted from the function `unregister_taxonomy` in /wp-includes/taxonomy.php
+ *
+ * @param string $taxonomy = The taxonomy to remove
+ *
+ * @global $wp_taxonomies
  */
+function unregister_custom_taxonomy($taxonomy)
+{
+	if (!taxonomy_exists($taxonomy))
+		return;
 
-/*
- * This code may well be deprecated soon, as it is currently a feature request.
- * See the link above.
- */
+	$taxonomy_object = get_taxonomy($taxonomy);
 
-function unregister_custom_taxonomy ( $taxonomy ) {
+	// Do not allow unregistering internal taxonomies.
+	if ($taxonomy_object->_builtin)
+		return;
+
 	global $wp_taxonomies;
-	if ( ! $taxonomy->builtin ) {
-		$terms = get_terms( $taxonomy );
-		foreach ( $terms as $term ) {
-			wp_delete_term( $term->term_id, $taxonomy );
-		}
-	unset( $wp_taxonomies[$taxonomy]);
-	}
+
+	$taxonomy_object->remove_rewrite_rules();
+	$taxonomy_object->remove_hooks();
+
+	// Remove the taxonomy.
+	unset($wp_taxonomies[$taxonomy]);
+
+	/**
+	 * Fires after a taxonomy is unregistered.
+	 *
+	 * @param string $taxonomy Taxonomy name.
+	 * @since 4.5.0
+	 *
+	 */
+	do_action('unregistered_taxonomy', $taxonomy);
+
+	return;
 }
 
-
-//-----------------------------------------------------------------------------//
-
 /**
- * Unistall custom tables, taxonomies, etc. on plugin uninstall
+ * Uninstall custom tables, taxonomies, etc. on plugin uninstall
  */
 function uninstall_sil_dictionary_infrastructure () {
 	clean_out_dictionary_data(1);
 }
 
 add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );
-
-
-?>
