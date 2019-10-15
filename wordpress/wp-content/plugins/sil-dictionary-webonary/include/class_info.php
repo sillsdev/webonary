@@ -280,7 +280,7 @@ SQL;
 
 			if($missingReversals > 0)
 			{
-				$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
+				//$status .= " <a href=\"edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=" . $indexed->language_code . "&language=" . $indexed->language_name . "\" style=\"color:red;\">missing senses for " . $missingReversals . " entries</a>";
 			}
 
 			$status .= "</div></div>";

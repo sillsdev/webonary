@@ -1,3 +1,4 @@
+v. 8.3.5 15 Oct 2019 removed missing senses link
 v. 8.3.4 15 Oct 2019 fixed ReIndex button
 v. 8.3.3 25 Sept 2019 fixed import of reversal css files to replace hyphens with underline character
 v. 8.3.2 20 Sept 2019 fixed query for published date
