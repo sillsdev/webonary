@@ -518,7 +518,7 @@ function webonary_conf_widget($showTitle = false) {
 
 			$import = new sil_pathway_xhtml_Import();
 			?>
-			<form id="configuration-form" method="post" action="">
+			<form id="configuration-form" method="post" action="admin.php?import=pathway-xhtml&amp;step=2">
 			<p>
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
 
