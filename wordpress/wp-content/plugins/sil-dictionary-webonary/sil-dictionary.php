@@ -68,8 +68,7 @@ $this_dir = dirname(__FILE__);
 include_once $this_dir . '/include/infrastructure.php';
 // Configure Webonary Settings
 include_once $this_dir . '/include/configuration.php';
-//setting and getting font information
-include_once $this_dir . '/include/fonts.php';
+
 // Code for searching on dictionaries.
 include_once $this_dir . '/include/dictionary-search.php';
 // Code for the XHMTL importer.

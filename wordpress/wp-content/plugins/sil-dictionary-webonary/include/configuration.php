@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 
 add_action( 'wp_ajax_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
 add_action( 'wp_ajax_nopriv_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
@@ -8,30 +8,54 @@ function relevanceSave()
 {
 	global $wpdb;
 
-	$tableCustomRelevance = $wpdb->prefix . "custom_relevance";
+	$tableCustomRelevance = $wpdb->prefix . 'custom_relevance';
+
+	$class_names = Webonary_Filters::PostArray('classname');
+	$relevances = Webonary_Filters::PostArray('relevance');
+
+	for ($i = 0; $i < count($class_names); $i++) {
+
+		$relevance = intval($relevances[$i]);
+		if ($relevance < 0 || $relevance > 99) {
+			echo '<span style="color: red;">Relevance has to be >= 0 and < 100 for all fields!</span><br>';
+			return false;
+		}
+
+		$class_name = $class_names[$i];
+
+		$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}sil_search SET relevance = %s WHERE class = %s", $relevance, $class_name));
+
+		$found = Webonary_Db::GetBool("SELECT COUNT(*) FROM {$tableCustomRelevance} WHERE class = %s", $class_name);
+
+		if ($found) {
+			$wpdb->query($wpdb->prepare("UPDATE {$tableCustomRelevance} SET relevance = %s WHERE class = %s", $relevance, $class_name));
+		}
+		else {
+			$wpdb->query($wpdb->prepare("INSERT INTO {$tableCustomRelevance} (relevance, class) VALUES (%s, %s)", $relevance, $class_name));
+		}
+	}
 
 	$r = 0;
 	foreach($_POST['classname'] as $class)
 	{
-
 		if($_POST['relevance'][$r] < 0 || $_POST['relevance'][$r] > 99 || !is_numeric($_POST['relevance'][$r]))
 		{
-			echo "<span style=\"color: red;\">Relevance has to be >= 0 and < 100 for all fields!</span><br>";
+			echo '<span style="color: red;">Relevance has to be >= 0 and < 100 for all fields!</span><br>';
 			return false;
 		}
 		//echo $class . ": " . $_POST['relevance'][$r] . "<br>";
 
-		$wpdb->query ("UPDATE " . $wpdb->prefix . "sil_search SET relevance = ". $_POST['relevance'][$r] ." WHERE class = '".$class."'");
+		$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}sil_search SET relevance = %s WHERE class = %s", $_POST['relevance'][$r], $class));
 
-		$result = $wpdb->get_results ("SELECT relevance FROM $tableCustomRelevance WHERE class = '".$class."'");
+		$result = $wpdb->get_results($wpdb->prepare('SELECT relevance FROM $tableCustomRelevance WHERE class = %s', $class));
 
 		if (count ($result) > 0) {
-			$wpdb->query ("UPDATE $tableCustomRelevance SET relevance = ". $_POST['relevance'][$r] ." WHERE class = '".$class."'");
-		} else {
-			$wpdb->query ("INSERT INTO $tableCustomRelevance (class, relevance) VALUES ('".$class."'," . $_POST['relevance'][$r] . ")");
+			$wpdb->query($wpdb->prepare("UPDATE {$tableCustomRelevance} SET relevance = %s WHERE class = %s", $_POST['relevance'][$r], $class));
+		}
+		else {
+			$wpdb->query($wpdb->prepare("INSERT INTO {$tableCustomRelevance} (class, relevance) VALUES (%s, %s)", $class, $_POST['relevance'][$r]));
 		}
 
-		$wpdb->query($sql);
 		$r++;
 	}
 
@@ -42,34 +66,40 @@ function relevanceSave()
 		echo "<h3>Relevance Settings were saved.</h3>";
 	}
 	echo "<hr>";
+
+	return true;
 }
 
 //display the senses that don't get linked in the reversal browse view
 function report_missing_senses()
 {
 	global $wpdb;
-?>
+
+	$sql = <<<SQL
+SELECT search_strings
+FROM {$wpdb->prefix}sil_search
+WHERE post_id = 0 AND language_code = '{$_GET['languageCode']}'
+SQL;
+
+	$arrMissing = $wpdb->get_results($sql);
+	$missing_items = '';
+	foreach($arrMissing as $missing) {
+		$missing_items .= "<li>{$missing->search_strings}</li>\n";
+	}
+
+	$html = <<<HTML
 	<div class="wrap">
-		<h2>Missing Senses for the <?php echo $_GET['language'];?> browse view</h2>
+		<h2>Missing Senses for the {$_GET['language']} browse view</h2>
 		One or more senses will not get found for the following entries when clicking on them in the browse view.<br>
 		Please check in the FLEx dictionary view, if they show up there.
 		<ul>
-		<?php
-		$sql = " SELECT search_strings " .
-				" FROM " . $wpdb->prefix . "sil_search" .
-				" WHERE post_id = 0 AND language_code = '" . $_GET['languageCode'] . "'";
-
-		$arrMissing = $wpdb->get_results($sql);
-
-		foreach($arrMissing as $missing)
-		{
-			echo "<li>" . $missing->search_strings . "</li>";
-		}
-		?>
+			{$missing_items}
 		</ul>
 		<a href="admin.php?page=webonary">Back to the Webonary settings</a>
 	</div>
-<?php
+HTML;
+
+	echo $html;
 }
 
 /**
@@ -82,61 +112,55 @@ function save_configurations() {
 		clean_out_dictionary_data();
 	}
 	if ( ! empty( $_POST['save_settings'])) {
-		update_option("publicationStatus", $_POST['publicationStatus']);
-		update_option("include_partial_words", $_POST['include_partial_words']);
-		update_option("searchSomposedCharacters", $_POST['search_composed_characters']);
-		//update_option("distinguish_diacritics", $_POST['distinguish_diacritics']);
-		if(isset($_POST['normalization']))
-		{
-			update_option("normalization", $_POST['normalization']);
+		update_option('publicationStatus', $_POST['publicationStatus']);
+		update_option('include_partial_words', $_POST['include_partial_words']);
+		update_option('searchSomposedCharacters', $_POST['search_composed_characters']);
+		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
+		if(isset($_POST['normalization'])) {
+			update_option('normalization', $_POST['normalization']);
 		}
 		$special_characters = $_POST['characters'];
-		if(trim($special_characters) == "")
-		{
+		if(trim($special_characters) == "") {
 			$special_characters = "empty";
 		}
-		update_option("special_characters", $special_characters);
-		update_option("inputFont", $_POST['inputFont']);
-		update_option("vernacularLettersFont", $_POST['vernacularLettersFont']);
+		update_option('special_characters', $special_characters);
+		update_option('inputFont', $_POST['inputFont']);
+		update_option('vernacularLettersFont', $_POST['vernacularLettersFont']);
 
 		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
 		$displaySubentriesAsMainEntries = 'no';
-		if(isset($_POST['DisplaySubentriesAsMainEntries']))
-		{
+		if(isset($_POST['DisplaySubentriesAsMainEntries'])) {
 			$displaySubentriesAsMainEntries = 1;
 		}
-		update_option("DisplaySubentriesAsMainEntries", $displaySubentriesAsMainEntries);
-		update_option("languagecode", $_POST['languagecode']);
-		if(is_super_admin())
-		{
-			update_option("vernacular_alphabet", $_POST['vernacular_alphabet']);
+		update_option('DisplaySubentriesAsMainEntries', $displaySubentriesAsMainEntries);
+		update_option('languagecode', $_POST['languagecode']);
+		if(is_super_admin()) {
+			update_option('vernacular_alphabet', $_POST['vernacular_alphabet']);
 		}
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
 		$IncludeCharactersWithDiacritics = 'no';
-		if(isset($_POST['IncludeCharactersWithDiacritics']))
-		{
+		if(isset($_POST['IncludeCharactersWithDiacritics'])) {
 			$IncludeCharactersWithDiacritics = 1;
 		}
-		update_option("IncludeCharactersWithDiacritics", $IncludeCharactersWithDiacritics);
+		update_option('IncludeCharactersWithDiacritics', $IncludeCharactersWithDiacritics);
 
-		update_option("displayCustomDomains", $_POST['displayCustomDomains']);
+		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
 
 		$vernacularRightToLeft = 'no';
-		if(isset($_POST['vernacularRightToLeft']))
-		{
+		if(isset($_POST['vernacularRightToLeft'])) {
 			$vernacularRightToLeft = 1;
 		}
-		update_option("vernacularRightToLeft", $vernacularRightToLeft);
+		update_option('vernacularRightToLeft', $vernacularRightToLeft);
 
-		update_option("reversal1_langcode", $_POST['reversal1_langcode']);
-		update_option("reversal2_langcode", $_POST['reversal2_langcode']);
-		update_option("reversal3_langcode", $_POST['reversal3_langcode']);
+		update_option('reversal1_langcode', $_POST['reversal1_langcode']);
+		update_option('reversal2_langcode', $_POST['reversal2_langcode']);
+		update_option('reversal3_langcode', $_POST['reversal3_langcode']);
 		if(is_super_admin())
 		{
-			update_option("reversal1_alphabet", $_POST['reversal1_alphabet']);
-			update_option("reversal2_alphabet", $_POST['reversal2_alphabet']);
-			update_option("reversal3_alphabet", $_POST['reversal3_alphabet']);
+			update_option('reversal1_alphabet', $_POST['reversal1_alphabet']);
+			update_option('reversal2_alphabet', $_POST['reversal2_alphabet']);
+			update_option('reversal3_alphabet', $_POST['reversal3_alphabet']);
 		}
 
 		$reversal1RightToLeft = 'no';
@@ -144,55 +168,53 @@ function save_configurations() {
 		{
 			$reversal1RightToLeft = 1;
 		}
-		update_option("reversal1RightToLeft", $reversal1RightToLeft);
+		update_option('reversal1RightToLeft', $reversal1RightToLeft);
 
 		$reversal2RightToLeft = 'no';
 		if(isset($_POST['reversal2RightToLeft']))
 		{
 			$reversal2RightToLeft = 1;
 		}
-		update_option("reversal2RightToLeft", $reversal2RightToLeft);
+		update_option('reversal2RightToLeft', $reversal2RightToLeft);
 
 		$reversal3RightToLeft = 'no';
 		if(isset($_POST['reversal3RightToLeft']))
 		{
 			$reversal3RightToLeft = 1;
 		}
-		update_option("reversal3RightToLeft", $reversal3RightToLeft);
+		update_option('reversal3RightToLeft', $reversal3RightToLeft);
 
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
 		{
 			echo "<br><span style=\"color:red\">Please fill out the textfields for the language names, as they will appear in a dropdown below the searcbhox.</span><br>";
 		}
 
-		$arrLanguages[0]['name'] = "txtVernacularName";
-		$arrLanguages[0]['code'] = "languagecode";
-		$arrLanguages[1]['name'] = "txtReversalName";
-		$arrLanguages[1]['code'] = "reversal1_langcode";
-		$arrLanguages[2]['name'] = "txtReversal2Name";
-		$arrLanguages[2]['code'] = "reversal2_langcode";
-		$arrLanguages[3]['name'] = "txtReversal3Name";
-		$arrLanguages[3]['code'] = "reversal3_langcode";
+		$arrLanguages[0]['name'] = 'txtVernacularName';
+		$arrLanguages[0]['code'] = 'languagecode';
+		$arrLanguages[1]['name'] = 'txtReversalName';
+		$arrLanguages[1]['code'] = 'reversal1_langcode';
+		$arrLanguages[2]['name'] = 'txtReversal2Name';
+		$arrLanguages[2]['code'] = 'reversal2_langcode';
+		$arrLanguages[3]['name'] = 'txtReversal3Name';
+		$arrLanguages[3]['code'] = 'reversal3_langcode';
 
-		foreach($arrLanguages as $language)
-		{
-			if(strlen(trim($_POST[$language['code']])) != 0)
-			{
+		foreach($arrLanguages as $language) {
+
+			if(strlen(trim($_POST[$language['code']])) != 0) {
+
 				$sql = "SELECT term_id, name
 				FROM $wpdb->terms
-				WHERE slug = '" . $_POST[$language['code']] . "'";
+				WHERE slug = '{$_POST[$language['code']]}'";
 
 				$arrLanguageNames = $wpdb->get_results($sql);
 
-				if(count($arrLanguageNames) > 0)
-				{
+				if(count($arrLanguageNames) > 0) {
 					$sql = "UPDATE $wpdb->terms SET name = '" . $_POST[$language['name']]  . "' WHERE slug = '" . $_POST[$language['code']]  . "'";
-					$termid = $arrLanguageNames[0]->term_id;
+					$term_id = $arrLanguageNames[0]->term_id;
 				}
-				else
-				{
+				else {
 					$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')";
-					$termid = $wpdb->insert_id;
+					$term_id = $wpdb->insert_id;
 				}
 
 				$wpdb->query( $sql );
@@ -200,7 +222,7 @@ function save_configurations() {
 
 				if(count($arrLanguageNames) > 0)
 				{
-					$sql = "UPDATE $wpdb->term_taxonomy SET description = '" . $_POST[$language['name']] . "' WHERE term_id = " . $termid;
+					$sql = "UPDATE $wpdb->term_taxonomy SET description = '" . $_POST[$language['name']] . "' WHERE term_id = " . $term_id;
 				}
 				else
 				{
@@ -243,7 +265,7 @@ function webonary_conf_widget($showTitle = false) {
 
 	$upload_dir = wp_upload_dir();
 
-	$fontClass = new fontManagment();
+	$fontClass = new Webonary_Font_Management();
 	$css_string = null;
 	$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
 	if(file_exists($configured_css_file))
@@ -331,13 +353,13 @@ function webonary_conf_widget($showTitle = false) {
 		var langcode = e.options[e.selectedIndex].value;
 
 		jQuery.ajax({
-     		url: '<?php echo admin_url('admin-ajax.php'); ?>',
-     		data : {action: "getAjaxlanguage", languagecode : langcode},
-     		type:'POST',
-     		dataType: 'html',
-     		success: function(output_string){
-        		jQuery('#' + langname).val(output_string);
-     		}
+			 url: '<?php echo admin_url('admin-ajax.php'); ?>',
+			 data : {action: "getAjaxlanguage", languagecode : langcode},
+			 type:'POST',
+			 dataType: 'html',
+			 success: function(output_string){
+				jQuery('#' + langname).val(output_string);
+			 }
 	 })
 	}
 	</script>
@@ -383,7 +405,7 @@ function webonary_conf_widget($showTitle = false) {
 				<br>
 			<?php } ?>
 			<?php
-			if($_GET['delete_taxonomies'] == 1)
+			if(!empty($_GET['delete_taxonomies']) && $_GET['delete_taxonomies']== 1)
 			{
 				_e('Lists are kept unless you check the following:'); ?><br>
 					<label for="delete_taxonomies">
@@ -447,20 +469,25 @@ function webonary_conf_widget($showTitle = false) {
 				</p>
 			<?php
 			}
-			if(class_exists(special_characters))
+			if(class_exists('special_characters'))
 			{
 				//this is here for legacy purposes. The special characters used to be Widget in a separate plugin.
-				//we need to get those characters for older ditionary sites and display them in the dashboard.
+				//we need to get those characters for older dictionary sites and display them in the dashboard.
+				/** @noinspection PhpUndefinedClassInspection */
 				$charWidget = new special_characters();
+				/** @noinspection PhpUndefinedMethodInspection */
 				$settings = $charWidget->get_settings();
 				$settings = reset($settings);
 			}
 			$special_characters = get_option('special_characters');
-			if(trim($special_characters) == "" && !isset($_POST['characters']) && trim($special_characters) != "empty")
+			if(!empty($settings['characters'])
+				&& trim($special_characters) == ''
+				&& !isset($_POST['characters'])
+				&& trim($special_characters) != 'empty')
 			{
 				$special_characters = $settings['characters'];
 			}
-			$special_characters = str_replace("empty", "", $special_characters);
+			$special_characters = str_replace('empty', '', $special_characters);
 			?>
 			<p>
 			<strong><?php _e('Special character input buttons');?></strong>
@@ -655,7 +682,7 @@ function webonary_conf_widget($showTitle = false) {
 						}
 						else
 						{
-						 	echo stripslashes(get_option('reversal2_alphabet'));
+							 echo stripslashes(get_option('reversal2_alphabet'));
 						}
 						?>
 						<input name="reversal2RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal2RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
@@ -685,7 +712,7 @@ function webonary_conf_widget($showTitle = false) {
 						}
 						else
 						{
-						 	echo stripslashes(get_option('reversal3_alphabet'));
+							 echo stripslashes(get_option('reversal3_alphabet'));
 						}
 						?>
 						<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal3RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
@@ -741,7 +768,6 @@ function webonary_conf_widget($showTitle = false) {
 			$fontFacesFile = file_get_contents($customCSSFilePath);
 			$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
 		}
-		$options = get_option('themezee_options');
 
 		$arrFont = $fontClass->getFontsAvailable();
 
