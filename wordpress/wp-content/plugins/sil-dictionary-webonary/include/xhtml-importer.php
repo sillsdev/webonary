@@ -1581,6 +1581,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			foreach($arrPosts as $post)
 			{
+				if(strlen($post->post_content) > 100000) {
+				?>
+					<DIV ID="flushme">The content of the entry <?php echo $post->post_title; ?> is too long. Does it have too many subentries?</DIV>
+				<?php
+					return false;
+				}
 				$subentry = false;
 				if ( $post->ID ){
 
