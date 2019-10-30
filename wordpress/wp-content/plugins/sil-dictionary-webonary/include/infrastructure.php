@@ -48,8 +48,8 @@ function create_custom_relevance()
 
 	$sql = <<<SQL
 CREATE TABLE IF NOT EXISTS {$tableCustomRelevance} (
-  `class` VARCHAR(50) NOT NULL PRIMARY KEY,
-  `relevance` TINYINT
+  class VARCHAR(50) NOT NULL PRIMARY KEY,
+  relevance TINYINT
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
 
@@ -65,14 +65,14 @@ function create_reversal_tables ()
 	$collate = MYSQL_COLLATION;
 
 	$sql = <<<SQL
-CREATE TABLE `{$table}` (
-  `id` VARCHAR(50) NOT NULL,
-  `language_code` VARCHAR(30),
-  `reversal_head` LONGTEXT,
-  `reversal_content` LONGTEXT,
-  `sortorder` INT NOT NULL DEFAULT '0',
-  `browseletter` VARCHAR(5),
-  UNIQUE KEY idx_{$table}_id (`id`)
+CREATE TABLE {$table} (
+  id VARCHAR(50) NOT NULL,
+  language_code VARCHAR(30),
+  reversal_head LONGTEXT,
+  reversal_content LONGTEXT,
+  sortorder INT NOT NULL DEFAULT '0',
+  browseletter VARCHAR(5),
+  UNIQUE KEY idx_{$table}_id (id)
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
 
@@ -87,15 +87,15 @@ function create_search_tables ()
 	$collate = MYSQL_COLLATION;
 
 	$sql = <<<SQL
-CREATE TABLE `{$table}` (
-  `post_id` bigint(20) NOT NULL,
-  `language_code` varchar(30),
-  `relevance` tinyint,
-  `search_strings` longtext,
-  `class` varchar(50),
-  `subid` INT NOT NULL DEFAULT  '0',
-  `sortorder` INT NOT NULL DEFAULT '0',
-  PRIMARY KEY (`post_id`, `language_code`, `relevance`, `search_strings` (150), `class` (50)),
+CREATE TABLE {$table} (
+  post_id bigint(20) NOT NULL,
+  language_code varchar(30),
+  relevance tinyint,
+  search_strings longtext,
+  class varchar(50),
+  subid INT NOT NULL DEFAULT  '0',
+  sortorder INT NOT NULL DEFAULT '0',
+  PRIMARY KEY (post_id, language_code, relevance, search_strings (150), class (50)),
   INDEX relevance_idx (relevance)
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
