@@ -219,4 +219,40 @@ class Webonary_Utility
 			return false;
 		}
 	}
+
+	public static function includeTemplate($template_name, $substitutions)
+	{
+		global $webonary_template_path;
+
+		$html = file_get_contents($webonary_template_path . DIRECTORY_SEPARATOR . $template_name);
+
+		if (empty($substitutions))
+			return $html;
+
+		foreach($substitutions as $key => $value) {
+			$html = str_replace($key, $value, $html);
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Executes $function, sends the response to the browser, closes the connection, and continues processing.
+	 * @param Closure $function
+	 */
+	public static function sendAndContinue($function)
+	{
+		ignore_user_abort(true);
+		set_time_limit(0);
+
+		ob_start();
+
+		$function();
+
+		header('Connection: close');
+		header('Content-Length: ' . ob_get_length());
+		ob_end_flush();
+		ob_flush();
+		flush();
+	}
 }

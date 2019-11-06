@@ -71,19 +71,6 @@ class Webonary_Configuration
 		echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
 	}
 
-	public static function ajaxlanguage()
-	{
-		global $wpdb;
-
-		$lang_code = filter_input(INPUT_POST, 'languagecode', FILTER_UNSAFE_RAW);
-
-		/** @noinspection SqlResolve */
-		$sql = $wpdb->prepare("SELECT `name` FROM {$wpdb->terms} WHERE slug = %s", array($lang_code));
-
-		echo $wpdb->get_var($sql);;
-		die();
-	}
-
 	public static function get_LanguageCodes($language_code = null)
 	{
 		global $wpdb;

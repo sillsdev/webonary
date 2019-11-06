@@ -1,8 +1,10 @@
 <?php /** @noinspection SqlResolve */
+/** @noinspection HtmlFormInputWithoutLabel */
+/** @noinspection HtmlUnknownTarget */
 
-add_action( 'wp_ajax_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
-add_action( 'wp_ajax_nopriv_getAjaxlanguage', 'Webonary_Configuration::ajaxlanguage' );
-
+add_action('wp_ajax_getAjaxLanguage', 'Webonary_Ajax::ajaxLanguage');
+add_action('wp_ajax_nopriv_getAjaxLanguage', 'Webonary_Ajax::ajaxLanguage');
+add_action('wp_ajax_getAjaxCurrentIndexedCount', 'Webonary_Ajax::ajaxCurrentIndexedCount');
 
 function relevanceSave()
 {
@@ -105,7 +107,8 @@ HTML;
 /**
  * Do what the user said to do.
  */
-function save_configurations() {
+function save_configurations()
+{
 	global $wpdb;
 
 	if ( ! empty( $_POST['delete_data'])) {
@@ -119,39 +122,28 @@ function save_configurations() {
 		if(isset($_POST['normalization'])) {
 			update_option('normalization', $_POST['normalization']);
 		}
-		$special_characters = $_POST['characters'];
-		if(trim($special_characters) == "") {
-			$special_characters = "empty";
-		}
+
+		$special_characters = trim($_POST['characters']);
+		if(empty($special_characters))
+			$special_characters = 'empty';
+
 		update_option('special_characters', $special_characters);
 		update_option('inputFont', $_POST['inputFont']);
 		update_option('vernacularLettersFont', $_POST['vernacularLettersFont']);
 
 		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
-		$displaySubentriesAsMainEntries = 'no';
-		if(isset($_POST['DisplaySubentriesAsMainEntries'])) {
-			$displaySubentriesAsMainEntries = 1;
-		}
-		update_option('DisplaySubentriesAsMainEntries', $displaySubentriesAsMainEntries);
+		update_option('DisplaySubentriesAsMainEntries', (isset($_POST['DisplaySubentriesAsMainEntries']) ? 1 : 'no'));
 		update_option('languagecode', $_POST['languagecode']);
 		if(is_super_admin()) {
 			update_option('vernacular_alphabet', $_POST['vernacular_alphabet']);
 		}
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
-		$IncludeCharactersWithDiacritics = 'no';
-		if(isset($_POST['IncludeCharactersWithDiacritics'])) {
-			$IncludeCharactersWithDiacritics = 1;
-		}
-		update_option('IncludeCharactersWithDiacritics', $IncludeCharactersWithDiacritics);
+		update_option('IncludeCharactersWithDiacritics', (isset($_POST['IncludeCharactersWithDiacritics']) ? 1 : 'no'));
 
 		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
 
-		$vernacularRightToLeft = 'no';
-		if(isset($_POST['vernacularRightToLeft'])) {
-			$vernacularRightToLeft = 1;
-		}
-		update_option('vernacularRightToLeft', $vernacularRightToLeft);
+		update_option('vernacularRightToLeft', (isset($_POST['vernacularRightToLeft']) ? 1 : 'no'));
 
 		update_option('reversal1_langcode', $_POST['reversal1_langcode']);
 		update_option('reversal2_langcode', $_POST['reversal2_langcode']);
@@ -163,31 +155,12 @@ function save_configurations() {
 			update_option('reversal3_alphabet', $_POST['reversal3_alphabet']);
 		}
 
-		$reversal1RightToLeft = 'no';
-		if(isset($_POST['reversal1RightToLeft']))
-		{
-			$reversal1RightToLeft = 1;
-		}
-		update_option('reversal1RightToLeft', $reversal1RightToLeft);
-
-		$reversal2RightToLeft = 'no';
-		if(isset($_POST['reversal2RightToLeft']))
-		{
-			$reversal2RightToLeft = 1;
-		}
-		update_option('reversal2RightToLeft', $reversal2RightToLeft);
-
-		$reversal3RightToLeft = 'no';
-		if(isset($_POST['reversal3RightToLeft']))
-		{
-			$reversal3RightToLeft = 1;
-		}
-		update_option('reversal3RightToLeft', $reversal3RightToLeft);
+		update_option('reversal1RightToLeft', (isset($_POST['reversal1RightToLeft']) ? 1 : 'no'));
+		update_option('reversal2RightToLeft', (isset($_POST['reversal2RightToLeft']) ? 1 : 'no'));
+		update_option('reversal3RightToLeft', (isset($_POST['reversal3RightToLeft']) ? 1 : 'no'));
 
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
-		{
-			echo "<br><span style=\"color:red\">Please fill out the textfields for the language names, as they will appear in a dropdown below the searcbhox.</span><br>";
-		}
+			echo '<br><span style="color:red">Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.</span><br>';
 
 		$arrLanguages[0]['name'] = 'txtVernacularName';
 		$arrLanguages[0]['code'] = 'languagecode';
@@ -202,23 +175,19 @@ function save_configurations() {
 
 			if(strlen(trim($_POST[$language['code']])) != 0) {
 
-				$sql = "SELECT term_id, name
-				FROM $wpdb->terms
-				WHERE slug = '{$_POST[$language['code']]}'";
-
+			    $sql = $wpdb->prepare("SELECT term_id, `name` FROM {$wpdb->terms} WHERE slug = %s", array($_POST[$language['code']]));
 				$arrLanguageNames = $wpdb->get_results($sql);
 
 				if(count($arrLanguageNames) > 0) {
-					$sql = "UPDATE $wpdb->terms SET name = '" . $_POST[$language['name']]  . "' WHERE slug = '" . $_POST[$language['code']]  . "'";
+					$sql = $wpdb->prepare("UPDATE {$wpdb->terms} SET `name` = %s WHERE slug = %s)", array($_POST[$language['name']], $_POST[$language['code']]));
+					$wpdb->query($sql);
 					$term_id = $arrLanguageNames[0]->term_id;
 				}
 				else {
-					$sql = "INSERT INTO  $wpdb->terms (name,slug) VALUES ('" . $_POST[$language['name']] . "','" . $_POST[$language['code']] . "')";
+					$sql = $wpdb->prepare("INSERT INTO {$wpdb->terms} (`name`, slug) VALUES (%s, %s)", array($_POST[$language['name']], $_POST[$language['code']]));
+					$wpdb->query($sql);
 					$term_id = $wpdb->insert_id;
 				}
-
-				$wpdb->query( $sql );
-
 
 				if(count($arrLanguageNames) > 0)
 				{
@@ -244,6 +213,7 @@ function save_configurations() {
 			$noSearchForm = $_POST['noSearchForm'];
 			if ( is_plugin_active( 'wp-super-cache/wp-cache.php' ) && $noSearchForm == 1)
 			{
+				/** @noinspection PhpUndefinedFunctionInspection */
 				prune_super_cache( get_supercache_dir(), true );
 			}
 
@@ -260,7 +230,9 @@ function webonary_conf_dashboard()
 {
 	webonary_conf_widget(true);
 }
-function webonary_conf_widget($showTitle = false) {
+
+function webonary_conf_widget($showTitle = false)
+{
 	save_configurations();
 
 	$upload_dir = wp_upload_dir();
@@ -269,10 +241,8 @@ function webonary_conf_widget($showTitle = false) {
 	$css_string = null;
 	$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
 	if(file_exists($configured_css_file))
-	{
 		$css_string = file_get_contents($configured_css_file);
-	}
-	$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+
 	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
 	wp_enqueue_style( 'custom_css');
 
@@ -282,65 +252,42 @@ function webonary_conf_widget($showTitle = false) {
 	}
 
 	if(isset($_GET['changerelevance']))
-	{
 		echo Webonary_Configuration::relevanceForm();
-	}
 
 	if(isset($_POST['uploadFont']))
-	{
 		$fontClass->uploadFont();
-	}
 
 	if(isset($_POST['btnSaveRelevance']))
-	{
 		relevanceSave();
-	}
+
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<style>
-	#dashboard-widgets a {
-		text-decoration: underline;
-	}
+	    #dashboard-widgets a {text-decoration: underline;}
 	<?php
-	if(get_option('inputFont') != "")
-	{
-	?>
-	#characters {
-		font-family: "<?php echo get_option('inputFont'); ?>";
-	}
-	<?php
-	}
-	?>
-	<?php
-	if(get_option('vernacularLettersFont') != "")
-	{
-	?>
-	#vernacularAlphabet {
-		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
-	}
-	<?php
-	}
+	$input_font = get_option('inputFont', '');
+	if (!empty($input_font))
+	    echo "#characters {font-family: \"{$input_font}\";}" . PHP_EOL;
+
+	$vernacular_font = get_option('vernacularLettersFont', '');
+	if (!empty($vernacular_font))
+	    echo "#vernacularAlphabet {font-family: \"{$vernacular_font}\";}" . PHP_EOL;
+
 	?>
 	</style>
 	<div class="wrap">
 	<?php
 	if($showTitle)
-	{
-	?>
-		<h2><?php _e( 'Webonary', 'webonary' ); ?></h2>
-	<?php
-	}
-	?>
-	<?php
-	_e('Webonary provides the admininstration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary'); ?>
+	    echo '<h2>' . _e( 'Webonary', 'webonary' ) . '</h2>' . PHP_EOL;
 
-	<?php
+	_e('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary');
+
 	$admin_sections = Webonary_Configuration::get_admin_sections();
-	echo '<h2 class="nav-tab-wrapper">'.PHP_EOL;
+	echo '<h2 class="nav-tab-wrapper">' . PHP_EOL;
 	foreach( $admin_sections as $slug => $name ){
-		echo '<a class="nav-tab" href="#'.$slug.'" title="'.sprintf(__('Click to switch to %s', 'sil_dictionary'), $name).'">'.$name.'</a>'.PHP_EOL;
+		echo '<a class="nav-tab" href="#'.$slug.'" title="'.sprintf(__('Click to switch to %s', 'sil_dictionary'), $name).'">'.$name.'</a>' . PHP_EOL;
 	}
-	echo '</h2>'.PHP_EOL;
+	echo '</h2>' . PHP_EOL;
 
 	$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
 
@@ -354,13 +301,13 @@ function webonary_conf_widget($showTitle = false) {
 
 		jQuery.ajax({
 			 url: '<?php echo admin_url('admin-ajax.php'); ?>',
-			 data : {action: "getAjaxlanguage", languagecode : langcode},
+			 data : {action: "getAjaxLanguage", languagecode : langcode},
 			 type:'POST',
 			 dataType: 'html',
 			 success: function(output_string){
 				jQuery('#' + langname).val(output_string);
 			 }
-	 })
+		})
 	}
 	</script>
 		<div id="icon-tools" class="icon32"></div>
@@ -369,37 +316,36 @@ function webonary_conf_widget($showTitle = false) {
 			 * Standard UI
 			 */
 			?>
-			<div class="tabs-content"><?php //<!-- tabs-container --> ?>
+			<div class="tabs-content">
 			<?php
-			//////////////////////////////////////////////////////////////////////////////
 			Webonary_Configuration::admin_section_start('import');
-
-			$import = new sil_pathway_xhtml_Import();
 			?>
-			<form id="configuration-form" method="post" action="">
-			<p>
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
 
+            <form method="post" action="admin.php?import=pathway-xhtml">
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 			<strong>Import Status:</strong> <?php echo Webonary_Info::import_status(); ?>
 			</div>
+            </form>
 
 			<p><?php _e('<a href="admin.php?import=pathway-xhtml" style="font-size:16px;">Click here to import your FLEx data</a>', 'sil_dictionary'); ?></p>
 
+            <form id="configuration-form" method="post" action="">
 			<p>
-			<?php _e('Publication status:'); ?>
-			<select name=publicationStatus>
-				<option value=0><?php _e('no status set'); ?></option>
-				<option value=1 <?php selected(get_option('publicationStatus'), 1); ?>><?php _e('Rough draft'); ?></option>
-				<option value=2 <?php selected(get_option('publicationStatus'), 2); ?>><?php _e('Self-reviewed draft'); ?></option>
-				<option value=3 <?php selected(get_option('publicationStatus'), 3); ?>><?php _e('Community-reviewed draft'); ?></option>
-				<option value=4 <?php selected(get_option('publicationStatus'), 4); ?>><?php _e('Consultant approved'); ?></option>
-				<option value=5 <?php selected(get_option('publicationStatus'), 5); ?>><?php _e('Finished (no formal publication)'); ?></option>
-				<option value=6 <?php selected(get_option('publicationStatus'), 6); ?>><?php _e('Formally published'); ?></option>
-			</select>
-			<p>
+				<?php _e('Publication status:'); ?>
+                <select name=publicationStatus>
+                    <option value=0><?php _e('no status set'); ?></option>
+                    <option value=1 <?php selected(get_option('publicationStatus'), 1); ?>><?php _e('Rough draft'); ?></option>
+                    <option value=2 <?php selected(get_option('publicationStatus'), 2); ?>><?php _e('Self-reviewed draft'); ?></option>
+                    <option value=3 <?php selected(get_option('publicationStatus'), 3); ?>><?php _e('Community-reviewed draft'); ?></option>
+                    <option value=4 <?php selected(get_option('publicationStatus'), 4); ?>><?php _e('Consultant approved'); ?></option>
+                    <option value=5 <?php selected(get_option('publicationStatus'), 5); ?>><?php _e('Finished (no formal publication)'); ?></option>
+                    <option value=6 <?php selected(get_option('publicationStatus'), 6); ?>><?php _e('Formally published'); ?></option>
+                </select>
+            </p>
+
 			<h3><?php _e( 'Delete Data', 'sil_dictionary' ); ?></h3>
-			<br>
+			<p>
 			<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 				<strong style=color:red;>You are not in your testing environment!</strong>
 				<br>
@@ -429,13 +375,15 @@ function webonary_conf_widget($showTitle = false) {
 				<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
 			</p>
 
-			<?php Webonary_Configuration::admin_section_end('import', 'Save Changes'); ?>
 			<?php
-			//////////////////////////////////////////////////////////////////////////////
+            Webonary_Configuration::admin_section_end('import', 'Save Changes');
+
 			Webonary_Configuration::admin_section_start('search');
 			?>
-			<p>
+
 			<h3><?php _e('Default Search Options');?></h3>
+
+            <p>
 			<input name="include_partial_words" type="checkbox" value="1"
 						<?php checked('1', get_option('include_partial_words')); ?> />
 						<?php _e('Always include searching through partial words.'); ?>
@@ -452,23 +400,27 @@ function webonary_conf_widget($showTitle = false) {
 			}
 			//this is only for legacy purposes.
 			//Now the import will convert all text to NFC, so this is no longer needed for newer imports
-			if(get_option("normalization") != null)
+            $normalization = get_option('normalization', '');
+			if (!empty($normalization))
 			{
 			?>
 				<strong>Normalization:</strong>
 				<br>
 				<select name="normalization">
-					<option value="FORM_C" <?php if(get_option("normalization") == "FORM_C") { echo "selected"; } ?>>FORM C</option>
-					<option value="FORM_D" <?php if(get_option("normalization") == "FORM_D") { echo "selected"; } ?>>FORM D</option>
+					<option value="FORM_C" <?php if($normalization == 'FORM_C') { echo 'selected'; } ?>>FORM C</option>
+					<option value="FORM_D" <?php if($normalization == 'FORM_D') { echo 'selected'; } ?>>FORM D</option>
 				</select>
 				<br>
 				See <a href="http://unicode.org/reports/tr15/" target="_blank">here</a> for more info on normalization of composite characters.
 				<br>
 				By default Webonary uses FORM C. If your search for a word that contains
 				a composite character doesn't return a result, try FORM D.
-				</p>
+
 			<?php
 			}
+			?>
+            </p>
+            <?php
 			if(class_exists('special_characters'))
 			{
 				//this is here for legacy purposes. The special characters used to be Widget in a separate plugin.
@@ -494,7 +446,7 @@ function webonary_conf_widget($showTitle = false) {
 			<br>
 			These will appear above the search field.<br>
 			Separate the characters by comma:
-			<input type="input" name="characters" id=characters type="checkbox" value="<?php echo $special_characters; ?>">
+			<input type="checkbox" name="characters" id=characters value="<?php echo $special_characters; ?>">
 			</p>
 			<b>Font to use for the search field and character buttons:</b>
 			<br>
@@ -507,21 +459,22 @@ function webonary_conf_widget($showTitle = false) {
 				foreach($arrUniqueCSSFonts as $font)
 				{
 				?>
-					<option value="<?php echo $font;?>" <?php if($font == get_option("inputFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+					<option value="<?php echo $font;?>" <?php if($font == $input_font) { echo 'selected'; } ?>><?php echo $font;?></option>
 				<?php
 				}
 			}
 			?>
 			</select>
 			<br><br>
-			<a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
+			<!--suppress HtmlUnknownAnchorTarget -->
+            <a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
 			<br><br>
-			<?php Webonary_Configuration::admin_section_end('search', 'Save Changes'); ?>
 			<?php
-			//////////////////////////////////////////////////////////////////////////
+            Webonary_Configuration::admin_section_end('search', 'Save Changes');
+
 			Webonary_Configuration::admin_section_start('browse');
 			?>
-			<p>
+
 			<h3>Browse Views</h3>
 			See <a href="https://www.webonary.org/help/creating-browse-views/" target="_blank">Help with creating Browse Views</a>
 			<p>
@@ -533,6 +486,7 @@ function webonary_conf_widget($showTitle = false) {
 			<input name="DisplaySubentriesAsMainEntries" type="checkbox" value="1"
 						<?php checked('1', $DisplaySubentriesAsMainEntries); ?> />
 						<?php _e('Display subentries as main entries'); ?>
+            </p>
 			<p>
 			<?php
 			}
@@ -540,7 +494,7 @@ function webonary_conf_widget($showTitle = false) {
 			{
 			?>
 				<span style="color:red">You need to first import your dictionary.</span>
-				<p>
+				<br><br>
 			<?php
 			}
 			if(count($arrLanguageCodes) > 0)
@@ -550,7 +504,8 @@ function webonary_conf_widget($showTitle = false) {
 				<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
 				<input type="hidden" name="languagecode" value="<?php echo get_option('languagecode'); ?>">
 				<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
-				<p>
+            </p>
+			<p>
 				<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
 				<?php
 				if(is_super_admin())
@@ -564,7 +519,8 @@ function webonary_conf_widget($showTitle = false) {
 				{
 					echo stripslashes(get_option('vernacular_alphabet'));
 				}?>
-				<p>
+            </p>
+			<p>
 
 				Font to use for the vernacular letters in browse view:
 				<select name=vernacularLettersFont>
@@ -576,37 +532,39 @@ function webonary_conf_widget($showTitle = false) {
 					foreach($arrUniqueCSSFonts as $font)
 					{
 					?>
-						<option value="<?php echo $font;?>" <?php if($font == get_option("vernacularLettersFont")) { echo "selected"; } ?>><?php echo $font;?></option>
+						<option value="<?php echo $font;?>" <?php if($font == $vernacular_font) { echo "selected"; } ?>><?php echo $font;?></option>
 					<?php
 					}
 				}
 				?>
 				</select>
-				<p>
-				<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option("vernacularRightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-
-				<p>
+            </p>
+			<p>
+				<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option('vernacularRightToLeft')); ?> /><?php _e('Display right-to-left') ?>
+            </p>
+            <p>
 				<?php
 				$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
 				if($IncludeCharactersWithDiacritics == 1)
 				{
-					$IncludeCharactersWithDiacritics = 1;
 				?>
 				<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 				<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
 				<?php
 				}
 				?>
-				<p>
+            </p>
+			<p>
 				<b><?php _e('Reversal Indexes:'); ?></b>
-				<p>
+            </p>
+
 				<?php
 				$displayXHTML = true;
 				$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
 
 				if(count($reversalEntries) == 0)
 				{
-					echo "No reversal indexes imported.";
+					echo 'No reversal indexes imported.';
 				}
 				else
 				{
@@ -615,13 +573,14 @@ function webonary_conf_widget($showTitle = false) {
 					if($k >= 0)
 					{
 					?>
+                        <p>
 						<i><?php _e('1. Reversal index'); ?></i><br>
 						Shortcode: [reversalindex1]
-						<p>
+						<br><br>
 						<input type="hidden" name="reversal1_langcode" value="<?php echo get_option('reversal1_langcode'); ?>">
 						<strong>[<?php echo get_option('reversal1_langcode'); ?>]</strong>
 						<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-						<p>
+                        <br><br>
 						<?php
 						if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
 						{
@@ -657,52 +616,56 @@ function webonary_conf_widget($showTitle = false) {
 							echo $reversal1alphabet;
 						}
 						?>
-						<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal1RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+						<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option('reversal1RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
+                        </p>
 						<?php
 					}
+
 					if(strlen(get_option('reversal2_langcode')) > 0)
-					{
-					?>
-						<hr>
-						 <i><?php _e('2. Reversal index'); ?></i><br>
-						 Shortcode: [reversalindex2]
-						 <p>
-						 <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
-						 <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-						<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-						<p>
-						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-						<?php
-						if(is_super_admin())
-						{
+				    {
+				?>
+			<hr>
+			<i><?php _e('2. Reversal index'); ?></i><br>
+			Shortcode: [reversalindex2]
+			<p>
+                <input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
+                <?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+			    <strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+            </p>
+                <p>
+					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/"
+                                                  target="_blank"><?php _e('configure in FLEx'); ?></a>):
+					<?php
+					if (is_super_admin()) {
 						?>
-							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-							<input type="text" size=50 name="reversal2_alphabet" value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
+                        <span style="color:red;">Only remove letters, do not change/add letters!</span><br>
+                        <input type="text" size=50 name="reversal2_alphabet"
+                               value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
 						<?php
-						}
-						else
-						{
-							 echo stripslashes(get_option('reversal2_alphabet'));
-						}
-						?>
-						<input name="reversal2RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal2RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
-						<?php
+					} else {
+						echo stripslashes(get_option('reversal2_alphabet'));
 					}
 					?>
+                    <input name="reversal2RightToLeft" type="checkbox"
+                           value="1" <?php checked('1', get_option('reversal2RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
+                </p>
 					<?php
+					}
+
 					if(strlen(get_option('reversal3_langcode')) > 0)
 					{
 					?>
-					<hr>
-					 <i><?php _e('3. Reversal index'); ?></i><br>
-					 Shortcode: [reversalindex3]
-					 <p>
-					 <input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
-					 <?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-					<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-					<p>
-					<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
-										<?php
+					    <hr>
+					    <i><?php _e('3. Reversal index'); ?></i><br>
+					    Shortcode: [reversalindex3]
+					    <p>
+					    <input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
+					    <?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
+					    <strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+                        </p>
+					    <p>
+					    <?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
+						<?php
 						if(is_super_admin())
 						{
 						?>
@@ -715,18 +678,17 @@ function webonary_conf_widget($showTitle = false) {
 							 echo stripslashes(get_option('reversal3_alphabet'));
 						}
 						?>
-						<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option("reversal3RightToLeft")); ?> /><?php _e('Display right-to-left') ?>
+						<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option('reversal3RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
+                        </p>
 						<?php
 					}
 				}
-				?>
 
-				<?php
 				if(is_super_admin())
 				{
 					$displayCustomDomains = get_option('displayCustomDomains');
 					/*
-					if($displayCustomDomains != "no" && !isset($displayCustomDomains))
+					if($displayCustomDomains != 'no' && !isset($displayCustomDomains))
 					{
 						$displayCustomDomains = 1;
 					}
@@ -734,9 +696,9 @@ function webonary_conf_widget($showTitle = false) {
 				?>
 					<h3>Semantic Domains</h3>
 					<select name="displayCustomDomains">
-						<option value="default" <?php selected($displayCustomDomains, "default"); ?>>Default View</option>
-						<option value="yakan" <?php selected($displayCustomDomains, "yakan"); ?>>Yakan (Philippines)</option>
-						<option value="spanishfoods" <?php selected($displayCustomDomains, "spanishfoods"); ?>>Spanish Foods</option>
+						<option value="default" <?php selected($displayCustomDomains, 'default'); ?>>Default View</option>
+						<option value="yakan" <?php selected($displayCustomDomains, 'yakan'); ?>>Yakan (Philippines)</option>
+						<option value="spanishfoods" <?php selected($displayCustomDomains, 'spanishfoods'); ?>>Spanish Foods</option>
 					</select>
 				<?php
 				}
@@ -749,17 +711,16 @@ function webonary_conf_widget($showTitle = false) {
 				<?php
 				*/
 			}
-		?>
-		</p>
-		<?php Webonary_Configuration::admin_section_end('browse', 'Save Changes'); ?>
-		<?php
-		//////////////////////////////////////////////////////////////////////////
+
+		Webonary_Configuration::admin_section_end('browse', 'Save Changes');
+
 		Webonary_Configuration::admin_section_start('fonts');
 		?>
-		<p>
+
 		<h3>Fonts</h3>
 		<p>
 		See <a href="https://www.webonary.org/help/setting-up-a-font/" target="_blank">Setting up a Font</a>.
+        </p>
 		<hr>
 		<?php
 		$arrFontFacesFile = array();
@@ -780,7 +741,7 @@ function webonary_conf_widget($showTitle = false) {
 
 				$fontKey = array_search($userFont, array_column($arrFont, 'name'));
 
-				if(!strstr($userFont, "default font"))
+				if(!strstr($userFont, 'default font'))
 				{
 					echo "<strong>" . $userFont . "</strong><br>";
 					$fontLinked = false;
@@ -789,7 +750,7 @@ function webonary_conf_widget($showTitle = false) {
 						if(in_array($userFont, $arrFontFacesFile))
 						{
 							$fontLinked = true;
-							echo "linked in <a href=\"" . $upload_dir['baseurl'] . "/custom.css\">custom.css</a>";
+							echo 'linked in <a href="' . $upload_dir['baseurl'] . '/custom.css">custom.css</a>';
 						}
 					}
 
@@ -797,67 +758,67 @@ function webonary_conf_widget($showTitle = false) {
 					{
 						if($fontKey !== false)
 						{
-							if($arrFont[$fontKey]["hasSubFonts"])
+							if($arrFont[$fontKey]['hasSubFonts'])
 							{
-								echo "<span style=\"color:orange; font-weight: bold;\">This web font is very large and will take a long time to load! Please use a <a href=\"https://www.webonary.org/help/setting-up-a-font/\" target=\"_blank\" style=\"color:orange; font-weight:bold;\">font subset</a> if possible.</span>";
+								echo '<span style="color:orange; font-weight: bold;">This web font is very large and will take a long time to load! Please use a <a href="https://www.webonary.org/help/setting-up-a-font/" target="_blank" style="color:orange; font-weight:bold;">font subset</a> if possible.</span>';
 							}
 						}
 					}
-
-					if(!$fontLinked)
+                    else
 					{
 						$arrSystemFonts = $fontClass->get_system_fonts();
 						if(in_array($userFont, $arrSystemFonts))
 						{
-							echo "This is a system font that most computers already have installed.";
+							echo 'This is a system font that most computers already have installed.';
 						}
 						else
 						{
 							echo "<strong style=\"color:red;\">";
 							if($fontKey > 0)
 							{
-								echo "Font not linked. Please reupload the css file to get it linked.";
+								echo 'Font not linked. Please re-upload the css file to get it linked.';
 							}
 							else
 							{
-								echo "Font not found in the repository. Please ask Webonary Support to add it.";
+								echo 'Font not found in the repository. Please ask Webonary Support to add it.';
 							}
-							echo "</strong>";
-						}
-					}
+							echo '</strong>';
 
-					if(is_super_admin() && !in_array($userFont, $arrSystemFonts))
-					{
-					?>
-							<input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
-							<input type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
-					<?php
-						$fontNr++;
+							if (is_super_admin()) {
+								?>
+                                <input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
+                                <input type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
+								<?php
+
+								$fontNr++;
+                            }
+						}
 					}
 
 					echo "<p></p>";
 				}
 			}
 		}
-		?>
-		<?php Webonary_Configuration::admin_section_end('fonts'); ?>
-		<?php
-		//////////////////////////////////////////////////////////////////////////
+
+		Webonary_Configuration::admin_section_end('fonts');
+
 		Webonary_Configuration::admin_section_start('superadmin');
 		?>
-		<p>
+
 		<h3>Notes</h3>
 		Site ID: <?php echo get_current_blog_id(); ?>
 		<p>
 		<span style="color:red">These notes are only visible to super admins.</span>
+        </p>
 		<p>
-		<textarea name=txtNotes cols=50 rows=6><?php echo stripslashes(get_option("notes"));?></textarea>
+		<textarea name=txtNotes cols=50 rows=6><?php echo stripslashes(get_option('notes'));?></textarea>
+        </p>
 		<p>
-		Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option("noSearch")); ?> />
+		Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option('noSearch')); ?> />
+        </p>
 		<p>
 		<?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
-
-		</div><?php //<!-- /tabs-container --> ?>
+        </p>
 		</form>
 	</div>
 	<?php

@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS {$tableCustomRelevance} (
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
 
-	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	include_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
 	dbDelta( $sql );
 }
@@ -82,12 +82,20 @@ SQL;
 
 function create_search_tables ()
 {
+	global $wpdb;
+
 	$table = SEARCHTABLE;
 	$char_set = MYSQL_CHARSET;
 	$collate = MYSQL_COLLATION;
 
-	$sql = <<<SQL
+	// if the table doesn't exist, create it now
+	$sql = "SHOW TABLES LIKE '{$table}';";
+	$results = $wpdb->get_results($sql);
+	if (empty($results)) {
+
+		$sql = <<<SQL
 CREATE TABLE {$table} (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
   post_id bigint(20) NOT NULL,
   language_code varchar(30),
   relevance tinyint,
@@ -95,13 +103,49 @@ CREATE TABLE {$table} (
   class varchar(50),
   subid INT NOT NULL DEFAULT  '0',
   sortorder INT NOT NULL DEFAULT '0',
-  PRIMARY KEY (post_id, language_code, relevance, search_strings (150), class (50)),
+  UNIQUE INDEX idx_unique_row (post_id, language_code, relevance, search_strings (150), class (50)),
   INDEX relevance_idx (relevance)
 ) DEFAULT CHARSET={$char_set} COLLATE={$collate};
 SQL;
+		$wpdb->query($sql);
+		return;
+	}
 
-	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-	dbDelta( $sql );
+
+	// remove the old primary key with multiple fields
+	$sql = "SHOW KEYS FROM {$table} WHERE Key_name = 'PRIMARY';";
+	$results = $wpdb->get_results($sql);
+	if (!empty($results) && count($results) > 1) {
+		$sql = "ALTER TABLE {$table} DROP PRIMARY KEY";
+		$wpdb->query($sql);
+	}
+
+	// add a unique constraint to replace the removed primary key
+	$sql = "SHOW KEYS FROM {$table} WHERE Key_name = 'idx_unique_row';";
+	$results = $wpdb->get_results($sql);
+	if (empty($results)) {
+		/** @noinspection SqlResolve */
+		$sql = "CREATE UNIQUE INDEX idx_unique_row ON {$table} (post_id, language_code, relevance, search_strings (150), class);";
+		$wpdb->query($sql);
+	}
+
+	// add a new auto-increment field for the new primary key
+	$sql = "SHOW FIELDS FROM {$table} WHERE Field = 'id';";
+	$results = $wpdb->get_results($sql);
+	if (empty($results)) {
+
+		// just in case there is an existing primary key
+		$sql = "SHOW KEYS FROM {$table} WHERE Key_name = 'PRIMARY';";
+		$results = $wpdb->get_results($sql);
+		if (!empty($results) && count($results) > 1) {
+			$sql = "ALTER TABLE {$table} DROP PRIMARY KEY";
+			$wpdb->query($sql);
+		}
+
+		// add the new primary key field
+		$sql = "ALTER TABLE {$table} ADD id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY FIRST;";
+		$wpdb->query($sql);
+	}
 }
 
 /**
@@ -271,9 +315,9 @@ function clean_out_dictionary_data ($delete_taxonomies = null)
 
 	//deletes the xhtml file, if still there because import didn't get completed
 	$import = new sil_pathway_xhtml_Import();
-	$file = $import->get_latest_xhtmlfile();
+	$file = $import->get_latest_xhtml_file();
 	if(isset($file->ID))
-		wp_delete_attachment( $file->ID );
+		wp_delete_attachment($file->ID);
 
 	// Remove all the old dictionary entries.
 	remove_entries();
@@ -359,7 +403,7 @@ SET option_value = 0
 WHERE option_name = 'uploads_use_yearmonth_folders'
 SQL;
 
-	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	include_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 
 	/*

@@ -11,6 +11,10 @@ class Webonary_Font_Management
 		return $arrFont;
 	}
 
+	/**
+	 * @param $css_string
+	 * @return string[]
+	 */
 	public function get_fonts_fromCssText($css_string)
 	{
 		// Get the CSS that contains a font-family rule.

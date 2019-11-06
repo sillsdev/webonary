@@ -8,6 +8,7 @@ function disable_plugins($plugins){
 
 	return $plugins;
 }
+
 if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") && isset($argv))
 {
 	define('WP_INSTALLING', true);
@@ -241,6 +242,7 @@ if(isset($xhtmlFileURL))
 	$headers = array(
 			'From: Webonary <webonary@sil.org>'
 	);
+
 	if($filetype == "configured")
 	{
 		/*
@@ -314,7 +316,7 @@ if(isset($xhtmlFileURL))
 	}
 
 
-	$file = $import->get_latest_xhtmlfile();
+	$file = $import->get_latest_xhtml_file();
 
 	if(isset($file))
 	{

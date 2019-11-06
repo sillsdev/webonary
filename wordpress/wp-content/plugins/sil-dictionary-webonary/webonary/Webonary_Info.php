@@ -3,6 +3,12 @@
 
 class Webonary_Info
 {
+	/** @var IIndexedCounts */
+	private static $post_counts;
+
+	/** @var int */
+	private static $category_id;
+
 	/**
 	 * @return int
 	 */
@@ -10,13 +16,27 @@ class Webonary_Info
 	{
 		global $wpdb;
 
+		if (!is_null(self::$category_id))
+			return self::$category_id;
+
 		/** @noinspection SqlResolve */
-		$cat_id = $wpdb->get_var("SELECT term_id FROM {$wpdb->terms} WHERE slug = 'webonary'");
+		self::$category_id = (int)$wpdb->get_var("SELECT term_id FROM {$wpdb->terms} WHERE slug = 'webonary'");
 
-		if(empty($cat_id))
-		    return 0;
+		return self::$category_id;
+	}
 
-		return (int)$cat_id;
+	public static function getCountIndexed()
+	{
+		$cat_id = self::category_id();
+		$counts = self::postCountByImportStatus($cat_id);
+		return (int)(empty($counts->indexed_count) ? 0 : $counts->indexed_count);
+	}
+
+	public static function getCountImported()
+	{
+		$cat_id = self::category_id();
+		$counts = self::postCountByImportStatus($cat_id);
+		return (int)(empty($counts->unindexed_count) ? 0 : $counts->unindexed_count);
 	}
 
 	/**
@@ -27,9 +47,9 @@ class Webonary_Info
 		global $wpdb;
 
 		$cat_id = self::category_id();
-		$arrPostCount = self::postCountByImportStatus($cat_id);
+		$counts = self::postCountByImportStatus($cat_id);
 
-		if(count($arrPostCount) == 0)
+		if($counts->total_count == 0)
 			return 'No entries have been imported yet. <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
 
 		$import_status = get_option('importStatus');
@@ -37,7 +57,7 @@ class Webonary_Info
 		if(empty($import_status))
 			return 'The import status will display here.<br>';
 
-		$status = '.';
+		$status = '';
 
 		if(get_option('useSemDomainNumbers') == 0)
 		{
@@ -57,16 +77,8 @@ class Webonary_Info
 
 		$arrReversalsImported = self::reversalPosts();
 		$arrIndexed = self::number_of_entries();
-		$countIndexed = 0;
-		$countImported = 0;
-
-		foreach($arrPostCount as $posts)
-		{
-			if($posts->pinged == 'indexed' || $posts->pinged == 'linksconverted')
-				$countIndexed = $posts->entryCount;
-			else
-				$countImported = $posts->entryCount;
-		}
+		$countIndexed = self::getCountIndexed();
+		$countImported = self::getCountImported();
 
 		if($import_status == 'importFinished')
 		{
@@ -97,9 +109,9 @@ class Webonary_Info
 		{
 			$totalImportedPosts = count(self::posts());
 
-			$status .= 'Indexing ' . $countIndexed . ' of ' . $totalImportedPosts . ' entries';
+			$status .= 'Indexing <span id="sil-count-indexed" class="sil-bold">' . $countIndexed . '</span> of <span class="sil-bold">' . $totalImportedPosts . '</span> entries' . PHP_EOL;
+			$status .= '<br>If you believe indexing has timed out, click here: <input type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings"/>';
 
-			$status .= '<br>If you believe indexing has timed out, click here: <input type="submit" name="btnReindex" value="Index Search Strings"/>';
 			return $status;
 		}
 
@@ -107,7 +119,7 @@ class Webonary_Info
 		{
 			$status .= $countImported . ' entries imported (not yet indexed)';
 
-			if($arrPostCount[0]->timediff > 5)
+			if($counts->time_diff > 5)
 			{
 				$status .= '<br>It appears the import has timed out, click here: <input type="submit" name="btnRestartImport" value="Restart Import">';
 			}
@@ -243,27 +255,37 @@ SQL;
 		return $wpdb->get_results($sql);
 	}
 
+	/**
+	 * @param $cat_id
+	 * @return IIndexedCounts
+	 */
 	public static function postCountByImportStatus($cat_id)
 	{
 		global $wpdb;
 
+		if (!is_null(self::$post_counts))
+			return self::$post_counts;
+
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
-SELECT COUNT(pinged) AS entryCount, post_date, TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS timediff, pinged
+SELECT SUM(IF(pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count,
+       MAX(IF(pinged IN ('indexed', 'linksconverted'), post_date, NULL)) AS indexed_date,
+       SUM(IF(pinged IN ('indexed', 'linksconverted'), 0, 1)) AS unindexed_count,
+       MAX(IF(pinged IN ('indexed', 'linksconverted'), NULL, post_date)) AS unindexed_date,
+       COUNT(*) AS total_count,
+       TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS time_diff
 FROM {$wpdb->prefix}posts
 WHERE post_type IN ('post', 'revision')
   AND ID IN (
-	  SELECT object_id
-	  FROM {$wpdb->prefix}term_relationships
-	  WHERE term_taxonomy_id = {$cat_id}
-  )
-GROUP BY pinged
-ORDER BY post_date DESC
+    SELECT object_id
+    FROM {$wpdb->prefix}term_relationships
+    WHERE term_taxonomy_id = {$cat_id}
+  );
 SQL;
 
-		$arrPostCount = $wpdb->get_results($sql);
+		self::$post_counts = $wpdb->get_row($sql);
 
-		return $arrPostCount;
+		return self::$post_counts;
 	}
 
 	public static function reversalsMissing($arrIndexed)

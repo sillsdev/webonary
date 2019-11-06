@@ -33,10 +33,13 @@ if ( ! defined('ABSPATH') )
 	die( '-1' );
 
 /** @var wpdb $wpdb */
-global $wpdb, $webonary_class_path;
+global $wpdb, $webonary_class_path, $webonary_template_path;
 
 /** @var string $webonary_class_path */
 $webonary_class_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'webonary';
+
+/** @var string $webonary_template_path */
+$webonary_template_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templates';
 
 //region Dependencies
 function webonary_autoloader($class_name)
@@ -49,9 +52,15 @@ function webonary_autoloader($class_name)
 	if ($pos === false || $pos != 0)
 		return null;
 
-	$class_file = $class_name . '.php';
+	// check for an interface file
+	$pos = strpos($class_name, 'Webonary_Interface_');
 
-	$success = include_once($webonary_class_path . DIRECTORY_SEPARATOR . $class_file);
+	if ($pos !== false)
+		$class_file = 'interface' . DIRECTORY_SEPARATOR . substr($class_name, 19) . '.php';
+	else
+		$class_file = $class_name . '.php';
+
+	$success = include_once $webonary_class_path . DIRECTORY_SEPARATOR . $class_file;
 
 	if ($success === false)
 		return new WP_Error('Failed', 'Not able to include ' . $class_name);
@@ -61,6 +70,19 @@ function webonary_autoloader($class_name)
 
 /** @noinspection PhpUnhandledExceptionInspection */
 spl_autoload_register('webonary_autoloader');
+
+function webonary_admin_script()
+{
+	wp_register_script('webonary_admin_script', '', [], false, true);
+	wp_enqueue_script('webonary_admin_script');
+	wp_add_inline_script('webonary_admin_script', Webonary_Utility::includeTemplate('admin.script.html', array('@ajax_url' => admin_url('admin-ajax.php'))));
+
+	wp_register_style('webonary_admin_style', '', [], false, 'all');
+	wp_enqueue_style('webonary_admin_style');
+	wp_add_inline_style('webonary_admin_style', Webonary_Utility::includeTemplate('admin.styles.css', array()));
+}
+add_action('admin_enqueue_scripts', 'webonary_admin_script');
+
 
 $this_dir = dirname(__FILE__);
 
@@ -97,7 +119,7 @@ include_once $this_dir . '/include/modifycontent.php';
 	// The register_activation_hook() appears not to work for some reason. But the
 	// site won't start up that much any way, and it doesn't hurt anything to call
 	// it more than once.
-	add_action( 'init', 'install_sil_dictionary_infrastructure', 0 );
+	add_action('init', 'install_sil_dictionary_infrastructure', 0);
 
 	// Take out the custom data when uninstalling the plugin.
 	register_uninstall_hook( __FILE__, 'uninstall_sil_dictionary_infrastructure' );
@@ -110,11 +132,11 @@ add_filter('search_message', 'sil_dictionary_custom_message');
 add_filter('posts_request','replace_default_search_filter');
 
 // this executes just before wordpress determines which template page to load
-add_action( 'template_redirect', 'my_enqueue_css' );
+add_action('template_redirect', 'my_enqueue_css');
 
 
 //add_action('pre_get_posts','no_standard_sort');
-add_action( 'preprocess_comment' , 'preprocess_comment_add_type' );
+add_action('preprocess_comment' , 'preprocess_comment_add_type');
 
 function add_rewrite_rules($aRules) {
 	//echo "rewrite rules<br>";

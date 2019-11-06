@@ -30,7 +30,7 @@ require_once ABSPATH . 'wp-admin/includes/import.php';
 if ( ! class_exists('WP_Importer') )  {
     $class_wp_importer = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
     if ( file_exists( $class_wp_importer ) )
-        require_once $class_wp_importer;
+        include_once $class_wp_importer;
 }
 
 // One more check.
@@ -76,7 +76,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 	function start()
 	{
-		global $wpdb;
 		global $current_user;
 
 		/* @todo See if there is a better way to do this than these steps */
@@ -103,11 +102,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 			if($this->api == false && $this->verbose == false)
 			{
+				/** @noinspection HtmlUnknownTarget */
 				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
 			}
 			flush();
 
-			$file = $this->get_latest_xhtmlfile();
+			$file = $this->get_latest_xhtml_file();
 			$xhtmlFileURL = $file->url;
 			$userid = $current_user->ID;
 			require("run_import.php");
@@ -123,7 +123,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			$this->verbose = true;
 			$this->index_searchstrings();
 
-			$file = $this->get_latest_xhtmlfile();
+			$file = $this->get_latest_xhtml_file();
 			wp_delete_attachment( $file->ID );
 		}
 
@@ -138,7 +138,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 			}
 			flush();
 
-			$file = $this->get_latest_xhtmlfile();
+			$file = $this->get_latest_xhtml_file();
 			$xhtmlFileURL = $file->url;
 			$userid = $current_user->ID;
 			require("run_import.php");
@@ -194,7 +194,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 				}
 				flush();
 
-				$file = $this->get_latest_xhtmlfile();
+				$file = $this->get_latest_xhtml_file();
 				if(isset($file))
 				{
 					$xhtmlFileURL = $file->url;
@@ -440,25 +440,26 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 		echo '</div>';
 	}
 
-	function get_latest_xhtmlfile(){
+	/**
+	 * @return IXhtmlFileInfo
+	 */
+	function get_latest_xhtml_file(){
 		global $wpdb;
 
-		$sql = "SELECT ID, post_content AS url
-			FROM $wpdb->posts
-			WHERE post_content LIKE '%.xhtml' AND post_type LIKE 'attachment'
-			ORDER BY post_date DESC
-			LIMIT 0,1";
-
+		/** @noinspection SqlResolve */
+		$sql = <<<SQL
+SELECT ID, post_content AS url
+FROM $wpdb->posts
+WHERE post_content LIKE '%.xhtml' AND post_type LIKE 'attachment'
+ORDER BY post_date DESC
+LIMIT 0,1
+SQL;
 		$arrLastFile = $wpdb->get_results($sql);
 
 		if(count($arrLastFile) > 0)
-		{
 			return $arrLastFile[0];
-		}
 		else
-		{
 			return null;
-		}
 	}
 
 	/**
@@ -466,7 +467,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 * @param string $headword = headword to find
 	 * @return int = post ID
 	 */
-
 	function get_post_id( $flexid ){
 		global $wpdb;
 
@@ -772,7 +772,6 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 	 */
 	function header() {
 		echo '<div class="wrap">';
-		screen_icon();
 		echo '<h2>' . __( 'Import SIL FLEX XHTML', 'sil_dictionary' ) . '</h2>';
 	}
 
@@ -966,11 +965,12 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 
 	/**
 	 * Show progress to the user
-	 * @param <type> $entry_counter = current entry number
-	 * @param <type> $entries_count = total number of entries
-	 * @param <type> $headword_text = text of the headword
+	 * @param int $entry_counter = current entry number
+	 * @param int $entries_count = total number of entries
+	 * @param string $headword_text = text of the headword
+	 * @param string $msg
 	 */
-	function import_xhtml_show_progress( $entry_counter, $entries_count, $headword_text, $msg = "" ) {
+	function import_xhtml_show_progress( $entry_counter, $entries_count, $headword_text, $msg = '' ) {
 
 	if($this->verbose)
 	{
@@ -1011,7 +1011,7 @@ class sil_pathway_xhtml_Import extends WP_Importer {
 						<?php
 						}
 						?>
-						info += "<?php echo " " + $headword_text; ?>";
+						info += "<?php echo ' ' . $headword_text; ?>";
 					<?php
 					}
 					?>
