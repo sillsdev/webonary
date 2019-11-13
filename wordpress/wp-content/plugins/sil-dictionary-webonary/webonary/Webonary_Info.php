@@ -120,7 +120,7 @@ class Webonary_Info
 			$totalImportedPosts = count(self::posts());
 
 			$status .= 'Indexing <span id="sil-count-indexed" class="sil-bold">' . $countIndexed . '</span> of <span class="sil-bold">' . $totalImportedPosts . '</span> entries' . PHP_EOL;
-			$status .= '<br>If you believe indexing has timed out, click here: <input type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings"/>';
+			$status .= '<br>If you believe indexing has timed out, click here: <input type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings" formaction="admin.php?import=pathway-xhtml&step=2">';
 
 			return $status;
 		}
@@ -131,7 +131,7 @@ class Webonary_Info
 
 			if($counts->time_diff > 5)
 			{
-				$status .= '<br>It appears the import has timed out, click here: <input type="submit" name="btnRestartImport" value="Restart Import">';
+				$status .= '<br>It appears the import has timed out, click here: <input type="submit" name="btnRestartImport" value="Restart Import" formaction="admin.php?import=pathway-xhtml&step=2">';
 			}
 			return $status;
 		}
@@ -140,7 +140,7 @@ class Webonary_Info
 		{
 			$status .= '<strong>Importing reversals. So far imported: ' . count($arrReversalsImported) . ' entries.</strong>';
 
-			$status .= '<br>If you believe the import has timed out, click here: <input type="submit" name="btnRestartReversalImport" value="Restart Reversal Import">';
+			$status .= '<br>If you believe the import has timed out, click here: <input type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2">';
 			return $status;
 		}
 

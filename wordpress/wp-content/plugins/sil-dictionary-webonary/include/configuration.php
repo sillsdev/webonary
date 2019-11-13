@@ -322,7 +322,7 @@ function webonary_conf_widget($showTitle = false)
 			?>
 			<h3><?php _e( 'Import Data', 'sil_dictionary' ); ?></h3>
 
-            <form method="post" action="admin.php?import=pathway-xhtml">
+            <form method="post" action="admin.php?import=pathway-xhtml&step=2">
 			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 			<strong>Import Status:</strong> <?php echo Webonary_Info::import_status(); ?>
 			</div>
