@@ -32,6 +32,7 @@ function _manually_load_plugin() {
 
 	$wpdb->query($sql);
 
+	Webonary_Info::category_id();
 	create_custom_relevance();
 	create_search_tables();
 	create_reversal_tables();

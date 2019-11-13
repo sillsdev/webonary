@@ -33,13 +33,17 @@ if ( ! defined('ABSPATH') )
 	die( '-1' );
 
 /** @var wpdb $wpdb */
-global $wpdb, $webonary_class_path, $webonary_template_path;
+global $wpdb, $webonary_class_path, $webonary_template_path, $webonary_include_path;
+
+$this_dir = dirname(__FILE__);
 
 /** @var string $webonary_class_path */
-$webonary_class_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'webonary';
+$webonary_class_path = $this_dir . DIRECTORY_SEPARATOR . 'webonary';
 
 /** @var string $webonary_template_path */
-$webonary_template_path = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'templates';
+$webonary_template_path = $this_dir . DIRECTORY_SEPARATOR . 'templates';
+
+$webonary_include_path = $this_dir . DIRECTORY_SEPARATOR . 'include';
 
 //region Dependencies
 function webonary_autoloader($class_name)
@@ -84,7 +88,6 @@ function webonary_admin_script()
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 
 
-$this_dir = dirname(__FILE__);
 
 // Infrastructure management: add and remove custom table(s) and custom taxonomies.
 include_once $this_dir . '/include/infrastructure.php';

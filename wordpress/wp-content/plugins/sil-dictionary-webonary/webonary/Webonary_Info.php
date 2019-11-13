@@ -22,6 +22,16 @@ class Webonary_Info
 		/** @noinspection SqlResolve */
 		self::$category_id = (int)$wpdb->get_var("SELECT term_id FROM {$wpdb->terms} WHERE slug = 'webonary'");
 
+		if (self::$category_id == 0) {
+
+			/** @noinspection SqlResolve */
+			$sql = "INSERT INTO {$wpdb->terms} (`name`, slug, term_group) VALUES ('Webonary', 'webonary', 0)";
+			$wpdb->query($sql);
+
+			self::$category_id = $wpdb->insert_id;
+		}
+
+
 		return self::$category_id;
 	}
 

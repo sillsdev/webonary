@@ -3,8 +3,8 @@ use Overtrue\Pinyin\Pinyin;
 
 function disable_plugins($plugins){
 
-	$key = array_search( 'qtranslate-x/qtranslate.php' , $plugins );
-	if ( false !== $key ) unset( $plugins[$key] );
+	$key = array_search('qtranslate-x/qtranslate.php' , $plugins);
+	if (false !== $key) unset($plugins[$key]);
 
 	return $plugins;
 }
@@ -13,16 +13,16 @@ if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") 
 {
 	define('WP_INSTALLING', true);
 
-	require($argv[1] . "wp-load.php");
+	include $argv[1] . 'wp-load.php';
 	switch_to_blog($argv[2]);
-	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/configuration.php");
-	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/class_info.php");
-	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/class_utilities.php");
+	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/configuration.php';
+	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/class_info.php';
+	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/class_utilities.php';
 
-	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/infrastructure.php");
+	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/infrastructure.php';
 	install_sil_dictionary_infrastructure();
 
-	require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/xhtml-importer.php");
+	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/xhtml-importer.php';
 
 	add_filter( 'option_active_plugins', 'disable_plugins' );
 
@@ -31,9 +31,9 @@ if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") 
 	$verbose = true;
 	$filetype = $argv[3];
 	//remove numbers from string
-	if(substr($filetype, 0, 8) == "reversal")
+	if(substr($filetype, 0, 8) == 'reversal')
 	{
-		$filetype = "reversal";
+		$filetype = 'reversal';
 	}
 	$xhtmlFileURL = $argv[4];
 	$userid = $argv[5];
@@ -49,13 +49,13 @@ if(isset($xhtmlFileURL))
 {
 	//if using Docker
 	if (strpos($xhtmlFileURL, 'localhost:8000') !== false) {
-		$xhtmlFileURL = str_replace("localhost:8000", $_SERVER['SERVER_ADDR'], $xhtmlFileURL);
+		$xhtmlFileURL = str_replace('localhost:8000', $_SERVER['SERVER_ADDR'], $xhtmlFileURL);
 	}
 	$path_parts = pathinfo($xhtmlFileURL);
 
 	$uploadPath = $path_parts['dirname'];
 
-	$import = new sil_pathway_xhtml_Import();
+	$import = new Webonary_Pathway_Xhtml_Import();
 
 	$import->api = $api;
 	$import->verbose = $verbose;
@@ -64,8 +64,8 @@ if(isset($xhtmlFileURL))
 	$reader->open($xhtmlFileURL);
 
 
-	update_option("hasComposedCharacters", 0);
-	update_option("importStatus", $filetype);
+	update_option('hasComposedCharacters', 0);
+	update_option('importStatus', $filetype);
 
 	/*
 	 * Import
@@ -76,31 +76,32 @@ if(isset($xhtmlFileURL))
 
 	$current_user = wp_get_current_user();
 
-	if ( $filetype== 'configured' || $filetype == 'stem' || $filetype == 'reversal')
+	if ( $filetype == 'configured' || $filetype == 'stem' || $filetype == 'reversal')
 	{
 		echo "Starting Import\n";
 
 		$time_pre = microtime(true);
 
-		$sql = "SELECT menu_order
-		FROM $wpdb->posts
-		INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID
-			ORDER BY menu_order DESC
-			LIMIT 0,1";
+		/** @noinspection SqlResolve */
+		$sql = <<<SQL
+SELECT menu_order
+FROM {$wpdb->posts}
+INNER JOIN {$wpdb->prefix}term_relationships ON object_id = ID
+ORDER BY menu_order DESC
+LIMIT 0,1
+SQL;
 
-		$menu_order = $wpdb->get_var($sql);
+		$menu_order = (int)$wpdb->get_var($sql);
 
 		if($menu_order == NULL)
-		{
 			$menu_order = 0;
-		}
 
-		$header = "";
+		$header = '';
 		$isHead = false;
-		$letter = "";
-		$letterLanguage = "";
+		$letter = '';
+		$letterLanguage = '';
 
-		$postentry = "";
+		$postentry = '';
 		$isEntry = false;
 		$entry_counter = 1;
 
@@ -108,7 +109,9 @@ if(isset($xhtmlFileURL))
 		 *
 		 * Load the configured post entries
 		 */
-		while ($reader->read() && $reader->name !== 'head');
+		while ($reader->read() && $reader->name !== 'head') {
+			continue;
+		}
 
 		if ($reader->name === 'head')
 		{
@@ -134,9 +137,9 @@ if(isset($xhtmlFileURL))
 
 				if(($letterLanguage == "zh-CN" || $letterLanguage == "zh-Hans-CN"))
 				{
-					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php' );
-					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php' );
-					require_once( $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php' );
+					include_once $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/Pinyin.php';
+					include_once $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/DictLoaderInterface.php';
+					include_once $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/pinyin/src/FileDictLoader.php';
 
 					$pinyin = new Pinyin();
 					$letterHead = $pinyin->sentence($letterHead);
@@ -349,8 +352,8 @@ if(isset($xhtmlFileURL))
 		}
 		if($arrReversals != null)
 		{
-			$fileReversal1 = $uploadPath . "/" . $arrReversals[0]; //str_replace("configured.xhtml", $arrReversals[0], $xhtmlFileURL);
-			error_log("fileReversal1: " . $fileReversal1);
+			$fileReversal1 = $uploadPath . '/' . $arrReversals[0]; //str_replace("configured.xhtml", $arrReversals[0], $xhtmlFileURL);
+			error_log('fileReversal1: ' . $fileReversal1);
 			$xhtmlReversal1 = null;
 			if(file_exists($fileReversal1))
 			{
@@ -359,11 +362,11 @@ if(isset($xhtmlFileURL))
 
 			if(isset($xhtmlReversal1))
 			{
-				$filetype = str_replace(".xhtml", "", $arrReversals[0]);
+				$filetype = str_replace('.xhtml', '', $arrReversals[0]);
 				$xhtmlFileURL = $fileReversal1;
-				error_log($filetype . "#" . $xhtmlFileURL);
+				error_log($filetype . '#' . $xhtmlFileURL);
 
-				require($argv[1] . "wp-content/plugins/sil-dictionary-webonary/include/run_import.php");
+				include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/run_import.php';
 			}
 		}
 		else
@@ -374,20 +377,19 @@ if(isset($xhtmlFileURL))
 			$email = $user_info->user_email;
 
 			$message = "The export to Webonary is completed.\n";
-			$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
+			$message .= 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
 			try
 			{
-				error_log("Email sent to " . $email);
+				error_log('Email sent to ' . $email);
 				$headers = array(
 						'From: Webonary <wordpress@webonary.org>'
 				);
 				wp_mail($email, 'Webonary Export completed', $message, $headers);
 			}
 			catch(Exception $e) {
-				error_log("Error: " . $e->getMessage());
+				error_log('Error: ' . $e->getMessage());
 			}
 
 		}
 	}
 }
-?>

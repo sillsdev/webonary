@@ -314,7 +314,7 @@ function clean_out_dictionary_data ($delete_taxonomies = null)
 		$delete_taxonomies = $_POST['delete_taxonomies'];
 
 	//deletes the xhtml file, if still there because import didn't get completed
-	$import = new sil_pathway_xhtml_Import();
+	$import = new Webonary_Pathway_Xhtml_Import();
 	$file = $import->get_latest_xhtml_file();
 	if(isset($file->ID))
 		wp_delete_attachment($file->ID);
