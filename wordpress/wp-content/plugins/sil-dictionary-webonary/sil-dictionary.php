@@ -26,7 +26,9 @@ License: MIT
  * @since 3.1
  */
 
-include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
+if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
+
+include_once __DIR__ . DS . 'include' . DS . 'defines.php';
 
 // don't load directly
 if ( ! defined('ABSPATH') )
@@ -38,33 +40,44 @@ global $wpdb, $webonary_class_path, $webonary_template_path, $webonary_include_p
 $this_dir = dirname(__FILE__);
 
 /** @var string $webonary_class_path */
-$webonary_class_path = $this_dir . DIRECTORY_SEPARATOR . 'webonary';
+$webonary_class_path = $this_dir . DS . 'webonary';
 
 /** @var string $webonary_template_path */
-$webonary_template_path = $this_dir . DIRECTORY_SEPARATOR . 'templates';
+$webonary_template_path = $this_dir . DS . 'templates';
 
-$webonary_include_path = $this_dir . DIRECTORY_SEPARATOR . 'include';
+$webonary_include_path = $this_dir . DS . 'include';
 
 //region Dependencies
 function webonary_autoloader($class_name)
 {
-	global $webonary_class_path;
+	global $webonary_class_path, $webonary_include_path;
 
-	$pos = strpos($class_name, 'Webonary_');
+	if ($class_name == 'Pinyin' ||
+		$class_name == 'MemoryFileDictLoader' ||
+		$class_name == 'GeneratorFileDictLoader' ||
+		$class_name == 'FileDictLoader' ||
+		$class_name == 'DictLoaderInterface') {
 
-	// class name must begin with "Webonary_"
-	if ($pos === false || $pos != 0)
-		return null;
+		$success = include_once $webonary_include_path . DS . 'pinyin' . DS . 'src' . DS . $class_name . '.php';
+	}
+	else {
 
-	// check for an interface file
-	$pos = strpos($class_name, 'Webonary_Interface_');
+		$pos = strpos($class_name, 'Webonary_');
 
-	if ($pos !== false)
-		$class_file = 'interface' . DIRECTORY_SEPARATOR . substr($class_name, 19) . '.php';
-	else
-		$class_file = $class_name . '.php';
+		// class name must begin with "Webonary_"
+		if ($pos === false || $pos != 0)
+			return null;
 
-	$success = include_once $webonary_class_path . DIRECTORY_SEPARATOR . $class_file;
+		// check for an interface file
+		$pos = strpos($class_name, 'Webonary_Interface_');
+
+		if ($pos !== false)
+			$class_file = 'interface' . DS . substr($class_name, 19) . '.php';
+		else
+			$class_file = $class_name . '.php';
+
+		$success = include_once $webonary_class_path . DS . $class_file;
+	}
 
 	if ($success === false)
 		return new WP_Error('Failed', 'Not able to include ' . $class_name);
@@ -77,13 +90,16 @@ spl_autoload_register('webonary_autoloader');
 
 function webonary_admin_script()
 {
-	wp_register_script('webonary_admin_script', '', [], false, true);
+	wp_register_script('webonary_admin_script', plugin_dir_url(__FILE__) . 'js/admin_script.js', [], false, true);
 	wp_enqueue_script('webonary_admin_script');
-	wp_add_inline_script('webonary_admin_script', Webonary_Utility::includeTemplate('admin.script.html', array('@ajax_url' => admin_url('admin-ajax.php'))));
+	wp_localize_script(
+		'webonary_admin_script',
+		'webonary_ajax_obj',
+		['ajax_url' => admin_url('admin-ajax.php')]
+	);
 
-	wp_register_style('webonary_admin_style', '', [], false, 'all');
+	wp_register_style('webonary_admin_style', plugin_dir_url(__FILE__) . 'css/admin_styles.css', [], false, 'all');
 	wp_enqueue_style('webonary_admin_style');
-	wp_add_inline_style('webonary_admin_style', Webonary_Utility::includeTemplate('admin.styles.css', array()));
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 

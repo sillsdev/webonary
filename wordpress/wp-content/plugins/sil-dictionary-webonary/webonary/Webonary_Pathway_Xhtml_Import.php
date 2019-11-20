@@ -1,6 +1,7 @@
-<?php
+<?php /** @noinspection SqlResolve */
 
 
+use Overtrue\Pinyin\Pinyin;
 
 class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 
@@ -54,17 +55,18 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 
 		if(isset($_POST['btnRestartImport']))
 		{
-			$filetype = "configured";
+			$filetype = 'configured';
 			remove_entries('');
 			remove_entries('flexlinks');
-			echo "Restarting Import...<br>";
+			echo 'Restarting Import...<br>';
 
 			if($this->api == false && $this->verbose == false)
 			{
-				/** @noinspection HtmlUnknownTarget */
-				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
+				update_option('importStatus', $filetype);
+				Webonary_Utility::sendAndContinue(function() {
+					Webonary_Pathway_Xhtml_Import::redirectToAdminHome();
+				});
 			}
-			flush();
 
 			$file = $this->get_latest_xhtml_file();
 			$xhtmlFileURL = $file->url;
@@ -93,9 +95,11 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 
 			if($this->api == false && $this->verbose == false)
 			{
-				echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
+				update_option('importStatus', $filetype);
+				Webonary_Utility::sendAndContinue(function() {
+					Webonary_Pathway_Xhtml_Import::redirectToAdminHome();
+				});
 			}
-			flush();
 
 			$file = $this->get_latest_xhtml_file();
 			$xhtmlFileURL = $file->url;
@@ -121,8 +125,6 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 			case 1 :
 				check_admin_referer('import-upload');
 
-				flush();
-
 				// Get the XHTML file
 				$result = $this->upload_files('xhtml');
 				if (is_wp_error( $result ))
@@ -143,15 +145,17 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 				$css_file = $result['file'];
 
 				if(isset($_POST['filetype']))
-				{
 					$filetype = $_POST['filetype'];
-				}
+				else
+				    $filetype = 'configured';
 
 				if($this->api == false && $this->verbose == false)
 				{
-					echo "You can now close the browser window. <a href=\"../wp-admin/admin.php?page=webonary\">Click here to view the import status</a><br>";
+					update_option('importStatus', $filetype);
+				    Webonary_Utility::sendAndContinue(function() {
+						Webonary_Pathway_Xhtml_Import::redirectToAdminHome();
+                    });
 				}
-				flush();
 
 				$file = $this->get_latest_xhtml_file();
 				if(isset($file))
@@ -238,8 +242,6 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 
 		}
 
-
-		flush();
 		echo __( 'Finished!', 'sil_dictionary' );
 	}
 	//-----------------------------------------------------------------------------//
@@ -567,21 +569,21 @@ SQL;
 			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
 				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
 				<p>
-					<label for="upload"><?php _e( 'Choose an XHTML file from your computer:' ); ?> (<?php printf( __('Maximum size: %s' ), $size ); ?>)
+					<label for="upload_xhtml"><?php _e( 'Choose an XHTML file from your computer:' ); ?> (<?php printf( __('Maximum size: %s' ), $size ); ?>)
 						<br>
 						<?php _e('**XHTML file must be sorted. Webonary does not sort the entries.**'); ?>
 					</label>
 				</p>
 				<p>
-					<input type="file" id="upload" name="xhtml" size="100" />
+					<input type="file" id="upload_xhtml" name="xhtml" size="100" accept=".xhtml"/>
 				</p>
 				<div id="uploadCSS">
 					<p>
-						<label for="upload"><?php _e( 'Choose a CSS file from your computer (optional):' ); ?>
+						<label for="upload_css"><?php _e( 'Choose a CSS file from your computer (optional):' ); ?>
 							(<?php printf( __('Maximum size: %s' ), $size ); ?>)</label>
 					</p>
 					<p>
-						<input type="file" id="upload" name="css" size="100" />
+						<input type="file" id="upload_css" name="css" size="100" accept=".css"/>
 					</p>
 				</div>
 				<?php
@@ -621,7 +623,7 @@ SQL;
 			*/
 					?>
 				<p>
-					<input type="submit" class="button" value="<?php esc_attr_e( 'Upload files and import' ); ?>" />
+					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Upload files and import' ); ?>" />
 				</p>
 			</form>
 		<?php
@@ -729,26 +731,28 @@ SQL;
 	/**
 	 * Header for the screen
 	 */
-	function header() {
-		echo '<div class="wrap">';
-		echo '<h2>' . __( 'Import SIL FLEX XHTML', 'sil_dictionary' ) . '</h2>';
+	private function header() {
+		return '<div class="wrap">' . PHP_EOL . '<h2>' . __( 'Import SIL FLEX XHTML', 'sil_dictionary' ) . '</h2>';
 	}
 
-	/**
-	 * Import the writing systems (languages)
-	 * @global <type> $wpdb
-	 */
 
 	/**
 	 * Import entries for the Configured Dictionary.
-	 * @global <type> $wpdb
+	 * @param string $post_entry
+	 * @param int $entry_counter
+	 * @param $menu_order
+	 * @param bool $isNewFLExExport
+	 * @param string $browse_letter
+	 * @return int
+	 * @global wpdb $wpdb
 	 */
-	function import_xhtml_entries ($postentry, $entry_counter, $menu_order, $isNewFLExExport = true, $browseletter = "") {
+	function import_xhtml_entries ($post_entry, $entry_counter, $menu_order, $isNewFLExExport = true, $browse_letter = '') {
 		global $wpdb;
 
+		/** @var DOMDocument $doc */
 		$doc = new DomDocument();
 		$doc->preserveWhiteSpace = false;
-		$doc->loadXML($postentry);
+		$doc->loadXML($post_entry);
 
 		$this->dom_xpath = new DOMXPath($doc);
 		$this->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
@@ -758,7 +762,7 @@ SQL;
 			//  Make sure we're not working on a reversal file.
 			$reversals = $this->dom_xpath->query( '(./xhtml:span[contains(@class, "reversal-form")])[1]|(./xhtml:span[contains(@class, "reversalform")])[1]' );
 			if ( $reversals->length > 0 )
-				return;
+				return $entry_counter;
 		}
 
 		$doc = $this->convert_fieldworks_images_to_wordpress($doc);
@@ -792,15 +796,15 @@ SQL;
 
 			if(isset($headword))
 			{
-				$headword_language = $headword->getAttribute( "lang" );
+				$headword_language = $headword->getAttribute( 'lang' );
 				if(strlen(trim($headword_language)) == 0)
 				{
-					$headword_language = $headword->childNodes->item(0)->getAttribute( "lang" );
+					$headword_language = $headword->childNodes->item(0)->getAttribute( 'lang' );
 
 					//if span with language attribute is inside a link
 					if(strlen(trim($headword_language)) == 0)
 					{
-						$headword_language = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( "lang" );
+						$headword_language = $headword->childNodes->item(0)->childNodes->item(0)->getAttribute( 'lang' );
 					}
 				}
 
@@ -829,11 +833,11 @@ SQL;
 			$headword_text = normalizer_normalize($headword->textContent, Normalizer::NFC );
 		}
 
-		$flexid = $entry->getAttribute("id");
+		$flex_id = $entry->getAttribute("id");
 
-		if(strlen(trim($flexid)) == 0)
+		if(strlen(trim($flex_id)) == 0)
 		{
-			$flexid = $headword_text;
+			$flex_id = $headword_text;
 		}
 
 		$entry->removeAttributeNS("http://www.w3.org/1999/xhtml", "");
@@ -858,7 +862,7 @@ SQL;
 		$entry_xml = normalizer_normalize($entry_xml, Normalizer::NFC );
 		//$entry_xml = str_replace("'","&#39;",$entry_xml);
 
-		$browseletter = normalizer_normalize($browseletter, Normalizer::NFC );
+		$browse_letter = normalizer_normalize($browse_letter, Normalizer::NFC );
 
 		$post_parent = 0;
 
@@ -868,7 +872,7 @@ SQL;
 
 		//$post_id = $this->get_post_id( $flexid );
 		//$post_id = $this->get_post_id_bytitle( $headword_text, $headword_language, $subid, true);
-		$post_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->posts . " WHERE post_name = '" . $flexid . "'");
+		$post_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->posts . " WHERE post_name = '" . $flex_id . "'");
 
 		//$post_id = wp_insert_post( $post );
 
@@ -877,7 +881,7 @@ SQL;
 			$sql = $wpdb->prepare(
 				"INSERT INTO ". $wpdb->posts . " (post_date, post_title, post_content, post_status, post_parent, post_name, comment_status, menu_order, post_content_filtered)
 				VALUES (NOW(), '%s', '%s', 'publish', %d, '%s', '%s', %d, '%s')",
-				trim($headword_text), $entry_xml, $post_parent, $flexid, get_option('default_comment_status'), $menu_order, $browseletter );
+				trim($headword_text), $entry_xml, $post_parent, $flex_id, get_option('default_comment_status'), $menu_order, $browse_letter );
 
 			$wpdb->query( $sql );
 
@@ -887,13 +891,13 @@ SQL;
 				$post_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->posts . " WHERE post_title = '" . addslashes(trim($headword_text)) . "'");
 			}
 
-			wp_set_object_terms( $post_id, "webonary", 'category' );
+			wp_set_object_terms( $post_id, 'webonary', 'category' );
 		}
 		else
 		{
 			$sql = $wpdb->prepare(
 				"UPDATE " . $wpdb->posts . " SET post_date = NOW(), post_title = '%s', post_content = '%s', post_status = 'publish', pinged='', post_parent=%d, post_name='%s', comment_status='%s' WHERE ID = %d",
-				trim($headword_text), $entry_xml, $post_parent, $flexid, get_option('default_comment_status'), $post_id);
+				trim($headword_text), $entry_xml, $post_parent, $flex_id, get_option('default_comment_status'), $post_id);
 
 			$wpdb->query( $sql );
 		}
@@ -903,16 +907,16 @@ SQL;
 			$wpdb->queries = null;
 			*/
 		/*
-		 * Show progresss to the user.
+		 * Show progress to the user.
 		 */
 		$this->import_xhtml_show_progress( $entry_counter, null, $headword_text, "Step 1 of 2: Importing Post Entries" );
 		$h++;
 		//} // foreach ( $headwords as $headword )
 
-		if($entry_counter % 50 == 0)
-		{
-			////sleep(1);
-		}
+//		if($entry_counter % 50 == 0)
+//		{
+//			////sleep(1);
+//		}
 
 		if($h > 0)
 		{
@@ -933,7 +937,6 @@ SQL;
 
 		if($this->verbose)
 		{
-			flush();
 			if($entry_counter == 1 && $this->api == true)
 			{
 				echo $msg . "\n";
@@ -1182,7 +1185,7 @@ SQL;
 		{
 			if($sd_numbers->length > 0)
 			{
-				update_option("useSemDomainNumbers", 1);
+				update_option('useSemDomainNumbers', 1);
 			}
 		}
 
@@ -1363,10 +1366,6 @@ SQL;
 					$reversal_browsehead = $reversal_head;
 					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN"))
 					{
-						require_once( dirname( __FILE__ ) . '/pinyin/src/Pinyin.php' );
-						require_once( dirname( __FILE__ ) . '/pinyin/src/DictLoaderInterface.php' );
-						require_once( dirname( __FILE__ ) . '/pinyin/src/FileDictLoader.php' );
-
 						$pinyin = new Pinyin();
 						$reversal_browsehead = $pinyin->sentence($reversal_head);
 						$browseletter = substr($reversal_browsehead, 0, 1);
@@ -1441,7 +1440,7 @@ SQL;
 		/*
 		 * Show progresss to the user.
 		 */
-		$this->import_xhtml_show_progress( $entry_counter, $entries_count, $headword_text );
+		$this->import_xhtml_show_progress( $entry_counter, null, $headword_text );
 
 		$entry_counter++;
 
@@ -1524,7 +1523,7 @@ SQL;
 	{
 		global $wpdb;
 
-		$search_table_exists = $wpdb->get_var( "show tables like '" . Webonary_Configuration::$search_table_name . "'" ) == Webonary_Configuration::$search_table_name;
+		$search_table_exists = $wpdb->get_var( 'show tables like \'' . Webonary_Configuration::$search_table_name . '\'' ) == Webonary_Configuration::$search_table_name;
 		$pos_taxonomy_exists = taxonomy_exists( Webonary_Configuration::$pos_taxonomy );
 		$semantic_domains_taxonomy_exists = taxonomy_exists( Webonary_Configuration::$semantic_domains_taxonomy );
 
@@ -1536,10 +1535,15 @@ SQL;
 			$entry_counter = 1;
 			$entries_count = count($arrPosts);
 
-			update_option("useSemDomainNumbers", 0);
+			update_option('useSemDomainNumbers', 0);
 
 			foreach($arrPosts as $post)
 			{
+			    $content_len = strlen($post->post_content);
+				if($content_len > 100000) {
+				    print 'too long' . PHP_EOL;
+                }
+
 				$subentry = false;
 				if ( $post->ID ){
 
@@ -1611,18 +1615,21 @@ SQL;
 		}
 	}
 
-	/**
-	 * Upload the files indicated by the user. An override of wp_import_handle_upload.
-	 *
-	 * @param string $which_file = The file being uploaded
-	 * @return array $file = the file, $id = the file's ID
-	 */
 
-	// The max file size is determined by the settings in php.ini. upload_max_files is set to 2MB by default
-	// in development versions, which is too small for what we do. The setting has been found to be higher
-	// in production settings. The post_max_size apparently needs to be at least as big as the
-	// upload_max_files setting. If the file size is bigger than the limit, the server simply will not
-	// upload it, and there is no indication to the user as to what happened.
+	/**
+     * Upload the files indicated by the user. An override of wp_import_handle_upload.
+     *
+     * The max file size is determined by the settings in php.ini. upload_max_files is set to 2MB by default
+	 * in development versions, which is too small for what we do. The setting has been found to be higher
+	 * in production settings. The post_max_size apparently needs to be at least as big as the
+	 * upload_max_files setting. If the file size is bigger than the limit, the server simply will not
+	 * upload it, and there is no indication to the user as to what happened.
+     *
+	 * @param string $which_file = The file being uploaded
+	 * @param string $filetype
+	 * @param string $reversalLang
+	 * @return array|string
+	 */
 	function upload_files( $which_file, $filetype = "",  $reversalLang = "") {
 		global $wpdb;
 		$upload_dir = wp_upload_dir();
@@ -1640,7 +1647,7 @@ SQL;
 		}
 
 		$overrides = array( 'test_form' => false, 'test_type' => false );
-		$file = wp_handle_upload( $_FILES[$which_file], $overrides );
+		$file = wp_handle_upload($_FILES[$which_file], $overrides);
 
 		if ( isset( $file['error'] ) )
 		{
@@ -1732,4 +1739,338 @@ SQL;
 		return $name.$ext;
 	}
 
+	public static function redirectToAdminHome()
+    {
+        $url = get_admin_url() . 'admin.php?page=webonary';
+		//header('refresh:2;url=' . $url);
+		header('Location: ' . $url);
+    }
+
+	/**
+	 * @param string $xhtml_file_url
+	 * @param string $file_type
+     *
+     * @global wpdb $wpdb
+	 */
+    public function process_xhtml_file($xhtml_file_url, $file_type)
+    {
+        global $wpdb;
+
+        $this->WriteLine('Begin processing');
+
+		$entry_counter = 1;
+		$arrLetters = array();
+
+		$path_parts = pathinfo($xhtml_file_url);
+		$upload_dir = $path_parts['dirname'];
+
+		$reader = new XMLReader;
+		$reader->open($xhtml_file_url);
+
+		$this->WriteLine('Reader opened');
+
+		update_option('hasComposedCharacters', 0);
+		update_option('importStatus', $file_type);
+
+		Webonary_Configuration::$search_table_name = $wpdb->prefix . 'sil_search';
+
+		/** @var WP_User $current_user */
+		$current_user = wp_get_current_user();
+
+		if ($file_type == 'configured' || $file_type == 'stem' || $file_type == 'reversal')
+		{
+			$this->WriteLine('File type = ' . $file_type);
+
+			$time_pre = microtime(true);
+
+			$sql = <<<SQL
+SELECT menu_order
+FROM {$wpdb->posts}
+INNER JOIN {$wpdb->prefix}term_relationships ON object_id = ID
+ORDER BY menu_order DESC
+LIMIT 0,1
+SQL;
+			$menu_order = (int)$wpdb->get_var($sql);
+
+			if($menu_order == NULL)
+				$menu_order = 0;
+
+			$letter = '';
+			$letterLanguage = '';
+
+			$entry_counter = 1;
+
+			/*
+			 *
+			 * Load the configured post entries
+			 */
+			while ($reader->read() && $reader->name !== 'head') {
+				continue;
+			}
+
+			if ($reader->name === 'head')
+			{
+				$this->WriteLine('Found header');
+
+				$header = $reader->readOuterXml();
+				$this->import_xhtml_writing_systems($header);
+			}
+
+			$a = 0;
+			$isNewFLExExport = true;
+			$counter = 1;
+			while ($reader->read())
+			{
+				$this->WriteLine('Processing entry ' . $counter++);
+
+				while($reader->getAttribute('class') == 'letter')
+				{
+					$letterHead = $reader->readInnerXml();
+					$letterLanguage = $reader->getAttribute('lang');
+
+					if(($letterLanguage == 'zh-CN' || $letterLanguage == 'zh-Hans-CN'))
+					{
+						$pinyin = new Pinyin();
+						$letterHead = $pinyin->sentence($letterHead);
+						$letterHead = substr($letterHead, 0, 1);
+						$letterHead = strtolower($letterHead);
+					}
+
+					if(strpos($letterHead, ' ') > 0)
+					{
+						$letters = explode(" ", $letterHead);
+
+						$letter = $letters[1];
+					}
+					else
+					{
+						$letter = $letterHead;
+					}
+
+					if (!in_array($letter, $arrLetters) && strlen(trim($letter)) > 0) {
+						$arrLetters[$a] = $letter;
+						$a++;
+					}
+
+					$reader->next('div');
+				}
+
+				$xml_class = $reader->getAttribute('class');
+				while ($xml_class === 'entry' ||
+                    $xml_class === 'mainentrycomplex' ||
+                    $xml_class === 'reversalindexentry' ||
+                    $xml_class === 'minorentry' ||
+                    $xml_class === 'minorentryvariant' ||
+                    $xml_class === 'minorentrycomplex')
+				{
+					$post_entry =  $reader->readOuterXml();
+
+					if($entry_counter == 1)
+					{
+						$id = $reader->getAttribute('id');
+
+						if(strlen($id) < 10 && $isNewFLExExport == true)
+						{
+							$isNewFLExExport = false;
+							echo '<span style="color:red; font-weight:bold;">Older FLEx xhtml exports are no longer supported by the Webonary importer. Please upgrade to FLEx 8.3.</span><br>';
+							flush();
+						}
+
+					}
+
+					if (trim($post_entry) != '' && $isNewFLExExport === true)
+					{
+						if ($file_type == 'stem')
+						{
+							$entry_counter = $this->import_xhtml_stem_indexes($post_entry, $entry_counter);
+							if(strlen($letterLanguage) > 0)
+							{
+								update_option('languagecode', $letterLanguage);
+							}
+						}
+                        elseif ($file_type == 'reversal')
+						{
+							Webonary_Configuration::$reversal_table_name = $wpdb->prefix . 'sil_reversals';
+							$entry_counter = $this->import_xhtml_reversal_indexes($post_entry, $entry_counter, $letter);
+						}
+						else
+						{
+							// $file_type == configured
+							$entry_counter = $this->import_xhtml_entries($post_entry, $entry_counter, $menu_order, $isNewFLExExport, $letter);
+							if(strlen($letterLanguage) > 0)
+							{
+								update_option('languagecode', $letterLanguage);
+							}
+						}
+
+						$menu_order++;
+					}
+
+					$reader->next('div');
+					$xml_class = $reader->getAttribute('class');
+				}
+			}
+
+			if($entry_counter == 1)
+				echo '<div style="color:red">ERROR: No entries found.</div><br>';
+
+			$time_post = microtime(true);
+			$exec_time = $time_post - $time_pre;
+
+			echo $exec_time . '<br>';
+		}
+
+		$email_headers = array('From: Webonary <webonary@sil.org>');
+
+		$alphabet = implode(',', $arrLetters);
+
+		$this->WriteLine('Finished importing, moving on');
+
+		if($file_type == 'configured')
+		{
+			update_option('vernacular_alphabet', $alphabet);
+
+			update_option('totalConfiguredEntries', ($entry_counter - 1));
+
+			update_option('importStatus', 'indexing');
+
+			$this->WriteLine('Indexing strings');
+
+			$this->index_searchstrings();
+
+			update_option('hasComposedCharacters', $this->hasComposedCharacters());
+
+			$message = "The import of the vernacular (configured) xhtml export is completed.\n";
+			$message .= 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
+
+			wp_mail( $current_user->user_email, 'Import complete', $message, $email_headers);
+
+			echo "Import finished\n";
+		}
+        elseif ($file_type == 'stem')
+		{
+			echo "Import finished\n";
+		}
+        elseif ( $file_type == 'reversal')
+		{
+			//reversal1_langcode
+			if(isset($_POST['languagecode']))
+			{
+				$reversalLang = $_POST['languagecode'];
+			}
+			else
+			{
+				$reversalLang = str_replace($upload_dir . '/reversal_', '', $xhtml_file_url);
+				$reversalLang = str_replace('.xhtml', '', $reversalLang);
+				$reversalLang = str_replace('_', '-', $reversalLang);
+			}
+
+			$reversalAlphabetOption = 'reversal1_alphabet';
+
+			if(get_option('reversal1_langcode') != $reversalLang)
+			{
+				$reversalAlphabetOption = 'reversal2_alphabet';
+
+				if(get_option('reversal2_langcode') != $reversalLang)
+				{
+					$reversalAlphabetOption = 'reversal3_alphabet';
+				}
+			}
+			similar_text(get_option($reversalAlphabetOption), $alphabet, $perSimilarAlphabet);
+
+			if($perSimilarAlphabet < 60)
+			{
+				update_option($reversalAlphabetOption, $alphabet);
+			}
+
+			update_option('importStatus', 'importFinished');
+			//$import->index_reversals();
+
+			$message = "The reversal import is completed.\n";
+			$message .= 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
+
+			wp_mail( $current_user->user_email, 'Reversal Import complete', $message, $email_headers);
+		}
+
+		$this->WriteLine('Delete file after successful processing');
+
+		$file = $this->get_latest_xhtml_file();
+
+		if (isset($file))
+		{
+			if(substr($file->url, strlen($file->url) - 5, 5) == 'xhtml')
+			{
+				wp_delete_attachment($file->ID);
+				error_log('deleted attachment: ' . $file->url);
+			}
+		}
+		else
+		{
+			//file is inside extracted zip directory
+			unlink($xhtml_file_url);
+
+			error_log('unlinked: ' . $xhtml_file_url);
+
+			error_log('Upload Path: ' . $upload_dir . "\n");
+
+			$files = scandir($upload_dir);
+			$arrReversals = null;
+			$x = 0;
+			foreach ($files as $file)
+			{
+				if (substr($file, 0, 9) == 'reversal_' && substr($file, strlen($file) - 5, 5) == 'xhtml')
+				{
+					error_log('reversal file: ' . $file . "\n");
+					$arrReversals[$x] = $file;
+					$x++;
+				}
+			}
+			if($arrReversals != null)
+			{
+				$fileReversal1 = $upload_dir . '/' . $arrReversals[0];
+				error_log('fileReversal1: ' . $fileReversal1);
+				$xhtmlReversal1 = null;
+				if(file_exists($fileReversal1))
+					$xhtmlReversal1 = file_get_contents($fileReversal1);
+
+				if(isset($xhtmlReversal1))
+				{
+					$file_type = str_replace('.xhtml', '', $arrReversals[0]);
+					$xhtmlFileURL = $fileReversal1;
+					error_log($file_type . '#' . $xhtmlFileURL);
+
+					include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/run_import.php';
+				}
+			}
+			else
+			{
+				error_log("Export completed.\n");
+
+				$user_info = get_userdata($current_user->ID);
+				$email = $user_info->user_email;
+
+				$message = "The export to Webonary is completed.\n";
+				$message .= 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
+				try
+				{
+					error_log('Email sent to ' . $email);
+					$headers = array(
+						'From: Webonary <wordpress@webonary.org>'
+					);
+					wp_mail($email, 'Webonary Export completed', $message, $headers);
+				}
+				catch(Exception $e) {
+					error_log('Error: ' . $e->getMessage());
+				}
+			}
+		}
+	}
+
+	private function WriteLine($msg)
+    {
+        if (!$this->verbose)
+            return;
+
+        print $msg . PHP_EOL;
+    }
 } // class

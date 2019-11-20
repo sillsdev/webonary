@@ -5,6 +5,7 @@
 add_action('wp_ajax_getAjaxLanguage', 'Webonary_Ajax::ajaxLanguage');
 add_action('wp_ajax_nopriv_getAjaxLanguage', 'Webonary_Ajax::ajaxLanguage');
 add_action('wp_ajax_getAjaxCurrentIndexedCount', 'Webonary_Ajax::ajaxCurrentIndexedCount');
+add_action('wp_ajax_getAjaxCurrentImportedCount', 'Webonary_Ajax::ajaxCurrentImportedCount');
 
 function relevanceSave()
 {
@@ -328,7 +329,7 @@ function webonary_conf_widget($showTitle = false)
 			</div>
             </form>
 
-			<p><?php _e('<a href="admin.php?import=pathway-xhtml" style="font-size:16px;">Click here to import your FLEx data</a>', 'sil_dictionary'); ?></p>
+			<p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to import your FLEx data', 'sil_dictionary'); ?></a></p>
 
             <form id="configuration-form" method="post" action="">
 			<p>
@@ -370,7 +371,7 @@ function webonary_conf_widget($showTitle = false)
 			}
 			?>
 				<?php _e('Are you sure you want to delete the dictionary data?', 'sil_dictionary'); ?>
-				<input type="submit" name="delete_data" value="<?php _e('Delete', 'sil_dictionary'); ?>">
+				<input style="margin-left: 8px" class="button button-webonary" type="submit" name="delete_data" value="<?php _e('Delete', 'sil_dictionary'); ?>">
 				<br>
 				<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
 			</p>
@@ -787,7 +788,7 @@ function webonary_conf_widget($showTitle = false)
 							if (is_super_admin()) {
 								?>
                                 <input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
-                                <input type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
+                                <input class="button-webonary" type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
 								<?php
 
 								$fontNr++;

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 
 
 class Webonary_Info
@@ -110,28 +110,32 @@ class Webonary_Info
 		}
 		else
 		{
-			$status .= 'Importing... <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a><br>';
-			$status .= ' You will receive an email when the import has completed. You don\'t need to stay online.';
-			$status .= '<br>';
+			$status .= 'Importing... <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
+			$status .= '<p>You will receive an email when the import has completed. You don\'t need to stay online.</p>';
 		}
 
 		if($import_status == 'indexing')
 		{
 			$totalImportedPosts = count(self::posts());
 
+			$percent = (int)ceil(($countIndexed / $countImported) * 100);
+			if ($percent > 100)
+				$percent = 100;
+
 			$status .= 'Indexing <span id="sil-count-indexed" class="sil-bold">' . $countIndexed . '</span> of <span class="sil-bold">' . $totalImportedPosts . '</span> entries' . PHP_EOL;
-			$status .= '<br>If you believe indexing has timed out, click here: <input type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings" formaction="admin.php?import=pathway-xhtml&step=2">';
+			$status .= '<br><progress id="sil-index-progress" max="100" value="' . $percent . '"></progress>';
+			$status .= '<p>If you believe indexing has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 
 			return $status;
 		}
 
 		if($import_status == 'configured')
 		{
-			$status .= $countImported . ' entries imported (not yet indexed)';
+			$status .= '<span id="sil-count-imported" class="sil-bold">' . $countImported . '</span> entries imported (not yet indexed)';
 
 			if($counts->time_diff > 5)
 			{
-				$status .= '<br>It appears the import has timed out, click here: <input type="submit" name="btnRestartImport" value="Restart Import" formaction="admin.php?import=pathway-xhtml&step=2">';
+				$status .= '<p>It appears the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartImport" value="Restart Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			}
 			return $status;
 		}
@@ -140,7 +144,7 @@ class Webonary_Info
 		{
 			$status .= '<strong>Importing reversals. So far imported: ' . count($arrReversalsImported) . ' entries.</strong>';
 
-			$status .= '<br>If you believe the import has timed out, click here: <input type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2">';
+			$status .= '<p>If you believe the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			return $status;
 		}
 
@@ -241,28 +245,66 @@ SQL;
 		return $arrIndexed;
 	}
 
-	public static function posts($index = ""){
+	public static function posts($index = '')
+	{
 		global $wpdb;
 
-		// @todo: If $headword_text has a double quote in it, this
-		// will probably fail.
-		$sql = "SELECT ID, post_title, post_content, post_parent, menu_order " .
-			" FROM $wpdb->posts " .
-			" INNER JOIN " . $wpdb->prefix . "term_relationships ON object_id = ID " .
-			" WHERE " . $wpdb->prefix . "term_relationships.term_taxonomy_id = " . self::category_id();
-		//using pinged field for not yet indexed
-		$sql .= " AND post_status = 'publish'";
-		if(strlen($index) > 0 && $index != "-")
-		{
-			$sql .= " AND pinged = '" . $index . "'";
-		}
-		if($index == "-")
-		{
-			$sql .= " AND pinged = ''";
-		}
-		$sql .= " ORDER BY menu_order ASC";
+		$args = [self::category_id()];
 
+		$sql = <<<SQL
+SELECT p.ID 
+FROM {$wpdb->posts} AS p
+  INNER JOIN {$wpdb->prefix}term_relationships AS t ON t.object_id = p.ID
+WHERE t.term_taxonomy_id = %s
+  AND p.post_status = 'publish'
+SQL;
+
+		if(strlen($index) > 0 && $index != '-')
+		{
+			$sql .= ' AND pinged = %s';
+			$args[] = $index;
+		}
+		if($index == '-')
+		{
+			$sql .= ' AND pinged = \'\'';
+		}
+
+		$sql .= ' ORDER BY menu_order ASC';
+
+		$sql = $wpdb->prepare($sql, $args);
 		return $wpdb->get_results($sql);
+	}
+
+	public static function getPost($post_id)
+	{
+		global $wpdb;
+
+		$sql = <<<SQL
+SELECT ID, post_title, post_content, post_parent, menu_order 
+FROM {$wpdb->posts} AS p
+WHERE ID = %s
+SQL;
+
+		$sql = $wpdb->prepare($sql, $post_id);
+		return $wpdb->get_row($sql);
+	}
+
+	public static function getNextPost()
+	{
+		global $wpdb;
+
+		$sql = <<<SQL
+SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order 
+FROM {$wpdb->posts} AS p
+  INNER JOIN {$wpdb->prefix}term_relationships AS t ON t.object_id = p.ID
+WHERE t.term_taxonomy_id = %s
+  AND p.post_status = 'publish'
+  AND p.pinged = ''
+ORDER BY p.ID
+LIMIT 1;
+SQL;
+		$sql = $wpdb->prepare($sql, self::category_id());
+		return $wpdb->get_row($sql);
 	}
 
 	/**
@@ -276,7 +318,6 @@ SQL;
 		if (!is_null(self::$post_counts))
 			return self::$post_counts;
 
-		/** @noinspection SqlResolve */
 		$sql = <<<SQL
 SELECT SUM(IF(pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count,
        MAX(IF(pinged IN ('indexed', 'linksconverted'), post_date, NULL)) AS indexed_date,

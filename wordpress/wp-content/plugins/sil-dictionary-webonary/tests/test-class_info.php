@@ -95,5 +95,21 @@ class InfoTest extends WP_UnitTestCase {
 		$this->assertContains("missing senses for 1 entries", $status);
 	}
 
+	function test_Import_Halbi()
+	{
+		// $this->markTestSkipped('Long Running Test');
 
+		wp_set_current_user(1);
+
+		update_option('importStatus', 'configured');
+
+		$xml_file = __DIR__ . '/data/halbi/configured.xhtml';
+
+		$import = new Webonary_Pathway_Xhtml_Import();
+
+		$import->api = false;
+		$import->verbose = true;
+
+		$import->process_xhtml_file($xml_file, 'configured');
+	}
 }
