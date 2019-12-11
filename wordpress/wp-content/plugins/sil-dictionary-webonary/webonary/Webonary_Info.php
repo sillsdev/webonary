@@ -3,49 +3,15 @@
 
 class Webonary_Info
 {
-	/** @var IIndexedCounts */
-	private static $post_counts;
-
-	/** @var int */
-	private static $category_id;
-
-	/**
-	 * @return int
-	 */
-	public static function category_id()
-	{
-		global $wpdb;
-
-		if (!is_null(self::$category_id))
-			return self::$category_id;
-
-		/** @noinspection SqlResolve */
-		self::$category_id = (int)$wpdb->get_var("SELECT term_id FROM {$wpdb->terms} WHERE slug = 'webonary'");
-
-		if (self::$category_id == 0) {
-
-			/** @noinspection SqlResolve */
-			$sql = "INSERT INTO {$wpdb->terms} (`name`, slug, term_group) VALUES ('Webonary', 'webonary', 0)";
-			$wpdb->query($sql);
-
-			self::$category_id = $wpdb->insert_id;
-		}
-
-
-		return self::$category_id;
-	}
-
 	public static function getCountIndexed()
 	{
-		$cat_id = self::category_id();
-		$counts = self::postCountByImportStatus($cat_id);
+		$counts = self::postCountByImportStatus();
 		return (int)(empty($counts->indexed_count) ? 0 : $counts->indexed_count);
 	}
 
 	public static function getCountImported()
 	{
-		$cat_id = self::category_id();
-		$counts = self::postCountByImportStatus($cat_id);
+		$counts = self::postCountByImportStatus();
 		return (int)(empty($counts->unindexed_count) ? 0 : $counts->unindexed_count);
 	}
 
@@ -56,8 +22,7 @@ class Webonary_Info
 	{
 		global $wpdb;
 
-		$cat_id = self::category_id();
-		$counts = self::postCountByImportStatus($cat_id);
+		$counts = self::postCountByImportStatus();
 
 		if($counts->total_count == 0)
 			return 'No entries have been imported yet. <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
@@ -69,22 +34,6 @@ class Webonary_Info
 
 		$status = '';
 
-		if(get_option('useSemDomainNumbers') == 0)
-		{
-			/** @noinspection SqlResolve */
-			$sql = "SELECT COUNT(taxonomy) AS sdCount FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = 'sil_semantic_domains'";
-
-			$sdCount = $wpdb->get_var($sql);
-
-			if($sdCount > 0)
-			{
-				$status .= '<br>';
-				$status .= '<span style="color:red;">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
-				$status .= 'Tip: You can hide the domain numbers from displaying, <a href=" https://www.webonary.org/help/tips-tricks/" target=_"blank">see here</a>.';
-				$status .= '<hr>';
-			}
-		}
-
 		$arrReversalsImported = self::reversalPosts();
 		$arrIndexed = self::number_of_entries();
 		$countIndexed = self::getCountIndexed();
@@ -92,6 +41,22 @@ class Webonary_Info
 
 		if($import_status == 'importFinished')
 		{
+			if(get_option('useSemDomainNumbers') == 0)
+			{
+				/** @noinspection SqlResolve */
+				$sql = "SELECT COUNT(taxonomy) AS sdCount FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = 'sil_semantic_domains'";
+
+				$sdCount = $wpdb->get_var($sql);
+
+				if($sdCount > 0)
+				{
+					$status .= '<br>';
+					$status .= '<span style="color:red;">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
+					$status .= 'Tip: You can hide the domain numbers from displaying, <a href=" https://www.webonary.org/help/tips-tricks/" target=_"blank">see here</a>.';
+					$status .= '<hr>';
+				}
+			}
+
 			if(!empty($posts) && !empty($posts->post_date))
 			{
 				$status .= 'Last import of configured xhtml was at ' . $posts->post_date . ' (server time).<br>';
@@ -116,15 +81,13 @@ class Webonary_Info
 
 		if($import_status == 'indexing')
 		{
-			$totalImportedPosts = count(self::posts());
-
 			$percent = (int)ceil(($countIndexed / $countImported) * 100);
 			if ($percent > 100)
 				$percent = 100;
 
-			$status .= 'Indexing <span id="sil-count-indexed" class="sil-bold">' . $countIndexed . '</span> of <span class="sil-bold">' . $totalImportedPosts . '</span> entries' . PHP_EOL;
+			$status .= 'Indexing <span id="sil-count-indexed" class="sil-bold">' . $countIndexed . '</span> of <span class="sil-bold">' . self::getPostCount() . '</span> entries' . PHP_EOL;
 			$status .= '<br><progress id="sil-index-progress" max="100" value="' . $percent . '"></progress>';
-			$status .= '<p>If you believe indexing has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnReindex" id="btnReindex" value="Index Search Strings" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
+			$status .= '<p id="timed-out-msg" style="display: none">If you believe indexing has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="button" name="btnReindex" id="btnReindex" value="Index Search Strings" onclick="RestartIndexing();"></p>';
 
 			return $status;
 		}
@@ -249,13 +212,15 @@ SQL;
 	{
 		global $wpdb;
 
-		$args = [self::category_id()];
+		$args = [];
 
 		$sql = <<<SQL
 SELECT p.ID 
-FROM {$wpdb->posts} AS p
-  INNER JOIN {$wpdb->prefix}term_relationships AS t ON t.object_id = p.ID
-WHERE t.term_taxonomy_id = %s
+FROM {$wpdb->prefix}posts AS p
+  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
+  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
 SQL;
 
@@ -271,8 +236,43 @@ SQL;
 
 		$sql .= ' ORDER BY menu_order ASC';
 
-		$sql = $wpdb->prepare($sql, $args);
+		if (!empty($args))
+			$sql = $wpdb->prepare($sql, $args);
+
 		return $wpdb->get_results($sql);
+	}
+
+	public static function getPostCount($index = '')
+	{
+		global $wpdb;
+
+		$args = [];
+
+		$sql = <<<SQL
+SELECT COUNT(*)
+FROM {$wpdb->prefix}posts AS p
+  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
+  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE t.slug = 'webonary'
+  AND p.post_status = 'publish'
+SQL;
+
+		if(strlen($index) > 0 && $index != '-')
+		{
+			$sql .= ' AND pinged = %s';
+			$args[] = $index;
+		}
+		if($index == '-')
+		{
+			$sql .= ' AND pinged = \'\'';
+		}
+
+
+		if (!empty($args))
+			$sql = $wpdb->prepare($sql, $args);
+
+		return (int)$wpdb->get_var($sql);
 	}
 
 	public static function getPost($post_id)
@@ -296,47 +296,53 @@ SQL;
 		$sql = <<<SQL
 SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order 
 FROM {$wpdb->posts} AS p
-  INNER JOIN {$wpdb->prefix}term_relationships AS t ON t.object_id = p.ID
-WHERE t.term_taxonomy_id = %s
+    INNER JOIN {$wpdb->term_relationships} AS r ON p.id = r.object_id
+    INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+    INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE t.slug = 'webonary' 
   AND p.post_status = 'publish'
   AND p.pinged = ''
 ORDER BY p.ID
 LIMIT 1;
 SQL;
-		$sql = $wpdb->prepare($sql, self::category_id());
 		return $wpdb->get_row($sql);
 	}
 
 	/**
-	 * @param $cat_id
 	 * @return IIndexedCounts
 	 */
-	public static function postCountByImportStatus($cat_id)
+	public static function postCountByImportStatus()
 	{
 		global $wpdb;
 
-		if (!is_null(self::$post_counts))
-			return self::$post_counts;
-
+		/**
+		 * Note: Because of how WordPress unit tests work, using the category ID here does not
+		 *       return the correct results. During unit testing, the $wpdb connection runs
+		 *       inside an explicit transaction and query results are not actually committed
+		 *       to the database.
+		 *
+		 * See: https://make.wordpress.org/core/handbook/testing/automated-testing/writing-phpunit-tests/#database
+		 *
+		 */
 		$sql = <<<SQL
-SELECT SUM(IF(pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count,
-       MAX(IF(pinged IN ('indexed', 'linksconverted'), post_date, NULL)) AS indexed_date,
-       SUM(IF(pinged IN ('indexed', 'linksconverted'), 0, 1)) AS unindexed_count,
-       MAX(IF(pinged IN ('indexed', 'linksconverted'), NULL, post_date)) AS unindexed_date,
+SELECT SUM(IF(p.pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count,
+       MAX(IF(p.pinged IN ('indexed', 'linksconverted'), post_date, NULL)) AS indexed_date,
+       SUM(IF(p.pinged IN ('indexed', 'linksconverted'), 0, 1)) AS unindexed_count,
+       MAX(IF(p.pinged IN ('indexed', 'linksconverted'), NULL, post_date)) AS unindexed_date,
        COUNT(*) AS total_count,
-       TIMESTAMPDIFF(SECOND, MAX(post_date),NOW()) AS time_diff
-FROM {$wpdb->prefix}posts
-WHERE post_type IN ('post', 'revision')
-  AND ID IN (
-    SELECT object_id
-    FROM {$wpdb->prefix}term_relationships
-    WHERE term_taxonomy_id = {$cat_id}
-  );
+       TIMESTAMPDIFF(SECOND, MAX(p.post_date),NOW()) AS time_diff
+FROM {$wpdb->prefix}posts AS p
+  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
+  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE p.post_type IN ('post', 'revision')
+  AND t.slug = 'webonary';
 SQL;
 
-		self::$post_counts = $wpdb->get_row($sql);
+		/** @var IIndexedCounts $post_counts */
+		$post_counts = $wpdb->get_row($sql);
 
-		return self::$post_counts;
+		return $post_counts;
 	}
 
 	public static function reversalsMissing($arrIndexed)
@@ -374,5 +380,4 @@ SQL;
 
 		return $wpdb->get_results($sql);
 	}
-
 }

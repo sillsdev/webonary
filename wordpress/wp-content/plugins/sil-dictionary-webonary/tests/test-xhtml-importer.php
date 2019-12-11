@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 /**
  * Class ImportTest
  *
@@ -82,7 +82,7 @@ class ImportTest extends WP_UnitTestCase {
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 		$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
 
-		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item(0), 2);
+		$converted = $import->convert_semantic_domains_to_links($doc, $sd_numbers->item(0), 2);
 		$converted = preg_replace( "/\r|\n/", "", $converted );
 		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span lang="en">Name</span></span></span></span></span></span></span></div>';
 		$this->assertEquals($converted, $expected);
@@ -105,7 +105,7 @@ class ImportTest extends WP_UnitTestCase {
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 		$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
 
-		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_names->item(0), 2);
+		$converted = $import->convert_semantic_domains_to_links($doc, $sd_names->item(0), 2);
 		$converted = preg_replace( "/\r|\n/", "", $converted );
 
 		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">Name</a></span></span></span></span></span></span></span></div>';
@@ -122,7 +122,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr"][0], "ärt");
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr-Xpeo-IR"][0], "آرت");
@@ -140,7 +143,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["nfr"][0], "abani");
 		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][7], "government");
@@ -158,7 +164,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["agn"][0], "abol");
 		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][9], "Dull, as of a blade.");
@@ -176,7 +185,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["ill"][0], "balik");
 		$this->assertEquals($arrStringsForIndexing["definition"]["en"][8], "catfish");

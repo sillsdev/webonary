@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 /**
  * Infrastructure
  *
@@ -353,23 +353,19 @@ function remove_entries($pinged = null)
 {
 	global $wpdb;
 
-	$cat_id = Webonary_Info::category_id();
-
-	if ($cat_id == 0)
-		return;
-
 	//just posts in category "webonary"
 	/** @noinspection SqlResolve */
 	$sql = <<<SQL
-DELETE FROM {$wpdb->prefix}posts
-WHERE post_type IN ('post', 'revision') 
-  AND ID IN (
-      SELECT object_id FROM {$wpdb->prefix}term_relationships 
-      WHERE {$wpdb->prefix}term_relationships.term_taxonomy_id = {$cat_id})
+DELETE p.*
+FROM {$wpdb->posts} AS p
+    INNER JOIN {$wpdb->term_relationships} AS r ON p.id = r.object_id
+    INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+    INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE t.slug = 'webonary' AND p.post_type IN ('post', 'revision')
 SQL;
 
 	if(isset($pinged))
-		$sql .= " AND pinged = '{$pinged}'";
+		$sql .= " AND p.pinged = '{$pinged}'";
 
 	$wpdb->query($sql);
 
@@ -384,10 +380,16 @@ SQL;
 
 	create_reversal_tables();
 
-	/** @noinspection SqlResolve */
-	$sql = 'DELETE FROM ' . $wpdb->prefix . 'term_relationships WHERE term_taxonomy_id = ' . $cat_id;
+	$sql = <<<SQL
+DELETE r.*
+FROM {$wpdb->term_relationships} AS r
+    INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+    INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+WHERE t.slug = 'webonary'
+SQL;
+
 	if(isset($pinged))
-		$sql .= " AND object_id NOT IN (SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post')";
+		$sql .= " AND r.object_id NOT IN (SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post')";
 
 	$wpdb->query( $sql );
 }

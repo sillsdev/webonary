@@ -3,10 +3,10 @@
 
 use Overtrue\Pinyin\Pinyin;
 
-class Webonary_Pathway_Xhtml_Import extends WP_Importer {
-
-	public $api; //if data is sent from an external program
-	public $verbose;
+class Webonary_Pathway_Xhtml_Import extends WP_Importer
+{
+	public $api = false; //if data is sent from an external program
+	public $verbose = false;
 
 	/*
 	 * Relevance level attributes
@@ -23,6 +23,7 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 	public $sense_crossref_relevance = 30;
 	public $custom_field_relevance = 20;
 	public $example_sentences_relevance = 10;
+    public $writing_system_taxonomy;
 
 	/*
 	 * DOM attributes
@@ -175,9 +176,7 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 				<?php
 				$this->index_searchstrings();
 
-				$xhtml_file = $result['file'];
-
-				$this->goodbye($xhtml_file, $css_file);
+				$this->goodbye(null);
 
 				$message = "The import of the vernacular (configured) xhtml export is completed.\n";
 				$message .= "Go here to configure more settings: " . get_site_url() . "/wp-admin/admin.php?page=webonary";
@@ -205,11 +204,10 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 
 	/**
 	 * Finish up.
+	 * @param $xhtml_file
 	 */
-	function goodbye($xhtml_file, $css_file){
-
-		global $wpdb;
-
+	function goodbye($xhtml_file)
+    {
 		echo '<div class="narrow">';
 
 		if ( $_POST['filetype'] == 'configured')
@@ -356,16 +354,20 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 		return $doc;
 	}
 
-
-	function convert_semantic_domains_to_links($post_id, $doc, $field, $termid) {
+	/**
+	 * @param DOMDocument $doc
+	 * @param DOMNode $field
+	 * @param int $term_id
+	 * @return string|bool
+	 */
+	function convert_semantic_domains_to_links($doc, $field, $term_id)
+    {
 		global $wpdb;
 
-		if(empty($field))
-		{
+		if (empty($field))
 			return false;
-		}
 
-		$newelement = $doc->createElement('span');
+		$new_element = $doc->createElement('span');
 
 		$allNodes = "";
 
@@ -374,24 +376,16 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer {
 			$allNodes .= $doc->saveXML($node);
 		}
 		$fragment = $doc->createDocumentFragment();
-		$url = get_bloginfo('wpurl') . "/?s=&partialsearch=1&tax=" . $termid;
+		$url = get_bloginfo('wpurl') . "/?s=&partialsearch=1&tax=" . $term_id;
 		$fragment->appendXML('<a href="' . htmlspecialchars($url) . '">' . $allNodes . '</a>');
-		$newelement->appendChild($fragment);
+		$new_element->appendChild($fragment);
 
-		$newelement->setAttribute("class", $field->getAttribute("class"));
+		$new_element->setAttribute("class", $field->getAttribute("class"));
 
 		$parent = $field->parentNode;
-		$parent->replaceChild($newelement, $field);
+		$parent->replaceChild($new_element, $field);
 
-		$entry_xml = $doc->saveXML( $doc );
-
-		$sql = "UPDATE $wpdb->posts " .
-			" SET post_content = '" . addslashes($entry_xml) . "'" .
-			" WHERE ID = " . $post_id;
-
-		$wpdb->query( $sql );
-
-		return $entry_xml;
+		return $doc->saveXML($doc);
 	}
 
 	/**
@@ -425,7 +419,7 @@ SQL;
 
 	/**
 	 * Utility function return the post ID given a headword.
-	 * @param string $headword = headword to find
+	 * @param $flexid
 	 * @return int = post ID
 	 */
 	function get_post_id( $flexid ){
@@ -536,6 +530,7 @@ SQL;
 
 		return $relevance;
 	}
+
 	function get_user_input() {
 
 		$bytes = apply_filters( 'import_upload_size_limit', wp_max_upload_size() );
@@ -728,6 +723,7 @@ SQL;
 
 		return $hasComposedCharacters;
 	}
+
 	/**
 	 * Header for the screen
 	 */
@@ -746,7 +742,8 @@ SQL;
 	 * @return int
 	 * @global wpdb $wpdb
 	 */
-	function import_xhtml_entries ($post_entry, $entry_counter, $menu_order, $isNewFLExExport = true, $browse_letter = '') {
+	function import_xhtml_entries ($post_entry, $entry_counter, $menu_order, $isNewFLExExport = true, $browse_letter = '')
+	{
 		global $wpdb;
 
 		/** @var DOMDocument $doc */
@@ -891,7 +888,7 @@ SQL;
 				$post_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->posts . " WHERE post_title = '" . addslashes(trim($headword_text)) . "'");
 			}
 
-			wp_set_object_terms( $post_id, 'webonary', 'category' );
+			wp_set_object_terms($post_id, 'webonary', 'category');
 		}
 		else
 		{
@@ -909,7 +906,7 @@ SQL;
 		/*
 		 * Show progress to the user.
 		 */
-		$this->import_xhtml_show_progress( $entry_counter, null, $headword_text, "Step 1 of 2: Importing Post Entries" );
+		//$this->import_xhtml_show_progress( $entry_counter, null, $headword_text, "Step 1 of 2: Importing Post Entries" );
 		$h++;
 		//} // foreach ( $headwords as $headword )
 
@@ -927,153 +924,112 @@ SQL;
 	}
 
 	/**
-	 * Show progress to the user
-	 * @param int $entry_counter = current entry number
-	 * @param int $entries_count = total number of entries
-	 * @param string $headword_text = text of the headword
-	 * @param string $msg
+	 * @param int $post_id
+	 * @param DOMXPath $xpath
+	 * @param bool $testing
+	 * @return array|null
 	 */
-	function import_xhtml_show_progress( $entry_counter, $entries_count, $headword_text, $msg = '' ) {
-
-		if($this->verbose)
-		{
-			if($entry_counter == 1 && $this->api == true)
-			{
-				echo $msg . "\n";
-			}
-
-			//only display every 25 entries or if last entry
-			if($entry_counter % 25 == 0 || $entry_counter == $entries_count)
-			{
-				if($this->api)
-				{
-					echo $entry_counter . " ";
-					if(isset($entries_count))
-					{
-						echo "of " . $entries_count . " entries: ";
-					}
-					echo $headword_text . "\n";
-				}
-				else
-				{
-					?>
-					<SCRIPT type="text/javascript">//<![CDATA[
-                        d = document.getElementById("flushme");
-                        info = "<strong><?php echo $msg; ?></strong><br>";
-						<?php
-						if($entries_count >= 1)
-						{
-						?>
-                        info += "<?php echo $entry_counter; ?>";
-						<?php
-						if(isset($entries_count))
-						{
-						?>
-                        info += " of <?php echo $entries_count; ?> entries:";
-						<?php
-						}
-						?>
-                        info += "<?php echo ' ' . $headword_text; ?>";
-						<?php
-						}
-						?>
-                        //info += "<br>";
-                        //info += "Memory Usage: <?php echo memory_get_usage() . " bytes"; ?>";
-
-                        d.innerHTML = info;
-                        //]]></SCRIPT>
-					<?php
-				}
-			}
-		}
-	}
-
-	function import_xhtml_classes($postid, $doc)
+	function import_xhtml_classes($post_id, $xpath, $testing=false)
 	{
-		$xpath = new DOMXPath($doc);
-		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+		$fields = $xpath->query('//span[@class]');
 
-		$fields = $xpath->query("//span[@class]");
+		$classnameLong = '';
 
-		$classnameLong = "";
-		$searchstring = "";
-		$lang = "";
+		if ($testing)
+		    $arrResults = [];
 
-		$arrResults = [];
 		$i = 0;
+
+		/** @var DOMElement $field */
 		foreach($fields as $field)
 		{
-			$langContent = $xpath->query("span[@lang]", $field);
+			$langContent = $xpath->query('span[@lang]', $field);
 
-			$classname = $field->getAttribute("class");
-			$classnameLong .= $classname . "_";
+			$classname = $field->getAttribute('class');
+			$classnameLong .= $classname . '_';
 
 			$relevance = $this->get_relevance($classname, $classnameLong);
 
+			/** @var DOMElement $content */
 			foreach($langContent as $content)
 			{
-				$searchstring = $content->textContent;
-				$lang = $content->getAttribute("lang");
-				$arrResult[$classname][$lang][$i] = $searchstring;
-				$this->import_xhtml_search_string($postid, $searchstring, $relevance, $lang, $classname);
+				$search_string = $content->textContent;
+				$lang = $content->getAttribute('lang');
+
+				if ($testing)
+				    $arrResults[$classname][$lang][$i] = $search_string;
+
+				$this->import_xhtml_search_string($post_id, $search_string, $relevance, $lang, $classname);
 			}
 
 			$i++;
 		}
 
-		return $arrResult;
+		unset($fields);
+
+		if ($testing) {
+			/** @noinspection PhpUndefinedVariableInspection */
+			return $arrResults;
+        }
+
+		return null;
 	}
 
 	//-----------------------------------------------------------------------------//
 
 	/**
 	 * Utility function to store off the search string
-	 * @param <type> $table = table holding the search strings
-	 * @param <type> $post_id = ID of post in wp_posts
-	 * @param <type> $language_code = Should be ISO 639-3, but can be longer
-	 * @param <type> $search_string = string we want to search for in the post
-	 * @param <int> $relevance = weighted importance of this particular string for search results
+	 * @param int $post_id = ID of post in wp_posts
+	 * @param string $search_string = string we want to search for in the post
+	 * @param int $relevance = weighted importance of this particular string for search results
+	 * @param string $language_code = Should be ISO 639-3, but can be longer
+	 * @param string $class_name
+	 * @param int $sub_id
 	 */
-	function import_xhtml_search_string( $post_id, $search_string, $relevance, $language_code, $classname, $subid = 0) {
+	function import_xhtml_search_string($post_id, $search_string, $relevance, $language_code, $class_name, $sub_id = 0)
+    {
 		global $wpdb;
 
-		// $wdbt->prepare likes to add single quotes around string replacements,
+		// $wpdb->prepare likes to add single quotes around string replacements,
 		// and that's why I concatenated the table name.
 		if(strlen(trim($search_string)) > 0)
 		{
 			$search_string = normalizer_normalize($search_string, Normalizer::NFC );
-			$sql = $wpdb->prepare(
-				"INSERT IGNORE INTO `". Webonary_Configuration::$search_table_name . "` (post_id, language_code, search_strings, relevance, class, subid)
-				VALUES (%d, '%s', '%s', %d, '%s', %d)",
-				$post_id, $language_code, trim($search_string), $relevance, $classname, $subid );
+			$tbl = Webonary_Configuration::$search_table_name;
+
+			$sql = <<<SQL
+INSERT IGNORE INTO `{$tbl}` (post_id, language_code, search_strings, relevance, class, subid)
+VALUES (%d, %s, %s, %d, %s, %d)
+SQL;
+			$sql = $wpdb->prepare($sql, $post_id, $language_code, trim($search_string), $relevance, $class_name, $sub_id);
 
 			//ON DUPLICATE KEY UPDATE search_strings = CONCAT(search_strings, ' ',  '%s');",
 
-			$wpdb->query( $sql );
+			$wpdb->query($sql);
 		}
 
-		//this replaces the special apostroph with the standard apostroph
-		//the first time round the special apostroph is inserted, so that both searches are valid
+		//this replaces the special apostrophe with the standard apostrophe
+		//the first time round the special apostrophe is inserted, so that both searches are valid
 		if(strstr($search_string,"’"))
 		{
 			$mySearch_string = str_replace("’", "'", $search_string);
-			$this->import_xhtml_search_string( $post_id, $mySearch_string, $relevance, $language_code, $classname, $subid);
+			$this->import_xhtml_search_string($post_id, $mySearch_string, $relevance, $language_code, $class_name, $sub_id);
 		}
 	}
 
 	/**
 	 * Import the part(s) of speech (POS) for an entry.
-	 * @param <type> $entry = XHTML of the dictionary entry
-	 * @param <type> $post_id = ID of the WordPress post.
+     *
+     * @param int $post_id = ID of the WordPress post.
+	 * @param DOMXPath $xpath
+	 *
 	 */
 
 	// Currently we aren't deleting any existing POS terms. More than one post may
 	// refer to a domain. For the moment, any bad POSs must be removed by hand.
 
-	function import_xhtml_part_of_speech( $doc, $post_id ){
-
-		$xpath = new DOMXPath($doc);
-
+	function import_xhtml_part_of_speech($post_id, $xpath)
+    {
 		//only index pos under the main entry, not subentries
 		$pos_terms = $xpath->query('//div/span[@class = "senses"]//span[contains(@class, "partofspeech")]');
 
@@ -1100,82 +1056,71 @@ SQL;
 
 	/**
 	 * Import the semantic domain(s) for the entry.
-	 * @param <type> $entry = XHTML of the dictionary entry
-	 * @param <type> $post_id = ID of the WordPress post.
+	 *
+	 * Currently we aren't deleting any existing semantic domains. More than one post may
+	 * refer to a domain. For the moment, any bad domains must be removed by hand.
+     *
+     * @param int $post_id
+	 * @param DOMXPath $xpath
+	 *
 	 */
-
-	// Currently we aren't deleting any existing semantic domains. More than one post may
-	// refer to a domain. For the moment, any bad domains must be removed by hand.
-
-	function import_xhtml_semantic_domain( $doc, $post_id, $subentry, $convertToLinks){
-
+	function import_xhtml_semantic_domain($post_id, $xpath)
+    {
 		global $wpdb;
-
-		$xpath = new DOMXPath($doc);
-		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 
-		$i = 0;
-
 		$sd_numbers = null;
+		$updated = false;
 
-		foreach ( $semantic_domains as $semantic_domain ){
+		/** @var DOMElement $semantic_domain */
+		foreach ($semantic_domains as $semantic_domain){
 
-			$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
-			$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
+			$sd_names = $xpath->query('.//*[starts-with(@class, "semantic-domain-name")]|.//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
+			$sd_numbers = $xpath->query('.//span[starts-with(@class, "semantic-domain-abbr")]|.//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domain);
 			///span[not(@class = "Writing_System_Abbreviation")]
 			$sc = 0;
+
+			/** @var DOMElement $sd_number */
 			foreach($sd_numbers as $sd_number)
 			{
-				$semantic_domain_language = $sd_number->getAttribute("lang");
+				// $semantic_domain_language = $sd_number->getAttribute('lang');
 
-				$sd_number_text = str_replace("[", "", $sd_number->textContent);
-				$sd_number_text = str_replace("(", "", $sd_number_text);
-				$sd_number_text = trim(str_replace("-", "", $sd_number_text));
+				$sd_number_text = str_replace('[', '', $sd_number->textContent);
+				$sd_number_text = str_replace('(', '', $sd_number_text);
+				$sd_number_text = trim(str_replace('-', '', $sd_number_text));
 
 				$domain_name = $sd_number_text;
 				if(isset($sd_names->item($sc)->textContent))
 				{
 					$domain_name = $sd_names->item($sc)->textContent;
-					$domain_name = str_replace("]", "", $domain_name);
-					$domain_name = str_replace(")", "", $domain_name);
-
+					$domain_name = str_replace(']', '', $domain_name);
+					$domain_name = str_replace(')', '', $domain_name);
 				}
 
-				$arrTerm = wp_insert_term(
+				/** @var array|WP_Error $term_results */
+				$term_results = wp_insert_term(
 					$domain_name,
 					Webonary_Configuration::$semantic_domains_taxonomy,
 					array(
 						'description' => trim($domain_name),
 						'slug' => $sd_number_text
-					));
+					)
+                );
 
-				$termid = $wpdb->get_var("
-						SELECT term_id
-						FROM $wpdb->terms
-						WHERE slug = '" . str_replace(".", "-", $sd_number_text) . "'");
+				if (is_array($term_results))
+				    $term_id = $term_results['term_id'];
+				else
+					$term_id = isset($term_results->error_data['term_exists']) ? $term_results->error_data['term_exists'] : null;
 
-				if($termid == NULL || $termid == 0)
+				if (!empty($term_id))
 				{
-					if (array_key_exists('term_id', $arrTerm))
-					{
-						$termid = $arrTerm['term_id'];
-						$taxonomyid = $arrTerm['term_taxonomy_id'];
-						$terms[$i] = $termid;
-						$i++;
-					}
+					$this->convert_semantic_domains_to_links($xpath->document, $sd_number, $term_id);
+					$this->convert_semantic_domains_to_links($xpath->document, $sd_names->item($sc), $term_id);
+					$updated = true;
+
+					wp_set_object_terms($post_id, $domain_name, Webonary_Configuration::$semantic_domains_taxonomy, true);
 				}
-
-				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_number, $termid);
-				$this->convert_semantic_domains_to_links($post_id, $doc, $sd_names->item($sc), $termid);
-
-				if(isset($termid))
-				{
-					wp_set_object_terms( $post_id, $domain_name, Webonary_Configuration::$semantic_domains_taxonomy, true);
-				}
-
-				$arrTerm = null;
 
 				$sc++;
 			}
@@ -1189,8 +1134,20 @@ SQL;
 			}
 		}
 
-		$sql = $wpdb->query("UPDATE $wpdb->term_taxonomy SET COUNT = 1 WHERE taxonomy = 'sil_semantic_domains'");
+		if ($updated) {
 
+		    $final_xml = $xpath->document->saveXML($xpath->document);
+
+			$sql = "UPDATE {$wpdb->posts} " .
+				" SET post_content = '" . addslashes($final_xml) . "'" .
+				" WHERE ID = {$post_id}";
+
+			$wpdb->query( $sql );
+        }
+
+		$wpdb->query("UPDATE $wpdb->term_taxonomy SET COUNT = 1 WHERE taxonomy = 'sil_semantic_domains'");
+
+		unset($xpath);
 	}
 
 	//-----------------------------------------------------------------------------//
@@ -1231,7 +1188,7 @@ SQL;
 			/*
 			 * Show progresss to the user.
 			 */
-			$this->import_xhtml_show_progress( $entry_counter, null, $reversal_head, "", "Step 1 of 2: Importing reversal entries" );
+			//$this->import_xhtml_show_progress( $entry_counter, null, $reversal_head, "", "Step 1 of 2: Importing reversal entries" );
 
 			if($entry_counter == 1)
 			{
@@ -1284,7 +1241,7 @@ SQL;
 
 				$headword_text = trim($headword->textContent);
 
-				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $reversal_head . " (" . $headword_text . ")",  "Step 2 of 2: Indexing reversal entries"  );
+				//$this->import_xhtml_show_progress( $entry_counter, $entries_count, $reversal_head . " (" . $headword_text . ")",  "Step 2 of 2: Indexing reversal entries"  );
 
 				$post_name = "";
 
@@ -1369,6 +1326,7 @@ SQL;
 						$pinyin = new Pinyin();
 						$reversal_browsehead = $pinyin->sentence($reversal_head);
 						$browseletter = substr($reversal_browsehead, 0, 1);
+						unset($pinyin);
 					}
 
 					if($existing_entry == NULL)
@@ -1438,11 +1396,13 @@ SQL;
 		$wpdb->query( $sql );
 
 		/*
-		 * Show progresss to the user.
+		 * Show progress to the user.
 		 */
-		$this->import_xhtml_show_progress( $entry_counter, null, $headword_text );
+		//$this->import_xhtml_show_progress( $entry_counter, null, $headword_text );
 
 		$entry_counter++;
+
+		unset($doc);
 
 		return $entry_counter;
 	}
@@ -1452,8 +1412,7 @@ SQL;
 	function import_xhtml_writing_systems ($header) {
 		global $wpdb;
 
-		$this->writing_system_taxonomy = "sil_writing_systems";
-
+		$this->writing_system_taxonomy = 'sil_writing_systems';
 
 		$doc = new DomDocument();
 		$doc->preserveWhiteSpace = false;
@@ -1467,6 +1426,7 @@ SQL;
 			// An example of writing system and font in meta of the XHTML file header:
 			// <meta name="en" content="English" scheme="Language Name" />
 			// <meta name="en" content="Times New Roman" scheme="Default Font" />
+            /** @var DOMNodeList $writing_systems */
 			$writing_systems = $this->dom_xpath->query( '//xhtml:meta[@scheme = "Language Name"]|//xhtml:meta[@name = "DC.language"]');
 
 			// Currently we aren't using font info.
@@ -1475,6 +1435,8 @@ SQL;
 			{
 				echo "The language names were not found. Please add the language name meta tag in your xhtml file.<br>";
 			}
+
+			/** @var DOMNode $writing_system */
 			foreach ( $writing_systems as $writing_system ) {
 
 				$writing_system_abbreviation = $writing_system->getAttribute( "name");
@@ -1514,9 +1476,13 @@ SQL;
 			// field needs a count of at least 1. I'm filling the number with something bigger
 			// so that it looks more obviously like a dummy number.
 
+            unset($writing_systems);
+
 			$sql = $wpdb->prepare("UPDATE $wpdb->term_taxonomy SET COUNT = 999999 WHERE taxonomy = '%s'", $this->writing_system_taxonomy );
 			$wpdb->query( $sql );
 		}
+
+		unset($doc);
 	}
 
 	function index_searchstrings()
@@ -1528,28 +1494,24 @@ SQL;
 		$semantic_domains_taxonomy_exists = taxonomy_exists( Webonary_Configuration::$semantic_domains_taxonomy );
 
 		if ( $search_table_exists ) {
-			$arrPosts = Webonary_Info::posts('-');
-
-			$subid = 1;
-
-			$entry_counter = 1;
-			$entries_count = count($arrPosts);
 
 			update_option('useSemDomainNumbers', 0);
 
-			foreach($arrPosts as $post)
+			$post = Webonary_Info::getNextPost();
+			while (!empty($post))
 			{
 			    $content_len = strlen($post->post_content);
 				if($content_len > 100000) {
 				    print 'too long' . PHP_EOL;
                 }
 
-				$subentry = false;
+				$sub_entry = false;
 				if ( $post->ID ){
 
-					$sql = $wpdb->prepare("DELETE FROM `". Webonary_Configuration::$search_table_name . "` WHERE post_id = %d", $post->ID);
+					$sql = $wpdb->prepare('DELETE FROM `'. Webonary_Configuration::$search_table_name . '` WHERE post_id = %d', $post->ID);
 
 					$wpdb->query( $sql );
+
 					//set as indexed
 					$sql = "UPDATE $wpdb->posts SET pinged = 'indexed' WHERE ID = " . $post->ID;
 					$wpdb->query( $sql );
@@ -1562,40 +1524,34 @@ SQL;
 				$xpath = new DOMXPath($doc);
 				$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-				$this->import_xhtml_show_progress( $entry_counter, $entries_count, $post->post_title, "Step 2 of 2: Indexing Search Strings");
-
 				if($post->post_parent == 0)
-				{
-					$this->import_xhtml_classes($post->ID, $doc);
-				}
-				else
-				{
-					$subentry = true;
-				}
+					$this->import_xhtml_classes($post->ID, $xpath);
 
 				//this is used for the browse view sort order, no longer needed for
-				$sql = "UPDATE " . Webonary_Configuration::$search_table_name . " SET sortorder = " . $post->menu_order . " WHERE post_id = " . $post->ID . " AND relevance >= 95 AND sortorder = 0" ;
+				$sql = 'UPDATE ' . Webonary_Configuration::$search_table_name . ' SET sortorder = ' . $post->menu_order . ' WHERE post_id = ' . $post->ID . ' AND relevance >= 95 AND sortorder = 0' ;
 				$wpdb->query( $sql );
 
 				/*
 				 * Import semantic domains
 				*/
 				if ( $semantic_domains_taxonomy_exists )
-				{
-					$this->import_xhtml_semantic_domain($doc, $post->ID, $subentry, false);
-				}
+					$this->import_xhtml_semantic_domain($post->ID, $xpath);
+
 				/*
 				 * Import parts of speech (POS)
 				 */
 				if ( $pos_taxonomy_exists )
-					$this->import_xhtml_part_of_speech($doc, $post->ID);
+					$this->import_xhtml_part_of_speech($post->ID, $xpath);
 
-				$subid++;
-				$entry_counter++;
+				unset($xpath);
+				unset($doc);
+				unset($post);
+
+				$post = Webonary_Info::getNextPost();
 			}
 
 			$this->update_relevance();
-			update_option("importStatus", "importFinished");
+			update_option('importStatus', 'importFinished');
 		}
 	}
 
@@ -1751,10 +1707,11 @@ SQL;
 	 * @param string $file_type
      *
      * @global wpdb $wpdb
+     * @global string $webonary_include_path
 	 */
     public function process_xhtml_file($xhtml_file_url, $file_type)
     {
-        global $wpdb;
+        global $wpdb, $webonary_include_path;
 
         $this->WriteLine('Begin processing');
 
@@ -1763,9 +1720,6 @@ SQL;
 
 		$path_parts = pathinfo($xhtml_file_url);
 		$upload_dir = $path_parts['dirname'];
-
-		$reader = new XMLReader;
-		$reader->open($xhtml_file_url);
 
 		$this->WriteLine('Reader opened');
 
@@ -1801,9 +1755,12 @@ SQL;
 			$entry_counter = 1;
 
 			/*
-			 *
 			 * Load the configured post entries
 			 */
+
+			$reader = new XMLReader;
+			$reader->open($xhtml_file_url);
+
 			while ($reader->read() && $reader->name !== 'head') {
 				continue;
 			}
@@ -1814,6 +1771,7 @@ SQL;
 
 				$header = $reader->readOuterXml();
 				$this->import_xhtml_writing_systems($header);
+				unset($header);
 			}
 
 			$a = 0;
@@ -1834,6 +1792,7 @@ SQL;
 						$letterHead = $pinyin->sentence($letterHead);
 						$letterHead = substr($letterHead, 0, 1);
 						$letterHead = strtolower($letterHead);
+						unset($pinyin);
 					}
 
 					if(strpos($letterHead, ' ') > 0)
@@ -1852,6 +1811,8 @@ SQL;
 						$a++;
 					}
 
+					unset($letterHead);
+
 					$reader->next('div');
 				}
 
@@ -1863,7 +1824,7 @@ SQL;
                     $xml_class === 'minorentryvariant' ||
                     $xml_class === 'minorentrycomplex')
 				{
-					$post_entry =  $reader->readOuterXml();
+					$post_entry = $reader->readOuterXml();
 
 					if($entry_counter == 1)
 					{
@@ -1906,10 +1867,15 @@ SQL;
 						$menu_order++;
 					}
 
+					unset($post_entry);
+
 					$reader->next('div');
 					$xml_class = $reader->getAttribute('class');
 				}
 			}
+
+			$reader->close();
+			unset($reader);
 
 			if($entry_counter == 1)
 				echo '<div style="color:red">ERROR: No entries found.</div><br>';
@@ -2039,7 +2005,7 @@ SQL;
 					$xhtmlFileURL = $fileReversal1;
 					error_log($file_type . '#' . $xhtmlFileURL);
 
-					include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/run_import.php';
+					include $webonary_include_path . DS . 'run_import.php';
 				}
 			}
 			else

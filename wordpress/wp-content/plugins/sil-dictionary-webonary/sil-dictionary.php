@@ -148,7 +148,7 @@ include_once $this_dir . '/include/modifycontent.php';
 /* Search hook */
 add_filter('search_message', 'sil_dictionary_custom_message');
 
-add_filter('posts_request','replace_default_search_filter');
+add_filter('posts_request','replace_default_search_filter', 10, 2);
 
 // this executes just before wordpress determines which template page to load
 add_action('template_redirect', 'my_enqueue_css');
