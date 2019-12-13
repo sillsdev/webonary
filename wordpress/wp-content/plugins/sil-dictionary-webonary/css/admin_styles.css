@@ -1,0 +1,24 @@
+
+.sil-bold {font-weight: 700;}
+
+#sil-index-progress {
+    width: 100%;
+    height: 18px;
+    margin: 4px auto;
+}
+
+.wp-core-ui .button-webonary {
+    background: #1e7e34;
+    border-color: #1e7e34;
+    color: #fff;
+    /*box-shadow: 0 1px 0 #bd831f;*/
+    /*text-shadow: 0 -1px 1px #bd831f, -1px 0 1px #bd831f, 0 1px 1px #bd831f, 1px 0 1px #bd831f;*/
+
+}
+
+.wp-core-ui .button-webonary:hover, .wp-core-ui .button-webonary:focus {
+    background: #175f27;
+    border-color: #145523;
+    color: #fff;
+    cursor: pointer;
+}

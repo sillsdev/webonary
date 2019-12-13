@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SqlResolve */
 /**
  * Class ImportTest
  *
@@ -18,7 +18,7 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry);
 
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 		$import->dom_xpath = new DOMXPath($doc);
 		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
@@ -37,7 +37,7 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry);
 
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 		$import->dom_xpath = new DOMXPath($doc);
 		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
@@ -75,14 +75,14 @@ class ImportTest extends WP_UnitTestCase {
 		$xpath = new DOMXPath($doc);
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 		$import->dom_xpath = new DOMXPath($doc);
 		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 		$sd_numbers = $xpath->query('//span[starts-with(@class, "semantic-domains")]//span[starts-with(@class, "semantic-domain-abbr")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "abbreviation")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
 
-		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_numbers->item(0), 2);
+		$converted = $import->convert_semantic_domains_to_links($doc, $sd_numbers->item(0), 2);
 		$converted = preg_replace( "/\r|\n/", "", $converted );
 		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span lang="en">Name</span></span></span></span></span></span></span></div>';
 		$this->assertEquals($converted, $expected);
@@ -98,14 +98,14 @@ class ImportTest extends WP_UnitTestCase {
 		$xpath = new DOMXPath($doc);
 		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 		$import->dom_xpath = new DOMXPath($doc);
 		$import->dom_xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
 
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
 		$sd_names = $xpath->query('//span[starts-with(@class, "semantic-domains")]//*[starts-with(@class, "semantic-domain-name")]|//span[@class = "semanticdomains"]//span[starts-with(@class, "name")]/span[not(@class = "writingsystemprefix")]', $semantic_domains[0]);
 
-		$converted = $import->convert_semantic_domains_to_links($post_id, $doc, $sd_names->item(0), 2);
+		$converted = $import->convert_semantic_domains_to_links($doc, $sd_names->item(0), 2);
 		$converted = preg_replace( "/\r|\n/", "", $converted );
 
 		$expected = '<?xml version="1.0" encoding="UTF-8"?><div class="entry" id="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="mainheadword"><span lang="ify"><a href="http://webonary.localhost/lubwisi/gabca4e11-59cd-4c7e-a3f3-b504e9665e83">Zealot</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">Prop.N</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gabca4e11-59cd-4c7e-a3f3-b504e9665e83"><span class="definitionorgloss"><span lang="en">refers to a member of a political party that was known for being zealous to overthrow the Roman government during the time of Jesus</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="ify">Huyyan Zealot ey hakey ni grupuh ni tuun eleg meminhed ni mengu-unnud ni gubilnun Rome. (Footnote: Matthew 10:2-4)</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This Zealot Party was one political group of people who did not want to support the government in Rome.</span></span></span></span></span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">9.7</a></span></span><span class="name"><span class=""><a href="http://example.org/?s=&amp;partialsearch=1&amp;tax=2">Name</a></span></span></span></span></span></span></span></div>';
@@ -114,7 +114,7 @@ class ImportTest extends WP_UnitTestCase {
 
 	function test_import_xhtml_search_Sangesari()
 	{
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 
 		$entry_xml = '<div class="entry" id="g6d6ec840-6075-4b3a-9958-b445c9bc02d5"><span class="mainheadword"><span lang="sgr"><a href="#g6d6ec840-6075-4b3a-9958-b445c9bc02d5">ärt</a></span><span lang="sgr-Xpeo-IR"><a href="#g6d6ec840-6075-4b3a-9958-b445c9bc02d5">آرت</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n.</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="g6d6ec840-6075-4b3a-9958-b445c9bc02d5"><span class="gloss"><span lang="en">flour</span><span lang="fa"><span dir="rtl">آرد</span></span></span></span></span></span></div>';
 
@@ -122,7 +122,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr"][0], "ärt");
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["sgr-Xpeo-IR"][0], "آرت");
@@ -132,7 +135,7 @@ class ImportTest extends WP_UnitTestCase {
 
 	function test_import_xhtml_search_Nafaanra()
 	{
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 
 		$entry_xml = '<div class="entry" id="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="mainheadword"><span lang="nfr"><a href="#gc0a52176-c8fc-4376-b889-0b475a6fe70c">abani</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="definitionorgloss"><span lang="en">government</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="nfr">Ala Ghana abani tia sro pan titi.</span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en">This year there is food help from the Government.</span></span></span></span></span></span></span></span></span></div>';
 
@@ -140,7 +143,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["nfr"][0], "abani");
 		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][7], "government");
@@ -150,7 +156,7 @@ class ImportTest extends WP_UnitTestCase {
 
 	function test_import_xhtml_search_Agutaynen()
 	{
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 
 		$entry_xml = '<div class="entry" id="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="mainheadword"><span lang="agn"><a href="#g175a8442-7a8d-4171-8f3b-9603e85cf91d">abol</a></span></span><span class="senses"><span class="sensecontent"><span class="sensenumber">1</span><span class="sense" entryguid="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="morphosyntaxanalysis"><span class="graminfoabbrev"><span lang="en">adj</span></span></span><span class="grammarnote"><span lang="en">mābol, kābol</span></span><span class="tagalog"><span lang="tl">mapurol</span></span><span class="definitionorgloss"><span lang="en">Dull, as of a blade.</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="agn"><span lang="agn">Baiden mo kay tang gedo, doro rag </span><span style="font-weight:bold;" lang="agn">kābol. </span></span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en"><span lang="en">Please sharpen my bolo, it is already very </span><span style="font-weight:bold;" lang="en">dull. </span></span></span></span></span></span></span></span></span><span class="sensecontent"><span class="sensenumber">2</span><span class="sense" entryguid="g175a8442-7a8d-4171-8f3b-9603e85cf91d"><span class="morphosyntaxanalysis"><span class="graminfoabbrev"><span lang="en">vt</span></span></span><span class="grammarnote"><span lang="en"><span lang="en">Undergoer: </span><span style="font-weight:bold;" lang="en">-on</span></span></span><span class="definitionorgloss"><span lang="en">To make a blade dull by misusing it.</span></span><span class="examplescontents"><span class="examplescontent"><span class="example"><span lang="agn"><span lang="agn">Indi kay </span><span style="font-weight:bold;" lang="agn">abolon</span><span lang="agn"> mo tang gonsingo!</span></span></span><span class="translationcontents"><span class="translationcontent"><span class="translation"><span lang="en"><span lang="en">Please don\'t </span><span style="font-weight:bold;" lang="en">make</span><span lang="en"> my scissors </span><span style="font-weight:bold;" lang="en">dull! </span></span></span></span></span></span></span><span class="lexsensereferences"><span class="lexsensereference"><span class="ownertype_abbreviation"><span lang="en">ant</span></span><span class="configtargets"><span class="configtarget"><span class="headword"><span lang="agn"><span lang="agn"><a href="#gd2672515-c472-48e4-9823-4e031e13aca1">matarem </a></span><span style="font-weight:bold;" lang="en"><a href="#gd2672515-c472-48e4-9823-4e031e13aca1">1</a></span></span></span></span></span></span></span></span></span></span></div>';
 
@@ -158,7 +164,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["agn"][0], "abol");
 		$this->assertEquals($arrStringsForIndexing["definitionorgloss"]["en"][9], "Dull, as of a blade.");
@@ -168,7 +177,7 @@ class ImportTest extends WP_UnitTestCase {
 
 	function test_import_xhtml_search_Iranun_Sabah()
 	{
-		$import = new sil_pathway_xhtml_Import();
+		$import = new Webonary_Pathway_Xhtml_Import();
 
 		$entry_xml = '<div class="entry" id="gcb70fdbe-9ce6-4529-977c-e2cdf0098890"><span class="mainheadword"><span lang="ill"><a href="#gcb70fdbe-9ce6-4529-977c-e2cdf0098890">balik</a></span></span><span class="senses"><span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="en">n</span></span></span></span><span class="sensecontent"><span class="sense" entryguid="gcb70fdbe-9ce6-4529-977c-e2cdf0098890"><span class="scientificname"><span lang="en">Clarias batrachus</span></span><span class="definition"><span class="writingsystemprefix">Eng</span><span lang="en">catfish</span><span class="writingsystemprefix">Mal</span><span lang="ms">ikan keli</span></span><span class="lexsensereferences"><span class="lexsensereference"><span class="configtargets"><span class="configtarget"><span class="headword"><span lang="ill"><span lang="ill"><a href="#g998a1ace-ec98-425b-ac0e-0cb14be67d46">seda\'</a></span><span style="font-weight:bold;font-size:58%;position:relative;top:0.3em;" lang="ill"><a href="#g998a1ace-ec98-425b-ac0e-0cb14be67d46">1</a></span></span></span></span></span></span></span></span></span></span><span class="pictures"><div class="picture"><img class="thumbnail" src="pictures\Clarias gariepinus catfish balik North African catfish intruduced mm.jpg" id="g0c73f08e-4c2c-4f58-9afb-8dc57bb65ad8" /><div class="captionContent"><span class="caption"><span lang="ill">Mabulmaddin Shaiddin</span></span></div></div></span></div>';
 
@@ -176,7 +185,10 @@ class ImportTest extends WP_UnitTestCase {
 		$doc->preserveWhiteSpace = false;
 		$doc->loadXML($entry_xml);
 
-		$arrStringsForIndexing = $import->import_xhtml_classes(1, $doc);
+		$xpath = new DOMXPath($doc);
+		$xpath->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+
+		$arrStringsForIndexing = $import->import_xhtml_classes(1, $xpath, true);
 
 		$this->assertEquals($arrStringsForIndexing["mainheadword"]["ill"][0], "balik");
 		$this->assertEquals($arrStringsForIndexing["definition"]["en"][8], "catfish");
