@@ -166,8 +166,8 @@ function webonary_searchform() {
 
 
 					//$catalog_terms = get_terms('sil_writing_systems');
-					$arrLanguages = Webonary_Configuration::get_LanguageCodes();
-					$arrVernacularLanguage = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'));
+					$arrLanguages = get_LanguageCodes();
+					$arrVernacularLanguage = get_LanguageCodes(get_option('languagecode'));
 					?>
 					<select name="key" class="webonary_searchform_language_select">
 					<option value="">
@@ -345,7 +345,7 @@ function add_footer()
 	{
 		if(get_option('noSearch') != 1)
 		{
-			$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
+			$arrLanguageCodes = get_LanguageCodes();
 
 			$letter = "frontpage";
 			if(isset($_GET['letter']))
