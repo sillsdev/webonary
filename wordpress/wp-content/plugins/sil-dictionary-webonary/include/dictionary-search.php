@@ -62,6 +62,8 @@ function my_enqueue_css() {
 
 function sil_dictionary_custom_message()
 {
+	global $wp_query;
+
 	$match_whole_words = is_match_whole_words(mb_strlen($_GET['s']));
 
 	if($match_whole_words == 0)
@@ -202,7 +204,9 @@ function get_indexed_entries($query, $language)
 	}
 	$sql .= "ORDER BY relevance DESC";
 
-	return $wpdb->get_results($sql);
+	$arrIndexed = $wpdb->get_results($sql);
+
+	return $arrIndexed;
 }
 
 function get_post_id_bycontent($query)
@@ -351,7 +355,7 @@ function get_subquery_where($query)
 
 /**
  * @param $input
- * @param WP_Query $query
+ * @param null $query
  * @return string
  */
 function replace_default_search_filter($input, $query=null)
@@ -371,7 +375,7 @@ function replace_default_search_filter($input, $query=null)
 		else
 			$where = get_subquery_where($query);
 
-		return <<<SQL
+		$sql = <<<SQL
 SELECT DISTINCTROW p.*, s.relevance
 FROM {$wpdb->posts} AS p
   INNER JOIN (
@@ -383,6 +387,8 @@ FROM {$wpdb->posts} AS p
 WHERE p.post_type = 'post' AND p.post_status = 'publish'
 ORDER BY s.relevance DESC, p.post_title
 SQL;
+
+		return $sql;
 	}
 
 	if(isset($query->query_vars['semdomain']))
@@ -422,7 +428,6 @@ SQL;
 function webonary_css()
 {
 	?>
-<!--suppress CssUnusedSymbol -->
 <style>
 	a:hover {text-decoration:none;}
 	a:hover span {text-decoration:none}
@@ -440,17 +445,17 @@ function webonary_css()
 		white-space:unset;
 	}
 
-	.minorentryvariant{
+.minorentryvariant{
 		clear:none;
 		white-space:unset;
 	}
-	.mainentrysubentries .mainentrysubentry{
+.mainentrysubentries .mainentrysubentry{
 		clear:none;
 		white-space:unset;
 	}
-	span.comment {
+span.comment {
 	background: none;
-	padding: 0;
+	padding: 0px;
 }
 <?php
 if(get_option('vernacularRightToLeft') == 1)
