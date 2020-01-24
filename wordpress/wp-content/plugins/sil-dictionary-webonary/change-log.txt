@@ -1,7 +1,6 @@
-v. 8.3.9 18 Dec 2019 fix indexing memory leaks, and update import to use ajax to improve user experience
 v. 8.3.8 31 Oct 2019 allow colon in password
 v. 8.3.7 26 Oct 2019 if post content too long, indexing will stop
-v. 8.3.6 17 Oct 2019 fixed configuration form/buttons issue
+v. 8.3.6 17 Oct 2019 fixed configration form/buttons issue
 v. 8.3.5 15 Oct 2019 removed missing senses link
 v. 8.3.4 15 Oct 2019 fixed ReIndex button
 v. 8.3.3 25 Sept 2019 fixed import of reversal css files to replace hyphens with underline character
