@@ -56,7 +56,7 @@ msgid "Maximum size: %s"
 msgstr ""
 
 #: include/xhtml-importer.php:613
-msgid "**XHTML file must be sorted. Webonary does not sort the entries.**"
+msgid "**XHTML file must be sorted. Webonary does not resort the entries.**"
 msgstr ""
 
 # @ default

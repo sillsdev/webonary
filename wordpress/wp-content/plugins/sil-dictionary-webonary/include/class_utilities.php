@@ -1,6 +1,4 @@
 <?php
-
-
 class Webonary_Utility
 {
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
@@ -194,8 +192,8 @@ class Webonary_Utility
 		if(isset($user->ID))
 		{
 			$sql = "SELECT meta_value AS userrole FROM wp_usermeta " .
-				" WHERE (user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities') OR " .
-				" (user_id = " . $user->ID . " AND meta_key = 'wp_capabilities')";
+					" WHERE (user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities') OR " .
+					" (user_id = " . $user->ID . " AND meta_key = 'wp_capabilities')";
 
 
 			$roleSerialized = $wpdb->get_var($sql);
@@ -218,41 +216,5 @@ class Webonary_Utility
 			echo "Wrong username or password.";
 			return false;
 		}
-	}
-
-	public static function includeTemplate($template_name, $substitutions)
-	{
-		global $webonary_template_path;
-
-		$html = file_get_contents($webonary_template_path . DIRECTORY_SEPARATOR . $template_name);
-
-		if (empty($substitutions))
-			return $html;
-
-		foreach($substitutions as $key => $value) {
-			$html = str_replace($key, $value, $html);
-		}
-
-		return $html;
-	}
-
-	/**
-	 * Executes $function, sends the response to the browser, closes the connection, and continues processing.
-	 * @param Closure $function
-	 */
-	public static function sendAndContinue($function)
-	{
-		ignore_user_abort(true);
-		set_time_limit(0);
-
-		ob_start();
-
-		$function();
-
-		header('Connection: close');
-		header('Content-Length: ' . ob_get_length());
-		ob_end_flush();
-		ob_flush();
-		flush();
 	}
 }

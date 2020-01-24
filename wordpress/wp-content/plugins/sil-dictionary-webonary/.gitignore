@@ -2,10 +2,3 @@
 .idea/
 *.iml
 .gradle/
-
-# local PHPUnit files
-phpunit.phar
-phpunit.xml
-
-# SRDB (Search Replace DB) used when moving a Wordpress database to different server
-srdb/

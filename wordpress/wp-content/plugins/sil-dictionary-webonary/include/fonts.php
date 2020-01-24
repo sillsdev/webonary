@@ -1,36 +1,40 @@
 <?php
-
-
-class Webonary_Font_Management
+//This class has functions for reading out the font family names from a css file and writing the font faces into
+//a custom css
+class fontManagment
 {
 	public function getFontsAvailable()
 	{
-		$string = file_get_contents(ABSPATH . FONTFOLDER . 'fonts.json');
+		$string = file_get_contents(ABSPATH . FONTFOLDER . "fonts.json");
 		$arrFont = json_decode($string, true);
 
 		return $arrFont;
 	}
 
-	/**
-	 * @param $css_string
-	 * @return string[]
-	 */
 	public function get_fonts_fromCssText($css_string)
 	{
 		// Get the CSS that contains a font-family rule.
 		$length = strlen($css_string);
-		$property = 'font-family';
+		$porperty = 'font-family';
 		$last_position = 0;
-		$arrCSSFonts = array();
-
-		while (($last_position = strpos($css_string, $property, $last_position)) !== FALSE) {
-
+		$arrCSSFonts = null;
+		$x = 0;
+		while (($last_position = strpos($css_string, $porperty, $last_position)) !== FALSE) {
 			// Get closing bracket.
 			$end = strpos($css_string, '}', $last_position);
 			if ($end === FALSE) {
 				$end = $length;
 			}
 			$end++;
+
+			// Get position of the last closing bracket (start of this section).
+			$start = strrpos($css_string, '}', - ($length - $last_position));
+			if ($start === FALSE) {
+				$start = 0;
+			}
+			else {
+				$start++;
+			}
 
 			// Get closing ; in order to get the end of the declaration.
 			$declaration_end = strpos($css_string, ';', $last_position);
@@ -41,19 +45,21 @@ class Webonary_Font_Management
 			// Parse values string into an array of values.
 			$values_array = explode(',', $values_string);
 
-			// We want the first font if there is more than one, without any quotation marks
-			if (!empty($values_array))
-			    $arrCSSFonts[] = trim($values_array[0], " \t\n\r\0\x0B\"'");
+			$fontName = trim(str_replace("'", "", $values_array[0]));
+			$arrCSSFonts[$x] = str_replace('"', '', $fontName);
+
+			// Values array has more than 1 value and first element is a quoted string.
 
 			// Advance position.
+			$x++;
 			$last_position = $end;
 		}
+		$arrUniqueCSSFonts = null;
 
-		$arrUniqueCSSFonts = array();
-
-		if(!empty($arrCSSFonts))
+		if(isset($arrCSSFonts))
 		{
 			$arrUniqueCSSFonts = array_unique($arrCSSFonts);
+
 			sort($arrUniqueCSSFonts);
 		}
 
@@ -70,7 +76,7 @@ class Webonary_Font_Management
 	//////////////////////
 	// creates custom.css
 	//////////////////////
-	public function set_fontFaces($file, $uploadPath)
+	public function set_fontFaces($file = "configured.css", $uploadPath)
 	{
 		$css_string = file_get_contents($file);
 		$arrUniqueCSSFonts = $this->get_fonts_fromCssText($css_string);
@@ -170,29 +176,28 @@ class Webonary_Font_Management
 		echo "</h3>";
 		echo "<hr>";
 	}
-
 	public function uploadFontForm()
 	{
 		$submitNumber = array_pop(array_keys($_REQUEST['uploadButton']));
-		?>
-		<a id="uploadfont"></a>
+	?>
+		<a name="uploadfont"></a>
 		<h1>Upload Font</h1>
 		<h3><?php echo $_POST['fontname'][$submitNumber]; ?></h3>
 		<p></p>
 		<form action="#" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="fontname" value="<?php echo $_POST['fontname'][$submitNumber]; ?>">
 			Type:
-            <select name="fonttype" title="">
+			<select name="fonttype">
 				<option value="regular">regular</option>
 				<option value="bold">bold</option>
 				<option value="cursive">cursive</option>
 			</select>
 			<p></p>
-			Font file: <input type="file" name="fileToUpload">
-			<p></p>
-			<input type="submit" value="Upload Font" name="uploadFont">
+		    Font file: <input type="file" name="fileToUpload">
+		   	<p></p>
+		    <input type="submit" value="Upload Font" name="uploadFont">
 		</form>
 		<hr>
-		<?php
+	<?php
 	}
 }

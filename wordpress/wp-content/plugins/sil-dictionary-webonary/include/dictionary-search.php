@@ -1,4 +1,4 @@
-<?php /** @noinspection SqlResolve */
+<?php
 /**
  * Search
  *
@@ -68,7 +68,7 @@ function sil_dictionary_custom_message()
 
 	if($match_whole_words == 0)
 	{
-		return;
+		return false;
 	}
 
 	$partialsearch = $_GET['partialsearch'];
@@ -96,8 +96,8 @@ function sil_dictionary_custom_message()
 
 /**
  * Does the string have Chinese, Japanese, or Korean characters?
- * @param string $string = string to check
- * @return bool = whether the string has Chinese/Japanese/Korean characters.
+ * @param <string> $string = string to check
+ * @return <boolean> = whether the string has Chinese/Japanese/Korean characters.
  */
 function is_CJK( $string ) {
 	$regex = '/' . implode( '|', get_CJK_unicode_ranges() ) . '/u';
@@ -182,14 +182,13 @@ function get_CJK_unicode_ranges() {
 
 // I'm not sure this is being used.
 
-// NOTE: no longer used
-//function no_standard_sort($k) {
-//	global $wp_query;
-//	if(!empty($wp_query->query_vars['s'])) {
-//		$k->query_vars['orderby'] = 'none';
-//		$k->query_vars['order'] = 'none';
-//	}
-//}
+function no_standard_sort($k) {
+	global $wp_query;
+	if(!empty($wp_query->query_vars['s'])) {
+		$k->query_vars['orderby'] = 'none';
+		$k->query_vars['order'] = 'none';
+	}
+}
 
 function get_indexed_entries($query, $language)
 {
@@ -219,7 +218,6 @@ function get_post_id_bycontent($query)
 
 	return $wpdb->get_var($sql);
 }
-
 function my_404_override() {
 	global $wp_query;
 
@@ -238,20 +236,22 @@ function my_404_override() {
 		}
 	}
 }
-add_filter('template_redirect', 'my_404_override');
+add_filter('template_redirect', 'my_404_override' );
 
-function filter_the_content_in_the_main_loop($content) {
+function filter_the_content_in_the_main_loop( $content ) {
 
-	$content = normalizer_normalize($content, Normalizer::NFC);
+	$content = normalizer_normalize($content, Normalizer::NFC );
 	return $content;
 }
-add_filter('the_content', 'filter_the_content_in_the_main_loop');
+add_filter( 'the_content', 'filter_the_content_in_the_main_loop' );
 
-function get_subquery_where($query)
+function get_subquery_where()
 {
+	global $wp_query;
+
 	mb_internal_encoding("UTF-8");
 
-	if( empty($query->query_vars['s'])) {
+	if( empty($wp_query->query_vars['s'])) {
 		return "";
 	}
 	//search string gets trimmed and normalized to NFC
@@ -264,20 +264,20 @@ function get_subquery_where($query)
 		}
 
 		//$normalization = Normalizer::NFD;
-		$search = normalizer_normalize(trim($query->query_vars['s']), $normalization);
-		//$search = normalizer_normalize(trim($query->query_vars['s']), Normalizer::FORM_D);
+		$search = normalizer_normalize(trim($wp_query->query_vars['s']), $normalization);
+		//$search = normalizer_normalize(trim($wp_query->query_vars['s']), Normalizer::FORM_D);
 	}
 	else
 	{
-		$search = trim($query->query_vars['s']);
+		$search = trim($wp_query->query_vars['s']);
 	}
 	$search = strtolower($search);
 
 	if(!empty($_GET['key'])) {
 		$key = $_GET['key'];
 	}
-	elseif(!empty($query->query_vars['langcode'])) {
-		$key = $query->query_vars['langcode'];
+	elseif(!empty($wp_query->query_vars['langcode'])) {
+		$key = $wp_query->query_vars['langcode'];
 	}
 	else {
 		$key = '';
@@ -286,112 +286,100 @@ function get_subquery_where($query)
 	$subquery_where = "";
 	if( strlen( trim( $key ) ) > 0)
 		$subquery_where .= " WHERE " . SEARCHTABLE . ".language_code = '$key' ";
+		$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
 
-    $subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
+		//using search form
+		$match_accents = false;
+		if(isset($wp_query->query_vars['match_accents']))
+		{
+			$match_accents = true;
+		}
 
-    //using search form
-    $match_accents = false;
-    if(isset($query->query_vars['match_accents']))
-    {
-        $match_accents = true;
-    }
+		//by default d à, ä, etc. are handled as the same letters when searching
+		$collateSearch = "";
+		if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
+		{
+			$collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
+		}
 
-    //by default d à, ä, etc. are handled as the same letters when searching
-    $collateSearch = "";
-    if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
-    {
-        $collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
-    }
+		$searchquery = $search;
+		//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
+		if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
+		{
+			//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
+			$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+			//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
+			//the mysql regular expression can't find words with  accented characters if we don't include them
+			$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
+			$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
+			$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
+			$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
+			$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
+			$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
+			$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+			$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
+			$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+			//for vowels we add [^a-z]* which will search for any character that comes after the normal character
+			//one can't see it, but compoased characters actually consist of two characters, for instance the a in ya̧g
+			$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+		}
 
-    $searchquery = $search;
-    //this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-    if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
-    {
-        //first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
-        $searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
-        //see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
-        //the mysql regular expression can't find words with  accented characters if we don't include them
-        $searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
-        $searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
-        $searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
-        $searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-        $searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
-        $searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-        $searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
-        $searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
-        $searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
-        //for vowels we add [^a-z]* which will search for any character that comes after the normal character
-        //one can't see it, but composed characters actually consist of two characters, for instance the a in ya̧g
-        $searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
-    }
+		$searchquery = str_replace("'", "\'", $searchquery);
 
-    $searchquery = str_replace("'", "\'", $searchquery);
+		$match_whole_words = is_match_whole_words($search);
 
-    $match_whole_words = is_match_whole_words($search);
-
-    if (is_CJK( $search ) || $match_whole_words == 0)
-    {
-        if(get_option("searchSomposedCharacters") == 1)
-        {
-            $subquery_where .= " LOWER(search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
-        }
-        else
-        {
-            $subquery_where .= " LOWER(search_strings) LIKE '%" .
-                    addslashes( $search ) . "%' " . $collateSearch;
-        }
-    }
-    else
-    {
-        if(mb_strlen($search) > 1)
-        {
-            $subquery_where .= "search_strings REGEXP '[[:<:]]" .
-                    $searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
-        }
-    }
+		if (is_CJK( $search ) || $match_whole_words == 0)
+		{
+			if(get_option("searchSomposedCharacters") == 1)
+			{
+				$subquery_where .= " LOWER(" . SEARCHTABLE . ".search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+			}
+			else
+			{
+				$subquery_where .= " LOWER(" . SEARCHTABLE . ".search_strings) LIKE '%" .
+						addslashes( $search ) . "%' " . $collateSearch;
+			}
+		}
+		else
+		{
+			if(mb_strlen($search) > 1)
+			{
+				$subquery_where .= SEARCHTABLE . ".search_strings REGEXP '[[:<:]]" .
+						$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
+			}
+		}
 
 	return $subquery_where;
 }
 
-/**
- * @param $input
- * @param null $query
- * @return string
- */
-function replace_default_search_filter($input, $query=null)
+function replace_default_search_filter($input)
 {
-	global $wpdb;
+	global $wp_query, $wpdb;
 
-	if (empty($query))
-	    return $input;
-
-	if (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
+	if ( is_search() && (isset($_GET['s']) || isset($wp_query->query_vars['s'])))
 	{
-		$searchWord = isset($_GET['s']) ? $_GET['s'] : $query->query_vars['s'];
-        $search_tbl = SEARCHTABLE;
+		$searchWord = isset($_GET['s']) ? $_GET['s'] : $wp_query->query_vars['s'];
 
+		$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
+		" FROM $wpdb->posts  JOIN " .
+		" (SELECT post_id, language_code, MAX(relevance) AS relevance, search_strings, sortorder " .
+		" FROM " . SEARCHTABLE;
+		$sqlQuery .= get_subquery_where();
+		$sqlQuery .= " GROUP BY post_id, language_code, sortorder " .
+				" ORDER BY relevance DESC) " .
+				SEARCHTABLE . " ON $wpdb->posts.ID = " . SEARCHTABLE . ".post_id  " .
+				" WHERE 1=1  AND post_type = 'post' AND post_status = 'publish' ";
 		if(empty($searchWord))
-            $where = 'WHERE post_id < 0';
-		else
-			$where = get_subquery_where($query);
+		{
+			//to make sure no search results are returned with empty query
+			$sqlQuery .= " AND 1 = 2 ";
+		}
+		$sqlQuery .= " ORDER BY relevance DESC, CHAR_LENGTH(search_strings) ASC, menu_order ASC, search_strings ASC ";
 
-		$sql = <<<SQL
-SELECT DISTINCTROW p.*, s.relevance
-FROM {$wpdb->posts} AS p
-  INNER JOIN (
-              SELECT post_id, MAX(relevance) AS relevance
-              FROM {$search_tbl} 
-              {$where}
-              GROUP BY post_id
-             ) AS s ON p.ID = s.post_id
-WHERE p.post_type = 'post' AND p.post_status = 'publish'
-ORDER BY s.relevance DESC, p.post_title
-SQL;
-
-		return $sql;
+		$input = $sqlQuery;
 	}
 
-	if(isset($query->query_vars['semdomain']))
+	if(isset($wp_query->query_vars['semdomain']))
 	{
 		$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
 		" FROM $wpdb->posts " .
@@ -399,7 +387,7 @@ SQL;
 		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
 		" INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id  " .
 		" WHERE 1=1  AND $wpdb->posts.post_type = 'post' " .
-		" AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains' AND $wpdb->terms.slug REGEXP '^" . $query->query_vars['semnumber'] ."([-]|$)' " .
+		" AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains' AND $wpdb->terms.slug REGEXP '^" . $wp_query->query_vars['semnumber'] ."([-]|$)' " .
 		" ORDER BY menu_order ASC, post_title";
 
 		$input = $sqlQuery;
