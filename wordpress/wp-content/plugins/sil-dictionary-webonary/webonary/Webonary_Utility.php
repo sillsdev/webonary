@@ -1,4 +1,6 @@
 <?php
+/** @noinspection SqlResolve */
+
 class Webonary_Utility
 {
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
@@ -110,6 +112,7 @@ class Webonary_Utility
 		}
 	}
 
+	/** @noinspection PhpUnusedParameterInspection */
 	public static function resize_image($src, $w, $h, $dst)
 	{
 		if(!file_exists($dst))
@@ -192,17 +195,16 @@ class Webonary_Utility
 		if(isset($user->ID))
 		{
 			$sql = "SELECT meta_value AS userrole FROM wp_usermeta " .
-					" WHERE (user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities') OR " .
-					" (user_id = " . $user->ID . " AND meta_key = 'wp_capabilities')";
+				" WHERE (user_id = " . $user->ID . " AND meta_key = 'wp_" . get_current_blog_id()  . "_capabilities') OR " .
+				" (user_id = " . $user->ID . " AND meta_key = 'wp_capabilities')";
 
 
 			$roleSerialized = $wpdb->get_var($sql);
-			$userrole = unserialize($roleSerialized);
+			$user_role = unserialize($roleSerialized);
 
-			if($userrole['editor'] == true || $userrole['administrator'] == true)
+			if(!empty($user_role['editor']) || !empty($user_role['administrator']))
 			{
-				$user_info = get_userdata($user->ID);
-				return $user_info;
+				return get_userdata($user->ID);
 			}
 			else
 			{
@@ -216,5 +218,76 @@ class Webonary_Utility
 			echo "Wrong username or password.";
 			return false;
 		}
+	}
+
+	public static function includeTemplate($template_name, $substitutions)
+	{
+		global $webonary_template_path;
+
+		$html = file_get_contents($webonary_template_path . DIRECTORY_SEPARATOR . $template_name);
+
+		if (empty($substitutions))
+			return $html;
+
+		foreach($substitutions as $key => $value) {
+			$html = str_replace($key, $value, $html);
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Executes $function, sends the response to the browser, closes the connection, and continues processing.
+	 * @param Closure $function
+	 */
+	public static function sendAndContinue($function)
+	{
+		ignore_user_abort(true);
+		set_time_limit(0);
+
+		ob_start();
+
+		$function();
+
+		// set the response code to 200, if not already set
+		if (http_response_code() === false)
+			http_response_code(200);
+
+		header('Connection: close');
+		header('Content-Length: ' . ob_get_length());
+		ob_end_flush();
+		ob_flush();
+		flush();
+	}
+
+	/**
+	 * This function attempts to remove everything from the output buffers.
+	 * Returns FALSE if the headers have already been sent.
+	 *
+	 * @return bool
+	 */
+	public static function clearResponse()
+	{
+		$headers_sent = headers_sent();
+
+		// attempt to remove all headers
+		if (!$headers_sent)
+			header_remove();
+
+		// discard all the buffered output
+		while (ob_get_level()) {
+			ob_end_clean();
+		}
+
+		return !$headers_sent;
+	}
+
+	public static function disablePlugins($plugins)
+	{
+		$key = array_search('qtranslate-x/qtranslate.php' , $plugins);
+		if (false !== $key)
+			unset($plugins[$key]);
+
+		return $plugins;
 	}
 }
