@@ -26,67 +26,14 @@ License: MIT
  * @since 3.1
  */
 
-if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
-
-include_once __DIR__ . DS . 'include' . DS . 'defines.php';
-
 // don't load directly
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
+include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
+
 /** @var wpdb $wpdb */
-global $wpdb, $webonary_class_path, $webonary_template_path, $webonary_include_path;
-
-$this_dir = dirname(__FILE__);
-
-/** @var string $webonary_class_path */
-$webonary_class_path = $this_dir . DS . 'webonary';
-
-/** @var string $webonary_template_path */
-$webonary_template_path = $this_dir . DS . 'templates';
-
-$webonary_include_path = $this_dir . DS . 'include';
-
-//region Dependencies
-function webonary_autoloader($class_name)
-{
-	global $webonary_class_path, $webonary_include_path;
-
-	if ($class_name == 'Pinyin' ||
-		$class_name == 'MemoryFileDictLoader' ||
-		$class_name == 'GeneratorFileDictLoader' ||
-		$class_name == 'FileDictLoader' ||
-		$class_name == 'DictLoaderInterface') {
-
-		$success = include_once $webonary_include_path . DS . 'pinyin' . DS . 'src' . DS . $class_name . '.php';
-	}
-	else {
-
-		$pos = strpos($class_name, 'Webonary_');
-
-		// class name must begin with "Webonary_"
-		if ($pos === false || $pos != 0)
-			return null;
-
-		// check for an interface file
-		$pos = strpos($class_name, 'Webonary_Interface_');
-
-		if ($pos !== false)
-			$class_file = 'interface' . DS . substr($class_name, 19) . '.php';
-		else
-			$class_file = $class_name . '.php';
-
-		$success = include_once $webonary_class_path . DS . $class_file;
-	}
-
-	if ($success === false)
-		return new WP_Error('Failed', 'Not able to include ' . $class_name);
-
-	return null;
-}
-
-/** @noinspection PhpUnhandledExceptionInspection */
-spl_autoload_register('webonary_autoloader');
+global $wpdb;
 
 function webonary_admin_script()
 {
@@ -103,30 +50,6 @@ function webonary_admin_script()
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 
-
-
-// Infrastructure management: add and remove custom table(s) and custom taxonomies.
-include_once $this_dir . '/include/infrastructure.php';
-// Configure Webonary Settings
-include_once $this_dir . '/include/configuration.php';
-
-// Code for searching on dictionaries.
-include_once $this_dir . '/include/dictionary-search.php';
-// Code for the XHMTL importer.
-include_once $this_dir . '/include/xhtml-importer.php';
-// A replacement for the search box.
-include_once $this_dir . '/include/searchform_func.php';
-// Creates the browse view based on shortcodes
-include_once $this_dir . '/include/browseview_func.php';
-// Adds functionality to save the post_name in comment_type and resync comments
-include_once $this_dir . '/include/comments_func.php';
-// API for FLEx
-include_once $this_dir . '/include/api.php';
-// Widgets
-include_once $this_dir . '/include/widgets.php';
-// modify the post content
-include_once $this_dir . '/include/modifycontent.php';
-//endregion
 
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
@@ -153,11 +76,14 @@ add_filter('posts_request','replace_default_search_filter', 10, 2);
 // this executes just before wordpress determines which template page to load
 add_action('template_redirect', 'my_enqueue_css');
 
-
-//add_action('pre_get_posts','no_standard_sort');
+// add_action('pre_get_posts','no_standard_sort');
 add_action('preprocess_comment' , 'preprocess_comment_add_type');
 
-function add_rewrite_rules($aRules) {
+// API for FLEx
+add_action('rest_api_init', 'Webonary_API_MyType::Register_New_Routes');
+
+function add_rewrite_rules($aRules)
+{
 	//echo "rewrite rules<br>";
 	$aNewRules = array('^/([^/]+)/?$' => 'index.php?clean=$matches[1]');
 	$aRules = $aNewRules + $aRules;
@@ -166,8 +92,10 @@ function add_rewrite_rules($aRules) {
 
 add_filter('post_rewrite_rules', 'add_rewrite_rules');
 
-function add_query_vars($qvars) {
-	$qvars[] = "clean";
+function add_query_vars($qvars)
+{
+	if (!in_array('clean', $qvars))
+		$qvars[] = 'clean';
 	return $qvars;
 }
 

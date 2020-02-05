@@ -1,5 +1,5 @@
 <?php
-
+/** @noinspection SqlResolve */
 
 class Webonary_Utility
 {
@@ -112,6 +112,7 @@ class Webonary_Utility
 		}
 	}
 
+	/** @noinspection PhpUnusedParameterInspection */
 	public static function resize_image($src, $w, $h, $dst)
 	{
 		if(!file_exists($dst))
@@ -199,12 +200,11 @@ class Webonary_Utility
 
 
 			$roleSerialized = $wpdb->get_var($sql);
-			$userrole = unserialize($roleSerialized);
+			$user_role = unserialize($roleSerialized);
 
-			if($userrole['editor'] == true || $userrole['administrator'] == true)
+			if(!empty($user_role['editor']) || !empty($user_role['administrator']))
 			{
-				$user_info = get_userdata($user->ID);
-				return $user_info;
+				return get_userdata($user->ID);
 			}
 			else
 			{
@@ -249,10 +249,45 @@ class Webonary_Utility
 
 		$function();
 
+		// set the response code to 200, if not already set
+		if (http_response_code() === false)
+			http_response_code(200);
+
 		header('Connection: close');
 		header('Content-Length: ' . ob_get_length());
 		ob_end_flush();
 		ob_flush();
 		flush();
+	}
+
+	/**
+	 * This function attempts to remove everything from the output buffers.
+	 * Returns FALSE if the headers have already been sent.
+	 *
+	 * @return bool
+	 */
+	public static function clearResponse()
+	{
+		$headers_sent = headers_sent();
+
+		// attempt to remove all headers
+		if (!$headers_sent)
+			header_remove();
+
+		// discard all the buffered output
+		while (ob_get_level()) {
+			ob_end_clean();
+		}
+
+		return !$headers_sent;
+	}
+
+	public static function disablePlugins($plugins)
+	{
+		$key = array_search('qtranslate-x/qtranslate.php' , $plugins);
+		if (false !== $key)
+			unset($plugins[$key]);
+
+		return $plugins;
 	}
 }

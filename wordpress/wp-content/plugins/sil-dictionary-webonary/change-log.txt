@@ -1,3 +1,4 @@
+v. 8.3.10 05 Feb 2020 move rest API to Webonary_API_MyType.php, delete api.php
 v. 8.3.9 18 Dec 2019 fix indexing memory leaks, and update import to use ajax to improve user experience
 v. 8.3.8 31 Oct 2019 allow colon in password
 v. 8.3.7 26 Oct 2019 if post content too long, indexing will stop

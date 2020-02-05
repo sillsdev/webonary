@@ -1,13 +1,5 @@
 <?php
 
-function disable_plugins($plugins){
-
-	$key = array_search('qtranslate-x/qtranslate.php' , $plugins);
-	if (false !== $key) unset($plugins[$key]);
-
-	return $plugins;
-}
-
 if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") && isset($argv))
 {
 	define('WP_INSTALLING', true);
@@ -23,7 +15,7 @@ if(exec('echo EXEC') == 'EXEC' && file_exists($argv[1] . "exec-configured.txt") 
 
 	include $argv[1] . 'wp-content/plugins/sil-dictionary-webonary/include/xhtml-importer.php';
 
-	add_filter( 'option_active_plugins', 'disable_plugins' );
+	add_filter('option_active_plugins', 'Webonary_Utility::disablePlugins');
 
 	//it isn't actually from the api, but saves us renaming the variable to "background" or something like that...
 	$api = true;
