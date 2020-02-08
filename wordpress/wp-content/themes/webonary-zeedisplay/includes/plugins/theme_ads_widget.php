@@ -1,15 +1,15 @@
 <?php
 	// Add Theme 125x125 Ads
 	class Theme_125_Ads extends WP_Widget {
-		function Theme_125_Ads() {
+		function __construct() {
 			$widget_ops = array('classname' => 'theme_ads', 'description' => __('Show your 125x125 Ad Spots', ZEE_LANG) );
 			parent::__construct('theme_ads', 'zeeBanners 125x125', $widget_ops);
 		}
-	 
+
 		function widget($args, $instance) {
 			extract($args, EXTR_SKIP);
 			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-			
+
 			$pic = array();
 			$url = array();
 			$nr = range(1,6);
@@ -27,7 +27,7 @@
 					$url[$i] = esc_url( $options['themeZee_ad_url_'.$number]);
 				}
 			}
-			
+
 			// Output
 			echo $before_widget;
 			if ( !empty( $title ) ) { echo $before_title . $title . $after_title; };
@@ -42,13 +42,13 @@
 		<?php
 			echo $after_widget;
 		}
-	 
+
 		function update($new_instance, $old_instance) {
 			$instance = $old_instance;
 			$instance['title'] = strip_tags($new_instance['title']);
 			return $instance;
 		}
-	 
+
 		function form($instance) {
 			$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 			$title = strip_tags($instance['title']);

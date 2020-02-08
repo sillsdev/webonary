@@ -77,8 +77,6 @@ function openImage(image)
 
 	</div>
 <?php //if(!isMobile()) { get_sidebar(); } ?>
-<?php get_footer();
-?>
 <?php
 if(strlen(trim($query)) > 0)
 {
@@ -92,8 +90,11 @@ if(strlen(trim($query)) > 0)
 <!--
  	//highlightSearchTerms('<?php echo trim(str_replace("'", "#", the_title())); ?>');
 	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', <?php echo $lenient; ?>);
-//-->
+-->
 </script>
 <?php
 }
+?>
+<?php
+get_footer();
 ?>

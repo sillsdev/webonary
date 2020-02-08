@@ -60,14 +60,19 @@ img {
   clear: both;
 }
 */
-a, a:link, a:visited{
-/*  color: #0066ee;*/
-  text-decoration: none
+.pageentry a {
+	color: darkblue !important;
+	text-decoration: underline !important;
+}
+.post a, .post a:link, .post a:visited{
+  text-decoration: none !important;
+  color: inherit !important;
 }
 a:hover {text-decoration:underline}, a:active {
   text-decoration: none;
 }
 a:hover span {text-decoration:underline}
+
 input, textarea {
   background-color: #f5f5f5;
   margin: 5px;
@@ -393,6 +398,10 @@ background: url(images/button_hover.png) repeat-x #eee;
   line-height: 1.3em;
   font-size: 1.0em;
   padding: 10px 20px 10px 20px;
+}
+#searchresults {
+	line-height: normal;
+	font-size: unset;
 }
 .pageentry h1 {
   line-height: 1.5em;
