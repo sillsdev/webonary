@@ -358,14 +358,11 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 	 * @param DOMDocument $doc
 	 * @param DOMNode $field
 	 * @param int $term_id
-	 * @return string|bool
 	 */
 	function convert_semantic_domains_to_links($doc, $field, $term_id)
     {
-		global $wpdb;
-
 		if (empty($field))
-			return false;
+			return;
 
 		$new_element = $doc->createElement('span');
 
@@ -384,8 +381,6 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 
 		$parent = $field->parentNode;
 		$parent->replaceChild($new_element, $field);
-
-		return $doc->saveXML($doc);
 	}
 
 	/**
@@ -1117,6 +1112,10 @@ SQL;
 				{
 					$this->convert_semantic_domains_to_links($xpath->document, $sd_number, $term_id);
 					$this->convert_semantic_domains_to_links($xpath->document, $sd_names->item($sc), $term_id);
+
+					$sql = "UPDATE {$wpdb->posts} SET post_content = %s WHERE ID = %s";
+					$wpdb->query($wpdb->prepare($sql, $xpath->document->saveXML($xpath->document), $post_id));
+
 					$updated = true;
 
 					wp_set_object_terms($post_id, $domain_name, Webonary_Configuration::$semantic_domains_taxonomy, true);
