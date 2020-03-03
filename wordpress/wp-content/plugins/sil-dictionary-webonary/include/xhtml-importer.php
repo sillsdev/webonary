@@ -43,7 +43,7 @@ if ( ! class_exists( 'WP_Importer' ) )
 
 /*
  * Register the importer so WordPress knows it exists. Specify the start
- * function as an entry point. Paramaters: $id, $name, $description,
+ * function as an entry point. Parameters: $id, $name, $description,
  * $callback.
  */
 $pathway_import = new Webonary_Pathway_Xhtml_Import();
