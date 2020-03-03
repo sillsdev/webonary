@@ -1,13 +1,4 @@
 <?php
-	if(exec('echo EXEC') == 'EXEC' && file_exists(ABSPATH . 'exec-configured.txt'))
-	{
-		$blogid = get_current_blog_id();
-		$command = 'php -f ' . ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php ' . ABSPATH . ' ' . $blogid . ' ' . $filetype . ' ' . $xhtmlFileURL . ' ' . $userid;
 
-		exec($command . ' > /tmp/webonaryimport_' . $blogid . '_' . $filetype . '.txt 2>&1 &');
-	}
-	else
-	{
-		$argv = null;
-		include ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php';
-	}
+$argv = null;
+include ABSPATH . 'wp-content/plugins/sil-dictionary-webonary/processes/import_entries.php';
