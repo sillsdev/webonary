@@ -345,7 +345,6 @@ function get_subquery_where($query)
                     $searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
         }
     }
-
 	return $subquery_where;
 }
 
@@ -361,17 +360,38 @@ function replace_default_search_filter($input, $query=null)
 	if (empty($query))
 	    return $input;
 
-	if (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
+	// hanatgit 20200303 I re-write the logic slightly for clarity.
+	// But in doing so, I realized that COMBINED searches, e.g. searching for a word
+	// within semantic domain or parts of speech (taxomony) would not work as is.
+	// Nor does paging, as all results are shown on every page.
+	// TODO: fix these in Webonary 1.5		
+	if (isset($_GET['tax']) && $_GET['tax'] > 1)
+	{
+		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		" FROM $wpdb->posts " .
+		" INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
+		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
+		" WHERE $wpdb->posts.post_type IN ('post') AND $wpdb->term_taxonomy.term_id = " . $_GET['tax'] .
+		" ORDER BY menu_order ASC, post_title ASC";
+	}
+	elseif (isset($query->query_vars['semdomain']))
+	{
+		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		" FROM $wpdb->posts " .
+		" LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
+		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
+		" INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id  " .
+		" WHERE $wpdb->posts.post_type = 'post' " .
+		" AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains' AND $wpdb->terms.slug REGEXP '^" . $query->query_vars['semnumber'] ."([-]|$)' " .
+		" ORDER BY menu_order ASC, post_title";
+	}
+	elseif (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
 	{
 		$searchWord = isset($_GET['s']) ? $_GET['s'] : $query->query_vars['s'];
         $search_tbl = SEARCHTABLE;
+		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
-		if(empty($searchWord))
-            $where = 'WHERE post_id < 0';
-		else
-			$where = get_subquery_where($query);
-
-		return <<<SQL
+		$input = <<<SQL
 SELECT DISTINCTROW p.*, s.relevance
 FROM {$wpdb->posts} AS p
   INNER JOIN (
@@ -385,43 +405,12 @@ ORDER BY s.relevance DESC, p.post_title
 SQL;
 	}
 
-	if(isset($query->query_vars['semdomain']))
-	{
-		$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
-		" FROM $wpdb->posts " .
-		" LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
-		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
-		" INNER JOIN $wpdb->terms ON $wpdb->term_taxonomy.term_id = $wpdb->terms.term_id  " .
-		" WHERE 1=1  AND $wpdb->posts.post_type = 'post' " .
-		" AND $wpdb->term_taxonomy.taxonomy = 'sil_semantic_domains' AND $wpdb->terms.slug REGEXP '^" . $query->query_vars['semnumber'] ."([-]|$)' " .
-		" ORDER BY menu_order ASC, post_title";
-
-		$input = $sqlQuery;
-
-	}
-
-	if(isset($_GET['tax']))
-	{
-		if($_GET['tax'] > 1)
-		{
-			$sqlQuery = "SELECT DISTINCTROW $wpdb->posts.* " .
-			" FROM $wpdb->posts " .
-			" INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
-			" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
-			" WHERE 1=1  AND $wpdb->posts.post_type IN ('post') AND $wpdb->term_taxonomy.term_id = " . $_GET['tax'] .
-			" ORDER BY menu_order ASC, post_title ASC";
-
-			$input = $sqlQuery;
-		}
-	}
-
 	return $input;
-
 }
 
 function webonary_css()
 {
-	?>
+?>
 <!--suppress CssUnusedSymbol -->
 <style>
 	a:hover {text-decoration:none;}

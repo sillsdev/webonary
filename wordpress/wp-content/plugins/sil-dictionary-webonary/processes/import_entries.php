@@ -13,7 +13,12 @@ if(isset($xhtmlFileURL))
 	}
 	$path_parts = pathinfo($xhtmlFileURL);
 
-	$uploadPath = $path_parts['dirname'];
+	$filetype = $path_parts['basename'];
+	//remove numbers from string
+	if(substr($filetype, 0, 8) == 'reversal')
+	{
+		$filetype = 'reversal';
+	}
 
 	$import = new Webonary_Pathway_Xhtml_Import();
 
