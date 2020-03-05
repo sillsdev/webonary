@@ -49,7 +49,7 @@ class Webonary_Utility
 		}
 
 		error_log("zip file extracted");
-		echo "zip file extracted successfully\n";
+		// echo "zip file extracted successfully\n";
 		unlink($uploadPath . "/" . $zipfile['name']);
 		return true;
 	}
@@ -126,8 +126,7 @@ class Webonary_Utility
 			{
 				list($width, $height) = getimagesize($src . "/"  . $file);
 
-				echo $width . "#" . $height . "\n";
-
+				// echo $width . "#" . $height . "\n";
 				$r = $width / $height;
 				$newwidth = $h*$r;
 				$newheight = $h;
@@ -173,7 +172,7 @@ class Webonary_Utility
 				{
 					copy ( $src . "/" . $file, $dst . "/" . $file );
 				}
-				echo $dst . "/" . $file . "\n";
+				// echo $dst . "/" . $file . "\n";
 			}
 		}
 	}

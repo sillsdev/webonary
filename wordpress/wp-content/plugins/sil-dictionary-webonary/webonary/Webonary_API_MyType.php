@@ -145,14 +145,14 @@ class Webonary_API_MyType
 
 			// If successfully cleared, send the success message and close the connection.
 			Webonary_Utility::sendAndContinue(function() {
-				echo "Upload successful\n";
+				echo "Upload successful. An email will be sent you when processing is completed.\n";
 			});
 		}
 		else {
 
 			// If not successfully cleared, send the success message and flush to the client.
 			// The connection will remain open.
-			echo "Upload successful\n";
+			echo "Upload successful. Beginning processing....\n";
 			flush();
 		}
 

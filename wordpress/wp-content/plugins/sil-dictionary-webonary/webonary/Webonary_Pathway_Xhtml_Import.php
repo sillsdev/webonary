@@ -141,12 +141,18 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 					$languagecode = $_POST['languagecode'];
 				}
 				$result = $this->upload_files('css', $_POST['filetype'], $languagecode);
-				if (is_wp_error( $result ))
+				if(is_wp_error( $result ))
 					echo $result->get_error_message();
 				$css_file = $result['file'];
 
 				if(isset($_POST['filetype']))
+				{
 					$filetype = $_POST['filetype'];
+
+					// reversals will have langauge in the filetype, eg reversal_en
+					if(substr($filetype, 0, 8) == 'reversal')
+						$filetype = 'reversal';
+				}
 				else
 				    $filetype = 'configured';
 
@@ -1656,7 +1662,7 @@ SQL;
 				$fontClass = new Webonary_Font_Management();
 				$fontClass->set_fontFaces($target_path, $upload_dir['path']);
 
-				_e('The css file has been uploaded into your upload folder:<br>' . $target_path . '<br>');
+				echo '<p>The css file has been uploaded into your upload folder: ' . $target_path . '</p>';
 			} else{
 				echo "<span style=color:red;>";
 				_e('There was an error uploading the file, please try again!');
@@ -1703,12 +1709,12 @@ SQL;
 
 	/**
 	 * @param string $xhtml_file_url
-	 * @param string $file_type
+	 * @param string $filetype
      *
      * @global wpdb $wpdb
      * @global string $webonary_include_path
 	 */
-    public function process_xhtml_file($xhtml_file_url, $file_type)
+    public function process_xhtml_file($xhtml_file_url, $filetype)
     {
         global $wpdb, $webonary_include_path;
 
@@ -1723,16 +1729,16 @@ SQL;
 		$this->WriteLine('Reader opened');
 
 		update_option('hasComposedCharacters', 0);
-		update_option('importStatus', $file_type);
+		update_option('importStatus', $filetype);
 
 		Webonary_Configuration::$search_table_name = $wpdb->prefix . 'sil_search';
 
 		/** @var WP_User $current_user */
 		$current_user = wp_get_current_user();
 
-		if ($file_type == 'configured' || $file_type == 'stem' || $file_type == 'reversal')
+		if ($filetype == 'configured' || $filetype == 'stem' || $filetype == 'reversal')
 		{
-			$this->WriteLine('File type = ' . $file_type);
+			$this->WriteLine('File type = ' . $filetype);
 
 			$time_pre = microtime(true);
 
@@ -1840,7 +1846,7 @@ SQL;
 
 					if (trim($post_entry) != '' && $isNewFLExExport === true)
 					{
-						if ($file_type == 'stem')
+						if ($filetype == 'stem')
 						{
 							$entry_counter = $this->import_xhtml_stem_indexes($post_entry, $entry_counter);
 							if(strlen($letterLanguage) > 0)
@@ -1848,14 +1854,14 @@ SQL;
 								update_option('languagecode', $letterLanguage);
 							}
 						}
-                        elseif ($file_type == 'reversal')
+                        elseif ($filetype == 'reversal')
 						{
 							Webonary_Configuration::$reversal_table_name = $wpdb->prefix . 'sil_reversals';
 							$entry_counter = $this->import_xhtml_reversal_indexes($post_entry, $entry_counter, $letter);
 						}
 						else
 						{
-							// $file_type == configured
+							// $filetype == configured
 							$entry_counter = $this->import_xhtml_entries($post_entry, $entry_counter, $menu_order, $isNewFLExExport, $letter);
 							if(strlen($letterLanguage) > 0)
 							{
@@ -1880,9 +1886,8 @@ SQL;
 				echo '<div style="color:red">ERROR: No entries found.</div><br>';
 
 			$time_post = microtime(true);
-			$exec_time = $time_post - $time_pre;
-
-			echo $exec_time . '<br>';
+			$exec_time = round($time_post - $time_pre, 1);
+			echo "Import finished in $exec_time seconds.\n";
 		}
 
 		$email_headers = array('From: Webonary <webonary@sil.org>');
@@ -1891,7 +1896,7 @@ SQL;
 
 		$this->WriteLine('Finished importing, moving on');
 
-		if($file_type == 'configured')
+		if($filetype == 'configured')
 		{
 			update_option('vernacular_alphabet', $alphabet);
 
@@ -1909,14 +1914,8 @@ SQL;
 			$message .= 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
 
 			wp_mail( $current_user->user_email, 'Import complete', $message, $email_headers);
-
-			echo "Import finished\n";
 		}
-        elseif ($file_type == 'stem')
-		{
-			echo "Import finished\n";
-		}
-        elseif ( $file_type == 'reversal')
+        elseif ( $filetype == 'reversal')
 		{
 			//reversal1_langcode
 			if(isset($_POST['languagecode']))
@@ -2000,9 +1999,14 @@ SQL;
 
 				if(isset($xhtmlReversal1))
 				{
-					$file_type = str_replace('.xhtml', '', $arrReversals[0]);
+					$filetype = str_replace('.xhtml', '', $arrReversals[0]);
+
+					// reversals will have langauge in the filetype, eg reversal_en
+					if(substr($filetype, 0, 8) == 'reversal')
+						$filetype = 'reversal';
+
 					$xhtmlFileURL = $fileReversal1;
-					error_log($file_type . '#' . $xhtmlFileURL);
+					error_log($filetype . '#' . $xhtmlFileURL);
 
 					include $webonary_include_path . DS . 'run_import.php';
 				}

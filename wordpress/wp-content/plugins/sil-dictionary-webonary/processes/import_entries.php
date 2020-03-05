@@ -1,29 +1,15 @@
 <?php
-
-$api = false;
-$verbose = false;
-
-global $wpdb;
-
-if(isset($xhtmlFileURL))
+if(isset($xhtmlFileURL) && isset($filetype))
 {
-	//if using Docker
-	if (strpos($xhtmlFileURL, 'localhost:8000') !== false) {
-		$xhtmlFileURL = str_replace('localhost:8000', $_SERVER['SERVER_ADDR'], $xhtmlFileURL);
-	}
-	$path_parts = pathinfo($xhtmlFileURL);
-
-	$filetype = $path_parts['basename'];
-	//remove numbers from string
-	if(substr($filetype, 0, 8) == 'reversal')
-	{
-		$filetype = 'reversal';
-	}
+	// if using Docker
+	if(strpos($xhtmlFileURL, 'localhost:8000') !== false)
+		$xhtmlFileURL = str_replace('localhost:8000', '127.0.0.1', $xhtmlFileURL);
 
 	$import = new Webonary_Pathway_Xhtml_Import();
-
-	$import->api = $api;
-	$import->verbose = $verbose;
-
+	$import->api = false;
+	$import->verbose = false;
 	$import->process_xhtml_file($xhtmlFileURL, $filetype);
+}
+else{
+	echo "File name and type must be set before importing entries! \n";
 }

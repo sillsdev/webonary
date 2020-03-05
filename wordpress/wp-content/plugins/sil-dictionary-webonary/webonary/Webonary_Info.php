@@ -75,7 +75,7 @@ class Webonary_Info
 		}
 		else
 		{
-			$status .= 'Importing... <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
+			$status .= 'Importing...';
 			$status .= '<p>You will receive an email when the import has completed. You don\'t need to stay online.</p>';
 		}
 
