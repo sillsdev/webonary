@@ -37,6 +37,19 @@ class Webonary_Ajax
 		exit();
 	}
 
+	public static function ajaxCurrentReversalsCount()
+	{
+		header('Content-Type: application/json');
+		$import_status = get_option('importStatus');
+		if ($import_status != 'reversal') {
+			echo json_encode(array('imported' => -1));
+			exit();
+		}
+
+		echo json_encode(array('imported' => Webonary_Info::getCountReversals()));
+		exit();
+	}
+
 	public static function ajaxRestartIndexing()
 	{
 		$import = new Webonary_Pathway_Xhtml_Import();

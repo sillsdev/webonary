@@ -72,11 +72,9 @@ class InfoTest extends WP_UnitTestCase
 		$reversal_xml = '<div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="gc9f30d9e-d675-492d-9179-f8c2bacfd95c"><span class="reversalform"><span lang="en">government</span></span><span class="referringsenses"><span class="sensecontent"><span class="referringsense" entryguid="gc0a52176-c8fc-4376-b889-0b475a6fe70c"><span class="headword"><span lang="nfr"><a href="#gc0a52176-c8fc-4376-b889-0b475a6fe70c">abani</a></span></span></span></span></span></div>';
 		$import->import_xhtml_reversal_indexes($reversal_xml);
 
-		$arrReversalsImported = Webonary_Info::reversalPosts();
+		$reversalsImportedCount = Webonary_Info::getCountReversals();
 
-		$this->assertEquals(1, count($arrReversalsImported));
-		$this->assertEquals('en', $arrReversalsImported[0]->language_code);
-		$this->assertEquals('government', $arrReversalsImported[0]->reversal_head);
+		$this->assertEquals(1, $reversalsImportedCount);
 	}
 
 	function test_reversalsMissing()
@@ -91,8 +89,6 @@ class InfoTest extends WP_UnitTestCase
 		$import->import_xhtml_reversal_indexes($reversal_xml);
 
 		$arrIndexed = Webonary_Info::number_of_entries();
-		$arrReversalsImported = Webonary_Info::reversalPosts();
-
 		$status = Webonary_Info::reversalsMissing($arrIndexed);
 		$this->assertContains('missing senses for 1 entries', $status);
 	}
