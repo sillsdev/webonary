@@ -1511,7 +1511,7 @@ SQL;
 			{
 			    $content_len = strlen($post->post_content);
 				if ( $content_len > $this->max_entry_lenth_for_indexing ) {
-					$this->write_log('WARNING: Entry for ' . $post->post_title . ' was not indexed because it exceeds maximum lengtha allowed. Does it have too many subentries?' )
+					$this->write_log('WARNING: Entry for ' . $post->post_title . ' was not indexed because its length of '.  $content_len . ' exceeds maximum allowed, ' . $max_entry_lenth_for_indexing '. Does it have too many subentries?')
 					continue;
                 }
 
