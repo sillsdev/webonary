@@ -79,35 +79,6 @@ function GetCurrentImportedCount() {
     });
 }
 
-function GetCurrentReversalsCount() {
-
-    const count_span = jQuery('#sil-count-reversals');
-    if (count_span.length === 0)
-        return;
-
-    // webonary_ajax_obj is added by wordpress `wp_localize_script()`
-    // noinspection JSUnresolvedVariable
-    jQuery.ajax({
-        url: webonary_ajax_obj['ajax_url'],
-        data: {action: 'getAjaxCurrentReversalsCount'},
-        type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-
-            const imported = data['imported'];
-            if (imported < 0)
-                window.location.reload();
-            else
-                count_span.html(imported.toString());
-
-            window.setTimeout(GetCurrentReversalsCount, 5000);
-        },
-        error: function(jqXHR, status, message) {
-            console.log(message);
-        }
-    });
-}
-
 function RestartIndexing() {
 
     // webonary_ajax_obj is added by wordpress `wp_localize_script()`
@@ -131,5 +102,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // start the count updater
     window.setTimeout(GetCurrentImportedCount, 5000);
     window.setTimeout(GetCurrentIndexedCount, 5000);
-    window.setTimeout(GetCurrentReversalsCount, 5000);
 });

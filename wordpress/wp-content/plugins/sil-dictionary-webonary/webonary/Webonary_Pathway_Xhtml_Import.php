@@ -159,14 +159,14 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 						$filetype = 'reversal';
 				}
 				else
-				    $filetype = 'configured';
+					$filetype = 'configured';
 
 				if($this->api == false && $this->verbose == false)
 				{
 					update_option('importStatus', $filetype);
-				    Webonary_Utility::sendAndContinue(function() {
+					Webonary_Utility::sendAndContinue(function() {
 						Webonary_Pathway_Xhtml_Import::redirectToAdminHome();
-                    });
+					});
 				}
 
 				$file = $this->get_latest_xhtml_file();
@@ -217,7 +217,7 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 	 * @param $xhtml_file
 	 */
 	function goodbye($xhtml_file)
-    {
+	{
 		echo '<div class="narrow">';
 
 		if ( $_POST['filetype'] == 'configured')
@@ -369,7 +369,7 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 	 * @param int $term_id
 	 */
 	function convert_semantic_domains_to_links($doc, $field, $term_id)
-    {
+	{
 		if (empty($field))
 			return;
 
@@ -555,15 +555,15 @@ SQL;
 		else :
 			?>
 			<script type="text/javascript">
-                function toggleConfigured() {
-                    document.getElementById("uploadCSS").style.visibility = 'visible';
-                    document.getElementById("langCode").style.display = "hidden";
-                    //document.getElementById("convertToLinks").style.visibility = 'visible';
-                }
-                function toggleReversal() {
-                    //document.getElementById("convertToLinks").style.visibility = 'hidden';
-                    document.getElementById("langCode").style.display = "block";
-                }
+				function toggleConfigured() {
+					document.getElementById("uploadCSS").style.visibility = 'visible';
+					document.getElementById("langCode").style.display = "hidden";
+					//document.getElementById("convertToLinks").style.visibility = 'visible';
+				}
+				function toggleReversal() {
+					//document.getElementById("convertToLinks").style.visibility = 'hidden';
+					document.getElementById("langCode").style.display = "block";
+				}
 			</script>
 			<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo esc_attr(
 				wp_nonce_url("admin.php?import=pathway-xhtml&amp;step=1", 'import-upload')); ?>">
@@ -940,7 +940,7 @@ SQL;
 		$classnameLong = '';
 
 		if ($testing)
-		    $arrResults = [];
+			$arrResults = [];
 
 		$i = 0;
 
@@ -961,7 +961,7 @@ SQL;
 				$lang = $content->getAttribute('lang');
 
 				if ($testing)
-				    $arrResults[$classname][$lang][$i] = $search_string;
+					$arrResults[$classname][$lang][$i] = $search_string;
 
 				$this->import_xhtml_search_string($post_id, $search_string, $relevance, $lang, $classname);
 			}
@@ -974,7 +974,7 @@ SQL;
 		if ($testing) {
 			/** @noinspection PhpUndefinedVariableInspection */
 			return $arrResults;
-        }
+		}
 
 		return null;
 	}
@@ -991,7 +991,7 @@ SQL;
 	 * @param int $sub_id
 	 */
 	function import_xhtml_search_string($post_id, $search_string, $relevance, $language_code, $class_name, $sub_id = 0)
-    {
+	{
 		global $wpdb;
 
 		// $wpdb->prepare likes to add single quotes around string replacements,
@@ -1023,8 +1023,8 @@ SQL;
 
 	/**
 	 * Import the part(s) of speech (POS) for an entry.
-     *
-     * @param int $post_id = ID of the WordPress post.
+	 *
+	 * @param int $post_id = ID of the WordPress post.
 	 * @param DOMXPath $xpath
 	 *
 	 */
@@ -1033,7 +1033,7 @@ SQL;
 	// refer to a domain. For the moment, any bad POSs must be removed by hand.
 
 	function import_xhtml_part_of_speech($post_id, $xpath)
-    {
+	{
 		//only index pos under the main entry, not subentries
 		$pos_terms = $xpath->query('//div/span[@class = "senses"]//span[contains(@class, "partofspeech")]');
 
@@ -1063,13 +1063,13 @@ SQL;
 	 *
 	 * Currently we aren't deleting any existing semantic domains. More than one post may
 	 * refer to a domain. For the moment, any bad domains must be removed by hand.
-     *
-     * @param int $post_id
+	 *
+	 * @param int $post_id
 	 * @param DOMXPath $xpath
 	 *
 	 */
 	function import_xhtml_semantic_domain($post_id, $xpath)
-    {
+	{
 		global $wpdb;
 
 		$semantic_domains = $xpath->query('//span[starts-with(@class, "semantic-domains")]|//span[starts-with(@class, "semanticdomains")]');
@@ -1110,10 +1110,10 @@ SQL;
 						'description' => trim($domain_name),
 						'slug' => $sd_number_text
 					)
-                );
+				);
 
 				if (is_array($term_results))
-				    $term_id = $term_results['term_id'];
+					$term_id = $term_results['term_id'];
 				else
 					$term_id = isset($term_results->error_data['term_exists']) ? $term_results->error_data['term_exists'] : null;
 
@@ -1144,14 +1144,14 @@ SQL;
 
 		if ($updated) {
 
-		    $final_xml = $xpath->document->saveXML($xpath->document);
+			$final_xml = $xpath->document->saveXML($xpath->document);
 
 			$sql = "UPDATE {$wpdb->posts} " .
 				" SET post_content = '" . addslashes($final_xml) . "'" .
 				" WHERE ID = {$post_id}";
 
 			$wpdb->query( $sql );
-        }
+		}
 
 		$wpdb->query("UPDATE $wpdb->term_taxonomy SET COUNT = 1 WHERE taxonomy = 'sil_semantic_domains'");
 
@@ -1434,7 +1434,7 @@ SQL;
 			// An example of writing system and font in meta of the XHTML file header:
 			// <meta name="en" content="English" scheme="Language Name" />
 			// <meta name="en" content="Times New Roman" scheme="Default Font" />
-            /** @var DOMNodeList $writing_systems */
+			/** @var DOMNodeList $writing_systems */
 			$writing_systems = $this->dom_xpath->query( '//xhtml:meta[@scheme = "Language Name"]|//xhtml:meta[@name = "DC.language"]');
 
 			// Currently we aren't using font info.
@@ -1484,7 +1484,7 @@ SQL;
 			// field needs a count of at least 1. I'm filling the number with something bigger
 			// so that it looks more obviously like a dummy number.
 
-            unset($writing_systems);
+			unset($writing_systems);
 
 			$sql = $wpdb->prepare("UPDATE $wpdb->term_taxonomy SET COUNT = 999999 WHERE taxonomy = '%s'", $this->writing_system_taxonomy );
 			$wpdb->query( $sql );
@@ -1574,14 +1574,14 @@ SQL;
 
 
 	/**
-     * Upload the files indicated by the user. An override of wp_import_handle_upload.
-     *
-     * The max file size is determined by the settings in php.ini. upload_max_files is set to 2MB by default
+	 * Upload the files indicated by the user. An override of wp_import_handle_upload.
+	 *
+	 * The max file size is determined by the settings in php.ini. upload_max_files is set to 2MB by default
 	 * in development versions, which is too small for what we do. The setting has been found to be higher
 	 * in production settings. The post_max_size apparently needs to be at least as big as the
 	 * upload_max_files setting. If the file size is bigger than the limit, the server simply will not
 	 * upload it, and there is no indication to the user as to what happened.
-     *
+	 *
 	 * @param string $which_file = The file being uploaded
 	 * @param string $filetype
 	 * @param string $reversalLang
@@ -1652,7 +1652,9 @@ SQL;
 				_e('The file imported-with-xhtml.css already exists in your upload folder. If you want to replace it, you have to delete it manually before you import a new file.');
 				}
 				*/
-			// error_reporting(E_ALL);
+			if(WP_DEBUG)
+				error_reporting(E_ALL);
+
 			if((copy($from_path, $target_path) || $from_path == $target_path) && $hasError == false) {
 
 				$fontClass = new Webonary_Font_Management();
@@ -1689,24 +1691,24 @@ SQL;
 	}
 
 	public static function redirectToAdminHome()
-    {
-        $url = get_admin_url() . 'admin.php?page=webonary';
+	{
+		$url = get_admin_url() . 'admin.php?page=webonary';
 		//header('refresh:2;url=' . $url);
 		header('Location: ' . $url);
-    }
+	}
 
 	/**
 	 * @param string $xhtml_file_url
 	 * @param string $filetype
-     *
-     * @global wpdb $wpdb
-     * @global string $webonary_include_path
+	 *
+	 * @global wpdb $wpdb
+	 * @global string $webonary_include_path
 	 */
-    public function process_xhtml_file($xhtml_file_url, $filetype, $user)
-    {
-        global $wpdb, $webonary_include_path;
+	public function process_xhtml_file($xhtml_file_url, $filetype, $user)
+	{
+		global $wpdb, $webonary_include_path;
 
-        $this->write_log('Begin processing ' . $filetype . ' file ' . $xhtml_file_url);
+		$this->write_log('Begin processing ' . $filetype . ' file ' . $xhtml_file_url);
 
 		$entry_counter = 1;
 		$arrLetters = array();
@@ -1806,11 +1808,11 @@ SQL;
 
 				$xml_class = $reader->getAttribute('class');
 				while ($xml_class === 'entry' ||
-                    $xml_class === 'mainentrycomplex' ||
-                    $xml_class === 'reversalindexentry' ||
-                    $xml_class === 'minorentry' ||
-                    $xml_class === 'minorentryvariant' ||
-                    $xml_class === 'minorentrycomplex')
+					$xml_class === 'mainentrycomplex' ||
+					$xml_class === 'reversalindexentry' ||
+					$xml_class === 'minorentry' ||
+					$xml_class === 'minorentryvariant' ||
+					$xml_class === 'minorentrycomplex')
 				{
 					$post_entry = $reader->readOuterXml();
 
@@ -1837,7 +1839,7 @@ SQL;
 								update_option('languagecode', $letterLanguage);
 							}
 						}
-                        elseif ($filetype == 'reversal')
+						elseif ($filetype == 'reversal')
 						{
 							Webonary_Configuration::$reversal_table_name = $wpdb->prefix . 'sil_reversals';
 							$entry_counter = $this->import_xhtml_reversal_indexes($post_entry, $entry_counter, $letter);
@@ -1870,7 +1872,7 @@ SQL;
 
 			$time_post = microtime(true);
 			$exec_time = round($time_post - $time_pre, 1);
-			$this->write_log('Import finished in ' . $exec_time . ' seconds.');
+			$this->write_log('Import finished in ' . gmdate("H:i:s", $exec_time));
 		}
 
 		$alphabet = implode(',', $arrLetters);
@@ -1892,7 +1894,7 @@ SQL;
 			if (!$this->api)
 				$this->send_email($user->user_email, 'Import of the vernacular (configured) xhtml is completed');
 		}
-        elseif ( $filetype == 'reversal')
+		elseif ( $filetype == 'reversal')
 		{
 			//reversal1_langcode
 			if(isset($_POST['languagecode']))
@@ -1991,7 +1993,7 @@ SQL;
 	}
 
 	private function send_email($email, $subject)
-    {
+	{
 		$message = 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
 		$message .= "\n\n";
 		$message .= "Log from today: \n\n";
@@ -2014,7 +2016,7 @@ SQL;
 
 
 	private function write_log($msg, $verbose_only = false)
-    {
+	{
 		if ($verbose_only && !$this->verbose)
 			return;
 
@@ -2030,5 +2032,5 @@ SQL;
 		}
 
 		file_put_contents($this->log_file, date('Y-m-d H:m:s ') . $msg . PHP_EOL, FILE_APPEND);
-    }
+	}
 } // class

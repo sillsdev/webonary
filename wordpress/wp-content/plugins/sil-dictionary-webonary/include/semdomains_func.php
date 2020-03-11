@@ -179,14 +179,10 @@ function buildTreeToSupportThisItem($domainNumber, $levelOfDomain)
 		*/
 
 		$strToPrint = $domainNrToPrint . " " . $defaultDomain[$domainNrToPrint]; //$defaultDomain[$key][1];
-
-		//$strToPrint = "#" . $domainNrToPrint . "#";
-
 		$currentDigits[$i] = $currentDomainDigits[$i];
 
 		if ($currentDomainDigits[$i] > $lastSemDom[$i])
 		{
-			//print "about to print $strToPrint as output <br>";
 			outputSemDomAsJava(($i+1), $strToPrint);
 			setLastSemDom($currentDigits);
 		}

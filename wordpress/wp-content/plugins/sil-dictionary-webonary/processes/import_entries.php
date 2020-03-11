@@ -6,8 +6,8 @@ if (isset($xhtmlFileURL) && isset($filetype) && isset($user)) {
 
 	$import = new Webonary_Pathway_Xhtml_Import();
 
-	$import->api = isset($api) ? $api : FALSE;
-	$import->verbose = isset($verbose) ? $verbose : FALSE;
+	$import->api = $api ?? FALSE;
+	$import->verbose = $verbose ?? FALSE;
 
 	$import->process_xhtml_file($xhtmlFileURL, $filetype, $user);
 }

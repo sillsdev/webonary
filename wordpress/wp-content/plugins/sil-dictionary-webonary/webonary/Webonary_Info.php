@@ -59,7 +59,7 @@ class Webonary_Info
 
 			if(!empty($counts->indexed_date))
 			{
-				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (server time).<br>';
+				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
 				if( is_subdomain_install() )
@@ -110,7 +110,6 @@ class Webonary_Info
 		if($import_status == 'reversal')
 		{
 			$status .= 'Importing reversals. So far imported: <span id="sil-count-imported" class="sil-bold">' . $countReversals . '</span> entries.';
-			//$status .= '<p>To see progress, click: <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a></p>';
 			$status .= '<p>If you believe the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			return $status;
 		}
@@ -363,7 +362,7 @@ SQL;
 
 			// This feature was removed in:  v. 8.3.5 15 Oct 2019 removed missing senses link
 			// if($missingReversals > 0)
-				// $status .= ' <a href="edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=' . $indexed->language_code . '&language=' . $indexed->language_name . '" style="color:red;">missing senses for ' . $missingReversals . ' entries</a>';
+			// $status .= ' <a href="edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=' . $indexed->language_code . '&language=' . $indexed->language_name . '" style="color:red;">missing senses for ' . $missingReversals . ' entries</a>';
 
 			$status .= '</div></div>';
 		}
