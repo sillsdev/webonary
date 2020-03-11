@@ -1,29 +1,16 @@
 <?php
-
-$api = false;
-$verbose = false;
-
-global $wpdb;
-
-if(isset($xhtmlFileURL))
-{
-	//if using Docker
-	if (strpos($xhtmlFileURL, 'localhost:8000') !== false) {
-		$xhtmlFileURL = str_replace('localhost:8000', $_SERVER['SERVER_ADDR'], $xhtmlFileURL);
-	}
-	$path_parts = pathinfo($xhtmlFileURL);
-
-	$filetype = $path_parts['basename'];
-	//remove numbers from string
-	if(substr($filetype, 0, 8) == 'reversal')
-	{
-		$filetype = 'reversal';
-	}
+if (isset($xhtmlFileURL) && isset($filetype) && isset($user)) {
+	// if using Docker
+	if(strpos($xhtmlFileURL, 'localhost:8000') !== false)
+		$xhtmlFileURL = str_replace('localhost:8000', '127.0.0.1', $xhtmlFileURL);
 
 	$import = new Webonary_Pathway_Xhtml_Import();
 
-	$import->api = $api;
-	$import->verbose = $verbose;
+	$import->api = $api ?? FALSE;
+	$import->verbose = $verbose ?? FALSE;
 
-	$import->process_xhtml_file($xhtmlFileURL, $filetype);
+	$import->process_xhtml_file($xhtmlFileURL, $filetype, $user);
+}
+else {
+	error_log("Programming Error: File name ($xhtmlFileURL) and type ($filetype) user record ($user->ID) must be set before importing entries!");
 }

@@ -19,7 +19,7 @@ class Webonary_Configuration
 		$data = get_userdata( get_current_user_id() );
 		$role = ( array ) $data->roles;
 
-		if ( $role[0] == "editor" || $role[0] == "administrator" || is_super_admin())
+		if (is_super_admin() || ( isset($role[0]) && in_array($role[0], array('editor', 'administrator')) ) )
 		{
 			add_menu_page( "Webonary", "Webonary", 'edit_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
 			add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');

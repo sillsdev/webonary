@@ -16,26 +16,22 @@ class Webonary_Utility
 
 		if (isset( $file['error']))
 		{
-			echo "Error: Upload failed: " . $file['error'] . "\n";
-			unlink($uploadPath . "/" . $zipfile['name']);
+			error_log('Error: Upload failed: ' . $file['error']);
+			unlink($uploadPath . '/' . $zipfile['name']);
 			return false;
 		}
 
-		error_log("zip file: " . $uploadPath . "/" . $_FILES['file']['name']);
-		error_log(WP_CONTENT_DIR . "/archives");
-
 		if(file_exists(WP_CONTENT_DIR . "/archives"))
 		{
-			error_log("copy zip file");
-			copy($uploadPath . "/" . $_FILES['file']['name'], WP_CONTENT_DIR . "/archives/" . $_FILES['file']['name']);
+			copy($uploadPath . '/' . $_FILES['file']['name'], WP_CONTENT_DIR . "/archives/" . $_FILES['file']['name']);
 		}
 
 		$zip = new ZipArchive;
-		$res = $zip->open($uploadPath . "/" . $zipfile['name']);
+		$res = $zip->open($uploadPath . '/' . $zipfile['name']);
 		if ($res === FALSE)
 		{
-			echo "Error: " . $zipfile['name'] . " isn't a valid zip file";
-			unlink($uploadPath . "/" . $zipfile['name']);
+			error_log('Error: ' . $zipfile['name'] . ' is not a valid zip file');
+			unlink($uploadPath . '/' . $zipfile['name']);
 			return false;
 		}
 
@@ -43,14 +39,12 @@ class Webonary_Utility
 		$zip->close();
 		if(!$unzip_success)
 		{
-			echo "Error: couldn't extract zip file to " . $uploadPath;
-			unlink($uploadPath . "/" . $zipfile['name']);
+			error_log('Error: could not extract zip file to ' . $uploadPath);
+			unlink($uploadPath . '/' . $zipfile['name']);
 			return false;
 		}
 
-		error_log("zip file extracted");
-		echo "zip file extracted successfully\n";
-		unlink($uploadPath . "/" . $zipfile['name']);
+		unlink($uploadPath . '/' . $zipfile['name']);
 		return true;
 	}
 
@@ -62,7 +56,6 @@ class Webonary_Utility
 			foreach ($files as $file)
 			{
 				if ($file != "." && $file != "..") self::recursiveRemoveDir("$dir/$file");
-				error_log("removed: " . $dir);
 				self::deleteDirectory($dir);
 			}
 		}
@@ -96,20 +89,19 @@ class Webonary_Utility
 	// Function to Copy folders and files
 	public static function recursiveCopy($src, $dst)
 	{
-		if (is_dir ( $src )) {
+		if (is_dir ( $src ))
+		{
 			if(!file_exists($dst))
-			{
-				error_log("create folder: " . $dst);
 				mkdir ( $dst, 0777, true );
-			}
+
 			$files = scandir ( $src );
 			foreach ( $files as $file )
 				if ($file != "." && $file != "..")
 					self::recursiveCopy ( "$src/$file", "$dst/$file" );
-		} else if (file_exists ( $src )) {
-			copy ( $src, $dst );
-			error_log("moved: " . $src . " to " . $dst);
 		}
+		elseif (file_exists ( $src ))
+			copy ( $src, $dst );
+
 	}
 
 	/** @noinspection PhpUnusedParameterInspection */
@@ -124,9 +116,7 @@ class Webonary_Utility
 		{
 			if ($file != "." && $file != "..")
 			{
-				list($width, $height) = getimagesize($src . "/"  . $file);
-
-				echo $width . "#" . $height . "\n";
+				list($width, $height) = getimagesize($src . '/'  . $file);
 
 				$r = $width / $height;
 				$newwidth = $h*$r;
@@ -139,41 +129,40 @@ class Webonary_Utility
 					try {
 						if($ext == "png")
 						{
-							$src_image = imagecreatefrompng($src . "/" . $file);
+							$src_image = imagecreatefrompng($src . '/' . $file);
 						}
 						elseif($ext == "gif")
 						{
-							$src_image = imagecreatefromgif($src . "/" . $file);
+							$src_image = imagecreatefromgif($src . '/' . $file);
 						}
 						else
 						{
-							$src_image = imagecreatefromjpeg($src . "/" . $file);
+							$src_image = imagecreatefromjpeg($src . '/' . $file);
 						}
 						$dst_image  = imagecreatetruecolor($newwidth, $newheight);
 						imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
 
 						if($ext == "png")
 						{
-							imagepng($dst_image, $dst . "/" . $file);
+							imagepng($dst_image, $dst . '/' . $file);
 						}
 						elseif($ext == "gif")
 						{
-							imagegif($dst_image, $dst . "/" . $file);
+							imagegif($dst_image, $dst . '/' . $file);
 						}
 						else
 						{
-							imagejpeg($dst_image, $dst . "/" . $file, 90);
+							imagejpeg($dst_image, $dst . '/' . $file, 90);
 						}
 					}
 					catch(Exception $e) {
-						echo 'There was an error converting image file to thumbnail: ' .$e->getMessage();
+						error_log('Error: There was an error converting image file to thumbnail: ' .$e->getMessage());
 					}
 				}
 				else
 				{
-					copy ( $src . "/" . $file, $dst . "/" . $file );
+					copy ( $src . '/' . $file, $dst . '/' . $file );
 				}
-				echo $dst . "/" . $file . "\n";
 			}
 		}
 	}
@@ -215,7 +204,7 @@ class Webonary_Utility
 		}
 		else
 		{
-			echo "Wrong username or password.";
+			echo "Wrong username or password\n";
 			return false;
 		}
 	}
@@ -250,14 +239,24 @@ class Webonary_Utility
 		$function();
 
 		// set the response code to 200, if not already set
+
 		if (http_response_code() === false)
 			http_response_code(200);
 
 		header('Connection: close');
 		header('Content-Length: ' . ob_get_length());
-		ob_end_flush();
-		ob_flush();
-		flush();
+
+		if (function_exists('fastcgi_finish_request')) {
+			fastcgi_finish_request();
+		}
+		else{
+			ob_end_flush();
+
+			if(ob_get_level() > 0)
+				ob_flush();
+
+			flush();
+		}
 	}
 
 	/**

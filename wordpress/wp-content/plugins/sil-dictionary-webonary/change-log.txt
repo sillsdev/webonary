@@ -1,4 +1,5 @@
-v. 8.3.12 04 Mar 2020 fixed bug that resulted in dictionary searches and reversal uploads not working
+v. 8.3.13 11 Mar 2020 keep daily log of uploads per blog site and include it in the email to the user
+v. 8.3.12 05 Mar 2020 fixed bug that resulted in dictionary searches and reversal uploads not working
 v. 8.3.11 03 Mar 2020 remove the `exec` pathway
 v. 8.3.10 05 Feb 2020 move rest API to Webonary_API_MyType.php, delete api.php
 v. 8.3.9 18 Dec 2019 fix indexing memory leaks, and update import to use ajax to improve user experience

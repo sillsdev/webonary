@@ -34,7 +34,7 @@ class Webonary_Info
 
 		$status = '';
 
-		$arrReversalsImported = self::reversalPosts();
+		$countReversals = self::getCountReversals();
 		$arrIndexed = self::number_of_entries();
 		$countIndexed = self::getCountIndexed();
 		$countImported = self::getCountImported();
@@ -57,14 +57,18 @@ class Webonary_Info
 				}
 			}
 
-			if(!empty($posts) && !empty($posts->post_date))
+			if(!empty($counts->indexed_date))
 			{
-				$status .= 'Last import of configured xhtml was at ' . $posts->post_date . ' (server time).<br>';
+				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
-				$sub_domain = explode('.', $_SERVER['HTTP_HOST'])[0];
-				$archiveFile = $sub_domain . '.zip';
+				if( is_subdomain_install() )
+					$dictionary_site = explode('.', $_SERVER['HTTP_HOST'])[0];	
+				else 
+					$dictionary_site = str_replace('/', '', get_blog_details()->path);
 
+				$archiveFile = $dictionary_site. '.zip';
+ 
 				if(file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
 					$status .= '<a href="/wp-content/archives/' . $archiveFile . '">' . $archiveFile . '</a>';
 				else
@@ -75,7 +79,7 @@ class Webonary_Info
 		}
 		else
 		{
-			$status .= 'Importing... <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
+			$status .= 'Importing...';
 			$status .= '<p>You will receive an email when the import has completed. You don\'t need to stay online.</p>';
 		}
 
@@ -105,8 +109,7 @@ class Webonary_Info
 
 		if($import_status == 'reversal')
 		{
-			$status .= '<strong>Importing reversals. So far imported: ' . count($arrReversalsImported) . ' entries.</strong>';
-
+			$status .= 'Importing reversals. So far imported: <span id="sil-count-imported" class="sil-bold">' . $countReversals . '</span> entries.';
 			$status .= '<p>If you believe the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			return $status;
 		}
@@ -118,9 +121,7 @@ class Webonary_Info
 			$status .= '<strong>Number of indexed entries (by language code):</strong><br>';
 			$status .= '</div>';
 			$status .= '<div style="min-width:50px; float: left; margin-left: 5px;">';
-
 			$status .= self::reversalsMissing($arrIndexed);
-
 			$status .= '</div>';
 			$status .= '<br style="clear:both;">';
 		}
@@ -359,20 +360,27 @@ SQL;
 
 			$missingReversals = $wpdb->get_var($sql);
 
-			if($missingReversals > 0)
-				$status .= ' <a href="edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=' . $indexed->language_code . '&language=' . $indexed->language_name . '" style="color:red;">missing senses for ' . $missingReversals . ' entries</a>';
+			// This feature was removed in:  v. 8.3.5 15 Oct 2019 removed missing senses link
+			// if($missingReversals > 0)
+			// $status .= ' <a href="edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=' . $indexed->language_code . '&language=' . $indexed->language_name . '" style="color:red;">missing senses for ' . $missingReversals . ' entries</a>';
 
 			$status .= '</div></div>';
 		}
 		return $status;
 	}
 
-	public static function reversalPosts()
+	public static function getCountReversals()
 	{
 		global $wpdb;
 
-		$sql = 'SELECT * FROM ' . Webonary_Configuration::$reversal_table_name;
+		$table_name = Webonary_Configuration::$reversal_table_name;
 
-		return $wpdb->get_results($sql);
+		/** @noinspection SqlResolve */
+		$sql = <<<SQL
+SELECT COUNT(*) 
+FROM {$table_name}
+SQL;
+
+		return $wpdb->get_var($sql);
 	}
 }

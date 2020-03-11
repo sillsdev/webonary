@@ -82,8 +82,7 @@ class Webonary_API_MyType
 			$fontClass->set_fontFaces($zipFolderPath . '/configured.css', $uploadPath);
 
 			copy($zipFolderPath . '/configured.css', $uploadPath . '/imported-with-xhtml.css');
-			error_log('Renamed configured.css to ' . $uploadPath . '/imported-with-xhtml.css');
-
+			
 			if (file_exists($uploadDirectory . '/ProjectDictionaryOverrides.css')) {
 				copy($zipFolderPath . '/ProjectDictionaryOverrides.css', $uploadPath . '/ProjectDictionaryOverrides.css');
 			}
@@ -97,7 +96,6 @@ class Webonary_API_MyType
 			if ($filename != 'configured.css') {
 				$newFilename = str_replace('-', '_', $filename);
 				copy($zipFolderPath . '/' . $filename, $uploadPath . '/' . $newFilename);
-				error_log('moved ' . $zipFolderPath . '/' . $filename . ' to ' . $uploadPath . '/' . $filename);
 				unlink($file);
 			}
 		}
@@ -145,14 +143,14 @@ class Webonary_API_MyType
 
 			// If successfully cleared, send the success message and close the connection.
 			Webonary_Utility::sendAndContinue(function() {
-				echo "Upload successful\n";
+				echo "Upload successful. An email will be sent to you when processing is complete.\n";
 			});
 		}
 		else {
 
 			// If not successfully cleared, send the success message and flush to the client.
 			// The connection will remain open.
-			echo "Upload successful\n";
+			echo "Upload successful. Beginning processing....\n";
 			flush();
 		}
 
@@ -162,6 +160,6 @@ class Webonary_API_MyType
 		$import->api = true;
 		$import->verbose = false;
 
-		$import->process_xhtml_file($fileConfigured, 'configured');
+		$import->process_xhtml_file($fileConfigured, 'configured', $user);
 	}
 }
