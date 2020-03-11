@@ -26,7 +26,6 @@ class Webonary_Pathway_Xhtml_Import extends WP_Importer
 	public $custom_field_relevance = 20;
 	public $example_sentences_relevance = 10;
 	public $writing_system_taxonomy;
-	public $max_entry_lenth_for_indexing = 100000;
 
 	/*
 	 * DOM attributes
@@ -1509,15 +1508,7 @@ SQL;
 			$post = Webonary_Info::getNextPost();
 			while (!empty($post))
 			{
-			    $content_len = strlen($post->post_content);
-				if ( $content_len > $this->max_entry_lenth_for_indexing ) {
-					$this->write_log('WARNING: Entry for ' . $post->post_title . ' was not indexed because its length of '.  $content_len . ' exceeds maximum allowed, ' . $max_entry_lenth_for_indexing '. Does it have too many subentries?')
-					continue;
-                }
-
-				$sub_entry = false;
 				if ( $post->ID ){
-
 					$sql = $wpdb->prepare('DELETE FROM `'. Webonary_Configuration::$search_table_name . '` WHERE post_id = %d', $post->ID);
 
 					$wpdb->query( $sql );
