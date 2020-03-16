@@ -331,6 +331,8 @@ function webonary_conf_widget($showTitle = false)
             <p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to import your FLEx data', 'sil_dictionary'); ?></a></p>
 
             <form id="configuration-form" method="post" action="">
+				<button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
                 <p>
 					<?php _e('Publication status:'); ?>
                     <select name=publicationStatus>
