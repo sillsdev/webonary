@@ -1872,7 +1872,7 @@ SQL;
 
 			$time_post = microtime(true);
 			$exec_time = round($time_post - $time_pre, 1);
-			$this->write_log('Import finished in ' . gmdate("H:i:s", $exec_time));
+			$this->write_log('Upload finished in ' . gmdate("H:i:s", $exec_time));
 		}
 
 		$alphabet = implode(',', $arrLetters);
@@ -1986,8 +1986,8 @@ SQL;
 			}
 			else
 			{
-				$this->write_log('Export completed.');
-				$this->send_email($user->user_email, 'The export to Webonary is completed');
+				$this->write_log('Upload completed.');
+				$this->send_email($user->user_email, 'The upload to Webonary is completed');
 			}
 		}
 	}
@@ -1995,8 +1995,6 @@ SQL;
 	private function send_email($email, $subject)
 	{
 		$message = 'Go here to configure more settings: ' . get_site_url() . '/wp-admin/admin.php?page=webonary';
-		$message .= "\n\n";
-		$message .= "Log from today: \n\n";
 
 		try
 		{
@@ -2004,7 +2002,12 @@ SQL;
 				'From: Webonary <wordpress@webonary.org>'
 			);
 
-			$message .= file_get_contents($this->log_file);
+			if ($this->verbose) {
+				$message .= "\n\n";
+				$message .= "Log from today: \n\n";	
+				$message .= file_get_contents($this->log_file);	
+			}
+
 			wp_mail($email, $subject, $message, $headers);
 
 			$this->write_log('Email sent to ' . $email);
