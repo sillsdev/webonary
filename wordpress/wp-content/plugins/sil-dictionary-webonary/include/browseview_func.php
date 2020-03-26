@@ -133,24 +133,24 @@ function categories_func( $atts )
 	</script>
 <?php
 	$display .= "<div id=searchresults>";
-	$semnumber = rtrim(str_replace(".", "-", $_REQUEST["semnumber"]), "-");
+	$semdomain = isset($_REQUEST["semdomain"]) ? trim($_REQUEST["semdomain"]) : '';
+	$semnumber = isset($_REQUEST["semnumber"]) ? trim($_REQUEST["semnumber"]) : '';
+	$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
 	$arrPosts = null;
-	if(isset($_REQUEST["semnumber"]))
+	if($semnumber != '')
 	{
-		$arrPosts = query_posts("semdomain=" . $_REQUEST["semdomain"] . "&semnumber=" . $semnumber . "&posts_per_page=" . $postsperpage . "&paged=" . $_REQUEST['pagenr']);
+		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsperpage . "&paged=" . $_REQUEST['pagenr']);
 	}
-?>
-<?php
 	if(count($arrPosts) == 0)
 	{
-		if(strlen(trim($_REQUEST["semdomain"])) > 0)
+		if($semdomain != '')
 		{
-			$display .= __('No entries exist for', 'sil_dictionary') . ' "' . $_REQUEST["semdomain"] . '"';
+			$display .= __('No entries exist for', 'sil_dictionary') . ' "' . $semdomain . '"';
 		}
 	}
 	else
 	{
-		$display .= "<h3>" . $_REQUEST["semnumber"]  . " " . $_REQUEST["semdomain"] . "</h3>";
+		$display .= "<h3>" . $semnumber  . " " . $semdomain . "</h3>";
 		foreach($arrPosts as $mypost)
 		{
 				$display .= "<div class=post>" . $mypost->post_content . "</div>";
@@ -159,7 +159,7 @@ function categories_func( $atts )
 
 	global $wp_query;
 	$totalEntries = $wp_query->found_posts;
-	$display .= displayPagenumbers($semnumber, $totalEntries, $postsperpage,  $_REQUEST["semdomain"] , "semnumber", $_REQUEST['pagenr']);
+	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsperpage,  $semdomain , "semnumber", $_REQUEST['pagenr']);
 
 	$display .= "</div>";
 

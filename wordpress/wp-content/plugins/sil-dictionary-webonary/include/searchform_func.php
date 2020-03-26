@@ -30,7 +30,7 @@ function webonary_searchform() {
 	window.onload = function(e)
 	{
 		<?php
-		if($_GET['displayAdvancedSearchName'] == 1)
+		if(isset($_GET['displayAdvancedSearchName']) && $_GET['displayAdvancedSearchName'] == 1)
 		{
 		?>
 		displayAdvancedSearch();
@@ -158,12 +158,7 @@ function webonary_searchform() {
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
 					<?php
-					$key = $_POST['key'];
-					if(!isset($_POST['key']))
-					{
-						$key = $_GET['key'];
-					}
-
+					$key = isset($_POST['key']) ? $_POST['key'] : (isset($_GET['key']) ? $_GET['key'] : '');
 
 					//$catalog_terms = get_terms('sil_writing_systems');
 					$arrLanguages = Webonary_Configuration::get_LanguageCodes();
@@ -194,12 +189,12 @@ function webonary_searchform() {
 					 * Set up the Parts of Speech
 					 */
 					$parts_of_speech = get_terms('sil_parts_of_speech');
-
+					$taxonomy = isset($_GET['tax']) ? $_GET['tax'] : ''; 
 					if($parts_of_speech)
 					{
 						wp_dropdown_categories("show_option_none=" .
 							__('All Parts of Speech','sil_dictionary') .
-							"&show_count=1&selected=" . $_GET['tax'] .
+							"&show_count=1&selected=" . $taxonomy .
 							"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech");
 					}
 					?>
