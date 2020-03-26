@@ -275,10 +275,11 @@ function webonary_searchform() {
 		?>
 		</div>
 		<?php
-		if(strlen(trim($_GET['s'])) > 0)
+		$search_term = isset($_GET['s']) ? trim($_GET['s']) : '';
+		if(strlen($search_term) > 0)
 		{
 			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
-			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . trim($_GET['s']) . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
+			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
     		$sem_domains = $wpdb->get_results( $query );
 
 			if(count($sem_domains) > 0 && count($sem_domains) <= 10)
@@ -340,7 +341,7 @@ function getDictStageImage($publicationStatus, $language)
 function add_footer()
 {
 	global $post, $wpdb;
-	$post_slug = $post->post_name;
+	$post_slug = is_null($post) ? '' : $post->post_name;
 	if(is_front_page() || $post_slug == "browse")
 	{
 		if(get_option('noSearch') != 1)
@@ -355,7 +356,7 @@ function add_footer()
 			$x = 0;
 			foreach($arrLanguageCodes as $languagecode)
 			{
-				 if(get_option('languagecode') == $languagecode->language_code)
+				 if(get_option('languagecode') == $languagecode['language_code'])
 				 {
 				 	$i = $x;
 				 }
