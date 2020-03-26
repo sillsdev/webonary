@@ -159,7 +159,8 @@ function categories_func( $atts )
 
 	global $wp_query;
 	$totalEntries = $wp_query->found_posts;
-	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsperpage,  $semdomain , "semnumber", $_REQUEST['pagenr']);
+	$pagenr = isset($_REQUEST['pagenr']) ? $_REQUEST['pagenr'] : '1';
+	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsperpage,  $semdomain , "semnumber", $pagenr);
 
 	$display .= "</div>";
 
