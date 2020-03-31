@@ -115,7 +115,7 @@ function is_match_whole_words($search)
 	if(!isset($_GET['partialsearch']))
 	{
 		$partialsearch = get_option("include_partial_words");
-		if($partialsearch == 1 && $match_whole_words == 0)
+		if($partialsearch == 1 && $match_whole_words == 1)
 		{
 			$match_whole_words = 0;
 		}

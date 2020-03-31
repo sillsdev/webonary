@@ -132,14 +132,19 @@ function categories_func( $atts )
 		initializeDocument();
 	</script>
 <?php
-	$display .= "<div id=searchresults>";
-	$semdomain = isset($_REQUEST["semdomain"]) ? trim($_REQUEST["semdomain"]) : '';
-	$semnumber = isset($_REQUEST["semnumber"]) ? trim($_REQUEST["semnumber"]) : '';
+	global $wp_query;
+	
+	$totalEntries = $wp_query->found_posts;
+	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+
+	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
+	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
 	$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
 	$arrPosts = null;
+	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsperpage . "&paged=" . $_REQUEST['pagenr']);
+		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsperpage . "&paged=" . $pagenr);
 	}
 	if(count($arrPosts) == 0)
 	{
@@ -157,9 +162,6 @@ function categories_func( $atts )
 		}
 	}
 
-	global $wp_query;
-	$totalEntries = $wp_query->found_posts;
-	$pagenr = isset($_REQUEST['pagenr']) ? $_REQUEST['pagenr'] : '1';
 	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsperpage,  $semdomain , "semnumber", $pagenr);
 
 	$display .= "</div>";
@@ -252,8 +254,9 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 	if(!$currentPage)
 	{
-		$currentPage = isset($_GET['pagenr']) ? $_GET['pagenr'] : '1';
+		$currentPage = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
 	}
+
 	$totalPages = ceil($totalEntries / $entriesPerPage);
 	if(($totalEntries / $entriesPerPage) > $totalPages)
 	{
@@ -586,9 +589,10 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
 	wp_enqueue_style( 'reversal_stylesheet');
 
-	$page = isset($_GET['pagenr']) ? $_GET['pagenr'] : '1';
+	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+
 	$displayXHTML = true;
-	$arrReversals = getReversalEntries($chosenLetter, $page, $langcode, $displayXHTML, $reversalnr);
+	$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
 	if($arrReversals == null)
 	{
 		$display .= "No reversal entries imported.";
@@ -715,22 +719,21 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 		$startFrom = ($page - 1) * $postsperpage;
 	}
 
-	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content ";
-    $sql .= " FROM $wpdb->posts ";
-	$sql .= " WHERE post_content_filtered = '" . $letter ."' " . $collate . " AND post_content_filtered != '' ";
+	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content";
+	$sql .= " FROM $wpdb->posts";
+	$sql .= " WHERE post_content_filtered = %s $collate";
 	$sql .= " ORDER BY menu_order ASC";
-	$sql .= " LIMIT " . $startFrom .", " . $postsperpage;
+	$sql .= " LIMIT $startFrom, $postsperpage";
 
-	$arrEntries = $wpdb->get_results($sql);
+	$arrEntries = $wpdb->get_results($wpdb->prepare($sql, $letter));
 
 	//for legacy browse views, where we didn't use the fields post_content_filtered and menu_order
 	if(count($arrEntries) == 0)
 	{
-
-		$sql = "SELECT SQL_CALC_FOUND_ROWS $wpdb->posts.ID, post_title, post_content, search_strings ";
-		$sql .= " FROM $wpdb->posts ";
-		$sql .= " JOIN " . SEARCHTABLE . " ON $wpdb->posts.ID = " . SEARCHTABLE . ".post_id ";
-		$sql .= " WHERE LOWER(search_strings) LIKE '" . strtolower($letter) . "%' " . $collate . " AND language_code = '" . $langcode . "' AND relevance >= 95";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS p.ID, post_title, post_content, search_strings";
+		$sql .= " FROM $wpdb->posts AS p";
+		$sql .= " JOIN " . SEARCHTABLE . " AS s ON p.ID = s.post_id";
+		$sql .= " WHERE LOWER(search_strings) LIKE %s $collate AND language_code = %s AND relevance >= 95";
 
 		$alphas = explode(",",  get_option('vernacular_alphabet'));
 		$chosenLetter = get_letter($alphas[0]);
@@ -741,15 +744,16 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 		{
 			if(strlen($noLetter) > 0)
 			{
-				$sql .= " AND " . SEARCHTABLE . ".search_strings NOT LIKE '" . $noLetter ."%' " . $collate .
-				" AND " . SEARCHTABLE . ".search_strings NOT LIKE '" . strtoupper($noLetter) ."%' " . $collate;
+				$sql .= " AND search_strings NOT LIKE '" . $noLetter ."%' ${collate}" .
+				" AND search_strings NOT LIKE '" . strtoupper($noLetter) ."%' ${collate}";
 			}
 		}
 
 		$sql .= " ORDER BY sortorder ASC, search_strings ASC";
-		$sql .= " LIMIT " . $startFrom .", " . $postsperpage;
+		$sql .= " LIMIT $startFrom, $postsperpage";
+		var_dump($sql);
 
-		$arrEntries = $wpdb->get_results($sql);
+		$arrEntries = $wpdb->get_results($wpdb->prepare($sql, strtolower($letter) . '%', $langcode));
 	}
 
 	return $arrEntries;
@@ -847,8 +851,8 @@ function vernacularalphabet_func( $atts )
 		}
 
 		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
-		$page = isset($_GET['pagenr']) ? $_GET['pagenr'] : '1';
-		$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $page);
+		$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+		$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr);
 
 		if(!isset($_GET['totalEntries']))
 		{
