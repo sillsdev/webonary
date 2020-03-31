@@ -30,7 +30,7 @@ function webonary_searchform() {
 	window.onload = function(e)
 	{
 		<?php
-		if($_GET['displayAdvancedSearchName'] == 1)
+		if(isset($_GET['displayAdvancedSearchName']) && $_GET['displayAdvancedSearchName'] == 1)
 		{
 		?>
 		displayAdvancedSearch();
@@ -158,12 +158,7 @@ function webonary_searchform() {
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
 					<?php
-					$key = $_POST['key'];
-					if(!isset($_POST['key']))
-					{
-						$key = $_GET['key'];
-					}
-
+					$key = isset($_POST['key']) ? $_POST['key'] : (isset($_GET['key']) ? $_GET['key'] : '');
 
 					//$catalog_terms = get_terms('sil_writing_systems');
 					$arrLanguages = Webonary_Configuration::get_LanguageCodes();
@@ -194,12 +189,12 @@ function webonary_searchform() {
 					 * Set up the Parts of Speech
 					 */
 					$parts_of_speech = get_terms('sil_parts_of_speech');
-
+					$taxonomy = isset($_GET['tax']) ? $_GET['tax'] : ''; 
 					if($parts_of_speech)
 					{
 						wp_dropdown_categories("show_option_none=" .
 							__('All Parts of Speech','sil_dictionary') .
-							"&show_count=1&selected=" . $_GET['tax'] .
+							"&show_count=1&selected=" . $taxonomy .
 							"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech");
 					}
 					?>
@@ -275,10 +270,11 @@ function webonary_searchform() {
 		?>
 		</div>
 		<?php
-		if(strlen(trim($_GET['s'])) > 0)
+		$search_term = isset($_GET['s']) ? trim($_GET['s']) : '';
+		if(strlen($search_term) > 0)
 		{
 			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
-			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . trim($_GET['s']) . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
+			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
     		$sem_domains = $wpdb->get_results( $query );
 
 			if(count($sem_domains) > 0 && count($sem_domains) <= 10)
@@ -340,7 +336,7 @@ function getDictStageImage($publicationStatus, $language)
 function add_footer()
 {
 	global $post, $wpdb;
-	$post_slug = $post->post_name;
+	$post_slug = is_null($post) ? '' : $post->post_name;
 	if(is_front_page() || $post_slug == "browse")
 	{
 		if(get_option('noSearch') != 1)
@@ -355,7 +351,7 @@ function add_footer()
 			$x = 0;
 			foreach($arrLanguageCodes as $languagecode)
 			{
-				 if(get_option('languagecode') == $languagecode->language_code)
+				 if(get_option('languagecode') == $languagecode['language_code'])
 				 {
 				 	$i = $x;
 				 }

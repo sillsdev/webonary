@@ -62,23 +62,20 @@ function my_enqueue_css() {
 
 function sil_dictionary_custom_message()
 {
-	$match_whole_words = is_match_whole_words(mb_strlen($_GET['s']));
+	$search_term = isset($_GET['s']) ? trim($_GET['s']): '';
+	$match_whole_words = is_match_whole_words(mb_strlen($search_term));
 
 	if($match_whole_words == 0)
 	{
 		return;
 	}
 
-	$partialsearch = $_GET['partialsearch'];
-	if(!isset($_GET['partialsearch']))
-	{
-		$partialsearch = get_option("include_partial_words");
-	}
+	$partialsearch = isset($_GET['partialsearch']) ? $_GET['partialsearch'] : get_option('include_partial_words');
 
 	mb_internal_encoding("UTF-8");
 	if($partialsearch != 1)
 	{
-		if(!is_CJK($_GET['s']) && mb_strlen($_GET['s']) > 0 && (mb_strlen($_GET['s']) <= 3 || $match_whole_words == 1))
+		if(!is_CJK($search_term) && mb_strlen($search_term) > 0 && (mb_strlen($search_term) <= 3 || $match_whole_words == 1))
 		{
 			//echo getstring("partial-search-omitted");
 			_e('Because of the brevity of your search term, partial search was omitted.', 'sil_dictionary');
@@ -118,7 +115,7 @@ function is_match_whole_words($search)
 	if(!isset($_GET['partialsearch']))
 	{
 		$partialsearch = get_option("include_partial_words");
-		if($partialsearch == 1 && $wp_query->query_vars['match_whole_words'] == 0)
+		if($partialsearch == 1 && $match_whole_words == 1)
 		{
 			$match_whole_words = 0;
 		}
