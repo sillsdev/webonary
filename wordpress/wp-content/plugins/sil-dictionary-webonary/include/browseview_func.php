@@ -744,8 +744,8 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 		{
 			if(strlen($noLetter) > 0)
 			{
-				$sql .= " AND search_strings NOT LIKE '" . $noLetter ."%' ${collate}" .
-				" AND search_strings NOT LIKE '" . strtoupper($noLetter) ."%' ${collate}";
+				$sql .= " AND search_strings NOT LIKE '" . $noLetter ."%' $collate" .
+				" AND search_strings NOT LIKE '" . strtoupper($noLetter) ."%' $collate";
 			}
 		}
 
