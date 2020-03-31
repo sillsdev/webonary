@@ -751,7 +751,6 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 
 		$sql .= " ORDER BY sortorder ASC, search_strings ASC";
 		$sql .= " LIMIT $startFrom, $postsperpage";
-		var_dump($sql);
 
 		$arrEntries = $wpdb->get_results($wpdb->prepare($sql, strtolower($letter) . '%', $langcode));
 	}
