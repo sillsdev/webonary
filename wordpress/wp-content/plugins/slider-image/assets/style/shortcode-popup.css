@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+.post-slider {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding-bottom: 30px;
+}
+
+.post-slider .slider-body {
+    padding-left: 45px;
+}
+
+.post-slider .slider-body .select-slider {
+
+}
+
+.post-slider .slider-body .select-slider h3 {
+
+}
+
+.post-slider .slider-body .select-slider .select-block {
+    display: flex;
+}
+
+.post-slider .slider-body .select-slider select {
+    margin-right: 10px;
+}
+
+.post-slider .slider-body .select-slider button {
+    background-color: #f7f7f7;
+}
+
+.post-slider .slider-body .current-slider {
+
+}
+
+.post-slider .slider-body .current-slider .current-block {
+    width: 50%;
+}
+
+.post-slider .slider-body .current-slider .current-block .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    min-height: 30px;
+}
+
+.post-slider .slider-body .current-slider .current-block .item .right {
+    display: flex;
+    justify-content: flex-start;
+    width: 160px;
+}
+
+.post-slider .slider-body .current-slider .current-block .item label{
+    margin-bottom: 5px;
+}
+
+.post-slider .slider-body .current-slider .current-block .item input{
+    width: 100%;
+    height: 22px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 0 10px;
+}
+
+.post-slider .slider-body .current-slider .current-block .item input[type="checkbox"] {
+    display: none;
+}
+
+.post-slider .slider-body .current-slider .current-block .item .check-effect {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #9e9e9e;
+    display: block;
+    cursor: pointer;
+}
+
+.post-slider .slider-body .current-slider .current-block .item input[type="checkbox"]:checked ~ label .check-effect {
+    background-color: blue;
+}
+
+.post-slider .slider-body .current-slider .current-block .item select{
+    width: 100%;
+    height: 24px;
+    border: 1px solid #ddd;
+}
+
+.post-slider .slider-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 45px;
+    padding-right: 15px;
+    margin-top: 30px;
+}
+
+.post-slider .slider-footer  i a {
+    text-decoration: none;
+    color: #008ac4;
+}

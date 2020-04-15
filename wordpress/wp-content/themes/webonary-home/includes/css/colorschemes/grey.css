@@ -1,0 +1,9 @@
+a, a:link, a:visited, .comment-reply-link, #slide_keys a:link, #slide_keys a:visited,
+#topnav li.current_page_item a, #topnavi li.current-menu-item a, #sidebar .widgettitle, #sidebar a:link,
+#sidebar a:visited, .post-title, .post-title a:link, .post-title a:visited, .comment-author .fn,
+#frontpage_widgets .widgettitle, #frontpage_widgets a:link, #frontpage_widgets a:visited {
+	color: #555555;
+}
+.wp-pagenavi .current {
+	background: #555555;
+}

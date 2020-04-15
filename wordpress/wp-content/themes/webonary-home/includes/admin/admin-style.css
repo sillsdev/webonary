@@ -1,0 +1,307 @@
+/*============================ HEADER / LOGO ============================*/
+#zee_admin_head {
+	width: 100%;
+	height: 43px;
+	margin-right: -10px;
+	background: #fff url(images/head.png) repeat-y top right;
+	padding-right: 10px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px; 
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px; 
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#zee_options_logo {
+	float: right;
+	background: #333;
+	padding-top: 2px;
+}
+#zee_options_logo img {
+	width: 180px;
+	height: 36px;
+}
+#zee_admin_heading {
+	margin-top: -43px;
+}
+#zee_tabs_navi {
+	padding-left: 5px;
+	margin: 15px 0;
+	
+}
+/*============================ NAVIGATION TABS ============================*/
+#zee_tabs_navi a {
+	color: #21759b;
+	font-size: 0.8em;
+}
+#zee_tabs_navi a:hover {
+	color: #d54e21;
+}
+#zee_tabs_navi a.nav-tab-active {
+	color: #464646;
+}
+/*============================ SETTINGS FORM ============================*/
+.zee_settings h3 {
+	margin: 0 !important;
+	padding: 8px 10px !important;
+	border: 1px solid #dfdfdf;
+	border-bottom: none;
+	font-size: 1.1em;
+	color: #464646;
+	text-shadow:#fff 0 1px 0;
+	-moz-box-shadow:inset 0 1px 0 #fff;
+	-webkit-box-shadow:inset 0 1px 0 #fff;
+	box-shadow:inset 0 1px 0 #fff;
+	-webkit-border-top-right-radius:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+	background-image:-ms-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-moz-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-o-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#ececec));
+	background-image:-webkit-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:linear-gradient(top,#f9f9f9,#ececec);
+}
+.zee_form{
+	margin-top: 10px !important;
+	float: left;
+	width: 72%;
+}
+.zee_settings table {
+	margin: 0 0 20px 0 !important;
+	background: #fff;
+	border: 1px solid #dfdfdf;
+}
+.zee_settings .form-table tr td, .zee_settings .form-table tr th{
+	border: 1px solid #dfdfdf;
+	padding: 15px !important;
+}
+.zee_settings .form-table tr th {
+	color: #666;
+	font-size: 1.0em;
+	font-weight: bold;
+	background: #f8f8f8;
+	background-image:-ms-linear-gradient(top,#f6f6f6,#fbfbfb);
+	background-image:-moz-linear-gradient(top,#f6f6f6,#fbfbfb);
+	background-image:-o-linear-gradient(top,#f6f6f6,#fbfbfb);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#fbfbfb));
+	background-image:-webkit-linear-gradient(top,#f6f6f6,#fbfbfb);
+	background-image:linear-gradient(top,#f6f6f6,#fbfbfb);
+}
+.zee_settings .form-table label{ 
+	color: #555;
+	font-size: 1.1em;
+	font-style: italic;
+}
+.zee_settings .form-table input { 
+	margin-bottom: 5px;
+}
+.zee_settings .form-table input[type=text]{ 
+	width: 100%; 
+}
+.zee_settings .form-table textarea{ 
+	width: 100%;
+}
+.zee_settings .form-table .colorpickerfield { 
+	width: 70px !important; 
+}
+.zee_settings .form-table .fontsizerfield { 
+	width: 60px !important; 
+}
+.zee-image-bg {
+	width: 98%;
+	padding: 4px 1% 0 1%;
+	background: transparent url(images/zee-logo-bg.png) repeat left top;
+	overflow: hidden;
+}
+#zee-font-bg {
+	padding: 5px 10px;
+	background: #f5f5f5;
+	font-size: 1.3em;
+	margin-top: 10px;
+	border-left: 2px solid #ddd;
+}
+/*============================ SIDEBAR ============================*/
+.zee_options_sidebar {
+	margin-top: 25px;
+	width: 26%;
+	margin-left: 74%;
+}
+.zee_options_sidebar dl {
+	margin-bottom: 20px;
+	background: #fff;
+}
+.zee_options_sidebar dt {
+	margin: 0 !important;
+	padding: 8px 10px !important;
+	border: 1px solid #dfdfdf;
+	border-bottom: none;
+	font-size: 1.1em;
+	color: #464646;
+	text-shadow:#fff 0 1px 0;
+	-moz-box-shadow:inset 0 1px 0 #fff;
+	-webkit-box-shadow:inset 0 1px 0 #fff;
+	box-shadow:inset 0 1px 0 #fff;
+	-webkit-border-top-right-radius:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+	background-image:-ms-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-moz-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-o-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#ececec));
+	background-image:-webkit-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:linear-gradient(top,#f9f9f9,#ececec);
+}
+.zee_options_sidebar dt h4 {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.zee_options_sidebar dd {
+	padding: 10px 15px 5px 15px;
+	margin: 0;
+	border: 1px solid #dfdfdf;
+	-webkit-border-bottom-right-radius:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+}
+.zee_options_sidebar dd p {
+	margin: 5px 0 10px 0;
+	line-height: 1.4em;
+}
+.zee_options_sidebar dd ul {
+	margin: 5px 0;
+	list-style: inside circle;
+}
+.zee_options_sidebar .subscribe {
+	list-style: none;
+}
+.zee_options_sidebar .subscribe li{
+	padding: 1px 0;
+}
+.zee_options_sidebar .subscribe img{
+	float: left;
+	margin-right: 5px;
+	width: 16px;
+	height: 16px;
+}
+/*============================ WELCOME SCREEN ============================*/
+#zee_welcome {
+	margin-top: 10px !important;
+	float: left;
+	width: 72%;
+}
+#zee_welcome .welcome_left {
+	float: left;
+	width: 49%;
+}
+#zee_welcome .welcome_right {
+	width: 49%;
+	margin-left: 51%;
+}
+#zee_welcome .container {
+	padding: 5px 10px;
+	margin-bottom: 20px;
+	border: 1px solid #dfdfdf;
+	background-image:-ms-linear-gradient(bottom,#f6f6f6,#fbfbfb);
+	background-image:-moz-linear-gradient(bottom,#f6f6f6,#fbfbfb);
+	background-image:-o-linear-gradient(bottom,#f6f6f6,#fbfbfb);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#fbfbfb));
+	background-image:-webkit-linear-gradient(bottom,#f6f6f6,#fbfbfb);
+	background-image:linear-gradient(bottom,#f6f6f6,#fbfbfb);
+}
+#zee_welcome h3 {
+	margin: 0 !important;
+	padding: 8px 10px !important;
+	border: 1px solid #dfdfdf;
+	border-bottom: none;
+	font-size: 1.1em;
+	color: #464646;
+	text-shadow:#fff 0 1px 0;
+	-moz-box-shadow:inset 0 1px 0 #fff;
+	-webkit-box-shadow:inset 0 1px 0 #fff;
+	box-shadow:inset 0 1px 0 #fff;
+	-webkit-border-top-right-radius:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+	background-image:-ms-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-moz-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-o-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#ececec));
+	background-image:-webkit-linear-gradient(top,#f9f9f9,#ececec);
+	background-image:linear-gradient(top,#f9f9f9,#ececec);
+}
+#zee_welcome h1 {
+	font-size: 3.0em;
+	margin: 15px 10px 5px 10px;
+	font-weight: normal;
+	line-height: 1.3em;
+}
+#zee_welcome .zee_intro {
+	padding: 5px 10px;
+	font-size: 1.8em;
+	color: #777;
+	line-height: 1.7em;
+}
+#zee_welcome .zee_intro b {
+	color: #333;
+}
+#zee_welcome h2 {
+	font-size: 2.0em;
+	margin: 0;
+	font-weight: normal;
+	line-height: 1.0em;
+}
+#zee_welcome h4 {
+	font-size: 1.4em;
+	margin: 0;
+	line-height: 1.0em;
+	background: #e4e4e4;
+	padding: 10px;
+	text-shadow:#fff 0 1px 0;
+	-webkit-border-top-right-radius:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-right-radius:3px;
+	border-top-left-radius:3px;
+}
+#zee_welcome p {
+	font-size: 1.2em;
+	line-height: 1.2em;
+}
+#zee_welcome ul {
+	margin: 0 0 10px 0;
+	padding: 5px 10px;
+	list-style: none !important;
+	background: #eee;
+	font-size: 1.2em;
+	min-height: 140px;
+	-webkit-border-bottom-right-radius:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+}
+#zee_welcome ul li{
+	padding: 0;
+	margin: 5px 0;
+}
+#zee_welcome .welcome_button {
+	display: block;
+	text-align: center;
+	margin: 0;
+	font-size: 1.3em;
+	line-height: 1.2em;
+	padding: 15px;
+	background: #21759b;
+	color: #fff;
+	text-decoration: none;
+	-webkit-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border-radius:3px;
+}
+#zee_welcome .welcome_button:hover {
+	background: #333;
+}

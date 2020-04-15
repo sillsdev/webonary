@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Private Only WordPress Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-12 23:57+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Pixel Insert/pixert <studio@pixert.com>\n"
+"Language-Team: Kate (pixert.com) <studio@pixert.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../disablefeed.php:14
+msgid "<strong>Error:</strong> Feed unavailable!"
+msgstr ""
+
+#: ../privateonly.php:84
+#: ../admin/settings-admin.php:33
+msgid "Private Only Custom Login"
+msgstr ""
+
+#: ../privateonly.php:126
+msgid "Only registered and logged in users are allowed to view this site. Please login now"
+msgstr ""
+
+#: ../privateonly.php:129
+msgid "Visit our public page:"
+msgstr ""
+
+#: ../privateonly.php:137
+msgid "Welcome,you need to be registered to see content"
+msgstr ""
+
+#: ../admin/settings-admin.php:34
+msgid "Private Only Custom Login Settings"
+msgstr ""
+
+#: ../admin/settings-admin.php:90
+msgid "New Settings saved"
+msgstr ""
+
+#: ../admin/settings-admin.php:110
+msgid "Settings have been reset. Please refresh this page"
+msgstr ""
+
+#: ../admin/settings-admin.php:139
+msgid "Do you really want to delete/reset the plugin settings?"
+msgstr ""
+
+#: ../admin/settings.php:18
+msgid "This is Private Only plugin for WordPress"
+msgstr ""
+
+#: ../admin/settings.php:20
+msgid "If you disable or enable feed, DO NOT FORGET TO REFRESH YOUR BROWSER CACHE AFTER ACTIVATE PRIVATE ONLY or DISABLE FEED"
+msgstr ""
+
+#: ../admin/settings.php:50
+msgid "This site is hidden from Search Engine. <a href=\""
+msgstr ""
+
+#: ../admin/settings.php:55
+msgid "This site is visible to search engines, go to the <a href=\""
+msgstr ""
+
+#: ../admin/settings.php:62
+msgid "Custom Login"
+msgstr ""
+
+#: ../admin/settings.php:71
+msgid "Public Page:"
+msgstr ""
+
+#: ../admin/settings.php:86
+msgid "Define the public page"
+msgstr ""
+
+#: ../admin/settings.php:99
+msgid "Logo:"
+msgstr ""
+
+#: ../admin/settings.php:103
+msgid "Upload an image with Media Library or FTP and put the full path here, http://yourdomainname.com/logo.jpg"
+msgstr ""
+
+#: ../admin/settings.php:104
+msgid "We do not provide upload tool here, because it is free for you upload it wherever you want to"
+msgstr ""
+
+#: ../admin/settings.php:109
+msgid "Logo Height:"
+msgstr ""
+
+#: ../admin/settings.php:113
+msgid "What is your logo height"
+msgstr ""
+
+#: ../admin/settings.php:126
+msgid "Use WordPress logo"
+msgstr ""
+
+#: ../admin/settings.php:131
+msgid "Check this box to use WordPress Logo, leave unchecked to disable it."
+msgstr ""
+
+#: ../admin/settings.php:136
+msgid "Change WordPress logo link"
+msgstr ""
+
+#: ../admin/settings.php:140
+msgid "Change WordPress logo link from wordpress.org to your domain, http://yourdomainname.com"
+msgstr ""
+
+#: ../admin/settings.php:146
+msgid "Your Custom Login Message"
+msgstr ""
+
+#: ../admin/settings.php:150
+msgid "Change default login message to your own"
+msgstr ""
+
+#: ../admin/settings.php:156
+msgid "Remove Register and Lost Your Password? text"
+msgstr ""
+
+#: ../admin/settings.php:161
+msgid "Check this box to remove Register and Lost Your Password? text on WP-Admin login, leave unchecked to disable it."
+msgstr ""
+
+#: ../admin/settings.php:166
+msgid "Remove Back to Blog link?"
+msgstr ""
+
+#: ../admin/settings.php:171
+msgid "Check this box to remove Back to Blog link on WP-Admin login, leave unchecked to disable it."
+msgstr ""
+
+#: ../admin/settings.php:183
+msgid "Use Custom CSS"
+msgstr ""
+
+#: ../admin/settings.php:188
+msgid "Check this box to use Custom CSS, leave unchecked to disable it. You should have custom css in your active theme"
+msgstr ""
+

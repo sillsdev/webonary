@@ -1,0 +1,239 @@
+/* OSM-plugin css file                                        */
+/* wp-osm-plugin.HanBlog.Net                                  */
+/* note: there is also some style information in the php-file */
+
+
+.entry .olMapViewport img{
+  max-width: none !important;
+  max-height: none !important;
+  vertical-align: none !important;
+}
+
+.OSM_Map img {
+  max-width: none !important;
+  max-height: none !important;
+  vertical-align: none;
+}
+
+.olTileImage {
+  max-width: none !important;
+  max-height: none !important;
+  vertical-align: none !important;
+}
+
+.olControlAttribution {
+  bottom: 0 !important;
+}
+
+div.olControlMousePosition {
+  bottom: 1em !important;
+}
+
+.olPopupContent
+{
+    /*padding-top:10px;
+    padding-bottom:10px;
+    padding-right:10px;
+    padding-left:10px;*/
+    padding: 0 0 0 0;
+    border: #fff solid;
+    border-width: 10px 10px;
+
+    white-space:nowrap;
+}
+
+/* pink tiles at openseamap */
+.olImageLoadError {
+display: none !important;
+}
+
+
+
+/* +++ metabox tabs +++ */
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+
+/*----- metabox tabs Links -----*/
+/* Clearfix */
+.tab-links:after {
+   display:block;
+   clear:both;
+   content:'';
+}
+
+.tab-links li {
+  margin:0px 5px;
+  float:left;
+  list-style:none;
+  text-decoration:none;
+}
+
+.tab-links a {
+  padding:3px 6px;
+  display:inline-block;
+  border-radius:3px 3px 0px 0px;
+  background:#FFFFFF;
+  transition:all linear 0.15s;
+  text-decoration:none;
+}
+
+.tab-links a:hover {
+  background:#FFFFFF;
+  text-decoration:none;
+}
+
+li.active a {
+  border: 1px solid #D8D8D8;
+  background:#FFFFFF;
+  border-bottom: none;
+  color: black;
+}
+
+li.active a:hover {
+  border: 1px solid #D8D8D8;
+  background:#FFFFFF;
+  border-bottom: none;
+}
+
+
+/* --- new metabox marker select --- */
+
+		.osm-marker-tab-container{
+			width: 95%;
+                        
+			margin: 0 auto;
+		}
+
+		ul.osm-marker-tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.osm-marker-tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 2px 5px;
+			cursor: pointer;
+		}
+
+		ul.osm-marker-tabs li.current{
+			background: #fdfdfd;
+			color: #222;
+			border: 1px solid #D8D8D8;
+			border-bottom: none;
+		}
+
+		.marker-tab-content{
+			margin: -7px 0px 0px 0px;
+                        padding:15px;
+                        border-radius:3px;
+			display: none;
+			background: #fdfdfd;
+			border: 1px solid #D8D8D8;
+                        height: 300px;
+		}
+
+		.marker-tab-content.current{
+			display: inherit;
+		}
+
+/* --- new metabox geotag marker select --- */
+
+		.osm-geo-marker-tab-container{
+			width: 95%;
+                        
+			margin: 0 auto;
+		}
+
+		ul.osm-geo-marker-tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.osm-geo-marker-tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 2px 5px;
+			cursor: pointer;
+		}
+
+		ul.osm-geo-marker-tabs li.current{
+			background: #fdfdfd;
+			color: #222;
+			border: 1px solid #D8D8D8;
+			border-bottom: none;
+		}
+
+		.geo-marker-tab-content{
+			margin: -7px 0px 0px 0px;
+                        padding:15px;
+                        border-radius:3px;
+			display: none;
+			background: #fdfdfd;
+			border: 1px solid #D8D8D8;
+                        height: 300px;
+		}
+
+		.geo-marker-tab-content.current{
+			display: inherit;
+		}
+
+
+
+
+/* --- new metabox --- */
+
+		.osm-tab-container{
+			width: 95%;
+			margin: 0 auto;
+		}
+
+		ul.osm-tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.osm-tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 2px 5px;
+			cursor: pointer;
+		}
+
+		ul.osm-tabs li.current{
+			background: #fdfdfd;
+			color: #222;
+			border: 1px solid #D8D8D8;
+			border-bottom: none;
+		}
+
+		.tab-content{
+			margin: -7px 0px 0px 0px;
+                        padding:15px;
+                        border-radius:3px;
+			display: none;
+			background: #fdfdfd;
+			border: 1px solid #D8D8D8;
+		}
+
+		.tab-content.current{
+			display: inherit;
+		}
+
+    /* is used for icon select at metabox */
+    label.metabox-label > input{ /* HIDE RADIO */
+      visibility: hidden; /* Makes input not-clickable */
+      position: absolute; /* Remove input from document flow */
+    }
+    label.metabox-label > input + img{ /* IMAGE STYLES */
+      cursor:pointer;
+      border:2px solid transparent;
+    }
+    label.metabox-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+      border:2px solid #808080;
+    }

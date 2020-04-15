@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600');
+
+.hugeit-tracking-optin {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+    width: 100%;
+    margin: 10px 0;
+    box-sizing: border-box;
+    padding: 14px 16px 12px 29px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.hugeit-tracking-optin-left {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+}
+
+.hugeit-tracking-optin-info {
+    margin-left: 31px;
+}
+
+.hugeit-tracking-optin-header {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 8px;
+    color:#515151;
+}
+
+.hugeit-tracking-optin-description {
+    max-width: 540px;
+    margin-bottom: 10px;
+    color: #303030;
+    font-size: 12px;
+}
+
+.hugeit-tracking-optin-button {
+    display: inline-block;
+    margin-right: 8px;
+    height: 39px;
+    line-height: 39px;
+    padding: 0 20px;
+    background-color:#be202e;
+    color:#fff;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #be202e;
+    transition: all .15s ease;
+}
+
+.hugeit-tracking-optin-button:hover {
+    color:#be202e;
+    background-color:#fff;
+}
+
+.hugeit-tracking-optout-button {
+    display: inline-block;
+    height: 39px;
+    line-height: 39px;
+    padding: 0 18px;
+    background-color:#fff;
+    color:#be202e;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #be202e;
+    transition: all .15s ease;
+}
+
+.hugeit-tracking-optout-button:hover {
+    background-color:#be202e;
+    color:#fff;
+}
+
+.hugeit-tracking-optin-right {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    align-content:center;
+    text-align: center;
+}
+
+.hugeit-tracking-optin-logo {
+    padding-bottom: 16px;
+
+}
+
+.hugeit-tracking-optin-links {
+    padding-top: 17px;
+    border-top: 2px solid #d7d7d7;
+}
+
+.hugeit-tracking-optin-links a {
+    display: inline-block;
+    font-size: 12px;
+    color:#787878;
+    text-decoration: none;
+    background: url(../images/admin/tracking/sprite.png) no-repeat;
+    transition: none;
+}
+
+.hugeit-tracking-optin-links a:hover {
+    color:#303030;
+}
+
+.hugeit-tracking-optin-links a:nth-child(1) {
+    background-position: 0 2px;
+    padding-left: 21px;
+}
+
+.hugeit-tracking-optin-links a:nth-child(1):hover {
+    background-position: 0 -22px;
+}
+
+
+.hugeit-tracking-optin-links a:nth-child(2) {
+    margin-left: 17px;
+    padding-left: 19px;
+    background-position: 0 -47px;
+}
+
+.hugeit-tracking-optin-links a:nth-child(2):hover {
+    background-position: 0 -70px;
+}
+
+/** Deactivation Feedback */
+#slider-image-deactivation-feedback .-hugeit-modal-content-header {
+    background-color: #157dbe;
+    border-bottom: 3px solid #d7d7d7;
+    color:#fff;
+}
+
+#slider-image-deactivation-feedback .-hugeit-modal-header-title {
+    margin-bottom: 6px;
+}

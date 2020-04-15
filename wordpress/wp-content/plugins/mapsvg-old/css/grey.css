@@ -1,0 +1,46 @@
+div.tab-content {
+    margin: -19px -20px 0 -20px;
+    padding: 20px 20px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+}
+.form-horizontal .form-actions {
+    margin: 0 -20px 0 -20px;
+    background-color: #ddd;
+    padding-left: 180px;
+}
+input[type="checkbox"]{
+    float: none !important;
+    border-width: 1px;
+    border-style: solid;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 16px;
+    margin: -4px 0 0 0;
+    outline: 0;
+    padding: 0 !important;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    min-width: 16px;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-color: #ccc;
+
+/* width: auto; */
+    /* height: auto; */
+    /* padding: 0; */
+    /* margin: 3px 0; */
+    /* line-height: normal; */
+    /* border: 0; */
+    /* cursor: pointer; */
+    /* -webkit-border-radius: 0; */
+    /* -moz-border-radius: 0; */
+    /* border-radius: 0; */
+}

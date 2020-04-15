@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Disable Site Delete\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-05 02:02+0530\n"
+"PO-Revision-Date: 2013-06-05 02:10+0530\n"
+"Last-Translator: Brajesh Singh <brajesh@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /var/www/bp/1.7/dev/ms/wp-content/plugins/disable-site-delete\n"
+
+#: /var/www/bp/1.7/dev/ms/wp-content/plugins/disable-site-delete/disable-site-delete.php:78
+#: /var/www/bp/1.7/dev/ms/wp-content/plugins/disable-site-delete/disable-site-delete.php:92
+msgid "You are not allowed to delete this site. Please contact network administrator for any help"
+msgstr ""
+

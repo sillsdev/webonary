@@ -1,0 +1,588 @@
+# Copyright (C) 2012 Q and A
+# This file is distributed under the same license as the Q and A package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Q and A 1.0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/Q-and-A\n"
+"POT-Creation-Date: 2012-09-17 23:29:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/documentation.php:1
+msgid "Table of Contents"
+msgstr ""
+
+#: admin/documentation.php:4 admin/documentation.php:9
+msgid "Introduction"
+msgstr ""
+
+#: admin/documentation.php:5 admin/documentation.php:23
+msgid "The [qa] shortcode"
+msgstr ""
+
+#: admin/documentation.php:11
+msgid "Q &amp; A makes it easy to create a full-featured, fully searchable FAQ knowledgebase on your WordPress site. You can add an unlimited number of entries, grouped by category."
+msgstr ""
+
+#: admin/documentation.php:13
+msgid "To get started, click on the <strong>Q &amp; A Plus</strong> section of the <strong>Settings</strong> menu of your WordPress Dashboard. The first thing you&#8217;ll want to do is create an FAQ homepage, this is where visitors will be able to view your FAQs. This can be a page that already exists, or the plugin can automatically create the page and add the shortcode for you. By default, the FAQ homepage is &#8220;faqs&#8221;, so if that works for you, go ahead and click the &#8220;Create Page&#8221; button to add a new page to your site."
+msgstr ""
+
+#: admin/documentation.php:15
+msgid "To use a page that already exists on your site, enter the page slug in the <strong>FAQ homepage</strong> field. For example, the page slug of your \"About\" page is <code>about</code>. If you'd like your FAQs to be on a sub-page on your site, you can use a slash, so a page called \"FAQs\" that is a child page of \"About\" would have the slug <code>about/faqs</code>. You will then need to add the <code>[qa]</code> shortcode to that page."
+msgstr ""
+
+#: admin/documentation.php:17
+msgid "The default options should work for most sites, so let&#8217;s create a few FAQs and see how they look. From the WordPress Dashboard, look for the <strong>FAQs</strong> menu, and then click <strong>Add New</strong>. Just like a typical WordPress post, you&#8217;ll be able to add a title and body content, as well as set your category. The title is the &#8220;Question&#8221; part of the FAQ and will be displayed on the FAQ page. The content section is hidden by default and will be displayed when the visitor clicks on the title. The category section allows you to organize your FAQs into multiple categories which are displayed on the homepage and on their own individual category pages. A FAQ can belong to multiple categories."
+msgstr ""
+
+#: admin/documentation.php:19
+msgid "Add your FAQ like you would any normal WordPress post. Once you&#8217;ve added some FAQs, visit your site and take a look. The FAQ homepage will be at yoursite.com/faqs by default, or wherever you set the FAQs homepage slug in the plugin settings."
+msgstr ""
+
+#: admin/documentation.php:21
+msgid "Take a look at the options on the \"Plugin Settings\" tab and try them out. You can add a search box on the FAQ homepage, category pages, and control the position of the search box. You can also customimze the animations and other aspects of the FAQ show/hide behavior. Each option has a small question mark like this next to it. <span class=\"vtip\" title=\"This is a contextual tooltip. Hover over these to find out what a particular setting does.\">?</span>Hover over this mark for a tooltip with more information about that option."
+msgstr ""
+
+#: admin/documentation.php:25
+msgid "The <code>[qa]</code> shortcode allows you to put your FAQs on any page on your site, and has quite a few options. If you need to create a new FAQ page, just use the shortcode without any options. You can also use the shortcode to place individual FAQs, single FAQ categories, and FAQ pages with custom options anywhere on your site. You can combine most shortcode attributes in any combination you want. Here are the basic Q &amp; A shortcode options:"
+msgstr ""
+
+#: admin/documentation.php:27
+msgid "<strong>FAQ homepage</strong>: <code>[qa]</code> Will insert the entire FAQ homepage anywhere on your site."
+msgstr ""
+
+#: admin/documentation.php:29
+msgid "<strong>Single category page</strong>: <code>[qa cat=dogs]</code> By specifying a category slug, you can add an entire category of FAQ entries anywhere on your site. You can find the category slug on the <strong>FAQs &rarr; FAQ Categories</strong> page."
+msgstr ""
+
+#: admin/documentation.php:31
+msgid "<strong>Single FAQ page</strong>: <code>[qa id=123]</code> By specifying an ID, you can insert an individual FAQ entry anywhere on your site."
+msgstr ""
+
+#: admin/documentation.php:33
+msgid "Hompage specific shortcodes:"
+msgstr ""
+
+#: admin/documentation.php:35
+msgid "<strong>Limit</strong>: <code>[qa limit=5]</code> Controls the number of FAQs returned on the FAQ homepage. Use <strong>-1</strong> to return all FAQ entries."
+msgstr ""
+
+#: admin/documentation.php:37
+msgid "<strong>Enable excerpts</strong>: <code>[qa excerpts=true]</code>. Whether to limit posts length on the homepage. Entries that are longer than 40 words will be shorted and a &#8220;Continue reading&#8221; link will be added. Possible values are <strong>true</strong> or <strong>false</strong>."
+msgstr ""
+
+#: admin/documentation.php:39
+msgid "General shortcode attributes:"
+msgstr ""
+
+#: admin/documentation.php:41
+msgid "<strong>Search</strong>: <code>[qa search=home]</code> Whether to show the search field. Possible values are <strong>home</strong>, <strong>categories</strong>, <strong>both</strong>, or <strong>none</strong> to disable the search field."
+msgstr ""
+
+#: admin/documentation.php:43
+msgid "<strong>Search position</strong>: <code>[qa searchpos=top]</code> Position of the search box, if enabled. Possible values are <strong>top</strong> or <strong>bottom</strong>."
+msgstr ""
+
+#: admin/documentation.php:45
+msgid "<strong>Permalinks</strong>: <code>[qa permalinks=true]</code> Whether to show permalinks for individual FAQs. This makes it easier for users to click through and bookmark your content. Possible values are <strong>true</strong> or <strong>false</strong>."
+msgstr ""
+
+#: admin/documentation.php:47
+msgid "<strong>Animation</strong>: <code>[qa animation=fade]</code> Customize the animation style when opening and closing FAQs. Possible values are <strong>fade</strong>, <strong>slide</strong>, and <strong>none</strong>."
+msgstr ""
+
+#: admin/documentation.php:49
+msgid "<strong>Accordion</strong>: <code>[qa accordion=true]</code> Clicking on one FAQ entry closes any other open FAQ entries on the page. Setting this to <strong>false</strong> will allow multiple FAQs to be open and visible on the page at the same time."
+msgstr ""
+
+#: admin/documentation.php:51
+msgid "<strong>Collapsible</strong>: <code>[qa collapsible=true]</code> You can completely disable the show/hide behavior by setting this to <strong>false</strong>."
+msgstr ""
+
+#: admin/q-a-plus-admin.php:13
+msgid "The FAQ homepage"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:13
+msgid "doesn't exist yet. Would you like to create it?"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:71
+msgid "Thanks for downloading Q & A! If you like it, please be sure to give us a positive rating in the <a href=\"http://wordpress.org/extend/plugins/q-and-a/\">WordPress repository</a>, it means a lot to us."
+msgstr ""
+
+#: admin/q-a-plus-admin.php:72
+msgid "If you like Q & A and would like more advanced features, please take a look at <strong><a href=\"http://madebyraygun.com/wordpress/plugins/q-and-a-plus\">Q & A Plus</a></strong>, our premium version of the plugin. It's got more display options, support for user submissions, user ratings, and even more options to explore."
+msgstr ""
+
+#: admin/q-a-plus-admin.php:77
+msgid "Plugin Settings"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:78
+msgid "Documentation"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:98
+msgid "Save Changes"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:112
+msgid "You're using Q &amp; A Plus, made by <a href=\"http://madebyraygun.com\">Raygun</a>. Check out our <a href=\"http://madebyraygun.com/wordpress/\" target=\"_blank\">other plugins</a>, and if you have any problems, stop by our <a href=\"http://madebyraygun.com/support/\" target=\"_blank\">support forum</a>!"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:133
+msgid "FAQ Homepage Options"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:140
+msgid "Single FAQ Options"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:147
+msgid "Global Options"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:154
+msgid "Advanced Options"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:161
+msgid "FAQ homepage <span class=\"vtip\" title=\"Where would you like your FAQ homepage to live? This can be a page that already exists on your site, but it shouldn't be the front page.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:169
+msgid "FAQs per category <span class=\"vtip\" title=\"How many items should we show in each category on the Q & A homepage? -1 shows all FAQ entries. Users will be able to click a link to see all questions on the category page.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:177
+msgid "Show category links <span class=\"vtip\" title=\"Show links to the single category page below each category. Works well in conjunction with the limit setting to condense your FAQ homepage.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:185
+msgid "Show number of entries <span class=\"vtip\" title=\"Show total number of FAQ entries in the category header.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:193
+msgid "Show excerpts <span class=\"vtip\" title=\"Show excerpts instead of full entries on the FAQ homepage.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:202
+msgid "Show breadcrumbs <span class=\"vtip\" title=\"Enables a link back to the FAQ homepage in the page title. This can cause problems in some themes so check to make sure it's working.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:210
+msgid "Show search <span class=\"vtip\" title=\"Show the search form on the home and category pages.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:218
+msgid "Search box position <span class=\"vtip\" title=\"Add the search box before or after the FAQ content.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:227
+msgid "Show permalinks <span class=\"vtip\" title=\"Add a permalink to each FAQ entry\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:235
+msgid "Animation style <span class=\"vtip\" title=\"What animation should be used to show/hide the FAQs?\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:243
+msgid "Accordion behavior <span class=\"vtip\" title=\"Clicking a FAQ title closes any other open FAQs.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:251
+msgid "Enable show/hide behavior <span class=\"vtip\" title=\"Uncheck this to turn off the show/hide behavior.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:259
+msgid "jQuery version <span class=\"vtip\" title=\"Which version of jQuery should the plugin use? This can sometimes help with compatibility issues. You should leave this set to <em>WP Included</em> unless you have a specific reason to change it.\">?</span>"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:267
+msgid "Version"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:321
+msgid "On home page"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:322
+msgid "On category pages"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:323
+msgid "Both home and category pages"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:324
+msgid "Do not enable search"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:332
+msgid "Top"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:333
+msgid "Bottom"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:341
+msgid "Fade"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:342
+msgid "Reveal"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:343 admin/q-a-plus-admin.php:371
+msgid "None"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:369
+msgid "WP included"
+msgstr ""
+
+#: admin/q-a-plus-admin.php:370
+msgid "Force latest version"
+msgstr ""
+
+#: inc/custom-post.php:8
+msgctxt "qa-free"
+msgid "FAQ Categories"
+msgstr ""
+
+#: inc/custom-post.php:9
+msgctxt "qa-free"
+msgid "FAQ Category"
+msgstr ""
+
+#: inc/custom-post.php:10
+msgid "Search FAQ Categories"
+msgstr ""
+
+#: inc/custom-post.php:11
+msgid "All FAQ Categories"
+msgstr ""
+
+#: inc/custom-post.php:12
+msgid "Parent FAQ Category"
+msgstr ""
+
+#: inc/custom-post.php:13
+msgid "Parent FAQ Category:"
+msgstr ""
+
+#: inc/custom-post.php:14
+msgid "Edit FAQ Category"
+msgstr ""
+
+#: inc/custom-post.php:15
+msgid "Update FAQ Category"
+msgstr ""
+
+#: inc/custom-post.php:16
+msgid "Add New FAQ Category"
+msgstr ""
+
+#: inc/custom-post.php:17
+msgid "New FAQ Category Name"
+msgstr ""
+
+#: inc/custom-post.php:23
+msgid "FAQs"
+msgstr ""
+
+#: inc/custom-post.php:24
+msgid "FAQ"
+msgstr ""
+
+#: inc/custom-post.php:25
+msgid "Edit FAQ"
+msgstr ""
+
+#: inc/custom-post.php:26
+msgid "Add FAQ"
+msgstr ""
+
+#: inc/custom-post.php:77
+msgid "Title"
+msgstr ""
+
+#: inc/custom-post.php:78
+msgid "Category"
+msgstr ""
+
+#: inc/custom-post.php:79
+msgid "Date"
+msgstr ""
+
+#: inc/functions.php:149
+msgid "<p>Page was successfully created!</p>"
+msgstr ""
+
+#: inc/functions.php:151
+msgid "<p>Page could not be created. Please create it and add the shortcode manually.</p>"
+msgstr ""
+
+#: inc/functions.php:189
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/functions.php:235
+msgid " / "
+msgstr ""
+
+#: inc/functions.php:276
+msgid "Posted in: "
+msgstr ""
+
+#: inc/reorder.php:5 inc/reorder.php:23 inc/reorder.php:63 inc/reorder.php:118
+#: inc/reorder.php:269
+msgid "Reorder FAQs"
+msgstr ""
+
+#: inc/reorder.php:76
+msgid "Show All %1$s"
+msgstr ""
+
+#: inc/reorder.php:109 inc/reorder.php:113
+msgid "Order Subpages"
+msgstr ""
+
+#: inc/reorder.php:125
+msgid "No Category Selected"
+msgstr ""
+
+#: inc/reorder.php:135
+msgid "Click to Reorder FAQs"
+msgstr ""
+
+#: inc/reorder.php:141
+msgid "This feature is part of the <a href=\"http://geekyweekly.com/mypageorder\">My Page Order</a> plugin by Andrew Charlton."
+msgstr ""
+
+#: inc/reorder.php:197
+msgid "Updating FAQ Order..."
+msgstr ""
+
+#: inc/reorder.php:230
+msgid "FAQ order updated successfully."
+msgstr ""
+
+#: inc/reorder.php:233
+msgid "An error occured, order has not been saved."
+msgstr ""
+
+#: inc/reorder.php:260
+msgid "Return to parent page"
+msgstr ""
+
+#: inc/reorder.php:268
+msgid "Enhanced Pages widget provided by Reorder FAQs"
+msgstr ""
+
+#: inc/reorder.php:274
+msgid "Pages"
+msgstr ""
+
+#: inc/reorder.php:378
+msgid "Title:"
+msgstr ""
+
+#: inc/reorder.php:381
+msgid "Sort by:"
+msgstr ""
+
+#: inc/reorder.php:383
+msgid "FAQ Order"
+msgstr ""
+
+#: inc/reorder.php:384
+msgid "Page Title"
+msgstr ""
+
+#: inc/reorder.php:385
+msgid "Post Date"
+msgstr ""
+
+#: inc/reorder.php:386
+msgid "Post Modified"
+msgstr ""
+
+#: inc/reorder.php:387
+msgid "Author"
+msgstr ""
+
+#: inc/reorder.php:388
+msgid "Page Slug"
+msgstr ""
+
+#: inc/reorder.php:389
+msgid "Page ID"
+msgstr ""
+
+#: inc/reorder.php:393
+msgid "Sort Order:"
+msgstr ""
+
+#: inc/reorder.php:395
+msgid "Ascending"
+msgstr ""
+
+#: inc/reorder.php:396
+msgid "Descending"
+msgstr ""
+
+#: inc/reorder.php:399
+msgid "Might only work with Page Title."
+msgstr ""
+
+#: inc/reorder.php:402
+msgid "Show Home:"
+msgstr ""
+
+#: inc/reorder.php:404
+msgid "Enter text for link to blog home, blank to hide."
+msgstr ""
+
+#: inc/reorder.php:407
+msgid "Exclude:"
+msgstr ""
+
+#: inc/reorder.php:409 inc/reorder.php:414 inc/reorder.php:419
+msgid "Page IDs, separated by commas."
+msgstr ""
+
+#: inc/reorder.php:412
+msgid "Exclude Tree:"
+msgstr ""
+
+#: inc/reorder.php:417
+msgid "Include:"
+msgstr ""
+
+#: inc/reorder.php:422
+msgid "Depth:"
+msgstr ""
+
+#: inc/reorder.php:424
+msgid "0 = Hierarchy, -1 = Flat, 1 = Top Level, 2+ = Depth."
+msgstr ""
+
+#: inc/reorder.php:427
+msgid "Child Of:"
+msgstr ""
+
+#: inc/reorder.php:429
+msgid "ID of Parent Page."
+msgstr ""
+
+#: inc/reorder.php:432
+msgid "Show Date:"
+msgstr ""
+
+#: inc/reorder.php:434
+msgid "modified or custom to use Date Format."
+msgstr ""
+
+#: inc/reorder.php:437
+msgid "Date Format:"
+msgstr ""
+
+#: inc/reorder.php:439
+msgid "Custom date format to use with custom Show Date."
+msgstr ""
+
+#: inc/reorder.php:442
+msgid "Meta Key:"
+msgstr ""
+
+#: inc/reorder.php:444
+msgid "Use with Meta Value."
+msgstr ""
+
+#: inc/reorder.php:447
+msgid "Meta Value:"
+msgstr ""
+
+#: inc/reorder.php:449
+msgid "Use with Meta Key."
+msgstr ""
+
+#: inc/reorder.php:452
+msgid "Link Before:"
+msgstr ""
+
+#: inc/reorder.php:454
+msgid "Text or HTML to proceed link text."
+msgstr ""
+
+#: inc/reorder.php:457
+msgid "Link After:"
+msgstr ""
+
+#: inc/reorder.php:459
+msgid "Text or HTML after link text."
+msgstr ""
+
+#: inc/reorder.php:462
+msgid "Authors:"
+msgstr ""
+
+#: inc/reorder.php:464
+msgid "Author IDs, seperated by comma."
+msgstr ""
+
+#: inc/reorder.php:467
+msgid "Number:"
+msgstr ""
+
+#: inc/reorder.php:469
+msgid "Number of pages to display."
+msgstr ""
+
+#: inc/reorder.php:472
+msgid "Offset:"
+msgstr ""
+
+#: inc/reorder.php:474
+msgid "Number of pages to skip."
+msgstr ""
+
+#: inc/shortcodes.php:89 inc/shortcodes.php:168 inc/shortcodes.php:282
+#: inc/shortcodes.php:371
+msgid "Permalink"
+msgstr ""
+
+#: inc/shortcodes.php:296
+msgid "View category&rarr;"
+msgstr ""
+
+#: inc/shortcodes.php:404
+msgid "Search FAQs"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Q and A"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/q-and-a/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "FAQ plugin for WordPress"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Raygun"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://madebyraygun.com"
+msgstr ""

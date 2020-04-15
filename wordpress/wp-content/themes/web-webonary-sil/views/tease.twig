@@ -1,0 +1,11 @@
+<article class="tease tease-{{post.post_type}}" id="tease-{{post.ID}}">
+	{% block content %}
+		<h2 class="h2"><a href="{{post.link}}">{{post.title|highlight(query)}}</a></h2>
+	  <p class="postmeta"><a href="{{post.author.path}}"> {{ post.author.name }} </a>| {{ post.display_date }}</p>
+		<p>{{post.get_preview(50)|highlight(query)}}</p>
+
+		{% if post.get_thumbnail %}
+			<img src="{{post.thumbnail.src}}" />
+		{% endif %}
+	{% endblock %}
+</article>

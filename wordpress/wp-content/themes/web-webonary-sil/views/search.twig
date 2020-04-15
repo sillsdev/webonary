@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+<header id="page-breadcrumbs" class="hidden-xs">
+  <div class="container">
+    <h2 class="page-header">
+      <ol class="breadcrumb">
+          <li><a href="{{home_url}}">Home</a></li>
+          <li><a href=""><span class="last-crumb">Search Results</span></a></li>
+      </ol>
+    </h2>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<section id="content_primary">
+
+  <div class="container">
+  	<div class="row">
+
+  		<div class="col-xs-12">
+    		<section class="article-content">
+    			<h1>Search Results</h1>
+		{% if posts|length > 0 %}
+		  {% for post in posts %}
+		  	{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+		  {% endfor %}
+		{% else %}
+					<div class="nosearchresults">Your search for <strong>{{query}}</strong> did not return any results.</div>
+					<h3>Suggestions:</h3>
+					<ul>
+						<li>Make sure all words are spelled correctly.</li>
+						<li>Try different keywords.</li>
+						<li>Try more general keywords.</li>
+						<li>Try fewer keywords.</li>
+					</ul>
+		{% endif %}
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf8" />
+	<meta name="author" content="Roman S. Stepanov" />
+    <meta name="description" content="MapSvg is jQuery plugin that can take any SVG map and make it interactive and clickable, upload data by each region, set custom colors and much more." />
+
+	<title>FAQ | jQuery Interactive SVG Map Plugin</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+
+
+</head>
+<style>
+        body {margin: 20px 40px; font: normal 12px/18px verdana; margin-bottom: 50px;}
+        pre { padding: 20px 20px 0 20px; background-color: #eee;}
+        li {line-height: 200%}
+        h2 {
+            margin: 50px 0 20px 0;
+        }
+        h3 {
+            padding: 25px 0 10px 0;
+            margin: 0;
+        }
+        .error {
+            color: red;
+            padding: 20px 10px 0 0;
+            font-weight: bold;
+        }
+        .notop {
+            padding-top: 0;
+            margin-top: 0;
+        }
+</style>
+
+
+<body>
+
+    <div class="container">
+
+    <h1>FAQ / jQuery interactive SVG Map plugin</h1>
+
+
+    <h2 id="support">Support - Free or Paid?</h2>
+    <strong>Hello, Thank you for purchasing mapSVG plugin!</strong>
+
+    I get tons of questions about mapSVG every day  - so let me make some <strong>important notes</strong>:
+    <ol>
+        <li><strong style="color: red">Free support</strong>: all messages with bugs / problems. <br />
+        <strong>Example:</strong>
+        <ul>
+            <li>"Popups aren't showing, could you help?"</li>
+        </ul></li>
+        <li><strong style="color: red">Paid support $$$</strong>: any messages regarding fine-tuning of the plugin for your needs.
+        <br />
+        <strong>Examples:</strong>
+        <ul>
+            <li>"Popups are showing on click, but I want them to show on mouse hover. How do I do that?".</li>
+            <li>"Could you help me to find SVG map of country XXX?"</li>
+        </ul>
+    </ol></li>
+
+    </ul>
+
+    In second case ("Paid support") there's no problem with the plugin but you ask me to spend some time to solve your question and show you how to do that, which should be paid. My hourly payrate is <strong>$30 p/hour</strong> (which is also a minimum payment even if solution has taken 10 minutes). I'm sorry but there's no other way to provide good and fast support
+    for hundreds of mails.
+
+
+    <h2>Contents</h2>
+    <ul>
+        <li><strong><a href="#first">First things you must know before asking any questions</a></strong></li>
+        <li><strong><a href="#javascript-errors">Frequent JavaScript errors from Console</a></strong>
+            <ul>
+                <li><a href="#no-method-mapsvg">Uncaught TypeError: Object [object Object] has no method 'mapSvg'</a></li>
+                <li><a href="#no-on">Object [object Object] has no method 'on'</a></li>
+                <li><a href="#x-undefined">Cannot read property 'x' of undefined</a></li>
+                <li><a href="#domain-origin">XMLHttpRequest cannot load http://domain.com/maps/usa.svg. Origin http://domain.com is not allowed by Access-Control-Allow-Origin.</a></li>
+            </ul>
+        </li>
+        <li><strong><a href="#javascript-errors">Questions</a></strong>
+            <ul>
+                <li><a href="#faq-create-map">I want to create my own map. How do I do that?</a></li>
+                <li><a href="#faq-own-map-fails">I use my own .SVG map and it doesn't work as expected</a></li>
+                <li><a href="#faq-ie8">Map isn't responsive in IE7-8</a></li>
+                <li><a href="#faq-full-width">How to stretch a map to 100% width of screen?</a></li>
+                <li><a href="#faq-gradient">How can I fill a region with gradient?</a></li>
+                <li><a href="#faq-background">How can I set image as background for a region?</a></li>
+
+            </ul>
+
+        </li>
+    </ul>
+
+
+
+
+    <h2 id="first">First things you must know before asking any questions</h2>
+    At first, in case you get any problem with mapSVG, open your page in Google Chrome, press <strong>F12</strong> and click last tab named <strong>"Console"</strong>.<br />
+    If there are any errors, you'll see them marked with <span style="color: red;"><strong>red color</strong></span> (please note that there might be some other errors not related to mapSVG):
+    <br /><br />
+    <img src="images/screen1.png"/>
+<br /><br />
+    Next, make sure that you're using <strong>jQuery 1.7.0</strong> or later (1.7.1, 1.7.2 etc.)! <strong>Plugin will not work</strong> with previous jQuery versions. <br />
+    To check which jQuery your site is using, go to "Console" tab in Chrome (see above), click on input field and type in:
+    <strong>console.log(jQuery().jquery)</strong>, press <strong>Enter</strong>.<br /><br />
+    <img src="images/screen2.png"/>
+
+
+    <h2 id="javascript-errors">Frequent JavaScript errors from Console</h2>
+    <div class="error notop" id="no-method-mapsvg">1. Uncaught TypeError: Object [object Object] has no method 'mapSvg' </div>
+    This means mapSVG plugin wasn't loaded properly. First check that file "mapsvg.js" or "mapsvg.min.js" is insluded in page's body.
+    Next check that jQuery library was included not more that 1 time. <strong>Example:</strong>
+<pre>
+&lt;script type="text/javascript" src="js/jquery-1.7.2.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/raphael.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/mapsvg.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/jquery-1.8.0.js"&gt;&lt;/script&gt;
+
+</pre>
+
+    Example above won't work because: first <strong>jquery-1.7.2</strong> was loaded, then <strong>mapsvg.min.js</strong> was attached to <strong>jquery-1.7.2</strong>, and then <strong>jquery-1.8.0</strong> was loaded so previous mapSvg attachement to jQuery was lost.
+
+
+
+    <div class="error" id="no-on">2. Object [object Object] has no method 'on' </div>
+    You're using old jQuery. Upgrade jQuery to <strong>1.7.x</strong> (it is uncluded in plugin's package).
+
+
+    <div class="error" id="x-undefined">3. Cannot read property 'x' of undefined </div>
+    You haven't created DIV container for your map or you have placed it after $('#mapsvg').mapSvg(). When you try to attach mapSVG plugin to some <strong>div</strong> container which isn't loaded yet - this error occurs. Move <strong>&lt;div id="mapsvg"&gt;&lt;/div&gt;</strong> to a place before <strong>$('#mapsvg').mapSvg()</strong>.
+
+
+
+    <div class="error" id="domain-origin">4. XMLHttpRequest cannot load http://domain.com/maps/usa.svg. Origin http://domain.com is not allowed by Access-Control-Allow-Origin.</div>
+    There is a rule in all browsers that doesn't allow JavaScript to access files on other domains. This means that your script and your map must be on same domain. Please note that even <strong>www.domain.com</strong> and <strong>domain.com</strong> counts as different domains and if I open your page in browser by entering address <strong>domain.com/mapsvg</strong> and you have set map's
+    source by <strong>{source: 'http://www.domain.com'}</strong> - it will fail to load.
+    Same thing with <strong>http://</strong> and <strong>https://</strong>.
+    To avoid problems with <strong>www</strong> - add this rule to <strong>.htaccess</strong> file in site's root folder:
+<pre>
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.domain.com [NC]
+RewriteRule ^(.*) http://domain.com$1 [R=301,L]
+
+</pre>
+
+This rule will redirect all requests from www.domain.com to domain.com so they become one whole thing.
+
+    <h2>Questions</h2>
+
+
+    <h3 class="notop" id="faq-create-map">1. I want to create my own map. How do I do that?</h3>
+    I recommend using <a href="http://inkscape.org/">InkScape</a> - a Free Open Source vector graphics editor. It's great for web-oriented SVG maps. I do not recommend Adobe Illustrator as it's less compatible with web.
+
+
+    <h3 id="faq-own-map-fails">2. I use my own .SVG map and it doesn't work as expected</h3>
+    <div class="answer">
+    <p>SVG   "groups" aren't supported by Raphael.js library, so you have to remove them (convert everything to "path" objects).</p>
+
+    <p>1) Download InkScape ( <a href="http://inkscape.org" rel="nofollow">http://inkscape.org</a> ) - it's free vector editor, good for    SVG    images.</p>
+
+    <p>2) Open your    SVG    map.</p>
+
+    <p>3) Click on any group (you'll see info about object's type - "group/path/polygon" etc. - in bottom status bar).</p>
+
+    <p>4) Double-click same group to enter into the group.</p>
+
+    <p>5) Press Ctrl+A or "Menu &rarr; Edit &rarr; Select All" to select all objects inside of the group.</p>
+
+    <p>6) Select "Menu &rarr; Path &rarr; Union" to merge selected paths inside of the group.</p>
+
+    <p>7) Click outside of the group to leave the group.</p>
+
+    <p>8.  Click on the same group again, select "Menu &rarr; Object &rarr; Ungroup". No you have one merged "path" without group.</p>
+
+    <p>9) Repeat for all other groups.</p>
+
+    <p>10) If you want to set region names, right-click a region, choose "Object Properties" and set object's ID. (ID is used as a region name in the plugin)</p>
+
+    </div>
+
+
+
+    <h3 id="faq-ie8">3. Map isn't "responsive" in IE7-8</h3>
+    It is known issue and it is mentioned in description of the plugin on CodeCayon. This bug belongs to Raphael.js library (not to mapSVG) which is used for map rendering. I'm looking for fix, if you have one - please mail me.
+
+    <h3 id="faq-full-width">4. How to stretch a map to 100% width of screen?</h3>
+    Set map's container width to 100% <strong>&lt;div style="width: 100%"&gt;&lt;/div&gt;</strong>
+    and set <strong>{responsive: true}</strong> in mapSVG options.
+
+    <h3 id="faq-gradient">5. How can I fill a region with gradient?</h3>
+    <strong>Linear gradient format: "</strong>&lt;angle&gt;-&lt;colour&gt;[-&lt;colour&gt;[:&lt;offset&gt;]]*-&lt;colour&gt;", <br />
+    <strong>Example:</strong> "90-#fff-#000" - 90&#186; gradient from white to black or "0-#fff-#f00:20-#000" - 0&#186; gradient from white via red (at 20%) to black.
+
+    <h3 id="faq-background">6. How can I set image as background for a region?</h3>
+    Instead of hex color <strong>#FF1122</strong> just set path to image <strong>url(/path/to/image.jpg)</strong>.
+
+
+
+<h2>That's all!</h2>
+Hope this helps. If not, mail me from my profile page @CodeCanyon (message form is on bottom right corner):
+<a href="http://codecanyon.net/user/Yatek/profile/">codecanyon.net/user/Yatek/profile/</a>
+<br /><br />
+
+<em>best wishes,<br />
+Roman</em>
+
+<br /><br /><br />
+<a href="#">&uarr; Scroll to Top</a><br />
+
+
+</div>
+</body>
+</html>

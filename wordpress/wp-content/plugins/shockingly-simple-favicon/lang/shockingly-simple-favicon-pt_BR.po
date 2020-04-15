@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: shockingly-simple-favicon\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-01 23:55-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: matias s. <matias@incerteza.org>\n"
+"Language-Team: matias s. <matias@incerteza.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../shockingly-simple-favicon.php:102
+#: ../shockingly-simple-favicon.php:146
+msgid "Settings"
+msgstr "Configurações"
+
+#: ../shockingly-simple-favicon.php:112
+#: ../shockingly-simple-favicon.php:132
+msgid "Shockingly Simple Favicon Options"
+msgstr "Opções Shockingly Simple Favicon"
+
+#: ../shockingly-simple-favicon.php:112
+msgid "S. Simple Favicon"
+msgstr "S. Simple Favicon"
+
+#: ../shockingly-simple-favicon.php:124
+msgid "Settings saved."
+msgstr "Opções salvas."
+
+#: ../shockingly-simple-favicon.php:128
+msgid "Default options loaded."
+msgstr "Opções padrão carregadas."
+
+#: ../shockingly-simple-favicon.php:133
+msgid "\"<i>A <a href=\"http://en.wikipedia.org/wiki/Favicon\" target=\"_blank\" rel=\"nofollow\">favicon</a> (short for favorites icon), also known as a website icon, shortcut icon, url icon, or bookmark icon is an icon associated with a particular website or webpage.</i>\""
+msgstr "\"<i>Um <a href=\"http://pt.wikipedia.org/wiki/Favicon\" target=\"_blank\" rel=\"nofollow\">favicon</a> (abreviação para ícone de favorito), também conhecido como ícone de website, ícone de atalho, ícone de url, ou ícone de favorito é um ícone associado com um site ou home-page em particular.</i>\""
+
+#: ../shockingly-simple-favicon.php:134
+msgid "Upload your favicon to"
+msgstr "Faça upload do seu favicon para"
+
+#: ../shockingly-simple-favicon.php:134
+msgid "the file should be named <strong>favicon.ico</strong>."
+msgstr "o arquivo deve se chamar <strong>favicon.ico</strong>."
+
+#: ../shockingly-simple-favicon.php:135
+msgid "A favicon is normally a .ico file with 16x16 in size, although .png and .gif are also suported, IE (obviously) only supports the .ico file."
+msgstr "Um favicon é normalmente um arquivo .ico de tamanho 16x16, mesmo que arquivos .png e .gif também sejam suportados, o IE (óbviamente) somente suporta arquivos .ico."
+
+#: ../shockingly-simple-favicon.php:136
+msgid "A cool site to you draw yours is <a href=\"http://www.favicon.cc/\" target=\"_blank\" rel=\"nofollow\">favicon.ico Generator</a>."
+msgstr "Um site interessante para desenhar o seu é <a href=\"http://www.favicon.cc/\" target=\"_blank\" rel=\"nofollow\">favicon.ico Generator</a>."
+
+#: ../shockingly-simple-favicon.php:138
+msgid "<strong>Attention</strong>: Internet Explorer (7.0 or lesses) handles favicons in a horrible way, the code use works in IE7 and IE6, but there are somethings you have to pay attention for it works:"
+msgstr "<strong>Atenção</strong>: Internet Explorer (7.0 ou inferior) manuseia favicons de uma forma terrível, o código usado funciona no IE7 e IE6, mas existe alguns pontos que você deve prestar atenção para que tudo funcione:"
+
+#: ../shockingly-simple-favicon.php:140
+msgid "The .ico file should be 16x16 in size;"
+msgstr "O .ico deve ter o tamanho de 16x16;"
+
+#: ../shockingly-simple-favicon.php:141
+msgid "The .ico file should be a 100% valid icon;"
+msgstr "O .ico deve ser um ícone 100% válido;"
+
+#: ../shockingly-simple-favicon.php:142
+msgid "There cant be another sizes in the .ico file (icons can have many sizes images in one file);"
+msgstr "Não pode haver outros tamanhos no arquivo .ico (ícones pode ter várias imagens em um arquivo)"
+
+#: ../shockingly-simple-favicon.php:143
+msgid "It cant be animated (<strong>most important!</strong>)."
+msgstr "Não pode ser animado (<strong>muito importante!</strong>)."
+
+#: ../shockingly-simple-favicon.php:145
+msgid "If you want to have certain that your favicon match this characteristics i recommend that you use the freeware icon edition program <a href=\"http://icofx.ro/\" target=\"_blank\" rel=\"nofollow\">icoFX</a>, open your favicon.ico, delete any size image diferent then 16x16, delete other frames (if animated), and save as a new favicon.ico, that should do the trick!"
+msgstr "Se você quer ter certeza que seu favicon tem essas características eu recomendo o uso do editor de ícones gratuíto <a href=\"http://icofx.ro/\" target=\"_blank\" rel=\"nofollow\">icoFX</a>, abra seu favicon.ico, remova qualquer imagem com tamanho diferente de 16x16, remova outros quadros (se animado), e salve como um novo favicon.ico, isso deve funcionar!"
+
+#: ../shockingly-simple-favicon.php:147
+msgid "By default the <strong>favicon.ico</strong> will be loaded from the root directory of your blog"
+msgstr "Por padrão o <strong>favicon.ico</strong> será carregado da raiz do seu blog"
+
+#: ../shockingly-simple-favicon.php:147
+msgid "Here you can specify a different location, leave this field <em>blank</em> for the default <strong>favicon</strong>"
+msgstr "Aqui você pode especificar um local diferente, deixe este campo <em>vazio</em> para usar o <strong>favicon</strong> padrão"
+
+#: ../shockingly-simple-favicon.php:150
+msgid "Favicon URL"
+msgstr "URL do Favicon"
+
+#: ../shockingly-simple-favicon.php:154
+msgid "Admin favicon"
+msgstr "Favicon do Admin"
+
+#: ../shockingly-simple-favicon.php:157
+msgid "None"
+msgstr "Nenhum"
+
+#: ../shockingly-simple-favicon.php:160
+msgid "Default"
+msgstr "Padrão"
+
+#: ../shockingly-simple-favicon.php:163
+msgid "Blog"
+msgstr "Blog"
+
+#: ../shockingly-simple-favicon.php:167
+msgid "If you use the <strong>Blog</strong> option in <i>Admin Favicon</i> you need to have a icon at"
+msgstr "Se você usar a opção <strong>Blog</strong> em <i>Favicon do Admin</i> você deve ter um ícone em"
+
+#: ../shockingly-simple-favicon.php:167
+msgid "or the favicon at the admin area will be blank."
+msgstr "ou o favicon da área administrativa ficará em branco."
+
+#: ../shockingly-simple-favicon.php:169
+msgid "Save Changes"
+msgstr "Salvar Mudanças"
+
+#: ../shockingly-simple-favicon.php:170
+msgid "Reset Options"
+msgstr "Recarregar Opções"
+
+#: ../shockingly-simple-favicon.php:174
+msgid "<strong>Note</strong>: i'm learning PHP & Wordpress coding and using this plugin to study, so if you have any idea or any kind of suggestion please contact me."
+msgstr "<strong>Nota</strong>: estou aprendendo PHP & codificação Wordpress e usando este plugin para estudar, então se você tiver qualquer idéia ou sugestão entre em contato."
+
+#: ../shockingly-simple-favicon.php:175
+msgid "by"
+msgstr "por"
+
+#: ../shockingly-simple-favicon.php:175
+msgid "at"
+msgstr "de"
+
+#~ msgid "Can't find the configured favicon.ico, using the default."
+#~ msgstr "Não foi possível achar o favicon.ico configurado, usando o padrão."
+

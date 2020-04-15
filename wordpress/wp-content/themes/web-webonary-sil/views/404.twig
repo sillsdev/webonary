@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+<header id="page-breadcrumbs">
+  <div class="container">
+    <h2 class="page-header">
+      <ol class="breadcrumb">
+          <li><a href="{{home_url}}">Home</a></li>
+          <li><a href=""><span class="last-crumb">Error</span></a></li>
+      </ol>
+    </h2>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<section id="content_primary">
+
+  <div class="container">
+  	<div class="row">
+
+  		<div class="col-md-8 col-sm-8">
+    		<article>
+    			<section class="article-content">
+    				<h1 class="article-h1">
+    				  {{post.title}}
+    				</h1>
+    				<div class="article-body">
+    					Sorry, we couldn't find that page.
+    				</div>
+    			</section>
+    		</article>
+      </div>
+
+      {% include "sidebar.twig" %}
+
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

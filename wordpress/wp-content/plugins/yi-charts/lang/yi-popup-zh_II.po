@@ -1,0 +1,82 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Philip <wireless_phil@yahoo.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Nuosu Yi\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: include/yi-popup-charts.php:25
+#@ searchform
+msgid "Add Yi lookup charts."
+msgstr ""
+
+#: include/yi-popup-charts.php:31
+#@ searchform
+msgid "Yi Popup Charts Widget"
+msgstr ""
+
+#: include/yi-popup-charts.php:46
+#@ yi-popup
+msgid "Yi index Chart"
+msgstr "ꆈꌠꁱꂷꃚꀨꎹꏦ"
+
+#: include/yi-popup-charts.php:50
+#@ yi-popup
+msgid "Yi Radical Stroke Index"
+msgstr "ꆈꌠꁱꂷꁱꀨꎹꏦ"
+
+#: include/yi-popup-charts.php:75
+#@ default
+msgid "Title:"
+msgstr ""
+
+#. translators: plugin header field 'Name'
+#: yi.php:0
+#@ yi-popup
+msgid "Yi"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: yi.php:0
+#@ yi-popup
+msgid "http://code.google.com/p/pathway/"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: yi.php:0
+#@ yi-popup
+msgid "Yi: Index Chart, Radical Stroke Index, and other functions specific to the Yi dialect."
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: yi.php:0
+#@ yi-popup
+msgid "SIL International"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: yi.php:0
+#@ yi-popup
+msgid "http://www.sil.org/"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: yi.php:0
+#@ yi-popup
+msgid "0.2"
+msgstr ""
+

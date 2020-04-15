@@ -1,0 +1,621 @@
+// Heading styling overrides
+
+h1 {
+  font-weight: 700;
+  margin-top:  25px;
+}
+
+h1, h2, h3 {
+  color: @color-bg;
+}
+
+h4, h5, h6 {
+  color: @color-bg;
+  font-style:  italic;
+}
+
+.textwidget {
+	h3 {
+		.h4;
+		color: @color-bg;
+		font-style:  italic;
+	}
+}
+
+a {
+  font-weight:  700;
+
+/* Break up long hyperlink text so it doesn't break the right edge of page (esp needed for smaller mobile devices) */
+
+ -ms-word-break: break-all;		/* Warning: Needed for oldIE support, but words are broken up letter-by-letter */
+     word-break: break-all;
+
+     word-break: break-word;	/* Non standard for webkit */
+
+-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+    -ms-hyphens: auto;
+        hyphens: auto;
+}
+
+// Navbar
+.navbar-default {
+	background: none;
+	border: 0px;
+	margin-bottom: 0px;
+
+	a.logo {
+		margin-bottom: 0px;
+		margin-top: 0px;
+	}
+
+	form#searchform {
+		max-width: 320px;
+	}
+
+	#nav-list {
+    clear:  right;
+    padding-top: 14px;
+  }
+
+	li > a {
+	  padding: 0 15px 0 15px;
+	  font-size: @font-size-h5;
+	  //font-weight:  700;
+	}
+
+	li {
+		border-right: 1px solid @text-color;
+		display: inline-block;
+		&:last-child {
+			border: 0;
+		}
+	}
+}
+
+@media (min-width: @screen-tablet) and (max-width: @screen-desktop) {
+	.navbar-nav.navbar-right:last-child {
+		margin-right: -20px;
+	}
+}
+
+// Page headers
+.page-header {
+	border-bottom: 0px;
+	color: #ffffff !important;
+	font-size: @font-size-h1;
+  font-weight: 400;
+	margin: 0 0 0 85px;
+	padding: 8px 0 8px;
+	text-transform: uppercase;
+}
+
+h2.page-header {
+	border-bottom: 0px;
+	color: #ffffff !important;
+	font-size: @font-size-h4;
+	letter-spacing: 0.05em;
+	margin: 0 0 0 85px;
+	padding: 5px 0 7px;
+	text-transform: uppercase;
+
+  a {
+    color: #ffffff !important;
+    font-weight: 400;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+    text-decoration: underline;
+    }
+  }
+}
+
+#page-title, #page-site-name {
+	background: @color-bg;
+	color: @color-text;
+	margin-bottom: 0;
+}
+
+#page-site-lang-tech, #page-breadcrumbs {
+	background: @color-lang-tech;
+	color: @color-text;
+	margin-bottom: 0;
+
+	h2 {
+  	font-size: @font-size-h4;
+  	margin: 0 0 0 85px;
+  	padding: 5px 0 7px 0;
+  }
+
+	ol {
+	  background:  none;
+	  padding:  0;
+	  margin-bottom: 0;
+
+	  a {
+	    color: @gray-lightmid;
+	    font-size: @font-size-h5;
+	    font-weight:  400;
+	  }
+  }
+}
+
+// Flush left H1 & H2 titles in mobile phones only
+@media (max-width: 379px) {
+	.page-header {
+		margin: 0;
+	}
+
+	h2 {
+		#page-breadcrumbs & ,
+		#page-site-lang-tech & {
+			margin: 0;
+		}
+	}
+}
+
+// Better left-align H1 & H2 titles against SIL logo in all devices except mobile phones
+@media (min-width: 380px) and (max-width: @screen-xs-max) {
+	.container {
+		#page-site-name & ,
+		#page-breadcrumbs & ,
+		#page-site-lang-tech & {
+			padding-left: 0;
+		}
+	}
+}
+
+#page-site-banner {
+  background-image: url(/media/sample/banner_image.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height:  @page-site-banner-height;
+  margin-bottom: 30px;
+}
+
+#page-site-banner-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  height:  @page-site-banner-height;
+  padding:  15px 15px;
+  font-size:  @font-size-h4;
+  font-style:  italic;
+
+  p {
+    padding-top: 15px;
+  }
+}
+
+//	Resize thumbnail images for Lightbox feature
+a[rel="lightbox"] {
+	img {
+		max-width: 100%;
+	}
+}
+
+//	Adjust margins and font size of brief product description in tablet portrait view only
+//	to prevent two-line download button from breaking out of bottom edge of banner overlay
+@media (min-width: 730px) and (max-width: 991px) {
+	#page-site-banner-overlay {
+		padding: 10px;
+
+		p {
+			font-size: @font-size-h5;
+			
+			&:last-child {
+				margin-top: -0.5em;
+			}
+		}
+	}
+}
+
+#home-sidebar {
+  background: @gray-lighter;
+  padding:  15px 15px;
+  font-size:  @font-size-h4;
+  font-style:  italic;
+
+  p {
+    padding-top: 15px;
+  }
+}
+
+#home-notice {
+  background: lighten(@link-color, 10%);
+  padding:  15px 15px;
+  font-size:  @font-size-h4;
+  font-style:  italic;
+  a {
+    color: #fff;
+    font-weight:  700;
+  }
+}
+
+.btn-download, .btn-contact {
+  color: @btn-download-color;
+  background: @btn-download-bg;
+  border: @btn-download-border;
+  font-size:  @font-size-h4;
+  font-style:  normal;
+  font-weight:  700;
+  padding-left: 6px;
+  padding-right: 6px;
+  white-space: normal;
+  word-break: normal;
+
+  &:hover {
+    background: @btn-download-hover;
+    color: @color-text;
+    
+    div& {
+	  color: @btn-download-color;
+	  background: @btn-download-bg;
+	  cursor: default;
+    }
+  }
+  
+  & + p, & + div {
+		margin-top: 1em;
+  }
+}
+
+.trifold {
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  h2 {
+    font-style:  italic;
+  }
+
+}
+
+.fullwidth {
+  text-align: center;
+  font-style: italic;
+  font-size: @font-size-h4;
+  display: block;
+  padding: 15px 50px 10px 50px;
+}
+
+#testimonial {
+	background: @gray-lightmid;
+	color: @text-color;
+}
+
+#content_primary {
+  margin-bottom: 30px;
+}
+
+#home_secondary {
+	background: @gray-lighter;
+	color: @text-color;
+	padding-bottom: 15px;
+
+  h2 {
+    font-style:  italic;
+    color: @gray;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+	}
+
+	li {
+	  margin-bottom: 5px;
+
+	  .post-date {
+	    color: @gray-light;
+	    text-transform:  uppercase;
+      font-size: @font-size-h6;
+      padding-left: 5px;
+	  }
+	}
+}
+
+#sidebar_main {
+  min-height: @page-site-banner-height;
+	background: @gray-lighter;
+	color: @text-color;
+  font-size: @font-size-h4;
+  padding:  15px 15px;
+
+  .menu {
+    list-style-type: none;
+    padding: 15px 0 0 0;
+
+    li {
+      padding-bottom: 5px;
+    }
+  }
+}
+
+.download {
+	margin: 1em 0 1.5em 0;
+	
+	p {
+		margin-top: 6px;
+		
+		.getfile {
+			padding-right: 1em;
+		}
+	}
+}
+
+#license {
+  background: @color-lang-tech;
+  color: @color-text;
+
+  a {
+		color: @link-color-dk-bkgd;
+	
+		&:hover {
+			color: @link-hover-color-dk-bkgd;
+		}
+  }
+}
+
+#donate {
+  background: @color-lang-tech + #222;
+  color: @color-text;
+
+  a {
+		color: @link-color-dk-bkgd;
+	
+		&:hover {
+			color: @link-hover-color-dk-bkgd;
+		}
+  }
+}
+
+.filemeta {
+		color: @gray-light;
+		font-weight: bold;
+		margin-left: 0.5em;
+		
+		&.paragraph-font {
+			margin-left: 1em;
+		}
+}
+
+.tease-post, .article-body {
+  h2 {
+    margin-bottom: 5px;
+  }
+
+  .postmeta {
+    font-weight:  400;
+    color: @gray-light;
+    text-transform: uppercase;
+  }
+}
+
+.article-body {
+  img {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  img.img-inline {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    vertical-align: text-bottom;
+  }
+}
+
+// Forms
+
+label.col-sm-2.control-label {
+  text-align: left;
+}
+
+.article-body img.wpcf7-captchac {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+//	Force 100% width on all Contact forms' text and textarea fields
+//	to keep main menu button from being pushed past right edge of viewport
+.wpcf7-form {
+	& .wpcf7-text,
+	& .wpcf7-textarea {
+		width: 100%;
+	}
+}
+
+//	Footer
+
+//	Markdown shortcode for "back to top" links
+
+.top {
+	display: block;
+	text-align: right;
+	width: 100%;
+	
+	&::before {
+		content: "^ ";
+	}
+	
+	&::after {
+		content: " ^";
+	}
+}
+
+.footer-top {
+	background: darken(@color-bg, 10%);
+	color: @color-text;
+	padding: 0 0 1em 0;
+
+	ul {
+    list-style-type: none;
+    padding-left: 0;
+	}
+
+	h2 {
+		font-size: 14px;
+		text-transform: uppercase;
+		color: @gray-lightmid;
+  }
+
+	a {
+		color: @color-text;
+		font-size: 14px;
+		font-weight: 400;
+	}
+
+	.nav > li > a {
+		padding: 0;
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+}
+
+.footer-bottom {
+  background: darken(@color-bg, 15%);
+  color: @gray-lighter;
+	padding: 1em 0 .5em 0;
+  font-size:  @font-size-h6;
+
+  a {
+    font-size:  @font-size-h6;
+    color: @gray-lighter;
+    font-weight:  400;
+}
+
+	.nav li > a {
+		padding: 0 15px 0 15px;
+    color: @gray-lighter;
+    font-size:  @font-size-h6;
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+}
+
+	li.first.leaf.active {
+		margin-left: -15px;
+	}
+
+}
+
+// Footer Navs
+.nav-horizontal {
+	> li {
+		border-right: 1px solid @color-text;
+		display: inline-block;
+		&:last-child {
+			border: 0;
+		}
+	}
+}
+
+// Tables - copied from tables.less
+// Modified for use with WordPress Markdown generated tables
+// ---------------------------------------------------------
+
+.article-content table {
+  width: 100%;
+  margin-bottom: @line-height-computed;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: @table-cell-padding;
+        line-height: @line-height-base;
+        vertical-align: top;
+        border-top: 1px solid @table-border-color;
+      }
+    }
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid @table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    border-top: 2px solid @table-border-color;
+  }
+
+  // Nesting
+  .table {
+    background-color: @body-bg;
+  }
+}
+
+<<<<<<< HEAD
+=======
+// ###########		SEARCH UI (E McHam, 9 Mar 2016)		###########
+
+>>>>>>> feature/srch_NoRslts_KwHilite
+// Highlight search terms in results
+.search-highlight {
+    font-weight: bold;
+    .h2 & {
+        color: #333;
+    }
+}
+
+<<<<<<< HEAD
+// Provide small, unobtrusive CC attributions for banner images where needed
+.bannercc {
+	font-size: x-small;
+	font-style: italic;
+	margin: -2.5em 0 2em 0;
+	&::before {
+		content: "BANNER IMAGE:";
+		font-weight: 700;
+		font-style: normal;
+		margin-right: 0.5em;
+	}
+	a {
+		color: #333;
+		font-weight: normal;
+	}
+}
+
+// Provide small, unobtrusive CC attributions for Home Trio pics where needed
+.widget_sp_image-description {
+	font-size: x-small;
+	font-style: italic;
+	margin-top: 1em;
+	&::before {
+		content: "ABOVE:";
+		font-weight: 700;
+		font-style: normal;
+		margin-right: 0.5em;
+	}
+	a {
+		color: #333;
+		font-weight: normal;
+	}
+}
+
+// No "hot pink" inline code examples (from Bootstrap)
+code {
+    background-color: #f0f0f0;
+    color: #333;
+    white-space: normal;
+}
+=======
+// No search results found
+.nosearchresults {
+		margin: 2em 1em;
+}
+
+>>>>>>> feature/srch_NoRslts_KwHilite

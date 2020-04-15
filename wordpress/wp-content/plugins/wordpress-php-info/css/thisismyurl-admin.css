@@ -1,0 +1,62 @@
+.thisismyurl-icon32 { 
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAA0lBMVEX///9Jj6xrpLxJj6xrpLxhnbdJj6xxqL5moblhnbdJj6xhnbdJj6xxqL5rpLxmoblJj6xxqL5hnbdJj6x1qsBJj6xrpLxmoblJj6xrpLxJj6x4rMFJj6x1qsBJj6xxqL5Jj6x4rMF1qsBxqL5Jj6z////3+vv0+Pru9ffm7/Tf6/Hd6u/V5ezS4+rO4OjG3OW71eC509+z0Nyvztuqy9ikx9aZwNCRu82OucuMtcWCssZ/sMWAsMV4rMF1qsBrpLxmoblhnbdamrRUlrFSlLBJj6wucLoaAAAAJXRSTlMAESIiMzMzRERERFVVZmZmZnd3d4iImZmZqqq7u8zM3d3u7u7u5Bc3VAAAAehJREFUOMttU9li0zAQdAkNEEoJhXIUp4HEK1vxJeLYiQ/FuGL//5dYWb5I2SdLM56dPWRZQ7z9tj5LHevPr63ncbfN9wEDCi84lNvbC/h6m0cwiShfXU/x27PQt2muM+Qpcdl+MxH5UnKAuJRDlMQPyg89/p5w7yj/iaMHvHxn8DdnTgd5EfRTtHnREtYCvBEXQc/wYL/S+LICGPUrlg1ZgJWviPBDgBiVo2D8jkGQxE0DYBJUR/1XbjCtWQKTL62vGYin9jIAP/eNWMZaXgTpJ+sxhgIbfTzoRhsBbngpxCsLOTSIWqOKQurgQVM9YyIHf2MhAFI8nSV1L9oB8KxiaWeTTPQE/FPpIbHIo3Hu+joARgLGZo47PSlRPSfIYdShTyIdwZOdSUR/XAYWc9ab/GnKRMym69J3lsr8bt2fQBAhnOBe87s+m0Zld9ZcAajBYhvSuEYFHGftsJKpRwg7HFNIbT3uxoUa8TQQmg6vwVULvRCPGXCF8S/X4EmfgEPx0G7UzInBL6nPsaa4qsN9EM6VWcolHdonk8js1OE1p+Lm/VovlWjV696eSqgZuBwfxo2TkQQvWn9NQXS3cObTpzWzVcrGSt1UPVxdvM6FjUUSkk03TAq0F/953/N729EpHPvjbLz9C0A/pR4RVDYdAAAAAElFTkSuQmCC) no-repeat; 
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+	float: left;
+}
+
+table.phpinfo {
+	width: 100%;
+	background-color: rgba( 255,255,255, 1);
+	border: solid 1px rgba( 0,0,0, .3 );
+
+}
+
+table.phpinfo td {
+	padding: 10;
+}
+#wpfooter {
+    position: relative;
+}
+#email_phpinfo {
+	width: 365px;
+	cursor: pointer;
+	margin: 0 auto;
+	padding: 25px;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	background: #777BB4;
+	color: #FFF;
+	border-radius: 10px;
+}
+#bgpopup {
+	background-color:rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 99998;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+#emailme {
+	width: 350px;
+	padding: 15px;
+	background: pink;
+	margin: 0 auto;
+	z-index: 99999;
+	position: fixed;
+	top: 100px;
+	display: none;
+	left: 0;
+	right: 0;
+}
+#emailsent {
+	height: 30px;
+	background: #FFF;
+	border: solid 1px #000;
+	padding: 15px;
+	margin: 20px;
+}

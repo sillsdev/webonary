@@ -1,0 +1,64 @@
+# Translation of Plugins - Disable Comments - Development (trunk) in Swedish
+# This file is distributed under the same license as the Plugins - Disable Comments - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-11 00:17:16+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: sv_SE\n"
+"Project-Id-Version: Plugins - Disable Comments - Development (trunk)\n"
+
+#. Author of the plugin/theme
+msgid "rbPlugins"
+msgstr "rbPlugins"
+
+#. Description of the plugin/theme
+msgid "Easy tool to disable comments for your blog posts, pages. Admin can disable comments in just few clicks. Delete comments from blog post."
+msgstr "Lätt verktyg för att inaktivera kommentarer för dina blogginlägg och sidor. Admin kan inaktivera kommentarer med några få klick. Ta bort kommentarer från blogginlägg."
+
+#. #-#-#-#-#  disable-comments-rb-code.pot (Disable Comments RB 1.0.7) 
+#. #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  disable-comments-rb-code.pot (Disable Comments RB 1.0.7) 
+#. #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://robosoft.co/wordpress-plugins/disable-comments"
+msgstr "https://robosoft.co/wordpress-plugins/disable-comments"
+
+#. #-#-#-#-#  disable-comments-rb-code.pot (Disable Comments RB 1.0.7) 
+#. #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: options.php:39
+msgid "Disable Comments RB"
+msgstr "Disable Comments RB"
+
+#: options.php:64
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#: options.php:57
+msgid "Enable"
+msgstr "Aktivera"
+
+#: options.php:49
+msgid "Disable all comments"
+msgstr "Inaktivera alla kommentarer"
+
+#: class_rb_disable-comments.php:216
+msgid "Rb Disable Comments"
+msgstr "Rb Disable Comments"
+
+#: class_rb_disable-comments.php:207
+msgid "Settings"
+msgstr "Inställningar"
+
+#: class_rb_disable-comments.php:146
+msgid "The <em>Disable Comments</em> plugin is active, but isn't configured to do anything yet. Visit the <a href=\"%s\">configuration page</a> to choose which post types to disable comments on."
+msgstr "Tillägget <em>Disable Comments</em> är aktivt men är inte konfigurerad att göra något än. Besök <a href=\"%s\">konfigurationssidan</a> för att välja på vilka inläggstyper kommentarer ska inaktiveras."
+
+#: class_rb_disable-comments.php:125 class_rb_disable-comments.php:155
+msgid "Comments are closed."
+msgstr "Kommentarer är stängda."

@@ -1,0 +1,68 @@
+{
+  "name": "timber/timber",
+  "type": "library",
+  "description": "Plugin to write WordPress themes w Object-Oriented Code and the Twig Template Engine",
+  "keywords": [
+    "timber",
+    "twig",
+    "themes",
+    "templating"
+  ],
+  "homepage": "http://timber.upstatement.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jared Novack",
+      "email": "jared@upstatement.com",
+      "homepage": "http://upstatement.com"
+    },
+    {
+      "name": "Connor J. Burton",
+      "email" : "connorjburton@gmail.com",
+      "homepage": "http://connorburton.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/timber/timber/issues",
+    "wiki": "https://github.com/timber/timber/wiki",
+    "source": "https://github.com/timber/timber"
+  },
+  "require": {
+    "php": ">=5.3.0",
+    "twig/twig": "1.*",
+    "upstatement/routes": "0.4",
+    "composer/installers": "~1.0",
+    "asm89/twig-cache-extension": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "satooshi/php-coveralls": "1.0.*",
+    "wpackagist-plugin/advanced-custom-fields": "4.*",
+    "phpdocumentor/phpdocumentor": "2.*",
+    "jarednova/markdowndocs": "dev-master",
+    "wpackagist-plugin/co-authors-plus" : "3.*" 
+  },
+  "autoload": {
+    "psr-4": {
+      "Timber\\": "lib/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "jarednova/markdowndocs",
+        "version": "dev-master",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/jarednova/PHP-Markdown-Documentation-Generator.git",
+          "reference": "master"
+        }
+      }
+    }
+  ]
+}

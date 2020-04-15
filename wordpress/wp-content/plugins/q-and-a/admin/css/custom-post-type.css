@@ -1,0 +1,25 @@
+p#vtip { width: 400px;display: none; position: absolute; margin-left: -300px;	padding: 10px; left: -5px; font-size: 1em; line-height: 1.5em; background-color: white; border: 6px solid #9aabb7; -moz-border-radius: 5px;border-radius: 5px; -webkit-border-radius: 5px; z-index: 9999}
+
+span.vtip { margin: 0 10px 0 2px !important; width: 16px; height: 16px;display: inline-block;	background: url(../img/q.png) no-repeat; text-indent: -9999px; opacity: .7; filter:Alpha(Opacity=70); 
+}
+
+
+#images li {
+	margin: 0 10px 10px 7px;
+	float: left;
+	list-style-type: none;
+}
+
+.instructions {
+	clear: both;
+}
+#ps_custom_post_type_uploads div.inside p {
+font-size: 1.1em;
+line-height: 1.5em;	
+margin: 10px 40px 15px 0;
+}
+
+
+
+
+

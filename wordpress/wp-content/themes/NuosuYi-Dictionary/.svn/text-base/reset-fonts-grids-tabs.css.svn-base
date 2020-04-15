@@ -1,0 +1,81 @@
+/*reset.css*/
+body{
+	color:#000;
+	background:#FFF;
+}
+body,div,ul,li,h3,form,input,p,td{
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+img{
+	border:0;
+}
+li{
+	list-style:none;
+}
+h3{
+	font-size:100%;
+	font-weight:normal;
+}
+input, select{
+	font-family:inherit;font-size:inherit;font-weight:inherit;
+}
+/*fonts.css*/
+body {
+	font:13px/1.22 arial,helvetica,clean,sans-serif;
+	font-size:small;
+	font:x-small;
+}
+table {
+	font-size:inherit;
+	font:100%;
+}
+/*grids.css*/
+body{
+	text-align:center;
+}
+#ft{
+	clear:both;
+}
+#doc,.yui-t1{
+	margin:auto;
+	text-align:left;
+	width:57.69em;*width:56.301em;
+}
+.yui-b{
+	position:relative;
+}
+.yui-b{
+	_position:static;
+}
+#yui-main .yui-b{
+	position:static;
+}
+#yui-main{
+	width:100%;
+}
+.yui-t1 #yui-main{
+	float:right;
+	margin-left:-25em;
+}
+.yui-t1 .yui-b{
+	float:left;
+	width:12.3207em;
+	width:12.0106em;
+}
+.yui-t1 #yui-main .yui-b{
+	margin-left:13.3207em;*margin-left:13.0106em;
+}
+#yui-main .yui-b{
+	float:none;
+	width:auto;
+}
+
+.yui-navset {
+    position:relative; /* contain absolute positioned tabs (left/right) */
+    zoom:1;
+}

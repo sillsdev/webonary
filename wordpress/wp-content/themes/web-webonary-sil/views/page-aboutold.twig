@@ -1,0 +1,79 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<section id="content_primary">
+
+  <div class="container">
+  	<div class="row">
+  	
+  		<div class="col-md-8 col-sm-8">
+    		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+    			<section class="article-content">
+    				<h1 class="article-h1">
+    				  {{post.title}}
+    				</h1>
+    				<div class="article-body">
+    					{{post.content}}
+    				</div>
+    			</section>
+    		</article>
+    		
+    		<section>
+    		  <h2>Contact us</h2>
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="inputName" class="col-sm-2 control-label">Name</label>
+              <div class="col-md-10 col-sm-10">
+                <input type="name" class="form-control" id="inputName" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+              <div class="col-md-10 col-sm-10">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputType" class="col-sm-2 control-label">Type</label>
+              <div class="col-md-10 col-sm-10">
+                 <select class="form-control">
+                    <option>Please select...</option>
+                    <option>Download help</option>
+                    <option>Installation help</option>
+                    <option>Bug report</option>
+                    <option>Feature suggestion</option>
+                    <option>General question</option>
+                 </select>
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="inputSubject" class="col-sm-2 control-label">Subject</label>
+              <div class="col-md-10 col-sm-10">
+                <input type="email" class="form-control" id="inputSubject" placeholder="Subject">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputDetails" class="col-sm-2 control-label">Details</label>
+              <div class="col-md-10 col-sm-10">
+                <textarea class="form-control" rows="5" id="inputDetails" placeholder="Details"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default btn-contact">Send</button>
+              </div>
+            </div>
+          </form>
+        </section>  		
+    		
+      </div>
+      
+      {% include "sidebar.twig" %}
+      
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
