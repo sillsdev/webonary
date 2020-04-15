@@ -28,7 +28,6 @@ else
 					<?php the_post_thumbnail('medium', array('class' => 'alignleft')); ?>
 					<?php the_content(); ?>
 					<div class="clear"></div>
-
 					<?php wp_link_pages(); ?>
 				</div>
 
@@ -42,7 +41,6 @@ else
 
 	</div>
 	</div>
-
 <?php get_footer();
 }
 ?>

@@ -86,7 +86,7 @@ jQuery.fn.highlight = function(searchString, lenient) {
     	var checkForComposedChar = "";
     	if(/[AEIOUɛəɔ]/.test(character))
     	{
-    		checkForComposedChar = "[^a-zɛəɔ]*";
+    		checkForComposedChar = "[^a-zɛəɔɖŋ]*";
     	}
     	if(charToAccentedCharClassMap[character])
     	{
