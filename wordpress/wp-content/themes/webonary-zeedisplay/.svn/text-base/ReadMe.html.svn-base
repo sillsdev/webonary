@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Steve Miller">
+	<META NAME="CREATED" CONTENT="20110125;16575800">
+	<META NAME="CHANGEDBY" CONTENT="Steve Miller">
+	<META NAME="CHANGED" CONTENT="20110718;14102300">
+	<META NAME="CHANGEDBY" CONTENT="Steve Miller">
+	<META NAME="CHANGEDBY" CONTENT="Steve Miller">
+	<META NAME="CHANGEDBY" CONTENT="Steve Miller">
+	<STYLE TYPE="text/css">
+	<!--
+		H2.cjk { font-family: "SimSun" }
+		H2.ctl { font-family: "Mangal" }
+		H3.cjk { font-family: "SimSun" }
+		H3.ctl { font-family: "Mangal" }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>webonary-<META NAME="CHANGEDBY" CONTENT="Steve Miller">zeedisplay
+Theme</H1>
+<P><STRONG>Webonary </STRONG>gives language groups the ability to put
+their bilingual or multilingual dictionaries on the web with little
+or no technical help. <B>webonary-zeedisplay</B> <SPAN STYLE="font-weight: normal">is
+a Webonary theme based on the theme <A HREF="http://themezee.com/zeedisplay/">zeeDisplay</A>
+by ThemeZee. Kudos for a great theme.</SPAN></P>
+<H2 CLASS="western">Installation</H2>
+<P>zeeDisplay, the theme on which this theme was based, has been
+tested on all major browsers including Firefox 2 &amp; 3.6, Opera 9.5
+&amp; 10, Internet Explorer 7 &amp; 8 and Safari 3.2.Your browser
+should have JavaScript enabled to make this theme work! For example,
+the DropDown Navigation and the Content Slider need Javascript to
+work.</P>
+<P>The theme works on WordPress 3.1.3 without any problems. Previous
+versions have not been tested and are not supported. Make sure to
+update your WordPress installation, especially to protect yourself
+from security flaws.</P>
+<H3 CLASS="western">Theme Installation</H3>
+<P>Upload the theme files to your WordPress theme folder
+wp-content/themes and activate the theme in your WordPress admin
+panel. 
+</P>
+<H3 CLASS="western">Plugins Installation</H3>
+<P>If you are using the theme as a dictionary, you will need the
+following plugins:</P>
+<OL>
+	<LI><P>You will need the WordPress plugin <A HREF="http://pathway.sil.org/webonary/download/?did=2">SIL
+	Dictionary Infrastructure</A>.</P>
+	<LI><P>Assuming you have a bilingual or multilingual dictionary, you
+	will also need to download, install, and activate <A 	HREF="http://wordpress.org/extend/plugins/qtranslate/">qTranslate</A>.</P>
+	<LI><P><P>For showing page numbers instead of "Previous/Next entries" below the search results, 	you might want to make use of <A HREF="http://www.jenst.se/2008/03/29/wp-page-numbers">WP
+	Page Numbers</A>.</P>
+	<LI><P>If you allow people to comment on your pages or entries, you
+	will want some sort of anti-spam plugin. We have successfully used
+	Quiz.</P>
+</OL>
+<P>See the section &ldquo;WordPress Options&rdquo; below for more
+plugin support inherited from the base theme.</P>
+<P>The following notes come from the zeeDisplay author:</P>
+<OL>
+	<LI><P>Post Thumbnails. This theme uses the WordPress post_thumbnail
+	function. You can easily add your thumbnail in every post by
+	clicking on Set featured image in the Featured Image box on the
+	right, upload your picture and click. Use as featured image.</P>
+	<LI><P>Media Settings. The size of your thumbnail images is set in
+	your WordPress media settings and can be changed at WP-Admin &gt;
+	Settings &gt; Media. The theme uses medium_size in single posts and
+	pages and thumbnail_size in index and archiv files.</P>
+	<LI><P>Pagination.The theme includes css styles for the
+	'wp_pagenavi' plugin. Simply download the plugin here and install it
+	to use pagination.</P>
+</OL>
+<H3 CLASS="western">Settings</H3>
+<P>Log in to the WordPress administration.</P>
+<OL>
+	<LI><P>You'll want to have some sort of backup before starting. The
+	minimalist way of doing this is go to Tools. Select Export. Select
+	&ldquo;All content&rdquo; and press the &ldquo;Download Export File&rdquo;
+	button.</P>
+	<LI><P>Go to Appearance</P>
+	<OL>
+		<LI><P>Select Themes. Activate the webonary-zeedisplay theme, if
+		you haven't already.</P>
+		<LI><P>Select Widgets.</P>
+		<OL>
+			<LI><P>In Available Widgets, select Search and drag it right to
+			the Sidebar Blog.</P>
+			<LI><P>Add any other widgets you want. The Links widget in
+			particular could be helpful. Feel free to experiment.</P>
+		</OL>
+	</OL>
+	<LI><P>Go to Settings.</P>
+	<OL>
+		<LI><P>Select General. Make sure all the settings there are
+		correct.</P>
+		<LI><P>Select Reading. Select either &ldquo;Your latest posts&rdquo;
+		or &ldquo;A static page.&rdquo; Either choice is acceptable, but
+		the Featured Posts Slider (explained below) works only with &ldquo;Your
+		latest posts.&rdquo;</P>
+		<LI><P>Select Discussion. You probably want most of the defaults,
+		but here is where you decide whether you want allow people to
+		comment on your pages or entries. If you don't, uncheck &ldquo;Allow
+		people to post comments on new articles.&rdquo; This should be the
+		third box down. 
+		</P>
+		<LI><P>Still in Discussion, see if you want to change any of the
+		other options.</P>
+		<LI><P>Select Media. Near the bottom, uncheck &ldquo;Organize my
+		uploads into month- and year-based folders.&rdquo;</P>
+		<LI><P>Select Privacy. You probably want the site to be visible to
+		everyone, but can change it here if you don't.</P>
+		<LI><P>Select Permalinks. Select Custom Structure and type
+		&ldquo;/%postname%&rdquo;.</P>
+		<LI><P>Select Languages. (This will not appear until you have
+		installed the qTranslate plugin.)</P>
+		<OL>
+			<LI><P>If you get a message that qTranslate could not load
+			OpenSSL, disregard.</P>
+			<LI><P>Under "Advanced Settings" one has to set the "URL Modification Mode" to "Use Query Mode (?lang=en)"</P>
+			<LI><P>Scroll down to add language(s).</P>
+			<LI><P>Scroll back up to set the Default Language/Order.</P>
+		</OL>
+	</OL>
+	<LI><P>Return to Appearance</P>
+	<OL>
+		<LI><P>Select zeeDisplay Options</P>
+		<OL>
+			<LI><P>Assuming you are using the theme for a dictionary, leave
+			the Mode at &ldquo;Dictionary.&rdquo; (You can, if you want, use
+			the theme for an ordinary blog.)</P>
+			<LI><P>Change the Logo with your own.</P>
+			<LI><P>Set the other Theme Settings as desired. Notes from the
+			zeeDisplay author: &ldquo;The theme comes with a couple of color
+			skins from which you can select one in the theme option panel. You
+			can also choose the custom color skin and add your own hex color
+			code via the theme option panel. All styles are stored in the
+			folder /includes/styles. There is a CSS file and a image folder
+			for each color, which you can manually change or even add new
+			ones. So you have the opportunity to create individual and
+			unlimited skins for your theme. Have fun!&rdquo;</P>
+			<LI><P>If you want to use the Featured Post Slider, check the box.
+			This could be a useful feature. For example, if you are making
+			frequent updates, you can show the latest.</P>
+			<LI><P>The theme comes equipped with Social Media and the ability
+			to display ads. See the zeeDisplay site for more information.</P>
+		</OL>
+		<LI><P>Select Background. If you want to change the Background
+		image or color, this is the place to do it.</P>
+		<LI><P>Select Header. Replace the header image with your own, or
+		remove it altogether.</P>
+	</OL>
+</OL>
+<H3 CLASS="western">Pages</H3>
+<P>You will most likely need some pages that has information about
+your site. For example, most sites have a Contact page. Add these
+pages in the Pages area.</P>
+<H3 CLASS="western">Menus</H3>
+<P>This theme supports two menus, a top menu and a main menu. You'll
+probably want to arrange your pages in the main menu.</P>
+<P>The top menu can be handy for multiple language support. For
+example, suppose you have Spanish and English in your dictionary.
+When you select Spanish, the site changes to a Spanish interface, and
+when you select English, it changes to an English interface. In the
+Menus area, you can create a Custom Link for each language name. Put
+the link for the site in Spanish: <A HREF="http://www.MyDictionary.org/">www.MyDictionary.org</A>.
+Then put the link for the English version:
+<A HREF="http://www.MyDictionary.org/">www.MyDictionary.org</A>?lang=en.</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

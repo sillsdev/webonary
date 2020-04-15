@@ -1,0 +1,137 @@
+/*============================ RESET ============================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+	list-style: none;
+	color: none;
+	text-decoration: none;
+}
+body {
+	font-family: Verdana, Arial;
+	font-size: 1.0em;
+	background: #eee;
+}
+/*============================ Header ============================*/
+#header {
+	width: 100%;
+	height: 100px;
+	background: url(http://themezee.com/wp-content/themes/ThemeZee/images/background.png) repeat #222;
+	color: #fff;
+}
+#head {
+	width: 800px;
+	margin: 0 auto;
+}
+#logo {
+	float: left;
+	margin: 25px 0px;
+}
+
+/*============================ Navigation ============================*/
+#menu {
+    float: right;
+    margin: 25px 0;
+}
+#menu li {
+    float: left;
+    margin: 0 0 0 5px;
+}
+#menu li a {
+    font-family: arial;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px #333333;
+    display: block;
+    padding: 10px 15px;
+        
+}
+#menu li a:hover {
+	color: #aaa;
+}
+#menu span {
+    display: block;
+    color: #c8c8c8;
+    font-size: 12px;
+    font-weight: normal;
+    text-shadow: 1px 1px 1px #222621;
+}
+/*============================ Content ============================*/
+#wrapper {
+	width: 760px;
+	font-size: 0.9em;
+	color: #333;
+	margin: 10px auto 40px auto;
+	padding: 10px 20px;
+	background: #fff;
+	border: 1px solid #ddd;
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Safari, Chrome */
+	-khtml-border-radius: 10px; /* Konqueror */
+	line-height: 1.5em;
+}
+a, a:link, a:visited {
+	color: #666;
+}
+a:hover, a:active {
+	color: #222;
+	text-decoration: underline;
+}
+h1 {
+	margin: 40px auto 20px auto;
+	width: 800px;
+	font-size: 2.7em;
+	font-family: "Times New Roman", Verdana;
+	color: #555;
+}
+h3 {
+	margin: 10px 0 20px 0;
+	padding: 5px 0;
+	border-bottom: 1px solid #ddd;
+	font-size: 1.6em;
+	color: #777;
+}
+h3 a {
+	font-size: 0.7em;
+}
+p {
+	margin: 10px 0 25px 0;
+	font-size: 0.9em;
+	font-weight: normal;
+}
+#contents {
+	margin-bottom: 50px;
+}
+#contents li {
+	margin: 5px;
+	color: #333;
+	font-size: 1.2em;
+}
+code {
+	padding: 1px 4px;
+	margin: 0 1px;
+	background: #e0e0e0;
+	font-size: 0.9em;
+	font-family: "Courier New", Courier, monospace;
+}
+ol, ol li{
+	list-style: decimal inside;
+	font-weight: bold;
+}
+
+

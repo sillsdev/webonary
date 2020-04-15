@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: zeeDisplay\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-21 11:09+0800\n"
+"PO-Revision-Date: 2017-11-15 13:23+0800\n"
+"Last-Translator: \n"
+"Language-Team: themezee.com\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ zeeDisplay
+#: 404.php:12
+msgid "Entry not found."
+msgstr ""
+
+# @ zeeDisplay
+#: archive.php:5 archive.php:6 archive.php:7
+msgid "Archive for"
+msgstr ""
+
+# @ zeeDisplay
+#: archive.php:8
+msgid "Tag Archive for"
+msgstr ""
+
+# @ zeeDisplay
+#: archive.php:9 page-sitemap.php:48
+msgid "Archives"
+msgstr ""
+
+# @ zeeDisplay
+#: comments.php:8
+msgid "Enter password to view comments."
+msgstr ""
+
+# @ zeeDisplay
+#: comments.php:16 includes/entry.php:15
+msgid "No comments"
+msgstr ""
+
+# @ zeeDisplay
+#: comments.php:16 includes/entry.php:15
+msgid "One comment"
+msgstr ""
+
+# @ zeeDisplay
+#: comments.php:16 includes/entry.php:15
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: footer.php:64
+msgid "Terms of Service"
+msgstr "সেবার শর্তাবলী "
+
+# @ zeeDisplay
+#: functions.php:210
+msgid "Search Bar Popups"
+msgstr ""
+
+#: functions.php:212
+msgid ""
+"If a widget placed here has links, those links will appear above the search "
+"field on the main screen."
+msgstr ""
+
+#: functions.php:329
+msgid "To view this protected post, enter the password below:"
+msgstr ""
+
+#: functions.php:331
+msgid ""
+"If you do not have a password, you may request it using the <a href=\"/help/"
+"contact-us/\">contact form</a>."
+msgstr ""
+
+#: functions.php:332
+msgid "Password:"
+msgstr ""
+
+# @ zeeDisplay
+#: page-sitemap.php:27
+msgid "Latest Posts"
+msgstr ""
+
+# @ zeeDisplay
+#: page-sitemap.php:38
+msgid "Pages"
+msgstr ""
+
+# @ zeeDisplay
+#: page-sitemap.php:43
+msgid "Categories"
+msgstr ""
+
+# @ zeeDisplay
+#: page-sitemap.php:53
+msgid "Posts by Category"
+msgstr ""
+
+# @ zeeDisplay
+#: page-sitemap.php:56
+msgid "Category"
+msgstr ""
+
+# @ zeeDisplay
+#: search.php:34
+#, php-format
+msgid "Search results for \"%s\""
+msgstr "ফলাফল অনুসন্ধান \"%s\""
+
+# @ zeeDisplay
+#: search.php:59
+msgid "Comments"
+msgstr "মন্তব্য "
+
+# @ zeeDisplay
+#: search.php:72
+msgid ""
+"No matches. Please try again, or use the navigation menus to find what you "
+"search for."
+msgstr ""
+"কোন মিল নেই। দয়া করে আবার চেষ্টা করুন অথবা যা খুঁজছেন তার জন্য নির্দেশনা মেনু "
+"ব্যবহার করুন "
+
+# @ zeeDisplay
+#: slide.php:8 slide.php:9
+msgid "featured"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/entry.php:31
+msgid "Read more"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/navigation.php:17
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/navigation.php:18
+msgid "Next Entries &raquo;"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-admin.php:31
+msgid "Theme Options"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:4
+msgid "Brown"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:5
+msgid "Darkblue"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:6
+msgid "Darkgreen"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:7
+msgid "Green"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:8
+msgid "Grey"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:9
+msgid "Orange"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:10
+msgid "Purple"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:11
+msgid "Red"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:12
+msgid "Standard"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:13
+msgid "Custom Color"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:22
+msgid "Theme Settings"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:56
+msgid "Footer Content"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:57
+msgid "Enter here the content which is displayed in the footer."
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:94
+msgid "Custom CSS"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:95
+msgid "Insert your own custom css code into the head of the theme."
+msgstr ""
+
+# @ zeeDisplay
+#: includes/admin/theme-settings.php:101
+msgid "Paste the full Image URL of your logo."
+msgstr ""
+
+# @ zeeDisplay
+#: includes/plugins/theme_ads_widget.php:5
+msgid "Show your 125x125 Ad Spots"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/plugins/theme_ads_widget.php:56
+#: includes/plugins/theme_socialmedia_widget.php:96
+msgid "Title"
+msgstr ""
+
+# @ zeeDisplay
+#: includes/plugins/theme_socialmedia_widget.php:5
+msgid "Show your Social Media Buttons"
+msgstr ""
