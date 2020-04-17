@@ -5,12 +5,24 @@ import * as iam from '@aws-cdk/aws-iam';
 import * as s3 from '@aws-cdk/aws-s3';
 import { Certificate } from '@aws-cdk/aws-certificatemanager';
 
+function defaultLambdaFunctionProps(functionName: string): lambda.FunctionProps {
+  const props: lambda.FunctionProps = {
+    functionName,
+    runtime: lambda.Runtime.NODEJS_12_X,
+    code: new lambda.AssetCode('lambda'),
+    handler: `${functionName}.handler`,
+    timeout: cdk.Duration.seconds(60),
+  };
+  return props;
+}
+
 export class WebonaryCloudApiStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     // Webonary web site
     const WEBONARY_URL = process.env.WEBONARY_URL ?? 'https://www.webonary.org';
+    const WEBONARY_AUTH_PATH = process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary/import';
 
     // Mongo
     const { DB_URI, DB_USERNAME, DB_PASSWORD } = process.env;
@@ -33,16 +45,16 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Lambda functions
 
     // API Authorizer for loading dictonary file or entry
-    const loadAuthorizeFuction = new lambda.Function(this, 'loadAuthorize', {
-      functionName: 'loadAuthorize',
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 'loadAuthorize.handler',
-      timeout: cdk.Duration.seconds(60),
-      environment: {
-        WEBONARY_URL: WEBONARY_URL ?? 'https://www.webonary.org',
-      },
-    });
+    const loadAuthorizeFuction = new lambda.Function(
+      this,
+      'loadAuthorize',
+      Object.assign(defaultLambdaFunctionProps('loadAuthorize'), {
+        environment: {
+          WEBONARY_URL,
+          WEBONARY_AUTH_PATH,
+        },
+      }),
+    );
 
     const loadAuthorizer = new apigateway.RequestAuthorizer(this, 'loadAuthorizer', {
       handler: loadAuthorizeFuction,
@@ -50,14 +62,27 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     });
 
     // Generates pre-signed URL to authorize S3 bucket upload
-    const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 's3Authorize.handler',
-      environment: {
-        S3_BUCKET: dictionaryBucket.bucketName,
-      },
-    });
+    /*
+    const s3AuthorizeFunction = new lambda.Function(
+      this,
+      's3Authorize',
+      Object.assign(defaultLambdaFunctionProps('s3Authorize'), {
+        environment: {
+          S3_BUCKET: dictionaryBucket.bucketName,
+        },
+      }),
+    );
+    */
+
+   const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
+    runtime: lambda.Runtime.NODEJS_12_X,
+    code: new lambda.AssetCode('lambda'),
+    handler: 's3Authorize.handler',
+    environment: {
+      S3_BUCKET: dictionaryBucket.bucketName,
+    },
+  });
+  
     s3AuthorizeFunction.addToRolePolicy(lambdaS3PolicyStatement);
 
     // eslint-disable-next-line no-new
@@ -67,53 +92,33 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       principal: 'apigateway.amazonaws.com',
     });
 
-    const loadEntryFunction = new lambda.Function(this, 'loadEntry', {
-      functionName: 'loadEntry',
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 'loadEntry.handler',
-      timeout: cdk.Duration.seconds(60),
-      environment: {
-        DB_URL,
-        DB_NAME,
-      },
-    });
+    const loadEntryFunction = new lambda.Function(
+      this,
+      'loadEntry',
+      Object.assign(defaultLambdaFunctionProps('loadEntry'), { environment: { DB_URL, DB_NAME } }),
+    );
 
-    const getEntryFunction = new lambda.Function(this, 'getEntry', {
-      functionName: 'getEntry',
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 'getEntry.handler',
-      timeout: cdk.Duration.seconds(60),
-      environment: {
-        DB_URL,
-        DB_NAME,
-      },
-    });
+    const getEntryFunction = new lambda.Function(
+      this,
+      'getEntry',
+      Object.assign(defaultLambdaFunctionProps('getEntry'), { environment: { DB_URL, DB_NAME } }),
+    );
 
-    const browseEntriesFunction = new lambda.Function(this, 'browseEntries', {
-      functionName: 'browseEntries',
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 'browseEntries.handler',
-      timeout: cdk.Duration.seconds(60),
-      environment: {
-        DB_URL,
-        DB_NAME,
-      },
-    });
+    const browseEntriesFunction = new lambda.Function(
+      this,
+      'browseEntries',
+      Object.assign(defaultLambdaFunctionProps('browseEntries'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
 
-    const searchEntriesFunction = new lambda.Function(this, 'searchEntries', {
-      functionName: 'searchEntries',
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 'searchEntries.handler',
-      timeout: cdk.Duration.seconds(60),
-      environment: {
-        DB_URL,
-        DB_NAME,
-      },
-    });
+    const searchEntriesFunction = new lambda.Function(
+      this,
+      'searchEntries',
+      Object.assign(defaultLambdaFunctionProps('searchEntries'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
 
     // API and resources
     const api = new apigateway.RestApi(this, 'webonary-cloud-api', {

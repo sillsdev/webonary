@@ -94,7 +94,7 @@ export class FlexXhtmlParser {
     const audioSrc =
       $('span.lexemeform span audio source')
         .attr('src')
-        ?.replace('\\', '/') ?? '';
+        ?.replace(/\\/g, '/') ?? '';
     const fileClass = $('span.lexemeform span a').attr('class') ?? '';
     const audio: EntryFile = { id: audioId, src: audioSrc, fileClass };
 
@@ -117,7 +117,7 @@ export class FlexXhtmlParser {
       const src =
         $(elem)
           .attr('src')
-          ?.replace('\\', '/') ?? '';
+          ?.replace(/\\/g, '/') ?? '';
       const caption =
         $(elem)
           .next()

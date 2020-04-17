@@ -55,7 +55,8 @@ export async function handler(
 
     // Call Webonary.org for user authentication
     try {
-      const response = await axios.post(`/${dictionary}/wp-json/webonary/import`, '{}', {
+      const authPath = `/${dictionary}${process.env.WEBONARY_AUTH_PATH}`;
+      const response = await axios.post(authPath, '{}', {
         auth: { username, password },
       });
 
