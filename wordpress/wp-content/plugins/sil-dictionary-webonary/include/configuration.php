@@ -766,8 +766,7 @@ function webonary_conf_widget($showTitle = false)
 							}
 							else
 							{
-								$arrSystemFonts = $fontClass->get_system_fonts();
-								if(in_array($userFont, $arrSystemFonts))
+								if(in_array($userFont, $fontClass->get_system_fonts()))
 								{
 									echo 'This is a system font that most computers already have installed.';
 								}
@@ -783,18 +782,17 @@ function webonary_conf_widget($showTitle = false)
 										echo 'Font not found in the repository. Please ask Webonary Support to add it.';
 									}
 									echo '</strong>';
-
-									if (is_super_admin()) {
-										?>
-										<input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
-										<input class="button-webonary" type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
-										<?php
-
-										$fontNr++;
-									}
 								}
 							}
 
+							if(is_super_admin() && !in_array($userFont, $fontClass->get_system_fonts()))
+							{
+							?>
+								<input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
+								<input class="button-webonary" type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
+								<?php
+								$fontNr++;
+							}							
 							echo "<p></p>";
 						}
 					}
