@@ -1,9 +1,6 @@
 import { CustomAuthorizerEvent, APIGatewayAuthorizerResult, Context, Callback } from 'aws-lambda';
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.WEBONARY_URL;
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-
 type Effect = 'Allow' | 'Deny';
 
 function generatePolicy(
@@ -33,13 +30,11 @@ export async function handler(
   context: Context,
   callback: Callback,
 ): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
+  const dictionary = event.pathParameters?.dictionary;
+  const authHeaders = event.headers?.Authorization;
 
-  if (event.headers) {
-    const dictionary = event.pathParameters?.dictionary;
-
-    const encodedCreds = event.headers.Authorization.split(' ')[1];
+  if (dictionary && authHeaders) {
+    const encodedCreds = authHeaders.split(' ')[1];
     const plainCreds = Buffer.from(encodedCreds, 'base64')
       .toString()
       .split(':');
@@ -54,8 +49,10 @@ export async function handler(
     const resource = event.methodArn.replace(/POST\/load\/(entry|file)\//i, 'POST/load/*/');
 
     // Call Webonary.org for user authentication
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    const authPath = `${process.env.WEBONARY_URL}/${dictionary}${process.env.WEBONARY_AUTH_PATH}`;
+
     try {
-      const authPath = `/${dictionary}${process.env.WEBONARY_AUTH_PATH}`;
       const response = await axios.post(authPath, '{}', {
         auth: { username, password },
       });
@@ -68,7 +65,7 @@ export async function handler(
         return callback(null, generatePolicy(principalId, 'Allow', resource));
       }
     } catch (error) {
-      return callback(`Error: ${JSON.stringify(error.response)}`);
+      return callback(error);
     }
   }
 

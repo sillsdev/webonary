@@ -12,3 +12,7 @@ template.yaml
 
 # test data files
 data
+
+# testing
+coverage
+lib/__tests__/__snapshots__/webonary-cloud-api.test.ts.snap

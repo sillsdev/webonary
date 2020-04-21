@@ -61,28 +61,15 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       identitySources: [apigateway.IdentitySource.header('Authorization')],
     });
 
-    // Generates pre-signed URL to authorize S3 bucket upload
-    /*
-    const s3AuthorizeFunction = new lambda.Function(
-      this,
-      's3Authorize',
-      Object.assign(defaultLambdaFunctionProps('s3Authorize'), {
-        environment: {
-          S3_BUCKET: dictionaryBucket.bucketName,
-        },
-      }),
-    );
-    */
+    const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
+      runtime: lambda.Runtime.NODEJS_12_X,
+      code: new lambda.AssetCode('lambda'),
+      handler: 's3Authorize.handler',
+      environment: {
+        S3_BUCKET: dictionaryBucket.bucketName,
+      },
+    });
 
-   const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
-    runtime: lambda.Runtime.NODEJS_12_X,
-    code: new lambda.AssetCode('lambda'),
-    handler: 's3Authorize.handler',
-    environment: {
-      S3_BUCKET: dictionaryBucket.bucketName,
-    },
-  });
-  
     s3AuthorizeFunction.addToRolePolicy(lambdaS3PolicyStatement);
 
     // eslint-disable-next-line no-new
@@ -125,7 +112,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       restApiName: 'webonaryCloudApi',
     });
 
-    const domainName = process.env.API_DOMAIN_NAME;
+    const domainName = process.env.API_DOMAIN_NAME
     const domainCertArn = process.env.API_DOMAIN_CERT_ARN;
     if (domainName && domainCertArn) {
       const certificate = Certificate.fromCertificateArn(
@@ -139,7 +126,10 @@ export class WebonaryCloudApiStack extends cdk.Stack {
         certificate,
       });
 
-      apiDomainName.addBasePathMapping(api, { basePath: 'v1' });
+      const basePath = process.env.API_DOMAIN_BASEPATH;
+      if (basePath) {
+        apiDomainName.addBasePathMapping(api, { basePath });
+      }
     }
 
     // Loading of file and data are protected via Webonary basic auth

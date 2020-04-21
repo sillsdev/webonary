@@ -7,26 +7,28 @@
   "scripts": {
     "build": "tsc",
     "deploy-local": "cdk synth --no-staging >| template.yaml && sam local start-api",
-    "deploy": "tsc && env-cmd cdk deploy",
+    "deploy": "env-cmd cdk deploy",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "load-legacy": "env-cmd ts-node tools/load-legacy.ts",
     "watch": "tsc -w",
-    "test": "env-cmd jest",
+    "test": "jest",
+    "test-coverage": "jest --collectCoverage",
     "cdk": "env-cmd cdk"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.26.0",
+    "@aws-cdk/assert": "^1.32.2",
     "@types/aws-lambda": "^8.10.44",
     "@types/cheerio": "^0.22.16",
     "@types/form-data": "^2.5.0",
-    "@types/jest": "^24.0.22",
+    "@types/jest": "^24.9.1",
     "@types/mime-types": "^2.1.0",
     "@types/node": "^13.7.6",
     "@types/parse5": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "aws-cdk": "^1.26.0",
+    "aws-sdk-mock": "^5.1.0",
     "env-cmd": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -54,5 +56,10 @@
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "mime-types": "^2.1.26"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ]
   }
 }
