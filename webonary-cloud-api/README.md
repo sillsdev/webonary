@@ -19,7 +19,7 @@ WCA is a serverless, cloud-based architecture consisting of:
 
 ## Installation and Prerequisites
 1. Clone this [repository](https://github.com/sillsdev/webonary.git) using [git](https://git-scm.com/).
-   1. Note that this is a monorepo, containing code for Webonary Wordpress site, as well as WCA. If you are interested in only WCA, you might consider using [git spare-checkout](https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/).
+   1. Note that this is a monorepo, containing code for Webonary Wordpress site, as well as WCA. If you are interested in only WCA, you might consider using [git sparse-checkout](https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/).
    2. The code for WCA exists in the directory [webonary-cloud-api](https://github.com/sillsdev/webonary/tree/master/webonary-cloud-api).
    3. WCA was scaffolded using [cdk init --typescript](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html). 
 2. Directory structure:
