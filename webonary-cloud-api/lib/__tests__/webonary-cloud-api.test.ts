@@ -23,11 +23,9 @@ test('S3 exists', () => {
   );
 });
 
-
 describe('Gateway domain', () => {
-
-  beforeEach( () => {
-    jest.resetModules() // this is important - it clears the cache
+  beforeEach(() => {
+    jest.resetModules(); // this is important - it clears the cache
 
     // First, set the env var
     process.env.WEBONARY_URL = 'https://www.testsite.com';
@@ -36,7 +34,6 @@ describe('Gateway domain', () => {
     process.env.API_DOMAIN_NAME = 'some-api.testsite.com';
     process.env.API_DOMAIN_CERT_ARN = 'arn:aws:acm:test';
   });
-
 
   test('Gateway domain name exists', async () => {
     // Next, load the module – do it dynamically, not at the top of the file!
@@ -48,7 +45,7 @@ describe('Gateway domain', () => {
       haveResource('AWS::ApiGateway::DomainName', {
         DomainName: process.env.API_DOMAIN_NAME,
         EndpointConfiguration: {
-          Types: [ 'REGIONAL' ],
+          Types: ['REGIONAL'],
         },
         RegionalCertificateArn: process.env.API_DOMAIN_CERT_ARN,
       }),
@@ -61,7 +58,10 @@ describe('Gateway domain', () => {
     // Next, load the module – do it dynamically, not at the top of the file!
     const appWithDomainAndPath = new cdk.App();
     const WebonaryCloudApiStack = (await import('../webonary-cloud-api-stack')).default;
-    const stackWithDomainAndPath = new WebonaryCloudApiStack(appWithDomainAndPath, 'MyTestStackWithDomain');
+    const stackWithDomainAndPath = new WebonaryCloudApiStack(
+      appWithDomainAndPath,
+      'MyTestStackWithDomain',
+    );
 
     expectCDK(stackWithDomainAndPath).to(
       haveResource('AWS::ApiGateway::BasePathMapping', {
@@ -70,5 +70,3 @@ describe('Gateway domain', () => {
     );
   });
 });
-
-

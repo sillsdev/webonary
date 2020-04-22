@@ -112,7 +112,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       restApiName: 'webonaryCloudApi',
     });
 
-    const domainName = process.env.API_DOMAIN_NAME
+    const domainName = process.env.API_DOMAIN_NAME;
     const domainCertArn = process.env.API_DOMAIN_CERT_ARN;
     if (domainName && domainCertArn) {
       const certificate = Certificate.fromCertificateArn(

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { CustomAuthorizerEvent, Context } from 'aws-lambda';
 import axios from 'axios';
 import lambdaHandler from '../loadAuthorize';
@@ -7,8 +8,8 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 const username = 'testUser';
 const password = 'testPassword!';
-const base64Creds = Buffer.from(`${username}:${password}`).toString('base64');
-const headers = { Authorization: `Basic ${base64Creds}` };
+const base64Credentials = Buffer.from(`${username}:${password}`).toString('base64');
+const headers = { Authorization: `Basic ${base64Credentials}` };
 
 const dictionary = 'testDictionary';
 
@@ -30,12 +31,12 @@ const context: Context = {
   logStreamName: '',
   getRemainingTimeInMillis: () => 0,
   done: () => undefined,
-  fail:() => undefined,
+  fail: () => undefined,
   succeed: () => undefined,
 };
 
 describe('loadAuthorize', () => {
-  test('succesful auth', async (): Promise<void> => {
+  test('successful auth', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: '' }));
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
@@ -73,7 +74,9 @@ describe('loadAuthorize', () => {
       await lambdaHandler(emptyEvent, context, error => {
         expect(error).toBe('Unauthorized');
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     return expect.hasAssertions();
   });
@@ -85,7 +88,9 @@ describe('loadAuthorize', () => {
       await lambdaHandler(event, context, error => {
         expect(error).toBe('Unauthorized');
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     return expect.hasAssertions();
   });
@@ -97,12 +102,13 @@ describe('loadAuthorize', () => {
         throw new Error(errorMessage);
       });
 
-      await lambdaHandler(event, context, (error, result) => {
+      await lambdaHandler(event, context, error => {
         expect(error).toEqual(new Error(errorMessage));
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     return expect.hasAssertions();
   });
-
 });

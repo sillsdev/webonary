@@ -34,12 +34,12 @@ export async function handler(
   const authHeaders = event.headers?.Authorization;
 
   if (dictionary && authHeaders) {
-    const encodedCreds = authHeaders.split(' ')[1];
-    const plainCreds = Buffer.from(encodedCreds, 'base64')
+    const encodedCredentials = authHeaders.split(' ')[1];
+    const plainCredentials = Buffer.from(encodedCredentials, 'base64')
       .toString()
       .split(':');
-    const username = plainCreds[0];
-    const password = plainCreds[1];
+    const username = plainCredentials[0];
+    const password = plainCredentials[1];
 
     // Same user should have the same access to load dictionary entry data as well as files.
     // User access is per dictionary per user.

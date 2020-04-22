@@ -19,10 +19,10 @@ export async function handler(
     const fullText = event.queryStringParameters?.fullText;
 
     // NOTE: Mongo text search can do language specific stemming,
-    // but then each serch much specify correct language in a field named "language".
+    // but then each search much specify correct language in a field named "language".
     // To use this, we will need to distinguish between lang field in Entry, and a special language field
     // that is one of the valid Mongo values, or "none".
-    // By setting $language: "none" in all quiries and in index, we are skipping langauge-specific stemming.
+    // By setting $language: "none" in all queries and in index, we are skipping language-specific stemming.
     // If we wanted to use language stemming, then we must specify language in each search,
     // and UNION all searches if language-independent search is desired
     const $language = event.queryStringParameters?.language ?? 'none';
