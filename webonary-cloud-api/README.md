@@ -39,9 +39,9 @@ WCA is a serverless, cloud-based architecture consisting of:
 
 ## Development
 1. This project is already set up for Typescript linting using [eslint](https://eslint.org/) with [AirBnB styles](https://www.npmjs.com/package/eslint-config-airbnb-typescript) and formatting with [prettier](https://github.com/prettier/prettier-eslint). 
-2. [Visual Studio Code (VSC)](https://code.visualstudio.com/) can be (configured)[https://levelup.gitconnected.com/setting-up-eslint-with-prettier-typescript-and-visual-studio-code-d113bbec9857] so automatic changes by eslint and prettier can be done as you save your code. 
+2. [Visual Studio Code (vscode)](https://code.visualstudio.com/) can be (configured)[https://levelup.gitconnected.com/setting-up-eslint-with-prettier-typescript-and-visual-studio-code-d113bbec9857] so automatic changes by eslint and prettier can be done as you save your code. 
    1. Alternately, you can run `npm run lint` from the root directory to detect problems and make automatic changes in all your Typescript files.
-3. While coding, you can open a shell terminal or do so within VSC and run `npm run watch` from the root directory for automatic compilation of your Typescript code into javascript.
+3. While coding, you can open a shell terminal or do so within vscode and run `npm run watch` from the root directory for automatic compilation of your Typescript code into javascript.
    1. Alternately, you can run `npm run build` from the root directory.
 4. To run unit tests using [jest](https://jestjs.io/), from the root directory run `npm run test`.
    1. To see coverage info, do `npm run test-coverage`.
@@ -52,7 +52,7 @@ WCA is a serverless, cloud-based architecture consisting of:
 ## Local Lambda testing
 During development, you can execute Lambda functions for testing, without deployment to AWS Cloud, using [AWS SAM](https://aws.amazon.com/serverless/sam/).
 
-To do so, run  `npm run deploy-local` from a terminal on your machine or from VSC's own terminal. This executes `cdk synth --no-staging >| template.yaml && sam local start-api`, which will update your CloudFormation template, and start SAM. Once started, your Lambda functions can be executed locally at `http://127.0.01:3000` by using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. Note that `deploy-local` is run in the foreground continually. To stop, you can issue a kill signal (`Ctrl + c`).
+To do so, run  `npm run deploy-local` from a terminal on your machine or from vscode's own terminal. This executes `cdk synth --no-staging >| template.yaml && sam local start-api`, which will update your CloudFormation template, and start SAM. Once started, your Lambda functions can be executed locally at `http://127.0.0.1:3000` by using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. Note that `deploy-local` is run in the foreground continually. To stop, you can issue a kill signal (`Ctrl + c`).
 
 If you change your Typescript code, then you should either do `npm run build` or make sure `npm run watch` is also being run in another terminal.  
 
