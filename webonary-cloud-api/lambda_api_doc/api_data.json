@@ -1,0 +1,284 @@
+[
+  {
+    "type": "post",
+    "url": "/load/entry/:dictionary",
+    "title": "Load entry",
+    "name": "LoadDictionaryEntry",
+    "group": "Dictionary",
+    "permission": [
+      {
+        "name": "dictionary admin in <a href=https://www.webonary.org>Webonary</a>"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example",
+          "content": "Authorization: Basic YWRtaW46cGFzc3dvcmQ=",
+          "type": "Header"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "dictionary",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "body",
+            "description": "<p>Array of dictionary entries</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "body.guid",
+            "description": "<p>GUID of the entry</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "body.data",
+            "description": "<p>Object of entry data</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "[\n  {\n    \"guid\": \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"data\": {\n      \"term\": \"hijo\",\n      \"definition\": \"son\"\n    }\n  },\n  {\n    \"guid\": \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"data\": {\n      \"term\": \"hija\",\n      \"definition\": \"daughter\"\n    }\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Timestamp of the loading of entries in GMT</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "updatedCount",
+            "description": "<p>Number of entries updated</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "insertedCount",
+            "description": "<p>Number of entries inserted</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "insertedGUIDs",
+            "description": "<p>Array containing GUID of the inserted entries</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"updatedAt\": \"Thu, 23 Apr 2020 17:00:15 GMT\",\n  \"updatedCount\": 48,\n  \"insertedCount\": 2,\n  \"insertedGUIDs\": [\n    \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"496e6865-bf0d-40aa-9834-93b47404ed93\"\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "InvalidRequest",
+            "description": "<p>Input should be an array of up to 50 entry objects.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 InvalidRequest\n{\n  \"errorType\": \"InvalidRequest\",\n  \"errorMessage\": \"Input must be an array of entries\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "lambda/loadEntry.d.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
+    "type": "post",
+    "url": "/load/entry/:dictionary",
+    "title": "Load entry",
+    "name": "LoadDictionaryEntry",
+    "group": "Dictionary",
+    "permission": [
+      {
+        "name": "dictionary admin in <a href=https://www.webonary.org>Webonary</a>"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header-Example",
+          "content": "Authorization: Basic YWRtaW46cGFzc3dvcmQ=",
+          "type": "Header"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "dictionary",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "body",
+            "description": "<p>Array of dictionary entries</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "body.guid",
+            "description": "<p>GUID of the entry</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "body.data",
+            "description": "<p>Object of entry data</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "[\n  {\n    \"guid\": \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"data\": {\n      \"term\": \"hijo\",\n      \"definition\": \"son\"\n    }\n  },\n  {\n    \"guid\": \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"data\": {\n      \"term\": \"hija\",\n      \"definition\": \"daughter\"\n    }\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Timestamp of the loading of entries in GMT</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "updatedCount",
+            "description": "<p>Number of entries updated</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "insertedCount",
+            "description": "<p>Number of entries inserted</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "insertedGUIDs",
+            "description": "<p>Array containing GUID of the inserted entries</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"updatedAt\": \"Thu, 23 Apr 2020 17:00:15 GMT\",\n  \"updatedCount\": 48,\n  \"insertedCount\": 2,\n  \"insertedGUIDs\": [\n    \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n    \"496e6865-bf0d-40aa-9834-93b47404ed93\"\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "InvalidRequest",
+            "description": "<p>Input should be an array of up to 50 entry objects.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 InvalidRequest\n{\n  \"errorType\": \"InvalidRequest\",\n  \"errorMessage\": \"Input must be an array of entries\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "lambda/loadEntry.ts",
+    "groupTitle": "Dictionary"
+  }
+]

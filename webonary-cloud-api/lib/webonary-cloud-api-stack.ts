@@ -82,13 +82,17 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const loadEntryFunction = new lambda.Function(
       this,
       'loadEntry',
-      Object.assign(defaultLambdaFunctionProps('loadEntry'), { environment: { DB_URL, DB_NAME } }),
+      Object.assign(defaultLambdaFunctionProps('loadEntry'), {
+        environment: { DB_URL, DB_NAME },
+      }),
     );
 
     const getEntryFunction = new lambda.Function(
       this,
       'getEntry',
-      Object.assign(defaultLambdaFunctionProps('getEntry'), { environment: { DB_URL, DB_NAME } }),
+      Object.assign(defaultLambdaFunctionProps('getEntry'), {
+        environment: { DB_URL, DB_NAME },
+      }),
     );
 
     const browseEntriesFunction = new lambda.Function(

@@ -39,11 +39,11 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
 async function loadEntry(
   dictionary: string,
   entry: Entry[],
-  creds: AxiosBasicCredentials,
+  credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/load/entry/${dictionary}`;
   const data = JSON.stringify(entry);
-  const config: AxiosRequestConfig = { auth: creds };
+  const config: AxiosRequestConfig = { auth: credentials };
 
   try {
     return await axios.post(path, data, config);
@@ -57,14 +57,14 @@ async function loadEntry(
 async function loadFile(
   dictionary: string,
   file: string,
-  creds: AxiosBasicCredentials,
+  credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/load/file/${dictionary}`;
   const data = JSON.stringify({
     objectId: `${dictionary}/${file}`,
     action: 'putObject',
   });
-  const config: AxiosRequestConfig = { auth: creds };
+  const config: AxiosRequestConfig = { auth: credentials };
 
   try {
     const response = await axios.post(path, data, config);
@@ -109,7 +109,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const username = process.env.WEBONARY_USERNAME ?? '';
 const password = process.env.WEBONARY_PASSWORD ?? '';
-const creds: AxiosBasicCredentials = { username, password };
+const credentials: AxiosBasicCredentials = { username, password };
 
 if (args[0] && args[1]) {
   (async (): Promise<void> => {
@@ -151,13 +151,13 @@ if (args[0] && args[1]) {
       a lot faster than many single loads running async
 
       const promises = chunk.map((entry): Promise<void> => {
-          return loadEntry(dictionary, [entry], creds);                    
+          return loadEntry(dictionary, [entry], credentials);                    
       });
       await Promise.all(promises);
       */
 
       // eslint-disable-next-line no-await-in-loop
-      await loadEntry(dictionary, chunk, creds);
+      await loadEntry(dictionary, chunk, credentials);
 
       logMessage(`Finished loading chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
     }
@@ -197,7 +197,7 @@ if (args[0] && args[1]) {
 
       const promises = chunk.map(
         (entryFile): Promise<AxiosResponse | undefined> => {
-          return loadFile(dictionary, entryFile.src, creds);
+          return loadFile(dictionary, entryFile.src, credentials);
         },
       );
 
