@@ -2,7 +2,7 @@
  * @api {post} /load/entry/:dictionary Load entry
  * @apiName LoadDictionaryEntry
  * @apiGroup Dictionary
- * @apiPermission dictionary admin in <a href=https://www.webonary.org>Webonary</a>
+ * @apiPermission dictionary admin in Webonary
  *
  * @apiHeader Authorization Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password
  * @apiHeader Content-Type application/json

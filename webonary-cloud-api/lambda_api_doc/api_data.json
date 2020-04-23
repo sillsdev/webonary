@@ -7,7 +7,7 @@
     "group": "Dictionary",
     "permission": [
       {
-        "name": "dictionary admin in <a href=https://www.webonary.org>Webonary</a>"
+        "name": "dictionary admin in Webonary"
       }
     ],
     "header": {
@@ -148,7 +148,7 @@
     "group": "Dictionary",
     "permission": [
       {
-        "name": "dictionary admin in <a href=https://www.webonary.org>Webonary</a>"
+        "name": "dictionary admin in Webonary"
       }
     ],
     "header": {
