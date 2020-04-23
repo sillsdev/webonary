@@ -61,13 +61,9 @@
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
-import { connectToDB, DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL } from './mongo';
+import { connectToDB } from './mongo';
+import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, LoadEntry } from './db';
 import * as response from './response';
-
-interface LoadEntry {
-  guid: string;
-  data: object;
-}
 
 interface LoadResult {
   updatedAt: string;
@@ -86,7 +82,7 @@ export async function handler(
   // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false;
 
-  const entries = JSON.parse(event.body as string);
+  const entries: LoadEntry[] = JSON.parse(event.body as string);
   let errorMessage = '';
   if (!Array.isArray(entries)) {
     errorMessage = 'Input must be an array of dictionary entry objects';
@@ -154,8 +150,6 @@ export async function handler(
     // eslint-disable-next-line no-console
     console.log(error);
     return callback(null, response.failure({ errorType: error.name, errorMessage: error.message }));
-  } finally {
-    await dbClient.close();
   }
 }
 

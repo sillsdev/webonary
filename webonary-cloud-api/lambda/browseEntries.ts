@@ -1,8 +1,8 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
-import { connectToDB, DB_NAME, COLLECTION_ENTRIES, DbFindParameters } from './mongo';
+import { connectToDB } from './mongo';
+import { DB_NAME, COLLECTION_ENTRIES, DbFindParameters, EntryData } from './db';
 import * as response from './response';
-import { Entry } from '../tools/flexXhtmlParser';
 
 let dbClient: MongoClient;
 
@@ -33,7 +33,7 @@ export async function handler(
       }
     }
 
-    const entries = await db
+    const entries: EntryData[] = await db
       .collection(COLLECTION_ENTRIES)
       .find(dbFind)
       .toArray();
@@ -42,9 +42,9 @@ export async function handler(
       return callback(null, response.notFound([{}]));
     }
 
-    let entriesSorted: Entry[] = [];
+    let entriesSorted: EntryData[] = [];
     if (lang) {
-      entriesSorted = entries.sort((a: Entry, b: Entry): number => {
+      entriesSorted = entries.sort((a, b) => {
         const aWord = a.senses.definitionOrGloss.find(letter => letter.lang === lang);
         const bWord = b.senses.definitionOrGloss.find(letter => letter.lang === lang);
         if (aWord && bWord) {
@@ -53,7 +53,7 @@ export async function handler(
         return 0;
       });
     } else {
-      entriesSorted = entries.sort((a: Entry, b: Entry): number => {
+      entriesSorted = entries.sort((a, b) => {
         return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
       });
     }

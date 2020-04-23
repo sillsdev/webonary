@@ -3,8 +3,9 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
+import { LoadEntry, EntryFile } from '../lambda/db';
 import fileGrabber from './fileGrabber';
-import { FlexXhtmlParser, Entry, EntryFile } from './flexXhtmlParser';
+import { FlexXhtmlParser } from './flexXhtmlParser';
 
 function logMessage(message: string, previousTime?: number): void {
   const currentTime = Date.now();
@@ -38,7 +39,7 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
 
 async function loadEntry(
   dictionary: string,
-  entry: Entry[],
+  entry: LoadEntry[],
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/load/entry/${dictionary}`;
@@ -115,7 +116,7 @@ if (args[0] && args[1]) {
   (async (): Promise<void> => {
     logMessage(`Importing ${args} to ${axios.defaults.baseURL} for ${username}`);
 
-    const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Altas allows 100 transactions a second, 500 simultaneous
+    const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Atlas allows 100 transactions a second, 500 simultaneous
     const CHUNK_LOAD_FILE_SIZE = 100; // AWS Lambda allows 1000 simultaneous connections
     const dictionary = args[0];
     const file = args[1];
@@ -138,7 +139,7 @@ if (args[0] && args[1]) {
     const startLoadingEntriesTime = Date.now();
     logMessage(`Start loading entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
 
-    const chunkedParsedItems: Entry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
+    const chunkedParsedItems: LoadEntry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
 
     // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
     // eslint-disable-next-line no-restricted-syntax
@@ -168,12 +169,12 @@ if (args[0] && args[1]) {
     logMessage(' Start loading files...');
 
     const entryFiles = parser.parsedItems.reduce(
-      (files: EntryFile[], entry: Entry): EntryFile[] => {
-        if (entry.audio.src) {
-          files.push(entry.audio);
+      (files: EntryFile[], entry: LoadEntry): EntryFile[] => {
+        if (entry.data.audio.src) {
+          files.push(entry.data.audio);
         }
-        if (entry.pictures.length) {
-          entry.pictures.forEach(picture => {
+        if (entry.data.pictures.length) {
+          entry.data.pictures.forEach(picture => {
             if (picture.src) {
               files.push(picture);
             }

@@ -1,6 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
-import { connectToDB, DB_NAME, COLLECTION_ENTRIES } from './mongo';
+import { connectToDB } from './mongo';
+import { DB_NAME, COLLECTION_ENTRIES } from './db';
 import * as response from './response';
 
 let dbClient: MongoClient;
