@@ -2,7 +2,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, COLLECTION_ENTRIES, DbFindParameters, EntryData } from './db';
-import * as response from './response';
+import * as Response from './response';
 
 let dbClient: MongoClient;
 
@@ -39,7 +39,7 @@ export async function handler(
       .toArray();
 
     if (!entries.length) {
-      return callback(null, response.notFound([{}]));
+      return callback(null, Response.notFound([{}]));
     }
 
     let entriesSorted: EntryData[] = [];
@@ -57,7 +57,7 @@ export async function handler(
         return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
       });
     }
-    return callback(null, response.success(entriesSorted));
+    return callback(null, Response.success(entriesSorted));
   } catch (err) {
     return callback(`Error occurred in browseEntries: ${JSON.stringify(err)}`);
   } finally {

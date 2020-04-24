@@ -1,3 +1,5 @@
+export const INVALID_REQUEST = 'InvalidRequest';
+
 function buildResponse(statusCode: number, body: object): object {
   return {
     statusCode,
@@ -35,5 +37,3 @@ export function redirect(location: string): object {
     },
   };
 }
-
-export const INVALID_REQUEST = 'InvalidRequest';

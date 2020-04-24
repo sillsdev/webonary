@@ -2,7 +2,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, COLLECTION_ENTRIES } from './db';
-import * as response from './response';
+import * as Response from './response';
 
 let dbClient: MongoClient;
 
@@ -35,9 +35,9 @@ export async function handler(
       .find({ dictionary, $text })
       .toArray();
     if (!entries.length) {
-      return callback(null, response.notFound([{}]));
+      return callback(null, Response.notFound([{}]));
     }
-    return callback(null, response.success(entries));
+    return callback(null, Response.success(entries));
   } catch (err) {
     return callback(`Error while performing ${JSON.stringify(event)}: ${JSON.stringify(err)}`);
   } finally {

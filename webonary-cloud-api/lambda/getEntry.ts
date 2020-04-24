@@ -2,7 +2,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, COLLECTION_ENTRIES } from './db';
-import * as response from './response';
+import * as Response from './response';
 
 let dbClient: MongoClient;
 
@@ -21,9 +21,9 @@ export async function handler(
     const _id = event.queryStringParameters?.guid;
     const dbItem = await db.collection(COLLECTION_ENTRIES).findOne({ _id });
     if (!dbItem) {
-      return callback(null, response.notFound({}));
+      return callback(null, Response.notFound({}));
     }
-    return callback(null, response.success(dbItem));
+    return callback(null, Response.success(dbItem));
   } catch (err) {
     return callback(`Error occurred while getEntry: ${JSON.stringify(err)}`);
   } finally {

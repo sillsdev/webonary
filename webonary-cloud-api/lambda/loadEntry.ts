@@ -63,7 +63,7 @@ import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, LoadEntry } from './db';
-import * as response from './response';
+import * as Response from './response';
 
 interface LoadResult {
   updatedAt: string;
@@ -102,8 +102,8 @@ export async function handler(
   }
 
   if (errorMessage) {
-    const errorType = response.INVALID_REQUEST;
-    return callback(null, response.badRequest({ errorType, errorMessage }));
+    const errorType = Response.INVALID_REQUEST;
+    return callback(null, Response.badRequest({ errorType, errorMessage }));
   }
 
   try {
@@ -145,11 +145,11 @@ export async function handler(
       insertedGUIDs: insertedIds,
     };
 
-    return callback(null, response.success({ ...loadResult }));
+    return callback(null, Response.success({ ...loadResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
   }
 }
 
