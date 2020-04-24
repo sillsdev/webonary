@@ -34,7 +34,7 @@ WCA is a serverless, cloud-based architecture consisting of:
    1. In the root directory, install required npm packages using `npm install`.
    2. In `lambda` subdirectory, where Lambda functions are stored, install required packages using `npm install`.
 4. Install [AWS command line interface](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) with your AWS credentials.
-5. GoInstall [AWS CDK command line interface](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) by doing `npm install -g aws-cdk`.
+5. Install [AWS CDK command line interface](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html) by doing `npm install -g aws-cdk`.
 6. Install [env-cmd npm package](https://www.npmjs.com/package/env-cmd) by doing `npm install -g env-cmd`. Then in your root directory, copy .env.sample to .env and modify it for your testing environment.
 7. Install [apidoc](https://apidocjs.com) by doing `npm install -g apidoc`. This will be used to generate API documentation.
 
