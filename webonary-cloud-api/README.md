@@ -8,7 +8,7 @@ WCA is a serverless, cloud-based architecture consisting of:
 2. AWS S3
 3. AWS Lambda (Typescript)
 4. MongoDB Atlas
-5. (Optional) AWS Certificate Manager ans Route 53 
+5. (Optional) AWS Certificate Manager and Route 53 
 
 ## Technology Stack
 1. AWS Cloud Development Kit (CDK) for infrastructure provisioning
