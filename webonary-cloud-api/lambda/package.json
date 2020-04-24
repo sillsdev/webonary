@@ -2,11 +2,11 @@
   "name": "lambda",
   "version": "0.1.0",
   "devDependencies": {
-    "@types/mongodb": "^3.5.9"
+    "@types/mongodb": "^3.5.10"
   },
   "dependencies": {
     "aws-lambda": "^1.0.5",
-    "aws-sdk": "^2.661.0",
+    "aws-sdk": "^2.663.0",
     "axios": "^0.19.2",
     "mongodb": "^3.5.6"
   }
