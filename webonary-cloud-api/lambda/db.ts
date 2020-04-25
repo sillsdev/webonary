@@ -17,7 +17,7 @@ export interface EntrySense {
 }
 
 export interface EntryData {
-  guid?: string;
+  _id?: string;
   dictionary: string;
   letterHead: string;
   mainHeadWord: EntryValue[];

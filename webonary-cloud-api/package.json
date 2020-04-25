@@ -5,7 +5,7 @@
     "webonary-cloud-api": "bin/webonary-cloud-api.js"
   },
   "scripts": {
-    "apidoc": "apidoc -f '.*\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
+    "apidoc": "apidoc -f '^[^.]+\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
     "build": "tsc && npm run apidoc",
     "cdk": "env-cmd cdk",
     "deploy": "npm run build && env-cmd cdk deploy",
