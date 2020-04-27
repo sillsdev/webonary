@@ -82,6 +82,11 @@ add_action('preprocess_comment' , 'preprocess_comment_add_type');
 // API for FLEx
 add_action('rest_api_init', 'Webonary_API_MyType::Register_New_Routes');
 
+if (get_option('useCloudBackend')) {
+	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);
+	// add_filter('the_content', 'Webonary_Cloud::getEntryAsPost');  
+}
+
 function add_rewrite_rules($aRules)
 {
 	//echo "rewrite rules<br>";
