@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "RESTful API to load and access dictionaries created using SIL FieldWorks",
   "title": "Webonary Cloud API",
-  "url": "https://cloud-api.weonbary.org/v1",
+  "url": "https://cloud-api.webonary.org/v1",
   "footer": {
     "title": "Help",
     "content": "<h3>Questions or issues?</h3>\n<p>Please go to <a href=\"https://github.com/sillsdev/webonary/issues\">Webonary issues</a>.</p>\n"
@@ -13,7 +13,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2020-04-28T16:57:26.239Z",
+    "time": "2020-04-28T17:10:17.984Z",
     "url": "http://apidocjs.com",
     "version": "0.20.1"
   }
