@@ -5,29 +5,30 @@
     "webonary-cloud-api": "bin/webonary-cloud-api.js"
   },
   "scripts": {
-    "build": "tsc",
-    "deploy-local": "cdk synth --no-staging >| template.yaml && sam local start-api",
-    "deploy": "env-cmd cdk deploy",
+    "apidoc": "apidoc -f '^[^.]+\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
+    "build": "tsc && npm run apidoc",
+    "cdk": "env-cmd cdk",
+    "deploy": "npm run build && env-cmd cdk deploy",
+    "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "load-legacy": "env-cmd ts-node tools/load-legacy.ts",
-    "watch": "tsc -w",
     "test": "jest",
     "test-coverage": "jest --collectCoverage",
-    "cdk": "env-cmd cdk"
+    "watch": "tsc -w"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.34.0",
-    "@types/aws-lambda": "^8.10.44",
-    "@types/cheerio": "^0.22.16",
+    "@aws-cdk/assert": "^1.35.0",
+    "@types/aws-lambda": "^8.10.51",
+    "@types/cheerio": "^0.22.18",
     "@types/form-data": "^2.5.0",
     "@types/jest": "^24.9.1",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^13.13.1",
+    "@types/node": "^13.13.2",
     "@types/parse5": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
-    "aws-cdk": "^1.34.0",
+    "aws-cdk": "^1.35.0",
     "aws-sdk-mock": "^5.1.0",
     "env-cmd": "^10.1.0",
     "eslint": "^6.8.0",
@@ -47,15 +48,15 @@
     "typescript": "~3.7.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "^1.34.0",
-    "@aws-cdk/aws-certificatemanager": "^1.34.0",
-    "@aws-cdk/aws-iam": "^1.34.0",
-    "@aws-cdk/aws-lambda": "^1.34.0",
-    "@aws-cdk/aws-s3": "^1.34.0",
-    "@aws-cdk/core": "^1.34.0",
+    "@aws-cdk/aws-apigateway": "^1.35.0",
+    "@aws-cdk/aws-certificatemanager": "^1.35.0",
+    "@aws-cdk/aws-iam": "^1.35.0",
+    "@aws-cdk/aws-lambda": "^1.35.0",
+    "@aws-cdk/aws-s3": "^1.35.0",
+    "@aws-cdk/core": "^1.35.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
-    "mime-types": "^2.1.26"
+    "mime-types": "^2.1.27"
   },
   "jest": {
     "moduleFileExtensions": [

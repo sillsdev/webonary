@@ -1,6 +1,8 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
-import { connectToDB, success, notFound, DB_NAME, COLLECTION_ENTRIES } from './mongo';
+import { connectToDB } from './mongo';
+import { DB_NAME, COLLECTION_ENTRIES } from './db';
+import * as Response from './response';
 
 let dbClient: MongoClient;
 
@@ -33,13 +35,13 @@ export async function handler(
       .find({ dictionary, $text })
       .toArray();
     if (!entries.length) {
-      return callback(null, notFound([{}]));
+      return callback(null, Response.notFound([{}]));
     }
-    return callback(null, success(entries));
-  } catch (err) {
-    return callback(`Error while performing ${JSON.stringify(event)}: ${JSON.stringify(err)}`);
-  } finally {
-    await dbClient.close();
+    return callback(null, Response.success(entries));
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
   }
 }
 

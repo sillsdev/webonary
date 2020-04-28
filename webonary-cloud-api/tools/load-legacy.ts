@@ -3,8 +3,9 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
+import { LoadEntry, EntryFile } from '../lambda/db';
 import fileGrabber from './fileGrabber';
-import { FlexXhtmlParser, Entry, EntryFile } from './flexXhtmlParser';
+import { FlexXhtmlParser } from './flexXhtmlParser';
 
 function logMessage(message: string, previousTime?: number): void {
   const currentTime = Date.now();
@@ -38,12 +39,12 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
 
 async function loadEntry(
   dictionary: string,
-  entry: Entry[],
-  creds: AxiosBasicCredentials,
+  entry: LoadEntry[],
+  credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/load/entry/${dictionary}`;
   const data = JSON.stringify(entry);
-  const config: AxiosRequestConfig = { auth: creds };
+  const config: AxiosRequestConfig = { auth: credentials };
 
   try {
     return await axios.post(path, data, config);
@@ -57,14 +58,14 @@ async function loadEntry(
 async function loadFile(
   dictionary: string,
   file: string,
-  creds: AxiosBasicCredentials,
+  credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/load/file/${dictionary}`;
   const data = JSON.stringify({
     objectId: `${dictionary}/${file}`,
     action: 'putObject',
   });
-  const config: AxiosRequestConfig = { auth: creds };
+  const config: AxiosRequestConfig = { auth: credentials };
 
   try {
     const response = await axios.post(path, data, config);
@@ -97,25 +98,25 @@ const [, , ...args] = process.argv;
 
 if (
   process.env.API_DOMAIN_NAME &&
-  process.env.API_DOMAIN_BASEPATH &&
+  process.env.API_DOMAIN_BASE_PATH &&
   process.env.API_DOMAIN_CERT_ARN
 ) {
-  axios.defaults.baseURL = `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASEPATH}`;
+  axios.defaults.baseURL = `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}`;
 } else {
-  axios.defaults.baseURL = process.env.LOAD_BASE_URL ?? 'https://localhost:3000';
+  axios.defaults.baseURL = process.env.LOAD_BASE_URL ?? 'https://localhost:8000';
 }
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const username = process.env.WEBONARY_USERNAME ?? '';
 const password = process.env.WEBONARY_PASSWORD ?? '';
-const creds: AxiosBasicCredentials = { username, password };
+const credentials: AxiosBasicCredentials = { username, password };
 
 if (args[0] && args[1]) {
   (async (): Promise<void> => {
     logMessage(`Importing ${args} to ${axios.defaults.baseURL} for ${username}`);
 
-    const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Altas allows 100 transactions a second, 500 simultaneous
+    const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Atlas allows 100 transactions a second, 500 simultaneous
     const CHUNK_LOAD_FILE_SIZE = 100; // AWS Lambda allows 1000 simultaneous connections
     const dictionary = args[0];
     const file = args[1];
@@ -138,7 +139,7 @@ if (args[0] && args[1]) {
     const startLoadingEntriesTime = Date.now();
     logMessage(`Start loading entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
 
-    const chunkedParsedItems: Entry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
+    const chunkedParsedItems: LoadEntry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
 
     // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
     // eslint-disable-next-line no-restricted-syntax
@@ -151,13 +152,13 @@ if (args[0] && args[1]) {
       a lot faster than many single loads running async
 
       const promises = chunk.map((entry): Promise<void> => {
-          return loadEntry(dictionary, [entry], creds);                    
+          return loadEntry(dictionary, [entry], credentials);                    
       });
       await Promise.all(promises);
       */
 
       // eslint-disable-next-line no-await-in-loop
-      await loadEntry(dictionary, chunk, creds);
+      await loadEntry(dictionary, chunk, credentials);
 
       logMessage(`Finished loading chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
     }
@@ -168,12 +169,12 @@ if (args[0] && args[1]) {
     logMessage(' Start loading files...');
 
     const entryFiles = parser.parsedItems.reduce(
-      (files: EntryFile[], entry: Entry): EntryFile[] => {
-        if (entry.audio.src) {
-          files.push(entry.audio);
+      (files: EntryFile[], entry: LoadEntry): EntryFile[] => {
+        if (entry.data.audio.src) {
+          files.push(entry.data.audio);
         }
-        if (entry.pictures.length) {
-          entry.pictures.forEach(picture => {
+        if (entry.data.pictures.length) {
+          entry.data.pictures.forEach(picture => {
             if (picture.src) {
               files.push(picture);
             }
@@ -197,7 +198,7 @@ if (args[0] && args[1]) {
 
       const promises = chunk.map(
         (entryFile): Promise<AxiosResponse | undefined> => {
-          return loadFile(dictionary, entryFile.src, creds);
+          return loadFile(dictionary, entryFile.src, credentials);
         },
       );
 

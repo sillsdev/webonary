@@ -53,6 +53,7 @@ export async function handler(
     const authPath = `${process.env.WEBONARY_URL}/${dictionary}${process.env.WEBONARY_AUTH_PATH}`;
 
     try {
+      console.log(authHeaders);
       const response = await axios.post(authPath, '{}', {
         auth: { username, password },
       });

@@ -1,38 +1,9 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
+import { EntryFile, EntryValue, EntryData, LoadEntry } from '../lambda/db';
 
 export interface Options {
   dictionary: string;
-}
-
-export interface EntryFile {
-  id: string;
-  src: string;
-  fileClass?: string;
-  caption?: string;
-}
-
-export interface EntryValue {
-  lang: string;
-  value: string;
-  type?: string;
-}
-
-export interface EntrySense {
-  definitionOrGloss: EntryValue[];
-  partOfSpeech: EntryValue;
-}
-
-export interface Entry {
-  _id: string;
-  dictionary: string;
-  letterHead: string;
-  mainHeadWord: EntryValue[];
-  pronunciations: EntryValue[];
-  senses: EntrySense;
-  reverseLetterHeads: EntryValue[];
-  audio: EntryFile;
-  pictures: EntryFile[];
 }
 
 export class FlexXhtmlParser {
@@ -40,7 +11,7 @@ export class FlexXhtmlParser {
 
   protected toBeParsed: string;
 
-  public parsedItems: Entry[];
+  public parsedItems: LoadEntry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     this.toBeParsed = toBeParsed;
@@ -55,15 +26,20 @@ export class FlexXhtmlParser {
       this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
 
     this.parsedItems = matches.map(
-      (entryData): Entry => {
+      (entryData): LoadEntry => {
         return FlexXhtmlParser.parseEntry(this.options.dictionary, entryData);
       },
     );
   }
 
-  static parseEntry(dictionary: string, entryData: string): Entry {
+  static parseEntry(dictionary: string, entryData: string): LoadEntry {
     const $ = cheerio.load(entryData);
-    const _id = $('div.entry').attr('id') ?? '';
+
+    // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
+    const guid =
+      $('div.entry')
+        .attr('id')
+        ?.substring(1) ?? '';
 
     const mainHeadWord: EntryValue[] = [];
     $('span.mainheadword span a').map((i, elem) => {
@@ -90,13 +66,15 @@ export class FlexXhtmlParser {
     </span>
     */
 
-    const audioId = $('span.lexemeform span audio').attr('id') ?? '';
+    const audioId = $('audio').attr('id') ?? '';
     const audioSrc =
-      $('span.lexemeform span audio source')
+      $('audio > source')
         .attr('src')
         ?.replace(/\\/g, '/') ?? '';
-    const fileClass = $('span.lexemeform span a').attr('class') ?? '';
+    const fileClass = $('audio + a').attr('class') ?? '';
     const audio: EntryFile = { id: audioId, src: audioSrc, fileClass };
+
+    // TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
 
     /* 
     <span class="pictures">
@@ -170,8 +148,7 @@ export class FlexXhtmlParser {
       [],
     );
 
-    const entry: Entry = {
-      _id,
+    const data: EntryData = {
       dictionary,
       mainHeadWord,
       letterHead,
@@ -182,6 +159,6 @@ export class FlexXhtmlParser {
       pictures,
     };
 
-    return entry;
+    return { guid, data };
   }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "Webonary Cloud API",
+  "version": "1.0.0",
+  "description": "RESTful API to load and access dictionaries created using SIL FieldWorks",
+  "title": "Webonary Cloud API",
+  "url" : "https://cloud-api.webonary.org/v1",
+  "footer": {
+    "title": "Help",
+    "filename": "apidoc-footer.md"
+  }
+}

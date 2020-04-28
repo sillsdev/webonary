@@ -53,7 +53,7 @@ describe('Gateway domain', () => {
   });
 
   test('Gateway domain name and path exists', async () => {
-    process.env.API_DOMAIN_BASEPATH = 'v999';
+    process.env.API_DOMAIN_BASE_PATH = 'v999';
 
     // Next, load the module – do it dynamically, not at the top of the file!
     const appWithDomainAndPath = new cdk.App();
@@ -65,7 +65,7 @@ describe('Gateway domain', () => {
 
     expectCDK(stackWithDomainAndPath).to(
       haveResource('AWS::ApiGateway::BasePathMapping', {
-        BasePath: process.env.API_DOMAIN_BASEPATH,
+        BasePath: process.env.API_DOMAIN_BASE_PATH,
       }),
     );
   });
