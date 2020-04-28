@@ -98,12 +98,12 @@ const [, , ...args] = process.argv;
 
 if (
   process.env.API_DOMAIN_NAME &&
-  process.env.API_DOMAIN_BASEPATH &&
+  process.env.API_DOMAIN_BASE_PATH &&
   process.env.API_DOMAIN_CERT_ARN
 ) {
-  axios.defaults.baseURL = `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASEPATH}`;
+  axios.defaults.baseURL = `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}`;
 } else {
-  axios.defaults.baseURL = process.env.LOAD_BASE_URL ?? 'https://localhost:3000';
+  axios.defaults.baseURL = process.env.LOAD_BASE_URL ?? 'https://localhost:8000';
 }
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';

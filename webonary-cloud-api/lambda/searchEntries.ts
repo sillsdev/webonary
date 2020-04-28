@@ -38,10 +38,10 @@ export async function handler(
       return callback(null, Response.notFound([{}]));
     }
     return callback(null, Response.success(entries));
-  } catch (err) {
-    return callback(`Error while performing ${JSON.stringify(event)}: ${JSON.stringify(err)}`);
-  } finally {
-    await dbClient.close();
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
   }
 }
 

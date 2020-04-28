@@ -23,6 +23,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Webonary web site
     const WEBONARY_URL = process.env.WEBONARY_URL ?? 'https://www.webonary.org';
     const WEBONARY_AUTH_PATH = process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary/import';
+    const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-api.webonary.org';
 
     // Mongo
     const { DB_URI, DB_USERNAME, DB_PASSWORD } = process.env;
@@ -33,6 +34,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const dictionaryBucket = new s3.Bucket(this, 'dictionaryBucket', {
       encryption: s3.BucketEncryption.S3_MANAGED,
       publicReadAccess: true,
+      bucketName: S3_DOMAIN_NAME,
     });
 
     // create lambda policy statement for operating over s3
@@ -44,8 +46,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // Lambda functions
 
-    // API Authorizer for loading dictonary file or entry
-    const loadAuthorizeFuction = new lambda.Function(
+    // API Authorizer for loading dictionary file or entry
+    const loadAuthorizeFunction = new lambda.Function(
       this,
       'loadAuthorize',
       Object.assign(defaultLambdaFunctionProps('loadAuthorize'), {
@@ -57,7 +59,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     );
 
     const loadAuthorizer = new apigateway.RequestAuthorizer(this, 'loadAuthorizer', {
-      handler: loadAuthorizeFuction,
+      handler: loadAuthorizeFunction,
       identitySources: [apigateway.IdentitySource.header('Authorization')],
     });
 
@@ -130,7 +132,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
         certificate,
       });
 
-      const basePath = process.env.API_DOMAIN_BASEPATH;
+      const basePath = process.env.API_DOMAIN_BASE_PATH;
       if (basePath) {
         apiDomainName.addBasePathMapping(api, { basePath });
       }

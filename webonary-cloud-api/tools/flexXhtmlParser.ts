@@ -66,13 +66,15 @@ export class FlexXhtmlParser {
     </span>
     */
 
-    const audioId = $('span.lexemeform span audio').attr('id') ?? '';
+    const audioId = $('audio').attr('id') ?? '';
     const audioSrc =
-      $('span.lexemeform span audio source')
+      $('audio > source')
         .attr('src')
         ?.replace(/\\/g, '/') ?? '';
-    const fileClass = $('span.lexemeform span a').attr('class') ?? '';
+    const fileClass = $('audio + a').attr('class') ?? '';
     const audio: EntryFile = { id: audioId, src: audioSrc, fileClass };
+
+    // TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
 
     /* 
     <span class="pictures">
