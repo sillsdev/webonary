@@ -220,7 +220,7 @@ function save_configurations()
 			}
 
 		}
-		update_option("noSearch", $noSearchForm);	
+		update_option("noSearch", $noSearchForm);
 
 		$useCloudBackend = filter_input(
 			INPUT_POST, 

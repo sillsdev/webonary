@@ -16,33 +16,46 @@ class Webonary_Cloud
 		return 'g' . $guid;
 	} 
 
-	private static function remoteGet($request, $args = array()) {
+	private static function remoteGet($path, $params = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
 			return;
 		}
 
-		$url = WEBONARY_CLOUD_API_URL . $request;
+		$encoded_path = array_map('rawurlencode', explode('/', $path));
+		$url = rtrim(WEBONARY_CLOUD_API_URL, '/') . '/' . implode('/', $encoded_path);
+
+		if (count($params)) {
+			$url .= '?' . build_query(array_map('urlencode', $params));
+		}
+
+		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
+			return;
+		}
 
 		if (WP_DEBUG){
 			error_log('Getting results from ' . $url);
-			if (count($args)) {
-				error_log('using ' . print_r($args, true));
-			} 
 		}
 
-		return wp_remote_get($url, $args);
+		return wp_remote_get($url);
 	}
 
-	private static function remoteFileUrl($filePath) {
-		if (defined('WEBONARY_CLOUD_FILE_URL')) {
-			$fileUrl = WEBONARY_CLOUD_FILE_URL;
-		}
-		else {
+	private static function remoteFileUrl($path) {
+		if (!defined('WEBONARY_CLOUD_FILE_URL'))  {
 			error_log('WEBONARY_CLOUD_FILE_URL is not set! Please do so in wp-config.php.');
-			$fileUrl = '';
+			return;
 		}
-		return $fileUrl . $filePath; 
+
+		$encoded_path = array_map('rawurlencode', explode('/', $path));
+		$url = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . implode('/', $encoded_path);
+
+		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_FILE_URL in wp-config.php set to a correct URL?');
+			return;
+		}
+
+		return $url;
 	}
 
 	public static function entryToFakePost($dictionary, $entry) {	
@@ -136,21 +149,22 @@ class Webonary_Cloud
 
 	public static function getEntriesAsPosts($doAction, $dictionary, $text) {
 		$request = $doAction . '/' . $dictionary;
+		$params = array();
 
 		switch ($doAction) {
 			case self::$doBrowseByLetter:
-				$request .= '?letterHead=' . $text;
+				$params['letterHead'] = $text;
 				break;
 			
 			case self::$doSearchFulltext:
-				$request .= '?fullText=' . $text;
+				$params['fullText'] = $text;
 				break;
 			
 			default:
 				break;
 		}
 
-		$response = self::remoteGet($request);
+		$response = self::remoteGet($request, $params);
 		$posts = [];
 	
 		if (is_array($response)) { 
@@ -168,10 +182,10 @@ class Webonary_Cloud
 	}
 	
 	public static function getEntriesAsReversals($dictionary, $lang, $letter) {	
-		$request = self::$doBrowseByLetter . '/' 
-			. $dictionary . '?letterHead=' . $letter . '&lang=' . $lang;
+		$request = self::$doBrowseByLetter . '/' . $dictionary;
+		$params = array('letterHead' => $letter, 'lang' => $lang);
 		
-		$response = self::remoteGet($request);
+		$response = self::remoteGet($request, $params);
 		$reversals = [];
 	
 		if (is_array($response)) { 
@@ -186,10 +200,10 @@ class Webonary_Cloud
 		return $reversals;
 	}
 
-	public static function getEntryAsPost($doAction, $dictionary, $page) {
-		$request = $doAction . '/' . $dictionary . '?guid=' . $page;
-		
-		$response = self::remoteGet($request);
+	public static function getEntryAsPost($doAction, $dictionary, $id) {
+		$request = $doAction . '/' . $dictionary;
+		$params = array('guid' => $id);
+		$response = self::remoteGet($request, $params);
 	
 		if (is_array($response)) { 
 			$body = json_decode($response['body']); // use the content

@@ -870,16 +870,8 @@ function vernacularalphabet_func( $atts )
 		{
 			$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr);
 		}
-		  
-		if(!isset($_GET['totalEntries']))
-		{
-			$totalEntries = count($arrPosts);
-		}
-		else
-		{
-			$totalEntries = $_GET['totalEntries'];
-		}
 
+		$totalEntries = $_GET['totalEntries'] ?? count($arrPosts);
 
 		if(count($arrPosts) == 0)
 		{
