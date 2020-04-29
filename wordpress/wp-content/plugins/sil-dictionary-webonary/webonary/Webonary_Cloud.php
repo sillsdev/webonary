@@ -204,14 +204,13 @@ class Webonary_Cloud
 		$request = $doAction . '/' . $dictionary;
 		$params = array('guid' => $id);
 		$response = self::remoteGet($request, $params);
-	
-		if (is_array($response)) { 
-			$body = json_decode($response['body']); // use the content
-			$post = self::entryToFakePost($dictionary, $body);
-			$posts = [];
-			$key = 1;
-			$post->ID = -$key; // negative ID, to avoid clash with a valid post
-			$posts[$key] = $post;
+		$entry = json_decode($response['body']); // use the content
+
+		$posts = [];
+		if (self::isValidEntry($entry)) { 
+			$post = self::entryToFakePost($dictionary, $entry);
+			$post->ID = -1; // negative ID, to avoid clash with a valid post
+			$posts[0] = $post;	
 		}
 
 		return $posts;
@@ -221,11 +220,11 @@ class Webonary_Cloud
 		if ($query->is_main_query()) {
 			$dictionary = Webonary_Cloud::getBlogDictionaryCode();
 
-			$page = trim(get_query_var('pagename'));
+			$pageName = trim(get_query_var('name'));
 
-			// Pagename begins with 'g', then followed by GUID
-			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $page)) {
-				return self::getEntryAsPost(self::$doGetEntry, $dictionary, $page);
+			// name begins with 'g', then followed by GUID
+			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
+				return self::getEntryAsPost(self::$doGetEntry, $dictionary, ltrim($pageName, 'g'));
 			}
 
 			$searchText = trim(get_search_query());
@@ -233,7 +232,7 @@ class Webonary_Cloud
 				return self::getEntriesAsPosts(self::$doSearchFulltext, $dictionary, $searchText);
 			}
 		}
-			
+
 		return null;
-	}	
+	}
 }
