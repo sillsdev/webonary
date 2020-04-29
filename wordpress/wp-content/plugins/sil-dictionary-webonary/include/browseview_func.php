@@ -483,7 +483,6 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 		}
 
 		$arrReversals = $wpdb->get_results($sql);
-
 		if(count($arrReversals) > 0)
 		{
 			$displayXHTML = false;
@@ -592,7 +591,17 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
 
 	$displayXHTML = true;
-	$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
+
+	if( get_option('useCloudBackend') )
+	{
+		$dictionary = Webonary_Cloud::getBlogDictionaryCode();
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionary, $langcode, $chosenLetter);
+	}
+	else
+	{
+		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
+	} 
+
 	if($arrReversals == null)
 	{
 		$display .= "No reversal entries imported.";
@@ -851,19 +860,18 @@ function vernacularalphabet_func( $atts )
 
 		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
 		$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
-		$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr);
 
-		if(!isset($_GET['totalEntries']))
+		if( get_option('useCloudBackend') )
 		{
-			$sql = "SELECT FOUND_ROWS()";
-
-			$totalEntries = $wpdb->get_var($sql);
+			$dictionary = Webonary_Cloud::getBlogDictionaryCode();
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionary, $chosenLetter);
 		}
 		else
 		{
-			$totalEntries = $_GET['totalEntries'];
+			$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr);
 		}
 
+		$totalEntries = $_GET['totalEntries'] ?? count($arrPosts);
 
 		if(count($arrPosts) == 0)
 		{
@@ -907,5 +915,4 @@ function vernacularalphabet_func( $atts )
 }
 
 add_shortcode( 'vernacularalphabet', 'vernacularalphabet_func' );
-
 ?>

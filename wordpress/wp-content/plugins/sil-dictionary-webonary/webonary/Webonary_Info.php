@@ -62,12 +62,7 @@ class Webonary_Info
 				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
-				if( is_subdomain_install() )
-					$dictionary_site = explode('.', $_SERVER['HTTP_HOST'])[0];	
-				else 
-					$dictionary_site = str_replace('/', '', get_blog_details()->path);
-
-				$archiveFile = $dictionary_site. '.zip';
+				$archiveFile = Webonary_Cloud::getBlogDictionaryCode() . '.zip';
  
 				if(file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
 					$status .= '<a href="/wp-content/archives/' . $archiveFile . '">' . $archiveFile . '</a>';

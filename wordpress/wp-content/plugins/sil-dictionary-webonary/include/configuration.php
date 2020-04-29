@@ -222,6 +222,22 @@ function save_configurations()
 		}
 		update_option("noSearch", $noSearchForm);
 
+		$useCloudBackend = filter_input(
+			INPUT_POST, 
+			'useCloudBackend', 
+			FILTER_SANITIZE_STRING, 
+			array('options' => array('default' => '')));
+
+		if($useCloudBackend != get_option('useCloudBackend', ''))
+		{
+			if (is_plugin_active('wp-super-cache/wp-cache.php'))
+			{
+				/** @noinspection PhpUndefinedFunctionInspection */
+				prune_super_cache(get_supercache_dir(), true);
+			}
+			update_option('useCloudBackend', $useCloudBackend);			
+		} 
+		
 		echo "<br>" . _e('Settings saved');
 	}
 }
@@ -813,6 +829,9 @@ function webonary_conf_widget($showTitle = false)
 				</p>
 				<p>
 					Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option('noSearch')); ?> />
+				</p>
+				<p>
+					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
 				</p>
 				<p>
 					<?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
