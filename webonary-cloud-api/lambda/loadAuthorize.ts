@@ -30,10 +30,10 @@ export async function handler(
   context: Context,
   callback: Callback,
 ): Promise<void> {
-  const dictionary = event.pathParameters?.dictionary;
+  const dictionaryId = event.pathParameters?.dictionaryId;
   const authHeaders = event.headers?.Authorization;
 
-  if (dictionary && authHeaders) {
+  if (dictionaryId && authHeaders) {
     const encodedCredentials = authHeaders.split(' ')[1];
     const plainCredentials = Buffer.from(encodedCredentials, 'base64')
       .toString()
@@ -43,14 +43,14 @@ export async function handler(
 
     // Same user should have the same access to load dictionary entry data as well as files.
     // User access is per dictionary per user.
-    const principalId = `${dictionary}::${username}`;
+    const principalId = `${dictionaryId}::${username}`;
 
     // To allow for correct caching behavior, we only keep the first part of request (load) and use wildcard for the next
     const resource = event.methodArn.replace(/POST\/load\/(entry|file)\//i, 'POST/load/*/');
 
     // Call Webonary.org for user authentication
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    const authPath = `${process.env.WEBONARY_URL}/${dictionary}${process.env.WEBONARY_AUTH_PATH}`;
+    const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
 
     try {
       console.log(authHeaders);

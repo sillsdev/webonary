@@ -18,12 +18,12 @@ export async function handler(
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    const dictionary = event.pathParameters?.dictionary ?? '';
+    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
     const letterHead = event.queryStringParameters?.letterHead;
     const lang = event.queryStringParameters?.lang;
 
     const dbFind: DbFindParameters = {};
-    dbFind.dictionary = dictionary;
+    dbFind.dictionaryId = dictionaryId;
 
     if (letterHead) {
       if (lang) {

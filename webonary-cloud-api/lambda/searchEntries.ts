@@ -17,7 +17,7 @@ export async function handler(
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dictionary = event.pathParameters?.dictionary;
+    const dictionaryId = event.pathParameters?.dictionaryId;
     const fullText = event.queryStringParameters?.fullText;
 
     // NOTE: Mongo text search can do language specific stemming,
@@ -32,7 +32,7 @@ export async function handler(
 
     const entries = await db
       .collection(COLLECTION_ENTRIES)
-      .find({ dictionary, $text })
+      .find({ dictionaryId, $text })
       .toArray();
     if (!entries.length) {
       return callback(null, Response.notFound([{}]));

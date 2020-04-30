@@ -8,7 +8,7 @@
  *
  * @apiUse BasicAuthHeader
  *
- * @apiParam (Path) {String} :dictionary Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
+ * @apiUse DictionaryIdPath
  *
  * @apiParam (Post Body) {String} objectId  Relative file path, starting with dictionary name
  * @apiParam (Post Body) {Object} action    "putObject"

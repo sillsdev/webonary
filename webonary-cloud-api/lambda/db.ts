@@ -16,7 +16,6 @@ export interface LoadDictionary {
   data: DictionaryData;
 }
 
-
 export interface EntryFile {
   id: string;
   src: string;

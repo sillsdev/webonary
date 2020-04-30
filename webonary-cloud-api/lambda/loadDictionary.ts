@@ -1,39 +1,25 @@
 /**
- * @apiDefine BasicAuthHeader
+ * @apiDefine DictionaryPostBody
+ * 
+ * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
+ * @apiParam (Post Body) {String}   body.guid  GUID of the entry
+ * @apiParam (Post Body) {Object}   body.data  Object of entry data
  *
- * @apiHeader Authorization Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password
- * @apiHeader Content-Type application/json
- * @apiHeaderExample {Header} Header Example
- * "Authorization: Basic YWRtaW46cGFzc3dvcmQ="
- */
+ */ 
 
 /**
- * @apiDefine ErrorForbidden
- *
- * @apiError ErrorForbidden Incorrect user credentials or user is not authorized to post to the dictionary
- *
- * @apiErrorExample {json} ErrorForbidden
- * HTTP/1.1 403 Forbidden
- * {
- *    "Message": "User is not authorized to access this resource with an explicit deny"
- * }
- */
-
-/**
- * @api {post} /load/entry/:dictionary Load entry
- * @apiDescription Calling this API will allow loading of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
- * @apiName LoadDictionaryEntry
+ * @api {post} /load/dictionary/:dictionaryId Load dictionary
+ * @apiDescription Calling this API will insert or update metadata for a dictionary
+ * @apiName LoadDictionary
  * @apiGroup Dictionary
  * @apiPermission dictionary admin in Webonary
  *
  * @apiUse BasicAuthHeader
  *
- * @apiParam (Path) {String} :dictionary Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
+ * @apiUse DictionaryIdPath
  *
- * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
- * @apiParam (Post Body) {String}   body.guid  GUID of the entry
- * @apiParam (Post Body) {Object}   body.data  Object of entry data
- *
+ * @apiUse DictionaryPostBody
+ * 
  * @apiParamExample {json} Post Body Example
  * [
  *    {
@@ -141,21 +127,16 @@
  *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *    }
  * ]
- * @apiSuccess {String} updatedAt Timestamp of the loading of entries in GMT
- * @apiSuccess {Number} updatedCount Number of entries updated
- * @apiSuccess {Number} insertedCount Number of entries inserted
- * @apiSuccess {Object[]} insertedGUIDs Array containing GUID of the inserted entries
+ * @apiSuccess {String} updatedAt Timestamp of the loading of dictionary metadata in GMT
+ * @apiSuccess {Number} updatedCount Dictionary updated
+ * @apiSuccess {Number} insertedCount Dictionary inserted
  *
  * @apiSuccessExample Success Response Example
  * HTTP/1.1 200 OK
  * {
  *    "updatedAt": "Thu, 23 Apr 2020 17:00:15 GMT",
- *    "updatedCount": 48,
- *    "insertedCount": 2,
- *    "insertedGUIDs": [
- *       "edea14f7-e59c-494c-b7c1-94e00f5f8a81",
- *       "496e6865-bf0d-40aa-9834-93b47404ed93"
- *    ]
+ *    "updatedCount": 0,
+ *    "insertedCount": 1
  * }
  *
  * @apiError BadRequest Input should be an array of up to 50 entry objects.

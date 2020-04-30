@@ -11,12 +11,12 @@ const password = 'testPassword!';
 const base64Credentials = Buffer.from(`${username}:${password}`).toString('base64');
 const headers = { Authorization: `Basic ${base64Credentials}` };
 
-const dictionary = 'testDictionary';
+const dictionaryId = 'testDictionary';
 
 const event: CustomAuthorizerEvent = {
   type: 'testEventType',
   methodArn: 'POST/load/entry/',
-  pathParameters: { dictionary },
+  pathParameters: { dictionaryId },
   headers,
 };
 
@@ -40,7 +40,7 @@ describe('loadAuthorize', () => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: '' }));
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(`${dictionary}::${username}`);
+      expect(result.principalId).toEqual(`${dictionaryId}::${username}`);
       expect(result.policyDocument.Statement[0].Effect).toBe('Allow');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
       expect(result.policyDocument.Statement[0].Resource).toBe('POST/load/*/');
@@ -54,7 +54,7 @@ describe('loadAuthorize', () => {
 
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(`${dictionary}::${username}`);
+      expect(result.principalId).toEqual(`${dictionaryId}::${username}`);
       expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
     });

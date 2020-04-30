@@ -81,6 +81,14 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       principal: 'apigateway.amazonaws.com',
     });
 
+    const loadDictionaryFunction = new lambda.Function(
+      this,
+      'loadDictionary',
+      Object.assign(defaultLambdaFunctionProps('loadDictionary'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
+
     const loadEntryFunction = new lambda.Function(
       this,
       'loadEntry',
@@ -145,6 +153,13 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const apiLoadFileForDictionary = apiLoadFile.addResource('{dictionary}');
     const s3AuthorizeLambda = new apigateway.LambdaIntegration(s3AuthorizeFunction);
     apiLoadFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
+      authorizer: loadAuthorizer,
+    });
+
+    const apiLoadDictionary = apiLoad.addResource('dictionary');
+    const apiLoadDictionaryForDictionary = apiLoadDictionary.addResource('{dictionary}');
+    const loadDictionaryLambda = new apigateway.LambdaIntegration(loadDictionaryFunction);
+    apiLoadDictionaryForDictionary.addMethod('POST', loadDictionaryLambda, {
       authorizer: loadAuthorizer,
     });
 

@@ -7,6 +7,20 @@
  * "Authorization: Basic YWRtaW46cGFzc3dvcmQ="
  */
 
+ /**
+ * @apiDefine DictionaryIdPath
+ *
+ * @apiParam (Path) {String} :dictionaryId Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
+ */
+
+ /**
+ * @apiDefine DictionaryEntryPostBody
+ *
+ * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
+ * @apiParam (Post Body) {String}   body.guid  GUID of the entry
+ * @apiParam (Post Body) {Object}   body.data  Object of entry data
+ */
+
 /**
  * @apiDefine ErrorForbidden
  *
@@ -20,7 +34,7 @@
  */
 
 /**
- * @api {post} /load/entry/:dictionary Load entry
+ * @api {post} /load/entry/:dictionaryId Load entry
  * @apiDescription Calling this API will allow loading of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
  * @apiName LoadDictionaryEntry
  * @apiGroup Dictionary
@@ -28,12 +42,10 @@
  *
  * @apiUse BasicAuthHeader
  *
- * @apiParam (Path) {String} :dictionary Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
- *
- * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
- * @apiParam (Post Body) {String}   body.guid  GUID of the entry
- * @apiParam (Post Body) {Object}   body.data  Object of entry data
- *
+ * @apiUse DictionaryIdPath
+ * 
+ * @apiUse DictionaryEntryPostBody
+ * 
  * @apiParamExample {json} Post Body Example
  * [
  *    {
@@ -43,7 +55,7 @@
  *          "id": "g635754050803599765ãadga",
  *          "src": "AudioVisual/635754050803599765ãadga.mp3"
  *        },
- *        "dictionary": "moore",
+ *        "dictionaryId": "moore",
  *        "letterHead": "ã",
  *        "mainHeadWord": [
  *          {
@@ -101,7 +113,7 @@
  *          "id": "g636908699703911281abada",
  *          "src": "AudioVisual/636908699703911281abada.mp3"
  *        },
- *        "dictionary": "moore",
+ *        "dictionaryId": "moore",
  *        "letterHead": "a",
  *        "mainHeadWord": [
  *          {
