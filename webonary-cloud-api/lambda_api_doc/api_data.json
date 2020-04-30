@@ -3,7 +3,7 @@
     "type": "post",
     "url": "/load/dictionary/:dictionaryId",
     "title": "Load dictionary",
-    "description": "<p>Calling this API will allow loading of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.</p>",
+    "description": "<p>Calling this API will insert or update metadata for a dictionary</p>",
     "name": "LoadDictionary",
     "group": "Dictionary",
     "permission": [
@@ -15,7 +15,7 @@
       "examples": [
         {
           "title": "Post Body Example",
-          "content": "[\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g635754050803599765ãadga\",\n         \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"ã\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"ãadga\"\n         }\n       ],\n       \"pictures\": [\n         {\n           \"caption\": \"ãadga\",\n           \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n           \"src\": \"pictures/Vitex_doniana.jpg\"\n         }\n       ],\n       \"pronunciations\": [\n         {\n           \"lang\": \"mos\",\n           \"type\": \"form\",\n           \"value\": \"ã́-á\"\n         }\n       ],\n       \"reverseLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"p\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"b\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"prunier noir\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"blackberry tree, plum tree\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"n\"\n         }\n       }\n     },\n     \"guid\": \"06a3f6ba-759f-42f2-b284-b4d5b3c887a2\"\n   },\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g636908699703911281abada\",\n         \"src\": \"AudioVisual/636908699703911281abada.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"a\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"abada\"\n         }\n       ],\n       \"pictures\": [],\n       \"pronunciations\": [],\n       \"reverseLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"j\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"n\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"jamais\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"never\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"adv\"\n         }\n       }\n     },\n     \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n   }\n]",
+          "content": "[\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g635754050803599765ãadga\",\n         \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"ã\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"ãadga\"\n         }\n       ],\n       \"pictures\": [\n         {\n           \"caption\": \"ãadga\",\n           \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n           \"src\": \"pictures/Vitex_doniana.jpg\"\n         }\n       ],\n       \"pronunciations\": [\n         {\n           \"lang\": \"mos\",\n           \"type\": \"form\",\n           \"value\": \"ã́-á\"\n         }\n       ],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"p\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"b\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"prunier noir\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"blackberry tree, plum tree\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"n\"\n         }\n       }\n     },\n     \"guid\": \"06a3f6ba-759f-42f2-b284-b4d5b3c887a2\"\n   },\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g636908699703911281abada\",\n         \"src\": \"AudioVisual/636908699703911281abada.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"a\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"abada\"\n         }\n       ],\n       \"pictures\": [],\n       \"pronunciations\": [],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"j\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"n\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"jamais\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"never\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"adv\"\n         }\n       }\n     },\n     \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n   }\n]",
           "type": "json"
         }
       ],
@@ -62,65 +62,28 @@
             "type": "String",
             "optional": false,
             "field": "updatedAt",
-            "description": "<p>Timestamp of the loading of entries in GMT</p>"
+            "description": "<p>Timestamp of the loading of dictionary metadata in GMT</p>"
           },
           {
             "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "updatedCount",
-            "description": "<p>Number of entries updated</p>"
+            "description": "<p>Dictionary updated</p>"
           },
           {
             "group": "Success 200",
             "type": "Number",
             "optional": false,
             "field": "insertedCount",
-            "description": "<p>Number of entries inserted</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "Object[]",
-            "optional": false,
-            "field": "insertedGUIDs",
-            "description": "<p>Array containing GUID of the inserted entries</p>"
+            "description": "<p>Dictionary inserted</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success Response Example",
-          "content": "HTTP/1.1 200 OK\n{\n   \"updatedAt\": \"Thu, 23 Apr 2020 17:00:15 GMT\",\n   \"updatedCount\": 48,\n   \"insertedCount\": 2,\n   \"insertedGUIDs\": [\n      \"edea14f7-e59c-494c-b7c1-94e00f5f8a81\",\n      \"496e6865-bf0d-40aa-9834-93b47404ed93\"\n   ]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "BadRequest",
-            "description": "<p>Input should be an array of up to 50 entry objects.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "ErrorForbidden",
-            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "BadRequest Example",
-          "content": "HTTP/1.1 400 BadRequest\n{\n   \"ErrorType\": \"BadRequest\",\n   \"Message\": \"Input must be an array of entries\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "ErrorForbidden",
-          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n   \"updatedAt\": \"Thu, 23 Apr 2020 17:00:15 GMT\",\n   \"updatedCount\": 0,\n   \"insertedCount\": 1\n}",
           "type": "json"
         }
       ]
@@ -152,6 +115,62 @@
           "type": "Header"
         }
       ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Input should be a valid JSON object for this API call</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "ErrorForbidden",
+            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
+          }
+        ],
+        "500": [
+          {
+            "group": "500",
+            "optional": false,
+            "field": "SyntaxError",
+            "description": "<p>Invalid JSON body structure</p>"
+          },
+          {
+            "group": "500",
+            "optional": false,
+            "field": "TypeError",
+            "description": "<p>Invalid type in JSON body</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Bad Request Example",
+          "content": "HTTP/1.1 400 Bad Request\n{\n   \"errorType\": \"BadRequest\",\n   \"errorMessage\": \"Input must be an array of entries\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "ErrorForbidden",
+          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "SyntaxError Example",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n   \"errorType\": \"SyntaxError\",\n   \"errorMessage\": \"Unexpected token } in JSON at position 243\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "TypeError Example",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n   \"errorType\": \"TypeError\",\n   \"errorMessage\": \"Cannot read property 'id' of null\"\n}",
+          "type": "json"
+        }
+      ]
     }
   },
   {
@@ -170,7 +189,7 @@
       "examples": [
         {
           "title": "Post Body Example",
-          "content": "[\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g635754050803599765ãadga\",\n         \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n       },\n       \"dictionaryId\": \"moore\",\n       \"letterHead\": \"ã\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"ãadga\"\n         }\n       ],\n       \"pictures\": [\n         {\n           \"caption\": \"ãadga\",\n           \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n           \"src\": \"pictures/Vitex_doniana.jpg\"\n         }\n       ],\n       \"pronunciations\": [\n         {\n           \"lang\": \"mos\",\n           \"type\": \"form\",\n           \"value\": \"ã́-á\"\n         }\n       ],\n       \"reverseLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"p\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"b\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"prunier noir\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"blackberry tree, plum tree\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"n\"\n         }\n       }\n     },\n     \"guid\": \"06a3f6ba-759f-42f2-b284-b4d5b3c887a2\"\n   },\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g636908699703911281abada\",\n         \"src\": \"AudioVisual/636908699703911281abada.mp3\"\n       },\n       \"dictionaryId\": \"moore\",\n       \"letterHead\": \"a\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"abada\"\n         }\n       ],\n       \"pictures\": [],\n       \"pronunciations\": [],\n       \"reverseLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"j\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"n\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"jamais\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"never\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"adv\"\n         }\n       }\n     },\n     \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n   }\n]",
+          "content": "[\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g635754050803599765ãadga\",\n         \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n       },\n       \"dictionaryId\": \"moore\",\n       \"letterHead\": \"ã\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"ãadga\"\n         }\n       ],\n       \"pictures\": [\n         {\n           \"caption\": \"ãadga\",\n           \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n           \"src\": \"pictures/Vitex_doniana.jpg\"\n         }\n       ],\n       \"pronunciations\": [\n         {\n           \"lang\": \"mos\",\n           \"type\": \"form\",\n           \"value\": \"ã́-á\"\n         }\n       ],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"p\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"b\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"prunier noir\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"blackberry tree, plum tree\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"n\"\n         }\n       }\n     },\n     \"guid\": \"06a3f6ba-759f-42f2-b284-b4d5b3c887a2\"\n   },\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g636908699703911281abada\",\n         \"src\": \"AudioVisual/636908699703911281abada.mp3\"\n       },\n       \"dictionaryId\": \"moore\",\n       \"letterHead\": \"a\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"abada\"\n         }\n       ],\n       \"pictures\": [],\n       \"pronunciations\": [],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"j\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"n\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"jamais\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"never\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"adv\"\n         }\n       }\n     },\n     \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n   }\n]",
           "type": "json"
         }
       ],
@@ -250,36 +269,6 @@
         }
       ]
     },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "BadRequest",
-            "description": "<p>Input should be an array of up to 50 entry objects.</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "ErrorForbidden",
-            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "BadRequest Example",
-          "content": "HTTP/1.1 400 BadRequest\n{\n   \"ErrorType\": \"BadRequest\",\n   \"Message\": \"Input must be an array of entries\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "ErrorForbidden",
-          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
-          "type": "json"
-        }
-      ]
-    },
     "version": "0.0.0",
     "filename": "lambda/loadEntry.ts",
     "groupTitle": "Dictionary",
@@ -305,6 +294,62 @@
           "title": "Header Example",
           "content": "\"Authorization: Basic YWRtaW46cGFzc3dvcmQ=\"",
           "type": "Header"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "400": [
+          {
+            "group": "400",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Input should be a valid JSON object for this API call</p>"
+          }
+        ],
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "ErrorForbidden",
+            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
+          }
+        ],
+        "500": [
+          {
+            "group": "500",
+            "optional": false,
+            "field": "SyntaxError",
+            "description": "<p>Invalid JSON body structure</p>"
+          },
+          {
+            "group": "500",
+            "optional": false,
+            "field": "TypeError",
+            "description": "<p>Invalid type in JSON body</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Bad Request Example",
+          "content": "HTTP/1.1 400 Bad Request\n{\n   \"errorType\": \"BadRequest\",\n   \"errorMessage\": \"Input must be an array of entries\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "ErrorForbidden",
+          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "SyntaxError Example",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n   \"errorType\": \"SyntaxError\",\n   \"errorMessage\": \"Unexpected token } in JSON at position 243\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "TypeError Example",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n   \"errorType\": \"TypeError\",\n   \"errorMessage\": \"Cannot read property 'id' of null\"\n}",
+          "type": "json"
         }
       ]
     }
@@ -464,18 +509,20 @@
     },
     "error": {
       "fields": {
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "ErrorForbidden",
+            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
+          }
+        ],
         "Error 4xx": [
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "BadRequest",
             "description": "<p>Input should be an be an object containing objectId and action (&quot;putObject&quot;).</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "ErrorForbidden",
-            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
           }
         ]
       },

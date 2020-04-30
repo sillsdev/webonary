@@ -30,8 +30,7 @@ export function success(body: ResponseBody): object {
 }
 
 export function badRequest(body: ResponseBody): object {
-  // This is to mimic default message structure from AWS Gateway custom authorizer
-  return buildResponse(400, { ErrorType: BAD_REQUEST, Message: body });
+  return buildResponse(400, { errorType: BAD_REQUEST, errorMessage: body });
 }
 
 export function failure(body: ResponseBody): object {

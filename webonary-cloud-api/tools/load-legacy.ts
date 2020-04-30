@@ -3,7 +3,8 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
-import { LoadEntry, EntryFile } from '../lambda/db';
+import { exist } from '@aws-cdk/assert';
+import { LoadDictionary, LoadEntry, EntryFile } from '../lambda/db';
 import fileGrabber from './fileGrabber';
 import { FlexXhtmlParser } from './flexXhtmlParser';
 
@@ -35,6 +36,24 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
     index += size;
   }
   return chunked;
+}
+
+async function loadDictionary(
+  dictionaryId: string,
+  dictionary: LoadDictionary,
+  credentials: AxiosBasicCredentials,
+): Promise<AxiosResponse | undefined> {
+  const path = `/load/dictionary/${dictionaryId}`;
+  const data = JSON.stringify(dictionary);
+  const config: AxiosRequestConfig = { auth: credentials };
+
+  try {
+    return await axios.post(path, data, config);
+  } catch (error) {
+    handleAxiosError(error);
+  }
+
+  return undefined;
 }
 
 async function loadEntry(
@@ -112,15 +131,36 @@ const username = process.env.WEBONARY_USERNAME ?? '';
 const password = process.env.WEBONARY_PASSWORD ?? '';
 const credentials: AxiosBasicCredentials = { username, password };
 
-if (args[0] && args[1]) {
+if (args[0]) {
   (async (): Promise<void> => {
     logMessage(`Importing ${args} to ${axios.defaults.baseURL} for ${username}`);
 
     const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Atlas allows 100 transactions a second, 500 simultaneous
     const CHUNK_LOAD_FILE_SIZE = 100; // AWS Lambda allows 1000 simultaneous connections
     const dictionaryId = args[0];
-    const file = args[1];
-    const toBeParsed = await fileGrabber.getFile(dictionaryId, file);
+
+    const dictionaryFiles = await fileGrabber.getFilenames(dictionaryId);
+    if (!dictionaryFiles.length) {
+      logMessage(`No data found for ${dictionaryId}!`);
+      return;
+    }
+
+    const mainCssFiles = [];
+    const mainFile = 'configured.xhtml';
+    const mainCssFile = 'configured.css';
+    if (!dictionaryFiles.includes(mainFile)) {
+      logMessage(`${mainFile} or ${mainCssFile} not found!`);
+      return;
+    }
+
+    mainCssFiles.push(mainFile);
+
+    const mainCssOverrideFile = 'ProjectDictionaryOverrides.css';
+    if (dictionaryFiles.includes(mainCssOverrideFile)) {
+      mainCssFiles.push(mainCssOverrideFile);
+    }
+
+    const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
     const parser = new FlexXhtmlParser(toBeParsed, { dictionaryId });
 
     const startProcessingTime = Date.now();
@@ -130,10 +170,37 @@ if (args[0] && args[1]) {
     await parser.parse();
     logMessage(`Finished parsing ${parser.parsedItems.length} entries`, startParsingTime);
 
-    const limit = Number(args[2]);
+    const limit = Number(args[1]);
     if (limit) {
       logMessage(`Limiting to ${limit.toString()} entries`);
       parser.parsedItems = parser.parsedItems.slice(0, limit);
+    }
+
+    logMessage(`Getting dictionary metadata...`);
+    const dictionaryLoad = FlexXhtmlParser.getDictionaryData(dictionaryId, parser.parsedItems);
+    if (dictionaryLoad) {
+      dictionaryLoad.data.mainLanguage.cssFiles = mainCssFiles;
+
+      dictionaryLoad.data.reversalLanguages.forEach((item, index) => {
+        const cssFile = `reversal_${item.lang}.css`;
+        if (dictionaryFiles.includes(cssFile)) {
+          dictionaryLoad.data.reversalLanguages[index].cssFiles = [cssFile];
+        }
+      });
+
+      logMessage(`Loading dictionary metadata...`);
+      await loadDictionary(dictionaryId, dictionaryLoad, credentials);
+
+      logMessage(`Loading dictionary css files...`);
+      const promises = dictionaryFiles
+        .filter(file => file.endsWith('.css'))
+        .map(
+          (file): Promise<AxiosResponse | undefined> => {
+            return loadFile(dictionaryId, file, credentials);
+          },
+        );
+
+      await Promise.all(promises);
     }
 
     const startLoadingEntriesTime = Date.now();
@@ -213,5 +280,5 @@ if (args[0] && args[1]) {
     logMessage(`Finished processing ${dictionaryId}`, startProcessingTime);
   })();
 } else {
-  logMessage('Usage: import-entries DICTIONARY_NAME CONFIGURED_XHTML_FILE_NAME LIMIT_ENTRY');
+  logMessage('Usage: import-entries DICTIONARY_NAME LIMIT_ENTRY');
 }

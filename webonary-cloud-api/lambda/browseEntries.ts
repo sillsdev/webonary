@@ -27,7 +27,7 @@ export async function handler(
 
     if (letterHead) {
       if (lang) {
-        dbFind.reverseLetterHeads = { lang, value: letterHead };
+        dbFind.reversalLetterHeads = { lang, value: letterHead };
       } else {
         dbFind.letterHead = letterHead;
       }

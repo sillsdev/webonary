@@ -1,11 +1,11 @@
 /**
  * @apiDefine DictionaryPostBody
- * 
+ *
  * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
  * @apiParam (Post Body) {String}   body.guid  GUID of the entry
  * @apiParam (Post Body) {Object}   body.data  Object of entry data
  *
- */ 
+ */
 
 /**
  * @api {post} /load/dictionary/:dictionaryId Load dictionary
@@ -19,7 +19,7 @@
  * @apiUse DictionaryIdPath
  *
  * @apiUse DictionaryPostBody
- * 
+ *
  * @apiParamExample {json} Post Body Example
  * [
  *    {
@@ -51,7 +51,7 @@
  *            "value": "ã́-á"
  *          }
  *        ],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "p"
@@ -97,7 +97,7 @@
  *        ],
  *        "pictures": [],
  *        "pronunciations": [],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "j"
@@ -139,29 +139,23 @@
  *    "insertedCount": 1
  * }
  *
- * @apiError BadRequest Input should be an array of up to 50 entry objects.
- *
- * @apiErrorExample {json} BadRequest Example
- * HTTP/1.1 400 BadRequest
- * {
- *    "ErrorType": "BadRequest",
- *    "Message": "Input must be an array of entries"
- * }
- *
+ * @apiUse BadRequest
  * @apiUse ErrorForbidden
+ * @apiUse SyntaxError
+ * @apiUse TypeError
  *
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, COLLECTION_DICTIONARIES, LoadDictionary } from './db';
 import * as Response from './response';
 
 interface LoadResult {
   updatedAt: string;
-  updatedCount: number,
-  insertedCount: number,
+  updatedCount: number;
+  insertedCount: number;
 }
 
 let dbClient: MongoClient;
@@ -175,14 +169,14 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
+    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
     const dictionary: LoadDictionary = JSON.parse(event.body as string);
-    const _id = dictionary.id;
+    const _id = dictionaryId;
     const updatedAt = new Date().toUTCString();
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-  
     const dbResult = await db
       .collection(COLLECTION_DICTIONARIES)
       .updateOne({ _id }, { $set: { _id, ...dictionary.data, updatedAt } }, { upsert: true });

@@ -150,21 +150,21 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const apiLoad = api.root.addResource('load');
 
     const apiLoadFile = apiLoad.addResource('file');
-    const apiLoadFileForDictionary = apiLoadFile.addResource('{dictionary}');
+    const apiLoadFileForDictionary = apiLoadFile.addResource('{dictionaryId}');
     const s3AuthorizeLambda = new apigateway.LambdaIntegration(s3AuthorizeFunction);
     apiLoadFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
       authorizer: loadAuthorizer,
     });
 
     const apiLoadDictionary = apiLoad.addResource('dictionary');
-    const apiLoadDictionaryForDictionary = apiLoadDictionary.addResource('{dictionary}');
+    const apiLoadDictionaryForDictionary = apiLoadDictionary.addResource('{dictionaryId}');
     const loadDictionaryLambda = new apigateway.LambdaIntegration(loadDictionaryFunction);
     apiLoadDictionaryForDictionary.addMethod('POST', loadDictionaryLambda, {
       authorizer: loadAuthorizer,
     });
 
     const apiLoadEntry = apiLoad.addResource('entry');
-    const apiLoadEntryForDictionary = apiLoadEntry.addResource('{dictionary}');
+    const apiLoadEntryForDictionary = apiLoadEntry.addResource('{dictionaryId}');
     const loadEntryLambda = new apigateway.LambdaIntegration(loadEntryFunction);
     apiLoadEntryForDictionary.addMethod('POST', loadEntryLambda, {
       authorizer: loadAuthorizer,
@@ -172,19 +172,19 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // Get single entry
     const apiGet = api.root.addResource('get');
-    const apiGetDictionary = apiGet.addResource('{dictionary}');
+    const apiGetDictionary = apiGet.addResource('{dictionaryId}');
     const getEntryLambda = new apigateway.LambdaIntegration(getEntryFunction);
     apiGetDictionary.addMethod('GET', getEntryLambda);
 
     // Browse entries, all and by starting letter
     const apiBrowse = api.root.addResource('browse');
-    const apiBrowseDictionary = apiBrowse.addResource('{dictionary}');
+    const apiBrowseDictionary = apiBrowse.addResource('{dictionaryId}');
     const browseEntriesLambda = new apigateway.LambdaIntegration(browseEntriesFunction);
     apiBrowseDictionary.addMethod('GET', browseEntriesLambda);
 
     // Search entries
     const apiSearch = api.root.addResource('search');
-    const apiSearchDictionary = apiSearch.addResource('{dictionary}');
+    const apiSearchDictionary = apiSearch.addResource('{dictionaryId}');
     const searchEntriesLambda = new apigateway.LambdaIntegration(searchEntriesFunction);
     apiSearchDictionary.addMethod('GET', searchEntriesLambda);
 

@@ -1,6 +1,13 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { EntryFile, EntryValue, EntryData, LoadEntry } from '../lambda/db';
+import {
+  EntryFile,
+  EntryValue,
+  EntryData,
+  LoadEntry,
+  LoadDictionary,
+  DictionaryLanguage,
+} from '../lambda/db';
 
 export interface Options {
   dictionaryId: string;
@@ -32,7 +39,7 @@ export class FlexXhtmlParser {
     );
   }
 
-  static parseEntry(dictionaryId: string, entryData: string): LoadEntry {
+  public static parseEntry(dictionaryId: string, entryData: string): LoadEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
@@ -136,7 +143,7 @@ export class FlexXhtmlParser {
       }
     });
 
-    const reverseLetterHeads = definitionOrGloss.reduce(
+    const reversalLetterHeads = definitionOrGloss.reduce(
       (letterHeads: EntryValue[], entry: EntryValue): EntryValue[] => {
         const { lang } = entry;
         const value = entry.value.toLowerCase().substring(0, 1);
@@ -154,11 +161,67 @@ export class FlexXhtmlParser {
       letterHead,
       pronunciations,
       senses: { partOfSpeech, definitionOrGloss },
-      reverseLetterHeads,
+      reversalLetterHeads,
       audio,
       pictures,
     };
 
     return { guid, data };
+  }
+
+  public static getDictionaryData(
+    dictionaryId: string,
+    loadEntry: LoadEntry[],
+  ): LoadDictionary | undefined {
+    const id = dictionaryId;
+
+    let loadDictionary;
+    if (id && loadEntry.length) {
+      // We can safely assume that all the entries have same main language
+      const mainLang = loadEntry[0].data.mainHeadWord[0].lang;
+      const mainLetters = loadEntry
+        .map(entry => entry.data.letterHead)
+        .filter((item, index, items) => items.indexOf(item) === index)
+        .sort((a, b) => a.localeCompare(b));
+
+      const mainLanguage: DictionaryLanguage = {
+        lang: mainLang,
+        letters: mainLetters,
+      };
+
+      const reversalLetterHeads = loadEntry.reduce((letterHeads, entry) => {
+        const newLetterHeads = letterHeads;
+        entry.data.reversalLetterHeads.forEach(head => {
+          const langLetters = newLetterHeads.get(head.lang);
+          if (langLetters) {
+            if (!langLetters.find(letter => letter === head.value)) {
+              langLetters.push(head.value);
+              newLetterHeads.set(head.lang, langLetters);
+            }
+          } else {
+            newLetterHeads.set(head.lang, [head.value]);
+          }
+        });
+        return newLetterHeads;
+      }, new Map<string, string[]>());
+
+      const reversalLanguages: DictionaryLanguage[] = [];
+      reversalLetterHeads.forEach((letters, lang) =>
+        reversalLanguages.push({
+          lang,
+          letters: letters.sort((a, b) => a.localeCompare(b)),
+        }),
+      );
+
+      loadDictionary = {
+        id,
+        data: {
+          mainLanguage,
+          reversalLanguages,
+        },
+      };
+    }
+
+    return loadDictionary;
   }
 }

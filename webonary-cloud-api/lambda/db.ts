@@ -1,14 +1,14 @@
 export interface DictionaryLanguage {
-  code: string;
-  name?: string;
-  letters?: string[],
+  lang: string;
+  title?: string;
+  letters?: string[];
   cssFiles?: string[];
 }
 
 export interface DictionaryData {
   _id?: string;
-  mainLanguage: LoadDictionary,
-  reversalLanguages: LoadDictionary[],
+  mainLanguage: DictionaryLanguage;
+  reversalLanguages: DictionaryLanguage[];
 }
 
 export interface LoadDictionary {
@@ -41,7 +41,7 @@ export interface EntryData {
   mainHeadWord: EntryValue[];
   pronunciations: EntryValue[];
   senses: EntrySense;
-  reverseLetterHeads: EntryValue[];
+  reversalLetterHeads: EntryValue[];
   audio: EntryFile;
   pictures: EntryFile[];
 }

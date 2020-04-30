@@ -7,13 +7,13 @@
  * "Authorization: Basic YWRtaW46cGFzc3dvcmQ="
  */
 
- /**
+/**
  * @apiDefine DictionaryIdPath
  *
  * @apiParam (Path) {String} :dictionaryId Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
  */
 
- /**
+/**
  * @apiDefine DictionaryEntryPostBody
  *
  * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
@@ -22,14 +22,53 @@
  */
 
 /**
+ * @apiDefine BadRequest
+ *
+ * @apiError (400) BadRequest Input should be a valid JSON object for this API call
+ *
+ * @apiErrorExample {json} Bad Request Example
+ * HTTP/1.1 400 Bad Request
+ * {
+ *    "errorType": "BadRequest",
+ *    "errorMessage": "Input must be an array of entries"
+ * }
+ */
+
+/**
  * @apiDefine ErrorForbidden
  *
- * @apiError ErrorForbidden Incorrect user credentials or user is not authorized to post to the dictionary
+ * @apiError (403) ErrorForbidden Incorrect user credentials or user is not authorized to post to the dictionary
  *
  * @apiErrorExample {json} ErrorForbidden
  * HTTP/1.1 403 Forbidden
  * {
  *    "Message": "User is not authorized to access this resource with an explicit deny"
+ * }
+ */
+
+/**
+ * @apiDefine TypeError
+ *
+ * @apiError (500) TypeError Invalid type in JSON body
+ *
+ * @apiErrorExample {json} TypeError Example
+ * HTTP/1.1 500 Internal Server Error
+ * {
+ *    "errorType": "TypeError",
+ *    "errorMessage": "Cannot read property 'id' of null"
+ * }
+ */
+
+/**
+ * @apiDefine SyntaxError
+ *
+ * @apiError (500) SyntaxError Invalid JSON body structure
+ *
+ * @apiErrorExample {json} SyntaxError Example
+ * HTTP/1.1 500 Internal Server Error
+ * {
+ *    "errorType": "SyntaxError",
+ *    "errorMessage": "Unexpected token } in JSON at position 243"
  * }
  */
 
@@ -43,9 +82,9 @@
  * @apiUse BasicAuthHeader
  *
  * @apiUse DictionaryIdPath
- * 
+ *
  * @apiUse DictionaryEntryPostBody
- * 
+ *
  * @apiParamExample {json} Post Body Example
  * [
  *    {
@@ -77,7 +116,7 @@
  *            "value": "ã́-á"
  *          }
  *        ],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "p"
@@ -123,7 +162,7 @@
  *        ],
  *        "pictures": [],
  *        "pronunciations": [],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "j"
@@ -170,17 +209,10 @@
  *    ]
  * }
  *
- * @apiError BadRequest Input should be an array of up to 50 entry objects.
- *
- * @apiErrorExample {json} BadRequest Example
- * HTTP/1.1 400 BadRequest
- * {
- *    "ErrorType": "BadRequest",
- *    "Message": "Input must be an array of entries"
- * }
- *
+ * @apiUse BadRequest
  * @apiUse ErrorForbidden
- *
+ * @apiUse SyntaxError
+ * @apiUse TypeError
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
@@ -209,8 +241,26 @@ export async function handler(
   try {
     const entries: LoadEntry[] = JSON.parse(event.body as string); // any type problems will be caught
 
-    if (entries.length > DB_MAX_UPDATES_PER_CALL) {
-      return callback(null, Response.badRequest(`Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`));
+    let errorMessage = '';
+    if (!Array.isArray(entries)) {
+      errorMessage = 'Input must be an array of dictionary entry objects';
+    } else if (entries.length > DB_MAX_UPDATES_PER_CALL) {
+      errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
+    } else if (entries.find(entry => typeof entry !== 'object')) {
+      errorMessage = 'Each dictionary entry must be a valid JSON object';
+    } else if (entries.find(entry => !('guid' in entry && entry.guid))) {
+      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
+    } else if (
+      entries.find(
+        entry =>
+          !('data' in entry) || typeof entry.data !== 'object' || !Object.keys(entry.data).length,
+      )
+    ) {
+      errorMessage = 'Each dictionary entry must have a non-empty data object';
+    }
+
+    if (errorMessage) {
+      return callback(null, Response.badRequest(errorMessage));
     }
 
     dbClient = await connectToDB();
