@@ -38,11 +38,11 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
 }
 
 async function loadEntry(
-  dictionary: string,
+  dictionaryId: string,
   entry: LoadEntry[],
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
-  const path = `/load/entry/${dictionary}`;
+  const path = `/load/entry/${dictionaryId}`;
   const data = JSON.stringify(entry);
   const config: AxiosRequestConfig = { auth: credentials };
 
@@ -56,13 +56,13 @@ async function loadEntry(
 }
 
 async function loadFile(
-  dictionary: string,
+  dictionaryId: string,
   file: string,
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
-  const path = `/load/file/${dictionary}`;
+  const path = `/load/file/${dictionaryId}`;
   const data = JSON.stringify({
-    objectId: `${dictionary}/${file}`,
+    objectId: `${dictionaryId}/${file}`,
     action: 'putObject',
   });
   const config: AxiosRequestConfig = { auth: credentials };
@@ -71,9 +71,9 @@ async function loadFile(
     const response = await axios.post(path, data, config);
     const signedUrl = response.data;
     if (typeof signedUrl === 'string') {
-      const filePath = `data/${dictionary}/${file}`;
+      const filePath = `data/${dictionaryId}/${file}`;
       if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(`data/${dictionary}/${file}`);
+        const fileContent = fs.readFileSync(`data/${dictionaryId}/${file}`);
         const fileConfig: AxiosRequestConfig = {
           headers: { 'Content-Type': mime.lookup(file) },
         };
@@ -118,10 +118,10 @@ if (args[0] && args[1]) {
 
     const CHUNK_LOAD_ENTRY_SIZE = 50; // Mongo Atlas allows 100 transactions a second, 500 simultaneous
     const CHUNK_LOAD_FILE_SIZE = 100; // AWS Lambda allows 1000 simultaneous connections
-    const dictionary = args[0];
+    const dictionaryId = args[0];
     const file = args[1];
-    const toBeParsed = await fileGrabber.getFile(dictionary, file);
-    const parser = new FlexXhtmlParser(toBeParsed, { dictionary });
+    const toBeParsed = await fileGrabber.getFile(dictionaryId, file);
+    const parser = new FlexXhtmlParser(toBeParsed, { dictionaryId });
 
     const startProcessingTime = Date.now();
     const startParsingTime = startProcessingTime;
@@ -158,7 +158,7 @@ if (args[0] && args[1]) {
       */
 
       // eslint-disable-next-line no-await-in-loop
-      await loadEntry(dictionary, chunk, credentials);
+      await loadEntry(dictionaryId, chunk, credentials);
 
       logMessage(`Finished loading chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
     }
@@ -198,7 +198,7 @@ if (args[0] && args[1]) {
 
       const promises = chunk.map(
         (entryFile): Promise<AxiosResponse | undefined> => {
-          return loadFile(dictionary, entryFile.src, credentials);
+          return loadFile(dictionaryId, entryFile.src, credentials);
         },
       );
 
@@ -210,7 +210,7 @@ if (args[0] && args[1]) {
 
     logMessage(`Finished loading ${entryFiles.length} files`, startLoadingFilesTime);
 
-    logMessage(`Finished processing ${dictionary}`, startProcessingTime);
+    logMessage(`Finished processing ${dictionaryId}`, startProcessingTime);
   })();
 } else {
   logMessage('Usage: import-entries DICTIONARY_NAME CONFIGURED_XHTML_FILE_NAME LIMIT_ENTRY');

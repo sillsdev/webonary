@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import { EntryFile, EntryValue, EntryData, LoadEntry } from '../lambda/db';
 
 export interface Options {
-  dictionary: string;
+  dictionaryId: string;
 }
 
 export class FlexXhtmlParser {
@@ -27,12 +27,12 @@ export class FlexXhtmlParser {
 
     this.parsedItems = matches.map(
       (entryData): LoadEntry => {
-        return FlexXhtmlParser.parseEntry(this.options.dictionary, entryData);
+        return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
       },
     );
   }
 
-  static parseEntry(dictionary: string, entryData: string): LoadEntry {
+  static parseEntry(dictionaryId: string, entryData: string): LoadEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
@@ -149,7 +149,7 @@ export class FlexXhtmlParser {
     );
 
     const data: EntryData = {
-      dictionary,
+      dictionaryId,
       mainHeadWord,
       letterHead,
       pronunciations,

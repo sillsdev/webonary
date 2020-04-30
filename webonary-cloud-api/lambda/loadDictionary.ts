@@ -174,14 +174,13 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, LoadEntry } from './db';
+import { DB_NAME, COLLECTION_DICTIONARIES, LoadDictionary } from './db';
 import * as Response from './response';
 
 interface LoadResult {
   updatedAt: string;
-  updatedCount: number;
-  insertedCount: number;
-  insertedGUIDs: ObjectId[];
+  updatedCount: number,
+  insertedCount: number,
 }
 
 let dbClient: MongoClient;
@@ -195,48 +194,22 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const entries: LoadEntry[] = JSON.parse(event.body as string); // any type problems will be caught
-
-    if (entries.length > DB_MAX_UPDATES_PER_CALL) {
-      return callback(null, Response.badRequest(`Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`));
-    }
+    const dictionary: LoadDictionary = JSON.parse(event.body as string);
+    const _id = dictionary.id;
+    const updatedAt = new Date().toUTCString();
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    await db.collection(COLLECTION_ENTRIES).createIndex(
-      {
-        'mainHeadWord.value': 'text',
-        'senses.definitionOrGloss.value': 'text',
-      },
-      { name: 'wordsFulltextIndex', default_language: 'none' },
-    );
-
-    const updatedAt = new Date().toUTCString();
-    const promises = entries.map(
-      (entry: LoadEntry): Promise<UpdateWriteOpResult> => {
-        const _id = entry.guid;
-        return db
-          .collection(COLLECTION_ENTRIES)
-          .updateOne({ _id }, { $set: { _id, ...entry.data, updatedAt } }, { upsert: true });
-      },
-    );
-
-    const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
-
-    const updatedCount = dbResults
-      .filter(result => result.modifiedCount)
-      .reduce((total, result) => total + result.modifiedCount, 0);
-
-    const insertedIds = dbResults
-      .filter(result => result.upsertedCount)
-      .map(result => result.upsertedId._id);
+  
+    const dbResult = await db
+      .collection(COLLECTION_DICTIONARIES)
+      .updateOne({ _id }, { $set: { _id, ...dictionary.data, updatedAt } }, { upsert: true });
 
     const loadResult: LoadResult = {
       updatedAt,
-      updatedCount,
-      insertedCount: insertedIds.length,
-      insertedGUIDs: insertedIds,
+      updatedCount: dbResult.modifiedCount,
+      insertedCount: dbResult.upsertedCount,
     };
 
     return callback(null, Response.success({ ...loadResult }));
