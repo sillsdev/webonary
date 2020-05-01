@@ -152,7 +152,7 @@ if (args[0]) {
       return;
     }
 
-    mainCssFiles.push(mainFile);
+    mainCssFiles.push(mainCssFile);
 
     const mainCssOverrideFile = 'ProjectDictionaryOverrides.css';
     if (dictionaryFiles.includes(mainCssOverrideFile)) {

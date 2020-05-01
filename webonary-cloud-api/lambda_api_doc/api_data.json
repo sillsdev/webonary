@@ -1,219 +1,5 @@
 [
   {
-    "type": "put",
-    "url": "https://AWS_SIGNED_URL",
-    "title": "Load file",
-    "description": "<p>This signed URL will temporarily allow uploading a file to a protected S3 bucket.</p>",
-    "name": "LoadDictionaryFile",
-    "group": "Dictionary",
-    "examples": [
-      {
-        "title": "Example usage",
-        "content": "curl --location --request PUT \\ \n'https://webonarycloudapistack-dictionarybucket8e4dd392-sy1tdtrywp2d.s3.us-east-2.amazonaws.com/moore/pictures/Vitex_doniana.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVNTQMPQG64WZTDW4%2F20200424%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200424T201152Z&X-Amz-Expires=100&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFQaCXVzLWVhc3QtMiJGMEQCIFPO0pCHDhkhW3EFiWGUe5Bsq6C2G9H8SaUmrgsjPADOAiB3pH3B4S0KMIk88bR5JbksUWCvsrb40UTbWJBM9ccZ2ir1AQh9EAEaDDM3MjgyNDExMjE0MSIMhk12v83ixdFJeUctKtIB7lqjJ8ncHjuJRWxo0a4ALEgt0fgdsY%2FZD%2BF3hzDMBLR1Sur4W%2BP0OJViYijJEfA1btMVgulek5fsPCmkiIDICsl3gkzpryXvyiKfTZPcQ%2B1kzGvyD7SSzof6YE3Nj3piHAfhTvMg0nqhFWcEZUArXZVjJqznMIgMrWAHgblYU4vVZ%2Bo70jp5TNxAmEDhN0hNVaBVifuzYt7YKZQN0iyg90izNAtDjTYprbn0WEP8%2BD45vH8fDcqKWrmfOSLdkszNjaX7lFco8kvrACvn9x7xbl61MPSPjfUFOuEB1IR%2FZGIYZyMNK1WaaBW9o2TL8n9h8YDipJ5ar54DJXe9VvBD85O7%2BU0P8PBP5IXYkLHcxSvk2Fif30a%2BcoDVXP7QCYzfybviQ%2FblokbQHtkDQ1xZpC%2BnBcft4lkX8lTIMN2Ppg5kUFzPpj6nIegMNFDfhigAQwvBvq9MKbjBo503im%2B6%2FtH4GIuJ185BOO1biBalrT4k18DKzbABNI%2BeIGps5TkJYywIl0I5Ow5LTO9yiwbgR%2BohsAO8xgHIfxUA65ELNChrUKUY2h1eQnCyZdDScxKCHz6tt3839NcG%2F4bJ&X-Amz-Signature=e6d9fa96efa464e065db54b351d42b37069dc7e48cbb73679e5a383f3ba12a56&X-Amz-SignedHeaders=host' \\\n--header 'Content-Type: image/jpeg' \\\n--data-binary '@/tmp/moore/pictures/Vitex_doniana.jpg'",
-        "type": "curl"
-      }
-    ],
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Content-Type",
-            "description": "<p>Valid mime type (e.g. image/jpeg, audio/mpeg, video/mpeg, etc)</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Header Example",
-          "content": "\"Content-Type: image/jpeg\"",
-          "type": "Header"
-        }
-      ]
-    },
-    "parameter": {
-      "examples": [
-        {
-          "title": "Post Body Example",
-          "content": "<file content here>",
-          "type": "file"
-        }
-      ]
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "Empty",
-            "description": "<p>string</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success Response Example",
-          "content": "HTTP/1.1 200 OK",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Forbidden",
-            "description": "<p>Access is denied if the temporarily signed URL is no longer valid.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Forbidden Error Example",
-          "content": "HTTP/1.1 403 Forbidden\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error>\n  <Code>AccessDenied</Code>\n  <Message>Request has expired</Message>\n  <X-Amz-Expires>120</X-Amz-Expires>\n  <Expires>2020-04-25T03:48:04Z</Expires>\n  <ServerTime>2020-04-25T03:50:33Z</ServerTime>\n  <RequestId>BF97CB31633F3C94</RequestId>\n  <HostId>WNR6dm5Dlr/B5hs+izoGaBueMObntiXi9D1q+SmvT06FuDfmCNx4c5pNhpw1HcHB75KlMYP6SSs=</HostId>\n</Error>",
-          "type": "xml"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "lambda/s3Authorize.ts",
-    "groupTitle": "Dictionary"
-  },
-  {
-    "type": "post",
-    "url": "/load/file/:dictionary",
-    "title": "Load file signed URL",
-    "description": "<p>Calling this API will return a signed URL which can be used to upload a file temporarily to a protected S3 bucked.</p>",
-    "name": "LoadDictionaryFileSignedUrl",
-    "group": "Dictionary",
-    "permission": [
-      {
-        "name": "dictionary admin in Webonary"
-      }
-    ],
-    "parameter": {
-      "fields": {
-        "Post Body": [
-          {
-            "group": "Post Body",
-            "type": "String",
-            "optional": false,
-            "field": "objectId",
-            "description": "<p>Relative file path, starting with dictionary name</p>"
-          },
-          {
-            "group": "Post Body",
-            "type": "Object",
-            "optional": false,
-            "field": "action",
-            "description": "<p>&quot;putObject&quot;</p>"
-          }
-        ],
-        "Path": [
-          {
-            "group": "Path",
-            "type": "String",
-            "optional": false,
-            "field": ":dictionaryId",
-            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Post Body Example",
-          "content": "{\n\t \"objectId\": \"moore/pictures/Vitex_doniana.jpg\",\n  \"action\": \"putObject\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "URL",
-            "description": "<p>Signed URL to upload file to AWS S3 Bucket</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success Response Example",
-          "content": "HTTP/1.1 200 OK\nhttps://webonarycloudapistack-dictionarybucket8e4dd392-sy1tdtrywp2d.s3.us-east-2.amazonaws.com/moore/pictures/Vitex_doniana.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVNTQMPQG64WZTDW4%2F20200424%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200424T201152Z&X-Amz-Expires=100&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFQaCXVzLWVhc3QtMiJGMEQCIFPO0pCHDhkhW3EFiWGUe5Bsq6C2G9H8SaUmrgsjPADOAiB3pH3B4S0KMIk88bR5JbksUWCvsrb40UTbWJBM9ccZ2ir1AQh9EAEaDDM3MjgyNDExMjE0MSIMhk12v83ixdFJeUctKtIB7lqjJ8ncHjuJRWxo0a4ALEgt0fgdsY%2FZD%2BF3hzDMBLR1Sur4W%2BP0OJViYijJEfA1btMVgulek5fsPCmkiIDICsl3gkzpryXvyiKfTZPcQ%2B1kzGvyD7SSzof6YE3Nj3piHAfhTvMg0nqhFWcEZUArXZVjJqznMIgMrWAHgblYU4vVZ%2Bo70jp5TNxAmEDhN0hNVaBVifuzYt7YKZQN0iyg90izNAtDjTYprbn0WEP8%2BD45vH8fDcqKWrmfOSLdkszNjaX7lFco8kvrACvn9x7xbl61MPSPjfUFOuEB1IR%2FZGIYZyMNK1WaaBW9o2TL8n9h8YDipJ5ar54DJXe9VvBD85O7%2BU0P8PBP5IXYkLHcxSvk2Fif30a%2BcoDVXP7QCYzfybviQ%2FblokbQHtkDQ1xZpC%2BnBcft4lkX8lTIMN2Ppg5kUFzPpj6nIegMNFDfhigAQwvBvq9MKbjBo503im%2B6%2FtH4GIuJ185BOO1biBalrT4k18DKzbABNI%2BeIGps5TkJYywIl0I5Ow5LTO9yiwbgR%2BohsAO8xgHIfxUA65ELNChrUKUY2h1eQnCyZdDScxKCHz6tt3839NcG%2F4bJ&X-Amz-Signature=e6d9fa96efa464e065db54b351d42b37069dc7e48cbb73679e5a383f3ba12a56&X-Amz-SignedHeaders=host",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "403": [
-          {
-            "group": "403",
-            "optional": false,
-            "field": "ErrorForbidden",
-            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
-          }
-        ],
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "BadRequest",
-            "description": "<p>Input should be an be an object containing objectId and action (&quot;putObject&quot;).</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "BadRequest Example",
-          "content": "HTTP/1.1 400 BadRequest\n{\n   \"ErrorType\": \"BadRequest\",\n   \"Message\": \"Missing objectId in the request body\"\n}",
-          "type": "json"
-        },
-        {
-          "title": "ErrorForbidden",
-          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "lambda/s3Authorize.ts",
-    "groupTitle": "Dictionary",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
-          },
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Content-Type",
-            "description": "<p>application/json</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Header Example",
-          "content": "\"Authorization: Basic YWRtaW46cGFzc3dvcmQ=\"",
-          "type": "Header"
-        }
-      ]
-    }
-  },
-  {
     "type": "post",
     "url": "/post/dictionary/:dictionaryId",
     "title": "Post dictionary",
@@ -229,7 +15,7 @@
       "examples": [
         {
           "title": "Post Body Example",
-          "content": "[\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g635754050803599765ãadga\",\n         \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"ã\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"ãadga\"\n         }\n       ],\n       \"pictures\": [\n         {\n           \"caption\": \"ãadga\",\n           \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n           \"src\": \"pictures/Vitex_doniana.jpg\"\n         }\n       ],\n       \"pronunciations\": [\n         {\n           \"lang\": \"mos\",\n           \"type\": \"form\",\n           \"value\": \"ã́-á\"\n         }\n       ],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"p\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"b\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"prunier noir\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"blackberry tree, plum tree\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"n\"\n         }\n       }\n     },\n     \"guid\": \"06a3f6ba-759f-42f2-b284-b4d5b3c887a2\"\n   },\n   {\n     \"data\": {\n       \"audio\": {\n         \"fileClass\": \"mos-Zxxx-x-audio\",\n         \"id\": \"g636908699703911281abada\",\n         \"src\": \"AudioVisual/636908699703911281abada.mp3\"\n       },\n       \"dictionary\": \"moore\",\n       \"letterHead\": \"a\",\n       \"mainHeadWord\": [\n         {\n           \"lang\": \"mos\",\n           \"value\": \"abada\"\n         }\n       ],\n       \"pictures\": [],\n       \"pronunciations\": [],\n       \"reversalLetterHeads\": [\n         {\n           \"lang\": \"fr\",\n           \"value\": \"j\"\n         },\n         {\n           \"lang\": \"en\",\n           \"value\": \"n\"\n         }\n       ],\n       \"senses\": {\n         \"definitionOrGloss\": [\n           {\n             \"lang\": \"fr\",\n             \"value\": \"jamais\"\n           },\n           {\n             \"lang\": \"en\",\n             \"value\": \"never\"\n           }\n         ],\n         \"partOfSpeech\": {\n           \"lang\": \"fr\",\n           \"value\": \"adv\"\n         }\n       }\n     },\n     \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n   }\n]",
+          "content": "{\n   \"id\": \"moore\",\n   \"data\": {\n     \"mainLanguage\": {\n       \"lang\": \"mos\",\n       \"letters\": [\"a\", \"ã\", \"b\", \"d\"],\n       \"cssFiles\": [\n         \"configured.css\",\n         \"ProjectDictionaryOverrides.css\"\n       ]\n     },\n     \"reversalLanguages\": [\n       {\n         \"lang\": \"fr\",\n         \"letters\": [\"c\", \"ç\", \"d\", \"e\", \"z\"],\n         \"cssFiles\": [\n           \"reversal_fr.css\"\n          ]\n       },\n       {\n          \"lang\": \"en\",\n          \"letters\": [\"a\", \"x\", \"y\", \"z\"],\n          \"cssFiles\": [\n            \"reversal_en.css\"\n          ]\n       }\n     ]\n   }\n}",
           "type": "json"
         }
       ],
@@ -564,6 +350,220 @@
           "title": "TypeError Example",
           "content": "HTTP/1.1 500 Internal Server Error\n{\n   \"errorType\": \"TypeError\",\n   \"errorMessage\": \"Cannot read property 'id' of null\"\n}",
           "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "https://AWS_SIGNED_URL",
+    "title": "Post file",
+    "description": "<p>This signed URL will temporarily allow upposting a file to a protected S3 bucket.</p>",
+    "name": "PostDictionaryFile",
+    "group": "Dictionary",
+    "examples": [
+      {
+        "title": "Example usage",
+        "content": "curl --location --request PUT \\ \n'https://cloud-storage.webonary.org/moore/pictures/Vitex_doniana.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVNTQMPQG64WZTDW4%2F20200424%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200424T201152Z&X-Amz-Expires=100&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFQaCXVzLWVhc3QtMiJGMEQCIFPO0pCHDhkhW3EFiWGUe5Bsq6C2G9H8SaUmrgsjPADOAiB3pH3B4S0KMIk88bR5JbksUWCvsrb40UTbWJBM9ccZ2ir1AQh9EAEaDDM3MjgyNDExMjE0MSIMhk12v83ixdFJeUctKtIB7lqjJ8ncHjuJRWxo0a4ALEgt0fgdsY%2FZD%2BF3hzDMBLR1Sur4W%2BP0OJViYijJEfA1btMVgulek5fsPCmkiIDICsl3gkzpryXvyiKfTZPcQ%2B1kzGvyD7SSzof6YE3Nj3piHAfhTvMg0nqhFWcEZUArXZVjJqznMIgMrWAHgblYU4vVZ%2Bo70jp5TNxAmEDhN0hNVaBVifuzYt7YKZQN0iyg90izNAtDjTYprbn0WEP8%2BD45vH8fDcqKWrmfOSLdkszNjaX7lFco8kvrACvn9x7xbl61MPSPjfUFOuEB1IR%2FZGIYZyMNK1WaaBW9o2TL8n9h8YDipJ5ar54DJXe9VvBD85O7%2BU0P8PBP5IXYkLHcxSvk2Fif30a%2BcoDVXP7QCYzfybviQ%2FblokbQHtkDQ1xZpC%2BnBcft4lkX8lTIMN2Ppg5kUFzPpj6nIegMNFDfhigAQwvBvq9MKbjBo503im%2B6%2FtH4GIuJ185BOO1biBalrT4k18DKzbABNI%2BeIGps5TkJYywIl0I5Ow5LTO9yiwbgR%2BohsAO8xgHIfxUA65ELNChrUKUY2h1eQnCyZdDScxKCHz6tt3839NcG%2F4bJ&X-Amz-Signature=e6d9fa96efa464e065db54b351d42b37069dc7e48cbb73679e5a383f3ba12a56&X-Amz-SignedHeaders=host' \\\n--header 'Content-Type: image/jpeg' \\\n--data-binary '@/tmp/moore/pictures/Vitex_doniana.jpg'",
+        "type": "curl"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Valid mime type (e.g. image/jpeg, audio/mpeg, video/mpeg, etc)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "\"Content-Type: image/jpeg\"",
+          "type": "Header"
+        }
+      ]
+    },
+    "parameter": {
+      "examples": [
+        {
+          "title": "Post Body Example",
+          "content": "<file content here>",
+          "type": "file"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Empty",
+            "description": "<p>string</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Forbidden",
+            "description": "<p>Access is denied if the temporarily signed URL is no longer valid.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Forbidden Error Example",
+          "content": "HTTP/1.1 403 Forbidden\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error>\n  <Code>AccessDenied</Code>\n  <Message>Request has expired</Message>\n  <X-Amz-Expires>120</X-Amz-Expires>\n  <Expires>2020-04-25T03:48:04Z</Expires>\n  <ServerTime>2020-04-25T03:50:33Z</ServerTime>\n  <RequestId>BF97CB31633F3C94</RequestId>\n  <HostId>WNR6dm5Dlr/B5hs+izoGaBueMObntiXi9D1q+SmvT06FuDfmCNx4c5pNhpw1HcHB75KlMYP6SSs=</HostId>\n</Error>",
+          "type": "xml"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "lambda/s3Authorize.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
+    "type": "post",
+    "url": "/post/file/:dictionaryId",
+    "title": "Post file signed URL",
+    "description": "<p>Calling this API will return a signed URL which can be used to upload a file temporarily to a protected S3 bucked.</p>",
+    "name": "PostDictionaryFileSignedUrl",
+    "group": "Dictionary",
+    "permission": [
+      {
+        "name": "dictionary admin in Webonary"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Post Body": [
+          {
+            "group": "Post Body",
+            "type": "String",
+            "optional": false,
+            "field": "objectId",
+            "description": "<p>Relative file path, starting with dictionary name</p>"
+          },
+          {
+            "group": "Post Body",
+            "type": "Object",
+            "optional": false,
+            "field": "action",
+            "description": "<p>&quot;putObject&quot;</p>"
+          }
+        ],
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Post Body Example",
+          "content": "{\n\t \"objectId\": \"moore/pictures/Vitex_doniana.jpg\",\n  \"action\": \"putObject\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "URL",
+            "description": "<p>Signed URL to upload a file to AWS S3 Bucket</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Response Example",
+          "content": "HTTP/1.1 200 OK\nhttps://cloud-storage.webonary.org/moore/pictures/Vitex_doniana.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVNTQMPQG64WZTDW4%2F20200424%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200424T201152Z&X-Amz-Expires=100&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFQaCXVzLWVhc3QtMiJGMEQCIFPO0pCHDhkhW3EFiWGUe5Bsq6C2G9H8SaUmrgsjPADOAiB3pH3B4S0KMIk88bR5JbksUWCvsrb40UTbWJBM9ccZ2ir1AQh9EAEaDDM3MjgyNDExMjE0MSIMhk12v83ixdFJeUctKtIB7lqjJ8ncHjuJRWxo0a4ALEgt0fgdsY%2FZD%2BF3hzDMBLR1Sur4W%2BP0OJViYijJEfA1btMVgulek5fsPCmkiIDICsl3gkzpryXvyiKfTZPcQ%2B1kzGvyD7SSzof6YE3Nj3piHAfhTvMg0nqhFWcEZUArXZVjJqznMIgMrWAHgblYU4vVZ%2Bo70jp5TNxAmEDhN0hNVaBVifuzYt7YKZQN0iyg90izNAtDjTYprbn0WEP8%2BD45vH8fDcqKWrmfOSLdkszNjaX7lFco8kvrACvn9x7xbl61MPSPjfUFOuEB1IR%2FZGIYZyMNK1WaaBW9o2TL8n9h8YDipJ5ar54DJXe9VvBD85O7%2BU0P8PBP5IXYkLHcxSvk2Fif30a%2BcoDVXP7QCYzfybviQ%2FblokbQHtkDQ1xZpC%2BnBcft4lkX8lTIMN2Ppg5kUFzPpj6nIegMNFDfhigAQwvBvq9MKbjBo503im%2B6%2FtH4GIuJ185BOO1biBalrT4k18DKzbABNI%2BeIGps5TkJYywIl0I5Ow5LTO9yiwbgR%2BohsAO8xgHIfxUA65ELNChrUKUY2h1eQnCyZdDScxKCHz6tt3839NcG%2F4bJ&X-Amz-Signature=e6d9fa96efa464e065db54b351d42b37069dc7e48cbb73679e5a383f3ba12a56&X-Amz-SignedHeaders=host",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "403": [
+          {
+            "group": "403",
+            "optional": false,
+            "field": "ErrorForbidden",
+            "description": "<p>Incorrect user credentials or user is not authorized to post to the dictionary</p>"
+          }
+        ],
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "BadRequest",
+            "description": "<p>Input should be an be an object containing objectId and action (&quot;putObject&quot;).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "BadRequest Example",
+          "content": "HTTP/1.1 400 BadRequest\n{\n   \"ErrorType\": \"BadRequest\",\n   \"Message\": \"Missing objectId in the request body\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "ErrorForbidden",
+          "content": "HTTP/1.1 403 Forbidden\n{\n   \"Message\": \"User is not authorized to access this resource with an explicit deny\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "lambda/s3Authorize.ts",
+    "groupTitle": "Dictionary",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "\"Authorization: Basic YWRtaW46cGFzc3dvcmQ=\"",
+          "type": "Header"
         }
       ]
     }

@@ -21,112 +21,36 @@
  * @apiUse DictionaryPostBody
  *
  * @apiParamExample {json} Post Body Example
- * [
- *    {
- *      "data": {
- *        "audio": {
- *          "fileClass": "mos-Zxxx-x-audio",
- *          "id": "g635754050803599765ãadga",
- *          "src": "AudioVisual/635754050803599765ãadga.mp3"
- *        },
- *        "dictionary": "moore",
- *        "letterHead": "ã",
- *        "mainHeadWord": [
- *          {
- *            "lang": "mos",
- *            "value": "ãadga"
- *          }
- *        ],
- *        "pictures": [
- *          {
- *            "caption": "ãadga",
- *            "id": "g8086aade-8416-4cc6-8bba-f8f8a8d54a4d",
- *            "src": "pictures/Vitex_doniana.jpg"
- *          }
- *        ],
- *        "pronunciations": [
- *          {
- *            "lang": "mos",
- *            "type": "form",
- *            "value": "ã́-á"
- *          }
- *        ],
- *        "reversalLetterHeads": [
- *          {
- *            "lang": "fr",
- *            "value": "p"
- *          },
- *          {
- *            "lang": "en",
- *            "value": "b"
- *          }
- *        ],
- *        "senses": {
- *          "definitionOrGloss": [
- *            {
- *              "lang": "fr",
- *              "value": "prunier noir"
- *            },
- *            {
- *              "lang": "en",
- *              "value": "blackberry tree, plum tree"
- *            }
- *          ],
- *          "partOfSpeech": {
- *            "lang": "fr",
- *            "value": "n"
- *          }
- *        }
+ * {
+ *    "id": "moore",
+ *    "data": {
+ *      "mainLanguage": {
+ *        "lang": "mos",
+ *        "letters": ["a", "ã", "b", "d"],
+ *        "cssFiles": [
+ *          "configured.css",
+ *          "ProjectDictionaryOverrides.css"
+ *        ]
  *      },
- *      "guid": "06a3f6ba-759f-42f2-b284-b4d5b3c887a2"
- *    },
- *    {
- *      "data": {
- *        "audio": {
- *          "fileClass": "mos-Zxxx-x-audio",
- *          "id": "g636908699703911281abada",
- *          "src": "AudioVisual/636908699703911281abada.mp3"
+ *      "reversalLanguages": [
+ *        {
+ *          "lang": "fr",
+ *          "letters": ["c", "ç", "d", "e", "z"],
+ *          "cssFiles": [
+ *            "reversal_fr.css"
+ *           ]
  *        },
- *        "dictionary": "moore",
- *        "letterHead": "a",
- *        "mainHeadWord": [
- *          {
- *            "lang": "mos",
- *            "value": "abada"
- *          }
- *        ],
- *        "pictures": [],
- *        "pronunciations": [],
- *        "reversalLetterHeads": [
- *          {
- *            "lang": "fr",
- *            "value": "j"
- *          },
- *          {
- *            "lang": "en",
- *            "value": "n"
- *          }
- *        ],
- *        "senses": {
- *          "definitionOrGloss": [
- *            {
- *              "lang": "fr",
- *              "value": "jamais"
- *            },
- *            {
- *              "lang": "en",
- *              "value": "never"
- *            }
- *          ],
- *          "partOfSpeech": {
- *            "lang": "fr",
- *            "value": "adv"
- *          }
+ *        {
+ *           "lang": "en",
+ *           "letters": ["a", "x", "y", "z"],
+ *           "cssFiles": [
+ *             "reversal_en.css"
+ *           ]
  *        }
- *      },
- *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
+ *      ]
  *    }
- * ]
+ * }
+ *
  * @apiSuccess {String} updatedAt Timestamp of the posting of dictionary metadata in GMT
  * @apiSuccess {Number} updatedCount Dictionary updated
  * @apiSuccess {Number} insertedCount Dictionary inserted
