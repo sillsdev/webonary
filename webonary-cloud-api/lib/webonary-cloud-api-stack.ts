@@ -46,11 +46,11 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // Lambda functions
 
-    // API Authorizer for loading dictionary file or entry
-    const loadAuthorizeFunction = new lambda.Function(
+    // API Authorizer for posting dictionary file or entry
+    const postAuthorizeFunction = new lambda.Function(
       this,
-      'loadAuthorize',
-      Object.assign(defaultLambdaFunctionProps('loadAuthorize'), {
+      'postAuthorize',
+      Object.assign(defaultLambdaFunctionProps('postAuthorize'), {
         environment: {
           WEBONARY_URL,
           WEBONARY_AUTH_PATH,
@@ -58,8 +58,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       }),
     );
 
-    const loadAuthorizer = new apigateway.RequestAuthorizer(this, 'loadAuthorizer', {
-      handler: loadAuthorizeFunction,
+    const postAuthorizer = new apigateway.RequestAuthorizer(this, 'postAuthorizer', {
+      handler: postAuthorizeFunction,
       identitySources: [apigateway.IdentitySource.header('Authorization')],
     });
 
@@ -81,18 +81,26 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       principal: 'apigateway.amazonaws.com',
     });
 
-    const loadDictionaryFunction = new lambda.Function(
+    const postDictionaryFunction = new lambda.Function(
       this,
-      'loadDictionary',
-      Object.assign(defaultLambdaFunctionProps('loadDictionary'), {
+      'postDictionary',
+      Object.assign(defaultLambdaFunctionProps('postDictionary'), {
         environment: { DB_URL, DB_NAME },
       }),
     );
 
-    const loadEntryFunction = new lambda.Function(
+    const getDictionaryFunction = new lambda.Function(
       this,
-      'loadEntry',
-      Object.assign(defaultLambdaFunctionProps('loadEntry'), {
+      'getDictionary',
+      Object.assign(defaultLambdaFunctionProps('getDictionary'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
+
+    const postEntryFunction = new lambda.Function(
+      this,
+      'postEntry',
+      Object.assign(defaultLambdaFunctionProps('postEntry'), {
         environment: { DB_URL, DB_NAME },
       }),
     );
@@ -146,47 +154,62 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       }
     }
 
-    // Loading of file and data are protected via Webonary basic auth
-    const apiLoad = api.root.addResource('load');
+    // Posting of file and data are protected via Webonary basic auth
+    const apiPost = api.root.addResource('post');
 
-    const apiLoadFile = apiLoad.addResource('file');
-    const apiLoadFileForDictionary = apiLoadFile.addResource('{dictionaryId}');
+    const apiPostFile = apiPost.addResource('file');
+    const apiPostFileForDictionary = apiPostFile.addResource('{dictionaryId}');
     const s3AuthorizeLambda = new apigateway.LambdaIntegration(s3AuthorizeFunction);
-    apiLoadFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
-      authorizer: loadAuthorizer,
+    apiPostFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
+      authorizer: postAuthorizer,
     });
 
-    const apiLoadDictionary = apiLoad.addResource('dictionary');
-    const apiLoadDictionaryForDictionary = apiLoadDictionary.addResource('{dictionaryId}');
-    const loadDictionaryLambda = new apigateway.LambdaIntegration(loadDictionaryFunction);
-    apiLoadDictionaryForDictionary.addMethod('POST', loadDictionaryLambda, {
-      authorizer: loadAuthorizer,
+    const apiPostDictionary = apiPost.addResource('dictionary');
+    const apiPostDictionaryForDictionary = apiPostDictionary.addResource('{dictionaryId}');
+    const postDictionaryLambda = new apigateway.LambdaIntegration(postDictionaryFunction);
+    apiPostDictionaryForDictionary.addMethod('POST', postDictionaryLambda, {
+      authorizer: postAuthorizer,
     });
 
-    const apiLoadEntry = apiLoad.addResource('entry');
-    const apiLoadEntryForDictionary = apiLoadEntry.addResource('{dictionaryId}');
-    const loadEntryLambda = new apigateway.LambdaIntegration(loadEntryFunction);
-    apiLoadEntryForDictionary.addMethod('POST', loadEntryLambda, {
-      authorizer: loadAuthorizer,
+    const apiPostEntry = apiPost.addResource('entry');
+    const apiPostEntryForDictionary = apiPostEntry.addResource('{dictionaryId}');
+    const postEntryLambda = new apigateway.LambdaIntegration(postEntryFunction);
+    apiPostEntryForDictionary.addMethod('POST', postEntryLambda, {
+      authorizer: postAuthorizer,
     });
 
-    // Get single entry
+    // Get a single document
     const apiGet = api.root.addResource('get');
-    const apiGetDictionary = apiGet.addResource('{dictionaryId}');
+
+    // dictionary meta data
+    const apiGetDictionary = apiGet.addResource('dictionary');
+    const apiGetDictionaryById = apiGetDictionary.addResource('{dictionaryId}');
+    const getDictionaryLambda = new apigateway.LambdaIntegration(getDictionaryFunction);
+    apiGetDictionaryById.addMethod('GET', getDictionaryLambda);
+
+    // dictionary entry
+    const apiGetEntry = apiGet.addResource('entry');
+    const apiGetEntryByDictionaryId = apiGetEntry.addResource('{dictionaryId}');
     const getEntryLambda = new apigateway.LambdaIntegration(getEntryFunction);
-    apiGetDictionary.addMethod('GET', getEntryLambda);
+    apiGetEntryByDictionaryId.addMethod('GET', getEntryLambda);
+
+    // Browse documents
+    const apiBrowse = api.root.addResource('browse');
 
     // Browse entries, all and by starting letter
-    const apiBrowse = api.root.addResource('browse');
-    const apiBrowseDictionary = apiBrowse.addResource('{dictionaryId}');
+    const apiBrowseEntries = apiBrowse.addResource('entry');
+    const apiBrowseEntriesByDictionaryId = apiBrowseEntries.addResource('{dictionaryId}');
     const browseEntriesLambda = new apigateway.LambdaIntegration(browseEntriesFunction);
-    apiBrowseDictionary.addMethod('GET', browseEntriesLambda);
+    apiBrowseEntriesByDictionaryId.addMethod('GET', browseEntriesLambda);
+
+    // Search documents
+    const apiSearch = api.root.addResource('search');
 
     // Search entries
-    const apiSearch = api.root.addResource('search');
-    const apiSearchDictionary = apiSearch.addResource('{dictionaryId}');
+    const apiSearchEntries = apiSearch.addResource('entry');
+    const apiSearchEntriesByDictionaryId = apiSearchEntries.addResource('{dictionaryId}');
     const searchEntriesLambda = new apigateway.LambdaIntegration(searchEntriesFunction);
-    apiSearchDictionary.addMethod('GET', searchEntriesLambda);
+    apiSearchEntriesByDictionaryId.addMethod('GET', searchEntriesLambda);
 
     // the main magic to easily pass the lambda version to stack in another region
     // this output is required

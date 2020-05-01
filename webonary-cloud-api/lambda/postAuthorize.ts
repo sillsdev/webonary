@@ -41,14 +41,14 @@ export async function handler(
     const username = plainCredentials[0];
     const password = plainCredentials[1];
 
-    // Same user should have the same access to load dictionary entry data as well as files.
+    // Same user should have the same access to post dictionary entry data as well as files.
     // User access is per dictionary per user.
     const principalId = `${dictionaryId}::${username}`;
 
-    // To allow for correct caching behavior, we only keep the first part of request (load) and use wildcard for the next
+    // To allow for correct caching behavior, we only keep the first part of request (post) and use wildcard for the next
     const resource = event.methodArn.replace(
-      /POST\/load\/(dictionary|entry|file)\//i,
-      'POST/load/*/',
+      /POST\/post\/(dictionary|entry|file)\//i,
+      'POST/post/*/',
     );
 
     // Call Webonary.org for user authentication

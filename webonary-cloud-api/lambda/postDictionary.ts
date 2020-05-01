@@ -8,9 +8,9 @@
  */
 
 /**
- * @api {post} /load/dictionary/:dictionaryId Load dictionary
+ * @api {post} /post/dictionary/:dictionaryId Post dictionary
  * @apiDescription Calling this API will insert or update metadata for a dictionary
- * @apiName LoadDictionary
+ * @apiName PostDictionary
  * @apiGroup Dictionary
  * @apiPermission dictionary admin in Webonary
  *
@@ -127,7 +127,7 @@
  *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *    }
  * ]
- * @apiSuccess {String} updatedAt Timestamp of the loading of dictionary metadata in GMT
+ * @apiSuccess {String} updatedAt Timestamp of the posting of dictionary metadata in GMT
  * @apiSuccess {Number} updatedCount Dictionary updated
  * @apiSuccess {Number} insertedCount Dictionary inserted
  *
@@ -149,10 +149,10 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_DICTIONARIES, LoadDictionary } from './db';
+import { DB_NAME, COLLECTION_DICTIONARIES, PostDictionary } from './db';
 import * as Response from './response';
 
-interface LoadResult {
+interface PostResult {
   updatedAt: string;
   updatedCount: number;
   insertedCount: number;
@@ -170,7 +170,7 @@ export async function handler(
 
   try {
     const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-    const dictionary: LoadDictionary = JSON.parse(event.body as string);
+    const dictionary: PostDictionary = JSON.parse(event.body as string);
     const _id = dictionaryId;
     const updatedAt = new Date().toUTCString();
 
@@ -181,13 +181,13 @@ export async function handler(
       .collection(COLLECTION_DICTIONARIES)
       .updateOne({ _id }, { $set: { _id, ...dictionary.data, updatedAt } }, { upsert: true });
 
-    const loadResult: LoadResult = {
+    const postResult: PostResult = {
       updatedAt,
       updatedCount: dbResult.modifiedCount,
       insertedCount: dbResult.upsertedCount,
     };
 
-    return callback(null, Response.success({ ...loadResult }));
+    return callback(null, Response.success({ ...postResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

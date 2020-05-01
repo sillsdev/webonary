@@ -4,8 +4,8 @@ import {
   EntryFile,
   EntryValue,
   EntryData,
-  LoadEntry,
-  LoadDictionary,
+  PostEntry,
+  PostDictionary,
   DictionaryLanguage,
 } from '../lambda/db';
 
@@ -18,7 +18,7 @@ export class FlexXhtmlParser {
 
   protected toBeParsed: string;
 
-  public parsedItems: LoadEntry[];
+  public parsedItems: PostEntry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     this.toBeParsed = toBeParsed;
@@ -33,13 +33,13 @@ export class FlexXhtmlParser {
       this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
 
     this.parsedItems = matches.map(
-      (entryData): LoadEntry => {
+      (entryData): PostEntry => {
         return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
       },
     );
   }
 
-  public static parseEntry(dictionaryId: string, entryData: string): LoadEntry {
+  public static parseEntry(dictionaryId: string, entryData: string): PostEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
@@ -171,8 +171,8 @@ export class FlexXhtmlParser {
 
   public static getDictionaryData(
     dictionaryId: string,
-    loadEntry: LoadEntry[],
-  ): LoadDictionary | undefined {
+    loadEntry: PostEntry[],
+  ): PostDictionary | undefined {
     const id = dictionaryId;
 
     let loadDictionary;

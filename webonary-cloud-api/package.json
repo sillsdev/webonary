@@ -12,7 +12,7 @@
     "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
-    "load-legacy": "env-cmd ts-node tools/load-legacy.ts",
+    "post-legacy": "env-cmd ts-node tools/post-legacy.ts",
     "test": "jest",
     "test-coverage": "jest --collectCoverage",
     "watch": "tsc -w"

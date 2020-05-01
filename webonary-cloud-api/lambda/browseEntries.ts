@@ -18,7 +18,7 @@ export async function handler(
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
+    const dictionaryId = event.pathParameters?.dictionaryId;
     const letterHead = event.queryStringParameters?.letterHead;
     const lang = event.queryStringParameters?.lang;
 

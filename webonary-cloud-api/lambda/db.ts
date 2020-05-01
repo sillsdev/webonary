@@ -11,7 +11,7 @@ export interface DictionaryData {
   reversalLanguages: DictionaryLanguage[];
 }
 
-export interface LoadDictionary {
+export interface PostDictionary {
   id: string;
   data: DictionaryData;
 }
@@ -46,7 +46,7 @@ export interface EntryData {
   pictures: EntryFile[];
 }
 
-export interface LoadEntry {
+export interface PostEntry {
   guid: string;
   data: EntryData;
 }

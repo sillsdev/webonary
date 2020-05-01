@@ -3,8 +3,7 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
-import { exist } from '@aws-cdk/assert';
-import { LoadDictionary, LoadEntry, EntryFile } from '../lambda/db';
+import { PostDictionary, PostEntry, EntryFile } from '../lambda/db';
 import fileGrabber from './fileGrabber';
 import { FlexXhtmlParser } from './flexXhtmlParser';
 
@@ -38,12 +37,12 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
   return chunked;
 }
 
-async function loadDictionary(
+async function postDictionary(
   dictionaryId: string,
-  dictionary: LoadDictionary,
+  dictionary: PostDictionary,
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
-  const path = `/load/dictionary/${dictionaryId}`;
+  const path = `/post/dictionary/${dictionaryId}`;
   const data = JSON.stringify(dictionary);
   const config: AxiosRequestConfig = { auth: credentials };
 
@@ -56,12 +55,12 @@ async function loadDictionary(
   return undefined;
 }
 
-async function loadEntry(
+async function postEntry(
   dictionaryId: string,
-  entry: LoadEntry[],
+  entry: PostEntry[],
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
-  const path = `/load/entry/${dictionaryId}`;
+  const path = `/post/entry/${dictionaryId}`;
   const data = JSON.stringify(entry);
   const config: AxiosRequestConfig = { auth: credentials };
 
@@ -74,12 +73,12 @@ async function loadEntry(
   return undefined;
 }
 
-async function loadFile(
+async function postFile(
   dictionaryId: string,
   file: string,
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
-  const path = `/load/file/${dictionaryId}`;
+  const path = `/post/file/${dictionaryId}`;
   const data = JSON.stringify({
     objectId: `${dictionaryId}/${file}`,
     action: 'putObject',
@@ -99,14 +98,14 @@ async function loadFile(
         try {
           return await axios.put(signedUrl, fileContent, fileConfig);
         } catch (error) {
-          logMessage(`loadEntry Error: ${JSON.stringify(error.message)}`);
+          logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
         }
       } else {
         logMessage(`Warning: File ${file} does not exist!`);
       }
     }
   } catch (error) {
-    logMessage(`loadFile Error: ${JSON.stringify(error.message)}`);
+    logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
   }
 
   return undefined;
@@ -177,66 +176,66 @@ if (args[0]) {
     }
 
     logMessage(`Getting dictionary metadata...`);
-    const dictionaryLoad = FlexXhtmlParser.getDictionaryData(dictionaryId, parser.parsedItems);
-    if (dictionaryLoad) {
-      dictionaryLoad.data.mainLanguage.cssFiles = mainCssFiles;
+    const dictionaryPost = FlexXhtmlParser.getDictionaryData(dictionaryId, parser.parsedItems);
+    if (dictionaryPost) {
+      dictionaryPost.data.mainLanguage.cssFiles = mainCssFiles;
 
-      dictionaryLoad.data.reversalLanguages.forEach((item, index) => {
+      dictionaryPost.data.reversalLanguages.forEach((item, index) => {
         const cssFile = `reversal_${item.lang}.css`;
         if (dictionaryFiles.includes(cssFile)) {
-          dictionaryLoad.data.reversalLanguages[index].cssFiles = [cssFile];
+          dictionaryPost.data.reversalLanguages[index].cssFiles = [cssFile];
         }
       });
 
-      logMessage(`Loading dictionary metadata...`);
-      await loadDictionary(dictionaryId, dictionaryLoad, credentials);
+      logMessage(`Posting dictionary metadata...`);
+      await postDictionary(dictionaryId, dictionaryPost, credentials);
 
-      logMessage(`Loading dictionary css files...`);
+      logMessage(`Posting dictionary css files...`);
       const promises = dictionaryFiles
         .filter(file => file.endsWith('.css'))
         .map(
           (file): Promise<AxiosResponse | undefined> => {
-            return loadFile(dictionaryId, file, credentials);
+            return postFile(dictionaryId, file, credentials);
           },
         );
 
       await Promise.all(promises);
     }
 
-    const startLoadingEntriesTime = Date.now();
-    logMessage(`Start loading entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
+    const startPostingEntriesTime = Date.now();
+    logMessage(`Start posting entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
 
-    const chunkedParsedItems: LoadEntry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
+    const chunkedParsedItems: PostEntry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
 
     // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
     // eslint-disable-next-line no-restricted-syntax
     for (const [index, chunk] of chunkedParsedItems.entries()) {
       const startChunkTime = Date.now();
-      logMessage(`Loading chunk ${index + 1}...`);
+      logMessage(`Posting chunk ${index + 1}...`);
 
       /* 
-      NOTE: It turns out (not surprisingly) that a single load with multiple entries
-      a lot faster than many single loads running async
+      NOTE: It turns out (not surprisingly) that a single post with multiple entries
+      a lot faster than many single posts running async
 
       const promises = chunk.map((entry): Promise<void> => {
-          return loadEntry(dictionary, [entry], credentials);                    
+          return postEntry(dictionary, [entry], credentials);                    
       });
       await Promise.all(promises);
       */
 
       // eslint-disable-next-line no-await-in-loop
-      await loadEntry(dictionaryId, chunk, credentials);
+      await postEntry(dictionaryId, chunk, credentials);
 
-      logMessage(`Finished loading chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
+      logMessage(`Finished posting chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
     }
 
-    logMessage(`Finished loading ${parser.parsedItems.length} entries`, startLoadingEntriesTime);
+    logMessage(`Finished posting ${parser.parsedItems.length} entries`, startPostingEntriesTime);
 
-    const startLoadingFilesTime = Date.now();
-    logMessage(' Start loading files...');
+    const startPostingFilesTime = Date.now();
+    logMessage(' Start posting files...');
 
     const entryFiles = parser.parsedItems.reduce(
-      (files: EntryFile[], entry: LoadEntry): EntryFile[] => {
+      (files: EntryFile[], entry: PostEntry): EntryFile[] => {
         if (entry.data.audio.src) {
           files.push(entry.data.audio);
         }
@@ -253,7 +252,7 @@ if (args[0]) {
     );
 
     logMessage(`Found ${entryFiles.length} files to process`);
-    logMessage(`Start loading files in chunks of ${CHUNK_LOAD_FILE_SIZE}...`);
+    logMessage(`Start posting files in chunks of ${CHUNK_LOAD_FILE_SIZE}...`);
 
     const chunkedEntryFiles: EntryFile[][] = chunkArray(entryFiles, CHUNK_LOAD_FILE_SIZE);
 
@@ -261,21 +260,21 @@ if (args[0]) {
     // eslint-disable-next-line no-restricted-syntax
     for (const [index, chunk] of chunkedEntryFiles.entries()) {
       const startChunkTime = Date.now();
-      logMessage(`Loading chunk ${index + 1}...`);
+      logMessage(`Posting chunk ${index + 1}...`);
 
       const promises = chunk.map(
         (entryFile): Promise<AxiosResponse | undefined> => {
-          return loadFile(dictionaryId, entryFile.src, credentials);
+          return postFile(dictionaryId, entryFile.src, credentials);
         },
       );
 
       /* eslint-disable no-await-in-loop */
       await Promise.all(promises);
 
-      logMessage(`Finished loading chunk of ${CHUNK_LOAD_FILE_SIZE}`, startChunkTime);
+      logMessage(`Finished posting chunk of ${CHUNK_LOAD_FILE_SIZE}`, startChunkTime);
     }
 
-    logMessage(`Finished loading ${entryFiles.length} files`, startLoadingFilesTime);
+    logMessage(`Finished posting ${entryFiles.length} files`, startPostingFilesTime);
 
     logMessage(`Finished processing ${dictionaryId}`, startProcessingTime);
   })();

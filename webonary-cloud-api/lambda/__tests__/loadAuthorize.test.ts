@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { CustomAuthorizerEvent, Context } from 'aws-lambda';
 import axios from 'axios';
-import lambdaHandler from '../loadAuthorize';
+import lambdaHandler from '../postAuthorize';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -15,7 +15,7 @@ const dictionaryId = 'testDictionary';
 
 const event: CustomAuthorizerEvent = {
   type: 'testEventType',
-  methodArn: 'POST/load/entry/',
+  methodArn: 'POST/post/entry/',
   pathParameters: { dictionaryId },
   headers,
 };
@@ -35,7 +35,7 @@ const context: Context = {
   succeed: () => undefined,
 };
 
-describe('loadAuthorize', () => {
+describe('postAuthorize', () => {
   test('successful auth', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: '' }));
     await lambdaHandler(event, context, (error, result) => {
@@ -43,7 +43,7 @@ describe('loadAuthorize', () => {
       expect(result.principalId).toEqual(`${dictionaryId}::${username}`);
       expect(result.policyDocument.Statement[0].Effect).toBe('Allow');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
-      expect(result.policyDocument.Statement[0].Resource).toBe('POST/load/*/');
+      expect(result.policyDocument.Statement[0].Resource).toBe('POST/post/*/');
     });
 
     return expect.hasAssertions();

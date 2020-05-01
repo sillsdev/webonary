@@ -73,9 +73,9 @@
  */
 
 /**
- * @api {post} /load/entry/:dictionaryId Load entry
- * @apiDescription Calling this API will allow loading of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
- * @apiName LoadDictionaryEntry
+ * @api {post} /post/entry/:dictionaryId Post entry
+ * @apiDescription Calling this API will allow posting of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
+ * @apiName PostDictionaryEntry
  * @apiGroup Dictionary
  * @apiPermission dictionary admin in Webonary
  *
@@ -192,7 +192,7 @@
  *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *    }
  * ]
- * @apiSuccess {String} updatedAt Timestamp of the loading of entries in GMT
+ * @apiSuccess {String} updatedAt Timestamp of the posting of entries in GMT
  * @apiSuccess {Number} updatedCount Number of entries updated
  * @apiSuccess {Number} insertedCount Number of entries inserted
  * @apiSuccess {Object[]} insertedGUIDs Array containing GUID of the inserted entries
@@ -218,10 +218,10 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, LoadEntry } from './db';
+import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, PostEntry } from './db';
 import * as Response from './response';
 
-interface LoadResult {
+interface PostResult {
   updatedAt: string;
   updatedCount: number;
   insertedCount: number;
@@ -239,7 +239,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const entries: LoadEntry[] = JSON.parse(event.body as string); // any type problems will be caught
+    const entries: PostEntry[] = JSON.parse(event.body as string); // any type problems will be caught
 
     let errorMessage = '';
     if (!Array.isArray(entries)) {
@@ -276,7 +276,7 @@ export async function handler(
 
     const updatedAt = new Date().toUTCString();
     const promises = entries.map(
-      (entry: LoadEntry): Promise<UpdateWriteOpResult> => {
+      (entry: PostEntry): Promise<UpdateWriteOpResult> => {
         const _id = entry.guid;
         return db
           .collection(COLLECTION_ENTRIES)
@@ -294,14 +294,14 @@ export async function handler(
       .filter(result => result.upsertedCount)
       .map(result => result.upsertedId._id);
 
-    const loadResult: LoadResult = {
+    const postResult: PostResult = {
       updatedAt,
       updatedCount,
       insertedCount: insertedIds.length,
       insertedGUIDs: insertedIds,
     };
 
-    return callback(null, Response.success({ ...loadResult }));
+    return callback(null, Response.success({ ...postResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

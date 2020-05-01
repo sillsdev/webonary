@@ -2,11 +2,11 @@
 
 class Webonary_Cloud
 {
-	public static $doBrowseByLetter = 'browse';
+	public static $doBrowseByLetter = 'browse/entry';
 
-	public static $doGetEntry = 'get';
+	public static $doGetEntry = 'get/entry';
 
-	public static $doSearchFulltext = 'search';
+	public static $doSearchEntry = 'search/entry';
 
 	private static function isValidEntry($entry) {
 		return is_object($entry) && isset($entry->_id);
@@ -147,6 +147,23 @@ class Webonary_Cloud
 		);
 	}
 
+
+	public static function getDictionaryData($dictionary) {
+		$request = $doAction . '/' . $dictionary;
+		$params = array('guid' => $id);
+		$response = self::remoteGet($request, $params);
+		$entry = json_decode($response['body']); // use the content
+
+		$posts = [];
+		if (self::isValidEntry($entry)) { 
+			$post = self::entryToFakePost($dictionary, $entry);
+			$post->ID = -1; // negative ID, to avoid clash with a valid post
+			$posts[0] = $post;	
+		}
+
+		return $posts;
+	}
+
 	public static function getEntriesAsPosts($doAction, $dictionary, $text) {
 		$request = $doAction . '/' . $dictionary;
 		$params = array();
@@ -156,7 +173,7 @@ class Webonary_Cloud
 				$params['letterHead'] = $text;
 				break;
 			
-			case self::$doSearchFulltext:
+			case self::$doSearchEntry:
 				$params['fullText'] = $text;
 				break;
 			
@@ -229,7 +246,7 @@ class Webonary_Cloud
 
 			$searchText = trim(get_search_query());
 			if ($searchText != '') {
-				return self::getEntriesAsPosts(self::$doSearchFulltext, $dictionary, $searchText);
+				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionary, $searchText);
 			}
 		}
 

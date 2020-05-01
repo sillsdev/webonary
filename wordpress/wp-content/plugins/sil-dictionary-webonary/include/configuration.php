@@ -235,7 +235,12 @@ function save_configurations()
 				/** @noinspection PhpUndefinedFunctionInspection */
 				prune_super_cache(get_supercache_dir(), true);
 			}
-			update_option('useCloudBackend', $useCloudBackend);			
+			update_option('useCloudBackend', $useCloudBackend);
+
+			// initial set up of dictionary using cloud values
+			if ($useCloudBackend === '1') {
+				
+			}
 		} 
 		
 		echo "<br>" . _e('Settings saved');
