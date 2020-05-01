@@ -32,24 +32,24 @@
         "Post Body": [
           {
             "group": "Post Body",
-            "type": "Object[]",
+            "type": "Object",
             "optional": false,
             "field": "body",
-            "description": "<p>Array of dictionary entries</p>"
+            "description": "<p>JSON representation of dictionary metadata</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.guid",
-            "description": "<p>GUID of the entry</p>"
+            "field": "body.id",
+            "description": "<p>Dictionary id (unique short name)</p>"
           },
           {
             "group": "Post Body",
             "type": "Object",
             "optional": false,
             "field": "body.data",
-            "description": "<p>Object of entry data</p>"
+            "description": "<p>Dictionary metadata</p>"
           }
         ]
       }

@@ -1,9 +1,9 @@
 /**
  * @apiDefine DictionaryPostBody
  *
- * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
- * @apiParam (Post Body) {String}   body.guid  GUID of the entry
- * @apiParam (Post Body) {Object}   body.data  Object of entry data
+ * @apiParam (Post Body) {Object} body      JSON representation of dictionary metadata
+ * @apiParam (Post Body) {String} body.id   Dictionary id (unique short name)
+ * @apiParam (Post Body) {Object} body.data Dictionary metadata
  *
  */
 
