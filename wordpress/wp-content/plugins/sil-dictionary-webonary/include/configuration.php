@@ -238,7 +238,7 @@ function save_configurations()
 			update_option('useCloudBackend', $useCloudBackend);
 
 			// initial set up of dictionary using cloud values
-			if ($useCloudBackend === '1') {
+			if ($useCloudBackend) {
 				$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 				$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
 				if (!is_null($dictionary)) {

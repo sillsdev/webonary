@@ -231,6 +231,30 @@ class Webonary_Cloud
 		return $posts;
 	}
 
+
+	public static function registerAndEnqueStyles($dictionaryId) {
+		$dictionary = self::getDictionary($dictionaryId);
+		if (!is_null($dictionary)){
+			$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
+
+			foreach($dictionary->mainLanguage->cssFiles as $index => $cssFile) {
+				if ($index === 0) {
+					$handle = 'configured_stylesheet';
+				}
+				elseif ($index === 1) {
+					$handle = 'overrides_stylesheet';
+				}
+				else {
+					$handle = 'overrides_stylesheet' . $index;
+				}
+
+				wp_register_style($handle, $baseUrl . $cssFile . '?time=' . date("U"));
+				wp_enqueue_style($handle);
+			}
+		}
+	}
+	
+	
 	public static function searchEntries($posts, WP_Query $query) {
 		if ($query->is_main_query()) {
 			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
