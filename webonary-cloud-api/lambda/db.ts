@@ -1,6 +1,7 @@
 export interface DictionaryLanguage {
   lang: string;
   title?: string;
+  entriesCount?: number;
   letters?: string[];
   cssFiles?: string[];
 }

@@ -18,21 +18,51 @@ export class FlexXhtmlParser {
 
   protected toBeParsed: string;
 
-  public parsedItems: PostEntry[];
+  public parsedFonts: Map<string, string>;
+
+  public parsedLanguages: Map<string, string>;
+
+  public parsedEntries: PostEntry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     this.toBeParsed = toBeParsed;
 
     this.options = Object.assign(options);
 
-    this.parsedItems = [];
+    this.parsedFonts = new Map();
+    this.parsedLanguages = new Map();
+    this.parsedEntries = [];
+
+    this.parseHead();
+    this.parseBody();
   }
 
-  public async parse(): Promise<void> {
+  protected parseHead(): void {
+    const startIndex = this.toBeParsed.indexOf('<head>');
+    const endIndex = this.toBeParsed.indexOf('</head>');
+    const $ = cheerio.load(this.toBeParsed.substring(startIndex + 6, endIndex));
+
+    $('meta').map((i, elem) => {
+      const name = $(elem).attr('name');
+      const content = $(elem).attr('content');
+      if (name && content) {
+        if (name === 'DC.language') {
+          const [languageCode, languageName] = content.split(':');
+          if (languageCode && languageName) {
+            this.parsedLanguages.set(languageCode, languageName);
+          }
+        } else {
+          this.parsedFonts.set(name, content);
+        }
+      }
+    });
+  }
+
+  protected parseBody(): void {
     const matches =
       this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
 
-    this.parsedItems = matches.map(
+    this.parsedEntries = matches.map(
       (entryData): PostEntry => {
         return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
       },
@@ -169,27 +199,25 @@ export class FlexXhtmlParser {
     return { guid, data };
   }
 
-  public static getDictionaryData(
-    dictionaryId: string,
-    loadEntry: PostEntry[],
-  ): PostDictionary | undefined {
-    const id = dictionaryId;
+  public getDictionaryData(): PostDictionary | undefined {
+    const id = this.options.dictionaryId;
 
     let loadDictionary;
-    if (id && loadEntry.length) {
+    if (id && this.parsedEntries.length) {
       // We can safely assume that all the entries have same main language
-      const mainLang = loadEntry[0].data.mainHeadWord[0].lang;
-      const mainLetters = loadEntry
+      const mainLang = this.parsedEntries[0].data.mainHeadWord[0].lang;
+      const mainLetters = this.parsedEntries
         .map(entry => entry.data.letterHead)
         .filter((item, index, items) => items.indexOf(item) === index)
         .sort((a, b) => a.localeCompare(b));
 
       const mainLanguage: DictionaryLanguage = {
         lang: mainLang,
+        title: this.parsedLanguages.get(mainLang),
         letters: mainLetters,
       };
 
-      const reversalLetterHeads = loadEntry.reduce((letterHeads, entry) => {
+      const reversalLetterHeads = this.parsedEntries.reduce((letterHeads, entry) => {
         const newLetterHeads = letterHeads;
         entry.data.reversalLetterHeads.forEach(head => {
           const langLetters = newLetterHeads.get(head.lang);
@@ -209,6 +237,7 @@ export class FlexXhtmlParser {
       reversalLetterHeads.forEach((letters, lang) =>
         reversalLanguages.push({
           lang,
+          title: this.parsedLanguages.get(lang),
           letters: letters.sort((a, b) => a.localeCompare(b)),
         }),
       );

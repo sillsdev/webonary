@@ -239,7 +239,32 @@ function save_configurations()
 
 			// initial set up of dictionary using cloud values
 			if ($useCloudBackend === '1') {
-				
+				$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+				$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+				if (!is_null($dictionary)) {
+					$language = $dictionary->mainLanguage;
+					update_option('languagecode', $language->lang);
+					update_option('totalConfiguredEntries', $language->entriesCount);
+					update_option('vernacular_alphabet', implode(',', $language->letters));
+
+					wp_insert_term(
+						$language->title,
+						'sil_writing_systems',
+						array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+					);
+
+					foreach($dictionary->reversalLanguages as $index => $reversal) {
+						$reversal_index = $index + 1;
+						update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
+						update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
+
+						wp_insert_term(
+							$reversal->title,
+							'sil_writing_systems',
+							array('description' => $reversal->title, 'slug' => $reversal->lang)
+						);						
+					}
+				}
 			}
 		} 
 		

@@ -4,9 +4,15 @@ class Webonary_Cloud
 {
 	public static $doBrowseByLetter = 'browse/entry';
 
+	public static $doGetDictionary = 'get/dictionary';
+
 	public static $doGetEntry = 'get/entry';
 
 	public static $doSearchEntry = 'search/entry';
+
+	private static function isValidDictionary($dictionary) {
+		return is_object($dictionary) && isset($dictionary->_id);
+	} 
 
 	private static function isValidEntry($entry) {
 		return is_object($entry) && isset($entry->_id);
@@ -16,7 +22,7 @@ class Webonary_Cloud
 		return 'g' . $guid;
 	} 
 
-	private static function remoteGet($path, $params = array()) {
+	private static function remoteGetJson($path, $params = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
 			return;
@@ -38,7 +44,15 @@ class Webonary_Cloud
 			error_log('Getting results from ' . $url);
 		}
 
-		return wp_remote_get($url);
+		$response = wp_remote_get($url);
+
+		if (is_wp_error($response)) {
+			error_log($response->get_error_message());
+			return;
+		}
+		
+		$body = wp_remote_retrieve_body($response);		
+		return json_decode($body);
 	}
 
 	private static function remoteFileUrl($path) {
@@ -58,7 +72,7 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	public static function entryToFakePost($dictionary, $entry) {	
+	public static function entryToFakePost($dictionaryId, $entry) {	
 		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 		$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
@@ -67,7 +81,7 @@ class Webonary_Cloud
 		$lexemeform = '';
 		if ($entry->audio->src != '') {
 			$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
-			$lexemeform .= '<source src="' . self::remoteFileUrl($dictionary . '/' . $entry->audio->src) . '"></audio>';
+			$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
 			$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
 		}
 	
@@ -88,7 +102,7 @@ class Webonary_Cloud
 		if (count($entry->pictures)) {
 			$pictures = '<span class="pictures">';
 			foreach ($entry->pictures as $picture)	{
-				$pictureUrl = self::remoteFileUrl($dictionary . '/' . $picture->src);
+				$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
 				$pictures .= '<div class="picture">';
 				$pictures .= '<a class="image" href="' . $pictureUrl . '">';
 				$pictures .= '<img src="' . $pictureUrl . '"></a>';
@@ -109,7 +123,7 @@ class Webonary_Cloud
 		return $post;
 	}
 
-	 public static function entryToReversal($dictionary, $lang, $letter, $entry) {	
+	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry) {	
 		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 		$reversal_value = '';
@@ -139,7 +153,7 @@ class Webonary_Cloud
 		return $reversal;
 	}
 
-	public static function getBlogDictionaryCode() {
+	public static function getBlogDictionaryId() {
 		return (
 			is_subdomain_install()
 			? explode('.', $_SERVER['HTTP_HOST'])[0]
@@ -148,24 +162,18 @@ class Webonary_Cloud
 	}
 
 
-	public static function getDictionaryData($dictionary) {
-		$request = $doAction . '/' . $dictionary;
-		$params = array('guid' => $id);
-		$response = self::remoteGet($request, $params);
-		$entry = json_decode($response['body']); // use the content
-
-		$posts = [];
-		if (self::isValidEntry($entry)) { 
-			$post = self::entryToFakePost($dictionary, $entry);
-			$post->ID = -1; // negative ID, to avoid clash with a valid post
-			$posts[0] = $post;	
+	public static function getDictionary($dictionaryId) {
+		$request = self::$doGetDictionary . '/' . $dictionaryId;
+		$response = self::remoteGetJson($request);
+		$dictionary = NULL;
+		if (self::isValidDictionary($response)) {
+			$dictionary = $response;
 		}
-
-		return $posts;
+		return $dictionary;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionary, $text) {
-		$request = $doAction . '/' . $dictionary;
+	public static function getEntriesAsPosts($doAction, $dictionaryId, $text) {
+		$request = $doAction . '/' . $dictionaryId;
 		$params = array();
 
 		switch ($doAction) {
@@ -181,51 +189,41 @@ class Webonary_Cloud
 				break;
 		}
 
-		$response = self::remoteGet($request, $params);
+		$response = self::remoteGetJson($request, $params);
 		$posts = [];
-	
-		if (is_array($response)) { 
-			$body = json_decode($response['body']); // use the content
-			foreach ($body as $key => $entry) {
-				if (self::isValidEntry($entry)) {
-					$post = self::entryToFakePost($dictionary, $entry);
-					$post->ID = -$key; // negative ID, to avoid clash with a valid post
-					$posts[$key] = $post;	
-				}
-			}		
-		}
+		foreach ($response as $key => $entry) {
+			if (self::isValidEntry($entry)) {
+				$post = self::entryToFakePost($dictionaryId, $entry);
+				$post->ID = -$key; // negative ID, to avoid clash with a valid post
+				$posts[$key] = $post;	
+			}
+		}		
 	
 		return $posts;
 	}
 	
-	public static function getEntriesAsReversals($dictionary, $lang, $letter) {	
-		$request = self::$doBrowseByLetter . '/' . $dictionary;
+	public static function getEntriesAsReversals($dictionaryId, $lang, $letter) {	
+		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
 		$params = array('letterHead' => $letter, 'lang' => $lang);
 		
-		$response = self::remoteGet($request, $params);
+		$response = self::remoteGetJson($request, $params);
 		$reversals = [];
-	
-		if (is_array($response)) { 
-			$body = json_decode($response['body']); // use the content
-			foreach ($body as $key => $entry) {
-				if (self::isValidEntry($entry)) {
-					$reversals[$key] = self::entryToReversal($dictionary, $lang, $letter, $entry);
-				}
-			}	
-		}
-	
+		foreach ($response as $key => $entry) {
+			if (self::isValidEntry($entry)) {
+				$reversals[$key] = self::entryToReversal($dictionaryId, $lang, $letter, $entry);
+			}
+		}	
+
 		return $reversals;
 	}
 
-	public static function getEntryAsPost($doAction, $dictionary, $id) {
-		$request = $doAction . '/' . $dictionary;
+	public static function getEntryAsPost($doAction, $dictionaryId, $id) {
+		$request = $doAction . '/' . $dictionaryId;
 		$params = array('guid' => $id);
-		$response = self::remoteGet($request, $params);
-		$entry = json_decode($response['body']); // use the content
-
+		$response = self::remoteGetJson($request, $params);
 		$posts = [];
-		if (self::isValidEntry($entry)) { 
-			$post = self::entryToFakePost($dictionary, $entry);
+		if (self::isValidEntry($response)) { 
+			$post = self::entryToFakePost($dictionaryId, $response);
 			$post->ID = -1; // negative ID, to avoid clash with a valid post
 			$posts[0] = $post;	
 		}
@@ -235,18 +233,18 @@ class Webonary_Cloud
 
 	public static function searchEntries($posts, WP_Query $query) {
 		if ($query->is_main_query()) {
-			$dictionary = Webonary_Cloud::getBlogDictionaryCode();
+			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 
 			$pageName = trim(get_query_var('name'));
 
 			// name begins with 'g', then followed by GUID
 			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
-				return self::getEntryAsPost(self::$doGetEntry, $dictionary, ltrim($pageName, 'g'));
+				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
 
 			$searchText = trim(get_search_query());
 			if ($searchText != '') {
-				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionary, $searchText);
+				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $searchText);
 			}
 		}
 

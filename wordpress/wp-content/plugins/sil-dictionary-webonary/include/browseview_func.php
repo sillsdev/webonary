@@ -594,7 +594,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 
 	if( get_option('useCloudBackend') )
 	{
-		$dictionary = Webonary_Cloud::getBlogDictionaryCode();
+		$dictionary = Webonary_Cloud::getBlogDictionaryId();
 		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionary, $langcode, $chosenLetter);
 	}
 	else
@@ -863,7 +863,7 @@ function vernacularalphabet_func( $atts )
 
 		if( get_option('useCloudBackend') )
 		{
-			$dictionary = Webonary_Cloud::getBlogDictionaryCode();
+			$dictionary = Webonary_Cloud::getBlogDictionaryId();
 			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionary, $chosenLetter);
 		}
 		else

@@ -159,24 +159,23 @@ if (args[0]) {
       mainCssFiles.push(mainCssOverrideFile);
     }
 
-    const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
-    const parser = new FlexXhtmlParser(toBeParsed, { dictionaryId });
-
     const startProcessingTime = Date.now();
     const startParsingTime = startProcessingTime;
     logMessage('Start parsing...');
 
-    await parser.parse();
-    logMessage(`Finished parsing ${parser.parsedItems.length} entries`, startParsingTime);
+    const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
+    const parser = new FlexXhtmlParser(toBeParsed, { dictionaryId });
+
+    logMessage(`Finished parsing ${parser.parsedEntries.length} entries`, startParsingTime);
 
     const limit = Number(args[1]);
     if (limit) {
       logMessage(`Limiting to ${limit.toString()} entries`);
-      parser.parsedItems = parser.parsedItems.slice(0, limit);
+      parser.parsedEntries = parser.parsedEntries.slice(0, limit);
     }
 
     logMessage(`Getting dictionary metadata...`);
-    const dictionaryPost = FlexXhtmlParser.getDictionaryData(dictionaryId, parser.parsedItems);
+    const dictionaryPost = parser.getDictionaryData();
     if (dictionaryPost) {
       dictionaryPost.data.mainLanguage.cssFiles = mainCssFiles;
 
@@ -205,7 +204,10 @@ if (args[0]) {
     const startPostingEntriesTime = Date.now();
     logMessage(`Start posting entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
 
-    const chunkedParsedItems: PostEntry[][] = chunkArray(parser.parsedItems, CHUNK_LOAD_ENTRY_SIZE);
+    const chunkedParsedItems: PostEntry[][] = chunkArray(
+      parser.parsedEntries,
+      CHUNK_LOAD_ENTRY_SIZE,
+    );
 
     // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
     // eslint-disable-next-line no-restricted-syntax
@@ -229,12 +231,12 @@ if (args[0]) {
       logMessage(`Finished posting chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
     }
 
-    logMessage(`Finished posting ${parser.parsedItems.length} entries`, startPostingEntriesTime);
+    logMessage(`Finished posting ${parser.parsedEntries.length} entries`, startPostingEntriesTime);
 
     const startPostingFilesTime = Date.now();
     logMessage(' Start posting files...');
 
-    const entryFiles = parser.parsedItems.reduce(
+    const entryFiles = parser.parsedEntries.reduce(
       (files: EntryFile[], entry: PostEntry): EntryFile[] => {
         if (entry.data.audio.src) {
           files.push(entry.data.audio);
