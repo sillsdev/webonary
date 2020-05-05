@@ -22,6 +22,17 @@ export async function handler(
     const letterHead = event.queryStringParameters?.letterHead;
     const lang = event.queryStringParameters?.lang;
 
+    let errorMessage = '';
+    if (!letterHead) {
+      errorMessage = 'Browse letter head must be specified.';
+    } else if (!lang) {
+      errorMessage = 'Browse language must be specified.';
+    }
+
+    if (errorMessage) {
+      return callback(null, Response.badRequest(errorMessage));
+    }
+
     const dbFind: DbFindParameters = {};
     dbFind.dictionaryId = dictionaryId;
 
