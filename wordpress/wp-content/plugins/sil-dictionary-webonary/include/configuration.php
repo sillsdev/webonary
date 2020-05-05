@@ -264,6 +264,9 @@ function save_configurations()
 							array('description' => $reversal->title, 'slug' => $reversal->lang)
 						);						
 					}
+					$arrDirectory = wp_upload_dir();
+					$uploadPath = $arrDirectory['path'];
+					Webonary_Cloud::setFontFaces($dictionary, $uploadPath);
 				}
 			}
 		} 

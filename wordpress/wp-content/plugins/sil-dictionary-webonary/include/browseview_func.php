@@ -24,7 +24,7 @@ function categories_func( $atts )
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueStyles($dictionaryId);
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
 	else
 	{	
@@ -585,28 +585,30 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	?>
 	</style>
 <?php
-	$upload_dir = wp_upload_dir();
-	//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
-	$reversalCSSFile = 'reversal_' . $langcode . '.css';
-	if(!file_exists($upload_dir['baseurl'] . '/' . $reversalCSSFile))
-	{
-		$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
-	}
-
-	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
-	wp_enqueue_style( 'reversal_stylesheet');
-
 	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
 
 	$displayXHTML = true;
 
-	if( get_option('useCloudBackend') )
+	if(get_option('useCloudBackend'))
 	{
-		$dictionary = Webonary_Cloud::getBlogdictionaryId();
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionary, $langcode, $chosenLetter);
+		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
+		Webonary_Cloud::registerAndEnqueueReversalStyles($dictionaryId, $langcode);
+
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $langcode, $chosenLetter);
 	}
 	else
 	{
+		$upload_dir = wp_upload_dir();
+		//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
+		$reversalCSSFile = 'reversal_' . $langcode . '.css';
+		if(!file_exists($upload_dir['baseurl'] . '/' . $reversalCSSFile))
+		{
+			$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
+		}
+	
+		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
+		wp_enqueue_style( 'reversal_stylesheet');
+
 		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
 	} 
 
@@ -828,7 +830,7 @@ function vernacularalphabet_func( $atts )
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueStyles($dictionaryId);
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
 	else 
 	{
@@ -879,8 +881,8 @@ function vernacularalphabet_func( $atts )
 
 		if(get_option('useCloudBackend'))
 		{
-			$dictionary = Webonary_Cloud::getBlogdictionaryId();
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionary, $chosenLetter);
+			$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $chosenLetter);
 		}
 		else
 		{

@@ -70,15 +70,13 @@ class Webonary_Font_Management
 	//////////////////////
 	// creates custom.css
 	//////////////////////
-	public function set_fontFaces($file, $uploadPath)
+	public function set_fontFaces($css_string, $uploadPath)
 	{
-		$css_string = file_get_contents($file);
 		$arrUniqueCSSFonts = $this->get_fonts_fromCssText($css_string);
-
 		$arrFont = $this->getFontsAvailable();
 
 		$fontFace = "";
-		$arrFonttyles = array("R", "B", "I", "BI");
+		$arrFontStyles = array("R", "B", "I", "BI");
 		if(count($arrUniqueCSSFonts) > 0)
 		{
 			foreach($arrUniqueCSSFonts as $userFont)
@@ -87,7 +85,7 @@ class Webonary_Font_Management
 
 				if($fontKey !== false)
 				{
-					foreach($arrFonttyles as $fontStyle)
+					foreach($arrFontStyles as $fontStyle)
 					{
 						$extension = "." . $arrFont[$fontKey]["type"];
 
@@ -161,7 +159,8 @@ class Webonary_Font_Management
 
 				$upload_dir = wp_upload_dir();
 				$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
-				$this->set_fontFaces($target_path, $upload_dir['path']);
+				$css_string = file_get_contents($target_path);
+				$this->set_fontFaces($css_string, $upload_dir['path']);
 
 			} else {
 				echo "Sorry, there was an error uploading your file.";

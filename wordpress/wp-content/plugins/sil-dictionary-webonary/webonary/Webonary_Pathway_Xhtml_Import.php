@@ -1658,7 +1658,8 @@ SQL;
 			if((copy($from_path, $target_path) || $from_path == $target_path) && $hasError == false) {
 
 				$fontClass = new Webonary_Font_Management();
-				$fontClass->set_fontFaces($target_path, $upload_dir['path']);
+				$css_string = file_get_contents($target_path);
+				$fontClass->set_fontFaces($css_string, $upload_dir['path']);
 
 				$this->write_log('The css file has been uploaded into your upload folder: ' . $target_path);
 			} else{

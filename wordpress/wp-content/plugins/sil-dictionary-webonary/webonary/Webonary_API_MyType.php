@@ -79,7 +79,8 @@ class Webonary_API_MyType
 		//moving and renaming configured style sheet file
 		if (file_exists($zipFolderPath . '/configured.css')) {
 			$fontClass = new Webonary_Font_Management();
-			$fontClass->set_fontFaces($zipFolderPath . '/configured.css', $uploadPath);
+			$css_string = file_get_contents($zipFolderPath . '/configured.css');
+			$fontClass->set_fontFaces($css_string, $uploadPath);
 
 			copy($zipFolderPath . '/configured.css', $uploadPath . '/imported-with-xhtml.css');
 			

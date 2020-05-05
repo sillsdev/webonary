@@ -44,7 +44,7 @@ function my_enqueue_css() {
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueStyles($dictionaryId);
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
 	else
 	{

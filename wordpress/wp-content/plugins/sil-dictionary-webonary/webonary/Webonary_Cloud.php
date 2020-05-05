@@ -231,12 +231,10 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-
-	public static function registerAndEnqueStyles($dictionaryId) {
+	public static function registerAndEnqueueMainStyles($dictionaryId) {
 		$dictionary = self::getDictionary($dictionaryId);
+		$time = strtotime($dictionary->updatedAt);
 		if (!is_null($dictionary)){
-			$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
-
 			foreach($dictionary->mainLanguage->cssFiles as $index => $cssFile) {
 				if ($index === 0) {
 					$handle = 'configured_stylesheet';
@@ -248,13 +246,48 @@ class Webonary_Cloud
 					$handle = 'overrides_stylesheet' . $index;
 				}
 
-				wp_register_style($handle, $baseUrl . $cssFile . '?time=' . date("U"));
+				$cssPath = $dictionaryId . '/' . $cssFile;   
+				wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
 				wp_enqueue_style($handle);
 			}
 		}
 	}
 	
-	
+	public static function registerAndEnqueueReversalStyles($dictionaryId, $lang) {
+		$dictionary = self::getDictionary($dictionaryId);
+		$time = strtotime($dictionary->updatedAt);
+		if (!is_null($dictionary)){
+			//$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
+			foreach($dictionary->reversalLanguages as $reversal) {
+				if ($lang === $reversal->lang) {
+					foreach($reversal->cssFiles as $index => $cssFile) {
+						$handle = 'reversal_stylesheet' . ($index ? $index : '');
+						$cssPath = $dictionaryId . '/' . $cssFile;   
+						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
+						wp_enqueue_style($handle);
+					}
+					break;
+				}
+			}
+		}
+	}
+
+	public static function setFontFaces($dictionary, $uploadPath) {
+		if (!empty($dictionary->mainLanguage->cssFiles)) {
+			$cssPath = $dictionary->_id . '/' . $dictionary->mainLanguage->cssFiles[0];
+			$response = wp_remote_get(self::remoteFileUrl($cssPath));
+
+			if (is_wp_error($response)) {
+				error_log($response->get_error_message());
+				return;
+			}
+			
+			$body = wp_remote_retrieve_body($response);
+			$fontClass = new Webonary_Font_Management();
+			$fontClass->set_fontFaces($body, $uploadPath);		
+		}
+	}
+
 	public static function searchEntries($posts, WP_Query $query) {
 		if ($query->is_main_query()) {
 			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
