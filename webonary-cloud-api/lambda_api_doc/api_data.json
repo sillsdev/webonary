@@ -15,7 +15,7 @@
       "examples": [
         {
           "title": "Post Body Example",
-          "content": "{\n   \"id\": \"moore\",\n   \"data\": {\n     \"mainLanguage\": {\n       \"lang\": \"mos\",\n       \"letters\": [\"a\", \"ã\", \"b\", \"d\"],\n       \"cssFiles\": [\n         \"configured.css\",\n         \"ProjectDictionaryOverrides.css\"\n       ]\n     },\n     \"reversalLanguages\": [\n       {\n         \"lang\": \"fr\",\n         \"letters\": [\"c\", \"ç\", \"d\", \"e\", \"z\"],\n         \"cssFiles\": [\n           \"reversal_fr.css\"\n          ]\n       },\n       {\n          \"lang\": \"en\",\n          \"letters\": [\"a\", \"x\", \"y\", \"z\"],\n          \"cssFiles\": [\n            \"reversal_en.css\"\n          ]\n       }\n     ]\n   }\n}",
+          "content": "{\n   \"id\": \"moore\",\n   \"data\": {\n     \"mainLanguage\": {\n       \"lang\": \"mos\",\n       \"title\": \"Moore\",\n       \"letters\": [\"a\", \"ã\", \"b\", \"d\"],\n       \"cssFiles\": [\n         \"configured.css\",\n         \"ProjectDictionaryOverrides.css\"\n       ]\n     },\n     \"reversalLanguages\": [\n       {\n         \"lang\": \"fr\",\n         \"title\": \"French\"\n         \"letters\": [\"c\", \"ç\", \"d\", \"e\", \"z\"],\n         \"cssFiles\": [\n           \"reversal_fr.css\"\n          ]\n       },\n       {\n          \"lang\": \"en\",\n          \"title\": \"English\",\n          \"letters\": [\"a\", \"x\", \"y\", \"z\"],\n          \"cssFiles\": [\n            \"reversal_en.css\"\n          ]\n       }\n     ]\n   }\n}",
           "type": "json"
         }
       ],

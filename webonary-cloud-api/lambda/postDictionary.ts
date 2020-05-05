@@ -26,6 +26,7 @@
  *    "data": {
  *      "mainLanguage": {
  *        "lang": "mos",
+ *        "title": "Moore",
  *        "letters": ["a", "ã", "b", "d"],
  *        "cssFiles": [
  *          "configured.css",
@@ -35,6 +36,7 @@
  *      "reversalLanguages": [
  *        {
  *          "lang": "fr",
+ *          "title": "French"
  *          "letters": ["c", "ç", "d", "e", "z"],
  *          "cssFiles": [
  *            "reversal_fr.css"
@@ -42,6 +44,7 @@
  *        },
  *        {
  *           "lang": "en",
+ *           "title": "English",
  *           "letters": ["a", "x", "y", "z"],
  *           "cssFiles": [
  *             "reversal_en.css"
