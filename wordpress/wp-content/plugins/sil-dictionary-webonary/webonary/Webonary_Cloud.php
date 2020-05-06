@@ -25,7 +25,7 @@ class Webonary_Cloud
 	private static function remoteGetJson($path, $params = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
-			return;
+			return null;
 		}
 
 		$encoded_path = array_map('rawurlencode', explode('/', $path));
@@ -37,7 +37,7 @@ class Webonary_Cloud
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
-			return;
+			return null;
 		}
 
 		if (WP_DEBUG){
@@ -48,7 +48,7 @@ class Webonary_Cloud
 
 		if (is_wp_error($response)) {
 			error_log($response->get_error_message());
-			return;
+			return null;
 		}
 		
 		$body = wp_remote_retrieve_body($response);		
@@ -58,7 +58,7 @@ class Webonary_Cloud
 	private static function remoteFileUrl($path) {
 		if (!defined('WEBONARY_CLOUD_FILE_URL'))  {
 			error_log('WEBONARY_CLOUD_FILE_URL is not set! Please do so in wp-config.php.');
-			return;
+			return null;
 		}
 
 		$encoded_path = array_map('rawurlencode', explode('/', $path));
@@ -66,7 +66,7 @@ class Webonary_Cloud
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_FILE_URL in wp-config.php set to a correct URL?');
-			return;
+			return null;
 		}
 
 		return $url;
@@ -279,13 +279,14 @@ class Webonary_Cloud
 
 			if (is_wp_error($response)) {
 				error_log($response->get_error_message());
-				return;
+				return null;
 			}
 			
 			$body = wp_remote_retrieve_body($response);
 			$fontClass = new Webonary_Font_Management();
 			$fontClass->set_fontFaces($body, $uploadPath);		
 		}
+		return null;
 	}
 
 	public static function searchEntries($posts, WP_Query $query) {

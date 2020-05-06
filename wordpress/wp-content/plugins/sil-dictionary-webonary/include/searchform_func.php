@@ -277,7 +277,7 @@ function webonary_searchform() {
 		echo $numberOfEntriesText;
 		echo "<br>";
 
-		if(isset($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
+		if(!empty($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
 		{
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
