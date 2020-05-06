@@ -23,7 +23,7 @@ export async function handler(
     const text = event.queryStringParameters?.text ?? '';
     const partOfSpeech = event.queryStringParameters?.partOfSpeech ?? '';
     const matchPartial = event.queryStringParameters?.matchPartial ?? '';
-    // const matchAccents = event.queryStringParameters?.matchAccents ?? '';
+    const matchAccents = event.queryStringParameters?.matchAccents ?? ''; // NOTE: matching accent works only for fulltext searching
 
     let errorMessage = '';
     if (!text) {
@@ -92,7 +92,8 @@ export async function handler(
       // If we wanted to use language stemming, then we must specify language in each search,
       // and UNION all searches if language-independent search is desired
       const $language = event.queryStringParameters?.stemmingLanguage ?? 'none';
-      const $text = { $search: text, $language };
+      const $diacriticSensitive = matchAccents === '1';
+      const $text = { $search: text, $language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
 
       if (lang) {
