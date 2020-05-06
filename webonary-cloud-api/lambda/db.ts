@@ -3,6 +3,7 @@ export interface DictionaryLanguage {
   title?: string;
   entriesCount?: number;
   letters?: string[];
+  partsOfSpeech?: string[];
   cssFiles?: string[];
 }
 

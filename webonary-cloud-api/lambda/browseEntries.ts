@@ -19,17 +19,26 @@ export async function handler(
     const db = dbClient.db(DB_NAME);
 
     const dictionaryId = event.pathParameters?.dictionaryId;
-    const letterHead = event.queryStringParameters?.letterHead;
+    const text = event.queryStringParameters?.text;
     const lang = event.queryStringParameters?.lang;
+
+    let errorMessage = '';
+    if (!text) {
+      errorMessage = 'Browse letter head must be specified.';
+    }
+
+    if (errorMessage) {
+      return callback(null, Response.badRequest(errorMessage));
+    }
 
     const dbFind: DbFindParameters = {};
     dbFind.dictionaryId = dictionaryId;
 
-    if (letterHead) {
+    if (text) {
       if (lang) {
-        dbFind.reversalLetterHeads = { lang, value: letterHead };
+        dbFind.reversalLetterHeads = { lang, value: text };
       } else {
-        dbFind.letterHead = letterHead;
+        dbFind.letterHead = text;
       }
     }
 

@@ -26,10 +26,19 @@ export async function handler(
       return callback(null, Response.notFound({}));
     }
 
-    // get entries aggregates
+    // get total entries
     dbItem.mainLanguage.entriesCount = await db
       .collection(COLLECTION_ENTRIES)
       .countDocuments({ dictionaryId });
+
+    // get all parts of speech
+    const partsOfSpeech = await db
+      .collection(COLLECTION_ENTRIES)
+      .distinct('senses.partOfSpeech.value', { dictionaryId });
+
+    dbItem.mainLanguage.partsOfSpeech = partsOfSpeech
+      .filter(Boolean)
+      .sort((a, b) => a.localeCompare(b));
 
     return callback(null, Response.success(dbItem));
   } catch (error) {
