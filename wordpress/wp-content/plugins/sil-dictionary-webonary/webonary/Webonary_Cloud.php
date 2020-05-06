@@ -172,23 +172,11 @@ class Webonary_Cloud
 		return $dictionary;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionaryId, $text) {
-		$request = $doAction . '/' . $dictionaryId;
-		$params = array();
-
-		switch ($doAction) {
-			case self::$doBrowseByLetter:
-				$params['letterHead'] = $text;
-				break;
-			
-			case self::$doSearchEntry:
-				$params['fullText'] = $text;
-				break;
-			
-			default:
-				break;
+	public static function getEntriesAsPosts($doAction, $dictionaryId, $params = array()) {
+		if (!is_array($params)) {
+			$params = array('text' => $params);
 		}
-
+		$request = $doAction . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $params);
 		$posts = [];
 		foreach ($response as $key => $entry) {
@@ -204,7 +192,7 @@ class Webonary_Cloud
 	
 	public static function getEntriesAsReversals($dictionaryId, $lang, $letter) {	
 		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
-		$params = array('letterHead' => $letter, 'lang' => $lang);
+		$params = array('text' => $letter, 'lang' => $lang);
 		
 		$response = self::remoteGetJson($request, $params);
 		$reversals = [];
@@ -298,10 +286,31 @@ class Webonary_Cloud
 			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
 				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
-
 			$searchText = trim(get_search_query());
-			if ($searchText != '') {
-				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $searchText);
+			if ($searchText != '') {			
+				$getParams = filter_input_array(
+					INPUT_GET, 
+					array(
+						'key' => array('filter' => FILTER_SANITIZE_STRING),
+						'tax' => array('filter' => FILTER_SANITIZE_STRING),
+						'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
+							'options' => array('default' => get_option('include_partial_words') === '1' ? '0' : '1')),
+						'match_accents' => array('filter' => FILTER_SANITIZE_STRING, 
+							'options' => array('default' => '0'))
+					)
+				);
+
+				$apiParams = array(
+					'text' => $searchText,
+					'lang' => $getParams['key'],
+					'partOfSpeech' => $getParams['tax'],
+					'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
+					'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
+				);
+
+				var_dump($apiParams);
+
+				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 			}
 		}
 
