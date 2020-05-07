@@ -1,9 +1,16 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { EntryFile, EntryValue, EntryData, LoadEntry } from '../lambda/db';
+import {
+  EntryFile,
+  EntryValue,
+  EntryData,
+  PostEntry,
+  PostDictionary,
+  DictionaryLanguage,
+} from '../lambda/db';
 
 export interface Options {
-  dictionary: string;
+  dictionaryId: string;
 }
 
 export class FlexXhtmlParser {
@@ -11,28 +18,58 @@ export class FlexXhtmlParser {
 
   protected toBeParsed: string;
 
-  public parsedItems: LoadEntry[];
+  public parsedFonts: Map<string, string>;
+
+  public parsedLanguages: Map<string, string>;
+
+  public parsedEntries: PostEntry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     this.toBeParsed = toBeParsed;
 
     this.options = Object.assign(options);
 
-    this.parsedItems = [];
+    this.parsedFonts = new Map();
+    this.parsedLanguages = new Map();
+    this.parsedEntries = [];
+
+    this.parseHead();
+    this.parseBody();
   }
 
-  public async parse(): Promise<void> {
+  protected parseHead(): void {
+    const startIndex = this.toBeParsed.indexOf('<head>');
+    const endIndex = this.toBeParsed.indexOf('</head>');
+    const $ = cheerio.load(this.toBeParsed.substring(startIndex + 6, endIndex));
+
+    $('meta').map((i, elem) => {
+      const name = $(elem).attr('name');
+      const content = $(elem).attr('content');
+      if (name && content) {
+        if (name === 'DC.language') {
+          const [languageCode, languageName] = content.split(':');
+          if (languageCode && languageName) {
+            this.parsedLanguages.set(languageCode, languageName);
+          }
+        } else {
+          this.parsedFonts.set(name, content);
+        }
+      }
+    });
+  }
+
+  protected parseBody(): void {
     const matches =
       this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
 
-    this.parsedItems = matches.map(
-      (entryData): LoadEntry => {
-        return FlexXhtmlParser.parseEntry(this.options.dictionary, entryData);
+    this.parsedEntries = matches.map(
+      (entryData): PostEntry => {
+        return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
       },
     );
   }
 
-  static parseEntry(dictionary: string, entryData: string): LoadEntry {
+  public static parseEntry(dictionaryId: string, entryData: string): PostEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
@@ -136,7 +173,7 @@ export class FlexXhtmlParser {
       }
     });
 
-    const reverseLetterHeads = definitionOrGloss.reduce(
+    const reversalLetterHeads = definitionOrGloss.reduce(
       (letterHeads: EntryValue[], entry: EntryValue): EntryValue[] => {
         const { lang } = entry;
         const value = entry.value.toLowerCase().substring(0, 1);
@@ -149,16 +186,71 @@ export class FlexXhtmlParser {
     );
 
     const data: EntryData = {
-      dictionary,
+      dictionaryId,
       mainHeadWord,
       letterHead,
       pronunciations,
       senses: { partOfSpeech, definitionOrGloss },
-      reverseLetterHeads,
+      reversalLetterHeads,
       audio,
       pictures,
     };
 
     return { guid, data };
+  }
+
+  public getDictionaryData(): PostDictionary | undefined {
+    const id = this.options.dictionaryId;
+
+    let loadDictionary;
+    if (id && this.parsedEntries.length) {
+      // We can safely assume that all the entries have same main language
+      const mainLang = this.parsedEntries[0].data.mainHeadWord[0].lang;
+      const mainLetters = this.parsedEntries
+        .map(entry => entry.data.letterHead)
+        .filter((item, index, items) => items.indexOf(item) === index)
+        .sort((a, b) => a.localeCompare(b));
+
+      const mainLanguage: DictionaryLanguage = {
+        lang: mainLang,
+        title: this.parsedLanguages.get(mainLang),
+        letters: mainLetters,
+      };
+
+      const reversalLetterHeads = this.parsedEntries.reduce((letterHeads, entry) => {
+        const newLetterHeads = letterHeads;
+        entry.data.reversalLetterHeads.forEach(head => {
+          const langLetters = newLetterHeads.get(head.lang);
+          if (langLetters) {
+            if (!langLetters.find(letter => letter === head.value)) {
+              langLetters.push(head.value);
+              newLetterHeads.set(head.lang, langLetters);
+            }
+          } else {
+            newLetterHeads.set(head.lang, [head.value]);
+          }
+        });
+        return newLetterHeads;
+      }, new Map<string, string[]>());
+
+      const reversalLanguages: DictionaryLanguage[] = [];
+      reversalLetterHeads.forEach((letters, lang) =>
+        reversalLanguages.push({
+          lang,
+          title: this.parsedLanguages.get(lang),
+          letters: letters.sort((a, b) => a.localeCompare(b)),
+        }),
+      );
+
+      loadDictionary = {
+        id,
+        data: {
+          mainLanguage,
+          reversalLanguages,
+        },
+      };
+    }
+
+    return loadDictionary;
   }
 }

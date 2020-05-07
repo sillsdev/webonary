@@ -235,7 +235,33 @@ function webonary_searchform() {
 		<div style="padding:3px; border:none;">
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
-		$arrIndexed = Webonary_Info::number_of_entries();
+		if(get_option('useCloudBackend'))
+		{
+			$arrIndexed = array();
+			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+			$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+			if(!is_null($dictionary))
+			{
+				$indexed = new stdClass();
+				$indexed->language_name = $dictionary->mainLanguage->title;
+				$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
+				$arrIndexed[] = $indexed;
+				foreach($dictionary->reversalLanguages as $index => $reversal) {
+					$indexed = new stdClass();
+					$indexed->language_name = $reversal->title;
+					$indexed->totalIndexed = $reversal->entriesCount ?? 0;
+
+				}
+			}
+
+			$lastEditDate = $dictionary->updatedAt;
+		}
+		else 
+		{
+			$arrIndexed = Webonary_Info::number_of_entries();
+			$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+		}
+
 
 		$numberOfEntriesText = "";
 		$language_name = "";
@@ -250,7 +276,6 @@ function webonary_searchform() {
 		}
 		echo $numberOfEntriesText;
 		echo "<br>";
-		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 
 		if(isset($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
 		{

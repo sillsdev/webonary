@@ -62,7 +62,7 @@ class Webonary_Info
 				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
-				$archiveFile = Webonary_Cloud::getBlogDictionaryCode() . '.zip';
+				$archiveFile = Webonary_Cloud::getBlogDictionaryId() . '.zip';
  
 				if(file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
 					$status .= '<a href="/wp-content/archives/' . $archiveFile . '">' . $archiveFile . '</a>';

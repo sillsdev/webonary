@@ -8,9 +8,36 @@
  */
 
 /**
+ * @apiDefine DictionaryIdPath
+ *
+ * @apiParam (Path) {String} :dictionaryId Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
+ */
+
+/**
+ * @apiDefine DictionaryEntryPostBody
+ *
+ * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
+ * @apiParam (Post Body) {String}   body.guid  GUID of the entry
+ * @apiParam (Post Body) {Object}   body.data  Object of entry data
+ */
+
+/**
+ * @apiDefine BadRequest
+ *
+ * @apiError (400) BadRequest Input should be a valid JSON object for this API call
+ *
+ * @apiErrorExample {json} Bad Request Example
+ * HTTP/1.1 400 Bad Request
+ * {
+ *    "errorType": "BadRequest",
+ *    "errorMessage": "Input must be an array of entries"
+ * }
+ */
+
+/**
  * @apiDefine ErrorForbidden
  *
- * @apiError ErrorForbidden Incorrect user credentials or user is not authorized to post to the dictionary
+ * @apiError (403) ErrorForbidden Incorrect user credentials or user is not authorized to post to the dictionary
  *
  * @apiErrorExample {json} ErrorForbidden
  * HTTP/1.1 403 Forbidden
@@ -20,19 +47,43 @@
  */
 
 /**
- * @api {post} /load/entry/:dictionary Load entry
- * @apiDescription Calling this API will allow loading of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
- * @apiName LoadDictionaryEntry
+ * @apiDefine TypeError
+ *
+ * @apiError (500) TypeError Invalid type in JSON body
+ *
+ * @apiErrorExample {json} TypeError Example
+ * HTTP/1.1 500 Internal Server Error
+ * {
+ *    "errorType": "TypeError",
+ *    "errorMessage": "Cannot read property 'id' of null"
+ * }
+ */
+
+/**
+ * @apiDefine SyntaxError
+ *
+ * @apiError (500) SyntaxError Invalid JSON body structure
+ *
+ * @apiErrorExample {json} SyntaxError Example
+ * HTTP/1.1 500 Internal Server Error
+ * {
+ *    "errorType": "SyntaxError",
+ *    "errorMessage": "Unexpected token } in JSON at position 243"
+ * }
+ */
+
+/**
+ * @api {post} /post/entry/:dictionaryId Post entry
+ * @apiDescription Calling this API will allow posting of up to 50 dictionary entries. If the entry guid already exists, update will occur instead of an insert.
+ * @apiName PostDictionaryEntry
  * @apiGroup Dictionary
  * @apiPermission dictionary admin in Webonary
  *
  * @apiUse BasicAuthHeader
  *
- * @apiParam (Path) {String} :dictionary Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a>
+ * @apiUse DictionaryIdPath
  *
- * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
- * @apiParam (Post Body) {String}   body.guid  GUID of the entry
- * @apiParam (Post Body) {Object}   body.data  Object of entry data
+ * @apiUse DictionaryEntryPostBody
  *
  * @apiParamExample {json} Post Body Example
  * [
@@ -43,7 +94,7 @@
  *          "id": "g635754050803599765ãadga",
  *          "src": "AudioVisual/635754050803599765ãadga.mp3"
  *        },
- *        "dictionary": "moore",
+ *        "dictionaryId": "moore",
  *        "letterHead": "ã",
  *        "mainHeadWord": [
  *          {
@@ -65,7 +116,7 @@
  *            "value": "ã́-á"
  *          }
  *        ],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "p"
@@ -101,7 +152,7 @@
  *          "id": "g636908699703911281abada",
  *          "src": "AudioVisual/636908699703911281abada.mp3"
  *        },
- *        "dictionary": "moore",
+ *        "dictionaryId": "moore",
  *        "letterHead": "a",
  *        "mainHeadWord": [
  *          {
@@ -111,7 +162,7 @@
  *        ],
  *        "pictures": [],
  *        "pronunciations": [],
- *        "reverseLetterHeads": [
+ *        "reversalLetterHeads": [
  *          {
  *            "lang": "fr",
  *            "value": "j"
@@ -141,7 +192,7 @@
  *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *    }
  * ]
- * @apiSuccess {String} updatedAt Timestamp of the loading of entries in GMT
+ * @apiSuccess {String} updatedAt Timestamp of the posting of entries in GMT
  * @apiSuccess {Number} updatedCount Number of entries updated
  * @apiSuccess {Number} insertedCount Number of entries inserted
  * @apiSuccess {Object[]} insertedGUIDs Array containing GUID of the inserted entries
@@ -158,26 +209,19 @@
  *    ]
  * }
  *
- * @apiError BadRequest Input should be an array of up to 50 entry objects.
- *
- * @apiErrorExample {json} BadRequest Example
- * HTTP/1.1 400 BadRequest
- * {
- *    "ErrorType": "BadRequest",
- *    "Message": "Input must be an array of entries"
- * }
- *
+ * @apiUse BadRequest
  * @apiUse ErrorForbidden
- *
+ * @apiUse SyntaxError
+ * @apiUse TypeError
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, LoadEntry } from './db';
+import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, PostEntry } from './db';
 import * as Response from './response';
 
-interface LoadResult {
+interface PostResult {
   updatedAt: string;
   updatedCount: number;
   insertedCount: number;
@@ -195,7 +239,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const entries: LoadEntry[] = JSON.parse(event.body as string);
+    const entries: PostEntry[] = JSON.parse(event.body as string); // any type problems will be caught
 
     let errorMessage = '';
     if (!Array.isArray(entries)) {
@@ -232,7 +276,7 @@ export async function handler(
 
     const updatedAt = new Date().toUTCString();
     const promises = entries.map(
-      (entry: LoadEntry): Promise<UpdateWriteOpResult> => {
+      (entry: PostEntry): Promise<UpdateWriteOpResult> => {
         const _id = entry.guid;
         return db
           .collection(COLLECTION_ENTRIES)
@@ -250,14 +294,14 @@ export async function handler(
       .filter(result => result.upsertedCount)
       .map(result => result.upsertedId._id);
 
-    const loadResult: LoadResult = {
+    const postResult: PostResult = {
       updatedAt,
       updatedCount,
       insertedCount: insertedIds.length,
       insertedGUIDs: insertedIds,
     };
 
-    return callback(null, Response.success({ ...loadResult }));
+    return callback(null, Response.success({ ...postResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

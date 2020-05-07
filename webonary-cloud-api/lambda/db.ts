@@ -1,3 +1,22 @@
+export interface DictionaryLanguage {
+  lang: string;
+  title?: string;
+  entriesCount?: number;
+  letters?: string[];
+  cssFiles?: string[];
+}
+
+export interface DictionaryData {
+  _id?: string;
+  mainLanguage: DictionaryLanguage;
+  reversalLanguages: DictionaryLanguage[];
+}
+
+export interface PostDictionary {
+  id: string;
+  data: DictionaryData;
+}
+
 export interface EntryFile {
   id: string;
   src: string;
@@ -18,17 +37,17 @@ export interface EntrySense {
 
 export interface EntryData {
   _id?: string;
-  dictionary: string;
+  dictionaryId: string;
   letterHead: string;
   mainHeadWord: EntryValue[];
   pronunciations: EntryValue[];
   senses: EntrySense;
-  reverseLetterHeads: EntryValue[];
+  reversalLetterHeads: EntryValue[];
   audio: EntryFile;
   pictures: EntryFile[];
 }
 
-export interface LoadEntry {
+export interface PostEntry {
   guid: string;
   data: EntryData;
 }
@@ -39,5 +58,6 @@ export interface DbFindParameters {
 }
 
 export const DB_NAME = process.env.DB_NAME as string;
+export const COLLECTION_DICTIONARIES = 'webonaryDictionaries';
 export const COLLECTION_ENTRIES = 'webonaryEntries';
 export const DB_MAX_UPDATES_PER_CALL = 50;

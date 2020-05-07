@@ -21,9 +21,17 @@ function categories_func( $atts )
 		}
 	}
 
-	$upload_dir = wp_upload_dir();
-	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-	wp_enqueue_style( 'configured_stylesheet');
+	if (get_option('useCloudBackend'))
+	{
+		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
+	}
+	else
+	{	
+		$upload_dir = wp_upload_dir();
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		wp_enqueue_style( 'configured_stylesheet');
+	}
 ?>
 	<style>
 	   TD {font-size: 9pt; font-family: arial,helvetica; text-decoration: none; font-weight: bold;}
@@ -577,28 +585,30 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	?>
 	</style>
 <?php
-	$upload_dir = wp_upload_dir();
-	//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
-	$reversalCSSFile = 'reversal_' . $langcode . '.css';
-	if(!file_exists($upload_dir['baseurl'] . '/' . $reversalCSSFile))
-	{
-		$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
-	}
-
-	wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
-	wp_enqueue_style( 'reversal_stylesheet');
-
 	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
 
 	$displayXHTML = true;
 
-	if( get_option('useCloudBackend') )
+	if(get_option('useCloudBackend'))
 	{
-		$dictionary = Webonary_Cloud::getBlogDictionaryCode();
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionary, $langcode, $chosenLetter);
+		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
+		Webonary_Cloud::registerAndEnqueueReversalStyles($dictionaryId, $langcode);
+
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $langcode, $chosenLetter);
 	}
 	else
 	{
+		$upload_dir = wp_upload_dir();
+		//wp_register_style('reversal_stylesheet', '/files/reversal_' . $langcode . '.css?time=' . date("U"));
+		$reversalCSSFile = 'reversal_' . $langcode . '.css';
+		if(!file_exists($upload_dir['baseurl'] . '/' . $reversalCSSFile))
+		{
+			$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
+		}
+	
+		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
+		wp_enqueue_style( 'reversal_stylesheet');
+
 		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
 	} 
 
@@ -817,14 +827,22 @@ function vernacularalphabet_func( $atts )
 	<?php
 	}
 
-	$upload_dir = wp_upload_dir();
-	wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-	wp_enqueue_style( 'configured_stylesheet');
-
-	if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
+	if (get_option('useCloudBackend'))
 	{
-		wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
-		wp_enqueue_style( 'overrides_stylesheet');
+		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
+	}
+	else 
+	{
+		$upload_dir = wp_upload_dir();
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		wp_enqueue_style( 'configured_stylesheet');
+
+		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
+		{
+			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+			wp_enqueue_style( 'overrides_stylesheet');
+		}
 	}
 
 	$languagecode = get_option('languagecode');
@@ -861,10 +879,10 @@ function vernacularalphabet_func( $atts )
 		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
 		$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
 
-		if( get_option('useCloudBackend') )
+		if(get_option('useCloudBackend'))
 		{
-			$dictionary = Webonary_Cloud::getBlogDictionaryCode();
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionary, $chosenLetter);
+			$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $chosenLetter);
 		}
 		else
 		{

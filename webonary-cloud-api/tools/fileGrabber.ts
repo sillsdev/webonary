@@ -18,7 +18,7 @@ class FileGrabber {
     return returned;
   }
 
-  public getFilenames(directory: string): string[] {
+  public async getFilenames(directory: string): Promise<string[]> {
     return fs.readdirSync(`data/${directory}`);
   }
 }
