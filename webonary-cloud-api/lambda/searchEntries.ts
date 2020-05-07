@@ -20,6 +20,7 @@ export async function handler(
     const dictionaryId = event.pathParameters?.dictionaryId;
     const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
+
     const text = event.queryStringParameters?.text ?? '';
     const partOfSpeech = event.queryStringParameters?.partOfSpeech ?? '';
     const matchPartial = event.queryStringParameters?.matchPartial ?? '';
