@@ -24,6 +24,64 @@ function webonary_searchform() {
 	{
 		return false;
 	}
+
+	/*
+	 * Set up the Parts of Speech
+	 */
+	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+	$parts_of_speech_dropdown = '';
+	$arrIndexed[] = array();
+	$lastEditDate = '';
+
+	if(get_option('useCloudBackend'))
+	{
+		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		if(!is_null($dictionary))
+		{
+			if (count($dictionary->mainLanguage->partsOfSpeech))
+			{
+				$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
+				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
+				foreach ($dictionary->mainLanguage->partsOfSpeech as $part)
+				{
+					$selected = ($part === $taxonomy) ? ' selected ' : '';
+					$parts_of_speech_dropdown .= "<option value=" . $part . $selected . ">" . $part . "</option>";
+				}
+				$parts_of_speech_dropdown .= "</select>";
+			}
+
+			$indexed = new stdClass();
+			$indexed->language_name = $dictionary->mainLanguage->title;
+			$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
+			$arrIndexed[] = $indexed;
+			foreach($dictionary->reversalLanguages as $index => $reversal)
+			{
+				$indexed = new stdClass();
+				$indexed->language_name = $reversal->title;
+				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
+				$arrIndex[] = $indexed;
+			}
+
+			$lastEditDate = $dictionary->updatedAt;
+		}
+	}
+	else 
+	{
+		$parts_of_speech = get_terms('sil_parts_of_speech');
+		if($parts_of_speech)
+		{
+			$parts_of_speech_dropdown = wp_dropdown_categories(
+				"show_option_none=" .
+				__('All Parts of Speech','sil_dictionary') .
+				"&show_count=1&selected=" . $taxonomy .
+				"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech"
+			);
+		}
+
+		$arrIndexed = Webonary_Info::number_of_entries();
+		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+	}
 	?>
 	<script LANGUAGE="JavaScript">
 	<!--
@@ -183,21 +241,7 @@ function webonary_searchform() {
 					}
 					?>
 					</select>
-					<?php
-
-					/*
-					 * Set up the Parts of Speech
-					 */
-					$parts_of_speech = get_terms('sil_parts_of_speech');
-					$taxonomy = isset($_GET['tax']) ? $_GET['tax'] : ''; 
-					if($parts_of_speech)
-					{
-						wp_dropdown_categories("show_option_none=" .
-							__('All Parts of Speech','sil_dictionary') .
-							"&show_count=1&selected=" . $taxonomy .
-							"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech");
-					}
-					?>
+					<?php echo $parts_of_speech_dropdown; ?>
 					<br>
 					<?php
 					$checkedWholeWords = "";
@@ -235,34 +279,6 @@ function webonary_searchform() {
 		<div style="padding:3px; border:none;">
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
-		if(get_option('useCloudBackend'))
-		{
-			$arrIndexed = array();
-			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-			$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
-			if(!is_null($dictionary))
-			{
-				$indexed = new stdClass();
-				$indexed->language_name = $dictionary->mainLanguage->title;
-				$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
-				$arrIndexed[] = $indexed;
-				foreach($dictionary->reversalLanguages as $index => $reversal) {
-					$indexed = new stdClass();
-					$indexed->language_name = $reversal->title;
-					$indexed->totalIndexed = $reversal->entriesCount ?? 0;
-
-				}
-			}
-
-			$lastEditDate = $dictionary->updatedAt;
-		}
-		else 
-		{
-			$arrIndexed = Webonary_Info::number_of_entries();
-			$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
-		}
-
-
 		$numberOfEntriesText = "";
 		$language_name = "";
 		foreach($arrIndexed as $indexed)
@@ -277,7 +293,7 @@ function webonary_searchform() {
 		echo $numberOfEntriesText;
 		echo "<br>";
 
-		if(isset($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
+		if(!empty($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
 		{
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}

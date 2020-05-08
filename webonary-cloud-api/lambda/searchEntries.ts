@@ -20,12 +20,14 @@ export async function handler(
     const dictionaryId = event.pathParameters?.dictionaryId;
     const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
-    const searchText = event.queryStringParameters?.searchText ?? '';
-    const searchType = event.queryStringParameters?.searchType ?? 'fullText';
-    const partOfSpeech = event.queryStringParameters?.partOfSpeech;
+
+    const text = event.queryStringParameters?.text ?? '';
+    const partOfSpeech = event.queryStringParameters?.partOfSpeech ?? '';
+    const matchPartial = event.queryStringParameters?.matchPartial ?? '';
+    const matchAccents = event.queryStringParameters?.matchAccents ?? ''; // NOTE: matching accent works only for fulltext searching
 
     let errorMessage = '';
-    if (!searchText) {
+    if (!text) {
       errorMessage = 'Text to search must be specified.';
     }
 
@@ -36,7 +38,7 @@ export async function handler(
     let entries;
     let primaryFilter;
     let langFilter;
-    const $regex = new RegExp(searchText, 'i');
+    const $regex = new RegExp(text, 'i');
 
     if (partOfSpeech) {
       primaryFilter = {
@@ -74,7 +76,7 @@ export async function handler(
       };
     }
 
-    if (searchType === 'partial') {
+    if (matchPartial === '1') {
       const dictionaryPartialSearch = {
         $and: [{ ...primaryFilter }, { ...langFilter }],
       };
@@ -91,9 +93,9 @@ export async function handler(
       // If we wanted to use language stemming, then we must specify language in each search,
       // and UNION all searches if language-independent search is desired
       const $language = event.queryStringParameters?.stemmingLanguage ?? 'none';
-      const $text = { $search: searchText, $language };
+      const $diacriticSensitive = matchAccents === '1';
+      const $text = { $search: text, $language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
-
       if (lang) {
         entries = await db
           .collection(COLLECTION_ENTRIES)

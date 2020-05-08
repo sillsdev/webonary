@@ -25,7 +25,7 @@ class Webonary_Cloud
 	private static function remoteGetJson($path, $params = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
-			return;
+			return null;
 		}
 
 		$encoded_path = array_map('rawurlencode', explode('/', $path));
@@ -37,7 +37,7 @@ class Webonary_Cloud
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
-			return;
+			return null;
 		}
 
 		if (WP_DEBUG){
@@ -48,7 +48,7 @@ class Webonary_Cloud
 
 		if (is_wp_error($response)) {
 			error_log($response->get_error_message());
-			return;
+			return null;
 		}
 		
 		$body = wp_remote_retrieve_body($response);		
@@ -58,7 +58,7 @@ class Webonary_Cloud
 	private static function remoteFileUrl($path) {
 		if (!defined('WEBONARY_CLOUD_FILE_URL'))  {
 			error_log('WEBONARY_CLOUD_FILE_URL is not set! Please do so in wp-config.php.');
-			return;
+			return null;
 		}
 
 		$encoded_path = array_map('rawurlencode', explode('/', $path));
@@ -66,7 +66,7 @@ class Webonary_Cloud
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_FILE_URL in wp-config.php set to a correct URL?');
-			return;
+			return null;
 		}
 
 		return $url;
@@ -172,23 +172,11 @@ class Webonary_Cloud
 		return $dictionary;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionaryId, $text) {
-		$request = $doAction . '/' . $dictionaryId;
-		$params = array();
-
-		switch ($doAction) {
-			case self::$doBrowseByLetter:
-				$params['letterHead'] = $text;
-				break;
-			
-			case self::$doSearchEntry:
-				$params['fullText'] = $text;
-				break;
-			
-			default:
-				break;
+	public static function getEntriesAsPosts($doAction, $dictionaryId, $params = array()) {
+		if (!is_array($params)) {
+			$params = array('text' => $params);
 		}
-
+		$request = $doAction . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $params);
 		$posts = [];
 		foreach ($response as $key => $entry) {
@@ -204,7 +192,7 @@ class Webonary_Cloud
 	
 	public static function getEntriesAsReversals($dictionaryId, $lang, $letter) {	
 		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
-		$params = array('letterHead' => $letter, 'lang' => $lang);
+		$params = array('text' => $letter, 'lang' => $lang);
 		
 		$response = self::remoteGetJson($request, $params);
 		$reversals = [];
@@ -279,13 +267,14 @@ class Webonary_Cloud
 
 			if (is_wp_error($response)) {
 				error_log($response->get_error_message());
-				return;
+				return null;
 			}
 			
 			$body = wp_remote_retrieve_body($response);
 			$fontClass = new Webonary_Font_Management();
 			$fontClass->set_fontFaces($body, $uploadPath);		
 		}
+		return null;
 	}
 
 	public static function searchEntries($posts, WP_Query $query) {
@@ -298,10 +287,29 @@ class Webonary_Cloud
 			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
 				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
-
 			$searchText = trim(get_search_query());
-			if ($searchText != '') {
-				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $searchText);
+			if ($searchText != '') {			
+				$getParams = filter_input_array(
+					INPUT_GET, 
+					array(
+						'key' => array('filter' => FILTER_SANITIZE_STRING),
+						'tax' => array('filter' => FILTER_SANITIZE_STRING),
+						'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
+							'options' => array('default' => get_option('include_partial_words') === '1' ? '0' : '1')),
+						'match_accents' => array('filter' => FILTER_SANITIZE_STRING, 
+							'options' => array('default' => '0'))
+					)
+				);
+
+				$apiParams = array(
+					'text' => $searchText,
+					'lang' => $getParams['key'],
+					'partOfSpeech' => $getParams['tax'],
+					'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
+					'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
+				);
+
+				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 			}
 		}
 
