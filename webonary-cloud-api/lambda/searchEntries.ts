@@ -76,7 +76,7 @@ export async function handler(
       };
     }
 
-    if (matchPartial) {
+    if (matchPartial === '1') {
       const dictionaryPartialSearch = {
         $and: [{ ...primaryFilter }, { ...langFilter }],
       };
@@ -96,7 +96,6 @@ export async function handler(
       const $diacriticSensitive = matchAccents === '1';
       const $text = { $search: text, $language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
-
       if (lang) {
         entries = await db
           .collection(COLLECTION_ENTRIES)
