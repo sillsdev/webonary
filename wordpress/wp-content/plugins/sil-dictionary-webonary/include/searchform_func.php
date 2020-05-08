@@ -30,10 +30,11 @@ function webonary_searchform() {
 	 */
 	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 	$parts_of_speech_dropdown = '';
+	$arrIndexed[] = array();
+	$lastEditDate = '';
 
 	if(get_option('useCloudBackend'))
 	{
-		$arrIndexed = array();
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
 		if(!is_null($dictionary))
@@ -61,9 +62,9 @@ function webonary_searchform() {
 				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
 				$arrIndex[] = $indexed;
 			}
-		}
 
-		$lastEditDate = $dictionary->updatedAt;
+			$lastEditDate = $dictionary->updatedAt;
+		}
 	}
 	else 
 	{
