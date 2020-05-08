@@ -309,8 +309,6 @@ class Webonary_Cloud
 					'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
 				);
 
-				var_dump($apiParams);
-
 				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 			}
 		}
