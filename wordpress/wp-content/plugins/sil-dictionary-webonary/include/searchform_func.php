@@ -25,21 +25,20 @@ function webonary_searchform() {
 		return false;
 	}
 
-	/*
-	 * Set up the Parts of Speech
-	 */
 	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-	$parts_of_speech_dropdown = '';
-	$arrIndexed[] = array();
-	$lastEditDate = '';
 
+	$arrIndexed = array();
+	$sem_domains = array();
+	$parts_of_speech_dropdown = '';
+	$lastEditDate = '';	
 	if(get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
 		if(!is_null($dictionary))
 		{
-			if (count($dictionary->mainLanguage->partsOfSpeech))
+			// set up parts of speech dropdown
+			if(count($dictionary->mainLanguage->partsOfSpeech))
 			{
 				$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
 				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
@@ -51,6 +50,15 @@ function webonary_searchform() {
 				$parts_of_speech_dropdown .= "</select>";
 			}
 
+			//set up semantic domains links
+			if($search_term !== '')
+			{
+				//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
+				$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
+				$sem_domains = $wpdb->get_results( $query );
+			}
+
+			// set up dictionary info
 			$indexed = new stdClass();
 			$indexed->language_name = $dictionary->mainLanguage->title;
 			$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
@@ -68,6 +76,7 @@ function webonary_searchform() {
 	}
 	else 
 	{
+		// set up parts of speech dropdown
 		$parts_of_speech = get_terms('sil_parts_of_speech');
 		if($parts_of_speech)
 		{
@@ -79,6 +88,15 @@ function webonary_searchform() {
 			);
 		}
 
+		// set up semantic domains links
+		if($search_term !== '')
+		{
+			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
+			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
+			$sem_domains = $wpdb->get_results( $query );
+		}
+
+		// set up dictionary info
 		$arrIndexed = Webonary_Info::number_of_entries();
 		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}

@@ -1,7 +1,13 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_ENTRIES,
+  PATH_TO_DEFINITION_VALUE,
+  PATH_TO_MAIN_HEADWORD_VALUE,
+  PATH_TO_PART_OF_SPEECH_VALUE,
+} from './db';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -43,7 +49,7 @@ export async function handler(
     if (partOfSpeech) {
       primaryFilter = {
         dictionaryId,
-        'senses.partOfSpeech.value': partOfSpeech,
+        [PATH_TO_PART_OF_SPEECH_VALUE]: partOfSpeech,
       };
     } else {
       primaryFilter = { dictionaryId };
@@ -70,8 +76,8 @@ export async function handler(
     } else {
       langFilter = {
         $or: [
-          { 'mainHeadWord.value': { $regex } },
-          { 'senses.definitionOrGloss.value': { $regex } },
+          { [PATH_TO_MAIN_HEADWORD_VALUE]: { $regex } },
+          { [PATH_TO_DEFINITION_VALUE]: { $regex } },
         ],
       };
     }
@@ -81,7 +87,7 @@ export async function handler(
         $and: [{ ...primaryFilter }, { ...langFilter }],
       };
       entries = await db
-        .collection(COLLECTION_ENTRIES)
+        .collection(DB_COLLECTION_ENTRIES)
         .find(dictionaryPartialSearch)
         .toArray();
     } else {
@@ -98,12 +104,12 @@ export async function handler(
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
       if (lang) {
         entries = await db
-          .collection(COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_ENTRIES)
           .aggregate([{ $match: dictionaryFulltextSearch }, { $match: langFilter }])
           .toArray();
       } else {
         entries = await db
-          .collection(COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_ENTRIES)
           .find(dictionaryFulltextSearch)
           .toArray();
       }

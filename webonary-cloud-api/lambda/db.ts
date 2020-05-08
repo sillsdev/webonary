@@ -26,14 +26,15 @@ export interface EntryFile {
 }
 
 export interface EntryValue {
+  key?: string;
   lang: string;
   value: string;
-  type?: string;
 }
 
 export interface EntrySense {
   definitionOrGloss: EntryValue[];
   partOfSpeech: EntryValue;
+  semanticDomains?: EntryValue[];
 }
 
 export interface EntryData {
@@ -59,6 +60,21 @@ export interface DbFindParameters {
 }
 
 export const DB_NAME = process.env.DB_NAME as string;
-export const COLLECTION_DICTIONARIES = 'webonaryDictionaries';
-export const COLLECTION_ENTRIES = 'webonaryEntries';
+
+// Vietnamese seem to have the most Latin diacritics, so use this for case and diacritic insensitive search
+export const DB_COLLATION_INSENSITIVE = { collation: { locale: 'vi', strength: 1 } };
+
+export const DB_COLLECTION_DICTIONARIES = 'webonaryDictionaries';
+export const DB_COLLECTION_ENTRIES = 'webonaryEntries';
+
+export const PATH_TO_MAIN_HEADWORD_VALUE = 'mainHeadWord.value';
+
+export const PATH_TO_DEFINITION_VALUE = 'senses.definitionOrGloss.value';
+
+export const PATH_TO_PART_OF_SPEECH_VALUE = 'senses.partOfSpeech.value';
+
+export const PATH_TO_SEM_DOMS_KEY = 'senses.semanticDomains.key';
+export const PATH_TO_SEM_DOMS_LANG = 'senses.semanticDomains.lang';
+export const PATH_TO_SEM_DOMS_VALUE = 'senses.semanticDomains.value';
+
 export const DB_MAX_UPDATES_PER_CALL = 50;

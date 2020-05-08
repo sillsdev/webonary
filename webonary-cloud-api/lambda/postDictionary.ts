@@ -76,7 +76,7 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_DICTIONARIES, PostDictionary } from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARIES, PostDictionary } from './db';
 import * as Response from './response';
 
 interface PostResult {
@@ -105,7 +105,7 @@ export async function handler(
     const db = dbClient.db(DB_NAME);
 
     const dbResult = await db
-      .collection(COLLECTION_DICTIONARIES)
+      .collection(DB_COLLECTION_DICTIONARIES)
       .updateOne({ _id }, { $set: { _id, ...dictionary.data, updatedAt } }, { upsert: true });
 
     const postResult: PostResult = {
