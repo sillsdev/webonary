@@ -129,14 +129,6 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       }),
     );
 
-    const searchEntriesSemDomsFunction = new lambda.Function(
-      this,
-      'searchEntriesSemDoms',
-      Object.assign(defaultLambdaFunctionProps('searchEntriesSemDoms'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
-
     // API and resources
     const api = new apigateway.RestApi(this, 'webonary-cloud-api', {
       restApiName: 'webonaryCloudApi',
@@ -219,14 +211,6 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     const searchEntriesLambda = new apigateway.LambdaIntegration(searchEntriesFunction);
     apiSearchEntriesByDictionaryId.addMethod('GET', searchEntriesLambda);
-
-    const apiSearchEntriesSemDomsByDictionaryId = apiSearchEntriesByDictionaryId.addResource(
-      'semDoms',
-    );
-    const searchEntriesSemDomsLambda = new apigateway.LambdaIntegration(
-      searchEntriesSemDomsFunction,
-    );
-    apiSearchEntriesSemDomsByDictionaryId.addMethod('GET', searchEntriesSemDomsLambda);
 
     // the main magic to easily pass the lambda version to stack in another region
     // this output is required
