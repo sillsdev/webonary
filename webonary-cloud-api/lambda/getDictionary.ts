@@ -5,7 +5,7 @@ import {
   DB_NAME,
   DB_COLLECTION_DICTIONARIES,
   DB_COLLECTION_ENTRIES,
-  PATH_TO_PART_OF_SPEECH_VALUE,
+  PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
   DictionaryData,
 } from './db';
 import * as Response from './response';
@@ -40,7 +40,7 @@ export async function handler(
     // get all parts of speech
     const partsOfSpeech = await db
       .collection(DB_COLLECTION_ENTRIES)
-      .distinct(PATH_TO_PART_OF_SPEECH_VALUE, { dictionaryId });
+      .distinct(PATH_TO_ENTRY_PART_OF_SPEECH_VALUE, { dictionaryId });
 
     dbItem.mainLanguage.partsOfSpeech = partsOfSpeech
       .filter(Boolean)

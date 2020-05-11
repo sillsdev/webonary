@@ -259,11 +259,53 @@ export class FlexXhtmlParser {
         }),
       );
 
+      /*
+      const semanticDomains = this.parsedEntries.reduce((semDoms, entry) => {
+        const newSemDoms = semDoms;
+        if (entry.data.senses.semanticDomains) {
+          entry.data.senses.semanticDomains.forEach(semDom => {
+            const semDomsForLang = newSemDoms.get(semDom.lang);
+            if (semDomsForLang) {
+              if (
+                !semDomsForLang.find(item => item.key === semDom.key && item.value === semDom.value)
+              ) {
+                semDomsForLang.push(semDom);
+                newSemDoms.set(semDom.lang, semDomsForLang);
+              }
+            } else {
+              newSemDoms.set(semDom.lang, [semDom]);
+            }
+          });
+        }
+        return newSemDoms;
+      }, new Map<string, EntryValue[]>());
+      */
+
+      const semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
+        const newSemDoms = semDoms;
+        if (entry.data.senses.semanticDomains) {
+          entry.data.senses.semanticDomains.forEach(semDom => {
+            if (
+              !newSemDoms.find(
+                item =>
+                  item.key === semDom.key &&
+                  item.lang === semDom.lang &&
+                  item.value === semDom.value,
+              )
+            ) {
+              newSemDoms.push(semDom);
+            }
+          });
+        }
+        return newSemDoms;
+      }, []);
+
       loadDictionary = {
         id,
         data: {
           mainLanguage,
           reversalLanguages,
+          semanticDomains,
         },
       };
     }

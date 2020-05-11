@@ -223,8 +223,8 @@ import {
   DB_COLLECTION_ENTRIES,
   DB_COLLATION_INSENSITIVE,
   DB_MAX_UPDATES_PER_CALL,
-  PATH_TO_DEFINITION_VALUE,
-  PATH_TO_MAIN_HEADWORD_VALUE,
+  PATH_TO_ENTRY_DEFINITION_VALUE,
+  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_SEM_DOMS_LANG,
   PATH_TO_SEM_DOMS_VALUE,
   PostEntry,
@@ -279,8 +279,8 @@ export async function handler(
     // fulltext index (case and diacritic insensitive by default)
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        [PATH_TO_MAIN_HEADWORD_VALUE]: 'text',
-        [PATH_TO_DEFINITION_VALUE]: 'text',
+        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+        [PATH_TO_ENTRY_DEFINITION_VALUE]: 'text',
       },
       { name: 'wordsFulltextIndex', default_language: 'none' },
     );
@@ -296,6 +296,7 @@ export async function handler(
     );
 
     const updatedAt = new Date().toUTCString();
+
     const promises = entries.map(
       (entry: PostEntry): Promise<UpdateWriteOpResult> => {
         const _id = entry.guid;

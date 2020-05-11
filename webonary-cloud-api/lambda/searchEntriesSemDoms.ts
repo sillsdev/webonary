@@ -1,14 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import {
-  DB_NAME,
-  DB_COLLATION_INSENSITIVE,
-  DB_COLLECTION_ENTRIES,
-  PATH_TO_SEM_DOMS_KEY,
-  PATH_TO_SEM_DOMS_LANG,
-  PATH_TO_SEM_DOMS_VALUE,
-} from './db';
+import { DB_NAME, PATH_TO_SEM_DOMS_SEARCH_VALUE, DB_COLLECTION_DICTIONARIES } from './db';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -25,8 +18,9 @@ export async function handler(
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
     const dictionaryId = event.pathParameters?.dictionaryId;
+    const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
 
-    const text = event.queryStringParameters?.text ?? '';
+    const text = event.queryStringParameters?.text.toLowerCase().normalize() ?? '';
 
     let errorMessage = '';
     if (!text) {
@@ -37,29 +31,15 @@ export async function handler(
       return callback(null, Response.badRequest(errorMessage));
     }
 
-    /*    
-    const filter: object = { dictionaryId, [PATH_TO_SEM_DOMS_VALUE]: text };
+    let filter: object = { dictionaryId, [PATH_TO_SEM_DOMS_SEARCH_VALUE]: text };
+
+    if (lang) {
+      filter = Object.assign(filter, { lang });
+    }
 
     const semDoms = await db
-      .collection(DB_COLLECTION_ENTRIES)
-      .find(filter, DB_COLLATION_INSENSITIVE)
-      .project({
-        _id: 0,
-        [PATH_TO_SEM_DOMS_KEY]: 1,
-        [PATH_TO_SEM_DOMS_LANG]: 1,
-        [PATH_TO_SEM_DOMS_VALUE]: 1,
-      })
-      .toArray();
-*/
-
-    const filter: object = {
-      dictionaryId,
-      [PATH_TO_SEM_DOMS_VALUE]: text,
-    };
-
-    const semDoms = await db
-      .collection(DB_COLLECTION_ENTRIES)
-      .distinct(PATH_TO_SEM_DOMS_VALUE, {}, collation: DB_COLLATION_INSENSITIVE);
+      .collection(DB_COLLECTION_DICTIONARIES)
+      .distinct('semanticDomains', filter);
 
     if (!semDoms.length) {
       return callback(null, Response.notFound([{}]));

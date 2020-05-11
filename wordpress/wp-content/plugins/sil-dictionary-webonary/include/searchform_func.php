@@ -26,6 +26,7 @@ function webonary_searchform() {
 	}
 
 	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+	$search_term = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 
 	$arrIndexed = array();
 	$sem_domains = array();
@@ -42,7 +43,7 @@ function webonary_searchform() {
 			{
 				$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
 				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
-				foreach ($dictionary->mainLanguage->partsOfSpeech as $part)
+				foreach($dictionary->mainLanguage->partsOfSpeech as $part)
 				{
 					$selected = ($part === $taxonomy) ? ' selected ' : '';
 					$parts_of_speech_dropdown .= "<option value=" . $part . $selected . ">" . $part . "</option>";
@@ -51,13 +52,24 @@ function webonary_searchform() {
 			}
 
 			//set up semantic domains links
-			if($search_term !== '')
+			if($search_term !== '' && count($dictionary->semanticDomains))
 			{
-				//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
-				$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
-				$sem_domains = $wpdb->get_results( $query );
+				// NOTE: Even though the current non-cloud search does not filter this by language, we should do so in the future
+				$sem_domains = array();
+				$sem_term = strtolower($search_term);
+				foreach($dictionary->semanticDomains as $item)
+				{
+					if(strpos($item->searchValue, $sem_term) !== false)
+					{ 
+						$sem_domain = new stdClass();
+						$sem_domain->term_id = $item->value;
+						$sem_domain->slug = str_replace('.', '-', $item->key);
+						$sem_domain->description = $item->value;
+						$sem_domains[] = $sem_domain;  	
+					}
+				}
 			}
-
+			
 			// set up dictionary info
 			$indexed = new stdClass();
 			$indexed->language_name = $dictionary->mainLanguage->title;
@@ -329,13 +341,8 @@ function webonary_searchform() {
 		?>
 		</div>
 		<?php
-		$search_term = isset($_GET['s']) ? trim($_GET['s']) : '';
-		if(strlen($search_term) > 0)
+		if($search_term !== '')
 		{
-			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
-			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
-    		$sem_domains = $wpdb->get_results( $query );
-
 			if(count($sem_domains) > 0 && count($sem_domains) <= 10)
 			{
 				echo "<p>&nbsp;</p>";
