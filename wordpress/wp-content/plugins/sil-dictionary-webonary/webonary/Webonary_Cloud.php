@@ -288,7 +288,19 @@ class Webonary_Cloud
 				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
 			$searchText = trim(get_search_query());
-			if ($searchText != '') {			
+			if ($searchText === '') {
+				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+				if ($tax !== '') {
+					// This is a listing by semantic domains			
+					$apiParams = array(
+						'text' => $tax,
+						'searchSemDoms' => '1'
+					);
+	
+					return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);					
+				}
+			} 
+			else {			
 				$getParams = filter_input_array(
 					INPUT_GET, 
 					array(

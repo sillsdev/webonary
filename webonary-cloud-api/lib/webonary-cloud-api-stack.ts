@@ -208,6 +208,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Search entries
     const apiSearchEntries = apiSearch.addResource('entry');
     const apiSearchEntriesByDictionaryId = apiSearchEntries.addResource('{dictionaryId}');
+
     const searchEntriesLambda = new apigateway.LambdaIntegration(searchEntriesFunction);
     apiSearchEntriesByDictionaryId.addMethod('GET', searchEntriesLambda);
 

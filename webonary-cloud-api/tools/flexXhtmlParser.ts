@@ -143,13 +143,13 @@ export class FlexXhtmlParser {
 
     const pronunciations: EntryValue[] = [];
     $('span.pronunciations span.pronunciation span span').map((i, elem) => {
-      const type =
+      const key =
         $(elem)
           .parent()
           .attr('class') ?? '';
       const lang = $(elem).attr('lang') ?? '';
       const value = $(elem).text();
-      pronunciations.push({ lang, value, type });
+      pronunciations.push({ lang, value, key });
     });
 
     const partOfSpeech: EntryValue = {
@@ -173,6 +173,23 @@ export class FlexXhtmlParser {
       }
     });
 
+    const semanticDomains: EntryValue[] = [];
+    $(
+      'span.senses span.sensecontent span.sense span.semanticdomains span.semanticdomain span.name span',
+    ).map((i, elem) => {
+      const lang = $(elem).attr('lang');
+      const value = $(elem).text();
+      if (lang && value) {
+        const key = $(elem)
+          .parent()
+          .parent()
+          .children('span.abbreviation')
+          .children()
+          .text();
+        semanticDomains.push({ key, lang, value });
+      }
+    });
+
     const reversalLetterHeads = definitionOrGloss.reduce(
       (letterHeads: EntryValue[], entry: EntryValue): EntryValue[] => {
         const { lang } = entry;
@@ -190,7 +207,7 @@ export class FlexXhtmlParser {
       mainHeadWord,
       letterHead,
       pronunciations,
-      senses: { partOfSpeech, definitionOrGloss },
+      senses: { partOfSpeech, definitionOrGloss, semanticDomains },
       reversalLetterHeads,
       audio,
       pictures,
@@ -242,11 +259,53 @@ export class FlexXhtmlParser {
         }),
       );
 
+      /*
+      const semanticDomains = this.parsedEntries.reduce((semDoms, entry) => {
+        const newSemDoms = semDoms;
+        if (entry.data.senses.semanticDomains) {
+          entry.data.senses.semanticDomains.forEach(semDom => {
+            const semDomsForLang = newSemDoms.get(semDom.lang);
+            if (semDomsForLang) {
+              if (
+                !semDomsForLang.find(item => item.key === semDom.key && item.value === semDom.value)
+              ) {
+                semDomsForLang.push(semDom);
+                newSemDoms.set(semDom.lang, semDomsForLang);
+              }
+            } else {
+              newSemDoms.set(semDom.lang, [semDom]);
+            }
+          });
+        }
+        return newSemDoms;
+      }, new Map<string, EntryValue[]>());
+      */
+
+      const semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
+        const newSemDoms = semDoms;
+        if (entry.data.senses.semanticDomains) {
+          entry.data.senses.semanticDomains.forEach(semDom => {
+            if (
+              !newSemDoms.find(
+                item =>
+                  item.key === semDom.key &&
+                  item.lang === semDom.lang &&
+                  item.value === semDom.value,
+              )
+            ) {
+              newSemDoms.push(semDom);
+            }
+          });
+        }
+        return newSemDoms;
+      }, []);
+
       loadDictionary = {
         id,
         data: {
           mainLanguage,
           reversalLanguages,
+          semanticDomains,
         },
       };
     }

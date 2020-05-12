@@ -218,7 +218,17 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, PostEntry } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_ENTRIES,
+  DB_COLLATION_INSENSITIVE,
+  DB_MAX_UPDATES_PER_CALL,
+  PATH_TO_ENTRY_DEFINITION_VALUE,
+  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
+  PATH_TO_SEM_DOMS_LANG,
+  PATH_TO_SEM_DOMS_VALUE,
+  PostEntry,
+} from './db';
 import * as Response from './response';
 
 interface PostResult {
@@ -266,20 +276,32 @@ export async function handler(
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    await db.collection(COLLECTION_ENTRIES).createIndex(
+    // fulltext index (case and diacritic insensitive by default)
+    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        'mainHeadWord.value': 'text',
-        'senses.definitionOrGloss.value': 'text',
+        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+        [PATH_TO_ENTRY_DEFINITION_VALUE]: 'text',
       },
       { name: 'wordsFulltextIndex', default_language: 'none' },
     );
 
+    // case and diacritic insensitive index for semantic domains
+    // Vietnamese seem to have the most diacritics
+    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
+      {
+        [PATH_TO_SEM_DOMS_LANG]: 1,
+        [PATH_TO_SEM_DOMS_VALUE]: 1,
+      },
+      DB_COLLATION_INSENSITIVE,
+    );
+
     const updatedAt = new Date().toUTCString();
+
     const promises = entries.map(
       (entry: PostEntry): Promise<UpdateWriteOpResult> => {
         const _id = entry.guid;
         return db
-          .collection(COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_ENTRIES)
           .updateOne({ _id }, { $set: { _id, ...entry.data, updatedAt } }, { upsert: true });
       },
     );

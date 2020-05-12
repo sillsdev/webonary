@@ -30,6 +30,9 @@ export async function handler(
   context: Context,
   callback: Callback,
 ): Promise<void> {
+  // eslint-disable-next-line no-param-reassign
+  context.callbackWaitsForEmptyEventLoop = false;
+
   const dictionaryId = event.pathParameters?.dictionaryId;
   const authHeaders = event.headers?.Authorization;
 

@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, COLLECTION_ENTRIES, DbFindParameters, EntryData } from './db';
+import { DB_NAME, DB_COLLECTION_ENTRIES, DbFindParameters, EntryData } from './db';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -43,7 +43,7 @@ export async function handler(
     }
 
     const entries: EntryData[] = await db
-      .collection(COLLECTION_ENTRIES)
+      .collection(DB_COLLECTION_ENTRIES)
       .find(dbFind)
       .toArray();
 
