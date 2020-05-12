@@ -173,9 +173,6 @@ class Webonary_Cloud
 	}
 
 	public static function getEntriesAsPosts($doAction, $dictionaryId, $params = array()) {
-		if (!is_array($params)) {
-			$params = array('text' => $params);
-		}
 		$request = $doAction . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $params);
 		$posts = [];

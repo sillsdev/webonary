@@ -882,7 +882,8 @@ function vernacularalphabet_func( $atts )
 		if(get_option('useCloudBackend'))
 		{
 			$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $chosenLetter);
+			$apiParams = array('text' => $chosenLetter, 'pageNumber' => $pagenr, 'pageLimit' => getPostsPerPage()); 
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
 		}
 		else
 		{

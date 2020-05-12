@@ -4,6 +4,7 @@ import { connectToDB } from './mongo';
 import {
   DB_NAME,
   DB_COLLECTION_ENTRIES,
+  DB_MAX_DOCUMENTS_PER_CALL,
   PATH_TO_ENTRY_DEFINITION_VALUE,
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
@@ -34,9 +35,18 @@ export async function handler(
     const matchPartial = event.queryStringParameters?.matchPartial ?? '';
     const matchAccents = event.queryStringParameters?.matchAccents ?? ''; // NOTE: matching accent works only for fulltext searching
 
+    const pageNumber = Number(event.queryStringParameters?.pageNumber) || 1;
+    const pageLimit = Number(event.queryStringParameters?.pageLimit) || DB_MAX_DOCUMENTS_PER_CALL;
+    const skip = (pageNumber - 1) * pageLimit;
+
     let errorMessage = '';
+
     if (!text) {
       errorMessage = 'Text to search must be specified.';
+    } else if (pageNumber < 1) {
+      errorMessage = 'Page number cannot be less than 1.';
+    } else if (pageLimit > DB_MAX_DOCUMENTS_PER_CALL || pageLimit < 1) {
+      errorMessage = `Page limit cannot be greater than ${DB_MAX_DOCUMENTS_PER_CALL} or less than 1.`;
     }
 
     if (errorMessage) {
@@ -50,6 +60,8 @@ export async function handler(
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
         .find({ ...primaryFilter, [PATH_TO_ENTRY_SEM_DOMS_VALUE]: text })
+        .skip(skip)
+        .limit(pageLimit)
         .toArray();
     } else {
       let langFilter;
@@ -95,6 +107,8 @@ export async function handler(
         entries = await db
           .collection(DB_COLLECTION_ENTRIES)
           .find(dictionaryPartialSearch)
+          .skip(skip)
+          .limit(pageLimit)
           .toArray();
       } else {
         // NOTE: Mongo text search can do language specific stemming,
@@ -112,11 +126,15 @@ export async function handler(
           entries = await db
             .collection(DB_COLLECTION_ENTRIES)
             .aggregate([{ $match: dictionaryFulltextSearch }, { $match: langFilter }])
+            .skip(skip)
+            .limit(pageLimit)
             .toArray();
         } else {
           entries = await db
             .collection(DB_COLLECTION_ENTRIES)
             .find(dictionaryFulltextSearch)
+            .skip(skip)
+            .limit(pageLimit)
             .toArray();
         }
       }
