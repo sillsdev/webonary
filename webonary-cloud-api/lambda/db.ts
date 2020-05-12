@@ -203,3 +203,7 @@ export function setSearchableEntries(entries: EntryValue[]): EntryValue[] {
     return newEntry;
   });
 }
+
+export function getDbSkip(pageNumber: number, pageLimit: number): number {
+  return (pageNumber - 1) * pageLimit;
+}

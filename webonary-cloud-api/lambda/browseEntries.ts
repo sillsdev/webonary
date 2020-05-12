@@ -14,6 +14,7 @@ import {
   PATH_TO_ENTRY_DEFINITION_VALUE,
   DbFindParameters,
   EntryData,
+  getDbSkip,
 } from './db';
 import * as Response from './response';
 
@@ -33,34 +34,40 @@ export async function handler(
 
     const dictionaryId = event.pathParameters?.dictionaryId;
     const text = event.queryStringParameters?.text;
+    const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
     const lang = event.queryStringParameters?.lang;
-    const pageNumber = Number(event.queryStringParameters?.pageNumber) || 1;
-    const pageLimit = Number(event.queryStringParameters?.pageLimit) || DB_MAX_DOCUMENTS_PER_CALL;
-    const skip = (pageNumber - 1) * pageLimit;
-
-    let errorMessage = '';
+    const countTotalOnly = event.queryStringParameters?.countTotalOnly;
+    const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber), 1);
+    const pageLimit = Math.min(
+      Math.max(Number(event.queryStringParameters?.pageLimit), 1),
+      DB_MAX_DOCUMENTS_PER_CALL,
+    );
 
     if (!text) {
-      errorMessage = 'Browse letter head must be specified.';
-    } else if (pageNumber < 1) {
-      errorMessage = 'Page number cannot be less than 1.';
-    } else if (pageLimit > DB_MAX_DOCUMENTS_PER_CALL || pageLimit < 1) {
-      errorMessage = `Page limit cannot be greater than ${DB_MAX_DOCUMENTS_PER_CALL} or less than 1.`;
+      return callback(null, Response.badRequest('Browse letter head must be specified.'));
     }
 
-    if (errorMessage) {
-      return callback(null, Response.badRequest(errorMessage));
-    }
-
-    let entries: EntryData[];
-    const dbFind: DbFindParameters = {};
-    let dbLocale = DB_COLLATION_LOCALE_DEFAULT;
-    let dbSortKey: string;
-
-    dbFind.dictionaryId = dictionaryId;
-
+    // set up main search
+    const dbFind: DbFindParameters = { dictionaryId };
     if (lang) {
       dbFind.reversalLetterHeads = { lang, value: text };
+    } else {
+      dbFind.letterHead = text;
+    }
+
+    // return count only
+    if (countTotalOnly && countTotalOnly === '1') {
+      const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
+      return callback(null, Response.success({ count }));
+    }
+
+    // set up to return entries
+    let entries: EntryData[];
+    let dbSortKey: string;
+    let dbLocale = DB_COLLATION_LOCALE_DEFAULT;
+    const dbSkip = getDbSkip(pageNumber, pageLimit);
+
+    if (lang) {
       // TODO: Include reversal language in sorting
       dbSortKey = PATH_TO_ENTRY_MAIN_HEADWORD_VALUE;
       if (DB_COLLATION_LOCALES.includes(lang)) {
@@ -78,20 +85,21 @@ export async function handler(
           ],
           { collation: { locale: dbLocale, strength: DB_COLLATION_LOCALE_STRENGTH } },
         )
-        .skip(skip)
+        .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
     } else {
-      dbFind.letterHead = text;
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
       dbSortKey = PATH_TO_ENTRY_MAIN_HEADWORD_VALUE;
-
+      if (mainLang && mainLang !== '' && DB_COLLATION_LOCALES.includes(mainLang)) {
+        dbLocale = mainLang;
+      }
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
         .find(dbFind)
         .collation({ locale: dbLocale, strength: DB_COLLATION_LOCALE_STRENGTH })
         .sort({ [dbSortKey]: 1 })
-        .skip(skip)
+        .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
     }
@@ -118,6 +126,7 @@ export async function handler(
     }
     return callback(null, Response.success(entriesSorted));
     */
+
     return callback(null, Response.success(entries));
   } catch (error) {
     // eslint-disable-next-line no-console

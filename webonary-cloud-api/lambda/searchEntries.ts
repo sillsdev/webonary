@@ -9,6 +9,7 @@ import {
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
   PATH_TO_ENTRY_SEM_DOMS_VALUE,
+  getDbSkip,
 } from './db';
 import * as Response from './response';
 
@@ -37,7 +38,6 @@ export async function handler(
 
     const pageNumber = Number(event.queryStringParameters?.pageNumber) || 1;
     const pageLimit = Number(event.queryStringParameters?.pageLimit) || DB_MAX_DOCUMENTS_PER_CALL;
-    const skip = (pageNumber - 1) * pageLimit;
 
     let errorMessage = '';
 
@@ -55,12 +55,13 @@ export async function handler(
 
     let entries;
     let primaryFilter = { dictionaryId };
+    const dbSkip = getDbSkip(pageNumber, pageLimit);
 
     if (searchSemDoms === '1') {
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
         .find({ ...primaryFilter, [PATH_TO_ENTRY_SEM_DOMS_VALUE]: text })
-        .skip(skip)
+        .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
     } else {
@@ -107,7 +108,7 @@ export async function handler(
         entries = await db
           .collection(DB_COLLECTION_ENTRIES)
           .find(dictionaryPartialSearch)
-          .skip(skip)
+          .skip(dbSkip)
           .limit(pageLimit)
           .toArray();
       } else {
@@ -126,14 +127,14 @@ export async function handler(
           entries = await db
             .collection(DB_COLLECTION_ENTRIES)
             .aggregate([{ $match: dictionaryFulltextSearch }, { $match: langFilter }])
-            .skip(skip)
+            .skip(dbSkip)
             .limit(pageLimit)
             .toArray();
         } else {
           entries = await db
             .collection(DB_COLLECTION_ENTRIES)
             .find(dictionaryFulltextSearch)
-            .skip(skip)
+            .skip(dbSkip)
             .limit(pageLimit)
             .toArray();
         }

@@ -5,7 +5,7 @@ function categories_func( $atts )
 
 	$display = "";
 
-	$postsperpage = 25;
+	$postsPerPage = 25;
 
 	$qTransLang = "en";
 
@@ -152,7 +152,7 @@ function categories_func( $atts )
 	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsperpage . "&paged=" . $pagenr);
+		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
 	}
 	if(count($arrPosts) == 0)
 	{
@@ -170,7 +170,7 @@ function categories_func( $atts )
 		}
 	}
 
-	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsperpage,  $semdomain , "semnumber", $pagenr);
+	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
 
 	$display .= "</div>";
 
@@ -413,7 +413,13 @@ function getPostsPerPage()
 	return $posts_per_page;
 }
 
-function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr)
+function getLimitSql($page, $postsPerPage)
+{
+	$startFrom = ($page > 1) ? (($page - 1) * $postsPerPage) : 0;
+	return " LIMIT $startFrom, $postsPerPage";
+}
+
+function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr, $postsPerPage = 25)
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
 	{
@@ -421,6 +427,8 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	}
 
 	global $wpdb;
+
+	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
 	$sortorderExists = (count($result))?TRUE:FALSE;
@@ -460,11 +468,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	{
 		$sql .= " ORDER BY reversal_head ASC";
 	}
-	if($page > 1)
-	{
-		$startFrom = ($page - 1) * 50;
-		$sql .= " LIMIT " . $startFrom .", 50";
-	}
+	$sql .= $limitSql;
 
 	$arrReversals = $wpdb->get_results($sql);
 
@@ -484,11 +488,8 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 		" AND a.search_strings LIKE  '" . $letter . "%' " . $collate .
 		" GROUP BY a.post_id, a.search_strings " .
 		" ORDER BY a.search_strings ";
-		if($page > 1)
-		{
-			$startFrom = ($page - 1) * 50;
-			$sql .= " LIMIT " . $startFrom .", 50";
-		}
+
+		$sql .= $limitSql;
 
 		$arrReversals = $wpdb->get_results($sql);
 		if(count($arrReversals) > 0)
@@ -586,7 +587,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	</style>
 <?php
 	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
-
+	$postsPerPage = getPostsPerPage();
 	$displayXHTML = true;
 
 	if(get_option('useCloudBackend'))
@@ -594,7 +595,15 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
 		Webonary_Cloud::registerAndEnqueueReversalStyles($dictionaryId, $langcode);
 
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $langcode, $chosenLetter);
+		$apiParams = array(
+			'text' => $chosenLetter,
+			'lang' => $langcode,
+			'pageNumber' => $pagenr,
+			'pageLimit' => $postsPerPage
+		);
+
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
 	}
 	else
 	{
@@ -609,7 +618,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
 		wp_enqueue_style( 'reversal_stylesheet');
 
-		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr);
+		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr, $postsPerPage);
+		$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
 	} 
 
 	if($arrReversals == null)
@@ -666,23 +676,14 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			}
 		}
     	$count++;
-    	if($count == 50)
+    	if($count == $postsPerPage)
     	{
     		break;
     	}
 	}
 
-	if(!isset($_GET['totalEntries']))
-	{
-		$totalEntries = count($arrReversals);
-	}
-	else
-	{
-		$totalEntries = $_GET['totalEntries'];
-	}
-
 	$display .=  "<div style=clear:both></div>";
-	$display .= displayPagenumbers($chosenLetter, $totalEntries, 50, $langcode);
+	$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $langcode);
 
 	$display .=  "</div><br>";
 
@@ -721,7 +722,7 @@ function getNoLetters($chosenLetter, $alphas)
 	return $noLetters;
 }
 
-function getVernacularEntries($letter = "", $langcode = "", $page)
+function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage = 25)
 {
 	global $wpdb;
 
@@ -731,18 +732,13 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 		$collate = "";
 	}
 
-	$startFrom = 0;
-	$postsperpage = getPostsPerPage();
-	if($page > 1)
-	{
-		$startFrom = ($page - 1) * $postsperpage;
-	}
+	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content";
 	$sql .= " FROM $wpdb->posts";
 	$sql .= " WHERE post_content_filtered = %s $collate";
 	$sql .= " ORDER BY menu_order ASC";
-	$sql .= " LIMIT $startFrom, $postsperpage";
+	$sql .= $limitSql;
 
 	$arrEntries = $wpdb->get_results($wpdb->prepare($sql, $letter));
 
@@ -769,7 +765,7 @@ function getVernacularEntries($letter = "", $langcode = "", $page)
 		}
 
 		$sql .= " ORDER BY sortorder ASC, search_strings ASC";
-		$sql .= " LIMIT $startFrom, $postsperpage";
+		$sql .= $limitSql;
 
 		$arrEntries = $wpdb->get_results($wpdb->prepare($sql, strtolower($letter) . '%', $langcode));
 	}
@@ -878,19 +874,25 @@ function vernacularalphabet_func( $atts )
 
 		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
 		$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+		$postsPerPage = getPostsPerPage();
 
 		if(get_option('useCloudBackend'))
 		{
 			$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
-			$apiParams = array('text' => $chosenLetter, 'pageNumber' => $pagenr, 'pageLimit' => getPostsPerPage()); 
+			$apiParams = array(
+				'text' => $chosenLetter,
+				'mainLang' => $languagecode,
+				'pageNumber' => $pagenr,
+				'pageLimit' => $postsPerPage);
+
 			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
 		}
 		else
 		{
-			$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr);
+			$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr, $postsPerPage);
+			$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
 		}
-
-		$totalEntries = $_GET['totalEntries'] ?? count($arrPosts);
 
 		if(count($arrPosts) == 0)
 		{
@@ -926,7 +928,7 @@ function vernacularalphabet_func( $atts )
 		$display .= "</div>";
 
 		$display .= "<div align=center><br>";
-		$display .= displayPagenumbers($chosenLetter, $totalEntries, getPostsPerPage(), $languagecode);
+		$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
 		$display .= "</div><br>";
 	}
  	wp_reset_query();
