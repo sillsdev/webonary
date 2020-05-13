@@ -39,9 +39,9 @@ export async function handler(
 
     const countTotalOnly = event.queryStringParameters?.countTotalOnly;
 
-    const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber), 1);
+    const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber ?? ''), 1);
     const pageLimit = Math.min(
-      Math.max(Number(event.queryStringParameters?.pageLimit), 1),
+      Math.max(Number(event.queryStringParameters?.pageLimit ?? DB_MAX_DOCUMENTS_PER_CALL), 1),
       DB_MAX_DOCUMENTS_PER_CALL,
     );
 
