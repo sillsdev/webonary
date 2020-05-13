@@ -35,8 +35,10 @@ export async function handler(
     const dictionaryId = event.pathParameters?.dictionaryId;
     const text = event.queryStringParameters?.text;
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
-    const lang = event.queryStringParameters?.lang;
+    const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
+
     const countTotalOnly = event.queryStringParameters?.countTotalOnly;
+
     const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber), 1);
     const pageLimit = Math.min(
       Math.max(Number(event.queryStringParameters?.pageLimit), 1),
