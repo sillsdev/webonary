@@ -70,12 +70,13 @@ export async function handler(
     const dbSkip = getDbSkip(pageNumber, pageLimit);
 
     if (lang) {
-      // TODO: Include reversal language in sorting
+      // TODO: Include reversal language in sorting?
+      /*
       dbSortKey = PATH_TO_ENTRY_MAIN_HEADWORD_VALUE;
       if (DB_COLLATION_LOCALES.includes(lang)) {
         dbLocale = lang;
       }
-
+      */
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
         .aggregate(
