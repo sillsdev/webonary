@@ -404,8 +404,9 @@ function get_has_reversalbrowseletters()
 
 function getPostsPerPage()
 {
-	$posts_per_page = 25;  // TODO: Check if this is reasonable, or should be increased, and made into a constant.
-	
+	// TODO: Check if this is reasonable, or should be increased, and made into a constant.
+	$posts_per_page = 25;
+
 	if(get_option( 'posts_per_page' ) > $posts_per_page)
 	{
 		$posts_per_page = get_option('posts_per_page');
@@ -417,7 +418,7 @@ function getPostsPerPage()
 function getLimitSql($page, $postsPerPage)
 {
 	$startFrom = ($page > 1) ? (($page - 1) * $postsPerPage) : 0;
-	return " LIMIT $startFrom, $postsPerPage";
+	return " LIMIT $postsPerPage OFFSET $startFrom";
 }
 
 function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr, $postsPerPage = null)
