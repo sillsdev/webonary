@@ -5,7 +5,7 @@ function categories_func( $atts )
 
 	$display = "";
 
-	$postsPerPage = 25;
+	$postsPerPage = getPostsPerPage();
 
 	$qTransLang = "en";
 
@@ -419,7 +419,7 @@ function getLimitSql($page, $postsPerPage)
 	return " LIMIT $startFrom, $postsPerPage";
 }
 
-function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr, $postsPerPage = 25)
+function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr, $postsPerPage = null)
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
 	{
@@ -428,6 +428,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 
 	global $wpdb;
 
+	$postsPerPage = $postsPerPage ?? getPostsPerPage();
 	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
@@ -722,17 +723,18 @@ function getNoLetters($chosenLetter, $alphas)
 	return $noLetters;
 }
 
-function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage = 25)
+function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage = null)
 {
 	global $wpdb;
 
+	$postsPerPage = $postsPerPage ?? getPostsPerPage();
+	$limitSql = getLimitSql($page, $postsPerPage);
+		
 	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 	if(get_option('IncludeCharactersWithDiacritics') == 1)
 	{
 		$collate = "";
 	}
-
-	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content";
 	$sql .= " FROM $wpdb->posts";

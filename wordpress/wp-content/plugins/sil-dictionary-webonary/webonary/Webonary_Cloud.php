@@ -133,7 +133,7 @@ class Webonary_Cloud
 			$definitions = [$definitions];
 		}
 
-		foreach ($definitions as $definition)	{
+		foreach ($definitions as $definition) {
 			$lowerLetter = strtolower($letter);
 			if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
 				$reversal_value = $definition->value;
