@@ -404,7 +404,8 @@ function get_has_reversalbrowseletters()
 
 function getPostsPerPage()
 {
-	$posts_per_page = 25;
+	$posts_per_page = 25;  // TODO: Check if this is reasonable, or should be increased, and made into a constant.
+	
 	if(get_option( 'posts_per_page' ) > $posts_per_page)
 	{
 		$posts_per_page = get_option('posts_per_page');
