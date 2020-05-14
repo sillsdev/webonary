@@ -24,10 +24,11 @@ export interface DictionaryEntry {
   letterHead: string;
   mainHeadWord: EntryValue[];
   pronunciations: EntryValue[];
-  senses: EntrySense;
+  senses: EntrySense[];
   reversalLetterHeads: EntryValue[];
   audio: EntryFile;
   pictures: EntryFile[];
+  updatedAt?: string;
 }
 
 export interface DictionaryLanguage {
@@ -204,8 +205,8 @@ export function sortEntries(entries: DictionaryEntry[], lang?: string): Dictiona
   let entriesSorted: DictionaryEntry[] = [];
   if (lang !== '') {
     entriesSorted = entries.sort((a, b) => {
-      const aWord = a.senses.definitionOrGloss.find(letter => letter.lang === lang);
-      const bWord = b.senses.definitionOrGloss.find(letter => letter.lang === lang);
+      const aWord = a.senses[0].definitionOrGloss.find(letter => letter.lang === lang);
+      const bWord = b.senses[0].definitionOrGloss.find(letter => letter.lang === lang);
       if (aWord && bWord) {
         return aWord.value.localeCompare(bWord.value);
       }

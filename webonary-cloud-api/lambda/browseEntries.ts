@@ -13,8 +13,8 @@ import {
   PATH_TO_ENTRY_DEFINITION_LANG,
   PATH_TO_ENTRY_DEFINITION_VALUE,
   DbFindParameters,
-  EntryData,
   getDbSkip,
+  DictionaryEntry,
 } from './db';
 import * as Response from './response';
 
@@ -64,7 +64,7 @@ export async function handler(
     }
 
     // set up to return entries
-    let entries: EntryData[];
+    let entries: DictionaryEntry[];
     let dbSortKey: string;
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     const dbSkip = getDbSkip(pageNumber, pageLimit);

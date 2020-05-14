@@ -1,9 +1,26 @@
 /**
  * @apiDefine DictionaryPostBody
  *
- * @apiParam (Post Body) {Object} body      JSON representation of dictionary metadata
- * @apiParam (Post Body) {String} body.id   Dictionary id (unique short name)
- * @apiParam (Post Body) {Object} body.data Dictionary metadata
+ * @apiParam (Post Body) {String} _id Dictionary id (unique short name)
+ *
+ * @apiParam (Post Body) {Object} mainLanguage Dictionary language metadata
+ * @apiParam (Post Body) {String} mainLanguage.lang ISO language code
+ * @apiParam (Post Body) {String} mainLanguage.title ISO language name
+ * @apiParam (Post Body) {String[]} mainLanguage.letters ISO Letters for the language
+ * @apiParam (Post Body) {String[]} mainLanguage.partsOfSpeech Parts of speech short codes for this language
+ * @apiParam (Post Body) {String[]} mainLanguage.cssFiles Css files used to displaying entries from this language (in order)
+ *
+ * @apiParam (Post Body) {Object[]} reversalLanguages Reversal languages defined for the main language
+ * @apiParam (Post Body) {String} reversalLanguages.lang ISO language code
+ * @apiParam (Post Body) {String} reversalLanguages.title ISO language name
+ * @apiParam (Post Body) {String[]} reversalLanguages.letters ISO Letters for the language
+ * @apiParam (Post Body) {String[]} reversalLanguages.partsOfSpeech Parts of speech short codes for this language
+ * @apiParam (Post Body) {String[]} reversalLanguages.cssFiles Css files used to displaying entries from this language (in order)
+ *
+ * @apiParam (Post Body) {Object[]} semanticDomains Semantic Domains used in dictionary entries (language specific)
+ * @apiParam (Post Body) {String} semanticDomains.key Hierarchical code
+ * @apiParam (Post Body) {String} semanticDomains.lang ISO language code
+ * @apiParam (Post Body) {String} semanticDomains.value Semantic domain name
  *
  */
 
@@ -22,37 +39,50 @@
  *
  * @apiParamExample {json} Post Body Example
  * {
- *    "id": "moore",
- *    "data": {
- *      "mainLanguage": {
- *        "lang": "mos",
- *        "title": "Moore",
- *        "letters": ["a", "ã", "b", "d"],
- *        "cssFiles": [
- *          "configured.css",
- *          "ProjectDictionaryOverrides.css"
- *        ]
- *      },
- *      "reversalLanguages": [
- *        {
- *          "lang": "fr",
- *          "title": "French"
- *          "letters": ["c", "ç", "d", "e", "z"],
- *          "cssFiles": [
- *            "reversal_fr.css"
- *           ]
- *        },
- *        {
- *           "lang": "en",
- *           "title": "English",
- *           "letters": ["a", "x", "y", "z"],
- *           "cssFiles": [
- *             "reversal_en.css"
- *           ]
- *        }
+ *    "_id": "moore",
+ *    "mainLanguage": {
+ *      "lang": "mos",
+ *      "title": "Moore",
+ *      "letters": ["a", "ã", "b", "d"],
+ *      "partsOfSpeech": ["adv", "n", "v"],
+ *      "cssFiles": [
+ *        "configured.css",
+ *        "ProjectDictionaryOverrides.css"
  *      ]
- *    }
- * }
+ *    },
+ *    "reversalLanguages": [
+ *      {
+ *        "lang": "fr",
+ *        "title": "French"
+ *        "letters": ["c", "ç", "d", "e", "z"],
+ *        "partsOfSpeech": [],
+ *        "cssFiles": [
+ *          "reversal_fr.css"
+ *         ]
+ *      },
+ *      {
+ *         "lang": "en",
+ *         "title": "English",
+ *         "letters": ["a", "x", "y", "z"],
+ *         "partsOfSpeech": [],
+ *         "cssFiles": [
+ *           "reversal_en.css"
+ *         ]
+ *      }
+ *    ],
+ *    "semanticDomains": [
+ *      {
+ *        "key": "9",
+ *        "lang": "fr",
+ *        "value": "La Grammaire",
+ *      },
+ *      {
+ *        "key": "9",
+ *        "lang": "en",
+ *        "value": "Grammar",
+ *      }
+ *    ]
+ *  }
  *
  * @apiSuccess {String} updatedAt Timestamp of the posting of dictionary metadata in GMT
  * @apiSuccess {Number} updatedCount Dictionary updated

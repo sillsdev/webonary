@@ -6,16 +6,16 @@
   },
   "scripts": {
     "apidoc": "apidoc -f '^[^.]+\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
-    "build": "tsc && npm run apidoc",
+    "build": "npx tsc && npm run apidoc",
     "cdk": "env-cmd cdk",
     "deploy": "npm run build && env-cmd cdk deploy",
     "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
-    "lint-dry-run": "tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
+    "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "post-legacy": "env-cmd ts-node tools/post-legacy.ts",
     "test": "jest",
     "test-coverage": "jest --collectCoverage",
-    "watch": "tsc -w"
+    "watch": "npx tsc -w"
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.38.0",
@@ -45,7 +45,7 @@
     "prettier": "^1.19.1",
     "ts-jest": "^25.5.1",
     "ts-node": "^8.10.1",
-    "typescript": "~3.7.2"
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "@aws-cdk/aws-apigateway": "^1.38.0",

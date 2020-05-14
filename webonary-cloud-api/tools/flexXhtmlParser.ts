@@ -3,9 +3,8 @@ import * as cheerio from 'cheerio';
 import {
   EntryFile,
   EntryValue,
-  EntryData,
-  PostEntry,
-  PostDictionary,
+  DictionaryEntry,
+  Dictionary,
   DictionaryLanguage,
 } from '../lambda/db';
 
@@ -22,7 +21,7 @@ export class FlexXhtmlParser {
 
   public parsedLanguages: Map<string, string>;
 
-  public parsedEntries: PostEntry[];
+  public parsedEntries: DictionaryEntry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     this.toBeParsed = toBeParsed;
@@ -63,17 +62,17 @@ export class FlexXhtmlParser {
       this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
 
     this.parsedEntries = matches.map(
-      (entryData): PostEntry => {
+      (entryData): DictionaryEntry => {
         return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
       },
     );
   }
 
-  public static parseEntry(dictionaryId: string, entryData: string): PostEntry {
+  public static parseEntry(dictionaryId: string, entryData: string): DictionaryEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
-    const guid =
+    const _id =
       $('div.entry')
         .attr('id')
         ?.substring(1) ?? '';
@@ -202,41 +201,43 @@ export class FlexXhtmlParser {
       [],
     );
 
-    const data: EntryData = {
+    const entry: DictionaryEntry = {
+      _id,
       dictionaryId,
       mainHeadWord,
       letterHead,
       pronunciations,
-      senses: { partOfSpeech, definitionOrGloss, semanticDomains },
+      senses: [{ partOfSpeech, definitionOrGloss, semanticDomains }],
       reversalLetterHeads,
       audio,
       pictures,
     };
 
-    return { guid, data };
+    return entry;
   }
 
-  public getDictionaryData(): PostDictionary | undefined {
-    const id = this.options.dictionaryId;
+  public getDictionaryData(): Dictionary | undefined {
+    const _id = this.options.dictionaryId;
 
     let loadDictionary;
-    if (id && this.parsedEntries.length) {
+    if (_id && this.parsedEntries.length) {
       // We can safely assume that all the entries have same main language
-      const mainLang = this.parsedEntries[0].data.mainHeadWord[0].lang;
+      const mainLang = this.parsedEntries[0].mainHeadWord[0].lang;
       const mainLetters = this.parsedEntries
-        .map(entry => entry.data.letterHead)
+        .map(entry => entry.letterHead)
         .filter((item, index, items) => items.indexOf(item) === index)
         .sort((a, b) => a.localeCompare(b));
 
       const mainLanguage: DictionaryLanguage = {
         lang: mainLang,
-        title: this.parsedLanguages.get(mainLang),
+        title: this.parsedLanguages.get(mainLang) ?? '',
         letters: mainLetters,
+        partsOfSpeech: [],
       };
 
       const reversalLetterHeads = this.parsedEntries.reduce((letterHeads, entry) => {
         const newLetterHeads = letterHeads;
-        entry.data.reversalLetterHeads.forEach(head => {
+        entry.reversalLetterHeads.forEach(head => {
           const langLetters = newLetterHeads.get(head.lang);
           if (langLetters) {
             if (!langLetters.find(letter => letter === head.value)) {
@@ -254,37 +255,16 @@ export class FlexXhtmlParser {
       reversalLetterHeads.forEach((letters, lang) =>
         reversalLanguages.push({
           lang,
-          title: this.parsedLanguages.get(lang),
+          title: this.parsedLanguages.get(lang) ?? '',
           letters: letters.sort((a, b) => a.localeCompare(b)),
+          partsOfSpeech: [],
         }),
       );
 
-      /*
-      const semanticDomains = this.parsedEntries.reduce((semDoms, entry) => {
-        const newSemDoms = semDoms;
-        if (entry.data.senses.semanticDomains) {
-          entry.data.senses.semanticDomains.forEach(semDom => {
-            const semDomsForLang = newSemDoms.get(semDom.lang);
-            if (semDomsForLang) {
-              if (
-                !semDomsForLang.find(item => item.key === semDom.key && item.value === semDom.value)
-              ) {
-                semDomsForLang.push(semDom);
-                newSemDoms.set(semDom.lang, semDomsForLang);
-              }
-            } else {
-              newSemDoms.set(semDom.lang, [semDom]);
-            }
-          });
-        }
-        return newSemDoms;
-      }, new Map<string, EntryValue[]>());
-      */
-
       const semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
         const newSemDoms = semDoms;
-        if (entry.data.senses.semanticDomains) {
-          entry.data.senses.semanticDomains.forEach(semDom => {
+        if (entry.senses[0].semanticDomains) {
+          entry.senses[0].semanticDomains.forEach(semDom => {
             if (
               !newSemDoms.find(
                 item =>
@@ -301,12 +281,10 @@ export class FlexXhtmlParser {
       }, []);
 
       loadDictionary = {
-        id,
-        data: {
-          mainLanguage,
-          reversalLanguages,
-          semanticDomains,
-        },
+        _id,
+        mainLanguage,
+        reversalLanguages,
+        semanticDomains,
       };
     }
 

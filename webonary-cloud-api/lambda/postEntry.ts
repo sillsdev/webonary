@@ -16,9 +16,39 @@
 /**
  * @apiDefine DictionaryEntryPostBody
  *
- * @apiParam (Post Body) {Object[]} body       Array of dictionary entries
- * @apiParam (Post Body) {String}   body.guid  GUID of the entry
- * @apiParam (Post Body) {Object}   body.data  Object of entry data
+ * @apiParam (Post Body) {Object[]} body Array of dictionary entries
+ * @apiParam (Post Body) {String} body._id GUID of the entry
+ * @apiParam (Post Body) {String} body.dictionaryId Unique code for dictionary
+ * @apiParam (Post Body) {String} body.letterHead Letter that this entry should be listed under
+ * @apiParam (Post Body) {Object[]} body.mainHeadWord Array of Entry head word data
+ * @apiParam (Post Body) {String} body.mainHeadWord.lang ISO language code for the head word
+ * @apiParam (Post Body) {String} body.mainHeadWord.value ISO head word
+ * @apiParam (Post Body) {Object} body.audio Audio associated with the entry
+ * @apiParam (Post Body) {String} body.audio.fileClass Css class for the audio
+ * @apiParam (Post Body) {String} body.audio.id Unique id for audio file
+ * @apiParam (Post Body) {String} body.audio.src Relative file path to the audio
+ * @apiParam (Post Body) {Object[]} body.pictures Images associated with the entry
+ * @apiParam (Post Body) {String} body.pictures.caption Image caption
+ * @apiParam (Post Body) {String} body.pictures.id Unique id for the image
+ * @apiParam (Post Body) {String} body.pictures.src Relative file path to the image
+ * @apiParam (Post Body) {Object[]} body.pronunciations Pronunciation guides associated with the entry
+ * @apiParam (Post Body) {String} body.pronunciations.lang ISO language code for pronunciation
+ * @apiParam (Post Body) {String} body.pronunciations.type Type of pronunciation
+ * @apiParam (Post Body) {String} body.pronunciations.value Pronunciation phonetic guide
+ * @apiParam (Post Body) {Object[]} body.reversalLetterHeads Reversal entry letter heads
+ * @apiParam (Post Body) {String} body.reversalLetterHeads.lang ISO language code for the reversal entry
+ * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word letter head
+ * @apiParam (Post Body) {Object[]} body.senses Senses for this entry
+ * @apiParam (Post Body) {Object[]} body.senses.definitionOrGloss Definition or gloss for the entry
+ * @apiParam (Post Body) {String} body.senses.definitionOrGloss.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.definitionOrGloss.value Definition or the gloss
+ * @apiParam (Post Body) {Object} body.senses.partOfSpeech Part of speech for this sense
+ * @apiParam (Post Body) {String} body.senses.partOfSpeech.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.partOfSpeech.value Part of speech abbreviation
+ * @apiParam (Post Body) {Object[]} body.senses.semanticDomains Semantic Domains used in dictionary entries (language specific)
+ * @apiParam (Post Body) {String} body.senses.semanticDomains.key Hierarchical code
+ * @apiParam (Post Body) {String} body.senses.semanticDomains.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.semanticDomains.value Semantic domain name
  */
 
 /**
@@ -88,108 +118,74 @@
  * @apiParamExample {json} Post Body Example
  * [
  *    {
- *      "data": {
- *        "audio": {
- *          "fileClass": "mos-Zxxx-x-audio",
- *          "id": "g635754050803599765ãadga",
- *          "src": "AudioVisual/635754050803599765ãadga.mp3"
- *        },
- *        "dictionaryId": "moore",
- *        "letterHead": "ã",
- *        "mainHeadWord": [
- *          {
- *            "lang": "mos",
- *            "value": "ãadga"
- *          }
- *        ],
- *        "pictures": [
- *          {
- *            "caption": "ãadga",
- *            "id": "g8086aade-8416-4cc6-8bba-f8f8a8d54a4d",
- *            "src": "pictures/Vitex_doniana.jpg"
- *          }
- *        ],
- *        "pronunciations": [
- *          {
- *            "lang": "mos",
- *            "type": "form",
- *            "value": "ã́-á"
- *          }
- *        ],
- *        "reversalLetterHeads": [
- *          {
- *            "lang": "fr",
- *            "value": "p"
- *          },
- *          {
- *            "lang": "en",
- *            "value": "b"
- *          }
- *        ],
- *        "senses": {
- *          "definitionOrGloss": [
- *            {
- *              "lang": "fr",
- *              "value": "prunier noir"
- *            },
- *            {
- *              "lang": "en",
- *              "value": "blackberry tree, plum tree"
- *            }
- *          ],
- *          "partOfSpeech": {
- *            "lang": "fr",
- *            "value": "n"
- *          }
- *        }
- *      },
- *      "guid": "06a3f6ba-759f-42f2-b284-b4d5b3c887a2"
- *    },
- *    {
- *      "data": {
- *        "audio": {
- *          "fileClass": "mos-Zxxx-x-audio",
- *          "id": "g636908699703911281abada",
- *          "src": "AudioVisual/636908699703911281abada.mp3"
- *        },
- *        "dictionaryId": "moore",
- *        "letterHead": "a",
- *        "mainHeadWord": [
- *          {
- *            "lang": "mos",
- *            "value": "abada"
- *          }
- *        ],
- *        "pictures": [],
- *        "pronunciations": [],
- *        "reversalLetterHeads": [
- *          {
- *            "lang": "fr",
- *            "value": "j"
- *          },
- *          {
- *            "lang": "en",
- *            "value": "n"
- *          }
- *        ],
- *        "senses": {
- *          "definitionOrGloss": [
- *            {
- *              "lang": "fr",
- *              "value": "jamais"
- *            },
- *            {
- *              "lang": "en",
- *              "value": "never"
- *            }
- *          ],
- *          "partOfSpeech": {
- *            "lang": "fr",
- *            "value": "adv"
- *          }
- *        }
- *      },
- *      "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
+ *       "_id": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
+ *       "dictionaryId": "moore",
+ *       "letterHead": "ã",
+ *       "mainHeadWord": [
+ *         {
+ *           "lang": "mos",
+ *           "value": "ãadga"
+ *         }
+ *       ],
+ *       "audio": {
+ *         "fileClass": "mos-Zxxx-x-audio",
+ *         "id": "g635754050803599765ãadga",
+ *         "src": "AudioVisual/635754050803599765ãadga.mp3"
+ *       },
+ *       "pictures": [
+ *         {
+ *           "caption": "ãadga",
+ *           "id": "g8086aade-8416-4cc6-8bba-f8f8a8d54a4d",
+ *           "src": "pictures/Vitex_doniana.jpg"
+ *         }
+ *       ],
+ *       "pronunciations": [
+ *         {
+ *           "lang": "mos",
+ *           "type": "form",
+ *           "value": "ã́-á"
+ *         }
+ *       ],
+ *       "reversalLetterHeads": [
+ *         {
+ *           "lang": "fr",
+ *           "value": "p"
+ *         },
+ *         {
+ *           "lang": "en",
+ *           "value": "b"
+ *         }
+ *       ],
+ *       "senses": [
+ *         {
+ *           "definitionOrGloss": [
+ *             {
+ *               "lang": "fr",
+ *               "value": "prunier noir"
+ *             },
+ *             {
+ *               "lang": "en",
+ *               "value": "blackberry tree, plum tree"
+ *             }
+ *           ],
+ *           "partOfSpeech": {
+ *             "lang": "fr",
+ *             "value": "n"
+ *           }
+ *         }
+ *         "semanticDomains": [
+ *           {
+ *             "key": "9",
+ *             "lang": "fr",
+ *             "value": "La Grammaire"
+ *           },
+ *           {
+ *             "key": "9",
+ *             "lang": "en",
+ *             "value": "Grammar"
+ *           }
+ *         ]
+ *       ]
  *    }
  * ]
  * @apiSuccess {String} updatedAt Timestamp of the posting of entries in GMT
@@ -248,8 +244,8 @@ export async function handler(
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
     } else if (entries.find(entry => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (entries.find(entry => !('guid' in entry && entry.guid))) {
-      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
+    } else if (entries.find(entry => !('_id' in entry && entry._id))) {
+      errorMessage = 'Each dictionary entry must have _id as a globally unique identifier';
     }
 
     if (errorMessage) {
@@ -262,11 +258,10 @@ export async function handler(
     const updatedAt = new Date().toUTCString();
 
     const promises = entries.map(
-      (entry: PostEntry): Promise<UpdateWriteOpResult> => {
-        const _id = entry.guid;
+      (entry: DictionaryEntry): Promise<UpdateWriteOpResult> => {
         return db
           .collection(DB_COLLECTION_ENTRIES)
-          .updateOne({ _id }, { $set: { _id, ...entry.data, updatedAt } }, { upsert: true });
+          .updateOne({ _id: entry._id }, { $set: { ...entry, updatedAt } }, { upsert: true });
       },
     );
 

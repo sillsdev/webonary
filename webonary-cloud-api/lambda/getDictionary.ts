@@ -6,7 +6,7 @@ import {
   DB_COLLECTION_DICTIONARIES,
   DB_COLLECTION_ENTRIES,
   PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
-  DictionaryData,
+  Dictionary,
 } from './db';
 import * as Response from './response';
 
@@ -25,7 +25,7 @@ export async function handler(
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem: DictionaryData | null = await db
+    const dbItem: Dictionary | null = await db
       .collection(DB_COLLECTION_DICTIONARIES)
       .findOne({ _id: dictionaryId });
     if (!dbItem) {
