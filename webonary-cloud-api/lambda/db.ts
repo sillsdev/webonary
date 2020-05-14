@@ -6,10 +6,10 @@ export interface EntryFile {
 }
 
 export interface EntryValue {
-  key?: string;
   lang: string;
   value: string;
-  searchValue?: string; // lowercase and normalized
+  key?: string;
+  valueInsensitive?: string; // lowercase and normalized
 }
 
 export interface EntrySense {
@@ -18,8 +18,8 @@ export interface EntrySense {
   semanticDomains?: EntryValue[];
 }
 
-export interface EntryData {
-  _id?: string;
+export interface DictionaryEntry {
+  _id: string;
   dictionaryId: string;
   letterHead: string;
   mainHeadWord: EntryValue[];
@@ -30,30 +30,20 @@ export interface EntryData {
   pictures: EntryFile[];
 }
 
-export interface PostEntry {
-  guid: string;
-  data: EntryData;
-}
-
 export interface DictionaryLanguage {
   lang: string;
-  title?: string;
+  title: string;
+  letters: string[];
+  partsOfSpeech: string[];
   entriesCount?: number;
-  letters?: string[];
-  partsOfSpeech?: string[];
   cssFiles?: string[];
 }
 
-export interface DictionaryData {
-  _id?: string;
+export interface Dictionary {
+  _id: string;
   mainLanguage: DictionaryLanguage;
   reversalLanguages: DictionaryLanguage[];
   semanticDomains?: EntryValue[];
-}
-
-export interface PostDictionary {
-  id: string;
-  data: DictionaryData;
 }
 
 export interface DbFindParameters {
@@ -84,7 +74,26 @@ export const DB_MAX_UPDATES_PER_CALL = 50;
 export function setSearchableEntries(entries: EntryValue[]): EntryValue[] {
   return entries.map(entry => {
     const newEntry = entry;
-    newEntry.searchValue = entry.value.toLowerCase().normalize();
+    newEntry.valueInsensitive = entry.value.toLowerCase().normalize();
     return newEntry;
   });
+}
+
+export function sortEntries(entries: DictionaryEntry[], lang?: string): DictionaryEntry[] {
+  let entriesSorted: DictionaryEntry[] = [];
+  if (lang !== '') {
+    entriesSorted = entries.sort((a, b) => {
+      const aWord = a.senses.definitionOrGloss.find(letter => letter.lang === lang);
+      const bWord = b.senses.definitionOrGloss.find(letter => letter.lang === lang);
+      if (aWord && bWord) {
+        return aWord.value.localeCompare(bWord.value);
+      }
+      return 0;
+    });
+  } else {
+    entriesSorted = entries.sort((a, b) => {
+      return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
+    });
+  }
+  return entriesSorted;
 }
