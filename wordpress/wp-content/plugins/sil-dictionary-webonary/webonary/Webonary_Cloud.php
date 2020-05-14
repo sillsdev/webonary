@@ -22,7 +22,7 @@ class Webonary_Cloud
 		return 'g' . $guid;
 	} 
 
-	private static function remoteGetJson($path, $params = array()) {
+	private static function remoteGetJson($path, $apiParams = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
 			return null;
@@ -31,8 +31,8 @@ class Webonary_Cloud
 		$encoded_path = array_map('rawurlencode', explode('/', $path));
 		$url = rtrim(WEBONARY_CLOUD_API_URL, '/') . '/' . implode('/', $encoded_path);
 
-		if (count($params)) {
-			$url .= '?' . build_query(array_map('urlencode', $params));
+		if (count($apiParams)) {
+			$url .= '?' . build_query(array_map('urlencode', $apiParams));
 		}
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
@@ -127,8 +127,15 @@ class Webonary_Cloud
 		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 		$reversal_value = '';
-		foreach ($entry->senses->definitionOrGloss as $definition)	{
-			if (($lang == $definition->lang) && ($letter == substr($definition->value, 0, 1))) {
+
+		$definitions = $entry->senses->definitionOrGloss;
+		if (!is_array($definitions)) {
+			$definitions = [$definitions];
+		}
+
+		foreach ($definitions as $definition) {
+			$lowerLetter = strtolower($letter);
+			if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
 				$reversal_value = $definition->value;
 				break;
 			}
@@ -172,12 +179,16 @@ class Webonary_Cloud
 		return $dictionary;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionaryId, $params = array()) {
-		if (!is_array($params)) {
-			$params = array('text' => $params);
-		}
+	public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()) {
 		$request = $doAction . '/' . $dictionaryId;
-		$response = self::remoteGetJson($request, $params);
+		$apiParams['countTotalOnly'] = '1';
+		$response = self::remoteGetJson($request, $apiParams);
+		return $response->count;
+	}
+
+	public static function getEntriesAsPosts($doAction, $dictionaryId, $apiParams = array()) {
+		$request = $doAction . '/' . $dictionaryId;
+		$response = self::remoteGetJson($request, $apiParams);
 		$posts = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
@@ -190,15 +201,13 @@ class Webonary_Cloud
 		return $posts;
 	}
 	
-	public static function getEntriesAsReversals($dictionaryId, $lang, $letter) {	
-		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
-		$params = array('text' => $letter, 'lang' => $lang);
-		
-		$response = self::remoteGetJson($request, $params);
+	public static function getEntriesAsReversals($dictionaryId, $apiParams) {	
+		$request = self::$doBrowseByLetter . '/' . $dictionaryId;		
+		$response = self::remoteGetJson($request, $apiParams);
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$reversals[$key] = self::entryToReversal($dictionaryId, $lang, $letter, $entry);
+				$reversals[$key] = self::entryToReversal($dictionaryId, $apiParams['lang'], $apiParams['text'], $entry);
 			}
 		}	
 
@@ -207,8 +216,8 @@ class Webonary_Cloud
 
 	public static function getEntryAsPost($doAction, $dictionaryId, $id) {
 		$request = $doAction . '/' . $dictionaryId;
-		$params = array('guid' => $id);
-		$response = self::remoteGetJson($request, $params);
+		$apiParams = array('guid' => $id);
+		$response = self::remoteGetJson($request, $apiParams);
 		$posts = [];
 		if (self::isValidEntry($response)) { 
 			$post = self::entryToFakePost($dictionaryId, $response);
@@ -300,7 +309,7 @@ class Webonary_Cloud
 					return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);					
 				}
 			} 
-			else {			
+			else {
 				$getParams = filter_input_array(
 					INPUT_GET, 
 					array(

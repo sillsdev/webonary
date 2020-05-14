@@ -76,7 +76,18 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARIES, Dictionary, setSearchableEntries } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_DICTIONARIES,
+  DB_COLLECTION_ENTRIES,
+  DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+  PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
+  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
+  PATH_TO_ENTRY_DEFINITION_VALUE,
+  Dictionary,
+  setSearchableEntries,
+} from './db';
 import * as Response from './response';
 
 interface PostResult {
@@ -110,6 +121,29 @@ export async function handler(
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
+
+    // fulltext index (case and diacritic insensitive by default)
+    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
+      {
+        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+        [PATH_TO_ENTRY_DEFINITION_VALUE]: 'text',
+      },
+      { name: 'wordsFulltextIndex', default_language: 'none' },
+    );
+
+    // case and diacritic insensitive index for semantic domains
+    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
+      {
+        [PATH_TO_ENTRY_MAIN_HEADWORD_LANG]: 1,
+        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 1,
+      },
+      {
+        collation: {
+          locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+          strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+        },
+      },
+    );
 
     const dbResult = await db
       .collection(DB_COLLECTION_DICTIONARIES)
