@@ -227,7 +227,7 @@ import {
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_SEM_DOMS_LANG,
   PATH_TO_SEM_DOMS_VALUE,
-  PostEntry,
+  DictionaryEntry,
 } from './db';
 import * as Response from './response';
 
@@ -249,7 +249,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const entries: PostEntry[] = JSON.parse(event.body as string); // any type problems will be caught
+    const entries: DictionaryEntry[] = JSON.parse(event.body as string); // any type problems will be caught
 
     let errorMessage = '';
     if (!Array.isArray(entries)) {
@@ -260,13 +260,6 @@ export async function handler(
       errorMessage = 'Each dictionary entry must be a valid JSON object';
     } else if (entries.find(entry => !('guid' in entry && entry.guid))) {
       errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
-    } else if (
-      entries.find(
-        entry =>
-          !('data' in entry) || typeof entry.data !== 'object' || !Object.keys(entry.data).length,
-      )
-    ) {
-      errorMessage = 'Each dictionary entry must have a non-empty data object';
     }
 
     if (errorMessage) {

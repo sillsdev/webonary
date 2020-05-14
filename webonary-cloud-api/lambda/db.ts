@@ -44,6 +44,7 @@ export interface Dictionary {
   mainLanguage: DictionaryLanguage;
   reversalLanguages: DictionaryLanguage[];
   semanticDomains?: EntryValue[];
+  updatedAt?: string;
 }
 
 export interface DbFindParameters {
