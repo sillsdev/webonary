@@ -66,9 +66,10 @@ export const DB_NAME = process.env.DB_NAME as string;
 export const DB_MAX_DOCUMENTS_PER_CALL = 100;
 export const DB_MAX_UPDATES_PER_CALL = 50;
 
-// Vietnamese seem to have the most Latin diacritics, so use this for case and diacritic insensitive search
-export const DB_COLLATION_LOCALE_DEFAULT = 'vi';
-export const DB_COLLATION_LOCALE_STRENGTH = 1;
+// TODO: Vietnamese seems to have the most Latin diacritics, so use this for case and diacritic insensitive search
+// We might have to do RegExp searches instead to get more accurate insensitive searches
+export const DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY = 'vi';
+export const DB_COLLATION_STRENGTH_FOR_INSENSITIVITY = 1; // case and diacritical insensitive search
 
 // See https://docs.mongodb.com/manual/reference/collation-locales-defaults/#collation-languages-locales
 export const DB_COLLATION_LOCALES = [
@@ -196,6 +197,10 @@ export const PATH_TO_ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value';
 export const PATH_TO_ENTRY_PART_OF_SPEECH_VALUE = 'senses.partOfSpeech.value';
 export const PATH_TO_ENTRY_SEM_DOMS_VALUE = `senses.${PATH_TO_SEM_DOMS_VALUE}`;
 
+export function getDbSkip(pageNumber: number, pageLimit: number): number {
+  return (pageNumber - 1) * pageLimit;
+}
+
 export function setSearchableEntries(entries: EntryValue[]): EntryValue[] {
   return entries.map(entry => {
     const newEntry = entry;
@@ -204,6 +209,21 @@ export function setSearchableEntries(entries: EntryValue[]): EntryValue[] {
   });
 }
 
-export function getDbSkip(pageNumber: number, pageLimit: number): number {
-  return (pageNumber - 1) * pageLimit;
+export function sortEntries(entries: EntryData[], lang?: string): EntryData[] {
+  let entriesSorted: EntryData[] = [];
+  if (lang !== '') {
+    entriesSorted = entries.sort((a, b) => {
+      const aWord = a.senses.definitionOrGloss.find(letter => letter.lang === lang);
+      const bWord = b.senses.definitionOrGloss.find(letter => letter.lang === lang);
+      if (aWord && bWord) {
+        return aWord.value.localeCompare(bWord.value);
+      }
+      return 0;
+    });
+  } else {
+    entriesSorted = entries.sort((a, b) => {
+      return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
+    });
+  }
+  return entriesSorted;
 }

@@ -80,8 +80,8 @@ import {
   DB_NAME,
   DB_COLLECTION_DICTIONARIES,
   DB_COLLECTION_ENTRIES,
-  DB_COLLATION_LOCALE_DEFAULT,
-  DB_COLLATION_LOCALE_STRENGTH,
+  DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_DEFINITION_VALUE,
@@ -132,7 +132,6 @@ export async function handler(
     );
 
     // case and diacritic insensitive index for semantic domains
-    // Vietnamese seem to have the most diacritics
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
         [PATH_TO_ENTRY_MAIN_HEADWORD_LANG]: 1,
@@ -140,11 +139,12 @@ export async function handler(
       },
       {
         collation: {
-          locale: DB_COLLATION_LOCALE_DEFAULT,
-          strength: DB_COLLATION_LOCALE_STRENGTH,
+          locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+          strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
         },
       },
     );
+
     const dbResult = await db
       .collection(DB_COLLECTION_DICTIONARIES)
       .updateOne({ _id }, { $set: { _id, ...processedData, updatedAt } }, { upsert: true });

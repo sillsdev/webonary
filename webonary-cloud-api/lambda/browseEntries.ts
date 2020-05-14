@@ -5,8 +5,8 @@ import {
   DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLECTION_ENTRIES,
-  DB_COLLATION_LOCALE_DEFAULT,
-  DB_COLLATION_LOCALE_STRENGTH,
+  DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_DEFINITION,
@@ -39,7 +39,7 @@ export async function handler(
 
     const countTotalOnly = event.queryStringParameters?.countTotalOnly;
 
-    const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber ?? ''), 1);
+    const pageNumber = Math.max(Number(event.queryStringParameters?.pageNumber ?? '1'), 1);
     const pageLimit = Math.min(
       Math.max(Number(event.queryStringParameters?.pageLimit ?? DB_MAX_DOCUMENTS_PER_CALL), 1),
       DB_MAX_DOCUMENTS_PER_CALL,
@@ -66,7 +66,7 @@ export async function handler(
     // set up to return entries
     let entries: EntryData[];
     let dbSortKey: string;
-    let dbLocale = DB_COLLATION_LOCALE_DEFAULT;
+    let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     const dbSkip = getDbSkip(pageNumber, pageLimit);
 
     if (lang) {
@@ -86,7 +86,7 @@ export async function handler(
             { $match: { [PATH_TO_ENTRY_DEFINITION_LANG]: lang } },
             { $sort: { [PATH_TO_ENTRY_DEFINITION_VALUE]: 1 } },
           ],
-          { collation: { locale: dbLocale, strength: DB_COLLATION_LOCALE_STRENGTH } },
+          { collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY } },
         )
         .skip(dbSkip)
         .limit(pageLimit)
@@ -100,7 +100,7 @@ export async function handler(
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
         .find(dbFind)
-        .collation({ locale: dbLocale, strength: DB_COLLATION_LOCALE_STRENGTH })
+        .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
         .sort({ [dbSortKey]: 1 })
         .skip(dbSkip)
         .limit(pageLimit)
@@ -110,25 +110,6 @@ export async function handler(
     if (!entries.length) {
       return callback(null, Response.notFound([{}]));
     }
-
-    /* Manual sorting, if necessary
-    let entriesSorted: EntryData[] = [];
-    if (lang) {
-      entriesSorted = entries.sort((a, b) => {
-        const aWord = a.senses.definitionOrGloss.find(letter => letter.lang === lang);
-        const bWord = b.senses.definitionOrGloss.find(letter => letter.lang === lang);
-        if (aWord && bWord) {
-          return aWord.value.localeCompare(bWord.value);
-        }
-        return 0;
-      });
-    } else {
-      entriesSorted = entries.sort((a, b) => {
-        return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
-      });
-    }
-    return callback(null, Response.success(entriesSorted));
-    */
 
     return callback(null, Response.success(entries));
   } catch (error) {
