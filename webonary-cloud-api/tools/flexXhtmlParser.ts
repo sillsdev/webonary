@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { EntryFile, EntryValue, DictionaryEntry, DictionaryItem, LanguageItem } from '../lambda/db';
+import { EntryFile, EntryValue, DictionaryEntry, DictionaryItem } from '../lambda/structs';
 
 export interface Options {
   dictionaryId: string;
@@ -201,8 +201,9 @@ export class FlexXhtmlParser {
       mainHeadWord,
       letterHead,
       pronunciations,
-      senses: [{ partOfSpeech, definitionOrGloss, semanticDomains }],
+      senses: [{ definitionOrGloss, semanticDomains }],
       reversalLetterHeads,
+      morphoSyntaxAnalysis: { partOfSpeech: [partOfSpeech] },
       audio,
       pictures,
     };

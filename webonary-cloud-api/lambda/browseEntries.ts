@@ -8,14 +8,16 @@ import {
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
+  DbFindParameters,
+} from './db';
+import {
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_DEFINITION,
   PATH_TO_ENTRY_DEFINITION_LANG,
   PATH_TO_ENTRY_DEFINITION_VALUE,
-  DbFindParameters,
-  getDbSkip,
   DictionaryEntry,
-} from './db';
+} from './structs';
+import { getDbSkip } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;

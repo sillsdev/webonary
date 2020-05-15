@@ -115,14 +115,16 @@ import {
   DB_COLLECTION_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+} from './db';
+import {
   PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_DEFINITION_VALUE,
   DictionaryItem,
+  EntryValueItem,
   LanguageItem,
-  setSearchableEntries,
-  copyObjectIgnoreKeyCase,
-} from './db';
+} from './structs';
+import { setSearchableEntries, copyObjectIgnoreKeyCase } from './utils';
 import * as Response from './response';
 
 interface PostResult {
@@ -151,7 +153,8 @@ export async function handler(
     item.mainLanguage = copyObjectIgnoreKeyCase('mainLanguage', languageItemKeys, posted);
     item.reversalLanguages = copyObjectIgnoreKeyCase('reversalLanguages', languageItemKeys, posted);
 
-    const semanticDomains = copyObjectIgnoreKeyCase('semanticDomains', languageItemKeys, posted);
+    const entryValueItemKeys = Object.keys(new EntryValueItem());
+    const semanticDomains = copyObjectIgnoreKeyCase('semanticDomains', entryValueItemKeys, posted);
     if (semanticDomains) {
       item.semanticDomains = setSearchableEntries(semanticDomains);
     }
