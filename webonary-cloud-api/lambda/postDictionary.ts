@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-restricted-syntax */
+
 /**
  * @apiDefine DictionaryPostBody
  *
- * @apiParam (Post Body) {String} _id Dictionary id (unique short name)
+ * @apiParam (Post Body) {String} id Dictionary id (unique short name)
  *
  * @apiParam (Post Body) {Object} mainLanguage Dictionary language metadata
  * @apiParam (Post Body) {String} mainLanguage.lang ISO language code
@@ -39,7 +42,7 @@
  *
  * @apiParamExample {json} Post Body Example
  * {
- *    "_id": "moore",
+ *    "id": "moore",
  *    "mainLanguage": {
  *      "lang": "mos",
  *      "title": "Moore",
@@ -115,8 +118,10 @@ import {
   PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
   PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
   PATH_TO_ENTRY_DEFINITION_VALUE,
-  Dictionary,
+  DictionaryItem,
+  LanguageItem,
   setSearchableEntries,
+  copyObjectIgnoreKeyCase,
 } from './db';
 import * as Response from './response';
 
@@ -138,16 +143,18 @@ export async function handler(
 
   try {
     const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-    const dictionary: Dictionary = JSON.parse(event.body as string);
-    const _id = dictionaryId;
+    const posted = JSON.parse(event.body as string);
 
-    // set searchable value for each semantic domain value
-    if (dictionary.semanticDomains) {
-      dictionary.semanticDomains = setSearchableEntries(dictionary.semanticDomains);
+    const item = new DictionaryItem(dictionaryId);
+
+    const languageItemKeys = Object.keys(new LanguageItem());
+    item.mainLanguage = copyObjectIgnoreKeyCase('mainLanguage', languageItemKeys, posted);
+    item.reversalLanguages = copyObjectIgnoreKeyCase('reversalLanguages', languageItemKeys, posted);
+
+    const semanticDomains = copyObjectIgnoreKeyCase('semanticDomains', languageItemKeys, posted);
+    if (semanticDomains) {
+      item.semanticDomains = setSearchableEntries(semanticDomains);
     }
-    const updatedAt = new Date().toUTCString();
-
-    dictionary.updatedAt = updatedAt;
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
@@ -177,10 +184,10 @@ export async function handler(
 
     const dbResult = await db
       .collection(DB_COLLECTION_DICTIONARIES)
-      .updateOne({ _id }, { $set: dictionary }, { upsert: true });
+      .updateOne({ _id: item._id }, { $set: item }, { upsert: true });
 
     const postResult: PostResult = {
-      updatedAt,
+      updatedAt: item.updatedAt,
       updatedCount: dbResult.modifiedCount,
       insertedCount: dbResult.upsertedCount,
     };

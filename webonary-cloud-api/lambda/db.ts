@@ -1,8 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable max-classes-per-file */
 export interface EntryFile {
   id: string;
   src: string;
   fileClass?: string;
   caption?: string;
+}
+
+export class EntryFileItem implements EntryFile {
+  id = '';
+
+  src = '';
+
+  fileClass? = '';
+
+  caption? = '';
 }
 
 export interface EntryValue {
@@ -12,10 +24,28 @@ export interface EntryValue {
   valueInsensitive?: string; // lowercase and normalized
 }
 
+export class EntryValueItem implements EntryValue {
+  lang = '';
+
+  value = '';
+
+  key? = '';
+
+  valueInsensitive? = '';
+}
+
 export interface EntrySense {
   definitionOrGloss: EntryValue[];
   partOfSpeech: EntryValue;
   semanticDomains?: EntryValue[];
+}
+
+export class EntrySenseItem implements EntrySense {
+  definitionOrGloss = Array(new EntryValueItem());
+
+  partOfSpeech = new EntryValueItem();
+
+  semanticDomains = Array(new EntryValueItem());
 }
 
 export interface DictionaryEntry {
@@ -31,22 +61,91 @@ export interface DictionaryEntry {
   updatedAt?: string;
 }
 
-export interface DictionaryLanguage {
+export class DictionaryEntryItem implements DictionaryEntry {
+  _id: string;
+
+  guid: string;
+
+  dictionaryId: string;
+
+  letterHead: string;
+
+  mainHeadWord: EntryValueItem[];
+
+  pronunciations: EntryValueItem[];
+
+  reversalLetterHeads: EntryValueItem[];
+
+  senses: EntrySenseItem[];
+
+  audio: EntryFileItem;
+
+  pictures: EntryFileItem[];
+
+  updatedAt: string;
+
+  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+    this._id = guid;
+    this.dictionaryId = dictionaryId;
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+  }
+}
+
+export interface Language {
   lang: string;
   title: string;
   letters: string[];
-  partsOfSpeech: string[];
-  entriesCount?: number;
+  partsOfSpeech?: string[];
   cssFiles?: string[];
+  entriesCount?: number;
+}
+
+export class LanguageItem implements Language {
+  lang = '';
+
+  title = '';
+
+  letters: string[] = [];
+
+  partsOfSpeech?: string[] = [];
+
+  cssFiles?: string[] = [];
 }
 
 export interface Dictionary {
   _id: string;
-  mainLanguage: DictionaryLanguage;
-  reversalLanguages: DictionaryLanguage[];
+  mainLanguage: Language;
+  reversalLanguages: Language[];
   semanticDomains?: EntryValue[];
-  updatedAt?: string;
+  updatedAt: string;
 }
+
+export class DictionaryItem implements Dictionary {
+  _id: string;
+
+  mainLanguage: LanguageItem;
+
+  reversalLanguages: LanguageItem[];
+
+  semanticDomains?: EntryValueItem[];
+
+  updatedAt: string;
+
+  constructor(dictionaryId: string) {
+    this._id = dictionaryId;
+    this.updatedAt = new Date().toUTCString();
+  }
+}
+
+/*
+  keyMap: Map<string, string> = new Map();
+
+this.keyMap = Object.keys(this).reduce((map: Map<string, string>, key) => {
+  const newMap = map;
+  newMap.set(key.toLowerCase(), key);
+  return newMap;
+}, new Map());
+*/
 
 export interface DbFindParameters {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -193,7 +292,49 @@ export function getDbSkip(pageNumber: number, pageLimit: number): number {
   return (pageNumber - 1) * pageLimit;
 }
 
-export function setSearchableEntries(entries: EntryValue[]): EntryValue[] {
+export function copyObjectIgnoreKeyCase(
+  copyKey: string,
+  subKeys: string[],
+  fromParentObject: any,
+): any {
+  let key = '';
+  if (copyKey in fromParentObject) {
+    key = copyKey;
+  } else {
+    const keyLowerCase = copyKey.toLowerCase();
+    if (keyLowerCase in fromParentObject) {
+      key = keyLowerCase;
+    }
+  }
+
+  if (key !== '') {
+    const isArray = Array.isArray(fromParentObject[key]);
+    const fromObjectArray = isArray ? fromParentObject[key] : new Array(fromParentObject[key]);
+
+    const toObjectArray = fromObjectArray.map((fromObject: any) => {
+      const toObject: { [key: string]: any } = {};
+
+      subKeys.forEach(subKey => {
+        if (subKey in fromObject) {
+          toObject[subKey] = fromObject[subKey];
+        } else {
+          const subKeyLowerCase = subKey.toLowerCase();
+          if (subKeyLowerCase in fromObject) {
+            toObject[subKey] = fromObject[subKeyLowerCase];
+          }
+        }
+      });
+
+      return toObject;
+    });
+
+    return isArray ? toObjectArray : toObjectArray[0];
+  }
+
+  return undefined;
+}
+
+export function setSearchableEntries(entries: EntryValueItem[]): EntryValueItem[] {
   return entries.map(entry => {
     const newEntry = entry;
     newEntry.valueInsensitive = entry.value.toLowerCase().normalize();

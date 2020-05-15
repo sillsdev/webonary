@@ -38,9 +38,9 @@
  */
 
 /**
- * @api {put} https://AWS_SIGNED_URL Post file
- * @apiDescription This signed URL will temporarily allow upposting a file to a protected S3 bucket.
- * @apiName PostDictionaryFile
+ * @api {put} https://AWS_SIGNED_URL Put file
+ * @apiDescription This signed URL will temporarily allow posting a file to a protected S3 bucket.
+ * @apiName PutDictionaryFile
  * @apiGroup Dictionary
  * 
  * @apiExample {curl} Example usage

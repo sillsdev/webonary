@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @apiDefine BasicAuthHeader
  *
@@ -17,7 +18,7 @@
  * @apiDefine DictionaryEntryPostBody
  *
  * @apiParam (Post Body) {Object[]} body Array of dictionary entries
- * @apiParam (Post Body) {String} body._id GUID of the entry
+ * @apiParam (Post Body) {String} body.guid GUID of the entry
  * @apiParam (Post Body) {String} body.dictionaryId Unique code for dictionary
  * @apiParam (Post Body) {String} body.letterHead Letter that this entry should be listed under
  * @apiParam (Post Body) {Object[]} body.mainHeadWord Array of Entry head word data
@@ -118,7 +119,7 @@
  * @apiParamExample {json} Post Body Example
  * [
  *    {
- *       "_id": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
+ *       "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *       "dictionaryId": "moore",
  *       "letterHead": "ã",
  *       "mainHeadWord": [
@@ -214,7 +215,16 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL, DictionaryEntry } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_ENTRIES,
+  DB_MAX_UPDATES_PER_CALL,
+  DictionaryEntryItem,
+  EntryFileItem,
+  EntrySenseItem,
+  EntryValueItem,
+  copyObjectIgnoreKeyCase,
+} from './db';
 import * as Response from './response';
 
 interface PostResult {
@@ -235,33 +245,60 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   try {
-    const entries: DictionaryEntry[] = JSON.parse(event.body as string); // any type problems will be caught
+    const postedEntries = JSON.parse(event.body as string);
 
     let errorMessage = '';
-    if (!Array.isArray(entries)) {
+    if (!Array.isArray(postedEntries)) {
       errorMessage = 'Input must be an array of dictionary entry objects';
-    } else if (entries.length > DB_MAX_UPDATES_PER_CALL) {
+    } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-    } else if (entries.find(entry => typeof entry !== 'object')) {
+    } else if (postedEntries.find(entry => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (entries.find(entry => !('_id' in entry && entry._id))) {
-      errorMessage = 'Each dictionary entry must have _id as a globally unique identifier';
+    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
+      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
     }
 
     if (errorMessage) {
       return callback(null, Response.badRequest(errorMessage));
     }
 
+    const entryFileItemKeys = Object.keys(new EntryFileItem());
+    const entrySenseItemKeys = Object.keys(new EntrySenseItem());
+    const entryValueItemKeys = Object.keys(new EntryValueItem());
+    const updatedAt = new Date().toUTCString();
+
+    const entries: DictionaryEntryItem[] = postedEntries.map((postedEntry: any) => {
+      const entry = new DictionaryEntryItem(postedEntry.guid as string, updatedAt);
+
+      entry.dictionaryId = postedEntry.dictionaryId ?? postedEntry.dictionaryid;
+      entry.letterHead = postedEntry.letterHead ?? postedEntry.letterhead;
+
+      entry.mainHeadWord = copyObjectIgnoreKeyCase('mainHeadWord', entryValueItemKeys, postedEntry);
+      entry.pronunciations = copyObjectIgnoreKeyCase(
+        'pronunciations',
+        entryValueItemKeys,
+        postedEntry,
+      );
+      entry.reversalLetterHeads = copyObjectIgnoreKeyCase(
+        'reversalLetterHeads',
+        entryValueItemKeys,
+        postedEntry,
+      );
+      entry.senses = copyObjectIgnoreKeyCase('senses', entrySenseItemKeys, postedEntry);
+      entry.audio = copyObjectIgnoreKeyCase('audio', entryFileItemKeys, postedEntry);
+      entry.pictures = copyObjectIgnoreKeyCase('pictures', entryFileItemKeys, postedEntry);
+
+      return entry;
+    });
+
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    const updatedAt = new Date().toUTCString();
-
     const promises = entries.map(
-      (entry: DictionaryEntry): Promise<UpdateWriteOpResult> => {
+      (entry: DictionaryEntryItem): Promise<UpdateWriteOpResult> => {
         return db
           .collection(DB_COLLECTION_ENTRIES)
-          .updateOne({ _id: entry._id }, { $set: { ...entry, updatedAt } }, { upsert: true });
+          .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
       },
     );
 

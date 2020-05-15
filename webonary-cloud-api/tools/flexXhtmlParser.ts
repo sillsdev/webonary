@@ -1,12 +1,6 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import {
-  EntryFile,
-  EntryValue,
-  DictionaryEntry,
-  Dictionary,
-  DictionaryLanguage,
-} from '../lambda/db';
+import { EntryFile, EntryValue, DictionaryEntry, DictionaryItem, LanguageItem } from '../lambda/db';
 
 export interface Options {
   dictionaryId: string;
@@ -216,10 +210,11 @@ export class FlexXhtmlParser {
     return entry;
   }
 
-  public getDictionaryData(): Dictionary | undefined {
+  public getDictionaryData(): DictionaryItem | undefined {
     const _id = this.options.dictionaryId;
 
-    let loadDictionary;
+    const loadDictionary = new DictionaryItem(_id);
+
     if (_id && this.parsedEntries.length) {
       // We can safely assume that all the entries have same main language
       const mainLang = this.parsedEntries[0].mainHeadWord[0].lang;
@@ -228,7 +223,7 @@ export class FlexXhtmlParser {
         .filter((item, index, items) => items.indexOf(item) === index)
         .sort((a, b) => a.localeCompare(b));
 
-      const mainLanguage: DictionaryLanguage = {
+      loadDictionary.mainLanguage = {
         lang: mainLang,
         title: this.parsedLanguages.get(mainLang) ?? '',
         letters: mainLetters,
@@ -251,9 +246,9 @@ export class FlexXhtmlParser {
         return newLetterHeads;
       }, new Map<string, string[]>());
 
-      const reversalLanguages: DictionaryLanguage[] = [];
+      loadDictionary.reversalLanguages = [];
       reversalLetterHeads.forEach((letters, lang) =>
-        reversalLanguages.push({
+        loadDictionary.reversalLanguages.push({
           lang,
           title: this.parsedLanguages.get(lang) ?? '',
           letters: letters.sort((a, b) => a.localeCompare(b)),
@@ -261,7 +256,7 @@ export class FlexXhtmlParser {
         }),
       );
 
-      const semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
+      loadDictionary.semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
         const newSemDoms = semDoms;
         if (entry.senses[0].semanticDomains) {
           entry.senses[0].semanticDomains.forEach(semDom => {
@@ -279,13 +274,6 @@ export class FlexXhtmlParser {
         }
         return newSemDoms;
       }, []);
-
-      loadDictionary = {
-        _id,
-        mainLanguage,
-        reversalLanguages,
-        semanticDomains,
-      };
     }
 
     return loadDictionary;
