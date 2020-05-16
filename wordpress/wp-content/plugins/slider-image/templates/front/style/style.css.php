@@ -2111,10 +2111,16 @@ div[class*=slider-loader-] {
 
 .huge-it-slide-bg {
     background: <?php
-					list($r,$g,$b) = array_map('hexdec',str_split(Hugeit_Slider_Options::get_slider_background_color(),2));
+					$bg_color = Hugeit_Slider_Options::get_slider_background_color();
+					if ($bg_color === false) {
+						echo 'rgba(0,0,0,1)';
+					}
+					else {
+						list($r,$g,$b) = array_map('hexdec',str_split($bg_color,2));
 						$titleopacity = Hugeit_Slider_Options::get_slider_background_color_transparency();
-						echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')'; ?>;
-<?php if($slider->get_navigate_by() !== 'thumbnail'){
+						echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')';
+					}
+if($slider->get_navigate_by() !== 'thumbnail'){
 	echo 'height: 100%';
 }
 if($slider->get_navigate_by() == 'thumbnail'){ ?> border-bottom: <?php echo Hugeit_Slider_Options::get_slideshow_border_size().'px'; ?> solid <?php echo '#'.Hugeit_Slider_Options::get_slideshow_border_color(); ?>;
@@ -2144,9 +2150,15 @@ if($slider->get_navigate_by() == 'thumbnail'){ ?> border-bottom: <?php echo Huge
     color: <?php echo '#' . Hugeit_Slider_Options::get_title_color(); ?>;
     text-align: <?php echo Hugeit_Slider_Options::get_title_text_align(); ?>;
     background: <?php
-					list($r,$g,$b) = array_map('hexdec',str_split(Hugeit_Slider_Options::get_title_background_color(),2));
+					$bg_color = Hugeit_Slider_Options::get_title_background_color();
+					if ($bg_color === false) {
+						echo 'rgba(0,0,0,1)';
+					}
+					else {
+						list($r,$g,$b) = array_map('hexdec',str_split($bg_color,2));
 						$titleopacity = Hugeit_Slider_Options::get_title_background_transparency();
-						echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')'; ?>;
+						echo 'rgba('.$r.','.$g.','.$b.','.$titleopacity.')';
+					}?>;
     border: <?php echo Hugeit_Slider_Options::get_title_border_size() . 'px solid #' . Hugeit_Slider_Options::get_title_border_color(); ?>;
     border-radius: <?php echo Hugeit_Slider_Options::get_title_border_radius() . 'px'; ?>;
 <?php switch(Hugeit_Slider_Options::get_title_position()){
@@ -2193,9 +2205,15 @@ if($slider->get_navigate_by() == 'thumbnail'){ ?> border-bottom: <?php echo Huge
     color: <?php echo '#' . Hugeit_Slider_Options::get_description_color(); ?>;
     text-align: <?php echo Hugeit_Slider_Options::get_description_text_align(); ?>;
     background: <?php
-					list($r,$g,$b) = array_map('hexdec',str_split(Hugeit_Slider_Options::get_description_background_color(),2));
-						$descriptionopacity = Hugeit_Slider_Options::get_description_background_transparency();
-						echo 'rgba('.$r.','.$g.','.$b.','.$descriptionopacity.')'; ?>;
+					$bg_color = Hugeit_Slider_Options::get_description_background_color();
+					if ($bg_color === false) {
+						echo 'rgba(0,0,0,1)';
+					}
+					else {
+						list($r,$g,$b) = array_map('hexdec',str_split($bg_color,2));
+							$descriptionopacity = Hugeit_Slider_Options::get_description_background_transparency();
+						echo 'rgba('.$r.','.$g.','.$b.','.$descriptionopacity.')';
+					}?>;
 
     border: <?php echo Hugeit_Slider_Options::get_description_border_size() . 'px solid #' . Hugeit_Slider_Options::get_description_border_color(); ?>;
     border-radius: <?php echo Hugeit_Slider_Options::get_description_border_radius() . 'px'; ?>;
