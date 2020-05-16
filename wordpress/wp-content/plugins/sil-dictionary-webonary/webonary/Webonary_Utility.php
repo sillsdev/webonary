@@ -3,6 +3,12 @@
 
 class Webonary_Utility
 {
+	// TODO: Check if this is reasonable, or should be increased.
+	private const DEFAULT_POSTS_PER_PAGE = 25;
+
+	private static $posts_per_page = 0;
+	private static $current_page_number = 0;
+
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
 	public static function unzip($zipfile, $uploadPath, $zipFolderPath)
 	{
@@ -288,5 +294,41 @@ class Webonary_Utility
 			unset($plugins[$key]);
 
 		return $plugins;
+	}
+
+	public static function getPostsPerPage()
+	{
+		if (!empty(self::$posts_per_page))
+			return self::$posts_per_page;
+
+		self::$posts_per_page = get_option('posts_per_page', self::DEFAULT_POSTS_PER_PAGE);
+
+		if(self::$posts_per_page < self::DEFAULT_POSTS_PER_PAGE)
+			self::$posts_per_page = self::DEFAULT_POSTS_PER_PAGE;
+
+		return self::$posts_per_page;
+	}
+
+	public static function getPageNumber()
+	{
+		if (!empty(self::$current_page_number))
+			return self::$current_page_number;
+
+		// first check for a page number in the URI
+		$re  = '/(?:\/page\/)(\d+)/';
+		$uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+		$matches = null;
+		$found = preg_match($re, $uri, $matches);
+
+		// if not found in the URL, look in the query string
+		if (!empty($found))
+			self::$current_page_number = (int)$matches[1];
+		else
+			self::$current_page_number = (int)filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, ['options' => ['default' => 1]]);
+
+		if (self::$current_page_number < 1)
+			self::$current_page_number = 1;
+
+		return self::$current_page_number;
 	}
 }

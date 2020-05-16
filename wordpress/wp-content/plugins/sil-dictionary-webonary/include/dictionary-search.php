@@ -56,12 +56,12 @@ function my_enqueue_css() {
 			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
 		}
 		wp_enqueue_style( 'configured_stylesheet');
-	
+
 		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
 		{
 			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
 			wp_enqueue_style( 'overrides_stylesheet');
-		}	
+		}
 	}
 }
 
@@ -252,9 +252,12 @@ function get_subquery_where($query)
 {
 	mb_internal_encoding("UTF-8");
 
-	if( empty($query->query_vars['s'])) {
+	$search = trim($query->query_vars['s'] ?? '');
+
+	if(empty($search)) {
 		return "";
 	}
+
 	//search string gets trimmed and normalized to NFC
 	if (class_exists("Normalizer", $autoload = false))
 	{
@@ -265,13 +268,10 @@ function get_subquery_where($query)
 		}
 
 		//$normalization = Normalizer::NFD;
-		$search = normalizer_normalize(trim($query->query_vars['s']), $normalization);
-		//$search = normalizer_normalize(trim($query->query_vars['s']), Normalizer::FORM_D);
+		$search = normalizer_normalize($search, $normalization);
+		//$search = normalizer_normalize($search, Normalizer::FORM_D);
 	}
-	else
-	{
-		$search = trim($query->query_vars['s']);
-	}
+
 	$search = strtolower($search);
 
 	if(!empty($_GET['key'])) {
@@ -369,7 +369,7 @@ function replace_default_search_filter($input, $query=null)
 	// But in doing so, I realized that COMBINED searches, e.g. searching for a word
 	// within semantic domain or parts of speech (taxomony) would not work as is.
 	// Nor does paging, as all results are shown on every page.
-	// TODO: fix these in Webonary 1.5		
+	// TODO: fix these in Webonary 1.5
 	if (isset($_GET['tax']) && $_GET['tax'] > 1)
 	{
 		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
@@ -410,7 +410,7 @@ ORDER BY s.relevance DESC, p.post_title
 SQL;
 	}
 
-	return $input;
+	return $input . PHP_EOL . getLimitSql();
 }
 
 function webonary_css()
