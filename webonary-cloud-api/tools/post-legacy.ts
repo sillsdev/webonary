@@ -3,7 +3,7 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
-import { PostDictionary, PostEntry, EntryFile } from '../lambda/db';
+import { Dictionary, DictionaryEntry, EntryFile } from '../lambda/structs';
 import fileGrabber from './fileGrabber';
 import { FlexXhtmlParser } from './flexXhtmlParser';
 
@@ -39,7 +39,7 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
 
 async function postDictionary(
   dictionaryId: string,
-  dictionary: PostDictionary,
+  dictionary: Dictionary,
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/post/dictionary/${dictionaryId}`;
@@ -57,7 +57,7 @@ async function postDictionary(
 
 async function postEntry(
   dictionaryId: string,
-  entry: PostEntry[],
+  entry: DictionaryEntry[],
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/post/entry/${dictionaryId}`;
@@ -177,12 +177,12 @@ if (args[0]) {
     logMessage(`Getting dictionary metadata...`);
     const dictionaryPost = parser.getDictionaryData();
     if (dictionaryPost) {
-      dictionaryPost.data.mainLanguage.cssFiles = mainCssFiles;
+      dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
 
-      dictionaryPost.data.reversalLanguages.forEach((item, index) => {
+      dictionaryPost.reversalLanguages.forEach((item, index) => {
         const cssFile = `reversal_${item.lang}.css`;
         if (dictionaryFiles.includes(cssFile)) {
-          dictionaryPost.data.reversalLanguages[index].cssFiles = [cssFile];
+          dictionaryPost.reversalLanguages[index].cssFiles = [cssFile];
         }
       });
 
@@ -204,7 +204,7 @@ if (args[0]) {
     const startPostingEntriesTime = Date.now();
     logMessage(`Start posting entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
 
-    const chunkedParsedItems: PostEntry[][] = chunkArray(
+    const chunkedParsedItems: DictionaryEntry[][] = chunkArray(
       parser.parsedEntries,
       CHUNK_LOAD_ENTRY_SIZE,
     );
@@ -237,12 +237,12 @@ if (args[0]) {
     logMessage(' Start posting files...');
 
     const entryFiles = parser.parsedEntries.reduce(
-      (files: EntryFile[], entry: PostEntry): EntryFile[] => {
-        if (entry.data.audio.src) {
-          files.push(entry.data.audio);
+      (files: EntryFile[], entry: DictionaryEntry): EntryFile[] => {
+        if (entry.audio.src) {
+          files.push(entry.audio);
         }
-        if (entry.data.pictures.length) {
-          entry.data.pictures.forEach(picture => {
+        if (entry.pictures.length) {
+          entry.pictures.forEach(picture => {
             if (picture.src) {
               files.push(picture);
             }

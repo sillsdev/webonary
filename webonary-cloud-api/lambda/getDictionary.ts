@@ -1,13 +1,8 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import {
-  DB_NAME,
-  DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_ENTRIES,
-  PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
-  DictionaryData,
-} from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_ENTRIES } from './db';
+import { Dictionary, DbPaths } from './structs';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -25,7 +20,7 @@ export async function handler(
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem: DictionaryData | null = await db
+    const dbItem: Dictionary | null = await db
       .collection(DB_COLLECTION_DICTIONARIES)
       .findOne({ _id: dictionaryId });
     if (!dbItem) {
@@ -40,7 +35,7 @@ export async function handler(
     // get all parts of speech
     const partsOfSpeech = await db
       .collection(DB_COLLECTION_ENTRIES)
-      .distinct(PATH_TO_ENTRY_PART_OF_SPEECH_VALUE, { dictionaryId });
+      .distinct(DbPaths.ENTRY_PART_OF_SPEECH_VALUE, { dictionaryId });
 
     dbItem.mainLanguage.partsOfSpeech = partsOfSpeech
       .filter(Boolean)

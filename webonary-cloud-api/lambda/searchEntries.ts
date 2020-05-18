@@ -1,17 +1,10 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import {
-  DB_NAME,
-  DB_COLLECTION_ENTRIES,
-  DB_MAX_DOCUMENTS_PER_CALL,
-  PATH_TO_ENTRY_DEFINITION_VALUE,
-  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
-  PATH_TO_ENTRY_PART_OF_SPEECH_VALUE,
-  PATH_TO_ENTRY_SEM_DOMS_VALUE,
-  DbFindParameters,
-  getDbSkip,
-} from './db';
+import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_DOCUMENTS_PER_CALL } from './db';
+import { DbFindParameters, DbPaths } from './structs';
+import { getDbSkip } from './utils';
+
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -59,7 +52,7 @@ export async function handler(
     if (searchSemDoms === '1') {
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
-        .find({ ...primaryFilter, [PATH_TO_ENTRY_SEM_DOMS_VALUE]: text })
+        .find({ ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_VALUE]: text })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
@@ -74,7 +67,7 @@ export async function handler(
     const regexFilter: DbFindParameters = { $regex: text, $options: 'i' };
 
     if (partOfSpeech) {
-      primaryFilter[PATH_TO_ENTRY_PART_OF_SPEECH_VALUE] = partOfSpeech;
+      primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = partOfSpeech;
     }
 
     if (lang) {
@@ -96,8 +89,8 @@ export async function handler(
     } else {
       langFilter = {
         $or: [
-          { [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: regexFilter },
-          { [PATH_TO_ENTRY_DEFINITION_VALUE]: regexFilter },
+          { [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: regexFilter },
+          { [DbPaths.ENTRY_DEFINITION_VALUE]: regexFilter },
         ],
       };
     }

@@ -1,9 +1,26 @@
 /**
  * @apiDefine DictionaryPostBody
  *
- * @apiParam (Post Body) {Object} body      JSON representation of dictionary metadata
- * @apiParam (Post Body) {String} body.id   Dictionary id (unique short name)
- * @apiParam (Post Body) {Object} body.data Dictionary metadata
+ * @apiParam (Post Body) {String} id Dictionary id (unique short name)
+ *
+ * @apiParam (Post Body) {Object} mainLanguage Dictionary language metadata
+ * @apiParam (Post Body) {String} mainLanguage.lang ISO language code
+ * @apiParam (Post Body) {String} mainLanguage.title ISO language name
+ * @apiParam (Post Body) {String[]} mainLanguage.letters ISO Letters for the language
+ * @apiParam (Post Body) {String[]} mainLanguage.partsOfSpeech Parts of speech short codes for this language
+ * @apiParam (Post Body) {String[]} mainLanguage.cssFiles Css files used to displaying entries from this language (in order)
+ *
+ * @apiParam (Post Body) {Object[]} reversalLanguages Reversal languages defined for the main language
+ * @apiParam (Post Body) {String} reversalLanguages.lang ISO language code
+ * @apiParam (Post Body) {String} reversalLanguages.title ISO language name
+ * @apiParam (Post Body) {String[]} reversalLanguages.letters ISO Letters for the language
+ * @apiParam (Post Body) {String[]} reversalLanguages.partsOfSpeech Parts of speech short codes for this language
+ * @apiParam (Post Body) {String[]} reversalLanguages.cssFiles Css files used to displaying entries from this language (in order)
+ *
+ * @apiParam (Post Body) {Object[]} semanticDomains Semantic Domains used in dictionary entries (language specific)
+ * @apiParam (Post Body) {String} semanticDomains.key Hierarchical code
+ * @apiParam (Post Body) {String} semanticDomains.lang ISO language code
+ * @apiParam (Post Body) {String} semanticDomains.value Semantic domain name
  *
  */
 
@@ -23,36 +40,49 @@
  * @apiParamExample {json} Post Body Example
  * {
  *    "id": "moore",
- *    "data": {
- *      "mainLanguage": {
- *        "lang": "mos",
- *        "title": "Moore",
- *        "letters": ["a", "ã", "b", "d"],
- *        "cssFiles": [
- *          "configured.css",
- *          "ProjectDictionaryOverrides.css"
- *        ]
- *      },
- *      "reversalLanguages": [
- *        {
- *          "lang": "fr",
- *          "title": "French"
- *          "letters": ["c", "ç", "d", "e", "z"],
- *          "cssFiles": [
- *            "reversal_fr.css"
- *           ]
- *        },
- *        {
- *           "lang": "en",
- *           "title": "English",
- *           "letters": ["a", "x", "y", "z"],
- *           "cssFiles": [
- *             "reversal_en.css"
- *           ]
- *        }
+ *    "mainLanguage": {
+ *      "lang": "mos",
+ *      "title": "Moore",
+ *      "letters": ["a", "ã", "b", "d"],
+ *      "partsOfSpeech": ["adv", "n", "v"],
+ *      "cssFiles": [
+ *        "configured.css",
+ *        "ProjectDictionaryOverrides.css"
  *      ]
- *    }
- * }
+ *    },
+ *    "reversalLanguages": [
+ *      {
+ *        "lang": "fr",
+ *        "title": "French"
+ *        "letters": ["c", "ç", "d", "e", "z"],
+ *        "partsOfSpeech": [],
+ *        "cssFiles": [
+ *          "reversal_fr.css"
+ *         ]
+ *      },
+ *      {
+ *         "lang": "en",
+ *         "title": "English",
+ *         "letters": ["a", "x", "y", "z"],
+ *         "partsOfSpeech": [],
+ *         "cssFiles": [
+ *           "reversal_en.css"
+ *         ]
+ *      }
+ *    ],
+ *    "semanticDomains": [
+ *      {
+ *        "key": "9",
+ *        "lang": "fr",
+ *        "value": "La Grammaire",
+ *      },
+ *      {
+ *        "key": "9",
+ *        "lang": "en",
+ *        "value": "Grammar",
+ *      }
+ *    ]
+ *  }
  *
  * @apiSuccess {String} updatedAt Timestamp of the posting of dictionary metadata in GMT
  * @apiSuccess {Number} updatedCount Dictionary updated
@@ -82,12 +112,9 @@ import {
   DB_COLLECTION_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
-  PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
-  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
-  PATH_TO_ENTRY_DEFINITION_VALUE,
-  PostDictionary,
-  setSearchableEntries,
 } from './db';
+import { DbPaths, DictionaryItem } from './structs';
+import { copyObjectIgnoreKeyCase, setSearchableEntries } from './utils';
 import * as Response from './response';
 
 interface PostResult {
@@ -108,15 +135,12 @@ export async function handler(
 
   try {
     const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-    const dictionary: PostDictionary = JSON.parse(event.body as string);
-    const _id = dictionaryId;
-    const updatedAt = new Date().toUTCString();
+    const posted = JSON.parse(event.body as string);
 
-    const processedData = dictionary.data;
-
-    // set searchable value for each semantic domain value
-    if (processedData.semanticDomains) {
-      processedData.semanticDomains = setSearchableEntries(processedData.semanticDomains);
+    let dictionaryItem = new DictionaryItem(dictionaryId);
+    dictionaryItem = Object.assign(dictionaryItem, copyObjectIgnoreKeyCase(dictionaryItem, posted));
+    if (dictionaryItem.semanticDomains) {
+      dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
     }
 
     dbClient = await connectToDB();
@@ -125,8 +149,8 @@ export async function handler(
     // fulltext index (case and diacritic insensitive by default)
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-        [PATH_TO_ENTRY_DEFINITION_VALUE]: 'text',
+        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+        [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
       },
       { name: 'wordsFulltextIndex', default_language: 'none' },
     );
@@ -134,8 +158,8 @@ export async function handler(
     // case and diacritic insensitive index for semantic domains
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        [PATH_TO_ENTRY_MAIN_HEADWORD_LANG]: 1,
-        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 1,
+        [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
+        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
       },
       {
         collation: {
@@ -147,10 +171,10 @@ export async function handler(
 
     const dbResult = await db
       .collection(DB_COLLECTION_DICTIONARIES)
-      .updateOne({ _id }, { $set: { _id, ...processedData, updatedAt } }, { upsert: true });
+      .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
 
     const postResult: PostResult = {
-      updatedAt,
+      updatedAt: dictionaryItem.updatedAt,
       updatedCount: dbResult.modifiedCount,
       insertedCount: dbResult.upsertedCount,
     };
