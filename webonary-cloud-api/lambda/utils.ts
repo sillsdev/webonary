@@ -1,222 +1,76 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable max-classes-per-file */
-export interface EntryFile {
-  id: string;
-  src: string;
-  fileClass?: string;
-  caption?: string;
+import { DictionaryEntry, EntryValueItem } from './structs';
+
+export function hasKey<O>(obj: O, key: keyof any): key is keyof O {
+  return key in obj;
 }
-
-export class EntryFileItem implements EntryFile {
-  id = '';
-
-  src = '';
-
-  fileClass? = '';
-
-  caption? = '';
-}
-
-export interface EntryValue {
-  lang: string;
-  value: string;
-  guid?: string;
-  key?: string;
-  valueInsensitive?: string; // lowercase and normalized
-}
-
-export class EntryValueItem implements EntryValue {
-  lang = '';
-
-  value = '';
-
-  guid? = '';
-
-  key? = '';
-
-  valueInsensitive? = '';
-}
-
-export interface EntryAnalysis {
-  partOfSpeech: EntryValue[];
-}
-
-export class EntryAnalysisItem implements EntryAnalysis {
-  partOfSpeech = Array(new EntryValueItem());
-}
-
-export interface EntryExampleContent {
-  example: EntryValue[];
-}
-
-export class EntryExampleContentItem implements EntryExampleContent {
-  example = Array(new EntryValueItem());
-}
-
-export interface EntrySense {
-  definitionOrGloss: EntryValue[];
-  examplesContents?: EntryExampleContent[];
-  semanticDomains?: EntryValue[];
-  guid?: string;
-}
-
-export class EntrySenseItem implements EntrySense {
-  definitionOrGloss = Array(new EntryValueItem());
-
-  examplesContents? = Array(new EntryExampleContentItem());
-
-  semanticDomains? = Array(new EntryValueItem());
-
-  guid? = '';
-}
-
-export interface DictionaryEntry {
-  _id: string;
-  dictionaryId: string;
-  letterHead: string;
-  mainHeadWord: EntryValue[];
-  senses: EntrySense[];
-  reversalLetterHeads: EntryValue[];
-  pronunciations?: EntryValue[];
-  morphoSyntaxAnalysis?: EntryAnalysis;
-  audio: EntryFile;
-  pictures: EntryFile[];
-  updatedAt?: string;
-}
-
-export class DictionaryEntryItem implements DictionaryEntry {
-  _id: string;
-
-  dictionaryId: string;
-
-  letterHead: string;
-
-  mainHeadWord: EntryValueItem[];
-
-  senses: EntrySenseItem[];
-
-  reversalLetterHeads: EntryValueItem[];
-
-  pronunciations: EntryValueItem[];
-
-  morphoSyntaxAnalysis: EntryAnalysisItem;
-
-  audio: EntryFileItem;
-
-  pictures: EntryFileItem[];
-
-  updatedAt: string;
-
-  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    this._id = guid;
-    this.dictionaryId = dictionaryId;
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
-  }
-}
-
-export interface Language {
-  lang: string;
-  title: string;
-  letters: string[];
-  partsOfSpeech?: string[];
-  cssFiles?: string[];
-  entriesCount?: number;
-}
-
-export class LanguageItem implements Language {
-  lang = '';
-
-  title = '';
-
-  letters: string[] = [];
-
-  partsOfSpeech?: string[] = [];
-
-  cssFiles?: string[] = [];
-}
-
-export interface Dictionary {
-  _id: string;
-  mainLanguage: Language;
-  reversalLanguages: Language[];
-  semanticDomains?: EntryValue[];
-  updatedAt: string;
-}
-
-export class DictionaryItem implements Dictionary {
-  _id: string;
-
-  mainLanguage: LanguageItem;
-
-  reversalLanguages: LanguageItem[];
-
-  semanticDomains?: EntryValueItem[];
-
-  updatedAt: string;
-
-  constructor(dictionaryId: string) {
-    this._id = dictionaryId;
-    this.updatedAt = new Date().toUTCString();
-  }
-}
-
-export const PATH_TO_SEM_DOMS_KEY = 'semanticDomains.key';
-export const PATH_TO_SEM_DOMS_LANG = 'semanticDomains.lang';
-export const PATH_TO_SEM_DOMS_VALUE = 'semanticDomains.value';
-export const PATH_TO_SEM_DOMS_SEARCH_VALUE = 'semanticDomains.searchValue';
-
-export const PATH_TO_ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.0.lang';
-export const PATH_TO_ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.0.value';
-export const PATH_TO_ENTRY_DEFINITION = 'senses.definitionOrGloss';
-export const PATH_TO_ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang';
-export const PATH_TO_ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value';
-export const PATH_TO_ENTRY_PART_OF_SPEECH_VALUE = 'senses.partOfSpeech.value';
-export const PATH_TO_ENTRY_SEM_DOMS_VALUE = `senses.${PATH_TO_SEM_DOMS_VALUE}`;
 
 export function getDbSkip(pageNumber: number, pageLimit: number): number {
   return (pageNumber - 1) * pageLimit;
 }
 
-export function copyObjectIgnoreKeyCase(
-  copyKey: string,
-  subKeys: string[],
+// TODO: This copies all the values of a key, but does not do so iteratively.
+// Once data coming from FLex is more settled, then we should do iterative copying per object/array for better type checking.
+export function copyObjectKeyValueIgnoreKeyCase(
+  toSubKeys: string[],
+  fromKey: string,
   fromParentObject: any,
 ): any {
-  let key = '';
-  if (copyKey in fromParentObject) {
-    key = copyKey;
-  } else {
-    const keyLowerCase = copyKey.toLowerCase();
-    if (keyLowerCase in fromParentObject) {
-      key = keyLowerCase;
-    }
-  }
+  const isArray = Array.isArray(fromParentObject[fromKey]);
+  const fromObjectArray = isArray
+    ? fromParentObject[fromKey]
+    : new Array(fromParentObject[fromKey]);
 
-  if (key !== '') {
-    const isArray = Array.isArray(fromParentObject[key]);
-    const fromObjectArray = isArray ? fromParentObject[key] : new Array(fromParentObject[key]);
+  const toObjectArray = fromObjectArray.map((fromObject: any) => {
+    const toObject: { [key: string]: any } = {};
 
-    const toObjectArray = fromObjectArray.map((fromObject: any) => {
-      const toObject: { [key: string]: any } = {};
-
-      subKeys.forEach(subKey => {
-        if (subKey in fromObject) {
-          toObject[subKey] = fromObject[subKey];
-        } else {
-          const subKeyLowerCase = subKey.toLowerCase();
-          if (subKeyLowerCase in fromObject) {
-            toObject[subKey] = fromObject[subKeyLowerCase];
-          }
-        }
-      });
-
-      return toObject;
+    toSubKeys.forEach(subKey => {
+      const subKeyLowerCase = subKey.toLowerCase();
+      const fromObjectKey = Object.keys(fromObject).find(
+        key => key.toLowerCase() === subKeyLowerCase,
+      );
+      if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
+        toObject[subKey] = fromObject[fromObjectKey];
+      }
     });
 
-    return isArray ? toObjectArray : toObjectArray[0];
-  }
+    return toObject;
+  });
 
-  return undefined;
+  return isArray ? toObjectArray : toObjectArray[0];
+}
+
+export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): object {
+  const copyObject: any = toObject;
+  Object.keys(toObject).forEach(toObjectKey => {
+    if (hasKey(toObject, toObjectKey)) {
+      const toObjectKeyLowercase = (toObjectKey ?? '').toLowerCase();
+      const fromObjectKey = Object.keys(fromObject).find(
+        key => key.toLowerCase() === toObjectKeyLowercase,
+      );
+
+      if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
+        if (typeof toObject[toObjectKey] === 'object') {
+          let toObjectSubKeys: string[] = [];
+          if (Array.isArray(toObject[toObjectKey])) {
+            const subArray = Object.entries(toObject[toObjectKey] ?? [{}]);
+            toObjectSubKeys = Object.keys(subArray[0][1]);
+          } else {
+            toObjectSubKeys = Object.keys(toObject[toObjectKey] ?? {});
+          }
+
+          copyObject[toObjectKey] = copyObjectKeyValueIgnoreKeyCase(
+            toObjectSubKeys,
+            fromObjectKey,
+            fromObject,
+          );
+        } else {
+          copyObject[toObjectKey] = fromObject[fromObjectKey];
+        }
+      }
+    }
+  });
+  return copyObject;
 }
 
 export function setSearchableEntries(entries: EntryValueItem[]): EntryValueItem[] {

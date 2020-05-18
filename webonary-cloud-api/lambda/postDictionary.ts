@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-restricted-syntax */
-
 /**
  * @apiDefine DictionaryPostBody
  *
@@ -116,15 +113,8 @@ import {
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
 } from './db';
-import {
-  PATH_TO_ENTRY_MAIN_HEADWORD_LANG,
-  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
-  PATH_TO_ENTRY_DEFINITION_VALUE,
-  DictionaryItem,
-  EntryValueItem,
-  LanguageItem,
-} from './structs';
-import { setSearchableEntries, copyObjectIgnoreKeyCase } from './utils';
+import { DbPaths, DictionaryItem, EntryValueItem, LanguageItem } from './structs';
+import { copyObjectIgnoreKeyCase, setSearchableEntries } from './utils';
 import * as Response from './response';
 
 interface PostResult {
@@ -147,16 +137,10 @@ export async function handler(
     const dictionaryId = event.pathParameters?.dictionaryId ?? '';
     const posted = JSON.parse(event.body as string);
 
-    const item = new DictionaryItem(dictionaryId);
-
-    const languageItemKeys = Object.keys(new LanguageItem());
-    item.mainLanguage = copyObjectIgnoreKeyCase('mainLanguage', languageItemKeys, posted);
-    item.reversalLanguages = copyObjectIgnoreKeyCase('reversalLanguages', languageItemKeys, posted);
-
-    const entryValueItemKeys = Object.keys(new EntryValueItem());
-    const semanticDomains = copyObjectIgnoreKeyCase('semanticDomains', entryValueItemKeys, posted);
-    if (semanticDomains) {
-      item.semanticDomains = setSearchableEntries(semanticDomains);
+    let dictionaryItem = new DictionaryItem(dictionaryId);
+    dictionaryItem = Object.assign(dictionaryItem, copyObjectIgnoreKeyCase(dictionaryItem, posted));
+    if (dictionaryItem.semanticDomains) {
+      dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
     }
 
     dbClient = await connectToDB();
@@ -165,8 +149,8 @@ export async function handler(
     // fulltext index (case and diacritic insensitive by default)
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-        [PATH_TO_ENTRY_DEFINITION_VALUE]: 'text',
+        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+        [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
       },
       { name: 'wordsFulltextIndex', default_language: 'none' },
     );
@@ -174,8 +158,8 @@ export async function handler(
     // case and diacritic insensitive index for semantic domains
     await db.collection(DB_COLLECTION_ENTRIES).createIndex(
       {
-        [PATH_TO_ENTRY_MAIN_HEADWORD_LANG]: 1,
-        [PATH_TO_ENTRY_MAIN_HEADWORD_VALUE]: 1,
+        [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
+        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
       },
       {
         collation: {
@@ -187,10 +171,10 @@ export async function handler(
 
     const dbResult = await db
       .collection(DB_COLLECTION_DICTIONARIES)
-      .updateOne({ _id: item._id }, { $set: item }, { upsert: true });
+      .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
 
     const postResult: PostResult = {
-      updatedAt: item.updatedAt,
+      updatedAt: dictionaryItem.updatedAt,
       updatedCount: dbResult.modifiedCount,
       insertedCount: dbResult.upsertedCount,
     };

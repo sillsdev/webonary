@@ -8,15 +8,8 @@ import {
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
-  DbFindParameters,
 } from './db';
-import {
-  PATH_TO_ENTRY_MAIN_HEADWORD_VALUE,
-  PATH_TO_ENTRY_DEFINITION,
-  PATH_TO_ENTRY_DEFINITION_LANG,
-  PATH_TO_ENTRY_DEFINITION_VALUE,
-  DictionaryEntry,
-} from './structs';
+import { DbFindParameters, DbPaths, DictionaryEntry } from './structs';
 import { getDbSkip } from './utils';
 import * as Response from './response';
 
@@ -74,7 +67,7 @@ export async function handler(
     if (lang) {
       // TODO: Include reversal language in sorting?
       /*
-      dbSortKey = PATH_TO_ENTRY_MAIN_HEADWORD_VALUE;
+      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
       if (DB_COLLATION_LOCALES.includes(lang)) {
         dbLocale = lang;
       }
@@ -84,9 +77,9 @@ export async function handler(
         .aggregate(
           [
             { $match: dbFind },
-            { $unwind: `$${PATH_TO_ENTRY_DEFINITION}` },
-            { $match: { [PATH_TO_ENTRY_DEFINITION_LANG]: lang } },
-            { $sort: { [PATH_TO_ENTRY_DEFINITION_VALUE]: 1 } },
+            { $unwind: `$${DbPaths.ENTRY_DEFINITION}` },
+            { $match: { [DbPaths.ENTRY_DEFINITION_LANG]: lang } },
+            { $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } },
           ],
           { collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY } },
         )
@@ -95,7 +88,7 @@ export async function handler(
         .toArray();
     } else {
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-      dbSortKey = PATH_TO_ENTRY_MAIN_HEADWORD_VALUE;
+      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
       if (mainLang && mainLang !== '' && DB_COLLATION_LOCALES.includes(mainLang)) {
         dbLocale = mainLang;
       }

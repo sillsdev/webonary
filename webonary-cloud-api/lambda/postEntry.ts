@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @apiDefine BasicAuthHeader
  *
@@ -216,13 +215,7 @@ import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL } from './db';
-import {
-  DictionaryEntryItem,
-  EntryAnalysisItem,
-  EntryFileItem,
-  EntrySenseItem,
-  EntryValueItem,
-} from './structs';
+import { DictionaryEntryItem } from './structs';
 import { copyObjectIgnoreKeyCase } from './utils';
 import * as Response from './response';
 
@@ -266,46 +259,15 @@ export async function handler(
       return callback(null, Response.badRequest(errorMessage));
     }
 
-    const entryFileItemKeys = Object.keys(new EntryFileItem());
-    const entryValueItemKeys = Object.keys(new EntryValueItem());
     const updatedAt = new Date().toUTCString();
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const entries: DictionaryEntryItem[] = postedEntries.map((postedEntry: any) => {
-      const _id: string = postedEntry._id ?? postedEntry.guid;
-      const entry = new DictionaryEntryItem(_id, dictionaryId, updatedAt);
-
-      entry.letterHead = postedEntry.letterHead ?? postedEntry.letterhead;
-
-      entry.mainHeadWord = copyObjectIgnoreKeyCase('mainHeadWord', entryValueItemKeys, postedEntry);
-
-      entry.pronunciations = copyObjectIgnoreKeyCase(
-        'pronunciations',
-        entryValueItemKeys,
-        postedEntry,
+      let entry = new DictionaryEntryItem(
+        postedEntry._id ?? postedEntry.guid,
+        dictionaryId,
+        updatedAt,
       );
-
-      entry.morphoSyntaxAnalysis = copyObjectIgnoreKeyCase(
-        'morphoSyntaxAnalysis',
-        Object.keys(new EntryAnalysisItem()),
-        postedEntry,
-      );
-
-      entry.senses = copyObjectIgnoreKeyCase(
-        'senses',
-        Object.keys(new EntrySenseItem()),
-        postedEntry,
-      );
-
-      entry.reversalLetterHeads = copyObjectIgnoreKeyCase(
-        'reversalLetterHeads',
-        entryValueItemKeys,
-        postedEntry,
-      );
-
-      entry.audio = copyObjectIgnoreKeyCase('audio', entryFileItemKeys, postedEntry);
-
-      entry.pictures = copyObjectIgnoreKeyCase('pictures', entryFileItemKeys, postedEntry);
-
+      entry = Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
       return entry;
     });
 

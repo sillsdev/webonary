@@ -120,8 +120,3 @@ export const DB_COLLATION_LOCALES = [
 
 export const DB_COLLECTION_DICTIONARIES = 'webonaryDictionaries';
 export const DB_COLLECTION_ENTRIES = 'webonaryEntries';
-
-export interface DbFindParameters {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}

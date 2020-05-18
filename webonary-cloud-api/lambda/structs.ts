@@ -110,6 +110,16 @@ export class DictionaryEntryItem implements DictionaryEntry {
     this._id = guid;
     this.dictionaryId = dictionaryId;
     this.updatedAt = updatedAt ?? new Date().toUTCString();
+
+    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
+    this.letterHead = '';
+    this.mainHeadWord = Array(new EntryValueItem());
+    this.senses = Array(new EntrySenseItem());
+    this.reversalLetterHeads = Array(new EntryValueItem());
+    this.pronunciations = Array(new EntryValueItem());
+    this.morphoSyntaxAnalysis = new EntryAnalysisItem();
+    this.audio = new EntryFileItem();
+    this.pictures = Array(new EntryFileItem());
   }
 }
 
@@ -136,14 +146,16 @@ export class LanguageItem implements Language {
 
 export interface Dictionary {
   _id: string;
+  updatedAt: string;
   mainLanguage: Language;
   reversalLanguages: Language[];
   semanticDomains?: EntryValue[];
-  updatedAt: string;
 }
 
 export class DictionaryItem implements Dictionary {
   _id: string;
+
+  updatedAt: string;
 
   mainLanguage: LanguageItem;
 
@@ -151,23 +163,32 @@ export class DictionaryItem implements Dictionary {
 
   semanticDomains?: EntryValueItem[];
 
-  updatedAt: string;
-
-  constructor(dictionaryId: string) {
+  constructor(dictionaryId: string, updatedAt?: string) {
     this._id = dictionaryId;
-    this.updatedAt = new Date().toUTCString();
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+
+    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
+    this.mainLanguage = new LanguageItem();
+    this.reversalLanguages = Array(new LanguageItem());
+    this.semanticDomains = Array(new EntryValueItem());
   }
 }
 
-export const PATH_TO_SEM_DOMS_KEY = 'semanticDomains.key';
-export const PATH_TO_SEM_DOMS_LANG = 'semanticDomains.lang';
-export const PATH_TO_SEM_DOMS_VALUE = 'semanticDomains.value';
-export const PATH_TO_SEM_DOMS_SEARCH_VALUE = 'semanticDomains.searchValue';
+export interface DbFindParameters {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
 
-export const PATH_TO_ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.0.lang';
-export const PATH_TO_ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.0.value';
-export const PATH_TO_ENTRY_DEFINITION = 'senses.definitionOrGloss';
-export const PATH_TO_ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang';
-export const PATH_TO_ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value';
-export const PATH_TO_ENTRY_PART_OF_SPEECH_VALUE = 'senses.partOfSpeech.value';
-export const PATH_TO_ENTRY_SEM_DOMS_VALUE = `senses.${PATH_TO_SEM_DOMS_VALUE}`;
+export enum DbPaths {
+  SEM_DOMS_KEY = 'semanticDomains.key',
+  SEM_DOMS_LANG = 'semanticDomains.lang',
+  SEM_DOMS_VALUE = 'semanticDomains.value',
+  SEM_DOMS_SEARCH_VALUE = 'semanticDomains.searchValue',
+  ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.0.lang',
+  ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.0.value',
+  ENTRY_DEFINITION = 'senses.definitionOrGloss',
+  ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',
+  ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value',
+  ENTRY_PART_OF_SPEECH_VALUE = 'morphoSyntaxAnalysis.partOfSpeech.value',
+  ENTRY_SEM_DOMS_VALUE = 'senses.semanticDomains.value',
+}
