@@ -113,7 +113,7 @@ import {
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
 } from './db';
-import { DbPaths, DictionaryItem, EntryValueItem, LanguageItem } from './structs';
+import { DbPaths, DictionaryItem } from './structs';
 import { copyObjectIgnoreKeyCase, setSearchableEntries } from './utils';
 import * as Response from './response';
 
