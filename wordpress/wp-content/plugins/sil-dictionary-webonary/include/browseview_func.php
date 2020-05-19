@@ -25,12 +25,36 @@ function categories_func( $atts )
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
+
+		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		$arrDomains = array();
+		if(!is_null($dictionary))
+		{
+			// set up semantic domains
+			if(count($dictionary->semanticDomains))
+			{
+				foreach($dictionary->semanticDomains as $domain)
+				{
+					if ($domain->lang === $qTransLang) {
+						$arrDomains[] = array('slug' => str_replace('.', '-', $domain->key), 'name'=> $domain->value);
+					}
+				}
+			}
+		}				
 	}
 	else
 	{	
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
+
+    	$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
+		" FROM " . $wpdb->prefix . "terms " .
+		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
+		" WHERE taxonomy = 'sil_semantic_domains'" .
+		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
+
+    	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
 	}
 ?>
 	<style>
@@ -66,17 +90,9 @@ function categories_func( $atts )
     else
     {
     	*/
-    	require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
+		require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
 
-    	$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
-		" FROM " . $wpdb->prefix . "terms " .
-		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
-		" WHERE taxonomy = 'sil_semantic_domains'" .
-		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
-
-    	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
-
-    	//if no semantic domains were imported, use the default domains defined in default_domains.php
+		//if no semantic domains were imported, use the default domains defined in default_domains.php
     	if(count($arrDomains) == 0)
     	{
     		$d = 0;

@@ -168,6 +168,13 @@ class Webonary_Cloud
 		);
 	}
 
+	public static function getCurrentLanguage() {
+		return (
+			function_exists('qtranxf_init_language')
+			? qtranxf_getLanguage()
+			: 'en'
+		);
+	}
 
 	public static function getDictionary($dictionaryId) {
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
@@ -298,14 +305,24 @@ class Webonary_Cloud
 			}
 			$searchText = trim(get_search_query());
 			if ($searchText === '') {
-				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-				if ($tax !== '') {
-					// This is a listing by semantic domains			
+				// TODO: "tax" is used in search form both for parts of speech and for semantic domains
+				// But in browse semantic domains page, the parameter that contains the sem dom text is "semdomain".
+				// We should unify this.
+				foreach (array('tax', 'semdomain') as $param) {
+					$searchText = filter_input(INPUT_GET, $param, FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+					if ($searchText !== '') {
+						break;
+					}
+				}
+
+				if ($searchText !== '') {
 					$apiParams = array(
-						'text' => $tax,
+						'text' => $searchText,
+						'lang' => self::getCurrentLanguage(),
 						'searchSemDoms' => '1'
 					);
-	
+
+					// This is a listing by semantic domains				
 					return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);					
 				}
 			} 
