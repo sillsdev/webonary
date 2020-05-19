@@ -71,7 +71,9 @@ add_action('admin_enqueue_scripts', 'webonary_admin_script');
 /* Search hook */
 add_filter('search_message', 'sil_dictionary_custom_message');
 
+/* post query hooks */
 add_filter('posts_request','replace_default_search_filter', 10, 2);
+add_filter('post_limits','replace_default_search_limits', 10, 2);
 
 // this executes just before wordpress determines which template page to load
 add_action('template_redirect', 'my_enqueue_css');

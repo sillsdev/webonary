@@ -4,7 +4,7 @@
 class Webonary_Utility
 {
 	// TODO: Check if this is reasonable, or should be increased.
-	private const DEFAULT_POSTS_PER_PAGE = 25;
+	private static $default_posts_perpage = 25;
 
 	private static $posts_per_page = 0;
 	private static $current_page_number = 0;
@@ -301,10 +301,10 @@ class Webonary_Utility
 		if (!empty(self::$posts_per_page))
 			return self::$posts_per_page;
 
-		self::$posts_per_page = get_option('posts_per_page', self::DEFAULT_POSTS_PER_PAGE);
+		self::$posts_per_page = get_option('posts_per_page', self::$default_posts_perpage);
 
-		if(self::$posts_per_page < self::DEFAULT_POSTS_PER_PAGE)
-			self::$posts_per_page = self::DEFAULT_POSTS_PER_PAGE;
+		if(self::$posts_per_page < self::$default_posts_perpage)
+			self::$posts_per_page = self::$default_posts_perpage;
 
 		return self::$posts_per_page;
 	}
@@ -330,5 +330,13 @@ class Webonary_Utility
 			self::$current_page_number = 1;
 
 		return self::$current_page_number;
+	}
+
+	public static function setPageNumber($page_num)
+	{
+		self::$current_page_number = $page_num;
+
+		if (self::$current_page_number < 1)
+			self::$current_page_number = 1;
 	}
 }

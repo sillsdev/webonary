@@ -1,4 +1,6 @@
-<?php /** @noinspection SqlResolve */
+<?php
+/** @noinspection PhpUnused */
+/** @noinspection SqlResolve */
 /**
  * Search
  *
@@ -354,6 +356,8 @@ function get_subquery_where($query)
 }
 
 /**
+ * Hook to override the default post query
+ *
  * @param $input
  * @param WP_Query $query
  * @return string
@@ -368,11 +372,10 @@ function replace_default_search_filter($input, $query=null)
 	// hanatgit 20200303 I re-write the logic slightly for clarity.
 	// But in doing so, I realized that COMBINED searches, e.g. searching for a word
 	// within semantic domain or parts of speech (taxomony) would not work as is.
-	// Nor does paging, as all results are shown on every page.
 	// TODO: fix these in Webonary 1.5
 	if (isset($_GET['tax']) && $_GET['tax'] > 1)
 	{
-		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		$input = "SELECT SQL_CALC_FOUND_ROWS DISTINCTROW $wpdb->posts.* " .
 		" FROM $wpdb->posts " .
 		" INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
 		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
@@ -381,7 +384,7 @@ function replace_default_search_filter($input, $query=null)
 	}
 	elseif (isset($query->query_vars['semdomain']))
 	{
-		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		$input = "SELECT SQL_CALC_FOUND_ROWS DISTINCTROW $wpdb->posts.* " .
 		" FROM $wpdb->posts " .
 		" LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
 		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
@@ -397,7 +400,7 @@ function replace_default_search_filter($input, $query=null)
 		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
 		$input = <<<SQL
-SELECT DISTINCTROW p.*, s.relevance
+SELECT SQL_CALC_FOUND_ROWS DISTINCTROW p.*, s.relevance
 FROM {$wpdb->posts} AS p
   INNER JOIN (
               SELECT post_id, MAX(relevance) AS relevance
@@ -411,6 +414,25 @@ SQL;
 	}
 
 	return $input . PHP_EOL . getLimitSql();
+}
+
+/**
+ * Hook to override the default page length
+ *
+ * @param string $input
+ * @param WP_Query $query
+ *
+ * @return string
+ */
+function replace_default_search_limits($input, $query=null)
+{
+    if (empty($input))
+        return $input;
+
+	$query->query_vars['posts_per_page'] = Webonary_Utility::getPostsPerPage();
+	Webonary_Utility::setPageNumber((int)($query->query_vars['paged'] ?? 0));
+
+    return getLimitSql();
 }
 
 function webonary_css()
