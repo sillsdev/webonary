@@ -32,15 +32,6 @@ export async function handler(
       .collection(DB_COLLECTION_ENTRIES)
       .countDocuments({ dictionaryId });
 
-    // get all parts of speech
-    const partsOfSpeech = await db
-      .collection(DB_COLLECTION_ENTRIES)
-      .distinct(DbPaths.ENTRY_PART_OF_SPEECH_VALUE, { dictionaryId });
-
-    dbItem.mainLanguage.partsOfSpeech = partsOfSpeech
-      .filter(Boolean)
-      .sort((a, b) => a.localeCompare(b));
-
     return callback(null, Response.success(dbItem));
   } catch (error) {
     // eslint-disable-next-line no-console

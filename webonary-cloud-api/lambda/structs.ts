@@ -16,6 +16,26 @@ export class EntryFileItem implements EntryFile {
   caption? = '';
 }
 
+export interface EntryListOption {
+  lang: string;
+  abbreviation: string;
+  name: string;
+  nameInsensitive?: string; // lowercase and normalized
+  guid?: string;
+}
+
+export class EntryListOptionItem implements EntryListOption {
+  lang = '';
+
+  abbreviation = '';
+
+  name = '';
+
+  nameInsensitive? = '';
+
+  guid? = '';
+}
+
 export interface EntryValue {
   lang: string;
   value: string;
@@ -52,10 +72,21 @@ export class EntryExampleContentItem implements EntryExampleContent {
   example = Array(new EntryValueItem());
 }
 
+export interface EntrySemanticDomain {
+  abbreviation: EntryValue[];
+  name: EntryValue[];
+}
+
+export class EntrySemanticDomainItem implements EntrySemanticDomain {
+  abbreviation = Array(new EntryValueItem());
+
+  name = Array(new EntryValueItem());
+}
+
 export interface EntrySense {
   definitionOrGloss: EntryValue[];
   examplesContents?: EntryExampleContent[];
-  semanticDomains?: EntryValue[];
+  semanticDomains?: EntrySemanticDomain[];
   guid?: string;
 }
 
@@ -64,7 +95,7 @@ export class EntrySenseItem implements EntrySense {
 
   examplesContents? = Array(new EntryExampleContentItem());
 
-  semanticDomains? = Array(new EntryValueItem());
+  semanticDomains? = Array(new EntrySemanticDomainItem());
 
   guid? = '';
 }
@@ -127,7 +158,6 @@ export interface Language {
   lang: string;
   title: string;
   letters: string[];
-  partsOfSpeech?: string[];
   cssFiles?: string[];
   entriesCount?: number;
 }
@@ -139,8 +169,6 @@ export class LanguageItem implements Language {
 
   letters: string[] = [];
 
-  partsOfSpeech?: string[] = [];
-
   cssFiles?: string[] = [];
 }
 
@@ -149,7 +177,8 @@ export interface Dictionary {
   updatedAt: string;
   mainLanguage: Language;
   reversalLanguages: Language[];
-  semanticDomains?: EntryValue[];
+  partsOfSpeech?: EntryListOption[];
+  semanticDomains?: EntryListOption[];
 }
 
 export class DictionaryItem implements Dictionary {
@@ -161,7 +190,9 @@ export class DictionaryItem implements Dictionary {
 
   reversalLanguages: LanguageItem[];
 
-  semanticDomains?: EntryValueItem[];
+  partsOfSpeech?: EntryListOptionItem[];
+
+  semanticDomains?: EntryListOptionItem[];
 
   constructor(dictionaryId: string, updatedAt?: string) {
     this._id = dictionaryId;
@@ -170,7 +201,8 @@ export class DictionaryItem implements Dictionary {
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.mainLanguage = new LanguageItem();
     this.reversalLanguages = Array(new LanguageItem());
-    this.semanticDomains = Array(new EntryValueItem());
+    this.partsOfSpeech = Array(new EntryListOptionItem());
+    this.semanticDomains = Array(new EntryListOptionItem());
   }
 }
 
@@ -180,15 +212,16 @@ export interface DbFindParameters {
 }
 
 export enum DbPaths {
-  SEM_DOMS_KEY = 'semanticDomains.key',
   SEM_DOMS_LANG = 'semanticDomains.lang',
+  SEM_DOMS_ABBREV = 'semanticDomains.abbrev',
   SEM_DOMS_VALUE = 'semanticDomains.value',
-  SEM_DOMS_SEARCH_VALUE = 'semanticDomains.searchValue',
+  SEM_DOMS_VALUE_INSENSITIVE = 'semanticDomains.valueInsensitive',
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.0.lang',
   ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.0.value',
   ENTRY_DEFINITION = 'senses.definitionOrGloss',
   ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',
   ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value',
   ENTRY_PART_OF_SPEECH_VALUE = 'morphoSyntaxAnalysis.partOfSpeech.value',
-  ENTRY_SEM_DOMS_VALUE = 'senses.semanticDomains.value',
+  ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
+  ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
 }

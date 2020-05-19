@@ -1,6 +1,17 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { EntryFile, EntryValue, DictionaryEntry, DictionaryItem } from '../lambda/structs';
+import { CfnDomainName } from '@aws-cdk/aws-apigateway';
+import { match } from 'assert';
+import {
+  EntryFile,
+  EntryValue,
+  DictionaryEntry,
+  DictionaryItem,
+  EntryListOption,
+  EntrySenseItem,
+  EntrySemanticDomain,
+} from '../lambda/structs';
+import { PATH_TO_SEM_DOMS_LANG } from '../lambda/db copy';
 
 export interface Options {
   dictionaryId: string;
@@ -166,20 +177,24 @@ export class FlexXhtmlParser {
       }
     });
 
-    const semanticDomains: EntryValue[] = [];
+    const semanticDomains: EntrySemanticDomain[] = [];
     $(
       'span.senses span.sensecontent span.sense span.semanticdomains span.semanticdomain span.name span',
     ).map((i, elem) => {
       const lang = $(elem).attr('lang');
-      const value = $(elem).text();
-      if (lang && value) {
-        const key = $(elem)
+      const name = $(elem).text();
+      if (lang && name) {
+        const abbreviation = $(elem)
           .parent()
           .parent()
           .children('span.abbreviation')
           .children()
           .text();
-        semanticDomains.push({ key, lang, value });
+
+        semanticDomains.push({
+          abbreviation: [{ lang, value: abbreviation }],
+          name: [{ lang, value: name }],
+        });
       }
     });
 
@@ -228,7 +243,6 @@ export class FlexXhtmlParser {
         lang: mainLang,
         title: this.parsedLanguages.get(mainLang) ?? '',
         letters: mainLetters,
-        partsOfSpeech: [],
       };
 
       const reversalLetterHeads = this.parsedEntries.reduce((letterHeads, entry) => {
@@ -253,30 +267,69 @@ export class FlexXhtmlParser {
           lang,
           title: this.parsedLanguages.get(lang) ?? '',
           letters: letters.sort((a, b) => a.localeCompare(b)),
-          partsOfSpeech: [],
         }),
       );
 
-      loadDictionary.semanticDomains = this.parsedEntries.reduce((semDoms: EntryValue[], entry) => {
-        const newSemDoms = semDoms;
-        if (entry.senses[0].semanticDomains) {
-          entry.senses[0].semanticDomains.forEach(semDom => {
-            if (
-              !newSemDoms.find(
-                item =>
-                  item.key === semDom.key &&
-                  item.lang === semDom.lang &&
-                  item.value === semDom.value,
-              )
-            ) {
-              newSemDoms.push(semDom);
+      loadDictionary.partsOfSpeech = this.parsedEntries.reduce(
+        (partsOfSpeech: EntryListOption[], entry) => {
+          const newDictionaryPartsOfSpeech = partsOfSpeech;
+          if (entry.morphoSyntaxAnalysis) {
+            entry.morphoSyntaxAnalysis.partOfSpeech.forEach(entryPartOfSpeech => {
+              if (
+                entryPartOfSpeech.lang !== '' &&
+                entryPartOfSpeech.value !== '' &&
+                !newDictionaryPartsOfSpeech.find(
+                  item =>
+                    item.lang === entryPartOfSpeech.lang &&
+                    item.abbreviation === entryPartOfSpeech.value &&
+                    item.name === entryPartOfSpeech.value,
+                )
+              ) {
+                newDictionaryPartsOfSpeech.push({
+                  abbreviation: entryPartOfSpeech.value,
+                  lang: entryPartOfSpeech.lang,
+                  name: entryPartOfSpeech.value,
+                });
+              }
+            });
+          }
+          return newDictionaryPartsOfSpeech;
+        },
+        [],
+      );
+
+      loadDictionary.semanticDomains = this.parsedEntries.reduce(
+        (semDoms: EntryListOption[], entry) => {
+          const newDictionarySemDoms = semDoms;
+          entry.senses.forEach(sense => {
+            if (sense.semanticDomains && sense.semanticDomains.length) {
+              sense.semanticDomains.forEach(semDom => {
+                semDom.abbreviation.forEach(abbreviation => {
+                  const matchingName = semDom.name.find(item => item.lang === abbreviation.lang);
+                  if (matchingName) {
+                    const foundAbbreviation = newDictionarySemDoms.find(
+                      item =>
+                        item.abbreviation === abbreviation.value &&
+                        item.lang === abbreviation.lang &&
+                        item.name === matchingName.value,
+                    );
+                    if (!foundAbbreviation || foundAbbreviation.name !== matchingName.value) {
+                      newDictionarySemDoms.push({
+                        abbreviation: abbreviation.value,
+                        lang: matchingName.lang,
+                        name: matchingName.value,
+                      });
+                    }
+                  }
+                });
+              });
             }
           });
-        }
-        return newSemDoms;
-      }, []);
+          return newDictionarySemDoms;
+        },
+        [],
+      );
     }
-
     return loadDictionary;
   }
 }

@@ -52,7 +52,7 @@ export async function handler(
     if (searchSemDoms === '1') {
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
-        .find({ ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_VALUE]: text })
+        .find({ ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: text })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
