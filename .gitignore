@@ -1,3 +1,6 @@
 # IntelliJ/PHPStorm project files
 /.idea/
 /*.iml
+/srdb/
+/*.sh
+/wordpress/*.htaccess
