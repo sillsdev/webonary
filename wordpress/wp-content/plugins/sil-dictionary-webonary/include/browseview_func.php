@@ -21,26 +21,24 @@ function categories_func( $atts )
 		}
 	}
 
+	$arrDomains = array();
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 
 		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
-		$arrDomains = array();
-		if(!is_null($dictionary))
+		if(!is_null($dictionary) && count($dictionary->semanticDomains))
 		{
-			// set up semantic domains
-			if(count($dictionary->semanticDomains))
+			foreach($dictionary->semanticDomains as $domain)
 			{
-				foreach($dictionary->semanticDomains as $domain)
-				{
-					if ($domain->lang === $qTransLang) {
-						$arrDomains[] = array('slug' => str_replace('.', '-', $domain->key), 'name'=> $domain->value);
-					}
+				if($domain->lang === $qTransLang) {
+					$arrDomains[$domain->abbreviation] = array('slug' => str_replace('.', '-', $domain->abbreviation), 'name' => $domain->name);
 				}
 			}
-		}				
+			
+			array_multisort(array_keys($arrDomains), SORT_NATURAL, $arrDomains);
+		}
 	}
 	else
 	{	
@@ -168,7 +166,21 @@ function categories_func( $atts )
 	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+
+		if(get_option('useCloudBackend'))
+		{
+			$apiParams = array(
+				'text' => $semdomain,
+				'lang' => $qTransLang,
+				'searchSemDoms' => '1'
+			);
+
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
+		}
+		else
+		{
+			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+		}
 	}
 	if(count($arrPosts) == 0)
 	{

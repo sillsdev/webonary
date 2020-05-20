@@ -86,12 +86,11 @@ class Webonary_Cloud
 		}
 	
 		// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
-
-		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->senses->partOfSpeech->lang . '">' . $entry->senses->partOfSpeech->value . '</span></span></span></span>';
+		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
 	
 		$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
 			. '<span class="definitionorgloss">';
-		foreach ($entry->senses->definitionOrGloss as $definition)	{
+		foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
 			$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
 		}
 		$sensecontent .= '</span></span>';
@@ -305,24 +304,14 @@ class Webonary_Cloud
 			}
 			$searchText = trim(get_search_query());
 			if ($searchText === '') {
-				// TODO: "tax" is used in search form both for parts of speech and for semantic domains
-				// But in browse semantic domains page, the parameter that contains the sem dom text is "semdomain".
-				// We should unify this.
-				foreach (array('tax', 'semdomain') as $param) {
-					$searchText = filter_input(INPUT_GET, $param, FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-					if ($searchText !== '') {
-						break;
-					}
-				}
-
-				if ($searchText !== '') {
+				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+				if ($tax !== '') {
+					// This is a listing by semantic domains			
 					$apiParams = array(
-						'text' => $searchText,
-						'lang' => self::getCurrentLanguage(),
+						'text' => $tax,
 						'searchSemDoms' => '1'
 					);
-
-					// This is a listing by semantic domains				
+	
 					return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);					
 				}
 			} 
