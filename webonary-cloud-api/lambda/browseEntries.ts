@@ -52,12 +52,6 @@ export async function handler(
       dbFind.letterHead = text;
     }
 
-    // return count only
-    if (countTotalOnly && countTotalOnly === '1') {
-      const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
-      return callback(null, Response.success({ count }));
-    }
-
     // set up to return entries
     let entries: DictionaryEntry[];
     let dbSortKey: string;
@@ -72,21 +66,37 @@ export async function handler(
         dbLocale = lang;
       }
       */
+      const pipeline: object[] = [
+        { $match: dbFind },
+        { $unwind: `$${DbPaths.ENTRY_SENSES}` },
+        { $unwind: `$${DbPaths.ENTRY_DEFINITION}` },
+        { $match: { [DbPaths.ENTRY_DEFINITION_LANG]: lang } },
+      ];
+
+      if (countTotalOnly && countTotalOnly === '1') {
+        pipeline.push({ $count: 'count' });
+        const count = await db
+          .collection(DB_COLLECTION_ENTRIES)
+          .aggregate(pipeline)
+          .next();
+        return callback(null, Response.success(count));
+      }
+
+      pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } });
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
-        .aggregate(
-          [
-            { $match: dbFind },
-            { $unwind: `$${DbPaths.ENTRY_DEFINITION}` },
-            { $match: { [DbPaths.ENTRY_DEFINITION_LANG]: lang } },
-            { $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } },
-          ],
-          { collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY } },
-        )
+        .aggregate(pipeline, {
+          collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY },
+        })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
     } else {
+      if (countTotalOnly && countTotalOnly === '1') {
+        const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
+        return callback(null, Response.success({ count }));
+      }
+
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
       dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
       if (mainLang && mainLang !== '' && DB_COLLATION_LOCALES.includes(mainLang)) {
