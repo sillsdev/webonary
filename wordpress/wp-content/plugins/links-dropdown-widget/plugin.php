@@ -128,7 +128,7 @@ class Links_Dropdown_Widget extends WP_Widget {
 
 } // end class
 
-add_action( 'widgets_init', create_function( '', 'register_widget("Links_Dropdown_Widget");' ) );
+add_action( 'widgets_init', function() { register_widget('Links_Dropdown_Widget'); });
 
 add_filter('site_transient_update_plugins', 'dd_remove_update_nag');
 function dd_remove_update_nag($value) {

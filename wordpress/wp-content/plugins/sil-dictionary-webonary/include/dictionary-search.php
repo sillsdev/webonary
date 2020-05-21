@@ -1,4 +1,6 @@
-<?php /** @noinspection SqlResolve */
+<?php
+/** @noinspection PhpUnused */
+/** @noinspection SqlResolve */
 /**
  * Search
  *
@@ -56,12 +58,12 @@ function my_enqueue_css() {
 			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
 		}
 		wp_enqueue_style( 'configured_stylesheet');
-	
+
 		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
 		{
 			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
 			wp_enqueue_style( 'overrides_stylesheet');
-		}	
+		}
 	}
 }
 
@@ -252,9 +254,12 @@ function get_subquery_where($query)
 {
 	mb_internal_encoding("UTF-8");
 
-	if( empty($query->query_vars['s'])) {
+	$search = trim($query->query_vars['s'] ?? '');
+
+	if(empty($search)) {
 		return "";
 	}
+
 	//search string gets trimmed and normalized to NFC
 	if (class_exists("Normalizer", $autoload = false))
 	{
@@ -265,13 +270,10 @@ function get_subquery_where($query)
 		}
 
 		//$normalization = Normalizer::NFD;
-		$search = normalizer_normalize(trim($query->query_vars['s']), $normalization);
-		//$search = normalizer_normalize(trim($query->query_vars['s']), Normalizer::FORM_D);
+		$search = normalizer_normalize($search, $normalization);
+		//$search = normalizer_normalize($search, Normalizer::FORM_D);
 	}
-	else
-	{
-		$search = trim($query->query_vars['s']);
-	}
+
 	$search = strtolower($search);
 
 	if(!empty($_GET['key'])) {
@@ -354,6 +356,8 @@ function get_subquery_where($query)
 }
 
 /**
+ * Hook to override the default post query
+ *
  * @param $input
  * @param WP_Query $query
  * @return string
@@ -368,11 +372,10 @@ function replace_default_search_filter($input, $query=null)
 	// hanatgit 20200303 I re-write the logic slightly for clarity.
 	// But in doing so, I realized that COMBINED searches, e.g. searching for a word
 	// within semantic domain or parts of speech (taxomony) would not work as is.
-	// Nor does paging, as all results are shown on every page.
-	// TODO: fix these in Webonary 1.5		
+	// TODO: fix these in Webonary 1.5
 	if (isset($_GET['tax']) && $_GET['tax'] > 1)
 	{
-		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		$input = "SELECT SQL_CALC_FOUND_ROWS DISTINCTROW $wpdb->posts.* " .
 		" FROM $wpdb->posts " .
 		" INNER JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
 		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
@@ -381,7 +384,7 @@ function replace_default_search_filter($input, $query=null)
 	}
 	elseif (isset($query->query_vars['semdomain']))
 	{
-		$input = "SELECT DISTINCTROW $wpdb->posts.* " .
+		$input = "SELECT SQL_CALC_FOUND_ROWS DISTINCTROW $wpdb->posts.* " .
 		" FROM $wpdb->posts " .
 		" LEFT JOIN $wpdb->term_relationships ON $wpdb->posts.ID = $wpdb->term_relationships.object_id " .
 		" INNER JOIN $wpdb->term_taxonomy ON $wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id " .
@@ -397,7 +400,7 @@ function replace_default_search_filter($input, $query=null)
 		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
 		$input = <<<SQL
-SELECT DISTINCTROW p.*, s.relevance
+SELECT SQL_CALC_FOUND_ROWS DISTINCTROW p.*, s.relevance
 FROM {$wpdb->posts} AS p
   INNER JOIN (
               SELECT post_id, MAX(relevance) AS relevance
@@ -409,8 +412,13 @@ WHERE p.post_type = 'post' AND p.post_status = 'publish'
 ORDER BY s.relevance DESC, p.post_title
 SQL;
 	}
+	else {
+	    return $input;
+    }
 
-	return $input;
+	Webonary_Utility::setPageNumber((int)($query->query_vars['paged'] ?? 0));
+
+	return $input . PHP_EOL . getLimitSql();
 }
 
 function webonary_css()

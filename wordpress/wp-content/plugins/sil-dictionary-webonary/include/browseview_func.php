@@ -5,7 +5,7 @@ function categories_func( $atts )
 
 	$display = "";
 
-	$postsPerPage = getPostsPerPage();
+	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
 	$qTransLang = "en";
 
@@ -27,7 +27,7 @@ function categories_func( $atts )
 		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
 	else
-	{	
+	{
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
@@ -141,9 +141,9 @@ function categories_func( $atts )
 	</script>
 <?php
 	global $wp_query;
-	
+
 	$totalEntries = $wp_query->found_posts;
-	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+	$pagenr = Webonary_Utility::getPageNumber();
 
 	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
 	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
@@ -262,7 +262,7 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 	if(!$currentPage)
 	{
-		$currentPage = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
+		$currentPage = Webonary_Utility::getPageNumber();
 	}
 
 	$totalPages = ceil($totalEntries / $entriesPerPage);
@@ -402,21 +402,23 @@ function get_has_reversalbrowseletters()
 	return $exists;
 }
 
-function getPostsPerPage()
+
+/**
+ * Returns a MySQL LIMIT statement
+ *
+ * @param int $page
+ * @param int $postsPerPage
+ *
+ * @return string
+ */
+function getLimitSql($page=null, $postsPerPage=null)
 {
-	// TODO: Check if this is reasonable, or should be increased, and made into a constant.
-	$posts_per_page = 25;
+	if (is_null($page))
+	    $page = Webonary_Utility::getPageNumber();
 
-	if(get_option( 'posts_per_page' ) > $posts_per_page)
-	{
-		$posts_per_page = get_option('posts_per_page');
-	}
+	if (is_null($postsPerPage))
+	    $postsPerPage = Webonary_Utility::getPostsPerPage();
 
-	return $posts_per_page;
-}
-
-function getLimitSql($page, $postsPerPage)
-{
 	$startFrom = ($page > 1) ? (($page - 1) * $postsPerPage) : 0;
 	return " LIMIT $postsPerPage OFFSET $startFrom";
 }
@@ -430,7 +432,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 
 	global $wpdb;
 
-	$postsPerPage = $postsPerPage ?? getPostsPerPage();
+	$postsPerPage = $postsPerPage ?? Webonary_Utility::getPostsPerPage();
 	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
@@ -589,8 +591,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	?>
 	</style>
 <?php
-	$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
-	$postsPerPage = getPostsPerPage();
+	$pagenr = Webonary_Utility::getPageNumber();
+	$postsPerPage = Webonary_Utility::getPostsPerPage();
 	$displayXHTML = true;
 
 	if(get_option('useCloudBackend'))
@@ -617,13 +619,13 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		{
 			$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
 		}
-	
+
 		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
 		wp_enqueue_style( 'reversal_stylesheet');
 
 		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr, $postsPerPage);
 		$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
-	} 
+	}
 
 	if($arrReversals == null)
 	{
@@ -729,9 +731,9 @@ function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage
 {
 	global $wpdb;
 
-	$postsPerPage = $postsPerPage ?? getPostsPerPage();
+	$postsPerPage = $postsPerPage ?? Webonary_Utility::getPostsPerPage();
 	$limitSql = getLimitSql($page, $postsPerPage);
-		
+
 	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 	if(get_option('IncludeCharactersWithDiacritics') == 1)
 	{
@@ -832,7 +834,7 @@ function vernacularalphabet_func( $atts )
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
-	else 
+	else
 	{
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
@@ -877,8 +879,8 @@ function vernacularalphabet_func( $atts )
 		}
 
 		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
-		$pagenr = filter_input(INPUT_GET, 'pagenr', FILTER_VALIDATE_INT, array('options' => array('default' => 1)));
-		$postsPerPage = getPostsPerPage();
+		$pagenr = Webonary_Utility::getPageNumber();
+		$postsPerPage = Webonary_Utility::getPostsPerPage();
 
 		if(get_option('useCloudBackend'))
 		{

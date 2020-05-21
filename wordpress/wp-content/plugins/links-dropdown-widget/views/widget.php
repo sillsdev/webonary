@@ -32,7 +32,7 @@ foreach ( (array) $cats as $cat ) {
 		}
 		return dictionariesAll[iterator];
 	}
-	
+
 	var dictionariesAll = <?php echo json_encode($bookmarks); ?>;
 	var dictionaries = filter_dictionaries(dictionariesAll, 8);
 
@@ -53,7 +53,7 @@ foreach ( (array) $cats as $cat ) {
 	function onUserSelectsDictionary () {
 		var goButton = document.querySelector("#linkGo");
 		var dropdown = document.querySelector("#publishedSites");
-		
+
 		if(dropdown.selectedIndex == 0){
 		  goButton.style.backgroundColor = '#f5f5f5';
 		  goButton.style.color = "black";
@@ -66,7 +66,7 @@ foreach ( (array) $cats as $cat ) {
 		var goButton = document.querySelector("#linkGo");
 		goButton.style.backgroundColor = '#f5f5f5';
 		goButton.style.color = "black";
-		
+
 		var dropdown = document.querySelector("#publishedSites");
 		//Launching the URL for the selected web site
 		if(dropdown.selectedIndex > 0){
@@ -95,7 +95,7 @@ foreach ( (array) $cats as $cat ) {
 </select>
 <select id="publishedSites" name="link-dropdown2" onchange="onUserSelectsDictionary()">
 	<option value=""><?php echo $default_option ?></option>
-	<?php echo $linkOutput ?>
+	<?php // echo $linkOutput ?>
 </select><input type="button" name="btnLinkGo" id=linkGo value="Go" onclick="onUserClicked()">
 
 </form>
