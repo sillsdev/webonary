@@ -16,26 +16,6 @@ export class EntryFileItem implements EntryFile {
   caption? = '';
 }
 
-export interface EntryListOption {
-  lang: string;
-  abbreviation: string;
-  name: string;
-  nameInsensitive?: string; // lowercase and normalized
-  guid?: string;
-}
-
-export class EntryListOptionItem implements EntryListOption {
-  lang = '';
-
-  abbreviation = '';
-
-  name = '';
-
-  nameInsensitive? = '';
-
-  guid? = '';
-}
-
 export interface EntryValue {
   lang: string;
   value: string;
@@ -154,70 +134,10 @@ export class DictionaryEntryItem implements DictionaryEntry {
   }
 }
 
-export interface Language {
-  lang: string;
-  title: string;
-  letters: string[];
-  cssFiles?: string[];
-  entriesCount?: number;
-}
-
-export class LanguageItem implements Language {
-  lang = '';
-
-  title = '';
-
-  letters: string[] = [];
-
-  cssFiles?: string[] = [];
-}
-
-export interface Dictionary {
-  _id: string;
-  updatedAt: string;
-  mainLanguage: Language;
-  reversalLanguages: Language[];
-  partsOfSpeech?: EntryListOption[];
-  semanticDomains?: EntryListOption[];
-}
-
-export class DictionaryItem implements Dictionary {
-  _id: string;
-
-  updatedAt: string;
-
-  mainLanguage: LanguageItem;
-
-  reversalLanguages: LanguageItem[];
-
-  partsOfSpeech?: EntryListOptionItem[];
-
-  semanticDomains?: EntryListOptionItem[];
-
-  constructor(dictionaryId: string, updatedAt?: string) {
-    this._id = dictionaryId;
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
-
-    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
-    this.mainLanguage = new LanguageItem();
-    this.reversalLanguages = Array(new LanguageItem());
-    this.partsOfSpeech = Array(new EntryListOptionItem());
-    this.semanticDomains = Array(new EntryListOptionItem());
-  }
-}
-
-export interface DbFindParameters {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
-
 export enum DbPaths {
-  SEM_DOMS_LANG = 'semanticDomains.lang',
-  SEM_DOMS_ABBREV = 'semanticDomains.abbrev',
-  SEM_DOMS_VALUE = 'semanticDomains.value',
-  SEM_DOMS_VALUE_INSENSITIVE = 'semanticDomains.valueInsensitive',
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
   ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.value',
+  ENTRY_MAIN_HEADWORD_FIRST_VALUE = 'mainHeadWord.0.value',
   ENTRY_SENSES = 'senses',
   ENTRY_DEFINITION = 'senses.definitionOrGloss',
   ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',

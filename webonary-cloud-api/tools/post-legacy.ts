@@ -3,7 +3,8 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
-import { Dictionary, DictionaryEntry, EntryFile } from '../lambda/structs';
+import { Dictionary } from '../lambda/dictionary.model';
+import { DictionaryEntry, EntryFile } from '../lambda/entry.model';
 import fileGrabber from './fileGrabber';
 import { FlexXhtmlParser } from './flexXhtmlParser';
 

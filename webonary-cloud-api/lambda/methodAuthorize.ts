@@ -37,28 +37,28 @@ export async function handler(
   const authHeaders = event.headers?.Authorization;
 
   if (dictionaryId && authHeaders) {
-    const encodedCredentials = authHeaders.split(' ')[1];
-    const plainCredentials = Buffer.from(encodedCredentials, 'base64')
-      .toString()
-      .split(':');
-    const username = plainCredentials[0];
-    const password = plainCredentials[1];
-
-    // Same user should have the same access to post dictionary entry data as well as files.
-    // User access is per dictionary per user.
-    const principalId = `${dictionaryId}::${username}`;
-
-    // To allow for correct caching behavior, we only keep the first part of request (post) and use wildcard for the next
-    const resource = event.methodArn.replace(
-      /POST\/post\/(dictionary|entry|file)\//i,
-      'POST/post/*/',
-    );
-
-    // Call Webonary.org for user authentication
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
-
     try {
+      const encodedCredentials = authHeaders.split(' ')[1];
+      const plainCredentials = Buffer.from(encodedCredentials, 'base64')
+        .toString()
+        .split(':');
+      const username = plainCredentials[0];
+      const password = plainCredentials[1];
+
+      // Same user should have the same access to post dictionary entry data as well as files.
+      // User access is per dictionary per user.
+      const principalId = `${dictionaryId}::${username}`;
+
+      // To allow for correct caching behavior, we only keep the first part of request (post) and use wildcard for the next
+      const resource = event.methodArn.replace(
+        /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\//i,
+        '$1/*/',
+      );
+
+      // Call Webonary.org for user authentication
+      axios.defaults.headers.post['Content-Type'] = 'application/json';
+      const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
+
       const response = await axios.post(authPath, '{}', {
         auth: { username, password },
       });

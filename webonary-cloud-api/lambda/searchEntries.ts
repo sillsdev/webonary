@@ -2,7 +2,8 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_DOCUMENTS_PER_CALL } from './db';
-import { DbFindParameters, DbPaths } from './structs';
+import { DbFindParameters } from './base.model';
+import { DbPaths } from './entry.model';
 import { getDbSkip } from './utils';
 
 import * as Response from './response';
