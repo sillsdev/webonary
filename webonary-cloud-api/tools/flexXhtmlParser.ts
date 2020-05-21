@@ -219,6 +219,7 @@ export class FlexXhtmlParser {
   public getDictionaryData(): DictionaryItem | undefined {
     const _id = this.options.dictionaryId;
 
+    console.log(_id);
     const loadDictionary = new DictionaryItem(_id);
 
     if (_id && this.parsedEntries.length) {

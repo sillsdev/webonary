@@ -7,14 +7,14 @@ export interface Language {
   entriesCount?: number;
 }
 
-export declare class LanguageItem implements Language {
-  lang: string;
+export class LanguageItem implements Language {
+  lang = '';
 
-  title: string;
+  title = '';
 
-  letters: string[];
+  letters: string[] = [];
 
-  cssFiles?: string[];
+  cssFiles?: string[] = [];
 }
 
 export interface ListOption {
@@ -45,7 +45,8 @@ export interface Dictionary {
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
 }
-export declare class DictionaryItem implements Dictionary {
+
+export class DictionaryItem implements Dictionary {
   _id: string;
 
   updatedAt: string;
@@ -58,10 +59,19 @@ export declare class DictionaryItem implements Dictionary {
 
   semanticDomains?: ListOptionItem[];
 
-  constructor(dictionaryId: string, updatedAt?: string);
+  constructor(dictionaryId: string, updatedAt?: string) {
+    this._id = dictionaryId;
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+
+    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
+    this.mainLanguage = new LanguageItem();
+    this.reversalLanguages = Array(new LanguageItem());
+    this.partsOfSpeech = Array(new ListOptionItem());
+    this.semanticDomains = Array(new ListOptionItem());
+  }
 }
 
-export declare enum DbPaths {
+export enum DbPaths {
   SEM_DOMS_LANG = 'semanticDomains.lang',
   SEM_DOMS_ABBREV = 'semanticDomains.abbrev',
   SEM_DOMS_VALUE = 'semanticDomains.value',
