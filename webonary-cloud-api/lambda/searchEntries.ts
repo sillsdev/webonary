@@ -26,10 +26,12 @@ export async function handler(
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
     const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
 
-    const searchSemDoms = event.queryStringParameters?.searchSemDoms;
     const partOfSpeech = event.queryStringParameters?.partOfSpeech;
     const matchPartial = event.queryStringParameters?.matchPartial;
     const matchAccents = event.queryStringParameters?.matchAccents; // NOTE: matching accent works only for fulltext searching
+
+    const semDomAbbrev = event.queryStringParameters?.semDomAbbrev;
+    const searchSemDoms = event.queryStringParameters?.searchSemDoms;
 
     const countTotalOnly = event.queryStringParameters?.countTotalOnly;
 
@@ -50,18 +52,43 @@ export async function handler(
 
     // Semantic domains search
     if (searchSemDoms === '1') {
+      let dbFind;
+      if (semDomAbbrev && semDomAbbrev !== '') {
+        const abbreviationRegex = { $in: [semDomAbbrev, new RegExp(`^${semDomAbbrev}.`)] };
+        if (lang) {
+          dbFind = {
+            ...primaryFilter,
+            [DbPaths.ENTRY_SEM_DOMS_ABBREV]: {
+              $elemMatch: {
+                lang,
+                value: abbreviationRegex,
+              },
+            },
+          };
+        } else {
+          dbFind = {
+            ...primaryFilter,
+            [DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE]: abbreviationRegex,
+          };
+        }
+      } else {
+        dbFind = { ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: text };
+      }
+
+      if (countTotalOnly === '1') {
+        const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
+        return callback(null, Response.success({ count }));
+      }
+
       entries = await db
         .collection(DB_COLLECTION_ENTRIES)
-        .find({ ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_VALUE]: text })
+        .find(dbFind)
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
 
       return callback(null, Response.success(entries));
     }
-
-    // return count only
-    const returnCount = countTotalOnly && countTotalOnly === '1';
 
     let langFilter: DbFindParameters;
     const regexFilter: DbFindParameters = { $regex: text, $options: 'i' };
@@ -100,7 +127,7 @@ export async function handler(
         $and: [primaryFilter, langFilter],
       };
 
-      if (returnCount) {
+      if (countTotalOnly === '1') {
         const count = await db
           .collection(DB_COLLECTION_ENTRIES)
           .countDocuments(dictionaryPartialSearch);
@@ -127,7 +154,7 @@ export async function handler(
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
       if (lang) {
         const dbFind = [{ $match: dictionaryFulltextSearch }, { $match: langFilter }];
-        if (returnCount) {
+        if (countTotalOnly === '1') {
           /* TODO: There might be a way to count docs in aggregation, but I have not figured it out yet...
           const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
           */
@@ -147,7 +174,7 @@ export async function handler(
           .limit(pageLimit)
           .toArray();
       } else {
-        if (returnCount) {
+        if (countTotalOnly === '1') {
           const count = await db
             .collection(DB_COLLECTION_ENTRIES)
             .countDocuments(dictionaryFulltextSearch);

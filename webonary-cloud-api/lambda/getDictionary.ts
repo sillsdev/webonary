@@ -2,7 +2,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_ENTRIES } from './db';
-import { Dictionary, DbPaths } from './structs';
+import { Dictionary } from './structs';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -31,15 +31,6 @@ export async function handler(
     dbItem.mainLanguage.entriesCount = await db
       .collection(DB_COLLECTION_ENTRIES)
       .countDocuments({ dictionaryId });
-
-    // get all parts of speech
-    const partsOfSpeech = await db
-      .collection(DB_COLLECTION_ENTRIES)
-      .distinct(DbPaths.ENTRY_PART_OF_SPEECH_VALUE, { dictionaryId });
-
-    dbItem.mainLanguage.partsOfSpeech = partsOfSpeech
-      .filter(Boolean)
-      .sort((a, b) => a.localeCompare(b));
 
     return callback(null, Response.success(dbItem));
   } catch (error) {
