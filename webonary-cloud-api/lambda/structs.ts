@@ -223,5 +223,7 @@ export enum DbPaths {
   ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',
   ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value',
   ENTRY_PART_OF_SPEECH_VALUE = 'morphoSyntaxAnalysis.partOfSpeech.value',
+  ENTRY_SEM_DOMS_ABBREV = 'senses.semanticDomains.abbreviation',
+  ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
 }
