@@ -36,7 +36,7 @@ function categories_func( $atts )
 					$arrDomains[$domain->abbreviation] = array('slug' => str_replace('.', '-', $domain->abbreviation), 'name' => $domain->name);
 				}
 			}
-			
+
 			array_multisort(array_keys($arrDomains), SORT_NATURAL, $arrDomains);
 		}
 	}
@@ -172,6 +172,7 @@ function categories_func( $atts )
 			$apiParams = array(
 				'text' => $semdomain,
 				'lang' => $qTransLang,
+				'semDomAbbrev' => rtrim($semnumber, '.'),
 				'searchSemDoms' => '1'
 			);
 
