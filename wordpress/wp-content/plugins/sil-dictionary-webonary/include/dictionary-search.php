@@ -412,27 +412,13 @@ WHERE p.post_type = 'post' AND p.post_status = 'publish'
 ORDER BY s.relevance DESC, p.post_title
 SQL;
 	}
+	else {
+	    return $input;
+    }
 
-	return $input . PHP_EOL . getLimitSql();
-}
-
-/**
- * Hook to override the default page length
- *
- * @param string $input
- * @param WP_Query $query
- *
- * @return string
- */
-function replace_default_search_limits($input, $query=null)
-{
-    if (empty($input))
-        return $input;
-
-	$query->query_vars['posts_per_page'] = Webonary_Utility::getPostsPerPage();
 	Webonary_Utility::setPageNumber((int)($query->query_vars['paged'] ?? 0));
 
-    return getLimitSql();
+	return $input . PHP_EOL . getLimitSql();
 }
 
 function webonary_css()

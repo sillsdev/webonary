@@ -303,9 +303,6 @@ class Webonary_Utility
 
 		self::$posts_per_page = get_option('posts_per_page', self::$default_posts_perpage);
 
-		if(self::$posts_per_page < self::$default_posts_perpage)
-			self::$posts_per_page = self::$default_posts_perpage;
-
 		return self::$posts_per_page;
 	}
 
