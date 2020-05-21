@@ -21,16 +21,37 @@ function categories_func( $atts )
 		}
 	}
 
+	$arrDomains = array();
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
+
+		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		if(!is_null($dictionary) && count($dictionary->semanticDomains))
+		{
+			foreach($dictionary->semanticDomains as $domain)
+			{
+				if($domain->lang === $qTransLang) {
+					$arrDomains[$domain->abbreviation] = array('slug' => str_replace('.', '-', $domain->abbreviation), 'name' => $domain->name);
+				}
+			}
+			ksort($arrDomains, SORT_NATURAL);
+		}
 	}
 	else
 	{
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
+
+		$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
+		" FROM " . $wpdb->prefix . "terms " .
+		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
+		" WHERE taxonomy = 'sil_semantic_domains'" .
+		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
+
+		$arrDomains = $wpdb->get_results($sql, ARRAY_A);
 	}
 ?>
 	<style>
@@ -46,94 +67,86 @@ function categories_func( $atts )
 			float: right;
 			margin-top: 20px;
 		}
-	</style>
-	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
+		</style>
+		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
 
-	<!-- Infrastructure code for the tree -->
-	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js" type="text/javascript"></script>
+		<!-- Infrastructure code for the tree -->
+		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js" type="text/javascript"></script>
 
-	<!-- Execution of the code that actually builds the specific tree.
-     The variable foldersTree creates its structure with calls to gFld, insFld, and insDoc -->
-    <?php
-    //if(get_option("useSemDomainNumbers") == 0 || 1 == 1)
-    /*
-    if(get_option("useSemDomainNumbers") == 0)
-    {
-    ?>
-		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_<?php echo $qTransLang; ?>.js" type="text/javascript"></script>
-	<?php
-    }
-    else
-    {
-    	*/
-    	require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
+		<!-- Execution of the code that actually builds the specific tree.
+		The variable foldersTree creates its structure with calls to gFld, insFld, and insDoc -->
+		<?php
+		//if(get_option("useSemDomainNumbers") == 0 || 1 == 1)
+		/*
+		if(get_option("useSemDomainNumbers") == 0)
+		{
+		?>
+			<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_<?php echo $qTransLang; ?>.js" type="text/javascript"></script>
+		<?php
+		}
+		else
+		{
+		*/
+		require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
 
-    	$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
-		" FROM " . $wpdb->prefix . "terms " .
-		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
-		" WHERE taxonomy = 'sil_semantic_domains'" .
-		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
-
-    	$arrDomains = $wpdb->get_results($sql, ARRAY_A);
-
-    	//if no semantic domains were imported, use the default domains defined in default_domains.php
-    	if(count($arrDomains) == 0)
-    	{
-    		$d = 0;
-    		foreach ($defaultDomain as $key => $value)
+		//if no semantic domains were imported, use the default domains defined in default_domains.php
+		if(count($arrDomains) == 0)
+		{
+			$d = 0;
+			foreach ($defaultDomain as $key => $value)
 			{
 				$arrDomains[$d]['slug'] = str_replace(".", "-", rtrim($key, "."));
 				$arrDomains[$d]['name'] = $value;
 				$d++;
 			}
-    	}
+		}
 
-    	//echo "<script language=\"JavaScript\">";
+		//echo "<script language=\"JavaScript\">";
 
-    	foreach($arrDomains as $domain)
-    	{
-    		//echo $domain['slug'] . " " . $domain['name'] . "\n";
+		foreach($arrDomains as $domain)
+		{
+			//echo $domain['slug'] . " " . $domain['name'] . "\n";
 
-    		$slug = $domain['slug'];
-    		$domainNumber = $domain['slug'];
+			$slug = $domain['slug'];
+			$domainNumber = $domain['slug'];
 
-    		$domainNumberAsInt = preg_replace('/-/', '', $domainNumber);
+			$domainNumberAsInt = preg_replace('/-/', '', $domainNumber);
 
-    		if(is_numeric($domainNumberAsInt))
-    		{
-	    		$currentSemDomain =  $slug . " " . $domain['name'];
+			if(is_numeric($domainNumberAsInt))
+			{
+				$currentSemDomain =  $slug . " " . $domain['name'];
 
-	    		$levelOfDomain = substr_count("$domainNumber","-") + 1;
+				$levelOfDomain = substr_count("$domainNumber","-") + 1;
 
-	    		printRootDomainIfNeeded($domainNumber);
+				printRootDomainIfNeeded($domainNumber);
 
-	    		buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
+				buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
 
-	    		$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
+				$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
 
-	    		$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
+				$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
 
-	    		if($qTransLang == "en")
-	    		{
-	    			if(isset($defaultDomain[$domainNumberModified]))
-	    			{
-	    				$domainName = $defaultDomain[$domainNumberModified];
-	    			}
-	    		}
-	    		else
-	    		{
-	    			$domainName = __($domainName, 'sil_dictionary');
-	    		}
-	    		$newString = "$domainNumberModified" . " " . $domainName;
-	    		outputSemDomAsJava($levelOfDomain, $newString);
-	    		$currentDigits = explode('-', $domainNumber);
-	    		setLastSemDom($currentDigits);
-    		}
+				if($qTransLang == "en")
+				{
+					if(isset($defaultDomain[$domainNumberModified]))
+					{
+						$domainName = $defaultDomain[$domainNumberModified];
+					}
+				}
+				else
+				{
+					$domainName = __($domainName, 'sil_dictionary');
+				}
+				$newString = "$domainNumberModified" . " " . $domainName;
+				outputSemDomAsJava($levelOfDomain, $newString);
+				$currentDigits = explode('-', $domainNumber);
+				setLastSemDom($currentDigits);
+			}
 
-    	}
+		}
 
-    	echo "</script>";
-    //}
+		echo "</script>";
+	//}
 	?>
 	<!-- Build the browser's objects and display default view of the tree. -->
 	<script language="JavaScript">
@@ -152,7 +165,22 @@ function categories_func( $atts )
 	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-		$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+
+		if(get_option('useCloudBackend'))
+		{
+			$apiParams = array(
+				'text' => $semdomain,
+				'lang' => $qTransLang,
+				'semDomAbbrev' => rtrim($semnumber, '.'),
+				'searchSemDoms' => '1'
+			);
+
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
+		}
+		else
+		{
+			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+		}
 	}
 	if(count($arrPosts) == 0)
 	{
@@ -680,11 +708,11 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 				$background = "even";
 			}
 		}
-    	$count++;
-    	if($count == $postsPerPage)
-    	{
-    		break;
-    	}
+		$count++;
+		if($count == $postsPerPage)
+		{
+			break;
+		}
 	}
 
 	$display .=  "<div style=clear:both></div>";

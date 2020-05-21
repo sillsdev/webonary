@@ -36,17 +36,20 @@ function webonary_searchform() {
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		$currentLanguage = Webonary_Cloud::getCurrentLanguage();
 		if(!is_null($dictionary))
 		{
 			// set up parts of speech dropdown
-			if(count($dictionary->mainLanguage->partsOfSpeech))
+			if(count($dictionary->partsOfSpeech))
 			{
 				$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
 				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
-				foreach($dictionary->mainLanguage->partsOfSpeech as $part)
+				foreach($dictionary->partsOfSpeech as $part)
 				{
-					$selected = ($part === $taxonomy) ? ' selected ' : '';
-					$parts_of_speech_dropdown .= "<option value=" . $part . $selected . ">" . $part . "</option>";
+					if ($part->language === $currentLanguage) {
+						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
+						$parts_of_speech_dropdown .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";	
+					}
 				}
 				$parts_of_speech_dropdown .= "</select>";
 			}
@@ -59,12 +62,12 @@ function webonary_searchform() {
 				$sem_term = strtolower($search_term);
 				foreach($dictionary->semanticDomains as $item)
 				{
-					if(strpos($item->searchValue, $sem_term) !== false)
+					if(strpos($item->nameInsensitive, $sem_term) !== false)
 					{ 
 						$sem_domain = new stdClass();
-						$sem_domain->term_id = $item->value;
-						$sem_domain->slug = str_replace('.', '-', $item->key);
-						$sem_domain->description = $item->value;
+						$sem_domain->term_id = $item->name;
+						$sem_domain->slug = str_replace('.', '-', $item->abbreviation);
+						$sem_domain->description = $item->name;
 						$sem_domains[] = $sem_domain;  	
 					}
 				}

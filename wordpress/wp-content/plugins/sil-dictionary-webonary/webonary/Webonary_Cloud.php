@@ -86,12 +86,11 @@ class Webonary_Cloud
 		}
 	
 		// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
-
-		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->senses->partOfSpeech->lang . '">' . $entry->senses->partOfSpeech->value . '</span></span></span></span>';
+		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
 	
 		$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
 			. '<span class="definitionorgloss">';
-		foreach ($entry->senses->definitionOrGloss as $definition)	{
+		foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
 			$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
 		}
 		$sensecontent .= '</span></span>';
@@ -168,6 +167,13 @@ class Webonary_Cloud
 		);
 	}
 
+	public static function getCurrentLanguage() {
+		return (
+			function_exists('qtranxf_init_language')
+			? qtranxf_getLanguage()
+			: 'en'
+		);
+	}
 
 	public static function getDictionary($dictionaryId) {
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
