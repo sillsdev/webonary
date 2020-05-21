@@ -1,17 +1,13 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { CfnDomainName } from '@aws-cdk/aws-apigateway';
-import { match } from 'assert';
 import {
   EntryFile,
   EntryValue,
   DictionaryEntry,
   DictionaryItem,
   EntryListOption,
-  EntrySenseItem,
   EntrySemanticDomain,
 } from '../lambda/structs';
-import { PATH_TO_SEM_DOMS_LANG } from '../lambda/db copy';
 
 export interface Options {
   dictionaryId: string;
