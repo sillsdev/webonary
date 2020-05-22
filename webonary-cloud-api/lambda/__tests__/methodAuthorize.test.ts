@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { CustomAuthorizerEvent, Context } from 'aws-lambda';
 import axios from 'axios';
-import lambdaHandler from '../postAuthorize';
+import lambdaHandler from '../methodAuthorize';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -35,7 +35,7 @@ const context: Context = {
   succeed: () => undefined,
 };
 
-describe('postAuthorize', () => {
+describe('methodAuthorize', () => {
   test('successful auth', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: '' }));
     await lambdaHandler(event, context, (error, result) => {

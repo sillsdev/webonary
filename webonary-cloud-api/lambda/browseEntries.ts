@@ -9,7 +9,8 @@ import {
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
 } from './db';
-import { DbFindParameters, DbPaths, DictionaryEntry } from './structs';
+import { DbFindParameters } from './base.model';
+import { DictionaryEntry, DbPaths } from './entry.model';
 import { getDbSkip } from './utils';
 import * as Response from './response';
 
@@ -20,12 +21,9 @@ export async function handler(
   context: Context,
   callback: Callback,
 ): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
   try {
-    dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
+    // eslint-disable-next-line no-param-reassign
+    context.callbackWaitsForEmptyEventLoop = false;
 
     const dictionaryId = event.pathParameters?.dictionaryId;
     const text = event.queryStringParameters?.text;
@@ -57,6 +55,9 @@ export async function handler(
     let dbSortKey: string;
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     const dbSkip = getDbSkip(pageNumber, pageLimit);
+
+    dbClient = await connectToDB();
+    const db = dbClient.db(DB_NAME);
 
     if (lang) {
       // TODO: Include reversal language in sorting?
@@ -98,7 +99,7 @@ export async function handler(
       }
 
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
+      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_FIRST_VALUE;
       if (mainLang && mainLang !== '' && DB_COLLATION_LOCALES.includes(mainLang)) {
         dbLocale = mainLang;
       }

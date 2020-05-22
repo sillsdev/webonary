@@ -16,6 +16,11 @@ export async function handler(
 
   const dictionaryId = event.pathParameters?.dictionaryId;
   const _id = event.queryStringParameters?.guid;
+
+  if (!_id || _id === '') {
+    return callback(null, Response.badRequest('guid for the dictionary entry must be specified.'));
+  }
+
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);

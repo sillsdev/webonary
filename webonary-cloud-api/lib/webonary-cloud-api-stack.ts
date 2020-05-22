@@ -47,10 +47,10 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Lambda functions
 
     // API Authorizer for posting dictionary file or entry
-    const postAuthorizeFunction = new lambda.Function(
+    const methodAuthorizeFunction = new lambda.Function(
       this,
-      'postAuthorize',
-      Object.assign(defaultLambdaFunctionProps('postAuthorize'), {
+      'methodAuthorize',
+      Object.assign(defaultLambdaFunctionProps('methodAuthorize'), {
         environment: {
           WEBONARY_URL,
           WEBONARY_AUTH_PATH,
@@ -58,8 +58,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       }),
     );
 
-    const postAuthorizer = new apigateway.RequestAuthorizer(this, 'postAuthorizer', {
-      handler: postAuthorizeFunction,
+    const methodAuthorizer = new apigateway.RequestAuthorizer(this, 'methodAuthorizer', {
+      handler: methodAuthorizeFunction,
       identitySources: [apigateway.IdentitySource.header('Authorization')],
     });
 
@@ -97,6 +97,14 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       }),
     );
 
+    const deleteDictionaryFunction = new lambda.Function(
+      this,
+      'deleteDictionary',
+      Object.assign(defaultLambdaFunctionProps('deleteDictionary'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
+
     const postEntryFunction = new lambda.Function(
       this,
       'postEntry',
@@ -109,6 +117,14 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       this,
       'getEntry',
       Object.assign(defaultLambdaFunctionProps('getEntry'), {
+        environment: { DB_URL, DB_NAME },
+      }),
+    );
+
+    const deleteEntryFunction = new lambda.Function(
+      this,
+      'deleteEntry',
+      Object.assign(defaultLambdaFunctionProps('deleteEntry'), {
         environment: { DB_URL, DB_NAME },
       }),
     );
@@ -161,21 +177,38 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const apiPostFileForDictionary = apiPostFile.addResource('{dictionaryId}');
     const s3AuthorizeLambda = new apigateway.LambdaIntegration(s3AuthorizeFunction);
     apiPostFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
-      authorizer: postAuthorizer,
+      authorizer: methodAuthorizer,
     });
 
     const apiPostDictionary = apiPost.addResource('dictionary');
     const apiPostDictionaryForDictionary = apiPostDictionary.addResource('{dictionaryId}');
     const postDictionaryLambda = new apigateway.LambdaIntegration(postDictionaryFunction);
     apiPostDictionaryForDictionary.addMethod('POST', postDictionaryLambda, {
-      authorizer: postAuthorizer,
+      authorizer: methodAuthorizer,
     });
 
     const apiPostEntry = apiPost.addResource('entry');
     const apiPostEntryForDictionary = apiPostEntry.addResource('{dictionaryId}');
     const postEntryLambda = new apigateway.LambdaIntegration(postEntryFunction);
     apiPostEntryForDictionary.addMethod('POST', postEntryLambda, {
-      authorizer: postAuthorizer,
+      authorizer: methodAuthorizer,
+    });
+
+    // delete document and its children
+    const apiDelete = api.root.addResource('delete');
+
+    const apiDeleteDictionary = apiDelete.addResource('dictionary');
+    const apiDeleteDictionaryForDictionary = apiDeleteDictionary.addResource('{dictionaryId}');
+    const deleteDictionaryLambda = new apigateway.LambdaIntegration(deleteDictionaryFunction);
+    apiDeleteDictionaryForDictionary.addMethod('DELETE', deleteDictionaryLambda, {
+      authorizer: methodAuthorizer,
+    });
+
+    const apiDeleteEntry = apiDelete.addResource('entry');
+    const apiDeleteEntryForDictionary = apiDeleteEntry.addResource('{dictionaryId}');
+    const deleteEntryLambda = new apigateway.LambdaIntegration(deleteEntryFunction);
+    apiDeleteEntryForDictionary.addMethod('DELETE', deleteEntryLambda, {
+      authorizer: methodAuthorizer,
     });
 
     // Get a single document

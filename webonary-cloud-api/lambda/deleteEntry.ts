@@ -1,8 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient } from 'mongodb';
+import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_ENTRIES } from './db';
-import { Dictionary } from './dictionary.model';
+import { DB_NAME, DB_COLLECTION_ENTRIES } from './db';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -16,24 +15,34 @@ export async function handler(
     // eslint-disable-next-line no-param-reassign
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const dictionaryId = event.pathParameters?.dictionaryId;
+    // const dictionaryId = event.pathParameters?.dictionaryId;
+    const _id = event.queryStringParameters?.guid;
+
+    if (!_id || _id === '') {
+      return callback(null, Response.badRequest('guid to delete must be specified.'));
+    }
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem: Dictionary | null = await db
-      .collection(DB_COLLECTION_DICTIONARIES)
-      .findOne({ _id: dictionaryId });
 
-    if (!dbItem) {
+    const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments({ _id });
+
+    if (!count) {
       return callback(null, Response.notFound({}));
     }
 
-    // get total entries
-    dbItem.mainLanguage.entriesCount = await db
+    const dbResultEntry: DeleteWriteOpResultObject = await db
       .collection(DB_COLLECTION_ENTRIES)
-      .countDocuments({ dictionaryId });
+      .deleteOne({ _id });
 
-    return callback(null, Response.success(dbItem));
+    // TODO: How to delete S3 files in the dictionary folder???
+
+    return callback(
+      null,
+      Response.success({
+        deletedEntryCount: dbResultEntry.deletedCount,
+      }),
+    );
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

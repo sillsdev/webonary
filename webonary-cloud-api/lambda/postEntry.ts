@@ -212,19 +212,13 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, ObjectId, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL } from './db';
-import { DictionaryEntryItem } from './structs';
+import { PostResult } from './base.model';
+import { DictionaryEntryItem } from './entry.model';
 import { copyObjectIgnoreKeyCase } from './utils';
 import * as Response from './response';
-
-interface PostResult {
-  updatedAt: string;
-  updatedCount: number;
-  insertedCount: number;
-  insertedGUIDs: ObjectId[];
-}
 
 let dbClient: MongoClient;
 
@@ -296,10 +290,10 @@ export async function handler(
       updatedAt,
       updatedCount,
       insertedCount: insertedIds.length,
-      insertedGUIDs: insertedIds,
+      insertedIds: insertedIds.map(objectId => objectId.toString()),
     };
 
-    return callback(null, Response.success({ ...postResult }));
+    return callback(null, Response.success(postResult));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

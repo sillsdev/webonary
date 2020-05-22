@@ -1,13 +1,7 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import {
-  EntryFile,
-  EntryValue,
-  DictionaryEntry,
-  DictionaryItem,
-  EntryListOption,
-  EntrySemanticDomain,
-} from '../lambda/structs';
+import { DictionaryEntry, EntryFile, EntryValue, EntrySemanticDomain } from '../lambda/entry.model';
+import { DictionaryItem, ListOption } from '../lambda/dictionary.model';
 
 export interface Options {
   dictionaryId: string;
@@ -225,6 +219,7 @@ export class FlexXhtmlParser {
   public getDictionaryData(): DictionaryItem | undefined {
     const _id = this.options.dictionaryId;
 
+    console.log(_id);
     const loadDictionary = new DictionaryItem(_id);
 
     if (_id && this.parsedEntries.length) {
@@ -267,7 +262,7 @@ export class FlexXhtmlParser {
       );
 
       loadDictionary.partsOfSpeech = this.parsedEntries.reduce(
-        (partsOfSpeech: EntryListOption[], entry) => {
+        (partsOfSpeech: ListOption[], entry) => {
           const newDictionaryPartsOfSpeech = partsOfSpeech;
           if (entry.morphoSyntaxAnalysis) {
             entry.morphoSyntaxAnalysis.partOfSpeech.forEach(entryPartOfSpeech => {
@@ -294,37 +289,34 @@ export class FlexXhtmlParser {
         [],
       );
 
-      loadDictionary.semanticDomains = this.parsedEntries.reduce(
-        (semDoms: EntryListOption[], entry) => {
-          const newDictionarySemDoms = semDoms;
-          entry.senses.forEach(sense => {
-            if (sense.semanticDomains && sense.semanticDomains.length) {
-              sense.semanticDomains.forEach(semDom => {
-                semDom.abbreviation.forEach(abbreviation => {
-                  const matchingName = semDom.name.find(item => item.lang === abbreviation.lang);
-                  if (matchingName) {
-                    const foundAbbreviation = newDictionarySemDoms.find(
-                      item =>
-                        item.abbreviation === abbreviation.value &&
-                        item.lang === abbreviation.lang &&
-                        item.name === matchingName.value,
-                    );
-                    if (!foundAbbreviation || foundAbbreviation.name !== matchingName.value) {
-                      newDictionarySemDoms.push({
-                        abbreviation: abbreviation.value,
-                        lang: matchingName.lang,
-                        name: matchingName.value,
-                      });
-                    }
+      loadDictionary.semanticDomains = this.parsedEntries.reduce((semDoms: ListOption[], entry) => {
+        const newDictionarySemDoms = semDoms;
+        entry.senses.forEach(sense => {
+          if (sense.semanticDomains && sense.semanticDomains.length) {
+            sense.semanticDomains.forEach(semDom => {
+              semDom.abbreviation.forEach(abbreviation => {
+                const matchingName = semDom.name.find(item => item.lang === abbreviation.lang);
+                if (matchingName) {
+                  const foundAbbreviation = newDictionarySemDoms.find(
+                    item =>
+                      item.abbreviation === abbreviation.value &&
+                      item.lang === abbreviation.lang &&
+                      item.name === matchingName.value,
+                  );
+                  if (!foundAbbreviation || foundAbbreviation.name !== matchingName.value) {
+                    newDictionarySemDoms.push({
+                      abbreviation: abbreviation.value,
+                      lang: matchingName.lang,
+                      name: matchingName.value,
+                    });
                   }
-                });
+                }
               });
-            }
-          });
-          return newDictionarySemDoms;
-        },
-        [],
-      );
+            });
+          }
+        });
+        return newDictionarySemDoms;
+      }, []);
     }
     return loadDictionary;
   }

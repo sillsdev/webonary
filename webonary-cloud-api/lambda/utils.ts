@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DictionaryEntry, EntryListOptionItem } from './structs';
+import { ListOptionItem } from './dictionary.model';
+import { DictionaryEntry } from './entry.model';
 
 export function hasKey<O>(obj: O, key: keyof any): key is keyof O {
   return key in obj;
@@ -73,7 +74,7 @@ export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): o
   return copyObject;
 }
 
-export function setSearchableEntries(entries: EntryListOptionItem[]): EntryListOptionItem[] {
+export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[] {
   return entries.map(entry => {
     const newEntry = entry;
     if ('name' in entry && typeof entry.name === 'string' && entry.name !== '')
