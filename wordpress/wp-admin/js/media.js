@@ -26,7 +26,7 @@
 		 * @param {string} af_name The name of the affected element.
 		 * @param {string} af_val The value of the affected post element.
 		 *
-		 * @return {boolean} Always returns false.
+		 * @returns {boolean} Always returns false.
 		 */
 		open: function( af_name, af_val ) {
 			var overlay = $( '.ui-find-overlay' );
@@ -65,7 +65,7 @@
 		 *
 		 * @memberOf findPosts
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		close: function() {
 			$('#find-posts-response').empty();
@@ -81,7 +81,7 @@
 		 *
 		 * @memberOf findPosts
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		overlay: function() {
 			$( '.ui-find-overlay' ).on( 'click', function () {
@@ -100,7 +100,7 @@
 		 *
 		 * @memberOf findPosts
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		send: function() {
 			var post = {
@@ -138,7 +138,7 @@
 	 * Initializes the file once the DOM is fully loaded and attaches events to the
 	 * various form elements.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	$( document ).ready( function() {
 		var settings, $mediaGridWrap = $( '#wp-media-grid' );
@@ -198,7 +198,7 @@
 		/**
 		 * Enables clicking on the entire table row.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		$( '.find-box-inside' ).on( 'click', 'tr', function() {
 			$( this ).find( '.found-radio input' ).prop( 'checked', true );

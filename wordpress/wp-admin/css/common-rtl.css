@@ -1,4 +1,3 @@
-/*! This file is auto-generated */
 /* 2 column liquid layout */
 #wpwrap {
 	height: auto;
@@ -2152,8 +2151,7 @@ html.wp-toolbar {
 #pass-strength-result.short,
 #ed_reply_toolbar #ed_reply_strong,
 .item-controls .item-order a,
-.feature-filter .feature-name,
-#comment-status-display {
+.feature-filter .feature-name {
 	font-weight: 600;
 }
 
@@ -3924,7 +3922,7 @@ img {
 
 	.fileedit-sub input[type="submit"] {
 		margin-bottom: 0px;
-		padding: 0px 18px;
+		padding: 4px 18px;
 	}
 
 	#documentation label[for="docs-list"] {

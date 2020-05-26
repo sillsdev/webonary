@@ -1,4 +1,3 @@
-/*! This file is auto-generated */
 /* Include margin and padding in the width calculation of input and textarea. */
 input,
 select,
@@ -397,10 +396,6 @@ input[type="radio"].disabled:checked:before {
 	max-width: 100%;
 }
 
-.meta-box-sortables input {
-	vertical-align: middle;
-}
-
 .misc-pub-post-status select {
 	margin-top: 0;
 }
@@ -469,7 +464,6 @@ input.small-text {
 
 input[type="number"].small-text {
 	width: 65px;
-	padding-left: 0;
 }
 
 input.tiny-text {
@@ -478,7 +472,6 @@ input.tiny-text {
 
 input[type="number"].tiny-text {
 	width: 45px;
-	padding-left: 0;
 }
 
 #doaction,
@@ -1039,7 +1032,7 @@ table.form-table td .updated p {
 
 #search-users,
 #search-sites {
-	max-width: 60%;
+	max-width: 100%;
 }
 
 /*------------------------------------------------------------------------------
@@ -1207,10 +1200,6 @@ table.form-table td .updated p {
 	color: #72777c;
 }
 
-.privacy_requests .row-actions.processing {
-	position: static;
-}
-
 .privacy_requests tbody .has-request-results th {
 	box-shadow: none;
 }
@@ -1229,8 +1218,8 @@ table.form-table td .updated p {
 }
 
 .privacy_requests .next_steps .button {
-	word-wrap: break-word;
-	white-space: normal;
+	word-break: break-all;
+	white-space: unset;
 }
 
 .privacy_requests .status-request-confirmed th,
@@ -1638,13 +1627,6 @@ table.form-table td .updated p {
 	.wp-list-table.privacy_requests.widefat thead td input {
 		margin-right: 5px;
 	}
-
-	.wp-privacy-request-form-field input[type="text"] {
-		width: 100%;
-		margin-bottom: 10px;
-		vertical-align: middle;
-	}
-
 	.regular-text {
 		max-width: 100%;
 	}

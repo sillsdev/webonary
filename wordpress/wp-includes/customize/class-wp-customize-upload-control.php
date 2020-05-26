@@ -18,9 +18,9 @@ class WP_Customize_Upload_Control extends WP_Customize_Media_Control {
 	public $type          = 'upload';
 	public $mime_type     = '';
 	public $button_labels = array();
-	public $removed       = '';   // Unused.
-	public $context;              // Unused.
-	public $extensions = array(); // Unused.
+	public $removed       = ''; // unused
+	public $context; // unused
+	public $extensions = array(); // unused
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

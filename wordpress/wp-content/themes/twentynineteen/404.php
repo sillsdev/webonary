@@ -6,13 +6,13 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 			<div class="error-404 not-found">
@@ -27,7 +27,7 @@ get_header();
 			</div><!-- .error-404 -->
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</section><!-- #primary -->
 
 <?php
 get_footer();

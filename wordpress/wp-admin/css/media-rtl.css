@@ -1,4 +1,3 @@
-/*! This file is auto-generated */
 /*------------------------------------------------------------------------------
   14.0 - Media Screen
 ------------------------------------------------------------------------------*/
@@ -853,8 +852,6 @@ border color while dragging a file over the uploader drop area */
 .wp_attachment_holder .imgedit-wrap .imgedit-panel-content {
 	float: right;
 	padding: 3px 0 0 16px;
-	min-width: 400px;
-	max-width: calc( 100% - 266px );
 }
 
 .wp_attachment_holder .imgedit-wrap .imgedit-settings {
@@ -1056,11 +1053,7 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-help {
 	display: none;
-	padding-bottom: 8px;
-}
-
-.imgedit-help.imgedit-restore {
-	padding-bottom: 0;
+	font-style: italic;
 }
 
 /* higher specificity than buttons */
@@ -1214,7 +1207,6 @@ audio, video {
 	.wp_attachment_holder .imgedit-wrap .imgedit-settings {
 		float: none;
 		width: auto;
-		max-width: none;
 	}
 }
 

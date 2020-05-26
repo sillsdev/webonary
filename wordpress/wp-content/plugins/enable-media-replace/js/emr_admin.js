@@ -1,6 +1,7 @@
-
+jQuery(document).ready(function($)
+{
   // interface for emr.
-  var emrIf = function ($)
+  var emrIf = new function ()
   {
     var source_type;
     var source_is_image;
@@ -82,7 +83,7 @@
           if ($('input[name="userfile"]').val().length > 0)
             this.checkSubmit();
           console.log('FileAPI not detected');
-          return false;
+          return;
         }
 
         var status = this.checkUpload(file);
@@ -103,16 +104,11 @@
 
       $(preview).find('img').remove();
       $(preview).removeClass('is_image not_image is_document');
-      var is_empty = false;
 
       if (file !== null) /// file is null when empty, or error
       {
         target_is_image = (file.type.indexOf('image') >= 0) ? true : false;
         target_type = file.type.trim();
-      }
-      else
-      {
-        is_empty = true;
       }
       // If image, load thumbnail and get dimensions.
       if (file && target_is_image)
@@ -123,15 +119,8 @@
 
         img.setAttribute('style', 'max-width:100%; max-height: 100%;');
         img.addEventListener("load", function () {
-          // with formats like svg it can be rough.
-            var width = img.naturalWidth;
-            var height = img.naturalHeight;
-            if (width == 0)
-              width = img.width;
-            if (height == 0)
-              height = img.height;
             //  $(preview).find('.textlayer').text(img.naturalWidth + ' x ' + img.naturalHeight );
-              self.updateTextLayer(preview, width + ' x ' + height);
+              self.updateTextLayer(preview, img.naturalWidth + ' x ' + img.naturalHeight);
         });
 
         $(preview).prepend(img);
@@ -153,19 +142,11 @@
         this.debug('Not image, media document');
       }
 
-      if (! is_empty && target_type != source_type)
+      if (target_type != source_type)
       {
         this.debug(target_type + ' not ' + source_type);
         this.warningFileType();
       }
-
-      if (! is_empty && emr_options.allowed_mime.indexOf(target_type) == -1)
-      {
-         this.debug(target_type + ' not ' + ' in allowed types ');
-         this.warningMimeType();
-      }
-    //  this.debug(emr_options.allowed_mime);
-
     },
     // replace the text, check if text is there ( or hide ), and fix the layout.
     this.updateTextLayer = function (preview, newtext)
@@ -198,7 +179,7 @@
     {
       $('.form-error').fadeOut();
       $('.form-warning').fadeOut();
-    },
+    }
     this.checkUpload = function(fileItem)
     {
       var maxsize = emr_options.maxfilesize;
@@ -228,36 +209,12 @@
     {
       $('.form-warning.filetype').fadeIn();
     }
-    this.warningMimeType = function(fileItem)
-    {
-      $('.form-warning.mimetype').fadeIn();
-    }
     this.debug = function(message)
     {
       console.debug(message);
     }
   } // emrIf
 
-jQuery(document).ready(function($)
-{
-  window.enableMediaReplace =  new emrIf($);
+  window.enableMediaReplace = emrIf;
   window.enableMediaReplace.init();
 });
-
-
-  function emrDelayedInit() {
-        console.log('Checking delayed init ');
-        if(typeof window.enableMediaReplace == "undefined") {
-            console.log(emrIf);
-            window.enableMediaReplace =  new emrIf(jQuery);
-            window.enableMediaReplace.init();
-        }
-        else if (typeof window.enableMediaReplace !== 'undefined')
-        {
-            // All fine.
-        }
-        else { // Nothing yet, try again.
-            setTimeout(emrdelayedInit, 3000);
-        }
-    }
-    setTimeout(emrDelayedInit, 3000);

@@ -32,12 +32,10 @@
 		 * if the postbox has been closed.
 		 *
 		 * @since 4.4.0
-		 *
 		 * @memberof postboxes
-		 *
 		 * @fires postboxes#postbox-toggled
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		handle_click : function () {
 			var $el = $( this ),
@@ -92,14 +90,13 @@
 		 * Adds event handlers to all postboxes and screen option on the current page.
 		 *
 		 * @since 2.7.0
-		 *
 		 * @memberof postboxes
 		 *
 		 * @param {string} page The page we are currently on.
 		 * @param {Object} [args]
 		 * @param {Function} args.pbshow A callback that is called when a postbox opens.
 		 * @param {Function} args.pbhide A callback that is called when a postbox closes.
-		 * @return {void}
+		 * @returns {void}
 		 */
 		add_postbox_toggles : function (page, args) {
 			var $handles = $( '.postbox .hndle, .postbox .handlediv' );
@@ -124,7 +121,7 @@
 			 *
 			 * @since 3.2.0
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			$( '.postbox a.dismiss' ).on( 'click.postboxes', function( e ) {
 				var hide_id = $(this).parents('.postbox').attr('id') + '-hide';
@@ -143,7 +140,7 @@
 			 *
 			 * @fires postboxes#postbox-toggled
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			$('.hide-postbox-tog').bind('click.postboxes', function() {
 				var $el = $(this),
@@ -177,7 +174,7 @@
 			 *
 			 * @since 2.8.0
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			$('.columns-prefs input[type="radio"]').bind('click.postboxes', function(){
 				var n = parseInt($(this).val(), 10);
@@ -193,7 +190,6 @@
 		 * Initializes all the postboxes, mainly their sortable behaviour.
 		 *
 		 * @since 2.7.0
-		 *
 		 * @memberof postboxes
 		 *
 		 * @param {string} page The page we are currently on.
@@ -202,7 +198,7 @@
 		 * @param {Function} args.pbhide A callback that is called when a postbox
 		 *                               closes.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		init : function(page, args) {
 			var isMobile = $( document.body ).hasClass( 'mobile' ),
@@ -276,11 +272,10 @@
 		 * hidden postboxes.
 		 *
 		 * @since 2.7.0
-		 *
 		 * @memberof postboxes
 		 *
 		 * @param {string} page The page we are currently on.
-		 * @return {void}
+		 * @returns {void}
 		 */
 		save_state : function(page) {
 			var closed, hidden;
@@ -308,11 +303,10 @@
 		 * Sends a list of all postboxes inside a sortable area to the server.
 		 *
 		 * @since 2.8.0
-		 *
 		 * @memberof postboxes
 		 *
 		 * @param {string} page The page we are currently on.
-		 * @return {void}
+		 * @returns {void}
 		 */
 		save_order : function(page) {
 			var postVars, page_columns = $('.columns-prefs input:checked').val() || 0;
@@ -339,11 +333,10 @@
 		 * present.
 		 *
 		 * @since 3.3.0
+		 * @memberof postboxes
 		 * @access private
 		 *
-		 * @memberof postboxes
-		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_mark_area : function() {
 			var visible = $('div.postbox:visible').length, side = $('#post-body #side-sortables');
@@ -372,14 +365,12 @@
 		 * Changes the amount of columns on the post edit page.
 		 *
 		 * @since 3.3.0
+		 * @memberof postboxes
+		 * @fires postboxes#postboxes-columnchange
 		 * @access private
 		 *
-		 * @memberof postboxes
-		 *
-		 * @fires postboxes#postboxes-columnchange
-		 *
 		 * @param {number} n The amount of columns to divide the post edit page in.
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_pb_edit : function(n) {
 			var el = $('.metabox-holder').get(0);
@@ -404,11 +395,10 @@
 		 * orientation of the browser.
 		 *
 		 * @since 3.3.0
+		 * @memberof postboxes
 		 * @access private
 		 *
-		 * @memberof postboxes
-		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_pb_change : function() {
 			var check = $( 'label.columns-prefs-1 input[type="radio"]' );
@@ -421,7 +411,7 @@
 					break;
 				case 0:
 				case 180:
-					if ( $( '#poststuff' ).length ) {
+					if ( $('#poststuff').length ) {
 						this._pb_edit(1);
 					} else {
 						if ( !check.length || !check.is(':checked') )
@@ -435,20 +425,19 @@
 
 		/**
 		 * @since 2.7.0
+		 * @memberof postboxes
 		 * @access public
-		 *
 		 * @property {Function|boolean} pbshow A callback that is called when a postbox
 		 *                                     is opened.
-		 * @memberof postboxes
 		 */
 		pbshow : false,
 
 		/**
 		 * @since 2.7.0
+		 * @memberof postboxes
 		 * @access public
 		 * @property {Function|boolean} pbhide A callback that is called when a postbox
 		 *                                     is closed.
-		 * @memberof postboxes
 		 */
 		pbhide : false
 	};

@@ -852,8 +852,6 @@ border color while dragging a file over the uploader drop area */
 .wp_attachment_holder .imgedit-wrap .imgedit-panel-content {
 	float: left;
 	padding: 3px 16px 0 0;
-	min-width: 400px;
-	max-width: calc( 100% - 266px );
 }
 
 .wp_attachment_holder .imgedit-wrap .imgedit-settings {
@@ -1055,11 +1053,7 @@ border color while dragging a file over the uploader drop area */
 
 .imgedit-help {
 	display: none;
-	padding-bottom: 8px;
-}
-
-.imgedit-help.imgedit-restore {
-	padding-bottom: 0;
+	font-style: italic;
 }
 
 /* higher specificity than buttons */
@@ -1213,7 +1207,6 @@ audio, video {
 	.wp_attachment_holder .imgedit-wrap .imgedit-settings {
 		float: none;
 		width: auto;
-		max-width: none;
 	}
 }
 

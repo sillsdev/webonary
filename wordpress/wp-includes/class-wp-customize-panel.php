@@ -69,10 +69,10 @@ class WP_Customize_Panel {
 	public $capability = 'edit_theme_options';
 
 	/**
-	 * Theme features required to support the panel.
+	 * Theme feature support for the panel.
 	 *
 	 * @since 4.0.0
-	 * @var string|string[]
+	 * @var string|array
 	 */
 	public $theme_supports = '';
 
@@ -138,20 +138,8 @@ class WP_Customize_Panel {
 	 * @since 4.0.0
 	 *
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
-	 * @param string               $id      A specific ID for the panel.
-	 * @param array                $args    {
-	 *     Optional. Array of properties for the new Panel object. Default empty array.
-	 *
-	 *     @type int             $priority        Priority of the panel, defining the display order
-	 *                                            of panels and sections. Default 160.
-	 *     @type string          $capability      Capability required for the panel.
-	 *                                            Default `edit_theme_options`.
-	 *     @type string|string[] $theme_supports  Theme features required to support the panel.
-	 *     @type string          $title           Title of the panel to show in UI.
-	 *     @type string          $description     Description to show in the UI.
-	 *     @type string          $type            Type of the panel.
-	 *     @type callable        $active_callback Active callback.
-	 * }
+	 * @param string               $id      An specific ID for the panel.
+	 * @param array                $args    Panel arguments.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		$keys = array_keys( get_object_vars( $this ) );
@@ -391,4 +379,4 @@ class WP_Customize_Panel {
 }
 
 /** WP_Customize_Nav_Menus_Panel class */
-require_once ABSPATH . WPINC . '/customize/class-wp-customize-nav-menus-panel.php';
+require_once( ABSPATH . WPINC . '/customize/class-wp-customize-nav-menus-panel.php' );

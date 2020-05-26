@@ -36,9 +36,10 @@
 		 * Creates a color picker that only allows you to adjust the hue.
 		 *
 		 * @since 3.5.0
+		 *
 		 * @access private
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_createHueOnly: function() {
 			var self = this,
@@ -64,7 +65,7 @@
 				 * @param {Event} event    The event that's being called.
 				 * @param {HTMLElement} ui The HTMLElement containing the color picker.
 				 *
-				 * @return {void}
+				 * @returns {void}
 				 */
 				change: function( event, ui ) {
 					if ( $.isFunction( self.options.change ) ) {
@@ -79,9 +80,10 @@
 		 * Creates the color picker, sets default values, css classes and wraps it all in HTML.
 		 *
 		 * @since 3.5.0
+		 *
 		 * @access private
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_create: function() {
 			// Return early if Iris support is missing.
@@ -184,7 +186,7 @@
 				 * @param {Event} event    The event that's being called.
 				 * @param {HTMLElement} ui The HTMLElement containing the color picker.
 				 *
-				 * @return {void}
+				 * @returns {void}
 				 */
 				change: function( event, ui ) {
 					self.toggler.css( { backgroundColor: ui.color.toString() } );
@@ -207,9 +209,10 @@
 		 * Binds event listeners to the color picker.
 		 *
 		 * @since 3.5.0
+		 *
 		 * @access private
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		_addListeners: function() {
 			var self = this;
@@ -221,7 +224,7 @@
 			 *
 			 * @param {Event} event The event that's being called.
 			 *
-			 * @return {void}
+			 * @returs {void}
 			 */
 			self.wrap.on( 'click.wpcolorpicker', function( event ) {
 				event.stopPropagation();
@@ -230,7 +233,7 @@
 			/**
 			 * Open or close the color picker depending on the class.
 			 *
-			 * @since 3.5.0
+			 * @since 3.5
 			 */
 			self.toggler.click( function(){
 				if ( self.toggler.hasClass( 'wp-picker-open' ) ) {
@@ -248,7 +251,7 @@
 			 *
 			 * @param {Event} event The event that's being called.
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			self.element.change( function( event ) {
 				var me = $( this ),
@@ -270,7 +273,7 @@
 			 *
 			 * @param {Event} event The event that's being called.
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			self.button.click( function( event ) {
 				var me = $( this );
@@ -290,7 +293,7 @@
 		 *
 		 * @since 3.5.0
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		open: function() {
 			this.element.iris( 'toggle' );
@@ -306,7 +309,7 @@
 		 *
 		 * @since 3.5.0
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		close: function() {
 			this.element.iris( 'toggle' );
@@ -324,7 +327,7 @@
 		 *
 		 * @since 3.5.0
 		 *
-		 * @return {string} The element's color.
+		 * @returns {string} The element's color
 		 */
 		color: function( newColor ) {
 			if ( newColor === undef ) {
@@ -340,7 +343,7 @@
 		 *
 		 * @since 3.5.0
 		 *
-		 * @return {boolean|string} The element's color.
+		 * @returns {boolean|string} The element's color.
 		 */
 		defaultColor: function( newDefaultColor ) {
 			if ( newDefaultColor === undef ) {

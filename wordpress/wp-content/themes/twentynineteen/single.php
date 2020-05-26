@@ -6,18 +6,18 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 			<?php
 
-			// Start the Loop.
+			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
 
@@ -27,8 +27,7 @@ get_header();
 					// Parent post navigation.
 					the_post_navigation(
 						array(
-							/* translators: %s: Parent post link. */
-							'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentynineteen' ), '%title' ),
+							'prev_text' => _x( '<span class="meta-nav">Published in</span><br/><span class="post-title">%title</span>', 'Parent post link', 'twentynineteen' ),
 						)
 					);
 				} elseif ( is_singular( 'post' ) ) {
@@ -50,11 +49,11 @@ get_header();
 					comments_template();
 				}
 
-			endwhile; // End the loop.
+			endwhile; // End of the loop.
 			?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</section><!-- #primary -->
 
 <?php
 get_footer();

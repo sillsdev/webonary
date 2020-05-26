@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 ?>
@@ -30,4 +30,4 @@
 	<footer class="entry-footer">
 		<?php twentynineteen_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-${ID} -->

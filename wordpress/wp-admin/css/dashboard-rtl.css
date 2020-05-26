@@ -1,4 +1,3 @@
-/*! This file is auto-generated */
 #wpbody-content #dashboard-widgets.columns-1 .postbox-container {
 	width: 100%;
 }
@@ -822,7 +821,7 @@ body #dashboard-widgets .postbox form .submit {
 	top: 12px;
 }
 
-#activity-widget #the-comment-list .dashboard-comment-wrap.has-avatar {
+#activity-widget #the-comment-list .dashboard-comment-wrap {
 	padding-right: 63px;
 }
 

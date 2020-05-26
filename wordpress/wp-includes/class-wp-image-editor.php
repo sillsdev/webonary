@@ -30,7 +30,7 @@ abstract class WP_Image_Editor {
 
 	/**
 	 * Checks to see if current environment supports the editor chosen.
-	 * Must be overridden in a subclass.
+	 * Must be overridden in a sub-class.
 	 *
 	 * @since 3.5.0
 	 *
@@ -45,7 +45,7 @@ abstract class WP_Image_Editor {
 
 	/**
 	 * Checks to see if editor supports the mime-type specified.
-	 * Must be overridden in a subclass.
+	 * Must be overridden in a sub-class.
 	 *
 	 * @since 3.5.0
 	 *
@@ -172,12 +172,7 @@ abstract class WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
-	 * @return array {
-	 *     Dimensions of the image.
-	 *
-	 *     @type int $width  The image width.
-	 *     @type int $height The image height.
-	 * }
+	 * @return array {'width'=>int, 'height'=>int}
 	 */
 	public function get_size() {
 		return $this->size;
@@ -295,7 +290,7 @@ abstract class WP_Image_Editor {
 	protected function get_output_format( $filename = null, $mime_type = null ) {
 		$new_ext = null;
 
-		// By default, assume specified type takes priority.
+		// By default, assume specified type takes priority
 		if ( $mime_type ) {
 			$new_ext = $this->get_extension( $mime_type );
 		}
@@ -310,7 +305,7 @@ abstract class WP_Image_Editor {
 		}
 
 		// Check to see if specified mime-type is the same as type implied by
-		// file extension. If so, prefer extension from file.
+		// file extension.  If so, prefer extension from file.
 		if ( ! $mime_type || ( $file_mime == $mime_type ) ) {
 			$mime_type = $file_mime;
 			$new_ext   = $file_ext;
@@ -353,7 +348,7 @@ abstract class WP_Image_Editor {
 	 * @return string filename
 	 */
 	public function generate_filename( $suffix = null, $dest_path = null, $extension = null ) {
-		// $suffix will be appended to the destination filename, just before the extension.
+		// $suffix will be appended to the destination filename, just before the extension
 		if ( ! $suffix ) {
 			$suffix = $this->get_suffix();
 		}
@@ -379,7 +374,7 @@ abstract class WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
-	 * @return string|false suffix
+	 * @return false|string suffix
 	 */
 	public function get_suffix() {
 		if ( ! $this->get_size() ) {
@@ -418,7 +413,7 @@ abstract class WP_Image_Editor {
 		 */
 		$orientation = apply_filters( 'wp_image_maybe_exif_rotate', $orientation, $this->file );
 
-		if ( ! $orientation || 1 === $orientation ) {
+		if ( ! $orientation || $orientation === 1 ) {
 			return false;
 		}
 
@@ -429,7 +424,7 @@ abstract class WP_Image_Editor {
 				break;
 			case 3:
 				// Rotate 180 degrees or flip horizontally and vertically.
-				// Flipping seems faster and uses less resources.
+				// Flipping seems faster/uses less resources.
 				$result = $this->flip( true, true );
 				break;
 			case 4:

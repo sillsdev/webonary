@@ -1,4 +1,3 @@
-/*! This file is auto-generated */
 /*------------------------------------------------------------------------------
   16.0 - Themes
 ------------------------------------------------------------------------------*/
@@ -230,7 +229,7 @@ body.js .theme-browser.search-loading {
 	top: 50%;
 	transform: translateY(-50%);
 	left: 0;
-	padding: 9px 15px;
+	padding: 10px 15px;
 	box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -1050,14 +1049,7 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	padding: 30px;
 	margin: 30px auto;
 	max-width: 380px;
-	display: flex;
 }
-
-.upload-theme .wp-upload-form > input[type="file"],
-.upload-plugin .wp-upload-form > input[type="file"] {
-	padding: 5px 0 0 1em;
-}
-
 .upload-theme .install-help,
 .upload-plugin .install-help {
 	color: #555d66; /* #f1f1f1 background */
@@ -1911,8 +1903,8 @@ body.full-overlay-active {
 
 	.theme-browser .theme.active .theme-actions,
 	.theme-browser .theme .theme-actions {
-		padding-top: 4px;
-		padding-bottom: 4px;
+		padding-top: 8px;
+		padding-bottom: 8px;
 	}
 }
 

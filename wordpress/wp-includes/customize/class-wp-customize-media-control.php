@@ -45,13 +45,9 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	 * @since 4.1.0
 	 * @since 4.2.0 Moved from WP_Customize_Upload_Control.
 	 *
-	 * @see WP_Customize_Control::__construct()
-	 *
 	 * @param WP_Customize_Manager $manager Customizer bootstrap instance.
 	 * @param string               $id      Control ID.
 	 * @param array                $args    Optional. Arguments to override class property defaults.
-	 *                                      See WP_Customize_Control::__construct() for information
-	 *                                      on accepted arguments. Default empty array.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -211,7 +207,7 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	 *
 	 * @since 4.9.0
 	 *
-	 * @return string[] An associative array of default button labels keyed by the button name.
+	 * @return array An associative array of default button labels.
 	 */
 	public function get_default_button_labels() {
 		// Get just the mime type and strip the mime subtype if present.

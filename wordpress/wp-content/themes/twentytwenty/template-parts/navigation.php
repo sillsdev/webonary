@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @since 1.0.0
  */
 
 $next_post = get_next_post();

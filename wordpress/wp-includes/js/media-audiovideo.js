@@ -150,7 +150,7 @@ wp.media.mixin = {
 			return;
 		}
 
-		// Invoke features cleanup.
+		// invoke features cleanup
 		for ( featureIndex in t.options.features ) {
 			feature = t.options.features[featureIndex];
 			if ( t['clean' + feature] ) {
@@ -246,7 +246,7 @@ wp.media.audio = {
 	 * @since 4.2.0
 	 *
 	 * @param {string} data The text to apply the shortcode on.
-	 * @return {wp.media} The media object.
+	 * @returns {wp.media} The media object.
 	 */
 	edit : function( data ) {
 		var frame, shortcode = wp.shortcode.next( 'audio', data ).shortcode;
@@ -266,7 +266,7 @@ wp.media.audio = {
 	 * @since 4.2.0
 	 *
 	 * @param {Array} model Array with attributes for the shortcode.
-	 * @return {wp.shortcode} The audio shortcode object.
+	 * @returns {wp.shortcode} The audio shortcode object.
 	 */
 	shortcode : function( model ) {
 		var content;
@@ -321,7 +321,7 @@ wp.media.video = {
 	 * @since 4.2.0
 	 *
 	 * @param {string} data The text to apply the shortcode on.
-	 * @return {wp.media} The media object.
+	 * @returns {wp.media} The media object.
 	 */
 	edit : function( data ) {
 		var frame,
@@ -346,7 +346,7 @@ wp.media.video = {
 	 * @since 4.2.0
 	 *
 	 * @param {Array} model Array with attributes for the shortcode.
-	 * @return {wp.shortcode} The video shortcode object.
+	 * @returns {wp.shortcode} The video shortcode object.
 	 */
 	shortcode : function( model ) {
 		var content;
@@ -995,7 +995,7 @@ MediaDetails = AttachmentDisplay.extend(/** @lends wp.media.view.MediaDetails.pr
 	},
 
 	/**
-	 * @return {media.view.MediaDetails} Returns itself to allow chaining.
+	 * @returns {media.view.MediaDetails} Returns itself to allow chaining
 	 */
 	render: function() {
 		AttachmentDisplay.prototype.render.apply( this, arguments );
@@ -1020,7 +1020,7 @@ MediaDetails = AttachmentDisplay.extend(/** @lends wp.media.view.MediaDetails.pr
 	 * When multiple players in the DOM contain the same src, things get weird.
 	 *
 	 * @param {HTMLElement} elem
-	 * @return {HTMLElement}
+	 * @returns {HTMLElement}
 	 */
 	prepareSrc : function( elem ) {
 		var i = MediaDetails.instances++;

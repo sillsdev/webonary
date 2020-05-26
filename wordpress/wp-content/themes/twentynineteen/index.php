@@ -11,13 +11,13 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 		<?php
@@ -39,9 +39,9 @@ get_header();
 
 		}
 		?>
-
+		
 		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+	</section><!-- .content-area -->
 
 <?php
 get_footer();

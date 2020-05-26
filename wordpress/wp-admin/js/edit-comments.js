@@ -192,7 +192,7 @@ var getCount, updateCount, updateCountText, updatePending, updateApproved,
 		var newTitle, regExMatch, titleCount, commentFrag;
 
 		titleRegEx = titleRegEx || new RegExp( adminCommentsL10n.docTitleCommentsCount.replace( '%s', '\\([0-9' + thousandsSeparator + ']+\\)' ) + '?' );
-		// Count funcs operate on a $'d element.
+		// count funcs operate on a $'d element
 		titleDiv = titleDiv || $( '<div />' );
 		newTitle = adminTitle;
 
@@ -256,7 +256,7 @@ var getCount, updateCount, updateCountText, updatePending, updateApproved,
 			return;
 		}
 
-		// Cache selectors to not get dupes.
+		// cache selectors to not get dupes
 		pending = $( 'span.' + pendingClass, postSelector );
 		noPending = $( 'span.' + noClass, postSelector );
 
@@ -444,7 +444,7 @@ window.setCommentsList = function() {
 
 			a.click(function( e ){
 				e.preventDefault();
-				e.stopPropagation(); // Ticket #35904.
+				e.stopPropagation(); // ticket #35904
 				list.wpList.del(this);
 				$('#undo-' + id).css( {backgroundColor:'#ceb'} ).fadeOut(350, function(){
 					$(this).remove();
@@ -491,19 +491,17 @@ window.setCommentsList = function() {
 			unapproved = commentRow.hasClass( 'unapproved' ),
 			spammed = commentRow.hasClass( 'spam' ),
 			trashed = commentRow.hasClass( 'trash' ),
-			undoing = false; // Ticket #35904.
+			undoing = false; // ticket #35904
 
 		updateDashboardText( newTotal );
 		updateInModerationText( newTotal );
 
-		/*
-		 * The order of these checks is important.
-		 * .unspam can also have .approve or .unapprove.
-		 * .untrash can also have .approve or .unapprove.
-		 */
+		// the order of these checks is important
+		// .unspam can also have .approve or .unapprove
+		// .untrash can also have .approve or .unapprove
 
 		if ( targetParent.is( 'span.undo' ) ) {
-			// The comment was spammed.
+			// the comment was spammed
 			if ( targetParent.hasClass( 'unspam' ) ) {
 				spamDiff = -1;
 
@@ -515,7 +513,7 @@ window.setCommentsList = function() {
 					pendingDiff = 1;
 				}
 
-			// The comment was trashed.
+			// the comment was trashed
 			} else if ( targetParent.hasClass( 'untrash' ) ) {
 				trashDiff = -1;
 
@@ -530,32 +528,32 @@ window.setCommentsList = function() {
 
 			undoing = true;
 
-		// User clicked "Spam".
+		// user clicked "Spam"
 		} else if ( targetParent.is( 'span.spam' ) ) {
-			// The comment is currently approved.
+			// the comment is currently approved
 			if ( approved ) {
 				approvedDiff = -1;
-			// The comment is currently pending.
+			// the comment is currently pending
 			} else if ( unapproved ) {
 				pendingDiff = -1;
-			// The comment was in the Trash.
+			// the comment was in the trash
 			} else if ( trashed ) {
 				trashDiff = -1;
 			}
-			// You can't spam an item on the Spam screen.
+			// you can't spam an item on the spam screen
 			spamDiff = 1;
 
-		// User clicked "Unspam".
+		// user clicked "Unspam"
 		} else if ( targetParent.is( 'span.unspam' ) ) {
 			if ( approved ) {
 				pendingDiff = 1;
 			} else if ( unapproved ) {
 				approvedDiff = 1;
 			} else if ( trashed ) {
-				// The comment was previously approved.
+				// the comment was previously approved
 				if ( targetParent.hasClass( 'approve' ) ) {
 					approvedDiff = 1;
-				// The comment was previously pending.
+				// the comment was previously pending
 				} else if ( targetParent.hasClass( 'unapprove' ) ) {
 					pendingDiff = 1;
 				}
@@ -567,23 +565,23 @@ window.setCommentsList = function() {
 					pendingDiff = 1;
 				}
 			}
-			// You can unspam an item on the Spam screen.
+			// you can Unspam an item on the spam screen
 			spamDiff = -1;
 
-		// User clicked "Trash".
+		// user clicked "Trash"
 		} else if ( targetParent.is( 'span.trash' ) ) {
 			if ( approved ) {
 				approvedDiff = -1;
 			} else if ( unapproved ) {
 				pendingDiff = -1;
-			// The comment was in the spam queue.
+			// the comment was in the spam queue
 			} else if ( spammed ) {
 				spamDiff = -1;
 			}
-			// You can't trash an item on the Trash screen.
+			// you can't trash an item on the trash screen
 			trashDiff = 1;
 
-		// User clicked "Restore".
+		// user clicked "Restore"
 		} else if ( targetParent.is( 'span.untrash' ) ) {
 			if ( approved ) {
 				pendingDiff = 1;
@@ -596,21 +594,21 @@ window.setCommentsList = function() {
 					pendingDiff = 1;
 				}
 			}
-			// You can't go from Trash to Spam.
-			// You can untrash on the Trash screen.
+			// you can't go from trash to spam
+			// you can untrash on the trash screen
 			trashDiff = -1;
 
-		// User clicked "Approve".
+		// User clicked "Approve"
 		} else if ( targetParent.is( 'span.approve:not(.unspam):not(.untrash)' ) ) {
 			approvedDiff = 1;
 			pendingDiff = -1;
 
-		// User clicked "Unapprove".
+		// User clicked "Unapprove"
 		} else if ( targetParent.is( 'span.unapprove:not(.unspam):not(.untrash)' ) ) {
 			approvedDiff = -1;
 			pendingDiff = 1;
 
-		// User clicked "Delete Permanently".
+		// User clicked "Delete Permanently"
 		} else if ( targetParent.is( 'span.delete' ) ) {
 			if ( spammed ) {
 				spamDiff = -1;
@@ -715,17 +713,17 @@ window.setCommentsList = function() {
 
 		if (ev) {
 			theExtraList.empty();
-			args.number = Math.min(8, per_page); // See WP_Comments_List_Table::prepare_items() in class-wp-comments-list-table.php.
+			args.number = Math.min(8, per_page); // see WP_Comments_List_Table::prepare_items() @ class-wp-comments-list-table.php
 		} else {
 			args.number = 1;
-			args.offset = Math.min(8, per_page) - 1; // Fetch only the next item on the extra list.
+			args.offset = Math.min(8, per_page) - 1; // fetch only the next item on the extra list
 		}
 
 		args.no_placeholder = true;
 
 		args.paged ++;
 
-		// $.query.get() needs some correction to be sent into an Ajax request.
+		// $.query.get() needs some correction to be sent into an ajax request
 		if ( true === args.comment_type )
 			args.comment_type = '';
 
@@ -783,9 +781,9 @@ window.commentReply = {
 	/**
 	 * Initializes the comment reply functionality.
 	 *
-	 * @since 2.7.0
-	 *
 	 * @memberof commentReply
+	 *
+	 * @since 2.7.0
 	 */
 	init : function() {
 		var row = $('#replyrow');
@@ -800,7 +798,7 @@ window.commentReply = {
 			}
 		});
 
-		// Add events.
+		// add events
 		$('#the-comment-list .column-comment > p').dblclick(function(){
 			commentReply.toggle($(this).parent());
 		});
@@ -913,7 +911,7 @@ window.commentReply = {
 				.focus();
 		}
 
-		// Reset the Quicktags buttons.
+		// reset the Quicktags buttons
  		if ( typeof QTags != 'undefined' )
 			QTags.closeAllTags('replycontent');
 
@@ -1031,7 +1029,7 @@ window.commentReply = {
 
 			$('#replycontent').focus().keyup(function(e){
 				if ( e.which == 27 )
-					commentReply.revert(); // Close on Escape.
+					commentReply.revert(); // close on Escape
 			});
 		}, 600);
 
@@ -1132,7 +1130,7 @@ window.commentReply = {
 			updateCountText( 'span.all-count', 1 );
 		}
 
-		c = $.trim(r.data); // Trim leading whitespaces.
+		c = $.trim(r.data); // Trim leading whitespaces
 		$(c).hide();
 		$('#replyrow').after(c);
 

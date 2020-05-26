@@ -24,7 +24,6 @@ class Loader {
 	 */
 	protected $providers = array(
 		'mail'        => 'WPMailSMTP\Providers\Mail\\',
-		'smtpcom'     => 'WPMailSMTP\Providers\SMTPcom\\',
 		'pepipostapi' => 'WPMailSMTP\Providers\PepipostAPI\\',
 		'sendinblue'  => 'WPMailSMTP\Providers\Sendinblue\\',
 		'mailgun'     => 'WPMailSMTP\Providers\Mailgun\\',

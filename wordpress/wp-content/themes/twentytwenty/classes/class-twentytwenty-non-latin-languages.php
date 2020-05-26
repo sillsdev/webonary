@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
+ * @since 1.0.0
  */
 
 if ( ! class_exists( 'TwentyTwenty_Non_Latin_Languages' ) ) {
@@ -26,7 +26,7 @@ if ( ! class_exists( 'TwentyTwenty_Non_Latin_Languages' ) ) {
 		 */
 		public static function get_non_latin_css( $type = 'front-end' ) {
 
-			// Fetch site locale.
+			// Fetch users locale.
 			$locale = get_bloginfo( 'language' );
 
 			// Define fallback fonts for non-latin languages.

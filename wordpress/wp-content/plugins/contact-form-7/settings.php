@@ -149,7 +149,7 @@ function wpcf7_install() {
 
 	WPCF7::update_option( 'bulk_validate',
 		array(
-			'timestamp' => time(),
+			'timestamp' => current_time( 'timestamp' ),
 			'version' => WPCF7_VERSION,
 			'count_valid' => 1,
 			'count_invalid' => 0,

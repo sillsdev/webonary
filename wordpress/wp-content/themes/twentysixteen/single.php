@@ -45,7 +45,7 @@ get_header(); ?>
 				);
 			}
 
-			// End the loop.
+			// End of the loop.
 		endwhile;
 		?>
 

@@ -251,7 +251,7 @@ class WP_List_Table {
 	 * @abstract
 	 */
 	public function ajax_user_can() {
-		die( 'function WP_List_Table::ajax_user_can() must be overridden in a subclass.' );
+		die( 'function WP_List_Table::ajax_user_can() must be over-ridden in a sub-class.' );
 	}
 
 	/**
@@ -263,7 +263,7 @@ class WP_List_Table {
 	 * @abstract
 	 */
 	public function prepare_items() {
-		die( 'function WP_List_Table::prepare_items() must be overridden in a subclass.' );
+		die( 'function WP_List_Table::prepare_items() must be over-ridden in a sub-class.' );
 	}
 
 	/**
@@ -451,7 +451,7 @@ class WP_List_Table {
 			 *
 			 * @param string[] $actions An array of the available bulk actions.
 			 */
-			$this->_actions = apply_filters( "bulk_actions-{$this->screen->id}", $this->_actions ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+			$this->_actions = apply_filters( "bulk_actions-{$this->screen->id}", $this->_actions );  // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 			$two            = '';
 		} else {
 			$two = '2';
@@ -501,13 +501,13 @@ class WP_List_Table {
 	}
 
 	/**
-	 * Generates the required HTML for a list of row action links.
+	 * Generate row actions div
 	 *
 	 * @since 3.1.0
 	 *
 	 * @param string[] $actions        An array of action links.
 	 * @param bool     $always_visible Whether the actions should be always visible.
-	 * @return string The HTML for the row actions.
+	 * @return string
 	 */
 	protected function row_actions( $actions, $always_visible = false ) {
 		$action_count = count( $actions );
@@ -531,14 +531,14 @@ class WP_List_Table {
 	}
 
 	/**
-	 * Displays a dropdown for filtering items in the list table by month.
+	 * Display a monthly dropdown for filtering items
 	 *
 	 * @since 3.1.0
 	 *
 	 * @global wpdb      $wpdb      WordPress database abstraction object.
 	 * @global WP_Locale $wp_locale WordPress date and time locale object.
 	 *
-	 * @param string $post_type The post type.
+	 * @param string $post_type
 	 */
 	protected function months_dropdown( $post_type ) {
 		global $wpdb, $wp_locale;
@@ -580,8 +580,8 @@ class WP_List_Table {
 		 *
 		 * @since 3.7.0
 		 *
-		 * @param object[] $months    Array of the months drop-down query results.
-		 * @param string   $post_type The post type.
+		 * @param object $months    The months drop-down query results.
+		 * @param string $post_type The post type.
 		 */
 		$months = apply_filters( 'months_dropdown_results', $months, $post_type );
 
@@ -830,18 +830,18 @@ class WP_List_Table {
 		$disable_prev  = false;
 		$disable_next  = false;
 
-		if ( 1 == $current ) {
+		if ( $current == 1 ) {
 			$disable_first = true;
 			$disable_prev  = true;
 		}
-		if ( 2 == $current ) {
+		if ( $current == 2 ) {
 			$disable_first = true;
 		}
-		if ( $total_pages == $current ) {
+		if ( $current == $total_pages ) {
 			$disable_last = true;
 			$disable_next = true;
 		}
-		if ( $total_pages - 1 == $current ) {
+		if ( $current == $total_pages - 1 ) {
 			$disable_last = true;
 		}
 
@@ -934,7 +934,7 @@ class WP_List_Table {
 	 * @return array
 	 */
 	public function get_columns() {
-		die( 'function WP_List_Table::get_columns() must be overridden in a subclass.' );
+		die( 'function WP_List_Table::get_columns() must be over-ridden in a sub-class.' );
 	}
 
 	/**
@@ -1004,8 +1004,8 @@ class WP_List_Table {
 		$columns = get_column_headers( $this->screen );
 		$default = $this->get_default_primary_column_name();
 
-		// If the primary column doesn't exist,
-		// fall back to the first non-checkbox column.
+		// If the primary column doesn't exist fall back to the
+		// first non-checkbox column.
 		if ( ! isset( $columns[ $default ] ) ) {
 			$default = WP_List_Table::get_default_primary_column_name();
 		}
@@ -1035,7 +1035,7 @@ class WP_List_Table {
 	 * @return array
 	 */
 	protected function get_column_info() {
-		// $_column_headers is already set / cached.
+		// $_column_headers is already set / cached
 		if ( isset( $this->_column_headers ) && is_array( $this->_column_headers ) ) {
 			// Back-compat for list tables that have been manually setting $_column_headers for horse reasons.
 			// In 4.3, we added a fourth argument for primary column.
@@ -1220,7 +1220,7 @@ class WP_List_Table {
 	 *
 	 * @since 3.1.0
 	 *
-	 * @return string[] Array of CSS classes for the table tag.
+	 * @return array List of CSS classes for the table tag.
 	 */
 	protected function get_table_classes() {
 		return array( 'widefat', 'fixed', 'striped', $this->_args['plural'] );
@@ -1373,8 +1373,7 @@ class WP_List_Table {
 	 * @param object $item        The item being acted upon.
 	 * @param string $column_name Current column name.
 	 * @param string $primary     Primary column name.
-	 * @return string The row actions HTML, or an empty string
-	 *                if the current column is not the primary column.
+	 * @return string The row actions HTML, or an empty string if the current column is the primary column.
 	 */
 	protected function handle_row_actions( $item, $column_name, $primary ) {
 		return $column_name === $primary ? '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __( 'Show more details' ) . '</span></button>' : '';

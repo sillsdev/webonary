@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 ?>
@@ -37,7 +37,7 @@
 			edit_post_link(
 				sprintf(
 					wp_kses(
-						/* translators: %s: Post title. Only visible to screen readers. */
+						/* translators: %s: Name of current post. Only visible to screen readers */
 						__( 'Edit <span class="screen-reader-text">%s</span>', 'twentynineteen' ),
 						array(
 							'span' => array(
@@ -47,7 +47,7 @@
 					),
 					get_the_title()
 				),
-				'<span class="edit-link">' . twentynineteen_get_icon_svg( 'edit', 16 ),
+				'<span class="edit-link">',
 				'</span>'
 			);
 			?>

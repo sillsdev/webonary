@@ -7,7 +7,7 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once __DIR__ . '/admin.php';
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! current_user_can( 'manage_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
@@ -32,7 +32,7 @@ get_current_screen()->add_help_tab(
 		'title'   => __( 'Permalink Settings' ),
 		'content' => '<p>' . __( 'Permalinks can contain useful information, such as the post date, title, or other elements. You can choose from any of the suggested permalink formats, or you can craft your own if you select Custom Structure.' ) . '</p>' .
 			'<p>' . sprintf(
-				/* translators: %s: Percent sign (%). */
+				/* translators: '%' character. */
 				__( 'If you pick an option other than Plain, your general URL path with structure tags (terms surrounded by %s) will also appear in the custom structure field and your path can be further modified there.' ),
 				'<code>%</code>'
 			) . '</p>' .
@@ -151,24 +151,12 @@ if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['category_base'] ) 
 
 	if ( $iis7_permalinks ) {
 		if ( $permalink_structure && ! $using_index_permalinks && ! $writable ) {
-			$message = sprintf(
-				/* translators: %s: web.config */
-				__( 'You should update your %s file now.' ),
-				'<code>web.config</code>'
-			);
+			$message = __( 'You should update your web.config now.' );
 		} elseif ( $permalink_structure && ! $using_index_permalinks && $writable ) {
-			$message = sprintf(
-				/* translators: %s: web.config */
-				__( 'Permalink structure updated. Remove write access on %s file now!' ),
-				'<code>web.config</code>'
-			);
+			$message = __( 'Permalink structure updated. Remove write access on web.config file now!' );
 		}
 	} elseif ( ! $is_nginx && $permalink_structure && ! $using_index_permalinks && ! $writable && $update_required ) {
-		$message = sprintf(
-			/* translators: %s: .htaccess */
-			__( 'You should update your %s file now.' ),
-			'<code>.htaccess</code>'
-		);
+		$message = __( 'You should update your .htaccess now.' );
 	}
 
 	if ( ! get_settings_errors() ) {
@@ -183,7 +171,7 @@ if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['category_base'] ) 
 
 flush_rewrite_rules();
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap">
 <h1><?php echo esc_html( $title ); ?></h1>
@@ -419,8 +407,8 @@ else :
 </form>
 	<?php endif; ?>
 <?php endif; ?>
-<?php } // End if ! is_multisite(). ?>
+<?php } // multisite ?>
 
 </div>
 
-<?php require_once ABSPATH . 'wp-admin/admin-footer.php'; ?>
+<?php require( ABSPATH . 'wp-admin/admin-footer.php' ); ?>

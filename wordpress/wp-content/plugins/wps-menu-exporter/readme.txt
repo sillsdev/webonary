@@ -3,8 +3,8 @@ Contributors: WPServeur, NicolasKulka
 Donate link: https://www.paypal.me/donateWPServeur
 Tags: export, menus, exporter, menu, wordpress menus, import, importer, xml, rss, wxr, posts, pages, terms, wpserveur
 Requires at least: 4.2
-Tested up to: 5.4
-Stable tag: 1.2.3
+Tested up to: 5.3
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,9 +62,6 @@ This plugin is only maintained, which means we do not guarantee free support. Co
 
 
 == Changelog ==
-
-= 1.2.3 =
-* Tested up to 5.4
 
 = 1.2.2 =
 * Fix : Security vulnerabilities (Thanks @juliobox)

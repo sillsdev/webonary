@@ -27,7 +27,7 @@ window.wp = window.wp || {};
 		 *                           the password.
 		 * @param {string} password2 The password confirmation.
 		 *
-		 * @return {number} The password strength score.
+		 * @returns {number} The password strength score.
 		 */
 		meter : function( password1, blacklist, password2 ) {
 			if ( ! $.isArray( blacklist ) )
@@ -54,7 +54,7 @@ window.wp = window.wp || {};
 		 *
 		 * @since 3.7.0
 		 *
-		 * @return {string[]} The array of words to be blacklisted.
+		 * @returns {string[]} The array of words to be blacklisted.
 		 */
 		userInputBlacklist : function() {
 			var i, userInputFieldsLength, rawValuesLength, currentField,

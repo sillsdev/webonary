@@ -44,7 +44,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	 * @param {Function}   settings.onChangeLintingErrors - Callback for when there are changes to linting errors.
 	 * @param {Function}   settings.onUpdateErrorNotice - Callback to update error notice.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	function configureLinting( editor, settings ) { // eslint-disable-line complexity
 		var currentErrorAnnotations = [], previouslyShownErrorAnnotations = [];
@@ -52,7 +52,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 		/**
 		 * Call the onUpdateErrorNotice if there are new errors to show.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		function updateErrorNotice() {
 			if ( settings.onUpdateErrorNotice && ! _.isEqual( currentErrorAnnotations, previouslyShownErrorAnnotations ) ) {
@@ -64,7 +64,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 		/**
 		 * Get lint options.
 		 *
-		 * @return {object} Lint options.
+		 * @returns {object} Lint options.
 		 */
 		function getLintOptions() { // eslint-disable-line complexity
 			var options = editor.getOption( 'lint' );
@@ -79,11 +79,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 				options = $.extend( {}, options );
 			}
 
-			/*
-			 * Note that rules must be sent in the "deprecated" lint.options property 
-			 * to prevent linter from complaining about unrecognized options.
-			 * See <https://github.com/codemirror/CodeMirror/pull/4944>.
-			 */
+			// Note that rules must be sent in the "deprecated" lint.options property to prevent linter from complaining about unrecognized options. See <https://github.com/codemirror/CodeMirror/pull/4944>.
 			if ( ! options.options ) {
 				options.options = {};
 			}
@@ -218,7 +214,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	 * @param {Function}   settings.onTabNext - Callback to handle tabbing to the next tabbable element.
 	 * @param {Function}   settings.onTabPrevious - Callback to handle tabbing to the previous tabbable element.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	function configureTabbing( codemirror, settings ) {
 		var $textarea = $( codemirror.getTextArea() );
@@ -277,7 +273,7 @@ if ( 'undefined' === typeof window.wp.codeEditor ) {
 	 * @param {object}                [settings.htmlhint] - Rules for HTMLHint.
 	 * @param {object}                [settings.jshint] - Rules for JSHint.
 	 *
-	 * @return {CodeEditorInstance} Instance.
+	 * @returns {CodeEditorInstance} Instance.
 	 */
 	wp.codeEditor.initialize = function initialize( textarea, settings ) {
 		var $textarea, codemirror, instanceSettings, instance;

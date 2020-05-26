@@ -24,7 +24,7 @@
  *
  * @since 4.4.0
  *
- * @link https://www.php.net/manual/en/class.arrayaccess.php
+ * @link https://secure.php.net/manual/en/class.arrayaccess.php
  */
 class WP_REST_Request implements ArrayAccess {
 
@@ -310,7 +310,7 @@ class WP_REST_Request implements ArrayAccess {
 		}
 
 		$value = strtolower( $value );
-		if ( false === strpos( $value, '/' ) ) {
+		if ( strpos( $value, '/' ) === false ) {
 			return null;
 		}
 
@@ -330,7 +330,7 @@ class WP_REST_Request implements ArrayAccess {
 	 *
 	 * @since 4.4.0
 	 *
-	 * @return string[] Array of types to check, in order of priority.
+	 * @return array List of types to check, in order of priority.
 	 */
 	protected function get_parameter_order() {
 		$order = array();
@@ -350,7 +350,7 @@ class WP_REST_Request implements ArrayAccess {
 		}
 
 		$accepts_body_data = array( 'POST', 'PUT', 'PATCH', 'DELETE' );
-		if ( in_array( $this->method, $accepts_body_data, true ) ) {
+		if ( in_array( $this->method, $accepts_body_data ) ) {
 			$order[] = 'POST';
 		}
 
@@ -366,8 +366,12 @@ class WP_REST_Request implements ArrayAccess {
 		 *
 		 * @since 4.4.0
 		 *
-		 * @param string[]        $order Array of types to check, in order of priority.
-		 * @param WP_REST_Request $this  The request object.
+		 * @param array           $order {
+		 *    An array of types to check, in order of priority.
+		 *
+		 * @param string $type The type to check.
+		 * }
+		 * @param WP_REST_Request $this The request object.
 		 */
 		return apply_filters( 'rest_request_parameter_order', $order, $this );
 	}
@@ -446,7 +450,7 @@ class WP_REST_Request implements ArrayAccess {
 
 		$params = array();
 		foreach ( $order as $type ) {
-			// array_merge() / the "+" operator will mess up
+			// array_merge / the "+" operator will mess up
 			// numeric keys, so instead do a manual foreach.
 			foreach ( (array) $this->params[ $type ] as $key => $value ) {
 				$params[ $key ] = $value;
@@ -674,7 +678,6 @@ class WP_REST_Request implements ArrayAccess {
 		}
 
 		$this->params['JSON'] = $params;
-
 		return true;
 	}
 
@@ -784,12 +787,10 @@ class WP_REST_Request implements ArrayAccess {
 			if ( empty( $this->params[ $type ] ) ) {
 				continue;
 			}
-
 			foreach ( $this->params[ $type ] as $key => $value ) {
 				if ( ! isset( $attributes['args'][ $key ] ) ) {
 					continue;
 				}
-
 				$param_args = $attributes['args'][ $key ];
 
 				// If the arg has a type but no sanitize_callback attribute, default to rest_parse_request_arg.
@@ -991,7 +992,7 @@ class WP_REST_Request implements ArrayAccess {
 			$api_url_part = substr( $url, strlen( untrailingslashit( $api_root ) ) );
 			$route        = parse_url( $api_url_part, PHP_URL_PATH );
 		} elseif ( ! empty( $query_params['rest_route'] ) ) {
-			// ?rest_route=... set directly.
+			// ?rest_route=... set directly
 			$route = $query_params['rest_route'];
 			unset( $query_params['rest_route'] );
 		}

@@ -127,7 +127,8 @@ window.wpWidgets = {
 		});
 
 		$(document.body).bind('click.widgets-toggle', function(e) {
-			var target = $(e.target), css = {},
+			var target = $(e.target),
+				css = { 'z-index': 100 },
 				widget, inside, targetWidth, widgetWidth, margin, saveButton, widgetId,
 				toggleBtn = target.closest( '.widget' ).find( '.widget-top button.widget-action' );
 
@@ -211,7 +212,7 @@ window.wpWidgets = {
 			handle: '> .widget-top > .widget-title',
 			distance: 2,
 			helper: 'clone',
-			zIndex: 101,
+			zIndex: 100,
 			containment: '#wpwrap',
 			refreshPositions: true,
 			start: function( event, ui ) {
@@ -221,9 +222,9 @@ window.wpWidgets = {
 				the_id = this.id;
 
 				if ( chooser.length ) {
-					// Hide the chooser and move it out of the widget.
+					// Hide the chooser and move it out of the widget
 					$( '#wpbody-content' ).append( chooser.hide() );
-					// Delete the cloned chooser from the drag helper.
+					// Delete the cloned chooser from the drag helper
 					ui.helper.find('.widgets-chooser').remove();
 					self.clearWidgetSelection();
 				}
@@ -320,7 +321,7 @@ window.wpWidgets = {
 				wpWidgets.hoveredSidebar = null;
 
 				if ( $widget.hasClass('deleting') ) {
-					wpWidgets.save( $widget, 1, 0, 1 ); // Delete widget.
+					wpWidgets.save( $widget, 1, 0, 1 ); // delete widget
 					$widget.remove();
 					return;
 				}
@@ -362,7 +363,7 @@ window.wpWidgets = {
 
 					$children = $sidebar.children('.widget');
 
-					// Make sure the dropped widget is at the top.
+					// Make sure the dropped widget is at the top
 					if ( $children.length > 1 ) {
 						child = $children.get(0);
 						item = $widget.get(0);
@@ -385,14 +386,14 @@ window.wpWidgets = {
 			},
 
 			deactivate: function() {
-				// Remove all min-height added on "start".
+				// Remove all min-height added on "start"
 				$(this).css( 'min-height', '' ).parent().removeClass( 'widget-hover' );
 			},
 
 			receive: function( event, ui ) {
 				var $sender = $( ui.sender );
 
-				// Don't add more widgets to orphaned sidebars.
+				// Don't add more widgets to orphaned sidebars
 				if ( this.id.indexOf('orphaned_widgets') > -1 ) {
 					$sender.sortable('cancel');
 					return;
@@ -430,7 +431,7 @@ window.wpWidgets = {
 			}
 		});
 
-		// Area Chooser.
+		// Area Chooser
 		$( '#widgets-right .widgets-holder-wrap' ).each( function( index, element ) {
 			var $element = $( element ),
 				name = $element.find( '.sidebar-name h2' ).text(),
@@ -464,7 +465,7 @@ window.wpWidgets = {
 				toggleButton.attr( 'aria-expanded', 'false' );
 				self.closeChooser();
 			} else {
-				// Open the chooser.
+				// Open the chooser
 				self.clearWidgetSelection();
 				$( '#widgets-left' ).addClass( 'chooser' );
 				// Add CSS class and insert the chooser after the widget description.
@@ -485,7 +486,7 @@ window.wpWidgets = {
 			}
 		});
 
-		// Add event handlers.
+		// Add event handlers
 		chooser.on( 'click.widgets-chooser', function( event ) {
 			var $target = $( event.target );
 
@@ -661,7 +662,7 @@ window.wpWidgets = {
 		add = widget.find( 'input.add_new' ).val();
 		n = widget.find( 'input.multi_number' ).val();
 
-		// Remove the cloned chooser from the widget.
+		// Remove the cloned chooser from the widget
 		widget.find('.widgets-chooser').remove();
 
 		if ( 'multi' === add ) {
@@ -688,7 +689,7 @@ window.wpWidgets = {
 		sidebar.sortable('refresh');
 
 		wpWidgets.save( widget, 0, 0, 1 );
-		// No longer "new" widget.
+		// No longer "new" widget
 		widget.find( 'input.add_new' ).val('');
 
 		$document.trigger( 'widget-added', [ widget ] );

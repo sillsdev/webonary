@@ -57,7 +57,7 @@ class Area {
 	protected function hooks() {
 
 		// Add the Settings link to a plugin on Plugins page.
-		add_filter( 'plugin_action_links_' . plugin_basename( WPMS_PLUGIN_FILE ), array( $this, 'add_plugin_action_link' ), 10, 1 );
+		add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_link' ), 10, 2 );
 
 		// Add the options page.
 		add_action( 'admin_menu', array( $this, 'add_admin_options_page' ) );
@@ -219,17 +219,14 @@ class Area {
 			self::SLUG . '-logs',
 			array( $this, 'display' )
 		);
-
-		if ( ! wp_mail_smtp()->is_white_labeled() ) {
-			\add_submenu_page(
-				self::SLUG,
-				\esc_html__( 'About Us', 'wp-mail-smtp' ),
-				\esc_html__( 'About Us', 'wp-mail-smtp' ),
-				'manage_options',
-				self::SLUG . '-about',
-				array( $this, 'display' )
-			);
-		}
+		\add_submenu_page(
+			self::SLUG,
+			\esc_html__( 'About Us', 'wp-mail-smtp' ),
+			\esc_html__( 'About Us', 'wp-mail-smtp' ),
+			'manage_options',
+			self::SLUG . '-about',
+			array( $this, 'display' )
+		);
 	}
 
 	/**
@@ -267,16 +264,15 @@ class Area {
 			'wp-mail-smtp-admin',
 			'wp_mail_smtp',
 			array(
-				'text_provider_remove'    => esc_html__( 'Are you sure you want to reset the current provider connection? You will need to immediately create a new one to be able to send emails.', 'wp-mail-smtp' ),
-				'text_settings_not_saved' => esc_html__( 'Changes that you made to the settings are not saved!', 'wp-mail-smtp' ),
-				'education'               => array(
+				'text_provider_remove' => esc_html__( 'Are you sure you want to reset the current provider connection? You will need to immediately create a new one to be able to send emails.', 'wp-mail-smtp' ),
+				'education'            => array(
 					'upgrade_icon_lock' => '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lock" class="svg-inline--fa fa-lock fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"></path></svg>',
 					'upgrade_title'     => esc_html__( '%name% is a PRO Feature', 'wp-mail-smtp' ),
 					'upgrade_button'    => esc_html__( 'Upgrade to Pro', 'wp-mail-smtp' ),
 					'upgrade_url'       => 'https://wpmailsmtp.com/lite-upgrade/?discount=SMTPLITEUPGRADE&utm_source=WordPress&utm_medium=plugin-settings&utm_campaign=liteplugin',
 					'upgrade_bonus'     => '<p>' .
 											wp_kses(
-												__( '<strong>Bonus:</strong> WP Mail SMTP users get <span>$50 off</span> regular price,<br>applied at checkout.', 'wp-mail-smtp' ),
+												__( '<strong>Bonus:</strong> WP Mail SMTP users get <span>20% off</span> regular price,<br>applied at checkout.', 'wp-mail-smtp' ),
 												array(
 													'strong' => true,
 													'span'   => true,
@@ -371,7 +367,7 @@ class Area {
 
 			\wp_enqueue_script(
 				'wp-mail-smtp-admin-about-matchheight',
-				\wp_mail_smtp()->assets_url . '/js/vendor/jquery.matchHeight.min.js',
+				\wp_mail_smtp()->assets_url . '/js/jquery.matchHeight.min.js',
 				array( 'wp-mail-smtp-admin' ),
 				'0.7.2',
 				false
@@ -394,10 +390,9 @@ class Area {
 		}
 		?>
 
-		<div id="wp-mail-smtp-header-temp"></div>
 		<div id="wp-mail-smtp-header">
 			<!--suppress HtmlUnknownTarget -->
-			<img class="wp-mail-smtp-header-logo" src="<?php echo esc_url( wp_mail_smtp()->assets_url ); ?>/images/logo<?php echo wp_mail_smtp()->is_white_labeled() ? '-whitelabel' : ''; ?>.svg" alt="WP Mail SMTP"/>
+			<img class="wp-mail-smtp-header-logo" src="<?php echo esc_url( wp_mail_smtp()->assets_url ); ?>/images/logo.svg" alt="WP Mail SMTP"/>
 		</div>
 
 		<?php
@@ -778,38 +773,29 @@ class Area {
 	}
 
 	/**
-	 * Add plugin action links on Plugins page (lite version only).
+	 * Add a link to Settings page of a plugin on Plugins page.
 	 *
 	 * @since 1.0.0
 	 * @since 1.5.0 Added a link to Email Log.
-	 * @since 2.0.0 Adjusted links. Process only the Lite plugin.
 	 *
-	 * @param array $links Existing plugin action links.
+	 * @param array $links
+	 * @param string $file
 	 *
-	 * @return array
+	 * @return mixed
 	 */
-	public function add_plugin_action_link( $links ) {
+	public function add_plugin_action_link( $links, $file ) {
 
-		// Do not register lite plugin action links if on pro version.
-		if ( wp_mail_smtp()->is_pro() ) {
+		// Will target both pro and lite version of a plugin.
+		if ( strpos( $file, 'wp-mail-smtp' ) === false ) {
 			return $links;
 		}
 
-		$custom['settings'] = sprintf(
-			'<a href="%s" aria-label="%s">%s</a>',
-			esc_url( $this->get_admin_page_url() ),
-			esc_attr__( 'Go to WP Mail SMTP Settings page', 'wp-mail-smtp' ),
-			esc_html__( 'Settings', 'wp-mail-smtp' )
-		);
+		$settings_link = '<a href="' . esc_url( $this->get_admin_page_url() ) . '">' . esc_html__( 'Settings', 'wp-mail-smtp' ) . '</a>';
+		$logs_link     = '<a href="' . esc_url( $this->get_admin_page_url( self::SLUG . '-logs' ) ) . '">' . esc_html__( 'Email Log', 'wp-mail-smtp' ) . '</a>';
 
-		$custom['support'] = sprintf(
-			'<a href="%1$s" aria-label="%2$s" style="font-weight:bold;">%3$s</a>',
-			esc_url( add_query_arg( 'tab','versus', $this->get_admin_page_url( Area::SLUG . '-about' ) ) ),
-			esc_attr__( 'Go to WP Mail SMTP Lite vs Pro comparison page', 'wp-mail-smtp' ),
-			esc_html__( 'Premium Support', 'wp-mail-smtp' )
-		);
+		array_unshift( $links, $settings_link, $logs_link );
 
-		return array_merge( $custom, (array) $links );
+		return $links;
 	}
 
 	/**

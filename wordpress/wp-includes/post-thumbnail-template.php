@@ -45,14 +45,14 @@ function has_post_thumbnail( $post = null ) {
  * @since 4.4.0 `$post` can be a post ID or WP_Post object.
  *
  * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global `$post`.
- * @return int|string Post thumbnail ID or empty string if the post does not exist.
+ * @return string|int Post thumbnail ID or empty string.
  */
 function get_post_thumbnail_id( $post = null ) {
 	$post = get_post( $post );
 	if ( ! $post ) {
 		return '';
 	}
-	return (int) get_post_meta( $post->ID, '_thumbnail_id', true );
+	return get_post_meta( $post->ID, '_thumbnail_id', true );
 }
 
 /**

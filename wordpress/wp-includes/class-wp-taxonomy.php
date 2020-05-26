@@ -30,17 +30,12 @@ final class WP_Taxonomy {
 	public $label;
 
 	/**
-	 * Labels object for this taxonomy.
-	 *
-	 * If not set, tag labels are inherited for non-hierarchical types
-	 * and category labels for hierarchical ones.
-	 *
-	 * @see get_taxonomy_labels()
+	 * An array of labels for this taxonomy.
 	 *
 	 * @since 4.7.0
 	 * @var object
 	 */
-	public $labels;
+	public $labels = array();
 
 	/**
 	 * A short descriptive summary of what the taxonomy is for.
@@ -283,7 +278,7 @@ final class WP_Taxonomy {
 
 		$args = array_merge( $defaults, $args );
 
-		// If not set, default to the setting for 'public'.
+		// If not set, default to the setting for public.
 		if ( null === $args['publicly_queryable'] ) {
 			$args['publicly_queryable'] = $args['public'];
 		}
@@ -295,7 +290,7 @@ final class WP_Taxonomy {
 				$args['query_var'] = sanitize_title_with_dashes( $args['query_var'] );
 			}
 		} else {
-			// Force 'query_var' to false for non-public taxonomies.
+			// Force query_var to false for non-public taxonomies.
 			$args['query_var'] = false;
 		}
 
@@ -314,27 +309,27 @@ final class WP_Taxonomy {
 			}
 		}
 
-		// If not set, default to the setting for 'public'.
+		// If not set, default to the setting for public.
 		if ( null === $args['show_ui'] ) {
 			$args['show_ui'] = $args['public'];
 		}
 
-		// If not set, default to the setting for 'show_ui'.
+		// If not set, default to the setting for show_ui.
 		if ( null === $args['show_in_menu'] || ! $args['show_ui'] ) {
 			$args['show_in_menu'] = $args['show_ui'];
 		}
 
-		// If not set, default to the setting for 'public'.
+		// If not set, default to the setting for public.
 		if ( null === $args['show_in_nav_menus'] ) {
 			$args['show_in_nav_menus'] = $args['public'];
 		}
 
-		// If not set, default to the setting for 'show_ui'.
+		// If not set, default to the setting for show_ui.
 		if ( null === $args['show_tagcloud'] ) {
 			$args['show_tagcloud'] = $args['show_ui'];
 		}
 
-		// If not set, default to the setting for 'show_ui'.
+		// If not set, default to the setting for show_ui.
 		if ( null === $args['show_in_quick_edit'] ) {
 			$args['show_in_quick_edit'] = $args['show_ui'];
 		}
@@ -351,7 +346,7 @@ final class WP_Taxonomy {
 
 		$args['object_type'] = array_unique( (array) $object_type );
 
-		// If not set, use the default meta box.
+		// If not set, use the default meta box
 		if ( null === $args['meta_box_cb'] ) {
 			if ( $args['hierarchical'] ) {
 				$args['meta_box_cb'] = 'post_categories_meta_box';

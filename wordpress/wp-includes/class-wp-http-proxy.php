@@ -174,7 +174,7 @@ class WP_HTTP_Proxy {
 		$check = @parse_url( $uri );
 
 		// Malformed URL, can not process, but this could mean ssl, so let through anyway.
-		if ( false === $check ) {
+		if ( $check === false ) {
 			return true;
 		}
 

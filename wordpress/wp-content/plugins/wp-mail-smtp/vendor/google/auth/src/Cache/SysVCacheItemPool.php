@@ -76,7 +76,7 @@ class SysVCacheItemPool implements CacheItemPoolInterface
     public function __construct($options = [])
     {
         if (! extension_loaded('sysvshm')) {
-            throw new \RuntimeException(
+            throw \RuntimeException(
                 'sysvshm extension is required to use this ItemPool');
         }
         $this->options = $options + [

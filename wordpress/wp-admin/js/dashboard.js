@@ -23,7 +23,7 @@ jQuery(document).ready( function($) {
 	 *
 	 * @param {boolean} visible Should it be visible or not.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	updateWelcomePanel = function( visible ) {
 		$.post( ajaxurl, {
@@ -72,7 +72,7 @@ jQuery(document).ready( function($) {
 	 *
 	 * @param {string} el Optional. Widget to fetch or none to update all.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	window.ajaxPopulateWidgets = function(el) {
 		/**
@@ -81,7 +81,7 @@ jQuery(document).ready( function($) {
 		 * @param {number} i Number of half-seconds to use as the timeout.
 		 * @param {string} id ID of the element which is going to be checked for changes.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		function show(i, id) {
 			var p, e = $('#' + id + ' div.inside:visible').find('.widget-loading');
@@ -127,7 +127,7 @@ jQuery(document).ready( function($) {
 	 *
 	 * @global
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	window.quickPressLoad = function() {
 		var act = $('#quickpost-action'), t;
@@ -159,7 +159,7 @@ jQuery(document).ready( function($) {
 			/**
 			 * Highlights the latest post for one second.
 			 *
-			 * @return {void}
+			 * @returns {void}
  			 */
 			function highlightLatestPost () {
 				var latestPost = $('.drafts ul li').first();
@@ -189,7 +189,7 @@ jQuery(document).ready( function($) {
 	 *
 	 * @since 3.6.0
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	function autoResizeTextarea() {
 		// When IE8 or older is used to render this document, exit.
@@ -285,7 +285,7 @@ jQuery( function( $ ) {
 		 *
 		 * @since 4.8.0
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		init: function() {
 			if ( app.initialized ) {
@@ -319,7 +319,7 @@ jQuery( function( $ ) {
 			/**
 			 * Filters events based on entered location.
 			 *
-			 * @return {void}
+			 * @returns {void}
 			 */
 			$container.on( 'submit', '.community-events-form', function( event ) {
 				var location = $.trim( $( '#community-events-location' ).val() );
@@ -356,7 +356,7 @@ jQuery( function( $ ) {
 		 * @param {event|string} action 'show' or 'hide' to specify a state;
 		 *                              or an event object to flip between states.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		toggleLocationForm: function( action ) {
 			var $toggleButton = $( '.community-events-toggle-location' ),
@@ -401,7 +401,7 @@ jQuery( function( $ ) {
 		 *
 		 * @param {Object} requestParams REST API Request parameters object.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		getEvents: function( requestParams ) {
 			var initiatedBy,
@@ -455,7 +455,7 @@ jQuery( function( $ ) {
 		 * @param {string} initiatedBy    'user' to indicate that this was triggered manually by the user;
 		 *                                'app' to indicate it was triggered automatically by the app itself.
 		 *
-		 * @return {void}
+		 * @returns {void}
 		 */
 		renderEventsTemplate: function( templateParams, initiatedBy ) {
 			var template,

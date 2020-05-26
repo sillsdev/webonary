@@ -243,7 +243,7 @@ class WP_Network {
 				return (int) $this->blog_id;
 			}
 
-			if ( defined( 'BLOGID_CURRENT_SITE' ) ) { // Deprecated.
+			if ( defined( 'BLOGID_CURRENT_SITE' ) ) { // deprecated.
 				$this->blog_id = (string) BLOGID_CURRENT_SITE;
 
 				return (int) $this->blog_id;
@@ -407,8 +407,7 @@ class WP_Network {
 		 *
 		 * @since 3.9.0
 		 *
-		 * @param null|bool|WP_Network $network  Network value to return by path. Default null
-		 *                                       to continue retrieving the network.
+		 * @param null|bool|WP_Network $network  Network value to return by path.
 		 * @param string               $domain   The requested domain.
 		 * @param string               $path     The requested path, in full.
 		 * @param int|null             $segments The suggested number of paths to consult.

@@ -55,8 +55,7 @@ class WP_Filesystem_Base {
 	 */
 	public function abspath() {
 		$folder = $this->find_folder( ABSPATH );
-		// Perhaps the FTP folder is rooted at the WordPress install.
-		// Check for wp-includes folder in root. Could have some false positives, but rare.
+		// Perhaps the FTP folder is rooted at the WordPress install, Check for wp-includes folder in root, Could have some false positives, but rare.
 		if ( ! $folder && $this->is_dir( '/' . WPINC ) ) {
 			$folder = '/';
 		}
@@ -97,7 +96,7 @@ class WP_Filesystem_Base {
 	public function wp_themes_dir( $theme = false ) {
 		$theme_root = get_theme_root( $theme );
 
-		// Account for relative theme roots.
+		// Account for relative theme roots
 		if ( '/themes' == $theme_root || ! is_dir( $theme_root ) ) {
 			$theme_root = WP_CONTENT_DIR . $theme_root;
 		}
@@ -183,7 +182,7 @@ class WP_Filesystem_Base {
 				'FTP_LANG_DIR'    => WP_LANG_DIR,
 			);
 
-			// Direct matches ( folder = CONSTANT/ ).
+			// Direct matches ( folder = CONSTANT/ )
 			foreach ( $constant_overrides as $constant => $dir ) {
 				if ( ! defined( $constant ) ) {
 					continue;
@@ -193,12 +192,12 @@ class WP_Filesystem_Base {
 				}
 			}
 
-			// Prefix matches ( folder = CONSTANT/subdir ),
+			// Prefix Matches ( folder = CONSTANT/subdir )
 			foreach ( $constant_overrides as $constant => $dir ) {
 				if ( ! defined( $constant ) ) {
 					continue;
 				}
-				if ( 0 === stripos( $folder, $dir ) ) { // $folder starts with $dir.
+				if ( 0 === stripos( $folder, $dir ) ) { // $folder starts with $dir
 					$potential_folder = preg_replace( '#^' . preg_quote( $dir, '#' ) . '/#i', trailingslashit( constant( $constant ) ), $folder );
 					$potential_folder = trailingslashit( $potential_folder );
 
@@ -209,12 +208,12 @@ class WP_Filesystem_Base {
 				}
 			}
 		} elseif ( 'direct' == $this->method ) {
-			$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation.
+			$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation
 			return trailingslashit( $folder );
 		}
 
-		$folder = preg_replace( '|^([a-z]{1}):|i', '', $folder ); // Strip out Windows drive letter if it's there.
-		$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation.
+		$folder = preg_replace( '|^([a-z]{1}):|i', '', $folder ); // Strip out windows drive letter if it's there.
+		$folder = str_replace( '\\', '/', $folder ); // Windows path sanitisation
 
 		if ( isset( $this->cache[ $folder ] ) ) {
 			return $this->cache[ $folder ];
@@ -241,7 +240,7 @@ class WP_Filesystem_Base {
 	 *
 	 * @param string $folder The folder to locate.
 	 * @param string $base   The folder to start searching from.
-	 * @param bool   $loop   If the function has recursed. Internal use only.
+	 * @param bool   $loop   If the function has recursed, Internal use only.
 	 * @return string|false The location of the remote path, false to cease looping.
 	 */
 	public function search_for_folder( $folder, $base = '.', $loop = false ) {
@@ -304,7 +303,7 @@ class WP_Filesystem_Base {
 		}
 
 		// Prevent this function from looping again.
-		// No need to proceed if we've just searched in `/`.
+		// No need to proceed if we've just searched in /
 		if ( $loop || '/' == $base ) {
 			return false;
 		}
@@ -320,7 +319,7 @@ class WP_Filesystem_Base {
 	 *
 	 * From the PHP documentation page for fileperms().
 	 *
-	 * @link https://www.php.net/manual/en/function.fileperms.php
+	 * @link https://secure.php.net/manual/en/function.fileperms.php
 	 *
 	 * @since 2.5.0
 	 *
@@ -329,39 +328,39 @@ class WP_Filesystem_Base {
 	 */
 	public function gethchmod( $file ) {
 		$perms = intval( $this->getchmod( $file ), 8 );
-		if ( ( $perms & 0xC000 ) == 0xC000 ) { // Socket.
+		if ( ( $perms & 0xC000 ) == 0xC000 ) { // Socket
 			$info = 's';
-		} elseif ( ( $perms & 0xA000 ) == 0xA000 ) { // Symbolic Link.
+		} elseif ( ( $perms & 0xA000 ) == 0xA000 ) { // Symbolic Link
 			$info = 'l';
-		} elseif ( ( $perms & 0x8000 ) == 0x8000 ) { // Regular.
+		} elseif ( ( $perms & 0x8000 ) == 0x8000 ) { // Regular
 			$info = '-';
-		} elseif ( ( $perms & 0x6000 ) == 0x6000 ) { // Block special.
+		} elseif ( ( $perms & 0x6000 ) == 0x6000 ) { // Block special
 			$info = 'b';
-		} elseif ( ( $perms & 0x4000 ) == 0x4000 ) { // Directory.
+		} elseif ( ( $perms & 0x4000 ) == 0x4000 ) { // Directory
 			$info = 'd';
-		} elseif ( ( $perms & 0x2000 ) == 0x2000 ) { // Character special.
+		} elseif ( ( $perms & 0x2000 ) == 0x2000 ) { // Character special
 			$info = 'c';
-		} elseif ( ( $perms & 0x1000 ) == 0x1000 ) { // FIFO pipe.
+		} elseif ( ( $perms & 0x1000 ) == 0x1000 ) { // FIFO pipe
 			$info = 'p';
-		} else { // Unknown.
+		} else { // Unknown
 			$info = 'u';
 		}
 
-		// Owner.
+		// Owner
 		$info .= ( ( $perms & 0x0100 ) ? 'r' : '-' );
 		$info .= ( ( $perms & 0x0080 ) ? 'w' : '-' );
 		$info .= ( ( $perms & 0x0040 ) ?
 					( ( $perms & 0x0800 ) ? 's' : 'x' ) :
 					( ( $perms & 0x0800 ) ? 'S' : '-' ) );
 
-		// Group.
+		// Group
 		$info .= ( ( $perms & 0x0020 ) ? 'r' : '-' );
 		$info .= ( ( $perms & 0x0010 ) ? 'w' : '-' );
 		$info .= ( ( $perms & 0x0008 ) ?
 					( ( $perms & 0x0400 ) ? 's' : 'x' ) :
 					( ( $perms & 0x0400 ) ? 'S' : '-' ) );
 
-		// World.
+		// World
 		$info .= ( ( $perms & 0x0004 ) ? 'r' : '-' );
 		$info .= ( ( $perms & 0x0002 ) ? 'w' : '-' );
 		$info .= ( ( $perms & 0x0001 ) ?
@@ -388,7 +387,7 @@ class WP_Filesystem_Base {
 	 * Converts '-rw-r--r--' to 0644
 	 * From "info at rvgate dot nl"'s comment on the PHP documentation for chmod()
 	 *
-	 * @link https://www.php.net/manual/en/function.chmod.php#49614
+	 * @link https://secure.php.net/manual/en/function.chmod.php#49614
 	 *
 	 * @since 2.5.0
 	 *
@@ -556,7 +555,7 @@ class WP_Filesystem_Base {
 	 * @param string    $file      Path to the file.
 	 * @param int|false $mode      Optional. The permissions as octal number, usually 0644 for files,
 	 *                             0755 for directories. Default false.
-	 * @param bool      $recursive Optional. If set to true, changes file permissions recursively.
+	 * @param bool      $recursive Optional. If set to true, changes file group recursively.
 	 *                             Default false.
 	 * @return bool True on success, false on failure.
 	 */
@@ -631,7 +630,7 @@ class WP_Filesystem_Base {
 	 * @abstract
 	 *
 	 * @param string       $file      Path to the file or directory.
-	 * @param bool         $recursive Optional. If set to true, deletes files and folders recursively.
+	 * @param bool         $recursive Optional. If set to true, changes file group recursively.
 	 *                                Default false.
 	 * @param string|false $type      Type of resource. 'f' for file, 'd' for directory.
 	 *                                Default false.
@@ -828,4 +827,4 @@ class WP_Filesystem_Base {
 		return false;
 	}
 
-}
+} // WP_Filesystem_Base

@@ -82,26 +82,26 @@ this["wp"] = this["wp"] || {}; this["wp"]["a11y"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 446);
+/******/ 	return __webpack_require__(__webpack_require__.s = 365);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 260:
+/***/ 217:
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["domReady"]; }());
 
 /***/ }),
 
-/***/ 446:
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: external {"this":["wp","domReady"]}
-var external_this_wp_domReady_ = __webpack_require__(260);
+var external_this_wp_domReady_ = __webpack_require__(217);
 var external_this_wp_domReady_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_domReady_);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/a11y/build-module/addContainer.js
@@ -110,7 +110,7 @@ var external_this_wp_domReady_default = /*#__PURE__*/__webpack_require__.n(exter
  *
  * @param {string} ariaLive Optional. Value for the 'aria-live' attribute, default 'polite'.
  *
- * @return {HTMLDivElement} The ARIA live region HTML element.
+ * @return {Object} $container The ARIA live region jQuery object.
  */
 var addContainer = function addContainer(ariaLive) {
   ariaLive = ariaLive || 'polite';
@@ -121,12 +121,7 @@ var addContainer = function addContainer(ariaLive) {
   container.setAttribute('aria-live', ariaLive);
   container.setAttribute('aria-relevant', 'additions text');
   container.setAttribute('aria-atomic', 'true');
-  var body = document.querySelector('body');
-
-  if (body) {
-    body.appendChild(container);
-  }
-
+  document.querySelector('body').appendChild(container);
   return container;
 };
 
@@ -199,11 +194,11 @@ var build_module_setup = function setup() {
   var containerAssertive = document.getElementById('a11y-speak-assertive');
 
   if (containerPolite === null) {
-    build_module_addContainer('polite');
+    containerPolite = build_module_addContainer('polite');
   }
 
   if (containerAssertive === null) {
-    build_module_addContainer('assertive');
+    containerAssertive = build_module_addContainer('assertive');
   }
 };
 /**

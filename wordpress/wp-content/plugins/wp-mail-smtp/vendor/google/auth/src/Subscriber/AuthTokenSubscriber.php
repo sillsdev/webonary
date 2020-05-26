@@ -18,7 +18,6 @@
 namespace Google\Auth\Subscriber;
 
 use Google\Auth\FetchAuthTokenInterface;
-use Google\Auth\GetQuotaProjectInterface;
 use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\RequestEvents;
 use GuzzleHttp\Event\SubscriberInterface;
@@ -114,20 +113,6 @@ class AuthTokenSubscriber implements SubscriberInterface
             if ($this->tokenCallback) {
                 call_user_func($this->tokenCallback, $this->fetcher->getCacheKey(), $auth_tokens['access_token']);
             }
-        }
-
-        if ($quotaProject = $this->getQuotaProject()) {
-            $request->setHeader(
-                GetQuotaProjectInterface::X_GOOG_USER_PROJECT_HEADER,
-                $quotaProject
-            );
-        }
-    }
-
-    private function getQuotaProject()
-    {
-        if ($this->fetcher instanceof GetQuotaProjectInterface) {
-            return $this->fetcher->getQuotaProject();
         }
     }
 }

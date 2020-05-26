@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 ?>
@@ -23,7 +23,7 @@
 		the_content(
 			sprintf(
 				wp_kses(
-					/* translators: %s: Post title. Only visible to screen readers. */
+					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentynineteen' ),
 					array(
 						'span' => array(
@@ -49,7 +49,7 @@
 	</footer><!-- .entry-footer -->
 
 	<?php if ( ! is_singular( 'attachment' ) ) : ?>
-		<?php get_template_part( 'template-parts/post/author', 'bio' ); ?>
+	<?php get_template_part( 'template-parts/post/author', 'bio' ); ?>
 	<?php endif; ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-${ID} -->

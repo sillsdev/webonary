@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Seventeen
- * @since Twenty Seventeen 1.0
+ * @since 1.0
  * @version 1.0
  */
 
@@ -16,12 +16,7 @@ get_header(); ?>
 
 	<header class="page-header">
 		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title">
-			<?php
-			/* translators: Search query. */
-			printf( __( 'Search Results for: %s', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' );
-			?>
-			</h1>
+			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 		<?php else : ?>
 			<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
 		<?php endif; ?>
@@ -32,7 +27,7 @@ get_header(); ?>
 
 		<?php
 		if ( have_posts() ) :
-			// Start the Loop.
+			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
 
@@ -43,7 +38,7 @@ get_header(); ?>
 				 */
 				get_template_part( 'template-parts/post/content', 'excerpt' );
 
-			endwhile; // End the loop.
+			endwhile; // End of the loop.
 
 			the_posts_pagination(
 				array(

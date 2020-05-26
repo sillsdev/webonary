@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2020  MiKa (http://wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2019  MiKa (http://wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -54,8 +54,7 @@
     'setup_trigger' => 'undefined',
     'setup_map_name' => 'undefined',
     'map_event' => 'no',
-    'file_select_box' => 'no',
-    'bckgrndimg' => 'no'
+		'file_select_box' => 'no'
     ), $atts));
 
 
@@ -64,50 +63,45 @@
     			$height,
     			$map_center,
     			$zoom,
-                       $map_api_key,
+                $map_api_key,
     			$file_list,
     			$file_color_list,
-			$type,
-			$jsname,
-			$marker_latlon,
-			$map_border,
-			$map_event,
-			$marker_name,
-			$marker_size,
-			$control,
-			$wms_address,
-			$wms_param,
-			$wms_attr_name,
-			$wms_type,
-			$wms_attr_url,
-			$tagged_type,
-			$tagged_filter,
-                       $tagged_filter_type,
-			$mwz,$post_markers,
-			$display_marker_name,
-			$tagged_param,
-			$tagged_color,
-			$file_title,
-			$file_link,
-			$setup_zoom,
-			$setup_layer,
-			$setup_center,
-			$setup_trigger,
-			$setup_map_name,
-			$file_select_box,
-			$bckgrndimg
-			);
+				$type,
+				$jsname,
+				$marker_latlon,
+				$map_border,
+				$map_event,
+				$marker_name,
+				$marker_size,
+				$control,
+				$wms_address,
+				$wms_param,
+				$wms_attr_name,
+				$wms_type,
+				$wms_attr_url,
+				$tagged_type,
+				$tagged_filter,
+                                $tagged_filter_type,
+				$mwz,$post_markers,
+				$display_marker_name,
+				$tagged_param,
+				$tagged_color,
+				$file_title,
+				$file_link,
+				$setup_zoom,
+				$setup_layer,
+				$setup_center,
+				$setup_trigger,
+				$setup_map_name,
+				$file_select_box
+				);
 
-    $dontShow = array('&#8243;','&#8220;');
+ 	 $dontShow = array('&#8243;','&#8220;');
 
     $lat = str_replace($dontShow, '', $sc_args->getMapCenterLat());
     $lon = str_replace($dontShow, '', $sc_args->getMapCenterLon());
 
-    $zoom = $sc_args->getMapZoom();
-
-    $map_autocenter = $sc_args->isAutocenter();
- 
-    
+    $zoom = str_replace($dontShow, '', $zoom);
     $array_control = $sc_args->getMapControl();
     $width_str = $sc_args->getMapWidth_str();
     $height_str = $sc_args->getMapHeight_str();
@@ -158,20 +152,7 @@
       $MapName = 'map_ol3js_' . $MapCounter;
 
 		// $setup_map_name is a class name - to control several maps at once map_name need not to be unique on one page
-if ($bckgrndimg != 'no'){
 		$output = '
-
-				<div id="' . $MapName . '" class="map ' . $setup_map_name . '" data-map_name="' . $setup_map_name . '" data-map="' . $MapName . '" style="width:' . $width_str . '; height:' . $height_str . '; overflow:hidden;border:' . $map_border . '; background-image: url('.OSM_PLUGIN_URL.$bckgrndimg.'); background-repeat: no-repeat; background-position: center; position: relative;" >
-				  <div id="' . $MapName . '_popup" class="ol-popup" >
-					<a href="#" id="' . $MapName . '_popup-closer" class="ol-popup-closer"></a>
-					<div id="' . $MapName . '_popup-content" ></div>
-				  </div>
-				</div>
-			';
-}
-else{
-		$output = '
-
 				<div id="' . $MapName . '" class="map ' . $setup_map_name . '" data-map_name="' . $setup_map_name . '" data-map="' . $MapName . '" style="width:' . $width_str . '; height:' . $height_str . '; overflow:hidden;border:' . $map_border . ';" >
 				  <div id="' . $MapName . '_popup" class="ol-popup" >
 					<a href="#" id="' . $MapName . '_popup-closer" class="ol-popup-closer"></a>
@@ -179,7 +160,6 @@ else{
 				  </div>
 				</div>
 			';
-}
 
 
       if( $OL3_LIBS_LOADED == 0) {
@@ -189,7 +169,7 @@ else{
 				<link rel="stylesheet" href="' . Osm_OL_3_Ext_CSS . '" type="text/css">
 				<link rel="stylesheet" href="' . Osm_map_CSS. '" type="text/css">
 				<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-                                <script src="' . OSM_PLUGIN_URL .'js/polyfill/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+				<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 
 				<script src="' . Osm_OL_3_LibraryLocation .'" type="text/javascript"></script>
 				<script src="' . Osm_OL_3_Ext_LibraryLocation .'" type="text/javascript"></script>
@@ -398,7 +378,7 @@ else{
 			  }
 			} // $file_list != "NoFile"
 			
-		  if (($tagged_type != "no") && ($tagged_param == "cluster")){
+		  if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")) && ($tagged_param == "cluster")){
 			$tagged_icon = new cOsm_icon($default_icon->getIconName());
 
 			$MarkerArray = OSM::OL3_createMarkerList('osm_l', $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', $tagged_filter_type);
@@ -407,6 +387,7 @@ else{
 			$Counter = 0;
 			$output .= '
 			  var vectorMarkerSource = new ol.source.Vector({});
+
 			  ';
 
 
@@ -487,7 +468,7 @@ else{
 		   }
 
 
-		if (($tagged_type != "no") && ($tagged_param != "cluster")){
+		if ((($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")) && ($tagged_param != "cluster")){
 			$tagged_icon = new cOsm_icon($default_icon->getIconName());
 
 			$MarkerArray = OSM::OL3_createMarkerList('osm_l', $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', $tagged_filter_type);
@@ -644,26 +625,9 @@ else{
       extent: [-11243808.051695308, 1.202710291, 9561377.290892059, 6852382.107835932]
     }),
 			new ol.control.FullScreen()
-		  ]; '. PHP_EOL ;
+		  ]; ' . PHP_EOL;
 
-
-    if (($map_autocenter == true) && (($file_list != "NoFile"))) {
-    $output.= '
-      var extension'.$MapCounter.' = ol.extent.createEmpty();
-      var curZoom'.$MapCounter.' = '.$MapName.'.getView().getZoom();
-
-      '.$MapName.'.getLayers().forEach(function(layer){
-         if(!layer.values_.id) {
-            layer.once("change", function(e){
-               ol.extent.extend(extension'.$MapCounter.', (layer.getSource().getExtent()));
-               '.$MapName.'.getView().fit(extension'. $MapCounter.', {padding: [50, 50, 50, 50]});
-            });
-         }
-      });
-    '. PHP_EOL;
-    }; 
-
-		  //eventhanlder for metabox 
+		  //eventhanlder for metabox
 		  include('osm-sc-osm_map_v3_backend.php');
 
 		if ($sc_args->issetFullScreen()){

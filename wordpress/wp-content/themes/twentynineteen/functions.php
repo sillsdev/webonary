@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 /**
@@ -74,8 +74,6 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 				'comment-list',
 				'gallery',
 				'caption',
-				'script',
-				'style',
 			)
 		);
 
@@ -145,12 +143,12 @@ if ( ! function_exists( 'twentynineteen_setup' ) ) :
 			'editor-color-palette',
 			array(
 				array(
-					'name'  => 'default' === get_theme_mod( 'primary_color' ) ? __( 'Blue', 'twentynineteen' ) : null,
+					'name'  => __( 'Primary', 'twentynineteen' ),
 					'slug'  => 'primary',
 					'color' => twentynineteen_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? 199 : get_theme_mod( 'primary_color_hue', 199 ), 100, 33 ),
 				),
 				array(
-					'name'  => 'default' === get_theme_mod( 'primary_color' ) ? __( 'Dark Blue', 'twentynineteen' ) : null,
+					'name'  => __( 'Secondary', 'twentynineteen' ),
 					'slug'  => 'secondary',
 					'color' => twentynineteen_hsl_hex( 'default' === get_theme_mod( 'primary_color' ) ? 199 : get_theme_mod( 'primary_color_hue', 199 ), 100, 23 ),
 				),
@@ -223,9 +221,11 @@ function twentynineteen_scripts() {
 
 	wp_style_add_data( 'twentynineteen-style', 'rtl', 'replace' );
 
+	wp_enqueue_script( 'twentynineteen-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
 	if ( has_nav_menu( 'menu-1' ) ) {
-		wp_enqueue_script( 'twentynineteen-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '20181214', true );
-		wp_enqueue_script( 'twentynineteen-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '20181231', true );
+		wp_enqueue_script( 'twentynineteen-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.0', true );
+		wp_enqueue_script( 'twentynineteen-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(), '1.0', true );
 	}
 
 	wp_enqueue_style( 'twentynineteen-print-style', get_template_directory_uri() . '/print.css', array(), wp_get_theme()->get( 'Version' ), 'print' );
@@ -237,29 +237,11 @@ function twentynineteen_scripts() {
 add_action( 'wp_enqueue_scripts', 'twentynineteen_scripts' );
 
 /**
- * Fix skip link focus in IE11.
- *
- * This does not enqueue the script because it is tiny and because it is only for IE11,
- * thus it does not warrant having an entire dedicated blocking script being loaded.
- *
- * @link https://git.io/vWdr2
- */
-function twentynineteen_skip_link_focus_fix() {
-	// The following is minified via `terser --compress --mangle -- js/skip-link-focus-fix.js`.
-	?>
-	<script>
-	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
-	</script>
-	<?php
-}
-add_action( 'wp_print_footer_scripts', 'twentynineteen_skip_link_focus_fix' );
-
-/**
  * Enqueue supplemental block editor styles.
  */
 function twentynineteen_editor_customizer_styles() {
 
-	wp_enqueue_style( 'twentynineteen-editor-customizer-styles', get_theme_file_uri( '/style-editor-customizer.css' ), false, '1.1', 'all' );
+	wp_enqueue_style( 'twentynineteen-editor-customizer-styles', get_theme_file_uri( '/style-editor-customizer.css' ), false, '1.0', 'all' );
 
 	if ( 'custom' === get_theme_mod( 'primary_color' ) ) {
 		// Include color patterns.
@@ -281,13 +263,14 @@ function twentynineteen_colors_css_wrap() {
 
 	require_once get_parent_theme_file_path( '/inc/color-patterns.php' );
 
-	$primary_color = 199;
-	if ( 'default' !== get_theme_mod( 'primary_color', 'default' ) ) {
-		$primary_color = get_theme_mod( 'primary_color_hue', 199 );
+	if ( 'default' === get_theme_mod( 'primary_color', 'default' ) ) {
+		$primary_color = 199;
+	} else {
+		$primary_color = absint( get_theme_mod( 'primary_color_hue', 199 ) );
 	}
 	?>
 
-	<style type="text/css" id="custom-theme-colors" <?php echo is_customize_preview() ? 'data-hue="' . absint( $primary_color ) . '"' : ''; ?>>
+	<style type="text/css" id="custom-theme-colors" <?php echo is_customize_preview() ? 'data-hue="' . $primary_color . '"' : ''; ?>>
 		<?php echo twentynineteen_custom_colors_css(); ?>
 	</style>
 	<?php
@@ -305,19 +288,14 @@ require get_template_directory() . '/classes/class-twentynineteen-svg-icons.php'
 require get_template_directory() . '/classes/class-twentynineteen-walker-comment.php';
 
 /**
- * Common theme functions.
+ * Enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/helper-functions.php';
+require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * SVG Icons related functions.
  */
 require get_template_directory() . '/inc/icon-functions.php';
-
-/**
- * Enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Custom template tags for the theme.

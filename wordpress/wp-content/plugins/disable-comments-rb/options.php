@@ -1,9 +1,9 @@
 <?php
 /*  
  * RB 	Disable Comments
- * Version:           1.0.9 - 38451
+ * Version:           1.0.6 - 78233
  * Author:            RBS
- * Date:              03 02 2020 12:11:29 GMT
+ * Date:              Thu, 24 Aug 2017 12:11:29 GMT
  */
 
 if( !defined('WPINC') || !defined("ABSPATH") ){

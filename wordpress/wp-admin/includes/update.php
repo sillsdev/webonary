@@ -9,8 +9,6 @@
 /**
  * Selects the first update version from the update_core option.
  *
- * @since 2.7.0
- *
  * @return object|array|false The response from the API on success, false on failure.
  */
 function get_preferred_from_update_core() {
@@ -25,9 +23,7 @@ function get_preferred_from_update_core() {
 }
 
 /**
- * Gets available core updates.
- *
- * @since 2.7.0
+ * Get available core updates.
  *
  * @param array $options Set $options['dismissed'] to true to show dismissed upgrades too,
  *                       set $options['available'] to false to skip not-dismissed updates.
@@ -56,7 +52,7 @@ function get_core_updates( $options = array() ) {
 	$updates = $from_api->updates;
 	$result  = array();
 	foreach ( $updates as $update ) {
-		if ( 'autoupdate' === $update->response ) {
+		if ( $update->response == 'autoupdate' ) {
 			continue;
 		}
 
@@ -76,13 +72,13 @@ function get_core_updates( $options = array() ) {
 }
 
 /**
- * Gets the best available (and enabled) Auto-Update for WordPress core.
+ * Gets the best available (and enabled) Auto-Update for WordPress Core.
  *
- * If there's 1.2.3 and 1.3 on offer, it'll choose 1.3 if the installation allows it, else, 1.2.3.
+ * If there's 1.2.3 and 1.3 on offer, it'll choose 1.3 if the installation allows it, else, 1.2.3
  *
  * @since 3.7.0
  *
- * @return object|false The core update offering on success, false on failure.
+ * @return array|false False on failure, otherwise the core update offering.
  */
 function find_core_auto_update() {
 	$updates = get_site_transient( 'update_core' );
@@ -90,7 +86,7 @@ function find_core_auto_update() {
 		return false;
 	}
 
-	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	include_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
 
 	$auto_update = false;
 	$upgrader    = new WP_Automatic_Updater;
@@ -117,7 +113,7 @@ function find_core_auto_update() {
  *
  * @param string $version Version string to query.
  * @param string $locale  Locale to query.
- * @return array|false An array of checksums on success, false on failure.
+ * @return bool|array False on failure. An array of checksums on success.
  */
 function get_core_checksums( $version, $locale ) {
 	$http_url = 'http://api.wordpress.org/core/checksums/1.0/?' . http_build_query( compact( 'version', 'locale' ), null, '&' );
@@ -160,10 +156,6 @@ function get_core_checksums( $version, $locale ) {
 }
 
 /**
- * Dismisses core update.
- *
- * @since 2.7.0
- *
  * @param object $update
  * @return bool
  */
@@ -174,10 +166,6 @@ function dismiss_core_update( $update ) {
 }
 
 /**
- * Undismisses core update.
- *
- * @since 2.7.0
- *
  * @param string $version
  * @param string $locale
  * @return bool
@@ -195,13 +183,9 @@ function undismiss_core_update( $version, $locale ) {
 }
 
 /**
- * Finds the available update for WordPress core.
- *
- * @since 2.7.0
- *
- * @param string $version Version string to find the update for.
- * @param string $locale  Locale to find the update for.
- * @return object|false The core update offering on success, false on failure.
+ * @param string $version
+ * @param string $locale
+ * @return object|false
  */
 function find_core_update( $version, $locale ) {
 	$from_api = get_site_transient( 'update_core' );
@@ -220,8 +204,6 @@ function find_core_update( $version, $locale ) {
 }
 
 /**
- * @since 2.3.0
- *
  * @param string $msg
  * @return string
  */
@@ -273,10 +255,8 @@ function core_update_footer( $msg = '' ) {
 }
 
 /**
- * @since 2.3.0
- *
  * @global string $pagenow
- * @return void|false
+ * @return false|void
  */
 function update_nag() {
 	if ( is_multisite() && ! current_user_can( 'update_core' ) ) {
@@ -291,7 +271,7 @@ function update_nag() {
 
 	$cur = get_preferred_from_update_core();
 
-	if ( ! isset( $cur->response ) || 'upgrade' !== $cur->response ) {
+	if ( ! isset( $cur->response ) || $cur->response != 'upgrade' ) {
 		return false;
 	}
 
@@ -321,11 +301,7 @@ function update_nag() {
 	echo "<div class='update-nag'>$msg</div>";
 }
 
-/**
- * Displays WordPress version and active theme in the 'At a Glance' dashboard widget.
- *
- * @since 2.5.0
- */
+// Called directly from dashboard
 function update_right_now_message() {
 	$theme_name = wp_get_theme();
 	if ( current_user_can( 'switch_themes' ) ) {
@@ -337,7 +313,7 @@ function update_right_now_message() {
 	if ( current_user_can( 'update_core' ) ) {
 		$cur = get_preferred_from_update_core();
 
-		if ( isset( $cur->response ) && 'upgrade' === $cur->response ) {
+		if ( isset( $cur->response ) && $cur->response == 'upgrade' ) {
 			$msg .= sprintf(
 				'<a href="%s" class="button" aria-describedby="wp-version">%s</a> ',
 				network_admin_url( 'update-core.php' ),
@@ -405,11 +381,9 @@ function wp_plugin_update_rows() {
 /**
  * Displays update information for a plugin.
  *
- * @since 2.3.0
- *
  * @param string $file        Plugin basename.
  * @param array  $plugin_data Plugin information.
- * @return void|false
+ * @return false|void
  */
 function wp_plugin_update_row( $file, $plugin_data ) {
 	$current = get_site_transient( 'update_plugins' );
@@ -566,8 +540,6 @@ function wp_plugin_update_row( $file, $plugin_data ) {
 }
 
 /**
- * @since 2.9.0
- *
  * @return array
  */
 function get_theme_updates() {
@@ -607,11 +579,9 @@ function wp_theme_update_rows() {
 /**
  * Displays update information for a theme.
  *
- * @since 3.1.0
- *
  * @param string   $theme_key Theme stylesheet.
  * @param WP_Theme $theme     Theme object.
- * @return void|false
+ * @return false|void
  */
 function wp_theme_update_row( $theme_key, $theme ) {
 	$current = get_site_transient( 'update_themes' );
@@ -717,14 +687,11 @@ function wp_theme_update_row( $theme_key, $theme ) {
 }
 
 /**
- * @since 2.7.0
- *
  * @global int $upgrading
- * @return void|false
+ * @return false|void
  */
 function maintenance_nag() {
-	// Include an unmodified $wp_version.
-	require ABSPATH . WPINC . '/version.php';
+	include( ABSPATH . WPINC . '/version.php' ); // include an unmodified $wp_version
 	global $upgrading;
 	$nag = isset( $upgrading );
 	if ( ! $nag ) {

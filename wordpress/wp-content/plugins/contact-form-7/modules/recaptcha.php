@@ -70,63 +70,56 @@ function wpcf7_recaptcha_onload_script() {
 
 ?>
 <script type="text/javascript">
-( function( sitekey, actions ) {
+( function( grecaptcha, sitekey, actions ) {
 
-	document.addEventListener( 'DOMContentLoaded', function( event ) {
-		var wpcf7recaptcha = {
+	var wpcf7recaptcha = {
 
-			execute: function( action ) {
-				grecaptcha.execute(
-					sitekey,
-					{ action: action }
-				).then( function( token ) {
-					var event = new CustomEvent( 'wpcf7grecaptchaexecuted', {
-						detail: {
-							action: action,
-							token: token,
-						},
-					} );
+		execute: function( action ) {
+			grecaptcha.execute(
+				sitekey,
+				{ action: action }
+			).then( function( token ) {
+				var forms = document.getElementsByTagName( 'form' );
 
-					document.dispatchEvent( event );
-				} );
-			},
+				for ( var i = 0; i < forms.length; i++ ) {
+					var fields = forms[ i ].getElementsByTagName( 'input' );
 
-			executeOnHomepage: function() {
-				wpcf7recaptcha.execute( actions[ 'homepage' ] );
-			},
+					for ( var j = 0; j < fields.length; j++ ) {
+						var field = fields[ j ];
 
-			executeOnContactform: function() {
-				wpcf7recaptcha.execute( actions[ 'contactform' ] );
-			},
+						if ( 'g-recaptcha-response' === field.getAttribute( 'name' ) ) {
+							field.setAttribute( 'value', token );
+							break;
+						}
+					}
+				}
+			} );
+		},
 
-		};
+		executeOnHomepage: function() {
+			wpcf7recaptcha.execute( actions[ 'homepage' ] );
+		},
 
-		grecaptcha.ready(
-			wpcf7recaptcha.executeOnHomepage
-		);
+		executeOnContactform: function() {
+			wpcf7recaptcha.execute( actions[ 'contactform' ] );
+		},
 
-		document.addEventListener( 'change',
-			wpcf7recaptcha.executeOnContactform, false
-		);
+	};
 
-		document.addEventListener( 'wpcf7submit',
-			wpcf7recaptcha.executeOnHomepage, false
-		);
+	grecaptcha.ready(
+		wpcf7recaptcha.executeOnHomepage
+	);
 
-	} );
+	document.addEventListener( 'change',
+		wpcf7recaptcha.executeOnContactform, false
+	);
 
-	document.addEventListener( 'wpcf7grecaptchaexecuted', function( event ) {
-		var fields = document.querySelectorAll(
-			"form.wpcf7-form input[name='g-recaptcha-response']"
-		);
-
-		for ( var i = 0; i < fields.length; i++ ) {
-			var field = fields[ i ];
-			field.setAttribute( 'value', event.detail.token );
-		}
-	} );
+	document.addEventListener( 'wpcf7submit',
+		wpcf7recaptcha.executeOnHomepage, false
+	);
 
 } )(
+	grecaptcha,
 	'<?php echo esc_js( $service->get_sitekey() ); ?>',
 	<?php echo json_encode( $actions ), "\n"; ?>
 );
@@ -201,7 +194,7 @@ function wpcf7_upgrade_recaptcha_v2_v3( $new_ver, $old_ver ) {
 
 	$service = WPCF7_RECAPTCHA::get_instance();
 
-	if ( ! $service->is_active() or $service->get_global_sitekey() ) {
+	if ( ! $service->is_active() ) {
 		return;
 	}
 
@@ -426,7 +419,7 @@ class WPCF7_RECAPTCHA extends WPCF7_Service {
 		$url = menu_page_url( 'wpcf7-integration', false );
 		$url = add_query_arg( array( 'service' => 'recaptcha' ), $url );
 
-		if ( ! empty( $args ) ) {
+		if ( ! empty( $args) ) {
 			$url = add_query_arg( $args, $url );
 		}
 
@@ -481,7 +474,7 @@ class WPCF7_RECAPTCHA extends WPCF7_Service {
 		if ( 'invalid' == $message ) {
 			echo sprintf(
 				'<div class="error notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
-				esc_html( __( "Error", 'contact-form-7' ) ),
+				esc_html( __( "ERROR", 'contact-form-7' ) ),
 				esc_html( __( "Invalid key values.", 'contact-form-7' ) ) );
 		}
 

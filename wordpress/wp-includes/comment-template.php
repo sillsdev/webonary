@@ -9,7 +9,7 @@
  */
 
 /**
- * Retrieves the author of the current comment.
+ * Retrieve the author of the current comment.
  *
  * If the comment has an empty comment_author field, then 'Anonymous' person is
  * assumed.
@@ -74,7 +74,7 @@ function comment_author( $comment_ID = 0 ) {
 }
 
 /**
- * Retrieves the email of the author of the current comment.
+ * Retrieve the email of the author of the current comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -100,7 +100,7 @@ function get_comment_author_email( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the email of the author of the current global $comment.
+ * Display the email of the author of the current global $comment.
  *
  * Care should be taken to protect the email address and assure that email
  * harvesters do not capture your commenter's email address. Most assume that
@@ -131,7 +131,7 @@ function comment_author_email( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the HTML email link to the author of the current comment.
+ * Display the html email link to the author of the current comment.
  *
  * Care should be taken to protect the email address and assure that email
  * harvesters do not capture your commenter's email address. Most assume that
@@ -156,7 +156,7 @@ function comment_author_email_link( $linktext = '', $before = '', $after = '', $
 }
 
 /**
- * Returns the HTML email link to the author of the current comment.
+ * Return the html email link to the author of the current comment.
  *
  * Care should be taken to protect the email address and assure that email
  * harvesters do not capture your commenter's email address. Most assume that
@@ -192,8 +192,8 @@ function get_comment_author_email_link( $linktext = '', $before = '', $after = '
 	 */
 	$email = apply_filters( 'comment_email', $comment->comment_author_email, $comment );
 
-	if ( ( ! empty( $email ) ) && ( '@' !== $email ) ) {
-		$display = ( '' != $linktext ) ? $linktext : $email;
+	if ( ( ! empty( $email ) ) && ( $email != '@' ) ) {
+		$display = ( $linktext != '' ) ? $linktext : $email;
 		$return  = $before;
 		$return .= sprintf( '<a href="%1$s">%2$s</a>', esc_url( 'mailto:' . $email ), esc_html( $display ) );
 		$return .= $after;
@@ -204,7 +204,7 @@ function get_comment_author_email_link( $linktext = '', $before = '', $after = '
 }
 
 /**
- * Retrieves the HTML link to the URL of the author of the current comment.
+ * Retrieve the HTML link to the URL of the author of the current comment.
  *
  * Both get_comment_author_url() and get_comment_author() rely on get_comment(),
  * which falls back to the global comment variable if the $comment_ID argument is empty.
@@ -242,7 +242,7 @@ function get_comment_author_link( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the HTML link to the URL of the author of the current comment.
+ * Display the html link to the url of the author of the current comment.
  *
  * @since 0.71
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -281,7 +281,7 @@ function get_comment_author_IP( $comment_ID = 0 ) { // phpcs:ignore WordPress.Na
 }
 
 /**
- * Displays the IP address of the author of the current comment.
+ * Display the IP address of the author of the current comment.
  *
  * @since 0.71
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -294,14 +294,14 @@ function comment_author_IP( $comment_ID = 0 ) { // phpcs:ignore WordPress.Naming
 }
 
 /**
- * Retrieves the URL of the author of the current comment, not linked.
+ * Retrieve the url of the author of the current comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
  *
  * @param int|WP_Comment $comment_ID Optional. WP_Comment or the ID of the comment for which to get the author's URL.
  *                                   Default current comment.
- * @return string Comment author URL, if provided, an empty string otherwise.
+ * @return string Comment author URL.
  */
 function get_comment_author_url( $comment_ID = 0 ) {
 	$comment = get_comment( $comment_ID );
@@ -327,7 +327,7 @@ function get_comment_author_url( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the URL of the author of the current comment, not linked.
+ * Display the url of the author of the current comment.
  *
  * @since 0.71
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -352,7 +352,7 @@ function comment_author_url( $comment_ID = 0 ) {
 }
 
 /**
- * Retrieves the HTML link of the URL of the author of the current comment.
+ * Retrieves the HTML link of the url of the author of the current comment.
  *
  * $linktext parameter is only used if the URL does not exist for the comment
  * author. If the URL does exist then the URL will be used and the $linktext
@@ -376,7 +376,7 @@ function comment_author_url( $comment_ID = 0 ) {
  */
 function get_comment_author_url_link( $linktext = '', $before = '', $after = '', $comment = 0 ) {
 	$url     = get_comment_author_url( $comment );
-	$display = ( '' != $linktext ) ? $linktext : $url;
+	$display = ( $linktext != '' ) ? $linktext : $url;
 	$display = str_replace( 'http://www.', '', $display );
 	$display = str_replace( 'http://', '', $display );
 
@@ -397,7 +397,7 @@ function get_comment_author_url_link( $linktext = '', $before = '', $after = '',
 }
 
 /**
- * Displays the HTML link of the URL of the author of the current comment.
+ * Displays the HTML link of the url of the author of the current comment.
  *
  * @since 0.71
  * @since 4.6.0 Added the `$comment` parameter.
@@ -427,12 +427,11 @@ function comment_author_url_link( $linktext = '', $before = '', $after = '', $co
  * @param int|WP_Post    $post_id  Post ID or WP_Post object. Default current post.
  * @param bool           $echo     Optional. Whether to echo or return the output.
  *                                 Default true.
- * @return void|string Void if `$echo` argument is true, comment classes if `$echo` is false.
+ * @return string If `$echo` is false, the class will be returned. Void otherwise.
  */
 function comment_class( $class = '', $comment = null, $post_id = null, $echo = true ) {
-	// Separates classes with a single space, collates classes for comment DIV.
+	// Separates classes with a single space, collates classes for comment DIV
 	$class = 'class="' . join( ' ', get_comment_class( $class, $comment, $post_id ) ) . '"';
-
 	if ( $echo ) {
 		echo $class;
 	} else {
@@ -453,7 +452,7 @@ function comment_class( $class = '', $comment = null, $post_id = null, $echo = t
  * @param string|array   $class      Optional. One or more classes to add to the class list. Default empty.
  * @param int|WP_Comment $comment_id Comment ID or WP_Comment object. Default current comment.
  * @param int|WP_Post    $post_id    Post ID or WP_Post object. Default current post.
- * @return string[] An array of classes.
+ * @return array An array of classes.
  */
 function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 	global $comment_alt, $comment_depth, $comment_thread_alt;
@@ -465,7 +464,7 @@ function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 		return $classes;
 	}
 
-	// Get the comment type (comment, trackback).
+	// Get the comment type (comment, trackback),
 	$classes[] = ( empty( $comment->comment_type ) ) ? 'comment' : $comment->comment_type;
 
 	// Add classes for comment authors that are registered users.
@@ -473,7 +472,7 @@ function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 	if ( $user ) {
 		$classes[] = 'byuser';
 		$classes[] = 'comment-author-' . sanitize_html_class( $user->user_nicename, $comment->user_id );
-		// For comment authors who are the author of the post.
+		// For comment authors who are the author of the post
 		$post = get_post( $post_id );
 		if ( $post ) {
 			if ( $comment->user_id === $post->post_author ) {
@@ -501,7 +500,7 @@ function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 
 	$comment_alt++;
 
-	// Alt for top-level comments.
+	// Alt for top-level comments
 	if ( 1 == $comment_depth ) {
 		if ( $comment_thread_alt % 2 ) {
 			$classes[] = 'thread-odd';
@@ -538,22 +537,22 @@ function get_comment_class( $class = '', $comment_id = null, $post_id = null ) {
 }
 
 /**
- * Retrieves the comment date of the current comment.
+ * Retrieve the comment date of the current comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
  *
- * @param string          $format     Optional. The format of the date. Default user's setting.
+ * @param string          $d          Optional. The format of the date. Default user's setting.
  * @param int|WP_Comment  $comment_ID WP_Comment or ID of the comment for which to get the date.
  *                                    Default current comment.
  * @return string The comment's date.
  */
-function get_comment_date( $format = '', $comment_ID = 0 ) {
+function get_comment_date( $d = '', $comment_ID = 0 ) {
 	$comment = get_comment( $comment_ID );
-	if ( '' == $format ) {
+	if ( '' == $d ) {
 		$date = mysql2date( get_option( 'date_format' ), $comment->comment_date );
 	} else {
-		$date = mysql2date( $format, $comment->comment_date );
+		$date = mysql2date( $d, $comment->comment_date );
 	}
 	/**
 	 * Filters the returned comment date.
@@ -561,24 +560,24 @@ function get_comment_date( $format = '', $comment_ID = 0 ) {
 	 * @since 1.5.0
 	 *
 	 * @param string|int $date    Formatted date string or Unix timestamp.
-	 * @param string     $format  The format of the date.
+	 * @param string     $d       The format of the date.
 	 * @param WP_Comment $comment The comment object.
 	 */
-	return apply_filters( 'get_comment_date', $date, $format, $comment );
+	return apply_filters( 'get_comment_date', $date, $d, $comment );
 }
 
 /**
- * Displays the comment date of the current comment.
+ * Display the comment date of the current comment.
  *
  * @since 0.71
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
  *
- * @param string         $format     Optional. The format of the date. Default user's settings.
+ * @param string         $d          Optional. The format of the date. Default user's settings.
  * @param int|WP_Comment $comment_ID WP_Comment or ID of the comment for which to print the date.
  *                                   Default current comment.
  */
-function comment_date( $format = '', $comment_ID = 0 ) {
-	echo get_comment_date( $format, $comment_ID );
+function comment_date( $d = '', $comment_ID = 0 ) {
+	echo get_comment_date( $d, $comment_ID );
 }
 
 /**
@@ -625,7 +624,7 @@ function get_comment_excerpt( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the excerpt of the current comment.
+ * Display the excerpt of the current comment.
  *
  * @since 1.2.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -650,7 +649,7 @@ function comment_excerpt( $comment_ID = 0 ) {
 }
 
 /**
- * Retrieves the comment id of the current comment.
+ * Retrieve the comment id of the current comment.
  *
  * @since 1.5.0
  *
@@ -672,7 +671,7 @@ function get_comment_ID() { // phpcs:ignore WordPress.NamingConventions.ValidFun
 }
 
 /**
- * Displays the comment id of the current comment.
+ * Display the comment id of the current comment.
  *
  * @since 0.71
  */
@@ -681,7 +680,7 @@ function comment_ID() { // phpcs:ignore WordPress.NamingConventions.ValidFunctio
 }
 
 /**
- * Retrieves the link to a given comment.
+ * Retrieve the link to a given comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment` to also accept a WP_Comment object. Added `$cpage` argument.
@@ -819,7 +818,7 @@ function get_comments_link( $post_id = 0 ) {
 }
 
 /**
- * Displays the link to the current post comments.
+ * Display the link to the current post comments.
  *
  * @since 0.71
  *
@@ -867,34 +866,33 @@ function get_comments_number( $post_id = 0 ) {
 }
 
 /**
- * Displays the language string for the number of comments the current post has.
+ * Display the language string for the number of comments the current post has.
  *
  * @since 0.71
- * @since 5.4.0 The `$deprecated` parameter was changed to `$post_id`.
  *
- * @param string      $zero       Optional. Text for no comments. Default false.
- * @param string      $one        Optional. Text for one comment. Default false.
- * @param string      $more       Optional. Text for more than one comment. Default false.
- * @param int|WP_Post $post_id    Optional. Post ID or WP_Post object. Default is the global `$post`.
+ * @param string $zero       Optional. Text for no comments. Default false.
+ * @param string $one        Optional. Text for one comment. Default false.
+ * @param string $more       Optional. Text for more than one comment. Default false.
+ * @param string $deprecated Not used.
  */
-function comments_number( $zero = false, $one = false, $more = false, $post_id = 0 ) {
-	echo get_comments_number_text( $zero, $one, $more, $post_id );
+function comments_number( $zero = false, $one = false, $more = false, $deprecated = '' ) {
+	if ( ! empty( $deprecated ) ) {
+		_deprecated_argument( __FUNCTION__, '1.3.0' );
+	}
+	echo get_comments_number_text( $zero, $one, $more );
 }
 
 /**
- * Displays the language string for the number of comments the current post has.
+ * Display the language string for the number of comments the current post has.
  *
  * @since 4.0.0
- * @since 5.4.0 Added the `$post_id` parameter to allow using the function outside of the loop.
  *
- * @param string      $zero    Optional. Text for no comments. Default false.
- * @param string      $one     Optional. Text for one comment. Default false.
- * @param string      $more    Optional. Text for more than one comment. Default false.
- * @param int|WP_Post $post_id Optional. Post ID or WP_Post object. Default is the global `$post`.
- * @return string Language string for the number of comments a post has.
+ * @param string $zero Optional. Text for no comments. Default false.
+ * @param string $one  Optional. Text for one comment. Default false.
+ * @param string $more Optional. Text for more than one comment. Default false.
  */
-function get_comments_number_text( $zero = false, $one = false, $more = false, $post_id = 0 ) {
-	$number = get_comments_number( $post_id );
+function get_comments_number_text( $zero = false, $one = false, $more = false ) {
+	$number = get_comments_number();
 
 	if ( $number > 1 ) {
 		if ( false === $more ) {
@@ -908,10 +906,10 @@ function get_comments_number_text( $zero = false, $one = false, $more = false, $
 			 */
 			if ( 'on' === _x( 'off', 'Comment number declension: on or off' ) ) {
 				$text = preg_replace( '#<span class="screen-reader-text">.+?</span>#', '', $more );
-				$text = preg_replace( '/&.+?;/', '', $text ); // Kill entities.
+				$text = preg_replace( '/&.+?;/', '', $text ); // Kill entities
 				$text = trim( strip_tags( $text ), '% ' );
 
-				// Replace '% Comments' with a proper plural form.
+				// Replace '% Comments' with a proper plural form
 				if ( $text && ! preg_match( '/[0-9]+/', $text ) && false !== strpos( $more, '%' ) ) {
 					/* translators: %s: Number of comments. */
 					$new_text = _n( '%s Comment', '%s Comments', $number );
@@ -926,9 +924,9 @@ function get_comments_number_text( $zero = false, $one = false, $more = false, $
 
 			$output = str_replace( '%', number_format_i18n( $number ), $more );
 		}
-	} elseif ( 0 == $number ) {
+	} elseif ( $number == 0 ) {
 		$output = ( false === $zero ) ? __( 'No Comments' ) : $zero;
-	} else { // Must be one.
+	} else { // must be one
 		$output = ( false === $one ) ? __( '1 Comment' ) : $one;
 	}
 	/**
@@ -946,37 +944,20 @@ function get_comments_number_text( $zero = false, $one = false, $more = false, $
 }
 
 /**
- * Retrieves the text of the current comment.
+ * Retrieve the text of the current comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
- * @since 5.4.0 Added 'In reply to %s.' prefix to child comments in comments feed.
  *
  * @see Walker_Comment::comment()
  *
  * @param int|WP_Comment  $comment_ID WP_Comment or ID of the comment for which to get the text.
  *                                    Default current comment.
- * @param array           $args       Optional. An array of arguments. Default empty array.
+ * @param array           $args       Optional. An array of arguments. Default empty.
  * @return string The comment content.
  */
 function get_comment_text( $comment_ID = 0, $args = array() ) {
 	$comment = get_comment( $comment_ID );
-
-	$comment_content = $comment->comment_content;
-
-	if ( is_comment_feed() && $comment->comment_parent ) {
-		$parent = get_comment( $comment->comment_parent );
-		if ( $parent ) {
-			$parent_link = esc_url( get_comment_link( $parent ) );
-			$name        = get_comment_author( $parent );
-
-			$comment_content = sprintf(
-				/* translators: %s: Comment link. */
-				ent2ncr( __( 'In reply to %s.' ) ),
-				'<a href="' . $parent_link . '">' . $name . '</a>'
-			) . "\n\n" . $comment_content;
-		}
-	}
 
 	/**
 	 * Filters the text of a comment.
@@ -989,11 +970,11 @@ function get_comment_text( $comment_ID = 0, $args = array() ) {
 	 * @param WP_Comment $comment         The comment object.
 	 * @param array      $args            An array of arguments.
 	 */
-	return apply_filters( 'get_comment_text', $comment_content, $comment, $args );
+	return apply_filters( 'get_comment_text', $comment->comment_content, $comment, $args );
 }
 
 /**
- * Displays the text of the current comment.
+ * Display the text of the current comment.
  *
  * @since 0.71
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -1002,7 +983,7 @@ function get_comment_text( $comment_ID = 0, $args = array() ) {
  *
  * @param int|WP_Comment  $comment_ID WP_Comment or ID of the comment for which to print the text.
  *                                    Default current comment.
- * @param array           $args       Optional. An array of arguments. Default empty array.
+ * @param array           $args       Optional. An array of arguments. Default empty array. Default empty.
  */
 function comment_text( $comment_ID = 0, $args = array() ) {
 	$comment = get_comment( $comment_ID );
@@ -1023,24 +1004,24 @@ function comment_text( $comment_ID = 0, $args = array() ) {
 }
 
 /**
- * Retrieves the comment time of the current comment.
+ * Retrieve the comment time of the current comment.
  *
  * @since 1.5.0
  *
- * @param string $format    Optional. The format of the time. Default user's settings.
+ * @param string $d         Optional. The format of the time. Default user's settings.
  * @param bool   $gmt       Optional. Whether to use the GMT date. Default false.
  * @param bool   $translate Optional. Whether to translate the time (for use in feeds).
  *                          Default true.
  * @return string The formatted time.
  */
-function get_comment_time( $format = '', $gmt = false, $translate = true ) {
+function get_comment_time( $d = '', $gmt = false, $translate = true ) {
 	$comment = get_comment();
 
 	$comment_date = $gmt ? $comment->comment_date_gmt : $comment->comment_date;
-	if ( '' == $format ) {
+	if ( '' == $d ) {
 		$date = mysql2date( get_option( 'time_format' ), $comment_date, $translate );
 	} else {
-		$date = mysql2date( $format, $comment_date, $translate );
+		$date = mysql2date( $d, $comment_date, $translate );
 	}
 
 	/**
@@ -1049,27 +1030,27 @@ function get_comment_time( $format = '', $gmt = false, $translate = true ) {
 	 * @since 1.5.0
 	 *
 	 * @param string|int $date      The comment time, formatted as a date string or Unix timestamp.
-	 * @param string     $format    Date format.
+	 * @param string     $d         Date format.
 	 * @param bool       $gmt       Whether the GMT date is in use.
 	 * @param bool       $translate Whether the time is translated.
 	 * @param WP_Comment $comment   The comment object.
 	 */
-	return apply_filters( 'get_comment_time', $date, $format, $gmt, $translate, $comment );
+	return apply_filters( 'get_comment_time', $date, $d, $gmt, $translate, $comment );
 }
 
 /**
- * Displays the comment time of the current comment.
+ * Display the comment time of the current comment.
  *
  * @since 0.71
  *
- * @param string $format Optional. The format of the time. Default user's settings.
+ * @param string $d Optional. The format of the time. Default user's settings.
  */
-function comment_time( $format = '' ) {
-	echo get_comment_time( $format );
+function comment_time( $d = '' ) {
+	echo get_comment_time( $d );
 }
 
 /**
- * Retrieves the comment type of the current comment.
+ * Retrieve the comment type of the current comment.
  *
  * @since 1.5.0
  * @since 4.4.0 Added the ability for `$comment_ID` to also accept a WP_Comment object.
@@ -1098,7 +1079,7 @@ function get_comment_type( $comment_ID = 0 ) {
 }
 
 /**
- * Displays the comment type of the current comment.
+ * Display the comment type of the current comment.
  *
  * @since 0.71
  *
@@ -1130,7 +1111,7 @@ function comment_type( $commenttxt = false, $trackbacktxt = false, $pingbacktxt 
 }
 
 /**
- * Retrieves the current post's trackback URL.
+ * Retrieve The current post's trackback URL.
  *
  * There is a check to see if permalink's have been enabled and if so, will
  * retrieve the pretty path. If permalinks weren't enabled, the ID of the
@@ -1158,7 +1139,7 @@ function get_trackback_url() {
 }
 
 /**
- * Displays the current post's trackback URL.
+ * Display the current post's trackback URL.
  *
  * @since 0.71
  *
@@ -1187,7 +1168,7 @@ function trackback_url( $deprecated_echo = true ) {
 }
 
 /**
- * Generates and displays the RDF for the trackback information of current post.
+ * Generate and display the RDF for the trackback information of current post.
  *
  * Deprecated in 3.0.0, and restored in 3.0.1.
  *
@@ -1279,7 +1260,7 @@ function pings_open( $post_id = null ) {
 }
 
 /**
- * Displays form token for unfiltered comments.
+ * Display form token for unfiltered comments.
  *
  * Will only display nonce token if the current user has permissions for
  * unfiltered html. Won't display the token for other users.
@@ -1303,7 +1284,7 @@ function wp_comment_form_unfiltered_html_nonce() {
 }
 
 /**
- * Loads the comment template specified in $file.
+ * Load the comment template specified in $file.
  *
  * Will not display the comments template if not on single post or page, or if
  * the post does not have comments.
@@ -1368,7 +1349,7 @@ function comments_template( $file = '/comments.php', $separate_comments = false 
 	$comment_author_email = $commenter['comment_author_email'];
 
 	/*
-	 * The URL of the current comment author escaped for use in attributes.
+	 * The url of the current comment author escaped for use in attributes.
 	 */
 	$comment_author_url = esc_url( $commenter['comment_author_url'] );
 
@@ -1524,11 +1505,11 @@ function comments_template( $file = '/comments.php', $separate_comments = false 
 	 */
 	$include = apply_filters( 'comments_template', $theme_template );
 	if ( file_exists( $include ) ) {
-		require $include;
+		require( $include );
 	} elseif ( file_exists( TEMPLATEPATH . $file ) ) {
-		require TEMPLATEPATH . $file;
-	} else { // Backward compat code will be removed in a future release.
-		require ABSPATH . WPINC . '/theme-compat/comments.php';
+		require( TEMPLATEPATH . $file );
+	} else { // Backward compat code will be removed in a future release
+		require( ABSPATH . WPINC . '/theme-compat/comments.php' );
 	}
 }
 
@@ -1616,7 +1597,7 @@ function comments_popup_link( $zero = false, $one = false, $more = false, $css_c
 }
 
 /**
- * Retrieves HTML content for reply to comment link.
+ * Retrieve HTML content for reply to comment link.
  *
  * @since 2.7.0
  * @since 4.4.0 Added the ability for `$comment` to also accept a WP_Comment object.
@@ -1736,10 +1717,10 @@ function get_comment_reply_link( $args = array(), $comment = null, $post = null 
 	 *
 	 * @since 2.7.0
 	 *
-	 * @param string     $link    The HTML markup for the comment reply link.
-	 * @param array      $args    An array of arguments overriding the defaults.
-	 * @param WP_Comment $comment The object of the comment being replied.
-	 * @param WP_Post    $post    The WP_Post object.
+	 * @param string  $link    The HTML markup for the comment reply link.
+	 * @param array   $args    An array of arguments overriding the defaults.
+	 * @param object  $comment The object of the comment being replied.
+	 * @param WP_Post $post    The WP_Post object.
 	 */
 	return apply_filters( 'comment_reply_link', $args['before'] . $link . $args['after'], $args, $comment, $post );
 }
@@ -1751,17 +1732,17 @@ function get_comment_reply_link( $args = array(), $comment = null, $post = null 
  *
  * @see get_comment_reply_link()
  *
- * @param array          $args    Optional. Override default options. Default empty array.
- * @param int|WP_Comment $comment Comment being replied to. Default current comment.
- * @param int|WP_Post    $post    Post ID or WP_Post object the comment is going to be displayed on.
- *                                Default current post.
+ * @param array       $args    Optional. Override default options.
+ * @param int         $comment Comment being replied to. Default current comment.
+ * @param int|WP_Post $post    Post ID or WP_Post object the comment is going to be displayed on.
+ *                             Default current post.
  */
 function comment_reply_link( $args = array(), $comment = null, $post = null ) {
 	echo get_comment_reply_link( $args, $comment, $post );
 }
 
 /**
- * Retrieves HTML content for reply to post link.
+ * Retrieve HTML content for reply to post link.
  *
  * @since 2.7.0
  *
@@ -1842,7 +1823,7 @@ function get_post_reply_link( $args = array(), $post = null ) {
  *
  * @see get_post_reply_link()
  *
- * @param array       $args Optional. Override default options. Default empty array.
+ * @param array       $args Optional. Override default options,
  * @param int|WP_Post $post Post ID or WP_Post object the comment is going to be displayed on.
  *                          Default current post.
  */
@@ -1851,7 +1832,7 @@ function post_reply_link( $args = array(), $post = null ) {
 }
 
 /**
- * Retrieves HTML content for cancel comment reply link.
+ * Retrieve HTML content for cancel comment reply link.
  *
  * @since 2.7.0
  *
@@ -1881,7 +1862,7 @@ function get_cancel_comment_reply_link( $text = '' ) {
 }
 
 /**
- * Displays HTML content for cancel comment reply link.
+ * Display HTML content for cancel comment reply link.
  *
  * @since 2.7.0
  *
@@ -1892,7 +1873,7 @@ function cancel_comment_reply_link( $text = '' ) {
 }
 
 /**
- * Retrieves hidden input HTML for replying to comments.
+ * Retrieve hidden input HTML for replying to comments.
  *
  * @since 3.0.0
  *
@@ -1921,7 +1902,7 @@ function get_comment_id_fields( $id = 0 ) {
 }
 
 /**
- * Outputs hidden input HTML for replying to comments.
+ * Output hidden input HTML for replying to comments.
  *
  * @since 2.7.0
  *
@@ -1932,7 +1913,7 @@ function comment_id_fields( $id = 0 ) {
 }
 
 /**
- * Displays text based on comment reply status.
+ * Display text based on comment reply status.
  *
  * Only affects users with JavaScript disabled.
  *
@@ -1975,7 +1956,7 @@ function comment_form_title( $noreplytext = false, $replytext = false, $linktopa
 }
 
 /**
- * Displays a list of comments.
+ * List comments.
  *
  * Used in the comments.php template to list comments for a particular post.
  *
@@ -2010,9 +1991,7 @@ function comment_form_title( $noreplytext = false, $replytext = false, $linktopa
  *     @type bool   $short_ping        Whether to output short pings. Default false.
  *     @type bool   $echo              Whether to echo the output or return it. Default true.
  * }
- * @param WP_Comment[] $comments Optional. Array of WP_Comment objects.
- * @return void|string Void if 'echo' argument is true, or no comments to list.
- *                     Otherwise, HTML list of comments.
+ * @param array $comments Optional. Array of WP_Comment objects.
  */
 function wp_list_comments( $args = array(), $comments = null ) {
 	global $wp_query, $comment_alt, $comment_depth, $comment_thread_alt, $overridden_cpage, $in_comment_loop;
@@ -2053,7 +2032,7 @@ function wp_list_comments( $args = array(), $comments = null ) {
 	 */
 	$parsed_args = apply_filters( 'wp_list_comments_args', $parsed_args );
 
-	// Figure out what comments we'll be looping through ($_comments).
+	// Figure out what comments we'll be looping through ($_comments)
 	if ( null !== $comments ) {
 		$comments = (array) $comments;
 		if ( empty( $comments ) ) {
@@ -2139,7 +2118,7 @@ function wp_list_comments( $args = array(), $comments = null ) {
 					* When first page shows oldest comments, post permalink is the same as
 					* the comment permalink.
 					*/
-				} elseif ( 1 == $cpage ) {
+				} elseif ( $cpage == 1 ) {
 					$parsed_args['cpage'] = '';
 				} else {
 					$parsed_args['cpage'] = $cpage;
@@ -2177,7 +2156,7 @@ function wp_list_comments( $args = array(), $comments = null ) {
 			set_query_var( 'cpage', $parsed_args['page'] );
 		}
 	}
-	// Validation check.
+	// Validation check
 	$parsed_args['page'] = intval( $parsed_args['page'] );
 	if ( 0 == $parsed_args['page'] && 0 != $parsed_args['per_page'] ) {
 		$parsed_args['page'] = 1;
@@ -2453,7 +2432,7 @@ function comment_form( $args = array(), $post_id = null ) {
 	// Ensure that the filtered args contain all required default values.
 	$args = array_merge( $defaults, $args );
 
-	// Remove `aria-describedby` from the email field if there's no associated description.
+	// Remove aria-describedby from the email field if there's no associated description.
 	if ( isset( $args['fields']['email'] ) && false === strpos( $args['comment_notes_before'], 'id="email-notes"' ) ) {
 		$args['fields']['email'] = str_replace(
 			' aria-describedby="email-notes"',
@@ -2555,10 +2534,10 @@ function comment_form( $args = array(), $post_id = null ) {
 			 */
 			$comment_fields = apply_filters( 'comment_form_fields', $comment_fields );
 
-			// Get an array of field names, excluding the textarea.
+			// Get an array of field names, excluding the textarea
 			$comment_field_keys = array_diff( array_keys( $comment_fields ), array( 'comment' ) );
 
-			// Get the first and the last field name, excluding the textarea.
+			// Get the first and the last field name, excluding the textarea
 			$first_field = reset( $comment_field_keys );
 			$last_field  = end( $comment_field_keys );
 
@@ -2649,7 +2628,7 @@ function comment_form( $args = array(), $post_id = null ) {
 			echo apply_filters( 'comment_form_submit_field', $submit_field, $args );
 
 			/**
-			 * Fires at the bottom of the comment form, inside the closing form tag.
+			 * Fires at the bottom of the comment form, inside the closing </form> tag.
 			 *
 			 * @since 1.5.0
 			 *

@@ -4,7 +4,7 @@ Plugin Name: Collapse-O-Matic
 Text Domain: jquery-collapse-o-matic
 Plugin URI: https://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.7.12
+Version: 1.7.11
 Author: twinpictures, baden03
 Author URI: https://twinpictures.de/
 License: GPL2
@@ -29,7 +29,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.7.12';
+	var $version = '1.7.11';
 
 	/**
 	 * Used as prefix for options entry
@@ -138,7 +138,7 @@ class WP_Collapse_O_Matic {
 		if($this->options['script_location'] == 'footer' ){
 			$load_in_footer = true;
 		}
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.19', $load_in_footer);
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.6.18', $load_in_footer);
 		if( empty($this->options['script_check']) ){
 			wp_enqueue_script('collapseomatic-js');
 		}
@@ -872,7 +872,7 @@ class WP_Collapse_O_Matic {
 		if ( !empty( $saved_options ) ) {
 			foreach ( $this->options AS $key => $option ) {
 				if($key == 'tabindex'){
-					$this->options[ $key ] = in_array( $key, $saved_options ) ? $saved_options[ $key ] : 0;
+					$this->options[ $key ] = $saved_options[ $key ];
 				}
 				else{
 					$this->options[ $key ] = ( empty( $saved_options[ $key ] ) ) ? '' : $saved_options[ $key ];

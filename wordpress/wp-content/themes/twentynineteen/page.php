@@ -6,18 +6,18 @@
  *
  * @package WordPress
  * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since 1.0.0
  */
 
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
+	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 			<?php
 
-			// Start the Loop.
+			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
 
@@ -28,11 +28,11 @@ get_header();
 					comments_template();
 				}
 
-			endwhile; // End the loop.
+			endwhile; // End of the loop.
 			?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</section><!-- #primary -->
 
 <?php
 get_footer();

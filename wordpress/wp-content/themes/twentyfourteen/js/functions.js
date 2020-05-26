@@ -1,5 +1,5 @@
 /**
- * Theme functions file.
+ * Theme functions file
  *
  * Contains handlers for navigation, accessibility, header sizing
  * footer widgets and Featured Content slider
@@ -122,11 +122,9 @@
 	} );
 
 	/**
-	 * Add or remove ARIA attributes.
-	 *
+	 * @summary Add or remove ARIA attributes.
 	 * Uses jQuery's width() function to determine the size of the window and add
 	 * the default ARIA attributes for the menu toggle if it's visible.
-	 *
 	 * @since Twenty Fourteen 1.4
 	 */
 	function onResizeARIA() {
