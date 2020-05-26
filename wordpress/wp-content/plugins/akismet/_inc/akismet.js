@@ -147,6 +147,11 @@ jQuery( function ( $ ) {
 	} );
 
 	$( '.checkforspam' ).click( function( e ) {
+		if ( $( this ).hasClass( 'checkforspam-pending-config' ) ) {
+			// Akismet hasn't been configured yet. Allow the user to proceed to the button's link.
+			return;
+		}
+
 		e.preventDefault();
 
 		if ( $( this ).hasClass( 'button-disabled' ) ) {
@@ -287,15 +292,6 @@ jQuery( function ( $ ) {
 		var img = new Image();
 		img.src = akismet_mshot_url( linkUrl );
 	}
-
-	/**
-	 * Sets the comment form privacy notice display to hide when one clicks Core's dismiss button on the related admin notice.
-	 */
-	$( '#akismet-privacy-notice-admin-notice' ).on( 'click', '.notice-dismiss', function () {
-		$.ajax( {
-			url: './options-general.php?page=akismet-key-config&akismet_comment_form_privacy_notice=hide',
-		} );
-	});
 
 	$( '.akismet-could-be-primary' ).each( function () {
 		var form = $( this ).closest( 'form' );
