@@ -619,6 +619,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	?>
 	</style>
 <?php
+	global $wpdb;
+
 	$pagenr = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 	$displayXHTML = true;

@@ -3,8 +3,8 @@
 
 class Webonary_Utility
 {
-	// TODO: Check if this is reasonable, or should be increased.
-	private static $default_posts_perpage = 25;
+	// Legacy default
+	private static $default_posts_per_page = 25;
 
 	private static $posts_per_page = 0;
 	private static $current_page_number = 0;
@@ -301,7 +301,7 @@ class Webonary_Utility
 		if (!empty(self::$posts_per_page))
 			return self::$posts_per_page;
 
-		self::$posts_per_page = get_option('posts_per_page', self::$default_posts_perpage);
+		self::$posts_per_page = get_option('posts_per_page', self::$default_posts_per_page);
 
 		return self::$posts_per_page;
 	}

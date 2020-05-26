@@ -99,7 +99,7 @@ function webonary_searchform() {
 				"show_option_none=" .
 				__('All Parts of Speech','sil_dictionary') .
 				"&show_count=1&selected=" . $taxonomy .
-				"&orderby=name&echo=1&name=tax&taxonomy=sil_parts_of_speech"
+				"&orderby=name&echo=0&name=tax&taxonomy=sil_parts_of_speech"
 			);
 		}
 
