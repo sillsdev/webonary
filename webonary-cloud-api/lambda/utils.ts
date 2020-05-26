@@ -44,8 +44,9 @@ export function copyObjectKeyValueIgnoreKeyCase(
 export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): object {
   const copyObject: any = toObject;
   Object.keys(toObject).forEach(toObjectKey => {
+    const toObjectKeyLowercase = toObjectKey.toLowerCase();
+
     if (hasKey(toObject, toObjectKey)) {
-      const toObjectKeyLowercase = (toObjectKey ?? '').toLowerCase();
       const fromObjectKey = Object.keys(fromObject).find(
         key => key.toLowerCase() === toObjectKeyLowercase,
       );
@@ -54,10 +55,11 @@ export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): o
         if (typeof toObject[toObjectKey] === 'object') {
           let toObjectSubKeys: string[] = [];
           if (Array.isArray(toObject[toObjectKey])) {
-            const subArray = Object.entries(toObject[toObjectKey] ?? [{}]);
-            toObjectSubKeys = Object.keys(subArray[0][1]);
+            const subArray = Object.entries(toObject[toObjectKey]);
+            const subArrayObject = subArray[0][1] as object;
+            toObjectSubKeys = Object.keys(subArrayObject);
           } else {
-            toObjectSubKeys = Object.keys(toObject[toObjectKey] ?? {});
+            toObjectSubKeys = Object.keys(toObject[toObjectKey]);
           }
 
           copyObject[toObjectKey] = copyObjectKeyValueIgnoreKeyCase(
