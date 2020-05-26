@@ -78,12 +78,11 @@
  */
 
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import * as AWS from 'aws-sdk';
+import { getSignedUrl } from './s3Utils';
 import * as Response from './response';
 
-const s3 = new AWS.S3({ signatureVersion: 'v4' });
-const bucket = process.env.S3_BUCKET;
-if (!bucket) {
+const dictionaryBucket = process.env.S3_DOMAIN_NAME ?? '';
+if (dictionaryBucket === '') {
   throw Error('S3 bucket not set');
 }
 
@@ -100,7 +99,7 @@ export async function handler(
     if (!objectId) {
       errorMessage = 'Missing objectId in the request body';
     }
-    if (action !== 'putObject' && action !== 'getObject') {
+    if (action !== 'putObject') {
       errorMessage = 'Invalid action in the request body';
     }
 
@@ -108,11 +107,7 @@ export async function handler(
       return callback(null, Response.badRequest(errorMessage));
     }
 
-    const signedUrl = s3.getSignedUrl(action, {
-      Bucket: bucket,
-      Key: objectId,
-      Expires: 120, // seconds
-    });
+    const signedUrl = getSignedUrl(dictionaryBucket, action, objectId);
 
     return callback(null, Response.success(signedUrl));
   } catch (error) {

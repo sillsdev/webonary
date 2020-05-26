@@ -23,7 +23,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Webonary web site
     const WEBONARY_URL = process.env.WEBONARY_URL ?? 'https://www.webonary.org';
     const WEBONARY_AUTH_PATH = process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary/import';
-    const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-api.webonary.org';
+    const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-storage.webonary.org';
 
     // Mongo
     const { DB_URI, DB_USERNAME, DB_PASSWORD } = process.env;
@@ -35,13 +35,6 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       encryption: s3.BucketEncryption.S3_MANAGED,
       publicReadAccess: true,
       bucketName: S3_DOMAIN_NAME,
-    });
-
-    // create lambda policy statement for operating over s3
-    const lambdaS3PolicyStatement = new iam.PolicyStatement({
-      effect: iam.Effect.ALLOW,
-      actions: ['s3:PutObject', 's3:GetObject'],
-      resources: [`${dictionaryBucket.bucketArn}/*`],
     });
 
     // Lambda functions
@@ -67,12 +60,17 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_12_X,
       code: new lambda.AssetCode('lambda'),
       handler: 's3Authorize.handler',
-      environment: {
-        S3_BUCKET: dictionaryBucket.bucketName,
-      },
+      environment: { S3_DOMAIN_NAME },
     });
 
-    s3AuthorizeFunction.addToRolePolicy(lambdaS3PolicyStatement);
+    // Give permission to list add and get file
+    s3AuthorizeFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: ['s3:PutObject', 's3:GetObject'],
+        resources: [`${dictionaryBucket.bucketArn}/*`],
+      }),
+    );
 
     // eslint-disable-next-line no-new
     new lambda.CfnPermission(this, 's3AuthorizeApiGtwLambdaPermission', {
@@ -101,7 +99,24 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       this,
       'deleteDictionary',
       Object.assign(defaultLambdaFunctionProps('deleteDictionary'), {
-        environment: { DB_URL, DB_NAME },
+        environment: { DB_URL, DB_NAME, S3_DOMAIN_NAME },
+      }),
+    );
+
+    // Give permission to list all files in the dictionary folder, and delete each
+    deleteDictionaryFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: ['s3:ListBucket'],
+        resources: [`${dictionaryBucket.bucketArn}`],
+      }),
+    );
+
+    deleteDictionaryFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: ['s3:DeleteObject'],
+        resources: [`${dictionaryBucket.bucketArn}/*`],
       }),
     );
 
