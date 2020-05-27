@@ -95,7 +95,8 @@ function favi_init() {
 // OPTIONS PAGE
 if ( is_admin() ) {	add_action('admin_menu', 'favi_menu'); }
 function favi_menu() {
-	add_options_page(__('Shockingly Simple Favicon Options', $favi_dom), __('S. Simple Favicon', $favi_dom), 8, __FILE__, 'favi_options');
+	global $favi_dom;
+  add_options_page(__('Shockingly Simple Favicon Options', $favi_dom), __('S. Simple Favicon', $favi_dom), 8, __FILE__, 'favi_options');
 }
 function favi_options() {
 global $favi_dom;
