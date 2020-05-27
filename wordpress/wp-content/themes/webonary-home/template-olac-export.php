@@ -55,7 +55,7 @@ if (0 < count ( $blogs ))
 		$output = implode(';', array(
 			date("Y-m-d", strtotime($recordUpdated)),
 			$site_title,
-			blog ['link_url'],
+			$blog['link_url'],
 			$ethnologue_code,
 			$entriesTotal,
 			date("Y-m-d", strtotime($lastEditDate))));
