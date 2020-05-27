@@ -5,9 +5,9 @@ Description: WPS Menu Exporter permet d'exporter les menus WordPress.
 Donate link: https://www.paypal.me/donateWPServeur
 Author: WPServeur, NicolasKulka
 Author URI: https://wpserveur.net
-Version: 1.2.2
+Version: 1.2.3
 Requires at least: 4.2
-Tested up to: 5.2
+Tested up to: 5.4
 Domain Path: languages
 Text Domain: wps-menu-exporter
 License: GPLv2 or later
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants
-define( 'WPS_MENU_EXPORTER_VERSION', '1.2.2' );
+define( 'WPS_MENU_EXPORTER_VERSION', '1.2.3' );
 define( 'WPS_MENU_EXPORTER_FOLDER', 'wps-menu-exporter' );
 define( 'WPS_MENU_EXPORTER_BASENAME', plugin_basename( __FILE__ ) );
 

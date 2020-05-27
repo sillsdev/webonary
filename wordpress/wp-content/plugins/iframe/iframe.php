@@ -2,8 +2,8 @@
 /*
 Plugin Name: iframe
 Plugin URI: http://wordpress.org/plugins/iframe/
-Description: [iframe src="http://www.youtube.com/embed/4qsGTXLnmKs" width="100%" height="500"] shortcode
-Version: 4.4
+Description: [iframe src="http://www.youtube.com/embed/oDlbBy9vfgI" width="100%" height="500"] shortcode
+Version: 4.5
 Author: webvitaly
 Author URI: http://web-profile.net/wordpress/plugins/
 License: GPLv3
@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) { // Avoid direct calls to this file and prevent f
 	exit;
 }
 
-define('IFRAME_PLUGIN_VERSION', '4.4');
+define('IFRAME_PLUGIN_VERSION', '4.5');
 
 function iframe_plugin_add_shortcode_cb( $atts ) {
 	$defaults = array(
-		'src' => 'http://www.youtube.com/embed/4qsGTXLnmKs',
+		'src' => 'http://www.youtube.com/embed/oDlbBy9vfgI',
 		'width' => '100%',
 		'height' => '500',
 		'scrolling' => 'yes',
@@ -34,6 +34,9 @@ function iframe_plugin_add_shortcode_cb( $atts ) {
 	$html = "\n".'<!-- iframe plugin v.'.IFRAME_PLUGIN_VERSION.' wordpress.org/plugins/iframe/ -->'."\n";
 	$html .= '<iframe';
 	foreach( $atts as $attr => $value ) {
+		if ( strtolower($attr) == 'src' ) { // sanitize url
+			$value = esc_url( $value );
+		}
 		if ( strtolower($attr) != 'same_height_as' AND strtolower($attr) != 'onload'
 			AND strtolower($attr) != 'onpageshow' AND strtolower($attr) != 'onclick') { // remove some attributes
 			if ( $value != '' ) { // adding all attributes
@@ -68,7 +71,7 @@ function iframe_plugin_row_meta_cb( $links, $file ) {
 		$row_meta = array(
 			'support' => '<a href="http://web-profile.net/wordpress/plugins/iframe/" target="_blank">' . __( 'Iframe', 'iframe' ) . '</a>',
 			'donate' => '<a href="http://web-profile.net/donate/" target="_blank">' . __( 'Donate', 'iframe' ) . '</a>',
-			'pro' => '<a href="http://codecanyon.net/item/antispam-pro/6491169?ref=webvitalii" target="_blank">' . __( 'Anti-spam Pro', 'iframe' ) . '</a>'
+			'pro' => '<a href="https://1.envato.market/Ym5aq" target="_blank">' . __( 'Advanced iFrame Pro', 'iframe' ) . '</a>'
 		);
 		$links = array_merge( $links, $row_meta );
 	}

@@ -30,7 +30,7 @@ $favi_dom = 'shockingly-simple-favicon';
 
 // DEFAULT OPTIONS
 function favi_default_opt() {
-	$url = get_settings('siteurl') . '/favicon.ico';
+	$url = get_option('siteurl') . '/favicon.ico';
 	$setup = array(
 		'url' => $url,
 		'admin' => 'default'
@@ -62,8 +62,8 @@ function favi_deactivate() {
 function favi_geturl() {
 	$opt = get_option('favi_options');
 	$icon = $opt['url'];
-	if ( $icon == '' || $icon == NULL ) { // se favicon url não setada, seta como favicon padrão
-		$icon = get_settings('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico';
+	if ( $icon == '' || $icon == NULL ) { // se favicon url nï¿½o setada, seta como favicon padrï¿½o
+		$icon = get_option('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico';
 	}
 	return $icon;
 }
@@ -79,7 +79,7 @@ if ( is_admin() ) {	add_action('admin_head', 'favi_admin_head'); }
 function favi_admin_head() {
 	$opt = get_option('favi_options');
 	if ( $opt['admin'] == 'default' ) {
-		echo '<link rel="shortcut icon" href="' . get_settings('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico" type="image/x-icon" /><!-- Favi -->';
+		echo '<link rel="shortcut icon" href="' . get_option('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico" type="image/x-icon" /><!-- Favi -->';
 	} 	else if ( $opt['admin'] == 'blog' ) {
 		echo '<link rel="shortcut icon" href="' . favi_geturl() . '" type="image/x-icon" /><!-- Favi -->';
 	}
@@ -117,7 +117,7 @@ $plug_site = 'http://www.incerteza.org/blog/projetos/shockingly-simple-favicon/'
 <div class="wrap">
   <h2><?php echo __('Shockingly Simple Favicon Options', $favi_dom); ?></h2>
   <p><?php echo __('"<i>A <a href="http://en.wikipedia.org/wiki/Favicon" target="_blank" rel="nofollow">favicon</a> (short for favorites icon), also known as a website icon, shortcut icon, url icon, or bookmark icon is an icon associated with a particular website or webpage.</i>"', $favi_dom); ?></p>
-  <p><?php echo __('Upload your favicon to', $favi_dom) . ' <strong>' . get_settings('siteurl') . '/</strong>, ' . __('the file should be named <strong>favicon.ico</strong>.', $favi_dom); ?></p>
+  <p><?php echo __('Upload your favicon to', $favi_dom) . ' <strong>' . get_option('siteurl') . '/</strong>, ' . __('the file should be named <strong>favicon.ico</strong>.', $favi_dom); ?></p>
   <p><?php echo __('A favicon is normally a .ico file with 16x16 in size, although .png and .gif are also suported, IE (obviously) only supports the .ico file.', $favi_dom); ?></p>
   <p><?php echo __('A cool site to you draw yours is <a href="http://www.favicon.cc/" target="_blank" rel="nofollow">favicon.ico Generator</a>.', $favi_dom); ?></p>
   <p></p>
@@ -130,7 +130,7 @@ $plug_site = 'http://www.incerteza.org/blog/projetos/shockingly-simple-favicon/'
   </ul>
   <p><?php echo __('If you want to have certain that your favicon match this characteristics i recommend that you use the freeware icon edition program <a href="http://icofx.ro/" target="_blank" rel="nofollow">icoFX</a>, open your favicon.ico, delete any size image diferent then 16x16, delete other frames (if animated), and save as a new favicon.ico, that should do the trick!', $favi_dom); ?></p>
   <h3><?php echo __('Settings', $favi_dom); ?></h3>
-  <p style="margin-left:10px;"><?php echo __('By default the <strong>favicon.ico</strong> will be loaded from the root directory of your blog', $favi_dom) . ' (<strong>' . get_settings('siteurl') . '/</strong>). ' . __('Here you can specify a different location, leave this field <em>blank</em> for the default <strong>favicon</strong>', $favi_dom) . ' (<img src="' . get_settings('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico" width="16" height="16">).'; ?></p>
+  <p style="margin-left:10px;"><?php echo __('By default the <strong>favicon.ico</strong> will be loaded from the root directory of your blog', $favi_dom) . ' (<strong>' . get_option('siteurl') . '/</strong>). ' . __('Here you can specify a different location, leave this field <em>blank</em> for the default <strong>favicon</strong>', $favi_dom) . ' (<img src="' . get_option('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico" width="16" height="16">).'; ?></p>
   <form method="post" name="options" target="_self">
     <p>
       <label for="name" style="width: 125px;float: left;text-align: left;margin-left: 10px;margin-right: 10px"><?php echo __('Favicon URL', $favi_dom); ?></label>
@@ -142,7 +142,7 @@ $plug_site = 'http://www.incerteza.org/blog/projetos/shockingly-simple-favicon/'
         <option value="none" <?php if ( $opt['admin'] == 'none' ) echo 'selected="selected"'; ?> />
         <?php echo __('None', $favi_dom); ?>
         </option>
-        <option value="default" <?php if ( $opt['admin'] == 'default' ) echo 'selected="selected"'; ?> style="background-image:url(<?php echo get_settings('siteurl'); ?>/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico);background-repeat:no-repeat;background-position:98% 50%;"/>
+        <option value="default" <?php if ( $opt['admin'] == 'default' ) echo 'selected="selected"'; ?> style="background-image:url(<?php echo get_option('siteurl'); ?>/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico);background-repeat:no-repeat;background-position:98% 50%;"/>
         <?php echo __('Default', $favi_dom); ?>
         </option>
         <option value="blog" <?php if ( $opt['admin'] == 'blog' ) echo 'selected="selected"'; ?> style="background-image:url(<?php echo favi_geturl(); ?>);background-repeat:no-repeat;background-position:98% 50%;"/>
@@ -150,7 +150,7 @@ $plug_site = 'http://www.incerteza.org/blog/projetos/shockingly-simple-favicon/'
         </option>
       </select>
     </p>
-    <p><?php echo __('If you use the <strong>Blog</strong> option in <i>Admin Favicon</i> you need to have a icon at', $favi_dom) . ' <strong>' . get_settings('siteurl') . '/</strong> ' . __('or the favicon at the admin area will be blank.',$favi_dom); ?></p>
+    <p><?php echo __('If you use the <strong>Blog</strong> option in <i>Admin Favicon</i> you need to have a icon at', $favi_dom) . ' <strong>' . get_option('siteurl') . '/</strong> ' . __('or the favicon at the admin area will be blank.',$favi_dom); ?></p>
     <p class="submit">
       <input type="submit" name="update_options" class="button-primary" value="<?php echo __('Save Changes', $favi_dom); ?>"/>
       <input type="submit" name="reset_options" value="<?php echo __('Reset Options', $favi_dom); ?>" />

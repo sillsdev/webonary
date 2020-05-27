@@ -167,7 +167,7 @@ locate_template('/includes/admin/theme-admin.php', true);
 // Add Theme Functions
 add_theme_support('post-thumbnails');
 add_theme_support('automatic-feed-links');
-add_custom_background();
+add_theme_support('custom-background');
 add_editor_style();
 
 // Add Custom Header
@@ -203,7 +203,10 @@ function themezee_admin_header_style() {
 </style>
 	<?php
 }
-add_custom_image_header('themezee_header_style', 'themezee_admin_header_style');
+add_theme_support('custom-header', array(
+		'wp-head-callback' => 'themezee_header_style',
+		'admin-head-callback' => 'themezee_admin_header_style',
+));
 
 // Register Sidebars
 register_sidebar(array(
@@ -236,7 +239,7 @@ function themezee_html5_gallery($content)
 	return str_replace('[gallery', '[gallery itemtag="div" icontag="span" captiontag="p"', $content);
 }
 add_filter('the_content', 'themezee_html5_gallery');
-add_filter('gallery_style', create_function('$a', 'return preg_replace("%<style type=\'text/css\'>(.*?)</style>%s", "", $a);'));
+add_filter('gallery_style', function($a) { return preg_replace("%<style type=\'text/css\'>(.*?)</style>%s", "", $a); });
 
 function themezee_html5_embed($return, $data, $url)
 {
