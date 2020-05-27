@@ -74,6 +74,9 @@ function wp_page_numbers_prevpage($paged, $max_page, $prevpage)
 {
 	if( $max_page > 1 && $paged > 1 )
 		$pagingString = '<li><a href="'.get_pagenum_link($paged-1). '">'.$prevpage.'</a></li>';
+	else
+		$pagingString = "";
+
 	return $pagingString;
 }
 
@@ -153,6 +156,9 @@ function wp_page_numbers_nextpage($paged, $max_page, $nextpage)
 {
 	if( $paged != "" && $paged < $max_page)
 		$pagingString = '<li><a href="'.get_pagenum_link($paged+1). '">'.$nextpage.'</a></li>'."\n";
+	else
+		$pagingString = "";
+
 	return $pagingString;
 }
 
@@ -206,6 +212,7 @@ function wp_page_numbers($start = "", $end = "")
 	if($page_of_page != "no")
 		$pagingString .= wp_page_numbers_page_of_page($max_page, $paged, $page_of_page_text, $page_of_of);
 	
+	$pagingMiddleString = '';	
 	if( ($paged) <= $limit_pages_left )
 	{
 		list ($value1, $value2, $page_check_min) = wp_page_numbers_left_side($max_page, $limit_pages, $paged, $pagingString);
