@@ -30,24 +30,26 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 	<div id="responsive-menu-wrapper">
 		<ul id="responsive-menu" class="">
 	    <?php
-		$count = 0;
 		$submenu = false;
 		foreach ( $menuitems as $index => $value)
 		{
 			$item = $menuitems[$index];
 			$link = $item->url;
 			$title = $item->title;
+
+			$next_item_parent = $menuitems[$index+1]->menu_item_parent ?? -1;
+
 			// item does not have a parent so menu_item_parent equals 0 (false)
 			if (!$item->menu_item_parent)
 			{
 				// save this id for later comparison with sub-menu items
 				$parent_id = $item->ID;
 				?>
-			    <li id="responsive-menu-item-<?php echo $parent_id; ?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children responsive-menu-item <?php if($menuitems[$index+1]->menu_item_parent != 0) { echo "responsive-menu-item-has-children"; } ?>">
+			    <li id="responsive-menu-item-<?php echo $parent_id; ?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children responsive-menu-item <?php if($next_item_parent != 0) { echo "responsive-menu-item-has-children"; } ?>">
 			    	<a href="<?php echo $link; ?>" class="responsive-menu-item-link">
 			            <?php echo $title; ?>
 			            <?php
-			            if($menuitems[$index+1]->menu_item_parent != 0)
+			            if($next_item_parent != 0)
 			            {
 			            ?>
 			            <div class="responsive-menu-subarrow">▼</div>
@@ -72,7 +74,7 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 		                <a href="<?php echo $link; ?>"
 								class="responsive-menu-item-link"><?php echo $title; ?></a></li>
 
-		            <?php if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id && $submenu )
+		            <?php if ( $next_item_parent != $parent_id && $submenu )
 		            {
 		            ?>
 		            </ul>
@@ -83,7 +85,7 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 		        <?php
 		        }
 
-		    if ( $menuitems[ $count + 1 ]->menu_item_parent != $parent_id )
+		    if ( $next_item_parent != $parent_id )
 		    {
 		    ?>
 		    </li>
@@ -91,7 +93,7 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 		    }
 		    ?>
 
-		<?php $count++;
+		<?php
 		}
 		?>
 		</ul>
