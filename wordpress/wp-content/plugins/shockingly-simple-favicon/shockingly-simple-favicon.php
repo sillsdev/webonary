@@ -89,7 +89,7 @@ function favi_admin_head() {
 if ( is_admin() ) { add_action('init', 'favi_init'); }
 function favi_init() {
 	global $favi_dom;
-	load_plugin_textdomain($favi_dom, '/wp-content/plugins/shockingly-simple-favicon/lang/');
+	load_plugin_textdomain($favi_dom, false, dirname(plugin_basename(__FILE__ )) .'/lang/');
 }
 
 // OPTIONS PAGE
