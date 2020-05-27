@@ -8,6 +8,7 @@ function themezee_admin_add_page() {
 // Display admin options page
 function themezee_options_page() {
 	$options = get_option('themezee_options');
+	$customcss = filter_input(INPUT_GET, 'customcss', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 ?>
 	<div class="wrap zee_admin_wrap">
 	
@@ -30,7 +31,7 @@ function themezee_options_page() {
 		<div class="icon32" id="icon-themes"></div>
 		<h2><?php _e('Theme Options', ZEE_LANG); ?></h2>
 		
-			<form class="zee_form" action="options.php?customcss=<?php echo $_GET['customcss']; ?>" method="post">
+			<form class="zee_form" action="options.php?customcss=<?php echo $customcss; ?>" method="post">
 				
 				<p><input name="Submit" class="button-primary" type="submit" value="<?php esc_attr_e('Save Changes', ZEE_LANG); ?>" /></p>
 				
@@ -137,8 +138,9 @@ function themezee_register_settings(){
 	}
 	
 	// Create Setting Fields
+	$customcss = filter_input(INPUT_GET, 'customcss', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 	foreach ($settings as $setting) {
-		if($setting['id'] != "themeZee_custom_css" || $_GET['customcss'] == 1)
+		if($setting['id'] != "themeZee_custom_css" || $customcss === '1')
 		{
 			add_settings_field($setting['id'], $setting['name'], 'themezee_display_setting', 'themezee', $setting['section'], $setting);
 		}
