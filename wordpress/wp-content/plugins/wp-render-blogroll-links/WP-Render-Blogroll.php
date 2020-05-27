@@ -16,7 +16,7 @@ Stable tag: trunk
 	The wp_list_bookmarks_plus function is an evolution of the wp_list_bookmarks function that is privded with Wordpress. Having this function here will allow this plugin to evolve even further than originally intended in the future.
 */
 
-define (WPRBLVERSION, '2.1.7');
+define ('WPRBLVERSION', '2.1.7');
 
 function walk_bookmarks_plus($bookmarks, $args = '' ) {
 	$defaults = array(
