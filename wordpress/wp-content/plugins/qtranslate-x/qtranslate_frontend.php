@@ -626,7 +626,7 @@ function qtranxf_excludeUntranslatedPosts($where, $query) {//WP_Query
 	return $where;
 }
 
-function qtranxf_excludeUntranslatedPostComments($clauses, &$q/*WP_Comment_Query*/) {
+function qtranxf_excludeUntranslatedPostComments($clauses, $q/*WP_Comment_Query*/) {
 	global $wpdb;
 
 	//qtranxf_dbg_log('qtranxf_excludeUntranslatedPostComments: $clauses: ',$clauses);

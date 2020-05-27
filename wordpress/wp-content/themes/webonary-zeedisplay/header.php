@@ -5,8 +5,6 @@ $options = get_option('themezee_options');
 <html <?php language_attributes(); ?>>
 <head>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<meta name="description" content="<?php echo $options['themeZee_description']; ?>">
-	<meta name="keywords" content="<?php echo $options['themeZee_keywords']; ?>">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
