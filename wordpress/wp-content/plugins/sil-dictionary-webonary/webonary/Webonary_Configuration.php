@@ -22,7 +22,10 @@ class Webonary_Configuration
 		if (is_super_admin() || ( isset($role[0]) && in_array($role[0], array('editor', 'administrator')) ) )
 		{
 			add_menu_page( "Webonary", "Webonary", 'edit_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
-			add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
+
+			// This page is no longer used, as of version 8.3.5
+			// add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
+
 			remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
 		}
 	}
