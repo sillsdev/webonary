@@ -6,7 +6,7 @@
   },
   "scripts": {
     "apidoc": "apidoc -f '^[^.]+\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
-    "build": "npx tsc && npm run apidoc",
+    "build": "npx tsc",
     "cdk": "env-cmd cdk",
     "deploy": "npm run build && env-cmd cdk deploy",
     "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",

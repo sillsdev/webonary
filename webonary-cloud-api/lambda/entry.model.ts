@@ -91,6 +91,7 @@ export interface DictionaryEntry {
   morphoSyntaxAnalysis?: EntryAnalysis;
   audio: EntryFile;
   pictures: EntryFile[];
+  displayXhtml?: string;
   updatedAt?: string;
 }
 
@@ -114,6 +115,8 @@ export class DictionaryEntryItem implements DictionaryEntry {
   audio: EntryFileItem;
 
   pictures: EntryFileItem[];
+
+  displayXhtml?: string;
 
   updatedAt: string;
 
