@@ -72,48 +72,63 @@ class Webonary_Cloud
 		return $url;
 	}
 
+	public static function entryToDisplayXhtml($id, $entry) {	
+		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
+		if (isset($entry->displayXhtml) && $entry->entryToDisplayXhtml !== '') {
+			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+		}
+		else {
+			$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
+				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
+					
+			$lexemeform = '';
+			if ($entry->audio->src != '') {
+				$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
+				$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
+				$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
+			}
+		
+			// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
+			$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
+		
+			$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
+				. '<span class="definitionorgloss">';
+			foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
+				$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
+			}
+			$sensecontent .= '</span></span>';
+		
+			$senses = '<span class="senses">' . $sharedgrammaticalinfo . $sensecontent . '</span>';
+		
+			$pictures = '';
+			if (count($entry->pictures)) {
+				$pictures = '<span class="pictures">';
+				foreach ($entry->pictures as $picture)	{
+					$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
+					$pictures .= '<div class="picture">';
+					$pictures .= '<a class="image" href="' . $pictureUrl . '">';
+					$pictures .= '<img src="' . $pictureUrl . '"></a>';
+					$pictures .= '<div class="captioncontent"><span class="headword"><span lang="' . $definition->lang . '">' . $picture->caption . '</span></span></div>';
+					$pictures .= '</div>';
+				}
+				$pictures .= '</span>';	
+			}
+
+			$displayXhtml = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
+		}
+
+
+		return $displayXhtml;
+	}
+
 	public static function entryToFakePost($dictionaryId, $entry) {	
 		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
-		$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
-			. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
-				
-		$lexemeform = '';
-		if ($entry->audio->src != '') {
-			$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
-			$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
-			$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
-		}
-	
-		// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
-		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
-	
-		$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
-			. '<span class="definitionorgloss">';
-		foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
-			$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
-		}
-		$sensecontent .= '</span></span>';
-	
-		$senses = '<span class="senses">' . $sharedgrammaticalinfo . $sensecontent . '</span>';
-	
-		$pictures = '';
-		if (count($entry->pictures)) {
-			$pictures = '<span class="pictures">';
-			foreach ($entry->pictures as $picture)	{
-				$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
-				$pictures .= '<div class="picture">';
-				$pictures .= '<a class="image" href="' . $pictureUrl . '">';
-				$pictures .= '<img src="' . $pictureUrl . '"></a>';
-				$pictures .= '<div class="captioncontent"><span class="headword"><span lang="' . $definition->lang . '">' . $picture->caption . '</span></span></div>';
-				$pictures .= '</div>';
-			}
-			$pictures .= '</span>';	
-		}
+
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
 		$post->post_name = $id;
-		$post->post_content = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
+		$post->post_content = self::entryToDisplayXhtml($id, $entry);
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
