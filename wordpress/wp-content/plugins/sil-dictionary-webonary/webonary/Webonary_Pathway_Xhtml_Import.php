@@ -709,10 +709,14 @@ SQL;
 			$search_string = $index->search_strings;
 			$search_string = preg_replace('/\s+/', '', $search_string);
 			$search_string2 = normalizer_normalize($search_string, Normalizer::NFC );
-			if(mb_strlen(trim($search_string), "utf-8") != mb_strlen(trim($search_string2), "auto") && preg_match('/([aeiou])/', $search_string)
-				&& strtr($search_string, $UTF8_ACCENTS) == $search_string)
+
+			$length = mb_strlen($search_string);
+			$length_utf = mb_strlen($search_string, "utf-8");
+			$length_normalized = mb_strlen($search_string2, "ISO-8859-1");  // Used to be "auto" before PHP 7.3
+			if($length_utf != $length_normalized && preg_match('/([aeiou])/', $search_string)
+				&& strtr($search_string, $UTF8_ACCENTS) === $search_string)
 			{
-				if(mb_strlen(trim($search_string)) <= 10 && mb_strlen(trim($search_string2), "auto") - mb_strlen(trim($search_string)) >= 5)
+				if($length <= 10 && $length_normalized - $length >= 5)
 				{
 					$notRoman++;
 				}
