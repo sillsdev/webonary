@@ -134,6 +134,7 @@ export class DictionaryEntryItem implements DictionaryEntry {
     this.morphoSyntaxAnalysis = new EntryAnalysisItem();
     this.audio = new EntryFileItem();
     this.pictures = Array(new EntryFileItem());
+    this.displayXhtml = '';
   }
 }
 

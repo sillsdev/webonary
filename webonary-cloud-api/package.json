@@ -18,7 +18,7 @@
     "watch": "npx tsc -w"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.41.0",
+    "@aws-cdk/assert": "^1.42.0",
     "@types/aws-lambda": "^8.10.51",
     "@types/cheerio": "^0.22.18",
     "@types/form-data": "^2.5.0",
@@ -28,7 +28,7 @@
     "@types/parse5": "^5.0.3",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
-    "aws-cdk": "^1.41.0",
+    "aws-cdk": "^1.42.0",
     "aws-sdk-mock": "^5.1.0",
     "env-cmd": "^10.1.0",
     "eslint": "^6.8.0",
@@ -36,7 +36,7 @@
     "eslint-config-airbnb-typescript": "^6.3.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-prettier": "^3.1.2",
     "form-data": "^3.0.0",
     "fs": "0.0.1-security",
@@ -48,12 +48,12 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "^1.41.0",
-    "@aws-cdk/aws-certificatemanager": "^1.41.0",
-    "@aws-cdk/aws-iam": "^1.41.0",
-    "@aws-cdk/aws-lambda": "^1.41.0",
-    "@aws-cdk/aws-s3": "^1.41.0",
-    "@aws-cdk/core": "^1.41.0",
+    "@aws-cdk/aws-apigateway": "^1.42.0",
+    "@aws-cdk/aws-certificatemanager": "^1.42.0",
+    "@aws-cdk/aws-iam": "^1.42.0",
+    "@aws-cdk/aws-lambda": "^1.42.0",
+    "@aws-cdk/aws-s3": "^1.42.0",
+    "@aws-cdk/core": "^1.42.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "mime-types": "^2.1.27"
