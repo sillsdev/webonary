@@ -1691,7 +1691,7 @@ SQL;
 	 * * @param string $entry_xml
 	 * @return string $entry_xml
 	 */	
-	public static function fix_entry_xml_links($entry_xml, $baseUrl = null)
+	public static function fix_entry_xml_links($entry_xml)
 	{
 		//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
 		//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
@@ -1704,7 +1704,7 @@ SQL;
 		$entry_xml = str_replace('></a>', '> </a>', $entry_xml);
 
 		//make all links that are not using onclick (e.g. have format "#">) use the url path
-		$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . ($url ?? get_bloginfo('wpurl')) . '/\\2">', $entry_xml);
+		$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . get_bloginfo('wpurl') . '/\\2">', $entry_xml);
 
 		$entry_xml = addslashes($entry_xml);
 		$entry_xml = stripslashes($entry_xml);
