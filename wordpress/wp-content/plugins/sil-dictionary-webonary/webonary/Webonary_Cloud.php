@@ -81,8 +81,8 @@ class Webonary_Cloud
 		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
 			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
 
-			// set image and audio src path to the cloud
-			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches)) {
+			// set image and audio src path to the cloud, if they are found in the entry
+			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches) === 1) {
 				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
 				foreach($matches[0] as $index => $src) {
 					$file = str_replace("\\", "/", $matches[1][$index]);
@@ -90,13 +90,16 @@ class Webonary_Cloud
 				}
 			}
 
-			// set semantic domains as links
+			// set semantic domains as links, if they are found in the entry
 			if (preg_match_all(
 				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
 				$displayXhtml,
-				$matches)) {
+				$matches)  === 1) {
 				foreach($matches[0] as $semDom) {
-					if (preg_match_all('/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',$semDom, $semDomNames)) {
+					if (preg_match_all(
+						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
+						$semDom,
+						$semDomNames) === 1) {
 						// <span lang="en">Language and thought</span>
 						$newSemDom = $semDom;
 						foreach($semDomNames[1] as $index => $semDomNameSpan) {
@@ -158,7 +161,6 @@ class Webonary_Cloud
 	}
 
 	public static function entryToFakePost($dictionaryId, $entry) {	
-		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 
 		$post = new stdClass();
@@ -350,7 +352,7 @@ class Webonary_Cloud
 			$pageName = trim(get_query_var('name'));
 
 			// name begins with 'g', then followed by GUID
-			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
+			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
 				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
 			$searchText = trim(get_search_query());
