@@ -849,7 +849,7 @@ SQL;
 
 		$entry_xml = $doc->saveXML($entry, LIBXML_NOEMPTYTAG);
 
-		$entry_xml = fix_entry_xml_links($entry_xml);
+		$entry_xml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry_xml);
 
 		$browse_letter = normalizer_normalize($browse_letter, Normalizer::NFC );
 
