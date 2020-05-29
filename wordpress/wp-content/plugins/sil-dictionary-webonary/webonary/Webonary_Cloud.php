@@ -72,48 +72,101 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	public static function entryToFakePost($dictionaryId, $entry) {	
+	private static function sematicDomainToLink($lang, $domain) {
+		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
+	}
+
+	private static function entryToDisplayXhtml($id, $entry) {	
 		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
-		$id = self::convertGuidToId($entry->_id);
-		$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
-			. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
-				
-		$lexemeform = '';
-		if ($entry->audio->src != '') {
-			$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
-			$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
-			$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
-		}
-	
-		// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
-		$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
-	
-		$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
-			. '<span class="definitionorgloss">';
-		foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
-			$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
-		}
-		$sensecontent .= '</span></span>';
-	
-		$senses = '<span class="senses">' . $sharedgrammaticalinfo . $sensecontent . '</span>';
-	
-		$pictures = '';
-		if (count($entry->pictures)) {
-			$pictures = '<span class="pictures">';
-			foreach ($entry->pictures as $picture)	{
-				$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
-				$pictures .= '<div class="picture">';
-				$pictures .= '<a class="image" href="' . $pictureUrl . '">';
-				$pictures .= '<img src="' . $pictureUrl . '"></a>';
-				$pictures .= '<div class="captioncontent"><span class="headword"><span lang="' . $definition->lang . '">' . $picture->caption . '</span></span></div>';
-				$pictures .= '</div>';
+		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
+			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+
+			// set image and audio src path to the cloud, if they are found in the entry
+			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches) === 1) {
+				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
+				foreach($matches[0] as $index => $src) {
+					$file = str_replace("\\", "/", $matches[1][$index]);
+					$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
+				}
 			}
-			$pictures .= '</span>';	
+
+			// set semantic domains as links, if they are found in the entry
+			if (preg_match_all(
+				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
+				$displayXhtml,
+				$matches)  === 1) {
+				foreach($matches[0] as $semDom) {
+					if (preg_match_all(
+						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
+						$semDom,
+						$semDomNames) === 1) {
+						// <span lang="en">Language and thought</span>
+						$newSemDom = $semDom;
+						foreach($semDomNames[1] as $index => $semDomNameSpan) {
+							$lang = $semDomNames[2][$index];
+							$domain = $semDomNames[3][$index];
+							// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
+							$newSemDom = str_replace(
+								$semDomNameSpan,
+								'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
+								$newSemDom);
+						}
+					}
+					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
+				}
+			}
 		}
+		else {
+			$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
+				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
+					
+			$lexemeform = '';
+			if ($entry->audio->src != '') {
+				$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
+				$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
+				$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
+			}
+		
+			// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
+			$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
+		
+			$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
+				. '<span class="definitionorgloss">';
+			foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
+				$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
+			}
+			$sensecontent .= '</span></span>';
+		
+			$senses = '<span class="senses">' . $sharedgrammaticalinfo . $sensecontent . '</span>';
+		
+			$pictures = '';
+			if (count($entry->pictures)) {
+				$pictures = '<span class="pictures">';
+				foreach ($entry->pictures as $picture)	{
+					$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
+					$pictures .= '<div class="picture">';
+					$pictures .= '<a class="image" href="' . $pictureUrl . '">';
+					$pictures .= '<img src="' . $pictureUrl . '"></a>';
+					$pictures .= '<div class="captioncontent"><span class="headword"><span lang="' . $definition->lang . '">' . $picture->caption . '</span></span></div>';
+					$pictures .= '</div>';
+				}
+				$pictures .= '</span>';	
+			}
+
+			$displayXhtml = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
+		}
+
+
+		return $displayXhtml;
+	}
+
+	public static function entryToFakePost($dictionaryId, $entry) {	
+		$id = self::convertGuidToId($entry->_id);
+
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
 		$post->post_name = $id;
-		$post->post_content = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
+		$post->post_content = self::entryToDisplayXhtml($id, $entry);
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
@@ -299,7 +352,7 @@ class Webonary_Cloud
 			$pageName = trim(get_query_var('name'));
 
 			// name begins with 'g', then followed by GUID
-			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName)) {
+			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
 				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
 			}
 			$searchText = trim(get_search_query());
