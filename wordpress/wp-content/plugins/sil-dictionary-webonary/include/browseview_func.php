@@ -154,8 +154,6 @@ function categories_func( $atts )
 	</script>
 <?php
 	global $wp_query;
-
-	$totalEntries = $wp_query->found_posts;
 	$pagenr = Webonary_Utility::getPageNumber();
 
 	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
@@ -165,7 +163,6 @@ function categories_func( $atts )
 	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-
 		if(get_option('useCloudBackend'))
 		{
 			$apiParams = array(
@@ -174,12 +171,13 @@ function categories_func( $atts )
 				'semDomAbbrev' => rtrim($semnumber, '.'),
 				'searchSemDoms' => '1'
 			);
-
+			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
 			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
 		}
 		else
 		{
 			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;			
 		}
 	}
 	if(count($arrPosts) == 0)
@@ -637,8 +635,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			'pageLimit' => $postsPerPage
 		);
 
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
 		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
 	}
 	else
 	{
