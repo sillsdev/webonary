@@ -169,7 +169,9 @@ function categories_func( $atts )
 				'text' => $semdomain,
 				'lang' => $qTransLang,
 				'semDomAbbrev' => rtrim($semnumber, '.'),
-				'searchSemDoms' => '1'
+				'searchSemDoms' => '1',
+				'pageNumber' => $pagenr,
+				'pageLimit' => $postsPerPage
 			);
 			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
 			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
