@@ -198,7 +198,7 @@ function categories_func( $atts )
 		}
 	}
 
-	$display .= displayPageNumbers($semnumber_internal, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
+	$display .= displayPageNumbers($semnumber, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
 	$display .= "</div>";
 
  	wp_reset_query();
