@@ -82,19 +82,18 @@ class Webonary_Cloud
 			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
 
 			// set image and audio src path to the cloud
-			$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
-
 			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches)) {
+				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
 				foreach($matches[0] as $index => $src) {
-					$cloudSrc = '<src="' . $baseUrl . str_replace("\\", "/", $matches[1][$index]) . '"';
-					$displayXhtml = str_replace($src, $cloudSrc, $displayXhtml);
+					$file = str_replace("\\", "/", $matches[1][$index]);
+					$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
 				}
 			}
 
 			// set semantic domains as links
 			if (preg_match_all(
 				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
-				$entry->displayXhtml,
+				$displayXhtml,
 				$matches)) {
 				foreach($matches[0] as $semDom) {
 					if (preg_match_all('/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',$semDom, $semDomNames)) {
