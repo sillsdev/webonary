@@ -72,10 +72,30 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	public static function entryToDisplayXhtml($id, $entry) {	
+	private static function sematicDomainToLink($lang, $domain) {
+		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
+	}
+
+	private static function entryToDisplayXhtml($id, $entry) {	
 		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
-		if (isset($entry->displayXhtml) && $entry->entryToDisplayXhtml !== '') {
+		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
 			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+			
+			if (preg_match_all('/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U', $entry->displayXhtml, $matches)) {
+				foreach($matches[0] as $semDom) {
+					if (preg_match_all('/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',$semDom, $semDomNames)) {
+						// <span lang="en">Language and thought</span>
+						$newSemDom = $semDom;
+						foreach($semDomNames[1] as $index => $semDomNameSpan) {
+							$newSemDom = str_replace(
+								$semDomNameSpan,
+								self::sematicDomainToLink($semDomNames[2][$index], $semDomNames[3][$index]),
+								$newSemDom);
+						}
+					}
+					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
+				}
+			}
 		}
 		else {
 			$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
