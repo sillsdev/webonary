@@ -196,8 +196,7 @@ function categories_func( $atts )
 		}
 	}
 
-	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
-
+	$display .= displayPageNumbers($semnumber_internal, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
 	$display .= "</div>";
 
  	wp_reset_query();
@@ -274,7 +273,7 @@ function displayAlphabet($alphas, $languagecode)
 
 }
 
-function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
+function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
 {
 ?>
 	<link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
@@ -316,7 +315,7 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', " . ($currentPage - 1) . ");\">" . $prevpage . "</a></li> ";
+				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
 			}
 			else
 			{
@@ -329,11 +328,11 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', 1);\">" . 1 . "</a></li> ";
+				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
 			}
 			else
 			{
-				$display .= "<li><a href=\"" . $url . "&pagenr=" . 1 . "\">" . 1 . "</a></li> ";
+				$display .= "<li><a href=\"" . $url . "&pagenr=1\">1</a></li> ";
 			}
 			$display .= "<li class=space>...</li>";
 			$start = $currentPage - 5;
@@ -374,7 +373,7 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', " . ($currentPage + 1) . ");\">" . $nextpage . "</a></li> ";
+				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
 			}
 			else
 			{
@@ -715,7 +714,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	}
 
 	$display .=  "<div style=clear:both></div>";
-	$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $langcode);
+	$display .= displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $langcode);
 
 	$display .=  "</div><br>";
 
@@ -961,7 +960,7 @@ function vernacularalphabet_func( $atts )
 		$display .= "</div>";
 
 		$display .= "<div align=center><br>";
-		$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
+		$display .= displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
 		$display .= "</div><br>";
 	}
  	wp_reset_query();
