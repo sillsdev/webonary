@@ -688,8 +688,9 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			{
 				$display .=  $reversal->English;
 			}
+
 			$englishWord = $reversal->English;
-				$display .=  "</div>";
+			$display .=  "</div>";
 
 			$url = "?p=" . trim($reversal->post_id);
 
