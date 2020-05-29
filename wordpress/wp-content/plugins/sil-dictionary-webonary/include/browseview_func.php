@@ -469,7 +469,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
 	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN";
 
-	$sql = "SELECT reversal_content " .
+	$sql = "SELECT SQL_CALC_FOUND_ROWS reversal_content " .
 	" FROM " . REVERSALTABLE  .
 	" WHERE 1 = 1 ";
 	if($letter != "")
@@ -508,7 +508,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	if(count($arrReversals) == 0)
 	{
 		//just get headwords (legacy code, as we didn't use to display the xhtml for reversals)
-		$sql = "SELECT a.post_id, a.search_strings AS English, b.search_strings AS Vernacular " .
+		$sql = "SELECT SQL_CALC_FOUND_ROWS a.post_id, a.search_strings AS English, b.search_strings AS Vernacular " .
 		" FROM " . SEARCHTABLE . " a ";
 		$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_id = b.post_id "; // AND a.subid = b.subid " .
 		//$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_name = b.post_name ";
@@ -685,21 +685,20 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		else
 		{
 			$display .=  "<div id=searchresult class=" . $background . " style=\"clear:both;\">";
-				$display .=  "<div id=englishcol>";
+			$display .=  "<div id=englishcol>";
 
-				if($reversal->English != $englishWord)
-				{
-					$display .=  $reversal->English;
-				}
-				$englishWord = $reversal->English;
-				 $display .=  "</div>";
+			if($reversal->English != $englishWord)
+			{
+				$display .=  $reversal->English;
+			}
+			$englishWord = $reversal->English;
+				$display .=  "</div>";
 
-			 	$url = "?p=" . trim($reversal->post_id);
+			$url = "?p=" . trim($reversal->post_id);
 
-			 	$display .=  "<div id=vernacularcol><a href=\"" . get_bloginfo('wpurl') . "/" . $url  . "\">" . $reversal->Vernacular . "</a></div>";
+			$display .=  "<div id=vernacularcol><a href=\"" . get_bloginfo('wpurl') . "/" . $url  . "\">" . $reversal->Vernacular . "</a></div>";
 
-				 $display .=  "</div>";
-			//$display .=  "<div style=clear:both></div>";
+			$display .=  "</div>";
 
 			if($background == "even")
 			{
