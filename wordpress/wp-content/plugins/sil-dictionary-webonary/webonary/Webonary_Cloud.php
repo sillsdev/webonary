@@ -87,9 +87,12 @@ class Webonary_Cloud
 						// <span lang="en">Language and thought</span>
 						$newSemDom = $semDom;
 						foreach($semDomNames[1] as $index => $semDomNameSpan) {
+							$lang = $semDomNames[2][$index];
+							$domain = $semDomNames[3][$index];
+							// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
 							$newSemDom = str_replace(
 								$semDomNameSpan,
-								self::sematicDomainToLink($semDomNames[2][$index], $semDomNames[3][$index]),
+								'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
 								$newSemDom);
 						}
 					}
