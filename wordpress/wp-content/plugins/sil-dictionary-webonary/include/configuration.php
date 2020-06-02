@@ -181,7 +181,7 @@ function save_configurations()
 				$arrLanguageNames = $wpdb->get_results($sql);
 
 				if(count($arrLanguageNames) > 0) {
-					$sql = $wpdb->prepare("UPDATE {$wpdb->terms} SET `name` = %s WHERE slug = %s)", array($_POST[$language['name']], $_POST[$language['code']]));
+					$sql = $wpdb->prepare("UPDATE {$wpdb->terms} SET `name` = %s WHERE slug = %s", array($_POST[$language['name']], $_POST[$language['code']]));
 					$wpdb->query($sql);
 					$term_id = $arrLanguageNames[0]->term_id;
 				}
