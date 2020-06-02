@@ -154,8 +154,6 @@ function categories_func( $atts )
 	</script>
 <?php
 	global $wp_query;
-
-	$totalEntries = $wp_query->found_posts;
 	$pagenr = Webonary_Utility::getPageNumber();
 
 	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
@@ -165,21 +163,23 @@ function categories_func( $atts )
 	$display .= "<div id=searchresults>";
 	if($semnumber != '')
 	{
-
 		if(get_option('useCloudBackend'))
 		{
 			$apiParams = array(
 				'text' => $semdomain,
 				'lang' => $qTransLang,
 				'semDomAbbrev' => rtrim($semnumber, '.'),
-				'searchSemDoms' => '1'
+				'searchSemDoms' => '1',
+				'pageNumber' => $pagenr,
+				'pageLimit' => $postsPerPage
 			);
-
+			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
 			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
 		}
 		else
 		{
 			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
+			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;			
 		}
 	}
 	if(count($arrPosts) == 0)
@@ -198,8 +198,7 @@ function categories_func( $atts )
 		}
 	}
 
-	$display .= displayPagenumbers($semnumber_internal, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
-
+	$display .= displayPageNumbers($semnumber, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
 	$display .= "</div>";
 
  	wp_reset_query();
@@ -276,7 +275,7 @@ function displayAlphabet($alphas, $languagecode)
 
 }
 
-function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
+function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
 {
 ?>
 	<link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
@@ -314,11 +313,12 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 		$limit_pages = 10;
 		$display .= "<li class=page_info>" . gettext("Page") . " " . $currentPage . " " . gettext("of") . " " . $totalPages . "</li>";
+
 		if( $totalPages > 1 && $currentPage > 1 )
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', " . ($currentPage - 1) . ");\">" . $prevpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
 			}
 			else
 			{
@@ -331,11 +331,11 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', 1);\">" . 1 . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
 			}
 			else
 			{
-				$display .= "<li><a href=\"" . $url . "&pagenr=" . 1 . "\">" . 1 . "</a></li> ";
+				$display .= "<li><a href=\"" . $url . "&pagenr=1\">1</a></li> ";
 			}
 			$display .= "<li class=space>...</li>";
 			$start = $currentPage - 5;
@@ -372,11 +372,12 @@ function displayPagenumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 				break;
 			}
 		}
+
 		if( $currentPage != "" && $currentPage < $totalPages)
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li><a href=\"#\" onclick=\"displayEntry('-', '" . $chosenLetter . "', " . ($currentPage + 1) . ");\">" . $nextpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
 			}
 			else
 			{
@@ -469,7 +470,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
 	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN";
 
-	$sql = "SELECT reversal_content " .
+	$sql = "SELECT SQL_CALC_FOUND_ROWS reversal_content " .
 	" FROM " . REVERSALTABLE  .
 	" WHERE 1 = 1 ";
 	if($letter != "")
@@ -508,7 +509,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	if(count($arrReversals) == 0)
 	{
 		//just get headwords (legacy code, as we didn't use to display the xhtml for reversals)
-		$sql = "SELECT a.post_id, a.search_strings AS English, b.search_strings AS Vernacular " .
+		$sql = "SELECT SQL_CALC_FOUND_ROWS a.post_id, a.search_strings AS English, b.search_strings AS Vernacular " .
 		" FROM " . SEARCHTABLE . " a ";
 		$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_id = b.post_id "; // AND a.subid = b.subid " .
 		//$sql .= " INNER JOIN " . SEARCHTABLE. " b ON a.post_name = b.post_name ";
@@ -637,8 +638,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			'pageLimit' => $postsPerPage
 		);
 
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
 		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
 	}
 	else
 	{
@@ -676,6 +677,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 
 	$background = "even";
 	$count = 0;
+	$previousEnglishWord = '';
 	foreach($arrReversals as $reversal)
 	{
 		if($displayXHTML)
@@ -685,21 +687,18 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		else
 		{
 			$display .=  "<div id=searchresult class=" . $background . " style=\"clear:both;\">";
-				$display .=  "<div id=englishcol>";
 
-				if($reversal->English != $englishWord)
-				{
-					$display .=  $reversal->English;
-				}
-				$englishWord = $reversal->English;
-				 $display .=  "</div>";
+			$display .=  "<div id=englishcol>";
+			if($reversal->English != $previousEnglishWord)
+			{
+				$display .=  $reversal->English;
+				$previousEnglishWord = $reversal->English;
+			}
+			$display .=  "</div>";
 
-			 	$url = "?p=" . trim($reversal->post_id);
-
-			 	$display .=  "<div id=vernacularcol><a href=\"" . get_bloginfo('wpurl') . "/" . $url  . "\">" . $reversal->Vernacular . "</a></div>";
-
-				 $display .=  "</div>";
-			//$display .=  "<div style=clear:both></div>";
+			$url = "?p=" . trim($reversal->post_id);
+			$display .=  "<div id=vernacularcol><a href=\"" . get_bloginfo('wpurl') . "/" . $url  . "\">" . $reversal->Vernacular . "</a></div>";
+			$display .=  "</div>";
 
 			if($background == "even")
 			{
@@ -718,7 +717,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	}
 
 	$display .=  "<div style=clear:both></div>";
-	$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $langcode);
+	$display .= displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $langcode);
 
 	$display .=  "</div><br>";
 
@@ -964,7 +963,7 @@ function vernacularalphabet_func( $atts )
 		$display .= "</div>";
 
 		$display .= "<div align=center><br>";
-		$display .= displayPagenumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
+		$display .= displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
 		$display .= "</div><br>";
 	}
  	wp_reset_query();
