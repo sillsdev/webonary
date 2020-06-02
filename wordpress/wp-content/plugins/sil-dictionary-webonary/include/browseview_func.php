@@ -313,11 +313,12 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 		$limit_pages = 10;
 		$display .= "<li class=page_info>" . gettext("Page") . " " . $currentPage . " " . gettext("of") . " " . $totalPages . "</li>";
+
 		if( $totalPages > 1 && $currentPage > 1 )
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
 			}
 			else
 			{
@@ -330,7 +331,7 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
 			}
 			else
 			{
@@ -371,11 +372,12 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 				break;
 			}
 		}
+
 		if( $currentPage != "" && $currentPage < $totalPages)
 		{
 			if($requestname == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
 			}
 			else
 			{
@@ -675,6 +677,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 
 	$background = "even";
 	$count = 0;
+	$previousEnglishWord = '';
 	foreach($arrReversals as $reversal)
 	{
 		if($displayXHTML)
@@ -684,20 +687,17 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		else
 		{
 			$display .=  "<div id=searchresult class=" . $background . " style=\"clear:both;\">";
-			$display .=  "<div id=englishcol>";
 
-			if($reversal->English != $englishWord)
+			$display .=  "<div id=englishcol>";
+			if($reversal->English != $previousEnglishWord)
 			{
 				$display .=  $reversal->English;
+				$previousEnglishWord = $reversal->English;
 			}
-
-			$englishWord = $reversal->English;
 			$display .=  "</div>";
 
 			$url = "?p=" . trim($reversal->post_id);
-
 			$display .=  "<div id=vernacularcol><a href=\"" . get_bloginfo('wpurl') . "/" . $url  . "\">" . $reversal->Vernacular . "</a></div>";
-
 			$display .=  "</div>";
 
 			if($background == "even")
