@@ -458,7 +458,7 @@ function renderlinks_settings_page(){
 
 function renderlinks_admin() {
 	if (function_exists('add_options_page')) {
-		add_options_page('WP Render Blogroll Links', 'WP Blogroll Links', 8, basename(__FILE__), 'renderlinks_settings_page');
+		add_options_page('WP Render Blogroll Links', 'WP Blogroll Links', 'manage_options', basename(__FILE__), 'renderlinks_settings_page');
 	}
 }
 
