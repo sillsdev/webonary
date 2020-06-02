@@ -23,7 +23,7 @@ add_action( 'admin_menu', 'add_admin_menu' );
 
 function add_admin_menu()
 {
-	add_submenu_page('link-manager.php', 'Add Links to Map', 'Add Links to Map', 3, __FILE__, 'add_links_to_map');
+	add_submenu_page('link-manager.php', 'Add Links to Map', 'Add Links to Map', 'edit_posts', __FILE__, 'add_links_to_map');
 }
 
 function change_link_updated($link) {
