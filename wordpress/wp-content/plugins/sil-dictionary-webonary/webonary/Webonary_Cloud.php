@@ -82,7 +82,7 @@ class Webonary_Cloud
 			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
 
 			// set image and audio src path to the cloud, if they are found in the entry
-			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches) === 1) {
+			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $displayXhtml, $matches) > 0) {
 				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
 				foreach($matches[0] as $index => $src) {
 					$file = str_replace("\\", "/", $matches[1][$index]);
@@ -94,12 +94,12 @@ class Webonary_Cloud
 			if (preg_match_all(
 				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
 				$displayXhtml,
-				$matches)  === 1) {
+				$matches)  > 0) {
 				foreach($matches[0] as $semDom) {
 					if (preg_match_all(
 						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
 						$semDom,
-						$semDomNames) === 1) {
+						$semDomNames) > 0) {
 						// <span lang="en">Language and thought</span>
 						$newSemDom = $semDom;
 						foreach($semDomNames[1] as $index => $semDomNameSpan) {
@@ -155,7 +155,6 @@ class Webonary_Cloud
 
 			$displayXhtml = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
 		}
-
 
 		return $displayXhtml;
 	}
