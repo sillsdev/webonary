@@ -53,24 +53,26 @@ export class FlexXhtmlParser {
   }
 
   protected parseBody(): void {
-    const matches =
-      this.toBeParsed.replace(/\r?\n|\r/g, '').match(/<div class="entry" (.+?)<\/div>/gm) ?? [];
+    const $ = cheerio.load(this.toBeParsed);
 
-    this.parsedEntries = matches.map(
-      (entryData): DictionaryEntry => {
-        return FlexXhtmlParser.parseEntry(this.options.dictionaryId, entryData);
-      },
-    );
+    const entries: DictionaryEntry[] = [];
+    $('div.entry').map((i, elem) => {
+      const guid = $(elem).attr('id');
+      const entryData = $(elem).html();
+      if (guid && entryData) {
+        entries.push(FlexXhtmlParser.parseEntry(this.options.dictionaryId, guid, entryData));
+      }
+    });
+
+    this.parsedEntries = entries;
   }
 
-  public static parseEntry(dictionaryId: string, entryData: string): DictionaryEntry {
+  public static parseEntry(dictionaryId: string, guid: string, entryData: string): DictionaryEntry {
     const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
-    const _id =
-      $('div.entry')
-        .attr('id')
-        ?.substring(1) ?? '';
+    const _id = guid.substring(1) ?? '';
+    const displayXhtml = `<div class="entry" id="${guid}>${entryData}</div>`;
 
     const mainHeadWord: EntryValue[] = [];
     $('span.mainheadword span a').map((i, elem) => {
@@ -211,7 +213,7 @@ export class FlexXhtmlParser {
       morphoSyntaxAnalysis: { partOfSpeech: [partOfSpeech] },
       audio,
       pictures,
-      displayXhtml: entryData,
+      displayXhtml,
     };
 
     return entry;
