@@ -177,15 +177,12 @@ class Webonary_Cloud
 		return $post;
 	}
 
-	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry, $entryType) {	
+	 public static function entryToReversal($entry, $apiParams) {	
 		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 
 		$reversal = new stdClass();
-		if ($entryType === 'reversalindexentry') {
-			$displayXhtml = $self::entryToDisplayXhtml($id, $entry->displayXhtml);
-		}
-		else {
+		if ($entryType === '') {
 			// Automatically generated reversal based on entry definition
 			$reversal_value = '';
 			$definitions = $entry->senses->definitionOrGloss;
@@ -194,8 +191,8 @@ class Webonary_Cloud
 			}
 	
 			foreach ($definitions as $definition) {
-				$lowerLetter = strtolower($letter);
-				if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
+				$lowerLetter = strtolower($apiParams['text']);
+				if (($apiParams['lang']== $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
 					$reversal_value = $definition->value;
 					break;
 				}
@@ -212,7 +209,10 @@ class Webonary_Cloud
 				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
 		
 			$displayXhtml .= '</span></span></span>';
-			$displayXhtml .= '</<div>';			
+			$displayXhtml .= '</<div>';		
+		}
+		else {
+			$displayXhtml = self::entryToDisplayXhtml($id, $entry->displayXhtml);	
 		}
 		$reversal->reversal_content = $displayXhtml;
 
@@ -273,7 +273,7 @@ class Webonary_Cloud
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$reversals[$key] = self::entryToReversal($dictionaryId, $apiParams['lang'], $apiParams['text'], $entry, $apiParams['entryType']);
+				$reversals[$key] = self::entryToReversal($entry, $apiParams);
 			}
 		}	
 
