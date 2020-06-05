@@ -42,16 +42,20 @@ function webonary_searchform() {
 			// set up parts of speech dropdown
 			if(count($dictionary->partsOfSpeech))
 			{
-				$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
-				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
+				$options = '';
 				foreach($dictionary->partsOfSpeech as $part)
 				{
 					if ($part->lang === $currentLanguage) {
 						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
-						$parts_of_speech_dropdown .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";	
+						$options .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";	
 					}
 				}
-				$parts_of_speech_dropdown .= "</select>";
+
+				if ($options !== '') {
+					$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
+					$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
+					$parts_of_speech_dropdown .= "</select>";	
+				}
 			}
 
 			//set up semantic domains links
