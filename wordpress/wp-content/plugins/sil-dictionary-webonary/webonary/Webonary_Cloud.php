@@ -76,47 +76,64 @@ class Webonary_Cloud
 		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
 	}
 
-	private static function entryToDisplayXhtml($id, $entry) {	
+	private static function entryToDisplayXhtml($id, $displayXhtml) {	
 		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
-		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
-			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+		$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($displayXhtml);
 
-			// set image and audio src path to the cloud, if they are found in the entry
-			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $displayXhtml, $matches) > 0) {
-				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
-				foreach($matches[0] as $index => $src) {
-					$file = str_replace("\\", "/", $matches[1][$index]);
-					$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
-				}
-			}
-
-			// set semantic domains as links, if they are found in the entry
-			if (preg_match_all(
-				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
-				$displayXhtml,
-				$matches)  > 0) {
-				foreach($matches[0] as $semDom) {
-					if (preg_match_all(
-						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
-						$semDom,
-						$semDomNames) > 0) {
-						// <span lang="en">Language and thought</span>
-						$newSemDom = $semDom;
-						foreach($semDomNames[1] as $index => $semDomNameSpan) {
-							$lang = $semDomNames[2][$index];
-							$domain = $semDomNames[3][$index];
-							// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
-							$newSemDom = str_replace(
-								$semDomNameSpan,
-								'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
-								$newSemDom);
-						}
-					}
-					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
-				}
+		// set image and audio src path to the cloud, if they are found in the entry
+		if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $displayXhtml, $matches) > 0) {
+			$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
+			foreach($matches[0] as $index => $src) {
+				$file = str_replace("\\", "/", $matches[1][$index]);
+				$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
 			}
 		}
+
+		// set semantic domains as links, if they are found in the entry
+		if (preg_match_all(
+			'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
+			$displayXhtml,
+			$matches)  > 0) {
+			foreach($matches[0] as $semDom) {
+				if (preg_match_all(
+					'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
+					$semDom,
+					$semDomNames) > 0) {
+					// <span lang="en">Language and thought</span>
+					$newSemDom = $semDom;
+					foreach($semDomNames[1] as $index => $semDomNameSpan) {
+						$lang = $semDomNames[2][$index];
+						$domain = $semDomNames[3][$index];
+						// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
+						$newSemDom = str_replace(
+							$semDomNameSpan,
+							'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
+							$newSemDom);
+					}
+				}
+				$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
+			}
+		}
+
+		return $displayXhtml;
+	}
+
+	public static function entryToFakePost($dictionaryId, $entry) {	
+		$id = self::convertGuidToId($entry->_id);
+
+		$post = new stdClass();
+		$post->post_title = $entry->mainHeadWord[0]->value;
+		$post->post_name = $id;
+		$post->post_status = 'publish';
+		$post->comment_status = 'closed';
+		$post->post_type = 'post';
+		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!		
+
+		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
+			$displayXhtml = self::entryToDisplayXhtml($id, $entry->displayXhtml);
+		}
 		else {
+			// Automatic generation of entry if displayXhtml is not present
 			$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
 				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
 					
@@ -155,59 +172,50 @@ class Webonary_Cloud
 
 			$displayXhtml = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
 		}
-
-		return $displayXhtml;
-	}
-
-	public static function entryToFakePost($dictionaryId, $entry) {	
-		$id = self::convertGuidToId($entry->_id);
-
-		$post = new stdClass();
-		$post->post_title = $entry->mainHeadWord[0]->value;
-		$post->post_name = $id;
-		$post->post_content = self::entryToDisplayXhtml($id, $entry);
-		$post->post_status = 'publish';
-		$post->comment_status = 'closed';
-		$post->post_type = 'post';
-		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!		
-	
+		$post->post_content = $displayXhtml;
+		
 		return $post;
 	}
 
 	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry) {	
 		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
-		$reversal_value = '';
 
-		$definitions = $entry->senses->definitionOrGloss;
-		if (!is_array($definitions)) {
-			$definitions = [$definitions];
-		}
-
-		foreach ($definitions as $definition) {
-			$lowerLetter = strtolower($letter);
-			if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
-				$reversal_value = $definition->value;
-				break;
-			}
-		}
-	
-		$content = '<div class="reversalindexentry">';
-		$content .= '<span class="reversalform"><span lang="' . $lang . '">';
-		$content .= $reversal_value . '</span></span>';
-		
-		$content .= '<span class="sensesrs"><span class="sensecontent">';
-		$content .= '<span class="sensesr" entryguid="' . $id . '">';
-	
-		$content .= '<span class="headword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
-			. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
-	
-		$content .= '</span></span></span>';
-		$content .= '</<div>';
-		
 		$reversal = new stdClass();
-		$reversal->reversal_content = $content;
+		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
+			$displayXhtml = $self::entryToDisplayXhtml($id, $entry->displayXhtml);
+		}
+		else {
+			// Automatically generated reversal based on entry definition
+			$reversal_value = '';
+			$definitions = $entry->senses->definitionOrGloss;
+			if (!is_array($definitions)) {
+				$definitions = [$definitions];
+			}
 	
+			foreach ($definitions as $definition) {
+				$lowerLetter = strtolower($letter);
+				if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
+					$reversal_value = $definition->value;
+					break;
+				}
+			}
+		
+			$displayXhtml = '<div class="reversalindexentry">';
+			$displayXhtml .= '<span class="reversalform"><span lang="' . $lang . '">';
+			$displayXhtml .= $reversal_value . '</span></span>';
+			
+			$displayXhtml .= '<span class="sensesrs"><span class="sensecontent">';
+			$displayXhtml .= '<span class="sensesr" entryguid="' . $id . '">';
+		
+			$displayXhtml .= '<span class="headword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
+				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
+		
+			$displayXhtml .= '</span></span></span>';
+			$displayXhtml .= '</<div>';			
+		}
+		$reversal->reversal_content = $displayXhtml;
+
 		return $reversal;
 	}
 
@@ -265,7 +273,7 @@ class Webonary_Cloud
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$reversals[$key] = self::entryToReversal($dictionaryId, $apiParams['lang'], $apiParams['text'], $entry);
+				$reversals[$key] = self::entryToReversal($dictionaryId, $apiParams['lang'], $apiParams['text'], $entry, $apiParams['entryType']);
 			}
 		}	
 

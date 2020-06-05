@@ -634,6 +634,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		$apiParams = array(
 			'text' => $chosenLetter,
 			'lang' => $langcode,
+			'entryType' => 'reversalindexentry',
 			'pageNumber' => $pagenr,
 			'pageLimit' => $postsPerPage
 		);
