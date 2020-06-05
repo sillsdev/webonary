@@ -46,7 +46,7 @@ function webonary_searchform() {
 				$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
 				foreach($dictionary->partsOfSpeech as $part)
 				{
-					if ($part->language === $currentLanguage) {
+					if ($part->lang === $currentLanguage) {
 						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
 						$parts_of_speech_dropdown .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";	
 					}
