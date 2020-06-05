@@ -210,10 +210,10 @@ class Webonary_Cloud
 	public static function getEntryAsPost($doAction, $dictionaryId, $id) {
 		$request = $doAction . '/' . $dictionaryId;
 		$apiParams = array('guid' => $id);
-		$response = self::remoteGetJson($request, $apiParams);
+		$entry = self::remoteGetJson($request, $apiParams);
 		$posts = [];
-		if (self::isValidEntry($response)) { 
-			$post = self::entryToFakePost($response);
+		if (self::isValidEntry($entry)) { 
+			$post = self::entryToFakePost($entry);
 			$post->ID = -1; // negative ID, to avoid clash with a valid post
 			$posts[0] = $post;	
 		}
