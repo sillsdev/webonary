@@ -77,11 +77,11 @@ class Webonary_Cloud
 	}
 
 	private static function entryToDisplayXhtml($entry) {
-		if (isset($entry->entryToDisplayXhtml) {
-			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+		if (!isset($entry->entryToDisplayXhtml) || $entry->entryToDisplayXhtml === '') {
+			return '';
 		}
 		else {
-			return '';
+			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
 		}
 
 		// set image and audio src path to the cloud, if they are found in the entry
