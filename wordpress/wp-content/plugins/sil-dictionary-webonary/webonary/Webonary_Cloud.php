@@ -177,12 +177,12 @@ class Webonary_Cloud
 		return $post;
 	}
 
-	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry) {	
+	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry, $entryType) {	
 		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
 		$id = self::convertGuidToId($entry->_id);
 
 		$reversal = new stdClass();
-		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
+		if ($entryType === 'reversalindexentry') {
 			$displayXhtml = $self::entryToDisplayXhtml($id, $entry->displayXhtml);
 		}
 		else {
