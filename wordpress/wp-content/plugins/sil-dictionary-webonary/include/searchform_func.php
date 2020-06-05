@@ -52,6 +52,7 @@ function webonary_searchform() {
 				}
 
 				if ($options !== '') {
+					$options = "<option value=''>" . __('All Parts of Speech','sil_dictionary') ."</options>" . $options;
 					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";	
 				}
 			}
