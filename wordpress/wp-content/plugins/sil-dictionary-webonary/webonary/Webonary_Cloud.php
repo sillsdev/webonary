@@ -185,7 +185,7 @@ class Webonary_Cloud
 		$posts = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$post = self::entryToFakePost($dictionaryId, $entry);
+				$post = self::entryToFakePost($entry);
 				$post->ID = -$key; // negative ID, to avoid clash with a valid post
 				$posts[$key] = $post;	
 			}
@@ -200,7 +200,7 @@ class Webonary_Cloud
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$reversals[$key] = self::entryToReversal($dictionaryId, $entry, $apiParams);
+				$reversals[$key] = self::entryToReversal($entry);
 			}
 		}	
 
@@ -213,7 +213,7 @@ class Webonary_Cloud
 		$response = self::remoteGetJson($request, $apiParams);
 		$posts = [];
 		if (self::isValidEntry($response)) { 
-			$post = self::entryToFakePost($dictionaryId, $response);
+			$post = self::entryToFakePost($response);
 			$post->ID = -1; // negative ID, to avoid clash with a valid post
 			$posts[0] = $post;	
 		}
