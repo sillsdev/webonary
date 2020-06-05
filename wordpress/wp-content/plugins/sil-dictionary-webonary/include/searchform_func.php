@@ -52,9 +52,7 @@ function webonary_searchform() {
 				}
 
 				if ($options !== '') {
-					$parts_of_speech_dropdown .= "<select  name='tax' id='tax' class='postform' >";
-					$parts_of_speech_dropdown .= "<option value=''>" . __('All Parts of Speech','sil_dictionary') . "</option>";
-					$parts_of_speech_dropdown .= "</select>";	
+					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";	
 				}
 			}
 
