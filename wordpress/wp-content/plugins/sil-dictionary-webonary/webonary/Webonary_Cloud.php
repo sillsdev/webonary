@@ -77,7 +77,7 @@ class Webonary_Cloud
 	}
 
 	private static function entryToDisplayXhtml($entry) {
-		if (!isset($entry->entryToDisplayXhtml) || $entry->entryToDisplayXhtml === '') {
+		if (!isset($entry->displayXhtml) || $entry->displayXhtml === '') {
 			return '';
 		}
 		else {
