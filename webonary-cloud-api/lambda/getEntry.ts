@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_ENTRIES } from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES } from './db';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -24,7 +24,9 @@ export async function handler(
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem = await db.collection(DB_COLLECTION_ENTRIES).findOne({ _id, dictionaryId });
+    const dbItem = await db
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .findOne({ _id, dictionaryId });
     if (!dbItem) {
       return callback(null, Response.notFound({}));
     }

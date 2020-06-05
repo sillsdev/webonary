@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_ENTRIES } from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_DICTIONARY_ENTRIES } from './db';
 import { Dictionary } from './dictionary.model';
 import * as Response from './response';
 
@@ -30,7 +30,7 @@ export async function handler(
 
     // get total entries
     dbItem.mainLanguage.entriesCount = await db
-      .collection(DB_COLLECTION_ENTRIES)
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .countDocuments({ dictionaryId });
 
     return callback(null, Response.success(dbItem));

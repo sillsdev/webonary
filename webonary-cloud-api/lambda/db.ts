@@ -119,4 +119,5 @@ export const DB_COLLATION_LOCALES = [
 ];
 
 export const DB_COLLECTION_DICTIONARIES = 'webonaryDictionaries';
-export const DB_COLLECTION_ENTRIES = 'webonaryEntries';
+export const DB_COLLECTION_DICTIONARY_ENTRIES = 'webonaryEntries';
+export const DB_COLLECTION_REVERSAL_ENTRIES = 'webonaryReversals';

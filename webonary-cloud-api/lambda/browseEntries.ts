@@ -4,13 +4,14 @@ import { connectToDB } from './mongo';
 import {
   DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
-  DB_COLLECTION_ENTRIES,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_COLLECTION_REVERSAL_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
-import { DictionaryEntry, DbPaths } from './entry.model';
+import { DictionaryEntry, ReversalEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
 import { getDbSkip } from './utils';
 import * as Response from './response';
 
@@ -26,9 +27,10 @@ export async function handler(
     context.callbackWaitsForEmptyEventLoop = false;
 
     const dictionaryId = event.pathParameters?.dictionaryId;
-    const text = event.queryStringParameters?.text;
+    const text = event.queryStringParameters?.text ?? '';
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
-    const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
+    const lang = event.queryStringParameters?.lang ?? ''; // this is used to limit which language to search
+    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
 
     const countTotalOnly = event.queryStringParameters?.countTotalOnly;
 
@@ -38,35 +40,80 @@ export async function handler(
       DB_MAX_DOCUMENTS_PER_CALL,
     );
 
-    if (!text) {
+    if (text === '') {
       return callback(null, Response.badRequest('Browse letter head must be specified.'));
     }
 
-    // set up main search
-    const dbFind: DbFindParameters = { dictionaryId };
-    if (lang) {
-      dbFind.reversalLetterHeads = { lang, value: text };
-    } else {
-      dbFind.letterHead = text;
-    }
-
-    // set up to return entries
-    let entries: DictionaryEntry[];
-    let dbSortKey: string;
+    let dbCollection = '';
+    let dbSortKey = '';
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
+    let entries: DictionaryEntry[] | ReversalEntry[];
+    let primarySearch = true;
+    const dbFind: DbFindParameters = { dictionaryId };
     const dbSkip = getDbSkip(pageNumber, pageLimit);
+
+    if (isReversalEntry) {
+      if (lang === '') {
+        return callback(
+          null,
+          Response.badRequest('Language must be specified for browsing reversal entries.'),
+        );
+      }
+
+      primarySearch = true;
+      dbCollection = DB_COLLECTION_REVERSAL_ENTRIES;
+      dbFind[DbPaths.ENTRY_REVERSAL_FORM_LANG] = lang;
+      if (DB_COLLATION_LOCALES.includes(lang)) {
+        dbLocale = lang;
+      }
+
+      // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
+      dbSortKey = DbPaths.ENTRY_REVERSAL_FORM_VALUE;
+    } else {
+      dbCollection = DB_COLLECTION_DICTIONARY_ENTRIES;
+      if (lang === '') {
+        if (mainLang && DB_COLLATION_LOCALES.includes(mainLang)) {
+          dbLocale = mainLang;
+        }
+
+        // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
+        dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_FIRST_VALUE;
+      } else {
+        // generate reversal entries based on searching via definitions
+        primarySearch = false;
+
+        // TODO: Include reversal language in sorting?
+        /*
+        dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
+        if (DB_COLLATION_LOCALES.includes(lang)) {
+          dbLocale = lang;
+        }
+        */
+      }
+    }
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    if (lang) {
-      // TODO: Include reversal language in sorting?
-      /*
-      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_VALUE;
-      if (DB_COLLATION_LOCALES.includes(lang)) {
-        dbLocale = lang;
+    if (primarySearch) {
+      dbFind.letterHead = text;
+
+      if (countTotalOnly && countTotalOnly === '1') {
+        const count = await db.collection(dbCollection).countDocuments(dbFind);
+        return callback(null, Response.success({ count }));
       }
-      */
+
+      entries = await db
+        .collection(dbCollection)
+        .find(dbFind)
+        .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
+        .sort({ [dbSortKey]: 1 })
+        .skip(dbSkip)
+        .limit(pageLimit)
+        .toArray();
+    } else {
+      dbFind.reversalLetterHeads = { lang, value: text };
+
       const pipeline: object[] = [
         { $match: dbFind },
         { $unwind: `$${DbPaths.ENTRY_SENSES}` },
@@ -77,7 +124,7 @@ export async function handler(
       if (countTotalOnly && countTotalOnly === '1') {
         pipeline.push({ $count: 'count' });
         const count = await db
-          .collection(DB_COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .aggregate(pipeline)
           .next();
         return callback(null, Response.success(count));
@@ -85,29 +132,10 @@ export async function handler(
 
       pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } });
       entries = await db
-        .collection(DB_COLLECTION_ENTRIES)
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .aggregate(pipeline, {
           collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY },
         })
-        .skip(dbSkip)
-        .limit(pageLimit)
-        .toArray();
-    } else {
-      if (countTotalOnly && countTotalOnly === '1') {
-        const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
-        return callback(null, Response.success({ count }));
-      }
-
-      // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-      dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_FIRST_VALUE;
-      if (mainLang && mainLang !== '' && DB_COLLATION_LOCALES.includes(mainLang)) {
-        dbLocale = mainLang;
-      }
-      entries = await db
-        .collection(DB_COLLECTION_ENTRIES)
-        .find(dbFind)
-        .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
-        .sort({ [dbSortKey]: 1 })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();

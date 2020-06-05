@@ -3,10 +3,17 @@
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import * as mime from 'mime-types';
 import * as fs from 'fs';
-import { Dictionary } from '../lambda/dictionary.model';
-import { DictionaryEntry, EntryFile } from '../lambda/entry.model';
+import { Dictionary, LanguageItem } from '../lambda/dictionary.model';
+import {
+  DictionaryEntry,
+  EntryFile,
+  ReversalEntry,
+  ENTRY_TYPE_MAIN,
+  ENTRY_TYPE_REVERSAL,
+} from '../lambda/entry.model';
 import fileGrabber from './fileGrabber';
-import { FlexXhtmlParser } from './flexXhtmlParser';
+import { FlexXhtmlParserMain } from './flexXhtmlParserMain';
+import { FlexXhtmlParserReversal } from './flexXhtmlParserReversal';
 
 function logMessage(message: string, previousTime?: number): void {
   const currentTime = Date.now();
@@ -58,12 +65,13 @@ async function postDictionary(
 
 async function postEntry(
   dictionaryId: string,
+  entryType: string,
   entry: DictionaryEntry[],
   credentials: AxiosBasicCredentials,
 ): Promise<AxiosResponse | undefined> {
   const path = `/post/entry/${dictionaryId}`;
   const data = JSON.stringify(entry);
-  const config: AxiosRequestConfig = { auth: credentials };
+  const config: AxiosRequestConfig = { params: { entryType }, auth: credentials };
 
   try {
     return await axios.post(path, data, config);
@@ -72,6 +80,35 @@ async function postEntry(
   }
 
   return undefined;
+}
+
+async function postEntries(
+  dictionaryId: string,
+  entries: DictionaryEntry[] | ReversalEntry[],
+  chunkSize: number,
+  credentials: AxiosBasicCredentials,
+  reversalLang?: string,
+): Promise<void> {
+  const startPostingEntriesTime = Date.now();
+  logMessage(
+    `Start posting ${entries.length} ${reversalLang ??
+      'main'} entries in chunks of ${chunkSize}...`,
+  );
+
+  const chunkedParsedItem = chunkArray(entries, chunkSize);
+  const entryType = reversalLang ? ENTRY_TYPE_REVERSAL : ENTRY_TYPE_MAIN;
+  // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [index, chunk] of chunkedParsedItem.entries()) {
+    logMessage(`Posting chunk ${index + 1}...`);
+    // eslint-disable-next-line no-await-in-loop
+    await postEntry(dictionaryId, entryType, chunk, credentials);
+  }
+
+  logMessage(
+    `Finished posting ${entries.length} ${reversalLang ?? 'main'} entries`,
+    startPostingEntriesTime,
+  );
 }
 
 async function postFile(
@@ -162,29 +199,62 @@ if (args[0]) {
 
     const startProcessingTime = Date.now();
     const startParsingTime = startProcessingTime;
-    logMessage('Start parsing...');
+    logMessage('Start parsing main xhtml...');
 
     const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
-    const parser = new FlexXhtmlParser(toBeParsed, { dictionaryId });
+    const mainParser = new FlexXhtmlParserMain(toBeParsed, { dictionaryId });
 
-    logMessage(`Finished parsing ${parser.parsedEntries.length} entries`, startParsingTime);
+    logMessage(
+      `Finished parsing ${mainParser.parsedDictionaryEntries.length} entries`,
+      startParsingTime,
+    );
 
     const limit = Number(args[1]);
     if (limit) {
       logMessage(`Limiting to ${limit.toString()} entries`);
-      parser.parsedEntries = parser.parsedEntries.slice(0, limit);
+      mainParser.parsedDictionaryEntries = mainParser.parsedDictionaryEntries.slice(0, limit);
     }
 
+    const startReversalParsingTime = Date.now();
+    logMessage('Start parsing reversal xhtml files...');
+    const reversals = await Promise.all(
+      dictionaryFiles
+        .filter(file => file.endsWith('.xhtml') && file !== mainFile)
+        .map(async file => {
+          const lang = file.substring(file.lastIndexOf('_') + 1, file.lastIndexOf('.'));
+          const parser = new FlexXhtmlParserReversal(
+            await fileGrabber.getFile(dictionaryId, file),
+            { dictionaryId },
+          );
+
+          if (limit) {
+            parser.parsedReversalEntries = parser.parsedReversalEntries.slice(0, limit);
+          }
+
+          return { lang, parser };
+        }),
+    );
+
+    logMessage(`Finished parsing ${reversals.length} reversal files`, startReversalParsingTime);
+
     logMessage(`Getting dictionary metadata...`);
-    const dictionaryPost = parser.getDictionaryData();
+    const dictionaryPost = mainParser.getDictionaryData();
     if (dictionaryPost) {
       dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
 
-      dictionaryPost.reversalLanguages.forEach((item, index) => {
-        const cssFile = `reversal_${item.lang}.css`;
-        if (dictionaryFiles.includes(cssFile)) {
-          dictionaryPost.reversalLanguages[index].cssFiles = [cssFile];
-        }
+      dictionaryPost.reversalLanguages = reversals.map(reversal => {
+        const item = new LanguageItem();
+        item.lang = reversal.lang;
+        item.letters = reversal.parser.parsedLetters;
+        item.title = mainParser.parsedLanguages.get(item.lang) ?? '';
+
+        [`reversal_${item.lang}.css`, 'ProjectReversalOverrides.css'].forEach(file => {
+          if (dictionaryFiles.includes(file)) {
+            item.cssFiles.push(file);
+          }
+        });
+
+        return item;
       });
 
       logMessage(`Posting dictionary metadata...`);
@@ -202,42 +272,31 @@ if (args[0]) {
       await Promise.all(promises);
     }
 
-    const startPostingEntriesTime = Date.now();
-    logMessage(`Start posting entries in chunks of ${CHUNK_LOAD_ENTRY_SIZE}...`);
-
-    const chunkedParsedItems: DictionaryEntry[][] = chunkArray(
-      parser.parsedEntries,
+    // post main entries
+    await postEntries(
+      dictionaryId,
+      mainParser.parsedDictionaryEntries,
       CHUNK_LOAD_ENTRY_SIZE,
+      credentials,
     );
 
-    // we need to allow synchronous processing in order to make sure not to overwhelm api gateway
+    // post reversal entries
     // eslint-disable-next-line no-restricted-syntax
-    for (const [index, chunk] of chunkedParsedItems.entries()) {
-      const startChunkTime = Date.now();
-      logMessage(`Posting chunk ${index + 1}...`);
-
-      /* 
-      NOTE: It turns out (not surprisingly) that a single post with multiple entries
-      a lot faster than many single posts running async
-
-      const promises = chunk.map((entry): Promise<void> => {
-          return postEntry(dictionary, [entry], credentials);                    
-      });
-      await Promise.all(promises);
-      */
-
+    for (const reversal of reversals) {
       // eslint-disable-next-line no-await-in-loop
-      await postEntry(dictionaryId, chunk, credentials);
-
-      logMessage(`Finished posting chunk of ${CHUNK_LOAD_ENTRY_SIZE}`, startChunkTime);
+      await postEntries(
+        dictionaryId,
+        reversal.parser.parsedReversalEntries,
+        CHUNK_LOAD_ENTRY_SIZE,
+        credentials,
+        reversal.lang,
+      );
     }
 
-    logMessage(`Finished posting ${parser.parsedEntries.length} entries`, startPostingEntriesTime);
-
     const startPostingFilesTime = Date.now();
-    logMessage(' Start posting files...');
+    logMessage('Start posting files...');
 
-    const entryFiles = parser.parsedEntries.reduce(
+    const entryFiles = mainParser.parsedDictionaryEntries.reduce(
       (files: EntryFile[], entry: DictionaryEntry): EntryFile[] => {
         if (entry.audio.src) {
           files.push(entry.audio);

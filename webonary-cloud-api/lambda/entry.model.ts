@@ -80,10 +80,15 @@ export class EntrySenseItem implements EntrySense {
   guid? = '';
 }
 
-export interface DictionaryEntry {
+export interface Entry {
   _id: string;
   dictionaryId: string;
   letterHead: string;
+  displayXhtml: string;
+  updatedAt?: string;
+}
+
+export interface DictionaryEntry extends Entry {
   mainHeadWord: EntryValue[];
   senses: EntrySense[];
   reversalLetterHeads: EntryValue[];
@@ -91,8 +96,6 @@ export interface DictionaryEntry {
   morphoSyntaxAnalysis?: EntryAnalysis;
   audio: EntryFile;
   pictures: EntryFile[];
-  displayXhtml?: string;
-  updatedAt?: string;
 }
 
 export class DictionaryEntryItem implements DictionaryEntry {
@@ -116,7 +119,7 @@ export class DictionaryEntryItem implements DictionaryEntry {
 
   pictures: EntryFileItem[];
 
-  displayXhtml?: string;
+  displayXhtml: string;
 
   updatedAt: string;
 
@@ -138,6 +141,40 @@ export class DictionaryEntryItem implements DictionaryEntry {
   }
 }
 
+export interface ReversalEntry extends Entry {
+  reversalForm: EntryValue;
+}
+
+export class ReversalEntryItem implements ReversalEntry {
+  _id: string;
+
+  dictionaryId: string;
+
+  letterHead: string;
+
+  reversalForm: EntryValueItem;
+
+  displayXhtml: string;
+
+  updatedAt: string;
+
+  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+    this._id = guid;
+    this.dictionaryId = dictionaryId;
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+
+    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
+    this.letterHead = '';
+    this.reversalForm = new EntryValueItem();
+    this.displayXhtml = '';
+  }
+}
+
+export type EntryItem = DictionaryEntryItem | ReversalEntryItem;
+
+export const ENTRY_TYPE_MAIN = 'entry';
+export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
+
 export enum DbPaths {
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
   ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.value',
@@ -150,4 +187,6 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV = 'senses.semanticDomains.abbreviation',
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
+  ENTRY_REVERSAL_FORM_LANG = 'reversalForm.lang',
+  ENTRY_REVERSAL_FORM_VALUE = 'reversalForm.value',
 }
