@@ -182,7 +182,7 @@ class Webonary_Cloud
 		$id = self::convertGuidToId($entry->_id);
 
 		$reversal = new stdClass();
-		if (empty($apiParams['entryType'] === '')) {
+		if (empty($apiParams['entryType'])) {
 			// Automatically generated reversal based on entry definition
 			$reversal_value = '';
 			$definitions = $entry->senses->definitionOrGloss;
