@@ -114,8 +114,8 @@ class Webonary_Cloud
 							'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
 							$newSemDom);
 					}
+					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
 				}
-				$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
 			}
 		}
 
@@ -138,8 +138,6 @@ class Webonary_Cloud
 	}
 
 	 public static function entryToReversal($entry) {	
-		$id = self::convertGuidToId($entry->_id);
-
 		$reversal = new stdClass();
 		$reversal->reversal_content = self::entryToDisplayXhtml($entry);
 
