@@ -151,7 +151,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       [],
     );
 
-    return {
+    const dictionaryEntry: DictionaryEntry = {
       ...entry,
       mainHeadWord,
       pronunciations,
@@ -161,23 +161,25 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       audio,
       pictures,
     };
+
+    return dictionaryEntry;
   }
 
   public getDictionaryData(): DictionaryItem | undefined {
     const _id = this.options.dictionaryId;
-    const loadDictionary = new DictionaryItem(_id);
+    const dictionary = new DictionaryItem(_id);
 
     if (_id && this.parsedDictionaryEntries.length) {
       // We can safely assume that all the entries have same main language
       const mainLang = this.parsedDictionaryEntries[0].mainHeadWord[0].lang ?? '';
-      loadDictionary.mainLanguage = {
+      dictionary.mainLanguage = {
         lang: mainLang,
         title: this.parsedLanguages.get(mainLang) ?? '',
         letters: this.parsedLetters,
         cssFiles: [],
       };
 
-      loadDictionary.partsOfSpeech = this.parsedDictionaryEntries.reduce(
+      dictionary.partsOfSpeech = this.parsedDictionaryEntries.reduce(
         (partsOfSpeech: ListOption[], entry) => {
           const newDictionaryPartsOfSpeech = partsOfSpeech;
           if (entry.morphoSyntaxAnalysis) {
@@ -205,7 +207,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
         [],
       );
 
-      loadDictionary.semanticDomains = this.parsedDictionaryEntries.reduce(
+      dictionary.semanticDomains = this.parsedDictionaryEntries.reduce(
         (semDoms: ListOption[], entry) => {
           const newDictionarySemDoms = semDoms;
           entry.senses.forEach(sense => {
@@ -237,7 +239,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
         [],
       );
     }
-    return loadDictionary;
+    return dictionary;
   }
 }
 

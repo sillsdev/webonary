@@ -65,10 +65,6 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
       sensesRs,
     };
 
-    if (reversalForm[0].value === 'abattage') {
-      console.log(reversalEntry);
-    }
-
     return reversalEntry;
   }
 }
