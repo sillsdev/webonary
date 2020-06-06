@@ -68,7 +68,7 @@ export async function handler(
       }
 
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-      dbSortKey = DbPaths.ENTRY_REVERSAL_FORM_VALUE;
+      dbSortKey = DbPaths.ENTRY_REVERSAL_FORM_FIRST_VALUE;
     } else {
       dbCollection = DB_COLLECTION_DICTIONARY_ENTRIES;
       if (lang === '') {

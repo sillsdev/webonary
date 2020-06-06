@@ -2,7 +2,13 @@
 import * as cheerio from 'cheerio';
 import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
-import { Entry, ReversalEntry, EntryValue, ENTRY_TYPE_REVERSAL } from '../lambda/entry.model';
+import {
+  Entry,
+  ReversalEntry,
+  ReversalSense,
+  EntryValue,
+  ENTRY_TYPE_REVERSAL,
+} from '../lambda/entry.model';
 
 export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public parsedReversalEntries: ReversalEntry[];
@@ -18,12 +24,52 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public static parseReversalEntry(entry: Entry): ReversalEntry {
     const $ = cheerio.load(entry.displayXhtml);
 
-    const lang = $('span.reversalform span').attr('lang') ?? '';
-    const value = $('span.reversalform span').text();
+    const reversalForm: EntryValue[] = [];
+    $('span.reversalform span').map((i, elem) => {
+      const lang = $(elem).attr('lang');
+      const value = $(elem).text();
+      if (lang && value) {
+        reversalForm.push({ lang, value });
+      }
+    });
 
-    const reversalForm: EntryValue = { lang, value };
+    const sensesRs: ReversalSense[] = [];
+    $('span.sensesr').map((i, elem) => {
+      const guid = $(elem).attr('entryguid');
+      if (guid) {
+        const headWord: EntryValue[] = [];
+        $('span.sensesr span.headword span').map((childIndex, childElem) => {
+          const lang = $(childElem).attr('lang');
+          const value = $(childElem).text();
+          if (lang && value) {
+            headWord.push({ lang, value });
+          }
+        });
 
-    return { ...entry, reversalForm };
+        const partOfSpeech: EntryValue[] = [];
+        $('span.morphosyntaxanalysis span.mlpartofspeech span').map((i, elem) => {
+          const lang = $(elem).attr('lang');
+          const value = $(elem).text();
+          if (lang && value) {
+            partOfSpeech.push({ lang, value });
+          }
+        });
+
+        sensesRs.push({ guid, headWord, partOfSpeech });
+      }
+    });
+
+    const reversalEntry: ReversalEntry = {
+      ...entry,
+      reversalForm,
+      sensesRs,
+    };
+
+    if (reversalForm[0].value === 'abattage') {
+      console.log(reversalEntry);
+    }
+
+    return reversalEntry;
   }
 }
 

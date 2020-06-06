@@ -100,15 +100,17 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       pronunciations.push({ lang, value, key });
     });
 
-    const partOfSpeechSpan =
-      'span.senses span.sharedgrammaticalinfo span.morphosyntaxanalysis span.partofspeech span';
-    const partOfSpeech: EntryValue = {
-      lang: $(partOfSpeechSpan).attr('lang') ?? '',
-      value: $(partOfSpeechSpan).text(),
-    };
+    const partOfSpeech: EntryValue[] = [];
+    $('span.morphosyntaxanalysis span.partofspeech span').map((i, elem) => {
+      const lang = $(elem).attr('lang');
+      const value = $(elem).text();
+      if (lang && value) {
+        partOfSpeech.push({ lang, value });
+      }
+    });
 
     const definitionOrGloss: EntryValue[] = [];
-    $('span.senses span.sensecontent span.sense span.definitionorgloss span').map((i, elem) => {
+    $('span.definitionorgloss span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const value = $(elem).text();
       if (lang && value) {
@@ -119,9 +121,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
     });
 
     const semanticDomains: EntrySemanticDomain[] = [];
-    $(
-      'span.senses span.sensecontent span.sense span.semanticdomains span.semanticdomain span.name span',
-    ).map((i, elem) => {
+    $('span.semanticdomain span.name span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const name = $(elem).text();
       if (lang && name) {
@@ -157,7 +157,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       pronunciations,
       senses: [{ definitionOrGloss, semanticDomains }],
       reversalLetterHeads,
-      morphoSyntaxAnalysis: { partOfSpeech: [partOfSpeech] },
+      morphoSyntaxAnalysis: { partOfSpeech },
       audio,
       pictures,
     };

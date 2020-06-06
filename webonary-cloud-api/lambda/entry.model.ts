@@ -141,8 +141,25 @@ export class DictionaryEntryItem implements DictionaryEntry {
   }
 }
 
+export interface ReversalSense {
+  guid: string;
+
+  headWord: EntryValue[];
+
+  partOfSpeech: EntryValue[];
+}
+
+export class ReversalSenseItem implements ReversalSense {
+  guid = '';
+
+  headWord = Array(new EntryValueItem());
+
+  partOfSpeech = Array(new EntryValueItem());
+}
+
 export interface ReversalEntry extends Entry {
-  reversalForm: EntryValue;
+  reversalForm: EntryValue[];
+  sensesRs: ReversalSense[];
 }
 
 export class ReversalEntryItem implements ReversalEntry {
@@ -152,7 +169,9 @@ export class ReversalEntryItem implements ReversalEntry {
 
   letterHead: string;
 
-  reversalForm: EntryValueItem;
+  reversalForm: EntryValueItem[];
+
+  sensesRs: ReversalSenseItem[];
 
   displayXhtml: string;
 
@@ -165,7 +184,9 @@ export class ReversalEntryItem implements ReversalEntry {
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.letterHead = '';
-    this.reversalForm = new EntryValueItem();
+    this.reversalForm = Array(new EntryValueItem());
+    this.sensesRs = Array(new ReversalSenseItem());
+
     this.displayXhtml = '';
   }
 }
@@ -188,5 +209,5 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
   ENTRY_REVERSAL_FORM_LANG = 'reversalForm.lang',
-  ENTRY_REVERSAL_FORM_VALUE = 'reversalForm.value',
+  ENTRY_REVERSAL_FORM_FIRST_VALUE = 'reversalForm.0.value',
 }
