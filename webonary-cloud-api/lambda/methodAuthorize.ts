@@ -49,10 +49,10 @@ export async function handler(
       // User access is per dictionary per user.
       const principalId = `${dictionaryId}::${username}`;
 
-      // To allow for correct caching behavior, we only keep the first part of request (post) and use wildcard for the next
+      // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path
       const resource = event.methodArn.replace(
         /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\//i,
-        '$1/*/',
+        '*/*/',
       );
 
       // Call Webonary.org for user authentication
@@ -63,12 +63,13 @@ export async function handler(
         auth: { username, password },
       });
 
+      console.log(`Processing policy for ${username} to resource ${event.methodArn}`);
       if (response.status === 200) {
         if (response.data) {
-          console.log(`Denied ${username} to resource ${resource} for ${response.data}`);
+          console.log(`Denied ${principalId} to resource ${resource} for ${response.data}`);
           return callback(null, generatePolicy(principalId, 'Deny', resource)); // 403
         }
-
+        console.log(`Created policy for ${principalId} to access resource ${resource}`);
         return callback(null, generatePolicy(principalId, 'Allow', resource));
       }
     } catch (error) {
