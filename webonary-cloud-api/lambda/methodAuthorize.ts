@@ -65,6 +65,7 @@ export async function handler(
 
       if (response.status === 200) {
         if (response.data) {
+          console.log(`Denied ${username} to resource ${resource} for ${response.data}`);
           return callback(null, generatePolicy(principalId, 'Deny', resource)); // 403
         }
 
