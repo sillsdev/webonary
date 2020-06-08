@@ -76,139 +76,71 @@ class Webonary_Cloud
 		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
 	}
 
-	private static function entryToDisplayXhtml($id, $entry) {	
-		//<div class="entry" id="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="mainheadword"><span lang="es"><a href="http://localhost:8000/test/ge5175994-067d-44c4-addc-ca183ce782a6">bacalaitos</a></span></span><span class="senses"><span class="sensecontent"><span class="sense" entryguid="ge5175994-067d-44c4-addc-ca183ce782a6"><span class="definitionorgloss"><span lang="en">cod fish fritters/cod croquettes</span></span><span class="semanticdomains"><span class="semanticdomain"><span class="abbreviation"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">1.7</a></span></span><span class="name"><span class=""><a href="http://localhost:8000/test/?s=&amp;partialsearch=1&amp;tax=9909">Puerto Rican Fritters</a></span></span></span></span></span></span></span></div></div>
-		if (isset($entry->displayXhtml) && $entry->displayXhtml !== '') {
+	private static function entryToDisplayXhtml($entry) {
+		if (!isset($entry->displayXhtml) || $entry->displayXhtml === '') {
+			return '';
+		}
+		else {
 			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+		}
 
-			// set image and audio src path to the cloud, if they are found in the entry
-			if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $entry->displayXhtml, $matches) === 1) {
-				$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
-				foreach($matches[0] as $index => $src) {
-					$file = str_replace("\\", "/", $matches[1][$index]);
-					$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
-				}
+		// set image and audio src path to the cloud, if they are found in the entry
+		if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $displayXhtml, $matches) > 0) {
+			$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
+			foreach($matches[0] as $index => $src) {
+				$file = str_replace("\\", "/", $matches[1][$index]);
+				$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
 			}
+		}
 
-			// set semantic domains as links, if they are found in the entry
-			if (preg_match_all(
-				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
-				$displayXhtml,
-				$matches)  === 1) {
-				foreach($matches[0] as $semDom) {
-					if (preg_match_all(
-						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
-						$semDom,
-						$semDomNames) === 1) {
-						// <span lang="en">Language and thought</span>
-						$newSemDom = $semDom;
-						foreach($semDomNames[1] as $index => $semDomNameSpan) {
-							$lang = $semDomNames[2][$index];
-							$domain = $semDomNames[3][$index];
-							// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
-							$newSemDom = str_replace(
-								$semDomNameSpan,
-								'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
-								$newSemDom);
-						}
+		// set semantic domains as links, if they are found in the entry
+		if (preg_match_all(
+			'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
+			$displayXhtml,
+			$matches)  > 0) {
+			foreach($matches[0] as $semDom) {
+				if (preg_match_all(
+					'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
+					$semDom,
+					$semDomNames) > 0) {
+					// <span lang="en">Language and thought</span>
+					$newSemDom = $semDom;
+					foreach($semDomNames[1] as $index => $semDomNameSpan) {
+						$lang = $semDomNames[2][$index];
+						$domain = $semDomNames[3][$index];
+						// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
+						$newSemDom = str_replace(
+							$semDomNameSpan,
+							'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
+							$newSemDom);
 					}
 					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
 				}
 			}
 		}
-		else {
-			$mainHeadWord = '<span class="mainheadword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
-				. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
-					
-			$lexemeform = '';
-			if ($entry->audio->src != '') {
-				$lexemeform .= '<span class="lexemeform"><span><audio id="' . $entry->audio->id . '">';
-				$lexemeform .= '<source src="' . self::remoteFileUrl($dictionaryId . '/' . $entry->audio->src) . '"></audio>';
-				$lexemeform .= '<a class="' . $entry->audio->fileClass . '" href="#' . $entry->audio->id . '" onClick="document.getElementById(\'' . $entry->audio->id .   '\').play()"> </a></span></span>';
-			}
-		
-			// TODO: There can be multiple media files, e.g. Hayashi, one for lexemeform and another in pronunciations
-			$sharedgrammaticalinfo = '<span class="sharedgrammaticalinfo"><span class="morphosyntaxanalysis"><span class="partofspeech"><span lang="' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->lang . '">' . $entry->morphoSyntaxAnalysis->partOfSpeech[0]->value . '</span></span></span></span>';
-		
-			$sensecontent = '<span class="sensecontent"><span class="sense" entryguid="' . $id . '">'
-				. '<span class="definitionorgloss">';
-			foreach ($entry->senses[0]->definitionOrGloss as $definition)	{
-				$sensecontent .= '<span lang="' . $definition->lang . '">' . $definition->value . '</span>';
-			}
-			$sensecontent .= '</span></span>';
-		
-			$senses = '<span class="senses">' . $sharedgrammaticalinfo . $sensecontent . '</span>';
-		
-			$pictures = '';
-			if (count($entry->pictures)) {
-				$pictures = '<span class="pictures">';
-				foreach ($entry->pictures as $picture)	{
-					$pictureUrl = self::remoteFileUrl($dictionaryId . '/' . $picture->src);
-					$pictures .= '<div class="picture">';
-					$pictures .= '<a class="image" href="' . $pictureUrl . '">';
-					$pictures .= '<img src="' . $pictureUrl . '"></a>';
-					$pictures .= '<div class="captioncontent"><span class="headword"><span lang="' . $definition->lang . '">' . $picture->caption . '</span></span></div>';
-					$pictures .= '</div>';
-				}
-				$pictures .= '</span>';	
-			}
-
-			$displayXhtml = '<div class="entry" id="' . $id . '">' . $mainHeadWord . $lexemeform . $senses . $pictures . '</div>';
-		}
-
 
 		return $displayXhtml;
 	}
 
-	public static function entryToFakePost($dictionaryId, $entry) {	
+	public static function entryToFakePost($entry) {	
 		$id = self::convertGuidToId($entry->_id);
 
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
 		$post->post_name = $id;
-		$post->post_content = self::entryToDisplayXhtml($id, $entry);
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
-		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!		
-	
+		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!
+		$post->post_content = self::entryToDisplayXhtml($entry);
+		
 		return $post;
 	}
 
-	 public static function entryToReversal($dictionaryId, $lang, $letter, $entry) {	
-		//<div class=post><div xmlns="http://www.w3.org/1999/xhtml" class="reversalindexentry" id="g009ab666-43dd-4f2f-ba62-7017417f6b23"><span class="reversalform"><span lang="en">aardvark</span></span><span class="sensesrs"><span class="sensecontent"><span class="sensesr" entryguid="gee1142ec-65f5-4e23-8d95-413685a48c23"><span class="headword"><span lang="mos"><a href="https://www.webonary.org/moore/gee1142ec-65f5-4e23-8d95-413685a48c23">tãnturi</a></span></span><span class="scientificname"><span lang="en">orycteropus afer</span></span></span></span></span></div></div>
-		$id = self::convertGuidToId($entry->_id);
-		$reversal_value = '';
-
-		$definitions = $entry->senses->definitionOrGloss;
-		if (!is_array($definitions)) {
-			$definitions = [$definitions];
-		}
-
-		foreach ($definitions as $definition) {
-			$lowerLetter = strtolower($letter);
-			if (($lang == $definition->lang) && ($lowerLetter == strtolower(substr($definition->value, 0, 1)))) {
-				$reversal_value = $definition->value;
-				break;
-			}
-		}
-	
-		$content = '<div class="reversalindexentry">';
-		$content .= '<span class="reversalform"><span lang="' . $lang . '">';
-		$content .= $reversal_value . '</span></span>';
-		
-		$content .= '<span class="sensesrs"><span class="sensecontent">';
-		$content .= '<span class="sensesr" entryguid="' . $id . '">';
-	
-		$content .= '<span class="headword"><span lang="' . $entry->mainHeadWord[0]->lang . '">'
-			. '<a href="' . get_site_url() . '/' . $id . '">' . $entry->mainHeadWord[0]->value . '</a></span></span>';
-	
-		$content .= '</span></span></span>';
-		$content .= '</<div>';
-		
+	 public static function entryToReversal($entry) {	
 		$reversal = new stdClass();
-		$reversal->reversal_content = $content;
-	
+		$reversal->reversal_content = self::entryToDisplayXhtml($entry);
+
 		return $reversal;
 	}
 
@@ -251,7 +183,7 @@ class Webonary_Cloud
 		$posts = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$post = self::entryToFakePost($dictionaryId, $entry);
+				$post = self::entryToFakePost($entry);
 				$post->ID = -$key; // negative ID, to avoid clash with a valid post
 				$posts[$key] = $post;	
 			}
@@ -266,7 +198,7 @@ class Webonary_Cloud
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
-				$reversals[$key] = self::entryToReversal($dictionaryId, $apiParams['lang'], $apiParams['text'], $entry);
+				$reversals[$key] = self::entryToReversal($entry);
 			}
 		}	
 
@@ -276,10 +208,10 @@ class Webonary_Cloud
 	public static function getEntryAsPost($doAction, $dictionaryId, $id) {
 		$request = $doAction . '/' . $dictionaryId;
 		$apiParams = array('guid' => $id);
-		$response = self::remoteGetJson($request, $apiParams);
+		$entry = self::remoteGetJson($request, $apiParams);
 		$posts = [];
-		if (self::isValidEntry($response)) { 
-			$post = self::entryToFakePost($dictionaryId, $response);
+		if (self::isValidEntry($entry)) { 
+			$post = self::entryToFakePost($entry);
 			$post->ID = -1; // negative ID, to avoid clash with a valid post
 			$posts[0] = $post;	
 		}
