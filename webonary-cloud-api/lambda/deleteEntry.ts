@@ -16,21 +16,23 @@ export async function handler(
     // eslint-disable-next-line no-param-reassign
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const _id = event.queryStringParameters?.guid;
-    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+    const dictionaryId = event.pathParameters?.dictionaryId;
+    const guid = event.queryStringParameters?.guid;
 
-    if (!_id || _id === '') {
-      return callback(null, Response.badRequest('guid to delete must be specified.'));
-    }
+    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
 
     const dbCollection = isReversalEntry
       ? DB_COLLECTION_REVERSAL_ENTRIES
       : DB_COLLECTION_DICTIONARY_ENTRIES;
 
+    if (!guid || guid === '') {
+      return callback(null, Response.badRequest('guid must be specified.'));
+    }
+
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
 
-    const count = await db.collection(dbCollection).countDocuments({ _id });
+    const count = await db.collection(dbCollection).countDocuments({ guid, dictionaryId });
 
     if (!count) {
       return callback(null, Response.notFound({}));
@@ -38,7 +40,7 @@ export async function handler(
 
     const dbResultEntry: DeleteWriteOpResultObject = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-      .deleteOne({ _id });
+      .deleteOne({ guid, dictionaryId });
 
     // TODO: How to delete S3 files in the dictionary folder???
 

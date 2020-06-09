@@ -16,7 +16,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   const dictionaryId = event.pathParameters?.dictionaryId;
-  const _id = event.queryStringParameters?.guid;
+  const guid = event.queryStringParameters?.guid;
 
   const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
 
@@ -24,14 +24,14 @@ export async function handler(
     ? DB_COLLECTION_REVERSAL_ENTRIES
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
-  if (!_id || _id === '') {
+  if (!guid || guid === '') {
     return callback(null, Response.badRequest('guid must be specified.'));
   }
 
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem = await db.collection(dbCollection).findOne({ _id, dictionaryId });
+    const dbItem = await db.collection(dbCollection).findOne({ guid, dictionaryId });
     if (!dbItem) {
       return callback(null, Response.notFound({}));
     }
