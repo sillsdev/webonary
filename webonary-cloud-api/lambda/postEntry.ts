@@ -224,7 +224,7 @@ import { PostResult } from './base.model';
 import {
   DictionaryEntryItem,
   ReversalEntryItem,
-  EntryItem,
+  EntryItemType,
   ENTRY_TYPE_REVERSAL,
 } from './entry.model';
 import { copyObjectIgnoreKeyCase } from './utils';
@@ -253,11 +253,7 @@ export async function handler(
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
     } else if (postedEntries.find(entry => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (
-      postedEntries.find(
-        entry => !('_id' in entry && entry._id) && !('guid' in entry && entry.guid),
-      )
-    ) {
+    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
       errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
     }
 
@@ -267,8 +263,8 @@ export async function handler(
 
     const updatedAt = new Date().toUTCString();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const entries: EntryItem[] = postedEntries.map((postedEntry: any) => {
-      const guid = postedEntry._id ?? postedEntry.guid;
+    const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
+      const { guid } = postedEntry;
       const entry = isReversalEntry
         ? new ReversalEntryItem(guid, dictionaryId, updatedAt)
         : new DictionaryEntryItem(guid, dictionaryId, updatedAt);
@@ -282,7 +278,7 @@ export async function handler(
       : DB_COLLECTION_DICTIONARY_ENTRIES;
 
     const promises = entries.map(
-      (entry: EntryItem): Promise<UpdateWriteOpResult> => {
+      (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
         return db
           .collection(dbCollection)
           .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });

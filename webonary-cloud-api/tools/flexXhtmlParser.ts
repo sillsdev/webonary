@@ -73,11 +73,10 @@ export class FlexXhtmlParser {
     // const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning
-    const _id = guid.substring(1) ?? '';
     const displayXhtml = `<div class="${entryClass}" id="${guid}">${entryData}</div>`;
 
     const entry: Entry = {
-      _id,
+      guid,
       dictionaryId,
       letterHead,
       displayXhtml,

@@ -81,11 +81,35 @@ export class EntrySenseItem implements EntrySense {
 }
 
 export interface Entry {
-  _id: string;
+  _id?: string;
+  guid: string;
   dictionaryId: string;
   letterHead: string;
   displayXhtml: string;
   updatedAt?: string;
+}
+
+export class EntryItem implements Entry {
+  _id: string;
+
+  guid: string;
+
+  dictionaryId: string;
+
+  letterHead: string;
+
+  displayXhtml: string;
+
+  updatedAt: string;
+
+  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+    this._id = `${dictionaryId}::${guid}`;
+    this.guid = guid;
+    this.dictionaryId = dictionaryId;
+    this.letterHead = '';
+    this.displayXhtml = '';
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+  }
 }
 
 export interface DictionaryEntry extends Entry {
@@ -98,13 +122,7 @@ export interface DictionaryEntry extends Entry {
   pictures: EntryFile[];
 }
 
-export class DictionaryEntryItem implements DictionaryEntry {
-  _id: string;
-
-  dictionaryId: string;
-
-  letterHead: string;
-
+export class DictionaryEntryItem extends EntryItem {
   mainHeadWord: EntryValueItem[];
 
   senses: EntrySenseItem[];
@@ -119,17 +137,10 @@ export class DictionaryEntryItem implements DictionaryEntry {
 
   pictures: EntryFileItem[];
 
-  displayXhtml: string;
-
-  updatedAt: string;
-
   constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    this._id = guid;
-    this.dictionaryId = dictionaryId;
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    super(guid, dictionaryId, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
-    this.letterHead = '';
     this.mainHeadWord = Array(new EntryValueItem());
     this.senses = Array(new EntrySenseItem());
     this.reversalLetterHeads = Array(new EntryValueItem());
@@ -137,7 +148,6 @@ export class DictionaryEntryItem implements DictionaryEntry {
     this.morphoSyntaxAnalysis = new EntryAnalysisItem();
     this.audio = new EntryFileItem();
     this.pictures = Array(new EntryFileItem());
-    this.displayXhtml = '';
   }
 }
 
@@ -162,36 +172,22 @@ export interface ReversalEntry extends Entry {
   sensesRs: ReversalSense[];
 }
 
-export class ReversalEntryItem implements ReversalEntry {
-  _id: string;
-
-  dictionaryId: string;
-
-  letterHead: string;
-
+export class ReversalEntryItem extends EntryItem {
   reversalForm: EntryValueItem[];
 
   sensesRs: ReversalSenseItem[];
 
-  displayXhtml: string;
-
-  updatedAt: string;
-
   constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    this._id = guid;
-    this.dictionaryId = dictionaryId;
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    super(guid, dictionaryId, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.letterHead = '';
     this.reversalForm = Array(new EntryValueItem());
     this.sensesRs = Array(new ReversalSenseItem());
-
-    this.displayXhtml = '';
   }
 }
 
-export type EntryItem = DictionaryEntryItem | ReversalEntryItem;
+export type EntryItemType = DictionaryEntryItem | ReversalEntryItem;
 
 export const ENTRY_TYPE_MAIN = 'entry';
 export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
