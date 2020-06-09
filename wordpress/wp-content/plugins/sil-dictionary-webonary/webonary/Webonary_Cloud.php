@@ -16,11 +16,7 @@ class Webonary_Cloud
 
 	private static function isValidEntry($entry) {
 		return is_object($entry) && isset($entry->_id);
-	} 
-
-	private static function convertGuidToId($guid) {
-		return 'g' . $guid;
-	} 
+	}
 
 	private static function remoteGetJson($path, $apiParams = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
@@ -122,12 +118,10 @@ class Webonary_Cloud
 		return $displayXhtml;
 	}
 
-	public static function entryToFakePost($entry) {	
-		$id = self::convertGuidToId($entry->_id);
-
+	public static function entryToFakePost($entry) {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
-		$post->post_name = $id;
+		$post->post_name = $entry->guid;
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
