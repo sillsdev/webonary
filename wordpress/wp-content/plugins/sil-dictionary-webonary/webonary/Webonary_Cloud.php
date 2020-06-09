@@ -279,7 +279,7 @@ class Webonary_Cloud
 
 			// name begins with 'g', then followed by GUID
 			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
-				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName));
+				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 			}
 			$searchText = trim(get_search_query());
 			if ($searchText === '') {
