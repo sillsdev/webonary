@@ -11,7 +11,7 @@ function openImage(image)
  	<div style="padding: 10px 25px;">
 	<div id="content">
 		<?php
-        $search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+		$search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 		if($search !== '')
 		{
 			$search_query = get_search_query();
