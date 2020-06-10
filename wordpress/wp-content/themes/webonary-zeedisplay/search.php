@@ -21,7 +21,7 @@ function openImage(image)
 			$sem_domain = filter_input(INPUT_GET, 'semdomain', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 			if($sem_domain !== '')
 			{
-				search_query = $sem_domain;
+				$search_query = $sem_domain;
 			}
 			else
 			{
