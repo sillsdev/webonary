@@ -11,6 +11,7 @@ function openImage(image)
  	<div style="padding: 10px 25px;">
 	<div id="content">
 		<?php
+		$search_query = '';
 		$search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 		if($search !== '')
 		{
@@ -33,7 +34,7 @@ function openImage(image)
 				else
 				{
 					$term = get_term($taxonomy, 'sil_semantic_domains')
-					$search_query = isset($term) ? $term->name : $taxonomy;
+					$search_query = (isset($term)) ? $term->name : $taxonomy;
 				}
 			}
 
