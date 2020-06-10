@@ -33,8 +33,8 @@ function openImage(image)
 				}
 				else
 				{
-					$term = get_term($taxonomy, 'sil_semantic_domains')
-					$search_query = (isset($term)) ? $term->name : $taxonomy;
+					$term = get_term($taxonomy, 'sil_semantic_domains');
+					$search_query = isset($term) ? $term->name : $taxonomy;
 				}
 			}
 
