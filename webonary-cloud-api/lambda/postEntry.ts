@@ -214,9 +214,19 @@
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_UPDATES_PER_CALL } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_COLLECTION_REVERSAL_ENTRIES,
+  DB_MAX_UPDATES_PER_CALL,
+} from './db';
 import { PostResult } from './base.model';
-import { DictionaryEntryItem } from './entry.model';
+import {
+  DictionaryEntryItem,
+  ReversalEntryItem,
+  EntryItemType,
+  ENTRY_TYPE_REVERSAL,
+} from './entry.model';
 import { copyObjectIgnoreKeyCase } from './utils';
 import * as Response from './response';
 
@@ -232,6 +242,8 @@ export async function handler(
 
   try {
     const dictionaryId = event.pathParameters?.dictionaryId ?? '';
+    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+
     const postedEntries = JSON.parse(event.body as string);
 
     let errorMessage = '';
@@ -241,11 +253,7 @@ export async function handler(
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
     } else if (postedEntries.find(entry => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (
-      postedEntries.find(
-        entry => !('_id' in entry && entry._id) && !('guid' in entry && entry.guid),
-      )
-    ) {
+    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
       errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
     }
 
@@ -255,23 +263,24 @@ export async function handler(
 
     const updatedAt = new Date().toUTCString();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const entries: DictionaryEntryItem[] = postedEntries.map((postedEntry: any) => {
-      let entry = new DictionaryEntryItem(
-        postedEntry._id ?? postedEntry.guid,
-        dictionaryId,
-        updatedAt,
-      );
-      entry = Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
-      return entry;
+    const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
+      const { guid } = postedEntry;
+      const entry = isReversalEntry
+        ? new ReversalEntryItem(guid, dictionaryId, updatedAt)
+        : new DictionaryEntryItem(guid, dictionaryId, updatedAt);
+      return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
     });
 
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
+    const dbCollection = isReversalEntry
+      ? DB_COLLECTION_REVERSAL_ENTRIES
+      : DB_COLLECTION_DICTIONARY_ENTRIES;
 
     const promises = entries.map(
-      (entry: DictionaryEntryItem): Promise<UpdateWriteOpResult> => {
+      (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
         return db
-          .collection(DB_COLLECTION_ENTRIES)
+          .collection(dbCollection)
           .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
       },
     );

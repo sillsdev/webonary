@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_ENTRIES, DB_MAX_DOCUMENTS_PER_CALL } from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_MAX_DOCUMENTS_PER_CALL } from './db';
 import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
 import { getDbSkip } from './utils';
@@ -77,12 +77,12 @@ export async function handler(
       }
 
       if (countTotalOnly === '1') {
-        const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
+        const count = await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).countDocuments(dbFind);
         return callback(null, Response.success({ count }));
       }
 
       entries = await db
-        .collection(DB_COLLECTION_ENTRIES)
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .find(dbFind)
         .skip(dbSkip)
         .limit(pageLimit)
@@ -130,13 +130,13 @@ export async function handler(
 
       if (countTotalOnly === '1') {
         const count = await db
-          .collection(DB_COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .countDocuments(dictionaryPartialSearch);
         return callback(null, Response.success({ count }));
       }
 
       entries = await db
-        .collection(DB_COLLECTION_ENTRIES)
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .find(dictionaryPartialSearch)
         .skip(dbSkip)
         .limit(pageLimit)
@@ -160,7 +160,7 @@ export async function handler(
           const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
           */
           entries = await db
-            .collection(DB_COLLECTION_ENTRIES)
+            .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
             .aggregate(dbFind)
             .toArray();
           const count = entries.length;
@@ -169,7 +169,7 @@ export async function handler(
         }
 
         entries = await db
-          .collection(DB_COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .aggregate(dbFind)
           .skip(dbSkip)
           .limit(pageLimit)
@@ -177,14 +177,14 @@ export async function handler(
       } else {
         if (countTotalOnly === '1') {
           const count = await db
-            .collection(DB_COLLECTION_ENTRIES)
+            .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
             .countDocuments(dictionaryFulltextSearch);
 
           return callback(null, Response.success({ count }));
         }
 
         entries = await db
-          .collection(DB_COLLECTION_ENTRIES)
+          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .find(dictionaryFulltextSearch)
           .skip(dbSkip)
           .limit(pageLimit)

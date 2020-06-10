@@ -3,7 +3,7 @@ export interface Language {
   lang: string;
   title: string;
   letters: string[];
-  cssFiles?: string[];
+  cssFiles: string[];
   entriesCount?: number;
 }
 
@@ -14,7 +14,7 @@ export class LanguageItem implements Language {
 
   letters: string[] = [];
 
-  cssFiles?: string[] = [];
+  cssFiles: string[] = [];
 }
 
 export interface ListOption {

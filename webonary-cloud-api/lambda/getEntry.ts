@@ -1,7 +1,8 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_ENTRIES } from './db';
+import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_COLLECTION_REVERSAL_ENTRIES } from './db';
+import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -15,16 +16,22 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   const dictionaryId = event.pathParameters?.dictionaryId;
-  const _id = event.queryStringParameters?.guid;
+  const guid = event.queryStringParameters?.guid;
 
-  if (!_id || _id === '') {
-    return callback(null, Response.badRequest('guid for the dictionary entry must be specified.'));
+  const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+
+  const dbCollection = isReversalEntry
+    ? DB_COLLECTION_REVERSAL_ENTRIES
+    : DB_COLLECTION_DICTIONARY_ENTRIES;
+
+  if (!guid || guid === '') {
+    return callback(null, Response.badRequest('guid must be specified.'));
   }
 
   try {
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
-    const dbItem = await db.collection(DB_COLLECTION_ENTRIES).findOne({ _id, dictionaryId });
+    const dbItem = await db.collection(dbCollection).findOne({ guid, dictionaryId });
     if (!dbItem) {
       return callback(null, Response.notFound({}));
     }

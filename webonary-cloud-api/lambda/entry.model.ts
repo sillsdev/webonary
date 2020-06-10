@@ -80,10 +80,39 @@ export class EntrySenseItem implements EntrySense {
   guid? = '';
 }
 
-export interface DictionaryEntry {
-  _id: string;
+export interface Entry {
+  _id?: string;
+  guid: string;
   dictionaryId: string;
   letterHead: string;
+  displayXhtml: string;
+  updatedAt?: string;
+}
+
+export class EntryItem implements Entry {
+  _id: string;
+
+  guid: string;
+
+  dictionaryId: string;
+
+  letterHead: string;
+
+  displayXhtml: string;
+
+  updatedAt: string;
+
+  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+    this._id = `${dictionaryId}::${guid}`;
+    this.guid = guid;
+    this.dictionaryId = dictionaryId;
+    this.letterHead = '';
+    this.displayXhtml = '';
+    this.updatedAt = updatedAt ?? new Date().toUTCString();
+  }
+}
+
+export interface DictionaryEntry extends Entry {
   mainHeadWord: EntryValue[];
   senses: EntrySense[];
   reversalLetterHeads: EntryValue[];
@@ -91,16 +120,9 @@ export interface DictionaryEntry {
   morphoSyntaxAnalysis?: EntryAnalysis;
   audio: EntryFile;
   pictures: EntryFile[];
-  updatedAt?: string;
 }
 
-export class DictionaryEntryItem implements DictionaryEntry {
-  _id: string;
-
-  dictionaryId: string;
-
-  letterHead: string;
-
+export class DictionaryEntryItem extends EntryItem {
   mainHeadWord: EntryValueItem[];
 
   senses: EntrySenseItem[];
@@ -115,15 +137,10 @@ export class DictionaryEntryItem implements DictionaryEntry {
 
   pictures: EntryFileItem[];
 
-  updatedAt: string;
-
   constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    this._id = guid;
-    this.dictionaryId = dictionaryId;
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    super(guid, dictionaryId, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
-    this.letterHead = '';
     this.mainHeadWord = Array(new EntryValueItem());
     this.senses = Array(new EntrySenseItem());
     this.reversalLetterHeads = Array(new EntryValueItem());
@@ -133,6 +150,47 @@ export class DictionaryEntryItem implements DictionaryEntry {
     this.pictures = Array(new EntryFileItem());
   }
 }
+
+export interface ReversalSense {
+  guid: string;
+
+  headWord: EntryValue[];
+
+  partOfSpeech: EntryValue[];
+}
+
+export class ReversalSenseItem implements ReversalSense {
+  guid = '';
+
+  headWord = Array(new EntryValueItem());
+
+  partOfSpeech = Array(new EntryValueItem());
+}
+
+export interface ReversalEntry extends Entry {
+  reversalForm: EntryValue[];
+  sensesRs: ReversalSense[];
+}
+
+export class ReversalEntryItem extends EntryItem {
+  reversalForm: EntryValueItem[];
+
+  sensesRs: ReversalSenseItem[];
+
+  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+    super(guid, dictionaryId, updatedAt);
+
+    // Set initial values so we can do Object.keys for dynamic case-insensitive copying
+    this.letterHead = '';
+    this.reversalForm = Array(new EntryValueItem());
+    this.sensesRs = Array(new ReversalSenseItem());
+  }
+}
+
+export type EntryItemType = DictionaryEntryItem | ReversalEntryItem;
+
+export const ENTRY_TYPE_MAIN = 'entry';
+export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
 
 export enum DbPaths {
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
@@ -146,4 +204,6 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV = 'senses.semanticDomains.abbreviation',
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
+  ENTRY_REVERSAL_FORM_LANG = 'reversalForm.lang',
+  ENTRY_REVERSAL_FORM_FIRST_VALUE = 'reversalForm.0.value',
 }

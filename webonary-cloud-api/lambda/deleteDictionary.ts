@@ -1,7 +1,12 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARIES, DB_COLLECTION_ENTRIES } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_DICTIONARIES,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_COLLECTION_REVERSAL_ENTRIES,
+} from './db';
 import { deleteS3Folder } from './s3Utils';
 import * as Response from './response';
 
@@ -39,7 +44,11 @@ export async function handler(
       .deleteOne({ _id: dictionaryId });
 
     const dbResultEntry: DeleteWriteOpResultObject = await db
-      .collection(DB_COLLECTION_ENTRIES)
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .deleteMany({ dictionaryId });
+
+    const dbResultReversal: DeleteWriteOpResultObject = await db
+      .collection(DB_COLLECTION_REVERSAL_ENTRIES)
       .deleteMany({ dictionaryId });
 
     /*
@@ -55,6 +64,7 @@ export async function handler(
       Response.success({
         deleteDictionaryCount: dbResultDictionary.deletedCount,
         deletedEntryCount: dbResultEntry.deletedCount,
+        deletedReversalCount: dbResultReversal.deletedCount,
         deletedFilesCount,
       }),
     );

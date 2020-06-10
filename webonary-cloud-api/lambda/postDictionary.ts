@@ -109,7 +109,7 @@ import { connectToDB } from './mongo';
 import {
   DB_NAME,
   DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_ENTRIES,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
 } from './db';
@@ -143,7 +143,7 @@ export async function handler(
     const db = dbClient.db(DB_NAME);
 
     // fulltext index (case and diacritic insensitive by default)
-    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
+    await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
       {
         [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
         [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
@@ -152,7 +152,7 @@ export async function handler(
     );
 
     // case and diacritic insensitive index for semantic domains
-    await db.collection(DB_COLLECTION_ENTRIES).createIndex(
+    await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
       {
         [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
         [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
