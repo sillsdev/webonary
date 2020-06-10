@@ -10,26 +10,36 @@ function openImage(image)
 
  	<div style="padding: 10px 25px;">
 	<div id="content">
-
 		<?php
-		if(strlen($_GET['s']) > 0)
+        $search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+		if($search !== '')
 		{
-			$searchquery = get_search_query();
+			$search_query = get_search_query();
 		}
 		else
 		{
-			if(strlen($_GET['semdomain']))
+			$sem_domain = filter_input(INPUT_GET, 'semdomain', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+			if($sem_domain !== '')
 			{
-				$searchquery = $_GET['semdomain'];
+				search_query = $sem_domain;
 			}
 			else
 			{
-				$searchquery = get_term($_GET['tax'], "sil_semantic_domains")->name;
+				$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+				if (get_option('useCloudBackend'))
+				{
+					$search_query = $taxonomy;
+				}
+				else
+				{
+					$term = get_term($taxonomy, 'sil_semantic_domains')
+					$search_query = isset($term) ? $term->name : $taxonomy;
+				}
 			}
 
 		}
 		?>
-		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $searchquery);?></h2>
+		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
 		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
 		<?php if (have_posts()) :
 		//search string are normalized to NFC
