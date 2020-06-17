@@ -16,11 +16,7 @@ class Webonary_Cloud
 
 	private static function isValidEntry($entry) {
 		return is_object($entry) && isset($entry->_id);
-	} 
-
-	private static function convertGuidToId($guid) {
-		return 'g' . $guid;
-	} 
+	}
 
 	private static function remoteGetJson($path, $apiParams = array()) {
 		if (!defined('WEBONARY_CLOUD_API_URL'))  {
@@ -122,12 +118,10 @@ class Webonary_Cloud
 		return $displayXhtml;
 	}
 
-	public static function entryToFakePost($entry) {	
-		$id = self::convertGuidToId($entry->_id);
-
+	public static function entryToFakePost($entry) {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
-		$post->post_name = $id;
+		$post->post_name = $entry->guid;
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
@@ -285,8 +279,9 @@ class Webonary_Cloud
 
 			// name begins with 'g', then followed by GUID
 			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
-				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, ltrim($pageName, 'g'));
+				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 			}
+
 			$searchText = trim(get_search_query());
 			if ($searchText === '') {
 				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
@@ -296,8 +291,6 @@ class Webonary_Cloud
 						'text' => $tax,
 						'searchSemDoms' => '1'
 					);
-	
-					return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);					
 				}
 			} 
 			else {
@@ -320,6 +313,15 @@ class Webonary_Cloud
 					'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
 					'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
 				);
+			}
+
+			if (isset($apiParams)) {
+				$apiParams['pageNumber'] = $query->query_vars['paged'];
+				$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
+
+				$totalEntries = self::getTotalCount(self::$doSearchEntry, $dictionaryId, $apiParams);
+				$query->found_posts = $totalEntries;
+				$query->max_num_pages = ceil($totalEntries / $apiParams['pageLimit']);
 
 				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 			}

@@ -10,60 +10,68 @@ function openImage(image)
 
  	<div style="padding: 10px 25px;">
 	<div id="content">
-
 		<?php
-		if(strlen($_GET['s']) > 0)
+		$search_query = '';
+		$search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+		if($search !== '')
 		{
-			$searchquery = get_search_query();
+			$search_query = get_search_query();
 		}
 		else
 		{
-			if(strlen($_GET['semdomain']))
+			$sem_domain = filter_input(INPUT_GET, 'semdomain', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+			if($sem_domain !== '')
 			{
-				$searchquery = $_GET['semdomain'];
+				$search_query = $sem_domain;
 			}
 			else
 			{
-				$searchquery = get_term($_GET['tax'], "sil_semantic_domains")->name;
+				$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+				if (get_option('useCloudBackend'))
+				{
+					$search_query = $taxonomy;
+				}
+				else
+				{
+					$term = get_term($taxonomy, 'sil_semantic_domains');
+					$search_query = isset($term) ? $term->name : $taxonomy;
+				}
 			}
-
 		}
 		?>
-		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $searchquery);?></h2>
+		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
 		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
 		<?php if (have_posts()) :
-		//search string are normalized to NFC
-		if (class_exists("Normalizer", $autoload = false))
-		{
-			$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
-		}
-		else
-		{
-			$query = $_GET['s'];
-		}
-		//echo $wp_query->found_posts . " ";
-	  	//echo getstring("search-results-for-s", "'" . $query . "'");
-		?>
-		<div id="searchresults">
-			<?php while (have_posts()) : the_post(); ?>
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php webonary_zeedisplay_display_entry_header(); ?>
-					<?php webonary_zeedisplay_display_entry(); ?>
-					<?php webonary_zeedisplay_display_entry_footer(); ?>
-				</div>
-			<?php
-			if( comments_open() ) {
-			?>
-				<a href="<?php the_permalink() ?>" rel="bookmark"><u><?php echo _e('Comments', ZEE_LANG); ?> (<?php echo get_comments_number(); ?>)</u></a>
-				<p>&nbsp;</p>
-			<?php
+			//search string are normalized to NFC
+			if (class_exists("Normalizer", $autoload = false))
+			{
+				$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
 			}
+			else
+			{
+				$query = $_GET['s'];
+			}
+			//echo $wp_query->found_posts . " ";
+			//echo getstring("search-results-for-s", "'" . $query . "'");
 			?>
-			<?php endwhile; ?>
-		</div>
+			<div id="searchresults">
+				<?php while (have_posts()) : the_post(); ?>
+					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<?php webonary_zeedisplay_display_entry_header(); ?>
+						<?php webonary_zeedisplay_display_entry(); ?>
+						<?php webonary_zeedisplay_display_entry_footer(); ?>
+					</div>
+				<?php
+				if( comments_open() ) {
+				?>
+					<a href="<?php the_permalink() ?>" rel="bookmark"><u><?php _e('Comments', ZEE_LANG); ?> (<?php echo get_comments_number(); ?>)</u></a>
+					<p>&nbsp;</p>
+				<?php
+				}
+				?>
+				<?php endwhile; ?>
+			</div>
 			<?php if(function_exists('wp_page_numbers')) { wp_page_numbers(); } ?>
-			<?php //webonary_zeedisplay_page_navigation();	?>
-
 		<?php else : ?>
 			<div class="post">
 				<div>
