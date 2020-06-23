@@ -329,4 +329,55 @@ class Webonary_Cloud
 
 		return null;
 	}
+
+	public static function registerApiRoutes()
+	{
+		$namespace = 'webonary-cloud/v1';
+
+		register_rest_route($namespace, '/validate', array(
+				'methods' => 'POST' | WP_REST_Server::CREATABLE,
+				'callback' => 'WebonaryCloud::validatePermissionToPost'
+			)
+		);
+	}
+
+	public static function validatePermissionToPost($request)
+	{
+		$responseMessage = 'Invalid or missing authorization header';
+		$responseCode = 401;
+		$header = $request->get_headers();
+		if (isset($header['authorization'][0])) {
+			$credentials = base64_decode(str_replace('Basic ', '', $header['authorization'][0]));
+			list($username, $password) = explode(':', $credentials, 2);
+			if ($username !== '' && $password !== '') {
+				$user = wp_authenticate($username, $password);
+
+				if(isset($user->ID)) {
+					$blogs = get_blogs_of_user($user->ID);
+					$blogsToPost = array();
+					foreach ($blogs as $blogId => $blogData) {
+						$userData = get_users(array(
+							'blog_id' => $blogId,
+							'search' => $user->ID)
+						);
+						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
+							$blogsToPost[] = trim($blogData->path, '/');
+						} 
+					}
+					if (count($blogsToPost)) {
+						$responseMessage = implode(',', $blogsToPost);
+						$responseCode = 200;
+					}
+					else {
+						$responseMessage = 'No permission to post to a dictionary';
+					}
+				}
+				else {
+					$responseMessage = 'Invalid username or password';
+				}
+			}
+		}
+
+		return new WP_REST_Response($responseMessage, $responseCode);
+	}
 }
