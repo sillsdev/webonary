@@ -1,6 +1,8 @@
 import { CustomAuthorizerEvent, APIGatewayAuthorizerResult, Context, Callback } from 'aws-lambda';
 import axios from 'axios';
 
+import { getBasicAuthCredentials } from './utils';
+
 type Effect = 'Allow' | 'Deny';
 
 function generatePolicy(
@@ -33,21 +35,16 @@ export async function handler(
   // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false;
 
-  const dictionaryId = event.pathParameters?.dictionaryId;
   const authHeaders = event.headers?.Authorization;
+  const dictionaryId = event.pathParameters?.dictionaryId;
 
   if (dictionaryId && authHeaders) {
     try {
-      const encodedCredentials = authHeaders.split(' ')[1];
-      const plainCredentials = Buffer.from(encodedCredentials, 'base64')
-        .toString()
-        .split(':');
-      const username = plainCredentials[0];
-      const password = plainCredentials[1];
+      const credentials = getBasicAuthCredentials(authHeaders);
 
       // Same user should have the same access to post dictionary entry data as well as files.
       // User access is per dictionary per user.
-      const principalId = `${dictionaryId}::${username}`;
+      const principalId = `${dictionaryId}::${credentials.username}`;
 
       // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path
       const resource = event.methodArn.replace(
@@ -60,10 +57,10 @@ export async function handler(
       const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
 
       const response = await axios.post(authPath, '{}', {
-        auth: { username, password },
+        auth: credentials,
       });
 
-      console.log(`Processing policy for ${username} to resource ${event.methodArn}`);
+      console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
       if (response.status === 200) {
         if (response.data) {
           console.log(`Denied ${principalId} to resource ${resource} for ${response.data}`);

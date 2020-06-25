@@ -87,6 +87,7 @@ export interface Entry {
   letterHead: string;
   displayXhtml: string;
   updatedAt?: string;
+  updatedBy?: string;
 }
 
 export class EntryItem implements Entry {
@@ -102,12 +103,15 @@ export class EntryItem implements Entry {
 
   updatedAt: string;
 
-  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
+  updatedBy: string;
+
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
     this._id = `${dictionaryId}::${guid}`;
     this.guid = guid;
     this.dictionaryId = dictionaryId;
     this.letterHead = '';
     this.displayXhtml = '';
+    this.updatedBy = updatedBy ?? '';
     this.updatedAt = updatedAt ?? new Date().toUTCString();
   }
 }
@@ -137,8 +141,8 @@ export class DictionaryEntryItem extends EntryItem {
 
   pictures: EntryFileItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    super(guid, dictionaryId, updatedAt);
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+    super(guid, dictionaryId, updatedAt, updatedBy);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.mainHeadWord = Array(new EntryValueItem());
@@ -177,8 +181,8 @@ export class ReversalEntryItem extends EntryItem {
 
   sensesRs: ReversalSenseItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedAt?: string) {
-    super(guid, dictionaryId, updatedAt);
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+    super(guid, dictionaryId, updatedAt, updatedBy);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.letterHead = '';
