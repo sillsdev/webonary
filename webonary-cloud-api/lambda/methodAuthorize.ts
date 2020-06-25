@@ -8,7 +8,7 @@ type Effect = 'Allow' | 'Deny';
 function generatePolicy(
   principalId: string,
   effect: Effect,
-  resource: string,
+  resources: string[],
 ): APIGatewayAuthorizerResult {
   const authResult: APIGatewayAuthorizerResult = {
     principalId,
@@ -18,7 +18,7 @@ function generatePolicy(
         {
           Action: 'execute-api:Invoke',
           Effect: effect,
-          Resource: resource,
+          Resource: resources,
         },
       ],
     },
@@ -39,38 +39,38 @@ export async function handler(
   const dictionaryId = event.pathParameters?.dictionaryId;
 
   if (dictionaryId && authHeaders) {
+    const credentials = getBasicAuthCredentials(authHeaders);
+
+    console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
+    // Same user should have the same access to post/delete dictionary entry data as well as files.
+    const principalId = credentials.username;
+    const resourceRegex = /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\/(.+)$/i;
+
+    // Call Webonary.org for user authentication
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
+
     try {
-      const credentials = getBasicAuthCredentials(authHeaders);
-
-      // Same user should have the same access to post dictionary entry data as well as files.
-      // User access is per dictionary per user.
-      const principalId = `${dictionaryId}::${credentials.username}`;
-
-      // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path
-      const resource = event.methodArn.replace(
-        /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\//i,
-        '*/*/',
-      );
-
-      // Call Webonary.org for user authentication
-      axios.defaults.headers.post['Content-Type'] = 'application/json';
-      const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
-
       const response = await axios.post(authPath, '{}', {
         auth: credentials,
       });
 
-      console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
-      if (response.status === 200) {
-        if (response.data) {
-          console.log(`Denied ${principalId} to resource ${resource} for ${response.data}`);
-          return callback(null, generatePolicy(principalId, 'Deny', resource)); // 403
-        }
-        console.log(`Created policy for ${principalId} to access resource ${resource}`);
-        return callback(null, generatePolicy(principalId, 'Allow', resource));
+      if (response.status === 200 && response.data) {
+        const resources = response.data.split(',').map((id: string) => {
+          // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path
+          // arn:aws:execute-api:region:zz:zzz/prod/POST/post/dictionary/myDictionary will be replaced with
+          // arn:aws:execute-api:region:zz:zzz/prod/*/*/dictionary/myDictionary will be replaced with
+          return event.methodArn.replace(resourceRegex, `*/*/${id}`);
+        });
+
+        console.log(`Creating policy for ${principalId} to access ${resources}`);
+        return callback(null, generatePolicy(principalId, 'Allow', resources));
       }
     } catch (error) {
-      return callback(error);
+      const resources = [event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`)];
+
+      console.log(`Denying ${principalId} to access {resources}`);
+      return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
     }
   }
 
