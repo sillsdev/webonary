@@ -182,7 +182,7 @@ class Webonary_Cloud
 		elseif (in_array($dictionaryId, explode(',', $response->message))) {
 			$code = 200;
 			$message = 'Successfully reset dictionary ' . $resetDictionary;
-			Webonary_Cloud::resetDictionary($dictionaryId);
+			self::resetDictionary($dictionaryId);
 		}
 		else {
 			$message = 'You do not have permission to reset dictionary ' . $resetDictionary;
@@ -346,7 +346,7 @@ class Webonary_Cloud
 
 	public static function searchEntries($posts, WP_Query $query) {
 		if ($query->is_main_query()) {
-			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+			$dictionaryId = self::getBlogDictionaryId();
 
 			$pageName = trim(get_query_var('name'));
 
@@ -404,13 +404,13 @@ class Webonary_Cloud
 	}
 
 	public static function registerApiRoutes() {
-		register_rest_route(Webonary_Cloud::apiNamespace, '/validate', array(
+		register_rest_route(self::apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiValidate'
 			)
 		);
 
-		register_rest_route(Webonary_Cloud::apiNamespace, '/resetDictionary', array(
+		register_rest_route(self::apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiResetDictionary'
 			)
@@ -418,7 +418,7 @@ class Webonary_Cloud
 	}
 
 	public static function resetDictionary($dictionaryId) {
-		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		$dictionary = self::getDictionary($dictionaryId);
 		if (!is_null($dictionary)) {
 			$language = $dictionary->mainLanguage;
 			update_option('languagecode', $language->lang);
@@ -444,7 +444,7 @@ class Webonary_Cloud
 			}
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
-			Webonary_Cloud::setFontFaces($dictionary, $uploadPath);	
+			self::setFontFaces($dictionary, $uploadPath);	
 		}
 	}
 }
