@@ -118,6 +118,45 @@ class Webonary_Cloud
 		return $displayXhtml;
 	}
 
+	private static function validatePermissionToPost($header){
+		$response = new stdClass();
+		$response->message = 'Invalid or missing authorization header';
+		$response->code = 401;
+		if (isset($header['authorization'][0])) {
+			$credentials = base64_decode(str_replace('Basic ', '', $header['authorization'][0]));
+			list($username, $password) = explode(':', $credentials, 2);
+			if ($username !== '' && $password !== '') {
+				$user = wp_authenticate($username, $password);
+
+				if(isset($user->ID)) {
+					$blogs = get_blogs_of_user($user->ID);
+					$blogsToPost = array();
+					foreach ($blogs as $blogId => $blogData) {
+						$userData = get_users(array(
+							'blog_id' => $blogId,
+							'search' => $user->ID)
+						);
+						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
+							$blogsToPost[] = trim($blogData->path, '/');
+						} 
+					}
+					if (count($blogsToPost)) {
+						$response->message = implode(',', $blogsToPost);
+						$response->code = 200;
+					}
+					else {
+						$response->message = 'No permission to post to a dictionary';
+					}
+				}
+				else {
+					$response->message = 'Invalid username or password';
+				}
+			}
+		}
+
+		return $response;
+	}
+
 	public static function entryToFakePost($entry) {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
@@ -330,54 +369,81 @@ class Webonary_Cloud
 		return null;
 	}
 
-	public static function registerApiRoutes()
-	{
+	public static function registerApiRoutes() {
 		$namespace = 'webonary-cloud/v1';
 
 		register_rest_route($namespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => 'Webonary_Cloud::validatePermissionToPost'
+				'callback' => 'Webonary_Cloud::apiValidate'
 			)
+		);
+
+		register_rest_route($namespace, '/resetDictionary', array(
+			'methods' => WP_REST_Server::CREATABLE,
+			'callback' => 'Webonary_Cloud::apiResetDictionary'
 		);
 	}
 
-	public static function validatePermissionToPost($request)
-	{
-		$responseMessage = 'Invalid or missing authorization header';
-		$responseCode = 401;
-		$header = $request->get_headers();
-		if (isset($header['authorization'][0])) {
-			$credentials = base64_decode(str_replace('Basic ', '', $header['authorization'][0]));
-			list($username, $password) = explode(':', $credentials, 2);
-			if ($username !== '' && $password !== '') {
-				$user = wp_authenticate($username, $password);
+	public static function apiValidate($request) {
+		$response = validatePermissionToPost($request->get_headers());
+		return new WP_REST_Response($response->message, $response->code);
+	}
 
-				if(isset($user->ID)) {
-					$blogs = get_blogs_of_user($user->ID);
-					$blogsToPost = array();
-					foreach ($blogs as $blogId => $blogData) {
-						$userData = get_users(array(
-							'blog_id' => $blogId,
-							'search' => $user->ID)
-						);
-						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
-							$blogsToPost[] = trim($blogData->path, '/');
-						} 
-					}
-					if (count($blogsToPost)) {
-						$responseMessage = implode(',', $blogsToPost);
-						$responseCode = 200;
-					}
-					else {
-						$responseMessage = 'No permission to post to a dictionary';
-					}
-				}
-				else {
-					$responseMessage = 'Invalid username or password';
-				}
-			}
+	public static function apiResetDictionary($request) {
+		$response = validatePermissionToPost($request->get_headers());
+		if ($response->code !== 200) {
+			// error in validation
+			return new WP_REST_Response($response->message, $response->code);
+		}
+		
+		$dictionaryId = WP_REST_Request::get_param('dictionary');
+		$code = 400; // Bad Request
+		if (is_null(dictionaryId)) {
+			$message = 'Missing dictionary id to reset in your request';
+		}
+		elseif ($response->message === '') {
+			$message = 'You do not have permission to reset any dictionary';
+		}
+		elseif (in_array($dictionaryId, explode(',', $response->message))) {
+			$code = 200;
+			$message = 'Successfully reset dictionary ' . $resetDictionary;
+			Webonary_Cloud::resetDictionary($dictionaryId);
+		}
+		else {
+			$message = 'You do not have permission to reset dictionary ' . $resetDictionary;
 		}
 
-		return new WP_REST_Response($responseMessage, $responseCode);
+		return new WP_REST_Response($message, $code);
+	}
+
+	public static function resetDictionary($dictionaryId) {
+		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+		if (!is_null($dictionary)) {
+			$language = $dictionary->mainLanguage;
+			update_option('languagecode', $language->lang);
+			update_option('totalConfiguredEntries', $language->entriesCount);
+			update_option('vernacular_alphabet', implode(',', $language->letters));
+
+			wp_insert_term(
+				$language->title,
+				'sil_writing_systems',
+				array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+			);
+
+			foreach($dictionary->reversalLanguages as $index => $reversal) {
+				$reversal_index = $index + 1;
+				update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
+				update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
+
+				wp_insert_term(
+					$reversal->title,
+					'sil_writing_systems',
+					array('description' => $reversal->title, 'slug' => $reversal->lang)
+				);						
+			}
+			$arrDirectory = wp_upload_dir();
+			$uploadPath = $arrDirectory['path'];
+			Webonary_Cloud::setFontFaces($dictionary, $uploadPath);	
+		}
 	}
 }
