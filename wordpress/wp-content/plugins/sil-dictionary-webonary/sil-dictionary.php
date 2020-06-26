@@ -98,7 +98,7 @@ add_filter('rest_authentication_errors', function($result) {
 	global $wp;
 	$path = add_query_arg(array(), $wp->request);
 	if ($path === 'wp-json/webonary/import'
-		|| strpos($path, 'wp-json/' . Webonary_Cloud::apiNamespace) === 0) {
+		|| strpos($path, 'wp-json/' . Webonary_Cloud::$apiNamespace) === 0) {
 		return $result;
 	}
 
