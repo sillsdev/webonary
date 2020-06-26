@@ -404,13 +404,13 @@ class Webonary_Cloud
 	}
 
 	public static function registerApiRoutes() {
-		register_rest_route(self::apiNamespace, '/validate', array(
+		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiValidate'
 			)
 		);
 
-		register_rest_route(self::apiNamespace, '/resetDictionary', array(
+		register_rest_route(self::$apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiResetDictionary'
 			)
