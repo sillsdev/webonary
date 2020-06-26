@@ -159,38 +159,6 @@ class Webonary_Cloud
 		return $response;
 	}
 
-	private static function apiValidate($request) {
-		$response = self::validatePermissionToPost($request->get_headers());
-		return new WP_REST_Response($response->message, $response->code);
-	}
-
-	private static function apiResetDictionary($request) {
-		$response = self::validatePermissionToPost($request->get_headers());
-		if ($response->code !== 200) {
-			// error in validation
-			return new WP_REST_Response($response->message, $response->code);
-		}
-		
-		$dictionaryId = WP_REST_Request::get_param('dictionary');
-		$code = 400; // Bad Request
-		if (is_null(dictionaryId)) {
-			$message = 'Missing dictionary id to reset in your request';
-		}
-		elseif ($response->message === '') {
-			$message = 'You do not have permission to reset any dictionary';
-		}
-		elseif (in_array($dictionaryId, explode(',', $response->message))) {
-			$code = 200;
-			$message = 'Successfully reset dictionary ' . $resetDictionary;
-			self::resetDictionary($dictionaryId);
-		}
-		else {
-			$message = 'You do not have permission to reset dictionary ' . $resetDictionary;
-		}
-
-		return new WP_REST_Response($message, $code);
-	}
-
 	public static function entryToFakePost($entry) {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
@@ -406,15 +374,45 @@ class Webonary_Cloud
 	public static function registerApiRoutes() {
 		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => 'self::apiValidate'
+				'callback' => __CLASS__ . '::apiValidate'
 			)
 		);
 
 		register_rest_route(self::$apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => 'self::apiResetDictionary'
+				'callback' => __CLASS__ . '::apiResetDictionary'
 			)
 		);
+	}
+
+	public static function apiValidate($request) {
+		$response = self::validatePermissionToPost($request->get_headers());
+		return new WP_REST_Response($response->message, $response->code);
+	}
+
+	public static function apiResetDictionary($request) {
+		$response = self::validatePermissionToPost($request->get_headers());
+		
+		if ($response->code !== 200) {
+			// error in validation
+			return new WP_REST_Response($response->message, $response->code);
+		}
+		
+		$dictionaryId = self::getBlogDictionaryId();
+		$code = 400; // Bad Request
+		if ($response->message === '') {
+			$message = 'You do not have permission to reset any dictionary';
+		}
+		elseif (in_array($dictionaryId, explode(',', $response->message))) {
+			$code = 200;
+			$message = 'Successfully reset dictionary ' . $dictionaryId;
+			self::resetDictionary($dictionaryId);
+		}
+		else {
+			$message = 'You do not have permission to reset dictionary ' . $dictionaryId;
+		}
+
+		return new WP_REST_Response($message, $code);
 	}
 
 	public static function resetDictionary($dictionaryId) {
@@ -445,6 +443,8 @@ class Webonary_Cloud
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
 			self::setFontFaces($dictionary, $uploadPath);	
+
+			update_option('useCloudBackend', '1');
 		}
 	}
 }
