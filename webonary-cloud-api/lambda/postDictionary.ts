@@ -116,7 +116,7 @@ import {
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
 import { DbPaths } from './entry.model';
-import { copyObjectIgnoreKeyCase, setSearchableEntries } from './utils';
+import { copyObjectIgnoreKeyCase, setSearchableEntries, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -129,59 +129,70 @@ export async function handler(
   // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false;
 
-  try {
-    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-    const posted = JSON.parse(event.body as string);
+  const authHeaders = event.headers?.Authorization;
+  const dictionaryId = event.pathParameters?.dictionaryId;
+  if (dictionaryId && authHeaders) {
+    try {
+      const credentials = getBasicAuthCredentials(authHeaders);
+      const updatedAt = new Date().toUTCString();
 
-    let dictionaryItem = new DictionaryItem(dictionaryId);
-    dictionaryItem = Object.assign(dictionaryItem, copyObjectIgnoreKeyCase(dictionaryItem, posted));
-    if (dictionaryItem.semanticDomains) {
-      dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
-    }
+      const posted = JSON.parse(event.body as string);
+      let dictionaryItem = new DictionaryItem(dictionaryId, credentials.username, updatedAt);
+      dictionaryItem = Object.assign(
+        dictionaryItem,
+        copyObjectIgnoreKeyCase(dictionaryItem, posted),
+      );
+      if (dictionaryItem.semanticDomains) {
+        dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
+      }
+      dbClient = await connectToDB();
+      const db = dbClient.db(DB_NAME);
 
-    dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
-
-    // fulltext index (case and diacritic insensitive by default)
-    await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
-      {
-        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-        [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
-      },
-      { name: 'wordsFulltextIndex', default_language: 'none' },
-    );
-
-    // case and diacritic insensitive index for semantic domains
-    await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
-      {
-        [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
-        [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
-      },
-      {
-        collation: {
-          locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-          strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+      // fulltext index (case and diacritic insensitive by default)
+      await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
+        {
+          [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
+          [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
         },
-      },
-    );
+        { name: 'wordsFulltextIndex', default_language: 'none' },
+      );
 
-    const dbResult = await db
-      .collection(DB_COLLECTION_DICTIONARIES)
-      .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
+      // case and diacritic insensitive index for semantic domains
+      await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
+        {
+          [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
+          [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
+        },
+        {
+          collation: {
+            locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+            strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+          },
+        },
+      );
 
-    const postResult: PostResult = {
-      updatedAt: dictionaryItem.updatedAt,
-      updatedCount: dbResult.modifiedCount,
-      insertedCount: dbResult.upsertedCount,
-      insertedIds: [dictionaryId],
-    };
+      const dbResult = await db
+        .collection(DB_COLLECTION_DICTIONARIES)
+        .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
 
-    return callback(null, Response.success({ ...postResult }));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+      const postResult: PostResult = {
+        updatedAt,
+        updatedCount: dbResult.modifiedCount,
+        insertedCount: dbResult.upsertedCount,
+        insertedIds: [dictionaryId],
+      };
+
+      return callback(null, Response.success({ ...postResult }));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+      return callback(
+        null,
+        Response.failure({ errorType: error.name, errorMessage: error.message }),
+      );
+    }
   }
+  return callback(null, Response.badRequest('Invalid parameters'));
 }
 
 export default handler;

@@ -22,7 +22,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // Webonary web site
     const WEBONARY_URL = process.env.WEBONARY_URL ?? 'https://www.webonary.org';
-    const WEBONARY_AUTH_PATH = process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary/import';
+    const WEBONARY_AUTH_PATH =
+      process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary-cloud/v1/validate';
     const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-storage.webonary.org';
 
     // Mongo

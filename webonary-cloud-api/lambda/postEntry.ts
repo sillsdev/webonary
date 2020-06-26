@@ -227,7 +227,7 @@ import {
   EntryItemType,
   ENTRY_TYPE_REVERSAL,
 } from './entry.model';
-import { copyObjectIgnoreKeyCase } from './utils';
+import { copyObjectIgnoreKeyCase, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -240,74 +240,82 @@ export async function handler(
   // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false;
 
-  try {
-    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+  const authHeaders = event.headers?.Authorization;
+  const dictionaryId = event.pathParameters?.dictionaryId;
+  const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+  if (dictionaryId && authHeaders) {
+    try {
+      const credentials = getBasicAuthCredentials(authHeaders);
 
-    const postedEntries = JSON.parse(event.body as string);
+      const postedEntries = JSON.parse(event.body as string);
 
-    let errorMessage = '';
-    if (!Array.isArray(postedEntries)) {
-      errorMessage = 'Input must be an array of dictionary entry objects';
-    } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
-      errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-    } else if (postedEntries.find(entry => typeof entry !== 'object')) {
-      errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
-      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
+      let errorMessage = '';
+      if (!Array.isArray(postedEntries)) {
+        errorMessage = 'Input must be an array of dictionary entry objects';
+      } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
+        errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
+      } else if (postedEntries.find(entry => typeof entry !== 'object')) {
+        errorMessage = 'Each dictionary entry must be a valid JSON object';
+      } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
+        errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
+      }
+
+      if (errorMessage) {
+        return callback(null, Response.badRequest(errorMessage));
+      }
+
+      const updatedAt = new Date().toUTCString();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
+        const { guid } = postedEntry;
+        const entry = isReversalEntry
+          ? new ReversalEntryItem(guid, dictionaryId, credentials.username, updatedAt)
+          : new DictionaryEntryItem(guid, dictionaryId, credentials.username, updatedAt);
+        return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+      });
+
+      dbClient = await connectToDB();
+      const db = dbClient.db(DB_NAME);
+      const dbCollection = isReversalEntry
+        ? DB_COLLECTION_REVERSAL_ENTRIES
+        : DB_COLLECTION_DICTIONARY_ENTRIES;
+
+      const promises = entries.map(
+        (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
+          return db
+            .collection(dbCollection)
+            .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+        },
+      );
+
+      const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
+
+      const updatedCount = dbResults
+        .filter(result => result.modifiedCount)
+        .reduce((total, result) => total + result.modifiedCount, 0);
+
+      const insertedIds = dbResults
+        .filter(result => result.upsertedCount)
+        .map(result => result.upsertedId._id);
+
+      const postResult: PostResult = {
+        updatedAt,
+        updatedCount,
+        insertedCount: insertedIds.length,
+        insertedIds: insertedIds.map(objectId => objectId.toString()),
+      };
+
+      return callback(null, Response.success(postResult));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+      return callback(
+        null,
+        Response.failure({ errorType: error.name, errorMessage: error.message }),
+      );
     }
-
-    if (errorMessage) {
-      return callback(null, Response.badRequest(errorMessage));
-    }
-
-    const updatedAt = new Date().toUTCString();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
-      const { guid } = postedEntry;
-      const entry = isReversalEntry
-        ? new ReversalEntryItem(guid, dictionaryId, updatedAt)
-        : new DictionaryEntryItem(guid, dictionaryId, updatedAt);
-      return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
-    });
-
-    dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
-    const dbCollection = isReversalEntry
-      ? DB_COLLECTION_REVERSAL_ENTRIES
-      : DB_COLLECTION_DICTIONARY_ENTRIES;
-
-    const promises = entries.map(
-      (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
-        return db
-          .collection(dbCollection)
-          .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
-      },
-    );
-
-    const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
-
-    const updatedCount = dbResults
-      .filter(result => result.modifiedCount)
-      .reduce((total, result) => total + result.modifiedCount, 0);
-
-    const insertedIds = dbResults
-      .filter(result => result.upsertedCount)
-      .map(result => result.upsertedId._id);
-
-    const postResult: PostResult = {
-      updatedAt,
-      updatedCount,
-      insertedCount: insertedIds.length,
-      insertedIds: insertedIds.map(objectId => objectId.toString()),
-    };
-
-    return callback(null, Response.success(postResult));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
   }
+  return callback(null, Response.badRequest('Invalid parameters'));
 }
 
 export default handler;

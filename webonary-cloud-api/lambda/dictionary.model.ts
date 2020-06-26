@@ -39,17 +39,16 @@ export class ListOptionItem implements ListOption {
 
 export interface Dictionary {
   _id: string;
-  updatedAt: string;
   mainLanguage: Language;
   reversalLanguages: Language[];
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
+  updatedAt?: string;
+  updatedBy?: string;
 }
 
 export class DictionaryItem implements Dictionary {
   _id: string;
-
-  updatedAt: string;
 
   mainLanguage: LanguageItem;
 
@@ -59,8 +58,13 @@ export class DictionaryItem implements Dictionary {
 
   semanticDomains?: ListOptionItem[];
 
-  constructor(dictionaryId: string, updatedAt?: string) {
+  updatedAt?: string;
+
+  updatedBy?: string;
+
+  constructor(dictionaryId: string, updatedBy?: string, updatedAt?: string) {
     this._id = dictionaryId;
+    this.updatedBy = updatedBy ?? '';
     this.updatedAt = updatedAt ?? new Date().toUTCString();
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying

@@ -2,6 +2,20 @@
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
 
+export interface BasicAuthCredentials {
+  username: string;
+  password: string;
+}
+
+export function getBasicAuthCredentials(authHeaders: string): BasicAuthCredentials {
+  const encodedCredentials = authHeaders.split(' ')[1];
+  const [username, password] = Buffer.from(encodedCredentials, 'base64')
+    .toString()
+    .split(':');
+
+  return { username, password };
+}
+
 export function hasKey<O>(obj: O, key: keyof any): key is keyof O {
   return key in obj;
 }

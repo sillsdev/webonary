@@ -240,6 +240,7 @@ if (args[0]) {
     logMessage(`Getting dictionary metadata...`);
     const dictionaryPost = mainParser.getDictionaryData();
     if (dictionaryPost) {
+      dictionaryPost.updatedBy = credentials.username;
       dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
 
       dictionaryPost.reversalLanguages = reversals.map(reversal => {
