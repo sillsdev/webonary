@@ -386,12 +386,12 @@ class Webonary_Cloud
 	}
 
 	public static function apiValidate($request) {
-		$response = validatePermissionToPost($request->get_headers());
+		$response = self::validatePermissionToPost($request->get_headers());
 		return new WP_REST_Response($response->message, $response->code);
 	}
 
 	public static function apiResetDictionary($request) {
-		$response = validatePermissionToPost($request->get_headers());
+		$response = self::validatePermissionToPost($request->get_headers());
 		if ($response->code !== 200) {
 			// error in validation
 			return new WP_REST_Response($response->message, $response->code);
