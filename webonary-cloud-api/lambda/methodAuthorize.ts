@@ -57,9 +57,9 @@ export async function handler(
 
       if (response.status === 200 && response.data) {
         const resources = response.data.split(',').map((id: string) => {
-          // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path
+          // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path. E.g.:
           // arn:aws:execute-api:region:zz:zzz/prod/POST/post/dictionary/myDictionary will be replaced with
-          // arn:aws:execute-api:region:zz:zzz/prod/*/*/dictionary/myDictionary will be replaced with
+          // arn:aws:execute-api:region:zz:zzz/prod/*/*/dictionary/myDictionary
           return event.methodArn.replace(resourceRegex, `*/*/${id}`);
         });
 

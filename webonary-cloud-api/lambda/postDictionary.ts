@@ -134,10 +134,10 @@ export async function handler(
   if (dictionaryId && authHeaders) {
     try {
       const credentials = getBasicAuthCredentials(authHeaders);
+      const updatedAt = new Date().toUTCString();
 
       const posted = JSON.parse(event.body as string);
-
-      let dictionaryItem = new DictionaryItem(dictionaryId, credentials.username);
+      let dictionaryItem = new DictionaryItem(dictionaryId, credentials.username, updatedAt);
       dictionaryItem = Object.assign(
         dictionaryItem,
         copyObjectIgnoreKeyCase(dictionaryItem, posted),
@@ -145,7 +145,6 @@ export async function handler(
       if (dictionaryItem.semanticDomains) {
         dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
       }
-
       dbClient = await connectToDB();
       const db = dbClient.db(DB_NAME);
 
@@ -177,7 +176,7 @@ export async function handler(
         .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
 
       const postResult: PostResult = {
-        updatedAt: dictionaryItem.updatedAt,
+        updatedAt,
         updatedCount: dbResult.modifiedCount,
         insertedCount: dbResult.upsertedCount,
         insertedIds: [dictionaryId],

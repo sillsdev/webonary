@@ -58,9 +58,9 @@ export class DictionaryItem implements Dictionary {
 
   semanticDomains?: ListOptionItem[];
 
-  updatedAt: string;
+  updatedAt?: string;
 
-  updatedBy: string;
+  updatedBy?: string;
 
   constructor(dictionaryId: string, updatedBy?: string, updatedAt?: string) {
     this._id = dictionaryId;

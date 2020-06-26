@@ -101,9 +101,9 @@ export class EntryItem implements Entry {
 
   displayXhtml: string;
 
-  updatedAt: string;
+  updatedAt?: string;
 
-  updatedBy: string;
+  updatedBy?: string;
 
   constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
     this._id = `${dictionaryId}::${guid}`;
@@ -142,7 +142,7 @@ export class DictionaryEntryItem extends EntryItem {
   pictures: EntryFileItem[];
 
   constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
-    super(guid, dictionaryId, updatedAt, updatedBy);
+    super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.mainHeadWord = Array(new EntryValueItem());
@@ -182,7 +182,7 @@ export class ReversalEntryItem extends EntryItem {
   sensesRs: ReversalSenseItem[];
 
   constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
-    super(guid, dictionaryId, updatedAt, updatedBy);
+    super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.letterHead = '';
