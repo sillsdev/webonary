@@ -8,7 +8,7 @@ class Webonary_API_MyType
 		$namespace = 'webonary';
 
 		register_rest_route($namespace, '/import', array(
-				'methods' => 'POST' | WP_REST_Server::CREATABLE,
+				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_API_MyType::Import'
 			)
 		);
@@ -17,7 +17,7 @@ class Webonary_API_MyType
 		//http://webonary.localhost/lubwisi/wp-json/webonary/query/dog/en
 		//language parameter is optional
 		register_rest_route($namespace, '/query/(?P<term>\w+)(?:/(?P<lang>\w+))?', array(
-				'methods' => 'GET' | WP_REST_Server::READABLE,
+				'methods' => WP_REST_Server::READABLE,
 				'callback' => 'Webonary_API_MyType::Query',
 				'args' => array(),
 			)

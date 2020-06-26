@@ -335,7 +335,7 @@ class Webonary_Cloud
 		$namespace = 'webonary-cloud/v1';
 
 		register_rest_route($namespace, '/validate', array(
-				'methods' => 'POST' | WP_REST_Server::CREATABLE,
+				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::validatePermissionToPost'
 			)
 		);
