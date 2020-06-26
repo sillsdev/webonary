@@ -159,6 +159,38 @@ class Webonary_Cloud
 		return $response;
 	}
 
+	private static function apiValidate($request) {
+		$response = self::validatePermissionToPost($request->get_headers());
+		return new WP_REST_Response($response->message, $response->code);
+	}
+
+	private static function apiResetDictionary($request) {
+		$response = self::validatePermissionToPost($request->get_headers());
+		if ($response->code !== 200) {
+			// error in validation
+			return new WP_REST_Response($response->message, $response->code);
+		}
+		
+		$dictionaryId = WP_REST_Request::get_param('dictionary');
+		$code = 400; // Bad Request
+		if (is_null(dictionaryId)) {
+			$message = 'Missing dictionary id to reset in your request';
+		}
+		elseif ($response->message === '') {
+			$message = 'You do not have permission to reset any dictionary';
+		}
+		elseif (in_array($dictionaryId, explode(',', $response->message))) {
+			$code = 200;
+			$message = 'Successfully reset dictionary ' . $resetDictionary;
+			Webonary_Cloud::resetDictionary($dictionaryId);
+		}
+		else {
+			$message = 'You do not have permission to reset dictionary ' . $resetDictionary;
+		}
+
+		return new WP_REST_Response($message, $code);
+	}
+
 	public static function entryToFakePost($entry) {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
@@ -383,38 +415,6 @@ class Webonary_Cloud
 				'callback' => 'Webonary_Cloud::apiResetDictionary'
 			)
 		);
-	}
-
-	public static function apiValidate($request) {
-		$response = self::validatePermissionToPost($request->get_headers());
-		return new WP_REST_Response($response->message, $response->code);
-	}
-
-	public static function apiResetDictionary($request) {
-		$response = self::validatePermissionToPost($request->get_headers());
-		if ($response->code !== 200) {
-			// error in validation
-			return new WP_REST_Response($response->message, $response->code);
-		}
-		
-		$dictionaryId = WP_REST_Request::get_param('dictionary');
-		$code = 400; // Bad Request
-		if (is_null(dictionaryId)) {
-			$message = 'Missing dictionary id to reset in your request';
-		}
-		elseif ($response->message === '') {
-			$message = 'You do not have permission to reset any dictionary';
-		}
-		elseif (in_array($dictionaryId, explode(',', $response->message))) {
-			$code = 200;
-			$message = 'Successfully reset dictionary ' . $resetDictionary;
-			Webonary_Cloud::resetDictionary($dictionaryId);
-		}
-		else {
-			$message = 'You do not have permission to reset dictionary ' . $resetDictionary;
-		}
-
-		return new WP_REST_Response($message, $code);
 	}
 
 	public static function resetDictionary($dictionaryId) {
