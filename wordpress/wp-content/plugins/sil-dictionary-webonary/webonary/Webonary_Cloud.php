@@ -10,6 +10,8 @@ class Webonary_Cloud
 
 	public static $doSearchEntry = 'search/entry';
 
+	public static $apiNamespace = 'webonary-cloud/v1';
+
 	private static function isValidDictionary($dictionary) {
 		return is_object($dictionary) && isset($dictionary->_id);
 	} 
@@ -370,15 +372,13 @@ class Webonary_Cloud
 	}
 
 	public static function registerApiRoutes() {
-		$namespace = 'webonary-cloud/v1';
-
-		register_rest_route($namespace, '/validate', array(
+		register_rest_route(Webonary_Cloud::apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiValidate'
 			)
 		);
 
-		register_rest_route($namespace, '/resetDictionary', array(
+		register_rest_route(Webonary_Cloud::apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
 				'callback' => 'Webonary_Cloud::apiResetDictionary'
 			)
