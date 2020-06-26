@@ -379,8 +379,9 @@ class Webonary_Cloud
 		);
 
 		register_rest_route($namespace, '/resetDictionary', array(
-			'methods' => WP_REST_Server::CREATABLE,
-			'callback' => 'Webonary_Cloud::apiResetDictionary'
+				'methods' => WP_REST_Server::CREATABLE,
+				'callback' => 'Webonary_Cloud::apiResetDictionary'
+			)
 		);
 	}
 
