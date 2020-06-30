@@ -222,6 +222,8 @@ if (args[0]) {
     logMessage('Start parsing main xhtml...');
 
     const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
+
+    // TODO: We need to parse minor variants also, e.g. ut-hun
     const mainParser = new FlexXhtmlParserMain(toBeParsed, { dictionaryId });
 
     logMessage(
