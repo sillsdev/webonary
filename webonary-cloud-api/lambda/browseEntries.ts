@@ -45,7 +45,7 @@ export async function handler(
     }
 
     let dbCollection = '';
-    let dbSortKey = '';
+    let dbSort = {};
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     let entries: DictionaryEntry[] | ReversalEntry[];
     let primarySearch = true;
@@ -68,7 +68,7 @@ export async function handler(
       }
 
       // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-      dbSortKey = DbPaths.ENTRY_REVERSAL_FORM_FIRST_VALUE;
+      dbSort = { 'reversalForm.0.value': 1, 'reversalForm.1.value': 1 };
     } else {
       dbCollection = DB_COLLECTION_DICTIONARY_ENTRIES;
       if (lang === '') {
@@ -77,7 +77,7 @@ export async function handler(
         }
 
         // TODO: Make sure to set default sort for entries to be on main headword browse letter and value
-        dbSortKey = DbPaths.ENTRY_MAIN_HEADWORD_FIRST_VALUE;
+        dbSort = { 'mainHeadWord.0.value': 1, 'mainHeadWord.1.value': 1 };
       } else {
         // generate reversal entries based on searching via definitions
         primarySearch = false;
@@ -107,7 +107,7 @@ export async function handler(
         .collection(dbCollection)
         .find(dbFind)
         .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
-        .sort({ [dbSortKey]: 1 })
+        .sort(dbSort)
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();

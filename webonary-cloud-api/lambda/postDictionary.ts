@@ -103,6 +103,7 @@
  *
  */
 
+import axios from 'axios';
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
@@ -175,11 +176,31 @@ export async function handler(
         .collection(DB_COLLECTION_DICTIONARIES)
         .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
 
+      // Call Webonary to alert that dictionary data is ready and refreshed
+      axios.defaults.headers.post['Content-Type'] = 'application/json';
+      const resetPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_RESET_DICTIONARY_PATH}`;
+      let message = '';
+
+      try {
+        const response = await axios.post(resetPath, '{}', {
+          auth: credentials,
+        });
+
+        if (response.status === 200 && response.data) {
+          message = response.data;
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+        message = JSON.stringify(error);
+      }
+
       const postResult: PostResult = {
         updatedAt,
         updatedCount: dbResult.modifiedCount,
         insertedCount: dbResult.upsertedCount,
         insertedIds: [dictionaryId],
+        message,
       };
 
       return callback(null, Response.success({ ...postResult }));

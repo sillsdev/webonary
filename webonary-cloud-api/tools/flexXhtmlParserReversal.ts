@@ -47,9 +47,9 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
         });
 
         const partOfSpeech: EntryValue[] = [];
-        $('span.morphosyntaxanalysis span.mlpartofspeech span').map((i, elem) => {
-          const lang = $(elem).attr('lang');
-          const value = $(elem).text();
+        $('span.morphosyntaxanalysis span.mlpartofspeech span').map((childIndex, childElem) => {
+          const lang = $(childElem).attr('lang');
+          const value = $(childElem).text();
           if (lang && value) {
             partOfSpeech.push({ lang, value });
           }

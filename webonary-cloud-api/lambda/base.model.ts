@@ -4,6 +4,7 @@ export interface PostResult {
   updatedCount: number;
   insertedCount: number;
   insertedIds?: string[];
+  message?: string;
 }
 export interface DbFindParameters {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

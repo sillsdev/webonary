@@ -45,6 +45,22 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
   return chunked;
 }
 
+async function deleteDictionary(
+  dictionaryId: string,
+  credentials: AxiosBasicCredentials,
+): Promise<AxiosResponse | undefined> {
+  const path = `/delete/dictionary/${dictionaryId}`;
+  const config: AxiosRequestConfig = { auth: credentials };
+
+  try {
+    return await axios.delete(path, config);
+  } catch (error) {
+    handleAxiosError(error);
+  }
+
+  return undefined;
+}
+
 async function postDictionary(
   dictionaryId: string,
   dictionary: Dictionary,
@@ -197,11 +213,17 @@ if (args[0]) {
       mainCssFiles.push(mainCssOverrideFile);
     }
 
+    logMessage(`Deleting existing dictionary...`);
+    const deleteResponse = await deleteDictionary(dictionaryId, credentials);
+    logMessage(JSON.stringify(deleteResponse?.data));
+
     const startProcessingTime = Date.now();
     const startParsingTime = startProcessingTime;
     logMessage('Start parsing main xhtml...');
 
     const toBeParsed = await fileGrabber.getFile(dictionaryId, mainFile);
+
+    // TODO: We need to parse minor variants also, e.g. ut-hun
     const mainParser = new FlexXhtmlParserMain(toBeParsed, { dictionaryId });
 
     logMessage(
@@ -236,42 +258,6 @@ if (args[0]) {
     );
 
     logMessage(`Finished parsing ${reversals.length} reversal files`, startReversalParsingTime);
-
-    logMessage(`Getting dictionary metadata...`);
-    const dictionaryPost = mainParser.getDictionaryData();
-    if (dictionaryPost) {
-      dictionaryPost.updatedBy = credentials.username;
-      dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
-
-      dictionaryPost.reversalLanguages = reversals.map(reversal => {
-        const item = new LanguageItem();
-        item.lang = reversal.lang;
-        item.letters = reversal.parser.parsedLetters;
-        item.title = mainParser.parsedLanguages.get(item.lang) ?? '';
-
-        [`reversal_${item.lang}.css`, 'ProjectReversalOverrides.css'].forEach(file => {
-          if (dictionaryFiles.includes(file)) {
-            item.cssFiles.push(file);
-          }
-        });
-
-        return item;
-      });
-
-      logMessage(`Posting dictionary metadata...`);
-      await postDictionary(dictionaryId, dictionaryPost, credentials);
-
-      logMessage(`Posting dictionary css files...`);
-      const promises = dictionaryFiles
-        .filter(file => file.endsWith('.css'))
-        .map(
-          (file): Promise<AxiosResponse | undefined> => {
-            return postFile(dictionaryId, file, credentials);
-          },
-        );
-
-      await Promise.all(promises);
-    }
 
     // post main entries
     await postEntries(
@@ -338,6 +324,42 @@ if (args[0]) {
     }
 
     logMessage(`Finished posting ${entryFiles.length} files`, startPostingFilesTime);
+
+    logMessage(`Getting dictionary metadata...`);
+    const dictionaryPost = mainParser.getDictionaryData();
+    if (dictionaryPost) {
+      dictionaryPost.updatedBy = credentials.username;
+      dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
+
+      dictionaryPost.reversalLanguages = reversals.map(reversal => {
+        const item = new LanguageItem();
+        item.lang = reversal.lang;
+        item.letters = reversal.parser.parsedLetters;
+        item.title = mainParser.parsedLanguages.get(item.lang) ?? '';
+
+        [`reversal_${item.lang}.css`, 'ProjectReversalOverrides.css'].forEach(file => {
+          if (dictionaryFiles.includes(file)) {
+            item.cssFiles.push(file);
+          }
+        });
+
+        return item;
+      });
+
+      logMessage(`Posting dictionary css files...`);
+      const promises = dictionaryFiles
+        .filter(file => file.endsWith('.css'))
+        .map(
+          (file): Promise<AxiosResponse | undefined> => {
+            return postFile(dictionaryId, file, credentials);
+          },
+        );
+      await Promise.all(promises);
+
+      logMessage(`Posting dictionary metadata...`);
+      const response = await postDictionary(dictionaryId, dictionaryPost, credentials);
+      logMessage(JSON.stringify(response?.data));
+    }
 
     logMessage(`Finished processing ${dictionaryId}`, startProcessingTime);
   })();

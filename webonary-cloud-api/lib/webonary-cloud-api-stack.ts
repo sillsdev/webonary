@@ -24,6 +24,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const WEBONARY_URL = process.env.WEBONARY_URL ?? 'https://www.webonary.org';
     const WEBONARY_AUTH_PATH =
       process.env.WEBONARY_AUTH_PATH ?? '/wp-json/webonary-cloud/v1/validate';
+    const WEBONARY_RESET_DICTIONARY_PATH =
+      process.env.WEBONARY_RESET_DICTIONARY_PATH ?? '/wp-json/webonary-cloud/v1/resetDictionary';
     const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-storage.webonary.org';
 
     // Mongo
@@ -84,7 +86,12 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       this,
       'postDictionary',
       Object.assign(defaultLambdaFunctionProps('postDictionary'), {
-        environment: { DB_URL, DB_NAME },
+        environment: {
+          DB_URL,
+          DB_NAME,
+          WEBONARY_URL,
+          WEBONARY_RESET_DICTIONARY_PATH,
+        },
       }),
     );
 

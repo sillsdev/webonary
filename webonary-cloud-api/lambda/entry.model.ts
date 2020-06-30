@@ -199,7 +199,6 @@ export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
 export enum DbPaths {
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
   ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.value',
-  ENTRY_MAIN_HEADWORD_FIRST_VALUE = 'mainHeadWord.0.value',
   ENTRY_SENSES = 'senses',
   ENTRY_DEFINITION = 'senses.definitionOrGloss',
   ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',
@@ -209,5 +208,4 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
   ENTRY_REVERSAL_FORM_LANG = 'reversalForm.lang',
-  ENTRY_REVERSAL_FORM_FIRST_VALUE = 'reversalForm.0.value',
 }
