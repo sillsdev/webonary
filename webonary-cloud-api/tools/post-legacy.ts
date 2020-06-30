@@ -45,6 +45,22 @@ function chunkArray(array: Array<any>, size: number): Array<any> {
   return chunked;
 }
 
+async function deleteDictionary(
+  dictionaryId: string,
+  credentials: AxiosBasicCredentials,
+): Promise<AxiosResponse | undefined> {
+  const path = `/delete/dictionary/${dictionaryId}`;
+  const config: AxiosRequestConfig = { auth: credentials };
+
+  try {
+    return await axios.delete(path, config);
+  } catch (error) {
+    handleAxiosError(error);
+  }
+
+  return undefined;
+}
+
 async function postDictionary(
   dictionaryId: string,
   dictionary: Dictionary,
@@ -196,6 +212,10 @@ if (args[0]) {
     if (dictionaryFiles.includes(mainCssOverrideFile)) {
       mainCssFiles.push(mainCssOverrideFile);
     }
+
+    logMessage(`Deleting existing dictionary...`);
+    const deleteResponse = await deleteDictionary(dictionaryId, credentials);
+    logMessage(JSON.stringify(deleteResponse?.data));
 
     const startProcessingTime = Date.now();
     const startParsingTime = startProcessingTime;
