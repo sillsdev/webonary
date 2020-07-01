@@ -107,7 +107,7 @@ export async function handler(
         .collection(dbCollection)
         .find(dbFind)
         .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
-        .sort(dbSort)
+        .sort({ sortOrder: 1, ...dbSort })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
