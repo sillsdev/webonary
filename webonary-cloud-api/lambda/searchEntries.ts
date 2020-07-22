@@ -8,7 +8,6 @@ import {
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_SENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
@@ -68,10 +67,6 @@ export async function handler(
       if (semDomAbbrev && semDomAbbrev !== '') {
         const abbreviationRegex = { $in: [semDomAbbrev, new RegExp(`^${semDomAbbrev}.`)] };
         if (lang) {
-          if (DB_COLLATION_LOCALES.includes(lang)) {
-            locale = lang;
-          }
-
           dbFind = {
             ...primaryFilter,
             [DbPaths.ENTRY_SEM_DOMS_ABBREV]: {
