@@ -112,7 +112,7 @@ import {
   DB_COLLECTION_DICTIONARIES,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
 } from './db';
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
@@ -167,7 +167,7 @@ export async function handler(
         {
           collation: {
             locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-            strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+            strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
           },
         },
       );

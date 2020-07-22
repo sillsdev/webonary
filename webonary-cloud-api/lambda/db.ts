@@ -6,7 +6,9 @@ export const DB_MAX_UPDATES_PER_CALL = 50;
 // TODO: Vietnamese seems to have the most Latin diacritics, so use this for insensitive search
 // We might have to do RegExp searches instead to get more accurate insensitive searches
 export const DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY = 'vi';
-export const DB_COLLATION_STRENGTH_FOR_INSENSITIVITY = 2; // case insensitive but diacritical sensitive search
+export const DB_COLLATION_STRENGTH_FOR_INSENSITIVITY = 1; // case insensitive and diacritical insensitive search
+export const DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY = 2; // case insensitive but diacritical sensitive search
+export const DB_COLLATION_STRENGTH_FOR_SENSITIVITY = 3; // case sensitive and diacritical sensitive search
 
 // See https://docs.mongodb.com/manual/reference/collation-locales-defaults/#collation-languages-locales
 export const DB_COLLATION_LOCALES = [

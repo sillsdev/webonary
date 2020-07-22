@@ -48,7 +48,7 @@ export class FlexXhtmlParser {
           this.parsedLetters.push(letterHead);
         }
 
-        const sortOrder = index * 100;
+        const sortIndex = index * 100;
 
         entries.push(
           FlexXhtmlParser.parseEntry(
@@ -56,7 +56,7 @@ export class FlexXhtmlParser {
             this.options.entryClass,
             guid,
             letterHead,
-            sortOrder,
+            sortIndex,
             entryData,
           ),
         );
@@ -71,7 +71,7 @@ export class FlexXhtmlParser {
     entryClass: string,
     guid: string,
     letterHead: string,
-    sortOrder: number,
+    sortIndex: number,
     entryData: string,
   ): Entry {
     // const $ = cheerio.load(entryData);
@@ -83,7 +83,7 @@ export class FlexXhtmlParser {
       guid,
       dictionaryId,
       letterHead,
-      sortOrder,
+      sortIndex,
       displayXhtml,
     };
 

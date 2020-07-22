@@ -1,7 +1,16 @@
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_MAX_DOCUMENTS_PER_CALL } from './db';
+import {
+  DB_NAME,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_MAX_DOCUMENTS_PER_CALL,
+  DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_SENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+  DB_COLLATION_LOCALES,
+} from './db';
 import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
 import { getDbSkip } from './utils';
@@ -48,6 +57,8 @@ export async function handler(
 
     // set up main search
     let entries;
+    let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
+    let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
     const dbSkip = getDbSkip(pageNumber, pageLimit);
     const primaryFilter: DbFindParameters = { dictionaryId };
 
@@ -57,6 +68,10 @@ export async function handler(
       if (semDomAbbrev && semDomAbbrev !== '') {
         const abbreviationRegex = { $in: [semDomAbbrev, new RegExp(`^${semDomAbbrev}.`)] };
         if (lang) {
+          if (DB_COLLATION_LOCALES.includes(lang)) {
+            locale = lang;
+          }
+
           dbFind = {
             ...primaryFilter,
             [DbPaths.ENTRY_SEM_DOMS_ABBREV]: {
@@ -99,6 +114,10 @@ export async function handler(
     }
 
     if (lang) {
+      if (DB_COLLATION_LOCALES.includes(lang)) {
+        locale = lang;
+      }
+
       let langFieldToFilter: string;
       if (mainLang && mainLang === lang) {
         langFieldToFilter = 'mainHeadWord';
@@ -128,16 +147,29 @@ export async function handler(
         $and: [primaryFilter, langFilter],
       };
 
+      if (matchAccents === '1') {
+        strength = DB_COLLATION_STRENGTH_FOR_SENSITIVITY;
+      }
+
+      console.log(
+        `Searching ${dictionaryId} using partial match and locale ${locale} and strength ${strength} ${JSON.stringify(
+          dictionaryPartialSearch,
+        )}`,
+      );
+
       if (countTotalOnly === '1') {
+        // TODO: countDocuments might not be 100%, but should be more than the actual count, so it would page to the end
         const count = await db
           .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .countDocuments(dictionaryPartialSearch);
+
         return callback(null, Response.success({ count }));
       }
 
       entries = await db
         .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .find(dictionaryPartialSearch)
+        .collation({ locale, strength })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
@@ -151,10 +183,13 @@ export async function handler(
       // and UNION all searches if language-independent search is desired
       const $language = event.queryStringParameters?.stemmingLanguage ?? 'none';
       const $diacriticSensitive = matchAccents === '1';
-      const $text = { $search: text, $language, $diacriticSensitive };
+      const $text = { $search: `"${text}"`, $language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
       if (lang) {
         const dbFind = [{ $match: dictionaryFulltextSearch }, { $match: langFilter }];
+
+        console.log(`Searching ${dictionaryId} using fulltext ${JSON.stringify(dbFind)}`);
+
         if (countTotalOnly === '1') {
           /* TODO: There might be a way to count docs in aggregation, but I have not figured it out yet...
           const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
@@ -175,6 +210,8 @@ export async function handler(
           .limit(pageLimit)
           .toArray();
       } else {
+        console.log(`Searching ${dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`);
+
         if (countTotalOnly === '1') {
           const count = await db
             .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
