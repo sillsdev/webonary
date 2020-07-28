@@ -85,6 +85,7 @@ export interface Entry {
   guid: string;
   dictionaryId: string;
   letterHead: string;
+  sortIndex: number;
   displayXhtml: string;
   updatedAt?: string;
   updatedBy?: string;
@@ -99,6 +100,8 @@ export class EntryItem implements Entry {
 
   letterHead: string;
 
+  sortIndex: number;
+
   displayXhtml: string;
 
   updatedAt?: string;
@@ -110,6 +113,7 @@ export class EntryItem implements Entry {
     this.guid = guid;
     this.dictionaryId = dictionaryId;
     this.letterHead = '';
+    this.sortIndex = 0;
     this.displayXhtml = '';
     this.updatedBy = updatedBy ?? '';
     this.updatedAt = updatedAt ?? new Date().toUTCString();

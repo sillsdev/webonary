@@ -7,7 +7,7 @@ import {
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_INSENSITIVITY,
+  DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
@@ -106,8 +106,8 @@ export async function handler(
       entries = await db
         .collection(dbCollection)
         .find(dbFind)
-        .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY })
-        .sort(dbSort)
+        .collation({ locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY })
+        .sort({ sortIndex: 1, ...dbSort })
         .skip(dbSkip)
         .limit(pageLimit)
         .toArray();
@@ -134,7 +134,7 @@ export async function handler(
       entries = await db
         .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .aggregate(pipeline, {
-          collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_INSENSITIVITY },
+          collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY },
         })
         .skip(dbSkip)
         .limit(pageLimit)
