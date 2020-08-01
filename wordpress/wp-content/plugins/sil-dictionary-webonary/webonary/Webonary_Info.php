@@ -41,7 +41,7 @@ class Webonary_Info
 
 		if($import_status == 'importFinished')
 		{
-			if(get_option('useSemDomainNumbers') == 0)
+			if(get_option('useSemDomainNumbers') != 0)
 			{
 				/** @noinspection SqlResolve */
 				$sql = "SELECT COUNT(taxonomy) AS sdCount FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = 'sil_semantic_domains'";
@@ -63,7 +63,7 @@ class Webonary_Info
 				$status .= 'Download data sent from FLEx: ';
 
 				$archiveFile = Webonary_Cloud::getBlogDictionaryId() . '.zip';
- 
+
 				if(file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
 					$status .= '<a href="/wp-content/archives/' . $archiveFile . '">' . $archiveFile . '</a>';
 				else
@@ -153,7 +153,7 @@ SQL;
 		$arrReversals = $wpdb->get_results($sql);
 		foreach($arrReversals as $reversal) {
 			$reversals[$reversal->language_code] = $reversal->totalIndexed;
-		} 
+		}
 
 		foreach($arrIndexed as $key => $indexed)
 		{
