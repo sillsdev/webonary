@@ -1320,7 +1320,9 @@ SQL;
 					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN"))
 					{
 						$pinyin = new Pinyin();
-						$reversal_browsehead = $pinyin->sentence($reversal_head);
+
+						// Convert fullwidth ideogrpaphic commas to fullwidth commas, as Pinyin->sentence cannot handle the former
+						$reversal_browsehead = $pinyin->sentence(str_replace('、', '，', $reversal_head));
 						$browseletter = substr($reversal_browsehead, 0, 1);
 						unset($pinyin);
 					}
