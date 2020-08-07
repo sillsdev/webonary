@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpComposerExtensionStubsInspection */
 /** @noinspection SqlResolve */
 
 class Webonary_Utility
@@ -110,67 +111,203 @@ class Webonary_Utility
 
 	}
 
-	/** @noinspection PhpUnusedParameterInspection */
-	public static function resize_image($src, $w, $h, $dst)
+	/**
+	 * Resize all of the allowed images files in the source directory and save them to the destination directory
+	 *
+	 * @param string $src_dir
+	 * @param int $w
+	 * @param int $h
+	 * @param string $dst_dir
+	 *
+	 * @return string[]
+	 */
+	public static function resizeImages($src_dir, $w, $h, $dst_dir)
 	{
-		if(!file_exists($dst))
-		{
-			mkdir ( $dst );
+		/** A list of error and warning messages returned by the function */
+		$messages = [];
+
+		/** A list of the accepted image file types. All others will be ignored. */
+		$allowed_types = [IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF];
+
+		/** A list of the files and directories in $src_dir */
+		$entries = [];
+
+		try {
+			// create the destination directory
+			if(!file_exists($dst_dir))
+				mkdir($dst_dir);
+
+			// get the list of files to process
+			$entries = scandir ($src_dir);
 		}
-		$files = scandir ( $src );
-		foreach ( $files as $file )
+		catch(Exception $e) {
+			$err_msg = $e->getMessage();
+			$messages[] = "Error initializing resizeImages: " . $err_msg;
+			error_log('Error initializing resizeImages: ' . $err_msg);
+		}
+
+		// process each file found
+		foreach ($entries as $entry)
 		{
-			if ($file != "." && $file != "..")
-			{
-				list($width, $height) = getimagesize($src . '/'  . $file);
+			try {
+				// ignore this directory and the parent
+				if ($entry == '.' || $entry == '..')
+					continue;
 
-				$r = $width / $height;
-				$newwidth = $h*$r;
-				$newheight = $h;
+				$file_name = $src_dir . '/' . $entry;
 
-				if($newheight <= $height && $newwidth <= $width)
+				// if the entry isn't a file, continue
+				if (!is_file($file_name))
+					continue;
+
+				// get the image info [width, height, type]
+				$image_info = getimagesize($file_name);
+
+				// will be false if getimagesize fails
+				if ($image_info === false) {
+					$messages[] = "Ignoring \"{$entry}\": file is not a valid image file.";
+					continue;
+				}
+
+				// information returned by getimagesize
+				$width = $image_info[0];
+				$height = $image_info[1];
+				$img_type = $image_info[2];
+
+				// make sure the image is an allowed type
+				if (!in_array($img_type, $allowed_types)) {
+					$messages[] = "Ignoring \"{$entry}\": file is not an allowed image type.";
+					continue;
+				}
+
+				// skip zero-width images
+				if ($width == 0) {
+					$messages[] = "Ignoring \"{$entry}\": image has a width of zero.";
+					continue;
+				}
+
+				// skip zero-height images
+				if ($height == 0) {
+					$messages[] = "Ignoring \"{$entry}\": image has a height of zero.";
+					continue;
+				}
+
+				if ($h < $height || $w < $width)
 				{
-					$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+					// NB: the image needs to be resized into a thumbnail
 
-					try {
-						if($ext == "png")
-						{
-							$src_image = imagecreatefrompng($src . '/' . $file);
-						}
-						elseif($ext == "gif")
-						{
-							$src_image = imagecreatefromgif($src . '/' . $file);
-						}
-						else
-						{
-							$src_image = imagecreatefromjpeg($src . '/' . $file);
-						}
-						$dst_image  = imagecreatetruecolor($newwidth, $newheight);
-						imagecopyresized($dst_image, $src_image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height );
+					$result = self::ResizeThisImage($img_type, $width, $height, $w, $h, $file_name, $dst_dir);
 
-						if($ext == "png")
-						{
-							imagepng($dst_image, $dst . '/' . $file);
-						}
-						elseif($ext == "gif")
-						{
-							imagegif($dst_image, $dst . '/' . $file);
-						}
-						else
-						{
-							imagejpeg($dst_image, $dst . '/' . $file, 90);
-						}
-					}
-					catch(Exception $e) {
-						error_log('Error: There was an error converting image file to thumbnail: ' .$e->getMessage());
-					}
+					if ($result === false)
+						$messages[] = "Warning: not able to save thumbnail \"{$entry}\".";
 				}
 				else
 				{
-					copy ( $src . '/' . $file, $dst . '/' . $file );
+					// NB: the image is already small enough to be a thumbnail, just copy to the output directory
+
+					$result = copy($src_dir . '/' . $entry, $dst_dir . '/' . $entry);
+
+					if ($result === false)
+						$messages[] = "Warning: not able to copy thumbnail \"{$entry}\".";
 				}
 			}
+			catch(Exception $e) {
+				$err_msg = $e->getMessage();
+				$messages[] = "Error resizing image \"{$entry}\": " . $err_msg;
+				error_log("Error: There was an error converting image file \"{$entry}\" to thumbnail: " . $err_msg);
+			}
 		}
+
+		return $messages;
+	}
+
+	/**
+	 * Resizes this particular image file
+	 *
+	 * @param $img_type
+	 * @param $src_width
+	 * @param $src_height
+	 * @param $max_width
+	 * @param $max_height
+	 * @param $src_file_name
+	 * @param $dst_dir
+	 *
+	 * @return bool
+	 */
+	public static function ResizeThisImage($img_type, $src_width, $src_height, $max_width, $max_height, $src_file_name, $dst_dir)
+	{
+		// calculate new dimensions - make sure both dimensions are inside the [$w, $h] rectangle
+		$rect = self::CalculateRectangle($src_width, $src_height, $max_width, $max_height);
+		$entry = basename($src_file_name);
+
+		$src_image = null;
+
+		switch ($img_type) {
+			case IMAGETYPE_PNG:
+				$src_image = imagecreatefrompng($src_file_name);
+				break;
+
+			case IMAGETYPE_GIF:
+				$src_image = imagecreatefromgif($src_file_name);
+				break;
+
+			case IMAGETYPE_JPEG:
+				$src_image = imagecreatefromjpeg($src_file_name);
+				break;
+
+			default:
+				return true;
+		}
+
+		$dst_image = imagecreatetruecolor($rect->width, $rect->height);
+		imagecopyresized($dst_image, $src_image, $rect->x, $rect->y, 0, 0, $rect->width, $rect->height, $src_width, $src_height);
+
+		switch ($img_type) {
+			case IMAGETYPE_PNG:
+				return imagepng($dst_image, $dst_dir . '/' . $entry);
+
+			case IMAGETYPE_GIF:
+				return imagegif($dst_image, $dst_dir . '/' . $entry);
+
+			case IMAGETYPE_JPEG:
+				return imagejpeg($dst_image, $dst_dir . '/' . $entry, 90);
+
+			default:
+				return false;
+		}
+	}
+
+	/**
+	 * Get the bounding rectangle for the new image, with the same aspect ratio.
+	 *
+	 * The returned rectangle will have the same aspect ratio as the source, and
+	 * fit completely inside the max rectangle.
+	 *
+	 * @param int $source_width
+	 * @param int $source_height
+	 * @param int $max_width
+	 * @param int $max_height
+	 * @return stdClass
+	 */
+	public static function CalculateRectangle($source_width, $source_height, $max_width, $max_height)
+	{
+		$rect = new stdClass();
+
+		// get an initial rectangle
+		$rect->width = intval($max_width);
+		$rect->height = intval($max_width * $source_height / $source_width);
+
+		// check for out-of-bounds
+		if ($rect->height > $max_height) {
+			$rect->height = intval($max_height);
+			$rect->width = intval($max_height * $source_width / $source_height);
+		}
+
+		// set the origin
+		$rect->x = 0;
+		$rect->y = 0;
+
+		return $rect;
 	}
 
 	public static function verifyAdminPrivileges($username, $password)

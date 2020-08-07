@@ -83,7 +83,7 @@ class Webonary_API_MyType
 			$fontClass->set_fontFaces($css_string, $uploadPath);
 
 			copy($zipFolderPath . '/configured.css', $uploadPath . '/imported-with-xhtml.css');
-			
+
 			if (file_exists($uploadDirectory . '/ProjectDictionaryOverrides.css')) {
 				copy($zipFolderPath . '/ProjectDictionaryOverrides.css', $uploadPath . '/ProjectDictionaryOverrides.css');
 			}
@@ -100,6 +100,10 @@ class Webonary_API_MyType
 				unlink($file);
 			}
 		}
+
+		$import = new Webonary_Pathway_Xhtml_Import();
+		$import->api = true;
+		$import->verbose = false;
 
 		//copy folder files (which includes audio and image folders and files)
 		if (is_dir($uploadPath)) {
@@ -118,7 +122,10 @@ class Webonary_API_MyType
 			if (is_dir($zipFolderPath . '/pictures/thumbnail')) {
 				Webonary_Utility::recursiveCopy($zipFolderPath . '/pictures/thumbnail', $uploadPath . '/images/thumbnail');
 			} else {
-				Webonary_Utility::resize_image($uploadPath . '/images/original', 150, 150, $uploadPath . '/images/thumbnail');
+				$messages = Webonary_Utility::resizeImages($uploadPath . '/images/original', 150, 150, $uploadPath . '/images/thumbnail');
+				foreach ($messages as $message) {
+					$import->write_log($message);
+				}
 			}
 
 			Webonary_Utility::recursiveRemoveDir($zipFolderPath . '/pictures');
@@ -154,12 +161,6 @@ class Webonary_API_MyType
 			echo "Upload successful. Beginning processing....\n";
 			flush();
 		}
-
-		//include $webonary_include_path . DS . 'run_import.php';
-		$import = new Webonary_Pathway_Xhtml_Import();
-
-		$import->api = true;
-		$import->verbose = false;
 
 		$import->process_xhtml_file($fileConfigured, 'configured', $user);
 	}

@@ -1692,7 +1692,7 @@ SQL;
 	 * Utility function to convert pseudo-links in entry xml from FLex into actual Webonary site links
 	 * @param string $entry_xml
 	 * @return string $entry_xml
-	 */	
+	 */
 	public static function fix_entry_xml_links($entry_xml)
 	{
 		//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
@@ -2023,8 +2023,8 @@ SQL;
 
 			if ($this->verbose) {
 				$message .= "\n\n";
-				$message .= "Log from today: \n\n";	
-				$message .= file_get_contents($this->log_file);	
+				$message .= "Log from today: \n\n";
+				$message .= file_get_contents($this->log_file);
 			}
 
 			wp_mail($email, $subject, $message, $headers);
@@ -2037,7 +2037,7 @@ SQL;
 	}
 
 
-	private function write_log($msg, $verbose_only = false)
+	public function write_log($msg, $verbose_only = false)
 	{
 		if ($verbose_only && !$this->verbose)
 			return;
@@ -2049,7 +2049,7 @@ SQL;
 
 			if (!is_dir( $logs_dir))
 				mkdir($logs_dir, 0775, true);
-			
+
 			$this->log_file = $logs_dir . '/' . 'log_' . date('Y-m-d') . '.txt';
 		}
 
