@@ -494,7 +494,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	{
 		$sql .=	" AND language_code = '" . $reversalLangcode . "' ";
 	}
-	if($sortorderExists && $reversalLangcode != "zh-CN" && $reversalLangcode != "zh-Hans-CN")
+	if($sortorderExists && !Webonary_Configuration::use_pinyin($reversalLangcode))
 	{
 		$sql .= " ORDER BY sortorder, reversal_head ASC";
 	}

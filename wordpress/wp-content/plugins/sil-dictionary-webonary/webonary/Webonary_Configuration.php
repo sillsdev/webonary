@@ -97,6 +97,11 @@ SQL;
 		return $wpdb->get_results($sql, 'ARRAY_A');
 	}
 
+	public static function use_pinyin($language_code) 
+	{
+		return in_array($language_code, array('zh-CN', 'zh-Hans-CN'));
+	}
+
 	private static function SkipClass($class)
 	{
 		return (
