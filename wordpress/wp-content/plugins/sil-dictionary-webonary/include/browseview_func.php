@@ -182,6 +182,11 @@ function categories_func( $atts )
 			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;
 		}
 	}
+	else
+	{
+		$totalEntries = 0;
+	}
+
 	if(!$arrPosts)
 	{
 		if($semdomain != '')
