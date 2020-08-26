@@ -42,7 +42,7 @@ html {
 }
 
 body {
-  font-family: Arial, Tahoma;
+  font-family: Arial, Tahoma, sans-serif;
   font-size: 100% !important;
   border: 0;
   color: #222;
@@ -68,9 +68,8 @@ img {
   text-decoration: none !important;
   color: inherit !important;
 }
-a:hover {text-decoration:underline}, a:active {
-  text-decoration: none;
-}
+a:hover {text-decoration:underline}
+a:active {text-decoration: none;}
 a:hover span {text-decoration:underline}
 
 input, textarea {
@@ -113,7 +112,7 @@ img {
   font-weight: bold;
   letter-spacing: 0;
   line-height: 1em;
-  font-family: "Myriad Pro","PT Sans","Helvetica Neue","Helvetica","Arial";
+  font-family: "Myriad Pro","PT Sans","Helvetica Neue","Helvetica","Arial", sans-serif;
 }
 
 #navlanguage
@@ -164,7 +163,6 @@ ul.qtrans_language_chooser li.active { display:none }
   color: #85005b;
   height: 25px;
   line-height: 25px;
-  font-size: 1.3em;
   padding: 2px 15px;
   margin-bottom: 5px;
   font-size: 1.1em;
@@ -290,7 +288,7 @@ background: url(images/button_hover.png) repeat-x #eee;
 #logo {
   float: left;
   width: 170px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 #logo h1 {
   padding: 0 10px;
@@ -299,7 +297,7 @@ background: url(images/button_hover.png) repeat-x #eee;
 }
 /*============================ TOP NAVIGATION ============================*/
 #topnavi {
-  padding: 0px 0px;
+  padding: 0 0;
   background: #ffffff;
 }
 #topnavi ul{
@@ -384,7 +382,7 @@ background: url(images/button_hover.png) repeat-x #eee;
   color:#0066ee;
 }
 .page h2 {
-  font-family: "Arial Unicode MS", san-serif;
+  font-family: "Arial Unicode MS", sans-serif;
   /* font-size: 1.8em; */
 }
 .post h2 a:link, .post h2 a:visited {
@@ -437,12 +435,12 @@ background: url(images/button_hover.png) repeat-x #eee;
   font-size: 1.0em;
   margin: 5px 0 0 0;
   color: #444;
-  font-family: "Arial Unicode MS", san-serif;
+  font-family: "Arial Unicode MS", sans-serif;
   font-weight: bold;
 }
 .pageentry p {
   margin: 5px 0 5px 0;
-  font-family: Arial, Tahoma;
+  font-family: Arial, Tahoma, sans-serif;
 }
 .arh {
   width: 80%;
@@ -562,7 +560,7 @@ code, pre {
   background: #eeeeee;
   color: #222 !important;
   font-size: 0.9em;
-  font-family: Monospace, "Courier New", Courier;
+  font-family: Monospace, "Courier New", Courier, monospace;
 }
 del, strike, s{
   text-decoration: line-through;
@@ -599,7 +597,7 @@ sub {
 blockquote {
   margin-left: 30px;
   /* padding: 15px; */
-  font-size: 1 em;
+  font-size: 1em;
   font-weight: normal;
   font-style: italic;
   text-align: justify;
@@ -827,7 +825,7 @@ blockquote:after{
   padding: 3px 5px 3px 10px;
   height: 100%;
   line-height: 1.2em;
-  font-family: tahoma, arial;
+  font-family: tahoma, arial, sans-serif;
   color: #fff;
 }
 #copyright {
@@ -874,7 +872,7 @@ blockquote:after{
 .credit_link {
   float: right;
   font-size: 1.0em;
-  margin: 0px 0px 0 0px;
+  margin: 0 0 0 0;
 }
 
 /*============================ Webonary Styles ============================*/
@@ -916,6 +914,10 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .aligncenter {display: block; margin-left: auto; margin-right: auto}
 span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-family:"Times New Roman","Lucida Sans Unicode","Arial Unicode MS",Arial,sans-serif;color:black;}
 
+img.ft-node {width: 16px; height: 22px; border: 0; max-width: none}
+img.ft-blank2 {width: 2px; height: 2px; border: 0; max-width: none}
+img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
+
 @media only screen and (max-width : 550px) {
 
 	#sidebar {
@@ -934,7 +936,7 @@ span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-fa
 	}
 
 	#wrap {
-		margin-top: 0px;
+		margin-top: 0;
 	}
 	.arh {
 		width: 100%;
