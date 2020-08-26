@@ -1317,7 +1317,7 @@ SQL;
 					//the Chinese headwords get converted to pinyin, so that the reversal browse view
 					//will work see https://github.com/overtrue/pinyin
 					$reversal_browsehead = $reversal_head;
-					if(($reversal_language == "zh-CN" || $reversal_language == "zh-Hans-CN"))
+					if(Webonary_Configuration::use_pinyin($reversal_language))
 					{
 						$pinyin = new Pinyin();
 
@@ -1795,7 +1795,7 @@ SQL;
 					$letterHead = $reader->readInnerXml();
 					$letterLanguage = $reader->getAttribute('lang');
 
-					if(($letterLanguage == 'zh-CN' || $letterLanguage == 'zh-Hans-CN'))
+					if(Webonary_Configuration::use_pinyin($letterLanguage))
 					{
 						$pinyin = new Pinyin();
 						$letterHead = $pinyin->sentence($letterHead);
@@ -1894,6 +1894,10 @@ SQL;
 			$this->write_log('Upload finished in ' . gmdate("H:i:s", $exec_time));
 		}
 
+		if (Webonary_Configuration::use_pinyin($letterLanguage))
+		{
+			sort($arrLetters);
+		}
 		$alphabet = implode(',', $arrLetters);
 
 		if($filetype == 'configured')
