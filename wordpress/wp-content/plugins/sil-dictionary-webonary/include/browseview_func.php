@@ -179,7 +179,7 @@ function categories_func( $atts )
 		else
 		{
 			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
-			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;			
+			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;
 		}
 	}
 	if(count($arrPosts) == 0)
@@ -757,7 +757,15 @@ function getNoLetters($chosenLetter, $alphas)
 	return $noLetters;
 }
 
-function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage = null)
+/**
+ * @param string $letter
+ * @param string $langcode
+ * @param int $page
+ * @param int $postsPerPage
+ *
+ * @return array|object|null
+ */
+function getVernacularEntries(string $letter, string $langcode, int $page, int $postsPerPage)
 {
 	global $wpdb;
 
@@ -789,8 +797,8 @@ function getVernacularEntries($letter = "", $langcode = "", $page, $postsPerPage
 		$alphas = explode(",",  get_option('vernacular_alphabet'));
 		$chosenLetter = get_letter($alphas[0]);
 
-		$noletters = getNoLetters($chosenLetter, $alphas);
-		$arrNoLetters = explode(",",  $noletters);
+		$noLetters = getNoLetters($chosenLetter, $alphas);
+		$arrNoLetters = explode(",",  $noLetters);
 		foreach($arrNoLetters as $noLetter)
 		{
 			if(strlen($noLetter) > 0)
@@ -940,7 +948,7 @@ function vernacularalphabet_func( $atts )
 			//legacy
 			if($displaySubentriesAsMinorEntries == true)
 			{
-				if(trim($mypost->post_title) != trim($mypost->search_strings))
+				if(trim($mypost->post_title ?? '') != trim($mypost->search_strings ?? ''))
 				{
 					$headword = getVernacularHeadword($mypost->ID, $languagecode);
 					$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
