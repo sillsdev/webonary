@@ -1,4 +1,8 @@
 <?php
+global $defaultDomain;
+
+$defaultDomain = [];
+
 $defaultDomain['1.'] = __('PLANTS');
 $defaultDomain['1.1.'] = __('Trees and fruit');
 $defaultDomain['1.1.1.'] = __('Trees, forest');
@@ -244,4 +248,3 @@ $defaultDomain['32.'] = __('WAYS OF TYING THINGS');
 $defaultDomain['33.'] = __('SEEING');
 $defaultDomain['33.1.'] = __('Verbs used in connection w/ seeing');
 $defaultDomain['33.2.'] = __('Adjectives used in connection w/ seeing');
-?>

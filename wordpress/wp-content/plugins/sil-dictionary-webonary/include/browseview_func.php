@@ -1,7 +1,7 @@
 <?php
 function categories_func( $atts )
 {
-	global $wpdb;
+	global $wpdb, $defaultDomain;
 
 	$display = "";
 
@@ -247,6 +247,7 @@ function displayAlphabet($alphas, $languagecode)
 	$permalink = "";
 	if(is_front_page())
 	{
+		/** @noinspection SqlResolve */
 		$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 		$post_id = $wpdb->get_var($sql);
 
