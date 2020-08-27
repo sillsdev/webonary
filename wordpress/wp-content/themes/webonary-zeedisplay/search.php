@@ -41,19 +41,18 @@ function openImage(image)
 		?>
 		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
 		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
-		<?php if (have_posts()) :
-			//search string are normalized to NFC
-			if (class_exists("Normalizer", $autoload = false))
-			{
-				$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
-			}
-			else
-			{
-				$query = $_GET['s'];
-			}
-			//echo $wp_query->found_posts . " ";
-			//echo getstring("search-results-for-s", "'" . $query . "'");
-			?>
+		<?php
+		//search string are normalized to NFC
+		if (class_exists("Normalizer", $autoload = false))
+		{
+			$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
+		}
+		else
+		{
+			$query = $_GET['s'];
+		}
+
+        if (have_posts()) : ?>
 			<div id="searchresults">
 				<?php while (have_posts()) : the_post(); ?>
 					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
