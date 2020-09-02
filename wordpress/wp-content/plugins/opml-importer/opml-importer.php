@@ -14,12 +14,12 @@ if ( !defined('WP_LOAD_IMPORTERS') )
 	return;
 
 // Load Importer API
-require_once ABSPATH . 'wp-admin/includes/import.php';
+include_once ABSPATH . 'wp-admin/includes/import.php';
 
 if ( !class_exists( 'WP_Importer' ) ) {
 	$class_wp_importer = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
 	if ( file_exists( $class_wp_importer ) )
-		require_once $class_wp_importer;
+		include_once $class_wp_importer;
 }
 
 /** Load WordPress Administration Bootstrap */
@@ -45,8 +45,6 @@ switch ($step) {
 		include_once( ABSPATH . 'wp-admin/admin-header.php' );
 		if ( !current_user_can('manage_links') )
 			wp_die(__('Cheatin&#8217; uh?', 'opml-importer'));
-
-		$opmltype = 'blogrolling'; // default.
 ?>
 
 <div class="wrap">
@@ -165,7 +163,6 @@ if ( ! $blogrolling )
 } // end switch
 	}
 
-	function OPML_Import() {}
 }
 
 $opml_importer = new OPML_Import();
