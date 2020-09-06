@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-$qaplus_options = get_option( 'qaplus_options' ); 
-$qaplus_auth = get_option( 'qaplus_auth' ); 
+$qaplus_options = get_option( 'qaplus_options' );
+$qaplus_auth = get_option( 'qaplus_auth' );
 
 //our custom post functions
 require ( Q_A_PLUS_PATH . 'inc/custom-post.php' );
 
 // If the version numbers don't match, run the upgrade script
-if ( $qaplus_options['version'] < Q_A_PLUS_VERSION ) { 
+if ( $qaplus_options['version'] < Q_A_PLUS_VERSION ) {
 	require ( Q_A_PLUS_PATH . 'inc/upgrader.php' );
 }
 
@@ -23,7 +23,7 @@ require ( Q_A_PLUS_PATH . 'inc/ratings.php' );
 //action link http://www.wpmods.com/adding-plugin-action-links
 function qaplus_action_links( $links, $file ) {
 	static $this_plugin;
-	$qaplus_auth = get_option( 'qaplus_auth' ); 
+	$qaplus_auth = get_option( 'qaplus_auth' );
 
 	if ( !$this_plugin ) {
 		$this_plugin = Q_A_PLUS_LOCATION;
@@ -46,17 +46,17 @@ add_filter( 'plugin_action_links', 'qaplus_action_links', 10, 2 );
 function qaplus_rewrites() {
 	global $qaplus_options;
 	if ( ! $qaplus_options['faq_slug'] ) { $slug = 'faqs'; } else { $slug = strtolower( $qaplus_options['faq_slug'] ); }
-	
+
 	add_rewrite_rule( $qaplus_options['faq_slug'] . '/search/?([^/]*)','index.php?s=$matches[1]&post_type=qa_faqs','top');
-	  
-  	add_rewrite_rule( $qaplus_options['faq_slug'] . '/page/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&paged=$matches[1]','top');
-   
+
+	add_rewrite_rule( $qaplus_options['faq_slug'] . '/page/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&paged=$matches[1]','top');
+
 	add_rewrite_rule( $qaplus_options['faq_slug'] . '/category/?([^/]*)/page/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&category_name=$matches[1]&paged=$matches[2]','top');
-	
+
 	add_rewrite_rule( $qaplus_options['faq_slug'] . '/category/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&category_name=$matches[1]','top');
 
 }
-		
+
 add_action('init', 'qaplus_rewrites');
 
 /* Load scripts for front */
@@ -67,18 +67,18 @@ if ( ! is_admin() ) {
 
 function qaplus_public() {
 	global $qaplus_options;
-	// jQuery  
+	// jQuery
 	if ( $qaplus_options['jquery'] == "force" ) {
-		wp_deregister_script( 'jquery' ); 
-		wp_register_script( 'jquery', ( "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ), false, '1', false); 
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', ( "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ), false, '1', false);
 		wp_enqueue_script( 'jquery' );
 	} elseif ( $qaplus_options['jquery'] == "wp" ) {
 		wp_enqueue_script( 'jquery' );
 	}
 
-	wp_enqueue_script( 'q-a-plus', Q_A_PLUS_URL . '/js/q-a-plus.js', false, $qaplus_options['version'], true ); 
+	wp_enqueue_script( 'q-a-plus', Q_A_PLUS_URL . '/js/q-a-plus.js', false, $qaplus_options['version'], true );
 
-	wp_enqueue_style( 'q-a-plus', Q_A_PLUS_URL . '/css/q-a-plus.css', false, $qaplus_options['version'], 'screen' );	
+	wp_enqueue_style( 'q-a-plus', Q_A_PLUS_URL . '/css/q-a-plus.css', false, $qaplus_options['version'], 'screen' );
 }
 
 add_action( 'wp_head', 'qaplus_head' );
@@ -88,23 +88,23 @@ if ( ! function_exists( 'qaplus_head' ) ) {
 		global $qaplus_options;
 		echo '<!-- Q & A -->
 		<noscript><link rel="stylesheet" type="text/css" href="' .  plugins_url( "css/q-a-plus-noscript.css?ver=" . $qaplus_options['version'], dirname(__FILE__) ) . '" /></noscript><!-- Q & A -->';
-	} // end qaplus_head 
+	} // end qaplus_head
 }
 
-/* Custom template redirection hook 
- * Todo: Make sure there's a good fallback if search template doesn't exist. 
- */ 
+/* Custom template redirection hook
+ * Todo: Make sure there's a good fallback if search template doesn't exist.
+ */
 
 function qaplus_template_redirect() {
-    global $wp;
+	global $wp;
 	global $wp_query;
 	global $post;
-	
+
 	if ( is_single() && 'qa_faqs' == get_post_type($post) ) {
-    
-		if ( file_exists( TEMPLATEPATH . '/single-qa_faqs.php') ) {	
+
+		if ( file_exists( TEMPLATEPATH . '/single-qa_faqs.php') ) {
 			$page_template = TEMPLATEPATH . '/single-qa_faqs.php';
-		} elseif ( file_exists( TEMPLATEPATH . '/page.php') ) {	
+		} elseif ( file_exists( TEMPLATEPATH . '/page.php') ) {
 			$page_template = TEMPLATEPATH . '/page.php';
 		} elseif ( file_exists( TEMPLATEPATH . '/single.php' )) {
 			$page_template = TEMPLATEPATH . '/single.php';
@@ -112,8 +112,8 @@ function qaplus_template_redirect() {
 			$page_template = TEMPLATEPATH . '/index.php';
 		}
 	}
-	        
-    if ( isset( $page_template ) ) {
+
+	if ( isset( $page_template ) ) {
 		if ( have_posts() ) {
 			include( $page_template );
 			exit;
@@ -134,16 +134,16 @@ function addQaplusPage(){
 	$new_page = ucwords( $new_page );
 	// Create post object
 	$qaplus_post = array(
-	  'post_title' => $new_page,
-	  'post_content' => '[qa]',
-	  'post_status' => 'publish',
-	  'post_type' => 'page',
-	  'post_author' => 1
+		'post_title' => $new_page,
+		'post_content' => '[qa]',
+		'post_status' => 'publish',
+		'post_type' => 'page',
+		'post_author' => 1
 	);
-	
+
 	// Insert the post into the database
 	wp_insert_post( $qaplus_post );
-	
+
 	$page_exists = get_page_by_path( $qaplus_options['faq_slug'] );
 	if ( $page_exists ) {
 		_e('<p>Page was successfully created!</p>', 'qa-free');
@@ -158,11 +158,11 @@ add_action('wp_ajax_nopriv_addQaplusPage', 'addQaplusPage'); // not really neede
 
 function dismissQaplusCreate(){
 	$qaplus_admin = get_option( 'qaplus_admin_options' );
-	
+
 	// Insert the post into the database
 	$qaplus_admin['dismiss_slug'] = "true";
 	update_option( 'qaplus_admin_options', $qaplus_admin );
-	
+
 	die();
 }
 
@@ -218,22 +218,22 @@ if ( $qaplus_options['breadcrumbs'] == "true" ) {
 }
 
 function update_page_title($data){
-    global $post, $qaplus_options;
+	global $post, $qaplus_options;
 
 	if ( is_single() && in_the_loop() && "qa_faqs" == get_post_type() ) {
 		$homeID = url_to_postid($qaplus_options['faq_slug']);
-		$single_query = new WP_Query( "page_id=$homeID" );	
-		
+		$single_query = new WP_Query( "page_id=$homeID" );
+
 		while( $single_query->have_posts() ): $single_query->the_post();
 			global $post;
 			$title = $post->post_title;
 		endwhile;
 
 		wp_reset_query();
-		
-   		$homelink =  '<a href="' . home_url() . '/' . $qaplus_options['faq_slug'] . '">' . $title . '</a>';
-   		$data = $homelink . __(' / ', 'qa-free') . $data;
-	 }
+
+		$homelink =  '<a href="' . home_url() . '/' . $qaplus_options['faq_slug'] . '">' . $title . '</a>';
+		$data = $homelink . __(' / ', 'qa-free') . $data;
+	}
 
 	return $data;
 }
@@ -244,30 +244,32 @@ function qa_add_categories() {
 
 	global $qaplus_options, $post;
 	$id = $post->ID;
-	
+
 	$i = 1;
 	$qa_tax_output = '';
-	
+
 	$terms = get_the_terms( $id, 'faq_category' );
-	$count = count( $terms );
-	
-	if ( $terms ) {
-			
+
+
+	if (!empty($terms) && is_array($terms)) {
+
+		$count = count( $terms );
+
 		foreach( $terms as $term ) {
 			$qa_tax_output .= '<a href=" ' . home_url() . '/' . $qaplus_options['faq_slug'] . '/category/' . $term->slug . '/">';
 			$qa_tax_output .= $term->name;
 			$qa_tax_output .= '</a>';
 			if ( $i != $count ) {
 				$qa_tax_output .= ', ';
-			}	
-			
+			}
+
 			unset($term);
 			$i++;
 		}
 	}
-	
+
 	return $qa_tax_output;
-}	
+}
 
 function add_categories_to_single ($content) {
 	global $post;
