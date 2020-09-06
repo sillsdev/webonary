@@ -120,6 +120,15 @@ SQL;
 		$wpdb->query($sql);
 	}
 
+	// make sure the `class` field exists
+	$sql = "SHOW COLUMNS FROM {$table} LIKE 'class';";
+	$results = $wpdb->get_results($sql);
+	if (empty($results)) {
+
+		$sql = "ALTER TABLE {$table} ADD `class` VARCHAR(50) NULL;";
+		$wpdb->query($sql);
+	}
+
 	// add a unique constraint to replace the removed primary key
 	$sql = "SHOW KEYS FROM {$table} WHERE Key_name = 'idx_unique_row';";
 	$results = $wpdb->get_results($sql);
@@ -306,7 +315,6 @@ function clean_out_dictionary_data ($delete_taxonomies = null)
 {
 
 	if (is_plugin_active('wp-super-cache/wp-cache.php')) {
-		/** @noinspection PhpUndefinedFunctionInspection */
 		prune_super_cache(get_supercache_dir(), true);
 	}
 
