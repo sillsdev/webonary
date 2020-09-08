@@ -50,6 +50,10 @@ function webonary_admin_script()
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 
+// see: https://www.monsterinsights.com/docs/how-to-disable-the-monsterinsights-dashboard-widget/
+// Had to put this here rather than in the theme because the MonsterInsights plugin is
+// already loaded before the theme loads.
+add_filter('monsterinsights_show_dashboard_widget', '__return_false');
 
 //if(is_admin() ){
 	// Menu in the WordPress Dashboard, under tools.
@@ -112,7 +116,7 @@ add_filter('rest_authentication_errors', function($result) {
 
 	return $result;
 });
-			
+
 if (get_option('useCloudBackend')) {
 	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);
 }
