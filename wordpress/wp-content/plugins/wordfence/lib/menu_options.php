@@ -121,7 +121,7 @@ if (isset($_GET['source']) && wfPage::isValidPage($_GET['source'])) {
 				'wf-option-loginSec-breachPasswds-enabled' => __('Prevent the use of passwords leaked in data breaches', 'wordfence'),
 				'wf-option-loginSec-maskLoginErrors' => __('Don\'t let WordPress reveal valid users in login errors', 'wordfence'),
 				'wf-option-loginSec-blockAdminReg' => __('Prevent users registering "admin" username if it doesn\'t exist', 'wordfence'),
-				'wf-option-loginSec-disableAuthorScan' => __('Prevent discovery of usernames through "/?author=N" scans, the oEmbed API, and the WordPress REST API', 'wordfence'),
+				'wf-option-loginSec-disableAuthorScan' => __('Prevent discovery of usernames through "/?author=N" scans, the oEmbed API, the WordPress REST API, and WordPress XML Sitemaps', 'wordfence'),
 				'wf-option-other-blockBadPOST' => __('Block IPs who send POST requests with blank User-Agent and Referer', 'wordfence'),
 				'wf-option-blockCustomText' => __('Custom text shown on block pages', 'wordfence'),
 				'wf-option-other-pwStrengthOnUpdate' => __('Check password strength on profile update', 'wordfence'),

@@ -936,6 +936,14 @@ class wfConfig {
 			return;
 		}
 
+		// Prevent WF auto-update if the user has enabled auto-update through the plugins page.
+		if (version_compare(wfUtils::getWPVersion(), '5.5-x', '>=')) {
+			$autoUpdatePlugins = get_site_option('auto_update_plugins');
+			if (is_array($autoUpdatePlugins) && in_array(WORDFENCE_BASENAME, $autoUpdatePlugins)) {
+				return;
+			}
+		}
+
 		if (!wfConfig::get('other_bypassLitespeedNoabort', false) && getenv('noabort') != '1' && stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
 			$lastEmail = self::get('lastLiteSpdEmail', false);
 			if( (! $lastEmail) || (time() - (int)$lastEmail > (86400 * 30))){
