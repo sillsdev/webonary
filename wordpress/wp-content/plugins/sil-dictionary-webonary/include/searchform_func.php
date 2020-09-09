@@ -259,9 +259,6 @@ function webonary_searchform() {
 					$arrVernacularLanguage = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'));
 					?>
 					<select name="key" class="webonary_searchform_language_select">
-					<option value="">
-					<?php _e('All Languages','sil_dictionary'); ?>
-					</option>
 					<?php
 					foreach ($arrLanguages as $language)
 					{
@@ -277,6 +274,7 @@ function webonary_searchform() {
 					}
 					?>
 					</select>
+                    <br>
 					<?php echo $parts_of_speech_dropdown; ?>
 					<br>
 					<?php
