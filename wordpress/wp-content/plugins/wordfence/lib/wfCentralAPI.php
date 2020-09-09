@@ -59,6 +59,24 @@ class wfCentralAPIRequest {
 
 		$http = _wp_http_get_object();
 		$response = $http->request(WORDFENCE_CENTRAL_API_URL_SEC . $this->getEndpoint(), $args);
+
+		if (!is_wp_error($response)) {
+			$body = wp_remote_retrieve_body($response);
+			$statusCode = wp_remote_retrieve_response_code($response);
+
+			// Check if site has been disconnected on Central's end, but the plugin is still trying to connect.
+			if ($statusCode === 404 && strpos($body, 'Site has been disconnected') !== false) {
+				// Increment attempt count.
+				$centralDisconnectCount = get_site_transient('wordfenceCentralDisconnectCount');
+				set_site_transient('wordfenceCentralDisconnectCount', ++$centralDisconnectCount, 86400);
+
+				// Once threshold is hit, disconnect Central.
+				if ($centralDisconnectCount > 3) {
+					wfRESTConfigController::disconnectConfig();
+				}
+			}
+		}
+
 		return new wfCentralAPIResponse($response);
 	}
 

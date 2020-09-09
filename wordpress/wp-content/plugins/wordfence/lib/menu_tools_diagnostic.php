@@ -844,6 +844,12 @@ if (!isset($sendingDiagnosticEmail)) {
 								<input class="wf-btn wf-btn-default wf-btn-sm" type="button" value="<?php esc_attr_e('Send Test Activity Report', 'wordfence'); ?>" onclick="WFAD.ajax('wordfence_email_summary_email_address_debug', {email: jQuery('#email_summary_email_address_debug').val()});"/>
 							</span>
 						</li>
+						<li>
+							<span>
+								<?php _e('Clear all Wordfence Central connection data', 'wordfence'); ?> <a href="<?php echo wfSupportController::esc_supportURL(wfSupportController::ITEM_DIAGNOSTICS_REMOVE_CENTRAL_DATA); ?>" target="_blank" rel="noopener noreferrer" class="wfhelp wf-inline-help"></a>
+								<input class="wf-btn wf-btn-default wf-btn-sm" type="button" value="<?php esc_attr_e('Clear Connection Data', 'wordfence'); ?>" onclick="WFAD.ajax('wordfence_wfcentral_disconnect', {}, function() { WFAD.colorboxModal((self.isSmallScreen ? '300px' : '400px'), 'Successfully romved data', 'All associated Wordfence Central data has been removed from the database.'); });"/>
+							</span>
+						</li>
 					</ul>
 
 				</div>

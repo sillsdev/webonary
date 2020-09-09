@@ -211,7 +211,7 @@ if (!isset($collapseable)) {
 							'enabledValue' => 1,
 							'disabledValue' => 0,
 							'value' => wfConfig::get('loginSec_disableAuthorScan') ? 1 : 0,
-							'title' => __('Prevent discovery of usernames through \'/?author=N\' scans, the oEmbed API, and the WordPress REST API', 'wordfence'),
+							'title' => __('Prevent discovery of usernames through \'/?author=N\' scans, the oEmbed API, the WordPress REST API, and WordPress XML Sitemaps', 'wordfence'),
 							'helpLink' => wfSupportController::supportURL(wfSupportController::ITEM_FIREWALL_WAF_OPTION_PREVENT_AUTHOR_SCAN),
 						))->render();
 						?>
