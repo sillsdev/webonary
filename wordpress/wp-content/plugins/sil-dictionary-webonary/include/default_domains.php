@@ -1,4 +1,8 @@
 <?php
+global $defaultDomain;
+
+$defaultDomain = [];
+
 $defaultDomain['1.'] = __('Universe, creation', 'sil_dictionary');
 $defaultDomain['1.1.'] = __('Sky', 'sil_dictionary');
 $defaultDomain['1.1.1.'] = __('Sun', 'sil_dictionary');
@@ -1791,4 +1795,3 @@ $defaultDomain['9.7.2.9.'] = __('Names of rivers', 'sil_dictionary');
 $defaultDomain['9.7.3.'] = __('Name of a thing', 'sil_dictionary');
 $defaultDomain['9.7.3.1.'] = __('Names of animals', 'sil_dictionary');
 $defaultDomain['9.7.3.2.'] = __('Names of buildings', 'sil_dictionary');
-?>

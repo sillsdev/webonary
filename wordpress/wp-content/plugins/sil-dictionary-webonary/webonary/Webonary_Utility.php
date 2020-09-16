@@ -433,16 +433,24 @@ class Webonary_Utility
 		return $plugins;
 	}
 
+	/**
+	 * Gets the number of posts per page
+	 * @return int
+	 */
 	public static function getPostsPerPage()
 	{
 		if (!empty(self::$posts_per_page))
 			return self::$posts_per_page;
 
-		self::$posts_per_page = get_option('posts_per_page', self::$default_posts_per_page);
+		self::$posts_per_page = (int)get_option('posts_per_page', self::$default_posts_per_page);
 
 		return self::$posts_per_page;
 	}
 
+	/**
+	 * Gets the current page number
+	 * @return int
+	 */
 	public static function getPageNumber()
 	{
 		if (!empty(self::$current_page_number))

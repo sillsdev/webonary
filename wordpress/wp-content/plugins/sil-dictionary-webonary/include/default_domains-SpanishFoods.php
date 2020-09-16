@@ -1,4 +1,8 @@
 <?php
+global $defaultDomain;
+
+$defaultDomain = [];
+
 $defaultDomain['1.'] = __('FOODS', 'sil_dictionary');
 $defaultDomain['1.1.'] = __('Cereal', 'sil_dictionary');
 $defaultDomain['1.2.'] = __('Creole food', 'sil_dictionary');
@@ -10,4 +14,3 @@ $defaultDomain['1.7.'] = __('Puerto Rican Fritters', 'sil_dictionary');
 $defaultDomain['1.8.'] = __('Seafood', 'sil_dictionary');
 $defaultDomain['1.9.'] = __('Spice', 'sil_dictionary');
 $defaultDomain['1.10.'] = __('Vegetables', 'sil_dictionary');
-?>
