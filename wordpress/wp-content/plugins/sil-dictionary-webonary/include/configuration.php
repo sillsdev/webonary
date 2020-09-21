@@ -118,7 +118,6 @@ function save_configurations()
 	}
 	if (!empty($_POST['save_settings'])) {
 		update_option('publicationStatus', $_POST['publicationStatus']);
-		update_option('include_partial_words', $_POST['include_partial_words']);
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters']);
 		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
 		if(isset($_POST['normalization'])) {
@@ -223,9 +222,9 @@ function save_configurations()
 		update_option("noSearch", $noSearchForm);
 
 		$useCloudBackend = filter_input(
-			INPUT_POST, 
-			'useCloudBackend', 
-			FILTER_SANITIZE_STRING, 
+			INPUT_POST,
+			'useCloudBackend',
+			FILTER_SANITIZE_STRING,
 			array('options' => array('default' => '')));
 
 		if($useCloudBackend != get_option('useCloudBackend', ''))
@@ -242,8 +241,8 @@ function save_configurations()
 				$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 				Webonary_Cloud::resetDictionary($dictionaryId);
 			}
-		} 
-		
+		}
+
 		echo "<br>" . _e('Settings saved');
 	}
 }
@@ -408,10 +407,6 @@ function webonary_conf_widget($showTitle = false)
 				<h3><?php _e('Default Search Options');?></h3>
 
 				<p>
-					<input name="include_partial_words" type="checkbox" value="1"
-						<?php checked('1', get_option('include_partial_words')); ?> />
-					<?php _e('Always include searching through partial words.'); ?>
-					<br>
 					<?php
 					if(get_option('hasComposedCharacters') == 1)
 					{
@@ -814,7 +809,7 @@ function webonary_conf_widget($showTitle = false)
 								<input class="button-webonary" type="submit" value="Upload" name="uploadButton[<?php echo $fontNr; ?>]">
 								<?php
 								$fontNr++;
-							}							
+							}
 							echo "<p></p>";
 						}
 					}
