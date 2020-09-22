@@ -73,7 +73,7 @@ class Webonary_SearchCookie
 		$svr_name = $_SERVER['SERVER_NAME'];
 
 		// domain must be empty for localhost
-		if (strpos(strtolower($svr_name), 'localhost') === false)
+		if (strpos(strtolower($svr_name), 'localhost') !== false)
 			return '';
 
 		$parts = explode('.', $svr_name);
