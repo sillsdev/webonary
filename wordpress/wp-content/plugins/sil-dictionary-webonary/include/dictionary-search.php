@@ -80,7 +80,7 @@ function sil_dictionary_custom_message()
 		return;
 	}
 
-	$partialsearch = isset($_GET['partialsearch']) ? $_GET['partialsearch'] : get_option('include_partial_words');
+	$partialsearch = filter_input(INPUT_GET, 'partialsearch', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]);
 
 	mb_internal_encoding("UTF-8");
 	if($partialsearch != 1)
@@ -122,21 +122,10 @@ function is_match_whole_words($search)
 		}
 	}
 
-	if(!isset($_GET['partialsearch']))
-	{
-		$partialsearch = get_option("include_partial_words");
-		if($partialsearch == 1 && $match_whole_words == 1)
-		{
-			$match_whole_words = 0;
-		}
-	}
-	else
-	{
-		if($_GET['partialsearch'] == 1)
-		{
-			$match_whole_words = 0;
-		}
-	}
+    if(filter_input(INPUT_GET, 'partialsearch', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]) == 1)
+    {
+        $match_whole_words = 0;
+    }
 
 	if(strlen($search) == 0 && $_GET['tax'] > 1)
 	{

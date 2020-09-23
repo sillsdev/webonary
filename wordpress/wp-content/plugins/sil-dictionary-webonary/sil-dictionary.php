@@ -32,8 +32,7 @@ if ( ! defined('ABSPATH') )
 
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
 
-/** @var wpdb $wpdb */
-global $wpdb;
+global $wpdb, $search_cookie;
 
 function webonary_admin_script()
 {
@@ -80,6 +79,7 @@ add_filter('posts_request','replace_default_search_filter', 10, 2);
 
 // this executes just before wordpress determines which template page to load
 add_action('template_redirect', 'my_enqueue_css');
+add_action('template_redirect', 'Webonary_SearchCookie::GetSearchCookie');
 
 // add_action('pre_get_posts','no_standard_sort');
 add_action('preprocess_comment' , 'preprocess_comment_add_type');

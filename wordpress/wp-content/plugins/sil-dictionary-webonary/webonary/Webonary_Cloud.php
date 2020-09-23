@@ -14,7 +14,7 @@ class Webonary_Cloud
 
 	private static function isValidDictionary($dictionary) {
 		return is_object($dictionary) && isset($dictionary->_id);
-	} 
+	}
 
 	private static function isValidEntry($entry) {
 		return is_object($entry) && isset($entry->_id);
@@ -48,8 +48,8 @@ class Webonary_Cloud
 			error_log($response->get_error_message());
 			return null;
 		}
-		
-		$body = wp_remote_retrieve_body($response);		
+
+		$body = wp_remote_retrieve_body($response);
 		return json_decode($body);
 	}
 
@@ -140,7 +140,7 @@ class Webonary_Cloud
 						);
 						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
 							$blogsToPost[] = trim($blogData->path, '/');
-						} 
+						}
 					}
 					if (count($blogsToPost)) {
 						$response->message = implode(',', $blogsToPost);
@@ -168,11 +168,11 @@ class Webonary_Cloud
 		$post->post_type = 'post';
 		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!
 		$post->post_content = self::entryToDisplayXhtml($entry);
-		
+
 		return $post;
 	}
 
-	 public static function entryToReversal($entry) {	
+	 public static function entryToReversal($entry) {
 		$reversal = new stdClass();
 		$reversal->reversal_content = self::entryToDisplayXhtml($entry);
 
@@ -220,22 +220,22 @@ class Webonary_Cloud
 			if (self::isValidEntry($entry)) {
 				$post = self::entryToFakePost($entry);
 				$post->ID = -$key; // negative ID, to avoid clash with a valid post
-				$posts[$key] = $post;	
+				$posts[$key] = $post;
 			}
-		}		
-	
+		}
+
 		return $posts;
 	}
-	
-	public static function getEntriesAsReversals($dictionaryId, $apiParams) {	
-		$request = self::$doBrowseByLetter . '/' . $dictionaryId;		
+
+	public static function getEntriesAsReversals($dictionaryId, $apiParams) {
+		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $apiParams);
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
 				$reversals[$key] = self::entryToReversal($entry);
 			}
-		}	
+		}
 
 		return $reversals;
 	}
@@ -245,10 +245,10 @@ class Webonary_Cloud
 		$apiParams = array('guid' => $id);
 		$entry = self::remoteGetJson($request, $apiParams);
 		$posts = [];
-		if (self::isValidEntry($entry)) { 
+		if (self::isValidEntry($entry)) {
 			$post = self::entryToFakePost($entry);
 			$post->ID = -1; // negative ID, to avoid clash with a valid post
-			$posts[0] = $post;	
+			$posts[0] = $post;
 		}
 
 		return $posts;
@@ -269,13 +269,13 @@ class Webonary_Cloud
 					$handle = 'overrides_stylesheet' . $index;
 				}
 
-				$cssPath = $dictionaryId . '/' . $cssFile;   
+				$cssPath = $dictionaryId . '/' . $cssFile;
 				wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
 				wp_enqueue_style($handle);
 			}
 		}
 	}
-	
+
 	public static function registerAndEnqueueReversalStyles($dictionaryId, $lang) {
 		$dictionary = self::getDictionary($dictionaryId);
 		$time = strtotime($dictionary->updatedAt);
@@ -285,7 +285,7 @@ class Webonary_Cloud
 				if ($lang === $reversal->lang) {
 					foreach($reversal->cssFiles as $index => $cssFile) {
 						$handle = 'reversal_stylesheet' . ($index ? $index : '');
-						$cssPath = $dictionaryId . '/' . $cssFile;   
+						$cssPath = $dictionaryId . '/' . $cssFile;
 						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
 						wp_enqueue_style($handle);
 					}
@@ -304,10 +304,10 @@ class Webonary_Cloud
 				error_log($response->get_error_message());
 				return null;
 			}
-			
+
 			$body = wp_remote_retrieve_body($response);
 			$fontClass = new Webonary_Font_Management();
-			$fontClass->set_fontFaces($body, $uploadPath);		
+			$fontClass->set_fontFaces($body, $uploadPath);
 		}
 		return null;
 	}
@@ -327,22 +327,22 @@ class Webonary_Cloud
 			if ($searchText === '') {
 				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 				if ($tax !== '') {
-					// This is a listing by semantic domains			
+					// This is a listing by semantic domains
 					$apiParams = array(
 						'text' => $tax,
 						'searchSemDoms' => '1'
 					);
 				}
-			} 
+			}
 			else {
 				$getParams = filter_input_array(
-					INPUT_GET, 
+					INPUT_GET,
 					array(
 						'key' => array('filter' => FILTER_SANITIZE_STRING),
 						'tax' => array('filter' => FILTER_SANITIZE_STRING),
 						'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
-							'options' => array('default' => get_option('include_partial_words') === '1' ? '0' : '1')),
-						'match_accents' => array('filter' => FILTER_SANITIZE_STRING, 
+							'options' => array('default' => '1')),
+						'match_accents' => array('filter' => FILTER_SANITIZE_STRING,
 							'options' => array('default' => '0'))
 					)
 				);
@@ -392,12 +392,12 @@ class Webonary_Cloud
 
 	public static function apiResetDictionary($request) {
 		$response = self::validatePermissionToPost($request->get_headers());
-		
+
 		if ($response->code !== 200) {
 			// error in validation
 			return new WP_REST_Response($response->message, $response->code);
 		}
-		
+
 		$dictionaryId = self::getBlogDictionaryId();
 		$code = 400; // Bad Request
 		if ($response->message === '') {
@@ -438,11 +438,11 @@ class Webonary_Cloud
 					$reversal->title,
 					'sil_writing_systems',
 					array('description' => $reversal->title, 'slug' => $reversal->lang)
-				);						
+				);
 			}
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
-			self::setFontFaces($dictionary, $uploadPath);	
+			self::setFontFaces($dictionary, $uploadPath);
 
 			update_option('useCloudBackend', '1');
 		}

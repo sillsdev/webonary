@@ -1,4 +1,5 @@
 <?php
+/** @noinspection SqlResolve */
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
  * in the theme, and make a call to this function, like so:
@@ -18,12 +19,15 @@ function custom_query_vars_filter($vars) {
 add_filter( 'query_vars', 'custom_query_vars_filter' );
 
 function webonary_searchform() {
-	global $wpdb;
+	global $wpdb, $search_cookie;
 
 	if(get_option('noSearch') == 1)
 	{
 		return false;
 	}
+
+	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
+	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
 	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 	$search_term = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
@@ -31,7 +35,7 @@ function webonary_searchform() {
 	$arrIndexed = array();
 	$sem_domains = array();
 	$parts_of_speech_dropdown = '';
-	$lastEditDate = '';	
+	$lastEditDate = '';
 	if(get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
@@ -47,13 +51,13 @@ function webonary_searchform() {
 				{
 					if ($part->lang === $currentLanguage) {
 						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
-						$options .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";	
+						$options .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";
 					}
 				}
 
 				if ($options !== '') {
 					$options = "<option value=''>" . __('All Parts of Speech','sil_dictionary') ."</options>" . $options;
-					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";	
+					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";
 				}
 			}
 
@@ -66,16 +70,16 @@ function webonary_searchform() {
 				foreach($dictionary->semanticDomains as $item)
 				{
 					if(strpos($item->nameInsensitive, $sem_term) !== false)
-					{ 
+					{
 						$sem_domain = new stdClass();
 						$sem_domain->term_id = $item->name;
 						$sem_domain->slug = str_replace('.', '-', $item->abbreviation);
 						$sem_domain->description = $item->name;
-						$sem_domains[] = $sem_domain;  	
+						$sem_domains[] = $sem_domain;
 					}
 				}
 			}
-			
+
 			// set up dictionary info
 			$indexed = new stdClass();
 			$indexed->language_name = $dictionary->mainLanguage->title;
@@ -92,7 +96,7 @@ function webonary_searchform() {
 			$lastEditDate = $dictionary->updatedAt;
 		}
 	}
-	else 
+	else
 	{
 		// set up parts of speech dropdown
 		$parts_of_speech = get_terms('sil_parts_of_speech');
@@ -277,34 +281,10 @@ function webonary_searchform() {
                     <br>
 					<?php echo $parts_of_speech_dropdown; ?>
 					<br>
-					<?php
-					$checkedWholeWords = "";
-
-					if(isset($_GET['search']))
-					{
-						if(isset($_GET['match_whole_words']))
-						{
-							$checkedWholeWords = "checked";
-						}
-					}
-					else
-					{
-						if(get_option('include_partial_words') == 0)
-						{
-							$checkedWholeWords = "checked";
-						}
-					}
-					?>
-					<input name="match_whole_words" value="1" <?php echo $checkedWholeWords; ?> type="checkbox"> <?php _e('Match whole words', 'sil_dictionary'); ?>
+                    <input type="hidden" name="search_options_set" value="1">
+                    <input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
 					<br>
-					<?php
-					$match_accents = false;
-					if(isset($_GET['match_accents']))
-					{
-						$match_accents = true;
-					}
-					?>
-					<input name="match_accents" <?php checked('1', $match_accents); ?> type="checkbox"> <?php _e('Match accents and tones', 'sil_dictionary'); ?>
+                    <input id="match_accents" name="match_accents" <?php echo $accents_checked; ?> type="checkbox"> <label for="match_accents"><?php _e('Match accents and tones', 'sil_dictionary'); ?></label>
 					<input id=displayAdvancedSearchId name="displayAdvancedSearchName" type="hidden" value="0">
 				</div>
 			</div>
