@@ -1,0 +1,44 @@
+
+.center {text-align: center !important}
+.right {text-align: right !important}
+.left {text-align: left !important}
+.float-left {float: left}
+
+.ltr {direction: ltr !important}
+.rtl {direction: rtl !important}
+
+.ltr .lpTitleLetterCell {float: left !important}
+.rtl .lpTitleLetterCell {float: right !important}
+
+.lpTitleLetterCell {
+    min-width: 31px;
+    height: 23px;
+    padding: 3px 0 2px;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #c0c0c0;
+    position: relative;
+}
+.lpTitleLetterCell a.not-configured {padding: 2px}
+
+#searchresults {display: table; margin: 0 auto}
+#searchresults div {box-sizing: border-box}
+#searchresult > div {display: inline-block; width: 50%}
+#searchresult,
+#searchresults > div.post {width: 700px; max-width: 90vw; min-width: 270px}
+
+#englishcol,
+#vernacularcol {padding: 2px 4px}
+
+.odd {background-color: #ccc}
+.even {background-color: #fff}
+
+a:hover,
+a:hover span {text-decoration:none;}
+span.comment {background: none; padding: 0}
+
+.entry,
+.reversalindexentry,
+.minorentrycomplex,
+.minorentryvariant,
+.mainentrysubentries .mainentrysubentry {clear:none !important; white-space:unset !important}
