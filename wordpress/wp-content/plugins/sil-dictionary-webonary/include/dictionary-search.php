@@ -40,6 +40,12 @@ if ( ! defined('ABSPATH') )
 
 function my_enqueue_css() {
 
+	wp_register_style('webonary_dictionary_style', plugin_dir_url(__DIR__) . 'css/dictionary_styles.css', [], date('U'), 'all');
+	wp_enqueue_style('webonary_dictionary_style');
+
+	// <link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); // >/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
+
+
 	if (is_page())
 		return;
 
@@ -51,17 +57,17 @@ function my_enqueue_css() {
 	else
 	{
 		$upload_dir = wp_upload_dir();
-		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date('U'));
 		$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
 		if(file_exists($overrides_css))
 		{
-			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date("U"));
+			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date('U'));
 		}
 		wp_enqueue_style( 'configured_stylesheet');
 
 		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
 		{
-			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date('U'));
 			wp_enqueue_style( 'overrides_stylesheet');
 		}
 	}
@@ -122,10 +128,10 @@ function is_match_whole_words($search)
 		}
 	}
 
-    if(filter_input(INPUT_GET, 'partialsearch', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]) == 1)
-    {
-        $match_whole_words = 0;
-    }
+	if(filter_input(INPUT_GET, 'partialsearch', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]) == 1)
+	{
+		$match_whole_words = 0;
+	}
 
 	if(strlen($search) == 0 && $_GET['tax'] > 1)
 	{
@@ -279,68 +285,68 @@ function get_subquery_where($query)
 	if( strlen( trim( $key ) ) > 0)
 		$subquery_where .= " WHERE " . SEARCHTABLE . ".language_code = '$key' ";
 
-    $subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
+	$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
 
-    //using search form
-    $match_accents = false;
-    if(isset($query->query_vars['match_accents']))
-    {
-        $match_accents = true;
-    }
+	//using search form
+	$match_accents = false;
+	if(isset($query->query_vars['match_accents']))
+	{
+		$match_accents = true;
+	}
 
-    //by default d à, ä, etc. are handled as the same letters when searching
-    $collateSearch = "";
-    if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
-    {
-        $collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
-    }
+	//by default d à, ä, etc. are handled as the same letters when searching
+	$collateSearch = "";
+	if(get_option('distinguish_diacritics') == 1 || $match_accents == true)
+	{
+		$collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
+	}
 
-    $searchquery = $search;
-    //this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-    if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
-    {
-        //first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
-        $searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
-        //see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
-        //the mysql regular expression can't find words with  accented characters if we don't include them
-        $searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
-        $searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
-        $searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
-        $searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-        $searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
-        $searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-        $searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
-        $searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
-        $searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
-        //for vowels we add [^a-z]* which will search for any character that comes after the normal character
-        //one can't see it, but composed characters actually consist of two characters, for instance the a in ya̧g
-        $searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
-    }
+	$searchquery = $search;
+	//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
+	if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
+	{
+		//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
+		$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+		//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
+		//the mysql regular expression can't find words with  accented characters if we don't include them
+		$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
+		$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
+		$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
+		$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
+		$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
+		$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
+		$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
+		$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
+		$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+		//for vowels we add [^a-z]* which will search for any character that comes after the normal character
+		//one can't see it, but composed characters actually consist of two characters, for instance the a in ya̧g
+		$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+	}
 
-    $searchquery = str_replace("'", "\'", $searchquery);
+	$searchquery = str_replace("'", "\'", $searchquery);
 
-    $match_whole_words = is_match_whole_words($search);
+	$match_whole_words = is_match_whole_words($search);
 
-    if (is_CJK( $search ) || $match_whole_words == 0)
-    {
-        if(get_option("searchSomposedCharacters") == 1)
-        {
-            $subquery_where .= " LOWER(search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
-        }
-        else
-        {
-            $subquery_where .= " LOWER(search_strings) LIKE '%" .
-                    addslashes( $search ) . "%' " . $collateSearch;
-        }
-    }
-    else
-    {
-        if(mb_strlen($search) > 1)
-        {
-            $subquery_where .= "search_strings REGEXP '[[:<:]]" .
-                    $searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
-        }
-    }
+	if (is_CJK( $search ) || $match_whole_words == 0)
+	{
+		if(get_option("searchSomposedCharacters") == 1)
+		{
+			$subquery_where .= " LOWER(search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
+		}
+		else
+		{
+			$subquery_where .= " LOWER(search_strings) LIKE '%" .
+					addslashes( $search ) . "%' " . $collateSearch;
+		}
+	}
+	else
+	{
+		if(mb_strlen($search) > 1)
+		{
+			$subquery_where .= "search_strings REGEXP '[[:<:]]" .
+					$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
+		}
+	}
 	return $subquery_where;
 }
 
@@ -356,7 +362,7 @@ function replace_default_search_filter($input, $query=null)
 	global $wpdb;
 
 	if (empty($query))
-	    return $input;
+		return $input;
 
 	// hanatgit 20200303 I re-write the logic slightly for clarity.
 	// But in doing so, I realized that COMBINED searches, e.g. searching for a word
@@ -385,80 +391,27 @@ function replace_default_search_filter($input, $query=null)
 	elseif (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
 	{
 		$searchWord = isset($_GET['s']) ? $_GET['s'] : $query->query_vars['s'];
-        $search_tbl = SEARCHTABLE;
+		$search_tbl = SEARCHTABLE;
 		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
 		$input = <<<SQL
 SELECT SQL_CALC_FOUND_ROWS DISTINCTROW p.*, s.relevance
 FROM {$wpdb->posts} AS p
   INNER JOIN (
-              SELECT post_id, MAX(relevance) AS relevance
-              FROM {$search_tbl} 
-              {$where}
-              GROUP BY post_id
-             ) AS s ON p.ID = s.post_id
+			  SELECT post_id, MAX(relevance) AS relevance
+			  FROM {$search_tbl} 
+			  {$where}
+			  GROUP BY post_id
+			 ) AS s ON p.ID = s.post_id
 WHERE p.post_type = 'post' AND p.post_status = 'publish'
 ORDER BY s.relevance DESC, p.post_title
 SQL;
 	}
 	else {
-	    return $input;
-    }
+		return $input;
+	}
 
 	Webonary_Utility::setPageNumber((int)($query->query_vars['paged'] ?? 0));
 
 	return $input . PHP_EOL . getLimitSql();
 }
-
-function webonary_css()
-{
-?>
-<!--suppress CssUnusedSymbol -->
-<style>
-	a:hover {text-decoration:none;}
-	a:hover span {text-decoration:none}
-
-	.entry{
-		clear:none;
-		white-space:unset;
-	}
-	.reversalindexentry {
-		clear:none !important;
-		white-space:unset !important;
-	}
-	.minorentrycomplex{
-		clear:none;
-		white-space:unset;
-	}
-
-	.minorentryvariant{
-		clear:none;
-		white-space:unset;
-	}
-	.mainentrysubentries .mainentrysubentry{
-		clear:none;
-		white-space:unset;
-	}
-	span.comment {
-	background: none;
-	padding: 0;
-}
-<?php
-if(get_option('vernacularRightToLeft') == 1)
-{
-?>
-	#searchresults {
-	text-align: right;
-	}
-	.entry {
-		white-space: unset !important;
-	}
-<?php
-}
-?>
-}
-</style>
-<?php
-}
-add_action('wp_head', 'webonary_css');
-?>

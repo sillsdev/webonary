@@ -11,9 +11,6 @@
     background: #1e7e34;
     border-color: #1e7e34;
     color: #fff;
-    /*box-shadow: 0 1px 0 #bd831f;*/
-    /*text-shadow: 0 -1px 1px #bd831f, -1px 0 1px #bd831f, 0 1px 1px #bd831f, 1px 0 1px #bd831f;*/
-
 }
 
 .wp-core-ui .button-webonary:hover, .wp-core-ui .button-webonary:focus {
@@ -21,4 +18,9 @@
     border-color: #145523;
     color: #fff;
     cursor: pointer;
+}
+
+.admin-alphabet {
+    display: block;
+    margin-bottom: 6px;
 }

@@ -1,5 +1,16 @@
 <?php
-function categories_func( $atts )
+/** @noinspection PhpComposerExtensionStubsInspection */
+
+/**
+ * @param array $atts
+ * @param $content
+ * @param $shortcode_tag
+ *
+ * @return string
+ * @noinspection PhpMissingParamTypeInspection
+ * @noinspection PhpUnusedParameterInspection
+ */
+function categories_func($atts, $content, $shortcode_tag)
 {
 	global $wpdb, $defaultDomain;
 
@@ -55,7 +66,7 @@ function categories_func( $atts )
 	}
 ?>
 	<style>
-	   TD {font-size: 9pt; font-family: arial,helvetica; text-decoration: none; font-weight: bold;}
+	   TD {font-size: 9pt; font-family: arial,helvetica,sans-serif; text-decoration: none; font-weight: bold;}
 	   a.categorylink {text-decoration: none; color: navy; font-size: 15px; padding: 3px;}
 	   #domRoot {
 	   	float:left; width:250px; margin-left: 20px; margin-top: 5px;
@@ -149,7 +160,7 @@ function categories_func( $atts )
 	//}
 	?>
 	<!-- Build the browser's objects and display default view of the tree. -->
-	<script language="JavaScript">
+	<script type="text/javascript">
 		initializeDocument();
 	</script>
 <?php
@@ -160,7 +171,7 @@ function categories_func( $atts )
 	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
 	$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
 	$arrPosts = null;
-	$display .= "<div id=searchresults>";
+	$display .= '<div id="searchresults">';
 	if($semnumber != '')
 	{
 		if(get_option('useCloudBackend'))
@@ -212,39 +223,24 @@ function categories_func( $atts )
 }
 add_shortcode( 'categories', 'categories_func' );
 
-
-function displayAlphabet($alphas, $languagecode)
+/**
+ * @param $alphas
+ * @param string $languageCode
+ * @param boolean $rtl
+ *
+ * @return string
+ */
+function displayAlphabet($alphas, $languageCode, $rtl)
 {
 	global $wpdb;
 
+	$align_class = $rtl ? 'right' : 'left';
+	$dir_class = $rtl ? 'rtl' : 'ltr';
+
 	if(trim($alphas[0]) == "" && is_front_page())
-	{
-		return "";
-	}
-?>
-	<style type="text/css">
-	.lpTitleLetterCell {min-width:31px; height: 23px; padding-top: 3px; padding-bottom: 2px; text-bottom; text-align:center;background-color: #EEEEEE;border:1px solid silver; position: relative;}
-	<?php
-	if(get_option('vernacularLettersFont') != "")
-	{
-	?>
-	.lpTitleLetter  {
-		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
-	}
-	#chosenLetterHead {
-		font-family: "<?php echo get_option('vernacularLettersFont'); ?>";
-	}
-	<?php
-	}
-	?>
-	</style>
-<?php
-	$display = "<br>";
-	$display .= "<div style=\"text-align:center;\"><div style=\"display:inline-block;\">";
+		return '';
 
-	$letterCells = "<div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>" . str_replace(",", "</span></div><div class=\"lpTitleLetterCell\"><span class=lpTitleLetter>", get_option('vernacular_alphabet')) . "</span></div><br>";
-
-	$permalink = "";
+	$permalink = '';
 	if(is_front_page())
 	{
 		/** @noinspection SqlResolve */
@@ -254,43 +250,54 @@ function displayAlphabet($alphas, $languagecode)
 		$permalink = get_permalink($post_id);
 	}
 
-	foreach($alphas as $letter)
-	{
-		$display .= "<div class=\"lpTitleLetterCell\"><span>";
-		if(trim($letter) == "" && !is_front_page())
-		{
-			$display .= "<a href=\"" . get_site_url() . "/wp-admin/admin.php?page=webonary#browse\" style=\"padding:2px;\">Alphabet not configured</a>";
-		}
-		else
-		{
-			$lang = "";
-			if(isset($_GET['lang']))
-			{
-				$lang = "&lang=" . $_GET['lang'];
-			}
+	/** @noinspection HtmlUnknownTarget */
+	$template = <<<HTML
+<div class="lpTitleLetterCell">
+	<span>
+	<a class="%s" href="%s">%s</a>
+	</span>
+</div>
+HTML;
 
-			$display .= "<a class=lpTitleLetter href=\"" . $permalink . "?letter=" . stripslashes($letter) . "&key=" . $languagecode . $lang . "\">" . stripslashes($letter) . "</a>";
+	if (empty($alphas) || trim($alphas[0]) == '') {
+		$content = sprintf($template, 'not-configured', get_site_url() . '/wp-admin/admin.php?page=webonary#browse', 'Alphabet not configured');
+	}
+	else {
+		$content = '';
+
+		foreach($alphas as $letter) {
+
+			$lang = '';
+
+			if(isset($_GET['lang']))
+				$lang = '&lang=' . $_GET['lang'];
+
+			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?letter=' . stripslashes($letter) . '&key=' . $languageCode . $lang, stripslashes($letter));
 		}
-		$display .= "</span></div>";
 	}
 
-	$display .= "</div></div>";
-	$display .=  "<div style=clear:both></div>";
+	$font_family = get_option('vernacularLettersFont') ?: 'inherit';
 
-	return $display;
-
+	return <<<HTML
+<style type="text/css">
+	#chosenLetterHead, .lpTitleLetter {font-family: {$font_family}}
+</style>
+<br>
+<div style="text-align:center;">
+	<div style="display:inline-block;" class="{$dir_class}">
+		{$content}
+	</div>
+</div>
+<div style=clear:both></div>
+HTML;
 }
 
-function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languagecode, $requestname = null, $currentPage = null)
+function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languageCode, $requestName = null, $currentPage = null)
 {
-?>
-	<link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
-
-<?php
 	$display = '';
-	if(!isset($requestname))
+	if(!isset($requestName))
 	{
-		$requestname = "letter";
+		$requestName = "letter";
 	}
 
 	if(!$currentPage)
@@ -315,16 +322,16 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 			$lang = "&lang=" . $_GET['lang'];
 		}
 
-		$url = "?" . $requestname . "=" . $chosenLetter . "&key=" . $languagecode . "&totalEntries=" . $totalEntries . $lang;
+		$url = "?" . $requestName . "=" . $chosenLetter . "&key=" . $languageCode . "&totalEntries=" . $totalEntries . $lang;
 
 		$limit_pages = 10;
 		$display .= "<li class=page_info>" . gettext("Page") . " " . $currentPage . " " . gettext("of") . " " . $totalPages . "</li>";
 
 		if( $totalPages > 1 && $currentPage > 1 )
 		{
-			if($requestname == "semnumber")
+			if($requestName == "semnumber")
 			{
-				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
 			}
 			else
 			{
@@ -335,9 +342,9 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 		$start = 1;
 		if($currentPage > ($limit_pages - 5))
 		{
-			if($requestname == "semnumber")
+			if($requestName == "semnumber")
 			{
-				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
 			}
 			else
 			{
@@ -358,9 +365,9 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 			{
 				$class="class=active_page";
 			}
-			if($requestname == "semnumber")
+			if($requestName == "semnumber")
 			{
-				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . $page . "\">" . $page . "</a></li> ";
+				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . $page . "\">" . $page . "</a></li> ";
 			}
 			else
 			{
@@ -381,9 +388,9 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 		if( $currentPage != "" && $currentPage < $totalPages)
 		{
-			if($requestname == "semnumber")
+			if($requestName == "semnumber")
 			{
-				$display .= "<li><a href=\"?semdomain=" . $languagecode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
+				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
 			}
 			else
 			{
@@ -396,9 +403,8 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 	return $display;
 }
 
-function englishalphabet_func( $atts, $content, $tag ) {
-
-	$languagecode = '';
+function english_alphabet_func($atts, $content, $tag)
+{
 	if(strlen(trim(get_option('reversal1_alphabet'))) == 0)
 	{
 		$languagecode = "en";
@@ -412,7 +418,7 @@ function englishalphabet_func( $atts, $content, $tag ) {
 		}
 
 		$alphas = range('a', 'z');
-		$display = displayAlphabet($alphas, $languagecode);
+		$display = displayAlphabet($alphas, $languagecode, false);
 
 		$display = reversalindex($display, $chosenLetter, $languagecode);
 	}
@@ -424,41 +430,52 @@ function englishalphabet_func( $atts, $content, $tag ) {
  return $display;
 }
 
-add_shortcode( 'englishalphabet', 'englishalphabet_func');
+add_shortcode('englishalphabet', 'english_alphabet_func');
 
-
-function get_has_reversalbrowseletters()
+/**
+ * @return bool
+ */
+function get_has_reversal_browseletters()
 {
 	global $wpdb;
 
 	$result = $wpdb->get_results("SHOW COLUMNS FROM " . REVERSALTABLE . " LIKE 'browseletter'");
-	$exists = (count($result))?TRUE:FALSE;
 
-	return $exists;
+	return count($result) > 0;
 }
 
 
 /**
  * Returns a MySQL LIMIT statement
  *
- * @param int $page
- * @param int $postsPerPage
+ * @param int|null $page
+ * @param int|null $postsPerPage
  *
  * @return string
  */
 function getLimitSql($page=null, $postsPerPage=null)
 {
 	if (is_null($page))
-	    $page = Webonary_Utility::getPageNumber();
+		$page = Webonary_Utility::getPageNumber();
 
 	if (is_null($postsPerPage))
-	    $postsPerPage = Webonary_Utility::getPostsPerPage();
+		$postsPerPage = Webonary_Utility::getPostsPerPage();
 
 	$startFrom = ($page > 1) ? (($page - 1) * $postsPerPage) : 0;
 	return " LIMIT $postsPerPage OFFSET $startFrom";
 }
 
-function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displayXHTML = true, $reversalnr, $postsPerPage = null)
+/**
+ * @param string $letter
+ * @param int $page
+ * @param string $reversalLangcode
+ * @param bool $displayXHTML
+ * @param string $reversalnr
+ * @param int|null $postsPerPage
+ *
+ * @return array|object|null
+ */
+function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $reversalnr, $postsPerPage = null)
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
 	{
@@ -482,7 +499,7 @@ function getReversalEntries($letter = "", $page, $reversalLangcode = "", &$displ
 	if($letter != "")
 	{
 		//new imports use the letter header from FLEx for grouping
-		if(get_has_reversalbrowseletters())
+		if(get_has_reversal_browseletters())
 		{
 			$sql .= " AND browseletter =  '" . $letter . "' " . $collate;
 		}
@@ -576,8 +593,9 @@ function reversalalphabet_func($atts, $content, $tag)
 		$chosenLetter = stripslashes($alphas[0]);
 	}
 
+	$rtl = get_option('reversal' . $reversalnr . 'RightToLeft') == '1';
 	$alphas = explode(",",  get_option('reversal' . $reversalnr . '_alphabet'));
-	$display = displayAlphabet($alphas, get_option('reversal' . $reversalnr . '_langcode'));
+	$display = displayAlphabet($alphas, get_option('reversal' . $reversalnr . '_langcode'), $rtl);
 
 	$display = reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'), $reversalnr);
 
@@ -586,47 +604,11 @@ function reversalalphabet_func($atts, $content, $tag)
 
 function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 {
-?>
-	<style>
-	#searchresult {
-		width:70%;
-		min-width: 270px;
-		text-align:left;
-	}
-	#englishcol {
-		float:left;
-		margin: 1px;
-		padding-left: 2px;
-		width:50%;
-		text-align:left;
-	}
-	#vernacularcol {
-		text-align:left;
-	}
-	.odd { background: #CCCCCC; };
-	.even { background: #FFF; };
-	</style>
-	<style>
-	<?php
-	if(get_option('reversal' . $reversalnr . 'RightToLeft') == 1)
-	{
-	?>
-		#searchresults {
-		text-align: right;
-		}
-		.lpTitleLetterCell {float:right;}
-	<?php
-	}
-	else
-	{
-	?>
-	.lpTitleLetterCell {float:left;}
-	<?php
-	}
-	?>
-	</style>
-<?php
 	global $wpdb;
+
+	$rtl = get_option('reversal' . $reversalnr . 'RightToLeft') == '1';
+	$align_class = $rtl ? 'right' : 'left';
+	$dir_class = $rtl ? 'rtl' : 'ltr';
 
 	$pagenr = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
@@ -671,15 +653,15 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 		return $display;
 	}
 
-	$display .= "<h1 align=center>" . $chosenLetter . "</h1><br>";
+	$display .= '<h1 class="center">' . $chosenLetter . '</h1><br>';
 
 	if($displayXHTML)
 	{
-		$display .=  "<div id=searchresults>";
+		$display .=  sprintf('<div id="searchresults" class="%s">', $align_class);
 	}
 	else
 	{
-		$display .=  "<div align=center id=searchresults>";
+		$display .=  sprintf('<div id="searchresults" class="reversal-results%s">', $reversalnr);
 	}
 
 	$background = "even";
@@ -856,22 +838,10 @@ function get_letter($firstLetterOfAlphabet = "") {
 function vernacularalphabet_func( $atts )
 {
 	global $wpdb;
-?>
-	<style>
-		.lpTitleLetterCell {float:left;}
-	</style>
-	<?php
-	if(get_option('vernacularRightToLeft') == 1)
-	{
-	?>
-		<style>
-		#searchresults {
-		text-align: right;
-		}
-		.lpTitleLetterCell {float:right;}
-		</style>
-	<?php
-	}
+
+	$rtl = get_option('vernacularRightToLeft') == '1';
+	$align_class = $rtl ? 'right' : 'left';
+	$dir_class = $rtl ? 'rtl' : 'ltr';
 
 	if (get_option('useCloudBackend'))
 	{
@@ -891,99 +861,105 @@ function vernacularalphabet_func( $atts )
 		}
 	}
 
-	$languagecode = get_option('languagecode');
+	$language_code = get_option('languagecode');
 
 	$alphas = explode(",",  get_option('vernacular_alphabet'));
 
 	$chosenLetter = get_letter($alphas[0]);
 
-	$display = displayAlphabet($alphas, $languagecode);
+	$display = displayAlphabet($alphas, $language_code, $rtl);
 
 	//just displaying letters, not entries (for homepage)
-	if($atts != "frontpage")
+	if($atts == 'frontpage')
+		return $display;
+
+	$display .= '<div class="center"><h1 id=chosenLetterHead>' . $chosenLetter . '</h1></div><br>';
+
+	if(empty($language_code))
 	{
-		$display .= "<div align=center><h1 id=chosenLetterHead>" . $chosenLetter . "</h1></div><br>";
+		$display .=  'No language code provided. Please import your dictionary.';
+		return $display;
+	}
 
-		if(empty($languagecode))
-		{
-			$display .=  "No language code provided. Please import your dictionary.";
-			return $display;
-		}
+	$displaySubentriesAsMinorEntries = get_option('DisplaySubentriesAsMainEntries') != 'no';
 
-		$display .= "<div id=searchresults>";
+	$pagenr = Webonary_Utility::getPageNumber();
+	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
-		$displaySubentriesAsMinorEntries = true;
-		if(get_option('DisplaySubentriesAsMainEntries') == 'no')
-		{
-			$displaySubentriesAsMinorEntries = false;
-		}
-		if(get_option('DisplaySubentriesAsMainEntries') == 1)
-		{
-			$displaySubentriesAsMinorEntries = true;
-		}
+	if(get_option('useCloudBackend'))
+	{
+		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
+		$apiParams = array(
+			'text' => $chosenLetter,
+			'mainLang' => $language_code,
+			'pageNumber' => $pagenr,
+			'pageLimit' => $postsPerPage);
 
-		//$arrPosts = query_posts("s=a&letter=" . $chosenLetter . "&noletters=" . $noLetters . "&langcode=" . $languagecode . "&posts_per_page=" . $posts_per_page . "&paged=" . $_GET['pagenr'] . "&DisplaySubentriesAsMainEntries=" . $displaySubentriesAsMinorEntries);
-		$pagenr = Webonary_Utility::getPageNumber();
-		$postsPerPage = Webonary_Utility::getPostsPerPage();
+		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+	}
+	else
+	{
+		$arrPosts = getVernacularEntries($chosenLetter, $language_code, $pagenr, $postsPerPage);
+		$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
+	}
 
-		if(get_option('useCloudBackend'))
-		{
-			$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
-			$apiParams = array(
-				'text' => $chosenLetter,
-				'mainLang' => $languagecode,
-				'pageNumber' => $pagenr,
-				'pageLimit' => $postsPerPage);
+	if(empty($arrPosts)) {
+		$content = __('No entries exist starting with this letter.', 'sil_dictionary');
+	}
+	else {
 
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-		}
-		else
-		{
-			$arrPosts = getVernacularEntries($chosenLetter, $languagecode, $pagenr, $postsPerPage);
-			$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
-		}
+		$template = <<<HTML
+<div class="entry">
+	<span class="headword">%s</span>
+	<span class="lpMiniHeading">See main entry:</span> <a href="/?s=%s&partialsearch=1">%s</a>
+</div>
+HTML;
 
-		if(count($arrPosts) == 0)
-		{
-			$display .= __('No entries exist starting with this letter.', 'sil_dictionary');
-		}
+		$content = '';
 
-		foreach($arrPosts as $mypost)
+		foreach($arrPosts as $my_post)
 		{
 			//legacy
 			if($displaySubentriesAsMinorEntries == true)
 			{
-				if(trim($mypost->post_title ?? '') != trim($mypost->search_strings ?? ''))
+				if(trim($my_post->post_title ?? '') != trim($my_post->search_strings ?? ''))
 				{
-					$headword = getVernacularHeadword($mypost->ID, $languagecode);
-					$display .= "<div class=entry><span class=headword>" . $mypost->search_strings . "</span> ";
-					$display .= "<span class=lpMiniHeading>See main entry:</span> <a href=\"/?s=" . $headword . "&partialsearch=1\">" . $headword . "</a></div>";
+					$headword = getVernacularHeadword($my_post->ID, $language_code);
+					$content .= sprintf($template, $my_post->search_strings, $headword, $headword);
 				}
 				else
 				{
-					$the_content = addLangQuery($mypost->post_content);
+					$the_content = addLangQuery($my_post->post_content);
 					$the_content = normalizer_normalize($the_content, Normalizer::NFC );
-					$display .= "<div class=\"post\">" . $the_content . "</div>";
+					$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 				}
 			}
 			else
 			{
-				$the_content = addLangQuery($mypost->post_content);
+				$the_content = addLangQuery($my_post->post_content);
 				$the_content = normalizer_normalize($the_content, Normalizer::NFC );
-				$display .= "<div class=\"post\">" . $the_content . "</div>";
+				$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 			}
 		}
-
-		$display .= "</div>";
-
-		$display .= "<div align=center><br>";
-		$display .= displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $languagecode);
-		$display .= "</div><br>";
 	}
+
+	$page_nums = displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $language_code);
+
+	$html = <<<HTML
+{$display}
+<div id="searchresults" class="vernacular-results {$align_class}">
+	{$content}
+</div>
+<div class="center">
+	<br>
+	{$page_nums}
+</div>
+<br>
+HTML;
+
  	wp_reset_query();
-	return $display;
+	return $html;
 }
 
 add_shortcode( 'vernacularalphabet', 'vernacularalphabet_func' );
-?>

@@ -531,7 +531,7 @@ function webonary_conf_widget($showTitle = false)
 					{
 						?>
 						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-						<input type="text" name="vernacular_alphabet" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>">
+						<input type="text" name="vernacular_alphabet" class="admin-alphabet" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>">
 						<?php
 					}
 					else
@@ -540,7 +540,6 @@ function webonary_conf_widget($showTitle = false)
 					}?>
 				</p>
 				<p>
-
 					Font to use for the vernacular letters in browse view:
 					<select name=vernacularLettersFont>
 						<option value=""></option>
@@ -625,7 +624,7 @@ function webonary_conf_widget($showTitle = false)
 						{
 							?>
 							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-							<input type="text" size=50 name="reversal1_alphabet" value="<?php echo $reversal1alphabet; ?>">
+							<input type="text" size=50 name="reversal1_alphabet" class="admin-alphabet" value="<?php echo $reversal1alphabet; ?>">
 							<?php
 						}
 						else
@@ -656,7 +655,7 @@ function webonary_conf_widget($showTitle = false)
 						if (is_super_admin()) {
 							?>
 							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-							<input type="text" size=50 name="reversal2_alphabet"
+							<input type="text" size=50 name="reversal2_alphabet" class="admin-alphabet"
 								   value="<?php echo stripslashes(get_option('reversal2_alphabet')); ?>">
 							<?php
 						} else {
@@ -687,7 +686,7 @@ function webonary_conf_widget($showTitle = false)
 						{
 							?>
 							<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-							<input type="text" size=50 name="reversal3_alphabet" value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>">
+							<input type="text" size=50 name="reversal3_alphabet" class="admin-alphabet" value="<?php echo stripslashes(get_option('reversal3_alphabet')); ?>">
 							<?php
 						}
 						else
