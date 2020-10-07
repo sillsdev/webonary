@@ -48,7 +48,7 @@ class Webonary_Info
 
 				$sdCount = $wpdb->get_var($sql);
 
-				if($sdCount > 0)
+				if(empty($sdCount))
 				{
 					$status .= '<br>';
 					$status .= '<span style="color:red;">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
