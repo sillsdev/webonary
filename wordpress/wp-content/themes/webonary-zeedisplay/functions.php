@@ -269,9 +269,10 @@ add_filter('comment_text', 'themezee_html5_elements');
 define('DICTIONARY_MODE', 0);
 define('BLOG_MODE', 1);
 
-require_once(get_template_directory() . '/includes/entry.php' );
-require_once(get_template_directory() . '/includes/style.php' );
-require_once(get_template_directory() . '/includes/navigation.php' );
+
+include_once __DIR__ . '/includes/entry.php';
+include_once __DIR__ . '/includes/style.php';
+include_once __DIR__ . '/includes/navigation.php';
 
 function isMobile()
 {
@@ -297,21 +298,33 @@ add_filter('upload_mimes', 'custom_upload_mimes');
 
 //register menu shortcode
 add_shortcode('menu', 'shortcode_menu');
-function shortcode_menu($args ) {
-	//don't echo the ouput so we can return it
-	$args['echo']=false;
-	//in case menu isn't found display a message
-	$args['fallback_cb']='shortcode_menu_fallback';
-	//check if showing a submenu, if so make sure everything is setup to do so
-	if (isset($args['show_submenu']) && !empty($args['show_submenu'])) {
-		if (!isset($args['depth'])) {
-			$args['depth']=1;
-		}
-		$args['walker']=new Sub_Menu_Walker_Nav_Menu();
+function shortcode_menu( $args ) {
+
+	// don't echo the output so we can return it
+	$args['echo'] = false;
+
+	// in case menu isn't found, display a message
+	$args['fallback_cb'] = 'shortcode_menu_fallback';
+
+	// check if showing a submenu, if so make sure everything is setup to do so
+	if (!empty($args['show_submenu'])) {
+		include_once __DIR__ . '/class-sub-menu-walker-nav-menu.php';
+
+		// don't show the top level
+		$args['depth'] = 1;
+		$args['walker'] = new Sub_Menu_Walker_Nav_Menu();
 	}
-	$menu=wp_nav_menu( $args );
-	return $menu;
+	elseif (!empty($args['show_branch'])) {
+		include_once __DIR__ . '/class-branch-walker-nav-menu.php';
+		$args['walker'] = new Branch_Walker_Nav_Menu();
+	}
+	else {
+		$args['walker'] = new Walker_Nav_Menu();
+	}
+
+	return wp_nav_menu( $args );
 }
+
 //message to display if menu isn't found
 function shortcode_menu_fallback($args ) {return 'No menu selected.';}
 
@@ -329,70 +342,8 @@ function my_password_form() {
 }
 add_filter( 'the_password_form', 'my_password_form' );
 
-//special walker_nav_menu class to only display submenu
-//depth must be greater than 0
-//show_submenu specifies submenu to display
-class Sub_Menu_Walker_Nav_Menu extends Walker_Nav_Menu {
-	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
-		if ( !$element )
-		return;
-
-		$id_field = $this->db_fields['id'];
-
-		$displaythiselement=$depth!=0;
-		if ($displaythiselement) {
-			//display this element
-			if ( is_array( $args[0] ) )
-			$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
-			$cb_args = array_merge( array(&$output, $element, $depth), $args);
-			call_user_func_array(array(&$this, 'start_el'), $cb_args);
-		}
-
-		$id = $element->$id_field;
-		if ( is_array( $args[0] ) ){
-			$show_submenu=$args[0]['show_submenu'];
-		}else
-		$show_submenu=$args[0]->show_submenu;
-
-		$url = explode("/", $element->url);
-		if(end($url) == "" || substr(end($url), 0, 1) == "?")
-		{
-			array_pop($url);
-		}
-		// descend only when the depth is right and there are childrens for this element
-		$link = explode("?", end($url));
-		if ( ($max_depth == 0 || $max_depth >= $depth+1 ) && isset( $children_elements[$id]) && $link[0]==$show_submenu) {
-
-			foreach( $children_elements[ $id ] as $child ){
-
-				if ( !isset($newlevel) ) {
-					$newlevel = true;
-					//start the child delimiter
-					$cb_args = array_merge( array(&$output, $depth), $args);
-					call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
-				}
-				$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
-			}
-			unset( $children_elements[ $id ] );
-		}
-
-		if ( isset($newlevel) && $newlevel ){
-			//end the child delimiter
-			$cb_args = array_merge( array(&$output, $depth), $args);
-			call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
-		}
-
-		if ($displaythiselement) {
-			//end this element
-			$cb_args = array_merge( array(&$output, $element, $depth), $args);
-			call_user_func_array(array(&$this, 'end_el'), $cb_args);
-		}
-	}
-}
-
 function crunchify_disable_comment_url($fields) {
 	unset($fields['url']);
 	return $fields;
 }
 add_filter('comment_form_default_fields','crunchify_disable_comment_url');
-?>
