@@ -27,6 +27,15 @@
 #searchresult,
 #searchresults > div.post {width: 700px; max-width: 90vw; min-width: 270px}
 
+#searchresults.semantic-domain {
+    width: calc(100% - 280px);
+    min-width: 270px;
+    text-align:left;
+    float: right;
+    margin-top: 20px;
+}
+#searchresults.semantic-domain > div.post {width: auto; max-width: 90vw; min-width: 270px}
+
 #englishcol,
 #vernacularcol {padding: 2px 4px}
 
@@ -42,3 +51,10 @@ span.comment {background: none; padding: 0}
 .minorentrycomplex,
 .minorentryvariant,
 .mainentrysubentries .mainentrysubentry {clear:none !important; white-space:unset !important}
+
+@media(max-width: 699px) {
+    #searchresults.semantic-domain {
+        width: auto;
+        float: none;
+    }
+}
