@@ -71,13 +71,6 @@ function categories_func($atts, $content, $shortcode_tag)
 	   #domRoot {
 	   	float:left; width:250px; margin-left: 20px; margin-top: 5px;
 	   }
-	   #searchresults {
-			width:70%;
-			min-width: 270px;
-			text-align:left;
-			float: right;
-			margin-top: 20px;
-		}
 		</style>
 		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
 
@@ -171,7 +164,7 @@ function categories_func($atts, $content, $shortcode_tag)
 	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
 	$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
 	$arrPosts = null;
-	$display .= '<div id="searchresults">';
+	$display .= '<div id="searchresults" class="semantic-domain">';
 	if($semnumber != '')
 	{
 		if(get_option('useCloudBackend'))
