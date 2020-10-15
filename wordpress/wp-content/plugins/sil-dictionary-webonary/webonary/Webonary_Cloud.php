@@ -254,7 +254,7 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-	public static function registerAndEnqueueMainStyles($dictionaryId) {
+	public static function registerAndEnqueueMainStyles($dictionaryId, $deps = array()) {
 		$dictionary = self::getDictionary($dictionaryId);
 		$time = strtotime($dictionary->updatedAt);
 		if (!is_null($dictionary)){
@@ -270,7 +270,7 @@ class Webonary_Cloud
 				}
 
 				$cssPath = $dictionaryId . '/' . $cssFile;
-				wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
+				wp_register_style($handle, self::remoteFileUrl($cssPath), $deps, $time);
 				wp_enqueue_style($handle);
 			}
 		}
