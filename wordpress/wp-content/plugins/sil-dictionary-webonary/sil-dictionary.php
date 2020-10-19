@@ -78,7 +78,7 @@ add_filter('search_message', 'sil_dictionary_custom_message');
 add_filter('posts_request','replace_default_search_filter', 10, 2);
 
 // be sure these style sheets are loaded last, after the theme
-add_action('wp_enqueue_scripts', 'my_enqueue_css', 999999);
+add_action('wp_enqueue_scripts', 'my_enqueue_css', 999991);
 
 // this executes just before wordpress determines which template page to load
 add_action('template_redirect', 'Webonary_SearchCookie::GetSearchCookie');

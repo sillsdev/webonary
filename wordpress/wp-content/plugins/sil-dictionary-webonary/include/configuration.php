@@ -252,6 +252,20 @@ function webonary_conf_dashboard()
 	webonary_conf_widget(true);
 }
 
+function webonary_register_custom_css()
+{
+	$upload_dir = wp_upload_dir();
+	wp_register_style(
+		'custom_stylesheet',
+		$upload_dir['baseurl'] . '/custom.css',
+		[],
+		date('U'),
+		'all'
+	);
+	wp_enqueue_style('custom_stylesheet');
+}
+add_action('wp_enqueue_scripts', 'webonary_register_custom_css', 999993);
+
 function webonary_conf_widget($showTitle = false)
 {
 	save_configurations();
@@ -264,8 +278,6 @@ function webonary_conf_widget($showTitle = false)
 	if(file_exists($configured_css_file))
 		$css_string = file_get_contents($configured_css_file);
 
-	wp_register_style('custom_css', $upload_dir['baseurl'] . '/custom.css?time=' . date("U"));
-	wp_enqueue_style('custom_css');
 
 	if(is_super_admin() && isset($_POST['uploadButton']))
 	{
