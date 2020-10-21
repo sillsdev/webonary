@@ -40,16 +40,11 @@ if ( ! defined('ABSPATH') )
 
 function my_enqueue_css() {
 
-	wp_register_style(
-		'webonary_dictionary_style',
-		plugin_dir_url(__DIR__) . 'css/dictionary_styles.css',
-		[],
-		date('U'),
-		'all'
-	);
+	wp_register_style('webonary_dictionary_style', plugin_dir_url(__DIR__) . 'css/dictionary_styles.css', [], date('U'), 'all');
 	wp_enqueue_style('webonary_dictionary_style');
 
 	// <link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); // >/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
+
 
 	if (is_page())
 		return;
@@ -57,36 +52,24 @@ function my_enqueue_css() {
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId, ['webonary_dictionary_style']);
+		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
 	}
 	else
 	{
 		$upload_dir = wp_upload_dir();
-		wp_register_style(
-			'configured_stylesheet',
-			$upload_dir['baseurl'] . '/imported-with-xhtml.css',
-			['webonary_dictionary_style'],
-			date('U'),
-			'all'
-		);
-		wp_enqueue_style('configured_stylesheet');
-
-		$overrides_css = $upload_dir['basedir'] . '/ProjectDictionaryOverrides.css';
-		if (!file_exists($overrides_css))
-			$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
-
-		if (file_exists($overrides_css))
+		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date('U'));
+		$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
+		if(file_exists($overrides_css))
 		{
-			wp_register_style(
-				'overrides_stylesheet',
-				$overrides_css,
-				['webonary_dictionary_style', 'configured_stylesheet'],
-				date('U'),
-				'all'
-			);
-			wp_enqueue_style('overrides_stylesheet');
+			wp_register_style('overrides_stylesheet', $overrides_css . '?time=' . date('U'));
 		}
+		wp_enqueue_style( 'configured_stylesheet');
 
+		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
+		{
+			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date('U'));
+			wp_enqueue_style( 'overrides_stylesheet');
+		}
 	}
 }
 

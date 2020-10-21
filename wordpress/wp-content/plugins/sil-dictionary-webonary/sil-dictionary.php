@@ -77,10 +77,8 @@ add_filter('search_message', 'sil_dictionary_custom_message');
 /* post query hooks */
 add_filter('posts_request','replace_default_search_filter', 10, 2);
 
-// be sure these style sheets are loaded last, after the theme
-add_action('wp_enqueue_scripts', 'my_enqueue_css', 999991);
-
 // this executes just before wordpress determines which template page to load
+add_action('template_redirect', 'my_enqueue_css');
 add_action('template_redirect', 'Webonary_SearchCookie::GetSearchCookie');
 
 // add_action('pre_get_posts','no_standard_sort');
