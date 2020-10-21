@@ -444,7 +444,9 @@ class Webonary_Cloud
 			$uploadPath = $arrDirectory['path'];
 			self::setFontFaces($dictionary, $uploadPath);
 
+			// Store this both as a blog option and metadata for convenience
 			update_option('useCloudBackend', '1');
+			update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
 		}
 	}
 }

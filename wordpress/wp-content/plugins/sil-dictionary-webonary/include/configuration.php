@@ -234,7 +234,10 @@ function save_configurations()
 				/** @noinspection PhpUndefinedFunctionInspection */
 				prune_super_cache(get_supercache_dir(), true);
 			}
+
+			// Store this both as a blog option and metadata for convenience
 			update_option('useCloudBackend', $useCloudBackend);
+			update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
 
 			// initial set up of dictionary using cloud values
 			if ($useCloudBackend) {
