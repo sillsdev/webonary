@@ -42,15 +42,15 @@ export async function handler(
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .countDocuments(dbFind);
 
-    // get reversal entry count
-    const reversalEntriesCount = await Promise.all(
+    // get reversal entry counts
+    const reversalEntriesCounts = await Promise.all(
       dbItem.reversalLanguages.map(async ({ lang }) => {
         dbFind[DbPaths.ENTRY_REVERSAL_FORM_LANG] = lang;
         return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments(dbFind);
       }),
     );
 
-    reversalEntriesCount.forEach((entriesCount, index) => {
+    reversalEntriesCounts.forEach((entriesCount, index) => {
       dbItem.reversalLanguages[index].entriesCount = entriesCount;
     });
 
