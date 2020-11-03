@@ -360,7 +360,29 @@ function webonary_conf_widget($showTitle = false)
 
 			<form method="post" action="admin.php?import=pathway-xhtml&step=2">
 				<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
-					<strong>Import Status:</strong> <?php echo Webonary_Info::import_status(); ?>
+					<strong>Import Status:</strong>
+					<?php
+					if (get_option('useCloudBackend')) {
+						$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
+						$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+						$import_status = '';
+						if (!is_null($dictionary)) {
+							$import_status .= '<li>Last Import: <em>' . $dictionary->updatedAt . '</em>';
+							$import_status .= '<li>Main Language (' . $dictionary->mainLanguage->lang . ')';
+							$import_status .= ' entries: <em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>';
+							foreach ($dictionary->reversalLanguages as $reversal) {
+								$import_status .= '<li>Reversal Language (' . $reversal->lang . ')';
+								if (isset($reversal->entriesCount) && $reversal->entriesCount) {
+									$import_status .= ' entries: <em>'. number_format($reversal->entriesCount) . '</em>';
+								}
+							}
+						}
+						echo '<ul>' . $import_status . '</ul>';
+					}
+					else {
+						echo Webonary_Info::import_status();
+					}
+                	?>
 				</div>
 			</form>
 
