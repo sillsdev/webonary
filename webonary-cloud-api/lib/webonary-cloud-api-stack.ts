@@ -4,10 +4,11 @@ import * as apigateway from '@aws-cdk/aws-apigateway';
 import * as iam from '@aws-cdk/aws-iam';
 import * as s3 from '@aws-cdk/aws-s3';
 import { Certificate } from '@aws-cdk/aws-certificatemanager';
+import { envSpecific } from './config';
 
 function defaultLambdaFunctionProps(functionName: string): lambda.FunctionProps {
   const props: lambda.FunctionProps = {
-    functionName,
+    functionName: envSpecific(functionName),
     runtime: lambda.Runtime.NODEJS_12_X,
     code: new lambda.AssetCode('lambda'),
     handler: `${functionName}.handler`,
@@ -170,7 +171,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // API and resources
     const api = new apigateway.RestApi(this, 'webonary-cloud-api', {
-      restApiName: 'webonaryCloudApi',
+      restApiName: envSpecific('webonaryCloudApi'),
     });
 
     const domainName = process.env.API_DOMAIN_NAME;
