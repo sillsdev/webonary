@@ -66,7 +66,7 @@ If you change your Typescript code, then you should either do `npm run build` or
 
 ## Integration Testing
 1. To simulate loading of test data into Mongo from FLex, you can run `post-legacy.ts` script found in the `tools` directory.
-   1. Testing should not be done against the live [Webonary site](https://www.webonary.org), so make sure to set variables in `.env` pertaining to Webonary and your API custom domain name.
+   1. Testing should not be done against the live [Webonary site](https://www.webonary.org), so make sure to set variables in `.env` pertaining to Webonary and your API custom domain name. During development set `DEPLOY_ENV=dev` in your `.env` file to deploy to your development stack. Deployment to the `live` stack should be done through CI/CD with `DEPLOY_ENV=live`.
    2. Obtain a dictionary data zip file produced by FLex. This zip file should be unzipped and stored as a subdirectory in `tools` using the dictionary name as its subdirectory name.
    3. This subdirectory should contain the following files and directories:
       1. configured.xhtml
@@ -74,7 +74,9 @@ If you change your Typescript code, then you should either do `npm run build` or
       3. ProjectDictionaryOverrides.css
       4. AudioVisual directory (optional)
       5. pictures directory (optional)
-2. Make sure `.env` file in your root directory is set up with the Webonary username and password for that dictionary. WCA uses Webonary's Wordpress username and password for authorization (using http basic authentication).
+   
+2. Make sure `.env` file in your root directory is set up with the Webonary username and password for that dictionary. WCA uses Webonary's Wordpress username and password for authorization (using http basic authentication). 
+
 3. To load the entire dictionary, run `npm run post-legacy dictionary_name configured.xhtml` where dictionary_name is the dictionary site name in Webonary.
    1. To limit the number of entries loaded, you can pass in a number as the final argument. For example, to load only the first 10 items, do `npm run post-legacy dictionary_name configured.xhtml 10`.
    2. Note that the post-legacy script was written to accommodate only a few model dictionaries, such as 
