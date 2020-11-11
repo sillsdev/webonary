@@ -57,12 +57,28 @@ Documentation for APIs is generated from specially formatted comments using [api
 2. Run `npm run apidoc` to generate documentation files in `lambda_api_doc` directory.
 3. Running `npm run build` or `npm run deploy` will also cause `apidoc` to be run.
 
-## Local Lambda testing
-During development, you can execute Lambda functions for testing, without deployment to AWS Cloud, using [AWS SAM](https://aws.amazon.com/serverless/sam/).
+## Local development and testing
+1. During development, you can execute Lambda functions for testing, without deployment to AWS Cloud, using [AWS SAM](https://aws.amazon.com/serverless/sam/).
 
 To do so, run  `npm run deploy-local` from a terminal on your machine or from vscode's own terminal. This executes `cdk synth --no-staging >| template.yaml && sam local start-api`, which will update your CloudFormation template, and start SAM. Once started, your Lambda functions can be executed locally at `http://127.0.0.1:3000` by using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. Note that `deploy-local` is run in the foreground continually. To stop, you can issue a kill signal (`Ctrl + c`).
 
 If you change your Typescript code, then you should either do `npm run build` or make sure `npm run watch` is also being run in another terminal.  
+
+2. In your local Wordpress installation, set the following variables in `wp-config.php`:
+```
+/* Webonary Cloud Backend */
+define('WEBONARY_CLOUD_API_URL', 'https://cloud-api.webonary.work/v1/');
+define('WEBONARY_CLOUD_FILE_URL', 'https://s3.us-east-2.amazonaws.com/cloud-storage.webonary.work/');
+```
+
+This will allow your local Wordpress to access test data in `webonary.work`. 
+
+To import dictionary data to `webonary.work`, set the following environment variable before running FLex:
+```
+WEBONARYSERVER=webonary.work
+```
+
+3. More to come... (how to set up Dockerized version of MongoDb to store dictionary data)
 
 ## Integration Testing
 1. To simulate loading of test data into Mongo from FLex, you can run `post-legacy.ts` script found in the `tools` directory.
