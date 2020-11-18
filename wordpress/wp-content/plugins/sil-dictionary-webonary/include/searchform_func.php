@@ -82,15 +82,15 @@ function webonary_searchform() {
 
 			// set up dictionary info
 			$indexed = new stdClass();
-			$indexed->language_name = $dictionary->mainLanguage->title;
+			$indexed->language_name = $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang;
 			$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
 			$arrIndexed[] = $indexed;
 			foreach($dictionary->reversalLanguages as $index => $reversal)
 			{
 				$indexed = new stdClass();
-				$indexed->language_name = $reversal->title;
+				$indexed->language_name = $reversal->title ?? $dictionary->reversal->lang;
 				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
-				$arrIndex[] = $indexed;
+				$arrIndexed[] = $indexed;
 			}
 
 			$lastEditDate = $dictionary->updatedAt;
