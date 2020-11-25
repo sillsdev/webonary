@@ -326,7 +326,9 @@ function webonary_conf_widget($showTitle = false)
 	else {
 		$import_status = Webonary_Info::import_status();
 		$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
-		if (count(getReversalEntries("", 0, "", true, "")))
+		$displayXHTML = true;
+		$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
+		if (count($reversalEntries))
 			$noReversalEntries = false;
 	}
 	?>
