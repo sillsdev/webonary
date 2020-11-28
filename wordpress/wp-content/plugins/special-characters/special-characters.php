@@ -50,4 +50,3 @@ add_action( 'widgets_init', 'register_special_characters_widgets' );
 function register_special_characters_widgets() {
     register_widget( 'special_characters' );
 }
-?>

@@ -20,7 +20,7 @@ class special_characters extends WP_Widget {
 	/**
 	 * Widget setup.
 	 */
-	function special_characters() {
+	function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'special_characters', 'description' => __('Add Special Characters.', 'special_characters') );
 
@@ -35,77 +35,78 @@ class special_characters extends WP_Widget {
 
 	/**
 	 * Widget display.
+	 *
+	 * @param $args
+	 * @param $instance
 	 */
 	function widget( $args, $instance ) {
-		
+
 		$special_characters = get_option('special_characters');
 		//if special characters were set inside the Webonary settings, use those
 		//else if set in Widget (legacy code), use that.
 		if((trim($special_characters)) == "")
 		{
-			extract($args);
-			$characters 		= apply_filters('widget_characters', $instance['characters']);
+			$characters = apply_filters('widget_characters', $instance['characters']);
 			$arrChar = explode(",", $characters);
-	
-			echo $before_widget;
+
+			echo $args['before_widget'] ?? '';
 			?>
-			<script LANGUAGE="JavaScript">
-			<!--
-			function addchar(button)
-			{
-				var searchfield = document.getElementById('s');
-				var currentPos = theCursorPosition(searchfield);
-				var origValue = searchfield.value;
-				var newValue = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
-				 
-				searchfield.value = newValue;
-	
-				searchfield.focus();
-							
-			    return true;
-			}
-	
-			function theCursorPosition(ofThisInput) {
-				// set a fallback cursor location
-				var theCursorLocation = 0;
-	
-				// find the cursor location via IE method...
-				if (document.selection) {
-					ofThisInput.focus();
-					var theSelectionRange = document.selection.createRange();
-					theSelectionRange.moveStart('character', -ofThisInput.value.length);
-					theCursorLocation = theSelectionRange.text.length;
-				} else if (ofThisInput.selectionStart || ofThisInput.selectionStart == '0') {
-					// or the FF way
-					theCursorLocation = ofThisInput.selectionStart;
-				}
-				return theCursorLocation;
-			}
-			
-			-->
-			</script>
-	
+<script type="text/javascript">
+<!--
+function addchar(button)
+{
+    let searchfield = document.getElementById('s');
+    let currentPos = theCursorPosition(searchfield);
+    let origValue = searchfield.value;
+
+    searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
+
+    searchfield.focus();
+
+    return true;
+}
+
+function theCursorPosition(ofThisInput) {
+    // set a fallback cursor location
+    let theCursorLocation = 0;
+
+    // find the cursor location via IE method...
+    if (document.selection) {
+        ofThisInput.focus();
+        let theSelectionRange = document.selection.createRange();
+        theSelectionRange.moveStart('character', -ofThisInput.value.length);
+        theCursorLocation = theSelectionRange.text.length;
+    } else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
+        // or the FF way
+        theCursorLocation = ofThisInput.selectionStart;
+    }
+    return theCursorLocation;
+}
+-->
+</script>
+
 			<?php
-				foreach($arrChar as $char)
-				{
-					?>
-		<input
-			id="spbutton" type="button" width="20" class="button"
-			value="<?php echo $char; ?>" onClick="addchar(this)"
-			style="padding: 5px">
-					<?php
-				}
-			?>
-			<?php
-				
-			echo $after_widget;
+			$html = <<<HTML
+<input id="spbutton" type="button" width="20" class="button"
+       value="%s" onClick="addchar(this)"
+       style="padding: 5px">
+HTML;
+
+			foreach ( $arrChar as $char ) {
+				printf( $html, $char );
+			}
+
+			echo $args['after_widget'] ?? '';
 		}
 	}
 
 	/**
 	 * Widget options to be saved
-	 * @param <type> $new_instance
-	 * @param <type> $old_instance
+	 *
+	 * @param $new_instance
+	 * @param $old_instance
+	 *
+	 * @return array
 	 */
 	function update($new_instance, $old_instance) {
 		/*parent::update($new_instance, $old_instance);*/
@@ -116,16 +117,20 @@ class special_characters extends WP_Widget {
 
 	/**
 	 * Widget admin
-	 * @param <type> $instance
+	 * @param $instance
 	 */
 	function form($instance) {
-		?>
-<p><label for="<?php echo $this->get_field_id('characters'); ?>">Characters
-(separated by comma):</label> <input class="widefat"
-	id="<?php echo $this->get_field_id('characters'); ?>"
-	name="<?php echo $this->get_field_name('characters'); ?>'" type="text"
-	value="<?php echo $instance['characters']; ?>" /></p>
-		<?php
+
+	    $id = $this->get_field_id('characters');
+	    $name = $this->get_field_name('characters');
+	    $value = $instance['characters'];
+
+	    $html = <<<HTML
+<p>
+  <label for="%1\$s">Characters (separated by comma):</label>
+  <input class="widefat" id="%1\$s" name="%2\$s" type="text" value="%3\$s">
+</p>
+HTML;
+	    printf( $html, $id, $name, $value );
 	}
 }
-?>
