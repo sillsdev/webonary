@@ -296,7 +296,6 @@ function webonary_conf_widget($showTitle = false)
 	if(isset($_POST['btnSaveRelevance']))
 		relevanceSave();
 
-	$import_status = '';
 	$arrLanguageCodes = array();
 	$noReversalEntries = true;
 	if (get_option('useCloudBackend')) {
@@ -320,8 +319,8 @@ function webonary_conf_widget($showTitle = false)
 					$noReversalEntries = false;
 				}
 			}
+			$import_status = '<ul>' . $import_status . '</ul>';
 		}
-		$import_status = '<ul>' . $import_status . '</ul>';
 	}
 	else {
 		$import_status = Webonary_Info::import_status();
