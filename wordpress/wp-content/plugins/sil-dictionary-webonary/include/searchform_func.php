@@ -85,26 +85,6 @@ function webonary_searchform() {
 				}
 			}
 
-
-			// set up language dropdown options
-			if(count($dictionary->partsOfSpeech))
-			{
-				$options = '';
-				foreach($dictionary->partsOfSpeech as $part)
-				{
-					if ($part->lang === $currentLanguage) {
-						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
-						$options .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";
-					}
-				}
-
-				if ($options !== '') {
-					$options = "<option value=''>" . __('All Parts of Speech','sil_dictionary') ."</options>" . $options;
-					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";
-				}
-			}
-
-
 			// set up dictionary info
 			$indexed = new stdClass();
 			$indexed->language_name = $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang;
