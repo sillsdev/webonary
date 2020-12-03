@@ -296,6 +296,40 @@ function webonary_conf_widget($showTitle = false)
 	if(isset($_POST['btnSaveRelevance']))
 		relevanceSave();
 
+	$arrLanguageCodes = array();
+	$noReversalEntries = true;
+	if (get_option('useCloudBackend')) {
+		$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
+		$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+		$import_status = '';
+		if (!is_null($dictionary)) {
+			$import_status .= '<li>Last Import: <em>' . $dictionary->updatedAt . '</em>';
+			$import_status .= '<li>Main Language (' . $dictionary->mainLanguage->lang . ')';
+			$import_status .= ' entries: <em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>';
+			$arrLanguageCodes[] = array(
+				'language_code' => $dictionary->mainLanguage->lang,
+				'name' => $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang);
+			foreach ($dictionary->reversalLanguages as $reversal) {
+				$import_status .= '<li>Reversal Language (' . $reversal->lang . ')';
+				if (isset($reversal->entriesCount) && $reversal->entriesCount) {
+					$import_status .= ' entries: <em>'. number_format($reversal->entriesCount) . '</em>';
+					$arrLanguageCodes[] = array(
+						'language_code' => $reversal->lang,
+						'name' => $reversal->title ?? $reversal->lang);
+					$noReversalEntries = false;
+				}
+			}
+			$import_status = '<ul>' . $import_status . '</ul>';
+		}
+	}
+	else {
+		$import_status = Webonary_Info::import_status();
+		$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
+		$displayXHTML = true;
+		$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
+		if (count($reversalEntries))
+			$noReversalEntries = false;
+	}
 	?>
 	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/options.js" type="text/javascript"></script>
 	<style>
@@ -324,8 +358,6 @@ function webonary_conf_widget($showTitle = false)
 			echo '<a class="nav-tab" href="#'.$slug.'" title="'.sprintf(__('Click to switch to %s', 'sil_dictionary'), $name).'">'.$name.'</a>' . PHP_EOL;
 		}
 		echo '</h2>' . PHP_EOL;
-
-		$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
 
 		// enctype="multipart/form-data"
 		?>
@@ -361,28 +393,7 @@ function webonary_conf_widget($showTitle = false)
 			<form method="post" action="admin.php?import=pathway-xhtml&step=2">
 				<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
 					<strong>Import Status:</strong>
-					<?php
-					if (get_option('useCloudBackend')) {
-						$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-						$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
-						$import_status = '';
-						if (!is_null($dictionary)) {
-							$import_status .= '<li>Last Import: <em>' . $dictionary->updatedAt . '</em>';
-							$import_status .= '<li>Main Language (' . $dictionary->mainLanguage->lang . ')';
-							$import_status .= ' entries: <em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>';
-							foreach ($dictionary->reversalLanguages as $reversal) {
-								$import_status .= '<li>Reversal Language (' . $reversal->lang . ')';
-								if (isset($reversal->entriesCount) && $reversal->entriesCount) {
-									$import_status .= ' entries: <em>'. number_format($reversal->entriesCount) . '</em>';
-								}
-							}
-						}
-						echo '<ul>' . $import_status . '</ul>';
-					}
-					else {
-						echo Webonary_Info::import_status();
-					}
-                	?>
+					<?php echo $import_status ?>
 				</div>
 			</form>
 
@@ -612,10 +623,7 @@ function webonary_conf_widget($showTitle = false)
 				</p>
 
 			<?php
-			$displayXHTML = true;
-			$reversalEntries = getReversalEntries("", 0, "", $displayXHTML, "");
-
-			if(count($reversalEntries) == 0)
+			if($noReversalEntries)
 			{
 				echo 'No reversal indexes imported.';
 			}
