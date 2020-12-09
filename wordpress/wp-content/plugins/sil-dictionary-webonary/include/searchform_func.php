@@ -36,7 +36,7 @@ function webonary_searchform() {
 	$sem_domains = array();
 
 	// set up language dropdown
-	$selected_language = isset($_POST['key']) ? $_POST['key'] : (isset($_GET['key']) ? $_GET['key'] : '');
+	$selected_language = $_POST['key'] ?? $_GET['key'] ?? '';
 	$language_dropdown_options = '';
 
 	$parts_of_speech_dropdown = '';
@@ -114,10 +114,10 @@ function webonary_searchform() {
 	{
 		//$catalog_terms = get_terms('sil_writing_systems');
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
-		$arrVernacularLanguage = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'));
+		$vernacularLanguageName = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'))[0]['name'];
 		foreach ($arrLanguages as $language)
 		{
-			if($language['name'] != $arrVernacularLanguage[0]['name'] || ($language['name'] == $arrVernacularLanguage[0]['name'] && $language['language_code'] == get_option('languagecode')))
+			if($language['name'] != $vernacularLanguageName || ($language['name'] == $vernacularLanguageName && $language['language_code'] == get_option('languagecode')))
 			{
 				$language_dropdown_options .= '<option value="'. $language['language_code'] . '"';
 				if ($selected_language == $language['language_code'])
