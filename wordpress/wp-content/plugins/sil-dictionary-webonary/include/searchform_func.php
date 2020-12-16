@@ -34,6 +34,11 @@ function webonary_searchform() {
 
 	$arrIndexed = array();
 	$sem_domains = array();
+
+	// set up language dropdown
+	$selected_language = $_POST['key'] ?? $_GET['key'] ?? '';
+	$language_dropdown_options = '';
+
 	$parts_of_speech_dropdown = '';
 	$lastEditDate = '';
 	if(get_option('useCloudBackend'))
@@ -85,12 +90,21 @@ function webonary_searchform() {
 			$indexed->language_name = $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang;
 			$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
 			$arrIndexed[] = $indexed;
-			foreach($dictionary->reversalLanguages as $index => $reversal)
-			{
-				$indexed = new stdClass();
-				$indexed->language_name = $reversal->title ?? $dictionary->reversal->lang;
-				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
-				$arrIndexed[] = $indexed;
+
+			if (count($dictionary->reversalLanguages)) {
+				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? ' selected' : '';
+				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";	
+				foreach($dictionary->reversalLanguages as $index => $reversal)
+				{
+					$indexed = new stdClass();
+					$indexed->language_name = $reversal->title ?? $reversal->lang;
+					$indexed->totalIndexed = $reversal->entriesCount ?? 0;
+					$arrIndexed[] = $indexed;
+	
+					// set up languages dropdown options
+					$selected = ($reversal->lang === $selected_language) ? ' selected' : '';
+					$language_dropdown_options .= "<option value='" . $reversal->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";	
+				}	
 			}
 
 			$lastEditDate = $dictionary->updatedAt;
@@ -98,6 +112,20 @@ function webonary_searchform() {
 	}
 	else
 	{
+		//$catalog_terms = get_terms('sil_writing_systems');
+		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
+		$vernacularLanguageName = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'))[0]['name'];
+		foreach ($arrLanguages as $language)
+		{
+			if($language['name'] != $vernacularLanguageName || ($language['name'] == $vernacularLanguageName && $language['language_code'] == get_option('languagecode')))
+			{
+				$language_dropdown_options .= '<option value="'. $language['language_code'] . '"';
+				if ($selected_language == $language['language_code'])
+					$language_dropdown_options .= ' selected';
+				$language_dropdown_options .= '>' . $language['name'] . '</option>';
+			}
+		}
+		
 		// set up parts of speech dropdown
 		$parts_of_speech = get_terms('sil_parts_of_speech');
 		if($parts_of_speech)
@@ -122,6 +150,7 @@ function webonary_searchform() {
 		$arrIndexed = Webonary_Info::number_of_entries();
 		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}
+
 	?>
 	<script LANGUAGE="JavaScript">
 	<!--
@@ -255,31 +284,15 @@ function webonary_searchform() {
 				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
-					<?php
-					$key = isset($_POST['key']) ? $_POST['key'] : (isset($_GET['key']) ? $_GET['key'] : '');
-
-					//$catalog_terms = get_terms('sil_writing_systems');
-					$arrLanguages = Webonary_Configuration::get_LanguageCodes();
-					$arrVernacularLanguage = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'));
-					?>
-					<select name="key" class="webonary_searchform_language_select">
-                        <option value=""><?php _e('All Languages','sil_dictionary'); ?></option>
-					<?php
-					foreach ($arrLanguages as $language)
-					{
-						if($language['name'] != $arrVernacularLanguage[0]['name'] || ($language['name'] == $arrVernacularLanguage[0]['name'] && $language['language_code'] == get_option('languagecode')))
-						{
-					?>
-						<option value="<?php echo $language['language_code']; ?>"
-							<?php if($key == $language['language_code']) {?>selected<?php }?>>
-							<?php echo $language['name']; ?>
-						</option>
-						<?php
+					<?php 
+						if ($language_dropdown_options !== '') {
+							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
+							$language_dropdown .= '<option value="">' . __('All Languages','sil_dictionary') .'</option>';
+							$language_dropdown .= $language_dropdown_options;
+							$language_dropdown .= '</select>';
+							echo $language_dropdown . '<br>';
 						}
-					}
 					?>
-					</select>
-                    <br>
 					<?php echo $parts_of_speech_dropdown; ?>
 					<br>
                     <input type="hidden" name="search_options_set" value="1">
