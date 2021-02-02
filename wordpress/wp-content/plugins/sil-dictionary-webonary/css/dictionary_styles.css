@@ -25,7 +25,7 @@
 #searchresults div {box-sizing: border-box}
 #searchresult > div {display: inline-block; width: 50%}
 #searchresult,
-#searchresults > div.post {width: 700px; max-width: 90vw; min-width: 270px}
+#searchresults > div.post {width: 100%; max-width: 90vw; min-width: 270px}
 
 #searchresults.semantic-domain {
     width: calc(100% - 280px);
