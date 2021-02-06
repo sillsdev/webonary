@@ -36,7 +36,7 @@ msgstr ""
 
 #: include/infrastructure.php:62
 #@ sil_dictionary
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 #: include/infrastructure.php:63
@@ -446,4 +446,3 @@ msgstr ""
 #@ sil_dictionary
 msgid "Click here to include searching through partial words."
 msgstr ""
-

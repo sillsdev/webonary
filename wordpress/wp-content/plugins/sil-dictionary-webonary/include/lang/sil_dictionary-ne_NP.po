@@ -7240,7 +7240,7 @@ msgstr ""
 
 # @ sil_dictionary
 #: include/infrastructure.php:126
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 # @ sil_dictionary

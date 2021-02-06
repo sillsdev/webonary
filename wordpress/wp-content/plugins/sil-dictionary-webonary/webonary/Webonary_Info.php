@@ -25,12 +25,12 @@ class Webonary_Info
 		$counts = self::postCountByImportStatus();
 
 		if($counts->total_count == 0)
-			return 'No entries have been imported yet. <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
+			return 'No entries have been uploaded yet. <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
 
 		$import_status = get_option('importStatus');
 
 		if(empty($import_status))
-			return 'The import status will display here.<br>';
+			return 'The upload status will display here.<br>';
 
 		$status = '';
 
@@ -51,7 +51,7 @@ class Webonary_Info
 				if(empty($sdCount))
 				{
 					$status .= '<br>';
-					$status .= '<span style="color:red;">It appears you imported semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
+					$status .= '<span style="color:red;">It appears you uploaded semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
 					$status .= 'Tip: You can hide the domain numbers from displaying, <a href=" https://www.webonary.org/help/tips-tricks/" target=_"blank">see here</a>.';
 					$status .= '<hr>';
 				}
@@ -59,7 +59,7 @@ class Webonary_Info
 
 			if(!empty($counts->indexed_date))
 			{
-				$status .= 'Last import of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
+				$status .= 'Last upload of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
 				$archiveFile = Webonary_Cloud::getBlogDictionaryId() . '.zip';
@@ -74,8 +74,8 @@ class Webonary_Info
 		}
 		else
 		{
-			$status .= 'Importing...';
-			$status .= '<p>You will receive an email when the import has completed. You don\'t need to stay online.</p>';
+			$status .= 'Uploading...';
+			$status .= '<p>You will receive an email when the upload has completed. You don\'t need to stay online.</p>';
 		}
 
 		if($import_status == 'indexing')
@@ -93,19 +93,19 @@ class Webonary_Info
 
 		if($import_status == 'configured')
 		{
-			$status .= '<span id="sil-count-imported" class="sil-bold">' . $countImported . '</span> entries imported (not yet indexed)';
+			$status .= '<span id="sil-count-imported" class="sil-bold">' . $countImported . '</span> entries uploadeded (not yet indexed)';
 
 			if($counts->time_diff > 5)
 			{
-				$status .= '<p>It appears the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartImport" value="Restart Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
+				$status .= '<p>It appears the upload has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartImport" value="Restart Upload" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			}
 			return $status;
 		}
 
 		if($import_status == 'reversal')
 		{
-			$status .= 'Importing reversals. So far imported: <span id="sil-count-imported" class="sil-bold">' . $countReversals . '</span> entries.';
-			$status .= '<p>If you believe the import has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Import" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
+			$status .= 'Uploading reversals. So far uploaded: <span id="sil-count-imported" class="sil-bold">' . $countReversals . '</span> entries.';
+			$status .= '<p>If you believe the upload has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Upload" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			return $status;
 		}
 

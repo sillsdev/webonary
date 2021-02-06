@@ -54,7 +54,7 @@ msgid ""
 msgstr ""
 
 #: include/configuration.php:31
-msgid "Data (Import)"
+msgid "Data (Upload)"
 msgstr ""
 
 #: include/configuration.php:32 include/default_domains.php:1313
@@ -95,7 +95,7 @@ msgid "Click to switch to %s"
 msgstr ""
 
 #: include/configuration.php:284
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 #: include/configuration.php:293

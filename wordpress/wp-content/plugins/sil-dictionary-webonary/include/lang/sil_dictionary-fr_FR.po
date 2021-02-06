@@ -7328,7 +7328,7 @@ msgid "Click here to include searching through partial words."
 msgstr "Cliquer ici pour inclure la recherche de mots partiels."
 
 #: include/configuration.php:31
-msgid "Data (Import)"
+msgid "Data (Upload)"
 msgstr ""
 
 #: include/configuration.php:33
@@ -7366,7 +7366,7 @@ msgstr ""
 
 # @ sil_dictionary
 #: include/configuration.php:350
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 #: include/configuration.php:359
