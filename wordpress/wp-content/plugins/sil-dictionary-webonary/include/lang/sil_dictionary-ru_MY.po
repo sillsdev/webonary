@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 
 #: include/configuration.php:31
-msgid "Data (Import)"
+msgid "Data (Upload)"
 msgstr ""
 
 # @ sil_dictionary
@@ -96,7 +96,7 @@ msgstr ""
 
 # @ sil_dictionary
 #: include/configuration.php:284
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 #: include/configuration.php:293

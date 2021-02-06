@@ -7366,7 +7366,7 @@ msgid "Click here to include searching through partial words."
 msgstr "ចុច​ទីនេះ​ដើម្បីបញ្ចូល​ការស្វែង​រកមិនពេញលេញ។"
 
 #: include/configuration.php:49
-msgid "Data (Import)"
+msgid "Data (Upload)"
 msgstr ""
 
 #: include/configuration.php:51
@@ -7403,7 +7403,7 @@ msgstr ""
 
 # @ sil_dictionary
 #: include/configuration.php:523
-msgid "Import Data"
+msgid "Upload Data"
 msgstr ""
 
 #: include/configuration.php:529

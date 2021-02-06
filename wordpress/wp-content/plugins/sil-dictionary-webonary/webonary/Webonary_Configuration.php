@@ -51,7 +51,7 @@ class Webonary_Configuration
 	{
 		$admin_sections = array();
 
-		$admin_sections['import'] = __('Data (Import)', 'sil_dictionary');
+		$admin_sections['import'] = __('Data (Upload)', 'sil_dictionary');
 		$admin_sections['search'] = __('Search', 'sil_dictionary');
 		$admin_sections['browse'] = __('Browse Views', 'sil_dictionary');
 		$admin_sections['fonts'] = __('Fonts', 'sil_dictionary');
@@ -97,7 +97,7 @@ SQL;
 		return $wpdb->get_results($sql, 'ARRAY_A');
 	}
 
-	public static function use_pinyin($language_code) 
+	public static function use_pinyin($language_code)
 	{
 		return in_array($language_code, array('zh-CN', 'zh-Hans-CN'));
 	}

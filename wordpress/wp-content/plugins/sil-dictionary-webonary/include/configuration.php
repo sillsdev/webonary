@@ -303,7 +303,7 @@ function webonary_conf_widget($showTitle = false)
 		$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
 		$import_status = '';
 		if (!is_null($dictionary)) {
-			$import_status .= '<li>Last Import: <em>' . $dictionary->updatedAt . '</em>';
+			$import_status .= '<li>Last Upload: <em>' . $dictionary->updatedAt . '</em>';
 			$import_status .= '<li>Main Language (' . $dictionary->mainLanguage->lang . ')';
 			$import_status .= ' entries: <em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>';
 			$arrLanguageCodes[] = array(
@@ -388,16 +388,16 @@ function webonary_conf_widget($showTitle = false)
 			<?php
 			Webonary_Configuration::admin_section_start('import');
 			?>
-			<h3><?php _e('Import Data', 'sil_dictionary'); ?></h3>
+			<h3><?php _e('Upload Data', 'sil_dictionary'); ?></h3>
 
 			<form method="post" action="admin.php?import=pathway-xhtml&step=2">
 				<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
-					<strong>Import Status:</strong>
+					<strong>Upload Status:</strong>
 					<?php echo $import_status ?>
 				</div>
 			</form>
 
-			<p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to import your FLEx data', 'sil_dictionary'); ?></a></p>
+			<p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to upload your FLEx data', 'sil_dictionary'); ?></a></p>
 
 			<form id="configuration-form" method="post" action="">
 				<button type="submit" disabled style="display: none" aria-hidden="true"></button>
@@ -560,7 +560,7 @@ function webonary_conf_widget($showTitle = false)
 					if(count($arrLanguageCodes) == 0)
 					{
 						?>
-						<span style="color:red">You need to first import your dictionary.</span>
+						<span style="color:red">You need to first upload your dictionary.</span>
 						<br><br>
 						<?php
 					}
@@ -625,7 +625,7 @@ function webonary_conf_widget($showTitle = false)
 			<?php
 			if($noReversalEntries)
 			{
-				echo 'No reversal indexes imported.';
+				echo 'No reversal indexes uploaded.';
 			}
 			else
 			{
