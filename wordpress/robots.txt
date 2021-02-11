@@ -1,9 +1,0 @@
-# robots.txt 
-User-agent: *
-Disallow: /?s=*
-Disallow: /files/*
-Disallow: http://lunyole.webonary.org/dictionary/
-Disallow: http://lubwisi.webonary.org/lubwis-dictionary
-Disallow: http://lugwere.webonary.org/2012/06/22/hello-world/
-Disallow: http://lugwere.webonary.org/lugwere-dictionary/
-Disallow: /cgi-bin/

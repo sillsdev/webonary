@@ -3,4 +3,6 @@
 /*.iml
 /srdb/
 /*.sh
-/wordpress/*.htaccess
+!/composer_links.sh
+/vendor/
+/wordpress/
