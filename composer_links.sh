@@ -26,13 +26,21 @@ if [[ -f "$FILE" ]]; then
 fi
 
 
-## link files in the web root directory
-#FILES="${thisDir}/wp-resources/*.*"
-#for f in $FILES
-#do
-#  fn=$(basename "$f")
-#  ln -sfn "${f}" "${thisDir}/wordpress/${fn}"
-#done
+# set default favicon
+FILE="${thisDir}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
+if [[ -f "$FILE" ]]; then
+  rm -f "$FILE"
+fi
+ln -sfn "${thisDir}/wp-resources/favicon.ico" "${FILE}"
+
+
+# link files in the web root directory
+FILES="${thisDir}/wp-resources/*.*"
+for f in $FILES
+do
+  fn=$(basename "$f")
+  ln -sfn "${f}" "${thisDir}/wordpress/${fn}"
+done
 
 
 # remove stray wp-content directory
