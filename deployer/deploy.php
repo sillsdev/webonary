@@ -35,6 +35,8 @@ task('deploy:wp_config_symlink', function () {
 	// create link to the shared wp_config.php file
 	run("ln -sf {{deploy_path}}/shared/wp-config.php {{release_path}}/wordpress/wp-config.php");
 	run("ln -sf {{deploy_path}}/shared/.htaccess {{release_path}}/wordpress/.htaccess");
+	run("ln -sf {{deploy_path}}/shared/wp-cache-config.php {{release_path}}/wordpress/wp-content/wp-cache-config.php");
+	run("ln -sf {{release_path}}/wordpress/wp-content/plugins/wp-super-cache/advanced-cache.php {{release_path}}/wordpress/wp-content/advanced-cache.php");
 
 })->desc('Creating symlink to wordpress config file.');
 
