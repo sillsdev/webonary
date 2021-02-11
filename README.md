@@ -1,14 +1,18 @@
 # Monorepo of everything Webonary!
 
 ###  How to restore a backup locally
+
+If you haven't done it already, copy `updateDataLive2Work.php` to your
+home directory.
+
 ```
 mysql -uwebonary -p -A --default-character-set=utf8mb4 webonary
 mysql> SET names 'utf8';
 mysql> SOURCE webonary.sql;
-mysql> UPDATE wp_options SET option_value = replace(option_value, 'webonary.org', 'webonary.work') WHERE option_name = 'home' OR option_name = 'siteurl';
-mysql> UPDATE wp_posts SET guid = replace(guid, 'webonary.org','webonary.work');
-mysql> UPDATE wp_posts SET post_content = replace(post_content, 'webonary.org', 'webonary.work');
 mysql> UPDATE wp_blogs SET domain = replace(domain, 'webonary.org', 'webonary.work');
+mysql> quit
+cd ~/
+wp eval-file updateDataLive2Work.php --path='/var/www/sites/webonary.work/current/wordpress'
 ```
 
 ### How to use old submenus

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Usage: ./deploy [STAGE]
+#
+# Possible stage values: test, prod
+#
+# Usage example: ./deploy prod
+#
+
+deploy_stage=$1
+
+thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd "$thisDir/deployer"
+
+"${thisDir}/vendor/deployer/deployer/bin/dep" deploy -vvv "$deploy_stage"
+exitcode=$?
+
+cd "$thisDir"
+
+exit ${exitcode}
