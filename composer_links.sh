@@ -4,9 +4,13 @@ thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 # uploads directory
-ln -sfn "${thisDir}/shared/uploads/" "${thisDir}/wordpress/wp-content/uploads"
-ln -sfn "${thisDir}/shared/blogs.dir/" "${thisDir}/wordpress/wp-content/blogs.dir"
+if [[ -d "${thisDir}/shared/uploads" ]]; then
+  ln -sfn "${thisDir}/shared/uploads/" "${thisDir}/wordpress/wp-content/uploads"
+fi
 
+if [[ -d "${thisDir}/shared/blogs.dir" ]]; then
+  ln -sfn "${thisDir}/shared/blogs.dir/" "${thisDir}/wordpress/wp-content/blogs.dir"
+fi
 
 # mu-plugins directory
 ln -sfn "${thisDir}/wp-resources/mu-plugins/" "${thisDir}/wordpress/wp-content/mu-plugins"
