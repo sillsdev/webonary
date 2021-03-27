@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
 
 
+# color settings for error and success messages
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 
-# TODO: determine if this is testing or production deploy
+# the number of old releases to keep
+OLD_TO_KEEP=5
+
+
+# determine if this is testing or production deploy
+STAGE=${1:-testing}
+if [[ "${STAGE}" == "production" ]]; then
+  SERVER="sysops.webonary.org"
+  SITE_DIR="/var/www/sites/webonary.org"
+else
+  SERVER="sysops.webonary.work"
+  SITE_DIR="/var/www/sites/webonary.work"
+fi
 
 
 # get the actual path to the project directory
@@ -23,7 +36,7 @@ fi
 
 # get the next release directory
 RELEASES=()
-DIRS="$( rsync --list-only -e 'ssh' sysops.webonary.work:/var/www/sites/webonary.work/releases/ )"
+DIRS="$( rsync --list-only -e 'ssh' ${SERVER}:${SITE_DIR}/releases/ )"
 while IFS=' ' read -ra vars; do
   dir_name="${vars[-1]}"
 
@@ -41,16 +54,16 @@ NEXT_DIR="$((SORTED[-1] + 1))"
 
 # make the shared directories and files
 echo "Creating shared"
-rm -rf "/var/www/sites/webonary.work"
-mkdir -p "/var/www/sites/webonary.work/shared/uploads/"
-mkdir -p "/var/www/sites/webonary.work/shared/blogs.dir/"
-touch "/var/www/sites/webonary.work/shared/.htaccess"
-touch "/var/www/sites/webonary.work/shared/wp-config.php"
-touch "/var/www/sites/webonary.work/shared/wp-cache-config.php"
+rm -rf "${SITE_DIR}"
+mkdir -p "${SITE_DIR}/shared/uploads/"
+mkdir -p "${SITE_DIR}/shared/blogs.dir/"
+touch "${SITE_DIR}/shared/.htaccess"
+touch "${SITE_DIR}/shared/wp-config.php"
+touch "${SITE_DIR}/shared/wp-cache-config.php"
 
 
 # make the release directory
-RELEASE_DIR="/var/www/sites/webonary.work/releases/${NEXT_DIR}"
+RELEASE_DIR="${SITE_DIR}/releases/${NEXT_DIR}"
 rm -rf "${RELEASE_DIR}"
 mkdir -p "${RELEASE_DIR}"
 
@@ -79,6 +92,7 @@ rm -rf "${RELEASE_DIR}/wordpress/wp-content/wp-content"
 echo "Copying files from wp-resources."
 cp -r "${PROJ_DIR}/wp-resources/mu-plugins" "${RELEASE_DIR}/wordpress/wp-content/mu-plugins"
 cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
+cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
 
 
 # copy files in the web root directory
@@ -114,16 +128,16 @@ done
 
 # link the shared files and directories
 ln -sf "${RELEASE_DIR}/wordpress/wp-content/plugins/wp-super-cache/advanced-cache.php" "${RELEASE_DIR}/wordpress/wp-content/advanced-cache.php"
-ln -sf "/var/www/sites/webonary.work/shared/.htaccess" "${RELEASE_DIR}/wordpress/.htaccess"
-ln -sf "/var/www/sites/webonary.work/shared/wp-config.php" "${RELEASE_DIR}/wordpress/wp-config.php"
-ln -sf "/var/www/sites/webonary.work/shared/wp-cache-config.php" "${RELEASE_DIR}/wordpress/wp-content/wp-cache-config.php"
+ln -sf "${SITE_DIR}/shared/.htaccess" "${RELEASE_DIR}/wordpress/.htaccess"
+ln -sf "${SITE_DIR}/shared/wp-config.php" "${RELEASE_DIR}/wordpress/wp-config.php"
+ln -sf "${SITE_DIR}/shared/wp-cache-config.php" "${RELEASE_DIR}/wordpress/wp-content/wp-cache-config.php"
 
-ln -sfn "/var/www/sites/webonary.work/shared/uploads/" "${RELEASE_DIR}/wordpress/wp-content/uploads"
-ln -sfn "/var/www/sites/webonary.work/shared/blogs.dir/" "${RELEASE_DIR}/wordpress/wp-content/blogs.dir"
+ln -sfn "${SITE_DIR}/shared/uploads/" "${RELEASE_DIR}/wordpress/wp-content/uploads"
+ln -sfn "${SITE_DIR}/shared/blogs.dir/" "${RELEASE_DIR}/wordpress/wp-content/blogs.dir"
 
 
 # link from the new release to current
-ln -sfn "${RELEASE_DIR}" "/var/www/sites/webonary.work/current"
+ln -sfn "${RELEASE_DIR}" "${SITE_DIR}/current"
 
 
 # finished building the site
@@ -131,38 +145,50 @@ echo "Finished building the site."
 
 
 # copy the files to the server
-echo "copying files to the server."
-rsync -avz --chmod=D2775,F664 -e 'ssh' "${RELEASE_DIR}/." "sysops.webonary.work:${RELEASE_DIR}"
+echo "Copying files to the server."
+rsync -az --chmod=D2775,F664 -e 'ssh' "${RELEASE_DIR}/." "${SERVER}:${RELEASE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
-  echo -e "${RED}COPY FAILED!${NC}"
+  echo -e "\n============\n${RED}COPY FAILED!${NC}\n============\n"
   exit 1
 fi
 echo "Finished copying the site."
 
 
 # make the new release the current one
-rsync -avz --chmod=D2775,F664 -e 'ssh' "/var/www/sites/webonary.work/current" "sysops.webonary.work:/var/www/sites/webonary.work"
+rsync -az --chmod=D2775,F664 -e 'ssh' "${SITE_DIR}/current" "${SERVER}:${SITE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
-  echo -e "${RED}DEPLOY FAILED!${NC}"
+  echo -e "\n==============\n${RED}DEPLOY FAILED!${NC}\n==============\n"
   exit 1
 fi
 echo "Finished deploying the site."
 
 
 # remove an old release if we exceeded the desired threshold
-OLD_TO_KEEP=1
-LEN=${#RELEASES[@]}
-if [[ $LEN -gt 2 && $LEN -gt $OLD_TO_KEEP ]]; then
-  echo "Removing old release ${RELEASES[0]}."
-  mkdir -p "/var/www/sites/webonary.work/releases/${RELEASES[0]}"
-  rsync -arv --delete "--include=*" "/var/www/sites/webonary.work/releases/${RELEASES[0]}" "sysops.webonary.work:/var/www/sites/webonary.work/releases"
-fi
+# NOTE: rsync can empty the directory but not remove it, sftp can remove it but not empty it
+LEN=${#SORTED[@]}
+while [[ $LEN -gt 2 && $LEN -gt $OLD_TO_KEEP ]]
+do
+  echo "Removing old release ${SORTED[0]}."
+
+  # empty the directory on the server
+  mkdir -p "${SITE_DIR}/releases/${SORTED[0]}"
+  rsync -ar --delete --include='*' "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
+
+  # remove the directory we want to delete
+  sftp "${SERVER}" <<< $"rmdir ${SITE_DIR}/releases/${SORTED[0]}"
+
+  # remove the directory from the list
+  SORTED=("${SORTED[@]:1}")
+  LEN=${#SORTED[@]}
+done
 
 
 # clean up
-echo 'Cleaning up.'
-rm -rf "/var/www/sites/webonary.work"
+echo "Cleaning up."
+rm -rf "${SITE_DIR}"
 
+
+# successfully deployed
 echo -e "\n========\n${GREEN}SUCCESS!${NC}\n========\n"
