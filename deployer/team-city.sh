@@ -174,10 +174,11 @@ do
 
   # empty the directory on the server
   mkdir -p "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -ar --delete --include='*' "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include='*' "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory we want to delete
-  sftp "${SERVER}" <<< $"rmdir ${SITE_DIR}/releases/${SORTED[0]}"
+  rm -rf "${SITE_DIR}/releases/${SORTED[0]}"
+  rsync -a --delete --include=${SORTED[0]} --exclude='*' "${SITE_DIR}/releases/." "${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory from the list
   SORTED=("${SORTED[@]:1}")
