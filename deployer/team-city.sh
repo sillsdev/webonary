@@ -11,14 +11,18 @@ NC='\033[0m' # No Color
 OLD_TO_KEEP=5
 
 
+# ssh options
+SSH_OPTIONS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+
+
 # determine if this is testing or production deploy
 STAGE=${1:-testing}
 if [[ "${STAGE}" == "production" ]]; then
   SERVER="sysops.webonary.org"
-  SITE_DIR="/var/www/sites/webonary.org"
+  SITE_DIR="/var/www/sites/webonary"
 else
   SERVER="sysops.webonary.work"
-  SITE_DIR="/var/www/sites/webonary.work"
+  SITE_DIR="/var/www/sites/webonary"
 fi
 
 
@@ -36,7 +40,7 @@ fi
 
 # get the next release directory
 RELEASES=()
-DIRS="$( rsync --list-only -e 'ssh' ${SERVER}:${SITE_DIR}/releases/ )"
+DIRS="$( rsync --list-only -e "ssh ${SSH_OPTIONS}" ${SERVER}:${SITE_DIR}/releases/ )"
 while IFS=' ' read -ra vars; do
   dir_name="${vars[-1]}"
 
@@ -146,7 +150,7 @@ echo "Finished building the site."
 
 # copy the files to the server
 echo "Copying files to the server."
-rsync -az --chmod=D2775,F664 -e 'ssh' "${RELEASE_DIR}/." "${SERVER}:${RELEASE_DIR}"
+rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${RELEASE_DIR}/." "${SERVER}:${RELEASE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   echo -e "\n============\n${RED}COPY FAILED!${NC}\n============\n"
@@ -156,7 +160,7 @@ echo "Finished copying the site."
 
 
 # make the new release the current one
-rsync -az --chmod=D2775,F664 -e 'ssh' "${SITE_DIR}/current" "${SERVER}:${SITE_DIR}"
+rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/current" "${SERVER}:${SITE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   echo -e "\n==============\n${RED}DEPLOY FAILED!${NC}\n==============\n"
@@ -166,7 +170,6 @@ echo "Finished deploying the site."
 
 
 # remove an old release if we exceeded the desired threshold
-# NOTE: rsync can empty the directory but not remove it, sftp can remove it but not empty it
 LEN=${#SORTED[@]}
 while [[ $LEN -gt 2 && $LEN -gt $OLD_TO_KEEP ]]
 do
@@ -174,11 +177,11 @@ do
 
   # empty the directory on the server
   mkdir -p "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -a --delete --include='*' "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory we want to delete
   rm -rf "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -a --delete --include=${SORTED[0]} --exclude='*' "${SITE_DIR}/releases/." "${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include=${SORTED[0]} --exclude='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/." "${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory from the list
   SORTED=("${SORTED[@]:1}")
