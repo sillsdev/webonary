@@ -15,8 +15,34 @@ OLD_TO_KEEP=5
 SSH_OPTIONS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 
+# parse the command line options
+STAGE='testing'
+SSH_USER=''
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+
+  case $key in
+    -s|--stage)
+    STAGE="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -u|--user)
+    SSH_USER="$2@"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+  esac
+done
+
+
 # determine if this is testing or production deploy
-STAGE=${1:-testing}
 if [[ "${STAGE}" == "production" ]]; then
   SERVER="sysops.webonary.org"
   SITE_DIR="/var/www/sites/webonary"
@@ -40,7 +66,7 @@ fi
 
 # get the next release directory
 RELEASES=()
-DIRS="$( rsync --list-only -e "ssh ${SSH_OPTIONS}" ${SERVER}:${SITE_DIR}/releases/ )"
+DIRS="$( rsync --list-only -e "ssh ${SSH_OPTIONS}" ${SSH_USER}${SERVER}:${SITE_DIR}/releases/ )"
 while IFS=' ' read -ra vars; do
   dir_name="${vars[-1]}"
 
@@ -150,7 +176,7 @@ echo "Finished building the site."
 
 # copy the files to the server
 echo "Copying files to the server."
-rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${RELEASE_DIR}/." "${SERVER}:${RELEASE_DIR}"
+rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${RELEASE_DIR}/." "${SSH_USER}${SERVER}:${RELEASE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   echo -e "\n============\n${RED}COPY FAILED!${NC}\n============\n"
@@ -160,7 +186,7 @@ echo "Finished copying the site."
 
 
 # make the new release the current one
-rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/current" "${SERVER}:${SITE_DIR}"
+rsync -az --chmod=D2775,F664 -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/current" "${SSH_USER}${SERVER}:${SITE_DIR}"
 EXIT_CODE=$?
 if [[ $EXIT_CODE -ne 0 ]]; then
   echo -e "\n==============\n${RED}DEPLOY FAILED!${NC}\n==============\n"
@@ -177,11 +203,11 @@ do
 
   # empty the directory on the server
   mkdir -p "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -a --delete --include='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/${SORTED[0]}" "${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/${SORTED[0]}" "${SSH_USER}${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory we want to delete
   rm -rf "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -a --delete --include=${SORTED[0]} --exclude='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/." "${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include=${SORTED[0]} --exclude='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/." "${SSH_USER}${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory from the list
   SORTED=("${SORTED[@]:1}")
