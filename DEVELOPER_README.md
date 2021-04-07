@@ -96,3 +96,46 @@ may need to install `make`.
 ```bash
 make test
 ```
+
+### Restore MySQL backup to webonary.work
+
+*NOTE: this process may take several hours.*
+
+For this to work, you will need to create a MySQL config file `~/.mysql/my.local.conf` and put this in it:
+```ini
+[mysql]
+user=your_user
+password="your_password"
+host=localhost
+protocol=tcp
+port=3306
+
+[mysqldump]
+user=your_user
+password="your_password"
+host=localhost
+protocol=tcp
+port=3306
+```
+
+1. Download a backup from <https://s3.amazonaws.com/backups.languagetechnology.org/webonary.org/mysql/daily/webonary/>
+2. Rename the downloaded file to `webonary.sql.gz`
+3. Transfer the file to webonary.work:
+   ```
+   rsync -avz --chmod=D2775,F664 -e 'ssh' ~/Downloads/webonary.sql.gz sysops.webonary.work:~/webonary.sql.gz
+   ```
+4. On webonary.work run these commands:
+   ```
+   cd ~/
+   rm -f webonary.sql
+   gunzip webonary.sql.gz
+   mysql --defaults-file=~/.mysql/my.local.conf -A --default-character-set=utf8mb4 webonary
+   mysql> SOURCE webonary.sql;
+   mysql> UPDATE wp_blogs SET domain = replace(domain, 'webonary.org', 'webonary.work');
+   mysql> quit
+   mkdir -p /var/www/sites/webonary.work/current/wordpress/wp-content/wflogs
+   touch /var/www/sites/webonary.work/current/wordpress/wp-content/wflogs/rules.php
+   wp eval-file updateDataLive2Work.php --path='/var/www/sites/webonary.work/current/wordpress'
+   wp cache flush --path='/var/www/sites/webonary.work/current/wordpress'
+   ```
+5. That's it, you're finished!
