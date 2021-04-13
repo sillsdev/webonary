@@ -4,7 +4,6 @@ Installation of WordPress and most plugins is handled with Composer. If
 you aren't familiar with Composer, you can get instructions on installation
 and how to use it here (<https://getcomposer.org/>).
 
-
 ### Getting Started
 
 The first steps are to clone the repository and install WordPress. The
@@ -134,6 +133,7 @@ port=3306
    mysql> SOURCE webonary.sql;
    mysql> UPDATE wp_blogs SET domain = replace(domain, 'webonary.org', 'webonary.work');
    mysql> quit
+
    mkdir -p /var/www/sites/webonary/current/wordpress/wp-content/wflogs
    touch /var/www/sites/webonary/current/wordpress/wp-content/wflogs/rules.php
    wp eval-file updateDataLive2Work.php --path='/var/www/sites/webonary/current/wordpress'
