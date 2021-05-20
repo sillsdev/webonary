@@ -1,0 +1,2 @@
+<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+<p><label for="<?php echo $this->get_field_id('default_option'); ?>"><?php _e('Default Option:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('default_option'); ?>" name="<?php echo $this->get_field_name('default_option'); ?>" type="text" value="<?php echo $default_option; ?>" /></p>

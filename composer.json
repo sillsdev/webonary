@@ -50,7 +50,6 @@
     "wpackagist-plugin/infinite-scroll": "^2.6",
     "wpackagist-plugin/inline-google-spreadsheet-viewer": "^0.13.2",
     "wpackagist-plugin/jquery-updater": "3.5.1.2",
-    "wpackagist-plugin/links-dropdown-widget": "^1.1",
     "wpackagist-plugin/list-categories": "^0.3.0",
     "wpackagist-plugin/magazine-columns": "^1.0",
     "wpackagist-plugin/multisite-plugin-manager": "^3.1",
