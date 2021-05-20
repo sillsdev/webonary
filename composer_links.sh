@@ -23,6 +23,13 @@ if [[ -f "$FILE" ]]; then
 fi
 
 
+# link wp-config
+FILE="${thisDir}/shared/config/wp-cache-config.php"
+if [[ -f "$FILE" ]]; then
+  ln -sfn "${FILE}" "${thisDir}"/wordpress/wp-content/wp-cache-config.php
+fi
+
+
 # link .htaccess
 FILE="${thisDir}/shared/config/.htaccess"
 if [[ -f "$FILE" ]]; then
