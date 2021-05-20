@@ -24,6 +24,6 @@
 
 #linkGo:hover, #linkGo.highlight {
 	color:white;
-	background-color: #85005b;
+	background-color: green; /* #85005b; */
 	border-color: #57013c;
 }
