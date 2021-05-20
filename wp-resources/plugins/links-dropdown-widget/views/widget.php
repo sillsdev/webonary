@@ -1,5 +1,5 @@
 <?php
-global $wpdb;
+global $wpdb, $default_option;
 $cats = get_terms('link_category', array('name__like' => '', 'exclude' => '2'));
 foreach ( (array) $cats as $cat ) {
 	$sql = "SELECT link_url, link_name, term_taxonomy_id " .
