@@ -224,7 +224,9 @@ wget "${CACHE_SCRIPT}" -O /dev/null
 
 # clean up
 echo "Cleaning up."
-rm -rf "${SITE_DIR}"
+rm -rf "${SITE_DIR}/shared"
+rm -rf "${SITE_DIR}/releases"
+rm -rf "${SITE_DIR}/current"
 
 
 # successfully deployed
