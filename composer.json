@@ -32,6 +32,7 @@
   },
   "require": {
     "php": ">=7.3",
+    "ext-gettext": "*",
     "johnpbloch/wordpress": ">=5.6",
     "wpackagist-plugin/akismet": "^4.1",
     "wpackagist-plugin/blog-copier": "^1.0",
@@ -49,8 +50,8 @@
     "wpackagist-plugin/imsanity": "^2.7",
     "wpackagist-plugin/infinite-scroll": "^2.6",
     "wpackagist-plugin/inline-google-spreadsheet-viewer": "^0.13.2",
-    "wpackagist-plugin/jquery-updater": "3.5.1.2",
-    "wpackagist-plugin/list-categories": "^0.3.0",
+    "wpackagist-plugin/jquery-updater": "3.6.0.1",
+    "wpackagist-plugin/list-categories": "^0.4.0",
     "wpackagist-plugin/magazine-columns": "^1.0",
     "wpackagist-plugin/multisite-plugin-manager": "^3.1",
     "wpackagist-plugin/opml-importer": "^0.2.0",

@@ -1,6 +1,7 @@
 <?php
 global $wpdb, $default_option;
 $cats = get_terms('link_category', array('name__like' => '', 'exclude' => '2'));
+$bookmarks = [];
 foreach ( (array) $cats as $cat ) {
 	$sql = "SELECT link_url, link_name, term_taxonomy_id " .
 			" FROM wp_links " .
@@ -35,7 +36,8 @@ foreach ( (array) $cats as $cat ) {
 </select><button type="button" name="btnLinkGo" id=linkGo value="Go" onclick="onUserClicked()">Go</button>
 
 </form>
-<script>
+<!--suppress JSUnusedAssignment -->
+<script type="application/javascript">
     /** @type {Array[]} */
     const dictionariesAll = <?php echo json_encode($bookmarks); ?>;
 
