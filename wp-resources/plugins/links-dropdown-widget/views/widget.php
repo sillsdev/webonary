@@ -26,7 +26,7 @@ foreach ( (array) $cats as $cat ) {
 		$countryOutput .= '<option value="'.$country->term_id.'">'.$country->name.'</option>';
 	}
 ?>
-<select id="countries" name="link-dropdown1" onchange="onUserSelectCountry()" style="margin-bottom:2px;" title="">
+<select id="countries" name="link-dropdown1" onchange="onUserSelectCountry()" style="margin-bottom:3px;" title="">
 	<option value="8"><?php echo gettext("Select Country") ?></option>
 	<?php echo $countryOutput ?>
 </select>
