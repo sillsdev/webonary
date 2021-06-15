@@ -1,0 +1,29 @@
+#publishedSites, #countries {
+	width: 230px;
+	padding: 5px;
+	font-size: 1em;
+	color: #474747;
+	border: 1px solid #ccc;
+	outline: 0;
+}
+
+#publishedSites, #countries option{
+	font-size: 1em !important;
+}
+
+#linkGo {
+	padding: 7px;
+	font-size: 1em;
+	font-weight: 700;
+	border: 1px solid #ccc;
+	margin-left: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+	color: #444;
+}
+
+#linkGo:hover, #linkGo.highlight {
+	color:white;
+	background-color: #85005b;
+	border-color: #57013c;
+}

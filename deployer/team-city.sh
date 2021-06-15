@@ -46,9 +46,11 @@ done
 if [[ "${STAGE}" == "production" ]]; then
   SERVER="sysops.webonary.org"
   SITE_DIR="/var/www/sites/webonary"
+  CACHE_SCRIPT="https://webonary.org/clear-wordpress-cache.php"
 else
   SERVER="sysops.webonary.work"
   SITE_DIR="/var/www/sites/webonary"
+  CACHE_SCRIPT="https://webonary.work/clear-wordpress-cache.php"
 fi
 
 
@@ -66,7 +68,7 @@ fi
 
 # get the next release directory
 RELEASES=()
-DIRS="$( rsync --list-only -e "ssh ${SSH_OPTIONS}" ${SSH_USER}${SERVER}:${SITE_DIR}/releases/ )"
+DIRS="$( rsync --list-only -e "ssh ${SSH_OPTIONS}" "${SSH_USER}"${SERVER}:${SITE_DIR}/releases/ )"
 while IFS=' ' read -ra vars; do
   dir_name="${vars[-1]}"
 
@@ -123,6 +125,7 @@ echo "Copying files from wp-resources."
 cp -r "${PROJ_DIR}/wp-resources/mu-plugins" "${RELEASE_DIR}/wordpress/wp-content/mu-plugins"
 cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
 cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
+cp "${PROJ_DIR}/wp-resources/clear-wordpress-cache.php" "${RELEASE_DIR}/wordpress/clear-wordpress-cache.php"
 
 
 # copy files in the web root directory
@@ -207,7 +210,7 @@ do
 
   # remove the directory we want to delete
   rm -rf "${SITE_DIR}/releases/${SORTED[0]}"
-  rsync -a --delete --include=${SORTED[0]} --exclude='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/." "${SSH_USER}${SERVER}:${SITE_DIR}/releases"
+  rsync -a --delete --include="${SORTED[0]}" --exclude='*' -e "ssh ${SSH_OPTIONS}" "${SITE_DIR}/releases/." "${SSH_USER}${SERVER}:${SITE_DIR}/releases"
 
   # remove the directory from the list
   SORTED=("${SORTED[@]:1}")
@@ -215,9 +218,15 @@ do
 done
 
 
+# clear the cache
+wget "${CACHE_SCRIPT}" -O /dev/null
+
+
 # clean up
 echo "Cleaning up."
-rm -rf "${SITE_DIR}"
+rm -rf "${SITE_DIR}/shared"
+rm -rf "${SITE_DIR}/releases"
+rm -rf "${SITE_DIR}/current"
 
 
 # successfully deployed
