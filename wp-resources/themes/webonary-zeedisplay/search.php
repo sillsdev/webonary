@@ -1,10 +1,14 @@
-<?php get_header();
-//require("highlight-code.php");
+<?php
+/** @noinspection PhpMultipleClassDeclarationsInspection */
+get_header();
+
+$rtl = get_option('vernacularRightToLeft') == '1';
+$align_class = $rtl ? 'right' : 'left';
 ?>
 <script type="text/javascript">
 function openImage(image)
 {
-	window.open('<?php echo get_bloginfo("template_directory"); ?>/image.php?img=' + image,'popuppage1','width=500,height=400,top=50,left=200,scrollbars=yes');
+	window.open('<?php echo get_bloginfo('template_directory'); ?>/image.php?img=' + image,'popuppage1','width=500,height=400,top=50,left=200,scrollbars=yes');
 }
 </script>
 
@@ -43,7 +47,7 @@ function openImage(image)
 		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
 		<?php
 		//search string are normalized to NFC
-		if (class_exists("Normalizer", $autoload = false))
+		if (class_exists('Normalizer', $autoload = false))
 		{
 			$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
 		}
@@ -53,7 +57,7 @@ function openImage(image)
 		}
 
         if (have_posts()) : ?>
-			<div id="searchresults">
+			<div id="searchresults" class="<?php echo $align_class; ?>">
 				<?php while (have_posts()) : the_post(); ?>
 					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php webonary_zeedisplay_display_entry_header(); ?>
@@ -93,15 +97,11 @@ if(strlen(trim($query)) > 0)
 		$lenient = false;
 	}
 ?>
-<script language=JavaScript>
-<!--
- 	//highlightSearchTerms('<?php echo trim(str_replace("'", "#", the_title())); ?>');
+<script>
 	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', <?php echo $lenient; ?>);
--->
 </script>
 <?php
 }
 ?>
 <?php
 get_footer();
-?>

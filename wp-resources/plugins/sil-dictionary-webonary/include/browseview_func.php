@@ -1,5 +1,8 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
+/** @noinspection HtmlUnknownTarget */
+/** @noinspection CssUnusedSymbol */
 
 /**
  * @param array $atts
@@ -33,6 +36,7 @@ function categories_func($atts, $content, $shortcode_tag)
 	}
 
 	$arrDomains = array();
+	$dictionaryId = null;
 	if (get_option('useCloudBackend'))
 	{
 		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
@@ -65,11 +69,12 @@ function categories_func($atts, $content, $shortcode_tag)
 		$arrDomains = $wpdb->get_results($sql, ARRAY_A);
 	}
 ?>
-	<style>
+
+    <style>
 	   TD {font-size: 9pt; font-family: arial,helvetica,sans-serif; text-decoration: none; font-weight: bold;}
 	   a.categorylink {text-decoration: none; color: navy; font-size: 15px; padding: 3px;}
 	   #domRoot {
-	   	float:left; width:250px; margin-left: 20px; margin-top: 5px;
+		   float:left; width:250px; margin-left: 20px; margin-top: 5px;
 	   }
 		</style>
 		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
@@ -80,17 +85,6 @@ function categories_func($atts, $content, $shortcode_tag)
 		<!-- Execution of the code that actually builds the specific tree.
 		The variable foldersTree creates its structure with calls to gFld, insFld, and insDoc -->
 		<?php
-		//if(get_option("useSemDomainNumbers") == 0 || 1 == 1)
-		/*
-		if(get_option("useSemDomainNumbers") == 0)
-		{
-		?>
-			<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_<?php echo $qTransLang; ?>.js" type="text/javascript"></script>
-		<?php
-		}
-		else
-		{
-		*/
 		require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
 
 		//if no semantic domains were imported, use the default domains defined in default_domains.php
@@ -272,13 +266,13 @@ HTML;
 	$font_family = get_option('vernacularLettersFont') ?: 'inherit';
 
 	return <<<HTML
-<style type="text/css">
-	#chosenLetterHead, .lpTitleLetter {font-family: {$font_family}}
+<style>
+	#chosenLetterHead, .lpTitleLetter {font-family: $font_family}
 </style>
 <br>
 <div style="text-align:center;">
-	<div style="display:inline-block;" class="{$dir_class}">
-		{$content}
+	<div style="display:inline-block;" class="$dir_class">
+		$content
 	</div>
 </div>
 <div style=clear:both></div>
@@ -396,6 +390,7 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 	return $display;
 }
 
+/** @noinspection PhpUnused */
 function english_alphabet_func($atts, $content, $tag)
 {
 	if(strlen(trim(get_option('reversal1_alphabet'))) == 0)
@@ -480,16 +475,16 @@ function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $
 	$postsPerPage = $postsPerPage ?? Webonary_Utility::getPostsPerPage();
 	$limitSql = getLimitSql($page, $postsPerPage);
 
-	$result = $wpdb->get_results("SHOW COLUMNS FROM ". REVERSALTABLE . " LIKE 'sortorder'");
-	$sortorderExists = (count($result))?TRUE:FALSE;
+	$result = $wpdb->get_var('SHOW COLUMNS FROM '. REVERSALTABLE . ' LIKE \'sortorder\'');
+	$sortorderExists = !is_null($result);
 
-	$alphabet = str_replace(",", "", get_option('reversal' . $reversalnr . '_alphabet'));
-	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN";
+	$alphabet = str_replace(',', '', get_option('reversal' . $reversalnr . '_alphabet'));
+	$collate = 'COLLATE ' . MYSQL_CHARSET . '_BIN';
 
-	$sql = "SELECT SQL_CALC_FOUND_ROWS reversal_content " .
-	" FROM " . REVERSALTABLE  .
-	" WHERE 1 = 1 ";
-	if($letter != "")
+	$sql = 'SELECT SQL_CALC_FOUND_ROWS reversal_content ' .
+	' FROM ' . REVERSALTABLE  .
+	' WHERE 1 = 1 ';
+	if($letter != '')
 	{
 		//new imports use the letter header from FLEx for grouping
 		if(get_has_reversal_browseletters())
@@ -590,9 +585,7 @@ function reversalalphabet_func($atts, $content, $tag)
 	$alphas = explode(",",  get_option('reversal' . $reversalnr . '_alphabet'));
 	$display = displayAlphabet($alphas, get_option('reversal' . $reversalnr . '_langcode'), $rtl);
 
-	$display = reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'), $reversalnr);
-
-	return $display;
+	return reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'), $reversalnr);
 }
 
 function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
@@ -816,7 +809,7 @@ function get_letter($firstLetterOfAlphabet = "") {
 	}
 	$chosenLetter = stripslashes(trim($_GET['letter']));
 	// REVIEW: Do we really want to silently fail if this is not true? CP 2017-02
-	if (class_exists("Normalizer", $autoload = false))
+	if (class_exists('Normalizer', false))
 	{
 		$normalization = Normalizer::FORM_C;
 		if(get_option("normalization") == "FORM_D")
@@ -940,13 +933,13 @@ HTML;
 	$page_nums = displayPageNumbers($chosenLetter, $totalEntries, $postsPerPage, $language_code);
 
 	$html = <<<HTML
-{$display}
-<div id="searchresults" class="vernacular-results {$align_class}">
-	{$content}
+$display
+<div id="searchresults" class="vernacular-results $align_class">
+	$content
 </div>
 <div class="center">
 	<br>
-	{$page_nums}
+	$page_nums
 </div>
 <br>
 HTML;
