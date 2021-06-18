@@ -15,9 +15,9 @@
  */
 function categories_func($atts, $content, $shortcode_tag)
 {
-	global $wpdb, $defaultDomain;
+	global $wpdb, $defaultDomain, $wp_query;
 
-	$display = "";
+	$display = '<div id="domRoot"></div>' . PHP_EOL;
 
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
@@ -68,96 +68,25 @@ function categories_func($atts, $content, $shortcode_tag)
 
 		$arrDomains = $wpdb->get_results($sql, ARRAY_A);
 	}
-?>
 
-    <style>
-	   TD {font-size: 9pt; font-family: arial,helvetica,sans-serif; text-decoration: none; font-weight: bold;}
-	   a.categorylink {text-decoration: none; color: navy; font-size: 15px; padding: 3px;}
-	   #domRoot {
-		   float:left; width:250px; margin-left: 20px; margin-top: 5px;
-	   }
-		</style>
-		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ua.js" type="text/javascript"></script>
+	$blog_url = get_bloginfo('wpurl');
 
-		<!-- Infrastructure code for the tree -->
-		<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js" type="text/javascript"></script>
+	wp_register_script('webonary_ua_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ua.js', [], false, true);
+	wp_enqueue_script('webonary_ua_script');
 
-		<!-- Execution of the code that actually builds the specific tree.
-		The variable foldersTree creates its structure with calls to gFld, insFld, and insDoc -->
-		<?php
-		require_once( dirname( __FILE__ ) . '/semdomains_func.php' );
+	wp_register_script('webonary_ftiens_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js', [], false, true);
+	wp_enqueue_script('webonary_ftiens_script');
 
-		//if no semantic domains were imported, use the default domains defined in default_domains.php
-		if(count($arrDomains) == 0)
-		{
-			$d = 0;
-			foreach ($defaultDomain as $key => $value)
-			{
-				$arrDomains[$d]['slug'] = str_replace(".", "-", rtrim($key, "."));
-				$arrDomains[$d]['name'] = $value;
-				$d++;
-			}
-		}
+	$js = Webonary_SemanticDomains::GetJavaScript($arrDomains, $defaultDomain, $qTransLang);
+	wp_add_inline_script('webonary_ftiens_script', $js);
 
-		//echo "<script language=\"JavaScript\">";
-
-		foreach($arrDomains as $domain)
-		{
-			//echo $domain['slug'] . " " . $domain['name'] . "\n";
-
-			$slug = $domain['slug'];
-			$domainNumber = $domain['slug'];
-
-			$domainNumberAsInt = preg_replace('/-/', '', $domainNumber);
-
-			if(is_numeric($domainNumberAsInt))
-			{
-				$currentSemDomain =  $slug . " " . $domain['name'];
-
-				$levelOfDomain = substr_count("$domainNumber","-") + 1;
-
-				printRootDomainIfNeeded($domainNumber);
-
-				buildTreeToSupportThisItem($domainNumber, $levelOfDomain);
-
-				$domainNumberModified = preg_replace('/-/', '.', $domainNumber) . '.';
-
-				$domainName = trim(substr($currentSemDomain, strlen($domainNumber), strlen($currentSemDomain)));
-
-				if($qTransLang == "en")
-				{
-					if(isset($defaultDomain[$domainNumberModified]))
-					{
-						$domainName = $defaultDomain[$domainNumberModified];
-					}
-				}
-				else
-				{
-					$domainName = __($domainName, 'sil_dictionary');
-				}
-				$newString = "$domainNumberModified" . " " . $domainName;
-				outputSemDomAsJava($levelOfDomain, $newString);
-				$currentDigits = explode('-', $domainNumber);
-				setLastSemDom($currentDigits);
-			}
-
-		}
-
-		echo "</script>";
-	//}
-	?>
-	<!-- Build the browser's objects and display default view of the tree. -->
-	<script type="text/javascript">
-		initializeDocument();
-	</script>
-<?php
-	global $wp_query;
 	$pagenr = Webonary_Utility::getPageNumber();
 
 	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
 	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
 	$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
 	$arrPosts = null;
+
 	$display .= '<div id="searchresults" class="semantic-domain">';
 	if($semnumber != '')
 	{
@@ -221,7 +150,6 @@ function displayAlphabet($alphas, $languageCode, $rtl)
 {
 	global $wpdb;
 
-	$align_class = $rtl ? 'right' : 'left';
 	$dir_class = $rtl ? 'rtl' : 'ltr';
 
 	if(trim($alphas[0]) == "" && is_front_page())
@@ -594,7 +522,6 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 
 	$rtl = get_option('reversal' . $reversalnr . 'RightToLeft') == '1';
 	$align_class = $rtl ? 'right' : 'left';
-	$dir_class = $rtl ? 'rtl' : 'ltr';
 
 	$pagenr = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
@@ -827,7 +754,6 @@ function vernacularalphabet_func( $atts )
 
 	$rtl = get_option('vernacularRightToLeft') == '1';
 	$align_class = $rtl ? 'right' : 'left';
-	$dir_class = $rtl ? 'rtl' : 'ltr';
 
 	if (get_option('useCloudBackend'))
 	{
