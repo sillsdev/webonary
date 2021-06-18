@@ -1,5 +1,5 @@
 <?php get_header();
-require("highlight-code.php");
+include 'highlight-code.php';
 ?>
 	<div style="padding: 10px 25px;">
 	<div id="content">
@@ -34,16 +34,13 @@ require("highlight-code.php");
 		<?php get_sidebar(); ?>
 <?php get_footer(); ?>
 <?php
-if(strlen(trim($query)) > 0)
-{
+if (isset($query) && strlen(trim($query)) > 0) {
+    $trimmed = trim(str_replace('\'', '#', $query));
 ?>
-<script language=JavaScript>
-<!--
- 	//highlightSearchTerms('<?php echo trim(str_replace("'", "#", the_title())); ?>');
-	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', true);
-	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', true);
-//-->
+<script type="text/javascript">
+	jQuery("#searchresults")
+		.highlight('<?php echo $trimmed; ?>', true)
+		.highlight('<?php echo $trimmed; ?>', true);
 </script>
 <?php
 }
-?>

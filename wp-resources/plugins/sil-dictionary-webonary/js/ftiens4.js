@@ -192,13 +192,13 @@ function drawFolder(insertAtObj)
 
   if (insertAtObj == null)
   {
-	  //if (supportsDeferral) {
-		  doc.write("<div id=domRoot></div>") //transition between regular flow HTML, and node-insert DOM DHTML
-		  insertAtObj = getElById("domRoot")
-		  insertAtObj.insertAdjacentHTML("beforeEnd", docW)
-	 // }
-	  //else
-		//  doc.write(docW)
+    insertAtObj = document.getElementById('domRoot');
+    if (insertAtObj == null) {
+      doc.write("<div id=domRoot></div>") //transition between regular flow HTML, and node-insert DOM DHTML
+      insertAtObj = getElById("domRoot")
+    }
+
+    insertAtObj.insertAdjacentHTML("beforeEnd", docW)
   }
   else
   {
@@ -1173,4 +1173,3 @@ function initializeDocument()
     }
   }
 }
-

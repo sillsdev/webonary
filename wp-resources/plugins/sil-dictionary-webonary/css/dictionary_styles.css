@@ -52,6 +52,26 @@ span.comment {background: none; padding: 0}
 .minorentryvariant,
 .mainentrysubentries .mainentrysubentry {clear:none !important; white-space:unset !important}
 
+td {
+    font-size: 9pt;
+    font-family: arial, helvetica, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.categorylink {
+    text-decoration: none;
+    color: navy;
+    font-size: 15px;
+    padding: 3px;
+}
+
+#domRoot {
+    float: left;
+    width: 250px;
+    margin: 5px 0 20px 20px;
+}
+
 @media(max-width: 699px) {
     #searchresults.semantic-domain {
         width: auto;
