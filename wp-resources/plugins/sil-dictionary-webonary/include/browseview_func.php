@@ -17,6 +17,8 @@ function categories_func($atts, $content, $shortcode_tag)
 {
 	global $wpdb, $defaultDomain, $wp_query;
 
+	Webonary_SemanticDomains::GetRoots();
+
 	$display = '<div id="domRoot"></div>' . PHP_EOL;
 
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
@@ -67,6 +69,23 @@ function categories_func($atts, $content, $shortcode_tag)
 		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
 
 		$arrDomains = $wpdb->get_results($sql, ARRAY_A);
+	}
+
+	// translate the domain names
+	foreach ( $arrDomains as &$domain ) {
+
+		// check if value is only digits or dash
+		if ( ! preg_match( '/^([0-9\-]+)$/', $domain['slug'] ) ) {
+			continue;
+		}
+
+		$domain_number = str_replace( '-', '.', $domain['slug'] ) . '.';
+
+		if ( $qTransLang == 'en' && isset( $defaultDomain[ $domain_number ] ) ) {
+			$domain['name'] = $defaultDomain[ $domain_number ];
+		} else {
+			$domain['name'] = __( $domain['name'], 'sil_dictionary' );
+		}
 	}
 
 	$blog_url = get_bloginfo('wpurl');

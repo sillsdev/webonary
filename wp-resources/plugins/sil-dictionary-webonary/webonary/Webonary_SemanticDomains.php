@@ -12,7 +12,7 @@ class Webonary_SemanticDomains {
 	private static $rootDomainPrinted;
 	private static $lastSemDom = [ 0, 0, 0, 0, 0, 0 ];
 
-	private static function GetRoots() {
+	public static function GetRoots() {
 
 		global $webonary_include_path;
 
