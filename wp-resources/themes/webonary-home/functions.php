@@ -251,4 +251,17 @@ function add_search_form_to_menu($items, $args) {
  return $items . '<li class="my-nav-menu-search" style="background-color: #FFFFFF;">' . get_search_form(false) . '</li>';
 }
 */
-?>
+
+
+function webonary_home_enqueue_jquery() {
+
+	wp_deregister_script( 'jquery-core' );
+	wp_register_script( 'jquery-core', 'https://code.jquery.com/jquery-3.5.1.min.js', [], '3.5.1' );
+
+	wp_deregister_script( 'jquery-migrate' );
+	wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.3.2.min.js', ['jquery-core'], '3.3.2' );
+}
+
+// load jquery first
+add_action('wp_enqueue_scripts', 'webonary_home_enqueue_jquery', 5);
+add_action('login_enqueue_scripts', 'webonary_home_enqueue_jquery', 5);
