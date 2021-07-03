@@ -72,6 +72,23 @@ a.categorylink {
     margin: 5px 0 20px 20px;
 }
 
+.entry-table table {
+    border: none;
+    width: auto;
+    margin: 8px auto 20px 5px
+}
+
+.entry-table table th {
+    text-align: center;
+    border: none;
+    padding: 5px;
+}
+
+.entry-table table td {
+    border: none;
+    padding: 2px 5px;
+}
+
 @media(max-width: 699px) {
     #searchresults.semantic-domain {
         width: auto;
