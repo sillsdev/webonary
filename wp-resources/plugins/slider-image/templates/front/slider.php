@@ -191,102 +191,131 @@
     <?php } ?>
 </div>
 <script>
-    var slider;
+    let slider;
+    let init_try_count = 0;
 
-    jQuery(function () {
-        switch (singleSlider_<?php echo $slider_id; ?>.view) {
-            case 'none':
-                jQuery('#slider_<?php echo $slider_id; ?>').sliderPlugin({
-                    maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
-                    maxHeight: singleSlider_<?php echo $slider_id; ?>.height,
-                    transition: singleSlider_<?php echo $slider_id; ?>.effect,
-                    controls: singleSlider_<?php echo $slider_id; ?>.navigate_by,
-                    cropImage: hugeitSliderObj.crop_image,
-                    navigation: hugeitSliderObj.show_arrows,
-                    delay: +singleSlider_<?php echo $slider_id; ?>.pause_time,
-                    transitionDuration: +singleSlider_<?php echo $slider_id; ?>.change_speed,
-                    pauseOnHover: singleSlider_<?php echo $slider_id; ?>.pause_on_hover
-                });
-                break;
-            case 'carousel1':
-                var $pager = false,
-                    $thumb = false;
-                switch (singleSlider_<?php echo $slider_id; ?>.navigate_by) {
-                    case 'dot':
-                        $pager = true;
+    function slider_jquery_init() {
+
+        init_try_count++;
+
+        if (typeof jQuery === 'undefined') {
+
+            // do not try forever
+            if (init_try_count > 15)
+                return;
+
+            window.setTimeout(slider_jquery_init, 200);
+            return;
+        }
+
+        if (typeof jQuery.fn.sliderPlugin === 'undefined') {
+
+            // do not try forever
+            if (init_try_count > 25)
+                return;
+
+            window.setTimeout(slider_jquery_init, 200);
+            return;
+        }
+
+        jQuery(function () {
+            switch (singleSlider_<?php echo $slider_id; ?>.view) {
+                case 'none':
+                    jQuery('#slider_<?php echo $slider_id; ?>').sliderPlugin({
+                        maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
+                        maxHeight: singleSlider_<?php echo $slider_id; ?>.height,
+                        transition: singleSlider_<?php echo $slider_id; ?>.effect,
+                        controls: singleSlider_<?php echo $slider_id; ?>.navigate_by,
+                        cropImage: hugeitSliderObj.crop_image,
+                        navigation: hugeitSliderObj.show_arrows,
+                        delay: +singleSlider_<?php echo $slider_id; ?>.pause_time,
+                        transitionDuration: +singleSlider_<?php echo $slider_id; ?>.change_speed,
+                        pauseOnHover: singleSlider_<?php echo $slider_id; ?>.pause_on_hover
+                    });
+                    break;
+                case 'carousel1':
+                    var $pager = false,
                         $thumb = false;
-                        break;
-                    case 'thumbnail':
+                    switch (singleSlider_<?php echo $slider_id; ?>.navigate_by) {
+                        case 'dot':
+                            $pager = true;
+                            $thumb = false;
+                            break;
+                        case 'thumbnail':
+                            $pager = true;
+                            $thumb = true;
+                            break;
+                        case 'none':
+                            $pager = false;
+                            $thumb = false;
+                            break;
+                    }
+
+                    jQuery('#slider_<?php echo $slider_id; ?>').RSlider({
+                        item: +singleSlider_<?php echo $slider_id; ?>.itemscount,
+                        pause: +singleSlider_<?php echo $slider_id; ?>.pause_time,
+                        speed: +singleSlider_<?php echo $slider_id; ?>.change_speed,
+                        pager: $pager,
+                        gallery: $thumb,
+                        pauseOnHover: +singleSlider_<?php echo $slider_id; ?>.pause_on_hover,
+                        thumbItem: +hugeitSliderObj.thumb_count_slides,
+                        controls: +hugeitSliderObj.show_arrows,
+                        view: singleSlider_<?php echo $slider_id; ?>.view,
+                        maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
+                        maxHeight: singleSlider_<?php echo $slider_id; ?>.height
+                    });
+                    break;
+                case 'thumb_view':
+                    var $pager = false, $thumb = false;
+
+                    if (singleSlider_<?php echo $slider_id; ?>.pager === '1') {
                         $pager = true;
                         $thumb = true;
-                        break;
-                    case 'none':
-                        $pager = false;
-                        $thumb = false;
-                        break;
-                }
+                    }
 
-                jQuery('#slider_<?php echo $slider_id; ?>').RSlider({
-                    item: +singleSlider_<?php echo $slider_id; ?>.itemscount,
-                    pause: +singleSlider_<?php echo $slider_id; ?>.pause_time,
-                    speed: +singleSlider_<?php echo $slider_id; ?>.change_speed,
-                    pager: $pager,
-                    gallery: $thumb,
-                    pauseOnHover: +singleSlider_<?php echo $slider_id; ?>.pause_on_hover,
-                    thumbItem: +hugeitSliderObj.thumb_count_slides,
-                    controls: +hugeitSliderObj.show_arrows,
-                    view: singleSlider_<?php echo $slider_id; ?>.view,
-                    maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
-                    maxHeight: singleSlider_<?php echo $slider_id; ?>.height
-                });
-                break;
-            case 'thumb_view':
-                var $pager = false, $thumb = false;
-
-                if (singleSlider_<?php echo $slider_id; ?>.pager === '1') {
-                    $pager = true;
-                    $thumb = true;
-                }
-
-                slider = jQuery('#slider_<?php echo $slider_id; ?>').RSlider({
-                    item: 1,
-                    view: singleSlider_<?php echo $slider_id; ?>.view,
-                    maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
-                    maxHeight: singleSlider_<?php echo $slider_id; ?>.height,
-                    mode: singleSlider_<?php echo $slider_id; ?>.mode,
-                    speed: +singleSlider_<?php echo $slider_id; ?>.change_speed,
-                    pauseOnHover: singleSlider_<?php echo $slider_id; ?>.pause_on_hover === '1',
-                    pause: +singleSlider_<?php echo $slider_id; ?>.pause_time,
-                    controls: singleSlider_<?php echo $slider_id; ?>.controls === '1',
-                    fullscreen: singleSlider_<?php echo $slider_id; ?>.fullscreen === '1',
-                    vertical: singleSlider_<?php echo $slider_id; ?>.vertical === '1',
-                    sliderHeight: +singleSlider_<?php echo $slider_id; ?>.height,
-                    vThumbWidth: +singleSlider_<?php echo $slider_id; ?>.vthumbwidth,
-                    hThumbHeight: +singleSlider_<?php echo $slider_id; ?>.hthumbheight,
-                    thumbItem: 5,
-                    thumbMargin: +singleSlider_<?php echo $slider_id; ?>.thumbmargin,
-                    thumbPosition: singleSlider_<?php echo $slider_id; ?>.thumbposition === '1',
-                    thumbControls: singleSlider_<?php echo $slider_id; ?>.thumbcontrols === '1',
-                    pager: $pager,
-                    gallery: $thumb,
-                    dragdrop: singleSlider_<?php echo $slider_id; ?>.dragdrop === '1',
-                    swipe: singleSlider_<?php echo $slider_id; ?>.swipe === '1',
-                    thumbdragdrop: singleSlider_<?php echo $slider_id; ?>.thumbdragdrop === '1',
-                    thumbswipe: singleSlider_<?php echo $slider_id; ?>.thumbswipe === '1',
-                    title: singleSlider_<?php echo $slider_id; ?>.titleonoff === '1',
-                    description: singleSlider_<?php echo $slider_id; ?>.desconoff === '1',
-                    titlesymbollimit: +singleSlider_<?php echo $slider_id; ?>.titlesymbollimit,
-                    descsymbollimit: 96
-                });
-                break;
-        }
-    });
-
-    jQuery(window).load(function () {
-        jQuery('.slider_lightbox_<?php echo $slider_id; ?>').lightbox({
-            slideAnimationType: singleSlider_<?php echo $slider_id; ?>.slide_effect,
-            arrows: singleSlider_<?php echo $slider_id; ?>.arrows_style,
-            openCloseType: singleSlider_<?php echo $slider_id; ?>.open_close_effect
+                    slider = jQuery('#slider_<?php echo $slider_id; ?>').RSlider({
+                        item: 1,
+                        view: singleSlider_<?php echo $slider_id; ?>.view,
+                        maxWidth: singleSlider_<?php echo $slider_id; ?>.width,
+                        maxHeight: singleSlider_<?php echo $slider_id; ?>.height,
+                        mode: singleSlider_<?php echo $slider_id; ?>.mode,
+                        speed: +singleSlider_<?php echo $slider_id; ?>.change_speed,
+                        pauseOnHover: singleSlider_<?php echo $slider_id; ?>.pause_on_hover === '1',
+                        pause: +singleSlider_<?php echo $slider_id; ?>.pause_time,
+                        controls: singleSlider_<?php echo $slider_id; ?>.controls === '1',
+                        fullscreen: singleSlider_<?php echo $slider_id; ?>.fullscreen === '1',
+                        vertical: singleSlider_<?php echo $slider_id; ?>.vertical === '1',
+                        sliderHeight: +singleSlider_<?php echo $slider_id; ?>.height,
+                        vThumbWidth: +singleSlider_<?php echo $slider_id; ?>.vthumbwidth,
+                        hThumbHeight: +singleSlider_<?php echo $slider_id; ?>.hthumbheight,
+                        thumbItem: 5,
+                        thumbMargin: +singleSlider_<?php echo $slider_id; ?>.thumbmargin,
+                        thumbPosition: singleSlider_<?php echo $slider_id; ?>.thumbposition === '1',
+                        thumbControls: singleSlider_<?php echo $slider_id; ?>.thumbcontrols === '1',
+                        pager: $pager,
+                        gallery: $thumb,
+                        dragdrop: singleSlider_<?php echo $slider_id; ?>.dragdrop === '1',
+                        swipe: singleSlider_<?php echo $slider_id; ?>.swipe === '1',
+                        thumbdragdrop: singleSlider_<?php echo $slider_id; ?>.thumbdragdrop === '1',
+                        thumbswipe: singleSlider_<?php echo $slider_id; ?>.thumbswipe === '1',
+                        title: singleSlider_<?php echo $slider_id; ?>.titleonoff === '1',
+                        description: singleSlider_<?php echo $slider_id; ?>.desconoff === '1',
+                        titlesymbollimit: +singleSlider_<?php echo $slider_id; ?>.titlesymbollimit,
+                        descsymbollimit: 96
+                    });
+                    break;
+            }
         });
-    });
+
+        jQuery(window).load(function () {
+            jQuery('.slider_lightbox_<?php echo $slider_id; ?>').lightbox({
+                slideAnimationType: singleSlider_<?php echo $slider_id; ?>.slide_effect,
+                arrows: singleSlider_<?php echo $slider_id; ?>.arrows_style,
+                openCloseType: singleSlider_<?php echo $slider_id; ?>.open_close_effect
+            });
+        });
+    }
+
+    window.setTimeout(slider_jquery_init, 200);
+
 </script>
