@@ -1,4 +1,6 @@
 <?php
+/** @noinspection XmlUnusedNamespaceDeclaration */
+/** @noinspection SqlResolve */
 /*
 Plugin Name: Links Map Publish
 Plugin URI:
@@ -32,6 +34,9 @@ function change_link_updated($link) {
 	$wpdb->query("UPDATE ".$table_prefix."links SET link_updated = NOW() WHERE link_updated = '0000-00-00 00:00:00' AND link_id = ".$link);
 }
 
+/**
+ * @throws Exception
+ */
 function add_links_to_map()
 {
 	global $wpdb;
@@ -39,7 +44,7 @@ function add_links_to_map()
 	if(isset($_POST['btnSave']))
 	{
 		$gpxMapFile = "<?xml version='1.0' encoding='UTF-8'?>\n";
-		$gpxMapFile .= "<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" xmlns:gpxdata=\"http://www.cluetrust.com/XML/GPXDATA/1/0\" xmlns:t=\"http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2\" creator=\"pytrainer http://sourceforge.net/projects/pytrainer\" version=\"1.1\">\n";
+		$gpxMapFile .= "<gpx xmlns=\"https://www.topografix.com/GPX/1/1\" xmlns:gpxdata=\"https://www.cluetrust.com/XML/GPXDATA/1/0\" xmlns:t=\"https://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2\" creator=\"pytrainer https://sourceforge.net/projects/pytrainer\" version=\"1.1\">\n";
 		$gpxMapFile .= "<metadata>\n";
 		$gpxMapFile .= "<name>Webonary Dictionary Sites</name>\n";
 		$gpxMapFile .= "<link href=\"https://www.webonary.org\"/>\n";
@@ -84,11 +89,11 @@ function add_links_to_map()
 
 		$gpxMapFile .= "</gpx>\n";
 
-		$file = $_SERVER['DOCUMENT_ROOT'] . "/wp/wp-content/uploads/webonary-sites.gpx";
+		$file = WP_CONTENT_DIR . '/uploads/webonary-sites.gpx';
 		file_put_contents($file, $gpxMapFile);
 	}
 
-	$str = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/wp/wp-content/plugins/links-map-publish/languages.json');
+	$str = file_get_contents(__DIR__ . '/languages.json');
 
 	$json = json_decode($str, true); // decode the JSON into an associative array
 
@@ -97,6 +102,7 @@ function add_links_to_map()
 	//echo var_dump($json[0]['leaflet'][0]['features']) . "\n";
 	$e = 0;
 
+	$ethnologueData = [];
 	$ethnologueData = getEthnologueData($ethnologueData, $e, $mapPoints);
 
 	//Endangered languages
@@ -197,7 +203,7 @@ function display_links_coordinates($hasCoordinates, $ethnologueData, $i)
 		echo "</td>";
 		echo "<td>Lat: <input type=text name=lat[" . $i . "] value='" . $lat . "'></td>";
 		echo "<td>Lon: <input type=text name=lon[" . $i . "] value='" .  $lon . "'></td>";
-		echo "<td><a href=\"http://www.whatsmygps.com/index.php?lat=" . $lat. "&lng=" . $lon. "\" target=\"_blank\">Find coordinates</a></td>";
+		echo "<td><a href=\"https://www.whatsmygps.com/index.php?lat=" . $lat. "&lng=" . $lon. "\" target=\"_blank\">Find coordinates</a></td>";
 		?>
 		<?php
 		echo "</tr>";
@@ -220,6 +226,14 @@ function create_map_table () {
 	$wpdb->get_var( $sql );
 }
 
+/**
+ * @param $ethnologueData
+ * @param $e
+ * @param $mapPoints
+ *
+ * @return mixed
+ * @throws Exception
+ */
 function getEthnologueData($ethnologueData, &$e, $mapPoints)
 {
 	foreach($mapPoints as $point)
@@ -228,7 +242,7 @@ function getEthnologueData($ethnologueData, &$e, $mapPoints)
 		$a = new SimpleXMLElement($url);
 		//echo var_dump($a) . "\n";
 		//echo $e . ": " . $a[2] . "\n";
-		$ethnologueCode = str_replace('http://www.ethnologue.com/language/', '', $a['href']);
+		$ethnologueCode = str_replace('https://www.ethnologue.com/language/', '', $a['href']);
 		//echo $ethnologueCode . "\n";
 		$ethnologueData[$e]['code'] = $ethnologueCode;
 		$ethnologueData[$e]['lat'] = $point['lat'];
