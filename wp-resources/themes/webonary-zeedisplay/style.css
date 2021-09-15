@@ -651,6 +651,12 @@ blockquote:after{
   max-width: 100%;
   height: auto;
 }
+
+/*=========================== Ken Zook Table ===========================*/
+div.pageentry .senses .tables table {border: none;}
+div.pageentry .senses .tables table th {text-align: center;}
+div.pageentry .senses .tables table td {border: none; text-align: left; font-weight: 400;}
+
 .wp-caption  {
   margin: 5px;
   max-width: 100%;
@@ -944,4 +950,3 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
 		padding: 10px 10px;
 	}
 }
-
