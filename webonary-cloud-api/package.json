@@ -54,7 +54,7 @@
     "@aws-cdk/aws-lambda": "^1.72.0",
     "@aws-cdk/aws-s3": "^1.72.0",
     "@aws-cdk/core": "^1.72.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "cheerio": "^1.0.0-rc.3",
     "mime-types": "^2.1.27"
   },
