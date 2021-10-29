@@ -3,11 +3,12 @@
 
 
 $now = gmdate('Y-m-d\TH.i.s\Z');
+$today = gmdate('Y-m-d');
 
 header('Content-disposition: attachment; filename="WebonarySites_' . $now . '.tsv"');
 header('Content-Type: text/plain');
 
-echo "Site Title\tCountry\tURL\tCopyright\tCode\tEntries\tCreateDate\tPublishDate\tContactEmail\tNotes\tLastImport" . PHP_EOL;
+$rows = [['Site Title', 'Country', 'URL', 'Copyright', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastImport']];
 
 $sql =  "SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered FROM $wpdb->blogs
     WHERE blog_id != $wpdb->blogid
@@ -85,11 +86,14 @@ if ( 0 < count( $blogs ) ) {
 
 			$s = preg_replace('/<script.+<\/script>/s', '', $a);
 		    $s = preg_replace('/[\r\n\t]/', ',', $s);
-		    return str_replace('<sup></sup>', '', $s);
+		    return htmlspecialchars_decode(str_replace('<sup></sup>', '', $s), ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401);
 	    }, $fields);
 
-		echo implode("\t", $mapped) . PHP_EOL;
+		$rows[] = $mapped;
 
         restore_current_blog();
     }
 }
+
+/** @noinspection PhpUnhandledExceptionInspection */
+Webonary_Excel::ToExcel( 'WebonarySites_' . $now, 'Webonary Sites: ' . $today, $rows);
