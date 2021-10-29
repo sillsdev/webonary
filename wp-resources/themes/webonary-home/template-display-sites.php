@@ -1,11 +1,13 @@
 <?php
 /** @noinspection SqlResolve */
 
+
+$now = gmdate('Y-m-d\TH.i.s\Z');
+
+header('Content-disposition: attachment; filename="WebonarySites_' . $now . '.tsv"');
 header('Content-Type: text/plain');
 
-echo 'Site Title;Country;URL;Copyright;Code;Entries;CreateDate;PublishDate;ContactEmail;Notes;LastImport' . PHP_EOL;
-
-
+echo "Site Title\tCountry\tURL\tCopyright\tCode\tEntries\tCreateDate\tPublishDate\tContactEmail\tNotes\tLastImport" . PHP_EOL;
 
 $sql =  "SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered FROM $wpdb->blogs
     WHERE blog_id != $wpdb->blogid
@@ -82,12 +84,11 @@ if ( 0 < count( $blogs ) ) {
 	    $mapped = array_map(function($a) {
 
 			$s = preg_replace('/<script.+<\/script>/s', '', $a);
-		    $s = preg_replace('/[\r\n]/', ',', $s);
-		    $s = str_replace('<sup></sup>', '', $s);
-		    return str_replace(';', ',', $s);
+		    $s = preg_replace('/[\r\n\t]/', ',', $s);
+		    return str_replace('<sup></sup>', '', $s);
 	    }, $fields);
 
-		echo implode(';', $mapped) . PHP_EOL;
+		echo implode("\t", $mapped) . PHP_EOL;
 
         restore_current_blog();
     }
