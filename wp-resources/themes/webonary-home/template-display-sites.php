@@ -5,8 +5,7 @@
 $now = gmdate('Y-m-d\TH.i.s\Z');
 $today = gmdate('Y-m-d');
 
-header('Content-disposition: attachment; filename="WebonarySites_' . $now . '.tsv"');
-header('Content-Type: text/plain');
+set_time_limit(300);
 
 $rows = [['Site Title', 'Country', 'URL', 'Copyright', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastImport']];
 
