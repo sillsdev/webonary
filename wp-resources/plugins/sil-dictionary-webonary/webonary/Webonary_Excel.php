@@ -8,7 +8,6 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class Webonary_Excel
 {
-
 	private static $regular_style = [
 		'font' => [
 			'bold' => false,
@@ -115,6 +114,27 @@ class Webonary_Excel
 		// set column widths
 		for ($i = 0; $i < count($columns); $i++) {
 			$sheet->getColumnDimensionByColumn($i + 1)->setAutoSize(true);
+		}
+
+		$sheet->calculateColumnWidths();
+
+		for ($i = 0; $i < count($columns); $i++) {
+			$sheet->getColumnDimensionByColumn($i + 1)->setAutoSize(false);
+		}
+
+		$sheet->refreshColumnDimensions();
+
+		for ($i = 0; $i < count($columns); $i++) {
+			$dimensions = $sheet->getColumnDimensionByColumn($i + 1);
+			$x = $dimensions->getWidth();
+			$x = $x * 0.7;
+			if ($x < 14)
+				$x = 14;
+
+			if ($x > 70)
+				$x = 70;
+
+			$dimensions->setWidth($x);
 		}
 
 		// report name
