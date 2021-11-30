@@ -1686,7 +1686,7 @@ msgid "Be about, subject"
 msgstr ""
 
 #: include/default_domains.php:398
-msgid "1"
+msgid "True"
 msgstr ""
 
 #: include/default_domains.php:399
