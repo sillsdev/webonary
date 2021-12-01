@@ -1633,7 +1633,7 @@ msgid "Be about, subject"
 msgstr "बारेमा हुनु, विषय"
 
 #: include/default_domains.php:398
-msgid "1"
+msgid "True"
 msgstr "सत्य"
 
 #: include/default_domains.php:399

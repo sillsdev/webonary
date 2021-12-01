@@ -1635,7 +1635,7 @@ msgid "Be about, subject"
 msgstr "Tentang/mengenai, pokok persoalan"
 
 #: include/default_domains.php:398
-msgid "1"
+msgid "True"
 msgstr "Benar"
 
 #: include/default_domains.php:399
