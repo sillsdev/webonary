@@ -30,7 +30,7 @@ function webonary_searchform() {
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
 	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-	$search_term = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 
 	$arrIndexed = array();
 	$sem_domains = array();
@@ -93,18 +93,18 @@ function webonary_searchform() {
 
 			if (count($dictionary->reversalLanguages)) {
 				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? ' selected' : '';
-				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";	
+				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";
 				foreach($dictionary->reversalLanguages as $index => $reversal)
 				{
 					$indexed = new stdClass();
 					$indexed->language_name = $reversal->title ?? $reversal->lang;
 					$indexed->totalIndexed = $reversal->entriesCount ?? 0;
 					$arrIndexed[] = $indexed;
-	
+
 					// set up languages dropdown options
 					$selected = ($reversal->lang === $selected_language) ? ' selected' : '';
-					$language_dropdown_options .= "<option value='" . $reversal->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";	
-				}	
+					$language_dropdown_options .= "<option value='" . $reversal->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";
+				}
 			}
 
 			$lastEditDate = $dictionary->updatedAt;
@@ -125,7 +125,7 @@ function webonary_searchform() {
 				$language_dropdown_options .= '>' . $language['name'] . '</option>';
 			}
 		}
-		
+
 		// set up parts of speech dropdown
 		$parts_of_speech = get_terms('sil_parts_of_speech');
 		if($parts_of_speech)
@@ -141,8 +141,17 @@ function webonary_searchform() {
 		// set up semantic domains links
 		if($search_term !== '')
 		{
-			//$sem_domains = get_terms( 'sil_semantic_domains', 'name__like=' .  trim($_GET['s']) .'');
-			$query = "SELECT t.*, tt.* FROM " . $wpdb->terms . " AS t INNER JOIN " . $wpdb->term_taxonomy . " AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('sil_semantic_domains') AND t.name LIKE '%" . $search_term . "%' AND tt.count > 0 GROUP BY t.name ORDER BY t.name ASC";
+            $escaped = Webonary_Utility::escapeSqlLike($search_term) ;
+			$query = <<<SQL
+SELECT t.*, tt.* 
+FROM $wpdb->terms AS t 
+    INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id 
+WHERE tt.taxonomy IN ('sil_semantic_domains') 
+  AND t.name LIKE '%$escaped%' 
+  AND tt.count > 0 
+GROUP BY t.name 
+ORDER BY t.name
+SQL;
 			$sem_domains = $wpdb->get_results( $query );
 		}
 
@@ -284,7 +293,7 @@ function webonary_searchform() {
 				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
 				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
-					<?php 
+					<?php
 						if ($language_dropdown_options !== '') {
 							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
 							$language_dropdown .= '<option value="">' . __('All Languages','sil_dictionary') .'</option>';
