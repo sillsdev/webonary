@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
 /** @noinspection SqlResolve */
 
@@ -11,7 +13,7 @@ class Webonary_Utility
 	private static $current_page_number = 0;
 
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
-	public static function unzip($zipfile, $uploadPath, $zipFolderPath)
+	public static function unzip($zip_file, $uploadPath, $zipFolderPath)
 	{
 		if (!function_exists('wp_handle_upload'))
 		{
@@ -19,12 +21,12 @@ class Webonary_Utility
 		}
 
 		$overrides = array( 'test_form' => false, 'test_type' => false );
-		$file = wp_handle_upload($zipfile, $overrides);
+		$file = wp_handle_upload($zip_file, $overrides);
 
 		if (isset( $file['error']))
 		{
 			error_log('Error: Upload failed: ' . $file['error']);
-			unlink($uploadPath . '/' . $zipfile['name']);
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
@@ -34,11 +36,11 @@ class Webonary_Utility
 		}
 
 		$zip = new ZipArchive;
-		$res = $zip->open($uploadPath . '/' . $zipfile['name']);
+		$res = $zip->open($uploadPath . '/' . $zip_file['name']);
 		if ($res === FALSE)
 		{
-			error_log('Error: ' . $zipfile['name'] . ' is not a valid zip file');
-			unlink($uploadPath . '/' . $zipfile['name']);
+			error_log('Error: ' . $zip_file['name'] . ' is not a valid zip file');
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
@@ -47,11 +49,11 @@ class Webonary_Utility
 		if(!$unzip_success)
 		{
 			error_log('Error: could not extract zip file to ' . $uploadPath);
-			unlink($uploadPath . '/' . $zipfile['name']);
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
-		unlink($uploadPath . '/' . $zipfile['name']);
+		unlink($uploadPath . '/' . $zip_file['name']);
 		return true;
 	}
 
@@ -165,7 +167,7 @@ class Webonary_Utility
 
 				// will be false if getimagesize fails
 				if ($image_info === false) {
-					$messages[] = "Ignoring \"{$entry}\": file is not a valid image file.";
+					$messages[] = "Ignoring \"$entry\": file is not a valid image file.";
 					continue;
 				}
 
@@ -176,19 +178,19 @@ class Webonary_Utility
 
 				// make sure the image is an allowed type
 				if (!in_array($img_type, $allowed_types)) {
-					$messages[] = "Ignoring \"{$entry}\": file is not an allowed image type.";
+					$messages[] = "Ignoring \"$entry\": file is not an allowed image type.";
 					continue;
 				}
 
 				// skip zero-width images
 				if ($width == 0) {
-					$messages[] = "Ignoring \"{$entry}\": image has a width of zero.";
+					$messages[] = "Ignoring \"$entry\": image has a width of zero.";
 					continue;
 				}
 
 				// skip zero-height images
 				if ($height == 0) {
-					$messages[] = "Ignoring \"{$entry}\": image has a height of zero.";
+					$messages[] = "Ignoring \"$entry\": image has a height of zero.";
 					continue;
 				}
 
@@ -199,7 +201,7 @@ class Webonary_Utility
 					$result = self::ResizeThisImage($img_type, $width, $height, $w, $h, $file_name, $dst_dir);
 
 					if ($result === false)
-						$messages[] = "Warning: not able to save thumbnail \"{$entry}\".";
+						$messages[] = "Warning: not able to save thumbnail \"$entry\".";
 				}
 				else
 				{
@@ -208,13 +210,13 @@ class Webonary_Utility
 					$result = copy($src_dir . '/' . $entry, $dst_dir . '/' . $entry);
 
 					if ($result === false)
-						$messages[] = "Warning: not able to copy thumbnail \"{$entry}\".";
+						$messages[] = "Warning: not able to copy thumbnail \"$entry\".";
 				}
 			}
 			catch(Exception $e) {
 				$err_msg = $e->getMessage();
-				$messages[] = "Error resizing image \"{$entry}\": " . $err_msg;
-				error_log("Error: There was an error converting image file \"{$entry}\" to thumbnail: " . $err_msg);
+				$messages[] = "Error resizing image \"$entry\": " . $err_msg;
+				error_log("Error: There was an error converting image file \"$entry\" to thumbnail: " . $err_msg);
 			}
 		}
 
@@ -239,8 +241,6 @@ class Webonary_Utility
 		// calculate new dimensions - make sure both dimensions are inside the [$w, $h] rectangle
 		$rect = self::CalculateRectangle($src_width, $src_height, $max_width, $max_height);
 		$entry = basename($src_file_name);
-
-		$src_image = null;
 
 		switch ($img_type) {
 			case IMAGETYPE_PNG:
@@ -457,7 +457,7 @@ class Webonary_Utility
 			return self::$current_page_number;
 
 		// first check for a page number in the URI
-		$re  = '/(?:\/page\/)(\d+)/';
+		$re  = '/\/page\/(\d+)/';
 		$uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		$matches = null;
 		$found = preg_match($re, $uri, $matches);
@@ -480,5 +480,15 @@ class Webonary_Utility
 
 		if (self::$current_page_number < 1)
 			self::$current_page_number = 1;
+	}
+
+	public static function escapeSql($string): string
+	{
+		return addcslashes($string, "\0..\37\"'\\");
+	}
+
+	public static function escapeSqlLike($string): string
+	{
+		return addcslashes($string, "\0..\37\"'_%\\");
 	}
 }
