@@ -22,20 +22,6 @@
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
-	/*
-	function SearchFilter($query) {
-		// If 's' request variable is set but empty
-		if(isset($_GET['s']))
-		{
-			if (strlen(trim($_GET['s'])) == 0){
-				$query->query_vars['s'] = '-';
-			}
-		}
-		return $query;
-	}
-	add_filter('pre_get_posts','SearchFilter');
-	*/
-
 //---------------------------------------------------------------------------//
 
 function my_enqueue_css() {
@@ -95,7 +81,7 @@ function my_enqueue_css() {
 
 function sil_dictionary_custom_message()
 {
-	$search_term = isset($_GET['s']) ? trim($_GET['s']): '';
+	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 	$match_whole_words = is_match_whole_words(mb_strlen($search_term));
 
 	if($match_whole_words == 0)
@@ -403,7 +389,7 @@ function replace_default_search_filter($input, $query=null)
 	}
 	elseif (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
 	{
-		$searchWord = isset($_GET['s']) ? $_GET['s'] : $query->query_vars['s'];
+		$searchWord = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => $query->query_vars['s']]]);
 		$search_tbl = SEARCHTABLE;
 		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
