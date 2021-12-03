@@ -29,8 +29,8 @@ function webonary_searchform() {
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
-	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
+	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, ['options' => ['default' => '']]);
+	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 
 	$arrIndexed = array();
 	$sem_domains = array();
@@ -161,7 +161,7 @@ SQL;
 	}
 
 	?>
-	<script LANGUAGE="JavaScript">
+	<script type="text/javascript">
 	<!--
 	window.onload = function(e)
 	{
@@ -230,17 +230,14 @@ SQL;
 					padding: 5px;
 				}
 				</style>
-				<script LANGUAGE="JavaScript">
-				<!--
+				<script type="text/javascript">
 
 				function addchar(button)
 				{
 					var searchfield = document.getElementById('s');
 					var currentPos = theCursorPosition(searchfield);
 					var origValue = searchfield.value;
-					var newValue = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
-
-					searchfield.value = newValue;
+                    searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
 
 					searchfield.focus();
 
@@ -263,7 +260,6 @@ SQL;
 					}
 					return theCursorLocation;
 				}
-				-->
 				</script>
 			<?php
 					$arrChar = explode(",", $special_characters);

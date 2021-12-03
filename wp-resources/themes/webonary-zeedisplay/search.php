@@ -46,15 +46,12 @@ function openImage(image)
 		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
 		<p><?php if (function_exists('sil_dictionary_custom_message')) { sil_dictionary_custom_message(); } ?></p>
 		<?php
+
+		$query = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+
 		//search string are normalized to NFC
-		if (class_exists('Normalizer', $autoload = false))
-		{
-			$query = normalizer_normalize(stripslashes($_GET['s']), Normalizer::FORM_C);
-		}
-		else
-		{
-			$query = $_GET['s'];
-		}
+		if (class_exists('Normalizer', false))
+			$query = normalizer_normalize($query, Normalizer::FORM_C);
 
         if (have_posts()) : ?>
 			<div id="searchresults" class="<?php echo $align_class; ?>">
@@ -87,7 +84,6 @@ function openImage(image)
 	<?php get_sidebar(); ?>
 
 	</div>
-<?php //if(!isMobile()) { get_sidebar(); } ?>
 <?php
 if(strlen(trim($query)) > 0)
 {
@@ -98,10 +94,8 @@ if(strlen(trim($query)) > 0)
 	}
 ?>
 <script>
-	jQuery("#searchresults").highlight('<?php echo trim(str_replace("'", "#", $query)); ?>', <?php echo $lenient; ?>);
+	jQuery("#searchresults").highlight('<?php echo trim(str_replace('\'', '\\\'', $query)); ?>', <?php echo $lenient; ?>);
 </script>
 <?php
 }
-?>
-<?php
 get_footer();
