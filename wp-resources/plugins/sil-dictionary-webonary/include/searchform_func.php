@@ -402,6 +402,79 @@ function getDictStageImage($publicationStatus, $language)
 	}
 }
 
+
+function getDictStageFlex($status): string
+{
+	$header = __('Publication Status', 'sil_dictionary');
+	$rough = __('Rough draft', 'sil_dictionary');
+	$self = __('Self-reviewed draft', 'sil_dictionary');
+	$community = __('Community reviewed draft', 'sil_dictionary');
+	$consultant = __('Consultant approved', 'sil_dictionary');
+	$no_formal = __('Finished (no formal publication)', 'sil_dictionary');
+	$formal = __('Formally published', 'sil_dictionary');
+
+	$status = (int)$status - 1;
+
+    if ($status < 0 || $status > 5)
+        $status = 0;
+
+    $active = ['', '', '', '', '', ''];
+    $active[$status] = 'active';
+
+
+	return <<<HTML
+<div class="status">
+    <p class="center">$header</p>
+    
+    <div class="status-flex">
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[0]"></div>
+                <div class="right-line purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$rough</p>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[1]"></div>
+                <div class="purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$self</p>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[2]"></div>
+                <div class="purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$community</p>
+            </div>
+        </div>    
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[3]"></div>
+                <div class="purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$consultant</p>
+            </div>
+        </div>    
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[4]"></div>
+                <div class="purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$no_formal</p>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="stage-inner">
+                <div class="arrow $active[5]"></div>
+                <div class="left-line purple-line"><span class="dot"></span></div>
+                <p class="stage-text">$formal</p>
+            </div>
+        </div>
+    </div>
+</div>
+HTML;
+
+}
+
 function add_footer()
 {
 	global $post, $wpdb;
@@ -448,19 +521,13 @@ function add_footer()
 			<?php
 			}
 		}
-		if(get_option('publicationStatus') && $post_slug != "browse")
-		{
-			$publicationStatus = get_option('publicationStatus');
-			if($publicationStatus > 0) {
+		if ( get_option( 'publicationStatus' ) && $post_slug != 'browse' ) {
 
-				$language = "";
-				if (function_exists('qtranxf_getLanguage')) {
-					$language = qtranxf_getLanguage();
-				}
-			?>
+			$publicationStatus = get_option( 'publicationStatus' );
 
-			<div align=center><img src="<?php getDictStageImage($publicationStatus, $language); ?>" style="padding: 5px; max-width: 100%;"></div>
-		<?php
+			if ( $publicationStatus > 0 ) {
+
+				echo getDictStageFlex( $publicationStatus );
 			}
 		}
 	}
