@@ -206,7 +206,7 @@ HTML;
 			if(isset($_GET['lang']))
 				$lang = '&lang=' . $_GET['lang'];
 
-			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?letter=' . stripslashes($letter) . '&key=' . $languageCode . $lang, stripslashes($letter));
+			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?letter=' . urlencode($letter) . '&key=' . $languageCode . $lang, stripslashes($letter));
 		}
 	}
 
