@@ -20,6 +20,7 @@
     position: relative;
 }
 .lpTitleLetterCell a.not-configured {padding: 2px}
+.lpTitleLetterCell span, .lpTitleLetterCell span a {display: block}
 
 #searchresults {display: table; margin: 0 auto}
 #searchresults div {box-sizing: border-box}
