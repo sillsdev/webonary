@@ -1,4 +1,5 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
 /** @noinspection HtmlUnknownTarget */
@@ -230,111 +231,103 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 {
 	$display = '';
 	if(!isset($requestName))
-	{
-		$requestName = "letter";
-	}
+		$requestName = 'letter';
 
 	if(!$currentPage)
-	{
 		$currentPage = Webonary_Utility::getPageNumber();
-	}
 
 	$totalPages = ceil($totalEntries / $entriesPerPage);
 	if(($totalEntries / $entriesPerPage) > $totalPages)
-	{
 		$totalPages++;
-	}
-	if($totalPages > 1)
+
+	if ($totalPages <= 1)
+		return '';
+
+
+
+
+
+	$next_page = '&gt;';
+	$prev_page = '&lt;';
+
+	$url = '?' . $requestName . '=' . urlencode($chosenLetter) . '&key=' . $languageCode . '&totalEntries=' . $totalEntries;
+	if(isset($_GET['lang']))
+		$url .= '&lang=' . $_GET['lang'];
+
+
+	$items = [];
+	$limit_pages = 10;
+	$items[] = '<li class="page_info">' . gettext('Page') . ' ' . $currentPage . ' ' . gettext('of') . ' ' . $totalPages . '</li>';
+
+
+
+	if($currentPage > 1)
 	{
-		$display .= "<div style=\"text-align:center;\"><div style=\"display:inline-block;\">";
-		$display .= "<div  id='wp_page_numbers'><ul>";
-		$nextpage = "&gt;";
-		$prevpage = "&lt;";
-		$lang = "";
-		if(isset($_GET['lang']))
-		{
-			$lang = "&lang=" . $_GET['lang'];
-		}
-
-		$url = "?" . $requestName . "=" . $chosenLetter . "&key=" . $languageCode . "&totalEntries=" . $totalEntries . $lang;
-
-		$limit_pages = 10;
-		$display .= "<li class=page_info>" . gettext("Page") . " " . $currentPage . " " . gettext("of") . " " . $totalPages . "</li>";
-
-		if( $totalPages > 1 && $currentPage > 1 )
-		{
-			if($requestName == "semnumber")
-			{
-				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage - 1) . "\">" . $prevpage . "</a></li> ";
-			}
-			else
-			{
-				$display .= "<li><a href=\"" . $url . "&pagenr=" . ($currentPage - 1) . "\">" .$prevpage . "</a></li>";
-			}
-		}
-
-		$start = 1;
-		if($currentPage > ($limit_pages - 5))
-		{
-			if($requestName == "semnumber")
-			{
-				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=1\">1</a></li> ";
-			}
-			else
-			{
-				$display .= "<li><a href=\"" . $url . "&pagenr=1\">1</a></li> ";
-			}
-			$display .= "<li class=space>...</li>";
-			$start = $currentPage - 5;
-			if($currentPage == 6)
-			{
-				$start = 2;
-			}
-		}
-
-		for($page = $start; $page <= $totalPages; $page++)
-		{
-			$class = "";
-			if($currentPage == $page || ($page == 1 && !isset($currentPage)))
-			{
-				$class="class=active_page";
-			}
-			if($requestName == "semnumber")
-			{
-				$display .= "<li " . $class . "><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . $page . "\">" . $page . "</a></li> ";
-			}
-			else
-			{
-				$display .= "<li " . $class . "><a href=\"" . $url . "&pagenr=" . $page . "\">" . $page . "</a></li> ";
-			}
-			$minusPages = 5;
-			if($currentPage < 5)
-			{
-				$minusPages = $currentPage;
-			}
-			if(($currentPage + $limit_pages - $minusPages) == $page && ($currentPage + $limit_pages) < $totalPages)
-			{
-				$display .= "<li class=space>...</li>";
-				$display .= "<li " . $class . "><a href=\"" . $url . "&pagenr=" . $totalPages . "\">" . $totalPages . "</a></li> ";
-				break;
-			}
-		}
-
-		if( $currentPage != "" && $currentPage < $totalPages)
-		{
-			if($requestName == "semnumber")
-			{
-				$display .= "<li><a href=\"?semdomain=" . $languageCode . "&semnumber=" . $chosenLetter . "&pagenr=" . ($currentPage + 1) . "\">" . $nextpage . "</a></li> ";
-			}
-			else
-			{
-				$display .= "<li><a href=\"" . $url . "&pagenr=" . ($currentPage + 1) . "\">" .$nextpage . "</a></li>";
-			}
-		}
-		$display .= "</ul></div>";
-		$display .= "</div></div>";
+		if($requestName == 'semnumber')
+			$items[] = '<li><a href="?semdomain=' . $languageCode . '&semnumber=' . $chosenLetter . '&pagenr=' . ($currentPage - 1) . '">' . $prev_page . '</a></li>';
+		else
+			$items[] = '<li><a href="' . $url . '&pagenr=' . ($currentPage - 1) . '">' .$prev_page . '</a></li>';
 	}
-	return $display;
+
+	$start = 1;
+	if($currentPage > ($limit_pages - 5))
+	{
+		if($requestName == 'semnumber')
+			$items[] = '<li><a href="?semdomain=' . $languageCode . '&semnumber=' . $chosenLetter . '&pagenr=1">1</a></li>';
+		else
+			$items[] = '<li><a href="' . $url . '&pagenr=1">1</a></li>';
+
+		$items[] = '<li class="space">...</li>';
+		$start = $currentPage - 5;
+		if($currentPage == 6)
+			$start = 2;
+	}
+
+	for($page = $start; $page <= $totalPages; $page++)
+	{
+		$class = '';
+		if($currentPage == $page || ($page == 1 && !isset($currentPage)))
+			$class='class="active_page"';
+
+		if($requestName == 'semnumber')
+			$items[] = "<li $class ><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$page\"></a></li>";
+		else
+			$items[] = "<li $class><a href=\"$url&pagenr=$page\">$page</a></li>";
+
+		$minusPages = 5;
+		if($currentPage < 5)
+			$minusPages = $currentPage;
+
+		if(($currentPage + $limit_pages - $minusPages) == $page && ($currentPage + $limit_pages) < $totalPages)
+		{
+			$items[] = '<li class="space">...</li>';
+			$items[] = "<li $class><a href=\"$url&pagenr=$totalPages\">$totalPages</a></li>";
+			break;
+		}
+	}
+
+	if( $currentPage != '' && $currentPage < $totalPages)
+	{
+		$next_page_num = $currentPage + 1;
+		if($requestName == 'semnumber')
+			$items[] = "<li><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$next_page_num\"></a></li>";
+		else
+			$items[] = "<li><a href=\" $url&pagenr=$next_page_num\">$next_page</a></li>";
+	}
+
+	$item_str = implode(PHP_EOL, $items);
+
+	return <<<HTML
+<div style="text-align:center;">
+<div style="display:inline-block;">
+	<div id="wp_page_numbers">
+		<ul>
+$item_str
+		</ul>
+	</div>
+</div>
+</div>
+HTML;
 }
 
 /** @noinspection PhpUnused */
@@ -346,7 +339,7 @@ function english_alphabet_func($atts, $content, $tag)
 
 		if(isset($_GET['letter']))
 		{
-			$chosenLetter = $_GET['letter'];
+			$chosenLetter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		}
 		else {
 			$chosenLetter = "a";
@@ -522,7 +515,7 @@ function reversalalphabet_func($atts, $content, $tag)
 
 	if(isset($_GET['letter']))
 	{
-		$chosenLetter = stripslashes($_GET['letter']);
+		$chosenLetter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 	}
 	else {
 		$chosenLetter = stripslashes($alphas[0]);
@@ -753,7 +746,7 @@ function get_letter($firstLetterOfAlphabet = "") {
 	if (!isset($_GET['letter'])) {
 		return $firstLetterOfAlphabet;
 	}
-	$chosenLetter = stripslashes(trim($_GET['letter']));
+	$chosenLetter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 	// REVIEW: Do we really want to silently fail if this is not true? CP 2017-02
 	if (class_exists('Normalizer', false))
 	{
