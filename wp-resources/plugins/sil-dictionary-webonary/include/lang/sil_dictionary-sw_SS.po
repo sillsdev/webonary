@@ -109,27 +109,27 @@ msgstr ""
 
 #: include/configuration.php:300
 msgid "Rough draft"
-msgstr ""
+msgstr "Halijapitishwa"
 
 #: include/configuration.php:301
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Limepitishwa na watengenezaji"
 
 #: include/configuration.php:302
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Limepitishwa na jamii"
 
 #: include/configuration.php:303
 msgid "Consultant approved"
-msgstr ""
+msgstr "Limekubaliwa na bingwa"
 
 #: include/configuration.php:304
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Limekamilika (bila kuchapishwa kirasmi)"
 
 #: include/configuration.php:305
 msgid "Formally published"
-msgstr ""
+msgstr "Limechapishwa kirasmi"
 
 # @ sil_dictionary
 #: include/configuration.php:309
@@ -5615,7 +5615,7 @@ msgstr ""
 # @ sil_dictionary
 #: include/dictionary-search.php:203
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr ""
+msgstr "Kwa sababu ya ufupi wa neno ulilotafutia, utafutaji wa maneno yasiyokamilika haujafanyika."
 "Kwa sababu ya ufupi wa neno ulilotafutia, utafutaji wa maneno yasiyokamilika "
 "haujafanyika."
 
@@ -5702,7 +5702,7 @@ msgstr ""
 # @ sil_dictionary
 #: include/infrastructure.php:145 include/searchform_func.php:144
 msgid "All Parts of Speech"
-msgstr "Aina zote za usemi"
+msgstr "Aina zote za semi"
 
 # @ default
 #: include/infrastructure.php:146
@@ -5930,3 +5930,11 @@ msgstr ""
 #: include/xhtml-importer.php:2244
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Idadi ya vidahizo"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Matoleo ya Uchapishaji"

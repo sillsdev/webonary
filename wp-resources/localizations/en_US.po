@@ -1,0 +1,8581 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-01 09:17-0500\n"
+"PO-Revision-Date: 2021-12-01 09:17-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:140
+msgid "No entries exist for"
+msgstr ""
+
+#: include/browseview_func.php:262
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:262
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:649
+msgid "Entry not found"
+msgstr ""
+
+#: include/browseview_func.php:839
+msgid "No entries exist starting with this letter."
+msgstr ""
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/configuration.php:249
+msgid "Settings saved"
+msgstr ""
+
+#: include/configuration.php:351
+msgid "Webonary"
+msgstr ""
+
+#: include/configuration.php:353
+msgid ""
+"Webonary provides the administration tools and framework for using WordPress "
+"for dictionaries. See <a href=\"https://www.webonary.org/help\" target="
+"\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+#: include/configuration.php:358
+#, php-format
+msgid "Click to switch to %s"
+msgstr ""
+
+#: include/configuration.php:391
+msgid "Upload Data"
+msgstr ""
+
+#: include/configuration.php:400
+msgid "Click here to upload your FLEx data"
+msgstr ""
+
+#: include/configuration.php:406
+msgid "Publication status:"
+msgstr ""
+
+#: include/configuration.php:408
+msgid "no status set"
+msgstr ""
+
+#: include/configuration.php:409
+msgid "Rough draft"
+msgstr ""
+
+#: include/configuration.php:410
+msgid "Self-reviewed draft"
+msgstr ""
+
+#: include/configuration.php:411
+msgid "Community-reviewed draft"
+msgstr ""
+
+#: include/configuration.php:412
+msgid "Consultant approved"
+msgstr ""
+
+#: include/configuration.php:413
+msgid "Finished (no formal publication)"
+msgstr ""
+
+#: include/configuration.php:414
+msgid "Formally published"
+msgstr ""
+
+#: include/configuration.php:418
+msgid "Delete Data"
+msgstr ""
+
+#: include/configuration.php:427
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+#: include/configuration.php:431
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+#: include/configuration.php:443
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+#: include/configuration.php:444
+msgid "Delete"
+msgstr ""
+
+#: include/configuration.php:446
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/configuration.php:455
+msgid "Default Search Options"
+msgstr ""
+
+#: include/configuration.php:512
+msgid "Special character input buttons"
+msgstr ""
+
+#: include/configuration.php:555
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/configuration.php:570
+msgid "Vernacular Browse view:"
+msgstr ""
+
+#: include/configuration.php:573 include/configuration.php:643
+#: include/configuration.php:694 include/configuration.php:725
+msgid "Language Name:"
+msgstr ""
+
+#: include/configuration.php:576
+msgid "Vernacular Alphabet"
+msgstr ""
+
+#: include/configuration.php:576 include/configuration.php:666
+#: include/configuration.php:698 include/configuration.php:728
+msgid "configure in FLEx"
+msgstr ""
+
+#: include/configuration.php:609 include/configuration.php:680
+#: include/configuration.php:711 include/configuration.php:742
+msgid "Display right-to-left"
+msgstr ""
+
+#: include/configuration.php:619
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/configuration.php:622
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/configuration.php:638
+msgid "1. Reversal index"
+msgstr ""
+
+#: include/configuration.php:666 include/configuration.php:697
+#: include/configuration.php:728
+msgid "Alphabet:"
+msgstr ""
+
+#: include/configuration.php:689
+msgid "2. Reversal index"
+msgstr ""
+
+#: include/configuration.php:720
+msgid "3. Reversal index"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:6
+#: webonary/Webonary_SemanticDomains.php:107
+msgid "FOODS"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:7
+msgid "Cereal"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:8
+msgid "Creole food"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:9
+msgid "Dessert"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:10
+#: include/default_domains-yakan.php:61 include/default_domains.php:90
+msgid "Fish"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:11
+msgid "Fruit"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:12 include/default_domains.php:853
+msgid "Meat"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:13
+msgid "Puerto Rican Fritters"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:14
+#: include/default_domains-yakan.php:214
+msgid "Seafood"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:15 include/default_domains.php:859
+msgid "Spice"
+msgstr ""
+
+#: include/default_domains-SpanishFoods.php:16
+#: include/default_domains-yakan.php:18
+msgid "Vegetables"
+msgstr ""
+
+#: include/default_domains-yakan.php:6 webonary/Webonary_SemanticDomains.php:65
+msgid "PLANTS"
+msgstr ""
+
+#: include/default_domains-yakan.php:7
+msgid "Trees and fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:8
+msgid "Trees, forest"
+msgstr ""
+
+#: include/default_domains-yakan.php:9
+msgid "Trees, fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:10
+msgid "Other fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:11
+msgid "Bananas"
+msgstr ""
+
+#: include/default_domains-yakan.php:12
+msgid "Palms"
+msgstr ""
+
+#: include/default_domains-yakan.php:13
+msgid "Bamboo and grasses"
+msgstr ""
+
+#: include/default_domains-yakan.php:14
+msgid "Bamboo"
+msgstr ""
+
+#: include/default_domains-yakan.php:15
+msgid "Canes, reeds and grasses"
+msgstr ""
+
+#: include/default_domains-yakan.php:16
+msgid "Grains"
+msgstr ""
+
+#: include/default_domains-yakan.php:17
+msgid "Tubers"
+msgstr ""
+
+#: include/default_domains-yakan.php:19
+msgid "Vegetables, leafy"
+msgstr ""
+
+#: include/default_domains-yakan.php:20
+msgid "Vegetables (fruit, roots, bulbs)"
+msgstr ""
+
+#: include/default_domains-yakan.php:21
+msgid "Flowering plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:22
+msgid "Vines"
+msgstr ""
+
+#: include/default_domains-yakan.php:23
+msgid "Fungi"
+msgstr ""
+
+#: include/default_domains-yakan.php:24
+msgid "Other plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:25
+msgid "Adjectives used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:26
+msgid "Verbs used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:27
+msgid "Parts of plants or fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:28
+msgid "Stages of development of plants and fruit"
+msgstr ""
+
+#: include/default_domains-yakan.php:29
+msgid "Uses of wood"
+msgstr ""
+
+#: include/default_domains-yakan.php:30
+#: webonary/Webonary_SemanticDomains.php:66
+msgid "ANIMALS (CREATURES ON LAND)"
+msgstr ""
+
+#: include/default_domains-yakan.php:31
+msgid "Mammals"
+msgstr ""
+
+#: include/default_domains-yakan.php:32
+msgid "Large mammals"
+msgstr ""
+
+#: include/default_domains-yakan.php:33
+msgid "Rodents and bats"
+msgstr ""
+
+#: include/default_domains-yakan.php:34
+msgid "Amphibians and lizards"
+msgstr ""
+
+#: include/default_domains-yakan.php:35
+msgid "Snakes"
+msgstr ""
+
+#: include/default_domains-yakan.php:36
+msgid "Creeping, crawling, and flying creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:37
+msgid "Beetles"
+msgstr ""
+
+#: include/default_domains-yakan.php:38
+msgid "Jumping insects"
+msgstr ""
+
+#: include/default_domains-yakan.php:39
+msgid "Small insects"
+msgstr ""
+
+#: include/default_domains-yakan.php:40
+msgid "Flying insects"
+msgstr ""
+
+#: include/default_domains-yakan.php:41
+msgid "Flies"
+msgstr ""
+
+#: include/default_domains-yakan.php:42
+msgid "Bees"
+msgstr ""
+
+#: include/default_domains-yakan.php:43
+msgid "Ants"
+msgstr ""
+
+#: include/default_domains-yakan.php:44
+msgid "Butterflies and worm-like creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:45
+msgid "Moths and butterflies"
+msgstr ""
+
+#: include/default_domains-yakan.php:46
+msgid "Caterpillars"
+msgstr ""
+
+#: include/default_domains-yakan.php:47
+msgid "Worms"
+msgstr ""
+
+#: include/default_domains-yakan.php:48
+msgid "Centipedes"
+msgstr ""
+
+#: include/default_domains-yakan.php:49
+msgid "Spiders"
+msgstr ""
+
+#: include/default_domains-yakan.php:50
+msgid "Other creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:51
+msgid "Parts of animals"
+msgstr ""
+
+#: include/default_domains-yakan.php:52
+msgid "Verbs used in connection w/ animals"
+msgstr ""
+
+#: include/default_domains-yakan.php:53
+#: webonary/Webonary_SemanticDomains.php:67
+msgid "BIRDS"
+msgstr ""
+
+#: include/default_domains-yakan.php:54
+msgid "Birds, various species"
+msgstr ""
+
+#: include/default_domains-yakan.php:55
+msgid "Parrots"
+msgstr ""
+
+#: include/default_domains-yakan.php:56
+msgid "Birds of prey"
+msgstr ""
+
+#: include/default_domains-yakan.php:57
+msgid "Domesticated birds"
+msgstr ""
+
+#: include/default_domains-yakan.php:58
+msgid "Parts of birds"
+msgstr ""
+
+#: include/default_domains-yakan.php:59
+msgid "Verbs and adjectives used in connection w/ birds"
+msgstr ""
+
+#: include/default_domains-yakan.php:60
+#: webonary/Webonary_SemanticDomains.php:68
+msgid "FISH AND THINGS OF THE SEA"
+msgstr ""
+
+#: include/default_domains-yakan.php:62
+msgid "Shellfish"
+msgstr ""
+
+#: include/default_domains-yakan.php:63
+msgid "Crustaceans"
+msgstr ""
+
+#: include/default_domains-yakan.php:64
+msgid "Corals"
+msgstr ""
+
+#: include/default_domains-yakan.php:65
+msgid "Seaweeds"
+msgstr ""
+
+#: include/default_domains-yakan.php:66
+msgid "Other sea creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:67
+msgid "Parts of fish and other sea creatures"
+msgstr ""
+
+#: include/default_domains-yakan.php:68
+msgid "Fish poisons"
+msgstr ""
+
+#: include/default_domains-yakan.php:69
+#: webonary/Webonary_SemanticDomains.php:69
+msgid "NATURAL PHENOMENA"
+msgstr ""
+
+#: include/default_domains-yakan.php:70
+msgid "World and time"
+msgstr ""
+
+#: include/default_domains-yakan.php:71
+msgid "Sky and things therein"
+msgstr ""
+
+#: include/default_domains-yakan.php:72
+msgid "Weather and natural calamities"
+msgstr ""
+
+#: include/default_domains-yakan.php:73
+msgid "Topography"
+msgstr ""
+
+#: include/default_domains-yakan.php:74 include/default_domains.php:43
+msgid "Bodies of water"
+msgstr ""
+
+#: include/default_domains-yakan.php:75
+msgid "Soil, stone, fire"
+msgstr ""
+
+#: include/default_domains-yakan.php:76
+msgid "Metals, etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:77
+#: webonary/Webonary_SemanticDomains.php:70
+msgid "SEA AND NAVIGATION"
+msgstr ""
+
+#: include/default_domains-yakan.php:78
+msgid "Types of boats and ships"
+msgstr ""
+
+#: include/default_domains-yakan.php:79
+msgid "Parts of boats and ships"
+msgstr ""
+
+#: include/default_domains-yakan.php:80
+msgid "Verbs used in connection w/ boats and ships"
+msgstr ""
+
+#: include/default_domains-yakan.php:81
+msgid "Sea, shore and other locations"
+msgstr ""
+
+#: include/default_domains-yakan.php:82
+msgid "Fishing nets and other devices"
+msgstr ""
+
+#: include/default_domains-yakan.php:83
+msgid "Verbs used in connection w/ fishing"
+msgstr ""
+
+#: include/default_domains-yakan.php:84
+#: webonary/Webonary_SemanticDomains.php:71
+msgid "NUMBERS"
+msgstr ""
+
+#: include/default_domains-yakan.php:85
+msgid "Number units"
+msgstr ""
+
+#: include/default_domains-yakan.php:86 include/default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr ""
+
+#: include/default_domains-yakan.php:87 include/default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr ""
+
+#: include/default_domains-yakan.php:88
+msgid "Persons"
+msgstr ""
+
+#: include/default_domains-yakan.php:89
+msgid "Units in counting"
+msgstr ""
+
+#: include/default_domains-yakan.php:90
+msgid "Other numbers"
+msgstr ""
+
+#: include/default_domains-yakan.php:91
+#: webonary/Webonary_SemanticDomains.php:72
+msgid "AGRICULTURE"
+msgstr ""
+
+#: include/default_domains-yakan.php:92 include/default_domains.php:24
+msgid "Land"
+msgstr ""
+
+#: include/default_domains-yakan.php:93
+msgid "Things planted, seeds etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:94
+msgid "Adjectives and verbs used in connection w/ plants"
+msgstr ""
+
+#: include/default_domains-yakan.php:95
+msgid "Verbs used in connection w/ agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:96
+msgid "Implements, agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:97
+msgid "Ceremonies, agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:98
+msgid "Things to scare animals away"
+msgstr ""
+
+#: include/default_domains-yakan.php:99
+msgid "Farm structures"
+msgstr ""
+
+#: include/default_domains-yakan.php:100
+msgid "Concerning farm animals"
+msgstr ""
+
+#: include/default_domains-yakan.php:101
+msgid "Other, agriculture"
+msgstr ""
+
+#: include/default_domains-yakan.php:102
+#: webonary/Webonary_SemanticDomains.php:73
+msgid "RICE CULTIVATION"
+msgstr ""
+
+#: include/default_domains-yakan.php:103
+msgid "Fields"
+msgstr ""
+
+#: include/default_domains-yakan.php:104
+msgid "Parts of the plant"
+msgstr ""
+
+#: include/default_domains-yakan.php:105 include/default_domains-yakan.php:112
+msgid "Stages of development"
+msgstr ""
+
+#: include/default_domains-yakan.php:106
+msgid "Verbs and adjectives used in connection w/ rice"
+msgstr ""
+
+#: include/default_domains-yakan.php:107
+msgid "Ceremonies and related things"
+msgstr ""
+
+#: include/default_domains-yakan.php:108
+msgid "Implements for processing"
+msgstr ""
+
+#: include/default_domains-yakan.php:109
+msgid "Varieties of rice"
+msgstr ""
+
+#: include/default_domains-yakan.php:110
+#: webonary/Webonary_SemanticDomains.php:74
+msgid "COCONUT CULTIVATION"
+msgstr ""
+
+#: include/default_domains-yakan.php:111
+msgid "Varieties of coconut"
+msgstr ""
+
+#: include/default_domains-yakan.php:113
+msgid "Parts of trees and nuts"
+msgstr ""
+
+#: include/default_domains-yakan.php:114
+msgid "Verbs used in connection w/ coconuts"
+msgstr ""
+
+#: include/default_domains-yakan.php:115
+msgid "Nouns used in connection w/ coconuts"
+msgstr ""
+
+#: include/default_domains-yakan.php:116
+msgid "Use of the leaf"
+msgstr ""
+
+#: include/default_domains-yakan.php:117
+#: webonary/Webonary_SemanticDomains.php:75
+msgid "BODY PARTS AND FUNCTIONS"
+msgstr ""
+
+#: include/default_domains-yakan.php:118
+msgid "External body parts"
+msgstr ""
+
+#: include/default_domains-yakan.php:119
+msgid "Internal body parts"
+msgstr ""
+
+#: include/default_domains-yakan.php:120 include/default_domains-yakan.php:132
+msgid "Eyes"
+msgstr ""
+
+#: include/default_domains-yakan.php:121
+msgid "Teeth and mouth etc."
+msgstr ""
+
+#: include/default_domains-yakan.php:122
+msgid "Arms, hands and fingers"
+msgstr ""
+
+#: include/default_domains-yakan.php:123
+msgid "Legs and feet"
+msgstr ""
+
+#: include/default_domains-yakan.php:124 include/default_domains.php:126
+msgid "Hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:125 include/default_domains-yakan.php:131
+#: include/default_domains.php:125
+msgid "Skin"
+msgstr ""
+
+#: include/default_domains-yakan.php:126
+msgid "Secretions"
+msgstr ""
+
+#: include/default_domains-yakan.php:127
+msgid "Functions"
+msgstr ""
+
+#: include/default_domains-yakan.php:128
+msgid "Other, body parts and functions"
+msgstr ""
+
+#: include/default_domains-yakan.php:129
+#: webonary/Webonary_SemanticDomains.php:76
+msgid "SICKNESSES/MEDICAL TERMS"
+msgstr ""
+
+#: include/default_domains-yakan.php:130
+msgid "Various sicknesses and general medical terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:133
+msgid "Ears"
+msgstr ""
+
+#: include/default_domains-yakan.php:134 include/default_domains.php:118
+msgid "Mouth"
+msgstr ""
+
+#: include/default_domains-yakan.php:135 include/default_domains.php:131
+msgid "Stomach"
+msgstr ""
+
+#: include/default_domains-yakan.php:136
+msgid "Feet"
+msgstr ""
+
+#: include/default_domains-yakan.php:137
+msgid "Hands"
+msgstr ""
+
+#: include/default_domains-yakan.php:138 include/default_domains.php:193
+msgid "Fever"
+msgstr ""
+
+#: include/default_domains-yakan.php:139
+msgid "Childbearing and sexual functions"
+msgstr ""
+
+#: include/default_domains-yakan.php:140
+msgid "Treatment"
+msgstr ""
+
+#: include/default_domains-yakan.php:141
+msgid "Adjectives and verbs used in connection w/ sickness"
+msgstr ""
+
+#: include/default_domains-yakan.php:142
+msgid "Other, sicknesses/medical terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:143
+#: webonary/Webonary_SemanticDomains.php:77
+msgid "DEATH"
+msgstr ""
+
+#: include/default_domains-yakan.php:144
+msgid "Nouns used in connection w/ death"
+msgstr ""
+
+#: include/default_domains-yakan.php:145
+msgid "Verbs used in connection w/ death"
+msgstr ""
+
+#: include/default_domains-yakan.php:146
+#: webonary/Webonary_SemanticDomains.php:78
+msgid "SUPERNATURAL/RELIGION"
+msgstr ""
+
+#: include/default_domains-yakan.php:147
+msgid "Supernatural beings and apparitions"
+msgstr ""
+
+#: include/default_domains-yakan.php:148
+msgid "Parts of supernatural beings"
+msgstr ""
+
+#: include/default_domains-yakan.php:149
+msgid "Men, titles, etc., occupations"
+msgstr ""
+
+#: include/default_domains-yakan.php:150
+msgid "adherent."
+msgstr ""
+
+#: include/default_domains-yakan.php:151
+msgid "Parts of men (thought, soul, etc.)"
+msgstr ""
+
+#: include/default_domains-yakan.php:152
+msgid "Time, months"
+msgstr ""
+
+#: include/default_domains-yakan.php:153
+msgid "Places and buildings"
+msgstr ""
+
+#: include/default_domains-yakan.php:154
+msgid "Religion general"
+msgstr ""
+
+#: include/default_domains-yakan.php:155
+msgid "Arabic phrases"
+msgstr ""
+
+#: include/default_domains-yakan.php:156
+msgid "Books and parts of books"
+msgstr ""
+
+#: include/default_domains-yakan.php:157
+msgid "Ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:158
+msgid "Offerings, gifts, tithes"
+msgstr ""
+
+#: include/default_domains-yakan.php:159
+msgid "Charms"
+msgstr ""
+
+#: include/default_domains-yakan.php:160
+msgid "Omens"
+msgstr ""
+
+#: include/default_domains-yakan.php:161
+msgid "Spells, casting spells, effects"
+msgstr ""
+
+#: include/default_domains-yakan.php:162
+msgid "Objects"
+msgstr ""
+
+#: include/default_domains-yakan.php:163
+msgid "‘Things’ that come to people (luck, disaster, etc.)"
+msgstr ""
+
+#: include/default_domains-yakan.php:164
+msgid "Verbs used in connection w/ religion in general"
+msgstr ""
+
+#: include/default_domains-yakan.php:165
+msgid "Verbs used in connection w/ Islamic worship"
+msgstr ""
+
+#: include/default_domains-yakan.php:166
+msgid "Activities to know or control the supernatural"
+msgstr ""
+
+#: include/default_domains-yakan.php:167
+msgid "Supernatural power/knowledge"
+msgstr ""
+
+#: include/default_domains-yakan.php:168
+msgid "Adjectives used in connection w/ religion"
+msgstr ""
+
+#: include/default_domains-yakan.php:169
+msgid "Other, supernatural/religion"
+msgstr ""
+
+#: include/default_domains-yakan.php:170
+#: webonary/Webonary_SemanticDomains.php:79
+msgid "WEDDINGS AND OTHER CEREMONIES"
+msgstr ""
+
+#: include/default_domains-yakan.php:171
+msgid "Verbs used in connection w/ weddings"
+msgstr ""
+
+#: include/default_domains-yakan.php:172
+msgid "People involved in weddings"
+msgstr ""
+
+#: include/default_domains-yakan.php:173
+msgid "Types of gifts, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:174
+msgid "Things concerning the feast"
+msgstr ""
+
+#: include/default_domains-yakan.php:175
+msgid "Decorations, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:176
+msgid "Other, weddings and other ceremonies"
+msgstr ""
+
+#: include/default_domains-yakan.php:177
+#: webonary/Webonary_SemanticDomains.php:80
+msgid "RELATIONSHIPS"
+msgstr ""
+
+#: include/default_domains-yakan.php:178
+msgid "Types of relationships"
+msgstr ""
+
+#: include/default_domains-yakan.php:179
+msgid "Adjectives used in connection w/ relationships"
+msgstr ""
+
+#: include/default_domains-yakan.php:180
+msgid "Verbs used in connnection w/ relationships"
+msgstr ""
+
+#: include/default_domains-yakan.php:181
+#: webonary/Webonary_SemanticDomains.php:81
+msgid "LAW AND JUDGING"
+msgstr ""
+
+#: include/default_domains-yakan.php:182
+msgid "Law and judges"
+msgstr ""
+
+#: include/default_domains-yakan.php:183
+msgid "Offenders and offences"
+msgstr ""
+
+#: include/default_domains-yakan.php:184
+msgid "Verbs and adjectives used in connection w/ legal cases"
+msgstr ""
+
+#: include/default_domains-yakan.php:185
+msgid "Penalties"
+msgstr ""
+
+#: include/default_domains-yakan.php:186
+msgid "Other, law and judging"
+msgstr ""
+
+#: include/default_domains-yakan.php:187
+#: webonary/Webonary_SemanticDomains.php:82
+msgid "TYPES OF CONVEYANCES"
+msgstr ""
+
+#: include/default_domains-yakan.php:188
+msgid "Vehicles"
+msgstr ""
+
+#: include/default_domains-yakan.php:189
+msgid "Parts of motor vehicles"
+msgstr ""
+
+#: include/default_domains-yakan.php:190
+msgid "Verbs used in connection w/ motor vehicles"
+msgstr ""
+
+#: include/default_domains-yakan.php:191
+msgid "Other, types of conveyances"
+msgstr ""
+
+#: include/default_domains-yakan.php:192
+#: webonary/Webonary_SemanticDomains.php:83
+msgid "TYPES OF HOUSES AND CARPENTRY"
+msgstr ""
+
+#: include/default_domains-yakan.php:193 include/default_domains.php:1037
+msgid "Types of houses"
+msgstr ""
+
+#: include/default_domains-yakan.php:194
+msgid "Parts of houses"
+msgstr ""
+
+#: include/default_domains-yakan.php:195 include/default_domains.php:819
+msgid "Furniture"
+msgstr ""
+
+#: include/default_domains-yakan.php:196 include/default_domains.php:1050
+msgid "Building materials"
+msgstr ""
+
+#: include/default_domains-yakan.php:197
+msgid "Other, types of houses and carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:198
+msgid "Verbs used in connection w/ carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:199
+msgid "Adjectives used in connection w/ carpentry"
+msgstr ""
+
+#: include/default_domains-yakan.php:200
+#: webonary/Webonary_SemanticDomains.php:84
+msgid "IMPLEMENTS"
+msgstr ""
+
+#: include/default_domains-yakan.php:201
+msgid "Tools"
+msgstr ""
+
+#: include/default_domains-yakan.php:202
+msgid "Bladed weapons and implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:203
+msgid "Parts of bladed weapons and implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:204
+msgid "Firearms and other shooting implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:205
+msgid "Weapons for hitting/beating"
+msgstr ""
+
+#: include/default_domains-yakan.php:206
+msgid "Measuring devices"
+msgstr ""
+
+#: include/default_domains-yakan.php:207
+msgid "Household implements / items"
+msgstr ""
+
+#: include/default_domains-yakan.php:208
+msgid "Containers"
+msgstr ""
+
+#: include/default_domains-yakan.php:209
+msgid "Traps"
+msgstr ""
+
+#: include/default_domains-yakan.php:210
+msgid "Other, implements"
+msgstr ""
+
+#: include/default_domains-yakan.php:211
+#: webonary/Webonary_SemanticDomains.php:85
+msgid "FOOD ITEMS"
+msgstr ""
+
+#: include/default_domains-yakan.php:212
+msgid "Baked goods and sweets"
+msgstr ""
+
+#: include/default_domains-yakan.php:213
+msgid "Rice and other staples"
+msgstr ""
+
+#: include/default_domains-yakan.php:215
+msgid "Things used in cooking"
+msgstr ""
+
+#: include/default_domains-yakan.php:216
+msgid "General terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:217
+msgid "Cooking terms"
+msgstr ""
+
+#: include/default_domains-yakan.php:218
+#: webonary/Webonary_SemanticDomains.php:86
+msgid "EATING"
+msgstr ""
+
+#: include/default_domains-yakan.php:219
+msgid "Verbs used in connection w/ eating"
+msgstr ""
+
+#: include/default_domains-yakan.php:220
+#: webonary/Webonary_SemanticDomains.php:87
+msgid "CLOTHING AND SEWING"
+msgstr ""
+
+#: include/default_domains-yakan.php:221
+msgid "Items of clothing"
+msgstr ""
+
+#: include/default_domains-yakan.php:222 include/default_domains.php:882
+msgid "Jewelry"
+msgstr ""
+
+#: include/default_domains-yakan.php:223
+msgid "Things used in sewing"
+msgstr ""
+
+#: include/default_domains-yakan.php:224 include/default_domains.php:877
+msgid "Parts of clothing"
+msgstr ""
+
+#: include/default_domains-yakan.php:225
+msgid "Types of cloth"
+msgstr ""
+
+#: include/default_domains-yakan.php:226
+msgid "Verbs and adjectives used in connection w/ sewing and dressing"
+msgstr ""
+
+#: include/default_domains-yakan.php:227
+msgid "Other, clothing and sewing"
+msgstr ""
+
+#: include/default_domains-yakan.php:228
+#: webonary/Webonary_SemanticDomains.php:88
+msgid "WEAVING"
+msgstr ""
+
+#: include/default_domains-yakan.php:229
+msgid "Types of weaving"
+msgstr ""
+
+#: include/default_domains-yakan.php:230
+msgid "Parts of a loom"
+msgstr ""
+
+#: include/default_domains-yakan.php:231
+msgid "Parts of a pattern"
+msgstr ""
+
+#: include/default_domains-yakan.php:232
+msgid "Verbs used in connection w/ weaving"
+msgstr ""
+
+#: include/default_domains-yakan.php:233
+#: webonary/Webonary_SemanticDomains.php:89
+msgid "COLOR TERMS"
+msgstr ""
+
+#: include/default_domains-yakan.php:234
+msgid "Colors"
+msgstr ""
+
+#: include/default_domains-yakan.php:235
+msgid "Other words used in connection w/ color"
+msgstr ""
+
+#: include/default_domains-yakan.php:236
+msgid "Adjectives used in connection w/ color"
+msgstr ""
+
+#: include/default_domains-yakan.php:237
+#: webonary/Webonary_SemanticDomains.php:90
+msgid "CONCERNING HAIR"
+msgstr ""
+
+#: include/default_domains-yakan.php:238
+msgid "Things used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:239
+msgid "Adjectives used in connecton w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:240
+msgid "Verbs used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:241
+msgid "Nouns used in connection w/ hair"
+msgstr ""
+
+#: include/default_domains-yakan.php:242
+#: webonary/Webonary_SemanticDomains.php:91
+msgid "GAMES AND TOYS"
+msgstr ""
+
+#: include/default_domains-yakan.php:243
+#: webonary/Webonary_SemanticDomains.php:92
+msgid "SOUNDS"
+msgstr ""
+
+#: include/default_domains-yakan.php:244
+#: webonary/Webonary_SemanticDomains.php:93
+msgid "WAYS OF CUTTING"
+msgstr ""
+
+#: include/default_domains-yakan.php:245
+#: webonary/Webonary_SemanticDomains.php:94
+msgid "WAYS OF SPEAKING AND THINKING"
+msgstr ""
+
+#: include/default_domains-yakan.php:246
+#: webonary/Webonary_SemanticDomains.php:95
+msgid "WAYS OF WALKING"
+msgstr ""
+
+#: include/default_domains-yakan.php:247
+#: webonary/Webonary_SemanticDomains.php:96
+msgid "WAYS OF TYING THINGS"
+msgstr ""
+
+#: include/default_domains-yakan.php:248
+#: webonary/Webonary_SemanticDomains.php:97
+msgid "SEEING"
+msgstr ""
+
+#: include/default_domains-yakan.php:249
+msgid "Verbs used in connection w/ seeing"
+msgstr ""
+
+#: include/default_domains-yakan.php:250
+msgid "Adjectives used in connection w/ seeing"
+msgstr ""
+
+#: include/default_domains.php:6 webonary/Webonary_SemanticDomains.php:129
+msgid "Universe, creation"
+msgstr ""
+
+#: include/default_domains.php:7
+msgid "Sky"
+msgstr ""
+
+#: include/default_domains.php:8
+msgid "Sun"
+msgstr ""
+
+#: include/default_domains.php:9
+msgid "Moon"
+msgstr ""
+
+#: include/default_domains.php:10
+msgid "Star"
+msgstr ""
+
+#: include/default_domains.php:11
+msgid "Planet"
+msgstr ""
+
+#: include/default_domains.php:12
+msgid "Air"
+msgstr ""
+
+#: include/default_domains.php:13
+msgid "Blow air"
+msgstr ""
+
+#: include/default_domains.php:14
+msgid "Weather"
+msgstr ""
+
+#: include/default_domains.php:15
+msgid "Wind"
+msgstr ""
+
+#: include/default_domains.php:16
+msgid "Cloud"
+msgstr ""
+
+#: include/default_domains.php:17
+msgid "Rain"
+msgstr ""
+
+#: include/default_domains.php:18
+msgid "Snow, ice"
+msgstr ""
+
+#: include/default_domains.php:19
+msgid "Storm"
+msgstr ""
+
+#: include/default_domains.php:20
+msgid "Lightning, thunder"
+msgstr ""
+
+#: include/default_domains.php:21
+msgid "Flood"
+msgstr ""
+
+#: include/default_domains.php:22
+msgid "Drought"
+msgstr ""
+
+#: include/default_domains.php:23
+msgid "World"
+msgstr ""
+
+#: include/default_domains.php:25
+msgid "Mountain"
+msgstr ""
+
+#: include/default_domains.php:26
+msgid "Volcano"
+msgstr ""
+
+#: include/default_domains.php:27
+msgid "Plain, plateau"
+msgstr ""
+
+#: include/default_domains.php:28
+msgid "Valley"
+msgstr ""
+
+#: include/default_domains.php:29
+msgid "Underground"
+msgstr ""
+
+#: include/default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr ""
+
+#: include/default_domains.php:31
+msgid "Earthquake"
+msgstr ""
+
+#: include/default_domains.php:32
+msgid "Substance, matter"
+msgstr ""
+
+#: include/default_domains.php:33
+msgid "Soil, dirt"
+msgstr ""
+
+#: include/default_domains.php:34
+msgid "Rock"
+msgstr ""
+
+#: include/default_domains.php:35
+msgid "Metal"
+msgstr ""
+
+#: include/default_domains.php:36
+msgid "Mineral"
+msgstr ""
+
+#: include/default_domains.php:37
+msgid "Jewel"
+msgstr ""
+
+#: include/default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr ""
+
+#: include/default_domains.php:39
+msgid "Liquid"
+msgstr ""
+
+#: include/default_domains.php:40
+msgid "Oil"
+msgstr ""
+
+#: include/default_domains.php:41
+msgid "Gas"
+msgstr ""
+
+#: include/default_domains.php:42
+msgid "Water"
+msgstr ""
+
+#: include/default_domains.php:44
+msgid "Ocean, lake"
+msgstr ""
+
+#: include/default_domains.php:45
+msgid "Swamp"
+msgstr ""
+
+#: include/default_domains.php:46
+msgid "River"
+msgstr ""
+
+#: include/default_domains.php:47
+msgid "Spring, well"
+msgstr ""
+
+#: include/default_domains.php:48
+msgid "Island, shore"
+msgstr ""
+
+#: include/default_domains.php:49
+msgid "Movement of water"
+msgstr ""
+
+#: include/default_domains.php:50
+msgid "Flow"
+msgstr ""
+
+#: include/default_domains.php:51
+msgid "Pour"
+msgstr ""
+
+#: include/default_domains.php:52
+msgid "Drip"
+msgstr ""
+
+#: include/default_domains.php:53
+msgid "Wave"
+msgstr ""
+
+#: include/default_domains.php:54
+msgid "Calm, rough"
+msgstr ""
+
+#: include/default_domains.php:55
+msgid "Tide"
+msgstr ""
+
+#: include/default_domains.php:56
+msgid "Wet"
+msgstr ""
+
+#: include/default_domains.php:57
+msgid "Dry"
+msgstr ""
+
+#: include/default_domains.php:58
+msgid "Be in water"
+msgstr ""
+
+#: include/default_domains.php:59
+msgid "Solutions of water"
+msgstr ""
+
+#: include/default_domains.php:60
+msgid "Water quality"
+msgstr ""
+
+#: include/default_domains.php:61
+msgid "Living things"
+msgstr ""
+
+#: include/default_domains.php:62
+msgid "Dead things"
+msgstr ""
+
+#: include/default_domains.php:63
+msgid "Spirits of things"
+msgstr ""
+
+#: include/default_domains.php:64
+msgid "Plant"
+msgstr ""
+
+#: include/default_domains.php:65
+msgid "Tree"
+msgstr ""
+
+#: include/default_domains.php:66
+msgid "Bush, shrub"
+msgstr ""
+
+#: include/default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr ""
+
+#: include/default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr ""
+
+#: include/default_domains.php:69
+msgid "Parts of a plant"
+msgstr ""
+
+#: include/default_domains.php:70
+msgid "Growth of plants"
+msgstr ""
+
+#: include/default_domains.php:71
+msgid "Plant diseases"
+msgstr ""
+
+#: include/default_domains.php:72
+msgid "Animal"
+msgstr ""
+
+#: include/default_domains.php:73
+msgid "Types of animals"
+msgstr ""
+
+#: include/default_domains.php:74
+msgid "Mammal"
+msgstr ""
+
+#: include/default_domains.php:75
+msgid "Primate"
+msgstr ""
+
+#: include/default_domains.php:76
+msgid "Carnivore"
+msgstr ""
+
+#: include/default_domains.php:77
+msgid "Hoofed animals"
+msgstr ""
+
+#: include/default_domains.php:78
+msgid "Rodent"
+msgstr ""
+
+#: include/default_domains.php:79
+msgid "Marsupial"
+msgstr ""
+
+#: include/default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr ""
+
+#: include/default_domains.php:81
+msgid "Sea mammal"
+msgstr ""
+
+#: include/default_domains.php:82
+msgid "Bat"
+msgstr ""
+
+#: include/default_domains.php:83
+msgid "Bird"
+msgstr ""
+
+#: include/default_domains.php:84
+msgid "Reptile"
+msgstr ""
+
+#: include/default_domains.php:85
+msgid "Snake"
+msgstr ""
+
+#: include/default_domains.php:86
+msgid "Lizard"
+msgstr ""
+
+#: include/default_domains.php:87
+msgid "Turtle"
+msgstr ""
+
+#: include/default_domains.php:88
+msgid "Crocodile"
+msgstr ""
+
+#: include/default_domains.php:89
+msgid "Amphibian"
+msgstr ""
+
+#: include/default_domains.php:91
+msgid "Shark, ray"
+msgstr ""
+
+#: include/default_domains.php:92
+msgid "Insect"
+msgstr ""
+
+#: include/default_domains.php:93
+msgid "Spider"
+msgstr ""
+
+#: include/default_domains.php:94
+msgid "Small animals"
+msgstr ""
+
+#: include/default_domains.php:95
+msgid "Parts of an animal"
+msgstr ""
+
+#: include/default_domains.php:96
+msgid "Parts of a bird"
+msgstr ""
+
+#: include/default_domains.php:97
+msgid "Parts of a reptile"
+msgstr ""
+
+#: include/default_domains.php:98
+msgid "Parts of a fish"
+msgstr ""
+
+#: include/default_domains.php:99
+msgid "Parts of an insect"
+msgstr ""
+
+#: include/default_domains.php:100
+msgid "Parts of small animals"
+msgstr ""
+
+#: include/default_domains.php:101
+msgid "Animal life cycle"
+msgstr ""
+
+#: include/default_domains.php:102
+msgid "Egg"
+msgstr ""
+
+#: include/default_domains.php:103
+msgid "Animal actions"
+msgstr ""
+
+#: include/default_domains.php:104
+msgid "Animal movement"
+msgstr ""
+
+#: include/default_domains.php:105
+msgid "Animal eating"
+msgstr ""
+
+#: include/default_domains.php:106
+msgid "Animal sounds"
+msgstr ""
+
+#: include/default_domains.php:107
+msgid "Animal home"
+msgstr ""
+
+#: include/default_domains.php:108
+msgid "Animal group"
+msgstr ""
+
+#: include/default_domains.php:109
+msgid "Male and female animals"
+msgstr ""
+
+#: include/default_domains.php:110
+msgid "Nature, environment"
+msgstr ""
+
+#: include/default_domains.php:111
+msgid "Natural"
+msgstr ""
+
+#: include/default_domains.php:112 webonary/Webonary_SemanticDomains.php:130
+msgid "Person"
+msgstr ""
+
+#: include/default_domains.php:113
+msgid "Body"
+msgstr ""
+
+#: include/default_domains.php:114
+msgid "Head"
+msgstr ""
+
+#: include/default_domains.php:115
+msgid "Eye"
+msgstr ""
+
+#: include/default_domains.php:116
+msgid "Ear"
+msgstr ""
+
+#: include/default_domains.php:117
+msgid "Nose"
+msgstr ""
+
+#: include/default_domains.php:119
+msgid "Tooth"
+msgstr ""
+
+#: include/default_domains.php:120
+msgid "Torso"
+msgstr ""
+
+#: include/default_domains.php:121
+msgid "Limb"
+msgstr ""
+
+#: include/default_domains.php:122
+msgid "Arm"
+msgstr ""
+
+#: include/default_domains.php:123
+msgid "Leg"
+msgstr ""
+
+#: include/default_domains.php:124
+msgid "Finger, toe"
+msgstr ""
+
+#: include/default_domains.php:127
+msgid "Bone, joint"
+msgstr ""
+
+#: include/default_domains.php:128
+msgid "Flesh"
+msgstr ""
+
+#: include/default_domains.php:129
+msgid "Internal organs"
+msgstr ""
+
+#: include/default_domains.php:130
+msgid "Heart"
+msgstr ""
+
+#: include/default_domains.php:132
+msgid "Male organs"
+msgstr ""
+
+#: include/default_domains.php:133
+msgid "Female organs"
+msgstr ""
+
+#: include/default_domains.php:134
+msgid "Body functions"
+msgstr ""
+
+#: include/default_domains.php:135
+msgid "Breathe, breath"
+msgstr ""
+
+#: include/default_domains.php:136
+msgid "Cough, sneeze"
+msgstr ""
+
+#: include/default_domains.php:137
+msgid "Spit, saliva"
+msgstr ""
+
+#: include/default_domains.php:138
+msgid "Mucus"
+msgstr ""
+
+#: include/default_domains.php:139
+msgid "Bleed, blood"
+msgstr ""
+
+#: include/default_domains.php:140
+msgid "Sweat"
+msgstr ""
+
+#: include/default_domains.php:141
+msgid "Urinate, urine"
+msgstr ""
+
+#: include/default_domains.php:142
+msgid "Defecate, feces"
+msgstr ""
+
+#: include/default_domains.php:143
+msgid "Sense, perceive"
+msgstr ""
+
+#: include/default_domains.php:144
+msgid "See"
+msgstr ""
+
+#: include/default_domains.php:145
+msgid "Look"
+msgstr ""
+
+#: include/default_domains.php:146
+msgid "Watch"
+msgstr ""
+
+#: include/default_domains.php:147
+msgid "Examine"
+msgstr ""
+
+#: include/default_domains.php:148
+msgid "Show, let someone see"
+msgstr ""
+
+#: include/default_domains.php:149
+msgid "Visible"
+msgstr ""
+
+#: include/default_domains.php:150
+msgid "Appear"
+msgstr ""
+
+#: include/default_domains.php:151
+msgid "Transparent"
+msgstr ""
+
+#: include/default_domains.php:152
+msgid "Reflect, mirror"
+msgstr ""
+
+#: include/default_domains.php:153
+msgid "Appearance"
+msgstr ""
+
+#: include/default_domains.php:154
+msgid "Beautiful"
+msgstr ""
+
+#: include/default_domains.php:155
+msgid "Ugly"
+msgstr ""
+
+#: include/default_domains.php:156
+msgid "Something used to see"
+msgstr ""
+
+#: include/default_domains.php:157
+msgid "Hear"
+msgstr ""
+
+#: include/default_domains.php:158
+msgid "Listen"
+msgstr ""
+
+#: include/default_domains.php:159
+msgid "Sound"
+msgstr ""
+
+#: include/default_domains.php:160
+msgid "Types of sounds"
+msgstr ""
+
+#: include/default_domains.php:161
+msgid "Loud"
+msgstr ""
+
+#: include/default_domains.php:162
+msgid "Quiet"
+msgstr ""
+
+#: include/default_domains.php:163
+msgid "Taste"
+msgstr ""
+
+#: include/default_domains.php:164
+msgid "Smell"
+msgstr ""
+
+#: include/default_domains.php:165
+msgid "Sense of touch"
+msgstr ""
+
+#: include/default_domains.php:166
+msgid "Comfortable"
+msgstr ""
+
+#: include/default_domains.php:167
+msgid "Body condition"
+msgstr ""
+
+#: include/default_domains.php:168
+msgid "Strong"
+msgstr ""
+
+#: include/default_domains.php:169
+msgid "Weak"
+msgstr ""
+
+#: include/default_domains.php:170
+msgid "Energetic"
+msgstr ""
+
+#: include/default_domains.php:171
+msgid "Tired"
+msgstr ""
+
+#: include/default_domains.php:172
+msgid "Rest"
+msgstr ""
+
+#: include/default_domains.php:173
+msgid "Healthy"
+msgstr ""
+
+#: include/default_domains.php:174
+msgid "Sick"
+msgstr ""
+
+#: include/default_domains.php:175
+msgid "Recover from sickness"
+msgstr ""
+
+#: include/default_domains.php:176
+msgid "Disease"
+msgstr ""
+
+#: include/default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr ""
+
+#: include/default_domains.php:178
+msgid "Skin disease"
+msgstr ""
+
+#: include/default_domains.php:179
+msgid "Stomach illness"
+msgstr ""
+
+#: include/default_domains.php:180
+msgid "Tooth decay"
+msgstr ""
+
+#: include/default_domains.php:181
+msgid "Injure"
+msgstr ""
+
+#: include/default_domains.php:182
+msgid "Amputate"
+msgstr ""
+
+#: include/default_domains.php:183
+msgid "Poison"
+msgstr ""
+
+#: include/default_domains.php:184
+msgid "Disabled"
+msgstr ""
+
+#: include/default_domains.php:185
+msgid "Blind"
+msgstr ""
+
+#: include/default_domains.php:186
+msgid "Poor eyesight"
+msgstr ""
+
+#: include/default_domains.php:187
+msgid "Deaf"
+msgstr ""
+
+#: include/default_domains.php:188
+msgid "Mute"
+msgstr ""
+
+#: include/default_domains.php:189
+msgid "Birth defect"
+msgstr ""
+
+#: include/default_domains.php:190
+msgid "Cause of disease"
+msgstr ""
+
+#: include/default_domains.php:191
+msgid "Symptom of disease"
+msgstr ""
+
+#: include/default_domains.php:192
+msgid "Pain"
+msgstr ""
+
+#: include/default_domains.php:194
+msgid "Swell"
+msgstr ""
+
+#: include/default_domains.php:195
+msgid "Lose consciousness"
+msgstr ""
+
+#: include/default_domains.php:196
+msgid "Dazed, confused"
+msgstr ""
+
+#: include/default_domains.php:197
+msgid "Vision, hallucination"
+msgstr ""
+
+#: include/default_domains.php:198
+msgid "Treat disease"
+msgstr ""
+
+#: include/default_domains.php:199
+msgid "Doctor, nurse"
+msgstr ""
+
+#: include/default_domains.php:200
+msgid "Medicine"
+msgstr ""
+
+#: include/default_domains.php:201
+msgid "Medicinal plants"
+msgstr ""
+
+#: include/default_domains.php:202
+msgid "Hospital"
+msgstr ""
+
+#: include/default_domains.php:203
+msgid "Traditional medicine"
+msgstr ""
+
+#: include/default_domains.php:204
+msgid "Mental illness"
+msgstr ""
+
+#: include/default_domains.php:205
+msgid "Life"
+msgstr ""
+
+#: include/default_domains.php:206
+msgid "Marriage"
+msgstr ""
+
+#: include/default_domains.php:207
+msgid "Arrange a marriage"
+msgstr ""
+
+#: include/default_domains.php:208
+msgid "Wedding"
+msgstr ""
+
+#: include/default_domains.php:209
+msgid "Unmarried"
+msgstr ""
+
+#: include/default_domains.php:210
+msgid "Divorce"
+msgstr ""
+
+#: include/default_domains.php:211
+msgid "Romantic love"
+msgstr ""
+
+#: include/default_domains.php:212
+msgid "Sexual relations"
+msgstr ""
+
+#: include/default_domains.php:213
+msgid "Virginity"
+msgstr ""
+
+#: include/default_domains.php:214
+msgid "Attract sexually"
+msgstr ""
+
+#: include/default_domains.php:215
+msgid "Sexual immorality"
+msgstr ""
+
+#: include/default_domains.php:216
+msgid "Birth"
+msgstr ""
+
+#: include/default_domains.php:217
+msgid "Pregnancy"
+msgstr ""
+
+#: include/default_domains.php:218
+msgid "Fetus"
+msgstr ""
+
+#: include/default_domains.php:219
+msgid "Miscarriage"
+msgstr ""
+
+#: include/default_domains.php:220
+msgid "Labor and birth pains"
+msgstr ""
+
+#: include/default_domains.php:221
+msgid "Help to give birth"
+msgstr ""
+
+#: include/default_domains.php:222
+msgid "Unusual birth"
+msgstr ""
+
+#: include/default_domains.php:223
+msgid "Multiple births"
+msgstr ""
+
+#: include/default_domains.php:224
+msgid "Fertile, infertile"
+msgstr ""
+
+#: include/default_domains.php:225
+msgid "Birth ceremony"
+msgstr ""
+
+#: include/default_domains.php:226
+msgid "Stage of life"
+msgstr ""
+
+#: include/default_domains.php:227
+msgid "Baby"
+msgstr ""
+
+#: include/default_domains.php:228
+msgid "Care for a baby"
+msgstr ""
+
+#: include/default_domains.php:229
+msgid "Child"
+msgstr ""
+
+#: include/default_domains.php:230
+msgid "Rear a child"
+msgstr ""
+
+#: include/default_domains.php:231
+msgid "Youth"
+msgstr ""
+
+#: include/default_domains.php:232
+msgid "Adult"
+msgstr ""
+
+#: include/default_domains.php:233
+msgid "Old person"
+msgstr ""
+
+#: include/default_domains.php:234
+msgid "Grow, get bigger"
+msgstr ""
+
+#: include/default_domains.php:235
+msgid "Initiation"
+msgstr ""
+
+#: include/default_domains.php:236
+msgid "Peer group"
+msgstr ""
+
+#: include/default_domains.php:237
+msgid "Male, female"
+msgstr ""
+
+#: include/default_domains.php:238
+msgid "Man"
+msgstr ""
+
+#: include/default_domains.php:239
+msgid "Woman"
+msgstr ""
+
+#: include/default_domains.php:240
+msgid "Die"
+msgstr ""
+
+#: include/default_domains.php:241
+msgid "Kill"
+msgstr ""
+
+#: include/default_domains.php:242
+msgid "Corpse"
+msgstr ""
+
+#: include/default_domains.php:243
+msgid "Funeral"
+msgstr ""
+
+#: include/default_domains.php:244
+msgid "Mourn"
+msgstr ""
+
+#: include/default_domains.php:245
+msgid "Bury"
+msgstr ""
+
+#: include/default_domains.php:246
+msgid "Grave"
+msgstr ""
+
+#: include/default_domains.php:247
+msgid "Inherit"
+msgstr ""
+
+#: include/default_domains.php:248
+msgid "Life after death"
+msgstr ""
+
+#: include/default_domains.php:249 webonary/Webonary_SemanticDomains.php:131
+msgid "Language and thought"
+msgstr ""
+
+#: include/default_domains.php:250
+msgid "Soul, spirit"
+msgstr ""
+
+#: include/default_domains.php:251
+msgid "Personality"
+msgstr ""
+
+#: include/default_domains.php:252
+msgid "Mental state"
+msgstr ""
+
+#: include/default_domains.php:253
+msgid "Alert"
+msgstr ""
+
+#: include/default_domains.php:254
+msgid "Notice"
+msgstr ""
+
+#: include/default_domains.php:255
+msgid "Attention"
+msgstr ""
+
+#: include/default_domains.php:256
+msgid "Ignore"
+msgstr ""
+
+#: include/default_domains.php:257
+msgid "Think"
+msgstr ""
+
+#: include/default_domains.php:258
+msgid "Mind"
+msgstr ""
+
+#: include/default_domains.php:259
+msgid "Think about"
+msgstr ""
+
+#: include/default_domains.php:260
+msgid "Imagine"
+msgstr ""
+
+#: include/default_domains.php:261
+msgid "Intelligent"
+msgstr ""
+
+#: include/default_domains.php:262
+msgid "Stupid"
+msgstr ""
+
+#: include/default_domains.php:263
+msgid "Logical"
+msgstr ""
+
+#: include/default_domains.php:264
+msgid "Instinct"
+msgstr ""
+
+#: include/default_domains.php:265
+msgid "Learn"
+msgstr ""
+
+#: include/default_domains.php:266
+msgid "Study"
+msgstr ""
+
+#: include/default_domains.php:267
+msgid "Check"
+msgstr ""
+
+#: include/default_domains.php:268
+msgid "Evaluate, test"
+msgstr ""
+
+#: include/default_domains.php:269
+msgid "Guess"
+msgstr ""
+
+#: include/default_domains.php:270
+msgid "Solve"
+msgstr ""
+
+#: include/default_domains.php:271
+msgid "Realize"
+msgstr ""
+
+#: include/default_domains.php:272
+msgid "Willing to learn"
+msgstr ""
+
+#: include/default_domains.php:273
+msgid "Know"
+msgstr ""
+
+#: include/default_domains.php:274
+msgid "Known, unknown"
+msgstr ""
+
+#: include/default_domains.php:275
+msgid "Area of knowledge"
+msgstr ""
+
+#: include/default_domains.php:276
+msgid "Secret"
+msgstr ""
+
+#: include/default_domains.php:277
+msgid "Understand"
+msgstr ""
+
+#: include/default_domains.php:278
+msgid "Misunderstand"
+msgstr ""
+
+#: include/default_domains.php:279
+msgid "Understandable"
+msgstr ""
+
+#: include/default_domains.php:280
+msgid "Mysterious"
+msgstr ""
+
+#: include/default_domains.php:281
+msgid "Opinion"
+msgstr ""
+
+#: include/default_domains.php:282
+msgid "Believe"
+msgstr ""
+
+#: include/default_domains.php:283
+msgid "Trust"
+msgstr ""
+
+#: include/default_domains.php:284
+msgid "Disbelief"
+msgstr ""
+
+#: include/default_domains.php:285
+msgid "Doubt"
+msgstr ""
+
+#: include/default_domains.php:286
+msgid "Agree with someone"
+msgstr ""
+
+#: include/default_domains.php:287
+msgid "Disagree"
+msgstr ""
+
+#: include/default_domains.php:288
+msgid "Protest"
+msgstr ""
+
+#: include/default_domains.php:289
+msgid "Philosophy"
+msgstr ""
+
+#: include/default_domains.php:290
+msgid "Attitude"
+msgstr ""
+
+#: include/default_domains.php:291
+msgid "Extreme belief"
+msgstr ""
+
+#: include/default_domains.php:292
+msgid "Change your mind"
+msgstr ""
+
+#: include/default_domains.php:293
+msgid "Approve of something"
+msgstr ""
+
+#: include/default_domains.php:294
+msgid "Remember"
+msgstr ""
+
+#: include/default_domains.php:295
+msgid "Forget"
+msgstr ""
+
+#: include/default_domains.php:296
+msgid "Recognize"
+msgstr ""
+
+#: include/default_domains.php:297
+msgid "Memorize"
+msgstr ""
+
+#: include/default_domains.php:298
+msgid "Remind"
+msgstr ""
+
+#: include/default_domains.php:299
+msgid "Expect"
+msgstr ""
+
+#: include/default_domains.php:300
+msgid "Hope"
+msgstr ""
+
+#: include/default_domains.php:301
+msgid "Hopeless"
+msgstr ""
+
+#: include/default_domains.php:302
+msgid "Predict"
+msgstr ""
+
+#: include/default_domains.php:303
+msgid "Tendency"
+msgstr ""
+
+#: include/default_domains.php:304
+msgid "Want"
+msgstr ""
+
+#: include/default_domains.php:305
+msgid "Decide, plan"
+msgstr ""
+
+#: include/default_domains.php:306
+msgid "Purpose, goal"
+msgstr ""
+
+#: include/default_domains.php:307
+msgid "Choose"
+msgstr ""
+
+#: include/default_domains.php:308
+msgid "Cast lots"
+msgstr ""
+
+#: include/default_domains.php:309
+msgid "Intend"
+msgstr ""
+
+#: include/default_domains.php:310
+msgid "Deliberately"
+msgstr ""
+
+#: include/default_domains.php:311
+msgid "Determined"
+msgstr ""
+
+#: include/default_domains.php:312
+msgid "Stubborn"
+msgstr ""
+
+#: include/default_domains.php:313
+msgid "Lust"
+msgstr ""
+
+#: include/default_domains.php:314
+msgid "Request"
+msgstr ""
+
+#: include/default_domains.php:315
+msgid "Agree to do something"
+msgstr ""
+
+#: include/default_domains.php:316
+msgid "Refuse to do something"
+msgstr ""
+
+#: include/default_domains.php:317
+msgid "Intercede"
+msgstr ""
+
+#: include/default_domains.php:318
+msgid "Willing"
+msgstr ""
+
+#: include/default_domains.php:319
+msgid "Influence"
+msgstr ""
+
+#: include/default_domains.php:320
+msgid "Suggest"
+msgstr ""
+
+#: include/default_domains.php:321
+msgid "Advise"
+msgstr ""
+
+#: include/default_domains.php:322
+msgid "Persuade"
+msgstr ""
+
+#: include/default_domains.php:323
+msgid "Insist"
+msgstr ""
+
+#: include/default_domains.php:324
+msgid "Compel"
+msgstr ""
+
+#: include/default_domains.php:325
+msgid "Control"
+msgstr ""
+
+#: include/default_domains.php:326
+msgid "Warn"
+msgstr ""
+
+#: include/default_domains.php:327
+msgid "Threaten"
+msgstr ""
+
+#: include/default_domains.php:328
+msgid "Ask permission"
+msgstr ""
+
+#: include/default_domains.php:329
+msgid "Give permission"
+msgstr ""
+
+#: include/default_domains.php:330
+msgid "Refuse permission"
+msgstr ""
+
+#: include/default_domains.php:331
+msgid "Exempt"
+msgstr ""
+
+#: include/default_domains.php:332
+msgid "Prevent"
+msgstr ""
+
+#: include/default_domains.php:333
+msgid "Free to do what you want"
+msgstr ""
+
+#: include/default_domains.php:334
+msgid "Offer"
+msgstr ""
+
+#: include/default_domains.php:335
+msgid "Accept"
+msgstr ""
+
+#: include/default_domains.php:336
+msgid "Reject"
+msgstr ""
+
+#: include/default_domains.php:337
+msgid "Emotion"
+msgstr ""
+
+#: include/default_domains.php:338
+msgid "Feel good"
+msgstr ""
+
+#: include/default_domains.php:339
+msgid "Like, love"
+msgstr ""
+
+#: include/default_domains.php:340
+msgid "Enjoy doing something"
+msgstr ""
+
+#: include/default_domains.php:341
+msgid "Self-esteem"
+msgstr ""
+
+#: include/default_domains.php:342
+msgid "Prefer"
+msgstr ""
+
+#: include/default_domains.php:343
+msgid "Popular"
+msgstr ""
+
+#: include/default_domains.php:344
+msgid "Fashionable"
+msgstr ""
+
+#: include/default_domains.php:345
+msgid "Contentment"
+msgstr ""
+
+#: include/default_domains.php:346
+msgid "Happy for"
+msgstr ""
+
+#: include/default_domains.php:347
+msgid "Pleased with"
+msgstr ""
+
+#: include/default_domains.php:348
+msgid "Happy"
+msgstr ""
+
+#: include/default_domains.php:349
+msgid "Relaxed"
+msgstr ""
+
+#: include/default_domains.php:350
+msgid "Calm"
+msgstr ""
+
+#: include/default_domains.php:351
+msgid "Surprise"
+msgstr ""
+
+#: include/default_domains.php:352
+msgid "Interested"
+msgstr ""
+
+#: include/default_domains.php:353
+msgid "Excited"
+msgstr ""
+
+#: include/default_domains.php:354
+msgid "Enthusiastic"
+msgstr ""
+
+#: include/default_domains.php:355
+msgid "Obsessed"
+msgstr ""
+
+#: include/default_domains.php:356
+msgid "Attract"
+msgstr ""
+
+#: include/default_domains.php:357
+msgid "Indifferent"
+msgstr ""
+
+#: include/default_domains.php:358
+msgid "Uninterested, bored"
+msgstr ""
+
+#: include/default_domains.php:359
+msgid "Confident"
+msgstr ""
+
+#: include/default_domains.php:360
+msgid "Feel bad"
+msgstr ""
+
+#: include/default_domains.php:361
+msgid "Sad"
+msgstr ""
+
+#: include/default_domains.php:362
+msgid "Dislike"
+msgstr ""
+
+#: include/default_domains.php:363
+msgid "Hate, detest"
+msgstr ""
+
+#: include/default_domains.php:364
+msgid "Disgusted"
+msgstr ""
+
+#: include/default_domains.php:365
+msgid "Disappointed"
+msgstr ""
+
+#: include/default_domains.php:366
+msgid "Lonely"
+msgstr ""
+
+#: include/default_domains.php:367
+msgid "Upset"
+msgstr ""
+
+#: include/default_domains.php:368
+msgid "Shock"
+msgstr ""
+
+#: include/default_domains.php:369
+msgid "Jealous"
+msgstr ""
+
+#: include/default_domains.php:370
+msgid "Discontent"
+msgstr ""
+
+#: include/default_domains.php:371
+msgid "Sorry"
+msgstr ""
+
+#: include/default_domains.php:372
+msgid "Ashamed"
+msgstr ""
+
+#: include/default_domains.php:373
+msgid "Embarrassed"
+msgstr ""
+
+#: include/default_domains.php:374
+msgid "Angry"
+msgstr ""
+
+#: include/default_domains.php:375
+msgid "Annoyed"
+msgstr ""
+
+#: include/default_domains.php:376
+msgid "Afraid"
+msgstr ""
+
+#: include/default_domains.php:377
+msgid "Worried"
+msgstr ""
+
+#: include/default_domains.php:378
+msgid "Nervous"
+msgstr ""
+
+#: include/default_domains.php:379
+msgid "Shy, timid"
+msgstr ""
+
+#: include/default_domains.php:380
+msgid "Confused"
+msgstr ""
+
+#: include/default_domains.php:381
+msgid "Communication"
+msgstr ""
+
+#: include/default_domains.php:382
+msgid "Say"
+msgstr ""
+
+#: include/default_domains.php:383
+msgid "Voice"
+msgstr ""
+
+#: include/default_domains.php:384
+msgid "Shout"
+msgstr ""
+
+#: include/default_domains.php:385
+msgid "Speak quietly"
+msgstr ""
+
+#: include/default_domains.php:386
+msgid "Speak a lot"
+msgstr ""
+
+#: include/default_domains.php:387
+msgid "Speak little"
+msgstr ""
+
+#: include/default_domains.php:388
+msgid "Say nothing"
+msgstr ""
+
+#: include/default_domains.php:389
+msgid "Speech style"
+msgstr ""
+
+#: include/default_domains.php:390
+msgid "Speak well"
+msgstr ""
+
+#: include/default_domains.php:391
+msgid "Speak poorly"
+msgstr ""
+
+#: include/default_domains.php:392
+msgid "Talk about a subject"
+msgstr ""
+
+#: include/default_domains.php:393
+msgid "Announce"
+msgstr ""
+
+#: include/default_domains.php:394
+msgid "Describe"
+msgstr ""
+
+#: include/default_domains.php:395
+msgid "Explain"
+msgstr ""
+
+#: include/default_domains.php:396
+msgid "Mention"
+msgstr ""
+
+#: include/default_domains.php:397
+msgid "Introduce"
+msgstr ""
+
+#: include/default_domains.php:398
+msgid "Repeat"
+msgstr ""
+
+#: include/default_domains.php:399
+msgid "Summarize"
+msgstr ""
+
+#: include/default_domains.php:400
+msgid "Emphasize"
+msgstr ""
+
+#: include/default_domains.php:401
+msgid "Be about, subject"
+msgstr ""
+
+#: include/default_domains.php:402
+msgid "True"
+msgstr ""
+
+#: include/default_domains.php:403
+msgid "Tell the truth"
+msgstr ""
+
+#: include/default_domains.php:404
+msgid "Tell a lie"
+msgstr ""
+
+#: include/default_domains.php:405
+msgid "Contradict"
+msgstr ""
+
+#: include/default_domains.php:406
+msgid "Expose falsehood"
+msgstr ""
+
+#: include/default_domains.php:407
+msgid "Real"
+msgstr ""
+
+#: include/default_domains.php:408
+msgid "Exaggerate"
+msgstr ""
+
+#: include/default_domains.php:409
+msgid "Speak with others"
+msgstr ""
+
+#: include/default_domains.php:410
+msgid "Call"
+msgstr ""
+
+#: include/default_domains.php:411
+msgid "Contact"
+msgstr ""
+
+#: include/default_domains.php:412
+msgid "Greet"
+msgstr ""
+
+#: include/default_domains.php:413
+msgid "Say farewell"
+msgstr ""
+
+#: include/default_domains.php:414
+msgid "Speak in unison"
+msgstr ""
+
+#: include/default_domains.php:415
+msgid "Ask"
+msgstr ""
+
+#: include/default_domains.php:416
+msgid "Answer"
+msgstr ""
+
+#: include/default_domains.php:417
+msgid "Disclose"
+msgstr ""
+
+#: include/default_domains.php:418
+msgid "Hide your thoughts"
+msgstr ""
+
+#: include/default_domains.php:419
+msgid "Debate"
+msgstr ""
+
+#: include/default_domains.php:420
+msgid "Demonstrate"
+msgstr ""
+
+#: include/default_domains.php:421
+msgid "Quarrel"
+msgstr ""
+
+#: include/default_domains.php:422
+msgid "Praise"
+msgstr ""
+
+#: include/default_domains.php:423
+msgid "Thank"
+msgstr ""
+
+#: include/default_domains.php:424
+msgid "Flatter"
+msgstr ""
+
+#: include/default_domains.php:425
+msgid "Boast"
+msgstr ""
+
+#: include/default_domains.php:426
+msgid "Criticize"
+msgstr ""
+
+#: include/default_domains.php:427
+msgid "Blame"
+msgstr ""
+
+#: include/default_domains.php:428
+msgid "Insult"
+msgstr ""
+
+#: include/default_domains.php:429
+msgid "Mock"
+msgstr ""
+
+#: include/default_domains.php:430
+msgid "Gossip"
+msgstr ""
+
+#: include/default_domains.php:431
+msgid "Complain"
+msgstr ""
+
+#: include/default_domains.php:432
+msgid "Promise"
+msgstr ""
+
+#: include/default_domains.php:433
+msgid "Make speech"
+msgstr ""
+
+#: include/default_domains.php:434
+msgid "Report"
+msgstr ""
+
+#: include/default_domains.php:435
+msgid "News, message"
+msgstr ""
+
+#: include/default_domains.php:436
+msgid "Figurative"
+msgstr ""
+
+#: include/default_domains.php:437
+msgid "Admit"
+msgstr ""
+
+#: include/default_domains.php:438 include/infrastructure.php:236
+#: include/infrastructure.php:244
+msgid "Language"
+msgstr ""
+
+#: include/default_domains.php:439
+msgid "Word"
+msgstr ""
+
+#: include/default_domains.php:440
+msgid "Information"
+msgstr ""
+
+#: include/default_domains.php:441
+msgid "Story"
+msgstr ""
+
+#: include/default_domains.php:442
+msgid "Fable, myth"
+msgstr ""
+
+#: include/default_domains.php:443
+msgid "Saying, proverb"
+msgstr ""
+
+#: include/default_domains.php:444
+msgid "Riddle"
+msgstr ""
+
+#: include/default_domains.php:445
+msgid "Poetry"
+msgstr ""
+
+#: include/default_domains.php:446
+msgid "History"
+msgstr ""
+
+#: include/default_domains.php:447
+msgid "Verbal tradition"
+msgstr ""
+
+#: include/default_domains.php:448
+msgid "Foolish talk"
+msgstr ""
+
+#: include/default_domains.php:449
+msgid "Obscenity"
+msgstr ""
+
+#: include/default_domains.php:450
+msgid "Sign, symbol"
+msgstr ""
+
+#: include/default_domains.php:451
+msgid "Gesture"
+msgstr ""
+
+#: include/default_domains.php:452
+msgid "Point at"
+msgstr ""
+
+#: include/default_domains.php:453
+msgid "Facial expression"
+msgstr ""
+
+#: include/default_domains.php:454
+msgid "Laugh"
+msgstr ""
+
+#: include/default_domains.php:455
+msgid "Cry, tear"
+msgstr ""
+
+#: include/default_domains.php:456
+msgid "Reading and writing"
+msgstr ""
+
+#: include/default_domains.php:457
+msgid "Write"
+msgstr ""
+
+#: include/default_domains.php:458
+msgid "Written material"
+msgstr ""
+
+#: include/default_domains.php:459
+msgid "Read"
+msgstr ""
+
+#: include/default_domains.php:460
+msgid "Publish"
+msgstr ""
+
+#: include/default_domains.php:461
+msgid "Record"
+msgstr ""
+
+#: include/default_domains.php:462
+msgid "List"
+msgstr ""
+
+#: include/default_domains.php:463
+msgid "Letter"
+msgstr ""
+
+#: include/default_domains.php:464
+msgid "Interpreting messages"
+msgstr ""
+
+#: include/default_domains.php:465
+msgid "Meaning"
+msgstr ""
+
+#: include/default_domains.php:466
+msgid "Meaningless"
+msgstr ""
+
+#: include/default_domains.php:467
+msgid "Unintelligible"
+msgstr ""
+
+#: include/default_domains.php:468
+msgid "Show, indicate"
+msgstr ""
+
+#: include/default_domains.php:469
+msgid "Mass communication"
+msgstr ""
+
+#: include/default_domains.php:470
+msgid "Radio, television"
+msgstr ""
+
+#: include/default_domains.php:471
+msgid "Telephone"
+msgstr ""
+
+#: include/default_domains.php:472
+msgid "Newspaper"
+msgstr ""
+
+#: include/default_domains.php:473
+msgid "Movie"
+msgstr ""
+
+#: include/default_domains.php:474
+msgid "Recorded music"
+msgstr ""
+
+#: include/default_domains.php:475
+msgid "Communication devices"
+msgstr ""
+
+#: include/default_domains.php:476
+msgid "Teach"
+msgstr ""
+
+#: include/default_domains.php:477
+msgid "Show, explain"
+msgstr ""
+
+#: include/default_domains.php:478
+msgid "School"
+msgstr ""
+
+#: include/default_domains.php:479
+msgid "Subject of teaching"
+msgstr ""
+
+#: include/default_domains.php:480
+msgid "Class, lesson"
+msgstr ""
+
+#: include/default_domains.php:481
+msgid "Correct"
+msgstr ""
+
+#: include/default_domains.php:482
+msgid "Science"
+msgstr ""
+
+#: include/default_domains.php:483
+msgid "Test"
+msgstr ""
+
+#: include/default_domains.php:484
+msgid "Answer in a test"
+msgstr ""
+
+#: include/default_domains.php:485 webonary/Webonary_SemanticDomains.php:132
+msgid "Social behavior"
+msgstr ""
+
+#: include/default_domains.php:486
+msgid "Relationships"
+msgstr ""
+
+#: include/default_domains.php:487
+msgid "Friend"
+msgstr ""
+
+#: include/default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr ""
+
+#: include/default_domains.php:489
+msgid "Types of people"
+msgstr ""
+
+#: include/default_domains.php:490
+msgid "Working relationship"
+msgstr ""
+
+#: include/default_domains.php:491
+msgid "Know someone"
+msgstr ""
+
+#: include/default_domains.php:492
+msgid "Meet for the first time"
+msgstr ""
+
+#: include/default_domains.php:493
+msgid "Neighbor"
+msgstr ""
+
+#: include/default_domains.php:494
+msgid "Social class"
+msgstr ""
+
+#: include/default_domains.php:495
+msgid "Unity"
+msgstr ""
+
+#: include/default_domains.php:496
+msgid "Disunity"
+msgstr ""
+
+#: include/default_domains.php:497
+msgid "Unfriendly"
+msgstr ""
+
+#: include/default_domains.php:498
+msgid "Set self apart"
+msgstr ""
+
+#: include/default_domains.php:499
+msgid "Alone"
+msgstr ""
+
+#: include/default_domains.php:500
+msgid "Independent person"
+msgstr ""
+
+#: include/default_domains.php:501
+msgid "Private, public"
+msgstr ""
+
+#: include/default_domains.php:502
+msgid "Begin a relationship"
+msgstr ""
+
+#: include/default_domains.php:503
+msgid "End a relationship"
+msgstr ""
+
+#: include/default_domains.php:504
+msgid "Show affection"
+msgstr ""
+
+#: include/default_domains.php:505
+msgid "Kinship"
+msgstr ""
+
+#: include/default_domains.php:506
+msgid "Related by birth"
+msgstr ""
+
+#: include/default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr ""
+
+#: include/default_domains.php:508
+msgid "Father, mother"
+msgstr ""
+
+#: include/default_domains.php:509
+msgid "Brother, sister"
+msgstr ""
+
+#: include/default_domains.php:510
+msgid "Son, daughter"
+msgstr ""
+
+#: include/default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr ""
+
+#: include/default_domains.php:512
+msgid "Uncle, aunt"
+msgstr ""
+
+#: include/default_domains.php:513
+msgid "Cousin"
+msgstr ""
+
+#: include/default_domains.php:514
+msgid "Nephew, niece"
+msgstr ""
+
+#: include/default_domains.php:515
+msgid "Birth order"
+msgstr ""
+
+#: include/default_domains.php:516
+msgid "Related by marriage"
+msgstr ""
+
+#: include/default_domains.php:517
+msgid "Husband, wife"
+msgstr ""
+
+#: include/default_domains.php:518
+msgid "In-law"
+msgstr ""
+
+#: include/default_domains.php:519
+msgid "Widow, widower"
+msgstr ""
+
+#: include/default_domains.php:520
+msgid "Orphan"
+msgstr ""
+
+#: include/default_domains.php:521
+msgid "Illegitimate child"
+msgstr ""
+
+#: include/default_domains.php:522
+msgid "Adopt"
+msgstr ""
+
+#: include/default_domains.php:523
+msgid "Non-relative"
+msgstr ""
+
+#: include/default_domains.php:524
+msgid "Family, clan"
+msgstr ""
+
+#: include/default_domains.php:525
+msgid "Race"
+msgstr ""
+
+#: include/default_domains.php:526
+msgid "Social activity"
+msgstr ""
+
+#: include/default_domains.php:527
+msgid "Come together, form a group"
+msgstr ""
+
+#: include/default_domains.php:528
+msgid "Invite"
+msgstr ""
+
+#: include/default_domains.php:529
+msgid "Encounter"
+msgstr ""
+
+#: include/default_domains.php:530
+msgid "Meet together"
+msgstr ""
+
+#: include/default_domains.php:531
+msgid "Visit"
+msgstr ""
+
+#: include/default_domains.php:532
+msgid "Welcome, receive"
+msgstr ""
+
+#: include/default_domains.php:533
+msgid "Show hospitality"
+msgstr ""
+
+#: include/default_domains.php:534
+msgid "Meeting, assembly"
+msgstr ""
+
+#: include/default_domains.php:535
+msgid "Participate"
+msgstr ""
+
+#: include/default_domains.php:536
+msgid "Crowd, group"
+msgstr ""
+
+#: include/default_domains.php:537
+msgid "Organization"
+msgstr ""
+
+#: include/default_domains.php:538
+msgid "Join an organization"
+msgstr ""
+
+#: include/default_domains.php:539
+msgid "Leave an organization"
+msgstr ""
+
+#: include/default_domains.php:540
+msgid "Belong to an organization"
+msgstr ""
+
+#: include/default_domains.php:541
+msgid "Social group"
+msgstr ""
+
+#: include/default_domains.php:542
+msgid "Social event"
+msgstr ""
+
+#: include/default_domains.php:543
+msgid "Ceremony"
+msgstr ""
+
+#: include/default_domains.php:544
+msgid "Festival, show"
+msgstr ""
+
+#: include/default_domains.php:545
+msgid "Celebrate"
+msgstr ""
+
+#: include/default_domains.php:546
+msgid "Music"
+msgstr ""
+
+#: include/default_domains.php:547
+msgid "Compose music"
+msgstr ""
+
+#: include/default_domains.php:548
+msgid "Play music"
+msgstr ""
+
+#: include/default_domains.php:549
+msgid "Sing"
+msgstr ""
+
+#: include/default_domains.php:550
+msgid "Musician"
+msgstr ""
+
+#: include/default_domains.php:551
+msgid "Musical instrument"
+msgstr ""
+
+#: include/default_domains.php:552
+msgid "Dance"
+msgstr ""
+
+#: include/default_domains.php:553
+msgid "Drama"
+msgstr ""
+
+#: include/default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr ""
+
+#: include/default_domains.php:555
+msgid "Game"
+msgstr ""
+
+#: include/default_domains.php:556
+msgid "Card game"
+msgstr ""
+
+#: include/default_domains.php:557
+msgid "Chess"
+msgstr ""
+
+#: include/default_domains.php:558
+msgid "Sports"
+msgstr ""
+
+#: include/default_domains.php:559
+msgid "Football, soccer"
+msgstr ""
+
+#: include/default_domains.php:560
+msgid "Basketball"
+msgstr ""
+
+#: include/default_domains.php:561
+msgid "Exercise"
+msgstr ""
+
+#: include/default_domains.php:562
+msgid "Gambling"
+msgstr ""
+
+#: include/default_domains.php:563
+msgid "Play, fun"
+msgstr ""
+
+#: include/default_domains.php:564
+msgid "Humor"
+msgstr ""
+
+#: include/default_domains.php:565
+msgid "Serious"
+msgstr ""
+
+#: include/default_domains.php:566
+msgid "Holiday"
+msgstr ""
+
+#: include/default_domains.php:567
+msgid "Free time"
+msgstr ""
+
+#: include/default_domains.php:568
+msgid "Behavior"
+msgstr ""
+
+#: include/default_domains.php:569
+msgid "Good, moral"
+msgstr ""
+
+#: include/default_domains.php:570
+msgid "Bad, immoral"
+msgstr ""
+
+#: include/default_domains.php:571
+msgid "Meet a standard"
+msgstr ""
+
+#: include/default_domains.php:572
+msgid "Below standard"
+msgstr ""
+
+#: include/default_domains.php:573
+msgid "Mature in behavior"
+msgstr ""
+
+#: include/default_domains.php:574
+msgid "Immature in behavior"
+msgstr ""
+
+#: include/default_domains.php:575
+msgid "Sensible"
+msgstr ""
+
+#: include/default_domains.php:576
+msgid "Reputation"
+msgstr ""
+
+#: include/default_domains.php:577
+msgid "Patient"
+msgstr ""
+
+#: include/default_domains.php:578
+msgid "Impatient"
+msgstr ""
+
+#: include/default_domains.php:579
+msgid "Bad-tempered"
+msgstr ""
+
+#: include/default_domains.php:580
+msgid "Admire someone"
+msgstr ""
+
+#: include/default_domains.php:581
+msgid "Despise someone"
+msgstr ""
+
+#: include/default_domains.php:582
+msgid "Humble"
+msgstr ""
+
+#: include/default_domains.php:583
+msgid "Proud"
+msgstr ""
+
+#: include/default_domains.php:584
+msgid "Show off"
+msgstr ""
+
+#: include/default_domains.php:585
+msgid "Love"
+msgstr ""
+
+#: include/default_domains.php:586
+msgid "Hate, ill will"
+msgstr ""
+
+#: include/default_domains.php:587
+msgid "Not care"
+msgstr ""
+
+#: include/default_domains.php:588
+msgid "Abandon"
+msgstr ""
+
+#: include/default_domains.php:589
+msgid "Do good to"
+msgstr ""
+
+#: include/default_domains.php:590
+msgid "Do evil to"
+msgstr ""
+
+#: include/default_domains.php:591
+msgid "Help"
+msgstr ""
+
+#: include/default_domains.php:592
+msgid "Hinder"
+msgstr ""
+
+#: include/default_domains.php:593
+msgid "Cooperate with"
+msgstr ""
+
+#: include/default_domains.php:594
+msgid "Compete with"
+msgstr ""
+
+#: include/default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr ""
+
+#: include/default_domains.php:596
+msgid "Selfish"
+msgstr ""
+
+#: include/default_domains.php:597
+msgid "Use a person"
+msgstr ""
+
+#: include/default_domains.php:598
+msgid "Share with"
+msgstr ""
+
+#: include/default_domains.php:599
+msgid "Provide for, support"
+msgstr ""
+
+#: include/default_domains.php:600
+msgid "Care for"
+msgstr ""
+
+#: include/default_domains.php:601
+msgid "Entrust to the care of"
+msgstr ""
+
+#: include/default_domains.php:602
+msgid "Meddle"
+msgstr ""
+
+#: include/default_domains.php:603
+msgid "Spoil"
+msgstr ""
+
+#: include/default_domains.php:604
+msgid "Enter by force"
+msgstr ""
+
+#: include/default_domains.php:605
+msgid "Kidnap"
+msgstr ""
+
+#: include/default_domains.php:606
+msgid "Cruel"
+msgstr ""
+
+#: include/default_domains.php:607
+msgid "Honest"
+msgstr ""
+
+#: include/default_domains.php:608
+msgid "Dishonest"
+msgstr ""
+
+#: include/default_domains.php:609
+msgid "Faithful"
+msgstr ""
+
+#: include/default_domains.php:610
+msgid "Reliable"
+msgstr ""
+
+#: include/default_domains.php:611
+msgid "Unreliable"
+msgstr ""
+
+#: include/default_domains.php:612
+msgid "Deceive"
+msgstr ""
+
+#: include/default_domains.php:613
+msgid "Hypocrite"
+msgstr ""
+
+#: include/default_domains.php:614
+msgid "Self-controlled"
+msgstr ""
+
+#: include/default_domains.php:615
+msgid "Lack self-control"
+msgstr ""
+
+#: include/default_domains.php:616
+msgid "Tidy"
+msgstr ""
+
+#: include/default_domains.php:617
+msgid "Untidy"
+msgstr ""
+
+#: include/default_domains.php:618
+msgid "Mistake"
+msgstr ""
+
+#: include/default_domains.php:619
+msgid "Polite"
+msgstr ""
+
+#: include/default_domains.php:620
+msgid "Impolite"
+msgstr ""
+
+#: include/default_domains.php:621
+msgid "Crazy"
+msgstr ""
+
+#: include/default_domains.php:622
+msgid "Change behavior"
+msgstr ""
+
+#: include/default_domains.php:623
+msgid "Conform"
+msgstr ""
+
+#: include/default_domains.php:624
+msgid "Culture"
+msgstr ""
+
+#: include/default_domains.php:625
+msgid "Custom"
+msgstr ""
+
+#: include/default_domains.php:626
+msgid "Habit"
+msgstr ""
+
+#: include/default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr ""
+
+#: include/default_domains.php:628
+msgid "Prosperity"
+msgstr ""
+
+#: include/default_domains.php:629
+msgid "Trouble"
+msgstr ""
+
+#: include/default_domains.php:630
+msgid "Problem"
+msgstr ""
+
+#: include/default_domains.php:631
+msgid "Danger"
+msgstr ""
+
+#: include/default_domains.php:632
+msgid "Accident"
+msgstr ""
+
+#: include/default_domains.php:633
+msgid "Disaster"
+msgstr ""
+
+#: include/default_domains.php:634
+msgid "Separate, alone"
+msgstr ""
+
+#: include/default_domains.php:635
+msgid "Suffer"
+msgstr ""
+
+#: include/default_domains.php:636
+msgid "Respond to trouble"
+msgstr ""
+
+#: include/default_domains.php:637
+msgid "Brave"
+msgstr ""
+
+#: include/default_domains.php:638
+msgid "Cowardice"
+msgstr ""
+
+#: include/default_domains.php:639
+msgid "Avoid"
+msgstr ""
+
+#: include/default_domains.php:640
+msgid "Caution"
+msgstr ""
+
+#: include/default_domains.php:641
+msgid "Solve a problem"
+msgstr ""
+
+#: include/default_domains.php:642
+msgid "Endure"
+msgstr ""
+
+#: include/default_domains.php:643
+msgid "Survive"
+msgstr ""
+
+#: include/default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr ""
+
+#: include/default_domains.php:645
+msgid "Mercy"
+msgstr ""
+
+#: include/default_domains.php:646
+msgid "Show sympathy, support"
+msgstr ""
+
+#: include/default_domains.php:647
+msgid "Gentle"
+msgstr ""
+
+#: include/default_domains.php:648
+msgid "Save from trouble"
+msgstr ""
+
+#: include/default_domains.php:649
+msgid "Protect"
+msgstr ""
+
+#: include/default_domains.php:650
+msgid "Free from bondage"
+msgstr ""
+
+#: include/default_domains.php:651
+msgid "Relief"
+msgstr ""
+
+#: include/default_domains.php:652
+msgid "Risk"
+msgstr ""
+
+#: include/default_domains.php:653
+msgid "Chance"
+msgstr ""
+
+#: include/default_domains.php:654
+msgid "Lucky"
+msgstr ""
+
+#: include/default_domains.php:655
+msgid "Unlucky"
+msgstr ""
+
+#: include/default_domains.php:656
+msgid "Authority"
+msgstr ""
+
+#: include/default_domains.php:657
+msgid "Person in authority"
+msgstr ""
+
+#: include/default_domains.php:658
+msgid "Have authority"
+msgstr ""
+
+#: include/default_domains.php:659
+msgid "Exercise authority"
+msgstr ""
+
+#: include/default_domains.php:660
+msgid "Lead"
+msgstr ""
+
+#: include/default_domains.php:661
+msgid "Command"
+msgstr ""
+
+#: include/default_domains.php:662
+msgid "Discipline, train"
+msgstr ""
+
+#: include/default_domains.php:663
+msgid "Appoint, delegate"
+msgstr ""
+
+#: include/default_domains.php:664
+msgid "Submit to authority"
+msgstr ""
+
+#: include/default_domains.php:665
+msgid "Obey"
+msgstr ""
+
+#: include/default_domains.php:666
+msgid "Disobey"
+msgstr ""
+
+#: include/default_domains.php:667
+msgid "Serve"
+msgstr ""
+
+#: include/default_domains.php:668
+msgid "Slave"
+msgstr ""
+
+#: include/default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr ""
+
+#: include/default_domains.php:670
+msgid "Rebel against authority"
+msgstr ""
+
+#: include/default_domains.php:671
+msgid "Independent"
+msgstr ""
+
+#: include/default_domains.php:672
+msgid "Honor"
+msgstr ""
+
+#: include/default_domains.php:673
+msgid "Title, name of honor"
+msgstr ""
+
+#: include/default_domains.php:674
+msgid "Lack respect"
+msgstr ""
+
+#: include/default_domains.php:675
+msgid "Status"
+msgstr ""
+
+#: include/default_domains.php:676
+msgid "High status"
+msgstr ""
+
+#: include/default_domains.php:677
+msgid "Low status"
+msgstr ""
+
+#: include/default_domains.php:678
+msgid "Government"
+msgstr ""
+
+#: include/default_domains.php:679
+msgid "Ruler"
+msgstr ""
+
+#: include/default_domains.php:680
+msgid "King's family"
+msgstr ""
+
+#: include/default_domains.php:681
+msgid "Government official"
+msgstr ""
+
+#: include/default_domains.php:682
+msgid "Citizen"
+msgstr ""
+
+#: include/default_domains.php:683
+msgid "Foreigner"
+msgstr ""
+
+#: include/default_domains.php:684
+msgid "Government organization"
+msgstr ""
+
+#: include/default_domains.php:685
+msgid "Governing body"
+msgstr ""
+
+#: include/default_domains.php:686
+msgid "Rule"
+msgstr ""
+
+#: include/default_domains.php:687
+msgid "Subjugate"
+msgstr ""
+
+#: include/default_domains.php:688
+msgid "Government functions"
+msgstr ""
+
+#: include/default_domains.php:689
+msgid "Police"
+msgstr ""
+
+#: include/default_domains.php:690
+msgid "Arrest"
+msgstr ""
+
+#: include/default_domains.php:691
+msgid "Informal justice"
+msgstr ""
+
+#: include/default_domains.php:692
+msgid "Diplomacy"
+msgstr ""
+
+#: include/default_domains.php:693
+msgid "Represent"
+msgstr ""
+
+#: include/default_domains.php:694
+msgid "Election"
+msgstr ""
+
+#: include/default_domains.php:695
+msgid "Politics"
+msgstr ""
+
+#: include/default_domains.php:696
+msgid "Region"
+msgstr ""
+
+#: include/default_domains.php:697
+msgid "Country"
+msgstr ""
+
+#: include/default_domains.php:698
+msgid "City"
+msgstr ""
+
+#: include/default_domains.php:699
+msgid "Countryside"
+msgstr ""
+
+#: include/default_domains.php:700
+msgid "Community"
+msgstr ""
+
+#: include/default_domains.php:701
+msgid "Law"
+msgstr ""
+
+#: include/default_domains.php:702
+msgid "Laws"
+msgstr ""
+
+#: include/default_domains.php:703
+msgid "Pass laws"
+msgstr ""
+
+#: include/default_domains.php:704
+msgid "Break the law"
+msgstr ""
+
+#: include/default_domains.php:705
+msgid "Court of law"
+msgstr ""
+
+#: include/default_domains.php:706
+msgid "Legal personnel"
+msgstr ""
+
+#: include/default_domains.php:707
+msgid "Trial"
+msgstr ""
+
+#: include/default_domains.php:708
+msgid "Investigate a crime"
+msgstr ""
+
+#: include/default_domains.php:709
+msgid "Suspect"
+msgstr ""
+
+#: include/default_domains.php:710
+msgid "Accuse, confront"
+msgstr ""
+
+#: include/default_domains.php:711
+msgid "Defend against accusation"
+msgstr ""
+
+#: include/default_domains.php:712
+msgid "Witness, testify"
+msgstr ""
+
+#: include/default_domains.php:713
+msgid "Drop charges"
+msgstr ""
+
+#: include/default_domains.php:714
+msgid "Take oath"
+msgstr ""
+
+#: include/default_domains.php:715
+msgid "Vindicate"
+msgstr ""
+
+#: include/default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr ""
+
+#: include/default_domains.php:717
+msgid "Acquit"
+msgstr ""
+
+#: include/default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr ""
+
+#: include/default_domains.php:719
+msgid "Fault"
+msgstr ""
+
+#: include/default_domains.php:720
+msgid "Punish"
+msgstr ""
+
+#: include/default_domains.php:721
+msgid "Reward"
+msgstr ""
+
+#: include/default_domains.php:722
+msgid "Fine"
+msgstr ""
+
+#: include/default_domains.php:723
+msgid "Imprison"
+msgstr ""
+
+#: include/default_domains.php:724
+msgid "Execute"
+msgstr ""
+
+#: include/default_domains.php:725
+msgid "Ostracize"
+msgstr ""
+
+#: include/default_domains.php:726
+msgid "Pardon, release"
+msgstr ""
+
+#: include/default_domains.php:727
+msgid "Atone, restitution"
+msgstr ""
+
+#: include/default_domains.php:728
+msgid "Legal contract"
+msgstr ""
+
+#: include/default_domains.php:729
+msgid "Covenant"
+msgstr ""
+
+#: include/default_domains.php:730
+msgid "Break a contract"
+msgstr ""
+
+#: include/default_domains.php:731
+msgid "Justice"
+msgstr ""
+
+#: include/default_domains.php:732
+msgid "Impartial"
+msgstr ""
+
+#: include/default_domains.php:733
+msgid "Unfair"
+msgstr ""
+
+#: include/default_domains.php:734
+msgid "Deserve"
+msgstr ""
+
+#: include/default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr ""
+
+#: include/default_domains.php:736
+msgid "Act harshly"
+msgstr ""
+
+#: include/default_domains.php:737
+msgid "Oppress"
+msgstr ""
+
+#: include/default_domains.php:738
+msgid "Conflict"
+msgstr ""
+
+#: include/default_domains.php:739
+msgid "Hostility"
+msgstr ""
+
+#: include/default_domains.php:740
+msgid "Oppose"
+msgstr ""
+
+#: include/default_domains.php:741
+msgid "Fight"
+msgstr ""
+
+#: include/default_domains.php:742
+msgid "Fight for something good"
+msgstr ""
+
+#: include/default_domains.php:743
+msgid "Fight against something bad"
+msgstr ""
+
+#: include/default_domains.php:744
+msgid "Attack"
+msgstr ""
+
+#: include/default_domains.php:745
+msgid "Ambush"
+msgstr ""
+
+#: include/default_domains.php:746
+msgid "Defend"
+msgstr ""
+
+#: include/default_domains.php:747
+msgid "Revenge"
+msgstr ""
+
+#: include/default_domains.php:748
+msgid "Riot"
+msgstr ""
+
+#: include/default_domains.php:749
+msgid "Betray"
+msgstr ""
+
+#: include/default_domains.php:750
+msgid "Violent"
+msgstr ""
+
+#: include/default_domains.php:751
+msgid "Enemy"
+msgstr ""
+
+#: include/default_domains.php:752
+msgid "War"
+msgstr ""
+
+#: include/default_domains.php:753
+msgid "Defeat"
+msgstr ""
+
+#: include/default_domains.php:754
+msgid "Win"
+msgstr ""
+
+#: include/default_domains.php:755
+msgid "Lose a fight"
+msgstr ""
+
+#: include/default_domains.php:756
+msgid "Surrender"
+msgstr ""
+
+#: include/default_domains.php:757
+msgid "Prisoner of war"
+msgstr ""
+
+#: include/default_domains.php:758
+msgid "Military organization"
+msgstr ""
+
+#: include/default_domains.php:759
+msgid "Army"
+msgstr ""
+
+#: include/default_domains.php:760
+msgid "Navy"
+msgstr ""
+
+#: include/default_domains.php:761
+msgid "Air force"
+msgstr ""
+
+#: include/default_domains.php:762
+msgid "Soldier"
+msgstr ""
+
+#: include/default_domains.php:763
+msgid "Spy"
+msgstr ""
+
+#: include/default_domains.php:764
+msgid "Fort"
+msgstr ""
+
+#: include/default_domains.php:765
+msgid "Weapon, shoot"
+msgstr ""
+
+#: include/default_domains.php:766
+msgid "Plunder"
+msgstr ""
+
+#: include/default_domains.php:767
+msgid "Peace"
+msgstr ""
+
+#: include/default_domains.php:768
+msgid "Rebuke"
+msgstr ""
+
+#: include/default_domains.php:769
+msgid "Make an appeal"
+msgstr ""
+
+#: include/default_domains.php:770
+msgid "Appease"
+msgstr ""
+
+#: include/default_domains.php:771
+msgid "Negotiate"
+msgstr ""
+
+#: include/default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr ""
+
+#: include/default_domains.php:773
+msgid "Repent"
+msgstr ""
+
+#: include/default_domains.php:774
+msgid "Request forgiveness"
+msgstr ""
+
+#: include/default_domains.php:775
+msgid "Forgive"
+msgstr ""
+
+#: include/default_domains.php:776
+msgid "Make peace"
+msgstr ""
+
+#: include/default_domains.php:777
+msgid "Stop fighting"
+msgstr ""
+
+#: include/default_domains.php:778
+msgid "Reconcile"
+msgstr ""
+
+#: include/default_domains.php:779
+msgid "Religion"
+msgstr ""
+
+#: include/default_domains.php:780
+msgid "God"
+msgstr ""
+
+#: include/default_domains.php:781
+msgid "Supernatural being"
+msgstr ""
+
+#: include/default_domains.php:782
+msgid "Theology"
+msgstr ""
+
+#: include/default_domains.php:783
+msgid "Sacred writings"
+msgstr ""
+
+#: include/default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr ""
+
+#: include/default_domains.php:785
+msgid "Sorcery"
+msgstr ""
+
+#: include/default_domains.php:786
+msgid "Demon possession"
+msgstr ""
+
+#: include/default_domains.php:787
+msgid "Bless"
+msgstr ""
+
+#: include/default_domains.php:788
+msgid "Curse"
+msgstr ""
+
+#: include/default_domains.php:789
+msgid "Destiny"
+msgstr ""
+
+#: include/default_domains.php:790
+msgid "Prophecy"
+msgstr ""
+
+#: include/default_domains.php:791
+msgid "Omen, divination"
+msgstr ""
+
+#: include/default_domains.php:792
+msgid "Practice religion"
+msgstr ""
+
+#: include/default_domains.php:793
+msgid "Devout"
+msgstr ""
+
+#: include/default_domains.php:794
+msgid "Pray"
+msgstr ""
+
+#: include/default_domains.php:795
+msgid "Worship"
+msgstr ""
+
+#: include/default_domains.php:796
+msgid "Religious ceremony"
+msgstr ""
+
+#: include/default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr ""
+
+#: include/default_domains.php:798
+msgid "Religious purification"
+msgstr ""
+
+#: include/default_domains.php:799
+msgid "Taboo"
+msgstr ""
+
+#: include/default_domains.php:800
+msgid "Salvation"
+msgstr ""
+
+#: include/default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr ""
+
+#: include/default_domains.php:802
+msgid "Fasting"
+msgstr ""
+
+#: include/default_domains.php:803
+msgid "Heaven, hell"
+msgstr ""
+
+#: include/default_domains.php:804
+msgid "Resurrection"
+msgstr ""
+
+#: include/default_domains.php:805
+msgid "Religious organization"
+msgstr ""
+
+#: include/default_domains.php:806
+msgid "Religious person"
+msgstr ""
+
+#: include/default_domains.php:807
+msgid "Christianity"
+msgstr ""
+
+#: include/default_domains.php:808
+msgid "Islam"
+msgstr ""
+
+#: include/default_domains.php:809
+msgid "Hinduism"
+msgstr ""
+
+#: include/default_domains.php:810
+msgid "Buddhism"
+msgstr ""
+
+#: include/default_domains.php:811
+msgid "Judaism"
+msgstr ""
+
+#: include/default_domains.php:812
+msgid "Animism"
+msgstr ""
+
+#: include/default_domains.php:813
+msgid "Religious things"
+msgstr ""
+
+#: include/default_domains.php:814
+msgid "Idol"
+msgstr ""
+
+#: include/default_domains.php:815
+msgid "Place of worship"
+msgstr ""
+
+#: include/default_domains.php:816
+msgid "Irreligion"
+msgstr ""
+
+#: include/default_domains.php:817 webonary/Webonary_SemanticDomains.php:133
+msgid "Daily life"
+msgstr ""
+
+#: include/default_domains.php:818
+msgid "Household equipment"
+msgstr ""
+
+#: include/default_domains.php:820
+msgid "Table"
+msgstr ""
+
+#: include/default_domains.php:821
+msgid "Chair"
+msgstr ""
+
+#: include/default_domains.php:822
+msgid "Bed"
+msgstr ""
+
+#: include/default_domains.php:823
+msgid "Cabinet"
+msgstr ""
+
+#: include/default_domains.php:824
+msgid "Household decoration"
+msgstr ""
+
+#: include/default_domains.php:825
+msgid "Food"
+msgstr ""
+
+#: include/default_domains.php:826
+msgid "Food preparation"
+msgstr ""
+
+#: include/default_domains.php:827
+msgid "Cooking methods"
+msgstr ""
+
+#: include/default_domains.php:828
+msgid "Steps in food preparation"
+msgstr ""
+
+#: include/default_domains.php:829
+msgid "Remove shell, skin"
+msgstr ""
+
+#: include/default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr ""
+
+#: include/default_domains.php:831
+msgid "Grind flour"
+msgstr ""
+
+#: include/default_domains.php:832
+msgid "Cooking utensil"
+msgstr ""
+
+#: include/default_domains.php:833
+msgid "Food storage"
+msgstr ""
+
+#: include/default_domains.php:834
+msgid "Serve food"
+msgstr ""
+
+#: include/default_domains.php:835
+msgid "Eat"
+msgstr ""
+
+#: include/default_domains.php:836
+msgid "Bite, chew"
+msgstr ""
+
+#: include/default_domains.php:837
+msgid "Meal"
+msgstr ""
+
+#: include/default_domains.php:838
+msgid "Feast"
+msgstr ""
+
+#: include/default_domains.php:839
+msgid "Manner of eating"
+msgstr ""
+
+#: include/default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr ""
+
+#: include/default_domains.php:841
+msgid "Satiated, full"
+msgstr ""
+
+#: include/default_domains.php:842
+msgid "Drink"
+msgstr ""
+
+#: include/default_domains.php:843
+msgid "Eating utensil"
+msgstr ""
+
+#: include/default_domains.php:844
+msgid "Fast, not eat"
+msgstr ""
+
+#: include/default_domains.php:845
+msgid "Types of food"
+msgstr ""
+
+#: include/default_domains.php:846
+msgid "Food from plants"
+msgstr ""
+
+#: include/default_domains.php:847
+msgid "Food from seeds"
+msgstr ""
+
+#: include/default_domains.php:848
+msgid "Food from fruit"
+msgstr ""
+
+#: include/default_domains.php:849
+msgid "Food from vegetables"
+msgstr ""
+
+#: include/default_domains.php:850
+msgid "Food from leaves"
+msgstr ""
+
+#: include/default_domains.php:851
+msgid "Food from roots"
+msgstr ""
+
+#: include/default_domains.php:852
+msgid "Food from animals"
+msgstr ""
+
+#: include/default_domains.php:854
+msgid "Milk products"
+msgstr ""
+
+#: include/default_domains.php:855
+msgid "Egg dishes"
+msgstr ""
+
+#: include/default_domains.php:856
+msgid "Cooking ingredients"
+msgstr ""
+
+#: include/default_domains.php:857
+msgid "Sugar"
+msgstr ""
+
+#: include/default_domains.php:858
+msgid "Salt"
+msgstr ""
+
+#: include/default_domains.php:860
+msgid "Leaven"
+msgstr ""
+
+#: include/default_domains.php:861
+msgid "Cooking oil"
+msgstr ""
+
+#: include/default_domains.php:862
+msgid "Prepared food"
+msgstr ""
+
+#: include/default_domains.php:863
+msgid "Prohibited food"
+msgstr ""
+
+#: include/default_domains.php:864
+msgid "Beverage"
+msgstr ""
+
+#: include/default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr ""
+
+#: include/default_domains.php:866
+msgid "Alcohol preparation"
+msgstr ""
+
+#: include/default_domains.php:867
+msgid "Drunk"
+msgstr ""
+
+#: include/default_domains.php:868
+msgid "Tobacco"
+msgstr ""
+
+#: include/default_domains.php:869
+msgid "Narcotic"
+msgstr ""
+
+#: include/default_domains.php:870
+msgid "Stimulant"
+msgstr ""
+
+#: include/default_domains.php:871
+msgid "Clothing"
+msgstr ""
+
+#: include/default_domains.php:872
+msgid "Men's clothing"
+msgstr ""
+
+#: include/default_domains.php:873
+msgid "Women's clothing"
+msgstr ""
+
+#: include/default_domains.php:874
+msgid "Traditional clothing"
+msgstr ""
+
+#: include/default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr ""
+
+#: include/default_domains.php:876
+msgid "Clothes for special people"
+msgstr ""
+
+#: include/default_domains.php:878
+msgid "Wear clothing"
+msgstr ""
+
+#: include/default_domains.php:879
+msgid "Naked"
+msgstr ""
+
+#: include/default_domains.php:880
+msgid "Style of clothing"
+msgstr ""
+
+#: include/default_domains.php:881
+msgid "Adornment"
+msgstr ""
+
+#: include/default_domains.php:883
+msgid "Cosmetics"
+msgstr ""
+
+#: include/default_domains.php:884
+msgid "Care for hair"
+msgstr ""
+
+#: include/default_domains.php:885
+msgid "Comb hair"
+msgstr ""
+
+#: include/default_domains.php:886
+msgid "Plait hair"
+msgstr ""
+
+#: include/default_domains.php:887
+msgid "Dye hair"
+msgstr ""
+
+#: include/default_domains.php:888
+msgid "Hairstyle"
+msgstr ""
+
+#: include/default_domains.php:889
+msgid "Cut hair"
+msgstr ""
+
+#: include/default_domains.php:890
+msgid "Shave"
+msgstr ""
+
+#: include/default_domains.php:891
+msgid "Care for the teeth"
+msgstr ""
+
+#: include/default_domains.php:892
+msgid "Anoint the body"
+msgstr ""
+
+#: include/default_domains.php:893
+msgid "Ritual scar"
+msgstr ""
+
+#: include/default_domains.php:894
+msgid "Circumcision"
+msgstr ""
+
+#: include/default_domains.php:895
+msgid "Care for the fingernails"
+msgstr ""
+
+#: include/default_domains.php:896
+msgid "Fire"
+msgstr ""
+
+#: include/default_domains.php:897
+msgid "Light a fire"
+msgstr ""
+
+#: include/default_domains.php:898
+msgid "Tend a fire"
+msgstr ""
+
+#: include/default_domains.php:899
+msgid "Extinguish a fire"
+msgstr ""
+
+#: include/default_domains.php:900
+msgid "Burn"
+msgstr ""
+
+#: include/default_domains.php:901
+msgid "What fires produce"
+msgstr ""
+
+#: include/default_domains.php:902
+msgid "Fuel"
+msgstr ""
+
+#: include/default_domains.php:903
+msgid "Fireplace"
+msgstr ""
+
+#: include/default_domains.php:904
+msgid "Cleaning"
+msgstr ""
+
+#: include/default_domains.php:905
+msgid "Clean, dirty"
+msgstr ""
+
+#: include/default_domains.php:906
+msgid "Bathe"
+msgstr ""
+
+#: include/default_domains.php:907
+msgid "Wash dishes"
+msgstr ""
+
+#: include/default_domains.php:908
+msgid "Wash clothes"
+msgstr ""
+
+#: include/default_domains.php:909
+msgid "Sweep, rake"
+msgstr ""
+
+#: include/default_domains.php:910
+msgid "Wipe, erase"
+msgstr ""
+
+#: include/default_domains.php:911
+msgid "Sleep"
+msgstr ""
+
+#: include/default_domains.php:912
+msgid "Go to sleep"
+msgstr ""
+
+#: include/default_domains.php:913
+msgid "Dream"
+msgstr ""
+
+#: include/default_domains.php:914
+msgid "Wake up"
+msgstr ""
+
+#: include/default_domains.php:915
+msgid "Manage a house"
+msgstr ""
+
+#: include/default_domains.php:916
+msgid "Live, stay"
+msgstr ""
+
+#: include/default_domains.php:917 webonary/Webonary_SemanticDomains.php:134
+msgid "Work and occupation"
+msgstr ""
+
+#: include/default_domains.php:918
+msgid "Work"
+msgstr ""
+
+#: include/default_domains.php:919
+msgid "Worker"
+msgstr ""
+
+#: include/default_domains.php:920
+msgid "Expert"
+msgstr ""
+
+#: include/default_domains.php:921
+msgid "Method"
+msgstr ""
+
+#: include/default_domains.php:922
+msgid "Try, attempt"
+msgstr ""
+
+#: include/default_domains.php:923
+msgid "Use"
+msgstr ""
+
+#: include/default_domains.php:924
+msgid "Useful"
+msgstr ""
+
+#: include/default_domains.php:925
+msgid "Useless"
+msgstr ""
+
+#: include/default_domains.php:926
+msgid "Available"
+msgstr ""
+
+#: include/default_domains.php:927
+msgid "Use up"
+msgstr ""
+
+#: include/default_domains.php:928
+msgid "Take care of something"
+msgstr ""
+
+#: include/default_domains.php:929
+msgid "Waste"
+msgstr ""
+
+#: include/default_domains.php:930
+msgid "Work well"
+msgstr ""
+
+#: include/default_domains.php:931
+msgid "Careful"
+msgstr ""
+
+#: include/default_domains.php:932
+msgid "Work hard"
+msgstr ""
+
+#: include/default_domains.php:933
+msgid "Busy"
+msgstr ""
+
+#: include/default_domains.php:934
+msgid "Power, force"
+msgstr ""
+
+#: include/default_domains.php:935
+msgid "Complete, finish"
+msgstr ""
+
+#: include/default_domains.php:936
+msgid "Ambitious"
+msgstr ""
+
+#: include/default_domains.php:937
+msgid "Work poorly"
+msgstr ""
+
+#: include/default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr ""
+
+#: include/default_domains.php:939
+msgid "Lazy"
+msgstr ""
+
+#: include/default_domains.php:940
+msgid "Give up"
+msgstr ""
+
+#: include/default_domains.php:941
+msgid "Plan"
+msgstr ""
+
+#: include/default_domains.php:942
+msgid "Arrange an event"
+msgstr ""
+
+#: include/default_domains.php:943
+msgid "Cancel an event"
+msgstr ""
+
+#: include/default_domains.php:944
+msgid "Prepare"
+msgstr ""
+
+#: include/default_domains.php:945
+msgid "Prepare something for use"
+msgstr ""
+
+#: include/default_domains.php:946
+msgid "Effective"
+msgstr ""
+
+#: include/default_domains.php:947
+msgid "Efficient"
+msgstr ""
+
+#: include/default_domains.php:948
+msgid "Opportunity"
+msgstr ""
+
+#: include/default_domains.php:949
+msgid "Difficult, impossible"
+msgstr ""
+
+#: include/default_domains.php:950
+msgid "Easy, possible"
+msgstr ""
+
+#: include/default_domains.php:951
+msgid "Succeed"
+msgstr ""
+
+#: include/default_domains.php:952
+msgid "Fail"
+msgstr ""
+
+#: include/default_domains.php:953
+msgid "Advantage"
+msgstr ""
+
+#: include/default_domains.php:954
+msgid "Job satisfaction"
+msgstr ""
+
+#: include/default_domains.php:955
+msgid "Unemployed, not working"
+msgstr ""
+
+#: include/default_domains.php:956
+msgid "Made by hand"
+msgstr ""
+
+#: include/default_domains.php:957
+msgid "Artificial"
+msgstr ""
+
+#: include/default_domains.php:958
+msgid "Experienced"
+msgstr ""
+
+#: include/default_domains.php:959
+msgid "Accustomed to"
+msgstr ""
+
+#: include/default_domains.php:960
+msgid "Agriculture"
+msgstr ""
+
+#: include/default_domains.php:961
+msgid "Growing crops"
+msgstr ""
+
+#: include/default_domains.php:962
+msgid "Growing grain"
+msgstr ""
+
+#: include/default_domains.php:963
+msgid "Growing rice"
+msgstr ""
+
+#: include/default_domains.php:964
+msgid "Growing wheat"
+msgstr ""
+
+#: include/default_domains.php:965
+msgid "Growing maize"
+msgstr ""
+
+#: include/default_domains.php:966
+msgid "Growing roots"
+msgstr ""
+
+#: include/default_domains.php:967
+msgid "Growing potatoes"
+msgstr ""
+
+#: include/default_domains.php:968
+msgid "Growing cassava"
+msgstr ""
+
+#: include/default_domains.php:969
+msgid "Growing vegetables"
+msgstr ""
+
+#: include/default_domains.php:970
+msgid "Growing fruit"
+msgstr ""
+
+#: include/default_domains.php:971
+msgid "Growing grapes"
+msgstr ""
+
+#: include/default_domains.php:972
+msgid "Growing bananas"
+msgstr ""
+
+#: include/default_domains.php:973
+msgid "Growing grass"
+msgstr ""
+
+#: include/default_domains.php:974
+msgid "Growing sugarcane"
+msgstr ""
+
+#: include/default_domains.php:975
+msgid "Growing tobacco"
+msgstr ""
+
+#: include/default_domains.php:976
+msgid "Growing flowers"
+msgstr ""
+
+#: include/default_domains.php:977
+msgid "Growing trees"
+msgstr ""
+
+#: include/default_domains.php:978
+msgid "Growing coconuts"
+msgstr ""
+
+#: include/default_domains.php:979
+msgid "Growing coffee"
+msgstr ""
+
+#: include/default_domains.php:980
+msgid "Land preparation"
+msgstr ""
+
+#: include/default_domains.php:981
+msgid "Clear a field"
+msgstr ""
+
+#: include/default_domains.php:982
+msgid "Plow a field"
+msgstr ""
+
+#: include/default_domains.php:983
+msgid "Fertilize a field"
+msgstr ""
+
+#: include/default_domains.php:984
+msgid "Plant a field"
+msgstr ""
+
+#: include/default_domains.php:985
+msgid "Tend a field"
+msgstr ""
+
+#: include/default_domains.php:986
+msgid "Cut grass"
+msgstr ""
+
+#: include/default_domains.php:987
+msgid "Uproot plants"
+msgstr ""
+
+#: include/default_domains.php:988
+msgid "Irrigate"
+msgstr ""
+
+#: include/default_domains.php:989
+msgid "Trim plants"
+msgstr ""
+
+#: include/default_domains.php:990
+msgid "Neglect plants"
+msgstr ""
+
+#: include/default_domains.php:991
+msgid "Harvest"
+msgstr ""
+
+#: include/default_domains.php:992
+msgid "First fruits"
+msgstr ""
+
+#: include/default_domains.php:993
+msgid "Crop failure"
+msgstr ""
+
+#: include/default_domains.php:994
+msgid "Gather wild plants"
+msgstr ""
+
+#: include/default_domains.php:995
+msgid "Plant product"
+msgstr ""
+
+#: include/default_domains.php:996
+msgid "Process harvest"
+msgstr ""
+
+#: include/default_domains.php:997
+msgid "Winnow grain"
+msgstr ""
+
+#: include/default_domains.php:998
+msgid "Mill grain"
+msgstr ""
+
+#: include/default_domains.php:999
+msgid "Thresh"
+msgstr ""
+
+#: include/default_domains.php:1000
+msgid "Store the harvest"
+msgstr ""
+
+#: include/default_domains.php:1001
+msgid "Farm worker"
+msgstr ""
+
+#: include/default_domains.php:1002
+msgid "Agricultural tool"
+msgstr ""
+
+#: include/default_domains.php:1003
+msgid "Farmland"
+msgstr ""
+
+#: include/default_domains.php:1004
+msgid "Animal husbandry"
+msgstr ""
+
+#: include/default_domains.php:1005
+msgid "Domesticated animal"
+msgstr ""
+
+#: include/default_domains.php:1006
+msgid "Cattle"
+msgstr ""
+
+#: include/default_domains.php:1007
+msgid "Sheep"
+msgstr ""
+
+#: include/default_domains.php:1008
+msgid "Goat"
+msgstr ""
+
+#: include/default_domains.php:1009
+msgid "Pig"
+msgstr ""
+
+#: include/default_domains.php:1010
+msgid "Dog"
+msgstr ""
+
+#: include/default_domains.php:1011
+msgid "Cat"
+msgstr ""
+
+#: include/default_domains.php:1012
+msgid "Beast of burden"
+msgstr ""
+
+#: include/default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr ""
+
+#: include/default_domains.php:1014
+msgid "Milk"
+msgstr ""
+
+#: include/default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr ""
+
+#: include/default_domains.php:1016
+msgid "Wool production"
+msgstr ""
+
+#: include/default_domains.php:1017
+msgid "Poultry raising"
+msgstr ""
+
+#: include/default_domains.php:1018
+msgid "Chicken"
+msgstr ""
+
+#: include/default_domains.php:1019
+msgid "Animal products"
+msgstr ""
+
+#: include/default_domains.php:1020
+msgid "Veterinary science"
+msgstr ""
+
+#: include/default_domains.php:1021
+msgid "Animal diseases"
+msgstr ""
+
+#: include/default_domains.php:1022
+msgid "Castrate animal"
+msgstr ""
+
+#: include/default_domains.php:1023
+msgid "Hunt and fish"
+msgstr ""
+
+#: include/default_domains.php:1024
+msgid "Hunt"
+msgstr ""
+
+#: include/default_domains.php:1025
+msgid "Track an animal"
+msgstr ""
+
+#: include/default_domains.php:1026
+msgid "Trap"
+msgstr ""
+
+#: include/default_domains.php:1027
+msgid "Hunting birds"
+msgstr ""
+
+#: include/default_domains.php:1028
+msgid "Beekeeping"
+msgstr ""
+
+#: include/default_domains.php:1029
+msgid "Fishing"
+msgstr ""
+
+#: include/default_domains.php:1030
+msgid "Fish with net"
+msgstr ""
+
+#: include/default_domains.php:1031
+msgid "Fish with hooks"
+msgstr ""
+
+#: include/default_domains.php:1032
+msgid "Fishing equipment"
+msgstr ""
+
+#: include/default_domains.php:1033
+msgid "Things done to animals"
+msgstr ""
+
+#: include/default_domains.php:1034
+msgid "Working with buildings"
+msgstr ""
+
+#: include/default_domains.php:1035
+msgid "Building"
+msgstr ""
+
+#: include/default_domains.php:1036
+msgid "House"
+msgstr ""
+
+#: include/default_domains.php:1038
+msgid "Land, property"
+msgstr ""
+
+#: include/default_domains.php:1039
+msgid "Yard"
+msgstr ""
+
+#: include/default_domains.php:1040
+msgid "Fence, wall"
+msgstr ""
+
+#: include/default_domains.php:1041
+msgid "Parts of a building"
+msgstr ""
+
+#: include/default_domains.php:1042
+msgid "Wall"
+msgstr ""
+
+#: include/default_domains.php:1043
+msgid "Roof"
+msgstr ""
+
+#: include/default_domains.php:1044
+msgid "Floor"
+msgstr ""
+
+#: include/default_domains.php:1045
+msgid "Door"
+msgstr ""
+
+#: include/default_domains.php:1046
+msgid "Window"
+msgstr ""
+
+#: include/default_domains.php:1047
+msgid "Foundation"
+msgstr ""
+
+#: include/default_domains.php:1048
+msgid "Room"
+msgstr ""
+
+#: include/default_domains.php:1049
+msgid "Floor, story"
+msgstr ""
+
+#: include/default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr ""
+
+#: include/default_domains.php:1052
+msgid "Infrastructure"
+msgstr ""
+
+#: include/default_domains.php:1053
+msgid "Road"
+msgstr ""
+
+#: include/default_domains.php:1054
+msgid "Boundary"
+msgstr ""
+
+#: include/default_domains.php:1055
+msgid "Occupation"
+msgstr ""
+
+#: include/default_domains.php:1056
+msgid "Working with cloth"
+msgstr ""
+
+#: include/default_domains.php:1057
+msgid "Cloth"
+msgstr ""
+
+#: include/default_domains.php:1058
+msgid "Spinning thread"
+msgstr ""
+
+#: include/default_domains.php:1059
+msgid "Knitting"
+msgstr ""
+
+#: include/default_domains.php:1060
+msgid "Weaving cloth"
+msgstr ""
+
+#: include/default_domains.php:1061
+msgid "Working with minerals"
+msgstr ""
+
+#: include/default_domains.php:1062
+msgid "Mining"
+msgstr ""
+
+#: include/default_domains.php:1063
+msgid "Smelting"
+msgstr ""
+
+#: include/default_domains.php:1064
+msgid "Working with metal"
+msgstr ""
+
+#: include/default_domains.php:1065
+msgid "Working with clay"
+msgstr ""
+
+#: include/default_domains.php:1066
+msgid "Working with glass"
+msgstr ""
+
+#: include/default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr ""
+
+#: include/default_domains.php:1068
+msgid "Working with stone"
+msgstr ""
+
+#: include/default_domains.php:1069
+msgid "Working with bricks"
+msgstr ""
+
+#: include/default_domains.php:1070
+msgid "Working with chemicals"
+msgstr ""
+
+#: include/default_domains.php:1071
+msgid "Explode"
+msgstr ""
+
+#: include/default_domains.php:1072
+msgid "Working with wood"
+msgstr ""
+
+#: include/default_domains.php:1073
+msgid "Lumbering"
+msgstr ""
+
+#: include/default_domains.php:1074
+msgid "Wood"
+msgstr ""
+
+#: include/default_domains.php:1075
+msgid "Working with paper"
+msgstr ""
+
+#: include/default_domains.php:1076
+msgid "Crafts"
+msgstr ""
+
+#: include/default_domains.php:1077
+msgid "Cordage"
+msgstr ""
+
+#: include/default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr ""
+
+#: include/default_domains.php:1079
+msgid "Working with leather"
+msgstr ""
+
+#: include/default_domains.php:1080
+msgid "Working with bone"
+msgstr ""
+
+#: include/default_domains.php:1081
+msgid "Art"
+msgstr ""
+
+#: include/default_domains.php:1082
+msgid "Draw, paint"
+msgstr ""
+
+#: include/default_domains.php:1083
+msgid "Photography"
+msgstr ""
+
+#: include/default_domains.php:1084
+msgid "Sculpture"
+msgstr ""
+
+#: include/default_domains.php:1085
+msgid "Working with land"
+msgstr ""
+
+#: include/default_domains.php:1086
+msgid "Working with water"
+msgstr ""
+
+#: include/default_domains.php:1087
+msgid "Plumber"
+msgstr ""
+
+#: include/default_domains.php:1088
+msgid "Conveying water"
+msgstr ""
+
+#: include/default_domains.php:1089
+msgid "Controlling water"
+msgstr ""
+
+#: include/default_domains.php:1090
+msgid "Working in the sea"
+msgstr ""
+
+#: include/default_domains.php:1091
+msgid "Working with machines"
+msgstr ""
+
+#: include/default_domains.php:1092
+msgid "Working with electricity"
+msgstr ""
+
+#: include/default_domains.php:1093
+msgid "Tool"
+msgstr ""
+
+#: include/default_domains.php:1094
+msgid "Cutting tool"
+msgstr ""
+
+#: include/default_domains.php:1095
+msgid "Poking tool"
+msgstr ""
+
+#: include/default_domains.php:1096
+msgid "Digging tool"
+msgstr ""
+
+#: include/default_domains.php:1097
+msgid "Pounding tool"
+msgstr ""
+
+#: include/default_domains.php:1098
+msgid "Carrying tool"
+msgstr ""
+
+#: include/default_domains.php:1099
+msgid "Lifting tool"
+msgstr ""
+
+#: include/default_domains.php:1100
+msgid "Fastening tool"
+msgstr ""
+
+#: include/default_domains.php:1101
+msgid "Holding tool"
+msgstr ""
+
+#: include/default_domains.php:1102
+msgid "Container"
+msgstr ""
+
+#: include/default_domains.php:1103
+msgid "Bag"
+msgstr ""
+
+#: include/default_domains.php:1104
+msgid "Sheath"
+msgstr ""
+
+#: include/default_domains.php:1105
+msgid "Parts of tools"
+msgstr ""
+
+#: include/default_domains.php:1106
+msgid "Machine"
+msgstr ""
+
+#: include/default_domains.php:1107
+msgid "Finance"
+msgstr ""
+
+#: include/default_domains.php:1108
+msgid "Have wealth"
+msgstr ""
+
+#: include/default_domains.php:1109
+msgid "Own, possess"
+msgstr ""
+
+#: include/default_domains.php:1110
+msgid "Rich"
+msgstr ""
+
+#: include/default_domains.php:1111
+msgid "Poor"
+msgstr ""
+
+#: include/default_domains.php:1112
+msgid "Store wealth"
+msgstr ""
+
+#: include/default_domains.php:1113
+msgid "Possession, property"
+msgstr ""
+
+#: include/default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr ""
+
+#: include/default_domains.php:1115
+msgid "Produce wealth"
+msgstr ""
+
+#: include/default_domains.php:1116
+msgid "Make profit"
+msgstr ""
+
+#: include/default_domains.php:1117
+msgid "Lose wealth"
+msgstr ""
+
+#: include/default_domains.php:1118
+msgid "Frugal"
+msgstr ""
+
+#: include/default_domains.php:1119
+msgid "Greedy"
+msgstr ""
+
+#: include/default_domains.php:1120
+msgid "Collect"
+msgstr ""
+
+#: include/default_domains.php:1121
+msgid "Earn"
+msgstr ""
+
+#: include/default_domains.php:1122
+msgid "Share wealth"
+msgstr ""
+
+#: include/default_domains.php:1123
+msgid "Give, donate"
+msgstr ""
+
+#: include/default_domains.php:1124
+msgid "Generous"
+msgstr ""
+
+#: include/default_domains.php:1125
+msgid "Stingy"
+msgstr ""
+
+#: include/default_domains.php:1126
+msgid "Beg"
+msgstr ""
+
+#: include/default_domains.php:1127
+msgid "Financial transaction"
+msgstr ""
+
+#: include/default_domains.php:1128
+msgid "Buy"
+msgstr ""
+
+#: include/default_domains.php:1129
+msgid "Sell"
+msgstr ""
+
+#: include/default_domains.php:1130
+msgid "Price"
+msgstr ""
+
+#: include/default_domains.php:1131
+msgid "Expensive"
+msgstr ""
+
+#: include/default_domains.php:1132
+msgid "Cheap"
+msgstr ""
+
+#: include/default_domains.php:1133
+msgid "Free of charge"
+msgstr ""
+
+#: include/default_domains.php:1134
+msgid "Bargain"
+msgstr ""
+
+#: include/default_domains.php:1135
+msgid "Pay"
+msgstr ""
+
+#: include/default_domains.php:1136
+msgid "Hire, rent"
+msgstr ""
+
+#: include/default_domains.php:1137
+msgid "Spend"
+msgstr ""
+
+#: include/default_domains.php:1138
+msgid "Store, marketplace"
+msgstr ""
+
+#: include/default_domains.php:1139
+msgid "Exchange, trade"
+msgstr ""
+
+#: include/default_domains.php:1140
+msgid "Borrow"
+msgstr ""
+
+#: include/default_domains.php:1141
+msgid "Lend"
+msgstr ""
+
+#: include/default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr ""
+
+#: include/default_domains.php:1143
+msgid "Owe"
+msgstr ""
+
+#: include/default_domains.php:1144
+msgid "Repay debt"
+msgstr ""
+
+#: include/default_domains.php:1145
+msgid "Credit"
+msgstr ""
+
+#: include/default_domains.php:1146
+msgid "Money"
+msgstr ""
+
+#: include/default_domains.php:1147
+msgid "Monetary units"
+msgstr ""
+
+#: include/default_domains.php:1148
+msgid "Accounting"
+msgstr ""
+
+#: include/default_domains.php:1149
+msgid "Tax"
+msgstr ""
+
+#: include/default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr ""
+
+#: include/default_domains.php:1151
+msgid "Steal"
+msgstr ""
+
+#: include/default_domains.php:1152
+msgid "Cheat"
+msgstr ""
+
+#: include/default_domains.php:1153
+msgid "Extort money"
+msgstr ""
+
+#: include/default_domains.php:1154
+msgid "Take by force"
+msgstr ""
+
+#: include/default_domains.php:1155
+msgid "Bribe"
+msgstr ""
+
+#: include/default_domains.php:1156
+msgid "Smuggle"
+msgstr ""
+
+#: include/default_domains.php:1157
+msgid "Business organization"
+msgstr ""
+
+#: include/default_domains.php:1158
+msgid "Management"
+msgstr ""
+
+#: include/default_domains.php:1159
+msgid "Work for someone"
+msgstr ""
+
+#: include/default_domains.php:1160
+msgid "Marketing"
+msgstr ""
+
+#: include/default_domains.php:1161
+msgid "Commerce"
+msgstr ""
+
+#: include/default_domains.php:1162
+msgid "Economics"
+msgstr ""
+
+#: include/default_domains.php:1163
+msgid "Insurance"
+msgstr ""
+
+#: include/default_domains.php:1164 webonary/Webonary_SemanticDomains.php:135
+msgid "Physical actions"
+msgstr ""
+
+#: include/default_domains.php:1165
+msgid "Posture"
+msgstr ""
+
+#: include/default_domains.php:1166
+msgid "Stand"
+msgstr ""
+
+#: include/default_domains.php:1167
+msgid "Sit"
+msgstr ""
+
+#: include/default_domains.php:1168
+msgid "Lie down"
+msgstr ""
+
+#: include/default_domains.php:1169
+msgid "Kneel"
+msgstr ""
+
+#: include/default_domains.php:1170
+msgid "Bow"
+msgstr ""
+
+#: include/default_domains.php:1171
+msgid "Lean"
+msgstr ""
+
+#: include/default_domains.php:1172
+msgid "Straight posture"
+msgstr ""
+
+#: include/default_domains.php:1173
+msgid "Relaxed posture"
+msgstr ""
+
+#: include/default_domains.php:1174
+msgid "Bend down"
+msgstr ""
+
+#: include/default_domains.php:1175
+msgid "Move a part of the body"
+msgstr ""
+
+#: include/default_domains.php:1176
+msgid "Move"
+msgstr ""
+
+#: include/default_domains.php:1177
+msgid "Manner of movement"
+msgstr ""
+
+#: include/default_domains.php:1178
+msgid "Walk"
+msgstr ""
+
+#: include/default_domains.php:1179
+msgid "Run"
+msgstr ""
+
+#: include/default_domains.php:1180
+msgid "Crawl"
+msgstr ""
+
+#: include/default_domains.php:1181
+msgid "Jump"
+msgstr ""
+
+#: include/default_domains.php:1182
+msgid "Move quickly"
+msgstr ""
+
+#: include/default_domains.php:1183
+msgid "Move slowly"
+msgstr ""
+
+#: include/default_domains.php:1184
+msgid "Wander"
+msgstr ""
+
+#: include/default_domains.php:1185
+msgid "Graceful"
+msgstr ""
+
+#: include/default_domains.php:1186
+msgid "Clumsy"
+msgstr ""
+
+#: include/default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr ""
+
+#: include/default_domains.php:1188
+msgid "Slip, slide"
+msgstr ""
+
+#: include/default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr ""
+
+#: include/default_domains.php:1190
+msgid "Balance"
+msgstr ""
+
+#: include/default_domains.php:1191
+msgid "Move noisily"
+msgstr ""
+
+#: include/default_domains.php:1192
+msgid "Move in a direction"
+msgstr ""
+
+#: include/default_domains.php:1193
+msgid "Move forward"
+msgstr ""
+
+#: include/default_domains.php:1194
+msgid "Move back"
+msgstr ""
+
+#: include/default_domains.php:1195
+msgid "Move sideways"
+msgstr ""
+
+#: include/default_domains.php:1196
+msgid "Move up"
+msgstr ""
+
+#: include/default_domains.php:1197
+msgid "Move down"
+msgstr ""
+
+#: include/default_domains.php:1198
+msgid "Fall"
+msgstr ""
+
+#: include/default_domains.php:1199
+msgid "Turn"
+msgstr ""
+
+#: include/default_domains.php:1200
+msgid "Move in a circle"
+msgstr ""
+
+#: include/default_domains.php:1201
+msgid "Move back and forth"
+msgstr ""
+
+#: include/default_domains.php:1202
+msgid "Move straight without turning"
+msgstr ""
+
+#: include/default_domains.php:1203
+msgid "Move toward something"
+msgstr ""
+
+#: include/default_domains.php:1204
+msgid "Move away"
+msgstr ""
+
+#: include/default_domains.php:1205
+msgid "Go"
+msgstr ""
+
+#: include/default_domains.php:1206
+msgid "Come"
+msgstr ""
+
+#: include/default_domains.php:1207
+msgid "Leave"
+msgstr ""
+
+#: include/default_domains.php:1208
+msgid "Arrive"
+msgstr ""
+
+#: include/default_domains.php:1209
+msgid "Move in"
+msgstr ""
+
+#: include/default_domains.php:1210
+msgid "Move out"
+msgstr ""
+
+#: include/default_domains.php:1211
+msgid "Move past, over, through"
+msgstr ""
+
+#: include/default_domains.php:1212
+msgid "Return"
+msgstr ""
+
+#: include/default_domains.php:1213
+msgid "Travel"
+msgstr ""
+
+#: include/default_domains.php:1214
+msgid "Travel by land"
+msgstr ""
+
+#: include/default_domains.php:1215
+msgid "Vehicle"
+msgstr ""
+
+#: include/default_domains.php:1216
+msgid "Railroad"
+msgstr ""
+
+#: include/default_domains.php:1217
+msgid "Travel by water"
+msgstr ""
+
+#: include/default_domains.php:1218
+msgid "Boat"
+msgstr ""
+
+#: include/default_domains.php:1219
+msgid "Swim"
+msgstr ""
+
+#: include/default_domains.php:1220
+msgid "Dive"
+msgstr ""
+
+#: include/default_domains.php:1221
+msgid "Fly"
+msgstr ""
+
+#: include/default_domains.php:1222
+msgid "Travel in space"
+msgstr ""
+
+#: include/default_domains.php:1223
+msgid "Move to a new house"
+msgstr ""
+
+#: include/default_domains.php:1224
+msgid "Way, route"
+msgstr ""
+
+#: include/default_domains.php:1225
+msgid "Lose your way"
+msgstr ""
+
+#: include/default_domains.php:1226
+msgid "Map"
+msgstr ""
+
+#: include/default_domains.php:1227
+msgid "Accompany"
+msgstr ""
+
+#: include/default_domains.php:1228
+msgid "Go first"
+msgstr ""
+
+#: include/default_domains.php:1229
+msgid "Follow"
+msgstr ""
+
+#: include/default_domains.php:1230
+msgid "Guide"
+msgstr ""
+
+#: include/default_domains.php:1231
+msgid "Move together"
+msgstr ""
+
+#: include/default_domains.php:1232
+msgid "Pursue"
+msgstr ""
+
+#: include/default_domains.php:1233
+msgid "Catch, capture"
+msgstr ""
+
+#: include/default_domains.php:1234
+msgid "Prevent from moving"
+msgstr ""
+
+#: include/default_domains.php:1235
+msgid "Escape"
+msgstr ""
+
+#: include/default_domains.php:1236
+msgid "Set free"
+msgstr ""
+
+#: include/default_domains.php:1237
+msgid "Not moving"
+msgstr ""
+
+#: include/default_domains.php:1238
+msgid "Stop moving"
+msgstr ""
+
+#: include/default_domains.php:1239
+msgid "Stay, remain"
+msgstr ""
+
+#: include/default_domains.php:1240
+msgid "Wait"
+msgstr ""
+
+#: include/default_domains.php:1241
+msgid "Send someone"
+msgstr ""
+
+#: include/default_domains.php:1242
+msgid "Move something"
+msgstr ""
+
+#: include/default_domains.php:1243
+msgid "Carry"
+msgstr ""
+
+#: include/default_domains.php:1244
+msgid "Throw"
+msgstr ""
+
+#: include/default_domains.php:1245
+msgid "Catch"
+msgstr ""
+
+#: include/default_domains.php:1246
+msgid "Shake"
+msgstr ""
+
+#: include/default_domains.php:1247
+msgid "Knock over"
+msgstr ""
+
+#: include/default_domains.php:1248
+msgid "Set upright"
+msgstr ""
+
+#: include/default_domains.php:1249
+msgid "Move something in a direction"
+msgstr ""
+
+#: include/default_domains.php:1250
+msgid "Put in front"
+msgstr ""
+
+#: include/default_domains.php:1251
+msgid "Put in back"
+msgstr ""
+
+#: include/default_domains.php:1252
+msgid "Put aside"
+msgstr ""
+
+#: include/default_domains.php:1253
+msgid "Lift"
+msgstr ""
+
+#: include/default_domains.php:1254
+msgid "Hang"
+msgstr ""
+
+#: include/default_domains.php:1255
+msgid "Lower something"
+msgstr ""
+
+#: include/default_domains.php:1256
+msgid "Put in"
+msgstr ""
+
+#: include/default_domains.php:1257
+msgid "Take something out of something"
+msgstr ""
+
+#: include/default_domains.php:1258
+msgid "Pull"
+msgstr ""
+
+#: include/default_domains.php:1259
+msgid "Push"
+msgstr ""
+
+#: include/default_domains.php:1260
+msgid "Take somewhere"
+msgstr ""
+
+#: include/default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr ""
+
+#: include/default_domains.php:1262
+msgid "Return something"
+msgstr ""
+
+#: include/default_domains.php:1263
+msgid "Send"
+msgstr ""
+
+#: include/default_domains.php:1264
+msgid "Chase away"
+msgstr ""
+
+#: include/default_domains.php:1265
+msgid "Drive along"
+msgstr ""
+
+#: include/default_domains.php:1266
+msgid "Handle something"
+msgstr ""
+
+#: include/default_domains.php:1267
+msgid "Touch"
+msgstr ""
+
+#: include/default_domains.php:1268
+msgid "Pick up"
+msgstr ""
+
+#: include/default_domains.php:1269
+msgid "Put down"
+msgstr ""
+
+#: include/default_domains.php:1270
+msgid "Hold"
+msgstr ""
+
+#: include/default_domains.php:1271
+msgid "Actions of the hand"
+msgstr ""
+
+#: include/default_domains.php:1272
+msgid "Support"
+msgstr ""
+
+#: include/default_domains.php:1273
+msgid "Extend"
+msgstr ""
+
+#: include/default_domains.php:1274
+msgid "Turn something"
+msgstr ""
+
+#: include/default_domains.php:1275
+msgid "Open"
+msgstr ""
+
+#: include/default_domains.php:1276
+msgid "Shut, close"
+msgstr ""
+
+#: include/default_domains.php:1277
+msgid "Block, dam up"
+msgstr ""
+
+#: include/default_domains.php:1278
+msgid "Limit"
+msgstr ""
+
+#: include/default_domains.php:1279
+msgid "Cover"
+msgstr ""
+
+#: include/default_domains.php:1280
+msgid "Uncover"
+msgstr ""
+
+#: include/default_domains.php:1281
+msgid "Wrap"
+msgstr ""
+
+#: include/default_domains.php:1282
+msgid "Spread, smear"
+msgstr ""
+
+#: include/default_domains.php:1283
+msgid "Transport"
+msgstr ""
+
+#: include/default_domains.php:1284
+msgid "Have, be with"
+msgstr ""
+
+#: include/default_domains.php:1285
+msgid "Give, hand to"
+msgstr ""
+
+#: include/default_domains.php:1286
+msgid "Receive"
+msgstr ""
+
+#: include/default_domains.php:1287
+msgid "Get"
+msgstr ""
+
+#: include/default_domains.php:1288
+msgid "Distribute"
+msgstr ""
+
+#: include/default_domains.php:1289
+msgid "Keep something"
+msgstr ""
+
+#: include/default_domains.php:1290
+msgid "Leave something"
+msgstr ""
+
+#: include/default_domains.php:1291
+msgid "Throw away"
+msgstr ""
+
+#: include/default_domains.php:1292
+msgid "Not have"
+msgstr ""
+
+#: include/default_domains.php:1293
+msgid "Arrange"
+msgstr ""
+
+#: include/default_domains.php:1294
+msgid "Gather"
+msgstr ""
+
+#: include/default_domains.php:1295
+msgid "Separate, scatter"
+msgstr ""
+
+#: include/default_domains.php:1296
+msgid "Include"
+msgstr ""
+
+#: include/default_domains.php:1297
+msgid "Special"
+msgstr ""
+
+#: include/default_domains.php:1298
+msgid "Join, attach"
+msgstr ""
+
+#: include/default_domains.php:1299
+msgid "Link, connect"
+msgstr ""
+
+#: include/default_domains.php:1300
+msgid "Stick together"
+msgstr ""
+
+#: include/default_domains.php:1301
+msgid "Add to something"
+msgstr ""
+
+#: include/default_domains.php:1302
+msgid "Remove, take apart"
+msgstr ""
+
+#: include/default_domains.php:1303
+msgid "Mix"
+msgstr ""
+
+#: include/default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr ""
+
+#: include/default_domains.php:1305
+msgid "Tie"
+msgstr ""
+
+#: include/default_domains.php:1306
+msgid "Rope, string"
+msgstr ""
+
+#: include/default_domains.php:1307
+msgid "Tangle"
+msgstr ""
+
+#: include/default_domains.php:1308
+msgid "Organize"
+msgstr ""
+
+#: include/default_domains.php:1309
+msgid "Disorganized"
+msgstr ""
+
+#: include/default_domains.php:1310
+msgid "Substitute"
+msgstr ""
+
+#: include/default_domains.php:1311
+msgid "Multiple things moving"
+msgstr ""
+
+#: include/default_domains.php:1312
+msgid "Simple, complicated"
+msgstr ""
+
+#: include/default_domains.php:1313
+msgid "Put"
+msgstr ""
+
+#: include/default_domains.php:1314
+msgid "Load, pile"
+msgstr ""
+
+#: include/default_domains.php:1315
+msgid "Fill, cover"
+msgstr ""
+
+#: include/default_domains.php:1316
+msgid "Hide"
+msgstr ""
+
+#: include/default_domains.php:1317 include/searchform_func.php:281
+#: webonary/Webonary_Configuration.php:55
+msgid "Search"
+msgstr ""
+
+#: include/default_domains.php:1318
+msgid "Find"
+msgstr ""
+
+#: include/default_domains.php:1319
+msgid "Lose, misplace"
+msgstr ""
+
+#: include/default_domains.php:1320
+msgid "Physical impact"
+msgstr ""
+
+#: include/default_domains.php:1321
+msgid "Hit"
+msgstr ""
+
+#: include/default_domains.php:1322
+msgid "Aim at a target"
+msgstr ""
+
+#: include/default_domains.php:1323
+msgid "Kick"
+msgstr ""
+
+#: include/default_domains.php:1324
+msgid "Press"
+msgstr ""
+
+#: include/default_domains.php:1325
+msgid "Rub"
+msgstr ""
+
+#: include/default_domains.php:1326
+msgid "Grind"
+msgstr ""
+
+#: include/default_domains.php:1327
+msgid "Mark"
+msgstr ""
+
+#: include/default_domains.php:1328
+msgid "Divide into pieces"
+msgstr ""
+
+#: include/default_domains.php:1329
+msgid "Break"
+msgstr ""
+
+#: include/default_domains.php:1330
+msgid "Crack"
+msgstr ""
+
+#: include/default_domains.php:1331
+msgid "Cut"
+msgstr ""
+
+#: include/default_domains.php:1332
+msgid "Tear, rip"
+msgstr ""
+
+#: include/default_domains.php:1333
+msgid "Make hole, opening"
+msgstr ""
+
+#: include/default_domains.php:1334
+msgid "Dig"
+msgstr ""
+
+#: include/default_domains.php:1335
+msgid "Break, wear out"
+msgstr ""
+
+#: include/default_domains.php:1336
+msgid "Damage"
+msgstr ""
+
+#: include/default_domains.php:1337
+msgid "Tear down"
+msgstr ""
+
+#: include/default_domains.php:1338
+msgid "Destroy"
+msgstr ""
+
+#: include/default_domains.php:1339
+msgid "Repair"
+msgstr ""
+
+#: include/default_domains.php:1340 webonary/Webonary_SemanticDomains.php:136
+msgid "States"
+msgstr ""
+
+#: include/default_domains.php:1341
+msgid "Quantity"
+msgstr ""
+
+#: include/default_domains.php:1342
+msgid "Number"
+msgstr ""
+
+#: include/default_domains.php:1344
+msgid "One"
+msgstr ""
+
+#: include/default_domains.php:1345
+msgid "Two"
+msgstr ""
+
+#: include/default_domains.php:1347
+msgid "Number of times"
+msgstr ""
+
+#: include/default_domains.php:1348
+msgid "Multiples"
+msgstr ""
+
+#: include/default_domains.php:1349
+msgid "Numbered group"
+msgstr ""
+
+#: include/default_domains.php:1350
+msgid "Fraction"
+msgstr ""
+
+#: include/default_domains.php:1351
+msgid "Number series"
+msgstr ""
+
+#: include/default_domains.php:1352
+msgid "Count"
+msgstr ""
+
+#: include/default_domains.php:1353
+msgid "Mathematics"
+msgstr ""
+
+#: include/default_domains.php:1354
+msgid "Add numbers"
+msgstr ""
+
+#: include/default_domains.php:1355
+msgid "Subtract numbers"
+msgstr ""
+
+#: include/default_domains.php:1356
+msgid "Multiply numbers"
+msgstr ""
+
+#: include/default_domains.php:1357
+msgid "Divide numbers"
+msgstr ""
+
+#: include/default_domains.php:1358
+msgid "Plural"
+msgstr ""
+
+#: include/default_domains.php:1359
+msgid "Many, much"
+msgstr ""
+
+#: include/default_domains.php:1360
+msgid "Few, little"
+msgstr ""
+
+#: include/default_domains.php:1361
+msgid "Group of things"
+msgstr ""
+
+#: include/default_domains.php:1362
+msgid "More"
+msgstr ""
+
+#: include/default_domains.php:1363
+msgid "Less"
+msgstr ""
+
+#: include/default_domains.php:1364
+msgid "Increase"
+msgstr ""
+
+#: include/default_domains.php:1365
+msgid "Decrease"
+msgstr ""
+
+#: include/default_domains.php:1366
+msgid "All"
+msgstr ""
+
+#: include/default_domains.php:1367
+msgid "Some"
+msgstr ""
+
+#: include/default_domains.php:1368
+msgid "None, nothing"
+msgstr ""
+
+#: include/default_domains.php:1369
+msgid "Both"
+msgstr ""
+
+#: include/default_domains.php:1370
+msgid "Most, almost all"
+msgstr ""
+
+#: include/default_domains.php:1371
+msgid "Most, least"
+msgstr ""
+
+#: include/default_domains.php:1372
+msgid "Almost"
+msgstr ""
+
+#: include/default_domains.php:1373
+msgid "Only"
+msgstr ""
+
+#: include/default_domains.php:1374
+msgid "Exact"
+msgstr ""
+
+#: include/default_domains.php:1375
+msgid "Approximate"
+msgstr ""
+
+#: include/default_domains.php:1376
+msgid "Average"
+msgstr ""
+
+#: include/default_domains.php:1377
+msgid "Whole, complete"
+msgstr ""
+
+#: include/default_domains.php:1378
+msgid "Part"
+msgstr ""
+
+#: include/default_domains.php:1379
+msgid "Piece"
+msgstr ""
+
+#: include/default_domains.php:1380
+msgid "Enough"
+msgstr ""
+
+#: include/default_domains.php:1381
+msgid "Extra"
+msgstr ""
+
+#: include/default_domains.php:1382
+msgid "Lack"
+msgstr ""
+
+#: include/default_domains.php:1383
+msgid "Need"
+msgstr ""
+
+#: include/default_domains.php:1384
+msgid "Remain, remainder"
+msgstr ""
+
+#: include/default_domains.php:1385
+msgid "Full"
+msgstr ""
+
+#: include/default_domains.php:1386
+msgid "Empty"
+msgstr ""
+
+#: include/default_domains.php:1387
+msgid "Big"
+msgstr ""
+
+#: include/default_domains.php:1388
+msgid "Small"
+msgstr ""
+
+#: include/default_domains.php:1389
+msgid "Long"
+msgstr ""
+
+#: include/default_domains.php:1390
+msgid "Short, not long"
+msgstr ""
+
+#: include/default_domains.php:1391
+msgid "Tall"
+msgstr ""
+
+#: include/default_domains.php:1392
+msgid "Short, not tall"
+msgstr ""
+
+#: include/default_domains.php:1393
+msgid "Thick"
+msgstr ""
+
+#: include/default_domains.php:1394
+msgid "Thin thing"
+msgstr ""
+
+#: include/default_domains.php:1395
+msgid "Fat person"
+msgstr ""
+
+#: include/default_domains.php:1396
+msgid "Thin person"
+msgstr ""
+
+#: include/default_domains.php:1397
+msgid "Wide"
+msgstr ""
+
+#: include/default_domains.php:1398
+msgid "Narrow"
+msgstr ""
+
+#: include/default_domains.php:1399
+msgid "Big area"
+msgstr ""
+
+#: include/default_domains.php:1400
+msgid "Big container, volume"
+msgstr ""
+
+#: include/default_domains.php:1401
+msgid "Distance"
+msgstr ""
+
+#: include/default_domains.php:1402
+msgid "Far"
+msgstr ""
+
+#: include/default_domains.php:1403
+msgid "Near"
+msgstr ""
+
+#: include/default_domains.php:1404
+msgid "High"
+msgstr ""
+
+#: include/default_domains.php:1405
+msgid "Low"
+msgstr ""
+
+#: include/default_domains.php:1406
+msgid "Deep, shallow"
+msgstr ""
+
+#: include/default_domains.php:1407
+msgid "Fit, size"
+msgstr ""
+
+#: include/default_domains.php:1408
+msgid "Tight"
+msgstr ""
+
+#: include/default_domains.php:1409
+msgid "Loose"
+msgstr ""
+
+#: include/default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr ""
+
+#: include/default_domains.php:1411
+msgid "Measure"
+msgstr ""
+
+#: include/default_domains.php:1412
+msgid "Weigh"
+msgstr ""
+
+#: include/default_domains.php:1413
+msgid "Heavy"
+msgstr ""
+
+#: include/default_domains.php:1414
+msgid "Light in weight"
+msgstr ""
+
+#: include/default_domains.php:1415
+msgid "Quality"
+msgstr ""
+
+#: include/default_domains.php:1416
+msgid "Shape"
+msgstr ""
+
+#: include/default_domains.php:1417
+msgid "Point, dot"
+msgstr ""
+
+#: include/default_domains.php:1418
+msgid "Line"
+msgstr ""
+
+#: include/default_domains.php:1419
+msgid "Straight"
+msgstr ""
+
+#: include/default_domains.php:1420
+msgid "Flat"
+msgstr ""
+
+#: include/default_domains.php:1421
+msgid "Horizontal"
+msgstr ""
+
+#: include/default_domains.php:1422
+msgid "Vertical"
+msgstr ""
+
+#: include/default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr ""
+
+#: include/default_domains.php:1424
+msgid "Bend"
+msgstr ""
+
+#: include/default_domains.php:1425
+msgid "Roll up"
+msgstr ""
+
+#: include/default_domains.php:1426
+msgid "Twist, wring"
+msgstr ""
+
+#: include/default_domains.php:1427
+msgid "Fold"
+msgstr ""
+
+#: include/default_domains.php:1428
+msgid "Round"
+msgstr ""
+
+#: include/default_domains.php:1429
+msgid "Concave"
+msgstr ""
+
+#: include/default_domains.php:1430
+msgid "Convex"
+msgstr ""
+
+#: include/default_domains.php:1431
+msgid "Hollow"
+msgstr ""
+
+#: include/default_domains.php:1432
+msgid "Square"
+msgstr ""
+
+#: include/default_domains.php:1433
+msgid "Pattern, design"
+msgstr ""
+
+#: include/default_domains.php:1434
+msgid "Symmetrical"
+msgstr ""
+
+#: include/default_domains.php:1435
+msgid "Stretch"
+msgstr ""
+
+#: include/default_domains.php:1436
+msgid "Texture"
+msgstr ""
+
+#: include/default_domains.php:1437
+msgid "Smooth"
+msgstr ""
+
+#: include/default_domains.php:1438
+msgid "Rough"
+msgstr ""
+
+#: include/default_domains.php:1439
+msgid "Sharp"
+msgstr ""
+
+#: include/default_domains.php:1440
+msgid "Pointed"
+msgstr ""
+
+#: include/default_domains.php:1441
+msgid "Blunt"
+msgstr ""
+
+#: include/default_domains.php:1442
+msgid "Furrow"
+msgstr ""
+
+#: include/default_domains.php:1443
+msgid "Light"
+msgstr ""
+
+#: include/default_domains.php:1444
+msgid "Shine"
+msgstr ""
+
+#: include/default_domains.php:1445
+msgid "Light source"
+msgstr ""
+
+#: include/default_domains.php:1446
+msgid "Bright"
+msgstr ""
+
+#: include/default_domains.php:1447
+msgid "Dark"
+msgstr ""
+
+#: include/default_domains.php:1448
+msgid "Shadow"
+msgstr ""
+
+#: include/default_domains.php:1449
+msgid "Color"
+msgstr ""
+
+#: include/default_domains.php:1450
+msgid "White"
+msgstr ""
+
+#: include/default_domains.php:1451
+msgid "Black"
+msgstr ""
+
+#: include/default_domains.php:1452
+msgid "Gray"
+msgstr ""
+
+#: include/default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr ""
+
+#: include/default_domains.php:1454
+msgid "Animal color, marking"
+msgstr ""
+
+#: include/default_domains.php:1455
+msgid "Change color"
+msgstr ""
+
+#: include/default_domains.php:1456
+msgid "Multicolored"
+msgstr ""
+
+#: include/default_domains.php:1457
+msgid "Shiny"
+msgstr ""
+
+#: include/default_domains.php:1458
+msgid "Hot"
+msgstr ""
+
+#: include/default_domains.php:1459
+msgid "Cold"
+msgstr ""
+
+#: include/default_domains.php:1460
+msgid "Type, kind"
+msgstr ""
+
+#: include/default_domains.php:1461
+msgid "Nature, character"
+msgstr ""
+
+#: include/default_domains.php:1462
+msgid "Compare"
+msgstr ""
+
+#: include/default_domains.php:1463
+msgid "Same"
+msgstr ""
+
+#: include/default_domains.php:1464
+msgid "Like, similar"
+msgstr ""
+
+#: include/default_domains.php:1465
+msgid "Different"
+msgstr ""
+
+#: include/default_domains.php:1466
+msgid "Other"
+msgstr ""
+
+#: include/default_domains.php:1467
+msgid "Various"
+msgstr ""
+
+#: include/default_domains.php:1468
+msgid "Opposite"
+msgstr ""
+
+#: include/default_domains.php:1469
+msgid "Common"
+msgstr ""
+
+#: include/default_domains.php:1470
+msgid "Usual"
+msgstr ""
+
+#: include/default_domains.php:1471
+msgid "Unusual"
+msgstr ""
+
+#: include/default_domains.php:1472
+msgid "Unique"
+msgstr ""
+
+#: include/default_domains.php:1473
+msgid "Strange"
+msgstr ""
+
+#: include/default_domains.php:1474
+msgid "Pattern, model"
+msgstr ""
+
+#: include/default_domains.php:1475
+msgid "Imitate"
+msgstr ""
+
+#: include/default_domains.php:1476
+msgid "Copy"
+msgstr ""
+
+#: include/default_domains.php:1477
+msgid "Made of, material"
+msgstr ""
+
+#: include/default_domains.php:1478
+msgid "Strong, brittle"
+msgstr ""
+
+#: include/default_domains.php:1479
+msgid "Hard, firm"
+msgstr ""
+
+#: include/default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr ""
+
+#: include/default_domains.php:1481
+msgid "Dense"
+msgstr ""
+
+#: include/default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr ""
+
+#: include/default_domains.php:1483
+msgid "Good"
+msgstr ""
+
+#: include/default_domains.php:1484
+msgid "Bad"
+msgstr ""
+
+#: include/default_domains.php:1485
+msgid "Better"
+msgstr ""
+
+#: include/default_domains.php:1486
+msgid "Worse"
+msgstr ""
+
+#: include/default_domains.php:1487
+msgid "Perfect"
+msgstr ""
+
+#: include/default_domains.php:1488
+msgid "Mediocre"
+msgstr ""
+
+#: include/default_domains.php:1489
+msgid "Important"
+msgstr ""
+
+#: include/default_domains.php:1490
+msgid "Basic"
+msgstr ""
+
+#: include/default_domains.php:1491
+msgid "Improve"
+msgstr ""
+
+#: include/default_domains.php:1492
+msgid "Right, proper"
+msgstr ""
+
+#: include/default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr ""
+
+#: include/default_domains.php:1494
+msgid "Convenient"
+msgstr ""
+
+#: include/default_domains.php:1495
+msgid "Compatible"
+msgstr ""
+
+#: include/default_domains.php:1496
+msgid "Decay"
+msgstr ""
+
+#: include/default_domains.php:1497
+msgid "Rust"
+msgstr ""
+
+#: include/default_domains.php:1498
+msgid "Blemish"
+msgstr ""
+
+#: include/default_domains.php:1499
+msgid "Garbage"
+msgstr ""
+
+#: include/default_domains.php:1500
+msgid "Preserve"
+msgstr ""
+
+#: include/default_domains.php:1501
+msgid "Value"
+msgstr ""
+
+#: include/default_domains.php:1502
+msgid "Decorated"
+msgstr ""
+
+#: include/default_domains.php:1503
+msgid "Simple, plain"
+msgstr ""
+
+#: include/default_domains.php:1504
+msgid "Glory"
+msgstr ""
+
+#: include/default_domains.php:1505
+msgid "Time"
+msgstr ""
+
+#: include/default_domains.php:1506
+msgid "Period of time"
+msgstr ""
+
+#: include/default_domains.php:1507
+msgid "Calendar"
+msgstr ""
+
+#: include/default_domains.php:1508
+msgid "Day"
+msgstr ""
+
+#: include/default_domains.php:1509
+msgid "Night"
+msgstr ""
+
+#: include/default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr ""
+
+#: include/default_domains.php:1511
+msgid "Time of the day"
+msgstr ""
+
+#: include/default_domains.php:1512
+msgid "Week"
+msgstr ""
+
+#: include/default_domains.php:1513
+msgid "Days of the week"
+msgstr ""
+
+#: include/default_domains.php:1514
+msgid "Month"
+msgstr ""
+
+#: include/default_domains.php:1515
+msgid "Months of the year"
+msgstr ""
+
+#: include/default_domains.php:1516
+msgid "Season"
+msgstr ""
+
+#: include/default_domains.php:1517
+msgid "Year"
+msgstr ""
+
+#: include/default_domains.php:1518
+msgid "Era"
+msgstr ""
+
+#: include/default_domains.php:1519
+msgid "Special days"
+msgstr ""
+
+#: include/default_domains.php:1520
+msgid "Take time"
+msgstr ""
+
+#: include/default_domains.php:1521
+msgid "A short time"
+msgstr ""
+
+#: include/default_domains.php:1522
+msgid "A long time"
+msgstr ""
+
+#: include/default_domains.php:1523
+msgid "Forever"
+msgstr ""
+
+#: include/default_domains.php:1524
+msgid "Temporary"
+msgstr ""
+
+#: include/default_domains.php:1525
+msgid "Indefinite time"
+msgstr ""
+
+#: include/default_domains.php:1526
+msgid "Telling time"
+msgstr ""
+
+#: include/default_domains.php:1527
+msgid "Plan a time"
+msgstr ""
+
+#: include/default_domains.php:1528
+msgid "Clock, watch"
+msgstr ""
+
+#: include/default_domains.php:1529
+msgid "Relative time"
+msgstr ""
+
+#: include/default_domains.php:1530
+msgid "Order, sequence"
+msgstr ""
+
+#: include/default_domains.php:1531
+msgid "Series"
+msgstr ""
+
+#: include/default_domains.php:1532
+msgid "First"
+msgstr ""
+
+#: include/default_domains.php:1533
+msgid "Next"
+msgstr ""
+
+#: include/default_domains.php:1534
+msgid "Last"
+msgstr ""
+
+#: include/default_domains.php:1535
+msgid "Regular"
+msgstr ""
+
+#: include/default_domains.php:1536
+msgid "Alternate"
+msgstr ""
+
+#: include/default_domains.php:1537
+msgid "Before"
+msgstr ""
+
+#: include/default_domains.php:1538
+msgid "After"
+msgstr ""
+
+#: include/default_domains.php:1539
+msgid "At the same time"
+msgstr ""
+
+#: include/default_domains.php:1540
+msgid "During"
+msgstr ""
+
+#: include/default_domains.php:1541
+msgid "Right time"
+msgstr ""
+
+#: include/default_domains.php:1542
+msgid "Early"
+msgstr ""
+
+#: include/default_domains.php:1543
+msgid "On time"
+msgstr ""
+
+#: include/default_domains.php:1544
+msgid "Late"
+msgstr ""
+
+#: include/default_domains.php:1545
+msgid "Delay"
+msgstr ""
+
+#: include/default_domains.php:1546
+msgid "Postpone"
+msgstr ""
+
+#: include/default_domains.php:1547
+msgid "Aspectual time"
+msgstr ""
+
+#: include/default_domains.php:1548
+msgid "Start something"
+msgstr ""
+
+#: include/default_domains.php:1549
+msgid "Beginning"
+msgstr ""
+
+#: include/default_domains.php:1550
+msgid "Stop something"
+msgstr ""
+
+#: include/default_domains.php:1551
+msgid "End"
+msgstr ""
+
+#: include/default_domains.php:1552
+msgid "Until"
+msgstr ""
+
+#: include/default_domains.php:1553
+msgid "Since, from"
+msgstr ""
+
+#: include/default_domains.php:1554
+msgid "Past"
+msgstr ""
+
+#: include/default_domains.php:1555
+msgid "Recently"
+msgstr ""
+
+#: include/default_domains.php:1556
+msgid "Present"
+msgstr ""
+
+#: include/default_domains.php:1557
+msgid "Now"
+msgstr ""
+
+#: include/default_domains.php:1558
+msgid "Future"
+msgstr ""
+
+#: include/default_domains.php:1559
+msgid "Soon"
+msgstr ""
+
+#: include/default_domains.php:1560
+msgid "Not yet"
+msgstr ""
+
+#: include/default_domains.php:1561
+msgid "Eventually"
+msgstr ""
+
+#: include/default_domains.php:1562
+msgid "Immediately"
+msgstr ""
+
+#: include/default_domains.php:1563
+msgid "Age"
+msgstr ""
+
+#: include/default_domains.php:1564
+msgid "Young"
+msgstr ""
+
+#: include/default_domains.php:1565
+msgid "Old, not young"
+msgstr ""
+
+#: include/default_domains.php:1566
+msgid "New"
+msgstr ""
+
+#: include/default_domains.php:1567
+msgid "Old, not new"
+msgstr ""
+
+#: include/default_domains.php:1568
+msgid "Modern"
+msgstr ""
+
+#: include/default_domains.php:1569
+msgid "Old fashioned"
+msgstr ""
+
+#: include/default_domains.php:1570
+msgid "Once"
+msgstr ""
+
+#: include/default_domains.php:1571
+msgid "Again"
+msgstr ""
+
+#: include/default_domains.php:1572
+msgid "Sometimes"
+msgstr ""
+
+#: include/default_domains.php:1573
+msgid "Often"
+msgstr ""
+
+#: include/default_domains.php:1574
+msgid "All the time"
+msgstr ""
+
+#: include/default_domains.php:1575
+msgid "Every time"
+msgstr ""
+
+#: include/default_domains.php:1576
+msgid "Never"
+msgstr ""
+
+#: include/default_domains.php:1577
+msgid "Continue, persevere"
+msgstr ""
+
+#: include/default_domains.php:1578
+msgid "Interrupt"
+msgstr ""
+
+#: include/default_domains.php:1579
+msgid "Start again"
+msgstr ""
+
+#: include/default_domains.php:1580
+msgid "Interval"
+msgstr ""
+
+#: include/default_domains.php:1581
+msgid "Speed"
+msgstr ""
+
+#: include/default_domains.php:1582
+msgid "Quick"
+msgstr ""
+
+#: include/default_domains.php:1583
+msgid "Slow"
+msgstr ""
+
+#: include/default_domains.php:1584
+msgid "Sudden"
+msgstr ""
+
+#: include/default_domains.php:1585
+msgid "Location"
+msgstr ""
+
+#: include/default_domains.php:1586
+msgid "Here, there"
+msgstr ""
+
+#: include/default_domains.php:1587
+msgid "In front of"
+msgstr ""
+
+#: include/default_domains.php:1588
+msgid "Behind"
+msgstr ""
+
+#: include/default_domains.php:1589
+msgid "Beside"
+msgstr ""
+
+#: include/default_domains.php:1590
+msgid "Around"
+msgstr ""
+
+#: include/default_domains.php:1591
+msgid "Between"
+msgstr ""
+
+#: include/default_domains.php:1592
+msgid "On"
+msgstr ""
+
+#: include/default_domains.php:1593
+msgid "Above"
+msgstr ""
+
+#: include/default_domains.php:1594
+msgid "Under, below"
+msgstr ""
+
+#: include/default_domains.php:1595
+msgid "Inside"
+msgstr ""
+
+#: include/default_domains.php:1596
+msgid "Out, outside"
+msgstr ""
+
+#: include/default_domains.php:1597
+msgid "Touching, contact"
+msgstr ""
+
+#: include/default_domains.php:1598
+msgid "Next to"
+msgstr ""
+
+#: include/default_domains.php:1599
+msgid "Across"
+msgstr ""
+
+#: include/default_domains.php:1600
+msgid "Indefinite location"
+msgstr ""
+
+#: include/default_domains.php:1601
+msgid "Direction"
+msgstr ""
+
+#: include/default_domains.php:1602
+msgid "Forward"
+msgstr ""
+
+#: include/default_domains.php:1603
+msgid "Backward"
+msgstr ""
+
+#: include/default_domains.php:1604
+msgid "Right, left"
+msgstr ""
+
+#: include/default_domains.php:1605
+msgid "Up"
+msgstr ""
+
+#: include/default_domains.php:1606
+msgid "Down"
+msgstr ""
+
+#: include/default_domains.php:1607
+msgid "Away from"
+msgstr ""
+
+#: include/default_domains.php:1608
+msgid "Towards"
+msgstr ""
+
+#: include/default_domains.php:1609
+msgid "North, south, east, west"
+msgstr ""
+
+#: include/default_domains.php:1610
+msgid "Be at a place"
+msgstr ""
+
+#: include/default_domains.php:1611
+msgid "Absent"
+msgstr ""
+
+#: include/default_domains.php:1612
+msgid "Area"
+msgstr ""
+
+#: include/default_domains.php:1613
+msgid "Vicinity"
+msgstr ""
+
+#: include/default_domains.php:1614
+msgid "Occupy an area"
+msgstr ""
+
+#: include/default_domains.php:1615
+msgid "Space, room"
+msgstr ""
+
+#: include/default_domains.php:1616
+msgid "Interval, space"
+msgstr ""
+
+#: include/default_domains.php:1617
+msgid "Spatial relations"
+msgstr ""
+
+#: include/default_domains.php:1618
+msgid "Contain"
+msgstr ""
+
+#: include/default_domains.php:1619
+msgid "Parts of things"
+msgstr ""
+
+#: include/default_domains.php:1620
+msgid "Front"
+msgstr ""
+
+#: include/default_domains.php:1621
+msgid "Back"
+msgstr ""
+
+#: include/default_domains.php:1622
+msgid "Top"
+msgstr ""
+
+#: include/default_domains.php:1623
+msgid "Bottom"
+msgstr ""
+
+#: include/default_domains.php:1624
+msgid "Side"
+msgstr ""
+
+#: include/default_domains.php:1625
+msgid "Inner part"
+msgstr ""
+
+#: include/default_domains.php:1626
+msgid "Outer part"
+msgstr ""
+
+#: include/default_domains.php:1627
+msgid "Middle"
+msgstr ""
+
+#: include/default_domains.php:1628
+msgid "Edge"
+msgstr ""
+
+#: include/default_domains.php:1629
+msgid "End, point"
+msgstr ""
+
+#: include/default_domains.php:1630 webonary/Webonary_SemanticDomains.php:137
+msgid "Grammar"
+msgstr ""
+
+#: include/default_domains.php:1631
+msgid "General words"
+msgstr ""
+
+#: include/default_domains.php:1632
+msgid "Be"
+msgstr ""
+
+#: include/default_domains.php:1633
+msgid "Exist"
+msgstr ""
+
+#: include/default_domains.php:1634
+msgid "Become, change state"
+msgstr ""
+
+#: include/default_domains.php:1635
+msgid "Have, of"
+msgstr ""
+
+#: include/default_domains.php:1636
+msgid "Attribution"
+msgstr ""
+
+#: include/default_domains.php:1637
+msgid "Do"
+msgstr ""
+
+#: include/default_domains.php:1638
+msgid "Happen"
+msgstr ""
+
+#: include/default_domains.php:1639
+msgid "React, respond"
+msgstr ""
+
+#: include/default_domains.php:1640
+msgid "Create"
+msgstr ""
+
+#: include/default_domains.php:1641
+msgid "Design"
+msgstr ""
+
+#: include/default_domains.php:1642
+msgid "Make"
+msgstr ""
+
+#: include/default_domains.php:1643
+msgid "Change something"
+msgstr ""
+
+#: include/default_domains.php:1644
+msgid "Event propositions"
+msgstr ""
+
+#: include/default_domains.php:1645
+msgid "Thing"
+msgstr ""
+
+#: include/default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr ""
+
+#: include/default_domains.php:1647
+msgid "Situation"
+msgstr ""
+
+#: include/default_domains.php:1648
+msgid "General adjectives"
+msgstr ""
+
+#: include/default_domains.php:1649
+msgid "General adverbs"
+msgstr ""
+
+#: include/default_domains.php:1650
+msgid "Part of speech"
+msgstr ""
+
+#: include/default_domains.php:1651
+msgid "Adjectives"
+msgstr ""
+
+#: include/default_domains.php:1652
+msgid "Adverbs"
+msgstr ""
+
+#: include/default_domains.php:1653
+msgid "Pronouns"
+msgstr ""
+
+#: include/default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr ""
+
+#: include/default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr ""
+
+#: include/default_domains.php:1656
+msgid "Relative pronouns"
+msgstr ""
+
+#: include/default_domains.php:1657
+msgid "Question words"
+msgstr ""
+
+#: include/default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr ""
+
+#: include/default_domains.php:1659
+msgid "Personally"
+msgstr ""
+
+#: include/default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr ""
+
+#: include/default_domains.php:1661
+msgid "Conjunctions"
+msgstr ""
+
+#: include/default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr ""
+
+#: include/default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr ""
+
+#: include/default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr ""
+
+#: include/default_domains.php:1665
+msgid "Particles"
+msgstr ""
+
+#: include/default_domains.php:1666
+msgid "Classifiers"
+msgstr ""
+
+#: include/default_domains.php:1667
+msgid "Interjections"
+msgstr ""
+
+#: include/default_domains.php:1668
+msgid "Idiophones"
+msgstr ""
+
+#: include/default_domains.php:1669
+msgid "Affixes"
+msgstr ""
+
+#: include/default_domains.php:1670
+msgid "Verb affixes"
+msgstr ""
+
+#: include/default_domains.php:1671
+msgid "Noun affixes"
+msgstr ""
+
+#: include/default_domains.php:1672
+msgid "Derivational affixes"
+msgstr ""
+
+#: include/default_domains.php:1673
+msgid "Very"
+msgstr ""
+
+#: include/default_domains.php:1674
+msgid "Degree"
+msgstr ""
+
+#: include/default_domains.php:1675
+msgid "To a large degree"
+msgstr ""
+
+#: include/default_domains.php:1676
+msgid "To a small degree"
+msgstr ""
+
+#: include/default_domains.php:1677
+msgid "To a larger degree"
+msgstr ""
+
+#: include/default_domains.php:1678
+msgid "To a smaller degree"
+msgstr ""
+
+#: include/default_domains.php:1679
+msgid "Completely"
+msgstr ""
+
+#: include/default_domains.php:1680
+msgid "Partly"
+msgstr ""
+
+#: include/default_domains.php:1681
+msgid "Do intensely"
+msgstr ""
+
+#: include/default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr ""
+
+#: include/default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr ""
+
+#: include/default_domains.php:1684
+msgid "Tense and aspect"
+msgstr ""
+
+#: include/default_domains.php:1685
+msgid "Tense"
+msgstr ""
+
+#: include/default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr ""
+
+#: include/default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr ""
+
+#: include/default_domains.php:1688
+msgid "Relational tenses"
+msgstr ""
+
+#: include/default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr ""
+
+#: include/default_domains.php:1690
+msgid "Can"
+msgstr ""
+
+#: include/default_domains.php:1691
+msgid "Can't"
+msgstr ""
+
+#: include/default_domains.php:1692
+msgid "Necessary"
+msgstr ""
+
+#: include/default_domains.php:1693
+msgid "Moods"
+msgstr ""
+
+#: include/default_domains.php:1694
+msgid "Imperative"
+msgstr ""
+
+#: include/default_domains.php:1695
+msgid "Hortative"
+msgstr ""
+
+#: include/default_domains.php:1696
+msgid "Interrogative"
+msgstr ""
+
+#: include/default_domains.php:1697
+msgid "Epistemic moods"
+msgstr ""
+
+#: include/default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr ""
+
+#: include/default_domains.php:1699
+msgid "Sure"
+msgstr ""
+
+#: include/default_domains.php:1700
+msgid "Probably"
+msgstr ""
+
+#: include/default_domains.php:1701
+msgid "Possible"
+msgstr ""
+
+#: include/default_domains.php:1702
+msgid "Uncertain"
+msgstr ""
+
+#: include/default_domains.php:1703
+msgid "Unsure"
+msgstr ""
+
+#: include/default_domains.php:1704
+msgid "Think so"
+msgstr ""
+
+#: include/default_domains.php:1705
+msgid "Maybe"
+msgstr ""
+
+#: include/default_domains.php:1706
+msgid "Seem"
+msgstr ""
+
+#: include/default_domains.php:1707
+msgid "Just, almost not"
+msgstr ""
+
+#: include/default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr ""
+
+#: include/default_domains.php:1709
+msgid "Impossible"
+msgstr ""
+
+#: include/default_domains.php:1710
+msgid "Evidentials"
+msgstr ""
+
+#: include/default_domains.php:1711
+msgid "Evaluator"
+msgstr ""
+
+#: include/default_domains.php:1712
+msgid "Yes"
+msgstr ""
+
+#: include/default_domains.php:1713
+msgid "No, not"
+msgstr ""
+
+#: include/default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr ""
+
+#: include/default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr ""
+
+#: include/default_domains.php:1716
+msgid "Subordinating particles"
+msgstr ""
+
+#: include/default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr ""
+
+#: include/default_domains.php:1718
+msgid "Case"
+msgstr ""
+
+#: include/default_domains.php:1719
+msgid "Primary cases"
+msgstr ""
+
+#: include/default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr ""
+
+#: include/default_domains.php:1721
+msgid "Instrument"
+msgstr ""
+
+#: include/default_domains.php:1722
+msgid "Means"
+msgstr ""
+
+#: include/default_domains.php:1723
+msgid "Way, manner"
+msgstr ""
+
+#: include/default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr ""
+
+#: include/default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr ""
+
+#: include/default_domains.php:1726
+msgid "Source (of movement)"
+msgstr ""
+
+#: include/default_domains.php:1727
+msgid "Path (of movement)"
+msgstr ""
+
+#: include/default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr ""
+
+#: include/default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr ""
+
+#: include/default_domains.php:1730
+msgid "Semantically similar events"
+msgstr ""
+
+#: include/default_domains.php:1731
+msgid "Together"
+msgstr ""
+
+#: include/default_domains.php:1732
+msgid "With, be with"
+msgstr ""
+
+#: include/default_domains.php:1733
+msgid "With, do with someone"
+msgstr ""
+
+#: include/default_domains.php:1734
+msgid "Each other"
+msgstr ""
+
+#: include/default_domains.php:1735
+msgid "In groups"
+msgstr ""
+
+#: include/default_domains.php:1736
+msgid "Patient-related cases"
+msgstr ""
+
+#: include/default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr ""
+
+#: include/default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr ""
+
+#: include/default_domains.php:1739
+msgid "With (a patient)"
+msgstr ""
+
+#: include/default_domains.php:1740
+msgid "Connected with, related"
+msgstr ""
+
+#: include/default_domains.php:1741
+msgid "Coordinate relations"
+msgstr ""
+
+#: include/default_domains.php:1742
+msgid "And, also"
+msgstr ""
+
+#: include/default_domains.php:1743
+msgid "Or, either"
+msgstr ""
+
+#: include/default_domains.php:1744
+msgid "Association"
+msgstr ""
+
+#: include/default_domains.php:1745
+msgid "Combinative relation"
+msgstr ""
+
+#: include/default_domains.php:1746
+msgid "But"
+msgstr ""
+
+#: include/default_domains.php:1747
+msgid "Except"
+msgstr ""
+
+#: include/default_domains.php:1748
+msgid "Instead"
+msgstr ""
+
+#: include/default_domains.php:1749
+msgid "Dissociation"
+msgstr ""
+
+#: include/default_domains.php:1750
+msgid "Distribution"
+msgstr ""
+
+#: include/default_domains.php:1751
+msgid "Equivalence"
+msgstr ""
+
+#: include/default_domains.php:1752
+msgid "Dependency relations"
+msgstr ""
+
+#: include/default_domains.php:1753
+msgid "Derivation"
+msgstr ""
+
+#: include/default_domains.php:1754
+msgid "Limitation of topic"
+msgstr ""
+
+#: include/default_domains.php:1755
+msgid "In general"
+msgstr ""
+
+#: include/default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr ""
+
+#: include/default_domains.php:1757
+msgid "Basis"
+msgstr ""
+
+#: include/default_domains.php:1758
+msgid "Cause"
+msgstr ""
+
+#: include/default_domains.php:1759
+msgid "Reason"
+msgstr ""
+
+#: include/default_domains.php:1760
+msgid "Without cause"
+msgstr ""
+
+#: include/default_domains.php:1761
+msgid "Result"
+msgstr ""
+
+#: include/default_domains.php:1762
+msgid "Without result"
+msgstr ""
+
+#: include/default_domains.php:1763
+msgid "Purpose"
+msgstr ""
+
+#: include/default_domains.php:1764
+msgid "Without purpose"
+msgstr ""
+
+#: include/default_domains.php:1765
+msgid "Condition"
+msgstr ""
+
+#: include/default_domains.php:1766
+msgid "Concession"
+msgstr ""
+
+#: include/default_domains.php:1767
+msgid "Discourse markers"
+msgstr ""
+
+#: include/default_domains.php:1768
+msgid "Markers of transition"
+msgstr ""
+
+#: include/default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr ""
+
+#: include/default_domains.php:1770
+msgid "Prompters of attention"
+msgstr ""
+
+#: include/default_domains.php:1771
+msgid "Markers of direct address"
+msgstr ""
+
+#: include/default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr ""
+
+#: include/default_domains.php:1773
+msgid "Markers of focus"
+msgstr ""
+
+#: include/default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr ""
+
+#: include/default_domains.php:1775
+msgid "Honorifics"
+msgstr ""
+
+#: include/default_domains.php:1776
+msgid "Name"
+msgstr ""
+
+#: include/default_domains.php:1777
+msgid "Name of a person"
+msgstr ""
+
+#: include/default_domains.php:1778
+msgid "Personal names"
+msgstr ""
+
+#: include/default_domains.php:1779
+msgid "Family names"
+msgstr ""
+
+#: include/default_domains.php:1780
+msgid "Clan names"
+msgstr ""
+
+#: include/default_domains.php:1781
+msgid "Tribal names"
+msgstr ""
+
+#: include/default_domains.php:1782
+msgid "Names of languages"
+msgstr ""
+
+#: include/default_domains.php:1783
+msgid "Nickname"
+msgstr ""
+
+#: include/default_domains.php:1784
+msgid "Terms of endearment"
+msgstr ""
+
+#: include/default_domains.php:1785
+msgid "Name of a place"
+msgstr ""
+
+#: include/default_domains.php:1786
+msgid "Names of countries"
+msgstr ""
+
+#: include/default_domains.php:1787
+msgid "Names of regions"
+msgstr ""
+
+#: include/default_domains.php:1788
+msgid "Names of cities"
+msgstr ""
+
+#: include/default_domains.php:1789
+msgid "Names of streets"
+msgstr ""
+
+#: include/default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr ""
+
+#: include/default_domains.php:1791
+msgid "Names of continents"
+msgstr ""
+
+#: include/default_domains.php:1792
+msgid "Names of mountains"
+msgstr ""
+
+#: include/default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr ""
+
+#: include/default_domains.php:1794
+msgid "Names of rivers"
+msgstr ""
+
+#: include/default_domains.php:1795
+msgid "Name of a thing"
+msgstr ""
+
+#: include/default_domains.php:1796
+msgid "Names of animals"
+msgstr ""
+
+#: include/default_domains.php:1797
+msgid "Names of buildings"
+msgstr ""
+
+#: include/dictionary-search.php:114
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+
+#: include/dictionary-search.php:117
+msgid "Click here to include searching through partial words."
+msgstr ""
+
+#: include/infrastructure.php:168
+msgid "Search Domains"
+msgstr ""
+
+#: include/infrastructure.php:169
+msgid "All Semantic Domains"
+msgstr ""
+
+#: include/infrastructure.php:170
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:171
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: include/infrastructure.php:172
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:173
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:174
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:175
+msgid "New Semantic Domain Name"
+msgstr ""
+
+#: include/infrastructure.php:176
+msgid "Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:202 include/infrastructure.php:210
+msgid "Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:203 include/searchform_func.php:64
+#: include/searchform_func.php:135
+msgid "All Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:204
+msgid "Parent Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:205
+msgid "Parent Part of Speech:"
+msgstr ""
+
+#: include/infrastructure.php:206
+msgid "Edit Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:207
+msgid "Update Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:208
+msgid "Add New Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:209
+msgid "New Part of Speech Name"
+msgstr ""
+
+#: include/infrastructure.php:237 include/searchform_func.php:290
+msgid "All Languages"
+msgstr ""
+
+#: include/infrastructure.php:238
+msgid "Parent Language"
+msgstr ""
+
+#: include/infrastructure.php:239
+msgid "Parent Language:"
+msgstr ""
+
+#: include/infrastructure.php:240
+msgid "Edit Language"
+msgstr ""
+
+#: include/infrastructure.php:241
+msgid "Update Language"
+msgstr ""
+
+#: include/infrastructure.php:242
+msgid "Add New Language"
+msgstr ""
+
+#: include/infrastructure.php:243
+msgid "New Language Name"
+msgstr ""
+
+#: include/infrastructure.php:270 include/infrastructure.php:278
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:271
+msgid "All Website strings"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Parent Website strings"
+msgstr ""
+
+#: include/infrastructure.php:273
+msgid "Parent Website strings:"
+msgstr ""
+
+#: include/infrastructure.php:274
+msgid "Edit Website strings"
+msgstr ""
+
+#: include/infrastructure.php:275
+msgid "Update Website strings"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Add New Website strings"
+msgstr ""
+
+#: include/infrastructure.php:277
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:283
+msgid "Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:285
+msgid "Hide Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:299
+msgid "Match whole words"
+msgstr ""
+
+#: include/searchform_func.php:301
+msgid "Match accents and tones"
+msgstr ""
+
+#: include/searchform_func.php:308
+msgid "Number of Entries"
+msgstr ""
+
+#: include/searchform_func.php:326
+msgid "Last update:"
+msgstr ""
+
+#: include/searchform_func.php:337
+msgid "Date published:"
+msgstr ""
+
+#: include/searchform_func.php:348
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+#: include/xhtml-importer.php:51
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+#: include/xhtml-importer.php:52
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""
+
+#: sil-dictionary.php:116
+msgid "This API can only be called if you are logged in first."
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:54
+msgid "Data (Upload)"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:56
+msgid "Browse Views"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:57
+msgid "Fonts"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:59
+msgid "Super Admin"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:206
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:208
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:253
+msgid "Finished!"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:553
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:571
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:571
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:573
+msgid "**XHTML file must be sorted. Webonary does not sort the entries.**"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:581
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:595
+msgid "Language Code:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:739
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:1587
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: webonary/Webonary_SemanticDomains.php:138
+msgid "Custom Domains"
+msgstr ""

@@ -20,7 +20,7 @@ msgstr ""
 
 #: include/browseview_func.php:108
 msgid "No entries exist for"
-msgstr "គ្មាន​ពាក្យ xx ទេ"
+msgstr "គ្មាន​ធាតុ​សម្រាប់"
 
 #: include/browseview_func.php:185
 msgid "Page"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: include/browseview_func.php:496
 msgid "No entries exist starting with this letter."
-msgstr "គ្មាន​ពាក្យ​ដែល​ចាប់​ផ្ដើម​ដោយ​អក្សរ​នេះ​ទេ"
+msgstr "គ្មាន​ធាតុ​ចាប់​ផ្ដើម​ដោយ​អក្សរ​នេះ​ទេ។"
 
 #: include/comments_func.php:25
 msgid "Re-syncing comments"
@@ -51,12 +51,12 @@ msgstr ""
 # @ sil_dictionary
 #: include/dictionary-search.php:173
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr "ដោយ​សារ​​ពាក្យ​ដែល​អ្នក​កំពុងរក​ជាក់​លាក់​ពេក ផ្នែក​ខ្លះ​ត្រូវ​បាន​លុប​ចេញ។"
+msgstr "បាន​បិទ​ការស្វែងរកមិន​ពេញលេញ ព្រោះ​ពាក្យ​​របស់​អ្នកជាក់លាក់។"
 
 # @ sil_dictionary
 #: include/dictionary-search.php:175
 msgid "Click here to include searching through partial words."
-msgstr "ចុច​ត្រង់​នេះ​ដើម្បី​​​ប្រើ​ផ្នែក​ខ្លះ​នៃ​ពាក្យ​ដើម្បី​រក​ពាក្យ​ដែល​អ្នក​ចង់​រក។"
+msgstr "ចុច​ទីនេះ​ដើម្បីបញ្ចូល​ការស្វែង​រកមិនពេញលេញ។"
 
 #: include/infrastructure.php:114
 msgid "Webonary"
@@ -129,27 +129,27 @@ msgstr ""
 
 #: include/infrastructure.php:155
 msgid "Rough draft"
-msgstr ""
+msgstr "សេចក្តីព្រាងទ្រួសៗ"
 
 #: include/infrastructure.php:156
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "ពិនិត្យសេចក្តីព្រាងដោយខ្លួនឯង"
 
 #: include/infrastructure.php:157
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "សេចក្តីព្រាងដែលពិនិត្យដោយសហគមន៍"
 
 #: include/infrastructure.php:158
 msgid "Consultant approved"
-msgstr ""
+msgstr "បាន​អនុម័ត​ដោយទីប្រឹក្សា"
 
 #: include/infrastructure.php:159
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "បាន​បញ្ចប់ (មិន​ទាន់​​ចេញផ្សាយ​ផ្លូវ​ការ)"
 
 #: include/infrastructure.php:160
 msgid "Formally published"
-msgstr ""
+msgstr "បាន​ចេញផ្សាយ​ផ្លូវការ"
 
 #: include/infrastructure.php:163
 msgid "Search Options:"
@@ -361,7 +361,7 @@ msgstr ""
 # @ sil_dictionary
 #: include/infrastructure.php:525 include/searchform_func.php:49
 msgid "All Languages"
-msgstr "ភាសា​ទាំង​អស់"
+msgstr "ភាសាទាំងអស់"
 
 # @ default
 #: include/infrastructure.php:526
@@ -564,3 +564,35 @@ msgstr ""
 #: include/xhtml-importer copy.php:2121 include/xhtml-importer.php:2089
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "ចំនួន​ធាតុ"
+
+#: extra string
+msgid "Last update:"
+msgstr "ធ្វើ​បច្ចុប្បន្នភាព​ចុងក្រោយ៖"
+
+#: extra string
+msgid "Date published:"
+msgstr "កាលបរិច្ឆេទ​ចេញផ្សាយ៖"
+
+#: extra string
+msgid "Advanced Search"
+msgstr "ការស្វែងរក​កម្រិតខ្ពស់"
+
+#: extra string
+msgid "Hide Advanced Search"
+msgstr "លាក់​ការស្វែងរក​កម្រិត​ខ្ពស់"
+
+#: extra string
+msgid "Match whole words"
+msgstr "ត្រូវ​នឹង​​ពាក្យ​ទាំង​មូល"
+
+#: extra string
+msgid "Match accents and tones"
+msgstr "ត្រូវ​នឹង​សញ្ញា​លើកដាក់សំឡេង​និង​តុង"
+
+#: extra string
+msgid "Publication Status"
+msgstr "ស្ថានភាពចេញផ្សាយ"
