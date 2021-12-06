@@ -115,27 +115,27 @@ msgstr ""
 
 #: include/configuration.php:337
 msgid "Rough draft"
-msgstr ""
+msgstr "Rascunho"
 
 #: include/configuration.php:338
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Rascunho auto-revisado"
 
 #: include/configuration.php:339
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Rascunho revisado pela comunidade"
 
 #: include/configuration.php:340
 msgid "Consultant approved"
-msgstr ""
+msgstr "Aprovado por consultor"
 
 #: include/configuration.php:341
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Concluído (sem publicação formal)"
 
 #: include/configuration.php:342
 msgid "Formally published"
-msgstr ""
+msgstr "Formalmente publicado"
 
 # @ sil_dictionary
 #: include/configuration.php:345
@@ -7423,13 +7423,13 @@ msgstr ""
 # @ sil_dictionary
 #: include/dictionary-search.php:215
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr ""
+msgstr "Devido à brevidade do termo de pesquisa, resultados parciais foram omitidos."
 "Devido à brevidade do termo de pesquisa, resultados parciais foram omitidos."
 
 # @ sil_dictionary
 #: include/dictionary-search.php:217
 msgid "Click here to include searching through partial words."
-msgstr "Clique aqui para incluir pesquisa por palavras parciais."
+msgstr "Clique aqui para incluir pesquisa por palavras parciais"
 
 # @ default
 #: include/infrastructure.php:115
@@ -7647,11 +7647,11 @@ msgstr "Número de entradas"
 
 #: include/searchform_func.php:170
 msgid "Last update:"
-msgstr "Última atualização: "
+msgstr "Última atualização:"
 
 #: include/searchform_func.php:176
 msgid "Date published:"
-msgstr "Data de publicação: "
+msgstr "Data de publicação:"
 
 #: include/searchform_func.php:191
 msgid "Found in Semantic Domains:"
@@ -7741,3 +7741,11 @@ msgstr ""
 #: include/xhtml-importer.php:2272
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Número de entradas"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Condição de Publicação"

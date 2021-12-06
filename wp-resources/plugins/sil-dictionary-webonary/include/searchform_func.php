@@ -408,7 +408,7 @@ function getDictStageFlex($status): string
 	$header = __('Publication Status', 'sil_dictionary');
 	$rough = __('Rough draft', 'sil_dictionary');
 	$self = __('Self-reviewed draft', 'sil_dictionary');
-	$community = __('Community reviewed draft', 'sil_dictionary');
+	$community = __('Community-reviewed draft', 'sil_dictionary');
 	$consultant = __('Consultant approved', 'sil_dictionary');
 	$no_formal = __('Finished (no formal publication)', 'sil_dictionary');
 	$formal = __('Formally published', 'sil_dictionary');
@@ -479,25 +479,14 @@ function add_footer()
 {
 	global $post, $wpdb;
 	$post_slug = is_null($post) ? '' : $post->post_name;
-	if(is_front_page() || $post_slug == "browse")
+	if(is_front_page() || $post_slug == 'browse')
 	{
 		if(get_option('noSearch') != 1)
 		{
-			$arrLanguageCodes = Webonary_Configuration::get_LanguageCodes();
-
-			$letter = "frontpage";
+			$letter = 'frontpage';
 			if(isset($_GET['letter']))
 			{
 				$letter = $_GET['letter'];
-			}
-			$x = 0;
-			foreach($arrLanguageCodes as $languagecode)
-			{
-				 if(get_option('languagecode') == $languagecode['language_code'])
-				 {
-				 	$i = $x;
-				 }
-				$x++;
 			}
 
 			$sql = "SELECT post_title FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";

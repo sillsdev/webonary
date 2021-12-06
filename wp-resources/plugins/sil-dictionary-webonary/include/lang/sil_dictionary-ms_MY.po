@@ -20,7 +20,7 @@ msgstr ""
 
 #: include/browseview_func.php:108
 msgid "No entries exist for"
-msgstr ""
+msgstr "Tiada entri wujud untuk"
 
 #: include/browseview_func.php:185
 msgid "Page"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: include/browseview_func.php:496
 msgid "No entries exist starting with this letter."
-msgstr "Tiada perkatan bermula dengan huruf ini."
+msgstr "Tiada entri wujud bermula dengan huruf ini"
 
 #: include/comments_func.php:25
 msgid "Re-syncing comments"
@@ -51,12 +51,12 @@ msgstr ""
 # @ sil_dictionary
 #: include/dictionary-search.php:173
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr ""
+msgstr "Disebabkan pencarian kata yang ringkas, carian separa tidak dapat dilakukan."
 
 # @ sil_dictionary
 #: include/dictionary-search.php:175
 msgid "Click here to include searching through partial words."
-msgstr ""
+msgstr "Klik sini untuk merangkumi carian kata separa"
 
 #: include/infrastructure.php:114
 msgid "Webonary"
@@ -129,27 +129,27 @@ msgstr ""
 
 #: include/infrastructure.php:155
 msgid "Rough draft"
-msgstr ""
+msgstr "Draf kasar"
 
 #: include/infrastructure.php:156
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Draf disemak sendiri"
 
 #: include/infrastructure.php:157
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Draf disemak komuniti"
 
 #: include/infrastructure.php:158
 msgid "Consultant approved"
-msgstr ""
+msgstr "Disahkan konsultan"
 
 #: include/infrastructure.php:159
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Siap (penerbitan belum dirasmikan)"
 
 #: include/infrastructure.php:160
 msgid "Formally published"
-msgstr ""
+msgstr "Penerbitan secara rasmi"
 
 #: include/infrastructure.php:163
 msgid "Search Options:"
@@ -308,7 +308,7 @@ msgstr ""
 # @ sil_dictionary
 #: include/infrastructure.php:488 include/searchform_func.php:74
 msgid "All Parts of Speech"
-msgstr "Semua kategori tatabahasa"
+msgstr "Semua Golongan Kata"
 
 # @ default
 #: include/infrastructure.php:489
@@ -564,3 +564,19 @@ msgstr ""
 #: include/xhtml-importer copy.php:2121 include/xhtml-importer.php:2089
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Jumlah entri"
+
+#: extra string
+msgid "Last update:"
+msgstr "Kemas kini terakhir"
+
+#: extra string
+msgid "Date published:"
+msgstr "Tarik diterbitkan"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Status Penerbitan"
