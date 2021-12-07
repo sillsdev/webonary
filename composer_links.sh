@@ -78,3 +78,17 @@ do
   target="${thisDir}/wordpress/wp-content/themes/${fn}"
   ln -sfn "${d}" "${target}"
 done
+
+
+# copy additional default localizations
+mkdir -p "${thisDir}/wordpress/wp-content/languages"
+FILES="${thisDir}/wp-resources/localizations/wordpress-base/*.mo"
+for f in $FILES
+do
+  fn=$(basename "$f")
+  target="${thisDir}/wordpress/wp-content/languages/${fn}"
+
+  if [[ ! -f "$target" ]]; then
+    cp "$f" "$target"
+  fi
+done

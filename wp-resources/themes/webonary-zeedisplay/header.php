@@ -1,6 +1,17 @@
 <!DOCTYPE html><!-- HTML 5 -->
 <?php
 $options = get_option('themezee_options');
+
+if ( isset($options['themeZee_logo']) and $options['themeZee_logo'] <> "") {
+	$host = filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_UNSAFE_RAW);
+	if (strpos($host, 'localhost') !== false)
+		$logo = '<a href="' . home_url() . '"><img src="https://www.webonary.org/wp-content/uploads/webonary.png" alt="Logo"></a>';
+    else
+        $logo = '<a href="' . home_url() . '"><img src="' . esc_url($options['themeZee_logo']) . '" alt="Logo"></a>';
+}
+else {
+    $logo = '';
+}
 ?>
 <html <?php language_attributes(); ?>>
 <head>
@@ -9,12 +20,6 @@ $options = get_option('themezee_options');
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<title><?php bloginfo('name'); if(is_home() || is_front_page()) { echo ' - '; bloginfo('description'); } else { wp_title(); } ?></title>
-
-	<style type="text/css">
-	#topnavi {
-		position: static; float: right; margin-right: 10px;
-	}
-	</style>
 
 	<?php webonary_zeedisplay_link_style_sheets() ?>
 
@@ -33,15 +38,7 @@ $options = get_option('themezee_options');
 
 	<div id="wrap">
 		<div id="head">
-			<div id="logo" align=left>
-				<?php
-				$options = get_option('themezee_options');
-				if ( isset($options['themeZee_logo']) and $options['themeZee_logo'] <> "") { ?>
-					<a href="<?php echo home_url(); ?>"><img src="<?php echo esc_url($options['themeZee_logo']); ?>" alt="Logo" /></a>
-				<?php } else { /* ?>
-					<a href="<?php echo home_url(); ?>/"><h1><?php bloginfo('name'); ?></h1></a>
-				<?php  */ } ?>
-			</div>
+			<div id="logo"><?php echo $logo; ?></div>
 			<?php if (has_nav_menu('top_navi') && !isMobile()) {?>
 			<div style="display: table-cell; vertical-align: bottom; position: static; padding-bottom: 10px;">
 			<?php if (function_exists('qtrans_init')) { ?><div  style="height: 50px;"><div id=navlanguage><nobr><?php echo qtrans_getLanguageLinks('text'); ?></nobr></div></div> <?php } ?>
