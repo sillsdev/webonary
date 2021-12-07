@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2021-12-01 09:17-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en_US\n"
+"Language: ur_PK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -205,7 +205,7 @@ msgstr ""
 #: include/default_domains-SpanishFoods.php:10
 #: include/default_domains-yakan.php:61 include/default_domains.php:90
 msgid "Fish"
-msgstr ""
+msgstr "مچھلی"
 
 #: include/default_domains-SpanishFoods.php:11
 msgid "Fruit"
@@ -213,7 +213,7 @@ msgstr ""
 
 #: include/default_domains-SpanishFoods.php:12 include/default_domains.php:853
 msgid "Meat"
-msgstr ""
+msgstr "ماس"
 
 #: include/default_domains-SpanishFoods.php:13
 msgid "Puerto Rican Fritters"
@@ -226,7 +226,7 @@ msgstr ""
 
 #: include/default_domains-SpanishFoods.php:15 include/default_domains.php:859
 msgid "Spice"
-msgstr ""
+msgstr "مصالحہ"
 
 #: include/default_domains-SpanishFoods.php:16
 #: include/default_domains-yakan.php:18
@@ -503,7 +503,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:74 include/default_domains.php:43
 msgid "Bodies of water"
-msgstr ""
+msgstr "اجزائے پانی،پانی کاجسم"
 
 #: include/default_domains-yakan.php:75
 msgid "Soil, stone, fire"
@@ -553,11 +553,11 @@ msgstr ""
 
 #: include/default_domains-yakan.php:86 include/default_domains.php:1343
 msgid "Cardinal numbers"
-msgstr ""
+msgstr "بنیادی ہندسے"
 
 #: include/default_domains-yakan.php:87 include/default_domains.php:1346
 msgid "Ordinal numbers"
-msgstr ""
+msgstr "اعدادی یا صفاتی ہندسے"
 
 #: include/default_domains-yakan.php:88
 msgid "Persons"
@@ -578,7 +578,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:92 include/default_domains.php:24
 msgid "Land"
-msgstr ""
+msgstr "زمین"
 
 #: include/default_domains-yakan.php:93
 msgid "Things planted, seeds etc."
@@ -705,12 +705,12 @@ msgstr ""
 
 #: include/default_domains-yakan.php:124 include/default_domains.php:126
 msgid "Hair"
-msgstr ""
+msgstr "بال"
 
 #: include/default_domains-yakan.php:125 include/default_domains-yakan.php:131
 #: include/default_domains.php:125
 msgid "Skin"
-msgstr ""
+msgstr "چمڑی"
 
 #: include/default_domains-yakan.php:126
 msgid "Secretions"
@@ -743,7 +743,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:135 include/default_domains.php:131
 msgid "Stomach"
-msgstr ""
+msgstr "پیٹ"
 
 #: include/default_domains-yakan.php:136
 msgid "Feet"
@@ -755,7 +755,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:138 include/default_domains.php:193
 msgid "Fever"
-msgstr ""
+msgstr "بخار"
 
 #: include/default_domains-yakan.php:139
 msgid "Childbearing and sexual functions"
@@ -982,7 +982,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:193 include/default_domains.php:1037
 msgid "Types of houses"
-msgstr ""
+msgstr "گھروں کی اقسام"
 
 #: include/default_domains-yakan.php:194
 msgid "Parts of houses"
@@ -990,11 +990,11 @@ msgstr ""
 
 #: include/default_domains-yakan.php:195 include/default_domains.php:819
 msgid "Furniture"
-msgstr ""
+msgstr "فرنیچر"
 
 #: include/default_domains-yakan.php:196 include/default_domains.php:1050
 msgid "Building materials"
-msgstr ""
+msgstr "عمارتی مواد"
 
 #: include/default_domains-yakan.php:197
 msgid "Other, types of houses and carpentry"
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:222 include/default_domains.php:882
 msgid "Jewelry"
-msgstr ""
+msgstr "زیورات"
 
 #: include/default_domains-yakan.php:223
 msgid "Things used in sewing"
@@ -1106,7 +1106,7 @@ msgstr ""
 
 #: include/default_domains-yakan.php:224 include/default_domains.php:877
 msgid "Parts of clothing"
-msgstr ""
+msgstr "کپڑوں کے حصے"
 
 #: include/default_domains-yakan.php:225
 msgid "Types of cloth"
@@ -1224,279 +1224,279 @@ msgstr ""
 
 #: include/default_domains.php:6 webonary/Webonary_SemanticDomains.php:129
 msgid "Universe, creation"
-msgstr ""
+msgstr "کائنات"
 
 #: include/default_domains.php:7
 msgid "Sky"
-msgstr ""
+msgstr "آسمانأ"
 
 #: include/default_domains.php:8
 msgid "Sun"
-msgstr ""
+msgstr "سُورج"
 
 #: include/default_domains.php:9
 msgid "Moon"
-msgstr ""
+msgstr "چَاند"
 
 #: include/default_domains.php:10
 msgid "Star"
-msgstr ""
+msgstr "ستارہ"
 
 #: include/default_domains.php:11
 msgid "Planet"
-msgstr ""
+msgstr "سیارہ (اجرامِ فَلکی)"
 
 #: include/default_domains.php:12
 msgid "Air"
-msgstr ""
+msgstr "ہوا"
 
 #: include/default_domains.php:13
 msgid "Blow air"
-msgstr ""
+msgstr "ہوا دینا یا ہوا مارنا"
 
 #: include/default_domains.php:14
 msgid "Weather"
-msgstr ""
+msgstr "موسم"
 
 #: include/default_domains.php:15
 msgid "Wind"
-msgstr ""
+msgstr "جَکھڑ، تیز ہوا"
 
 #: include/default_domains.php:16
 msgid "Cloud"
-msgstr ""
+msgstr "بادَل"
 
 #: include/default_domains.php:17
 msgid "Rain"
-msgstr ""
+msgstr "بارش"
 
 #: include/default_domains.php:18
 msgid "Snow, ice"
-msgstr ""
+msgstr "برف"
 
 #: include/default_domains.php:19
 msgid "Storm"
-msgstr ""
+msgstr "طوفان، آندھی"
 
 #: include/default_domains.php:20
 msgid "Lightning, thunder"
-msgstr ""
+msgstr "صاعقہ، بادل کی گرج"
 
 #: include/default_domains.php:21
 msgid "Flood"
-msgstr ""
+msgstr "سیلاب"
 
 #: include/default_domains.php:22
 msgid "Drought"
-msgstr ""
+msgstr "خشک سالی، تشنگی"
 
 #: include/default_domains.php:23
 msgid "World"
-msgstr ""
+msgstr "دنیا"
 
 #: include/default_domains.php:25
 msgid "Mountain"
-msgstr ""
+msgstr "پہاڑ"
 
 #: include/default_domains.php:26
 msgid "Volcano"
-msgstr ""
+msgstr "آتش فشاں"
 
 #: include/default_domains.php:27
 msgid "Plain, plateau"
-msgstr ""
+msgstr "میدان ، سطح مرتفع"
 
 #: include/default_domains.php:28
 msgid "Valley"
-msgstr ""
+msgstr "وادی"
 
 #: include/default_domains.php:29
 msgid "Underground"
-msgstr ""
+msgstr "زمین دوز، خفیہ"
 
 #: include/default_domains.php:30
 msgid "Forest, grassland, desert"
-msgstr ""
+msgstr "ماحولیاتی نظام، ارتعاشی نظام"
 
 #: include/default_domains.php:31
 msgid "Earthquake"
-msgstr ""
+msgstr "زلزلہ"
 
 #: include/default_domains.php:32
 msgid "Substance, matter"
-msgstr ""
+msgstr "مواد"
 
 #: include/default_domains.php:33
 msgid "Soil, dirt"
-msgstr ""
+msgstr "اراضی،زرعی زمین–خاک"
 
 #: include/default_domains.php:34
 msgid "Rock"
-msgstr ""
+msgstr "چٹان"
 
 #: include/default_domains.php:35
 msgid "Metal"
-msgstr ""
+msgstr "دھات، لوہا قسم کی چیز"
 
 #: include/default_domains.php:36
 msgid "Mineral"
-msgstr ""
+msgstr "معدنیات"
 
 #: include/default_domains.php:37
 msgid "Jewel"
-msgstr ""
+msgstr "لعل جواہر، قیمتی نگینے"
 
 #: include/default_domains.php:38
 msgid "Solid, liquid, gas"
-msgstr ""
+msgstr "ٹھوس، مائع،گیس"
 
 #: include/default_domains.php:39
 msgid "Liquid"
-msgstr ""
+msgstr "مائع"
 
 #: include/default_domains.php:40
 msgid "Oil"
-msgstr ""
+msgstr "تِیل"
 
 #: include/default_domains.php:41
 msgid "Gas"
-msgstr ""
+msgstr "گیس"
 
 #: include/default_domains.php:42
 msgid "Water"
-msgstr ""
+msgstr "پانی"
 
 #: include/default_domains.php:44
 msgid "Ocean, lake"
-msgstr ""
+msgstr "جھیل، جزیرا"
 
 #: include/default_domains.php:45
 msgid "Swamp"
-msgstr ""
+msgstr "دلدل، دھسن"
 
 #: include/default_domains.php:46
 msgid "River"
-msgstr ""
+msgstr "دریا"
 
 #: include/default_domains.php:47
 msgid "Spring, well"
-msgstr ""
+msgstr "کنواں"
 
 #: include/default_domains.php:48
 msgid "Island, shore"
-msgstr ""
+msgstr "جزیرہ"
 
 #: include/default_domains.php:49
 msgid "Movement of water"
-msgstr ""
+msgstr "پانی کی حرکت"
 
 #: include/default_domains.php:50
 msgid "Flow"
-msgstr ""
+msgstr "بہاو"
 
 #: include/default_domains.php:51
 msgid "Pour"
-msgstr ""
+msgstr "انڈیلنا"
 
 #: include/default_domains.php:52
 msgid "Drip"
-msgstr ""
+msgstr "قطرہ، رسنا، ٹپکنے والی چیز"
 
 #: include/default_domains.php:53
 msgid "Wave"
-msgstr ""
+msgstr "لہر"
 
 #: include/default_domains.php:54
 msgid "Calm, rough"
-msgstr ""
+msgstr "خاموشی"
 
 #: include/default_domains.php:55
 msgid "Tide"
-msgstr ""
+msgstr "سمندری لہر، موسم،مدوجزری"
 
 #: include/default_domains.php:56
 msgid "Wet"
-msgstr ""
+msgstr "گیلا"
 
 #: include/default_domains.php:57
 msgid "Dry"
-msgstr ""
+msgstr "خشک"
 
 #: include/default_domains.php:58
 msgid "Be in water"
-msgstr ""
+msgstr "پانی میں ہونا"
 
 #: include/default_domains.php:59
 msgid "Solutions of water"
-msgstr ""
+msgstr "پانی کا محلول"
 
 #: include/default_domains.php:60
 msgid "Water quality"
-msgstr ""
+msgstr "پانی کی خصوصیت"
 
 #: include/default_domains.php:61
 msgid "Living things"
-msgstr ""
+msgstr "جاندار اشیأ"
 
 #: include/default_domains.php:62
 msgid "Dead things"
-msgstr ""
+msgstr "مردہ اشیاء"
 
 #: include/default_domains.php:63
 msgid "Spirits of things"
-msgstr ""
+msgstr "روحانی اشیاء"
 
 #: include/default_domains.php:64
 msgid "Plant"
-msgstr ""
+msgstr "پودے"
 
 #: include/default_domains.php:65
 msgid "Tree"
-msgstr ""
+msgstr "درخت"
 
 #: include/default_domains.php:66
 msgid "Bush, shrub"
-msgstr ""
+msgstr "جھاڑی"
 
 #: include/default_domains.php:67
 msgid "Grass, herb, vine"
-msgstr ""
+msgstr "گھاس ، جڑی بوٹیاں، بیلیں"
 
 #: include/default_domains.php:68
 msgid "Moss, fungus, algae"
-msgstr ""
+msgstr "کائی،فنجائی اور اُشنہ، بحری گھاس"
 
 #: include/default_domains.php:69
 msgid "Parts of a plant"
-msgstr ""
+msgstr "پودے کے حصے"
 
 #: include/default_domains.php:70
 msgid "Growth of plants"
-msgstr ""
+msgstr "پودے کی بڑھوتری"
 
 #: include/default_domains.php:71
 msgid "Plant diseases"
-msgstr ""
+msgstr "پودے کی بیماری"
 
 #: include/default_domains.php:72
 msgid "Animal"
-msgstr ""
+msgstr "جانور"
 
 #: include/default_domains.php:73
 msgid "Types of animals"
-msgstr ""
+msgstr "جانوروں کی اقسام"
 
 #: include/default_domains.php:74
 msgid "Mammal"
-msgstr ""
+msgstr "دودھ پلانے والے جانور"
 
 #: include/default_domains.php:75
 msgid "Primate"
-msgstr ""
+msgstr "پرائمایٹ"
 
 #: include/default_domains.php:76
 msgid "Carnivore"
-msgstr ""
+msgstr "گوشت خور جانور یا پودے"
 
 #: include/default_domains.php:77
 msgid "Hoofed animals"
@@ -1504,351 +1504,351 @@ msgstr ""
 
 #: include/default_domains.php:78
 msgid "Rodent"
-msgstr ""
+msgstr "تیز مُنہ والے جانور"
 
 #: include/default_domains.php:79
 msgid "Marsupial"
-msgstr ""
+msgstr "تھیلی دار جانور"
 
 #: include/default_domains.php:80
 msgid "Anteater, aardvark"
-msgstr ""
+msgstr "لمبی چونچ اور زبان والے جانور،"
 
 #: include/default_domains.php:81
 msgid "Sea mammal"
-msgstr ""
+msgstr "سمندردی ممالیہ  جانور"
 
 #: include/default_domains.php:82
 msgid "Bat"
-msgstr ""
+msgstr "چمگادڑ"
 
 #: include/default_domains.php:83
 msgid "Bird"
-msgstr ""
+msgstr "پرندہ"
 
 #: include/default_domains.php:84
 msgid "Reptile"
-msgstr ""
+msgstr "رینگنے والے جانور"
 
 #: include/default_domains.php:85
 msgid "Snake"
-msgstr ""
+msgstr "سانپ"
 
 #: include/default_domains.php:86
 msgid "Lizard"
-msgstr ""
+msgstr "چھپکلی"
 
 #: include/default_domains.php:87
 msgid "Turtle"
-msgstr ""
+msgstr "کچھوا"
 
 #: include/default_domains.php:88
 msgid "Crocodile"
-msgstr ""
+msgstr "مگرمچھ"
 
 #: include/default_domains.php:89
 msgid "Amphibian"
-msgstr ""
+msgstr "خشکی اور تری میں رہنے والے جانور"
 
 #: include/default_domains.php:91
 msgid "Shark, ray"
-msgstr ""
+msgstr "شارک، رے (مچھلی)"
 
 #: include/default_domains.php:92
 msgid "Insect"
-msgstr ""
+msgstr "حشرات"
 
 #: include/default_domains.php:93
 msgid "Spider"
-msgstr ""
+msgstr "مکڑا"
 
 #: include/default_domains.php:94
 msgid "Small animals"
-msgstr ""
+msgstr "چھوٹی جانور"
 
 #: include/default_domains.php:95
 msgid "Parts of an animal"
-msgstr ""
+msgstr "جانوروں کے اجزأ"
 
 #: include/default_domains.php:96
 msgid "Parts of a bird"
-msgstr ""
+msgstr "پرندوں کے اجزأ"
 
 #: include/default_domains.php:97
 msgid "Parts of a reptile"
-msgstr ""
+msgstr "رینگنے والے جانوروں کے اجزا"
 
 #: include/default_domains.php:98
 msgid "Parts of a fish"
-msgstr ""
+msgstr "مچھلی کے حصے یا اجزا"
 
 #: include/default_domains.php:99
 msgid "Parts of an insect"
-msgstr ""
+msgstr "حشرات کے حصے"
 
 #: include/default_domains.php:100
 msgid "Parts of small animals"
-msgstr ""
+msgstr "چھوٹے جانورں کے حصے یااجزا"
 
 #: include/default_domains.php:101
 msgid "Animal life cycle"
-msgstr ""
+msgstr "جانوروں کی زندگی کا نظامِ حیات"
 
 #: include/default_domains.php:102
 msgid "Egg"
-msgstr ""
+msgstr "انڈا"
 
 #: include/default_domains.php:103
 msgid "Animal actions"
-msgstr ""
+msgstr "جانوروں کے کام"
 
 #: include/default_domains.php:104
 msgid "Animal movement"
-msgstr ""
+msgstr "جانوروں کی حرکات"
 
 #: include/default_domains.php:105
 msgid "Animal eating"
-msgstr ""
+msgstr "جانوروں کا کھانا"
 
 #: include/default_domains.php:106
 msgid "Animal sounds"
-msgstr ""
+msgstr "جانوروں کی آوازیں"
 
 #: include/default_domains.php:107
 msgid "Animal home"
-msgstr ""
+msgstr "جانوروں کے گھر"
 
 #: include/default_domains.php:108
 msgid "Animal group"
-msgstr ""
+msgstr "جانوروں کے گروہ"
 
 #: include/default_domains.php:109
 msgid "Male and female animals"
-msgstr ""
+msgstr "نر اور مادہ جانور"
 
 #: include/default_domains.php:110
 msgid "Nature, environment"
-msgstr ""
+msgstr "فطرت اور ماحولیات"
 
 #: include/default_domains.php:111
 msgid "Natural"
-msgstr ""
+msgstr "قدرتی/ فطرتی"
 
 #: include/default_domains.php:112 webonary/Webonary_SemanticDomains.php:130
 msgid "Person"
-msgstr ""
+msgstr "شخص"
 
 #: include/default_domains.php:113
 msgid "Body"
-msgstr ""
+msgstr "جسم"
 
 #: include/default_domains.php:114
 msgid "Head"
-msgstr ""
+msgstr "سر"
 
 #: include/default_domains.php:115
 msgid "Eye"
-msgstr ""
+msgstr "آنکھ"
 
 #: include/default_domains.php:116
 msgid "Ear"
-msgstr ""
+msgstr "کان کا کام"
 
 #: include/default_domains.php:117
 msgid "Nose"
-msgstr ""
+msgstr "ناک"
 
 #: include/default_domains.php:119
 msgid "Tooth"
-msgstr ""
+msgstr "دانت"
 
 #: include/default_domains.php:120
 msgid "Torso"
-msgstr ""
+msgstr "دھڑ"
 
 #: include/default_domains.php:121
 msgid "Limb"
-msgstr ""
+msgstr "بازو، ٹانگیں"
 
 #: include/default_domains.php:122
 msgid "Arm"
-msgstr ""
+msgstr "بازو"
 
 #: include/default_domains.php:123
 msgid "Leg"
-msgstr ""
+msgstr "ٹانگیں"
 
 #: include/default_domains.php:124
 msgid "Finger, toe"
-msgstr ""
+msgstr "اُنگلی،پنجہ"
 
 #: include/default_domains.php:127
 msgid "Bone, joint"
-msgstr ""
+msgstr "ہڈی،جوڑ"
 
 #: include/default_domains.php:128
 msgid "Flesh"
-msgstr ""
+msgstr "ماس"
 
 #: include/default_domains.php:129
 msgid "Internal organs"
-msgstr ""
+msgstr "اندرونی اجزا"
 
 #: include/default_domains.php:130
 msgid "Heart"
-msgstr ""
+msgstr "دل"
 
 #: include/default_domains.php:132
 msgid "Male organs"
-msgstr ""
+msgstr "نر اعضاء"
 
 #: include/default_domains.php:133
 msgid "Female organs"
-msgstr ""
+msgstr "مادہ اعضاء"
 
 #: include/default_domains.php:134
 msgid "Body functions"
-msgstr ""
+msgstr "جسم کے کام"
 
 #: include/default_domains.php:135
 msgid "Breathe, breath"
-msgstr ""
+msgstr "سانس، سانس لینا"
 
 #: include/default_domains.php:136
 msgid "Cough, sneeze"
-msgstr ""
+msgstr "کھانسی/"
 
 #: include/default_domains.php:137
 msgid "Spit, saliva"
-msgstr ""
+msgstr "تھوک، منہ کا پانی"
 
 #: include/default_domains.php:138
 msgid "Mucus"
-msgstr ""
+msgstr "لعابی مادہ"
 
 #: include/default_domains.php:139
 msgid "Bleed, blood"
-msgstr ""
+msgstr "خون کا بہنا، خون"
 
 #: include/default_domains.php:140
 msgid "Sweat"
-msgstr ""
+msgstr "پسینہ"
 
 #: include/default_domains.php:141
 msgid "Urinate, urine"
-msgstr ""
+msgstr "پیشاب کرنا، پیشاب"
 
 #: include/default_domains.php:142
 msgid "Defecate, feces"
-msgstr ""
+msgstr "ٹٹی کرنا، ٹٹی"
 
 #: include/default_domains.php:143
 msgid "Sense, perceive"
-msgstr ""
+msgstr "حسیں"
 
 #: include/default_domains.php:144
 msgid "See"
-msgstr ""
+msgstr "دیکھنا، نظر آنا"
 
 #: include/default_domains.php:145
 msgid "Look"
-msgstr ""
+msgstr "دیکھنا"
 
 #: include/default_domains.php:146
 msgid "Watch"
-msgstr ""
+msgstr "دیکھنا"
 
 #: include/default_domains.php:147
 msgid "Examine"
-msgstr ""
+msgstr "جانچنا"
 
 #: include/default_domains.php:148
 msgid "Show, let someone see"
-msgstr ""
+msgstr "کسی کو دکھانا"
 
 #: include/default_domains.php:149
 msgid "Visible"
-msgstr ""
+msgstr "صاف ظاہر، عیاں"
 
 #: include/default_domains.php:150
 msgid "Appear"
-msgstr ""
+msgstr "ظاہر"
 
 #: include/default_domains.php:151
 msgid "Transparent"
-msgstr ""
+msgstr "شفاف"
 
 #: include/default_domains.php:152
 msgid "Reflect, mirror"
-msgstr ""
+msgstr "آئینہ"
 
 #: include/default_domains.php:153
 msgid "Appearance"
-msgstr ""
+msgstr "ظہور"
 
 #: include/default_domains.php:154
 msgid "Beautiful"
-msgstr ""
+msgstr "خوبصورت"
 
 #: include/default_domains.php:155
 msgid "Ugly"
-msgstr ""
+msgstr "بد صورت"
 
 #: include/default_domains.php:156
 msgid "Something used to see"
-msgstr ""
+msgstr "دیکھنے کے لئے کسی چیز کو استعمال کرنا"
 
 #: include/default_domains.php:157
 msgid "Hear"
-msgstr ""
+msgstr "سُننا"
 
 #: include/default_domains.php:158
 msgid "Listen"
-msgstr ""
+msgstr "سننا"
 
 #: include/default_domains.php:159
 msgid "Sound"
-msgstr ""
+msgstr "آواز"
 
 #: include/default_domains.php:160
 msgid "Types of sounds"
-msgstr ""
+msgstr "آوازوں کی اقسام"
 
 #: include/default_domains.php:161
 msgid "Loud"
-msgstr ""
+msgstr "اونچا"
 
 #: include/default_domains.php:162
 msgid "Quiet"
-msgstr ""
+msgstr "خاموش"
 
 #: include/default_domains.php:163
 msgid "Taste"
-msgstr ""
+msgstr "ذائقہ"
 
 #: include/default_domains.php:164
 msgid "Smell"
-msgstr ""
+msgstr "بو"
 
 #: include/default_domains.php:165
 msgid "Sense of touch"
-msgstr ""
+msgstr "چھونے کی حس"
 
 #: include/default_domains.php:166
 msgid "Comfortable"
-msgstr ""
+msgstr "آرام"
 
 #: include/default_domains.php:167
 msgid "Body condition"
-msgstr ""
+msgstr "جسمانی حالت"
 
 #: include/default_domains.php:168
 msgid "Strong"
-msgstr ""
+msgstr "مضبوط"
 
 #: include/default_domains.php:169
 msgid "Weak"
-msgstr ""
+msgstr "کمزور"
 
 #: include/default_domains.php:170
 msgid "Energetic"
@@ -1856,767 +1856,767 @@ msgstr ""
 
 #: include/default_domains.php:171
 msgid "Tired"
-msgstr ""
+msgstr "تھکاوٹ"
 
 #: include/default_domains.php:172
 msgid "Rest"
-msgstr ""
+msgstr "آرام"
 
 #: include/default_domains.php:173
 msgid "Healthy"
-msgstr ""
+msgstr "صحت مند"
 
 #: include/default_domains.php:174
 msgid "Sick"
-msgstr ""
+msgstr "بیمار"
 
 #: include/default_domains.php:175
 msgid "Recover from sickness"
-msgstr ""
+msgstr "بیماری سے شفا پانا"
 
 #: include/default_domains.php:176
 msgid "Disease"
-msgstr ""
+msgstr "بیماری"
 
 #: include/default_domains.php:177
 msgid "Malnutrition, starvation"
-msgstr ""
+msgstr "غذائی قلت، فاقہ کشی"
 
 #: include/default_domains.php:178
 msgid "Skin disease"
-msgstr ""
+msgstr "کوڑھ، جزام"
 
 #: include/default_domains.php:179
 msgid "Stomach illness"
-msgstr ""
+msgstr "پیٹ کی بیماریاں"
 
 #: include/default_domains.php:180
 msgid "Tooth decay"
-msgstr ""
+msgstr "دانتوں کا خلا"
 
 #: include/default_domains.php:181
 msgid "Injure"
-msgstr ""
+msgstr "زخم"
 
 #: include/default_domains.php:182
 msgid "Amputate"
-msgstr ""
+msgstr "کٹا ہوا، ناکارہ،عضو کا نہ ہونا"
 
 #: include/default_domains.php:183
 msgid "Poison"
-msgstr ""
+msgstr "زہرکا علاج کرنا کرنا"
 
 #: include/default_domains.php:184
 msgid "Disabled"
-msgstr ""
+msgstr "فالج ذدہ"
 
 #: include/default_domains.php:185
 msgid "Blind"
-msgstr ""
+msgstr "اندھا"
 
 #: include/default_domains.php:186
 msgid "Poor eyesight"
-msgstr ""
+msgstr "کمزور نظر"
 
 #: include/default_domains.php:187
 msgid "Deaf"
-msgstr ""
+msgstr "بہرہ"
 
 #: include/default_domains.php:188
 msgid "Mute"
-msgstr ""
+msgstr "گونگا، چُپ چاپ"
 
 #: include/default_domains.php:189
 msgid "Birth defect"
-msgstr ""
+msgstr "پیدائشی نُقص"
 
 #: include/default_domains.php:190
 msgid "Cause of disease"
-msgstr ""
+msgstr "بیماری کے اسباب"
 
 #: include/default_domains.php:191
 msgid "Symptom of disease"
-msgstr ""
+msgstr "بیماری کی علامات"
 
 #: include/default_domains.php:192
 msgid "Pain"
-msgstr ""
+msgstr "درد"
 
 #: include/default_domains.php:194
 msgid "Swell"
-msgstr ""
+msgstr "سوجھنا"
 
 #: include/default_domains.php:195
 msgid "Lose consciousness"
-msgstr ""
+msgstr "ہوش کھونا"
 
 #: include/default_domains.php:196
 msgid "Dazed, confused"
-msgstr ""
+msgstr "گھبراہٹ بدحواسی– الجھانا، گڈ مڈ کرنا"
 
 #: include/default_domains.php:197
 msgid "Vision, hallucination"
-msgstr ""
+msgstr "نظر، نگاہ–فریب خیالی، تصورکا دھوکا،لغزس"
 
 #: include/default_domains.php:198
 msgid "Treat disease"
-msgstr ""
+msgstr "بیماری کا علاج"
 
 #: include/default_domains.php:199
 msgid "Doctor, nurse"
-msgstr ""
+msgstr "ڈاکٹر،نرس"
 
 #: include/default_domains.php:200
 msgid "Medicine"
-msgstr ""
+msgstr "دوائی"
 
 #: include/default_domains.php:201
 msgid "Medicinal plants"
-msgstr ""
+msgstr "جڑی بوٹیاں"
 
 #: include/default_domains.php:202
 msgid "Hospital"
-msgstr ""
+msgstr "ہسپتال"
 
 #: include/default_domains.php:203
 msgid "Traditional medicine"
-msgstr ""
+msgstr "روائیتی ادویات"
 
 #: include/default_domains.php:204
 msgid "Mental illness"
-msgstr ""
+msgstr "ذہنی ناکارہ"
 
 #: include/default_domains.php:205
 msgid "Life"
-msgstr ""
+msgstr "زندگی"
 
 #: include/default_domains.php:206
 msgid "Marriage"
-msgstr ""
+msgstr "شادی"
 
 #: include/default_domains.php:207
 msgid "Arrange a marriage"
-msgstr ""
+msgstr "شادی کا انتظام کرنا"
 
 #: include/default_domains.php:208
 msgid "Wedding"
-msgstr ""
+msgstr "شادی"
 
 #: include/default_domains.php:209
 msgid "Unmarried"
-msgstr ""
+msgstr "غیر شادی شُدہ"
 
 #: include/default_domains.php:210
 msgid "Divorce"
-msgstr ""
+msgstr "طلاق"
 
 #: include/default_domains.php:211
 msgid "Romantic love"
-msgstr ""
+msgstr "جذباتی محبت"
 
 #: include/default_domains.php:212
 msgid "Sexual relations"
-msgstr ""
+msgstr "جنسی تعلقات"
 
 #: include/default_domains.php:213
 msgid "Virginity"
-msgstr ""
+msgstr "کنوارہ پن"
 
 #: include/default_domains.php:214
 msgid "Attract sexually"
-msgstr ""
+msgstr "جنسی طور پر ُپرکشش"
 
 #: include/default_domains.php:215
 msgid "Sexual immorality"
-msgstr ""
+msgstr "جنسی بد اخلاقی"
 
 #: include/default_domains.php:216
 msgid "Birth"
-msgstr ""
+msgstr "پیدائش دینا"
 
 #: include/default_domains.php:217
 msgid "Pregnancy"
-msgstr ""
+msgstr "حاملہ پن"
 
 #: include/default_domains.php:218
 msgid "Fetus"
-msgstr ""
+msgstr "فیٹس/ماں کے پیٹ میں موجود بچہ"
 
 #: include/default_domains.php:219
 msgid "Miscarriage"
-msgstr ""
+msgstr "اسقاطِ حمل"
 
 #: include/default_domains.php:220
 msgid "Labor and birth pains"
-msgstr ""
+msgstr "پیدائش اور دردِ پیدائش"
 
 #: include/default_domains.php:221
 msgid "Help to give birth"
-msgstr ""
+msgstr "پیدائش میں مدد کرنا"
 
 #: include/default_domains.php:222
 msgid "Unusual birth"
-msgstr ""
+msgstr "غیر معمولی پیدائش"
 
 #: include/default_domains.php:223
 msgid "Multiple births"
-msgstr ""
+msgstr "کئی پیدائشیں"
 
 #: include/default_domains.php:224
 msgid "Fertile, infertile"
-msgstr ""
+msgstr "بانجھ"
 
 #: include/default_domains.php:225
 msgid "Birth ceremony"
-msgstr ""
+msgstr "سال گرہ"
 
 #: include/default_domains.php:226
 msgid "Stage of life"
-msgstr ""
+msgstr "زندگی کے مراحل"
 
 #: include/default_domains.php:227
 msgid "Baby"
-msgstr ""
+msgstr "بچہ"
 
 #: include/default_domains.php:228
 msgid "Care for a baby"
-msgstr ""
+msgstr "بچے کی حفاظت کرنا"
 
 #: include/default_domains.php:229
 msgid "Child"
-msgstr ""
+msgstr "بچہ"
 
 #: include/default_domains.php:230
 msgid "Rear a child"
-msgstr ""
+msgstr "بچے کی پرورش"
 
 #: include/default_domains.php:231
 msgid "Youth"
-msgstr ""
+msgstr "جوانی"
 
 #: include/default_domains.php:232
 msgid "Adult"
-msgstr ""
+msgstr "بالغ،جوان"
 
 #: include/default_domains.php:233
 msgid "Old person"
-msgstr ""
+msgstr "بوڑھا آدمی"
 
 #: include/default_domains.php:234
 msgid "Grow, get bigger"
-msgstr ""
+msgstr "بڑا ہوجانا"
 
 #: include/default_domains.php:235
 msgid "Initiation"
-msgstr ""
+msgstr "باضابطہ شرکت، ابتدا، داخلہ"
 
 #: include/default_domains.php:236
 msgid "Peer group"
-msgstr ""
+msgstr "ھم عمر ،ہم جماعت"
 
 #: include/default_domains.php:237
 msgid "Male, female"
-msgstr ""
+msgstr "نر،مادہ"
 
 #: include/default_domains.php:238
 msgid "Man"
-msgstr ""
+msgstr "مرد"
 
 #: include/default_domains.php:239
 msgid "Woman"
-msgstr ""
+msgstr "عورت"
 
 #: include/default_domains.php:240
 msgid "Die"
-msgstr ""
+msgstr "مرنا"
 
 #: include/default_domains.php:241
 msgid "Kill"
-msgstr ""
+msgstr "مارنا"
 
 #: include/default_domains.php:242
 msgid "Corpse"
-msgstr ""
+msgstr "لاش"
 
 #: include/default_domains.php:243
 msgid "Funeral"
-msgstr ""
+msgstr "جنازہ"
 
 #: include/default_domains.php:244
 msgid "Mourn"
-msgstr ""
+msgstr "ماتم"
 
 #: include/default_domains.php:245
 msgid "Bury"
-msgstr ""
+msgstr "دفن کرنا"
 
 #: include/default_domains.php:246
 msgid "Grave"
-msgstr ""
+msgstr "قبر"
 
 #: include/default_domains.php:247
 msgid "Inherit"
-msgstr ""
+msgstr "ورثہ میں مِلنا، وارث ہونا، خاندانی خصوصیات رکھنا"
 
 #: include/default_domains.php:248
 msgid "Life after death"
-msgstr ""
+msgstr "موت کے بعد زندگی"
 
 #: include/default_domains.php:249 webonary/Webonary_SemanticDomains.php:131
 msgid "Language and thought"
-msgstr ""
+msgstr "زبان اور سوچ"
 
 #: include/default_domains.php:250
 msgid "Soul, spirit"
-msgstr ""
+msgstr "روح،جسم کی روح"
 
 #: include/default_domains.php:251
 msgid "Personality"
-msgstr ""
+msgstr "شخصییت، انفرادییت"
 
 #: include/default_domains.php:252
 msgid "Mental state"
-msgstr ""
+msgstr "ذہنی منصب"
 
 #: include/default_domains.php:253
 msgid "Alert"
-msgstr ""
+msgstr "قدرے ہوشیار"
 
 #: include/default_domains.php:254
 msgid "Notice"
-msgstr ""
+msgstr "اشارہ"
 
 #: include/default_domains.php:255
 msgid "Attention"
-msgstr ""
+msgstr "توجہ"
 
 #: include/default_domains.php:256
 msgid "Ignore"
-msgstr ""
+msgstr "نظرانداز کرنا"
 
 #: include/default_domains.php:257
 msgid "Think"
-msgstr ""
+msgstr "سوچنا یا خیال کرنا"
 
 #: include/default_domains.php:258
 msgid "Mind"
-msgstr ""
+msgstr "دماغ"
 
 #: include/default_domains.php:259
 msgid "Think about"
-msgstr ""
+msgstr "کسی کے بارے میں سوچنا"
 
 #: include/default_domains.php:260
 msgid "Imagine"
-msgstr ""
+msgstr "تصور میں لانا"
 
 #: include/default_domains.php:261
 msgid "Intelligent"
-msgstr ""
+msgstr "ذہین"
 
 #: include/default_domains.php:262
 msgid "Stupid"
-msgstr ""
+msgstr "بیوقوف/ احمق"
 
 #: include/default_domains.php:263
 msgid "Logical"
-msgstr ""
+msgstr "منطقی"
 
 #: include/default_domains.php:264
 msgid "Instinct"
-msgstr ""
+msgstr "فطری صلاحیت"
 
 #: include/default_domains.php:265
 msgid "Learn"
-msgstr ""
+msgstr "سیکھنا , پڑھنا"
 
 #: include/default_domains.php:266
 msgid "Study"
-msgstr ""
+msgstr "تفتیش کرنا"
 
 #: include/default_domains.php:267
 msgid "Check"
-msgstr ""
+msgstr "چیک کرنا"
 
 #: include/default_domains.php:268
 msgid "Evaluate, test"
-msgstr ""
+msgstr "جائزہ لگانا–ٹیسٹ کرنا"
 
 #: include/default_domains.php:269
 msgid "Guess"
-msgstr ""
+msgstr "اندازہ لگانا"
 
 #: include/default_domains.php:270
 msgid "Solve"
-msgstr ""
+msgstr "حل کرنا"
 
 #: include/default_domains.php:271
 msgid "Realize"
-msgstr ""
+msgstr "جاننا/ محسوس کرنا"
 
 #: include/default_domains.php:272
 msgid "Willing to learn"
-msgstr ""
+msgstr "سیکھنے کو راضی ہونا"
 
 #: include/default_domains.php:273
 msgid "Know"
-msgstr ""
+msgstr "جاننا"
 
 #: include/default_domains.php:274
 msgid "Known, unknown"
-msgstr ""
+msgstr "جانا ہوا، انجان"
 
 #: include/default_domains.php:275
 msgid "Area of knowledge"
-msgstr ""
+msgstr "علم کے احاطے"
 
 #: include/default_domains.php:276
 msgid "Secret"
-msgstr ""
+msgstr "راز"
 
 #: include/default_domains.php:277
 msgid "Understand"
-msgstr ""
+msgstr "سمجھنا"
 
 #: include/default_domains.php:278
 msgid "Misunderstand"
-msgstr ""
+msgstr "غلط فہمی ہونا"
 
 #: include/default_domains.php:279
 msgid "Understandable"
-msgstr ""
+msgstr "قابلِ فہم"
 
 #: include/default_domains.php:280
 msgid "Mysterious"
-msgstr ""
+msgstr "مخفی/ باطنی"
 
 #: include/default_domains.php:281
 msgid "Opinion"
-msgstr ""
+msgstr "رائے"
 
 #: include/default_domains.php:282
 msgid "Believe"
-msgstr ""
+msgstr "یقین"
 
 #: include/default_domains.php:283
 msgid "Trust"
-msgstr ""
+msgstr "اعتماد"
 
 #: include/default_domains.php:284
 msgid "Disbelief"
-msgstr ""
+msgstr "غیر یقین"
 
 #: include/default_domains.php:285
 msgid "Doubt"
-msgstr ""
+msgstr "شک"
 
 #: include/default_domains.php:286
 msgid "Agree with someone"
-msgstr ""
+msgstr "متفق"
 
 #: include/default_domains.php:287
 msgid "Disagree"
-msgstr ""
+msgstr "نا متفق ہونا"
 
 #: include/default_domains.php:288
 msgid "Protest"
-msgstr ""
+msgstr "اظہار اختلاف/ مخالفانہ ردِ عمل"
 
 #: include/default_domains.php:289
 msgid "Philosophy"
-msgstr ""
+msgstr "فلسفہ"
 
 #: include/default_domains.php:290
 msgid "Attitude"
-msgstr ""
+msgstr "رویّہ/ طرز سلوک"
 
 #: include/default_domains.php:291
 msgid "Extreme belief"
-msgstr ""
+msgstr "عقیدے کی شدّت"
 
 #: include/default_domains.php:292
 msgid "Change your mind"
-msgstr ""
+msgstr "اپنی رائے بدلنا"
 
 #: include/default_domains.php:293
 msgid "Approve of something"
-msgstr ""
+msgstr "منظور کرنا"
 
 #: include/default_domains.php:294
 msgid "Remember"
-msgstr ""
+msgstr "یاد کرنا"
 
 #: include/default_domains.php:295
 msgid "Forget"
-msgstr ""
+msgstr "بھولنا"
 
 #: include/default_domains.php:296
 msgid "Recognize"
-msgstr ""
+msgstr "پہچاننا"
 
 #: include/default_domains.php:297
 msgid "Memorize"
-msgstr ""
+msgstr "رٹہ لگانا"
 
 #: include/default_domains.php:298
 msgid "Remind"
-msgstr ""
+msgstr "یاد دہانی کرنا"
 
 #: include/default_domains.php:299
 msgid "Expect"
-msgstr ""
+msgstr "توقع رکھنا"
 
 #: include/default_domains.php:300
 msgid "Hope"
-msgstr ""
+msgstr "اُمید"
 
 #: include/default_domains.php:301
 msgid "Hopeless"
-msgstr ""
+msgstr "ناامیدی"
 
 #: include/default_domains.php:302
 msgid "Predict"
-msgstr ""
+msgstr "پیشن گوئی کرنا"
 
 #: include/default_domains.php:303
 msgid "Tendency"
-msgstr ""
+msgstr "رجحان"
 
 #: include/default_domains.php:304
 msgid "Want"
-msgstr ""
+msgstr "خواہش،چاہنا"
 
 #: include/default_domains.php:305
 msgid "Decide, plan"
-msgstr ""
+msgstr "فیصلہ کرنا–خاکہ، تدبیر، نمونہ تیار کرنا"
 
 #: include/default_domains.php:306
 msgid "Purpose, goal"
-msgstr ""
+msgstr "مقصد"
 
 #: include/default_domains.php:307
 msgid "Choose"
-msgstr ""
+msgstr "چُننا"
 
 #: include/default_domains.php:308
 msgid "Cast lots"
-msgstr ""
+msgstr "قرعہ اندازی کرنا"
 
 #: include/default_domains.php:309
 msgid "Intend"
-msgstr ""
+msgstr "ارادہ کرنا/ نیت کرنا"
 
 #: include/default_domains.php:310
 msgid "Deliberately"
-msgstr ""
+msgstr "جان بوجھ کر"
 
 #: include/default_domains.php:311
 msgid "Determined"
-msgstr ""
+msgstr "فیصلہ کرنا"
 
 #: include/default_domains.php:312
 msgid "Stubborn"
-msgstr ""
+msgstr "ضدی"
 
 #: include/default_domains.php:313
 msgid "Lust"
-msgstr ""
+msgstr "خواہش،شہوت"
 
 #: include/default_domains.php:314
 msgid "Request"
-msgstr ""
+msgstr "درخواست کرنا"
 
 #: include/default_domains.php:315
 msgid "Agree to do something"
-msgstr ""
+msgstr "کسی کام کے لئے متفق ہونا"
 
 #: include/default_domains.php:316
 msgid "Refuse to do something"
-msgstr ""
+msgstr "کسی کام کے لئے انکار کرنا"
 
 #: include/default_domains.php:317
 msgid "Intercede"
-msgstr ""
+msgstr "درمیان میں پڑھنا، کسی کے لیے کوشش کرنا"
 
 #: include/default_domains.php:318
 msgid "Willing"
-msgstr ""
+msgstr "خواہش"
 
 #: include/default_domains.php:319
 msgid "Influence"
-msgstr ""
+msgstr "اثر اندازی"
 
 #: include/default_domains.php:320
 msgid "Suggest"
-msgstr ""
+msgstr "تجویز کرنا"
 
 #: include/default_domains.php:321
 msgid "Advise"
-msgstr ""
+msgstr "نصیحت کرنا"
 
 #: include/default_domains.php:322
 msgid "Persuade"
-msgstr ""
+msgstr "مائل کرنا"
 
 #: include/default_domains.php:323
 msgid "Insist"
-msgstr ""
+msgstr "اصرار"
 
 #: include/default_domains.php:324
 msgid "Compel"
-msgstr ""
+msgstr "مجبور کرنا"
 
 #: include/default_domains.php:325
 msgid "Control"
-msgstr ""
+msgstr "قابو کرنا"
 
 #: include/default_domains.php:326
 msgid "Warn"
-msgstr ""
+msgstr "تنبیہ/خبردار کرنا"
 
 #: include/default_domains.php:327
 msgid "Threaten"
-msgstr ""
+msgstr "دھمکی دینا"
 
 #: include/default_domains.php:328
 msgid "Ask permission"
-msgstr ""
+msgstr "اجازت لینا"
 
 #: include/default_domains.php:329
 msgid "Give permission"
-msgstr ""
+msgstr "اجازت دینا"
 
 #: include/default_domains.php:330
 msgid "Refuse permission"
-msgstr ""
+msgstr "اجازت سے انکار کرنا"
 
 #: include/default_domains.php:331
 msgid "Exempt"
-msgstr ""
+msgstr "مستثنیٰ کرنا"
 
 #: include/default_domains.php:332
 msgid "Prevent"
-msgstr ""
+msgstr "روکنا"
 
 #: include/default_domains.php:333
 msgid "Free to do what you want"
-msgstr ""
+msgstr "آزادی"
 
 #: include/default_domains.php:334
 msgid "Offer"
-msgstr ""
+msgstr "پیشکش کرنا، دعوت دینا"
 
 #: include/default_domains.php:335
 msgid "Accept"
-msgstr ""
+msgstr "قبول کرنا"
 
 #: include/default_domains.php:336
 msgid "Reject"
-msgstr ""
+msgstr "نظر انداز کرنا"
 
 #: include/default_domains.php:337
 msgid "Emotion"
-msgstr ""
+msgstr "جذبات"
 
 #: include/default_domains.php:338
 msgid "Feel good"
-msgstr ""
+msgstr "مثبت جذبات"
 
 #: include/default_domains.php:339
 msgid "Like, love"
-msgstr ""
+msgstr "پسند، پیار و محبت"
 
 #: include/default_domains.php:340
 msgid "Enjoy doing something"
-msgstr ""
+msgstr "کسی کام سے لطف اندوز ہونا"
 
 #: include/default_domains.php:341
 msgid "Self-esteem"
-msgstr ""
+msgstr "فخر، عزت، عزت نفس"
 
 #: include/default_domains.php:342
 msgid "Prefer"
-msgstr ""
+msgstr "پیش کرنا، زیادہ پسند کرنا"
 
 #: include/default_domains.php:343
 msgid "Popular"
-msgstr ""
+msgstr "مشہور"
 
 #: include/default_domains.php:344
 msgid "Fashionable"
-msgstr ""
+msgstr "پابند وضع، وضع دار"
 
 #: include/default_domains.php:345
 msgid "Contentment"
-msgstr ""
+msgstr "قناعت"
 
 #: include/default_domains.php:346
 msgid "Happy for"
-msgstr ""
+msgstr "کسی کے لیے خوشی"
 
 #: include/default_domains.php:347
 msgid "Pleased with"
-msgstr ""
+msgstr "کسی کے ساتھ خوش"
 
 #: include/default_domains.php:348
 msgid "Happy"
-msgstr ""
+msgstr "خوش"
 
 #: include/default_domains.php:349
 msgid "Relaxed"
-msgstr ""
+msgstr "سکون"
 
 #: include/default_domains.php:350
 msgid "Calm"
-msgstr ""
+msgstr "خاموشی/پرسکون"
 
 #: include/default_domains.php:351
 msgid "Surprise"
-msgstr ""
+msgstr "حیرانگی"
 
 #: include/default_domains.php:352
 msgid "Interested"
-msgstr ""
+msgstr "دلچسپی رکھنا"
 
 #: include/default_domains.php:353
 msgid "Excited"
-msgstr ""
+msgstr "پُر جوش"
 
 #: include/default_domains.php:354
 msgid "Enthusiastic"
-msgstr ""
+msgstr "پر جوش"
 
 #: include/default_domains.php:355
 msgid "Obsessed"
-msgstr ""
+msgstr "وھم خیال کا مسلط ہوجانا"
 
 #: include/default_domains.php:356
 msgid "Attract"
-msgstr ""
+msgstr "مائل کرنا"
 
 #: include/default_domains.php:357
 msgid "Indifferent"
-msgstr ""
+msgstr "بے غرض، معمولی، ہلکا"
 
 #: include/default_domains.php:358
 msgid "Uninterested, bored"
-msgstr ""
+msgstr "اُکتانے والا"
 
 #: include/default_domains.php:359
 msgid "Confident"
-msgstr ""
+msgstr "پرُاعتماد"
 
 #: include/default_domains.php:360
 msgid "Feel bad"
-msgstr ""
+msgstr "منفی جذبات"
 
 #: include/default_domains.php:361
 msgid "Sad"
-msgstr ""
+msgstr "غمزدہ، افسردہ"
 
 #: include/default_domains.php:362
 msgid "Dislike"
-msgstr ""
+msgstr "نا پسند"
 
 #: include/default_domains.php:363
 msgid "Hate, detest"
@@ -2628,27 +2628,27 @@ msgstr ""
 
 #: include/default_domains.php:365
 msgid "Disappointed"
-msgstr ""
+msgstr "ناامید، مایوس"
 
 #: include/default_domains.php:366
 msgid "Lonely"
-msgstr ""
+msgstr "اکیلا"
 
 #: include/default_domains.php:367
 msgid "Upset"
-msgstr ""
+msgstr "پریشان۔ بے اطمینان"
 
 #: include/default_domains.php:368
 msgid "Shock"
-msgstr ""
+msgstr "صدمہ"
 
 #: include/default_domains.php:369
 msgid "Jealous"
-msgstr ""
+msgstr "حاسد/سڑیَل"
 
 #: include/default_domains.php:370
 msgid "Discontent"
-msgstr ""
+msgstr "بے چینی، بے قناعتی،غیر مطمعٰن،ناخوش، بیقرار"
 
 #: include/default_domains.php:371
 msgid "Sorry"
@@ -2664,616 +2664,616 @@ msgstr ""
 
 #: include/default_domains.php:374
 msgid "Angry"
-msgstr ""
+msgstr "غصہ"
 
 #: include/default_domains.php:375
 msgid "Annoyed"
-msgstr ""
+msgstr "اداس"
 
 #: include/default_domains.php:376
 msgid "Afraid"
-msgstr ""
+msgstr "ڈَر"
 
 #: include/default_domains.php:377
 msgid "Worried"
-msgstr ""
+msgstr "ڈرنا، پریشان ہونا"
 
 #: include/default_domains.php:378
 msgid "Nervous"
-msgstr ""
+msgstr "ہیجانی کیفیت میں ہونا"
 
 #: include/default_domains.php:379
 msgid "Shy, timid"
-msgstr ""
+msgstr "ڈرا ہوا،ڈرپوک،بزدل، خاہف،بے حد شرمیلا"
 
 #: include/default_domains.php:380
 msgid "Confused"
-msgstr ""
+msgstr "پریشان"
 
 #: include/default_domains.php:381
 msgid "Communication"
-msgstr ""
+msgstr "رابطہ کاری"
 
 #: include/default_domains.php:382
 msgid "Say"
-msgstr ""
+msgstr "کہنا"
 
 #: include/default_domains.php:383
 msgid "Voice"
-msgstr ""
+msgstr "آواز،صوت"
 
 #: include/default_domains.php:384
 msgid "Shout"
-msgstr ""
+msgstr "چلانا"
 
 #: include/default_domains.php:385
 msgid "Speak quietly"
-msgstr ""
+msgstr "خاموشی سے بولنا یا بات چیت کرنا"
 
 #: include/default_domains.php:386
 msgid "Speak a lot"
-msgstr ""
+msgstr "گپ شپی ہونا، زیادہ بولنا"
 
 #: include/default_domains.php:387
 msgid "Speak little"
-msgstr ""
+msgstr "تھوڑا بولنا"
 
 #: include/default_domains.php:388
 msgid "Say nothing"
-msgstr ""
+msgstr "خاموش"
 
 #: include/default_domains.php:389
 msgid "Speech style"
-msgstr ""
+msgstr "بولنے کا انداز"
 
 #: include/default_domains.php:390
 msgid "Speak well"
-msgstr ""
+msgstr "اچھا بولنا"
 
 #: include/default_domains.php:391
 msgid "Speak poorly"
-msgstr ""
+msgstr "خراب گفتگو کرنا"
 
 #: include/default_domains.php:392
 msgid "Talk about a subject"
-msgstr ""
+msgstr "کسی موضوع کے متعلق بات چیت"
 
 #: include/default_domains.php:393
 msgid "Announce"
-msgstr ""
+msgstr "اعلان کرنا"
 
 #: include/default_domains.php:394
 msgid "Describe"
-msgstr ""
+msgstr "بیان کرنا"
 
 #: include/default_domains.php:395
 msgid "Explain"
-msgstr ""
+msgstr "تشریح کرنا"
 
 #: include/default_domains.php:396
 msgid "Mention"
-msgstr ""
+msgstr "ذکر کرنا"
 
 #: include/default_domains.php:397
 msgid "Introduce"
-msgstr ""
+msgstr "تعارف کرنا"
 
 #: include/default_domains.php:398
 msgid "Repeat"
-msgstr ""
+msgstr "دھرانا"
 
 #: include/default_domains.php:399
 msgid "Summarize"
-msgstr ""
+msgstr "خلاصہ کر نا، مختصر کارنا"
 
 #: include/default_domains.php:400
 msgid "Emphasize"
-msgstr ""
+msgstr "تاکید، زور، دباو"
 
 #: include/default_domains.php:401
 msgid "Be about, subject"
-msgstr ""
+msgstr "کسی موضوع کے متعلق"
 
 #: include/default_domains.php:402
 msgid "True"
-msgstr ""
+msgstr "سچ"
 
 #: include/default_domains.php:403
 msgid "Tell the truth"
-msgstr ""
+msgstr "سچ بولنا"
 
 #: include/default_domains.php:404
 msgid "Tell a lie"
-msgstr ""
+msgstr "جھوٹ بولنا"
 
 #: include/default_domains.php:405
 msgid "Contradict"
-msgstr ""
+msgstr "ناموافقت، نامتفق ہونا"
 
 #: include/default_domains.php:406
 msgid "Expose falsehood"
-msgstr ""
+msgstr "غلطی پکڑنا، جھوٹ سامنے لانا"
 
 #: include/default_domains.php:407
 msgid "Real"
-msgstr ""
+msgstr "حقیقت"
 
 #: include/default_domains.php:408
 msgid "Exaggerate"
-msgstr ""
+msgstr "بڑھانا چڑھانا"
 
 #: include/default_domains.php:409
 msgid "Speak with others"
-msgstr ""
+msgstr "دوسروں سے بولنا"
 
 #: include/default_domains.php:410
 msgid "Call"
-msgstr ""
+msgstr "پکار"
 
 #: include/default_domains.php:411
 msgid "Contact"
-msgstr ""
+msgstr "رابطہ کرنا"
 
 #: include/default_domains.php:412
 msgid "Greet"
-msgstr ""
+msgstr "مِلنا"
 
 #: include/default_domains.php:413
 msgid "Say farewell"
-msgstr ""
+msgstr "الوداع کہنا"
 
 #: include/default_domains.php:414
 msgid "Speak in unison"
-msgstr ""
+msgstr "یک دم بولنا،اکھٹا بولنا"
 
 #: include/default_domains.php:415
 msgid "Ask"
-msgstr ""
+msgstr "پوچھنا"
 
 #: include/default_domains.php:416
 msgid "Answer"
-msgstr ""
+msgstr "جواب"
 
 #: include/default_domains.php:417
 msgid "Disclose"
-msgstr ""
+msgstr "ظاہر کرنا، بتانا"
 
 #: include/default_domains.php:418
 msgid "Hide your thoughts"
-msgstr ""
+msgstr "اپنے خیالات کو چھپانا"
 
 #: include/default_domains.php:419
 msgid "Debate"
-msgstr ""
+msgstr "تکرار کرنا"
 
 #: include/default_domains.php:420
 msgid "Demonstrate"
-msgstr ""
+msgstr "ظاہر کرنا، بتانا، واضع کرنا"
 
 #: include/default_domains.php:421
 msgid "Quarrel"
-msgstr ""
+msgstr "زبانی جھگڑا کرنا،چوں چُوں کرنا"
 
 #: include/default_domains.php:422
 msgid "Praise"
-msgstr ""
+msgstr "تعریف"
 
 #: include/default_domains.php:423
 msgid "Thank"
-msgstr ""
+msgstr "شکریہ"
 
 #: include/default_domains.php:424
 msgid "Flatter"
-msgstr ""
+msgstr "خوشامد کرنا"
 
 #: include/default_domains.php:425
 msgid "Boast"
-msgstr ""
+msgstr "شیخی"
 
 #: include/default_domains.php:426
 msgid "Criticize"
-msgstr ""
+msgstr "نقطہ چینی کرنا"
 
 #: include/default_domains.php:427
 msgid "Blame"
-msgstr ""
+msgstr "الزام لگانا"
 
 #: include/default_domains.php:428
 msgid "Insult"
-msgstr ""
+msgstr "بے عزتی کرنا"
 
 #: include/default_domains.php:429
 msgid "Mock"
-msgstr ""
+msgstr "مذاق اڑانا"
 
 #: include/default_domains.php:430
 msgid "Gossip"
-msgstr ""
+msgstr "گپ شپ کرنا"
 
 #: include/default_domains.php:431
 msgid "Complain"
-msgstr ""
+msgstr "شکایت"
 
 #: include/default_domains.php:432
 msgid "Promise"
-msgstr ""
+msgstr "وعدہ"
 
 #: include/default_domains.php:433
 msgid "Make speech"
-msgstr ""
+msgstr "تقریر کرنا"
 
 #: include/default_domains.php:434
 msgid "Report"
-msgstr ""
+msgstr "رپوٹ"
 
 #: include/default_domains.php:435
 msgid "News, message"
-msgstr ""
+msgstr "خبریں، پیغام"
 
 #: include/default_domains.php:436
 msgid "Figurative"
-msgstr ""
+msgstr "مجازی، تشبیہی، تمثیل"
 
 #: include/default_domains.php:437
 msgid "Admit"
-msgstr ""
+msgstr "تسلیم کرنا"
 
 #: include/default_domains.php:438 include/infrastructure.php:236
 #: include/infrastructure.php:244
 msgid "Language"
-msgstr ""
+msgstr "زبان"
 
 #: include/default_domains.php:439
 msgid "Word"
-msgstr ""
+msgstr "لفظ"
 
 #: include/default_domains.php:440
 msgid "Information"
-msgstr ""
+msgstr "معلومات"
 
 #: include/default_domains.php:441
 msgid "Story"
-msgstr ""
+msgstr "کہانی"
 
 #: include/default_domains.php:442
 msgid "Fable, myth"
-msgstr ""
+msgstr "فرضی قصہ،کہانی،دیو پری کا افسانہ"
 
 #: include/default_domains.php:443
 msgid "Saying, proverb"
-msgstr ""
+msgstr "کہاوت"
 
 #: include/default_domains.php:444
 msgid "Riddle"
-msgstr ""
+msgstr "الگ کرنے کی چھلنی، چھان بیں کرنا"
 
 #: include/default_domains.php:445
 msgid "Poetry"
-msgstr ""
+msgstr "شاعری"
 
 #: include/default_domains.php:446
 msgid "History"
-msgstr ""
+msgstr "تاریخ"
 
 #: include/default_domains.php:447
 msgid "Verbal tradition"
-msgstr ""
+msgstr "زبانی روایت"
 
 #: include/default_domains.php:448
 msgid "Foolish talk"
-msgstr ""
+msgstr "بیوقوفانہ گفتگو"
 
 #: include/default_domains.php:449
 msgid "Obscenity"
-msgstr ""
+msgstr "فحش، بے حیائی"
 
 #: include/default_domains.php:450
 msgid "Sign, symbol"
-msgstr ""
+msgstr "نشان،علامت"
 
 #: include/default_domains.php:451
 msgid "Gesture"
-msgstr ""
+msgstr "اشارہ"
 
 #: include/default_domains.php:452
 msgid "Point at"
-msgstr ""
+msgstr "کسی کی طرف اشارہ کرنا"
 
 #: include/default_domains.php:453
 msgid "Facial expression"
-msgstr ""
+msgstr "چہرے کے تاثرات"
 
 #: include/default_domains.php:454
 msgid "Laugh"
-msgstr ""
+msgstr "ہنسنا،ہنسی"
 
 #: include/default_domains.php:455
 msgid "Cry, tear"
-msgstr ""
+msgstr "رُونا"
 
 #: include/default_domains.php:456
 msgid "Reading and writing"
-msgstr ""
+msgstr "لکھنا اور پڑھنا"
 
 #: include/default_domains.php:457
 msgid "Write"
-msgstr ""
+msgstr "لِکھنا"
 
 #: include/default_domains.php:458
 msgid "Written material"
-msgstr ""
+msgstr "لکھا ہوا مواد"
 
 #: include/default_domains.php:459
 msgid "Read"
-msgstr ""
+msgstr "پڑھنا"
 
 #: include/default_domains.php:460
 msgid "Publish"
-msgstr ""
+msgstr "شائع کرنا"
 
 #: include/default_domains.php:461
 msgid "Record"
-msgstr ""
+msgstr "ریکاڈ"
 
 #: include/default_domains.php:462
 msgid "List"
-msgstr ""
+msgstr "لِسٹ"
 
 #: include/default_domains.php:463
 msgid "Letter"
-msgstr ""
+msgstr "خط"
 
 #: include/default_domains.php:464
 msgid "Interpreting messages"
-msgstr ""
+msgstr "پیغام کی تشریح کرنا"
 
 #: include/default_domains.php:465
 msgid "Meaning"
-msgstr ""
+msgstr "معنی"
 
 #: include/default_domains.php:466
 msgid "Meaningless"
-msgstr ""
+msgstr "معنی کے بغیر"
 
 #: include/default_domains.php:467
 msgid "Unintelligible"
-msgstr ""
+msgstr "غیر  ملکی، نا قابل فہم، ناقابل،معقول"
 
 #: include/default_domains.php:468
 msgid "Show, indicate"
-msgstr ""
+msgstr "دکھانا، ظاہر کرنا"
 
 #: include/default_domains.php:469
 msgid "Mass communication"
-msgstr ""
+msgstr "مواصلات عامہ"
 
 #: include/default_domains.php:470
 msgid "Radio, television"
-msgstr ""
+msgstr "ریڈیو اور ٹیلی ویژن"
 
 #: include/default_domains.php:471
 msgid "Telephone"
-msgstr ""
+msgstr "ٹیلیفون"
 
 #: include/default_domains.php:472
 msgid "Newspaper"
-msgstr ""
+msgstr "اخبار"
 
 #: include/default_domains.php:473
 msgid "Movie"
-msgstr ""
+msgstr "فلم"
 
 #: include/default_domains.php:474
 msgid "Recorded music"
-msgstr ""
+msgstr "ریکارڈ کیا ہوا ساز"
 
 #: include/default_domains.php:475
 msgid "Communication devices"
-msgstr ""
+msgstr "ابلاغی آلات"
 
 #: include/default_domains.php:476
 msgid "Teach"
-msgstr ""
+msgstr "پڑھانا"
 
 #: include/default_domains.php:477
 msgid "Show, explain"
-msgstr ""
+msgstr "دیکھانا، و ضاحت کرنا"
 
 #: include/default_domains.php:478
 msgid "School"
-msgstr ""
+msgstr "مدرسہ"
 
 #: include/default_domains.php:479
 msgid "Subject of teaching"
-msgstr ""
+msgstr "مضمون"
 
 #: include/default_domains.php:480
 msgid "Class, lesson"
-msgstr ""
+msgstr "کلاس، سبق"
 
 #: include/default_domains.php:481
 msgid "Correct"
-msgstr ""
+msgstr "درست , صحیح"
 
 #: include/default_domains.php:482
 msgid "Science"
-msgstr ""
+msgstr "سائنس"
 
 #: include/default_domains.php:483
 msgid "Test"
-msgstr ""
+msgstr "آزمائش"
 
 #: include/default_domains.php:484
 msgid "Answer in a test"
-msgstr ""
+msgstr "امتحان میں جواب"
 
 #: include/default_domains.php:485 webonary/Webonary_SemanticDomains.php:132
 msgid "Social behavior"
-msgstr ""
+msgstr "معاشرتی رویہ , چال چلن"
 
 #: include/default_domains.php:486
 msgid "Relationships"
-msgstr ""
+msgstr "تعلق"
 
 #: include/default_domains.php:487
 msgid "Friend"
-msgstr ""
+msgstr "دوستی"
 
 #: include/default_domains.php:488
 msgid "Girlfriend, boyfriend"
-msgstr ""
+msgstr "لڑکی یا لڑکے سے دوستی، یاری"
 
 #: include/default_domains.php:489
 msgid "Types of people"
-msgstr ""
+msgstr "انسانوں کی اقسام"
 
 #: include/default_domains.php:490
 msgid "Working relationship"
-msgstr ""
+msgstr "اجتماعی کام"
 
 #: include/default_domains.php:491
 msgid "Know someone"
-msgstr ""
+msgstr "جان پہچان"
 
 #: include/default_domains.php:492
 msgid "Meet for the first time"
-msgstr ""
+msgstr "پہلے بار مِلنا"
 
 #: include/default_domains.php:493
 msgid "Neighbor"
-msgstr ""
+msgstr "پڑوس"
 
 #: include/default_domains.php:494
 msgid "Social class"
-msgstr ""
+msgstr "معاشرتی نسل"
 
 #: include/default_domains.php:495
 msgid "Unity"
-msgstr ""
+msgstr "اتفاق/اتحاد"
 
 #: include/default_domains.php:496
 msgid "Disunity"
-msgstr ""
+msgstr "نااتفاق"
 
 #: include/default_domains.php:497
 msgid "Unfriendly"
-msgstr ""
+msgstr "غیر دوستانہ"
 
 #: include/default_domains.php:498
 msgid "Set self apart"
-msgstr ""
+msgstr "اپنے آپ کو علیحدہ رکھنا"
 
 #: include/default_domains.php:499
 msgid "Alone"
-msgstr ""
+msgstr "اکیلا"
 
 #: include/default_domains.php:500
 msgid "Independent person"
-msgstr ""
+msgstr "آذاد شخص"
 
 #: include/default_domains.php:501
 msgid "Private, public"
-msgstr ""
+msgstr "عوام"
 
 #: include/default_domains.php:502
 msgid "Begin a relationship"
-msgstr ""
+msgstr "رشتہ داری کرنا"
 
 #: include/default_domains.php:503
 msgid "End a relationship"
-msgstr ""
+msgstr "رشتے کا اختتام"
 
 #: include/default_domains.php:504
 msgid "Show affection"
-msgstr ""
+msgstr "پیار جتانا"
 
 #: include/default_domains.php:505
 msgid "Kinship"
-msgstr ""
+msgstr "خونی رشتہ"
 
 #: include/default_domains.php:506
 msgid "Related by birth"
-msgstr ""
+msgstr "پیداہش کے ذریعے منسلک"
 
 #: include/default_domains.php:507
 msgid "Grandfather, grandmother"
-msgstr ""
+msgstr "دادا، دادی"
 
 #: include/default_domains.php:508
 msgid "Father, mother"
-msgstr ""
+msgstr "باپ، ماں"
 
 #: include/default_domains.php:509
 msgid "Brother, sister"
-msgstr ""
+msgstr "بہن بھائی"
 
 #: include/default_domains.php:510
 msgid "Son, daughter"
-msgstr ""
+msgstr "بیٹا، بیٹی"
 
 #: include/default_domains.php:511
 msgid "Grandson, granddaughter"
-msgstr ""
+msgstr "پوتا، پوتی"
 
 #: include/default_domains.php:512
 msgid "Uncle, aunt"
-msgstr ""
+msgstr "چچا، چچی"
 
 #: include/default_domains.php:513
 msgid "Cousin"
-msgstr ""
+msgstr "چچا زاد، کزن"
 
 #: include/default_domains.php:514
 msgid "Nephew, niece"
-msgstr ""
+msgstr "بھتیجا، بھتیجی"
 
 #: include/default_domains.php:515
 msgid "Birth order"
-msgstr ""
+msgstr "سب سے بڑا،پیدائشی ترتیب"
 
 #: include/default_domains.php:516
 msgid "Related by marriage"
-msgstr ""
+msgstr "شادی کے ذریعے تعلق"
 
 #: include/default_domains.php:517
 msgid "Husband, wife"
-msgstr ""
+msgstr "میاں، بیوی"
 
 #: include/default_domains.php:518
 msgid "In-law"
-msgstr ""
+msgstr "سسرال"
 
 #: include/default_domains.php:519
 msgid "Widow, widower"
-msgstr ""
+msgstr "بیوہ،رنڈوہ"
 
 #: include/default_domains.php:520
 msgid "Orphan"
-msgstr ""
+msgstr "یتیم"
 
 #: include/default_domains.php:521
 msgid "Illegitimate child"
-msgstr ""
+msgstr "حرامی بچہ"
 
 #: include/default_domains.php:522
 msgid "Adopt"
-msgstr ""
+msgstr "لے پالک"
 
 #: include/default_domains.php:523
 msgid "Non-relative"
-msgstr ""
+msgstr "غیر رشتہ دار"
 
 #: include/default_domains.php:524
 msgid "Family, clan"
-msgstr ""
+msgstr "خاندان،قبیلہ"
 
 #: include/default_domains.php:525
 msgid "Race"
-msgstr ""
+msgstr "نسل"
 
 #: include/default_domains.php:526
 msgid "Social activity"
-msgstr ""
+msgstr "معاشرتی سرگرمی"
 
 #: include/default_domains.php:527
 msgid "Come together, form a group"
@@ -3281,1735 +3281,1735 @@ msgstr ""
 
 #: include/default_domains.php:528
 msgid "Invite"
-msgstr ""
+msgstr "دعوت"
 
 #: include/default_domains.php:529
 msgid "Encounter"
-msgstr ""
+msgstr "آمنا سامنا، مِلنا"
 
 #: include/default_domains.php:530
 msgid "Meet together"
-msgstr ""
+msgstr "اکھٹے ہونا"
 
 #: include/default_domains.php:531
 msgid "Visit"
-msgstr ""
+msgstr "سیر"
 
 #: include/default_domains.php:532
 msgid "Welcome, receive"
-msgstr ""
+msgstr "خوش آمدید، ملنا"
 
 #: include/default_domains.php:533
 msgid "Show hospitality"
-msgstr ""
+msgstr "مہمان نوازی دِکھانا"
 
 #: include/default_domains.php:534
 msgid "Meeting, assembly"
-msgstr ""
+msgstr "اجتماع، مجلس، انجمن"
 
 #: include/default_domains.php:535
 msgid "Participate"
-msgstr ""
+msgstr "شرکت"
 
 #: include/default_domains.php:536
 msgid "Crowd, group"
-msgstr ""
+msgstr "ہجوم، جماعت"
 
 #: include/default_domains.php:537
 msgid "Organization"
-msgstr ""
+msgstr "تنظیم"
 
 #: include/default_domains.php:538
 msgid "Join an organization"
-msgstr ""
+msgstr "کسی تنظیم میں شامل ہونا"
 
 #: include/default_domains.php:539
 msgid "Leave an organization"
-msgstr ""
+msgstr "تنظیم کو چھوڑنا"
 
 #: include/default_domains.php:540
 msgid "Belong to an organization"
-msgstr ""
+msgstr "کسی تنظیم سے تعلق رکھنا"
 
 #: include/default_domains.php:541
 msgid "Social group"
-msgstr ""
+msgstr "معاشرتی گروہ"
 
 #: include/default_domains.php:542
 msgid "Social event"
-msgstr ""
+msgstr "معاشرتی سرگرمی"
 
 #: include/default_domains.php:543
 msgid "Ceremony"
-msgstr ""
+msgstr "تقریب"
 
 #: include/default_domains.php:544
 msgid "Festival, show"
-msgstr ""
+msgstr "تہوار، جشن"
 
 #: include/default_domains.php:545
 msgid "Celebrate"
-msgstr ""
+msgstr "تہوار"
 
 #: include/default_domains.php:546
 msgid "Music"
-msgstr ""
+msgstr "موسیقی"
 
 #: include/default_domains.php:547
 msgid "Compose music"
-msgstr ""
+msgstr "موسیقی کا تخلیق کرنا/ نغمہ سازی"
 
 #: include/default_domains.php:548
 msgid "Play music"
-msgstr ""
+msgstr "موسیقی گانا"
 
 #: include/default_domains.php:549
 msgid "Sing"
-msgstr ""
+msgstr "گانا"
 
 #: include/default_domains.php:550
 msgid "Musician"
-msgstr ""
+msgstr "موسیقار"
 
 #: include/default_domains.php:551
 msgid "Musical instrument"
-msgstr ""
+msgstr "موسیقی کے آلات"
 
 #: include/default_domains.php:552
 msgid "Dance"
-msgstr ""
+msgstr "ناچ"
 
 #: include/default_domains.php:553
 msgid "Drama"
-msgstr ""
+msgstr "ڈرامہ"
 
 #: include/default_domains.php:554
 msgid "Entertainment, recreation"
-msgstr ""
+msgstr "تفریح"
 
 #: include/default_domains.php:555
 msgid "Game"
-msgstr ""
+msgstr "کھیل/ کرتب"
 
 #: include/default_domains.php:556
 msgid "Card game"
-msgstr ""
+msgstr "تاش وغیرہ کے پتوں کا کھیل"
 
 #: include/default_domains.php:557
 msgid "Chess"
-msgstr ""
+msgstr "شطرنج"
 
 #: include/default_domains.php:558
 msgid "Sports"
-msgstr ""
+msgstr "کھیل"
 
 #: include/default_domains.php:559
 msgid "Football, soccer"
-msgstr ""
+msgstr "فٹ بال"
 
 #: include/default_domains.php:560
 msgid "Basketball"
-msgstr ""
+msgstr "باسکٹ بال"
 
 #: include/default_domains.php:561
 msgid "Exercise"
-msgstr ""
+msgstr "ورزش"
 
 #: include/default_domains.php:562
 msgid "Gambling"
-msgstr ""
+msgstr "قمار بارزی"
 
 #: include/default_domains.php:563
 msgid "Play, fun"
-msgstr ""
+msgstr "کھیلنا، فن"
 
 #: include/default_domains.php:564
 msgid "Humor"
-msgstr ""
+msgstr "خوش مزاجی/ شگفتگی"
 
 #: include/default_domains.php:565
 msgid "Serious"
-msgstr ""
+msgstr "سنجیدہ"
 
 #: include/default_domains.php:566
 msgid "Holiday"
-msgstr ""
+msgstr "چھٹی"
 
 #: include/default_domains.php:567
 msgid "Free time"
-msgstr ""
+msgstr "فارغ وقت"
 
 #: include/default_domains.php:568
 msgid "Behavior"
-msgstr ""
+msgstr "چال ڈھال،چال چلن"
 
 #: include/default_domains.php:569
 msgid "Good, moral"
-msgstr ""
+msgstr "اچھا/ اخلاقی"
 
 #: include/default_domains.php:570
 msgid "Bad, immoral"
-msgstr ""
+msgstr "برا، بد اخلاق"
 
 #: include/default_domains.php:571
 msgid "Meet a standard"
-msgstr ""
+msgstr "معیار حاصل کرنا"
 
 #: include/default_domains.php:572
 msgid "Below standard"
-msgstr ""
+msgstr "نچلے درجے کا"
 
 #: include/default_domains.php:573
 msgid "Mature in behavior"
-msgstr ""
+msgstr "رویے میں پُختہ"
 
 #: include/default_domains.php:574
 msgid "Immature in behavior"
-msgstr ""
+msgstr "رویے میں ناپُختہ"
 
 #: include/default_domains.php:575
 msgid "Sensible"
-msgstr ""
+msgstr "معقولیت پسند/ متوازن"
 
 #: include/default_domains.php:576
 msgid "Reputation"
-msgstr ""
+msgstr "شُہرت"
 
 #: include/default_domains.php:577
 msgid "Patient"
-msgstr ""
+msgstr "رحم دِل، صابر"
 
 #: include/default_domains.php:578
 msgid "Impatient"
-msgstr ""
+msgstr "جلد باز"
 
 #: include/default_domains.php:579
 msgid "Bad-tempered"
-msgstr ""
+msgstr "بد مزاج/ برہم"
 
 #: include/default_domains.php:580
 msgid "Admire someone"
-msgstr ""
+msgstr "کسی کی تعریف کرنا"
 
 #: include/default_domains.php:581
 msgid "Despise someone"
-msgstr ""
+msgstr "کسی سے حقارت کرنا"
 
 #: include/default_domains.php:582
 msgid "Humble"
-msgstr ""
+msgstr "ملنسار/ عاجز"
 
 #: include/default_domains.php:583
 msgid "Proud"
-msgstr ""
+msgstr "مغرور"
 
 #: include/default_domains.php:584
 msgid "Show off"
-msgstr ""
+msgstr "اپنے آپ کو دکھانا"
 
 #: include/default_domains.php:585
 msgid "Love"
-msgstr ""
+msgstr "محبت"
 
 #: include/default_domains.php:586
 msgid "Hate, ill will"
-msgstr ""
+msgstr "نفرت/ بری خواہش"
 
 #: include/default_domains.php:587
 msgid "Not care"
-msgstr ""
+msgstr "دیکھ بھال نہ کرنا"
 
 #: include/default_domains.php:588
 msgid "Abandon"
-msgstr ""
+msgstr "ترک کرنا،طلاق دینا، چھوڑنا"
 
 #: include/default_domains.php:589
 msgid "Do good to"
-msgstr ""
+msgstr "پیار کرنا، رحم دِل ہونا"
 
 #: include/default_domains.php:590
 msgid "Do evil to"
-msgstr ""
+msgstr "بُرا پیش آنا"
 
 #: include/default_domains.php:591
 msgid "Help"
-msgstr ""
+msgstr "مدد"
 
 #: include/default_domains.php:592
 msgid "Hinder"
-msgstr ""
+msgstr "منع کرنا/ مزاحمت کرنا"
 
 #: include/default_domains.php:593
 msgid "Cooperate with"
-msgstr ""
+msgstr "تعاون کرنا"
 
 #: include/default_domains.php:594
 msgid "Compete with"
-msgstr ""
+msgstr "ہمسری کرنا، برابری کرنا"
 
 #: include/default_domains.php:595
 msgid "Altruistic, selfless"
-msgstr ""
+msgstr "بے غرض، دوسروں کا خیال رکھنے والا"
 
 #: include/default_domains.php:596
 msgid "Selfish"
-msgstr ""
+msgstr "خود غرض"
 
 #: include/default_domains.php:597
 msgid "Use a person"
-msgstr ""
+msgstr "کسی شخص کو استعمال کرنا"
 
 #: include/default_domains.php:598
 msgid "Share with"
-msgstr ""
+msgstr "شامل ہونا، شریک کرنا"
 
 #: include/default_domains.php:599
 msgid "Provide for, support"
-msgstr ""
+msgstr "مہیا کرنا، سپورٹ کرنا"
 
 #: include/default_domains.php:600
 msgid "Care for"
-msgstr ""
+msgstr "حفاظت کرنا، کسی کی ضرورت پورا کرنا"
 
 #: include/default_domains.php:601
 msgid "Entrust to the care of"
-msgstr ""
+msgstr "ذمہ سونپنا"
 
 #: include/default_domains.php:602
 msgid "Meddle"
-msgstr ""
+msgstr "دخل دینا، دست اندازی کرنا"
 
 #: include/default_domains.php:603
 msgid "Spoil"
-msgstr ""
+msgstr "بگاڑنا/ خراب کرنا"
 
 #: include/default_domains.php:604
 msgid "Enter by force"
-msgstr ""
+msgstr "زور سے اندر آنا یا ہونا"
 
 #: include/default_domains.php:605
 msgid "Kidnap"
-msgstr ""
+msgstr "اغوا کرنا"
 
 #: include/default_domains.php:606
 msgid "Cruel"
-msgstr ""
+msgstr "ظلم"
 
 #: include/default_domains.php:607
 msgid "Honest"
-msgstr ""
+msgstr "دیانت دار"
 
 #: include/default_domains.php:608
 msgid "Dishonest"
-msgstr ""
+msgstr "بد دیانت"
 
 #: include/default_domains.php:609
 msgid "Faithful"
-msgstr ""
+msgstr "وفادار"
 
 #: include/default_domains.php:610
 msgid "Reliable"
-msgstr ""
+msgstr "قابل یقین، قابل اعتماد،اپنے الفاظ پہ ٹھہرا ہوا"
 
 #: include/default_domains.php:611
 msgid "Unreliable"
-msgstr ""
+msgstr "غیر زمہ دار، غیر موزوں"
 
 #: include/default_domains.php:612
 msgid "Deceive"
-msgstr ""
+msgstr "فریب۔دھوکہ دہی"
 
 #: include/default_domains.php:613
 msgid "Hypocrite"
-msgstr ""
+msgstr "بخیلی، منافق"
 
 #: include/default_domains.php:614
 msgid "Self-controlled"
-msgstr ""
+msgstr "ضابطے والا، نفس پہ قابو کیا ہوا"
 
 #: include/default_domains.php:615
 msgid "Lack self-control"
-msgstr ""
+msgstr "بے تاب،نفس پر قابو نہ پانا"
 
 #: include/default_domains.php:616
 msgid "Tidy"
-msgstr ""
+msgstr "صاف ستھرا،سلیقہ شعار، خوش اطوار"
 
 #: include/default_domains.php:617
 msgid "Untidy"
-msgstr ""
+msgstr "نا صاف ، غیر سلیقہ پن"
 
 #: include/default_domains.php:618
 msgid "Mistake"
-msgstr ""
+msgstr "غلطی"
 
 #: include/default_domains.php:619
 msgid "Polite"
-msgstr ""
+msgstr "شائستہ"
 
 #: include/default_domains.php:620
 msgid "Impolite"
-msgstr ""
+msgstr "ناشائستہ"
 
 #: include/default_domains.php:621
 msgid "Crazy"
-msgstr ""
+msgstr "غیر معقول/ نے تحاشا"
 
 #: include/default_domains.php:622
 msgid "Change behavior"
-msgstr ""
+msgstr "اخلاق تبدیل ہونا"
 
 #: include/default_domains.php:623
 msgid "Conform"
-msgstr ""
+msgstr "پکا،مسحکم، توثیق کرنا"
 
 #: include/default_domains.php:624
 msgid "Culture"
-msgstr ""
+msgstr "ثقافت"
 
 #: include/default_domains.php:625
 msgid "Custom"
-msgstr ""
+msgstr "رواج"
 
 #: include/default_domains.php:626
 msgid "Habit"
-msgstr ""
+msgstr "عادت"
 
 #: include/default_domains.php:627
 msgid "Prosperity, trouble"
-msgstr ""
+msgstr "خوشحالی/ مصیبت"
 
 #: include/default_domains.php:628
 msgid "Prosperity"
-msgstr ""
+msgstr "خوشحالی"
 
 #: include/default_domains.php:629
 msgid "Trouble"
-msgstr ""
+msgstr "تلاطم پیدا کرنا، تکلیف، مصیبت"
 
 #: include/default_domains.php:630
 msgid "Problem"
-msgstr ""
+msgstr "مسلئہ"
 
 #: include/default_domains.php:631
 msgid "Danger"
-msgstr ""
+msgstr "خطرہ"
 
 #: include/default_domains.php:632
 msgid "Accident"
-msgstr ""
+msgstr "حادثہ"
 
 #: include/default_domains.php:633
 msgid "Disaster"
-msgstr ""
+msgstr "آفت"
 
 #: include/default_domains.php:634
 msgid "Separate, alone"
-msgstr ""
+msgstr "علیہدہ، اکیلا"
 
 #: include/default_domains.php:635
 msgid "Suffer"
-msgstr ""
+msgstr "مبتلا ہونا"
 
 #: include/default_domains.php:636
 msgid "Respond to trouble"
-msgstr ""
+msgstr "مشکل کا مقابلہ کرنا یا کُشائی کرنا"
 
 #: include/default_domains.php:637
 msgid "Brave"
-msgstr ""
+msgstr "بہادر"
 
 #: include/default_domains.php:638
 msgid "Cowardice"
-msgstr ""
+msgstr "نامرد، ڈرپوک، بزدل"
 
 #: include/default_domains.php:639
 msgid "Avoid"
-msgstr ""
+msgstr "بچنا"
 
 #: include/default_domains.php:640
 msgid "Caution"
-msgstr ""
+msgstr "خبرداری، ہوشیاری،احتیاط"
 
 #: include/default_domains.php:641
 msgid "Solve a problem"
-msgstr ""
+msgstr "مسلے کو حل کرنا"
 
 #: include/default_domains.php:642
 msgid "Endure"
-msgstr ""
+msgstr "برداشت کرنا"
 
 #: include/default_domains.php:643
 msgid "Survive"
-msgstr ""
+msgstr "گزارہ کرنا ، بچنا"
 
 #: include/default_domains.php:644
 msgid "Respond to someone in trouble"
-msgstr ""
+msgstr "کسی کی مشکل کُشائی کرنا، یا مدد کرنا"
 
 #: include/default_domains.php:645
 msgid "Mercy"
-msgstr ""
+msgstr "رحم"
 
 #: include/default_domains.php:646
 msgid "Show sympathy, support"
-msgstr ""
+msgstr "ہمدردی دکھانا، مدد کرنا"
 
 #: include/default_domains.php:647
 msgid "Gentle"
-msgstr ""
+msgstr "مسکین، بھلا مانس، شریف"
 
 #: include/default_domains.php:648
 msgid "Save from trouble"
-msgstr ""
+msgstr "مشکل سے بچانا"
 
 #: include/default_domains.php:649
 msgid "Protect"
-msgstr ""
+msgstr "حفاظت کرنا"
 
 #: include/default_domains.php:650
 msgid "Free from bondage"
-msgstr ""
+msgstr "بندھن سے آزاد"
 
 #: include/default_domains.php:651
 msgid "Relief"
-msgstr ""
+msgstr "رہائی/ مصیبت۔ پریشانی سے نجات"
 
 #: include/default_domains.php:652
 msgid "Risk"
-msgstr ""
+msgstr "خطرہ، خوف، جوکھم"
 
 #: include/default_domains.php:653
 msgid "Chance"
-msgstr ""
+msgstr "موقع یا قسمت"
 
 #: include/default_domains.php:654
 msgid "Lucky"
-msgstr ""
+msgstr "خوش قسمتی"
 
 #: include/default_domains.php:655
 msgid "Unlucky"
-msgstr ""
+msgstr "بد قسمتی"
 
 #: include/default_domains.php:656
 msgid "Authority"
-msgstr ""
+msgstr "اختیار یا طاقت"
 
 #: include/default_domains.php:657
 msgid "Person in authority"
-msgstr ""
+msgstr "شخصی اختیار"
 
 #: include/default_domains.php:658
 msgid "Have authority"
-msgstr ""
+msgstr "اتھارٹی یا طاقت رکھنا"
 
 #: include/default_domains.php:659
 msgid "Exercise authority"
-msgstr ""
+msgstr "طاقت کا استعمال"
 
 #: include/default_domains.php:660
 msgid "Lead"
-msgstr ""
+msgstr "قیادت"
 
 #: include/default_domains.php:661
 msgid "Command"
-msgstr ""
+msgstr "حکم دینا"
 
 #: include/default_domains.php:662
 msgid "Discipline, train"
-msgstr ""
+msgstr "ضبط یا تیار"
 
 #: include/default_domains.php:663
 msgid "Appoint, delegate"
-msgstr ""
+msgstr "مقرر کرنا، بھیجنا"
 
 #: include/default_domains.php:664
 msgid "Submit to authority"
-msgstr ""
+msgstr "اختیار کے آگے حکم بجا لانا"
 
 #: include/default_domains.php:665
 msgid "Obey"
-msgstr ""
+msgstr "حکم بجا لانا، فرمانی کرنا"
 
 #: include/default_domains.php:666
 msgid "Disobey"
-msgstr ""
+msgstr "نا فرمانی کرنا"
 
 #: include/default_domains.php:667
 msgid "Serve"
-msgstr ""
+msgstr "خدمت کرنا"
 
 #: include/default_domains.php:668
 msgid "Slave"
-msgstr ""
+msgstr "غلام"
 
 #: include/default_domains.php:669
 msgid "Follow, be a disciple"
-msgstr ""
+msgstr "پیروی کرنا، شاگرد بننا"
 
 #: include/default_domains.php:670
 msgid "Rebel against authority"
-msgstr ""
+msgstr "منصب یا اختیار کے خلاف بغاوت"
 
 #: include/default_domains.php:671
 msgid "Independent"
-msgstr ""
+msgstr "آزاد"
 
 #: include/default_domains.php:672
 msgid "Honor"
-msgstr ""
+msgstr "عزت"
 
 #: include/default_domains.php:673
 msgid "Title, name of honor"
-msgstr ""
+msgstr "عزت کا نام"
 
 #: include/default_domains.php:674
 msgid "Lack respect"
-msgstr ""
+msgstr "عزت کی کمی"
 
 #: include/default_domains.php:675
 msgid "Status"
-msgstr ""
+msgstr "منصب"
 
 #: include/default_domains.php:676
 msgid "High status"
-msgstr ""
+msgstr "اعلیٰ عہدہ"
 
 #: include/default_domains.php:677
 msgid "Low status"
-msgstr ""
+msgstr "کم منصب"
 
 #: include/default_domains.php:678
 msgid "Government"
-msgstr ""
+msgstr "حکومت"
 
 #: include/default_domains.php:679
 msgid "Ruler"
-msgstr ""
+msgstr "حکمران"
 
 #: include/default_domains.php:680
 msgid "King's family"
-msgstr ""
+msgstr "بادشاہ کا خاندان"
 
 #: include/default_domains.php:681
 msgid "Government official"
-msgstr ""
+msgstr "حکومتی امور"
 
 #: include/default_domains.php:682
 msgid "Citizen"
-msgstr ""
+msgstr "شہری"
 
 #: include/default_domains.php:683
 msgid "Foreigner"
-msgstr ""
+msgstr "اجنبی، غیر ملکی"
 
 #: include/default_domains.php:684
 msgid "Government organization"
-msgstr ""
+msgstr "نظم و نسق کی تنظیم"
 
 #: include/default_domains.php:685
 msgid "Governing body"
-msgstr ""
+msgstr "حکومتی کابینہ"
 
 #: include/default_domains.php:686
 msgid "Rule"
-msgstr ""
+msgstr "حکمرانی کرنا"
 
 #: include/default_domains.php:687
 msgid "Subjugate"
-msgstr ""
+msgstr "محکوم ہونا یا کرنا"
 
 #: include/default_domains.php:688
 msgid "Government functions"
-msgstr ""
+msgstr "حکومتی امور"
 
 #: include/default_domains.php:689
 msgid "Police"
-msgstr ""
+msgstr "پولیس، مددگار"
 
 #: include/default_domains.php:690
 msgid "Arrest"
-msgstr ""
+msgstr "گرفتار کرنا"
 
 #: include/default_domains.php:691
 msgid "Informal justice"
-msgstr ""
+msgstr "غیر رسمی انصاف"
 
 #: include/default_domains.php:692
 msgid "Diplomacy"
-msgstr ""
+msgstr "مطلب برآری، حکمتِ عملی"
 
 #: include/default_domains.php:693
 msgid "Represent"
-msgstr ""
+msgstr "نمائندگی کرنا"
 
 #: include/default_domains.php:694
 msgid "Election"
-msgstr ""
+msgstr "ووٹ"
 
 #: include/default_domains.php:695
 msgid "Politics"
-msgstr ""
+msgstr "سیاست"
 
 #: include/default_domains.php:696
 msgid "Region"
-msgstr ""
+msgstr "علاقہ"
 
 #: include/default_domains.php:697
 msgid "Country"
-msgstr ""
+msgstr "ملک"
 
 #: include/default_domains.php:698
 msgid "City"
-msgstr ""
+msgstr "شہر"
 
 #: include/default_domains.php:699
 msgid "Countryside"
-msgstr ""
+msgstr "گاؤں"
 
 #: include/default_domains.php:700
 msgid "Community"
-msgstr ""
+msgstr "کمیونٹی"
 
 #: include/default_domains.php:701
 msgid "Law"
-msgstr ""
+msgstr "قانون"
 
 #: include/default_domains.php:702
 msgid "Laws"
-msgstr ""
+msgstr "قوانین"
 
 #: include/default_domains.php:703
 msgid "Pass laws"
-msgstr ""
+msgstr "قانون بنانا"
 
 #: include/default_domains.php:704
 msgid "Break the law"
-msgstr ""
+msgstr "قانون شکنی کرنا"
 
 #: include/default_domains.php:705
 msgid "Court of law"
-msgstr ""
+msgstr "عدالت"
 
 #: include/default_domains.php:706
 msgid "Legal personnel"
-msgstr ""
+msgstr "عدالتی ملازم"
 
 #: include/default_domains.php:707
 msgid "Trial"
-msgstr ""
+msgstr "مقدمہ/ عدالتی کاروائی"
 
 #: include/default_domains.php:708
 msgid "Investigate a crime"
-msgstr ""
+msgstr "جرم کی تفتیش کرنا"
 
 #: include/default_domains.php:709
 msgid "Suspect"
-msgstr ""
+msgstr "شک کرنا"
 
 #: include/default_domains.php:710
 msgid "Accuse, confront"
-msgstr ""
+msgstr "الزام لگانا، آمنا سامنا کرنا"
 
 #: include/default_domains.php:711
 msgid "Defend against accusation"
-msgstr ""
+msgstr "الزام کی دفاع کرنا"
 
 #: include/default_domains.php:712
 msgid "Witness, testify"
-msgstr ""
+msgstr "گواہ، گواہی دینا"
 
 #: include/default_domains.php:713
 msgid "Drop charges"
-msgstr ""
+msgstr "الزام ہٹانا"
 
 #: include/default_domains.php:714
 msgid "Take oath"
-msgstr ""
+msgstr "قسم لینا"
 
 #: include/default_domains.php:715
 msgid "Vindicate"
-msgstr ""
+msgstr "بری ثابت کرنا، صحیع ٹھرانا، بول بالا کرنا"
 
 #: include/default_domains.php:716
 msgid "Judge, render a verdict"
-msgstr ""
+msgstr "جج، فتوی کا حوالہ دینا"
 
 #: include/default_domains.php:717
 msgid "Acquit"
-msgstr ""
+msgstr "بری کرنا"
 
 #: include/default_domains.php:718
 msgid "Condemn, find guilty"
-msgstr ""
+msgstr "الزام لگانا، ضبطی کا حکم دینا– سزا وار ٹھہرانا"
 
 #: include/default_domains.php:719
 msgid "Fault"
-msgstr ""
+msgstr "غلطی"
 
 #: include/default_domains.php:720
 msgid "Punish"
-msgstr ""
+msgstr "سزا دینا"
 
 #: include/default_domains.php:721
 msgid "Reward"
-msgstr ""
+msgstr "صِلہ"
 
 #: include/default_domains.php:722
 msgid "Fine"
-msgstr ""
+msgstr "جرمانہ کرنا"
 
 #: include/default_domains.php:723
 msgid "Imprison"
-msgstr ""
+msgstr "قید میں ڈالنا"
 
 #: include/default_domains.php:724
 msgid "Execute"
-msgstr ""
+msgstr "موت دینا، مکمل کرنا"
 
 #: include/default_domains.php:725
 msgid "Ostracize"
-msgstr ""
+msgstr "جلاوطن کرنا، برادری سے خارج کرنا"
 
 #: include/default_domains.php:726
 msgid "Pardon, release"
-msgstr ""
+msgstr "معاف کرنا،رہائی دینا"
 
 #: include/default_domains.php:727
 msgid "Atone, restitution"
-msgstr ""
+msgstr "تلافی کرنا/ تدارک/ کفارہ کرنا"
 
 #: include/default_domains.php:728
 msgid "Legal contract"
-msgstr ""
+msgstr "قانونی معاہدہ"
 
 #: include/default_domains.php:729
 msgid "Covenant"
-msgstr ""
+msgstr "عہدوپیماں"
 
 #: include/default_domains.php:730
 msgid "Break a contract"
-msgstr ""
+msgstr "معاہدہ شکنی کرنا"
 
 #: include/default_domains.php:731
 msgid "Justice"
-msgstr ""
+msgstr "انصاف"
 
 #: include/default_domains.php:732
 msgid "Impartial"
-msgstr ""
+msgstr "غیر مشروط،منصافانہ"
 
 #: include/default_domains.php:733
 msgid "Unfair"
-msgstr ""
+msgstr "ناجائز/ غیر منصفانہ"
 
 #: include/default_domains.php:734
 msgid "Deserve"
-msgstr ""
+msgstr "مستحق ہونا/ لائق ہونا"
 
 #: include/default_domains.php:735
 msgid "Discriminate, be unfair"
-msgstr ""
+msgstr "تفرقہ، غیر منصفانہ"
 
 #: include/default_domains.php:736
 msgid "Act harshly"
-msgstr ""
+msgstr "کھردرا، سخت، بدمزا یا ناگوار کرنا"
 
 #: include/default_domains.php:737
 msgid "Oppress"
-msgstr ""
+msgstr "تابع/ محکوم ہونا"
 
 #: include/default_domains.php:738
 msgid "Conflict"
-msgstr ""
+msgstr "تنازعہ"
 
 #: include/default_domains.php:739
 msgid "Hostility"
-msgstr ""
+msgstr "عداوت/ تضاد/ دشمنی"
 
 #: include/default_domains.php:740
 msgid "Oppose"
-msgstr ""
+msgstr "مخالفت کرنا"
 
 #: include/default_domains.php:741
 msgid "Fight"
-msgstr ""
+msgstr "لڑنا"
 
 #: include/default_domains.php:742
 msgid "Fight for something good"
-msgstr ""
+msgstr "اچھائی کے لئے لڑنا"
 
 #: include/default_domains.php:743
 msgid "Fight against something bad"
-msgstr ""
+msgstr "برائی کے خلاف لڑنا"
 
 #: include/default_domains.php:744
 msgid "Attack"
-msgstr ""
+msgstr "حملہ کرنا"
 
 #: include/default_domains.php:745
 msgid "Ambush"
-msgstr ""
+msgstr "گھات لگا کر"
 
 #: include/default_domains.php:746
 msgid "Defend"
-msgstr ""
+msgstr "دفاع"
 
 #: include/default_domains.php:747
 msgid "Revenge"
-msgstr ""
+msgstr "انتقام"
 
 #: include/default_domains.php:748
 msgid "Riot"
-msgstr ""
+msgstr "غل غپاڑہ، دھنگا، ہنگامہ"
 
 #: include/default_domains.php:749
 msgid "Betray"
-msgstr ""
+msgstr "دغا سے دشمن کے حوالے کرنا"
 
 #: include/default_domains.php:750
 msgid "Violent"
-msgstr ""
+msgstr "ظالم/ بدمعاش"
 
 #: include/default_domains.php:751
 msgid "Enemy"
-msgstr ""
+msgstr "دشمن"
 
 #: include/default_domains.php:752
 msgid "War"
-msgstr ""
+msgstr "جنگ"
 
 #: include/default_domains.php:753
 msgid "Defeat"
-msgstr ""
+msgstr "شکست"
 
 #: include/default_domains.php:754
 msgid "Win"
-msgstr ""
+msgstr "جیت"
 
 #: include/default_domains.php:755
 msgid "Lose a fight"
-msgstr ""
+msgstr "لڑائی ہارنا"
 
 #: include/default_domains.php:756
 msgid "Surrender"
-msgstr ""
+msgstr "گرفتار"
 
 #: include/default_domains.php:757
 msgid "Prisoner of war"
-msgstr ""
+msgstr "جنگی قیدی"
 
 #: include/default_domains.php:758
 msgid "Military organization"
-msgstr ""
+msgstr "فوجی تنظیم"
 
 #: include/default_domains.php:759
 msgid "Army"
-msgstr ""
+msgstr "آرمی/ فوجی دستہ"
 
 #: include/default_domains.php:760
 msgid "Navy"
-msgstr ""
+msgstr "بحریہ"
 
 #: include/default_domains.php:761
 msgid "Air force"
-msgstr ""
+msgstr "فضائیہ"
 
 #: include/default_domains.php:762
 msgid "Soldier"
-msgstr ""
+msgstr "فوجی"
 
 #: include/default_domains.php:763
 msgid "Spy"
-msgstr ""
+msgstr "جاسوسی"
 
 #: include/default_domains.php:764
 msgid "Fort"
-msgstr ""
+msgstr "قلعہ"
 
 #: include/default_domains.php:765
 msgid "Weapon, shoot"
-msgstr ""
+msgstr "ہتھیار"
 
 #: include/default_domains.php:766
 msgid "Plunder"
-msgstr ""
+msgstr "لوٹ مار"
 
 #: include/default_domains.php:767
 msgid "Peace"
-msgstr ""
+msgstr "امن"
 
 #: include/default_domains.php:768
 msgid "Rebuke"
-msgstr ""
+msgstr "ملامت کرنا، سرنش کرنا"
 
 #: include/default_domains.php:769
 msgid "Make an appeal"
-msgstr ""
+msgstr "اپیل کرنا"
 
 #: include/default_domains.php:770
 msgid "Appease"
-msgstr ""
+msgstr "ڈھارس بندھانا، فرض کرنا، رفع کرنا"
 
 #: include/default_domains.php:771
 msgid "Negotiate"
-msgstr ""
+msgstr "راضی نامہ"
 
 #: include/default_domains.php:772
 msgid "Renounce claim, concede"
-msgstr ""
+msgstr "تسلیم کرنا، ماننا، قبول کرنا،–دعویٰ کا ترک کرنا"
 
 #: include/default_domains.php:773
 msgid "Repent"
-msgstr ""
+msgstr "مزاحمت، توبہ، پشیمانی،"
 
 #: include/default_domains.php:774
 msgid "Request forgiveness"
-msgstr ""
+msgstr "معافی کی درخواست"
 
 #: include/default_domains.php:775
 msgid "Forgive"
-msgstr ""
+msgstr "معاف کرنا"
 
 #: include/default_domains.php:776
 msgid "Make peace"
-msgstr ""
+msgstr "امن کرنا"
 
 #: include/default_domains.php:777
 msgid "Stop fighting"
-msgstr ""
+msgstr "لڑائی بند کرنا"
 
 #: include/default_domains.php:778
 msgid "Reconcile"
-msgstr ""
+msgstr "صلح کرنا،متضاد بیان میں توافق بیان کرنا"
 
 #: include/default_domains.php:779
 msgid "Religion"
-msgstr ""
+msgstr "مذہب"
 
 #: include/default_domains.php:780
 msgid "God"
-msgstr ""
+msgstr "خُدا، اللہٰ"
 
 #: include/default_domains.php:781
 msgid "Supernatural being"
-msgstr ""
+msgstr "طاقتور یا زورآور مخلوق، وہ جو نظر نہیں آتی"
 
 #: include/default_domains.php:782
 msgid "Theology"
-msgstr ""
+msgstr "علم الہیٰ"
 
 #: include/default_domains.php:783
 msgid "Sacred writings"
-msgstr ""
+msgstr "مقدس تحریر"
 
 #: include/default_domains.php:784
 msgid "Miracle, supernatural power"
-msgstr ""
+msgstr "مافوق الفطرت طاقت"
 
 #: include/default_domains.php:785
 msgid "Sorcery"
-msgstr ""
+msgstr "کالا جادو کرنا یا جادو کرنا"
 
 #: include/default_domains.php:786
 msgid "Demon possession"
-msgstr ""
+msgstr "بد روح  شیطان"
 
 #: include/default_domains.php:787
 msgid "Bless"
-msgstr ""
+msgstr "مقدس بنانا، اقبال مندی کی دُعا کرنا۔ رحم کی دُعا کرنا"
 
 #: include/default_domains.php:788
 msgid "Curse"
-msgstr ""
+msgstr "بد دعا، لعنت، بلا کا ہونا"
 
 #: include/default_domains.php:789
 msgid "Destiny"
-msgstr ""
+msgstr "قسمت"
 
 #: include/default_domains.php:790
 msgid "Prophecy"
-msgstr ""
+msgstr "پیغمبری"
 
 #: include/default_domains.php:791
 msgid "Omen, divination"
-msgstr ""
+msgstr "کوئی واقعہ سے جسے اچھا یا بُرا شگون لیا جائے،پیشن گوئی، غیب کا حال بتانا"
 
 #: include/default_domains.php:792
 msgid "Practice religion"
-msgstr ""
+msgstr "مذہبی ہونا، عبادت کرنا"
 
 #: include/default_domains.php:793
 msgid "Devout"
-msgstr ""
+msgstr "دین دار، پاک سار، خدا پرست، صادق"
 
 #: include/default_domains.php:794
 msgid "Pray"
-msgstr ""
+msgstr "دُعا"
 
 #: include/default_domains.php:795
 msgid "Worship"
-msgstr ""
+msgstr "عبادت"
 
 #: include/default_domains.php:796
 msgid "Religious ceremony"
-msgstr ""
+msgstr "مذہبی تہوار"
 
 #: include/default_domains.php:797
 msgid "Offering, sacrifice"
-msgstr ""
+msgstr "قربانی"
 
 #: include/default_domains.php:798
 msgid "Religious purification"
-msgstr ""
+msgstr "مذہبی ہونا، پاک دامن ہونا"
 
 #: include/default_domains.php:799
 msgid "Taboo"
-msgstr ""
+msgstr "ممنوعات"
 
 #: include/default_domains.php:800
 msgid "Salvation"
-msgstr ""
+msgstr "معافی،پاک کرنا"
 
 #: include/default_domains.php:801
 msgid "Dedicate to religious use"
-msgstr ""
+msgstr "مذہبی کاموں کے لیے مجزوب یا مقرر کرنا"
 
 #: include/default_domains.php:802
 msgid "Fasting"
-msgstr ""
+msgstr "روزہ رکھنا"
 
 #: include/default_domains.php:803
 msgid "Heaven, hell"
-msgstr ""
+msgstr "جنت، دوزخ"
 
 #: include/default_domains.php:804
 msgid "Resurrection"
-msgstr ""
+msgstr "موت کے بعد دوبارہ جینا، قیامت کے دِن جینا"
 
 #: include/default_domains.php:805
 msgid "Religious organization"
-msgstr ""
+msgstr "مذہبی تنظیم"
 
 #: include/default_domains.php:806
 msgid "Religious person"
-msgstr ""
+msgstr "مذہبی شخص"
 
 #: include/default_domains.php:807
 msgid "Christianity"
-msgstr ""
+msgstr "عیسائیت"
 
 #: include/default_domains.php:808
 msgid "Islam"
-msgstr ""
+msgstr "اسلام"
 
 #: include/default_domains.php:809
 msgid "Hinduism"
-msgstr ""
+msgstr "ہندو مت"
 
 #: include/default_domains.php:810
 msgid "Buddhism"
-msgstr ""
+msgstr "بدھ مت"
 
 #: include/default_domains.php:811
 msgid "Judaism"
-msgstr ""
+msgstr "یہودیت"
 
 #: include/default_domains.php:812
 msgid "Animism"
-msgstr ""
+msgstr "مظاہر پرستی"
 
 #: include/default_domains.php:813
 msgid "Religious things"
-msgstr ""
+msgstr "مذہبی اشیاء"
 
 #: include/default_domains.php:814
 msgid "Idol"
-msgstr ""
+msgstr "بے کار بُت"
 
 #: include/default_domains.php:815
 msgid "Place of worship"
-msgstr ""
+msgstr "جائے عبادت"
 
 #: include/default_domains.php:816
 msgid "Irreligion"
-msgstr ""
+msgstr "لا دینی"
 
 #: include/default_domains.php:817 webonary/Webonary_SemanticDomains.php:133
 msgid "Daily life"
-msgstr ""
+msgstr "روزمرہ زندگی"
 
 #: include/default_domains.php:818
 msgid "Household equipment"
-msgstr ""
+msgstr "گھریلو سامان"
 
 #: include/default_domains.php:820
 msgid "Table"
-msgstr ""
+msgstr "میز"
 
 #: include/default_domains.php:821
 msgid "Chair"
-msgstr ""
+msgstr "کرسی"
 
 #: include/default_domains.php:822
 msgid "Bed"
-msgstr ""
+msgstr "بستر/چارپائی"
 
 #: include/default_domains.php:823
 msgid "Cabinet"
-msgstr ""
+msgstr "کہلوٹی، الماری"
 
 #: include/default_domains.php:824
 msgid "Household decoration"
-msgstr ""
+msgstr "گھر کی سجاوٹ"
 
 #: include/default_domains.php:825
 msgid "Food"
-msgstr ""
+msgstr "خوراک"
 
 #: include/default_domains.php:826
 msgid "Food preparation"
-msgstr ""
+msgstr "خوراک کی تیاری"
 
 #: include/default_domains.php:827
 msgid "Cooking methods"
-msgstr ""
+msgstr "کھانے کے طریقے"
 
 #: include/default_domains.php:828
 msgid "Steps in food preparation"
-msgstr ""
+msgstr "خوراک کی تیاری کے مراحل"
 
 #: include/default_domains.php:829
 msgid "Remove shell, skin"
-msgstr ""
+msgstr "خول یا چمڑی اُتارنا"
 
 #: include/default_domains.php:830
 msgid "Pound in mortar and pestle"
-msgstr ""
+msgstr "لنگری میں کوٹنا"
 
 #: include/default_domains.php:831
 msgid "Grind flour"
-msgstr ""
+msgstr "آٹا پیسنا"
 
 #: include/default_domains.php:832
 msgid "Cooking utensil"
-msgstr ""
+msgstr "کھانے کے برتن"
 
 #: include/default_domains.php:833
 msgid "Food storage"
-msgstr ""
+msgstr "خوراک کا ذخیرہ"
 
 #: include/default_domains.php:834
 msgid "Serve food"
-msgstr ""
+msgstr "روٹی کا پیش کرنا"
 
 #: include/default_domains.php:835
 msgid "Eat"
-msgstr ""
+msgstr "کھانا"
 
 #: include/default_domains.php:836
 msgid "Bite, chew"
-msgstr ""
+msgstr "کاٹنا / چبانا"
 
 #: include/default_domains.php:837
 msgid "Meal"
-msgstr ""
+msgstr "خوراک"
 
 #: include/default_domains.php:838
 msgid "Feast"
-msgstr ""
+msgstr "دعوت"
 
 #: include/default_domains.php:839
 msgid "Manner of eating"
-msgstr ""
+msgstr "کھانے کا سلیقہ و طریقہ"
 
 #: include/default_domains.php:840
 msgid "Hungry, thirsty"
-msgstr ""
+msgstr "بھوکا، پیاسا"
 
 #: include/default_domains.php:841
 msgid "Satiated, full"
-msgstr ""
+msgstr "بھرا ہوا، سیر ہوا ہوا"
 
 #: include/default_domains.php:842
 msgid "Drink"
-msgstr ""
+msgstr "پینا"
 
 #: include/default_domains.php:843
 msgid "Eating utensil"
-msgstr ""
+msgstr "کھانے کے برتن"
 
 #: include/default_domains.php:844
 msgid "Fast, not eat"
-msgstr ""
+msgstr "روزہ"
 
 #: include/default_domains.php:845
 msgid "Types of food"
-msgstr ""
+msgstr "خوراک کے اقسام"
 
 #: include/default_domains.php:846
 msgid "Food from plants"
-msgstr ""
+msgstr "پودوں والی غذائیں"
 
 #: include/default_domains.php:847
 msgid "Food from seeds"
-msgstr ""
+msgstr "بیجدار غذائیں"
 
 #: include/default_domains.php:848
 msgid "Food from fruit"
-msgstr ""
+msgstr "پھلدار غذائیں"
 
 #: include/default_domains.php:849
 msgid "Food from vegetables"
-msgstr ""
+msgstr "سبزی والی غذا"
 
 #: include/default_domains.php:850
 msgid "Food from leaves"
-msgstr ""
+msgstr "پتوں والی غذا"
 
 #: include/default_domains.php:851
 msgid "Food from roots"
-msgstr ""
+msgstr "جڑ والی غذا"
 
 #: include/default_domains.php:852
 msgid "Food from animals"
-msgstr ""
+msgstr "وہ خوراک جو جانوروں سے حاصل کے جاوے"
 
 #: include/default_domains.php:854
 msgid "Milk products"
-msgstr ""
+msgstr "دودھ کے اشیأ"
 
 #: include/default_domains.php:855
 msgid "Egg dishes"
-msgstr ""
+msgstr "انڈے کا خوراک"
 
 #: include/default_domains.php:856
 msgid "Cooking ingredients"
-msgstr ""
+msgstr "پکانے کے اجزا"
 
 #: include/default_domains.php:857
 msgid "Sugar"
-msgstr ""
+msgstr "چینی"
 
 #: include/default_domains.php:858
 msgid "Salt"
-msgstr ""
+msgstr "نمک"
 
 #: include/default_domains.php:860
 msgid "Leaven"
-msgstr ""
+msgstr "خمیر یا خمیر اُٹھانا"
 
 #: include/default_domains.php:861
 msgid "Cooking oil"
-msgstr ""
+msgstr "پکانے کے تیل"
 
 #: include/default_domains.php:862
 msgid "Prepared food"
-msgstr ""
+msgstr "تیار خوراک"
 
 #: include/default_domains.php:863
 msgid "Prohibited food"
-msgstr ""
+msgstr "حرام خوراک"
 
 #: include/default_domains.php:864
 msgid "Beverage"
-msgstr ""
+msgstr "مشروب"
 
 #: include/default_domains.php:865
 msgid "Alcoholic beverage"
-msgstr ""
+msgstr "الکحل، مشروبات"
 
 #: include/default_domains.php:866
 msgid "Alcohol preparation"
-msgstr ""
+msgstr "الکوحل کی تیاری"
 
 #: include/default_domains.php:867
 msgid "Drunk"
-msgstr ""
+msgstr "شراب"
 
 #: include/default_domains.php:868
 msgid "Tobacco"
-msgstr ""
+msgstr "تمباکو"
 
 #: include/default_domains.php:869
 msgid "Narcotic"
-msgstr ""
+msgstr "نشہ آور اشیأ"
 
 #: include/default_domains.php:870
 msgid "Stimulant"
-msgstr ""
+msgstr "محرک/ اکسانے والا"
 
 #: include/default_domains.php:871
 msgid "Clothing"
-msgstr ""
+msgstr "کپڑے"
 
 #: include/default_domains.php:872
 msgid "Men's clothing"
-msgstr ""
+msgstr "مرد کے کپڑے"
 
 #: include/default_domains.php:873
 msgid "Women's clothing"
-msgstr ""
+msgstr "عورت کے کپڑے"
 
 #: include/default_domains.php:874
 msgid "Traditional clothing"
-msgstr ""
+msgstr "روایتی کپڑے"
 
 #: include/default_domains.php:875
 msgid "Clothes for special occasions"
-msgstr ""
+msgstr "خاص تقریب کی پوشاک"
 
 #: include/default_domains.php:876
 msgid "Clothes for special people"
-msgstr ""
+msgstr "خاص لوگوں کے لیے کپڑے"
 
 #: include/default_domains.php:878
 msgid "Wear clothing"
-msgstr ""
+msgstr "کپڑے پہننا"
 
 #: include/default_domains.php:879
 msgid "Naked"
-msgstr ""
+msgstr "ننگا"
 
 #: include/default_domains.php:880
 msgid "Style of clothing"
-msgstr ""
+msgstr "کپڑوں کا سٹائل"
 
 #: include/default_domains.php:881
 msgid "Adornment"
-msgstr ""
+msgstr "سج دھج، سنگار، آرائش"
 
 #: include/default_domains.php:883
 msgid "Cosmetics"
-msgstr ""
+msgstr "چہرے کا سنگار"
 
 #: include/default_domains.php:884
 msgid "Care for hair"
-msgstr ""
+msgstr "بال کی حفاظت رکھنا"
 
 #: include/default_domains.php:885
 msgid "Comb hair"
-msgstr ""
+msgstr "بال کنگھے کرنا"
 
 #: include/default_domains.php:886
 msgid "Plait hair"
-msgstr ""
+msgstr "بالوں کا ڈوری/ لٹ بنانا"
 
 #: include/default_domains.php:887
 msgid "Dye hair"
-msgstr ""
+msgstr "بالوں کو رنگ دینا"
 
 #: include/default_domains.php:888
 msgid "Hairstyle"
-msgstr ""
+msgstr "بالوں کی سٹائل"
 
 #: include/default_domains.php:889
 msgid "Cut hair"
-msgstr ""
+msgstr "بالوں کو کاٹنا"
 
 #: include/default_domains.php:890
 msgid "Shave"
-msgstr ""
+msgstr "مونڈھنا"
 
 #: include/default_domains.php:891
 msgid "Care for the teeth"
-msgstr ""
+msgstr "دانتوں کی حفاظت کرنا"
 
 #: include/default_domains.php:892
 msgid "Anoint the body"
-msgstr ""
+msgstr "جسم کو معطر کرنا/ خوشبو لگانا"
 
 #: include/default_domains.php:893
 msgid "Ritual scar"
-msgstr ""
+msgstr "رسومی زخم کا نشان/ داغ"
 
 #: include/default_domains.php:894
 msgid "Circumcision"
-msgstr ""
+msgstr "خُطنہ"
 
 #: include/default_domains.php:895
 msgid "Care for the fingernails"
-msgstr ""
+msgstr "ناخن کی حفاظت"
 
 #: include/default_domains.php:896
 msgid "Fire"
-msgstr ""
+msgstr "آگ"
 
 #: include/default_domains.php:897
 msgid "Light a fire"
-msgstr ""
+msgstr "آگ لگانا"
 
 #: include/default_domains.php:898
 msgid "Tend a fire"
-msgstr ""
+msgstr "آگ کو ہوا دینا"
 
 #: include/default_domains.php:899
 msgid "Extinguish a fire"
-msgstr ""
+msgstr "آگ بُجھانا"
 
 #: include/default_domains.php:900
 msgid "Burn"
-msgstr ""
+msgstr "جلنا"
 
 #: include/default_domains.php:901
 msgid "What fires produce"
-msgstr ""
+msgstr "آگ کیا متعارف کرتی ہے"
 
 #: include/default_domains.php:902
 msgid "Fuel"
-msgstr ""
+msgstr "ایندھن"
 
 #: include/default_domains.php:903
 msgid "Fireplace"
-msgstr ""
+msgstr "آگ کے جگہ، چولہا"
 
 #: include/default_domains.php:904
 msgid "Cleaning"
-msgstr ""
+msgstr "صفائی یا صفائی کرنا"
 
 #: include/default_domains.php:905
 msgid "Clean, dirty"
-msgstr ""
+msgstr "صاف، گندہ"
 
 #: include/default_domains.php:906
 msgid "Bathe"
-msgstr ""
+msgstr "نہانا"
 
 #: include/default_domains.php:907
 msgid "Wash dishes"
-msgstr ""
+msgstr "برتن دھونا"
 
 #: include/default_domains.php:908
 msgid "Wash clothes"
-msgstr ""
+msgstr "کپڑے دھونا"
 
 #: include/default_domains.php:909
 msgid "Sweep, rake"
-msgstr ""
+msgstr "جھاڑو دینا"
 
 #: include/default_domains.php:910
 msgid "Wipe, erase"
-msgstr ""
+msgstr "صاف کرنا"
 
 #: include/default_domains.php:911
 msgid "Sleep"
-msgstr ""
+msgstr "سونا"
 
 #: include/default_domains.php:912
 msgid "Go to sleep"
-msgstr ""
+msgstr "سونے کو جانا"
 
 #: include/default_domains.php:913
 msgid "Dream"
-msgstr ""
+msgstr "خواب"
 
 #: include/default_domains.php:914
 msgid "Wake up"
-msgstr ""
+msgstr "جاگنا"
 
 #: include/default_domains.php:915
 msgid "Manage a house"
-msgstr ""
+msgstr "گھر سنوارنا"
 
 #: include/default_domains.php:916
 msgid "Live, stay"
-msgstr ""
+msgstr "رہنا، بسیرا کرنا"
 
 #: include/default_domains.php:917 webonary/Webonary_SemanticDomains.php:134
 msgid "Work and occupation"
-msgstr ""
+msgstr "پیشہ اور کام"
 
 #: include/default_domains.php:918
 msgid "Work"
-msgstr ""
+msgstr "کام"
 
 #: include/default_domains.php:919
 msgid "Worker"
-msgstr ""
+msgstr "کارکن"
 
 #: include/default_domains.php:920
 msgid "Expert"
-msgstr ""
+msgstr "ماھر"
 
 #: include/default_domains.php:921
 msgid "Method"
-msgstr ""
+msgstr "طریقہ کار"
 
 #: include/default_domains.php:922
 msgid "Try, attempt"
-msgstr ""
+msgstr "کوشش"
 
 #: include/default_domains.php:923
 msgid "Use"
-msgstr ""
+msgstr "استعمال"
 
 #: include/default_domains.php:924
 msgid "Useful"
-msgstr ""
+msgstr "مفید، کار آمد"
 
 #: include/default_domains.php:925
 msgid "Useless"
-msgstr ""
+msgstr "بے کار"
 
 #: include/default_domains.php:926
 msgid "Available"
-msgstr ""
+msgstr "دستیاب"
 
 #: include/default_domains.php:927
 msgid "Use up"
-msgstr ""
+msgstr "استعمال کرنا"
 
 #: include/default_domains.php:928
 msgid "Take care of something"
-msgstr ""
+msgstr "کسی چیز کی حفاظت"
 
 #: include/default_domains.php:929
 msgid "Waste"
-msgstr ""
+msgstr "ضائع"
 
 #: include/default_domains.php:930
 msgid "Work well"
-msgstr ""
+msgstr "کام اچھی طرح کرنا"
 
 #: include/default_domains.php:931
 msgid "Careful"
-msgstr ""
+msgstr "حفاظت سے بھرپور"
 
 #: include/default_domains.php:932
 msgid "Work hard"
-msgstr ""
+msgstr "سخت کام"
 
 #: include/default_domains.php:933
 msgid "Busy"
-msgstr ""
+msgstr "مصروف"
 
 #: include/default_domains.php:934
 msgid "Power, force"
-msgstr ""
+msgstr "طاقت"
 
 #: include/default_domains.php:935
 msgid "Complete, finish"
-msgstr ""
+msgstr "مکمل / ختم"
 
 #: include/default_domains.php:936
 msgid "Ambitious"
-msgstr ""
+msgstr "جذباتی"
 
 #: include/default_domains.php:937
 msgid "Work poorly"
-msgstr ""
+msgstr "سلیقہ سے کام نہ کرنا، کم یا بُرا کام کرنا"
 
 #: include/default_domains.php:938
 msgid "Careless, irresponsible"
-msgstr ""
+msgstr "غیر زمہ دار"
 
 #: include/default_domains.php:939
 msgid "Lazy"
-msgstr ""
+msgstr "سُست"
 
 #: include/default_domains.php:940
 msgid "Give up"
-msgstr ""
+msgstr "چھوڑنا، ترک کرنا"
 
 #: include/default_domains.php:941
 msgid "Plan"
-msgstr ""
+msgstr "منصوبہ"
 
 #: include/default_domains.php:942
 msgid "Arrange an event"
-msgstr ""
+msgstr "پروگرام کا انتظام کرنا"
 
 #: include/default_domains.php:943
 msgid "Cancel an event"
-msgstr ""
+msgstr "پروگرام کو ملتوی کرنا"
 
 #: include/default_domains.php:944
 msgid "Prepare"
-msgstr ""
+msgstr "تیار کرنا"
 
 #: include/default_domains.php:945
 msgid "Prepare something for use"
-msgstr ""
+msgstr "کسی چیز کو استعمال کے لئے تیار کرنا"
 
 #: include/default_domains.php:946
 msgid "Effective"
-msgstr ""
+msgstr "پراثر"
 
 #: include/default_domains.php:947
 msgid "Efficient"
-msgstr ""
+msgstr "منافع بخش"
 
 #: include/default_domains.php:948
 msgid "Opportunity"
-msgstr ""
+msgstr "مو قع"
 
 #: include/default_domains.php:949
 msgid "Difficult, impossible"
-msgstr ""
+msgstr "مشکل، ناممکن"
 
 #: include/default_domains.php:950
 msgid "Easy, possible"
-msgstr ""
+msgstr "آسان، ممکن"
 
 #: include/default_domains.php:951
 msgid "Succeed"
-msgstr ""
+msgstr "کامیاب"
 
 #: include/default_domains.php:952
 msgid "Fail"
-msgstr ""
+msgstr "ناکام"
 
 #: include/default_domains.php:953
 msgid "Advantage"
-msgstr ""
+msgstr "فائدہ"
 
 #: include/default_domains.php:954
 msgid "Job satisfaction"
-msgstr ""
+msgstr "کام سے مطمئن"
 
 #: include/default_domains.php:955
 msgid "Unemployed, not working"
-msgstr ""
+msgstr "بے روزگار، نکما"
 
 #: include/default_domains.php:956
 msgid "Made by hand"
-msgstr ""
+msgstr "دستی"
 
 #: include/default_domains.php:957
 msgid "Artificial"
-msgstr ""
+msgstr "مصنوعی"
 
 #: include/default_domains.php:958
 msgid "Experienced"
-msgstr ""
+msgstr "تجربہ کار"
 
 #: include/default_domains.php:959
 msgid "Accustomed to"
-msgstr ""
+msgstr "کسی چیز کے مطابق ہونا"
 
 #: include/default_domains.php:960
 msgid "Agriculture"
-msgstr ""
+msgstr "ذراعت"
 
 #: include/default_domains.php:961
 msgid "Growing crops"
-msgstr ""
+msgstr "پیداواری فصل"
 
 #: include/default_domains.php:962
 msgid "Growing grain"
-msgstr ""
+msgstr "بیج کا لگانا"
 
 #: include/default_domains.php:963
 msgid "Growing rice"
-msgstr ""
+msgstr "چاول اگانا"
 
 #: include/default_domains.php:964
 msgid "Growing wheat"
-msgstr ""
+msgstr "گندم اگانا"
 
 #: include/default_domains.php:965
 msgid "Growing maize"
-msgstr ""
+msgstr "مکئی اگانا"
 
 #: include/default_domains.php:966
 msgid "Growing roots"
@@ -5017,727 +5017,727 @@ msgstr ""
 
 #: include/default_domains.php:967
 msgid "Growing potatoes"
-msgstr ""
+msgstr "آلو اگانا"
 
 #: include/default_domains.php:968
 msgid "Growing cassava"
-msgstr ""
+msgstr "کساوا اگانا"
 
 #: include/default_domains.php:969
 msgid "Growing vegetables"
-msgstr ""
+msgstr "سبزیاں اگانا"
 
 #: include/default_domains.php:970
 msgid "Growing fruit"
-msgstr ""
+msgstr "میوہ اگانا"
 
 #: include/default_domains.php:971
 msgid "Growing grapes"
-msgstr ""
+msgstr "انگور اگانا"
 
 #: include/default_domains.php:972
 msgid "Growing bananas"
-msgstr ""
+msgstr "کیلا اگانا"
 
 #: include/default_domains.php:973
 msgid "Growing grass"
-msgstr ""
+msgstr "گھاس اگانا"
 
 #: include/default_domains.php:974
 msgid "Growing sugarcane"
-msgstr ""
+msgstr "گنا اگانا"
 
 #: include/default_domains.php:975
 msgid "Growing tobacco"
-msgstr ""
+msgstr "تمباکو اگانا"
 
 #: include/default_domains.php:976
 msgid "Growing flowers"
-msgstr ""
+msgstr "پھول اُگانا"
 
 #: include/default_domains.php:977
 msgid "Growing trees"
-msgstr ""
+msgstr "درخت اُگانا"
 
 #: include/default_domains.php:978
 msgid "Growing coconuts"
-msgstr ""
+msgstr "ناریل اگانا"
 
 #: include/default_domains.php:979
 msgid "Growing coffee"
-msgstr ""
+msgstr "کافی اگانا"
 
 #: include/default_domains.php:980
 msgid "Land preparation"
-msgstr ""
+msgstr "زمین کو تیار کرنا یا ہموار کرنا"
 
 #: include/default_domains.php:981
 msgid "Clear a field"
-msgstr ""
+msgstr "زمین تیار کرنا، تال کرنا"
 
 #: include/default_domains.php:982
 msgid "Plow a field"
-msgstr ""
+msgstr "کھیت بونا ( کھیتی باڑی کرنا)"
 
 #: include/default_domains.php:983
 msgid "Fertilize a field"
-msgstr ""
+msgstr "کھیت میں کھاد ڈالنا"
 
 #: include/default_domains.php:984
 msgid "Plant a field"
-msgstr ""
+msgstr "کھیت بونا، بیج بونا"
 
 #: include/default_domains.php:985
 msgid "Tend a field"
-msgstr ""
+msgstr "کھیت کی دیکھ بھال کرنا"
 
 #: include/default_domains.php:986
 msgid "Cut grass"
-msgstr ""
+msgstr "گھاس کاٹنا"
 
 #: include/default_domains.php:987
 msgid "Uproot plants"
-msgstr ""
+msgstr "پودے اُکھاڑنا"
 
 #: include/default_domains.php:988
 msgid "Irrigate"
-msgstr ""
+msgstr "آبپاشی کرنا"
 
 #: include/default_domains.php:989
 msgid "Trim plants"
-msgstr ""
+msgstr "شاخ تراشی کرنا"
 
 #: include/default_domains.php:990
 msgid "Neglect plants"
-msgstr ""
+msgstr "پودوں کو نظر انداز کرنا"
 
 #: include/default_domains.php:991
 msgid "Harvest"
-msgstr ""
+msgstr "زخیرہ کرنا، فصل جمع کرنا"
 
 #: include/default_domains.php:992
 msgid "First fruits"
-msgstr ""
+msgstr "پہلا پھل"
 
 #: include/default_domains.php:993
 msgid "Crop failure"
-msgstr ""
+msgstr "فصل ناکام ہونا، فصل جھلنا"
 
 #: include/default_domains.php:994
 msgid "Gather wild plants"
-msgstr ""
+msgstr "جنگلی پودے اکٹھے کرنا"
 
 #: include/default_domains.php:995
 msgid "Plant product"
-msgstr ""
+msgstr "پیداوار کا لگانا"
 
 #: include/default_domains.php:996
 msgid "Process harvest"
-msgstr ""
+msgstr "بوائی، کٹائی وغیرہ کے لیے فصل جمع کرنا"
 
 #: include/default_domains.php:997
 msgid "Winnow grain"
-msgstr ""
+msgstr "ہوا کے زور سے بھوسا الگ کرنا، پنکھ مارنا"
 
 #: include/default_domains.php:998
 msgid "Mill grain"
-msgstr ""
+msgstr "دانے پیسنا"
 
 #: include/default_domains.php:999
 msgid "Thresh"
-msgstr ""
+msgstr "غلے کے پودے کو گاہنا، معاملہ کی چھان بین کرنا"
 
 #: include/default_domains.php:1000
 msgid "Store the harvest"
-msgstr ""
+msgstr "فصل یا غلہ کو جمع کرنا"
 
 #: include/default_domains.php:1001
 msgid "Farm worker"
-msgstr ""
+msgstr "دہقان"
 
 #: include/default_domains.php:1002
 msgid "Agricultural tool"
-msgstr ""
+msgstr "زرعی سامان"
 
 #: include/default_domains.php:1003
 msgid "Farmland"
-msgstr ""
+msgstr "کھیت"
 
 #: include/default_domains.php:1004
 msgid "Animal husbandry"
-msgstr ""
+msgstr "جانوروں سے کھیتی باڑی یا جانوروں کی خانہ داری"
 
 #: include/default_domains.php:1005
 msgid "Domesticated animal"
-msgstr ""
+msgstr "گھریلو جانور"
 
 #: include/default_domains.php:1006
 msgid "Cattle"
-msgstr ""
+msgstr "مویشی"
 
 #: include/default_domains.php:1007
 msgid "Sheep"
-msgstr ""
+msgstr "بھیڑ"
 
 #: include/default_domains.php:1008
 msgid "Goat"
-msgstr ""
+msgstr "بکری"
 
 #: include/default_domains.php:1009
 msgid "Pig"
-msgstr ""
+msgstr "سؤر"
 
 #: include/default_domains.php:1010
 msgid "Dog"
-msgstr ""
+msgstr "کُتا"
 
 #: include/default_domains.php:1011
 msgid "Cat"
-msgstr ""
+msgstr "بلی"
 
 #: include/default_domains.php:1012
 msgid "Beast of burden"
-msgstr ""
+msgstr "باربرداری والے جانور (ٹٹو،گدھا، خچر)"
 
 #: include/default_domains.php:1013
 msgid "Tend herds in fields"
-msgstr ""
+msgstr "کھیت میں جانوروں کی غول کی دیکھ بھال"
 
 #: include/default_domains.php:1014
 msgid "Milk"
-msgstr ""
+msgstr "دودھ"
 
 #: include/default_domains.php:1015
 msgid "Butcher, slaughter"
-msgstr ""
+msgstr "قصائی، قربان گاہ"
 
 #: include/default_domains.php:1016
 msgid "Wool production"
-msgstr ""
+msgstr "اونی پیداوار"
 
 #: include/default_domains.php:1017
 msgid "Poultry raising"
-msgstr ""
+msgstr "مُرغیاں پالنا"
 
 #: include/default_domains.php:1018
 msgid "Chicken"
-msgstr ""
+msgstr "مُرغیاں"
 
 #: include/default_domains.php:1019
 msgid "Animal products"
-msgstr ""
+msgstr "جانوروں سے حاصل کی گئی پیداوار (دودھ،چمڑا،گوشت،انڈے،خون)"
 
 #: include/default_domains.php:1020
 msgid "Veterinary science"
-msgstr ""
+msgstr "علاج حیوانات کے مطابق"
 
 #: include/default_domains.php:1021
 msgid "Animal diseases"
-msgstr ""
+msgstr "جانوروں کے بیماریاں"
 
 #: include/default_domains.php:1022
 msgid "Castrate animal"
-msgstr ""
+msgstr "جانوروں کو خصی کرنا"
 
 #: include/default_domains.php:1023
 msgid "Hunt and fish"
-msgstr ""
+msgstr "شکار"
 
 #: include/default_domains.php:1024
 msgid "Hunt"
-msgstr ""
+msgstr "شکار"
 
 #: include/default_domains.php:1025
 msgid "Track an animal"
-msgstr ""
+msgstr "جانور کا پیچھا کرنا"
 
 #: include/default_domains.php:1026
 msgid "Trap"
-msgstr ""
+msgstr "جال/ پنجرہ"
 
 #: include/default_domains.php:1027
 msgid "Hunting birds"
-msgstr ""
+msgstr "پرندوں کا شکار کرنا"
 
 #: include/default_domains.php:1028
 msgid "Beekeeping"
-msgstr ""
+msgstr "شہد کی مکھیاں پالنا"
 
 #: include/default_domains.php:1029
 msgid "Fishing"
-msgstr ""
+msgstr "مچھلیاں پکڑنا"
 
 #: include/default_domains.php:1030
 msgid "Fish with net"
-msgstr ""
+msgstr "جال سے مچھلیاں پکڑنا"
 
 #: include/default_domains.php:1031
 msgid "Fish with hooks"
-msgstr ""
+msgstr "کانٹے سے مچھلیاں پکڑنا"
 
 #: include/default_domains.php:1032
 msgid "Fishing equipment"
-msgstr ""
+msgstr "مچھلیاں پکڑنے کا سامان"
 
 #: include/default_domains.php:1033
 msgid "Things done to animals"
-msgstr ""
+msgstr "جانوروں کو سدھارنے کا کام"
 
 #: include/default_domains.php:1034
 msgid "Working with buildings"
-msgstr ""
+msgstr "عمارتی کام"
 
 #: include/default_domains.php:1035
 msgid "Building"
-msgstr ""
+msgstr "عمارت"
 
 #: include/default_domains.php:1036
 msgid "House"
-msgstr ""
+msgstr "گھر"
 
 #: include/default_domains.php:1038
 msgid "Land, property"
-msgstr ""
+msgstr "زمیں، جائیداد"
 
 #: include/default_domains.php:1039
 msgid "Yard"
-msgstr ""
+msgstr "صحن"
 
 #: include/default_domains.php:1040
 msgid "Fence, wall"
-msgstr ""
+msgstr "دیوار ، باڑ"
 
 #: include/default_domains.php:1041
 msgid "Parts of a building"
-msgstr ""
+msgstr "عمارت کے حصے"
 
 #: include/default_domains.php:1042
 msgid "Wall"
-msgstr ""
+msgstr "دیوار"
 
 #: include/default_domains.php:1043
 msgid "Roof"
-msgstr ""
+msgstr "چھت"
 
 #: include/default_domains.php:1044
 msgid "Floor"
-msgstr ""
+msgstr "فرش"
 
 #: include/default_domains.php:1045
 msgid "Door"
-msgstr ""
+msgstr "دروازہ"
 
 #: include/default_domains.php:1046
 msgid "Window"
-msgstr ""
+msgstr "کھڑکی"
 
 #: include/default_domains.php:1047
 msgid "Foundation"
-msgstr ""
+msgstr "بنیاد"
 
 #: include/default_domains.php:1048
 msgid "Room"
-msgstr ""
+msgstr "کمرہ"
 
 #: include/default_domains.php:1049
 msgid "Floor, story"
-msgstr ""
+msgstr "فرش یا سطح"
 
 #: include/default_domains.php:1051
 msgid "Building equipment and maintenance"
-msgstr ""
+msgstr "عمارت کے لئے آلات اور دیکھ بھال"
 
 #: include/default_domains.php:1052
 msgid "Infrastructure"
-msgstr ""
+msgstr "خدوخال، عوامی فلاح و بہبود"
 
 #: include/default_domains.php:1053
 msgid "Road"
-msgstr ""
+msgstr "سڑک"
 
 #: include/default_domains.php:1054
 msgid "Boundary"
-msgstr ""
+msgstr "سرحد ، حد"
 
 #: include/default_domains.php:1055
 msgid "Occupation"
-msgstr ""
+msgstr "پیشہ"
 
 #: include/default_domains.php:1056
 msgid "Working with cloth"
-msgstr ""
+msgstr "کپڑے کا کام  کرنے والا یا درزی"
 
 #: include/default_domains.php:1057
 msgid "Cloth"
-msgstr ""
+msgstr "کپڑا"
 
 #: include/default_domains.php:1058
 msgid "Spinning thread"
-msgstr ""
+msgstr "دھاگہ کاتنا"
 
 #: include/default_domains.php:1059
 msgid "Knitting"
-msgstr ""
+msgstr "بُننا"
 
 #: include/default_domains.php:1060
 msgid "Weaving cloth"
-msgstr ""
+msgstr "کپڑوں کو جوڑنا/سانٹھنا"
 
 #: include/default_domains.php:1061
 msgid "Working with minerals"
-msgstr ""
+msgstr "کان کُنی کرنا"
 
 #: include/default_domains.php:1062
 msgid "Mining"
-msgstr ""
+msgstr "کان کُنی"
 
 #: include/default_domains.php:1063
 msgid "Smelting"
-msgstr ""
+msgstr "دھات کی پگھلائی"
 
 #: include/default_domains.php:1064
 msgid "Working with metal"
-msgstr ""
+msgstr "لوہے کا کام کرنا"
 
 #: include/default_domains.php:1065
 msgid "Working with clay"
-msgstr ""
+msgstr "لَس مٹی کا کام کرنا"
 
 #: include/default_domains.php:1066
 msgid "Working with glass"
-msgstr ""
+msgstr "شیشے کا کام کرنا"
 
 #: include/default_domains.php:1067
 msgid "Working with oil and gas"
-msgstr ""
+msgstr "تیل اور گیس کا کام کرنا"
 
 #: include/default_domains.php:1068
 msgid "Working with stone"
-msgstr ""
+msgstr "پتھروں کا کام کرنا"
 
 #: include/default_domains.php:1069
 msgid "Working with bricks"
-msgstr ""
+msgstr "اینٹیں بنانا"
 
 #: include/default_domains.php:1070
 msgid "Working with chemicals"
-msgstr ""
+msgstr "کیمیائی کام کرنا"
 
 #: include/default_domains.php:1071
 msgid "Explode"
-msgstr ""
+msgstr "پھوٹنا/ اڑنا"
 
 #: include/default_domains.php:1072
 msgid "Working with wood"
-msgstr ""
+msgstr "چوب کاری"
 
 #: include/default_domains.php:1073
 msgid "Lumbering"
-msgstr ""
+msgstr "ہری کشی کرنا"
 
 #: include/default_domains.php:1074
 msgid "Wood"
-msgstr ""
+msgstr "لکڑی"
 
 #: include/default_domains.php:1075
 msgid "Working with paper"
-msgstr ""
+msgstr "کاغذ کا کام کرنا"
 
 #: include/default_domains.php:1076
 msgid "Crafts"
-msgstr ""
+msgstr "کاری گری،ہنر مندی، دست کاری،مکاری، ہوشیاری"
 
 #: include/default_domains.php:1077
 msgid "Cordage"
-msgstr ""
+msgstr "رسی"
 
 #: include/default_domains.php:1078
 msgid "Weaving baskets and mats"
-msgstr ""
+msgstr "ٹوکریاں اور چارپائیاں بننا"
 
 #: include/default_domains.php:1079
 msgid "Working with leather"
-msgstr ""
+msgstr "چمڑے کا کام کرنا"
 
 #: include/default_domains.php:1080
 msgid "Working with bone"
-msgstr ""
+msgstr "ہڈیوں کا کام کرنا"
 
 #: include/default_domains.php:1081
 msgid "Art"
-msgstr ""
+msgstr "فن"
 
 #: include/default_domains.php:1082
 msgid "Draw, paint"
-msgstr ""
+msgstr "تصویر بنانا"
 
 #: include/default_domains.php:1083
 msgid "Photography"
-msgstr ""
+msgstr "تصویر بنانا"
 
 #: include/default_domains.php:1084
 msgid "Sculpture"
-msgstr ""
+msgstr "سنگ تراشی، مجسمہ سازی"
 
 #: include/default_domains.php:1085
 msgid "Working with land"
-msgstr ""
+msgstr "زمین داری کرنا"
 
 #: include/default_domains.php:1086
 msgid "Working with water"
-msgstr ""
+msgstr "پانی کا کام مثلاً آبپاشی کرنا"
 
 #: include/default_domains.php:1087
 msgid "Plumber"
-msgstr ""
+msgstr "پلمبر /نل ساز"
 
 #: include/default_domains.php:1088
 msgid "Conveying water"
-msgstr ""
+msgstr "پلمبری کرنا، پانی مہیا کرنا"
 
 #: include/default_domains.php:1089
 msgid "Controlling water"
-msgstr ""
+msgstr "ڈیم بنانا،پانی کو قابو میں رکھنا"
 
 #: include/default_domains.php:1090
 msgid "Working in the sea"
-msgstr ""
+msgstr "سنمدر میں کام کرنا"
 
 #: include/default_domains.php:1091
 msgid "Working with machines"
-msgstr ""
+msgstr "مشینی کام"
 
 #: include/default_domains.php:1092
 msgid "Working with electricity"
-msgstr ""
+msgstr "بجلی کا کام"
 
 #: include/default_domains.php:1093
 msgid "Tool"
-msgstr ""
+msgstr "آلات/ اوزار"
 
 #: include/default_domains.php:1094
 msgid "Cutting tool"
-msgstr ""
+msgstr "کاٹنے والے اوزار"
 
 #: include/default_domains.php:1095
 msgid "Poking tool"
-msgstr ""
+msgstr "سوراخ کرنے والے اوزار"
 
 #: include/default_domains.php:1096
 msgid "Digging tool"
-msgstr ""
+msgstr "کھُدائی والے اوزار"
 
 #: include/default_domains.php:1097
 msgid "Pounding tool"
-msgstr ""
+msgstr "کوٹنے والے ہتھیار یا اوزار مثلاَ ہتھوڑا وغیرہ"
 
 #: include/default_domains.php:1098
 msgid "Carrying tool"
-msgstr ""
+msgstr "اُٹھانے والے اوزار"
 
 #: include/default_domains.php:1099
 msgid "Lifting tool"
-msgstr ""
+msgstr "ہٹانے کے اوزار"
 
 #: include/default_domains.php:1100
 msgid "Fastening tool"
-msgstr ""
+msgstr "باندھنے کے اوزار"
 
 #: include/default_domains.php:1101
 msgid "Holding tool"
-msgstr ""
+msgstr "پکڑنے کے اوزار"
 
 #: include/default_domains.php:1102
 msgid "Container"
-msgstr ""
+msgstr "ایک قسم کاڈبہ یعنی برتن"
 
 #: include/default_domains.php:1103
 msgid "Bag"
-msgstr ""
+msgstr "تھیلا"
 
 #: include/default_domains.php:1104
 msgid "Sheath"
-msgstr ""
+msgstr "نیام، غلاف، خول"
 
 #: include/default_domains.php:1105
 msgid "Parts of tools"
-msgstr ""
+msgstr "اوزاروں کے حصے"
 
 #: include/default_domains.php:1106
 msgid "Machine"
-msgstr ""
+msgstr "مشین"
 
 #: include/default_domains.php:1107
 msgid "Finance"
-msgstr ""
+msgstr "مالیہ، مالیات، مال گزاری، آمدنی،محاصل، سرمایہ لگانا،مالی کاروبار کرنا"
 
 #: include/default_domains.php:1108
 msgid "Have wealth"
-msgstr ""
+msgstr "دولت مند ہونا، دولت رکھنا"
 
 #: include/default_domains.php:1109
 msgid "Own, possess"
-msgstr ""
+msgstr "ملکیت"
 
 #: include/default_domains.php:1110
 msgid "Rich"
-msgstr ""
+msgstr "امیر"
 
 #: include/default_domains.php:1111
 msgid "Poor"
-msgstr ""
+msgstr "غریب"
 
 #: include/default_domains.php:1112
 msgid "Store wealth"
-msgstr ""
+msgstr "دولت جمع کرنا"
 
 #: include/default_domains.php:1113
 msgid "Possession, property"
-msgstr ""
+msgstr "جائیداد"
 
 #: include/default_domains.php:1114
 msgid "Accumulate wealth"
-msgstr ""
+msgstr "مالی فراوانی، دولت جمع کرنا، اکٹھا کرنا، ڈھیر لگانا"
 
 #: include/default_domains.php:1115
 msgid "Produce wealth"
-msgstr ""
+msgstr "دولت پیدا کرنا"
 
 #: include/default_domains.php:1116
 msgid "Make profit"
-msgstr ""
+msgstr "نفع کمانا، مال بنانا"
 
 #: include/default_domains.php:1117
 msgid "Lose wealth"
-msgstr ""
+msgstr "دولت گنوانا،"
 
 #: include/default_domains.php:1118
 msgid "Frugal"
-msgstr ""
+msgstr "کفایت شعار، کم خرچ، فضول خرچی سے بچنے والا،سلامت رو"
 
 #: include/default_domains.php:1119
 msgid "Greedy"
-msgstr ""
+msgstr "لالچی"
 
 #: include/default_domains.php:1120
 msgid "Collect"
-msgstr ""
+msgstr "جمع کرنا"
 
 #: include/default_domains.php:1121
 msgid "Earn"
-msgstr ""
+msgstr "کمانا"
 
 #: include/default_domains.php:1122
 msgid "Share wealth"
-msgstr ""
+msgstr "دولت میں شریک ہونا، دولت شیئر کرنا"
 
 #: include/default_domains.php:1123
 msgid "Give, donate"
-msgstr ""
+msgstr "عطیہ دینا"
 
 #: include/default_domains.php:1124
 msgid "Generous"
-msgstr ""
+msgstr "سخی،فیاض،بلند حوصلہ، دریا دِل، عالی ہمت"
 
 #: include/default_domains.php:1125
 msgid "Stingy"
-msgstr ""
+msgstr "کنجوس، بخیل"
 
 #: include/default_domains.php:1126
 msgid "Beg"
-msgstr ""
+msgstr "بھیگ مانگنا"
 
 #: include/default_domains.php:1127
 msgid "Financial transaction"
-msgstr ""
+msgstr "مالیاتی کاروبار"
 
 #: include/default_domains.php:1128
 msgid "Buy"
-msgstr ""
+msgstr "خریدنا"
 
 #: include/default_domains.php:1129
 msgid "Sell"
-msgstr ""
+msgstr "بیچنا"
 
 #: include/default_domains.php:1130
 msgid "Price"
-msgstr ""
+msgstr "قیمت"
 
 #: include/default_domains.php:1131
 msgid "Expensive"
-msgstr ""
+msgstr "قیمتی"
 
 #: include/default_domains.php:1132
 msgid "Cheap"
-msgstr ""
+msgstr "سستا"
 
 #: include/default_domains.php:1133
 msgid "Free of charge"
-msgstr ""
+msgstr "فری"
 
 #: include/default_domains.php:1134
 msgid "Bargain"
-msgstr ""
+msgstr "بھاؤ تاؤ، سودا، معاملہ، چیز جو خریدی جائے"
 
 #: include/default_domains.php:1135
 msgid "Pay"
-msgstr ""
+msgstr "ادا کرنا، پیسے ادا کرنا"
 
 #: include/default_domains.php:1136
 msgid "Hire, rent"
-msgstr ""
+msgstr "کرایہ پر لینا یادینا، اُجرت دے کر کام لینا کرایہ،  مالیہ،"
 
 #: include/default_domains.php:1137
 msgid "Spend"
-msgstr ""
+msgstr "خرچ کرنا"
 
 #: include/default_domains.php:1138
 msgid "Store, marketplace"
-msgstr ""
+msgstr "سٹور"
 
 #: include/default_domains.php:1139
 msgid "Exchange, trade"
-msgstr ""
+msgstr "تبادلہ، تجارت"
 
 #: include/default_domains.php:1140
 msgid "Borrow"
-msgstr ""
+msgstr "اُدھار لینا"
 
 #: include/default_domains.php:1141
 msgid "Lend"
-msgstr ""
+msgstr "ادھار دینا"
 
 #: include/default_domains.php:1142
 msgid "Give pledge, bond"
-msgstr ""
+msgstr "گروی دینا، بانڈ"
 
 #: include/default_domains.php:1143
 msgid "Owe"
-msgstr ""
+msgstr "مقروض ہونا، ممنون ہونا، زیر بار احسان ہونا"
 
 #: include/default_domains.php:1144
 msgid "Repay debt"
-msgstr ""
+msgstr "قرض ادا کرنا"
 
 #: include/default_domains.php:1145
 msgid "Credit"
-msgstr ""
+msgstr "اعتبار، بھروسہ، یقین، اعتماد، شہرت، ساکھ،قرض، ادھار، جمع، وصولی"
 
 #: include/default_domains.php:1146
 msgid "Money"
-msgstr ""
+msgstr "رقم،پیسہ"
 
 #: include/default_domains.php:1147
 msgid "Monetary units"
-msgstr ""
+msgstr "زرکی اکائی"
 
 #: include/default_domains.php:1148
 msgid "Accounting"
-msgstr ""
+msgstr "شماریات، حساب کتاب"
 
 #: include/default_domains.php:1149
 msgid "Tax"
-msgstr ""
+msgstr "ٹیکسٹ"
 
 #: include/default_domains.php:1150
 msgid "Dishonest financial practices"
@@ -5745,1300 +5745,1300 @@ msgstr ""
 
 #: include/default_domains.php:1151
 msgid "Steal"
-msgstr ""
+msgstr "چرانا"
 
 #: include/default_domains.php:1152
 msgid "Cheat"
-msgstr ""
+msgstr "دھوکہ"
 
 #: include/default_domains.php:1153
 msgid "Extort money"
-msgstr ""
+msgstr "رقم کی جبری حصول"
 
 #: include/default_domains.php:1154
 msgid "Take by force"
-msgstr ""
+msgstr "طاقت سے لینا/ چھیننا"
 
 #: include/default_domains.php:1155
 msgid "Bribe"
-msgstr ""
+msgstr "رشوت"
 
 #: include/default_domains.php:1156
 msgid "Smuggle"
-msgstr ""
+msgstr "گھاٹ ماری/ سمگلِنگ"
 
 #: include/default_domains.php:1157
 msgid "Business organization"
-msgstr ""
+msgstr "کاروباری تنظیم"
 
 #: include/default_domains.php:1158
 msgid "Management"
-msgstr ""
+msgstr "انتظام"
 
 #: include/default_domains.php:1159
 msgid "Work for someone"
-msgstr ""
+msgstr "کسی کا کام کرنا"
 
 #: include/default_domains.php:1160
 msgid "Marketing"
-msgstr ""
+msgstr "خریدو فروخت کرنا، منڈی میں لانا"
 
 #: include/default_domains.php:1161
 msgid "Commerce"
-msgstr ""
+msgstr "اصولِ تجارت"
 
 #: include/default_domains.php:1162
 msgid "Economics"
-msgstr ""
+msgstr "معاشیات، اقتصادیات"
 
 #: include/default_domains.php:1163
 msgid "Insurance"
-msgstr ""
+msgstr "معاہدہ"
 
 #: include/default_domains.php:1164 webonary/Webonary_SemanticDomains.php:135
 msgid "Physical actions"
-msgstr ""
+msgstr "طبعی عمل"
 
 #: include/default_domains.php:1165
 msgid "Posture"
-msgstr ""
+msgstr "چال ڈھال/ اعضاء جسمانی  کی ظاہری کیفیت"
 
 #: include/default_domains.php:1166
 msgid "Stand"
-msgstr ""
+msgstr "کھڑا ہوا"
 
 #: include/default_domains.php:1167
 msgid "Sit"
-msgstr ""
+msgstr "بیٹھنا"
 
 #: include/default_domains.php:1168
 msgid "Lie down"
-msgstr ""
+msgstr "لیٹنا"
 
 #: include/default_domains.php:1169
 msgid "Kneel"
-msgstr ""
+msgstr "گھٹنوں کے بل بیٹھنا"
 
 #: include/default_domains.php:1170
 msgid "Bow"
-msgstr ""
+msgstr "سر جُھکانا، سر خم کرنا، آداب بجا لانا"
 
 #: include/default_domains.php:1171
 msgid "Lean"
-msgstr ""
+msgstr "جُھکنا، ترچھا ہونا"
 
 #: include/default_domains.php:1172
 msgid "Straight posture"
-msgstr ""
+msgstr "سیدھے وضع قصع"
 
 #: include/default_domains.php:1173
 msgid "Relaxed posture"
-msgstr ""
+msgstr "ڈھیلا انداز،ڈھیلا طرز"
 
 #: include/default_domains.php:1174
 msgid "Bend down"
-msgstr ""
+msgstr "نیچے کو خم ہونا"
 
 #: include/default_domains.php:1175
 msgid "Move a part of the body"
-msgstr ""
+msgstr "جسم کے کسی ایک حصے کی حرکت"
 
 #: include/default_domains.php:1176
 msgid "Move"
-msgstr ""
+msgstr "حرکت"
 
 #: include/default_domains.php:1177
 msgid "Manner of movement"
-msgstr ""
+msgstr "طرز یا ڈھب ِ حرکت"
 
 #: include/default_domains.php:1178
 msgid "Walk"
-msgstr ""
+msgstr "چلنا"
 
 #: include/default_domains.php:1179
 msgid "Run"
-msgstr ""
+msgstr "دوڑنا"
 
 #: include/default_domains.php:1180
 msgid "Crawl"
-msgstr ""
+msgstr "رینگنا"
 
 #: include/default_domains.php:1181
 msgid "Jump"
-msgstr ""
+msgstr "چھلانگ"
 
 #: include/default_domains.php:1182
 msgid "Move quickly"
-msgstr ""
+msgstr "جلدی حرکت"
 
 #: include/default_domains.php:1183
 msgid "Move slowly"
-msgstr ""
+msgstr "آہستہ حرکت"
 
 #: include/default_domains.php:1184
 msgid "Wander"
-msgstr ""
+msgstr "گھومنا"
 
 #: include/default_domains.php:1185
 msgid "Graceful"
-msgstr ""
+msgstr "محتاط"
 
 #: include/default_domains.php:1186
 msgid "Clumsy"
-msgstr ""
+msgstr "بے ڈھنگا"
 
 #: include/default_domains.php:1187
 msgid "Walk with difficulty"
-msgstr ""
+msgstr "مشکل سے چلنا"
 
 #: include/default_domains.php:1188
 msgid "Slip, slide"
-msgstr ""
+msgstr "سرک جانا، پھسلنا"
 
 #: include/default_domains.php:1189
 msgid "Steady, unsteady"
-msgstr ""
+msgstr "ثابت قدم،قاہم مزاج، میانہ رویکسان طور پر–جس کا مزاج ایک جیسا نہ ہو،"
 
 #: include/default_domains.php:1190
 msgid "Balance"
-msgstr ""
+msgstr "توازن"
 
 #: include/default_domains.php:1191
 msgid "Move noisily"
-msgstr ""
+msgstr "شور مچاتے ہوئے حرکت کرنا"
 
 #: include/default_domains.php:1192
 msgid "Move in a direction"
-msgstr ""
+msgstr "کسی طرف حرکت کرنا"
 
 #: include/default_domains.php:1193
 msgid "Move forward"
-msgstr ""
+msgstr "آگے حرکت کرنا"
 
 #: include/default_domains.php:1194
 msgid "Move back"
-msgstr ""
+msgstr "پیچھے مڑنا یا حرکت کرنا"
 
 #: include/default_domains.php:1195
 msgid "Move sideways"
-msgstr ""
+msgstr "ایک طرف کو مڑنا"
 
 #: include/default_domains.php:1196
 msgid "Move up"
-msgstr ""
+msgstr "اوپر کو حرکت کرنا"
 
 #: include/default_domains.php:1197
 msgid "Move down"
-msgstr ""
+msgstr "نیچے کو ہونا یا حرکت کرنا"
 
 #: include/default_domains.php:1198
 msgid "Fall"
-msgstr ""
+msgstr "گرنا"
 
 #: include/default_domains.php:1199
 msgid "Turn"
-msgstr ""
+msgstr "مڑنا"
 
 #: include/default_domains.php:1200
 msgid "Move in a circle"
-msgstr ""
+msgstr "دائرے میں حرکت کرنا"
 
 #: include/default_domains.php:1201
 msgid "Move back and forth"
-msgstr ""
+msgstr "آگے پیچھے حرکت کرنا"
 
 #: include/default_domains.php:1202
 msgid "Move straight without turning"
-msgstr ""
+msgstr "موڑنے کی بجائے سیدھی حرکت کرنا"
 
 #: include/default_domains.php:1203
 msgid "Move toward something"
-msgstr ""
+msgstr "کسی چیز کی طرف حرکت کرنا"
 
 #: include/default_domains.php:1204
 msgid "Move away"
-msgstr ""
+msgstr "دور جانا،"
 
 #: include/default_domains.php:1205
 msgid "Go"
-msgstr ""
+msgstr "جانا"
 
 #: include/default_domains.php:1206
 msgid "Come"
-msgstr ""
+msgstr "آنا"
 
 #: include/default_domains.php:1207
 msgid "Leave"
-msgstr ""
+msgstr "چھوڑنا"
 
 #: include/default_domains.php:1208
 msgid "Arrive"
-msgstr ""
+msgstr "آنا"
 
 #: include/default_domains.php:1209
 msgid "Move in"
-msgstr ""
+msgstr "اندر کو ہونا"
 
 #: include/default_domains.php:1210
 msgid "Move out"
-msgstr ""
+msgstr "باہر کو ہونا یا جانا"
 
 #: include/default_domains.php:1211
 msgid "Move past, over, through"
-msgstr ""
+msgstr "کسی کوچھوڑنا، اوپر سے ہونا یا کسی چیز میں سے گزرنا"
 
 #: include/default_domains.php:1212
 msgid "Return"
-msgstr ""
+msgstr "واپس"
 
 #: include/default_domains.php:1213
 msgid "Travel"
-msgstr ""
+msgstr "سفر کرنا"
 
 #: include/default_domains.php:1214
 msgid "Travel by land"
-msgstr ""
+msgstr "بری سفر"
 
 #: include/default_domains.php:1215
 msgid "Vehicle"
-msgstr ""
+msgstr "گاڑی"
 
 #: include/default_domains.php:1216
 msgid "Railroad"
-msgstr ""
+msgstr "ریل کی"
 
 #: include/default_domains.php:1217
 msgid "Travel by water"
-msgstr ""
+msgstr "بحری سفر"
 
 #: include/default_domains.php:1218
 msgid "Boat"
-msgstr ""
+msgstr "کشتی"
 
 #: include/default_domains.php:1219
 msgid "Swim"
-msgstr ""
+msgstr "تیرنا"
 
 #: include/default_domains.php:1220
 msgid "Dive"
-msgstr ""
+msgstr "غوطہ لگانا"
 
 #: include/default_domains.php:1221
 msgid "Fly"
-msgstr ""
+msgstr "اڑنا"
 
 #: include/default_domains.php:1222
 msgid "Travel in space"
-msgstr ""
+msgstr "خلائی سفر کرنا"
 
 #: include/default_domains.php:1223
 msgid "Move to a new house"
-msgstr ""
+msgstr "نئے گھر میں جانا"
 
 #: include/default_domains.php:1224
 msgid "Way, route"
-msgstr ""
+msgstr "راستہ"
 
 #: include/default_domains.php:1225
 msgid "Lose your way"
-msgstr ""
+msgstr "راستہ بھول جانا"
 
 #: include/default_domains.php:1226
 msgid "Map"
-msgstr ""
+msgstr "نقشہ"
 
 #: include/default_domains.php:1227
 msgid "Accompany"
-msgstr ""
+msgstr "ساتھ دینا، یا ساتھ ہونا یا ساتھ سفر کرنا"
 
 #: include/default_domains.php:1228
 msgid "Go first"
-msgstr ""
+msgstr "پہلے جانا"
 
 #: include/default_domains.php:1229
 msgid "Follow"
-msgstr ""
+msgstr "پیروی کرنا"
 
 #: include/default_domains.php:1230
 msgid "Guide"
-msgstr ""
+msgstr "رہنمائی کرنا"
 
 #: include/default_domains.php:1231
 msgid "Move together"
-msgstr ""
+msgstr "ایک ساتھ حرکت کرنا"
 
 #: include/default_domains.php:1232
 msgid "Pursue"
-msgstr ""
+msgstr "تعاقب کرنا"
 
 #: include/default_domains.php:1233
 msgid "Catch, capture"
-msgstr ""
+msgstr "پکڑنا"
 
 #: include/default_domains.php:1234
 msgid "Prevent from moving"
-msgstr ""
+msgstr "حرکت سے روکنا"
 
 #: include/default_domains.php:1235
 msgid "Escape"
-msgstr ""
+msgstr "بھاگنا"
 
 #: include/default_domains.php:1236
 msgid "Set free"
-msgstr ""
+msgstr "آزاد کرنا"
 
 #: include/default_domains.php:1237
 msgid "Not moving"
-msgstr ""
+msgstr "حرکت نہ کرنا"
 
 #: include/default_domains.php:1238
 msgid "Stop moving"
-msgstr ""
+msgstr "حرکت کرنے سے رُکنا"
 
 #: include/default_domains.php:1239
 msgid "Stay, remain"
-msgstr ""
+msgstr "رُکنا، ٹھرے رہنا"
 
 #: include/default_domains.php:1240
 msgid "Wait"
-msgstr ""
+msgstr "انتظار"
 
 #: include/default_domains.php:1241
 msgid "Send someone"
-msgstr ""
+msgstr "کسی کو بھیجنا"
 
 #: include/default_domains.php:1242
 msgid "Move something"
-msgstr ""
+msgstr "کسی چیز کا حرکت کرنا"
 
 #: include/default_domains.php:1243
 msgid "Carry"
-msgstr ""
+msgstr "اُٹھانا"
 
 #: include/default_domains.php:1244
 msgid "Throw"
-msgstr ""
+msgstr "پھینکنا"
 
 #: include/default_domains.php:1245
 msgid "Catch"
-msgstr ""
+msgstr "پکڑنا"
 
 #: include/default_domains.php:1246
 msgid "Shake"
-msgstr ""
+msgstr "ملانا، ہلانا"
 
 #: include/default_domains.php:1247
 msgid "Knock over"
-msgstr ""
+msgstr "اوندھ جانا/ گر جانا"
 
 #: include/default_domains.php:1248
 msgid "Set upright"
-msgstr ""
+msgstr "اپنی جگہ رکھنا"
 
 #: include/default_domains.php:1249
 msgid "Move something in a direction"
-msgstr ""
+msgstr "کسی چیز کا سمت میں حرکت کرنا"
 
 #: include/default_domains.php:1250
 msgid "Put in front"
-msgstr ""
+msgstr "سامنے رکھنا"
 
 #: include/default_domains.php:1251
 msgid "Put in back"
-msgstr ""
+msgstr "پس پُشت ڈالنا"
 
 #: include/default_domains.php:1252
 msgid "Put aside"
-msgstr ""
+msgstr "ایک طرف رکھنا"
 
 #: include/default_domains.php:1253
 msgid "Lift"
-msgstr ""
+msgstr "اُٹھانا"
 
 #: include/default_domains.php:1254
 msgid "Hang"
-msgstr ""
+msgstr "لٹکنا یا لٹکانا"
 
 #: include/default_domains.php:1255
 msgid "Lower something"
-msgstr ""
+msgstr "زیر کرنا، یا نیچے کرنا"
 
 #: include/default_domains.php:1256
 msgid "Put in"
-msgstr ""
+msgstr "ڈالنا"
 
 #: include/default_domains.php:1257
 msgid "Take something out of something"
-msgstr ""
+msgstr "کسی چیز کو باہر نکالنا"
 
 #: include/default_domains.php:1258
 msgid "Pull"
-msgstr ""
+msgstr "کھنچنا"
 
 #: include/default_domains.php:1259
 msgid "Push"
-msgstr ""
+msgstr "دھکیلنا"
 
 #: include/default_domains.php:1260
 msgid "Take somewhere"
-msgstr ""
+msgstr "کہیں لے جانا"
 
 #: include/default_domains.php:1261
 msgid "Take something from somewhere"
-msgstr ""
+msgstr "کسی جگہ سے کسی کو لے جانا"
 
 #: include/default_domains.php:1262
 msgid "Return something"
-msgstr ""
+msgstr "کسی چیز کی واپسی کرنا"
 
 #: include/default_domains.php:1263
 msgid "Send"
-msgstr ""
+msgstr "بھیجنا"
 
 #: include/default_domains.php:1264
 msgid "Chase away"
-msgstr ""
+msgstr "بدر کرنا"
 
 #: include/default_domains.php:1265
 msgid "Drive along"
-msgstr ""
+msgstr "کسی کو ساتھ لے جانا"
 
 #: include/default_domains.php:1266
 msgid "Handle something"
-msgstr ""
+msgstr "کسی چیز کا بندوبست کرنا یا انتظام کرنا"
 
 #: include/default_domains.php:1267
 msgid "Touch"
-msgstr ""
+msgstr "چھونا"
 
 #: include/default_domains.php:1268
 msgid "Pick up"
-msgstr ""
+msgstr "اٹھانا"
 
 #: include/default_domains.php:1269
 msgid "Put down"
-msgstr ""
+msgstr "نیچے چھوڑنا"
 
 #: include/default_domains.php:1270
 msgid "Hold"
-msgstr ""
+msgstr "پکڑنا"
 
 #: include/default_domains.php:1271
 msgid "Actions of the hand"
-msgstr ""
+msgstr "ہاتھوں کے عوامل"
 
 #: include/default_domains.php:1272
 msgid "Support"
-msgstr ""
+msgstr "تھامنا اُٹھانا،سہارا دینا"
 
 #: include/default_domains.php:1273
 msgid "Extend"
-msgstr ""
+msgstr "بڑھانا،پھیلانا، لمبا کرنا"
 
 #: include/default_domains.php:1274
 msgid "Turn something"
-msgstr ""
+msgstr "کسی چیز کا موڑنا"
 
 #: include/default_domains.php:1275
 msgid "Open"
-msgstr ""
+msgstr "کُھلنا"
 
 #: include/default_domains.php:1276
 msgid "Shut, close"
-msgstr ""
+msgstr "بند کرنا"
 
 #: include/default_domains.php:1277
 msgid "Block, dam up"
-msgstr ""
+msgstr "روکنا، انسداد کرنا،روک"
 
 #: include/default_domains.php:1278
 msgid "Limit"
-msgstr ""
+msgstr "حد"
 
 #: include/default_domains.php:1279
 msgid "Cover"
-msgstr ""
+msgstr "ڈھانپنا، ڈھکنا، چھپا دینا"
 
 #: include/default_domains.php:1280
 msgid "Uncover"
-msgstr ""
+msgstr "سرپوش الگ کرنا، کھولنا"
 
 #: include/default_domains.php:1281
 msgid "Wrap"
-msgstr ""
+msgstr "لپیٹنا"
 
 #: include/default_domains.php:1282
 msgid "Spread, smear"
-msgstr ""
+msgstr "پھیلانا"
 
 #: include/default_domains.php:1283
 msgid "Transport"
-msgstr ""
+msgstr "مال بردار"
 
 #: include/default_domains.php:1284
 msgid "Have, be with"
-msgstr ""
+msgstr "کسی چیز کا ہونا"
 
 #: include/default_domains.php:1285
 msgid "Give, hand to"
-msgstr ""
+msgstr "دینا"
 
 #: include/default_domains.php:1286
 msgid "Receive"
-msgstr ""
+msgstr "حاصل کرنا"
 
 #: include/default_domains.php:1287
 msgid "Get"
-msgstr ""
+msgstr "حاصل کرنا/ پانا"
 
 #: include/default_domains.php:1288
 msgid "Distribute"
-msgstr ""
+msgstr "تقسیم کرنا"
 
 #: include/default_domains.php:1289
 msgid "Keep something"
-msgstr ""
+msgstr "کسی چیز کا رکھنا"
 
 #: include/default_domains.php:1290
 msgid "Leave something"
-msgstr ""
+msgstr "کسی چیز کو چھوڑنا یا تَرک کرنا"
 
 #: include/default_domains.php:1291
 msgid "Throw away"
-msgstr ""
+msgstr "پرے پھینکنا"
 
 #: include/default_domains.php:1292
 msgid "Not have"
-msgstr ""
+msgstr "نہ ہونا"
 
 #: include/default_domains.php:1293
 msgid "Arrange"
-msgstr ""
+msgstr "انتظام/ترتیب"
 
 #: include/default_domains.php:1294
 msgid "Gather"
-msgstr ""
+msgstr "اکھٹا ہونا"
 
 #: include/default_domains.php:1295
 msgid "Separate, scatter"
-msgstr ""
+msgstr "علیہدہ کرنا، پھیلانا"
 
 #: include/default_domains.php:1296
 msgid "Include"
-msgstr ""
+msgstr "شامل کرنا"
 
 #: include/default_domains.php:1297
 msgid "Special"
-msgstr ""
+msgstr "خاص"
 
 #: include/default_domains.php:1298
 msgid "Join, attach"
-msgstr ""
+msgstr "ملانا"
 
 #: include/default_domains.php:1299
 msgid "Link, connect"
-msgstr ""
+msgstr "ملانا"
 
 #: include/default_domains.php:1300
 msgid "Stick together"
-msgstr ""
+msgstr "ایک دوسرے سے چھپک جانا"
 
 #: include/default_domains.php:1301
 msgid "Add to something"
-msgstr ""
+msgstr "کسی چیز کا اضافہ کرنا"
 
 #: include/default_domains.php:1302
 msgid "Remove, take apart"
-msgstr ""
+msgstr "ہٹانا"
 
 #: include/default_domains.php:1303
 msgid "Mix"
-msgstr ""
+msgstr "اکھٹنا ہونا یا کرنا"
 
 #: include/default_domains.php:1304
 msgid "Pure, unmixed"
-msgstr ""
+msgstr "خالص"
 
 #: include/default_domains.php:1305
 msgid "Tie"
-msgstr ""
+msgstr "باندھنا"
 
 #: include/default_domains.php:1306
 msgid "Rope, string"
-msgstr ""
+msgstr "رسی،رسہ"
 
 #: include/default_domains.php:1307
 msgid "Tangle"
-msgstr ""
+msgstr "الجھنا، پھنسانا"
 
 #: include/default_domains.php:1308
 msgid "Organize"
-msgstr ""
+msgstr "ترتیب دینا"
 
 #: include/default_domains.php:1309
 msgid "Disorganized"
-msgstr ""
+msgstr "بے ترتیب"
 
 #: include/default_domains.php:1310
 msgid "Substitute"
-msgstr ""
+msgstr "نیمُ لبدل"
 
 #: include/default_domains.php:1311
 msgid "Multiple things moving"
-msgstr ""
+msgstr "کئی چیزوں کی حرکت"
 
 #: include/default_domains.php:1312
 msgid "Simple, complicated"
-msgstr ""
+msgstr "سادہ / مشکل"
 
 #: include/default_domains.php:1313
 msgid "Put"
-msgstr ""
+msgstr "رکھنا"
 
 #: include/default_domains.php:1314
 msgid "Load, pile"
-msgstr ""
+msgstr "لادنا"
 
 #: include/default_domains.php:1315
 msgid "Fill, cover"
-msgstr ""
+msgstr "بھرنا"
 
 #: include/default_domains.php:1316
 msgid "Hide"
-msgstr ""
+msgstr "چھپانا"
 
 #: include/default_domains.php:1317 include/searchform_func.php:281
 #: webonary/Webonary_Configuration.php:55
 msgid "Search"
-msgstr "تلاش کیجئے"
+msgstr "تلاش کرنا"
 
 #: include/default_domains.php:1318
 msgid "Find"
-msgstr ""
+msgstr "ڈھونڈنا"
 
 #: include/default_domains.php:1319
 msgid "Lose, misplace"
-msgstr ""
+msgstr "کھونا"
 
 #: include/default_domains.php:1320
 msgid "Physical impact"
-msgstr ""
+msgstr "جسمانی دباؤ،جکڑنا،تصادم"
 
 #: include/default_domains.php:1321
 msgid "Hit"
-msgstr ""
+msgstr "مارنا/لگنا"
 
 #: include/default_domains.php:1322
 msgid "Aim at a target"
-msgstr ""
+msgstr "نشانہ باندھنا"
 
 #: include/default_domains.php:1323
 msgid "Kick"
-msgstr ""
+msgstr "ٹھوکر مارنا، لات مارنا"
 
 #: include/default_domains.php:1324
 msgid "Press"
-msgstr ""
+msgstr "دبانا"
 
 #: include/default_domains.php:1325
 msgid "Rub"
-msgstr ""
+msgstr "رگڑنا"
 
 #: include/default_domains.php:1326
 msgid "Grind"
-msgstr ""
+msgstr "پیسنا"
 
 #: include/default_domains.php:1327
 msgid "Mark"
-msgstr ""
+msgstr "نشان لگانا"
 
 #: include/default_domains.php:1328
 msgid "Divide into pieces"
-msgstr ""
+msgstr "ٹکڑوں میں تقسیم کرنا"
 
 #: include/default_domains.php:1329
 msgid "Break"
-msgstr ""
+msgstr "توڑنا"
 
 #: include/default_domains.php:1330
 msgid "Crack"
-msgstr ""
+msgstr "چیر"
 
 #: include/default_domains.php:1331
 msgid "Cut"
-msgstr ""
+msgstr "کاٹنا"
 
 #: include/default_domains.php:1332
 msgid "Tear, rip"
-msgstr ""
+msgstr "چیرنا، پھاڑنا"
 
 #: include/default_domains.php:1333
 msgid "Make hole, opening"
-msgstr ""
+msgstr "کھولنا، سوراخ کرنا"
 
 #: include/default_domains.php:1334
 msgid "Dig"
-msgstr ""
+msgstr "کھودنا"
 
 #: include/default_domains.php:1335
 msgid "Break, wear out"
-msgstr ""
+msgstr "توڑنا / ٹوٹنا"
 
 #: include/default_domains.php:1336
 msgid "Damage"
-msgstr ""
+msgstr "نقصان پہنچانا، ضرر پہنچانا"
 
 #: include/default_domains.php:1337
 msgid "Tear down"
-msgstr ""
+msgstr "پھاڑنا"
 
 #: include/default_domains.php:1338
 msgid "Destroy"
-msgstr ""
+msgstr "تباہ کرنا / برباد کرنا"
 
 #: include/default_domains.php:1339
 msgid "Repair"
-msgstr ""
+msgstr "مرمت کرنا"
 
 #: include/default_domains.php:1340 webonary/Webonary_SemanticDomains.php:136
 msgid "States"
-msgstr ""
+msgstr "حالت"
 
 #: include/default_domains.php:1341
 msgid "Quantity"
-msgstr ""
+msgstr "مقدار"
 
 #: include/default_domains.php:1342
 msgid "Number"
-msgstr ""
+msgstr "تعداد"
 
 #: include/default_domains.php:1344
 msgid "One"
-msgstr ""
+msgstr "ایک"
 
 #: include/default_domains.php:1345
 msgid "Two"
-msgstr ""
+msgstr "دو"
 
 #: include/default_domains.php:1347
 msgid "Number of times"
-msgstr ""
+msgstr "وقت کی تعداد"
 
 #: include/default_domains.php:1348
 msgid "Multiples"
-msgstr ""
+msgstr "بکثرت، ایسا عدد جو دوسرے پر پورا پورا تقسیم ہو سکے"
 
 #: include/default_domains.php:1349
 msgid "Numbered group"
-msgstr ""
+msgstr "گروہی مقدار"
 
 #: include/default_domains.php:1350
 msgid "Fraction"
-msgstr ""
+msgstr "کسر"
 
 #: include/default_domains.php:1351
 msgid "Number series"
-msgstr ""
+msgstr "ہندسی سلسلہ"
 
 #: include/default_domains.php:1352
 msgid "Count"
-msgstr ""
+msgstr "گِننا"
 
 #: include/default_domains.php:1353
 msgid "Mathematics"
-msgstr ""
+msgstr "حساب"
 
 #: include/default_domains.php:1354
 msgid "Add numbers"
-msgstr ""
+msgstr "اعداد کو جمع کرنا"
 
 #: include/default_domains.php:1355
 msgid "Subtract numbers"
-msgstr ""
+msgstr "اعداد کو منفی/ تفریق کرنا"
 
 #: include/default_domains.php:1356
 msgid "Multiply numbers"
-msgstr ""
+msgstr "اعداد کو ضرب دینا"
 
 #: include/default_domains.php:1357
 msgid "Divide numbers"
-msgstr ""
+msgstr "اعداد کو تقسیم کرنا"
 
 #: include/default_domains.php:1358
 msgid "Plural"
-msgstr ""
+msgstr "جمع"
 
 #: include/default_domains.php:1359
 msgid "Many, much"
-msgstr ""
+msgstr "کئی/ ذیادہ"
 
 #: include/default_domains.php:1360
 msgid "Few, little"
-msgstr ""
+msgstr "چند/ کم"
 
 #: include/default_domains.php:1361
 msgid "Group of things"
-msgstr ""
+msgstr "چیزوں کا گروہ"
 
 #: include/default_domains.php:1362
 msgid "More"
-msgstr ""
+msgstr "کئی"
 
 #: include/default_domains.php:1363
 msgid "Less"
-msgstr ""
+msgstr "کم"
 
 #: include/default_domains.php:1364
 msgid "Increase"
-msgstr ""
+msgstr "اضافہ"
 
 #: include/default_domains.php:1365
 msgid "Decrease"
-msgstr ""
+msgstr "کمی"
 
 #: include/default_domains.php:1366
 msgid "All"
-msgstr ""
+msgstr "تمام"
 
 #: include/default_domains.php:1367
 msgid "Some"
-msgstr ""
+msgstr "کچھ"
 
 #: include/default_domains.php:1368
 msgid "None, nothing"
-msgstr ""
+msgstr "کچھ بھی نیہں"
 
 #: include/default_domains.php:1369
 msgid "Both"
-msgstr ""
+msgstr "دونوں میں"
 
 #: include/default_domains.php:1370
 msgid "Most, almost all"
-msgstr ""
+msgstr "اکثر"
 
 #: include/default_domains.php:1371
 msgid "Most, least"
-msgstr ""
+msgstr "اکثر"
 
 #: include/default_domains.php:1372
 msgid "Almost"
-msgstr ""
+msgstr "اکثر"
 
 #: include/default_domains.php:1373
 msgid "Only"
-msgstr ""
+msgstr "صرف"
 
 #: include/default_domains.php:1374
 msgid "Exact"
-msgstr ""
+msgstr "ٹھیک / صحیح"
 
 #: include/default_domains.php:1375
 msgid "Approximate"
-msgstr ""
+msgstr "اندازتا"
 
 #: include/default_domains.php:1376
 msgid "Average"
-msgstr ""
+msgstr "اوسط"
 
 #: include/default_domains.php:1377
 msgid "Whole, complete"
-msgstr ""
+msgstr "مکمل/ تمام"
 
 #: include/default_domains.php:1378
 msgid "Part"
-msgstr ""
+msgstr "حصہ"
 
 #: include/default_domains.php:1379
 msgid "Piece"
-msgstr ""
+msgstr "ٹکڑا/ حصہ"
 
 #: include/default_domains.php:1380
 msgid "Enough"
-msgstr ""
+msgstr "کافی"
 
 #: include/default_domains.php:1381
 msgid "Extra"
-msgstr ""
+msgstr "اضافی"
 
 #: include/default_domains.php:1382
 msgid "Lack"
-msgstr ""
+msgstr "کمی"
 
 #: include/default_domains.php:1383
 msgid "Need"
-msgstr ""
+msgstr "ضرورت"
 
 #: include/default_domains.php:1384
 msgid "Remain, remainder"
-msgstr ""
+msgstr "باقی ماندہ"
 
 #: include/default_domains.php:1385
 msgid "Full"
-msgstr ""
+msgstr "بھرا ہوا"
 
 #: include/default_domains.php:1386
 msgid "Empty"
-msgstr ""
+msgstr "خالی"
 
 #: include/default_domains.php:1387
 msgid "Big"
-msgstr ""
+msgstr "بڑا"
 
 #: include/default_domains.php:1388
 msgid "Small"
-msgstr ""
+msgstr "چھوٹا"
 
 #: include/default_domains.php:1389
 msgid "Long"
-msgstr ""
+msgstr "لمبا"
 
 #: include/default_domains.php:1390
 msgid "Short, not long"
-msgstr ""
+msgstr "چھوٹا"
 
 #: include/default_domains.php:1391
 msgid "Tall"
-msgstr ""
+msgstr "لمبا"
 
 #: include/default_domains.php:1392
 msgid "Short, not tall"
-msgstr ""
+msgstr "چھوٹا"
 
 #: include/default_domains.php:1393
 msgid "Thick"
-msgstr ""
+msgstr "موٹا"
 
 #: include/default_domains.php:1394
 msgid "Thin thing"
-msgstr ""
+msgstr "پتلی چیز"
 
 #: include/default_domains.php:1395
 msgid "Fat person"
-msgstr ""
+msgstr "موٹا آدمی"
 
 #: include/default_domains.php:1396
 msgid "Thin person"
-msgstr ""
+msgstr "پتلا آدمی"
 
 #: include/default_domains.php:1397
 msgid "Wide"
-msgstr ""
+msgstr "کُھلا، چوڑا"
 
 #: include/default_domains.php:1398
 msgid "Narrow"
-msgstr ""
+msgstr "تنگ، بند"
 
 #: include/default_domains.php:1399
 msgid "Big area"
-msgstr ""
+msgstr "بڑا علاقہ"
 
 #: include/default_domains.php:1400
 msgid "Big container, volume"
-msgstr ""
+msgstr "بڑا برتن"
 
 #: include/default_domains.php:1401
 msgid "Distance"
-msgstr ""
+msgstr "فاصلہ"
 
 #: include/default_domains.php:1402
 msgid "Far"
-msgstr ""
+msgstr "دور"
 
 #: include/default_domains.php:1403
 msgid "Near"
-msgstr ""
+msgstr "نزدیک"
 
 #: include/default_domains.php:1404
 msgid "High"
-msgstr ""
+msgstr "اونچا"
 
 #: include/default_domains.php:1405
 msgid "Low"
-msgstr ""
+msgstr "نیچا یا گٹھیا"
 
 #: include/default_domains.php:1406
 msgid "Deep, shallow"
-msgstr ""
+msgstr "گہرہ"
 
 #: include/default_domains.php:1407
 msgid "Fit, size"
-msgstr ""
+msgstr "موزون"
 
 #: include/default_domains.php:1408
 msgid "Tight"
-msgstr ""
+msgstr "کسا ہوا/ جکڑا ہوا"
 
 #: include/default_domains.php:1409
 msgid "Loose"
-msgstr ""
+msgstr "ڈھیلا"
 
 #: include/default_domains.php:1410
 msgid "Wedged in, stuck"
-msgstr ""
+msgstr "کوٹا ہوا، یا پھنسا ہوا"
 
 #: include/default_domains.php:1411
 msgid "Measure"
-msgstr ""
+msgstr "پیمائش"
 
 #: include/default_domains.php:1412
 msgid "Weigh"
-msgstr ""
+msgstr "وزن"
 
 #: include/default_domains.php:1413
 msgid "Heavy"
-msgstr ""
+msgstr "بھاری"
 
 #: include/default_domains.php:1414
 msgid "Light in weight"
-msgstr ""
+msgstr "وزن میں ہلکا"
 
 #: include/default_domains.php:1415
 msgid "Quality"
-msgstr ""
+msgstr "اچھائی ،خصوصیت،خاصییت"
 
 #: include/default_domains.php:1416
 msgid "Shape"
-msgstr ""
+msgstr "شکل"
 
 #: include/default_domains.php:1417
 msgid "Point, dot"
-msgstr ""
+msgstr "نقطہ"
 
 #: include/default_domains.php:1418
 msgid "Line"
-msgstr ""
+msgstr "لائن"
 
 #: include/default_domains.php:1419
 msgid "Straight"
-msgstr ""
+msgstr "سیدھا"
 
 #: include/default_domains.php:1420
 msgid "Flat"
-msgstr ""
+msgstr "ہموار"
 
 #: include/default_domains.php:1421
 msgid "Horizontal"
-msgstr ""
+msgstr "اُفقی"
 
 #: include/default_domains.php:1422
 msgid "Vertical"
-msgstr ""
+msgstr "عمودی"
 
 #: include/default_domains.php:1423
 msgid "Leaning, sloping"
-msgstr ""
+msgstr "جھکاو، نیچے گرنا"
 
 #: include/default_domains.php:1424
 msgid "Bend"
-msgstr ""
+msgstr "ٹیڑھا"
 
 #: include/default_domains.php:1425
 msgid "Roll up"
-msgstr ""
+msgstr "لپیٹنا"
 
 #: include/default_domains.php:1426
 msgid "Twist, wring"
-msgstr ""
+msgstr "مروڑنا، امیٹھ کر پانی ڈالنا"
 
 #: include/default_domains.php:1427
 msgid "Fold"
-msgstr ""
+msgstr "لپیٹنا/ تہ کرنا"
 
 #: include/default_domains.php:1428
 msgid "Round"
-msgstr ""
+msgstr "گول کرنا"
 
 #: include/default_domains.php:1429
 msgid "Concave"
-msgstr ""
+msgstr "گہرا/ محدث"
 
 #: include/default_domains.php:1430
 msgid "Convex"
-msgstr ""
+msgstr "ابھرا/محدب"
 
 #: include/default_domains.php:1431
 msgid "Hollow"
-msgstr ""
+msgstr "کھوکھلا"
 
 #: include/default_domains.php:1432
 msgid "Square"
-msgstr ""
+msgstr "چوکور"
 
 #: include/default_domains.php:1433
 msgid "Pattern, design"
-msgstr ""
+msgstr "نمونہ/ڈیزئن"
 
 #: include/default_domains.php:1434
 msgid "Symmetrical"
-msgstr ""
+msgstr "موزونیت والا"
 
 #: include/default_domains.php:1435
 msgid "Stretch"
-msgstr ""
+msgstr "پھیلانا، کھینچنا، ضرورت سے زیادہ کام کرنا"
 
 #: include/default_domains.php:1436
 msgid "Texture"
-msgstr ""
+msgstr "تار پود، بناوٹ"
 
 #: include/default_domains.php:1437
 msgid "Smooth"
-msgstr ""
+msgstr "نرم"
 
 #: include/default_domains.php:1438
 msgid "Rough"
-msgstr ""
+msgstr "کھردرا"
 
 #: include/default_domains.php:1439
 msgid "Sharp"
-msgstr ""
+msgstr "تیز"
 
 #: include/default_domains.php:1440
 msgid "Pointed"
-msgstr ""
+msgstr "نوکدار، نوکیلا،تیز"
 
 #: include/default_domains.php:1441
 msgid "Blunt"
-msgstr ""
+msgstr "سخت گو، ناتیز"
 
 #: include/default_domains.php:1442
 msgid "Furrow"
-msgstr ""
+msgstr "لکیر، نالی، نالیاں بنانا، ہل چلانا"
 
 #: include/default_domains.php:1443
 msgid "Light"
-msgstr ""
+msgstr "ہلکا یا روشنی"
 
 #: include/default_domains.php:1444
 msgid "Shine"
-msgstr ""
+msgstr "چمک"
 
 #: include/default_domains.php:1445
 msgid "Light source"
-msgstr ""
+msgstr "روشنی کامنبع"
 
 #: include/default_domains.php:1446
 msgid "Bright"
-msgstr ""
+msgstr "روشن"
 
 #: include/default_domains.php:1447
 msgid "Dark"
-msgstr ""
+msgstr "اندھیرا"
 
 #: include/default_domains.php:1448
 msgid "Shadow"
-msgstr ""
+msgstr "سایہ"
 
 #: include/default_domains.php:1449
 msgid "Color"
-msgstr ""
+msgstr "رنگ"
 
 #: include/default_domains.php:1450
 msgid "White"
-msgstr ""
+msgstr "سفید"
 
 #: include/default_domains.php:1451
 msgid "Black"
-msgstr ""
+msgstr "کالا"
 
 #: include/default_domains.php:1452
 msgid "Gray"
-msgstr ""
+msgstr "خاکستری، بھورا"
 
 #: include/default_domains.php:1453
 msgid "Colors of the spectrum"
-msgstr ""
+msgstr "کہکشاں کے رنگ"
 
 #: include/default_domains.php:1454
 msgid "Animal color, marking"
-msgstr ""
+msgstr "جانوروں کے رنگ"
 
 #: include/default_domains.php:1455
 msgid "Change color"
-msgstr ""
+msgstr "رنگ بدلنا"
 
 #: include/default_domains.php:1456
 msgid "Multicolored"
-msgstr ""
+msgstr "کئی رنگ"
 
 #: include/default_domains.php:1457
 msgid "Shiny"
-msgstr ""
+msgstr "چمکیلے"
 
 #: include/default_domains.php:1458
 msgid "Hot"
-msgstr ""
+msgstr "گرم"
 
 #: include/default_domains.php:1459
 msgid "Cold"
-msgstr ""
+msgstr "ٹھنڈا"
 
 #: include/default_domains.php:1460
 msgid "Type, kind"
-msgstr ""
+msgstr "قسم"
 
 #: include/default_domains.php:1461
 msgid "Nature, character"
-msgstr ""
+msgstr "قدرت، کردار"
 
 #: include/default_domains.php:1462
 msgid "Compare"
-msgstr ""
+msgstr "موازنہ کرنا"
 
 #: include/default_domains.php:1463
 msgid "Same"
-msgstr ""
+msgstr "وہی، ایک طرح کا"
 
 #: include/default_domains.php:1464
 msgid "Like, similar"
-msgstr ""
+msgstr "ایک جیسے"
 
 #: include/default_domains.php:1465
 msgid "Different"
-msgstr ""
+msgstr "مختلف"
 
 #: include/default_domains.php:1466
 msgid "Other"
-msgstr ""
+msgstr "دوسرے"
 
 #: include/default_domains.php:1467
 msgid "Various"
-msgstr ""
+msgstr "مختلف"
 
 #: include/default_domains.php:1468
 msgid "Opposite"
-msgstr ""
+msgstr "مخالف"
 
 #: include/default_domains.php:1469
 msgid "Common"
-msgstr ""
+msgstr "مشترک"
 
 #: include/default_domains.php:1470
 msgid "Usual"
-msgstr ""
+msgstr "عام"
 
 #: include/default_domains.php:1471
 msgid "Unusual"
-msgstr ""
+msgstr "غیر عمومی"
 
 #: include/default_domains.php:1472
 msgid "Unique"
-msgstr ""
+msgstr "منفرد"
 
 #: include/default_domains.php:1473
 msgid "Strange"
-msgstr ""
+msgstr "عجیب"
 
 #: include/default_domains.php:1474
 msgid "Pattern, model"
-msgstr ""
+msgstr "نمونہ، ماڈل"
 
 #: include/default_domains.php:1475
 msgid "Imitate"
-msgstr ""
+msgstr "نقل کرنا"
 
 #: include/default_domains.php:1476
 msgid "Copy"
-msgstr ""
+msgstr "نقل کرنا"
 
 #: include/default_domains.php:1477
 msgid "Made of, material"
@@ -7046,483 +7046,483 @@ msgstr ""
 
 #: include/default_domains.php:1478
 msgid "Strong, brittle"
-msgstr ""
+msgstr "مضبوط–خُشک خستہ، ٹوٹ جانے والا"
 
 #: include/default_domains.php:1479
 msgid "Hard, firm"
-msgstr ""
+msgstr "سخت"
 
 #: include/default_domains.php:1480
 msgid "Stiff, flexible"
-msgstr ""
+msgstr "غیر متعیر پذیر/لچک دار"
 
 #: include/default_domains.php:1481
 msgid "Dense"
-msgstr ""
+msgstr "گنجان"
 
 #: include/default_domains.php:1482
 msgid "Soft, flimsy"
-msgstr ""
+msgstr "مالاہم، آسانی سے ٹوٹنے کے قابل"
 
 #: include/default_domains.php:1483
 msgid "Good"
-msgstr ""
+msgstr "اچھا"
 
 #: include/default_domains.php:1484
 msgid "Bad"
-msgstr ""
+msgstr "برا"
 
 #: include/default_domains.php:1485
 msgid "Better"
-msgstr ""
+msgstr "بہتر"
 
 #: include/default_domains.php:1486
 msgid "Worse"
-msgstr ""
+msgstr "بد تر"
 
 #: include/default_domains.php:1487
 msgid "Perfect"
-msgstr ""
+msgstr "صحیح"
 
 #: include/default_domains.php:1488
 msgid "Mediocre"
-msgstr ""
+msgstr "نہ اچھا نہ بُرا، درمیانہ درجہ کا"
 
 #: include/default_domains.php:1489
 msgid "Important"
-msgstr ""
+msgstr "اہم"
 
 #: include/default_domains.php:1490
 msgid "Basic"
-msgstr ""
+msgstr "بنیادی"
 
 #: include/default_domains.php:1491
 msgid "Improve"
-msgstr ""
+msgstr "سدھارنا، بہترکرنا، اصلاح کرنا"
 
 #: include/default_domains.php:1492
 msgid "Right, proper"
-msgstr ""
+msgstr "صحیح، حقیقی"
 
 #: include/default_domains.php:1493
 msgid "Wrong, unsuitable"
-msgstr ""
+msgstr "غلط/ نامناسب"
 
 #: include/default_domains.php:1494
 msgid "Convenient"
-msgstr ""
+msgstr "معقول"
 
 #: include/default_domains.php:1495
 msgid "Compatible"
-msgstr ""
+msgstr "موافق/ سازگار"
 
 #: include/default_domains.php:1496
 msgid "Decay"
-msgstr ""
+msgstr "بوسیدہ ہونا/ تباہ ہونا"
 
 #: include/default_domains.php:1497
 msgid "Rust"
-msgstr ""
+msgstr "زنگ لگنا/ خراب ہونا"
 
 #: include/default_domains.php:1498
 msgid "Blemish"
-msgstr ""
+msgstr "دھبا لگانا، بدنام کرنا"
 
 #: include/default_domains.php:1499
 msgid "Garbage"
-msgstr ""
+msgstr "گند بلا"
 
 #: include/default_domains.php:1500
 msgid "Preserve"
-msgstr ""
+msgstr "حفاظت کرنا محفوظ کرنا"
 
 #: include/default_domains.php:1501
 msgid "Value"
-msgstr ""
+msgstr "قیمت"
 
 #: include/default_domains.php:1502
 msgid "Decorated"
-msgstr ""
+msgstr "سجایا ہوا"
 
 #: include/default_domains.php:1503
 msgid "Simple, plain"
-msgstr ""
+msgstr "سادہ"
 
 #: include/default_domains.php:1504
 msgid "Glory"
-msgstr ""
+msgstr "تعریف"
 
 #: include/default_domains.php:1505
 msgid "Time"
-msgstr ""
+msgstr "وقت"
 
 #: include/default_domains.php:1506
 msgid "Period of time"
-msgstr ""
+msgstr "وقت کے لمحات"
 
 #: include/default_domains.php:1507
 msgid "Calendar"
-msgstr ""
+msgstr "جنتری،تقویمِ فہرست، کیلنڈر"
 
 #: include/default_domains.php:1508
 msgid "Day"
-msgstr ""
+msgstr "دِن"
 
 #: include/default_domains.php:1509
 msgid "Night"
-msgstr ""
+msgstr "رات"
 
 #: include/default_domains.php:1510
 msgid "Yesterday, today, tomorrow"
-msgstr ""
+msgstr "کل"
 
 #: include/default_domains.php:1511
 msgid "Time of the day"
-msgstr ""
+msgstr "دن کا وقت"
 
 #: include/default_domains.php:1512
 msgid "Week"
-msgstr ""
+msgstr "ہفتہ"
 
 #: include/default_domains.php:1513
 msgid "Days of the week"
-msgstr ""
+msgstr "ہفتے کے دِن"
 
 #: include/default_domains.php:1514
 msgid "Month"
-msgstr ""
+msgstr "ماہ،مہینے"
 
 #: include/default_domains.php:1515
 msgid "Months of the year"
-msgstr ""
+msgstr "سال کے مہینے"
 
 #: include/default_domains.php:1516
 msgid "Season"
-msgstr ""
+msgstr "موسم"
 
 #: include/default_domains.php:1517
 msgid "Year"
-msgstr ""
+msgstr "سال"
 
 #: include/default_domains.php:1518
 msgid "Era"
-msgstr ""
+msgstr "تاریخی دور،سن، شمسی وغیرہ"
 
 #: include/default_domains.php:1519
 msgid "Special days"
-msgstr ""
+msgstr "خاص دِن"
 
 #: include/default_domains.php:1520
 msgid "Take time"
-msgstr ""
+msgstr "وقت لینا"
 
 #: include/default_domains.php:1521
 msgid "A short time"
-msgstr ""
+msgstr "مختصر وقت"
 
 #: include/default_domains.php:1522
 msgid "A long time"
-msgstr ""
+msgstr "لمبا عرصہ"
 
 #: include/default_domains.php:1523
 msgid "Forever"
-msgstr ""
+msgstr "ہمیشہ کے لیے"
 
 #: include/default_domains.php:1524
 msgid "Temporary"
-msgstr ""
+msgstr "عارضی"
 
 #: include/default_domains.php:1525
 msgid "Indefinite time"
-msgstr ""
+msgstr "غیر مقرر، غیر معین"
 
 #: include/default_domains.php:1526
 msgid "Telling time"
-msgstr ""
+msgstr "وقت بتانا"
 
 #: include/default_domains.php:1527
 msgid "Plan a time"
-msgstr ""
+msgstr "وقت کی منصوبہ بندی"
 
 #: include/default_domains.php:1528
 msgid "Clock, watch"
-msgstr ""
+msgstr "گھڑی"
 
 #: include/default_domains.php:1529
 msgid "Relative time"
-msgstr ""
+msgstr "متعلقہ وقت"
 
 #: include/default_domains.php:1530
 msgid "Order, sequence"
-msgstr ""
+msgstr "مطابقت"
 
 #: include/default_domains.php:1531
 msgid "Series"
-msgstr ""
+msgstr "سلسلہ"
 
 #: include/default_domains.php:1532
 msgid "First"
-msgstr ""
+msgstr "پہلے"
 
 #: include/default_domains.php:1533
 msgid "Next"
-msgstr ""
+msgstr "اگلا"
 
 #: include/default_domains.php:1534
 msgid "Last"
-msgstr ""
+msgstr "آخری"
 
 #: include/default_domains.php:1535
 msgid "Regular"
-msgstr ""
+msgstr "باقائدہ"
 
 #: include/default_domains.php:1536
 msgid "Alternate"
-msgstr ""
+msgstr "متبادلہ"
 
 #: include/default_domains.php:1537
 msgid "Before"
-msgstr ""
+msgstr "پہلے"
 
 #: include/default_domains.php:1538
 msgid "After"
-msgstr ""
+msgstr "کے بعد"
 
 #: include/default_domains.php:1539
 msgid "At the same time"
-msgstr ""
+msgstr "ایک ہی وقت میں"
 
 #: include/default_domains.php:1540
 msgid "During"
-msgstr ""
+msgstr "دوران"
 
 #: include/default_domains.php:1541
 msgid "Right time"
-msgstr ""
+msgstr "صحیح وقت"
 
 #: include/default_domains.php:1542
 msgid "Early"
-msgstr ""
+msgstr "جلد"
 
 #: include/default_domains.php:1543
 msgid "On time"
-msgstr ""
+msgstr "وقت پر"
 
 #: include/default_domains.php:1544
 msgid "Late"
-msgstr ""
+msgstr "دیر سے یا دیر"
 
 #: include/default_domains.php:1545
 msgid "Delay"
-msgstr ""
+msgstr "تاخیر"
 
 #: include/default_domains.php:1546
 msgid "Postpone"
-msgstr ""
+msgstr "ملتوی کرنا"
 
 #: include/default_domains.php:1547
 msgid "Aspectual time"
-msgstr ""
+msgstr "غیر متعین، غیر رسمی وقت"
 
 #: include/default_domains.php:1548
 msgid "Start something"
-msgstr ""
+msgstr "شروع کرنا یا ہونا"
 
 #: include/default_domains.php:1549
 msgid "Beginning"
-msgstr ""
+msgstr "آغاز"
 
 #: include/default_domains.php:1550
 msgid "Stop something"
-msgstr ""
+msgstr "کسی چیز کو روکنا"
 
 #: include/default_domains.php:1551
 msgid "End"
-msgstr ""
+msgstr "اختتام"
 
 #: include/default_domains.php:1552
 msgid "Until"
-msgstr ""
+msgstr "جب تک"
 
 #: include/default_domains.php:1553
 msgid "Since, from"
-msgstr ""
+msgstr "سے"
 
 #: include/default_domains.php:1554
 msgid "Past"
-msgstr ""
+msgstr "ماضی"
 
 #: include/default_domains.php:1555
 msgid "Recently"
-msgstr ""
+msgstr "حال ہی میں"
 
 #: include/default_domains.php:1556
 msgid "Present"
-msgstr ""
+msgstr "حال"
 
 #: include/default_domains.php:1557
 msgid "Now"
-msgstr ""
+msgstr "اب"
 
 #: include/default_domains.php:1558
 msgid "Future"
-msgstr ""
+msgstr "مستقبل"
 
 #: include/default_domains.php:1559
 msgid "Soon"
-msgstr ""
+msgstr "جلدی"
 
 #: include/default_domains.php:1560
 msgid "Not yet"
-msgstr ""
+msgstr "ابھی نہیں"
 
 #: include/default_domains.php:1561
 msgid "Eventually"
-msgstr ""
+msgstr "حادثاتی طور پر"
 
 #: include/default_domains.php:1562
 msgid "Immediately"
-msgstr ""
+msgstr "جلدی"
 
 #: include/default_domains.php:1563
 msgid "Age"
-msgstr ""
+msgstr "عمر"
 
 #: include/default_domains.php:1564
 msgid "Young"
-msgstr ""
+msgstr "جوانی"
 
 #: include/default_domains.php:1565
 msgid "Old, not young"
-msgstr ""
+msgstr "بوڑھا"
 
 #: include/default_domains.php:1566
 msgid "New"
-msgstr ""
+msgstr "نیا"
 
 #: include/default_domains.php:1567
 msgid "Old, not new"
-msgstr ""
+msgstr "پرانا"
 
 #: include/default_domains.php:1568
 msgid "Modern"
-msgstr ""
+msgstr "جدید"
 
 #: include/default_domains.php:1569
 msgid "Old fashioned"
-msgstr ""
+msgstr "پرانی فیشن"
 
 #: include/default_domains.php:1570
 msgid "Once"
-msgstr ""
+msgstr "ایک دفعہ"
 
 #: include/default_domains.php:1571
 msgid "Again"
-msgstr ""
+msgstr "ایک بار پھر"
 
 #: include/default_domains.php:1572
 msgid "Sometimes"
-msgstr ""
+msgstr "بعض دفعہ"
 
 #: include/default_domains.php:1573
 msgid "Often"
-msgstr ""
+msgstr "اکثر"
 
 #: include/default_domains.php:1574
 msgid "All the time"
-msgstr ""
+msgstr "تمام وقت"
 
 #: include/default_domains.php:1575
 msgid "Every time"
-msgstr ""
+msgstr "ہر وقت"
 
 #: include/default_domains.php:1576
 msgid "Never"
-msgstr ""
+msgstr "کبھی نہیں"
 
 #: include/default_domains.php:1577
 msgid "Continue, persevere"
-msgstr ""
+msgstr "جاری رکھنا"
 
 #: include/default_domains.php:1578
 msgid "Interrupt"
-msgstr ""
+msgstr "مداخلت کرنا،سلسلہ توڑ دینا"
 
 #: include/default_domains.php:1579
 msgid "Start again"
-msgstr ""
+msgstr "دوبارہ شروع ہونا"
 
 #: include/default_domains.php:1580
 msgid "Interval"
-msgstr ""
+msgstr "وقفے"
 
 #: include/default_domains.php:1581
 msgid "Speed"
-msgstr ""
+msgstr "رفتار"
 
 #: include/default_domains.php:1582
 msgid "Quick"
-msgstr ""
+msgstr "جلدی"
 
 #: include/default_domains.php:1583
 msgid "Slow"
-msgstr ""
+msgstr "آہستہ"
 
 #: include/default_domains.php:1584
 msgid "Sudden"
-msgstr ""
+msgstr "اچانک"
 
 #: include/default_domains.php:1585
 msgid "Location"
-msgstr ""
+msgstr "معینہ مقام"
 
 #: include/default_domains.php:1586
 msgid "Here, there"
-msgstr ""
+msgstr "یہاں/ وہاں"
 
 #: include/default_domains.php:1587
 msgid "In front of"
-msgstr ""
+msgstr "سامنے"
 
 #: include/default_domains.php:1588
 msgid "Behind"
-msgstr ""
+msgstr "پیچھے"
 
 #: include/default_domains.php:1589
 msgid "Beside"
-msgstr ""
+msgstr "ساتھ"
 
 #: include/default_domains.php:1590
 msgid "Around"
-msgstr ""
+msgstr "ارد گرد"
 
 #: include/default_domains.php:1591
 msgid "Between"
-msgstr ""
+msgstr "درمیان"
 
 #: include/default_domains.php:1592
 msgid "On"
-msgstr ""
+msgstr "پر"
 
 #: include/default_domains.php:1593
 msgid "Above"
-msgstr ""
+msgstr "اوپر"
 
 #: include/default_domains.php:1594
 msgid "Under, below"
-msgstr ""
+msgstr "نیچے"
 
 #: include/default_domains.php:1595
 msgid "Inside"
-msgstr ""
+msgstr "اندر"
 
 #: include/default_domains.php:1596
 msgid "Out, outside"
-msgstr ""
+msgstr "باہر"
 
 #: include/default_domains.php:1597
 msgid "Touching, contact"
-msgstr ""
+msgstr "ملے ہوئے"
 
 #: include/default_domains.php:1598
 msgid "Next to"
@@ -7530,79 +7530,79 @@ msgstr ""
 
 #: include/default_domains.php:1599
 msgid "Across"
-msgstr ""
+msgstr "ساتھ،سامنے"
 
 #: include/default_domains.php:1600
 msgid "Indefinite location"
-msgstr ""
+msgstr "غیر مقررہ، غیر معتین جگہ"
 
 #: include/default_domains.php:1601
 msgid "Direction"
-msgstr ""
+msgstr "سمت"
 
 #: include/default_domains.php:1602
 msgid "Forward"
-msgstr ""
+msgstr "آگے"
 
 #: include/default_domains.php:1603
 msgid "Backward"
-msgstr ""
+msgstr "پیچھے"
 
 #: include/default_domains.php:1604
 msgid "Right, left"
-msgstr ""
+msgstr "دائیں، بائیں"
 
 #: include/default_domains.php:1605
 msgid "Up"
-msgstr ""
+msgstr "اوپر"
 
 #: include/default_domains.php:1606
 msgid "Down"
-msgstr ""
+msgstr "نچے"
 
 #: include/default_domains.php:1607
 msgid "Away from"
-msgstr ""
+msgstr "دور"
 
 #: include/default_domains.php:1608
 msgid "Towards"
-msgstr ""
+msgstr "آگے"
 
 #: include/default_domains.php:1609
 msgid "North, south, east, west"
-msgstr ""
+msgstr "شمال، جنوب،مشرق، مغرب"
 
 #: include/default_domains.php:1610
 msgid "Be at a place"
-msgstr ""
+msgstr "جگہ پر ہونا"
 
 #: include/default_domains.php:1611
 msgid "Absent"
-msgstr ""
+msgstr "غیر حاضر"
 
 #: include/default_domains.php:1612
 msgid "Area"
-msgstr ""
+msgstr "علاقہ"
 
 #: include/default_domains.php:1613
 msgid "Vicinity"
-msgstr ""
+msgstr "پڑوس، قربت، قرب و جوار"
 
 #: include/default_domains.php:1614
 msgid "Occupy an area"
-msgstr ""
+msgstr "علاقہ قابض ہونا"
 
 #: include/default_domains.php:1615
 msgid "Space, room"
-msgstr ""
+msgstr "جگہ، کمرہ"
 
 #: include/default_domains.php:1616
 msgid "Interval, space"
-msgstr ""
+msgstr "وقفہ، خلا"
 
 #: include/default_domains.php:1617
 msgid "Spatial relations"
-msgstr ""
+msgstr "دُنیاوی یا فضائی تعلق"
 
 #: include/default_domains.php:1618
 msgid "Contain"
@@ -7610,103 +7610,103 @@ msgstr ""
 
 #: include/default_domains.php:1619
 msgid "Parts of things"
-msgstr ""
+msgstr "چیزوں کے اجزاء"
 
 #: include/default_domains.php:1620
 msgid "Front"
-msgstr ""
+msgstr "سامنے"
 
 #: include/default_domains.php:1621
 msgid "Back"
-msgstr ""
+msgstr "پیچھے"
 
 #: include/default_domains.php:1622
 msgid "Top"
-msgstr ""
+msgstr "سب سے اوپر/ چوٹی"
 
 #: include/default_domains.php:1623
 msgid "Bottom"
-msgstr ""
+msgstr "تہہ"
 
 #: include/default_domains.php:1624
 msgid "Side"
-msgstr ""
+msgstr "طرف/ جانب"
 
 #: include/default_domains.php:1625
 msgid "Inner part"
-msgstr ""
+msgstr "اندرونی حصہ"
 
 #: include/default_domains.php:1626
 msgid "Outer part"
-msgstr ""
+msgstr "بیرونی حصہ"
 
 #: include/default_domains.php:1627
 msgid "Middle"
-msgstr ""
+msgstr "درمیان"
 
 #: include/default_domains.php:1628
 msgid "Edge"
-msgstr ""
+msgstr "کنارہ"
 
 #: include/default_domains.php:1629
 msgid "End, point"
-msgstr ""
+msgstr "اختتام"
 
 #: include/default_domains.php:1630 webonary/Webonary_SemanticDomains.php:137
 msgid "Grammar"
-msgstr ""
+msgstr "گرائمر"
 
 #: include/default_domains.php:1631
 msgid "General words"
-msgstr ""
+msgstr "عام الفاظ"
 
 #: include/default_domains.php:1632
 msgid "Be"
-msgstr ""
+msgstr "ہونا"
 
 #: include/default_domains.php:1633
 msgid "Exist"
-msgstr ""
+msgstr "موجود ہونا"
 
 #: include/default_domains.php:1634
 msgid "Become, change state"
-msgstr ""
+msgstr "ہونا، منصب تبدیل کرنا یا ہونا"
 
 #: include/default_domains.php:1635
 msgid "Have, of"
-msgstr ""
+msgstr "رکھنا"
 
 #: include/default_domains.php:1636
 msgid "Attribution"
-msgstr ""
+msgstr "منسوبیت، وَصف"
 
 #: include/default_domains.php:1637
 msgid "Do"
-msgstr ""
+msgstr "کرنا"
 
 #: include/default_domains.php:1638
 msgid "Happen"
-msgstr ""
+msgstr "واقع ہونا"
 
 #: include/default_domains.php:1639
 msgid "React, respond"
-msgstr ""
+msgstr "ردعمل"
 
 #: include/default_domains.php:1640
 msgid "Create"
-msgstr ""
+msgstr "بنانا"
 
 #: include/default_domains.php:1641
 msgid "Design"
-msgstr ""
+msgstr "ڈیزائن"
 
 #: include/default_domains.php:1642
 msgid "Make"
-msgstr ""
+msgstr "بنانا"
 
 #: include/default_domains.php:1643
 msgid "Change something"
-msgstr ""
+msgstr "کسی چیز کا بدلنا"
 
 #: include/default_domains.php:1644
 msgid "Event propositions"
@@ -7714,19 +7714,19 @@ msgstr ""
 
 #: include/default_domains.php:1645
 msgid "Thing"
-msgstr ""
+msgstr "اشیأ"
 
 #: include/default_domains.php:1646
 msgid "Physical, non-physical"
-msgstr ""
+msgstr "جسمانی، غیر جسمانی"
 
 #: include/default_domains.php:1647
 msgid "Situation"
-msgstr ""
+msgstr "حالت"
 
 #: include/default_domains.php:1648
 msgid "General adjectives"
-msgstr ""
+msgstr "عام اسم صفت"
 
 #: include/default_domains.php:1649
 msgid "General adverbs"
@@ -7734,55 +7734,55 @@ msgstr ""
 
 #: include/default_domains.php:1650
 msgid "Part of speech"
-msgstr ""
+msgstr "اجزائے کلام"
 
 #: include/default_domains.php:1651
 msgid "Adjectives"
-msgstr ""
+msgstr "اسم صفت"
 
 #: include/default_domains.php:1652
 msgid "Adverbs"
-msgstr ""
+msgstr "متعلق فعل"
 
 #: include/default_domains.php:1653
 msgid "Pronouns"
-msgstr ""
+msgstr "اسمِ ضمیر"
 
 #: include/default_domains.php:1654
 msgid "Reflexive pronouns"
-msgstr ""
+msgstr "وہ اسم ضمیر جو فاعل کی طرف راغب ہوں"
 
 #: include/default_domains.php:1655
 msgid "Indefinite pronouns"
-msgstr ""
+msgstr "غیر مقررہ یا غیر معین اسمِ ضمیر"
 
 #: include/default_domains.php:1656
 msgid "Relative pronouns"
-msgstr ""
+msgstr "لازم وملزوم یا منحصر اسِم ضمیر"
 
 #: include/default_domains.php:1657
 msgid "Question words"
-msgstr ""
+msgstr "سوالیہ الفاظ"
 
 #: include/default_domains.php:1658
 msgid "Demonstrative pronouns"
-msgstr ""
+msgstr "اسم اشارہ"
 
 #: include/default_domains.php:1659
 msgid "Personally"
-msgstr ""
+msgstr "ذاتی"
 
 #: include/default_domains.php:1660
 msgid "Prepositions, postpositions"
-msgstr ""
+msgstr "حروف جار"
 
 #: include/default_domains.php:1661
 msgid "Conjunctions"
-msgstr ""
+msgstr "حروف عطف"
 
 #: include/default_domains.php:1662
 msgid "Phrase conjunctions"
-msgstr ""
+msgstr "جملوں میں حروف عطف"
 
 #: include/default_domains.php:1663
 msgid "Clause conjunctions"
@@ -7794,75 +7794,75 @@ msgstr ""
 
 #: include/default_domains.php:1665
 msgid "Particles"
-msgstr ""
+msgstr "چھوٹا سا بول  جس میں کوئی تصریف نہ ہو"
 
 #: include/default_domains.php:1666
 msgid "Classifiers"
-msgstr ""
+msgstr "درجہ بندی"
 
 #: include/default_domains.php:1667
 msgid "Interjections"
-msgstr ""
+msgstr "حروف ندائیہ/ فجائیہ"
 
 #: include/default_domains.php:1668
 msgid "Idiophones"
-msgstr ""
+msgstr "مخصوص بولی"
 
 #: include/default_domains.php:1669
 msgid "Affixes"
-msgstr ""
+msgstr "سابقے اور لاحقے"
 
 #: include/default_domains.php:1670
 msgid "Verb affixes"
-msgstr ""
+msgstr "فعل کے لاحقے"
 
 #: include/default_domains.php:1671
 msgid "Noun affixes"
-msgstr ""
+msgstr "اسم کے ساتھ لاحقے"
 
 #: include/default_domains.php:1672
 msgid "Derivational affixes"
-msgstr ""
+msgstr "ماخوذ لاحقے"
 
 #: include/default_domains.php:1673
 msgid "Very"
-msgstr ""
+msgstr "بہت"
 
 #: include/default_domains.php:1674
 msgid "Degree"
-msgstr ""
+msgstr "درجہ"
 
 #: include/default_domains.php:1675
 msgid "To a large degree"
-msgstr ""
+msgstr "بڑا درجہ"
 
 #: include/default_domains.php:1676
 msgid "To a small degree"
-msgstr ""
+msgstr "چھوٹا درجہ"
 
 #: include/default_domains.php:1677
 msgid "To a larger degree"
-msgstr ""
+msgstr "بڑے درجے"
 
 #: include/default_domains.php:1678
 msgid "To a smaller degree"
-msgstr ""
+msgstr "کم درجہ"
 
 #: include/default_domains.php:1679
 msgid "Completely"
-msgstr ""
+msgstr "مکمل طور پر"
 
 #: include/default_domains.php:1680
 msgid "Partly"
-msgstr ""
+msgstr "جزوی طور پر"
 
 #: include/default_domains.php:1681
 msgid "Do intensely"
-msgstr ""
+msgstr "شدت سے کرنا"
 
 #: include/default_domains.php:1682
 msgid "Attribution of an attribute"
-msgstr ""
+msgstr "وصفی صفات"
 
 #: include/default_domains.php:1683
 msgid "Semantic constituents related to verbs"
@@ -7870,59 +7870,59 @@ msgstr ""
 
 #: include/default_domains.php:1684
 msgid "Tense and aspect"
-msgstr ""
+msgstr "جملے اور پہلو"
 
 #: include/default_domains.php:1685
 msgid "Tense"
-msgstr ""
+msgstr "جملہ"
 
 #: include/default_domains.php:1686
 msgid "Aspect--dynamic verbs"
-msgstr ""
+msgstr "پہلو–متحرک فعل"
 
 #: include/default_domains.php:1687
 msgid "Aspect--stative verbs"
-msgstr ""
+msgstr "پہلو–وہ فعل حال ماضی کا ہو۔"
 
 #: include/default_domains.php:1688
 msgid "Relational tenses"
-msgstr ""
+msgstr "تعلقی جملے"
 
 #: include/default_domains.php:1689
 msgid "Agent-oriented modalities"
-msgstr ""
+msgstr "فاعل–ایسا عامل جس کی رغبت اندازِ فعل کے متعلق ہو"
 
 #: include/default_domains.php:1690
 msgid "Can"
-msgstr ""
+msgstr "سکنا"
 
 #: include/default_domains.php:1691
 msgid "Can't"
-msgstr ""
+msgstr "نہ کر سکنا"
 
 #: include/default_domains.php:1692
 msgid "Necessary"
-msgstr ""
+msgstr "لازمی"
 
 #: include/default_domains.php:1693
 msgid "Moods"
-msgstr ""
+msgstr "کسی کے جذبات،احساسات"
 
 #: include/default_domains.php:1694
 msgid "Imperative"
-msgstr ""
+msgstr "واجب، ضروری، صیغہِ امر"
 
 #: include/default_domains.php:1695
 msgid "Hortative"
-msgstr ""
+msgstr "تقاضہ کرنے یا ابھارنے والے الفاظ"
 
 #: include/default_domains.php:1696
 msgid "Interrogative"
-msgstr ""
+msgstr "استفہامیہ، سوالیہ،استفسار کے طور پر"
 
 #: include/default_domains.php:1697
 msgid "Epistemic moods"
-msgstr ""
+msgstr "مذہبی احساس یا لکھے ہوے جذبات"
 
 #: include/default_domains.php:1698
 msgid "Certainly, definitely"
@@ -7930,7 +7930,7 @@ msgstr ""
 
 #: include/default_domains.php:1699
 msgid "Sure"
-msgstr ""
+msgstr "یقینی"
 
 #: include/default_domains.php:1700
 msgid "Probably"
@@ -7938,63 +7938,63 @@ msgstr ""
 
 #: include/default_domains.php:1701
 msgid "Possible"
-msgstr ""
+msgstr "ممکن"
 
 #: include/default_domains.php:1702
 msgid "Uncertain"
-msgstr ""
+msgstr "غیر یقینی"
 
 #: include/default_domains.php:1703
 msgid "Unsure"
-msgstr ""
+msgstr "غیر یقینی"
 
 #: include/default_domains.php:1704
 msgid "Think so"
-msgstr ""
+msgstr "اس طرح"
 
 #: include/default_domains.php:1705
 msgid "Maybe"
-msgstr ""
+msgstr "ہو سکتا ہے"
 
 #: include/default_domains.php:1706
 msgid "Seem"
-msgstr ""
+msgstr "دکھائی دیتا ہے"
 
 #: include/default_domains.php:1707
 msgid "Just, almost not"
-msgstr ""
+msgstr "بجا/"
 
 #: include/default_domains.php:1708
 msgid "Don't think so, doubt it"
-msgstr ""
+msgstr "اس طرح نہیں"
 
 #: include/default_domains.php:1709
 msgid "Impossible"
-msgstr ""
+msgstr "ناممکن"
 
 #: include/default_domains.php:1710
 msgid "Evidentials"
-msgstr ""
+msgstr "ثبوتی"
 
 #: include/default_domains.php:1711
 msgid "Evaluator"
-msgstr ""
+msgstr "اندازہ لگانے والا"
 
 #: include/default_domains.php:1712
 msgid "Yes"
-msgstr ""
+msgstr "ہاں"
 
 #: include/default_domains.php:1713
 msgid "No, not"
-msgstr ""
+msgstr "نہ /نہیں"
 
 #: include/default_domains.php:1714
 msgid "Markers expecting an affirmative answer"
-msgstr ""
+msgstr "ایسی توقعاتی علامتیں جو کسی جواب کو پکا کرنے کے لیے دی جائیں، ہاں،جی وغیرہ"
 
 #: include/default_domains.php:1715
 msgid "Markers expecting a negative answer"
-msgstr ""
+msgstr "ایسی علامتیں جو کسی سوال کے جواب میں نفی کریں"
 
 #: include/default_domains.php:1716
 msgid "Subordinating particles"
@@ -8002,51 +8002,51 @@ msgstr ""
 
 #: include/default_domains.php:1717
 msgid "Adverbial clauses"
-msgstr ""
+msgstr "توسیعی فعل یعنی متعلق فعل کے جملے"
 
 #: include/default_domains.php:1718
 msgid "Case"
-msgstr ""
+msgstr "صورت/ حالت"
 
 #: include/default_domains.php:1719
 msgid "Primary cases"
-msgstr ""
+msgstr "ابتدائی صورتیں"
 
 #: include/default_domains.php:1720
 msgid "Beneficiary of an event"
-msgstr ""
+msgstr "وظیفہ خواری کا واقعہ"
 
 #: include/default_domains.php:1721
 msgid "Instrument"
-msgstr ""
+msgstr "آلات"
 
 #: include/default_domains.php:1722
 msgid "Means"
-msgstr ""
+msgstr "ذرائع"
 
 #: include/default_domains.php:1723
 msgid "Way, manner"
-msgstr ""
+msgstr "طریقہ"
 
 #: include/default_domains.php:1724
 msgid "Attendant circumstances"
-msgstr ""
+msgstr "خدمت گزار، متعلقہ واقعات کے حالات"
 
 #: include/default_domains.php:1725
 msgid "Spatial location of an event"
-msgstr ""
+msgstr "فضائی جگہ"
 
 #: include/default_domains.php:1726
 msgid "Source (of movement)"
-msgstr ""
+msgstr "حرکت کے ذرائع"
 
 #: include/default_domains.php:1727
 msgid "Path (of movement)"
-msgstr ""
+msgstr "چلنے کا راستہ"
 
 #: include/default_domains.php:1728
 msgid "Goal (of movement)"
-msgstr ""
+msgstr "منزل مقصود"
 
 #: include/default_domains.php:1729
 msgid "Origin (of a person)"
@@ -8054,143 +8054,143 @@ msgstr ""
 
 #: include/default_domains.php:1730
 msgid "Semantically similar events"
-msgstr ""
+msgstr "ایسے واقعات جن کا معنی، موقف ایک ہو"
 
 #: include/default_domains.php:1731
 msgid "Together"
-msgstr ""
+msgstr "ایک ساتھ"
 
 #: include/default_domains.php:1732
 msgid "With, be with"
-msgstr ""
+msgstr "کے ساتھ"
 
 #: include/default_domains.php:1733
 msgid "With, do with someone"
-msgstr ""
+msgstr "کے ساتھ، کسی کے ساتھ"
 
 #: include/default_domains.php:1734
 msgid "Each other"
-msgstr ""
+msgstr "ایک دوسرے"
 
 #: include/default_domains.php:1735
 msgid "In groups"
-msgstr ""
+msgstr "گروہوں میں"
 
 #: include/default_domains.php:1736
 msgid "Patient-related cases"
-msgstr ""
+msgstr "متعمل حالات"
 
 #: include/default_domains.php:1737
 msgid "Beneficiary (of a patient)"
-msgstr ""
+msgstr "وظیفہ/ حمایت"
 
 #: include/default_domains.php:1738
 msgid "Recipient (of a patient)"
-msgstr ""
+msgstr "لینے والا، حاصل کرنے والا"
 
 #: include/default_domains.php:1739
 msgid "With (a patient)"
-msgstr ""
+msgstr "کے ساتھ"
 
 #: include/default_domains.php:1740
 msgid "Connected with, related"
-msgstr ""
+msgstr "کسی کے ساتھ منسلک"
 
 #: include/default_domains.php:1741
 msgid "Coordinate relations"
-msgstr ""
+msgstr "ایک جیسے، محدود، برابر تعلق"
 
 #: include/default_domains.php:1742
 msgid "And, also"
-msgstr ""
+msgstr "اور/ بھی"
 
 #: include/default_domains.php:1743
 msgid "Or, either"
-msgstr ""
+msgstr "یا"
 
 #: include/default_domains.php:1744
 msgid "Association"
-msgstr ""
+msgstr "تنظیم"
 
 #: include/default_domains.php:1745
 msgid "Combinative relation"
-msgstr ""
+msgstr "متحدہ یا اجتمائی تعلق"
 
 #: include/default_domains.php:1746
 msgid "But"
-msgstr ""
+msgstr "لیکن"
 
 #: include/default_domains.php:1747
 msgid "Except"
-msgstr ""
+msgstr "ماسوائے"
 
 #: include/default_domains.php:1748
 msgid "Instead"
-msgstr ""
+msgstr "کے باوجود"
 
 #: include/default_domains.php:1749
 msgid "Dissociation"
-msgstr ""
+msgstr "رابطہ ختم کرنا، تعلق ختم کرنا"
 
 #: include/default_domains.php:1750
 msgid "Distribution"
-msgstr ""
+msgstr "تقسیم"
 
 #: include/default_domains.php:1751
 msgid "Equivalence"
-msgstr ""
+msgstr "برابری"
 
 #: include/default_domains.php:1752
 msgid "Dependency relations"
-msgstr ""
+msgstr "منحصر یا انحصار رکھنے والا تعلق"
 
 #: include/default_domains.php:1753
 msgid "Derivation"
-msgstr ""
+msgstr "اسخراج،اخذ"
 
 #: include/default_domains.php:1754
 msgid "Limitation of topic"
-msgstr ""
+msgstr "مضمون کی احاطہ بندی، حد یا مجبوری"
 
 #: include/default_domains.php:1755
 msgid "In general"
-msgstr ""
+msgstr "عام طور پر"
 
 #: include/default_domains.php:1756
 msgid "Relations involving correspondences"
-msgstr ""
+msgstr "ربطِ تعلق، موافقت"
 
 #: include/default_domains.php:1757
 msgid "Basis"
-msgstr ""
+msgstr "بنیادیں"
 
 #: include/default_domains.php:1758
 msgid "Cause"
-msgstr ""
+msgstr "وجہ"
 
 #: include/default_domains.php:1759
 msgid "Reason"
-msgstr ""
+msgstr "وجہ"
 
 #: include/default_domains.php:1760
 msgid "Without cause"
-msgstr ""
+msgstr "وجہ بغیر"
 
 #: include/default_domains.php:1761
 msgid "Result"
-msgstr ""
+msgstr "نتیجہ"
 
 #: include/default_domains.php:1762
 msgid "Without result"
-msgstr ""
+msgstr "بغیر نتیجہ"
 
 #: include/default_domains.php:1763
 msgid "Purpose"
-msgstr ""
+msgstr "مقصد"
 
 #: include/default_domains.php:1764
 msgid "Without purpose"
-msgstr ""
+msgstr "مقصد بغیر"
 
 #: include/default_domains.php:1765
 msgid "Condition"
@@ -8198,39 +8198,39 @@ msgstr ""
 
 #: include/default_domains.php:1766
 msgid "Concession"
-msgstr ""
+msgstr "رعایت، مراعات"
 
 #: include/default_domains.php:1767
 msgid "Discourse markers"
-msgstr ""
+msgstr "گفتگو یا بحث کے نشان"
 
 #: include/default_domains.php:1768
 msgid "Markers of transition"
-msgstr ""
+msgstr "زبان یا سُر کو تبدیل کرنے والے نشان"
 
 #: include/default_domains.php:1769
 msgid "Markers of emphasis"
-msgstr ""
+msgstr "زور ڈالنے والے نشان"
 
 #: include/default_domains.php:1770
 msgid "Prompters of attention"
-msgstr ""
+msgstr "ایسے الفاظ جو توّجہ دلوانیں"
 
 #: include/default_domains.php:1771
 msgid "Markers of direct address"
-msgstr ""
+msgstr "توّجہ مرکوز کروانیں والے"
 
 #: include/default_domains.php:1772
 msgid "Markers of identificational and explanatory clauses"
-msgstr ""
+msgstr "ایسے جو وضاحت پیش کریں"
 
 #: include/default_domains.php:1773
 msgid "Markers of focus"
-msgstr ""
+msgstr "ڻکصوص کرنا"
 
 #: include/default_domains.php:1774
 msgid "Hesitation fillers"
-msgstr ""
+msgstr "ہچکچاہٹ"
 
 #: include/default_domains.php:1775
 msgid "Honorifics"
@@ -8238,91 +8238,91 @@ msgstr ""
 
 #: include/default_domains.php:1776
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #: include/default_domains.php:1777
 msgid "Name of a person"
-msgstr ""
+msgstr "شخص کا نام"
 
 #: include/default_domains.php:1778
 msgid "Personal names"
-msgstr ""
+msgstr "ذاتی نام"
 
 #: include/default_domains.php:1779
 msgid "Family names"
-msgstr ""
+msgstr "خاندانوں کے نام"
 
 #: include/default_domains.php:1780
 msgid "Clan names"
-msgstr ""
+msgstr "کنبوں/فرقوں  کے نام"
 
 #: include/default_domains.php:1781
 msgid "Tribal names"
-msgstr ""
+msgstr "قبیلوں کے نام"
 
 #: include/default_domains.php:1782
 msgid "Names of languages"
-msgstr ""
+msgstr "زبانوں کے نام"
 
 #: include/default_domains.php:1783
 msgid "Nickname"
-msgstr ""
+msgstr "لقب/عرف"
 
 #: include/default_domains.php:1784
 msgid "Terms of endearment"
-msgstr ""
+msgstr "شگفتگی، پیار والے الفاظ"
 
 #: include/default_domains.php:1785
 msgid "Name of a place"
-msgstr ""
+msgstr "جگہوں کے نام"
 
 #: include/default_domains.php:1786
 msgid "Names of countries"
-msgstr ""
+msgstr "ملکوں کے نام"
 
 #: include/default_domains.php:1787
 msgid "Names of regions"
-msgstr ""
+msgstr "علاقوں کے نام"
 
 #: include/default_domains.php:1788
 msgid "Names of cities"
-msgstr ""
+msgstr "شہروں کے نام"
 
 #: include/default_domains.php:1789
 msgid "Names of streets"
-msgstr ""
+msgstr "گلیوں کے نام"
 
 #: include/default_domains.php:1790
 msgid "Names of heavenly bodies"
-msgstr ""
+msgstr "اجزائے فلکیات کے نام"
 
 #: include/default_domains.php:1791
 msgid "Names of continents"
-msgstr ""
+msgstr "براعظموں کے نام"
 
 #: include/default_domains.php:1792
 msgid "Names of mountains"
-msgstr ""
+msgstr "پہاڑوں کے نام"
 
 #: include/default_domains.php:1793
 msgid "Names of oceans and lakes"
-msgstr ""
+msgstr "بحیروں اور جھیلوں کے نام"
 
 #: include/default_domains.php:1794
 msgid "Names of rivers"
-msgstr ""
+msgstr "دریاؤں کے نام"
 
 #: include/default_domains.php:1795
 msgid "Name of a thing"
-msgstr ""
+msgstr "کسی چیز کا نام"
 
 #: include/default_domains.php:1796
 msgid "Names of animals"
-msgstr ""
+msgstr "جانوروں کے نام"
 
 #: include/default_domains.php:1797
 msgid "Names of buildings"
-msgstr ""
+msgstr "عمارتوں کے نام"
 
 #: include/dictionary-search.php:114
 msgid "Because of the brevity of your search term, partial search was omitted."
@@ -8587,3 +8587,14 @@ msgstr "اندراج کی تعداد"
 #: extra string
 msgid "Publication Status"
 msgstr "شائع کرنے کی صورتِ حال"
+
+#. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
+#: wp-includes/class-wp-locale.php:217 wp-includes/script-loader.php:265
+#: wp-includes/js/dist/i18n.js:1444
+msgctxt "text direction"
+msgid "ltr"
+msgstr "rtl"
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr ""

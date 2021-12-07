@@ -97,7 +97,7 @@ div.status {
     background: #fff;
     border: 3px solid #85005b;
     width: calc(100% - 40px);
-    font-size: 0.7rem !important;
+    font-size: 1rem;
 }
 
 div.status-flex {
@@ -110,6 +110,10 @@ div.status-flex div.stage {
     flex: 1;
 }
 
+div.status-flex div.stage .stage-text {
+    font-size: 0.85rem;
+}
+
 div.status-flex div.stage div.stage-inner {
     display: flex;
     flex-direction: column;
@@ -117,10 +121,11 @@ div.status-flex div.stage div.stage-inner {
 
 div.status .arrow {
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1.5rem;
     color: #fff;
     height: 24px;
+    overflow: hidden;
 }
 
 div.status .arrow.active {
@@ -150,11 +155,22 @@ div.status .dot {
 
 div.status .purple-line.right-line {
     width: 50%;
-    margin-left: 50%
+    margin-left: 50%;
+}
+
+html[dir=rtl] div.status .purple-line.right-line {
+    width: 50%;
+    margin-right: 50%;
+    margin-left: 0;
 }
 
 div.status .purple-line.right-line .dot {
     left: -8px;
+}
+
+html[dir=rtl] div.status .purple-line.right-line .dot {
+    left: unset;
+    right: -8px;
 }
 
 div.status .purple-line.left-line {
@@ -164,6 +180,11 @@ div.status .purple-line.left-line {
 div.status .purple-line.left-line .dot {
     left: unset;
     right: -4px;
+}
+
+html[dir=rtl] div.status .purple-line.left-line .dot {
+    left: -4px;
+    right: unset;
 }
 
 @media(max-width: 699px) {
@@ -190,15 +211,20 @@ div.status .purple-line.left-line .dot {
         margin: 0 6px;
     }
 
-    div.status .arrow::after {
-        content: '\01F816';
+    div.status .arrow {
+        width: 24px;
+        direction: rtl;
     }
 
-    div.status .dot {
-        top: 3px;
-    }
+    div.status .arrow::after { content: '\01F816'; }
 
-    div.status .purple-line.right-line {
+    html[dir=rtl] div.status .arrow { direction: ltr; }
+
+    html[dir=rtl] div.status .arrow::after { content: '\01F814'; }
+
+    div.status .dot { top: 3px; }
+
+    div.status .purple-line.right-line, html[dir=rtl] div.status .purple-line.right-line {
         width: 0;
         height: 12px;
         margin: 12px 6px 0;
@@ -206,6 +232,12 @@ div.status .purple-line.left-line .dot {
 
     div.status .purple-line.right-line .dot {
         left: -6px;
+        top: -9px;
+    }
+
+    html[dir=rtl] div.status .purple-line.right-line .dot {
+        left: -6px;
+        right: unset;
         top: -9px;
     }
 
@@ -220,7 +252,12 @@ div.status .purple-line.left-line .dot {
         top: 3px;
     }
 
-    div.status .stage-text {
-        margin: 5px 0 0 4px;
+    html[dir=rtl] div.status .purple-line.left-line .dot {
+        left: -6px;
+        top: 3px;
     }
+
+    div.status .stage-text { margin: 5px 0 0 4px; }
+
+    html[dir=rtl] div.status .stage-text { margin: 5px 4px 0 0; }
 }

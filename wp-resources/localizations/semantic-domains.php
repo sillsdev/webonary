@@ -1,8 +1,8 @@
 <?php
 
 
-$lang_code = 'ru';
-$locale_code = 'ru_RU';
+$lang_code = 'ur';
+$locale_code = 'ur_PK';
 
 
 include_once 'shared-functions.php';
