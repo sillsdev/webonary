@@ -1,10 +1,13 @@
 <?php
-/** @noinspection PhpUnused */
 
-$input_file_name = 'LocalizedLists-ru_RU.xml';
-$lang_code = 'ru';
-$locale_code = 'ru_RU';
 
+$lang_code = 'ur';
+$locale_code = 'ur_PK';
+
+
+include_once 'shared-functions.php';
+
+$input_file_name = 'input/LocalizedLists-' . $locale_code . '.xml';
 $po_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/lang/sil_dictionary-' . $locale_code . '.po';
 
 
@@ -91,13 +94,6 @@ function getSubPossibilities(SimpleXMLElement $e): array
 	return $sem_domains;
 }
 
-function escapeString($string)
-{
-	$string = str_replace("\n", '\\n', $string);
-
-	return str_replace("\"", '\\"', $string);
-}
-
 function addOrReplacePO(string $key, string $value, string $code, array &$po_list)
 {
 	$e_key = escapeString($key);
@@ -130,91 +126,13 @@ function processPODomain($domain, array &$po_list)
 	}
 }
 
-function makePOFile($lines)
-{
-	global $po_file_name;
-
-	// rename the old file
-	if (is_file($po_file_name))
-		rename($po_file_name, $po_file_name . '.old');
-
-	// save the new po file
-	file_put_contents($po_file_name, implode(PHP_EOL, $lines));
-}
-
-function makeMOFile()
-{
-	global $po_file_name;
-
-	$mo_file_name = substr($po_file_name, 0, -2) . 'mo';
-
-	// rename the old file
-	if (is_file($mo_file_name))
-		rename($mo_file_name, $mo_file_name . '.old');
-
-	// generate the new mo file
-	$output = null;
-	$return_val = null;
-	$cmd = 'msgfmt ' . $po_file_name . ' -o ' . $mo_file_name;
-	exec($cmd, $output, $return_val);
-}
-
-function makeJSFile($output): void
-{
-	global $lang_code;
-
-	// load the english file
-	$en_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/js/categoryNodes_en.js';
-	$lines = file($en_file_name, FILE_IGNORE_NEW_LINES);
-
-	foreach ($output['domains'] as $domain) {
-		processJSDomain($domain, $lines);
-	}
-
-	$out_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/js/categoryNodes_' . $lang_code . '.js';
-
-	// rename the old file
-	if (is_file($out_file_name))
-		rename($out_file_name, $out_file_name . '.old');
-
-	// save the new po file
-	file_put_contents($out_file_name, implode(PHP_EOL, $lines));
-}
-
-function processJSDomain($domain, &$lines)
-{
-	addOrReplaceJS($domain['eng'], $domain['name'], $domain['code'], $lines);
-
-	foreach ($domain['domains'] as $d) {
-		processJSDomain($d, $lines);
-	}
-}
-
-function addOrReplaceJS(string $key, string $value, string $code, array &$lines)
-{
-	$find = '"' . $code . '. ' . $key . '"';
-
-	foreach($lines as &$line) {
-
-		if (strpos($line, $find) !== false) {
-			$replace = '"' . $code . '. ' . $value . '"';
-			$line = str_replace($find, $replace, $line);
-			return;
-		}
-	}
-
-	// output a warning if you get here
-	print('WARNING: "' . $code . ' ' . $key . '" was not found in the JS list.' . PHP_EOL);
-}
 
 $output = getDomains();
 $lines = getPOLines($output);
 
-makePOFile($lines);
-makeMOFile();
+makePOFile($po_file_name, $lines);
+makeMOFile($po_file_name);
 
 unset($lines);
-
-// makeJSFile($output);
 
 print(PHP_EOL . 'Finished.' . PHP_EOL);

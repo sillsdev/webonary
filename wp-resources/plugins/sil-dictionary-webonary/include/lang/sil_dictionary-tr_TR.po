@@ -115,27 +115,27 @@ msgstr ""
 
 #: include/configuration.php:337
 msgid "Rough draft"
-msgstr ""
+msgstr "Ham taslak"
 
 #: include/configuration.php:338
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Bireysel değerlendirilmiş taslak"
 
 #: include/configuration.php:339
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Grup değerlendirilmesi olan taslak"
 
 #: include/configuration.php:340
 msgid "Consultant approved"
-msgstr ""
+msgstr "Danışman onaylı"
 
 #: include/configuration.php:341
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Bitmiş (resmi baskısı yapılmamış)"
 
 #: include/configuration.php:342
 msgid "Formally published"
-msgstr ""
+msgstr "Resmi baskısı yapılmış"
 
 # @ sil_dictionary
 #: include/configuration.php:345
@@ -7740,3 +7740,11 @@ msgstr ""
 #: include/xhtml-importer.php:2272
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Girdi sayısı"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Yayınlama durumu"

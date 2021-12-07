@@ -100,9 +100,9 @@ button#responsive-menu-button,
     #responsive-menu-container *,
     #responsive-menu-container *:before,
     #responsive-menu-container *:after {
-         box-sizing: border-box;
-         margin: 0;
-         padding: 0;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     #responsive-menu-container #responsive-menu-search-box,
@@ -115,12 +115,13 @@ button#responsive-menu-button,
     #responsive-menu-container #responsive-menu ul {
         width: 100%;
     }
+
     #responsive-menu-container #responsive-menu ul.responsive-menu-submenu {
         display: none;
     }
 
     #responsive-menu-container #responsive-menu ul.responsive-menu-submenu.responsive-menu-submenu-open {
-         display: block;
+        display: block;
     }
 
     #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-1 a.responsive-menu-item-link {
@@ -168,7 +169,7 @@ button#responsive-menu-button,
         overflow: hidden;
     }
 
-    #responsive-menu-container li.responsive-menu-item a .responsive-menu-subarrow  .fa {
+    #responsive-menu-container li.responsive-menu-item a .responsive-menu-subarrow .fa {
         margin-right: 0;
     }
 
@@ -208,8 +209,7 @@ button#responsive-menu-button,
     }
 
     .responsive-menu-label.responsive-menu-label-top,
-    .responsive-menu-label.responsive-menu-label-bottom
-    {
+    .responsive-menu-label.responsive-menu-label-bottom {
         display: block;
         margin: 0 auto;
     }
@@ -246,14 +246,14 @@ button#responsive-menu-button,
     .responsive-menu-inner,
     .responsive-menu-inner::before,
     .responsive-menu-inner::after {
-         width: 25px;
-         height: 3px;
-         background-color: #6E6262;
-         border-radius: 4px;
-         position: absolute;
-         transition-property: transform;
-         transition-duration: 0.15s;
-         transition-timing-function: ease;
+        width: 25px;
+        height: 3px;
+        background-color: #6E6262;
+        border-radius: 4px;
+        position: absolute;
+        transition-property: transform;
+        transition-duration: 0.15s;
+        transition-timing-function: ease;
     }
 
     .responsive-menu-open .responsive-menu-inner,
@@ -279,56 +279,62 @@ button#responsive-menu-button,
 
     .responsive-menu-inner::before,
     .responsive-menu-inner::after {
-         content: "";
-         display: block;
+        content: "";
+        display: block;
     }
 
     .responsive-menu-inner::before {
-         top: -8px;
+        top: -8px;
     }
 
     .responsive-menu-inner::after {
-         bottom: -8px;
+        bottom: -8px;
     }
 
-            .responsive-menu-boring .responsive-menu-inner,
-.responsive-menu-boring .responsive-menu-inner::before,
-.responsive-menu-boring .responsive-menu-inner::after {
-    transition-property: none;
-}
+    .responsive-menu-boring .responsive-menu-inner,
+    .responsive-menu-boring .responsive-menu-inner::before,
+    .responsive-menu-boring .responsive-menu-inner::after {
+        transition-property: none;
+    }
 
-.responsive-menu-boring.is-active .responsive-menu-inner {
-    transform: rotate(45deg);
-}
+    .responsive-menu-boring.is-active .responsive-menu-inner {
+        transform: rotate(45deg);
+    }
 
-.responsive-menu-boring.is-active .responsive-menu-inner::before {
-    top: 0;
-    opacity: 0;
-}
+    .responsive-menu-boring.is-active .responsive-menu-inner::before {
+        top: 0;
+        opacity: 0;
+    }
 
-.responsive-menu-boring.is-active .responsive-menu-inner::after {
-    bottom: 0;
-    transform: rotate(-90deg);
-}
+    .responsive-menu-boring.is-active .responsive-menu-inner::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+    }
+
     button#responsive-menu-button {
         width: 55px;
         height: 55px;
         position: fixed;
-        top: 0px;
+        top: 0;
         right: 1%;
-                    background: #f2eded
-            }
+        background: #f2eded
+    }
 
-            .responsive-menu-open button#responsive-menu-button {
-            background: #d6cfcf
-        }
+    html[dir=rtl] button#responsive-menu-button {
+        right: unset;
+        left: 1%;
+    }
 
-            .responsive-menu-open button#responsive-menu-button:hover,
-        .responsive-menu-open button#responsive-menu-button:focus,
-        button#responsive-menu-button:hover,
-        button#responsive-menu-button:focus {
-            background: #bdbbbb
-        }
+    .responsive-menu-open button#responsive-menu-button {
+        background: #d6cfcf
+    }
+
+    .responsive-menu-open button#responsive-menu-button:hover,
+    .responsive-menu-open button#responsive-menu-button:focus,
+    button#responsive-menu-button:hover,
+    button#responsive-menu-button:focus {
+        background: #bdbbbb
+    }
 
     button#responsive-menu-button .responsive-menu-box {
         color: #6E6262;
@@ -342,7 +348,7 @@ button#responsive-menu-button,
         color: #6E6262;
         font-size: 14px;
         line-height: 13px;
-            }
+    }
 
     button#responsive-menu-button {
         display: inline-block;
@@ -350,14 +356,13 @@ button#responsive-menu-button,
     }
 
 
-
     #responsive-menu-container {
         width: 75%;
         left: 0;
         transition: transform 0.5s;
         text-align: left;
-                                            background: #F1F1F1;
-            }
+        background: #F1F1F1;
+    }
 
     #responsive-menu-container #responsive-menu-wrapper {
         background: #F1F1F1;
@@ -495,7 +500,7 @@ button#responsive-menu-button,
         border-color: #ADADAD;
     }
 
-            #topnavi {
-            display: none !important;
-        }
+    #topnavi {
+        display: none !important;
     }
+}

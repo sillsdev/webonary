@@ -21,7 +21,7 @@ msgstr ""
 
 #: include/browseview_func.php:121
 msgid "No entries exist for"
-msgstr "Walang talang natagpuan para sa"
+msgstr "Walang mga entry na umiiral para sa"
 
 #: include/browseview_func.php:207
 msgid "Page"
@@ -37,7 +37,7 @@ msgstr ""
 
 #: include/browseview_func.php:602
 msgid "No entries exist starting with this letter."
-msgstr "Walang talang natagpuan para sa letrang ito."
+msgstr "Walang mga entry na umiiral ang nagsisimula sa letrang ito."
 
 #: include/comments_func.php:25
 msgid "Re-syncing comments"
@@ -60,7 +60,7 @@ msgstr ""
 #: include/configuration.php:32 include/default_domains.php:1313
 #: include/searchform_func.php:98
 msgid "Search"
-msgstr "Panghanap"
+msgstr "Hanapin"
 
 #: include/configuration.php:33
 msgid "Browse Views"
@@ -114,27 +114,27 @@ msgstr ""
 
 #: include/configuration.php:300
 msgid "Rough draft"
-msgstr ""
+msgstr "Draft na hindi pa sinuri"
 
 #: include/configuration.php:301
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Draft na sinuri ng sarili"
 
 #: include/configuration.php:302
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Draft na sinuri ng komunidad"
 
 #: include/configuration.php:303
 msgid "Consultant approved"
-msgstr ""
+msgstr "Aprobado ng tagasangguni"
 
 #: include/configuration.php:304
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Tapos (walang pormal na paglalathala)"
 
 #: include/configuration.php:305
 msgid "Formally published"
-msgstr ""
+msgstr "Pormal na inilathala"
 
 #: include/configuration.php:309
 msgid "Delete Data"
@@ -7403,13 +7403,13 @@ msgstr ""
 
 #: include/dictionary-search.php:203
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr ""
+msgstr "Dahil sa ikli ng salitang hinanap, ang parsyal na paghahanap ay tinanggal."
 "Dahil sa kaiklian ng inyong itinalang takda, hindi isinama ang resulta ng "
 "partial search."
 
 #: include/dictionary-search.php:205
 msgid "Click here to include searching through partial words."
-msgstr "I-click ito upang isama ang resulta ng partial word search."
+msgstr "I-click dito upang isali sa paghahanap sa pamamagitan ng parsyal na mga salita."
 
 #: include/infrastructure.php:104
 msgctxt "taxonomy general name"
@@ -7473,7 +7473,7 @@ msgstr ""
 
 #: include/infrastructure.php:145 include/searchform_func.php:144
 msgid "All Parts of Speech"
-msgstr "Lahat ng bahagi ng pananalita"
+msgstr "Lahat ng Bahagi ng Pananalita"
 
 #: include/infrastructure.php:146
 msgid "Parent Part of Speech"
@@ -7511,7 +7511,7 @@ msgstr ""
 
 #: include/infrastructure.php:182 include/searchform_func.php:119
 msgid "All Languages"
-msgstr "Lahat ng Lenggwahe"
+msgstr "Lahat ng Wika"
 
 #: include/infrastructure.php:183
 msgid "Parent Language"
@@ -7585,7 +7585,7 @@ msgstr "Bilang ng mga Tala"
 
 #: include/searchform_func.php:171
 msgid "Last update:"
-msgstr ""
+msgstr "Huling update:"
 
 #: include/searchform_func.php:186
 msgid "Found in Semantic Domains:"
@@ -7660,3 +7660,31 @@ msgstr ""
 #: include/xhtml-importer.php:2273
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Bilang ng mga entry"
+
+#: extra string
+msgid "Date published:"
+msgstr "Petsa ng pagkalathala:"
+
+#: extra string
+msgid "Advanced Search"
+msgstr "Advanced na Paghahanap"
+
+#: extra string
+msgid "Hide Advanced Search"
+msgstr "Itago ang Advanced na Paghahanap"
+
+#: extra string
+msgid "Match whole words"
+msgstr "Itugma ang buong mga salita"
+
+#: extra string
+msgid "Match accents and tones"
+msgstr "Itugma ang mga punto at tono"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Estado ng Paglalathala"

@@ -397,8 +397,6 @@ function webonary_conf_widget($showTitle = false)
 				</div>
 			</form>
 
-			<p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to upload your FLEx data', 'sil_dictionary'); ?></a></p>
-
 			<form id="configuration-form" method="post" action="">
 				<button type="submit" disabled style="display: none" aria-hidden="true"></button>
 
