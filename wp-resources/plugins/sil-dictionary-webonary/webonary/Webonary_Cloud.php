@@ -12,11 +12,11 @@ class Webonary_Cloud
 
 	public static $apiNamespace = 'webonary-cloud/v1';
 
-	private static function isValidDictionary($dictionary) {
+	private static function isValidDictionary($dictionary): bool {
 		return is_object($dictionary) && isset($dictionary->_id);
 	}
 
-	private static function isValidEntry($entry) {
+	private static function isValidEntry($entry): bool {
 		return is_object($entry) && isset($entry->_id);
 	}
 
@@ -42,6 +42,12 @@ class Webonary_Cloud
 			error_log('Getting results from ' . $url);
 		}
 
+		// check the cache first
+		$found = false;
+		$cached_val = wp_cache_get($url, 'webonary', false, $found);
+		if ($found !== false)
+			return $cached_val;
+
 		$response = wp_remote_get($url);
 
 		if (is_wp_error($response)) {
@@ -50,10 +56,14 @@ class Webonary_Cloud
 		}
 
 		$body = wp_remote_retrieve_body($response);
-		return json_decode($body);
+		$returned_val = json_decode($body);
+
+		wp_cache_set($url, $returned_val, 'webonary');
+
+		return $returned_val;
 	}
 
-	private static function remoteFileUrl($path) {
+	private static function remoteFileUrl($path): ?string {
 		if (!defined('WEBONARY_CLOUD_FILE_URL'))  {
 			error_log('WEBONARY_CLOUD_FILE_URL is not set! Please do so in wp-config.php.');
 			return null;
@@ -70,7 +80,7 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	private static function sematicDomainToLink($lang, $domain) {
+	private static function sematicDomainToLink($lang, $domain): string {
 		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
 	}
 
@@ -83,13 +93,10 @@ class Webonary_Cloud
 		}
 
 		// set image and audio src path to the cloud, if they are found in the entry
-		if (preg_match_all('/src=\"(.*(?:\.jpg|.mp3))\"/iU', $displayXhtml, $matches) > 0) {
-			$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
-			foreach($matches[0] as $index => $src) {
-				$file = str_replace("\\", "/", $matches[1][$index]);
-				$displayXhtml = str_replace($src, 'src="' . $baseUrl . $file . '"', $displayXhtml);
-			}
-		}
+		$baseUrl = self::remoteFileUrl($entry->dictionaryId) . '/';
+		$displayXhtml = preg_replace_callback('/src=\"((?!http).+)\"/iU', function ($matches) use($baseUrl) {
+			return str_replace($matches[1], $baseUrl . str_replace('\\', '/', $matches[1]), $matches[0]);
+		}, $displayXhtml);
 
 		// set semantic domains as links, if they are found in the entry
 		if (preg_match_all(
@@ -120,7 +127,7 @@ class Webonary_Cloud
 		return $displayXhtml;
 	}
 
-	private static function validatePermissionToPost($header){
+	private static function validatePermissionToPost($header): stdClass {
 		$response = new stdClass();
 		$response->message = 'Invalid or missing authorization header';
 		$response->code = 401;
@@ -159,7 +166,7 @@ class Webonary_Cloud
 		return $response;
 	}
 
-	public static function entryToFakePost($entry) {
+	public static function entryToFakePost($entry): stdClass {
 		$post = new stdClass();
 		$post->post_title = $entry->mainHeadWord[0]->value;
 		$post->post_name = $entry->guid;
@@ -172,7 +179,7 @@ class Webonary_Cloud
 		return $post;
 	}
 
-	 public static function entryToReversal($entry) {
+	 public static function entryToReversal($entry): stdClass {
 		$reversal = new stdClass();
 		$reversal->reversal_content = self::entryToDisplayXhtml($entry);
 
@@ -198,23 +205,23 @@ class Webonary_Cloud
 	public static function getDictionary($dictionaryId) {
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request);
-		$dictionary = NULL;
-		if (self::isValidDictionary($response)) {
-			$dictionary = $response;
-		}
-		return $dictionary;
+
+		return (self::isValidDictionary($response)) ? $response : null;
 	}
 
-	public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()) {
+	public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()): int {
 		$request = $doAction . '/' . $dictionaryId;
 		$apiParams['countTotalOnly'] = '1';
 		$response = self::remoteGetJson($request, $apiParams);
-		return $response->count;
+		return $response->count ?? 0;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionaryId, $apiParams = array()) {
+	public static function getEntriesAsPosts($doAction, $dictionaryId, $apiParams = array()): array {
 		$request = $doAction . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $apiParams);
+		if (empty($response))
+			return [];
+
 		$posts = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
@@ -227,9 +234,12 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-	public static function getEntriesAsReversals($dictionaryId, $apiParams) {
+	public static function getEntriesAsReversals($dictionaryId, $apiParams): array {
 		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $apiParams);
+		if (empty($response))
+			return [];
+
 		$reversals = [];
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
@@ -240,10 +250,13 @@ class Webonary_Cloud
 		return $reversals;
 	}
 
-	public static function getEntryAsPost($doAction, $dictionaryId, $id) {
+	public static function getEntryAsPost($doAction, $dictionaryId, $id): array {
 		$request = $doAction . '/' . $dictionaryId;
 		$apiParams = array('guid' => $id);
 		$entry = self::remoteGetJson($request, $apiParams);
+		if (empty($entry))
+			return [];
+
 		$posts = [];
 		if (self::isValidEntry($entry)) {
 			$post = self::entryToFakePost($entry);
@@ -255,9 +268,12 @@ class Webonary_Cloud
 	}
 
 	public static function registerAndEnqueueMainStyles($dictionaryId, $deps = array()) {
+
 		$dictionary = self::getDictionary($dictionaryId);
-		$time = strtotime($dictionary->updatedAt);
-		if (!is_null($dictionary)){
+
+		if (!is_null($dictionary)) {
+
+			$time = strtotime($dictionary->updatedAt);
 			foreach($dictionary->mainLanguage->cssFiles as $index => $cssFile) {
 				if ($index === 0) {
 					$handle = 'configured_stylesheet';
@@ -284,7 +300,7 @@ class Webonary_Cloud
 			foreach($dictionary->reversalLanguages as $reversal) {
 				if ($lang === $reversal->lang) {
 					foreach($reversal->cssFiles as $index => $cssFile) {
-						$handle = 'reversal_stylesheet' . ($index ? $index : '');
+						$handle = 'reversal_stylesheet' . ($index ?: '');
 						$cssPath = $dictionaryId . '/' . $cssFile;
 						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
 						wp_enqueue_style($handle);
@@ -312,63 +328,64 @@ class Webonary_Cloud
 		return null;
 	}
 
-	public static function searchEntries($posts, WP_Query $query) {
-		if ($query->is_main_query()) {
-			$dictionaryId = self::getBlogDictionaryId();
+	public static function searchEntries($posts, WP_Query $query): ?array {
 
-			$pageName = trim(get_query_var('name'));
+		if (!$query->is_main_query())
+			return null;
 
-			// name begins with 'g', then followed by GUID
-			if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
-				return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
-			}
+		$dictionaryId = self::getBlogDictionaryId();
 
-			$searchText = trim(get_search_query());
-			if ($searchText === '') {
-				$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
-				if ($tax !== '') {
-					// This is a listing by semantic domains
-					$apiParams = array(
-						'text' => $tax,
-						'searchSemDoms' => '1'
-					);
-				}
-			}
-			else {
-				$getParams = filter_input_array(
-					INPUT_GET,
-					array(
-						'key' => array('filter' => FILTER_SANITIZE_STRING),
-						'tax' => array('filter' => FILTER_SANITIZE_STRING),
-						'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
-							'options' => array('default' => '1')),
-						'match_accents' => array('filter' => FILTER_SANITIZE_STRING,
-							'options' => array('default' => '0'))
-					)
-				);
+		$pageName = trim(get_query_var('name'));
 
-				$apiParams = array(
-					'text' => $searchText,
-					'lang' => $getParams['key'],
-					'partOfSpeech' => $getParams['tax'],
-					'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
-					'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
-				);
-			}
-
-			if (isset($apiParams)) {
-				$apiParams['pageNumber'] = $query->query_vars['paged'];
-				$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
-
-				$totalEntries = self::getTotalCount(self::$doSearchEntry, $dictionaryId, $apiParams);
-				$query->found_posts = $totalEntries;
-				$query->max_num_pages = ceil($totalEntries / $apiParams['pageLimit']);
-
-				return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
-			}
+		// name begins with 'g', then followed by GUID
+		if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
+			return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 		}
 
-		return null;
+		$searchText = trim(get_search_query());
+		if ($searchText === '') {
+			$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+			if ($tax !== '') {
+				// This is a listing by semantic domains
+				$apiParams = array(
+					'text' => $tax,
+					'searchSemDoms' => '1'
+				);
+			}
+		}
+		else {
+			$getParams = filter_input_array(
+				INPUT_GET,
+				array(
+					'key' => array('filter' => FILTER_SANITIZE_STRING),
+					'tax' => array('filter' => FILTER_SANITIZE_STRING),
+					'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
+						'options' => array('default' => '1')),
+					'match_accents' => array('filter' => FILTER_SANITIZE_STRING,
+						'options' => array('default' => '0'))
+				)
+			);
+
+			$apiParams = array(
+				'text' => $searchText,
+				'lang' => $getParams['key'],
+				'partOfSpeech' => $getParams['tax'],
+				'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
+				'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
+			);
+		}
+
+		if (!isset($apiParams))
+			return null;
+
+		$apiParams['pageNumber'] = $query->query_vars['paged'];
+		$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
+
+		$totalEntries = self::getTotalCount(self::$doSearchEntry, $dictionaryId, $apiParams);
+		$query->found_posts = $totalEntries;
+		$query->max_num_pages = ceil($totalEntries / $apiParams['pageLimit']);
+
+		return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 	}
 
 	public static function registerApiRoutes() {
