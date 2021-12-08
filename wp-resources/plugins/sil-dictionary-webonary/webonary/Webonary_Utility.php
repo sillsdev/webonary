@@ -491,4 +491,32 @@ class Webonary_Utility
 	{
 		return addcslashes($string, "\0..\37\"'_%\\");
 	}
+
+	/**
+	 * Utility function to convert pseudo-links in entry xml from FLex into actual Webonary site links
+	 * @param string $entry_xml
+	 * @return string $entry_xml
+	 */
+	public static function fix_entry_xml_links($entry_xml)
+	{
+		//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
+		//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
+		//but it will keep a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268" onclick="document.getElementById('g635754005092954976ã').play()"
+		//which is important for playing audio
+
+		//first make sure audio href only contains a hastag (or any href with onclick after it)
+		$entry_xml = preg_replace('/href="(#)([^"]+)" onclick/', 'href="#$2" onclick', $entry_xml);
+
+		//closing tag for <a .play()"/>, needs to have an empty space between > </a>
+		$entry_xml = str_replace('></a>', '> </a>', $entry_xml);
+
+		//make all links that are not using onclick (e.g. have format "#">) use the url path
+		$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . get_bloginfo('wpurl') . '/\\2">', $entry_xml);
+
+		$entry_xml = addslashes($entry_xml);
+		$entry_xml = stripslashes($entry_xml);
+		$entry_xml = normalizer_normalize($entry_xml, Normalizer::NFC );
+
+		return $entry_xml;
+	}
 }
