@@ -114,15 +114,23 @@ function webonary_searchform() {
 	{
 		//$catalog_terms = get_terms('sil_writing_systems');
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
-		$vernacularLanguageName = Webonary_Configuration::get_LanguageCodes(get_option('languagecode'))[0]['name'];
-		foreach ($arrLanguages as $language)
-		{
-			if($language['name'] != $vernacularLanguageName || ($language['name'] == $vernacularLanguageName && $language['language_code'] == get_option('languagecode')))
-			{
-				$language_dropdown_options .= '<option value="'. $language['language_code'] . '"';
-				if ($selected_language == $language['language_code'])
-					$language_dropdown_options .= ' selected';
-				$language_dropdown_options .= '>' . $language['name'] . '</option>';
+		if ( ! empty( $arrLanguages ) ) {
+
+			$vernacularLanguages = Webonary_Configuration::get_LanguageCodes( get_option( 'languagecode' ) );
+			if ( ! empty( $vernacularLanguages ) ) {
+
+				$vernacularLanguageName = Webonary_Configuration::get_LanguageCodes( get_option( 'languagecode' ) )[0]['name'];
+				foreach ( $arrLanguages as $language ) {
+
+					if ( $language['name'] != $vernacularLanguageName || $language['language_code'] == get_option( 'languagecode' ) ) {
+
+						$language_dropdown_options .= '<option value="' . $language['language_code'] . '"';
+						if ( $selected_language == $language['language_code'] ) {
+							$language_dropdown_options .= ' selected';
+						}
+						$language_dropdown_options .= '>' . $language['name'] . '</option>';
+					}
+				}
 			}
 		}
 
