@@ -98,6 +98,11 @@ class Webonary_Cloud
 			return str_replace($matches[1], $baseUrl . str_replace('\\', '/', $matches[1]), $matches[0]);
 		}, $displayXhtml);
 
+		// set the URL for videos and such
+		$displayXhtml = preg_replace_callback('/href=\"((?!http).+)\"/iU', function ($matches) use($baseUrl) {
+			return str_replace($matches[1], $baseUrl . str_replace('\\', '/', $matches[1]), $matches[0]);
+		}, $displayXhtml);
+
 		// set semantic domains as links, if they are found in the entry
 		if (preg_match_all(
 			'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
