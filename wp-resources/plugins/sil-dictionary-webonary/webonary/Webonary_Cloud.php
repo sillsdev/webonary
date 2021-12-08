@@ -79,7 +79,7 @@ class Webonary_Cloud
 			return '';
 		}
 		else {
-			$displayXhtml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry->displayXhtml);
+			$displayXhtml = Webonary_Utility::fix_entry_xml_links($entry->displayXhtml);
 		}
 
 		// set image and audio src path to the cloud, if they are found in the entry
