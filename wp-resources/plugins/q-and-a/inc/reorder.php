@@ -1,8 +1,8 @@
 <?php //borrowed from My Page Order http://www.geekyweekly.com/mypageorder by Andrew Charlton
 
 function faqpageorder_menu()
-{    
-	add_submenu_page( 'edit.php?post_type=qa_faqs', __('Reorder FAQs', 'qa-free'), __('Reorder FAQs', 'qa-free'), 'manage_options', 'faqpageorder', 'faqpageorder' ); 
+{
+	add_submenu_page( 'edit.php?post_type=qa_faqs', __('Reorder FAQs', 'qa-free'), __('Reorder FAQs', 'qa-free'), 'manage_options', 'faqpageorder', 'faqpageorder' );
 
 	//add_pages_page(__('Reorder FAQs', 'faqpageorder'), __('Reorder FAQs', 'faqpageorder'), 'edit_pages', 'faqpageorder', 'faqpageorder');
 }
@@ -19,7 +19,7 @@ function faqpageorder_set_plugin_meta($links, $file) {
 	$plugin = plugin_basename(__FILE__);
 	// create link
 	if ($file == $plugin) {
-		return array_merge( $links, array( 
+		return array_merge( $links, array(
 			'<a href="' . faqpageorder_getTarget() . '">' . __('Reorder FAQs', 'qa-free') . '</a>'
 		));
 	}
@@ -35,14 +35,14 @@ function faqpageorder()
 global $wpdb;
 $parentID = 0;
 
-if (isset($_POST['btnSubPages'])) { 
+if (isset($_POST['btnSubPages'])) {
 	$parentID = $_POST['pages'];
 }
-elseif (isset($_POST['hdnParentID'])) { 
+elseif (isset($_POST['hdnParentID'])) {
 	$parentID = $_POST['hdnParentID'];
 }
 
-if (isset($_POST['btnReturnParent'])) { 
+if (isset($_POST['btnReturnParent'])) {
 	$parentsParent = $wpdb->get_row("SELECT post_parent FROM $wpdb->posts WHERE ID = " . $_POST['hdnParentID'], ARRAY_N);
 	$parentID = $parentsParent[0];
 }
@@ -52,7 +52,7 @@ if(isset($_GET['hideNote'])) {
 }
 
 $success = "";
-if (isset($_POST['btnOrderPages'])) { 
+if (isset($_POST['btnOrderPages'])) {
 	$success = faqpageorder_updateOrder();
 }
 
@@ -62,9 +62,9 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 <div class='wrap'>
 <h2><?php _e('Reorder FAQs', 'qa-free'); ?></h2>
 <form action="edit.php" method="get" >
-	 <?php 
+	 <?php
 		$tax_slug = 'faq_category';
-		
+
 		// retrieve the taxonomy object
 		$tax_obj = get_taxonomy($tax_slug);
 		$tax_name = $tax_obj->labels->name;
@@ -79,7 +79,7 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 			echo '<option value='. $term->term_id, $_GET[$tax_slug] == $term->term_id ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
 		}
 		echo "</select>";
-		
+
         /*$business_taxonomy = get_taxonomy($taxonomy);
 		wp_dropdown_categories(array(
             'show_option_all' =>  __("Show All {$business_taxonomy->label}"),
@@ -95,28 +95,28 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 		<input type="hidden" name="post_type" value="qa_faqs" />
 		<input type="hidden" name="page" value="faqpageorder" />
 		<input type="submit" />
-</form>	
+</form>
 <form name="frmfaqpageorder" method="post" action="">
-	
-	<?php 
+
+	<?php
 	echo $success;
 	?>
-	
+
 	<?php
- 	if($subPageStr != "") 
+ 	if($subPageStr != "")
 	{ ?>
-	
+
 	<h3><?php _e('Order Subpages', 'qa-free'); ?></h3>
 	<select id="pages" name="pages">
 		<?php echo $subPageStr; ?>
 	</select>
 	&nbsp;<input type="submit" name="btnSubPages" class="button" id="btnSubPages" value="<?php _e('Order Subpages', 'qa-free'); ?>" />
-	<?php 
-	} 
+	<?php
+	}
 	?>
 
 	<h3><?php _e('Reorder FAQs', 'qa-free'); ?></h3>
-	
+
 	<ul id="faqpageorderList">
 	<?php
 	$results = faqpageorder_pageQuery($parentID);
@@ -124,11 +124,11 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 		$productcategories = (array) wp_get_object_terms($row->ID, 'faq_category', array('fields' => 'names'));
 		if(count($productcategories) == 0) $productcategories[0] = __('No Category Selected', 'qa-free');
 		$productcategories_id = (array) wp_get_object_terms($row->ID, 'faq_category', array('fields' => 'ids'));
-		
+
 		if( empty($_GET['faq_category']) || in_array($_GET['faq_category'],$productcategories_id)){
 		echo "<li id='id_$row->ID' class='lineitem'>".__($row->post_title)." <span style='float:right'>| ".implode(', ',$productcategories)."</span></li>";
 		}
-	}	
+	}
 	?>
 	</ul>
 
@@ -139,14 +139,14 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 	<input type="hidden" id="hdnfaqpageorder" name="hdnfaqpageorder" />
 	<input type="hidden" id="hdnParentID" name="hdnParentID" value="<?php echo $parentID; ?>" />
 	<p><?php _e('This feature is part of the <a href="http://geekyweekly.com/mypageorder">My Page Order</a> plugin by Andrew Charlton.', 'qa-free'); ?></p>
-	
+
 </form>
 </div>
 
 <style type="text/css">
 	#faqpageorderList {
-		width: 90%; 
-		border:1px solid #B2B2B2; 
+		width: 90%;
+		border:1px solid #B2B2B2;
 		margin:10px 10px 10px 0px;
 		padding:5px 10px 5px 10px;
 		list-style:none;
@@ -169,14 +169,14 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 		height:1.5em;
 		line-height:1.5em;
 	}
-	
-	.sortable-placeholder{ 
+
+	.sortable-placeholder{
 		border:1px dashed #B2B2B2;
 		margin-top:5px;
-		margin-bottom:5px; 
+		margin-bottom:5px;
 		padding: 2px 5px 2px 5px;
 		height:1.5em;
-		line-height:1.5em;	
+		line-height:1.5em;
 	}
 </style>
 
@@ -184,15 +184,15 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 // <![CDATA[
 
 	function faqpageorderaddloadevent(){
-		jQuery("#faqpageorderList").sortable({ 
-			placeholder: "sortable-placeholder", 
+		jQuery("#faqpageorderList").sortable({
+			placeholder: "sortable-placeholder",
 			revert: false,
-			tolerance: "pointer" 
+			tolerance: "pointer"
 		});
 	};
 
 	addLoadEvent(faqpageorderaddloadevent);
-	
+
 	function orderPages() {
 		jQuery("#updateText").html("<?php _e('Updating FAQ Order...', 'qa-free'); ?>");
 		jQuery("#hdnfaqpageorder").val(jQuery("#faqpageorderList").sortable("toArray"));
@@ -214,7 +214,7 @@ function faqpageorder_getTarget() {
 
 function faqpageorder_updateOrder()
 {
-	if (isset($_POST['hdnfaqpageorder']) && $_POST['hdnfaqpageorder'] != "") { 
+	if (isset($_POST['hdnfaqpageorder']) && $_POST['hdnfaqpageorder'] != "") {
 		global $wpdb;
 
 		$hdnfaqpageorder = $_POST['hdnfaqpageorder'];
@@ -236,7 +236,7 @@ function faqpageorder_updateOrder()
 function faqpageorder_getSubPages($parentID)
 {
 	global $wpdb;
-	
+
 	$subPageStr = "";
 	$results = faqpageorder_pageQuery($parentID);
 	foreach($results as $row)
@@ -264,9 +264,12 @@ function faqpageorder_getParentLink($parentID)
 
 class faqpageorder_Widget extends WP_Widget {
 
-	function faqpageorder_Widget() {
-		$widget_ops = array('classname' => 'widget_faqpageorder', 'description' => __( 'Enhanced Pages widget provided by Reorder FAQs', 'qa-free') );
-		$this->WP_Widget('faqpageorder', __('Reorder FAQs', 'qa-free'), $widget_ops);	}
+
+    public function __construct() {
+
+	    $widget_ops = array('classname' => 'widget_faqpageorder', 'description' => __( 'Enhanced Pages widget provided by Reorder FAQs', 'qa-free') );
+	    parent::__construct( 'faqpageorder', __('Reorder FAQs', 'qa-free'), $widget_ops );
+    }
 
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -295,16 +298,16 @@ class faqpageorder_Widget extends WP_Widget {
 
 		if($show_home != '')
 		{
-			$out = wp_page_menu( apply_filters('widget_pages_args', array('title_li' => '', 'echo' => 0, 'sort_column' => $sortby, 'sort_order' => $sort_order, 'exclude' => $exclude, 
-					'exclude_tree' => $exclude_tree, 'include' => $include, 'depth' => $depth, 'child_of' => $child_of, 'show_date' => $show_date, 
-					'date_format' => $date_format, 'meta_key' => $meta_key, 'meta_value' => $meta_value, 'link_before' => $link_before, 'link_after' => $link_after, 
+			$out = wp_page_menu( apply_filters('widget_pages_args', array('title_li' => '', 'echo' => 0, 'sort_column' => $sortby, 'sort_order' => $sort_order, 'exclude' => $exclude,
+					'exclude_tree' => $exclude_tree, 'include' => $include, 'depth' => $depth, 'child_of' => $child_of, 'show_date' => $show_date,
+					'date_format' => $date_format, 'meta_key' => $meta_key, 'meta_value' => $meta_value, 'link_before' => $link_before, 'link_after' => $link_after,
 					'authors' => $authors, 'number' => $number, 'offset' => $offset, 'show_home' => $show_home	) ) );
 		}
 		else
 		{
-			$out = wp_list_pages( apply_filters('widget_pages_args', array('title_li' => '', 'echo' => 0, 'sort_column' => $sortby, 'sort_order' => $sort_order, 'exclude' => $exclude, 
-					'exclude_tree' => $exclude_tree, 'include' => $include, 'depth' => $depth, 'child_of' => $child_of, 'show_date' => $show_date, 
-					'date_format' => $date_format, 'meta_key' => $meta_key, 'meta_value' => $meta_value, 'link_before' => $link_before, 'link_after' => $link_after, 
+			$out = wp_list_pages( apply_filters('widget_pages_args', array('title_li' => '', 'echo' => 0, 'sort_column' => $sortby, 'sort_order' => $sort_order, 'exclude' => $exclude,
+					'exclude_tree' => $exclude_tree, 'include' => $include, 'depth' => $depth, 'child_of' => $child_of, 'show_date' => $show_date,
+					'date_format' => $date_format, 'meta_key' => $meta_key, 'meta_value' => $meta_value, 'link_before' => $link_before, 'link_after' => $link_after,
 					'authors' => $authors, 'number' => $number, 'offset' => $offset, 'show_home' => $show_home	) ) );
 		}
 
@@ -329,7 +332,7 @@ class faqpageorder_Widget extends WP_Widget {
 		} else {
 			$instance['sortby'] = 'menu_order';
 		}
-		
+
 		if ( in_array( $new_instance['sort_order'], array( 'asc', 'desc' ) ) ) {
 			$instance['sort_order'] = $new_instance['sort_order'];
 		} else {
@@ -354,7 +357,7 @@ class faqpageorder_Widget extends WP_Widget {
 
 		return $instance;
 	}
-	
+
 	function form( $instance ) {
 		//Defaults
 		$instance = wp_parse_args( (array) $instance, array( 'sortby' => 'menu_order', 'sort_order' => 'asc', 'title' => '', 'exclude' => '', 'exclude_tree' => '', 'include' => '', 'depth' => '0', 'child_of' => '', 'show_date' => '', 'date_format' => '', 'meta_key' => '', 'meta_value' => '', 'link_before' => '', 'link_after' => '', 'authors' => '', 'number' => '', 'offset' => '', 'show_home' => '' ) );
@@ -376,7 +379,7 @@ class faqpageorder_Widget extends WP_Widget {
 		$offset = esc_attr( $instance['offset'] );
 	?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'qa-free'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
-		
+
 		<p>
 			<label for="<?php echo $this->get_field_id('sortby'); ?>"><?php _e( 'Sort by:', 'qa-free' ); ?></label>
 			<select name="<?php echo $this->get_field_name('sortby'); ?>" id="<?php echo $this->get_field_id('sortby'); ?>" class="widefat">
@@ -473,7 +476,7 @@ class faqpageorder_Widget extends WP_Widget {
 			<br />
 			<small><?php _e( 'Number of pages to skip.', 'qa-free' ); ?></small>
 		</p>
-		
+
 <?php
 	}
 
