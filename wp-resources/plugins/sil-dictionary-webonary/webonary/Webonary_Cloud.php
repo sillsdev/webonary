@@ -99,8 +99,14 @@ class Webonary_Cloud
 		}, $displayXhtml);
 
 		// set the URL for videos and such
-		$displayXhtml = preg_replace_callback('/href=\"((?!http).+)\"/iU', function ($matches) use($baseUrl) {
+		$displayXhtml = preg_replace_callback('/href=\"((?!http|#).+)\"/iU', function ($matches) use($baseUrl) {
 			return str_replace($matches[1], $baseUrl . str_replace('\\', '/', $matches[1]), $matches[0]);
+		}, $displayXhtml);
+
+		// media player
+		$re = '/<span class="mediafile">[^<]*<a[^>]+(href=\"(.+)\")>[^<]+<\/a>[^<]*<\/span>/iUm';
+		$displayXhtml = preg_replace_callback($re, function ($matches) use($baseUrl) {
+			return str_replace($matches[1], 'onclick="return Webonary.showVideo(\'' . $matches[2] . '\');"', $matches[0]);
 		}, $displayXhtml);
 
 		// set semantic domains as links, if they are found in the entry
