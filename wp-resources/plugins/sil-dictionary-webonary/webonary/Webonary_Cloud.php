@@ -99,8 +99,14 @@ class Webonary_Cloud
 		}, $displayXhtml);
 
 		// set the URL for videos and such
-		$displayXhtml = preg_replace_callback('/href=\"((?!http).+)\"/iU', function ($matches) use($baseUrl) {
+		$displayXhtml = preg_replace_callback('/href=\"((?!http|#).+)\"/iU', function ($matches) use($baseUrl) {
 			return str_replace($matches[1], $baseUrl . str_replace('\\', '/', $matches[1]), $matches[0]);
+		}, $displayXhtml);
+
+		// media player
+		$re = '/<span class="mediafile">[^<]*<a[^>]+(href=\"(.+)\")>[^<]+<\/a>[^<]*<\/span>/iUm';
+		$displayXhtml = preg_replace_callback($re, function ($matches) use($baseUrl) {
+			return str_replace($matches[1], 'onclick="return Webonary.showVideo(\'' . $matches[2] . '\');"', $matches[0]);
 		}, $displayXhtml);
 
 		// set semantic domains as links, if they are found in the entry
@@ -361,23 +367,21 @@ class Webonary_Cloud
 		else {
 			$getParams = filter_input_array(
 				INPUT_GET,
-				array(
-					'key' => array('filter' => FILTER_SANITIZE_STRING),
-					'tax' => array('filter' => FILTER_SANITIZE_STRING),
-					'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
-						'options' => array('default' => '1')),
-					'match_accents' => array('filter' => FILTER_SANITIZE_STRING,
-						'options' => array('default' => '0'))
-				)
+				[
+					'key' => ['filter' => FILTER_UNSAFE_RAW],
+					'tax' => ['filter' => FILTER_UNSAFE_RAW],
+					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '1']],
+					'match_accents' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']]
+				]
 			);
 
-			$apiParams = array(
+			$apiParams = [
 				'text' => $searchText,
 				'lang' => $getParams['key'],
 				'partOfSpeech' => $getParams['tax'],
-				'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
-				'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
-			);
+				'matchPartial' => $getParams['match_whole_words'] ?? '',
+				'matchAccents' => is_null($getParams['match_accents']) ? '' : '1'
+			];
 		}
 
 		if (!isset($apiParams))
