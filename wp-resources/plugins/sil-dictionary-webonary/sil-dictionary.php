@@ -119,18 +119,19 @@ add_filter('rest_authentication_errors', function($result) {
 	return $result;
 });
 
-// add the correct RTL/LTR class
-function filter_post_class($classes)
-{
-	$rtl = get_option('vernacularRightToLeft') == '1';
-	$align_class = $rtl ? 'right' : 'left';
-
-	if (!in_array($align_class, $classes))
-		$classes[] = $align_class;
-
-	return $classes;
-}
-add_filter('post_class', 'filter_post_class', 10, 3);
+// NOTE: this was removed because appears to be applying the vernacular settings to the UI language (which it shouldn't)
+//// add the correct RTL/LTR class
+//function filter_post_class($classes)
+//{
+//	$rtl = get_option('vernacularRightToLeft') == '1';
+//	$align_class = $rtl ? 'right' : 'left';
+//
+//	if (!in_array($align_class, $classes))
+//		$classes[] = $align_class;
+//
+//	return $classes;
+//}
+//add_filter('post_class', 'filter_post_class', 10, 3);
 
 if (get_option('useCloudBackend')) {
 	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);

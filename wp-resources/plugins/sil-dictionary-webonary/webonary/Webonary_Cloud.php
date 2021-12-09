@@ -367,23 +367,21 @@ class Webonary_Cloud
 		else {
 			$getParams = filter_input_array(
 				INPUT_GET,
-				array(
-					'key' => array('filter' => FILTER_SANITIZE_STRING),
-					'tax' => array('filter' => FILTER_SANITIZE_STRING),
-					'match_whole_words' => array('filter' => FILTER_SANITIZE_STRING,
-						'options' => array('default' => '1')),
-					'match_accents' => array('filter' => FILTER_SANITIZE_STRING,
-						'options' => array('default' => '0'))
-				)
+				[
+					'key' => ['filter' => FILTER_UNSAFE_RAW],
+					'tax' => ['filter' => FILTER_UNSAFE_RAW],
+					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '1']],
+					'match_accents' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']]
+				]
 			);
 
-			$apiParams = array(
+			$apiParams = [
 				'text' => $searchText,
 				'lang' => $getParams['key'],
 				'partOfSpeech' => $getParams['tax'],
-				'matchPartial' => ($getParams['match_whole_words'] === '1') ? '' : '1',
-				'matchAccents' => ($getParams['match_accents'] === 'on') ? '1' : ''
-			);
+				'matchPartial' => $getParams['match_whole_words'] ?? '',
+				'matchAccents' => is_null($getParams['match_accents']) ? '' : '1'
+			];
 		}
 
 		if (!isset($apiParams))
