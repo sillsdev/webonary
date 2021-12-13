@@ -1,5 +1,6 @@
 <?php
 /** @noinspection SqlResolve */
+/** @noinspection HtmlUnknownTarget */
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
  * in the theme, and make a call to this function, like so:
@@ -22,9 +23,7 @@ function webonary_searchform() {
 	global $wpdb, $search_cookie;
 
 	if(get_option('noSearch') == 1)
-	{
-		return false;
-	}
+		return;
 
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
@@ -36,7 +35,7 @@ function webonary_searchform() {
 	$sem_domains = array();
 
 	// set up language dropdown
-	$selected_language = $_POST['key'] ?? $_GET['key'] ?? '';
+	$selected_language = $_REQUEST['key'] ?? '';
 	$language_dropdown_options = '';
 
 	$parts_of_speech_dropdown = '';
@@ -70,7 +69,6 @@ function webonary_searchform() {
 			if($search_term !== '' && count($dictionary->semanticDomains))
 			{
 				// NOTE: Even though the current non-cloud search does not filter this by language, we should do so in the future
-				$sem_domains = array();
 				$sem_term = strtolower($search_term);
 				foreach($dictionary->semanticDomains as $item)
 				{
@@ -91,10 +89,14 @@ function webonary_searchform() {
 			$indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
 			$arrIndexed[] = $indexed;
 
+            $dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
+	            return !empty($v->lang);
+            }));
+
 			if (count($dictionary->reversalLanguages)) {
 				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? ' selected' : '';
 				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";
-				foreach($dictionary->reversalLanguages as $index => $reversal)
+				foreach($dictionary->reversalLanguages as $reversal)
 				{
 					$indexed = new stdClass();
 					$indexed->language_name = $reversal->title ?? $reversal->lang;
@@ -116,13 +118,18 @@ function webonary_searchform() {
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
 		if ( ! empty( $arrLanguages ) ) {
 
-			$vernacularLanguages = Webonary_Configuration::get_LanguageCodes( get_option( 'languagecode' ) );
+            $lang_code = get_option('languagecode');
+
+			$vernacularLanguages = array_values(array_filter($arrLanguages, function($v) use($lang_code) {
+                return $v['language_code'] == $lang_code;
+            }));
+
 			if ( ! empty( $vernacularLanguages ) ) {
 
-				$vernacularLanguageName = Webonary_Configuration::get_LanguageCodes( get_option( 'languagecode' ) )[0]['name'];
+				$vernacularLanguageName = $vernacularLanguages[0]['name'];
 				foreach ( $arrLanguages as $language ) {
 
-					if ( $language['name'] != $vernacularLanguageName || $language['language_code'] == get_option( 'languagecode' ) ) {
+					if ( $language['name'] != $vernacularLanguageName || $language['language_code'] == $lang_code ) {
 
 						$language_dropdown_options .= '<option value="' . $language['language_code'] . '"';
 						if ( $selected_language == $language['language_code'] ) {
@@ -171,7 +178,7 @@ SQL;
 	?>
 	<script type="text/javascript">
 	<!--
-	window.onload = function(e)
+	window.onload = function()
 	{
 		<?php
 		if(isset($_GET['displayAdvancedSearchName']) && $_GET['displayAdvancedSearchName'] == 1)
@@ -242,9 +249,9 @@ SQL;
 
 				function addchar(button)
 				{
-					var searchfield = document.getElementById('s');
-					var currentPos = theCursorPosition(searchfield);
-					var origValue = searchfield.value;
+					let searchfield = document.getElementById('s');
+                    let currentPos = theCursorPosition(searchfield);
+                    let origValue = searchfield.value;
                     searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
 
 					searchfield.focus();
@@ -254,15 +261,15 @@ SQL;
 
 				function theCursorPosition(ofThisInput) {
 					// set a fallback cursor location
-					var theCursorLocation = 0;
+                    let theCursorLocation = 0;
 
 					// find the cursor location via IE method...
 					if (document.selection) {
 						ofThisInput.focus();
-						var theSelectionRange = document.selection.createRange();
+                        let theSelectionRange = document.selection.createRange();
 						theSelectionRange.moveStart('character', -ofThisInput.value.length);
 						theCursorLocation = theSelectionRange.text.length;
-					} else if (ofThisInput.selectionStart || ofThisInput.selectionStart == '0') {
+					} else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
 						// or the FF way
 						theCursorLocation = ofThisInput.selectionStart;
 					}
@@ -283,7 +290,7 @@ SQL;
 				}
 				echo "<br>";
 				?>
-				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40>
+				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40 title="">
 
 				<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
 				<?php if (function_exists('qtrans_getLanguage')) {?>
@@ -293,9 +300,9 @@ SQL;
 				<!-- search button -->
 				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
 				<br>
-				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch();" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php echo _e('Advanced Search', 'sil_dictionary'); ?></a>
-				<div id=advancedSearch style="display:none; border: 0px; padding: 2px; font-size: 14px;">
-				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php echo _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
+				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch();" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php _e('Advanced Search', 'sil_dictionary'); ?></a>
+				<div id=advancedSearch style="display:none; border: 0; padding: 2px; font-size: 14px;">
+				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 				<p style="margin-bottom: 6px;"></p>
 					<?php
 						if ($language_dropdown_options !== '') {
@@ -338,8 +345,7 @@ SQL;
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
 
-		$siteurlNoHttp = str_replace('https://', '', get_bloginfo('wpurl'));
-		$siteurlNoHttp = str_replace('http://', '', $siteurlNoHttp);
+		$siteurlNoHttp = preg_replace('@http[s]?://@m', '', get_bloginfo('wpurl'));
 
 		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($siteurlNoHttp) . "' OR link_url LIKE 'http_://" . trim($siteurlNoHttp) . "/'");
 
@@ -390,24 +396,6 @@ function add_header()
 }
 
 add_action('wp_head', 'add_header');
-
-function getDictStageImage($publicationStatus, $language)
-{
-	if($language == "en")
-	{
-		$language = "";
-	}
-	$DictStage = "/wp-content/plugins/sil-dictionary-webonary/images/status/DictStage" . $publicationStatus . strtolower($language) . ".png";
-
-	if(file_exists(ABSPATH . $DictStage))
-	{
-		echo $DictStage;
-	}
-	else
-	{
-		getDictStageImage($publicationStatus, "");
-	}
-}
 
 
 function getDictStageFlex($status): string
@@ -533,4 +521,3 @@ function add_footer()
 }
 
 add_action('wp_footer', 'add_footer');
-?>
