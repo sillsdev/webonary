@@ -197,8 +197,8 @@ if ( !class_exists('BlogCopier') ) {
 			}
 			*/
 			if( !$from_blog ) {
-				$query = "SELECT b.blog_id, CONCAT(b.domain, b.path) as domain_path FROM {$wpdb->blogs} b " .
-					"WHERE b.site_id = {$current_site->id} && b.blog_id > 1 ORDER BY domain_path ASC LIMIT 10000";
+				$query = "SELECT b.blog_id, b.domain, TRIM(BOTH '/' FROM b.path) AS path FROM {$wpdb->blogs} AS b " .
+					"WHERE b.site_id = {$current_site->id} && b.blog_id > 1 ORDER BY path LIMIT 10000";
 
 				$blogs = $wpdb->get_results( $query );
 			}
@@ -220,20 +220,18 @@ if ( !class_exists('BlogCopier') ) {
 								<th scope='row'><?php _e( 'Choose Source Site to Copy', $this->_domain ); ?></th>
 								<td>
 									<?php
-									$template = "template-english.webonary.org";
+									$template = 'template-english';
 									if(isset($application['template-to-use']->field_value))
 									{
-										preg_match('!https?://\S+!', $application['template-to-use']->field_value, $hrefs);
-										$template = $hrefs[0];
-
-										$template = str_replace("http://", "", $template);
-										$template = str_replace("https://", "", $template);
+										$found = preg_match('!https?://.+/(\S+)!', $application['template-to-use']->field_value, $hrefs);
+                                        if ($found !== false)
+                                            $template = $hrefs[1];
 									}
 									?>
 									<select name="source_blog">
 										<option value=""></option>
 									<?php foreach( $blogs as $blog ) { ?>
-										<option value="<?php echo $blog->blog_id; ?>"  <?php selected( $blog->blog_id, $from_blog_id ); ?> <?php if(substr($blog->domain_path, 0, -1) == $template) { echo "selected"; } ?>><?php echo substr($blog->domain_path, 0, -1); ?></option>
+										<option value="<?php echo $blog->blog_id; ?>"  <?php selected( $blog->blog_id, $from_blog_id ); ?> <?php if ($blog->path == $template) { echo 'selected'; } ?>><?php echo $blog->path; ?></option>
 									<?php } ?>
 									</select>
 								</td>
@@ -247,16 +245,16 @@ if ( !class_exists('BlogCopier') ) {
 								<th scope='row'><?php _e( 'New Site Address', $this->_domain ); ?></th>
 								<td>
 								<?php
-								$desired_url = "";
+								$desired_url = '';
 								if(isset($_POST['blog']))
 								{
 									$desired_url = $appPost['domain'];
 								}
 								else if(isset($application['desired-url']->field_value))
 								{
-									$desired_url = str_replace("http://", "", $application['desired-url']->field_value);
-									$desired_url = str_replace("https://", "", $desired_url);
-									$desired_url = str_replace(".webonary.org", "", $desired_url);
+									$desired_url = str_replace('http://', '', $application['desired-url']->field_value);
+									$desired_url = str_replace('https://', '', $desired_url);
+									$desired_url = str_replace('.webonary.org', '', $desired_url);
 								}
 								if( is_subdomain_install() ) { ?>
 									<input name="blog[domain]" size="40" type="text" title="<?php _e( 'Subdomain', $this->_domain ); ?>" value="<?php echo $desired_url; ?>"/>.<?php echo "webonary.org";?>
@@ -875,7 +873,7 @@ add_action( 'add_link', 'add_link_action');
 
 //20200207 chungh: validate subdirectory name
 add_action( 'wpcf7_init', 'custom_add_form_tag_subdirectory' );
- 
+
 function custom_add_form_tag_subdirectory() {
 	wpcf7_add_form_tag( 'subdirectory*', 'custom_subdirectory_form_tag_handler', array( 'name-attr' => true ) );
 }
