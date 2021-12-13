@@ -320,27 +320,26 @@ SQL;
 		<div style="padding:3px; border:none;">
 		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
 		<?php
-		$numberOfEntriesText = "";
-		$language_name = "";
+		$numberOfEntriesText = '';
+		$reversals = [];
 		foreach($arrIndexed as $indexed)
 		{
-			if($indexed->language_name != $language_name)
-			{
-				$numberOfEntriesText .= $indexed->language_name . ":&nbsp;". $indexed->totalIndexed;
-				$numberOfEntriesText .= "<br>";
-			}
-			$language_name = $indexed->language_name;
+            if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
+                continue;
+
+            $numberOfEntriesText .= $indexed->language_name . ':&nbsp;'. $indexed->totalIndexed. '<br>';
+			$reversals[] = $indexed->language_name;
 		}
 		echo $numberOfEntriesText;
-		echo "<br>";
+		echo '<br>';
 
-		if(!empty($lastEditDate) && $lastEditDate != "0000-00-00 00:00:00")
+		if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
 		{
 			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
 		}
 
-		$siteurlNoHttp = str_replace("https://", "", get_bloginfo('wpurl'));
-		$siteurlNoHttp = str_replace("http://", "", $siteurlNoHttp);
+		$siteurlNoHttp = str_replace('https://', '', get_bloginfo('wpurl'));
+		$siteurlNoHttp = str_replace('http://', '', $siteurlNoHttp);
 
 		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($siteurlNoHttp) . "' OR link_url LIKE 'http_://" . trim($siteurlNoHttp) . "/'");
 
