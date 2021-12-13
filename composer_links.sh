@@ -38,7 +38,7 @@ fi
 
 
 # set default favicon
-FILE="${thisDir}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
+FILE="${thisDir}/wp-resources/plugins/shockingly-simple-favicon/default/favicon.ico"
 if [[ -f "$FILE" ]]; then
   rm -f "$FILE"
 fi
