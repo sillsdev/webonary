@@ -46,6 +46,12 @@ function webonary_admin_script()
 
 	wp_register_style('webonary_admin_style', plugin_dir_url(__FILE__) . 'css/admin_styles.css', [], false, 'all');
 	wp_enqueue_style('webonary_admin_style');
+
+	wp_register_script('webonary_toastr_script', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', [], false, true);
+	wp_enqueue_script('webonary_toastr_script');
+
+	wp_register_style('webonary_toastr_style', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', [], false, 'all');
+	wp_enqueue_style('webonary_toastr_style');
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 
