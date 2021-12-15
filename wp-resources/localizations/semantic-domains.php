@@ -1,15 +1,28 @@
 <?php
 
 
-$lang_code = 'ur';
-$locale_code = 'ur_PK';
+$lang_code = 'ar';
+$locale_code = 'ar_AR';
 
 
 include_once 'shared-functions.php';
 
 $input_file_name = 'input/LocalizedLists-' . $locale_code . '.xml';
-$po_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/lang/sil_dictionary-' . $locale_code . '.po';
+$po_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/sem-domains/sil_domains-' . $locale_code . '.po';
 
+if (!is_file($po_file_name))
+	copy(__DIR__ . '/english/sil_domains-en_US.po', $po_file_name);
+
+function fixIdeophones(string $english): string
+{
+	if ($english == 'Idiophones')
+		return 'Ideophones';
+
+	if (strtolower($english) == 'onomatopoeic words')
+		return 'Ideophones';
+
+	return $english;
+}
 
 function getDomains(): array
 {
@@ -25,7 +38,7 @@ function getDomains(): array
 	$eng = $list->xpath('Name/AUni[@ws="en"]')[0];
 
 	$output['name'] = (string)$name;
-	$output['eng'] = (string)$eng;
+	$output['eng'] = fixIdeophones((string)$eng);
 	$output['domains'] = [];
 
 	$possibilities = $list->xpath('Possibilities/CmSemanticDomain');
@@ -82,7 +95,7 @@ function getSubPossibilities(SimpleXMLElement $e): array
 
 	$sem_domains['code'] = (string)$code;
 	$sem_domains['name'] = (string)$name;
-	$sem_domains['eng'] = (string)$eng;
+	$sem_domains['eng'] = fixIdeophones((string)$eng);
 	$sem_domains['domains'] = [];
 
 	$possibilities = $e->xpath('SubPossibilities/CmSemanticDomain');

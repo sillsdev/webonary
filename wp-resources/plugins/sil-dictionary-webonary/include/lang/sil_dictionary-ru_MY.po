@@ -6896,7 +6896,7 @@ msgid "Interjections"
 msgstr "Междометия"
 
 #: include/default_domains.php:1664
-msgid "Idiophones"
+msgid "Ideophones"
 msgstr ""
 
 #: include/default_domains.php:1665

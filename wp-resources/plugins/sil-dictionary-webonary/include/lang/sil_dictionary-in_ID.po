@@ -6703,7 +6703,7 @@ msgid "Interjections"
 msgstr "Kata seru"
 
 #: include/default_domains.php:1664
-msgid "Idiophones"
+msgid "Ideophones"
 msgstr "Ideofon (kata yang melambangkan bunyi sesuatu)"
 
 #: include/default_domains.php:1665

@@ -6752,7 +6752,7 @@ msgid "Interjections"
 msgstr "Interjections"
 
 #: include/default_domains.php:1664
-msgid "Idiophones"
+msgid "Ideophones"
 msgstr "Idéophones"
 
 #: include/default_domains.php:1665

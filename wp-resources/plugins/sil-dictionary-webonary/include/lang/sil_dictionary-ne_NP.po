@@ -6698,7 +6698,7 @@ msgid "Interjections"
 msgstr "बिष्मयादीवोधक"
 
 #: include/default_domains.php:1664
-msgid "Idiophones"
+msgid "Ideophones"
 msgstr "अनुकरणात्मक (शब्द)"
 
 #: include/default_domains.php:1665

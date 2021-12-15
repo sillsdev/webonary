@@ -1,36 +1,37 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Webonary\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-09 11:08+0800\n"
-"PO-Revision-Date: 2015-10-23 12:36+0800\n"
+"POT-Creation-Date: 2021-12-15 16:39-0500\n"
+"PO-Revision-Date: 2021-12-15 16:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
-"X-Poedit-Basepath: ../../\n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: include/browseview_func.php:108
+#: include/browseview_func.php:141
 msgid "No entries exist for"
 msgstr "Tiada entri wujud untuk"
 
-#: include/browseview_func.php:185
+#: include/browseview_func.php:260
 msgid "Page"
 msgstr ""
 
-#: include/browseview_func.php:185
+#: include/browseview_func.php:260
 msgid "of"
 msgstr ""
 
-#: include/browseview_func.php:496
+#: include/browseview_func.php:642
+msgid "Entry not found"
+msgstr ""
+
+#: include/browseview_func.php:832
 msgid "No entries exist starting with this letter."
 msgstr "Tiada entri wujud bermula dengan huruf ini"
 
@@ -38,545 +39,404 @@ msgstr "Tiada entri wujud bermula dengan huruf ini"
 msgid "Re-syncing comments"
 msgstr ""
 
-#: include/comments_func.php:92
-msgid "Comments Re-Sync"
+#: include/configuration.php:249
+msgid "Settings saved"
 msgstr ""
 
-#: include/comments_func.php:93
-msgid ""
-"If you have the comments turned on, you need to re-sync your comments after "
-"re-importing of your posts."
-msgstr ""
-
-# @ sil_dictionary
-#: include/dictionary-search.php:173
-msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr "Disebabkan pencarian kata yang ringkas, carian separa tidak dapat dilakukan."
-
-# @ sil_dictionary
-#: include/dictionary-search.php:175
-msgid "Click here to include searching through partial words."
-msgstr "Klik sini untuk merangkumi carian kata separa"
-
-#: include/infrastructure.php:114
+#: include/configuration.php:351
 msgid "Webonary"
 msgstr ""
 
-#: include/infrastructure.php:121
+#: include/configuration.php:353
 msgid ""
-"Webonary provides the admininstration tools and framework for using "
-"WordPress for dictionaries.<br>See <a href=\"http://www.webonary.org/help\" "
-"target=\"_blank\">Webonary Support</a> for help."
+"Webonary provides the administration tools and framework for using WordPress "
+"for dictionaries. See <a href=\"https://www.webonary.org/help\" target="
+"\"_blank\">Webonary Support</a> for help."
 msgstr ""
 
-# @ sil_dictionary
-#: include/infrastructure.php:122
+#: include/configuration.php:358
+#, php-format
+msgid "Click to switch to %s"
+msgstr ""
+
+#: include/configuration.php:391
 msgid "Upload Data"
 msgstr ""
 
-# @ sil_dictionary
-#: include/infrastructure.php:123
-msgid ""
-"You can find the <a href=\"admin.php?import=pathway-xhtml\">SIL FLEX XHTML "
-"importer</a> by clicking on Import under the Tools menu."
-msgstr ""
-
-#: include/infrastructure.php:124
-msgid ""
-"Each dictionary entry is stored in a \"post.\" You will find the entries in "
-"the Posts menu."
-msgstr ""
-
-# @ sil_dictionary
-#: include/infrastructure.php:126
-msgid "Delete Data"
-msgstr ""
-
-#: include/infrastructure.php:131
-msgid "Lists are kept unless you check the following:"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:135
-msgid "Delete lists such as Part of Speech?"
-msgstr ""
-
-# @ sil_dictionary
-#: include/infrastructure.php:145
-msgid "Are you sure you want to delete the dictionary data?"
-msgstr ""
-
-# @ sil_dictionary
-#: include/infrastructure.php:146
-msgid "Delete"
-msgstr ""
-
-#: include/infrastructure.php:148
-msgid "(deletes all posts in the category \"webonary\")"
-msgstr ""
-
-#: include/infrastructure.php:150
-msgid "Settings"
-msgstr ""
-
-#: include/infrastructure.php:152
+#: include/configuration.php:404
 msgid "Publication status:"
 msgstr ""
 
-#: include/infrastructure.php:154
+#: include/configuration.php:406
 msgid "no status set"
 msgstr ""
 
-#: include/infrastructure.php:155
+#: include/configuration.php:407 include/searchform_func.php:404
 msgid "Rough draft"
 msgstr "Draf kasar"
 
-#: include/infrastructure.php:156
+#: include/configuration.php:408 include/searchform_func.php:405
 msgid "Self-reviewed draft"
 msgstr "Draf disemak sendiri"
 
-#: include/infrastructure.php:157
+#: include/configuration.php:409 include/searchform_func.php:406
 msgid "Community-reviewed draft"
 msgstr "Draf disemak komuniti"
 
-#: include/infrastructure.php:158
+#: include/configuration.php:410 include/searchform_func.php:407
 msgid "Consultant approved"
 msgstr "Disahkan konsultan"
 
-#: include/infrastructure.php:159
+#: include/configuration.php:411 include/searchform_func.php:408
 msgid "Finished (no formal publication)"
 msgstr "Siap (penerbitan belum dirasmikan)"
 
-#: include/infrastructure.php:160
+#: include/configuration.php:412 include/searchform_func.php:409
 msgid "Formally published"
 msgstr "Penerbitan secara rasmi"
 
-#: include/infrastructure.php:163
-msgid "Search Options:"
+#: include/configuration.php:416
+msgid "Delete Data"
 msgstr ""
 
-#: include/infrastructure.php:167
-msgid "Always include searching through partial words."
+#: include/configuration.php:425
+msgid "Lists are kept unless you check the following:"
 msgstr ""
 
-#: include/infrastructure.php:180
+#: include/configuration.php:429
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+#: include/configuration.php:441
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+#: include/configuration.php:442
+msgid "Delete"
+msgstr ""
+
+#: include/configuration.php:444
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/configuration.php:453
+msgid "Default Search Options"
+msgstr ""
+
+#: include/configuration.php:510
+msgid "Special character input buttons"
+msgstr ""
+
+#: include/configuration.php:553
 msgid "Display subentries as main entries"
 msgstr ""
 
-#: include/infrastructure.php:190
-msgid "Vernacular Language Code:"
+#: include/configuration.php:568
+msgid "Vernacular Browse view:"
 msgstr ""
 
-#: include/infrastructure.php:201 include/infrastructure.php:230
-#: include/infrastructure.php:270
+#: include/configuration.php:571 include/configuration.php:641
+#: include/configuration.php:692 include/configuration.php:723
 msgid "Language Name:"
 msgstr ""
 
-#: include/infrastructure.php:203
-msgid "Vernacular Alphabet:"
+#: include/configuration.php:574
+msgid "Vernacular Alphabet"
 msgstr ""
 
-#: include/infrastructure.php:205 include/infrastructure.php:255
-#: include/infrastructure.php:274
-msgid "(Letters separated by comma)"
+#: include/configuration.php:574 include/configuration.php:664
+#: include/configuration.php:696 include/configuration.php:726
+msgid "configure in FLEx"
 msgstr ""
 
-#: include/infrastructure.php:215
+#: include/configuration.php:607 include/configuration.php:678
+#: include/configuration.php:709 include/configuration.php:740
+msgid "Display right-to-left"
+msgstr ""
+
+#: include/configuration.php:617
 msgid ""
 "Include characters with diacritics (e.g. words starting with ä, à, etc. will "
 "all display under a)"
 msgstr ""
 
-#: include/infrastructure.php:217
+#: include/configuration.php:620
 msgid "Reversal Indexes:"
 msgstr ""
 
-#: include/infrastructure.php:219
-msgid "Main reversal index code:"
+#: include/configuration.php:636
+msgid "1. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:253
-msgid "Main Reversal Index Alphabet:"
+#: include/configuration.php:664 include/configuration.php:695
+#: include/configuration.php:726
+msgid "Alphabet:"
 msgstr ""
 
-#: include/infrastructure.php:257
-msgid "If you have a second reversal index, enter the information here:"
+#: include/configuration.php:687
+msgid "2. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:259
-msgid "Secondary reversal index code:"
+#: include/configuration.php:718
+msgid "3. Reversal index"
 msgstr ""
 
-#: include/infrastructure.php:272
-msgid "Secondary Reversal Index Alphabet:"
-msgstr ""
+#: include/dictionary-search.php:46
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr "Disebabkan pencarian kata yang ringkas, carian separa tidak dapat dilakukan."
 
-#: include/infrastructure.php:276
-msgid "Save"
-msgstr ""
+#: include/dictionary-search.php:49
+msgid "Click here to include searching through partial words."
+msgstr "Klik sini untuk merangkumi carian kata separa"
 
-# @ sil_dictionary
-#: include/infrastructure.php:295 include/xhtml-importer copy.php:266
-#: copy.php:381 include/xhtml-importer.php:268 include/xhtml-importer.php:383
-msgid "Finished!"
-msgstr ""
-
-# @ sil_dictionary
-#: include/infrastructure.php:296
-msgid "OK"
-msgstr ""
-
-#: include/infrastructure.php:375
-msgid "Settings saved"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:447
-msgctxt "taxonomy general name"
-msgid "Semantic Domains"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:448
-msgctxt "taxonomy singular name"
-msgid "Semantic Domain"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:449
+#: include/infrastructure.php:168
 msgid "Search Domains"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:450
+#: include/infrastructure.php:169
 msgid "All Semantic Domains"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:451
+#: include/infrastructure.php:170
 msgid "Parent Semantic Domain"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:452
+#: include/infrastructure.php:171
 msgid "Parent Semantic Domain:"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:453
+#: include/infrastructure.php:172
 msgid "Edit Semantic Domain"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:454
+#: include/infrastructure.php:173
 msgid "Update Semantic Domain"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:455
+#: include/infrastructure.php:174
 msgid "Add New Semantic Domain"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:456
+#: include/infrastructure.php:175
 msgid "New Semantic Domain Name"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:457
+#: include/infrastructure.php:176
 msgid "Semantic Domain"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:485
-msgctxt "taxonomy general name"
-msgid "Part of Speech"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:486
-msgctxt "taxonomy singular name"
-msgid "Part of Speech"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:487 include/infrastructure.php:495
+#: include/infrastructure.php:202 include/infrastructure.php:210
 msgid "Parts of Speech"
 msgstr ""
 
-# @ default
-# @ sil_dictionary
-#: include/infrastructure.php:488 include/searchform_func.php:74
+#: include/infrastructure.php:203 include/searchform_func.php:63
+#: include/searchform_func.php:150
 msgid "All Parts of Speech"
 msgstr "Semua Golongan Kata"
 
-# @ default
-#: include/infrastructure.php:489
+#: include/infrastructure.php:204
 msgid "Parent Part of Speech"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:490
+#: include/infrastructure.php:205
 msgid "Parent Part of Speech:"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:491
+#: include/infrastructure.php:206
 msgid "Edit Part of Speech"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:492
+#: include/infrastructure.php:207
 msgid "Update Part of Speech"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:493
+#: include/infrastructure.php:208
 msgid "Add New Part of Speech"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:494
+#: include/infrastructure.php:209
 msgid "New Part of Speech Name"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:522
-msgctxt "taxonomy general name"
-msgid "Languages"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:523
-msgctxt "taxonomy singular name"
+#: include/infrastructure.php:236 include/infrastructure.php:244
 msgid "Language"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:524 include/infrastructure.php:532
-msgid "Language"
-msgstr ""
-
-# @ default
-# @ sil_dictionary
-#: include/infrastructure.php:525 include/searchform_func.php:49
+#: include/infrastructure.php:237 include/searchform_func.php:310
 msgid "All Languages"
 msgstr "Semua Bahasa"
 
-# @ default
-#: include/infrastructure.php:526
+#: include/infrastructure.php:238
 msgid "Parent Language"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:527
+#: include/infrastructure.php:239
 msgid "Parent Language:"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:528
+#: include/infrastructure.php:240
 msgid "Edit Language"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:529
+#: include/infrastructure.php:241
 msgid "Update Language"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:530
+#: include/infrastructure.php:242
 msgid "Add New Language"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:531
+#: include/infrastructure.php:243
 msgid "New Language Name"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:559
-msgctxt "taxonomy general name"
+#: include/infrastructure.php:270 include/infrastructure.php:278
 msgid "Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:560
-msgctxt "taxonomy singular name"
-msgid "Website strings"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:561 include/infrastructure.php:569
-msgid "Website strings"
-msgstr ""
-
-# @ default
-#: include/infrastructure.php:562
+#: include/infrastructure.php:271
 msgid "All Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:563
+#: include/infrastructure.php:272
 msgid "Parent Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:564
+#: include/infrastructure.php:273
 msgid "Parent Website strings:"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:565
+#: include/infrastructure.php:274
 msgid "Edit Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:566
+#: include/infrastructure.php:275
 msgid "Update Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:567
+#: include/infrastructure.php:276
 msgid "Add New Website strings"
 msgstr ""
 
-# @ default
-#: include/infrastructure.php:568
+#: include/infrastructure.php:277
 msgid "New Website strings Name"
 msgstr ""
 
-# @ sil_dictionary
-#: include/searchform_func.php:28
+#: include/searchform_func.php:301 webonary/Webonary_Configuration.php:55
 msgid "Search"
 msgstr "Cari"
 
-#: include/searchform_func.php:92
+#: include/searchform_func.php:303
+msgid "Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:305
+msgid "Hide Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:319
+msgid "Match whole words"
+msgstr ""
+
+#: include/searchform_func.php:321
+msgid "Match accents and tones"
+msgstr ""
+
+#: include/searchform_func.php:328
+msgid "Number of Entries"
+msgstr ""
+
+#: include/searchform_func.php:345
+msgid "Last update:"
+msgstr "Kemas kini terakhir"
+
+#: include/searchform_func.php:355
+msgid "Date published:"
+msgstr "Tarik diterbitkan"
+
+#: include/searchform_func.php:366
 msgid "Found in Semantic Domains:"
 msgstr ""
 
-#: include/semdomains_func.php:24
-msgid "Universe, creation"
+#: include/searchform_func.php:403
+msgid "Publication Status"
+msgstr "Status Penerbitan"
+
+#: sil-dictionary.php:120
+msgid "This API can only be called if you are logged in first."
 msgstr ""
 
-#: include/semdomains_func.php:25
-msgid "Person"
+#: webonary/Webonary_Configuration.php:54
+msgid "Data (Upload)"
 msgstr ""
 
-#: include/semdomains_func.php:26
-msgid "Language and thought"
+#: webonary/Webonary_Configuration.php:56
+msgid "Browse Views"
 msgstr ""
 
-#: include/semdomains_func.php:27
-msgid "Social behavior"
+#: webonary/Webonary_Configuration.php:57
+msgid "Fonts"
 msgstr ""
 
-#: include/semdomains_func.php:28
-msgid "Daily life"
+#: webonary/Webonary_Configuration.php:59
+msgid "Super Admin"
 msgstr ""
 
-#: include/semdomains_func.php:29
-msgid "Work and occupation"
-msgstr ""
-
-#: include/semdomains_func.php:30
-msgid "Physical actions"
-msgstr ""
-
-#: include/semdomains_func.php:31
-msgid "States"
-msgstr ""
-
-#: include/semdomains_func.php:32
-msgid "Grammar"
-msgstr ""
-
-# @ sil_dictionary
-#: include/xhtml-importer copy.php:283 include/xhtml-importer.php:285
+#: webonary/Webonary_Pathway_Xhtml_Import.php:217
 msgid ""
 "Howdy! This importer allows you to import SIL FLEX XHTML data into your "
 "WordPress site."
 msgstr ""
 
-#: include/xhtml-importer copy.php:285 include/xhtml-importer.php:287
+#: webonary/Webonary_Pathway_Xhtml_Import.php:219
 msgid ""
 "Before re-importing, it's best to delete your existing entries. Go to <a "
 "href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
 "to do this."
 msgstr ""
 
-# @ default
-#: include/xhtml-importer copy.php:435 include/xhtml-importer.php:437
+#: webonary/Webonary_Pathway_Xhtml_Import.php:264
+msgid "Finished!"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:564
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 
-# @ default
-#: include/xhtml-importer copy.php:452 include/xhtml-importer.php:455
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
 msgid "Choose an XHTML file from your computer:"
 msgstr ""
 
-# @ default
-#: include/xhtml-importer copy.php:452 copy.php:463
-#: include/xhtml-importer.php:455 include/xhtml-importer.php:467
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
+#: webonary/Webonary_Pathway_Xhtml_Import.php:593
 #, php-format
 msgid "Maximum size: %s"
 msgstr ""
 
-#: include/xhtml-importer copy.php:454 include/xhtml-importer.php:457
+#: webonary/Webonary_Pathway_Xhtml_Import.php:584
 msgid "**XHTML file must be sorted. Webonary does not sort the entries.**"
 msgstr ""
 
-# @ default
-#: include/xhtml-importer copy.php:462 include/xhtml-importer.php:466
+#: webonary/Webonary_Pathway_Xhtml_Import.php:592
 msgid "Choose a CSS file from your computer (optional):"
 msgstr ""
 
-# @ sil_dictionary
-#: include/xhtml-importer copy.php:496 include/xhtml-importer.php:500
+#: webonary/Webonary_Pathway_Xhtml_Import.php:606
+msgid "Language Code:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:750
 msgid "Import SIL FLEX XHTML"
 msgstr ""
 
-# @ default
-#: include/xhtml-importer copy.php:527 include/xhtml-importer.php:531
+#: webonary/Webonary_Pathway_Xhtml_Import.php:1598
 msgid ""
 "The file is either empty, or uploads are disabled in your php.ini, or "
 "post_max_size is defined as smaller than upload_max_filesize in php.ini."
 msgstr ""
 
-#: include/xhtml-importer copy.php:567 include/xhtml-importer.php:571
-msgid ""
-"The css file has been uploaded into your upload folder and renamed to "
-"imported-with-xhtml.css<br>"
-msgstr ""
-
-# @ default
-#: include/xhtml-importer copy.php:569 include/xhtml-importer.php:573
-msgid "There was an error uploading the file, please try again!"
-msgstr ""
-
-# @ sil_dictionary
-#: include/xhtml-importer copy.php:2120 include/xhtml-importer.php:2088
-msgid "SIL FLEX XHTML"
-msgstr ""
-
-# @ sil_dictionary
-#: include/xhtml-importer copy.php:2121 include/xhtml-importer.php:2089
-msgid "Import posts from an SIL FLEX XHTML file."
-msgstr ""
-
 #: extra string
 msgid "Number of entries"
 msgstr "Jumlah entri"
-
-#: extra string
-msgid "Last update:"
-msgstr "Kemas kini terakhir"
-
-#: extra string
-msgid "Date published:"
-msgstr "Tarik diterbitkan"
-
-#: extra string
-msgid "Publication Status"
-msgstr "Status Penerbitan"

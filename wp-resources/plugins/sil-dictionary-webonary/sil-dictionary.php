@@ -55,6 +55,8 @@ function webonary_admin_script()
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
 
+add_action('init', 'Webonary_Utility::LoadTextDomains');
+
 // see: https://www.monsterinsights.com/docs/how-to-disable-the-monsterinsights-dashboard-widget/
 // Had to put this here rather than in the theme because the MonsterInsights plugin is
 // already loaded before the theme loads.
