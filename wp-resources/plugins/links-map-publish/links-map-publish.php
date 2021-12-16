@@ -381,13 +381,17 @@ XML;
     $body = '';
 
     foreach ($links as $link) {
+		if ($body != '')
+			$body .= PHP_EOL;
+
         $body .= sprintf($template, $link->lat, $link->lon, $link->link_url, $link->link_name, htmlentities( $link->link_description ));
     }
 
     $timestamp = date('Y-m-d H:i:s');
-    $xml = <<<XML
+	/** @noinspection HttpUrlsUsage */
+	$xml = <<<XML
 <?xml version='1.0' encoding='UTF-8'?>
-<gpx xmlns="https://www.topografix.com/GPX/1/1" xmlns:gpxdata="https://www.cluetrust.com/XML/GPXDATA/1/0" xmlns:t="https://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" creator="pytrainer https://sourceforge.net/projects/pytrainer" version="1.1">
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxdata="http://www.cluetrust.com/XML/GPXDATA/1/0" xmlns:t="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" creator="pytrainer http://sourceforge.net/projects/pytrainer" version="1.1">
 <metadata>
   <name>Webonary Dictionary Sites</name>
   <link href="https://www.webonary.org"/>
