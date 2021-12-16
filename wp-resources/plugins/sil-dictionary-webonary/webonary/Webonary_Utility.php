@@ -573,4 +573,14 @@ class Webonary_Utility
 			}
 		}
 	}
+
+	/**
+	 * Loads the translated strings
+	 */
+	public static function LoadTextDomains()
+	{
+		$include_dir = 'sil-dictionary-webonary/include';
+		load_plugin_textdomain('sil_dictionary', false, $include_dir . '/lang');
+		load_plugin_textdomain('sil_domains', false, $include_dir . '/sem-domains');
+	}
 }

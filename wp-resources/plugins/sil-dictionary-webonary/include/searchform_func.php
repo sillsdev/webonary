@@ -5,12 +5,6 @@
  * A replacement for search box for dictionaries. To use, create searchform.php
  * in the theme, and make a call to this function, like so:
  */
-function searchform_init() {
-	/*
-	 * Load the translated strings for the plugin.
-	 */
-    load_plugin_textdomain('sil_dictionary', false, dirname(plugin_basename(__FILE__ )).'/lang/');
-}
 
 function custom_query_vars_filter($vars) {
 	$vars[] .= 'match_accents';
@@ -375,8 +369,6 @@ SQL;
 		?>
 <?php
 }
-
-add_action('init', 'searchform_init');
 
 function add_header()
 {

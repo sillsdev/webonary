@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "ब्रह्माण्ड, सिर्जना"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "आकाश"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "सूर्य"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "चन्‍द्रमा"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "तारा"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "ग्रह"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "हावा"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "हावा चल्‍नु"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "मौसम"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "बतास"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "बादल"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "पानी"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "हिउँ, बरफ"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "आँधी-बेह्री"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "चट्याङ्, गड्‌यङगुडुङ्‌"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "बाढी"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "खडेरी"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "संसार"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "जमिन"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "हिमाल"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "ज्‍वालामुखी"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "समतल"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "बेँसी"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "भूमिगत"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "जङ्‌गल, घाँसे मैदान, मरुभूमि"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "भुइँचालो"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "पर्दाथ, वस्तु"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "माटो, मैला"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "चट्टान"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "धातु"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "खनिज-पर्दाथ"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "गरगहना"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "ठोस, तरल, ग्‍याँस"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "तरल पर्दाथ"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "तेल"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "ग्‍याँस"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "पानी"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "पानीका भागहरू"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "महासागर, ताल"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "सिम (भास)"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "नदी"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "मूल, कुवा"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "टापु, किनार"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "पानीको गति"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "बग्‍नु"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "खन्‍याउनु"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "थोपा"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "छाल"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "शान्त, उछ्रिङ्खल"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "ज्‍वारभाटा"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "भिजेको"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "सुक्‍खा"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "पानीमा हुनु"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "पानीको घोलहरू"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "पानीको गुण"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "सजीव वस्‍तुहरू"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "मृत चीजहरू"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "वस्‍तुको आत्‍मा"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "वनस्‍पति"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "रूख"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "झाडी, पोथ्रापोथ्री"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "झारपात, घाँसपात, लहरा"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "झ्‍याउ, ढुसी, लेउ"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "वनस्‍पतिका भागहरू"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "वनस्‍पतिहरूको वृद्धि"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "वनस्‍पति रोग"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "पशु"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "पशुहरूको प्रकारहरू"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "स्‍तनधारी"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "उच्‍च जातको जन्‍तु"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "मांसहारी पशु"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "खुर भएको जनावरहरू"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "लोखर्के"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "बच्‍चालाई थैलामा हालेर हिड्‌ने (कंगारू)"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "सालक"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "समुद्री स्‍तनपायी वा स्तनधारी"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "चमेरा"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "चरा"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "घस्रने जन्‍तुहरू"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "सर्प"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "छेपारो"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "कछुवा"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "गोही"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "जलथल दुवैमा बस्‍ने प्राणी, उभयचर"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "माछा"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "सार्क, रे (ठूला माछा)"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "किरा-फट्याङ्‌ग्रा"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "माकुरा"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "साना जनावरहरू"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "पशुको भागहरू"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "चराको अङ्गहरू"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "घस्रने प्राणीहरूको अङ्गहरू"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "माछाको अङ्गहरू"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "कीरा-फट्याङ्‌ग्राहरूको अङ्गहरू"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "सानो जन्‍तुको अङ्गहरू"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "पशुको जीवन चक्र"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "अण्‍डा"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "पशुको क्रियाकलापहरू"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "जनावर हलचल"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "पशुको खुवाइ"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "पशुको आवाज"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "पशुको घरहरू"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "पशु समूह"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "भाले र पोथी पशु"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "प्रकृति, वातावरण"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "प्राकृतिक"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "व्‍यक्ति"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "शरीर"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "शिर"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "आँखा"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "कान"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "नाक"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "मुख"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "दन्‍त"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "टाउको र हात नभएको मूर्ति वा सालिक"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "हात, खुट्‌टा"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "पाखुरा"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "खुट्टा"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "औंला, खुट्टाको बुढी औंला"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "छाला"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "कपाल"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "हड्डी, जोर्नी"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "मासु"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "भित्री इन्‍द्रियहरू"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "मुटु"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "पेट"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "पुरुषका अङ्गहरू"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "महिलाका अङ्गहरू"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "शरीरको कार्यहरू"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "सास"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "खोक्‍नु, हाछिउँ गर्नु"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "थक्‍नु,थुक"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "सिँगान"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "रगत बग्‍नु, रगत"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "पसिना"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "पिसाब फेर्नु, पिसाब"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "दिसा गर्नु, दिसा"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "ज्ञान, चेतना"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "देख्‍नु"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "हेर्नु"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "पहरा दिनु (हेर्नु)"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "जाँच्‍नु"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "देखाउनु, देखोस्"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "देख्‍न सकिने"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "देखा पर्नु"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "पारदर्शी"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "प्रतिबिम्‍बित हुनु, ऐना"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "रुपरंग"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "सुन्‍दर"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "नराम्रो"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "कुनैचीज हेर्न प्रयोग गर्ने वस्तु"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "सुन्‍नु"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "सुन्‍नु"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "आवाज"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "आवाजको किसिम"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "चर्को"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "शान्‍त"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "स्वाद"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "बास्‍ना"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "छुवाइको अनुभव"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "सुबिधाजनक"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "शरीरको स्‍थिति"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "बलियो"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "कमजोर"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "बलवान"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "थाकेको"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "विश्राम"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "निरोगी"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "बिरामी"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "बिमारबाट निको हुनु"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "रोग"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "कुपोषण, भोकै रहने काम"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "छालाको रोग"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "पेटको रोग"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "दाँत मक्‍किनु"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "चोट लागेको"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "अङ्गछेदन गर्नु"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "विष"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "असामर्थ्‍य"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "अन्‍धा"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "आँखाको दृष्‍टि कमजोर"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "बहिरो"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "बोल्‍न नसक्‍ने"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "जन्‍म त्रुटि"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "रोगको कारण"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "रोगका लक्षणहरू"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "पीडा"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "ज्‍वरो"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "सुनिनु"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "विवेक गुमाउनु"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "अक्‍क न वक्‍क भएको"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "दृष्‍टि, दृष्‍टिभ्रम"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "रोग उपचार"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "चिकित्‍सक, परिचारिका"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "औषधी"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "औषधीका विरुवाहरू"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "अस्‍पताल"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "परम्‍परागत औषधी"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "मानसिक तवरले असक्‍त"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "जीवन"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "विवाह"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr "विवाह प्रबन्‍ध गर्नु"
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "विहे"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "अविवाहित"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "पारपाचुके"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "भावुक प्रेम"
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "संभोग सम्‍बन्‍धहरू"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "कुमारीत्‍व"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr "यौन आकर्षण"
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "अनैतिक यौन सम्‍बन्‍ध"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "जन्‍म"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "गर्भाधारण"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "भ्रूण"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "गर्भपात"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "सुत्‍केरी व्‍यथा, बेथा"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "जन्‍माउन मद्दत गर्नु"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "असाधारण जन्‍म"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "बहुजन्‍म"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "उर्वर, बाँझो"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "जन्‍म समारोह"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "जीवनका चरण"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "शिशु"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "शिशुको रेखदेख"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "बालक"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "बालक पालन-पोषण"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "जवान"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "वयस्क"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr "बृद्ध मान्‍छे"
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "वृद्धि, ठूलो हुनु"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "संस्‍कार"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "दौंतरी समूह"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "पुरुष, स्‍त्री"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "मानिस"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "आइमाई"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "मर्नु"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "मार्नु"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "मुर्दा"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "अन्‍त्‍येष्‍टि"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "शोक गर्नु"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "मुर्दा गाड्‌नु"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "चिहान"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "अधिकार प्राप्‍त गर्नु"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "मृत्‍यु पछिको जीवन"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "भाषा र सोचाइ"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "प्राण, आत्‍मा"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "व्‍यक्तित्‍व"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "मनको स्‍थिति"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "सतर्क"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "सूचना"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr "ध्‍यान"
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "इन्‍कार गर्नु"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "सोच्‍नु"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "मन"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr "बारेमा सोच्‍नु"
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "कल्‍पना गर्नु"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "बुद्धिमानी"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "मूर्ख"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "तर्कसंगत"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "सहज"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "सिक्‍नु"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr "अध्‍यान"
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "जाँच गर्नु"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "मूल्‍याङ्कन गर्नु, जाँच"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "अनुमान गर्नु"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "सुल्‍झाउनु"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr "महशुस गर्नु"
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "सिक्‍न चाहनु"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "जान्नु"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "चिनेको, नचिनेको"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "ज्ञानको क्षेत्र"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr "गोप्य"
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "बुझ्‍नु"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "गलत अर्थ लाउनु"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "बुझ्‍न सकिने"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr "रहस्‍यात्मक"
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "बिचार"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "विश्‍वास गर्नु"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr "भरोसा"
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "विश्‍वास नगर्नु"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "शङ्का"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr "कसैसँग सहमत हुनु"
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr "असहमत"
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr "बिरोध गर्नु"
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "दर्शनशास्‍त्र"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "आचरण"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "कट्टरबाद विश्‍वास"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "तपाईको मन बदल्‍नु"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr "प्रमाणित गर्नु"
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "सम्‍झनु"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "बिर्सनु"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr "पहिचान गर्नु"
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr "कण्‍ठस्‍त"
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr "स्‍मरण गर्नु"
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "आशा गर्नु"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "आशा"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "निराश"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr "भविष्‍यवाणी"
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "प्रवृत्ति (अभिप्राय)"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "चाहनु"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "निर्णय, योजना"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr "उदेश्‍य, लक्ष्‍य"
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "चुन्‍नु"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr "चिठ्ठा हाल्‍नु"
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "अभिप्राय"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "जानी-जानीकन"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "संकल्‍प"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "हठी"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "अभिलाषा"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "अनुरोध"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr "सहमति दिनु"
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr "केही गर्नलाई अस्‍वीकार गर्नु"
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "मध्यस्त गर्नु"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "इच्‍छुक"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "प्रभाव"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "सुझाव"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "सल्‍लाह"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "फकाउनु"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "जिद्दी"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "कर गर्नु"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "नियन्‍त्रण"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "चेतावनी"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "धम्की"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr "अनुमति माग्‍नु"
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr "आज्ञा गर्नु"
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "अनुमति इन्‍कार गर्नु"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "छुट दिनु"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr "रोक्‍नु"
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr "स्‍वतन्‍त्रता"
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "प्रस्‍ताव"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr "ग्रहण"
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "अस्‍वीकार"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "भावना"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr "असल लाग्‍नु"
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "मन पर्नु, माया गर्नु"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr "केही गरेर आनन्‍द मनाउनु"
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "स्‍वआदर गर्नु"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr "सिफारिस गर्नु"
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr "लोकप्रिय"
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr "ढाँचा बढाउने (नक्कल पार्ने)"
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "सन्‍तोष"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "खुशी हुनु"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "खुशी पार्नु"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "खुशी"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "आराम"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "शान्‍त"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "अचम्‍म"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "रुचि"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "उत्तेजित"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "उत्‍साहित"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr "एकत्रित भएको"
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "आकर्षण"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "उदासीन"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "अरुचि, निरस"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "निश्‍चित"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr "नकारात्‍मक मनको भावनाहरू"
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "दु:खी"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr "मन नपर्नु"
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr "घृणा, तुच्‍छ ठान्‍नु"
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr "घृणा"
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "निराश भएको"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "एकान्‍त"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr "उल्‍टाउनु"
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "धक्‍का"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "डाह गर्ने"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "असन्‍तोष"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr "खेद प्रकट"
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr "सरम हुनु"
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr "आत्तिएको"
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "रीस"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr "चिढाउनु"
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr "डराउनु"
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr "चिन्‍ता"
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "घबराउनु"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "लाज मान्‍नु, कातर"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr "अलमलिनु"
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "सञ्चार गर्नु"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "भन्‍नु"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "स्‍वर"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "कराउनु"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "चूपचापले बोल्‍नु"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "धेरै बोल्‍नु"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "थोरै बोल्‍नु"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr "चूपचाप रहनु"
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "बोल्‍ने शैली"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "राम्रो बोल्‍नु"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "साधरण हिसाबले बोल्‍नु"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr "बिषय बारे छलफल"
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "उद्‍घोषण"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "व्‍याख्‍या"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr "व्‍याख्‍या"
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr "उल्‍लेख"
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "परिचय गर्नु"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "दोहोर्‍याउनु"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "संक्षिप्‍त पार्न"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "जोड दिनु"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr "बारेमा हुनु, विषय"
+
+#: default_domains.php:402
+msgid "True"
+msgstr "सत्य"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr "सत्‍य बोल्‍नु"
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr "झूटा बोल्‍नु"
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "वादविवाद गर्नु"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "झूटा देखाउनु"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr "वास्‍तविक"
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "लम्‍ब्‍याउनु"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "अरूहरूसित बोल्‍नु"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "बोलाउनु"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr "सम्‍पर्क"
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "नमस्‍कार गर्नु"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "बिदाइ भन्‍नु"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "एक स्‍वरमा बोल्‍नु"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "सोध्‍नु"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "उत्तर"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "खोल्नु (कुरा)"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "तपाईंका बिचारहरु लुकाउनु"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "बिबाद गर्नु"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "प्रदर्शन"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "झगडा"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr "प्रशंसा"
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "धन्‍यबाद"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "चिप्‍लो घस्‍नु"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "घमण्‍ड गर्नु"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "आलोचना गर्नु"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr "दोष"
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "अपमान"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "गिल्‍ला गर्नु"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "गफ गर्नु"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr "गुनासो"
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "प्रतिज्ञा गर्नु"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "वक्‍तव्‍य दिनु"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "प्रतिबेदन"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "खबर, समाचार"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "आलङ्कारिक"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "स्‍वीकार गर्नु"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "भाषा"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "शब्‍द"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "सूचना"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr "कथा"
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "कथा, पौराणीक कथा"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr "भनाई, टुक्‍का"
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "गाउँखाने कथा"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "कविता"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "इतिहास"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "मौखिक परम्‍परा"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "मूर्ख बोली"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "अश्लीलता"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "चिन्‍ह, संकेत"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "हाउभाउ"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "देखाउनु"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "अनुहारको अभिव्‍यक्ति"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "हाँस्‍नु"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr "रुनु, आँसु"
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "पढाइ र लेखाइ"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "लेख्‍नु"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "लिखित वस्‍तु"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "पढ्‌नु"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "प्रकाशित गर्नु"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "अभिलेख"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "सूची"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr "पत्र"
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "अनुवादित खबरहरू"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "अर्थ"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "अनर्थ"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "अबोध"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "देखाउनु, जनाउनु"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "आमसञ्चार वा मिडिया"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "रेडियो, टेलिभिजन"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "दूरसञ्‍चार"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "खबर पत्रिका"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "चलचित्र"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "रेकर्ड गरिएको संगित"
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "संचार उपकरणहरू"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "सिकाउनु"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "देखाउनु, बताउनु"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "विद्यालय"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "सिकाइने विषय"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr "कक्षा, पाठ"
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "ठीक"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "विज्ञान"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "परीक्षा"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "परिक्षामा उत्तर"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "सामाजिक व्‍यवहार"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "सम्‍बन्‍धहरू"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr "मित्रता"
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "प्रेमी प्रेमिका"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "मानिसको प्रकार"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "काम गर्ने सम्‍बन्‍धहरू"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr "कसैलाई चिन्‍नु"
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "पहिलो चोटिको भेट"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "छिमेकी"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "सामाजिक वर्ग"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "एकता"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "अनेकता"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr "अमैत्रिक"
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "आफै छुट्टिएको समूह"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "एकल"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "स्‍वतन्‍त्र मान्‍छे"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "व्‍यक्तिगत, सार्वजनिक"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "सम्‍बन्‍ध शुरु हुनु"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "सम्‍बन्‍ध अन्‍त्‍य गर्नु"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "स्‍नेह देखाउनु"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr "नातेदार"
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "जन्‍म सम्‍बन्‍धित"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "बाजे, बज्‍यै"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "बाबु, आमा"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "दाजु वा भाइ, दिदी वा बहिनी"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "छोरा, छोरी"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "नाति, नातिनी"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "काका, काकी"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "दाजुभाइ, दिदीबहिनी"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "भान्‍जा, भान्‍जी"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "जन्‍म क्रम"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "विवाहद्वारा सम्‍बन्‍धित"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "श्रीमान, श्रीमती"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "(मानिसहरूको विवाहद्वारा सम्‍बन्‍धित) साइनो"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "विधवा, विधुर"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "टुहुरो"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "अवैध बालक"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "धर्मपुत्र लिनु"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "असम्‍बन्‍धित"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "परिवार, कुल, वंश"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "जाति"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "सामाजिक क्रियाकलाप"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr "जम्मा हुनु (समूह बनाउनु)"
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "निमन्‍त्रणा"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "आकस्‍मिक भेट"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "सँगै भेट्‌नु"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "भेट्‌नु"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "स्‍वागत, ग्रहण"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "अतिथि सत्‍कार देखाउनु"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "बैठक, सभा"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "सहभागी हुनु"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "भीड, समूह"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr "संस्‍था"
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr "संस्‍थामा सहभागी"
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr "संस्‍था छोड्‌नु"
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr "संस्‍थासँग आवद्ध हुनु"
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr "समाजिक समूह"
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "सामाजिक घटना"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "समारोह"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr "चाड, प्रदर्शन"
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "उत्‍सव मनाउनु"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "संगीत"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr "संगीत लेख्‍नु"
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "संगीत बजाउनु"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "गाउनु"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "संगीतकार"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "संगीतात्‍मक उपकरणहरू"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "नाच्‍नु"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "नाटक"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "मनोरन्‍जन, आमोद-प्रमोद"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "खेल"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr "तास खेल"
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "सतरन्‍ज (चेस)"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "खेलहरू"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr "भकुण्‍डोखेल"
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr "बास्केटबल (खेल -१)"
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "ब्‍यायाम, अभ्‍यास"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "जुवा"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "खेल्‍नु, ठट्टा"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "ठट्टा (चुट्किला)"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr "गम्‍भीर"
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "बिदाको दिन, छुट्टीको दिन"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr "खाली समय"
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "व्‍यवहार"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr "असल"
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr "खराब, अनैतिक"
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "स्‍तर भेट्टाउनु, मापदण्‍ड पुग्‍नु"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "स्‍तरदेखि मुनि"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr "पाकोरुपले कार्य गर्नु"
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr "अपरिपक्‍व"
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr "ध्‍यानमग्‍न, सम्‍वेदनशील"
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr "असल मर्यादा हुनु"
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "धैर्यवान"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "अधिर, धैर्य नभएको"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "नराम्रो रिसाहा"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr "राम्रो विचार गर्नु"
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr "तुच्‍छ गरी विचार गर्नु"
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "नम्र"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "घमण्‍ड"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr "देखाउनु"
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "प्रेम"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr "कतै खराब अनुभव गर्नु"
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "ध्‍यान नदिनु"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "त्‍याग्‍नु"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "असल गर्नु"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "खराब गर्नु"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "मद्दत"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "बाधा दिनु"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "सरसहयोग"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "प्रतियोगी हुनु"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "परमार्थ, स्‍वार्थहीन"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "स्‍वार्थी"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr "शोषण गर्नु"
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "भाग गर्नु"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "प्रदान गर्नु, सहयोग"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "ध्‍यान दिनु"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "रेखदेखको लागि जिम्‍मा दिनु"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "हस्‍तक्षेप गर्नु"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr "बिग्रनु"
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "जबरजस्‍तिसाथ प्रवेश गर्नु"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr "अपहरण्‍"
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "निर्दयी"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr "इमान्‍दार"
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "बेइमान"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "विश्‍वासी, इमानदार"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "विश्‍वासनीय"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "भर पर्न नसकिने, अविश्‍वसनीय"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "छल गर्नु"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "कप्‍टी, पाखण्‍डी जन"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "संयम"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "संयमको कमी"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr "असल आचरण भएको, क्रमबद्ध"
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr "अस्‍तव्‍यस्‍त"
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr "गल्‍ती गर्नु"
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr "भद्र"
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "अशिष्‍ट, असभ्‍य"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "ज्‍यादै उत्‍साही, उन्‍मत्त"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "व्‍यवहार परिवर्तन"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "मान्‍नु, स्‍वीकार गर्नु"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "संस्‍कृति"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "रिवाज"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "आदत"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "सफलता, संकट"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "सफलता"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "संकट"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "समस्‍या"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "खतरा"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "दुर्घटना"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "भीषण दुर्घटना, विपत्ति"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "छुट्टै, एकल"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "दु:ख बेहोर्नु"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "संकटलाई सामना गर्नु"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr "आँट"
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "कातरता"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr "संकट टार्नु, संकट छल्‍नु"
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "साबधानी"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "समस्‍या समाधान गर्नु"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "सहनु"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "बाँचिरहनु, जीवित रहनु"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "संकटमा कसैलाई प्रश्‍नोत्तर गर्नु"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr "दया हुनु"
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "साहनुभूति देखाउनु, सहयोग दिनु"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "सभ्‍य"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "संकटदेखि बचाउनु"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr "खतरादेखि बचाउनु"
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "बन्‍धनदेखि स्‍वतन्‍त्र पार्नु"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "उद्धार"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "जोखिम"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "मौका"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr "भाग्‍यमानी"
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr "अभाग्‍यवश"
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "अधिकार"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "अधिकारमा मान्‍छे"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "अधिकार हुनु"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "अधिकार अभ्‍यास"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "अगुवाइ"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "आज्ञा"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "अनुशासन गर्नु, तालिम दिनु"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "नियुक्त गर्नु, प्रतिनिधि सदस्‍य"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "अधिकारलाई सुम्‍पनु"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "आज्ञा पालन गर्नु"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "आज्ञा पालन नगर्नु"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "सेवा गर्नु"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr "कमारा, सेवक"
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "पछ्याउनु, चेला हुनु"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "अधिकार विरुद्व विद्रोह"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "स्‍वतन्‍त्र"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "मान"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "उपाधि, मानको नाम"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "सम्‍मान कमी"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "अवस्‍था"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "उच्‍च अवस्‍था"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "निम्‍न अवस्‍था"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "सरकार"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr "सर्बोच्‍च अधिकार"
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "राजाको परिवार"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr "सरकारी कार्यालयको"
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "नागरिक"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "विदेशी"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "सरकारी संस्‍था"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr "साशन गर्ने व्‍यक्तिहरू"
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "नियम"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "वशमा राख्‍नु"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "सरकारका कार्यहरू"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "प्रहरी, सुरक्षा कर्मी"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "गिरफ्‍तारी"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "अनौपचारिक न्‍याय"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "कुटनीति"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr "प्रतिनिधि"
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "चुनाव"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr "राजनीतिक दल"
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "प्रान्‍त"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "राज्‍य"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "सहर"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "गाउँ"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "समुदाय"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "कानून"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "कानून"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "कानूनहरू पारित गर्नु"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "कानून तोड्‌नु"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "कानूनको अदालत"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "वैधानिक कर्मचारी वर्ग"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr "वैधानिक प्रणाली"
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr "अपराध अनुसन्‍धान"
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr "शङ्का गर्नु"
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "दोष लगाउनु, सामना गर्नु"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr "बचाउनु"
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "गवाही दिनु, साक्षी दिनु"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "आदेशहरू निकाल्‍नु"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "किरिया खानु, शपथ खानु"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "साँचो देखाउनु, समर्थन गर्नु"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "न्‍यायधीश, इन्‍साफ प्रदान गर्ने"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "रिहा गर्नु"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "निन्‍दा गर्नु, दोषी भेट्टाउनु"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "दोष"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "दण्‍ड दिनु"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "इनाम"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "जरिमाना"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "कैद हाल्‍नु"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "ज्‍यान सजाय दिनु"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "निष्‍कासन, निर्वासन"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "क्षमा, छुटकारा"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr "प्रायश्‍चित, क्षतिपुर्ति"
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "वैधानिक प्रतिज्ञा-पत्र"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "करार"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "प्रतिज्ञा-पत्र तोड्‌नु"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "न्‍याय"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "निष्‍पक्ष"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "अनुचित"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "योग्‍य हुनु"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "भेद, अन्‍याय हुनु"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "रूखो तरीकाले काम गर्नु"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "थिचोमिचो गर्नु"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr "झगडा, विरोध"
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr "बिरोध"
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr "रोक्‌"
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "लडाइँ गर्नु"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr "असल कुराको लागी लड्‌नु"
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr "खराब कुराको लागी लड्‌नु"
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "हमला"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "ढुकेर हमला गर्नु"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "हमलादेखि बचाउनु"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "बद्‌ला लिनु"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "कोलाहल"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "विश्‍वासघात गर्नु"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr "हिंसा"
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "शत्रु"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "लडाइँ"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "हराउनु"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "विजय"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "हार"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "आत्‍म समर्पण गर्नु"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "लडाइँको कैदी"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "फौजी संस्‍थाहरू"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr "सेना"
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr "जलसेना"
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr "हवाई सेना"
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "योद्धा"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "जासुस गर्नु"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "किल्‍ला"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "हतियार, हान्‍नु"
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr "लुट्‌नु"
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "शान्‍ति"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "गाली गर्नु, धम्‍की दिनु"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "अनुरोध गर्नु"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "शान्‍त गराउनु, फुल्‍याउनु"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "सहमत हुनु"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "दाबी अस्‍वीकार गर्नु, साँचो ठान्‍नु"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "पश्‍चात्ताप गर्नु"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "क्षमाको लागि अनुरोध"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "क्षमा गर्नु, दिनु"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "शान्‍ति बनाउनु"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "झगडा रोक्‍नु"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "पुन:मिलन"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "धर्म"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "परमेश्‍वर"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "अलौकिक"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "धर्मशास्‍त्र, ईश्‍वरज्ञान"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "धार्मिक (पवित्र) लेखहरू"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "परोपकारी अलौकिक शक्ति"
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "इन्‍द्रजाल, टुना"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "भूतको प्रभुत्‍व"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "आशिष दिनु"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "श्राप"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "भाग्‍य, कर्म"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "भविष्यवाणी"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "साइत, जोखना हेराइ"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "धर्म सम्‍पादन"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "भक्तिपूर्ण, भक्ति"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "प्रार्थना गर्नु"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "आराधना गर्नु"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr "धार्मिक समारोह"
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "भेटी चढाउनु, बलिदान"
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "धार्मिक शुद्धिकरण"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "प्रतिबन्‍ध"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "मुक्ति"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "धार्मिक प्रयोगको लागि अर्पण गर्नु"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "उपवास"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "स्‍वर्ग, नरक"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "पुनरुत्‍थान"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "धार्मिक संस्‍था"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "धार्मिक अभ्‍यासकर्ता"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "ईसाई धर्म"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "इस्लाम धर्म"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "हिन्‍दु धर्म"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "बुद्ध धर्म"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "यहूदी धर्म"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr "सबै वस्‍तु (जस्‍तै: रुख, ढुङ्गा आदि)-मा आत्‍मा हुन्‍छ भन्‍ने विश्‍वास (प्रकृतिपूजक)"
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr "धार्मिक वस्तु"
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "मूर्ति"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "आराधनाको ठाउँ"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "अधार्मिक"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr "दैनिक जीवन"
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr "घरायसी समानहरू"
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "फर्निचर (सज्जा सामग्रीहरू)"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "टेबल"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "कूर्सी"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "खाट, ओछ्यान, पलङ"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "दराज"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr "घरायसी सजावटहरू"
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "खाना"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "खाना तयारी"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr "खाना पकाउने विधिहरू"
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "खाना तयार गर्नुका चरणहरू"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "बोक्रा ताछ्‌नु, छाला ताछ्‌नु"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "ओखल र ढिकीमा पिस्‍नु"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "पीठो पिंध्‍नु"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr "पकाउने उपकरणहरू"
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "अन्‍न भण्‍डार गर्नु"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "खाना बाँड्‌नु"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "खानु"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr "टोक्‍नु, चपाउनु"
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "भोजन"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "भोज"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "खाने तरीका"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "भोक लाग्‍नु, तिर्खा लाग्‍नु"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "सन्‍तुष्‍ट हुनु, अघाउनु"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "पिउनु"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "खाने भाँडा"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "उपवास, नखानु"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "खानाको प्रकार"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "वनस्‍पतिहरूबाट खाना"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "बियाँबाट खाना"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "फलफूलबाट खाना"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "सागसब्‍जीबाट खाना"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "पातहरूबाट खाना"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "जराहरूबाट खाना"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "पशुबाट खाना"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "मासु"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "दुग्ध उत्‍पादनहरू"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr "अण्‍डा"
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "पकाउने कुराका अंशहरू"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "चिनी"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "नुन"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "मसला"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "मर्चा, खमिर"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "खाने तेल"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "तयारी खाना"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "निषेधित खाना"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr "पेयपदार्थहरू"
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "मादक पर्दाथहरू"
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "मादक पर्दाथ बनाउने काम"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr "रक्‍स्‍याहा"
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr "सुर्ती"
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr "अम्‍मल, मादक"
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr "उत्तेजक"
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "लुगाफाटा"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr "पुरूषहरूको लुगाफाटा"
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr "महिलाहरूको लुगाफाटा"
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr "परम्‍परागत लुगाफाटा"
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "बिशेष अवसरको निम्‍ति लुगा"
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr "बिशेष मानिसको निम्‍ति लुगा"
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr "लुगाको भागहरू"
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr "लुगा लगाउनु"
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr "नाङ्गो"
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr "पहिरनका शैली, ढाँचा"
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "सिङ्‌गार पटार, गहना"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr "गहना"
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr "सौन्दर्य-प्रसाधन (श्रृङ्गार सामाग्रीहरू)"
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr "कपालको रेखदेख गर्नु"
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr "केश कोर्नु"
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr "केश बाट्‌नु"
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr "केश रङ्गाउनु"
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr "केशको शैली"
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr "केश कटाइ"
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr "खौरनु"
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr "दाँतलाई ध्‍यान राख्‍नु"
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr "जिउमा तेलले मालिस गर्नु"
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr "धर्म विधि सम्‍बन्‍धि चिनो लगाउने काम"
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr "खतना"
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr "औँलाका नङ्‌हरूको लागि रेखदेख"
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "आगो"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr "आगो बाल्‍नु वा सल्‍काउनु"
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr "आगो जोगाउनु"
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "आगो निभाउनु"
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr "बाल्‍नु, जल्नुा"
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr "आगोले के उत्‍पन्‍न गराउँछ?"
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr "इन्‍धन"
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr "चुलो"
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr "सफा गर्नु"
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr "सफा, फोहोर"
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr "नुहाउनु"
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr "थालहरू धुनु"
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr "लुगा धुनु"
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr "बडार्नु, सोहोर्नु"
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr "पुछ्‌नु, मेटाउनु"
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr "सुत्‍नु"
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr "सुत्‍नलाई जानु"
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr "सपना"
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr "बिँउझनु"
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr "घर व्‍यवस्‍थापन गर्नु"
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr "बस्‍नु, रहनु"
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "काम र पेशा"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "काम"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "कामदारहरू"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "विशेषज्ञ"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "तरिका"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr "कोसिस गर्नु"
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "प्रयोग"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr "उपयुक्‍त"
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr "बेकामको"
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "प्राप्‍य"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "प्रयोग भएको"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "चीजको वास्‍था गर्नु"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "काम नलाग्‍ने वस्‍तु, फयाँकिएको वस्‍तु"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "राम्ररी काम गर्नु"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "होशियार"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "कडा काम गर्नु"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "व्‍यस्‍त"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "शक्ति, वल"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "पुरा गर्नु, सिध्‍याउनु"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "महत्‍वकांक्षी"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "कमजोर हिसाबले काम गर्नु"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "असावधान, अनुत्तरदायि"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "अल्‍छी"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "छाड्‌नु, त्‍याग्‍नु"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "योजना"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr "सम्‍मेलन आयोजना गर्नु"
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "घटना रद्द गर्नु"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "तयारी"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr "प्रयोगको लागि केही कुरा तयार गर्नु"
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "प्रभावकारी"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "निपुर्ण, प्रभावशाली"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "मौका"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "कठिन, असम्‍भव"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "सजिलो, सम्‍भावित"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "सफल हुनु"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "असफल"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr "फाइदा"
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "कार्य सन्‍तुष्‍टि"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "बेरोजगार"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "हातले बनाएको"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "कृतिम"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "अनुभवी"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "बानी भएको हुनु"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "कृषि"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "बढिरहेको बाली"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "अन्‍न उब्‍जाउनु"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr "धान उत्पादन"
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr "गहुँ उपार्जन"
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr "मकै उब्‍जाउनु"
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr "जरा (जमिनमुनि लगाइने तरकारीहरू) उमार्नु"
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr "आलु उपार्जन"
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr "सिमल तरुल उमार्नु"
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr "सब्‍जी उमार्नु"
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr "फल फलाउनु"
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr "अङ्गूर फलाउनु"
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr "केरा उमार्नु"
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr "घाँस उमार्नु"
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr "उखु उमार्नु"
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr "सुर्ती उमार्नु"
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "फूल उमार्नु"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "रूखहरू उमार्नु"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr "नरिवल उमार्नु"
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr "कफि उमार्नु"
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "जमिनको तयारी"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "खेत सफा गर्नु"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "खेत जोत्‍नु"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "खेत मल्नु"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "खेत रोप्‍नु"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "खेतको रेखदेख गर्नु"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "घाँस काट्‌नु"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr "वनस्‍पतिहरू उखेल्‍नु"
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "सिंचाइ गर्नु"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "वनस्‍पतिहरू छाँट्‌नु"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "तिरष्कृत वनस्‍पतिहरू"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "खेती, बाली जम्‍मा गर्नु"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "अगौटे (पहिलो) फलहरू"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "बाली नहुनु"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "जङ्गली वनस्‍पतिहरू बटुल्‍नु"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "विरुवा उत्‍पादन गर्नु"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "खेती विधि"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "अन्‍न बत्ताउनु"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "अन्‍न घट्ट"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "दाउनु, झाँट्‌नु"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "खेती भण्डार गर्नु"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr "किसानहरू"
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr "कृषि उपकरणहरू"
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr "खेतीयोग्य जमिन"
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "पशु पालन"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "घरपालुवा जनावर"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "गाईवस्तु"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "भेडा"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "बाख्रा"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "सुँगुर"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "कुकुर"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "बिरालो"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "भारी बोक्‍ने जन्‍तु"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "खेतमा हेरबिचार गर्नु"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "दुध"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "कसाइ, काटमार गर्नु"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "ऊन उत्‍पादन"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "घरेलु पंक्षी बढाउनु"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "कुखुरा"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "पशु उत्‍पादन"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "पशु चिकित्‍साविज्ञान"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "पशु रोगहरू"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "पशुलाई खसी पार्नु"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "सिकार खेल्‍नु र माछा मार्नु"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "सिकार खेल्‍नु"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "जनावरलाई पछ्याउनु"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "पासो"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "चराहरूको सिकार खेल्‍ने"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "मौरी पालन"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "माछा मार्नु"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "जालले माछा मार्नु"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "बल्‍छीले माछा मार्नु"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "माछा मार्ने समान"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "जनावरहरूलाई गरिने कार्यहरू"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "भवनहरूमा काम गर्नु"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "भवन"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr "घर"
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "घरहरूको प्रकार"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr "व्‍यक्तिगत जमिनको सानो खण्‍ड, सम्‍पत्ति"
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr "घरको बाहिर"
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr "बार, प्रखाल"
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "भवनका भागहरू"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "पर्खाल"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "छत, छाना"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "तला"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "ढोका"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "झ्‍याल"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "जग"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "कोठा"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr "तला"
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "भवनको भौतिक वस्‍तुहरू"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "भवनको सरसमान र संरक्षण"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "भौतिक संरचना"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "सडक"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "सिमाना, साँध"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr "पेशाहरू"
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "लुगाको काम गर्नु"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "लुगा"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "धागो कात्‍नु"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "बुन्‍नु"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr "लुगा बुन्‍नु"
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "खनिज-पर्दाथहरूको काम गर्नु"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "धातु झिक्‍न भुईं खन्‍नु"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "खार्नु, गलाउनु"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "धातुको काम गर्नु"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "माटोको काम गर्नु"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "काँचको काम गर्नु"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "तेल र ग्‍याँसको काम गर्नु"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "ढुङ्गाको काम गर्नु"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "ईंटको काम गर्नु"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "रसायनिक पर्दाथहरूको काम गर्नु"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "पड्‌किनु"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "काठको काम गर्नु"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "काठ काट्‌नु"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "काठ"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "कागजको काम गर्नु"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "सीप, कला"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "धागो"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr "डोको र गुन्द्री बुन्‍नु"
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "छालाको काम गर्नु"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "हाडको काम गर्नु"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "कला"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "खिच्‍नु, रंगाउनु"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "फोटोविज्ञान"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "मूर्तिकला, शिल्‍पकला"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "जमिनको काम गर्नु"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "पानीको काम गर्नु"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "पानीको नालाको काम गर्ने"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "पानी लैजाने काम"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "पानी नियन्‍त्रण गर्नु"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "समुद्रमा काम गर्नु"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "मेशिनहरूसित काम गर्नु"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "बिजुलीसित काम गर्नु"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "सामान (उपकरण)"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "हातहतियार (काट्ने सामान)"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "घोच्‍ने समान"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "खन्‍ने हातहतियार"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "पिस्‍ने समान"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "बोक्‍ने समान"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr "उठाउने वा उचाल्‍ने यन्‍त्र"
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr "फित्ता"
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr "समात्‍ने वा पक्रने यन्‍त्र"
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "चीजबीज राख्‍ने भाँडो"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "झोला"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "म्‍यान, दाप"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "सामानहरूको भागहरू"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "यन्‍त्र"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "अर्थ-प्रबन्‍ध"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "धन हुनु"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr "प्रभुत्‍व जमाउनु"
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr "धनी"
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "गरिब"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "दौलत संग्रह गर्नु"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr "सम्‍पत्ति"
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "दौलत सन्‍चय गर्नु"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "दौलत बनाउनु"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "नाफा बनाउनु"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "धन गुमाउनु"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "कम खर्च गर्ने, किफायती"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "लोभी"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr "बटुल्‍नु"
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr "कमाउनु"
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "दौलत बाँड्‌नु"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "दिनु, चन्‍दा दिनु"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "दानी, उदार"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "कन्‍जूस"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "बिन्‍ती गर्नु"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr "आर्थिक कारोबारहरू"
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "किन्‍नु"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "बेच्‍नु"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr "मोल राख्‍नु"
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "महङ्गो"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "सस्‍तो"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "सित्तैको, मोलविनाको"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "किनबेचको सम्‍झौता"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "ऋण आदि तिर्नु"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "ज्‍याला, भाडा"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "पैसा खर्च गर्नु"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "भण्‍डार, बजार"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "विनिमय, व्यापार"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "उधारो लिनु"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "सापट दिनु"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "धितो राखेको चीज, धितो राख्‍नु"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "ऋणी हुनु"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "कर्जा फर्काउनु, तिर्नु"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "जम्‍मा गर्नु, हिसाबको जम्‍मा"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "पैसा"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "मुद्रा सम्‍बन्‍धि एकाईहरू"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "हिसाब गर्नु"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "कर"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "आर्थिक कामहरू बेइमान गर्नु"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "चोर्नु"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "छल गर्नु"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "पैसा बलपूर्वक प्राप्‍त गर्नु, खोस्‍नु"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "बलपूर्वक लिनु"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "घुस"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr "चोरी व्यापार"
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "ब्‍यापार संस्‍था"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "व्‍यवस्‍था"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr "परिश्रम"
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "किनबेच"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "वाणिज्‍य"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "अर्थशास्‍त्र"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "बिमा"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "शारीरिक कार्यहरू"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "चाल, भाव"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "उभिनु"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "बस्‍नु"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "ढल्‍कनु"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "घुँडा टेक्‍नु"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "निहुरिनु"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "झुकाउ, ढल्‍कनु"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "सोझो चाल"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "विश्राम गरेको चाल"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "तल झुक्‍नु"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "शरीरको भाग चल्‍नु"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "चल्‍नु"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "चालचलनको ढाँचा"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "हिँड्‌नु"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "कुद्‌नु"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "बामे सर्नु"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "उफ्रनु"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "छिटो चल्‍नु"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "बिस्‍तारै चल्‍नु"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "घुम्‍नु"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "मनोहर"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "अनौठो, बेढङ्गको"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "ठेस लाग्‍नु, लरखराउनु"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "चिप्‍लनु"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "स्‍थिर, अस्‍थिर"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "सन्‍तुलन"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr "हल्ला गर्दै चल्‍नु"
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "दिशामा चल्‍नु"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "अगाडि चल्‍नु"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "पछाडि चल्‍नु"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "छेउतिर चल्‍नु"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "माथि चल्‍नु"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "तल सर्नु"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr "झर्नु"
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "फर्किनु, घुम्‍नु"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "चक्रमा चल्‍नु"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "अगाडि र पछाडि चल्‍नु"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "नफर्की सीधा चल्‍नु"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "केही वस्‍तुतिर चल्‍नु"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "टाढा चल्‍नु"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "जानु"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "आउनु"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "छोड्‌नु"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "पुग्‍नु"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "सर्नु"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "बाहिर सर्नु"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "अतित वित्‍नु"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "फर्कनु"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "यात्रा"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "जमिन भएर यात्रा गर्नु"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "बाहन"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr "रेलको लिक"
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "पानी भएर यात्रा गर्नु"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "डुङ्गा, नाउ"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "पौडिनु"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "डुबुल्‍की मार्नु, डुबुल्‍की"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "आकाश भएर यात्रा गर्नु"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "नक्षत्रमा यात्रा गर्नु"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "नयाँ घरमा सर्नु"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr "बाटो, सडक, गोरेटो, घोडेटो, दिसा,दुरी"
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "बाटो हराउनु"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "नक्‍सा"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "सम्‍मिलित हुनु"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "पहिले जानु"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "पछ्याउनु"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "बाटो देखाउनु"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr "सँगै हिड्‌नु"
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "भाग्‍नु, पछ्याउनु"
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr "पकड्‌नु,"
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "दमन गर्ने काम"
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "भाग्‍नु, फुत्‍कनु"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "मुक्त गर्नु"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "नचल्‍नु"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "चल्‍न छोड्‌नु"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "रहनु, पछि छोडिनु"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "पर्खनु"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "कसैलाई पठाउनु"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "चल्‍नु"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "बोक्‍नु"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "फ्‍याँक्‍नु"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "समात्‍नु"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "हल्‍लाउनु"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "ढक्‌ढकाउनु"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "ठाडो उभ्‍याउनु"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "कनै दिशामा केही वस्‍तु चल्‍नु"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "अगाडि लाउनु"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "पछाडि लाउनु"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "छेउ लाउनु"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "उचाल्‍नु, उठाउनु"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "झुन्‍ड्याउनु"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "केही वस्‍तु होचो पार्नु"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "भित्र हाल्‍नु"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "बाहिर निकाल्‍नु"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "तान्‍नु"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "घचेट्‌नु, ठेल्‍नु"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "कतै लानु"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "केही वस्‍तु हटाउनु"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "केही वस्‍तु फर्कनु"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "पठाउनु"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "टाढा खेद्‌नु"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr "खेद्‌नु"
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "केही वस्‍तु हातमा लिनु"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "छुनु"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "बटुल्‍नु, उठाउनु"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "तल हाल्‍नु, झार्नु"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "अँठ्याउनु"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "हातको कार्यहरू"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "समर्थन"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "फैलिनु"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "केही वस्‍तु फर्कनु"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "खुल्‍ला, खोल्‍नु"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "बन्‍द गर्नु"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "छेक्‍नु, बार्नु"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "सीमा, हद"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "छोप्‍नु"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "उघार्नु"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "पट्याउनु, बेर्नु"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr "फैलाउनु, दल्‍नु"
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr "यातायात"
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "हुनु"
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "दिनु"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "प्राप्‍त गर्नु"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr "पाउनु"
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "बितरण गर्नु"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "केही वस्‍तु राख्‍नु"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "केही वस्‍तु छोड्‌नु"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "फाल्‍नु"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr "नहुनु"
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr "प्रबन्ध गर्नु, आयोजन गर्नु"
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "जम्‍मा गर्नु"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "छुट्टै, छरपस्‍ट हुनु"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "समाबेश गर्नु"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "विशेष"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "जोड्‌नु"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr "सम्‍बन्‍ध"
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr "खप्‍टिएको हुनु"
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr "केही जोड्‌नु"
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "हटाउनु"
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "मिसाउनु"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "शुद्ध, नमिसाएको"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "बाँध्‍नु"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "डोरी, फित्ता, तार"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "गाँठो पार्नु"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr "व्‍यवस्‍था"
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "विघटन गर्नु"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "बदली, प्रतिस्‍थापन"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "धेरै चीजहरू चल्‍नु"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "साधरण, जटिल"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr "राख्‍नु"
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr "भारी, थुप्रो"
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr "भर्नु, छोप्‍नु"
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "लुकाउनु"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "खोज्‍नु"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "भेट्टाउनु"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "हराउनु"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "शारीरिक धक्‍का"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "हिर्काउनु, प्रहार गर्नु"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "निशानामा ताक्‍नु"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "लात्ताले हान्‍नु"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "थिच्‍नु"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "दल्‍नु"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "पिंध्‍नु"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "निशाना लाउनु"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "टुक्राहरूमा बिभाजन गर्नु"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "तोड्‌नु"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "चर्किनु"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "काट्‌नु"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "फाट्‌नु, उधार्नु"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "प्वाल बनाउने, खोल्ने"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "खन्‍नु"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr "तोड्‌नु, बिग्रदै जानु"
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "बिगार्नु"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "फटाउनु"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "बिगार्नु"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "मर्मत गर्नु"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "अवस्‍थाहरू"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "परिमाण"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "अङ्क"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "मूलभूत अङ्कहरू"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr "एक"
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr "दुई"
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "क्रमसूचक अङ्कहरू"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "समयको संख्या"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "गुणाहरू"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr "संख्यात्मक गणना"
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "भिन्‍न"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr "अंक श्रृंखला वा क्रमबद्ध"
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "गणना"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr "गणित"
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr "जोड"
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr "घटाउ"
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr "गुणन"
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr "भाग"
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr "बहुवचन"
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr "धेरै"
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr "अलिकति"
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "चीजहरूको समूह"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "धेरै"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "कम"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "वृद्धि"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "घट्‌नु"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "सबै"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "केही"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr "कुनै पनि"
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "दुवै"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr "प्राय, सबै"
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr "धेरै, थोरै"
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "झण्‍डै"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "मात्र"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr "दुरुस्‍त"
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr "अन्‍दाजी"
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "सालाखाला वा औसत"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr "सारा"
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "भाग"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr "टुक्रा"
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr "प्रशस्‍त हुनु"
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr "फाल्‍तु हुनु"
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr "कमी हुनु"
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr "आवश्‍यक"
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr "बाँकी रहेको"
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "पूर्ण, पूरा"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "खाली"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "ठूलो"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "सानो"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr "लामो"
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr "छोटो"
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "अग्‍लो"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr "होंचो"
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr "बाक्‍लो"
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr "पातलो"
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr "मोटो"
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr "पातलो मान्‍छे"
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "फराकिलो"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "संकुचित"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr "ठूलो क्षेत्र"
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr "ग्रन्‍थ"
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr "दुरी"
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "टाढा"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "नजीक"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "उच्‍च"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "होचो"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "गहिरो"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "उपयुक्त, आकार"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr "कसिएको"
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr "खुकुलो"
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "किला ठोकेको, घुसार्नु"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "नाप्‍नु"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr "तौल"
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "गह्रौँ"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "तौलमा हलुका"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "गुण"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "आकार"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "बिन्‍दु"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "रेखा"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "सीधा"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "च्‍याप्‍टो"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "तेर्सो"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "ठाडो"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "झुकाउ, भिरालो"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr "बाङ्गो"
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr "बेह्रिएको"
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "बटार्नु, निचोर्नु"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr "पट्‌याउनु"
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "गोलो"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "अवतल वा नतोदर (बीच खण्ड भित्रिएको वा पेट भित्र पसेको)"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "बाहिरतिर उठेको वा उन्नतोदर"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr "खुकुलो"
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "वर्ग क्षेत्र"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr "नमूना"
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "एकैनासे"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "फैलाउनु, पसार्नु"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "बुनोट, रचना"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "चिल्‍लो"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "खस्रो"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "तिखो, धारिलो"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "औल्याँएको"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "भुत्ते"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "हलोको रेखा, सीता"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "चम्किलो"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "चम्‍कनु"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "प्रकाश स्रोत"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "उज्‍यालो"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "अँध्‍यारो"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "छाया"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "वर्ण वा रङ्ग"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "सेतो"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "कालो"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "खरानी रङ्ग"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "देखिएको वस्‍तुको रङ्गहरू"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "पशु रङ्ग, चिनो लाउनु"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr "रङ्ग थप्‍नु, रङ्गाउनु"
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr "धेरैथरि रङ्गाएको"
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr "चम्‍किलो"
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr "गर्मी"
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "चिसो"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr "प्रकार"
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "स्‍वभाव, चरित्र"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "दाँज्‍नु"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "उस्‍तै"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "उस्‍तै, मिल्‍दोजुल्‍दो"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "भिन्‍दै"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "अरू"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr "विविध"
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr "उल्टो"
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "साझा"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "प्रचलित वा पाच्य"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "अप्रचलित वा अपाच्य"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "अद्वितीय वस्‍तु"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "अनौठो"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "आदर्श, नमूना"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "अनुकरण गर्नु"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr "नक्‍कल"
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr "वस्तु"
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "बलियो, काफर"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "कडा, खँदिलो"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "कठिन, नम्र"
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "बाक्‍लो"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "नरम, निर्वल"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "राम्रो"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "नराम्रो"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr "अझ राम्रो, उत्‍कृष्‍ट"
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr "खराब, अझ कम्‍ति"
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "पूर्ण"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "मामुली, मझौला"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "महत्‍वपूर्ण"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "आधारभूत"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "सुधार गर्नु"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr "सुहाउँदो"
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr "गल्‍ती, अयोग्‍य"
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "सुविधाजनक"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr "उपयुक्‍त"
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr "कुहुनु, सड्‌नु"
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr "खिया"
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "खोट, दाग"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "मैला, फोहोर"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "कुहिन नदिनु, सुरक्षित राख्‍नु"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "महत्‍व"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr "सिंगारिएको"
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "साधरण, मामुली"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "महिमा"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "समय"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "समयको अवधि"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "पात्रो"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "दिन"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "रात"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr "हिजो, आज, भोली"
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "दिनको समय"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "हप्‍ता, साता"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "हप्‍ताका दिनहरू"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "महिना"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "वर्षका महिनाहरू"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "मौसम"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "वर्ष"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "युग"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "विशेष दिनहरू"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "समय लिनु"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "छोटो समय"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "लामो समय"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "सधैँ"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "अस्‍थायी"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "अनिश्‍चित समय"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "समय बताउनु"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr "कहिलेकाहीँ, अवसर"
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr "घडी"
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "सम्‍बन्‍धित समय"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "अनुक्रम"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr "श्रृंखला"
+
+#: default_domains.php:1532
+msgid "First"
+msgstr "पहिलो"
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr "अर्को"
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr "अन्‍तिम"
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "नियमित"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr "विकल्‍प"
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr "अगाडि"
+
+#: default_domains.php:1538
+msgid "After"
+msgstr "पछि"
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr "उही समयमा"
+
+#: default_domains.php:1540
+msgid "During"
+msgstr "मा"
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr "ठीक समय"
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "चाँडो"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "ठीक समयमा, बेलामा"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "ढिलो"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "ढिलाइ"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "पछि सार्नु"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr "अवस्‍था अनुसारको समय"
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr "केही चीजको शुरुवात"
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr "आदि वा शुरु"
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr "रोक्‍नु, अन्‍त्‍य"
+
+#: default_domains.php:1551
+msgid "End"
+msgstr "अन्‍त्य"
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "सम्‍म"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr "देखि"
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "अतीत"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr "एकछिन अघि"
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "वर्तमान"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "अहिले"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "भविष्‍यत्‌"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "चाँडो"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "अझसम्‍म (नभएको)"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "आखिर"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr "तुरुन्तै"
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "उमेर"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr "जवान"
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr "बुढो"
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "नयाँ"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr "पुरानो"
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr "आधुनिक"
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr "पुरानो ढाँचा"
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "एकपल्‍ट"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "फेरि"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "कहिलेकहीँ"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr "बारम्‍बार"
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "हर समय"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "प्रत्‍येक समय"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "कहिल्‍यै"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr "लगातार, टिक्‍नु"
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "हस्‍तक्षेप गर्नु"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "फेरि प्रारम्‍भ हुनु"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "मध्यान्तर"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "वेग"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "छिटो"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "बिस्‍तारै, ढिलो"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "अचानक"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "स्‍थान"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr "यहाँ, त्यहाँ"
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "अगाडि"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "पछाडि"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "छेउ"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "वरिपरि"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "बीचमा"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "मा, माथि"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "माथि"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "मुनि, तल"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "भित्र"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr "बाहिर"
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr "सम्‍पर्क"
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr "निकटतम"
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "पारी"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "अनिश्‍चत ठाउँ"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "दिशा"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr "अगाडि सर्नु"
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr "पछाडि सर्नु"
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "दाहिने, देब्रे"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr "माथि"
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr "तल"
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr "देखि, बाट"
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr "तिर, देखि टाढा"
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "उत्तर, दक्षिण,पूर्ब, पश्‍चिम"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "ठाउँमा हुनु"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "अनुपस्‍थित"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "क्षेत्र"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "छेउ-छाउ"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "क्षेत्र ओगट्‌नु"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "खाली ठाउँ कोठा"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "बीच-बीचमा आउने स्‍थान, खाली ठाउँ"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr "विशेष सम्‍बन्‍धहरू"
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr "सङ्ग्रहण"
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "(वस्तु) का भागहरू"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr "सामु"
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr "पछाडि"
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr "शिखर"
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr "पिँध"
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr "छेउ"
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr "भित्री भाग"
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr "बाहिरी भाग"
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr "मध्‍य"
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr "धार"
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr "अन्‍त्य"
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr "व्‍याकरण"
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr "सामान्‍य शब्‍दहरू"
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr "हुनु"
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr "अस्तित्ववाचक"
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr "हुनु, स्‍थिति परिवर्तन"
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr "को"
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr "गुणवाचक"
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr "गर्नु"
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr "हुनु, घट्नु"
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr "प्रतिक्रिया गर्नु, उत्तर दिनु"
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr "सृजना गर्नु"
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr "आकार"
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr "बनाउनु"
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr "केही कुरा परिवर्तन गर्नु"
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr "घटना तर्कवाक्यहरू"
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr "चिज वा वस्तु"
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "भौतिक, अभौतिक"
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr "अवस्‍था"
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr "सामान्‍य विशेषणहरू"
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr "सामान्‍य क्रियाविशेषणहरू"
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr "शव्दवर्ग"
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr "बिशेषणहरू"
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr "क्रिया बिशेषणहरू"
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr "सर्वनामहरू"
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "आत्मवोधक सर्वनामहरू"
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "अनिश्‍चयवाचक सर्वनामहरू"
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "सम्‍बन्‍धवाचक सर्वनामहरू"
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr "प्रश्‍नार्थक शब्‍दहरू"
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "दर्शकवाचक सर्वनामहरू"
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr "व्‍यक्तिगत रुपले"
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr "विभक्ति, नामयोगी"
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr "संयोजक"
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr "पदावली संयोजकहरू"
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr "उपवाक्‍य संयोजकहरू"
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr "वाक्‍यगत संयोजकहरु"
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr "निपात"
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr "कोटिकार"
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr "बिष्मयादीवोधक"
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr "अनुकरणात्मक (शब्द)"
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr "प्रत्‍ययहरू"
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr "क्रिया प्रत्ययहरू"
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr "नाम प्रत्ययहरू"
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr "व्युत्पादक प्रत्ययहरू"
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr "धेरै"
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr "अक्षांस"
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr "ठूलो अक्षांस (मात्रा)"
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr "थोरै मात्रा"
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr "ठूलो मात्रा (लाई)"
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr "सानो मात्रा (लाई)"
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr "पूर्णरुपले"
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr "आंशिकरूपले"
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr "सघन गराई"
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "विशेषकको विशेषता"
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "क्रियासँग सम्वन्धित आर्थिक घटकहरू"
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "काल र पक्ष"
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr "काल"
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "पक्ष--गतिशिल क्रियाहरू"
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "पक्ष--अवस्‍था क्रियाहरू"
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr "सम्‍बन्‍धित कालहरू"
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "कर्तामा आधारित भावहरू"
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr "सक्‍नु"
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr "नसक्‍नु"
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr "आवश्‍यक"
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr "भाव"
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr "आज्ञार्थक"
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr "विन्तीबोधक"
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr "प्रश्‍नवाचक"
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "मानसिक ज्ञान जनाउने भावहरू"
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr "निश्‍चय, पक्‍का"
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr "निश्‍चय"
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr "सम्‍भाब्‍य"
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr "सम्‍भव"
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr "अनिश्‍चित"
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr "अनिश्‍चय"
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr "मान्नु"
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr "हुन सक्‍छ"
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr "बोध हुनु, थाहा हुनु"
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr "झण्‍डै होइन"
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr "नसोचेको"
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr "असम्‍भव"
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr "प्रत्यक्षताहरू"
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr "मूल्‍याङ्कर्ता"
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr "अँ, हो"
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr "निषेध (हैन, छैन)"
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "सकारात्‍मक उत्तरको आशा गरिएका चिन्‍हहरू"
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "नकारात्‍मक उत्तरको आशा गरिएका चिन्‍हहरू"
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr "आश्रयक"
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "क्रियाविशेषण उपवाक्यहरू"
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr "कारक"
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr "प्राथमिक कारकहरू"
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "कुनै घटनाको फाइदा"
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr "साधन"
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr "साधन"
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr "ढङ्ग"
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "अनुचरको अवस्‍थाहरू"
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr "कुनै घटनाको स्‍थान"
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr "(गतिको) स्रोत"
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr "(गतिको) बाटो"
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr "(गतिको) लक्ष्‍य"
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr "(व्यक्तिको) उत्‍पत्ति"
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "अर्थगतरूपले उस्तै घटनाहरू"
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr "सँगसँगै"
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr "सँगै"
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr "सँग"
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr "एक-आपस"
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr "समूहमा"
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "कर्मसम्‍बन्‍धि कुराहरू"
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr "(कर्मको) फाइदा"
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr "(कर्मको) प्राप्‍ति"
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr "(कर्मको) सहभागिता"
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr "तार्किक सम्‍बन्‍धहरू"
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "सह-सम्बन्धहरू"
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr "र, पनि"
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr "वा, अथवा"
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr "सम्वन्ध"
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr "सह‍-सम्‍बन्‍ध"
+
+#: default_domains.php:1746
+msgid "But"
+msgstr "तर"
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr "अपबाद"
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr "सट्‌टामा"
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr "विघटन"
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr "वितरण"
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr "समानता"
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr "आश्रित सम्‍बन्‍धहरू"
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr "व्युत्पादन"
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "विषयको सीमा"
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr "सामान्‍य"
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "अन्तरसम्वन्धसँग सहभागी सम्‍बन्‍धहरू"
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr "आधार"
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr "कारण"
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr "कारण"
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr "बिनाकारण"
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr "परिणाम"
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr "परिणामविना"
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr "उद्देश्‍य"
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr "उद्देश्‍यविना"
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "संकेतार्थक (वाक्‍यहरू)"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr "घटी-घटाउ"
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr "संकथनका चिन्हकहरू"
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr "संक्रमणका चिन्हकहरू"
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "जोड दिने चिन्हहरू"
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "आकर्षणका उत्प्रेरकहरू"
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "सोझै संबोधनका चिन्हकहरू"
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "परिचयात्मक र ब्‍याख्‍यात्‍मक उपवाक्यहरूका चिन्हकहरू"
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr "केन्द्रकका चिन्हकहरू"
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr "हिचकिचाहट हुँदा आउने शब्दहरू"
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr "आदरार्थीहरू"
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr "(व्‍यक्तिवाचक) नामहरू"
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr "व्‍यक्तिगत नामहरू"
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr "व्यक्तिवाचक नामहरू"
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr "पारिवारिक नामहरू"
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr "कुल नामहरू"
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr "जातीय नामहरू"
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr "भाषाका नामहरू"
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr "बोलाउने नाम"
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "प्रेमानुरागको शब्दहरू"
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr "ठाउँको नामहरू"
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr "देशका नामहरू"
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr "प्रान्‍तहरूको नामहरू"
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr "शहरहरूको नामहरू"
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr "सडकका नामहरू"
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "स्‍वर्गीय भागका नामहरू"
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr "महादेशहरूको नामहरू"
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr "हिमालका नामहरू"
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "तालहरू र सागरहरूको नामहरू"
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr "नदीहरूको नामहरू"
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr "चीजको नाउँ"
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr "जनावरहरूको नामहरू"
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr "भवनका नामहरू"
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr ""

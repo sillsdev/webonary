@@ -10,6 +10,9 @@ include_once 'shared-functions.php';
 $input_file_name = 'input/plugin-' . $locale_code . '.tab';
 $po_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/lang/sil_dictionary-' . $locale_code . '.po';
 
+if (!is_file($po_file_name))
+	copy(__DIR__ . '/english/sil_dictionary-en_US.po', $po_file_name);
+
 function addOrReplacePO(string $key, string $value, array &$po_list)
 {
 	$e_key = escapeString($key);
