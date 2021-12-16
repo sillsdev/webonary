@@ -148,9 +148,21 @@ function add_links_to_map()
 
             // check for error condition
             if ('success' in data && data['success'] === 'OK') {
+                
+                // remove the changed flag
                 elements.forEach(el => {
                     el.removeAttribute('data-changed');
                 });
+                
+                // update the "Find coordinates" link
+	            for (let i=0; i < ids.length; i++) {
+	            
+		            let idx = ids[i];
+	                let lat = document.getElementsByName('lat[' + idx + ']')[0].value;
+	                let lon = document.getElementsByName('lon[' + idx + ']')[0].value;
+	                
+		            document.getElementById('map-link-' + idx.toString()).setAttribute('href', 'https://www.whatsmygps.com/index.php?lat=' + lat + '&lng=' + lon);
+		        }
         
                 toastr.success('Data saved');
                 return;
@@ -198,7 +210,7 @@ SQL;
 </td>
 <td>Lat: <input class="coordinate" type="text" name="lat[%3$d]" value="%6$s"></td>
 <td>Lon: <input class="coordinate" type="text" name="lon[%3$d]" value="%7$s"></td>
-<td><a href="https://www.whatsmygps.com/index.php?lat=%6$s&lng=%7$s" target="_blank">Find coordinates</a></td>
+<td><a id="map-link-%3$d" href="https://www.whatsmygps.com/index.php?lat=%6$s&lng=%7$s" target="_blank">Find coordinates</a></td>
 </tr>
 HTML;
 
