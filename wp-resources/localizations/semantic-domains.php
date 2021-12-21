@@ -1,13 +1,13 @@
 <?php
 
 
-$lang_code = 'ar';
-$locale_code = 'ar_AR';
-
+$lang_code = 'my';
+$locale_code = 'my_MM';
+$extension = 'usfm'; // usfm or xml
 
 include_once 'shared-functions.php';
 
-$input_file_name = 'input/LocalizedLists-' . $locale_code . '.xml';
+$input_file_name = 'input/LocalizedLists-' . $locale_code . '.' . $extension;
 $po_file_name = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/sem-domains/sil_domains-' . $locale_code . '.po';
 
 if (!is_file($po_file_name))
@@ -24,7 +24,7 @@ function fixIdeophones(string $english): string
 	return $english;
 }
 
-function getDomains(): array
+function getXmlDomains(): array
 {
 	global $input_file_name, $lang_code;
 
@@ -64,7 +64,42 @@ function getDomains(): array
 
 }
 
-function getPOLines($output): array
+function getUsfmDomains(): array
+{
+	global $input_file_name, $lang_code;
+
+	$handle = fopen($input_file_name, 'r');
+
+	$output = [];
+	$current_entry = null;
+
+	while (($line = fgets($handle)) !== false) {
+
+		$line = trim($line);
+
+		if (strpos($line, '\is ') === 0) {
+			$current_entry = ['code' => trim(substr($line, 4))];
+		}
+		elseif (strpos($line, '\sd ') === 0 && !is_null($current_entry)) {
+			$current_entry['eng'] =  trim(substr($line, 4));
+		}
+		elseif (strpos($line, '\sdn ') === 0 && !is_null($current_entry)) {
+			$current_entry['name'] = trim(substr($line, 5));
+		}
+		else {
+			if (!empty($current_entry) && !empty($current_entry['code']) && !empty($current_entry['eng']) && !empty($current_entry['name']))
+				$output[] = $current_entry;
+
+			$current_entry = null;
+		}
+	}
+
+	fclose($handle);
+
+	return $output;
+}
+
+function getXmlPOLines($output): array
 {
 	global $po_file_name;
 
@@ -76,6 +111,23 @@ function getPOLines($output): array
 
 	foreach ($output['domains'] as $domain) {
 		processPODomain($domain, $lines);
+	}
+
+	if ($lines[count($lines) - 1] != '')
+		$lines[] = '';
+
+	return $lines;
+}
+
+function getUsfmPOLines($output): array
+{
+	global $po_file_name;
+
+	// load the existing localizations
+	$lines = file($po_file_name, FILE_IGNORE_NEW_LINES);
+
+	foreach ($output as $item) {
+		addOrReplacePO($item['eng'], $item['name'], $item['code'], $lines);
 	}
 
 	if ($lines[count($lines) - 1] != '')
@@ -139,9 +191,25 @@ function processPODomain($domain, array &$po_list)
 	}
 }
 
+switch ($extension) {
+	case 'xml':
+		$output = getXmlDomains();
+		$lines = getXmlPOLines($output);
+		break;
 
-$output = getDomains();
-$lines = getPOLines($output);
+	case 'usfm':
+		$output = getUsfmDomains();
+		$lines = getUsfmPOLines($output);
+		break;
+}
+
+
+if (empty($lines)) {
+	print PHP_EOL . 'No semantic domain entries found.' . PHP_EOL;
+	exit();
+}
+
+
 
 makePOFile($po_file_name, $lines);
 makeMOFile($po_file_name);

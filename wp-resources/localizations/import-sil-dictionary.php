@@ -67,7 +67,7 @@ while (($line = fgets($handle)) !== false) {
 
 fclose($handle);
 
-$lines = getPOLines($words);
+$lines = getXmlPOLines($words);
 
 makePOFile($po_file_name, $lines);
 makeMOFile($po_file_name);

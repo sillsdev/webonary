@@ -1,0 +1,6461 @@
+\is 1
+\sd Universe, creation
+\sdn Cakerawala, ciptaan
+
+\is 1.1
+\sd Sky
+\sdn Langit
+
+\is 1.1.1
+\sd Sun
+\sdn Matahari
+
+\is 1.1.1.1
+\sd Moon
+\sdn Bulan
+
+\is 1.1.1.2
+\sd Star
+\sdn Bintang
+
+\is 1.1.1.3
+\sd Planet
+\sdn Planet
+
+\is 1.1.2
+\sd Air
+\sdn Udara
+
+\is 1.1.2.1
+\sd Blow air
+\sdn Hembusan udara
+
+\is 1.1.3
+\sd Weather
+\sdn Cuaca
+
+\is 1.1.3.1
+\sd Wind
+\sdn Angin
+
+\is 1.1.3.2
+\sd Cloud
+\sdn Awan
+
+\is 1.1.3.3
+\sd Rain
+\sdn Hujan
+
+\is 1.1.3.4
+\sd Snow, ice
+\sdn Salji, ais
+
+\is 1.1.3.5
+\sd Storm
+\sdn Ribut
+
+\is 1.1.3.6
+\sd Lightning, thunder
+\sdn Kilat, guruh
+
+\is 1.1.3.7
+\sd Flood
+\sdn Banjir
+
+\is 1.1.3.8
+\sd Drought
+\sdn Kemarau
+
+\is 1.2
+\sd World
+\sdn Dunia
+
+\is 1.2.1
+\sd Land
+\sdn Tanah
+
+\is 1.2.1.1
+\sd Mountain
+\sdn Gunung
+
+\is 1.2.1.2
+\sd Volcano
+\sdn Gunung Berapi
+
+\is 1.2.1.3
+\sd Plain, plateau
+\sdn Rata, dataran
+
+\is 1.2.1.4
+\sd Valley
+\sdn Lembah
+
+\is 1.2.1.5
+\sd Underground
+\sdn Bawah tanah
+
+\is 1.2.1.6
+\sd Forest, grassland, desert
+\sdn Hutan, padang rumput, gurun
+
+\is 1.2.1.7
+\sd Earthquake
+\sdn Gempa bumi
+
+\is 1.2.2
+\sd Substance, matter
+\sdn Bahan, benda
+
+\is 1.2.2.1
+\sd Soil, dirt
+\sdn Tanah, kotoran
+
+\is 1.2.2.2
+\sd Rock
+\sdn Batu
+
+\is 1.2.2.3
+\sd Metal
+\sdn Logam
+
+\is 1.2.2.4
+\sd Mineral
+\sdn Galian
+
+\is 1.2.2.5
+\sd Jewel
+\sdn Permata
+
+\is 1.2.3
+\sd Solid, liquid, gas
+\sdn Pejal, cair, gas
+
+\is 1.2.3.1
+\sd Liquid
+\sdn Cecair
+
+\is 1.2.3.2
+\sd Oil
+\sdn Minyak
+
+\is 1.2.3.3
+\sd Gas
+\sdn Gas
+
+\is 1.3
+\sd Water
+\sdn Air
+
+\is 1.3.1
+\sd Bodies of water
+\sdn Kumpulan-kumpulan air
+
+\is 1.3.1.1
+\sd Ocean, lake
+\sdn Laut, tasik
+
+\is 1.3.1.2
+\sd Swamp
+\sdn Paya
+
+\is 1.3.1.3
+\sd River
+\sdn Sungai
+
+\is 1.3.1.4
+\sd Spring, well
+\sdn Mata air, Perigi
+
+\is 1.3.1.5
+\sd Island, shore
+\sdn Pulau, pantai
+
+\is 1.3.2
+\sd Movement of water
+\sdn Pergerakan Air
+
+\is 1.3.2.1
+\sd Flow
+\sdn Aliran
+
+\is 1.3.2.2
+\sd Pour
+\sdn Curah
+
+\is 1.3.2.3
+\sd Drip
+\sdn Titisan
+
+\is 1.3.2.4
+\sd Wave
+\sdn Ombak
+
+\is 1.3.2.5
+\sd Calm, rough
+\sdn Tenang, bergoncang
+
+\is 1.3.2.6
+\sd Tide
+\sdn Air pasang
+
+\is 1.3.3
+\sd Wet
+\sdn Basah
+
+\is 1.3.3.1
+\sd Dry
+\sdn Kering
+
+\is 1.3.4
+\sd Be in water
+\sdn Berada dalam air
+
+\is 1.3.5
+\sd Solutions of water
+\sdn Larutan air
+
+\is 1.3.6
+\sd Water quality
+\sdn Kualiti Air
+
+\is 1.4
+\sd Living things
+\sdn Hidupan
+
+\is 1.4.1
+\sd Dead things
+\sdn Benda mati
+
+\is 1.4.2
+\sd Spirits of things
+\sdn Roh-roh/semangat benda
+
+\is 1.5
+\sd Plant
+\sdn Tumbuhan
+
+\is 1.5.1
+\sd Tree
+\sdn Pokok
+
+\is 1.5.2
+\sd Bush, shrub
+\sdn Belukar / tumbuhan renek
+
+\is 1.5.3
+\sd Grass, herb, vine
+\sdn Rumput, herba, pokok menjalar
+
+\is 1.5.4
+\sd Moss, fungus, algae
+\sdn Lumut, kulat, rumpair
+
+\is 1.5.5
+\sd Parts of a plant
+\sdn Bahagian suatu tumbuhan
+
+\is 1.5.6
+\sd Growth of plants
+\sdn Pertumbuhan tumbuhan
+
+\is 1.5.7
+\sd Plant diseases
+\sdn Penyakit-penyakit tumbuhan
+
+\is 1.6
+\sd Animal
+\sdn Haiwan
+
+\is 1.6.1
+\sd Types of animals
+\sdn Jenis-jenis haiwan
+
+\is 1.6.1.1
+\sd Mammal
+\sdn Mamalia
+
+\is 1.6.1.1.1
+\sd Primate
+\sdn Primat
+
+\is 1.6.1.1.2
+\sd Carnivore
+\sdn Karnivor
+
+\is 1.6.1.1.3
+\sd Hoofed animals
+\sdn Haiwan berkukuh
+
+\is 1.6.1.1.4
+\sd Rodent
+\sdn Rodensia
+
+\is 1.6.1.1.5
+\sd Marsupial
+\sdn Marsupial
+
+\is 1.6.1.1.6
+\sd Anteater, aardvark
+\sdn Binatang pemakan semut, aardvark
+
+\is 1.6.1.1.7
+\sd Sea mammal
+\sdn Mamalia laut
+
+\is 1.6.1.1.8
+\sd Bat
+\sdn Kelawar
+
+\is 1.6.1.2
+\sd Bird
+\sdn Burung
+
+\is 1.6.1.3
+\sd Reptile
+\sdn Reptilia
+
+\is 1.6.1.3.1
+\sd Snake
+\sdn Ular
+
+\is 1.6.1.3.2
+\sd Lizard
+\sdn Cicak
+
+\is 1.6.1.3.3
+\sd Turtle
+\sdn Penyu
+
+\is 1.6.1.3.4
+\sd Crocodile
+\sdn Buaya
+
+\is 1.6.1.4
+\sd Amphibian
+\sdn Amfibia
+
+\is 1.6.1.5
+\sd Fish
+\sdn Ikan
+
+\is 1.6.1.6
+\sd Shark, ray
+\sdn Jerung, ikan pari
+
+\is 1.6.1.7
+\sd Insect
+\sdn Serangga
+
+\is 1.6.1.8
+\sd Spider
+\sdn Labah-labah
+
+\is 1.6.1.9
+\sd Small animals
+\sdn Haiwan-haiwan kecil
+
+\is 1.6.2
+\sd Parts of an animal
+\sdn Bahagian-bahagian daripada haiwan
+
+\is 1.6.2.1
+\sd Parts of a bird
+\sdn Bahagian-bahagian daripada seekor burung
+
+\is 1.6.2.2
+\sd Parts of a reptile
+\sdn Bahagian-bahagian daripada seekor reptilia
+
+\is 1.6.2.3
+\sd Parts of a fish
+\sdn Bahagian daripada ikan
+
+\is 1.6.2.4
+\sd Parts of an insect
+\sdn Bahagian daripada serangga
+
+\is 1.6.2.5
+\sd Parts of small animals
+\sdn Bahagian daripada haiwan kecil
+
+\is 1.6.3
+\sd Animal life cycle
+\sdn Kitaran hidup haiwan
+
+\is 1.6.3.1
+\sd Egg
+\sdn Telur
+
+\is 1.6.4
+\sd Animal actions
+\sdn Tindakan haiwan
+
+\is 1.6.4.1
+\sd Animal movement
+\sdn Pergerakan Haiwan
+
+\is 1.6.4.2
+\sd Animal eating
+\sdn Haiwan sedang makan
+
+\is 1.6.4.3
+\sd Animal sounds
+\sdn Bunyi-bunyi haiwan
+
+\is 1.6.5
+\sd Animal home
+\sdn Kediaman Haiwan
+
+\is 1.6.6
+\sd Animal group
+\sdn Kumpulan Haiwan
+
+\is 1.6.7
+\sd Male and female animals
+\sdn Haiwan jantan dan betina
+
+\is 1.7
+\sd Nature, environment
+\sdn Alam, persekitaran
+
+\is 1.7.1
+\sd Natural
+\sdn Semula jadi
+
+\is 2
+\sd Person
+
+\is 2.1
+\sd Body
+
+\is 2.1.1
+\sd Head
+
+\is 2.1.1.1
+\sd Eye
+\sdn Mata
+
+\is 2.1.1.2
+\sd Ear
+\sdn Telinga
+
+\is 2.1.1.3
+\sd Nose
+\sdn Hidung
+
+\is 2.1.1.4
+\sd Mouth
+\sdn Mulut
+
+\is 2.1.1.5
+\sd Tooth
+\sdn Gigi
+
+\is 2.1.2
+\sd Torso
+\sdn Badan/Torso
+
+\is 2.1.3
+\sd Limb
+\sdn Tangan/Kaki
+
+\is 2.1.3.1
+\sd Arm
+\sdn Lengan/Tangan
+
+\is 2.1.3.2
+\sd Leg
+\sdn Kaki
+
+\is 2.1.3.3
+\sd Finger, toe
+\sdn Jari tangan, jari kaki
+
+\is 2.1.4
+\sd Skin
+\sdn Kulit
+
+\is 2.1.5
+\sd Hair
+\sdn Rambut
+
+\is 2.1.6
+\sd Bone, joint
+\sdn Tulang, Persendian
+
+\is 2.1.7
+\sd Flesh
+\sdn Daging
+
+\is 2.1.8
+\sd Internal organs
+\sdn Organ-organ dalaman
+
+\is 2.1.8.1
+\sd Heart
+\sdn Jantung
+
+\is 2.1.8.2
+\sd Stomach
+\sdn Perut
+
+\is 2.1.8.3
+\sd Male organs
+
+\is 2.1.8.4
+\sd Female organs
+\sdn Organ perempuan
+
+\is 2.2
+\sd Body functions
+\sdn Fungsi-fungsi Tubuh
+
+\is 2.2.1
+\sd Breathe, breath
+\sdn Bernafas, nafas
+
+\is 2.2.2
+\sd Cough, sneeze
+\sdn Batuk, bersin
+
+\is 2.2.3
+\sd Spit, saliva
+\sdn Air ludah, air liur
+
+\is 2.2.4
+\sd Mucus
+\sdn Hingus
+
+\is 2.2.5
+\sd Bleed, blood
+\sdn Berdarah, darah
+
+\is 2.2.6
+\sd Sweat
+\sdn Peluh
+
+\is 2.2.7
+\sd Urinate, urine
+\sdn Buang air kecil, air kencing
+
+\is 2.2.8
+\sd Defecate, feces
+\sdn Air besar, tahi
+
+\is 2.3
+\sd Sense, perceive
+\sdn Deria, rasa
+
+\is 2.3.1
+\sd See
+\sdn Melihat
+
+\is 2.3.1.1
+\sd Look
+\sdn Tengok
+
+\is 2.3.1.2
+\sd Watch
+\sdn Memperhatikan
+
+\is 2.3.1.3
+\sd Examine
+\sdn Memeriksa
+
+\is 2.3.1.4
+\sd Show, let someone see
+
+\is 2.3.1.5
+\sd Visible
+\sdn Boleh dilihat
+
+\is 2.3.1.5.1
+\sd Appear
+\sdn Muncul
+
+\is 2.3.1.6
+\sd Transparent
+\sdn Lut Sinar
+
+\is 2.3.1.7
+\sd Reflect, mirror
+\sdn Pantulan, cermin
+
+\is 2.3.1.8
+\sd Appearance
+\sdn Rupa
+
+\is 2.3.1.8.1
+\sd Beautiful
+\sdn Cantik
+
+\is 2.3.1.8.2
+\sd Ugly
+\sdn Hodoh
+
+\is 2.3.1.9
+\sd Something used to see
+\sd Poor eyesight
+\sdn Daya penglihatan yang tidak baik
+
+\is 2.3.2
+\sd Hear
+\sdn Telinga
+\sd Deaf
+\sdn Pekak
+
+\is 2.3.2.1
+\sd Listen
+\sdn Mendengar
+
+\is 2.3.2.2
+\sd Sound
+
+\is 2.3.2.3
+\sd Types of sounds
+
+\is 2.3.2.4
+\sd Loud
+\sdn Bunyi kuat
+
+\is 2.3.2.5
+\sd Quiet
+\sdn Senyap
+
+\is 2.3.3
+\sd Taste
+\sdn Rasa
+
+\is 2.3.4
+\sd Smell
+\sdn Bau
+
+\is 2.3.5
+\sd Sense of touch
+\sdn Deria sentuh
+
+\is 2.3.5.1
+\sd Comfortable
+\sdn Selesa
+
+\is 2.4
+\sd Body condition
+\sdn Keadaan Tubuh
+
+\is 2.4.1
+\sd Strong
+\sdn Kuat
+
+\is 2.4.2
+\sd Weak
+\sdn Lemah
+
+\is 2.4.3
+\sd Energetic
+\sdn Penuh bertenaga
+
+\is 2.4.4
+\sd Tired
+\sdn Penat
+
+\is 2.4.5
+\sd Rest
+\sdn Rehat
+
+\is 2.5
+\sd Healthy
+\sdn Sihat
+
+\is 2.5.1
+\sd Sick
+\sdn Sakit
+
+\is 2.5.1.1
+\sd Recover from sickness
+\sdn Pulih dari sakit
+
+\is 2.5.2
+\sd Disease
+\sd Animal diseases
+
+\is 2.5.2.1
+\sd Malnutrition, starvation
+\sdn Pemakanan Tak Seimbang, Kebuluran
+
+\is 2.5.2.2
+\sd Skin disease
+\sdn Penyakit kulit
+
+\is 2.5.2.3
+\sd Stomach illness
+\sdn Penyakit Perut
+
+\is 2.5.2.4
+\sd Tooth decay
+\sdn Kerosakan gigi
+
+\is 2.5.3
+\sd Injure
+\sdn Kecederaan
+
+\is 2.5.3.1
+\sd Amputate
+\sdn Amputasi/Memotong
+
+\is 2.5.3.2
+\sd Poison
+\sdn Racun
+
+\is 2.5.4
+\sd Disabled
+\sdn Hilang Keupayaan
+
+\is 2.5.4.1
+\sd Blind
+\sdn Buta
+
+\is 2.5.4.2
+\sd Poor eyesight
+\sdn Kabur/lemah penglihatan
+
+\is 2.5.4.3
+\sd Deaf
+\sdn Pekak
+
+\is 2.5.4.4
+\sd Mute
+\sdn Bisu
+
+\is 2.5.4.5
+\sd Birth defect
+\sdn Lahir cacat
+
+\is 2.5.5
+\sd Cause of disease
+\sdn Penyebab Penyakit
+
+\is 2.5.6
+\sd Symptom of disease
+\sdn Gejala penyakit
+
+\is 2.5.6.1
+\sd Pain
+\sdn Sakit
+
+\is 2.5.6.2
+\sd Fever
+\sdn Demam
+
+\is 2.5.6.3
+\sd Swell
+\sdn Bengkak
+
+\is 2.5.6.4
+\sd Lose consciousness
+\sdn Tidak sedar
+
+\is 2.5.6.5
+\sd Dazed, confused
+\sdn Bingung, keliru
+
+\is 2.5.6.6
+\sd Vision, hallucination
+\sdn Bayangan, Halusinasi
+
+\is 2.5.7
+\sd Treat disease
+\sdn Rawatan penyakit
+
+\is 2.5.7.1
+\sd Doctor, nurse
+\sdn Doktor, jururawat
+
+\is 2.5.7.2
+\sd Medicine
+\sdn Ubat
+
+\is 2.5.7.3
+\sd Medicinal plants
+\sdn Tumbuh-tumbuhan berubat
+
+\is 2.5.7.4
+\sd Hospital
+\sdn Hospital
+
+\is 2.5.7.5
+\sd Traditional medicine
+
+\is 2.5.7.5
+\sd Mental illness
+\sdn Penyakit mental
+
+\is 2.6
+\sd Life
+
+\is 2.6.1
+\sd Marriage
+
+\is 2.6.1.1
+\sd Arrange a marriage
+
+\is 2.6.1.2
+\sd Wedding
+
+\is 2.6.1.3
+\sd Unmarried
+
+\is 2.6.1.4
+\sd Divorce
+
+\is 2.6.1.5
+\sd Romantic love
+\sdn Percintaan yang romantik
+
+\is 2.6.2
+\sd Sexual relations
+
+\is 2.6.2.1
+\sd Virginity
+
+\is 2.6.2.2
+\sd Attract sexually
+
+\is 2.6.2.3
+\sd Sexual immorality
+\sdn Kesumbangan seksual
+
+\is 2.6.3
+\sd Birth
+
+\is 2.6.3.1
+\sd Pregnancy
+
+\is 2.6.3.2
+\sd Fetus
+
+\is 2.6.3.3
+\sd Miscarriage
+
+\is 2.6.3.4
+\sd Labor and birth pains
+
+\is 2.6.3.5
+\sd Help to give birth
+
+\is 2.6.3.6
+\sd Unusual birth
+
+\is 2.6.3.7
+\sd Multiple births
+
+\is 2.6.3.8
+\sd Fertile, infertile
+\sdn Subur, Tidak subur
+
+\is 2.6.3.9
+\sd Birth ceremony
+
+\is 2.6.4
+\sd Stage of life
+
+\is 2.6.4.1
+\sd Baby
+
+\is 2.6.4.1.1
+\sd Care for a baby
+\sdn Menjaga seorang bayi
+
+\is 2.6.4.2
+\sd Child
+
+\is 2.6.4.2.1
+\sd Rear a child
+\sdn Membesarkan seorang anak
+
+\is 2.6.4.3
+\sd Youth
+
+\is 2.6.4.4
+\sd Adult
+
+\is 2.6.4.5
+\sd Old person
+
+\is 2.6.4.6
+\sd Grow, get bigger
+\sdn Meningkat dewasa, membesar
+
+\is 2.6.4.7
+\sd Initiation
+\sdn Inisiasi
+
+\is 2.6.4.8
+\sd Peer group
+\sdn Kelompok sebaya
+
+\is 2.6.5
+\sd Male, female
+\sd Male and female animals
+
+\is 2.6.5.1
+\sd Man
+\sdn Lelaki
+
+\is 2.6.5.2
+\sd Woman
+\sdn Wanita
+
+\is 2.6.6
+\sd Die
+
+\is 2.6.6.1
+\sd Kill
+
+\is 2.6.6.2
+\sd Corpse
+
+\is 2.6.6.3
+\sd Funeral
+
+\is 2.6.6.4
+\sd Mourn
+
+\is 2.6.6.5
+\sd Bury
+\sdn mengabadikan
+
+\is 2.6.6.6
+\sd Grave
+
+\is 2.6.6.7
+\sd Inherit
+\sdn Mewarisi
+
+\is 2.6.6.8
+\sd Life after death
+\sdn Kehidupan setelah mati
+
+\is 3
+\sd Language and thought
+\sdn
+
+\is 3.1
+\sd Soul, spirit
+\sdn Jiwa, Roh
+
+\is 3.1.1
+\sd Personality
+\sdn Keperibadian
+
+\is 3.1.2
+\sd Mental state
+\sdn Keadaan Mental
+
+\is 3.1.2.1
+\sd Alert
+\sdn Cergas
+
+\is 3.1.2.2
+\sd Notice
+\sdn Lihat
+
+\is 3.1.2.3
+\sd Attention
+\sdn
+
+\is 3.1.2.4
+\sd Ignore
+\sdn Tidak menghiraukan
+
+\is 3.2
+\sd Think
+\sdn Berfikir
+
+\is 3.2.1
+\sd Mind
+\sdn MInda
+
+\is 3.2.1.1
+\sd Think about
+\sdn
+
+\is 3.2.1.2
+\sd Imagine
+\sdn Membayangkan
+
+\is 3.2.1.3
+\sd Intelligent
+\sdn Berakal, Cerdik
+
+\is 3.2.1.4
+\sd Stupid
+\sdn Jahil
+
+\is 3.2.1.5
+\sd Logical
+\sdn Munasabah
+
+\is 3.2.1.6
+\sd Instinct
+\sdn Naluri
+
+\is 3.2.2
+\sd Learn
+\sdn Belajar
+
+\is 3.2.2.1
+\sd Study
+\sdn
+
+\is 3.2.2.2
+\sd Check
+\sdn Memeriksa
+
+\is 3.2.2.3
+\sd Evaluate, test
+\sdn Menilai, Menguji
+
+\is 3.2.2.4
+\sd Guess
+\sdn Menduga
+
+\is 3.2.2.5
+\sd Solve
+\sdn Mengatasi
+
+\is 3.2.2.6
+\sd Realize
+\sdn
+
+\is 3.2.2.7
+\sd Willing to learn
+\sdn Sedia Belajar
+
+\is 3.2.3
+\sd Know
+\sdn Tahu, Mengetahui
+
+\is 3.2.3.1
+\sd Known, unknown
+\sdn Dikenali, Tidak dikenali
+
+\is 3.2.3.2
+\sd Area of knowledge
+\sdn Bidang Pengetahuan
+
+\is 3.2.3.3
+\sd Secret
+\sdn
+
+\is 3.2.4
+\sd Understand
+\sdn Memahami
+
+\is 3.2.4.1
+\sd Misunderstand
+\sdn Salah Faham
+
+\is 3.2.4.2
+\sd Understandable
+\sdn Boleh Difahami
+
+\is 3.2.4.3
+\sd Mysterious
+\sdn
+
+\is 3.2.5
+\sd Opinion
+\sdn
+
+\is 3.2.5.1
+\sd Believe
+\sdn Mempercayai
+
+\is 3.2.5.1.1
+\sd Trust
+\sdn
+
+\is 3.2.5.2
+\sd Disbelief
+\sdn Tidak Mempercayai
+
+\is 3.2.5.3
+\sd Doubt
+\sdn Keraguan
+
+\is 3.2.5.4
+\sd Agree with someone
+\sdn
+
+\is 3.2.5.4.1
+\sd Disagree
+\sdn
+
+\is 3.2.5.4.2
+\sd Protest
+\sdn
+
+\is 3.2.5.5
+\sd Philosophy
+\sdn Falsafah
+
+\is 3.2.5.6
+\sd Attitude
+\sdn Sikap
+
+\is 3.2.5.7
+\sd Extreme belief
+\sdn Kepercayaan Yang Melampaui Batas
+
+\is 3.2.5.8
+\sd Change your mind
+\sdn
+
+\is 3.2.5.9
+\sd Approve of something
+\sdn
+
+\is 3.2.6
+\sd Remember
+\sdn Mengingati
+
+\is 3.2.6.1
+\sd Forget
+\sdn Melupakan
+
+\is 3.2.6.2
+\sd Recognize
+\sdn
+
+\is 3.2.6.3
+\sd Memorize
+\sdn
+
+\is 3.2.6.4
+\sd Remind
+\sdn
+
+\is 3.2.7
+\sd Expect
+\sdn Berharap
+
+\is 3.2.7.1
+\sd Hope
+\sdn Mengharapkan
+
+\is 3.2.7.2
+\sd Hopeless
+\sdn Tiada harapan
+
+\is 3.2.7.3
+\sd Predict
+\sdn
+
+\is 3.2.8
+\sd Tendency
+\sdn Kecenderungan
+
+\is 3.3
+\sd Want
+\sdn Mahu, Ingin
+
+\is 3.3.1
+\sd Decide, plan
+\sdn Memutuskan,Merancang
+
+\is 3.3.1.1
+\sd Purpose, goal
+\sdn
+
+\is 3.3.1.2
+\sd Choose
+\sdn Memilih
+
+\is 3.3.1.3
+\sd Cast lots
+\sdn
+
+\is 3.3.1.4
+\sd Intend
+\sdn
+
+\is 3.3.1.5
+\sd Deliberately
+\sdn Sengaja
+
+\is 3.3.1.6
+\sd Determined
+\sdn
+
+\is 3.3.1.7
+\sd Stubborn
+\sdn Berdegil
+
+\is 3.3.1.8
+\sd Lust
+\sdn Berahi
+
+\is 3.3.2
+\sd Request
+\sdn Meminta, Memohon
+
+\is 3.3.2.1
+\sd Agree to do something
+\sdn
+
+\is 3.3.2.2
+\sd Refuse to do something
+\sdn
+
+\is 3.3.2.3
+\sd Intercede
+\sdn Memohon Bagi Sesuatu Pihak
+
+\is 3.3.2.4
+\sd Willing
+\sdn
+
+\is 3.3.3
+\sd Influence
+\sdn Mempengaruhi
+
+\is 3.3.3.1
+\sd Suggest
+\sdn Mencadangkan
+
+\is 3.3.3.2
+\sd Advise
+\sdn Menasihatkan
+
+\is 3.3.3.3
+\sd Persuade
+\sdn
+
+\is 3.3.3.4
+\sd Insist
+\sdn
+
+\is 3.3.3.5
+\sd Compel
+\sdn Menggerakkan
+
+\is 3.3.3.6
+\sd Control
+\sdn Menguasai
+
+\is 3.3.3.7
+\sd Warn
+\sdn Memberi Amaran
+
+\is 3.3.3.8
+\sd Threaten
+\sdn
+
+\is 3.3.4
+\sd Ask permission
+\sdn
+
+\is 3.3.4.1
+\sd Give permission
+\sdn
+
+\is 3.3.4.2
+\sd Refuse permission
+\sdn Enggan memberi kebenaran
+
+\is 3.3.4.3
+\sd Exempt
+\sdn Pengecualian
+
+\is 3.3.4.4
+\sd Prevent
+\sdn
+
+\is 3.3.4.5
+\sd Free to do what you want
+\sdn
+
+\is 3.3.5
+\sd Offer
+\sdn Menawarkan
+
+\is 3.3.5.1
+\sd Accept
+\sdn
+
+\is 3.3.5.2
+\sd Reject
+\sdn Menolak
+
+\is 3.4
+\sd Emotion
+\sdn Pengalaman Batin
+
+\is 3.4.1
+\sd Feel good
+\sdn
+
+\is 3.4.1.1
+\sd Like, love
+\sdn Suka
+
+\is 3.4.1.1.1
+\sd Enjoy doing something
+\sdn
+
+\is 3.4.1.1.2
+\sd Self-esteem
+\sdn Kehormatan Diri
+
+\is 3.4.1.1.3
+\sd Prefer
+\sdn
+
+\is 3.4.1.1.4
+\sd Popular
+\sdn
+
+\is 3.4.1.1.5
+\sd Fashionable
+\sdn
+
+\is 3.4.1.1.6
+\sd Contentment
+\sdn Kepuasan hati
+
+\is 3.4.1.1.7
+\sd Happy for
+\sdn Bersukacita
+
+\is 3.4.1.1.8
+\sd Pleased with
+\sdn Berkenan terhadap
+
+\is 3.4.1.2
+\sd Happy
+\sdn
+
+\is 3.4.1.2.1
+\sd Relaxed
+\sdn Lega
+
+\is 3.4.1.2.2
+\sd Calm
+\sdn Tenang
+
+\is 3.4.1.3
+\sd Surprise
+\sdn
+
+\is 3.4.1.4
+\sd Interested
+\sdn
+
+\is 3.4.1.4.1
+\sd Excited
+\sdn
+
+\is 3.4.1.4.2
+\sd Enthusiastic
+\sdn Ghairah
+
+\is 3.4.1.4.3
+\sd Obsessed
+\sdn
+
+\is 3.4.1.4.4
+\sd Attract
+\sdn Mempesona
+
+\is 3.4.1.4.5
+\sd Indifferent
+\sdn Tidak Peduli
+
+\is 3.4.1.4.6
+\sd Uninterested, bored
+\sdn
+
+\is 3.4.1.5
+\sd Confident
+\sdn Yakin, Berkeyakinan
+
+\is 3.4.2
+\sd Feel bad
+\sdn
+
+\is 3.4.2.1
+\sd Sad
+\sdn Sedih
+
+\is 3.4.2.1.1
+\sd Dislike
+\sdn
+
+\is 3.4.2.1.2
+\sd Hate, detest
+\sdn
+
+\is 3.4.2.1.3
+\sd Disgusted
+\sdn
+
+\is 3.4.2.1.4
+\sd Disappointed
+\sdn Kecewa
+
+\is 3.4.2.1.5
+\sd Lonely
+\sdn Sepi
+
+\is 3.4.2.1.6
+\sd Upset
+\sdn
+
+\is 3.4.2.1.7
+\sd Shock
+\sdn Terperanjat
+
+\is 3.4.2.1.8
+\sd Jealous
+\sdn Cemburu
+
+\is 3.4.2.1.9
+\sd Discontent
+\sdn Tidak puas hati
+
+\is 3.4.2.2
+\sd Sorry
+\sdn
+
+\is 3.4.2.2.1
+\sd Ashamed
+\sdn
+
+\is 3.4.2.2.2
+\sd Embarrassed
+\sdn
+
+\is 3.4.2.3
+\sd Angry
+\sdn Marah
+
+\is 3.4.2.3.1
+\sd Annoyed
+\sdn
+
+\is 3.4.2.4
+\sd Afraid
+\sdn
+
+\is 3.4.2.4.1
+\sd Worried
+\sdn
+
+\is 3.4.2.4.2
+\sd Nervous
+\sdn Gelisah
+
+\is 3.4.2.4.3
+\sd Shy, timid
+\sdn Segan, Takut
+
+\is 3.4.2.5
+\sd Confused
+\sdn
+
+\is 3.5
+\sd Communication
+\sdn Perhubungan
+
+\is 3.5.1
+\sd Say
+\sdn
+
+\is 3.5.1.1
+\sd Voice
+\sdn Suara
+
+\is 3.5.1.1.1
+\sd Shout
+\sdn
+
+\is 3.5.1.1.2
+\sd Speak quietly
+\sdn Berbicara Dengan Suara Yang Kecil
+
+\is 3.5.1.1.3
+\sd Speak a lot
+\sdn Berbicara Panjang
+
+\is 3.5.1.1.4
+\sd Speak little
+\sdn Tidak Banyak Berbicara
+
+\is 3.5.1.1.5
+\sd Say nothing
+\sdn
+
+\is 3.5.1.1.6
+\sd Speech style
+\sdn Gaya Bicara
+
+\is 3.5.1.1.7
+\sd Speak well
+\sdn Pandai Berbicara
+
+\is 3.5.1.1.8
+\sd Speak poorly
+\sdn Tidak Pandai Berbicara
+
+\is 3.5.1.2
+\sd Talk about a subject
+\sdn
+
+\is 3.5.1.2.1
+\sd Announce
+\sdn Mengumumkan
+
+\is 3.5.1.2.2
+\sd Describe
+\sdn Menjelaskan
+
+\is 3.5.1.2.3
+\sd Explain
+\sdn
+
+\is 3.5.1.2.4
+\sd Mention
+\sdn
+
+\is 3.5.1.2.5
+\sd Introduce
+\sdn Memperkenalkan
+
+\is 3.5.1.2.6
+\sd Repeat
+\sdn Mengulangi
+
+\is 3.5.1.2.7
+\sd Summarize
+\sdn Meringkaskan
+
+\is 3.5.1.2.8
+\sd Emphasize
+\sdn Menitikberatkan
+
+\is 3.5.1.2.9
+\sd Be about, subject
+\sdn
+
+\is 3.5.1.3
+\sd True
+\sdn Benar
+
+\is 3.5.1.3.1
+\sd Tell the truth
+\sdn
+
+\is 3.5.1.3.2
+\sd Tell a lie
+\sdn
+
+\is 3.5.1.3.3
+\sd Contradict
+\sdn Membantah
+
+\is 3.5.1.3.4
+\sd Expose falsehood
+\sdn Memdedahkan kepalsuan
+
+\is 3.5.1.3.5
+\sd Real
+\sdn
+
+\is 3.5.1.3.6
+\sd Exaggerate
+\sdn Tokok Tambah
+
+\is 3.5.1.4
+\sd Speak with others
+\sdn Berbual Dengan Orang Lain
+
+\is 3.5.1.4.1
+\sd Call
+\sdn Memanggil
+
+\is 3.5.1.4.2
+\sd Contact
+\sdn
+
+\is 3.5.1.4.3
+\sd Greet
+\sdn Menyambut
+
+\is 3.5.1.4.4
+\sd Say farewell
+\sdn Mengucapkan Selamat Jalan Atau Selamat Tinggal
+
+\is 3.5.1.4.5
+\sd Speak in unison
+\sdn Serentak Bersuara
+
+\is 3.5.1.5
+\sd Ask
+\sdn Meminta
+
+\is 3.5.1.5.1
+\sd Answer
+\sdn Menjawab
+
+\is 3.5.1.5.2
+\sd Disclose
+\sdn Memberi Keterangan
+
+\is 3.5.1.5.3
+\sd Hide your thoughts
+\sdn Menyembunyikan Perasaan Jiwa (Buah Fikiran)
+
+\is 3.5.1.6
+\sd Debate
+\sdn Perbahasan
+
+\is 3.5.1.6.1
+\sd Demonstrate
+\sdn Menunjukkan
+
+\is 3.5.1.6.2
+\sd Quarrel
+\sdn Pertengkaran, pergaduhan
+
+\is 3.5.1.7
+\sd Praise
+\sdn
+
+\is 3.5.1.7.1
+\sd Thank
+\sdn Berterima kasih
+
+\is 3.5.1.7.2
+\sd Flatter
+\sdn Mengampu
+
+\is 3.5.1.7.3
+\sd Boast
+\sdn Memborakkan
+
+\is 3.5.1.8
+\sd Criticize
+\sdn Mengkritik
+
+\is 3.5.1.8.1
+\sd Blame
+\sdn
+
+\is 3.5.1.8.2
+\sd Insult
+\sdn Mencaci
+
+\is 3.5.1.8.3
+\sd Mock
+\sdn Mencela
+
+\is 3.5.1.8.4
+\sd Gossip
+\sdn Mengumpat
+
+\is 3.5.1.8.5
+\sd Complain
+\sdn
+
+\is 3.5.1.9
+\sd Promise
+\sdn Berjanji
+
+\is 3.5.2
+\sd Make speech
+\sdn Berpidato
+
+\is 3.5.2.1
+\sd Report
+\sdn Melaporkan
+
+\is 3.5.2.2
+\sd News, message
+\sdn Warta Berita
+
+\is 3.5.2.3
+\sd Figurative
+\sdn Bersifat Kiasan
+
+\is 3.5.2.4
+\sd Admit
+\sdn Mengaku
+
+\is 3.5.3
+\sd Language
+\sdn Bahasa
+
+\is 3.5.3.1
+\sd Word
+\sdn Perkataan
+
+\is 3.5.3.2
+\sd Information
+\sdn Maklumat
+
+\is 3.5.4
+\sd Story
+\sdn
+
+\is 3.5.4.1
+\sd Fable, myth
+\sdn Cerita Dogeng, Hikayat Purbakala
+
+\is 3.5.4.2
+\sd Saying, proverb
+\sdn
+
+\is 3.5.4.3
+\sd Riddle
+\sdn Teka-teki
+
+\is 3.5.4.4
+\sd Poetry
+\sdn Puisi
+
+\is 3.5.4.5
+\sd History
+\sdn Sejarah
+
+\is 3.5.4.6
+\sd Verbal tradition
+\sdn Tradisi Lisan
+
+\is 3.5.5
+\sd Foolish talk
+\sdn Kata Bicara Orang Bodah
+
+\is 3.5.5.1
+\sd Obscenity
+\sdn Kelucahan
+
+\is 3.5.6
+\sd Sign, symbol
+\sdn Isyarat, Lambang
+
+\is 3.5.6.1
+\sd Gesture
+\sdn Mengisyaratkan
+
+\is 3.5.6.2
+\sd Point at
+\sdn
+
+\is 3.5.6.3
+\sd Facial expression
+\sdn Air Muka
+
+\is 3.5.6.4
+\sd Laugh
+\sdn Ketawa
+
+\is 3.5.6.5
+\sd Cry, tear
+\sdn
+
+\is 3.5.7
+\sd Reading and writing
+\sdn Membaca Dan Menulis
+
+\is 3.5.7.1
+\sd Write
+\sdn Tulis, Menulis
+
+\is 3.5.7.2
+\sd Written material
+\sdn Hasil Cipta Penulisan
+
+\is 3.5.7.3
+\sd Read
+\sdn Baca, Membaca
+
+\is 3.5.7.4
+\sd Publish
+\sdn Menerbitkan
+
+\is 3.5.7.5
+\sd Record
+\sdn Catat, Mencatat
+
+\is 3.5.7.6
+\sd List
+\sdn Senarai
+
+\is 3.5.7.7
+\sd Letter
+\sdn
+
+\is 3.5.8
+\sd Interpreting messages
+\sdn Mentafsirkan Maklumat
+
+\is 3.5.8.1
+\sd Meaning
+\sdn Erti
+
+\is 3.5.8.2
+\sd Meaningless
+\sdn Tidak Bererti, Sia-sia
+
+\is 3.5.8.3
+\sd Unintelligible
+\sdn Tidak Dapat Difahami
+
+\is 3.5.8.4
+\sd Show, indicate
+\sdn Membuktikan, Menandakan
+
+\is 3.5.9
+\sd Mass communication
+\sdn Media Massa
+
+\is 3.5.9.1
+\sd Radio, television
+\sdn Radio, Televisyen
+
+\is 3.5.9.2
+\sd Telephone
+\sdn Telefon
+
+\is 3.5.9.3
+\sd Newspaper
+\sdn Surat Khabar
+
+\is 3.5.9.4
+\sd Movie
+\sdn Wayang Gambar
+
+\is 3.5.9.5
+\sd Recorded music
+\sdn
+
+\is 3.5.9.6
+\sd Communication devices
+\sdn Kemudahan Perhubungan
+
+\is 3.6
+\sd Teach
+\sdn Mengajar
+
+\is 3.6.1
+\sd Show, explain
+\sdn Memberi Tunjuk Ajar, Menerangkan
+
+\is 3.6.2
+\sd School
+\sdn Institusi Pendidikan
+
+\is 3.6.3
+\sd Subject of teaching
+\sdn Matapelajaran
+
+\is 3.6.4
+\sd Class, lesson
+\sdn
+
+\is 3.6.5
+\sd Correct
+\sdn Membetulkan
+
+\is 3.6.6
+\sd Science
+\sdn Sains
+
+\is 3.6.7
+\sd Test
+\sdn Ujian
+
+\is 3.6.8
+\sd Answer in a test
+\sdn Jawapan Ujian
+
+\is 4
+\sd Social behavior
+\sdn Tatalaku kemasyarakatan
+
+\is 4.1
+\sd Relationships
+\sdn Perhubungan
+
+\is 4.1.1
+\sd Friend
+\sdn
+
+\is 4.1.1.1
+\sd Girlfriend, boyfriend
+\sdn Teman perempuan Teman lelaki
+
+\is 4.1.2
+\sd Types of people
+\sdn
+
+\is 4.1.2.1
+\sd Working relationship
+\sdn
+
+\is 4.1.3
+\sd Know someone
+\sdn
+
+\is 4.1.3.1
+\sd Meet for the first time
+\sdn Pertama kali berkenalan
+
+\is 4.1.4
+\sd Neighbor
+\sdn Jiran
+
+\is 4.1.4.1
+\sd Social class
+\sdn Lapisan masyarakat
+
+\is 4.1.5
+\sd Unity
+\sdn Perpaduan
+
+\is 4.1.6
+\sd Disunity
+\sdn Ketidaksatuan
+
+\is 4.1.6.1
+\sd Unfriendly
+\sdn
+
+\is 4.1.6.2
+\sd Set self apart
+\sdn Menyendiri
+
+\is 4.1.6.3
+\sd Alone
+\sdn Berseorangan
+
+\is 4.1.6.4
+\sd Independent person
+\sdn Seseorang yang berdikari
+
+\is 4.1.6.5
+\sd Private, public
+\sdn Peribadi, Awam
+
+\is 4.1.7
+\sd Begin a relationship
+\sdn Memulakan Suatu Perhubungan
+
+\is 4.1.7.1
+\sd End a relationship
+\sdn Memutuskan suatu perhubungan
+
+\is 4.1.8
+\sd Show affection
+\sdn Menunjukkan kemesraan
+
+\is 4.1.9
+\sd Kinship
+\sdn
+
+\is 4.1.9.1
+\sd Related by birth
+\sdn Perhubungan baka
+
+\is 4.1.9.1.1
+\sd Grandfather, grandmother
+\sdn Datuk, Nenek
+
+\is 4.1.9.1.2
+\sd Father, mother
+\sdn Ibu, Bapa
+
+\is 4.1.9.1.3
+\sd Brother, sister
+\sdn Abang, Kakak, Adik lelaki, Adik perempuan
+
+\is 4.1.9.1.4
+\sd Son, daughter
+\sdn Anak lelaki, Anak perempuan
+
+\is 4.1.9.1.5
+\sd Grandson, granddaughter
+\sdn Cucu lelaki, Cucu perempuan
+
+\is 4.1.9.1.6
+\sd Uncle, aunt
+\sdn Bapa saudara, Ibu saudara
+
+\is 4.1.9.1.7
+\sd Cousin
+\sdn Ipar
+
+\is 4.1.9.1.8
+\sd Nephew, niece
+\sdn Anak saudara lelaki, Anak saudara perempuan
+
+\is 4.1.9.1.9
+\sd Birth order
+\sdn Urutan kelahiran
+
+\is 4.1.9.2
+\sd Related by marriage
+\sdn Perhubungan hasil perkahwinan
+
+\is 4.1.9.2.1
+\sd Husband, wife
+\sdn Suami, Isteri
+
+\is 4.1.9.2.2
+\sd In-law
+\sdn Mentua
+
+\is 4.1.9.3
+\sd Widow, widower
+\sdn Janda, Duda
+
+\is 4.1.9.4
+\sd Orphan
+\sdn Yatim Piatu
+
+\is 4.1.9.5
+\sd Illegitimate child
+\sdn Anak luar nikah
+
+\is 4.1.9.6
+\sd Adopt
+\sdn Menjadikan seseorang sebagai anak angkat
+
+\is 4.1.9.7
+\sd Non-relative
+\sdn Tiada kaitan persaudaraan
+
+\is 4.1.9.8
+\sd Family, clan
+\sdn Kaum keluarga, Puak suku bangsa
+
+\is 4.1.9.9
+\sd Race
+\sdn
+
+\is 4.2
+\sd Social activity
+\sdn Kegiatan sosial
+
+\is 4.2.1
+\sd Come together, form a group
+\sdn
+
+\is 4.2.1.1
+\sd Invite
+\sdn Menjemput
+
+\is 4.2.1.2
+\sd Encounter
+\sdn Bersua
+
+\is 4.2.1.3
+\sd Meet together
+\sdn Berkumpul bersama-sama
+
+\is 4.2.1.4
+\sd Visit
+\sdn Melawat
+
+\is 4.2.1.4.1
+\sd Welcome, receive
+\sdn Mengalu-alukan, Menyambut
+
+\is 4.2.1.4.2
+\sd Show hospitality
+\sdn Memberi layanan mesra
+
+\is 4.2.1.5
+\sd Meeting, assembly
+\sdn Pertemuan, Perhimpunan
+
+\is 4.2.1.6
+\sd Participate
+\sdn
+
+\is 4.2.1.7
+\sd Crowd, group
+\sdn Perkumpulan tanpa struktur
+
+\is 4.2.1.8
+\sd Organization
+\sdn
+
+\is 4.2.1.8.1
+\sd Join an organization
+\sdn
+
+\is 4.2.1.8.2
+\sd Leave an organization
+\sdn
+
+\is 4.2.1.8.3
+\sd Belong to an organization
+\sdn
+
+\is 4.2.1.9
+\sd Social group
+\sdn
+
+\is 4.2.2
+\sd Social event
+\sdn Acara sosial
+
+\is 4.2.2.1
+\sd Ceremony
+\sdn Upacara
+
+\is 4.2.2.2
+\sd Festival, show
+\sdn
+
+\is 4.2.2.3
+\sd Celebrate
+\sdn Merayakan
+
+\is 4.2.3
+\sd Music
+\sdn Muzik
+
+\is 4.2.3.1
+\sd Compose music
+\sdn
+
+\is 4.2.3.2
+\sd Play music
+\sdn
+
+\is 4.2.3.3
+\sd Sing
+\sdn Nyanyi
+
+\is 4.2.3.4
+\sd Musician
+\sdn Ahli muzik
+
+\is 4.2.3.5
+\sd Musical instrument
+\sdn
+
+\is 4.2.4
+\sd Dance
+\sdn Tarian
+
+\is 4.2.5
+\sd Drama
+\sdn Drama
+
+\is 4.2.6
+\sd Entertainment, recreation
+\sdn Hiburan, rekreasi
+
+\is 4.2.6.1
+\sd Game
+\sdn Permainan
+
+\is 4.2.6.1.1
+\sd Card game
+\sdn
+
+\is 4.2.6.1.2
+\sd Chess
+\sdn Permainan catur
+
+\is 4.2.6.2
+\sd Sports
+\sdn Olahraga
+
+\is 4.2.6.2.1
+\sd Football, soccer
+\sdn
+
+\is 4.2.6.2.2
+\sd Basketball
+\sdn
+
+\is 4.2.6.3
+\sd Exercise
+\sdn Bersenam
+
+\is 4.2.6.4
+\sd Gambling
+\sdn Berjudi
+
+\is 4.2.7
+\sd Play, fun
+\sdn Bermain, berseronok
+
+\is 4.2.8
+\sd Humor
+\sdn Kebolehan berlucu
+
+\is 4.2.8.1
+\sd Serious
+\sdn
+
+\is 4.2.9
+\sd Holiday
+\sdn Bercuti
+
+\is 4.2.9.1
+\sd Free time
+\sdn
+
+\is 4.3
+\sd Behavior
+\sdn Kelakuan
+
+\is 4.3.1
+\sd Good, moral
+\sdn
+
+\is 4.3.1.1
+\sd Bad, immoral
+\sdn
+
+\is 4.3.1.2
+\sd Meet a standard
+\sdn Memenuhi piawaian
+
+\is 4.3.1.2.1
+\sd Below standard
+\sdn Pencapaian kurang baik (sempurna)
+
+\is 4.3.1.3
+\sd Mature in behavior
+\sdn
+
+\is 4.3.1.3.1
+\sd Immature in behavior
+\sdn
+
+\is 4.3.1.3.2
+\sd Sensible
+\sdn
+
+\is 4.3.1.4
+\sd Reputation
+\sdn
+
+\is 4.3.1.5
+\sd Patient
+\sdn Sabar
+
+\is 4.3.1.5.1
+\sd Impatient
+\sdn Tidak sabar
+
+\is 4.3.1.5.2
+\sd Bad-tempered
+\sdn Cepat marah
+
+\is 4.3.2
+\sd Admire someone
+\sdn
+
+\is 4.3.2.1
+\sd Despise someone
+\sdn
+
+\is 4.3.2.2
+\sd Humble
+\sdn Merendahkan diri
+
+\is 4.3.2.3
+\sd Proud
+\sdn Angkuh
+
+\is 4.3.2.4
+\sd Show off
+\sdn
+
+\is 4.3.3
+\sd Love
+\sdn Mengasihi
+
+\is 4.3.3.1
+\sd Hate, ill will
+\sdn
+
+\is 4.3.3.2
+\sd Not care
+\sdn Tidak mempedulikan
+
+\is 4.3.3.3
+\sd Abandon
+\sdn Meninggalkan
+
+\is 4.3.4
+\sd Do good to
+\sdn Berbuat baik terhadap
+
+\is 4.3.4.1
+\sd Do evil to
+\sdn Berbuat jahat terhadap
+
+\is 4.3.4.2
+\sd Help
+\sdn Bantuan
+
+\is 4.3.4.2.1
+\sd Hinder
+\sdn Menghalang
+
+\is 4.3.4.3
+\sd Cooperate with
+\sdn Berkerjasama dengan
+
+\is 4.3.4.3.1
+\sd Compete with
+\sdn Bertanding dengan
+
+\is 4.3.4.4
+\sd Altruistic, selfless
+\sdn Mengutamakan kesenangan orang lain, tidak mementingkan diri sendiri
+
+\is 4.3.4.4.1
+\sd Selfish
+\sdn Hanya mementingkan diri sendiri
+
+\is 4.3.4.4.2
+\sd Use a person
+\sdn
+
+\is 4.3.4.5
+\sd Share with
+\sdn Membahagi bersama-sama
+
+\is 4.3.4.5.1
+\sd Provide for, support
+\sdn Membekalkan keperluan
+
+\is 4.3.4.5.2
+\sd Care for
+\sdn Mempedulikan
+
+\is 4.3.4.5.3
+\sd Entrust to the care of
+\sdn Mempercayakan penjagaan
+
+\is 4.3.4.6
+\sd Meddle
+\sdn Campur tangan tanpa memanfaatkan
+
+\is 4.3.4.6.1
+\sd Spoil
+\sdn
+
+\is 4.3.4.7
+\sd Enter by force
+\sdn Menceroboh
+
+\is 4.3.4.8
+\sd Kidnap
+\sdn
+
+\is 4.3.4.9
+\sd Cruel
+\sdn Kejam
+
+\is 4.3.5
+\sd Honest
+\sdn
+
+\is 4.3.5.1
+\sd Dishonest
+\sdn Tidak jujur
+
+\is 4.3.5.2
+\sd Faithful
+\sdn Setia
+
+\is 4.3.5.3
+\sd Reliable
+\sdn Boleh dipercayai
+
+\is 4.3.5.4
+\sd Unreliable
+\sdn Tidak boleh diharap
+
+\is 4.3.5.5
+\sd Deceive
+\sdn Memperdaya
+
+\is 4.3.5.6
+\sd Hypocrite
+\sdn Munafik
+
+\is 4.3.6
+\sd Self-controlled
+\sdn Berkemampuan menguasai diri sendiri
+
+\is 4.3.6.1
+\sd Lack self-control
+\sdn Lemah mengawal diri
+
+\is 4.3.6.2
+\sd Tidy
+\sdn
+
+\is 4.3.6.3
+\sd Untidy
+\sdn
+
+\is 4.3.6.4
+\sd Mistake
+\sdn
+
+\is 4.3.7
+\sd Polite
+\sdn
+
+\is 4.3.7.1
+\sd Impolite
+\sdn Tidak sopan
+
+\is 4.3.7.2
+\sd Crazy
+\sdn Gila
+
+\is 4.3.8
+\sd Change behavior
+\sdn Berubah tabiat
+
+\is 4.3.8.1
+\sd Conform
+\sdn Menurut akur
+
+\is 4.3.9
+\sd Culture
+\sdn Kebudayaan
+
+\is 4.3.9.1
+\sd Custom
+\sdn Adat resam
+
+\is 4.3.9.2
+\sd Habit
+\sdn Tabiat
+
+\is 4.4
+\sd Prosperity, trouble
+\sdn Kemakmuran & kesusahan
+
+\is 4.4.1
+\sd Prosperity
+\sdn Kemakmuran
+
+\is 4.4.2
+\sd Trouble
+\sdn Kesusahan
+
+\is 4.4.2.1
+\sd Problem
+\sdn Masalah
+
+\is 4.4.2.2
+\sd Danger
+\sdn Bahaya
+
+\is 4.4.2.3
+\sd Accident
+\sdn Kemalangan
+
+\is 4.4.2.4
+\sd Disaster
+\sdn Bencana, malapetaka
+
+\is 4.4.2.5
+\sd Separate, alone
+\sdn Terasing, bersendirian
+
+\is 4.4.2.6
+\sd Suffer
+\sdn Menderita
+
+\is 4.4.3
+\sd Respond to trouble
+\sdn Tindakan terhadap kesusahan
+
+\is 4.4.3.1
+\sd Brave
+\sdn
+
+\is 4.4.3.2
+\sd Cowardice
+\sdn Sifat penakut, ketakutan
+
+\is 4.4.3.3
+\sd Avoid
+\sdn
+
+\is 4.4.3.4
+\sd Caution
+\sdn Berhati-hati, berjaga-jaga
+
+\is 4.4.3.5
+\sd Solve a problem
+\sdn Menyelesaikan suatu masalah
+
+\is 4.4.3.6
+\sd Endure
+\sdn Bertahan
+
+\is 4.4.3.7
+\sd Survive
+\sdn Terselamat
+
+\is 4.4.4
+\sd Respond to someone in trouble
+\sdn Bertindak terhadap seseorang yang dilanda kesusahan
+
+\is 4.4.4.1
+\sd Mercy
+\sdn
+
+\is 4.4.4.2
+\sd Show sympathy, support
+\sdn Menunjukkan simpati, menyokong
+
+\is 4.4.4.3
+\sd Gentle
+\sdn Beradab
+
+\is 4.4.4.4
+\sd Save from trouble
+\sdn Menyelamatkan daripada kesusahan
+
+\is 4.4.4.5
+\sd Protect
+\sdn
+
+\is 4.4.4.6
+\sd Free from bondage
+\sdn Bebas daripada terkurung
+
+\is 4.4.4.7
+\sd Relief
+\sdn Bantuan
+
+\is 4.4.4.8
+\sd Risk
+\sdn Risiko
+
+\is 4.4.5
+\sd Chance
+\sdn Suatu kemungkinan
+
+\is 4.4.5.1
+\sd Lucky
+\sdn
+
+\is 4.4.5.2
+\sd Unlucky
+\sdn
+
+\is 4.5
+\sd Authority
+\sdn Wibawa, kewibawaan
+
+\is 4.5.1
+\sd Person in authority
+\sdn Pihak berkuasa
+
+\is 4.5.2
+\sd Have authority
+\sdn Berwibawa
+
+\is 4.5.3
+\sd Exercise authority
+\sdn Menggunakan wibawa
+
+\is 4.5.3.1
+\sd Lead
+\sdn Memimpin
+
+\is 4.5.3.2
+\sd Command
+\sdn Memerintah
+
+\is 4.5.3.3
+\sd Discipline, train
+\sdn Mendisiplin, melatih
+
+\is 4.5.3.4
+\sd Appoint, delegate
+\sdn Melantik, Diberi kuasa mewakili
+
+\is 4.5.4
+\sd Submit to authority
+\sdn Mengakui pihak berkuasa
+
+\is 4.5.4.1
+\sd Obey
+\sdn Patuh
+
+\is 4.5.4.2
+\sd Disobey
+\sdn Tidak patuh
+
+\is 4.5.4.3
+\sd Serve
+\sdn Berkhidmat
+
+\is 4.5.4.4
+\sd Slave
+\sdn
+
+\is 4.5.4.5
+\sd Follow, be a disciple
+\sdn Ikut, Meneladani
+
+\is 4.5.4.6
+\sd Rebel against authority
+\sdn Memberontak terhadap pihak berkuasa
+
+\is 4.5.4.7
+\sd Independent
+\sdn Merdeka
+
+\is 4.5.5
+\sd Honor
+\sdn Memberi penghormatan, Menjunjung
+
+\is 4.5.5.1
+\sd Title, name of honor
+\sdn Gelaran penghormatan
+
+\is 4.5.5.2
+\sd Lack respect
+\sdn Kurang ajar
+
+\is 4.5.6
+\sd Status
+\sdn Kedudukan
+
+\is 4.5.6.1
+\sd High status
+\sdn Berkedudukan tinggi
+
+\is 4.5.6.2
+\sd Low status
+\sdn Berkedudukan rendah
+
+\is 4.6
+\sd Government
+\sdn Kerajaan
+
+\is 4.6.1
+\sd Ruler
+\sdn
+
+\is 4.6.1.1
+\sd King's family
+\sdn Kerabat diraja
+
+\is 4.6.1.2
+\sd Government official
+\sdn
+
+\is 4.6.2
+\sd Citizen
+\sdn Warganegara
+
+\is 4.6.2.1
+\sd Foreigner
+\sdn Orang asing
+
+\is 4.6.3
+\sd Government organization
+\sdn Jentera kerajaan
+
+\is 4.6.3.1
+\sd Governing body
+\sdn
+
+\is 4.6.4
+\sd Rule
+\sdn Memerintah
+
+\is 4.6.5
+\sd Subjugate
+\sdn Menawan
+
+\is 4.6.6
+\sd Government functions
+\sdn Fungsi-fungsi kerajaan
+
+\is 4.6.6.1
+\sd Police
+\sdn Polis
+
+\is 4.6.6.1.1
+\sd Arrest
+\sdn Memberkas
+
+\is 4.6.6.1.2
+\sd Informal justice
+\sdn Keadilan di luar perundangan, Penghakiman yang subjektif
+
+\is 4.6.6.2
+\sd Diplomacy
+\sdn Diplomasi
+
+\is 4.6.6.3
+\sd Represent
+\sdn
+
+\is 4.6.6.4
+\sd Election
+\sdn Pilihan raya
+
+\is 4.6.6.5
+\sd Politics
+\sdn
+
+\is 4.6.7
+\sd Region
+\sdn Kawasan
+
+\is 4.6.7.1
+\sd Country
+\sdn Negara
+
+\is 4.6.7.2
+\sd City
+\sdn Kota
+
+\is 4.6.7.3
+\sd Countryside
+\sdn Desa
+
+\is 4.6.7.4
+\sd Community
+\sdn Masyarakat
+
+\is 4.7
+\sd Law
+\sdn Undang-undang
+
+\is 4.7.1
+\sd Laws
+\sdn Hukum-hukum, Perundangan
+
+\is 4.7.2
+\sd Pass laws
+\sdn Meluluskan rang undang-undang
+
+\is 4.7.3
+\sd Break the law
+\sdn Melanggar undang-undang
+
+\is 4.7.4
+\sd Court of law
+\sdn Mahkamah
+
+\is 4.7.4.1
+\sd Legal personnel
+\sdn Orang yang terlibat dalam pengurusan pembicaraan mahkamah
+
+\is 4.7.5
+\sd Trial
+\sdn
+
+\is 4.7.5.1
+\sd Investigate a crime
+\sdn
+
+\is 4.7.5.2
+\sd Suspect
+\sdn
+
+\is 4.7.5.3
+\sd Accuse, confront
+\sdn Menuduh, Berdepan muka
+
+\is 4.7.5.4
+\sd Defend against accusation
+\sdn
+
+\is 4.7.5.5
+\sd Witness, testify
+\sdn Bersaksi, Memberi Kesaksian
+
+\is 4.7.5.6
+\sd Drop charges
+\sdn Membatalkan dakwaan-dakwaan
+
+\is 4.7.5.7
+\sd Take oath
+\sdn Mengangkat sumpah
+
+\is 4.7.5.8
+\sd Vindicate
+\sdn Mengesahkan kebenaran
+
+\is 4.7.6
+\sd Judge, render a verdict
+\sdn Mengadili, Memberi keputusan
+
+\is 4.7.6.1
+\sd Acquit
+\sdn Membebaskan
+
+\is 4.7.6.2
+\sd Condemn, find guilty
+\sdn Menyalahkan, didapati bersalah
+
+\is 4.7.6.3
+\sd Fault
+\sdn Kesalahan
+
+\is 4.7.7
+\sd Punish
+\sdn Menghukum
+
+\is 4.7.7.1
+\sd Reward
+\sdn Ganjaran
+
+\is 4.7.7.2
+\sd Fine
+\sdn Denda
+
+\is 4.7.7.3
+\sd Imprison
+\sdn Memenjarakan
+
+\is 4.7.7.4
+\sd Execute
+\sdn Menjalankan hukuman mati
+
+\is 4.7.7.5
+\sd Ostracize
+\sdn Memulaukan
+
+\is 4.7.7.6
+\sd Pardon, release
+\sdn Pengampunan, Pembebasan
+
+\is 4.7.7.7
+\sd Atone, restitution
+\sdn
+
+\is 4.7.8
+\sd Legal contract
+\sdn Perjanjian rasmi
+
+\is 4.7.8.1
+\sd Covenant
+\sdn Perjanjian kekeluargaan
+
+\is 4.7.8.2
+\sd Break a contract
+\sdn Tamatkan ikatan kontrak
+
+\is 4.7.9
+\sd Justice
+\sdn Keadilan
+
+\is 4.7.9.1
+\sd Impartial
+\sdn Adil
+
+\is 4.7.9.2
+\sd Unfair
+\sdn Tidak adil
+
+\is 4.7.9.3
+\sd Deserve
+\sdn Berhak
+
+\is 4.7.9.4
+\sd Discriminate, be unfair
+\sdn Membeza-bezakan tanpa berlaku adil, Tidak adil
+
+\is 4.7.9.5
+\sd Act harshly
+\sdn Berlaku kasar
+
+\is 4.7.9.6
+\sd Oppress
+\sdn Menindas
+
+\is 4.8
+\sd Conflict
+\sdn
+
+\is 4.8.1
+\sd Hostility
+\sdn
+
+\is 4.8.1.1
+\sd Oppose
+\sdn
+
+\is 4.8.2
+\sd Fight
+\sdn Berlawan
+
+\is 4.8.2.1
+\sd Fight for something good
+\sdn
+
+\is 4.8.2.2
+\sd Fight against something bad
+\sdn
+
+\is 4.8.2.3
+\sd Attack
+\sdn Menyerang
+
+\is 4.8.2.3.1
+\sd Ambush
+\sdn Menyerang hendap
+
+\is 4.8.2.4
+\sd Defend
+\sdn Membela
+
+\is 4.8.2.5
+\sd Revenge
+\sdn Membalas dendam
+
+\is 4.8.2.6
+\sd Riot
+\sdn Rusuhan
+
+\is 4.8.2.7
+\sd Betray
+\sdn Mengkhianati
+
+\is 4.8.2.8
+\sd Violent
+\sdn
+
+\is 4.8.2.9
+\sd Enemy
+\sdn Musuh
+
+\is 4.8.3
+\sd War
+\sdn Perang
+
+\is 4.8.3.1
+\sd Defeat
+\sdn Kekalahan
+
+\is 4.8.3.2
+\sd Win
+\sdn
+
+\is 4.8.3.3
+\sd Lose a fight
+\sdn
+
+\is 4.8.3.4
+\sd Surrender
+\sdn Menyerah
+
+\is 4.8.3.5
+\sd Prisoner of war
+\sdn Tawanan peperangan
+
+\is 4.8.3.6
+\sd Military organization
+\sdn
+
+\is 4.8.3.6.1
+\sd Army
+\sdn
+
+\is 4.8.3.6.2
+\sd Navy
+\sdn
+
+\is 4.8.3.6.3
+\sd Air force
+\sdn
+
+\is 4.8.3.6.4
+\sd Soldier
+\sdn Askar
+
+\is 4.8.3.6.5
+\sd Spy
+\sdn Pengintip
+
+\is 4.8.3.6.6
+\sd Fort
+\sdn
+
+\is 4.8.3.7
+\sd Weapon, shoot
+\sdn
+
+\is 4.8.3.8
+\sd Plunder
+\sdn
+
+\is 4.8.4
+\sd Peace
+\sdn Aman damai
+
+\is 4.8.4.1
+\sd Rebuke
+\sdn Menegur
+
+\is 4.8.4.2
+\sd Make an appeal
+\sdn Membuat rayuan
+
+\is 4.8.4.3
+\sd Appease
+\sdn Mendamaikan
+
+\is 4.8.4.4
+\sd Negotiate
+\sdn Berunding
+
+\is 4.8.4.5
+\sd Renounce claim, concede
+\sdn Membatalkan tuntutan, Mempersetujui
+
+\is 4.8.4.6
+\sd Repent
+\sdn Bertaubat
+
+\is 4.8.4.6.1
+\sd Request forgiveness
+\sdn Memohon pengampunan
+
+\is 4.8.4.7
+\sd Forgive
+\sdn Mengampuni
+
+\is 4.8.4.8
+\sd Make peace
+\sdn Tindakan berdamai
+
+\is 4.8.4.8.1
+\sd Stop fighting
+\sdn Henti berlawan
+
+\is 4.8.4.9
+\sd Reconcile
+\sdn Memperdamaikan
+
+\is 4.9
+\sd Religion
+\sdn Agama
+
+\is 4.9.1
+\sd God
+\sdn Tuhan
+
+\is 4.9.2
+\sd Supernatural being
+\sdn Makhluk luar biasa
+
+\is 4.9.3
+\sd Theology
+\sdn Teologi
+
+\is 4.9.3.1
+\sd Sacred writings
+\sdn Bahan-bahan tulisan suci
+
+\is 4.9.4
+\sd Miracle, supernatural power
+\sdn
+
+\is 4.9.4.1
+\sd Sorcery
+\sdn Ilmu Sihir
+
+\is 4.9.4.2
+\sd Demon possession
+\sdn Kerasukan roh syaitan
+
+\is 4.9.4.3
+\sd Bless
+\sdn Memberkati
+
+\is 4.9.4.4
+\sd Curse
+\sdn Menyumpah
+
+\is 4.9.4.5
+\sd Destiny
+\sdn Akhirat
+
+\is 4.9.4.6
+\sd Prophecy
+\sdn Nubuat
+
+\is 4.9.4.7
+\sd Omen, divination
+\sdn Telahan
+
+\is 4.9.5
+\sd Practice religion
+\sdn Mengamalkan prinsip-prinsip agama
+
+\is 4.9.5.1
+\sd Devout
+\sdn Beriman
+
+\is 4.9.5.2
+\sd Pray
+\sdn Berdoa
+
+\is 4.9.5.3
+\sd Worship
+\sdn Beribadah
+
+\is 4.9.5.4
+\sd Religious ceremony
+\sdn
+
+\is 4.9.5.5
+\sd Offering, sacrifice
+\sdn
+
+\is 4.9.5.6
+\sd Religious purification
+\sdn Penyucian menurut adat istiadat agama
+
+\is 4.9.5.6.1
+\sd Taboo
+\sdn Larangan agama atau adat
+
+\is 4.9.5.7
+\sd Salvation
+\sdn Keselamatan
+
+\is 4.9.5.8
+\sd Dedicate to religious use
+\sdn Mentahbiskan untuk pelayanan Tuhan
+
+\is 4.9.5.9
+\sd Fasting
+\sdn Berpuasa
+
+\is 4.9.6
+\sd Heaven, hell
+\sdn Syurga, Neraka
+
+\is 4.9.6.1
+\sd Resurrection
+\sdn Kebangkitan
+
+\is 4.9.7
+\sd Religious organization
+\sdn Organisasi keagamaan
+
+\is 4.9.7.1
+\sd Religious person
+\sdn
+
+\is 4.9.7.2
+\sd Christianity
+\sdn Agama Kristian, Kepercayaan umat Kristian, Kepercayaan pengikut-pengikut Kristus
+
+\is 4.9.7.3
+\sd Islam
+\sdn Agama Islam, Kepercayaan umat Islam
+
+\is 4.9.7.4
+\sd Hinduism
+\sdn Agama Hindu, Kepercayaan umat Hindu
+
+\is 4.9.7.5
+\sd Buddhism
+\sdn Agama Buddha
+
+\is 4.9.7.6
+\sd Judaism
+\sdn Agama Yahudi, Kepercayaan umat Yahudi
+
+\is 4.9.7.7
+\sd Animism
+\sdn
+
+\is 4.9.8
+\sd Religious things
+\sdn
+
+\is 4.9.8.1
+\sd Idol
+\sdn Berhala
+
+\is 4.9.8.2
+\sd Place of worship
+\sdn Tempat penyembahan
+
+\is 4.9.9
+\sd Irreligion
+\sdn Anti-Tuhan, ketidakagamaan
+
+\is 5
+\sd Daily life
+\sdn
+
+\is 5.1
+\sd Household equipment
+\sdn
+
+\is 5.1.1
+\sd Furniture
+\sdn
+
+\is 5.1.1.1
+\sd Table
+\sdn
+
+\is 5.1.1.2
+\sd Chair
+\sdn
+
+\is 5.1.1.3
+\sd Bed
+\sdn
+
+\is 5.1.1.4
+\sd Cabinet
+\sdn
+
+\is 5.1.2
+\sd Household decoration
+\sdn
+
+\is 5.2
+\sd Food
+\sdn
+
+\is 5.2.1
+\sd Food preparation
+\sdn
+
+\is 5.2.1.1
+\sd Cooking methods
+\sdn
+
+\is 5.2.1.2
+\sd Steps in food preparation
+\sdn
+
+\is 5.2.1.2.1
+\sd Remove shell, skin
+\sdn
+
+\is 5.2.1.2.2
+\sd Pound in mortar and pestle
+\sdn
+
+\is 5.2.1.2.3
+\sd Grind flour
+\sdn
+
+\is 5.2.1.3
+\sd Cooking utensil
+\sdn
+
+\is 5.2.1.4
+\sd Food storage
+\sdn
+
+\is 5.2.1.5
+\sd Serve food
+\sdn
+
+\is 5.2.2
+\sd Eat
+\sdn
+
+\is 5.2.2.1
+\sd Bite, chew
+\sdn
+
+\is 5.2.2.2
+\sd Meal
+\sdn
+
+\is 5.2.2.3
+\sd Feast
+\sdn
+
+\is 5.2.2.4
+\sd Manner of eating
+\sdn
+
+\is 5.2.2.5
+\sd Hungry, thirsty
+\sdn
+
+\is 5.2.2.6
+\sd Satiated, full
+\sdn
+
+\is 5.2.2.7
+\sd Drink
+\sdn
+
+\is 5.2.2.8
+\sd Eating utensil
+\sdn
+
+\is 5.2.2.9
+\sd Fast, not eat
+\sdn
+
+\is 5.2.3
+\sd Types of food
+\sdn
+
+\is 5.2.3.1
+\sd Food from plants
+\sdn
+
+\is 5.2.3.1.1
+\sd Food from seeds
+\sdn
+
+\is 5.2.3.1.2
+\sd Food from fruit
+\sdn
+
+\is 5.2.3.1.3
+\sd Food from vegetables
+\sdn
+
+\is 5.2.3.1.4
+\sd Food from leaves
+\sdn
+
+\is 5.2.3.1.5
+\sd Food from roots
+\sdn
+
+\is 5.2.3.2
+\sd Food from animals
+\sdn
+
+\is 5.2.3.2.1
+\sd Meat
+\sdn
+
+\is 5.2.3.2.2
+\sd Milk products
+\sdn
+
+\is 5.2.3.2.3
+\sd Egg dishes
+\sdn
+
+\is 5.2.3.3
+\sd Cooking ingredients
+\sdn
+
+\is 5.2.3.3.1
+\sd Sugar
+\sdn
+
+\is 5.2.3.3.2
+\sd Salt
+\sdn
+
+\is 5.2.3.3.3
+\sd Spice
+\sdn
+
+\is 5.2.3.3.4
+\sd Leaven
+\sdn
+
+\is 5.2.3.3.5
+\sd Cooking oil
+\sdn
+
+\is 5.2.3.4
+\sd Prepared food
+\sdn
+
+\is 5.2.3.5
+\sd Prohibited food
+\sdn
+
+\is 5.2.3.6
+\sd Beverage
+\sdn
+
+\is 5.2.3.7
+\sd Alcoholic beverage
+\sdn
+
+\is 5.2.3.7.1
+\sd Alcohol preparation
+\sdn
+
+\is 5.2.3.7.2
+\sd Drunk
+\sdn
+
+\is 5.2.4
+\sd Tobacco
+\sdn
+
+\is 5.2.5
+\sd Narcotic
+\sdn
+
+\is 5.2.6
+\sd Stimulant
+\sdn
+
+\is 5.3
+\sd Clothing
+\sdn
+
+\is 5.3.1
+\sd Men's clothing
+\sdn
+
+\is 5.3.2
+\sd Women's clothing
+\sdn
+
+\is 5.3.3
+\sd Traditional clothing
+\sdn
+
+\is 5.3.4
+\sd Clothes for special occasions
+\sdn
+
+\is 5.3.5
+\sd Clothes for special people
+\sdn
+
+\is 5.3.6
+\sd Parts of clothing
+\sdn
+
+\is 5.3.7
+\sd Wear clothing
+\sdn
+
+\is 5.3.8
+\sd Naked
+\sdn
+
+\is 5.3.9
+\sd Style of clothing
+\sdn
+
+\is 5.4
+\sd Adornment
+\sdn
+
+\is 5.4.1
+\sd Jewelry
+\sdn
+
+\is 5.4.2
+\sd Cosmetics
+\sdn
+
+\is 5.4.3
+\sd Care for hair
+\sdn
+
+\is 5.4.3.1
+\sd Comb hair
+\sdn
+
+\is 5.4.3.2
+\sd Plait hair
+\sdn
+
+\is 5.4.3.3
+\sd Dye hair
+\sdn
+
+\is 5.4.3.4
+\sd Hairstyle
+\sdn
+
+\is 5.4.3.5
+\sd Cut hair
+\sdn
+
+\is 5.4.3.6
+\sd Shave
+\sdn
+
+\is 5.4.4
+\sd Care for the teeth
+\sdn
+
+\is 5.4.5
+\sd Anoint the body
+\sdn
+
+\is 5.4.6
+\sd Ritual scar
+\sdn
+
+\is 5.4.6.1
+\sd Circumcision
+\sdn
+
+\is 5.4.7
+\sd Care for the fingernails
+\sdn
+
+\is 5.5
+\sd Fire
+\sdn
+
+\is 5.5.1
+\sd Light a fire
+\sdn
+
+\is 5.5.2
+\sd Tend a fire
+\sdn
+
+\is 5.5.3
+\sd Extinguish a fire
+\sdn
+
+\is 5.5.4
+\sd Burn
+\sdn
+
+\is 5.5.5
+\sd What fires produce
+\sdn
+
+\is 5.5.6
+\sd Fuel
+\sdn
+
+\is 5.5.7
+\sd Fireplace
+\sdn
+
+\is 5.6
+\sd Cleaning
+\sdn
+
+\is 5.6.1
+\sd Clean, dirty
+\sdn
+
+\is 5.6.2
+\sd Bathe
+\sdn
+
+\is 5.6.3
+\sd Wash dishes
+\sdn
+
+\is 5.6.4
+\sd Wash clothes
+\sdn
+
+\is 5.6.5
+\sd Sweep, rake
+\sdn
+
+\is 5.6.6
+\sd Wipe, erase
+\sdn
+
+\is 5.7
+\sd Sleep
+\sdn
+
+\is 5.7.1
+\sd Go to sleep
+\sdn
+
+\is 5.7.2
+\sd Dream
+\sdn
+
+\is 5.7.3
+\sd Wake up
+\sdn
+
+\is 5.8
+\sd Manage a house
+\sdn
+
+\is 5.9
+\sd Live, stay
+\sdn
+
+\is 6
+\sd Work and occupation
+\sdn Kerja dan pekerjaan
+
+\is 6.1
+\sd Work
+\sdn Kerja
+
+\is 6.1.1
+\sd Worker
+\sdn Pekerja
+
+\is 6.1.1.1
+\sd Expert
+\sdn Pakar
+
+\is 6.1.2
+\sd Method
+\sdn Kaedah
+
+\is 6.1.2.1
+\sd Try, attempt
+\sdn
+
+\is 6.1.2.2
+\sd Use
+\sdn Guna
+
+\is 6.1.2.2.1
+\sd Useful
+\sdn
+
+\is 6.1.2.2.2
+\sd Useless
+\sdn
+
+\is 6.1.2.2.3
+\sd Available
+\sdn Senantiasa ada
+
+\is 6.1.2.2.4
+\sd Use up
+\sdn Digunakan
+
+\is 6.1.2.2.5
+\sd Take care of something
+\sdn Menjaga sesuatu
+
+\is 6.1.2.2.6
+\sd Waste
+\sdn Pembaziran
+
+\is 6.1.2.3
+\sd Work well
+\sdn Kerja dengan baik
+
+\is 6.1.2.3.1
+\sd Careful
+\sdn Berhati-hati
+
+\is 6.1.2.3.2
+\sd Work hard
+\sdn Kerja keras
+
+\is 6.1.2.3.3
+\sd Busy
+\sdn Sibuk
+
+\is 6.1.2.3.4
+\sd Power, force
+\sdn Kuasa, kekuatan
+
+\is 6.1.2.3.5
+\sd Complete, finish
+\sdn Selesai, habis
+
+\is 6.1.2.3.6
+\sd Ambitious
+\sdn Bercita-cita tinggi
+
+\is 6.1.2.4
+\sd Work poorly
+\sdn Kerja yang tidak baik
+
+\is 6.1.2.4.1
+\sd Careless, irresponsible
+\sdn Cuai, tidak bertanggungjawab
+
+\is 6.1.2.4.2
+\sd Lazy
+\sdn Malas
+
+\is 6.1.2.4.3
+\sd Give up
+\sdn Menyerah
+
+\is 6.1.2.5
+\sd Plan
+\sdn Rancangan
+
+\is 6.1.2.5.1
+\sd Arrange an event
+\sdn
+
+\is 6.1.2.5.2
+\sd Cancel an event
+\sdn Memabatalkan sesuatu acara
+
+\is 6.1.2.6
+\sd Prepare
+\sdn Sedia
+
+\is 6.1.2.6.1
+\sd Prepare something for use
+\sdn
+
+\is 6.1.2.7
+\sd Effective
+\sdn Berkesan
+
+\is 6.1.2.8
+\sd Efficient
+\sdn Cekap
+
+\is 6.1.2.9
+\sd Opportunity
+\sdn Kesempatan
+
+\is 6.1.3
+\sd Difficult, impossible
+\sdn Susah, mustahil
+
+\is 6.1.3.1
+\sd Easy, possible
+\sdn Senang, mungkin
+
+\is 6.1.3.2
+\sd Succeed
+\sdn Berjaya
+
+\is 6.1.3.3
+\sd Fail
+\sdn Gagal
+
+\is 6.1.3.4
+\sd Advantage
+\sdn
+
+\is 6.1.4
+\sd Job satisfaction
+\sdn Pekerjaan yang menyenangkan
+
+\is 6.1.5
+\sd Unemployed, not working
+\sdn Menganggur, tidak bekerja
+
+\is 6.1.6
+\sd Made by hand
+\sdn Dibuat dengan tangan
+
+\is 6.1.7
+\sd Artificial
+\sdn Tiruan
+
+\is 6.1.8
+\sd Experienced
+\sdn Berpengalaman
+
+\is 6.1.8.1
+\sd Accustomed to
+\sdn Biasa dengan
+
+\is 6.2
+\sd Agriculture
+\sdn Pertanian
+
+\is 6.2.1
+\sd Growing crops
+\sdn Penanaman tanam-tanaman
+
+\is 6.2.1.1
+\sd Growing grain
+\sdn Penanaman bijirin
+
+\is 6.2.1.1.1
+\sd Growing rice
+\sdn
+
+\is 6.2.1.1.2
+\sd Growing wheat
+\sdn
+
+\is 6.2.1.1.3
+\sd Growing maize
+\sdn
+
+\is 6.2.1.2
+\sd Growing roots
+\sdn
+
+\is 6.2.1.2.1
+\sd Growing potatoes
+\sdn
+
+\is 6.2.1.2.2
+\sd Growing cassava
+\sdn
+
+\is 6.2.1.3
+\sd Growing vegetables
+\sdn
+
+\is 6.2.1.4
+\sd Growing fruit
+\sdn
+
+\is 6.2.1.4.1
+\sd Growing grapes
+\sdn
+
+\is 6.2.1.4.2
+\sd Growing bananas
+\sdn
+
+\is 6.2.1.5
+\sd Growing grass
+\sdn
+
+\is 6.2.1.5.1
+\sd Growing sugarcane
+\sdn
+
+\is 6.2.1.5.2
+\sd Growing tobacco
+\sdn
+
+\is 6.2.1.6
+\sd Growing flowers
+\sdn Penanaman bunga
+
+\is 6.2.1.7
+\sd Growing trees
+\sdn Penanaman pokok-pokok
+
+\is 6.2.1.7.1
+\sd Growing coconuts
+\sdn
+
+\is 6.2.1.7.2
+\sd Growing coffee
+\sdn
+
+\is 6.2.2
+\sd Land preparation
+\sdn Persiapan tanah
+
+\is 6.2.2.1
+\sd Clear a field
+\sdn Membersihkan ladang
+
+\is 6.2.2.2
+\sd Plow a field
+\sdn Membajak ladang
+
+\is 6.2.2.3
+\sd Fertilize a field
+\sdn Membaja ladang
+
+\is 6.2.3
+\sd Plant a field
+\sdn Menanam ladang
+
+\is 6.2.4
+\sd Tend a field
+\sdn Menjaga ladang
+
+\is 6.2.4.1
+\sd Cut grass
+\sdn Potong rumput
+
+\is 6.2.4.2
+\sd Uproot plants
+\sdn Mencabut tanaman
+
+\is 6.2.4.3
+\sd Irrigate
+\sdn Membekalkan air
+
+\is 6.2.4.4
+\sd Trim plants
+\sdn Memangkas tanaman
+
+\is 6.2.4.5
+\sd Neglect plants
+\sdn Mengabaikan tanaman
+
+\is 6.2.5
+\sd Harvest
+\sdn Tuai
+
+\is 6.2.5.1
+\sd First fruits
+\sdn Buah pertama
+
+\is 6.2.5.2
+\sd Crop failure
+\sdn Kegagalan tanam-tanaman
+
+\is 6.2.5.3
+\sd Gather wild plants
+\sdn Mengumpulkan tanaman liar
+
+\is 6.2.5.4
+\sd Plant product
+\sdn Hasil tanaman
+
+\is 6.2.6
+\sd Process harvest
+\sdn Memproses tuaian
+
+\is 6.2.6.1
+\sd Winnow grain
+\sdn Menampi bijirin
+
+\is 6.2.6.2
+\sd Mill grain
+\sdn Menggiling bijirin
+
+\is 6.2.6.3
+\sd Thresh
+\sdn Membanting
+
+\is 6.2.6.4
+\sd Store the harvest
+\sdn Menyimpan tuaian
+
+\is 6.2.7
+\sd Farm worker
+\sdn
+
+\is 6.2.8
+\sd Agricultural tool
+\sdn
+
+\is 6.2.9
+\sd Farmland
+\sdn
+
+\is 6.3
+\sd Animal husbandry
+\sdn Ladang binatang
+
+\is 6.3.1
+\sd Domesticated animal
+\sdn Binatang pelihara
+
+\is 6.3.1.1
+\sd Cattle
+\sdn Lembu
+
+\is 6.3.1.2
+\sd Sheep
+\sdn Biri-biri/domba
+
+\is 6.3.1.3
+\sd Goat
+\sdn Kambing
+
+\is 6.3.1.4
+\sd Pig
+\sdn Babi
+
+\is 6.3.1.5
+\sd Dog
+\sdn Anjing
+
+\is 6.3.1.6
+\sd Cat
+\sdn Kucing
+
+\is 6.3.1.7
+\sd Beast of burden
+\sdn Binatang mengangkat beban
+
+\is 6.3.2
+\sd Tend herds in fields
+\sdn Menjaga binatang di padang
+
+\is 6.3.3
+\sd Milk
+\sdn Memerah susu
+
+\is 6.3.4
+\sd Butcher, slaughter
+\sdn Memotong, sembelih
+
+\is 6.3.5
+\sd Wool production
+\sdn Penghasilan bulu
+
+\is 6.3.6
+\sd Poultry raising
+\sdn Ternakan ayam itik
+
+\is 6.3.6.1
+\sd Chicken
+\sdn Ayam
+
+\is 6.3.7
+\sd Animal products
+\sdn Hasil binatang
+
+\is 6.3.8
+\sd Veterinary science
+\sdn Sains haiwan
+
+\is 6.3.8.1
+\sd Animal diseases
+\sdn Penyakit binatang
+
+\is 6.3.8.2
+\sd Castrate animal
+\sdn Mengembiri binatang
+
+\is 6.4
+\sd Hunt and fish
+\sdn Memburu dan menangkap ikan
+
+\is 6.4.1
+\sd Hunt
+\sdn Memburu
+
+\is 6.4.1.1
+\sd Track an animal
+\sdn Mengikuti jejak binatang
+
+\is 6.4.2
+\sd Trap
+\sdn Perangkap
+
+\is 6.4.3
+\sd Hunting birds
+\sdn Memburu burung
+
+\is 6.4.4
+\sd Beekeeping
+\sdn Memelihara lebah
+
+\is 6.4.5
+\sd Fishing
+\sdn Menangkap ikan
+
+\is 6.4.5.1
+\sd Fish with net
+\sdn Menjala ikan
+
+\is 6.4.5.2
+\sd Fish with hooks
+\sdn Menangkap ikan dengan mata kail
+
+\is 6.4.5.3
+\sd Fishing equipment
+\sdn Peralatan menangkap ikan
+
+\is 6.4.6
+\sd Things done to animals
+\sdn Perkara yang dibuat terhadap binatang
+
+\is 6.5
+\sd Working with buildings
+\sdn Bekerja dengan bangunan
+
+\is 6.5.1
+\sd Building
+\sdn Bangunan
+
+\is 6.5.1.1
+\sd House
+\sdn
+
+\is 6.5.1.2
+\sd Types of houses
+\sdn Jenis-jenis rumah
+
+\is 6.5.1.3
+\sd Land, property
+\sdn
+
+\is 6.5.1.4
+\sd Yard
+\sdn
+
+\is 6.5.1.5
+\sd Fence, wall
+\sdn
+
+\is 6.5.2
+\sd Parts of a building
+\sdn Bahagian sebuah bangunan
+
+\is 6.5.2.1
+\sd Wall
+\sdn Dinding
+
+\is 6.5.2.2
+\sd Roof
+\sdn Atap
+
+\is 6.5.2.3
+\sd Floor
+\sdn Lantai
+
+\is 6.5.2.4
+\sd Door
+\sdn Pintu
+
+\is 6.5.2.5
+\sd Window
+\sdn Jendela, tingkap
+
+\is 6.5.2.6
+\sd Foundation
+\sdn Asas
+
+\is 6.5.2.7
+\sd Room
+\sdn Bilik
+
+\is 6.5.2.8
+\sd Floor, story
+\sdn
+
+\is 6.5.3
+\sd Building materials
+\sdn Bahan bangunan
+
+\is 6.5.3.1
+\sd Building equipment and maintenance
+\sdn Peralatan bangunan dan penjagaan
+
+\is 6.5.4
+\sd Infrastructure
+\sdn Infrastruktur
+
+\is 6.5.4.1
+\sd Road
+\sdn Jalan
+
+\is 6.5.4.2
+\sd Boundary
+\sdn Sempadan
+
+\is 6.6
+\sd Occupation
+\sdn
+
+\is 6.6.1
+\sd Working with cloth
+\sdn Bekerja dengan kain
+
+\is 6.6.1.1
+\sd Cloth
+\sdn Kain
+
+\is 6.6.1.2
+\sd Spinning thread
+\sdn Memintal benang
+
+\is 6.6.1.3
+\sd Knitting
+\sdn Mengait
+
+\is 6.6.1.4
+\sd Weaving cloth
+\sdn
+
+\is 6.6.2
+\sd Working with minerals
+\sdn Bekerja dengan bahan galian
+
+\is 6.6.2.1
+\sd Mining
+\sdn Melombong
+
+\is 6.6.2.2
+\sd Smelting
+\sdn Peleburan
+
+\is 6.6.2.3
+\sd Working with metal
+\sdn Bekerja dengan logam
+
+\is 6.6.2.4
+\sd Working with clay
+\sdn Bekerja dengan tanah liat
+
+\is 6.6.2.5
+\sd Working with glass
+\sdn Bekerja dengan kaca
+
+\is 6.6.2.6
+\sd Working with oil and gas
+\sdn Bekerja dengan minyak dan gas
+
+\is 6.6.2.7
+\sd Working with stone
+\sdn Bekerja dengan batu
+
+\is 6.6.2.8
+\sd Working with bricks
+\sdn Bekerja dengan batu bata
+
+\is 6.6.2.9
+\sd Working with chemicals
+\sdn Bekerja dengan bahan kimia
+
+\is 6.6.2.9.1
+\sd Explode
+\sdn Meletup
+
+\is 6.6.3
+\sd Working with wood
+\sdn Bekerja dengan kayu
+
+\is 6.6.3.1
+\sd Lumbering
+\sdn Pembalakan
+
+\is 6.6.3.2
+\sd Wood
+\sdn Kayu
+
+\is 6.6.3.3
+\sd Working with paper
+\sdn Bekerja dengan kertas
+
+\is 6.6.4
+\sd Crafts
+\sdn Kesenian
+
+\is 6.6.4.1
+\sd Cordage
+\sdn Tali-temali
+
+\is 6.6.4.2
+\sd Weaving baskets and mats
+\sdn
+
+\is 6.6.4.3
+\sd Working with leather
+\sdn Bekerja dengan kulit
+
+\is 6.6.4.4
+\sd Working with bone
+\sdn Bekerja dengan tulang
+
+\is 6.6.5
+\sd Art
+\sdn Kesenian
+
+\is 6.6.5.1
+\sd Draw, paint
+\sdn Melukis, mewarna
+
+\is 6.6.5.2
+\sd Photography
+\sdn Fotografi
+
+\is 6.6.5.3
+\sd Sculpture
+\sdn Seni arca
+
+\is 6.6.6
+\sd Working with land
+\sdn Bekerja dengan tanah
+
+\is 6.6.7
+\sd Working with water
+\sdn Bekerja dengan air
+
+\is 6.6.7.1
+\sd Plumber
+\sdn Tukang paip
+
+\is 6.6.7.2
+\sd Conveying water
+\sdn Penghantaran air
+
+\is 6.6.7.3
+\sd Controlling water
+\sdn Pengawalan air
+
+\is 6.6.7.4
+\sd Working in the sea
+\sdn Bekerja dalam laut
+
+\is 6.6.8
+\sd Working with machines
+\sdn Bekerja dengan mesin
+
+\is 6.6.8.1
+\sd Working with electricity
+\sdn Bekerja dengan elektrik
+
+\is 6.7
+\sd Tool
+\sdn Alat
+
+\is 6.7.1
+\sd Cutting tool
+\sdn Alat pemotong
+
+\is 6.7.1.1
+\sd Poking tool
+\sdn Alat pengesan
+
+\is 6.7.1.2
+\sd Digging tool
+\sdn Alat penggali
+
+\is 6.7.2
+\sd Pounding tool
+\sdn Alat pemukul
+
+\is 6.7.3
+\sd Carrying tool
+\sdn Alat pengangkat
+
+\is 6.7.4
+\sd Lifting tool
+\sdn
+
+\is 6.7.5
+\sd Fastening tool
+\sdn
+
+\is 6.7.6
+\sd Holding tool
+\sdn
+
+\is 6.7.7
+\sd Container
+\sdn Bekas
+
+\is 6.7.7.1
+\sd Bag
+\sdn Beg
+
+\is 6.7.7.2
+\sd Sheath
+\sdn Sarung
+
+\is 6.7.8
+\sd Parts of tools
+\sdn Bahagian-bahagian alat
+
+\is 6.7.9
+\sd Machine
+\sdn Mesin-mesin
+
+\is 6.8
+\sd Finance
+\sdn Kewangan
+
+\is 6.8.1
+\sd Have wealth
+\sdn Ada harta
+
+\is 6.8.1.1
+\sd Own, possess
+\sdn
+
+\is 6.8.1.2
+\sd Rich
+\sdn
+
+\is 6.8.1.3
+\sd Poor
+\sdn Miskin
+
+\is 6.8.1.4
+\sd Store wealth
+\sdn Mengumpulkan harta
+
+\is 6.8.1.5
+\sd Possession, property
+\sdn
+
+\is 6.8.2
+\sd Accumulate wealth
+\sdn Mengumpulkan harta
+
+\is 6.8.2.1
+\sd Produce wealth
+\sdn Menghasilkan harta
+
+\is 6.8.2.2
+\sd Make profit
+\sdn Menguntungkan
+
+\is 6.8.2.3
+\sd Lose wealth
+\sdn Kehilangan harta
+
+\is 6.8.2.4
+\sd Frugal
+\sdn Berhemat
+
+\is 6.8.2.5
+\sd Greedy
+\sdn Tamak
+
+\is 6.8.2.6
+\sd Collect
+\sdn
+
+\is 6.8.2.7
+\sd Earn
+\sdn
+
+\is 6.8.3
+\sd Share wealth
+\sdn Mengongsikan harta
+
+\is 6.8.3.1
+\sd Give, donate
+\sdn Memberi, menderma
+
+\is 6.8.3.2
+\sd Generous
+\sdn Murah hati
+
+\is 6.8.3.3
+\sd Stingy
+\sdn Kedekut
+
+\is 6.8.3.4
+\sd Beg
+\sdn Merayu
+
+\is 6.8.4
+\sd Financial transaction
+\sdn
+
+\is 6.8.4.1
+\sd Buy
+\sdn Membeli
+
+\is 6.8.4.2
+\sd Sell
+\sdn Jual
+
+\is 6.8.4.3
+\sd Price
+\sdn
+
+\is 6.8.4.3.1
+\sd Expensive
+\sdn Mahal
+
+\is 6.8.4.3.2
+\sd Cheap
+\sdn Murah
+
+\is 6.8.4.3.3
+\sd Free of charge
+\sdn Percuma
+
+\is 6.8.4.4
+\sd Bargain
+\sdn Jual murah
+
+\is 6.8.4.5
+\sd Pay
+\sdn Bayar
+
+\is 6.8.4.6
+\sd Hire, rent
+\sdn Sewa,upah
+
+\is 6.8.4.7
+\sd Spend
+\sdn Mengguna
+
+\is 6.8.4.8
+\sd Store, marketplace
+\sdn Stor, pasar
+
+\is 6.8.4.9
+\sd Exchange, trade
+\sdn Tukar-menukar, jual beli
+
+\is 6.8.5
+\sd Borrow
+\sdn Pinjam
+
+\is 6.8.5.1
+\sd Lend
+\sdn Pinjamkan
+
+\is 6.8.5.2
+\sd Give pledge, bond
+\sdn Memberi perjanjian, jaminan
+
+\is 6.8.5.3
+\sd Owe
+\sdn Berhutang
+
+\is 6.8.5.4
+\sd Repay debt
+\sdn Membayar hutang
+
+\is 6.8.5.5
+\sd Credit
+\sdn Kredit
+
+\is 6.8.6
+\sd Money
+\sdn Wang
+
+\is 6.8.6.1
+\sd Monetary units
+\sdn Unit kewangan
+
+\is 6.8.7
+\sd Accounting
+\sdn Perakaunan
+
+\is 6.8.8
+\sd Tax
+\sdn Cukai
+
+\is 6.8.9
+\sd Dishonest financial practices
+\sdn Kegiatan kewangan yang tidak jujur
+
+\is 6.8.9.1
+\sd Steal
+\sdn Mencuri
+
+\is 6.8.9.2
+\sd Cheat
+\sdn Menipu
+
+\is 6.8.9.3
+\sd Extort money
+\sdn Wang desakan
+
+\is 6.8.9.4
+\sd Take by force
+\sdn Mengambil dengan paksa
+
+\is 6.8.9.5
+\sd Bribe
+\sdn Memberi rasuah
+
+\is 6.8.9.6
+\sd Smuggle
+\sdn
+
+\is 6.9
+\sd Business organization
+\sdn Organisasi perniagaan
+
+\is 6.9.1
+\sd Management
+\sdn Pengurusan
+
+\is 6.9.2
+\sd Work for someone
+\sdn
+
+\is 6.9.3
+\sd Marketing
+\sdn Pemasaran
+
+\is 6.9.4
+\sd Commerce
+\sdn Perdagangan
+
+\is 6.9.5
+\sd Economics
+\sdn Ekonomi
+
+\is 6.9.6
+\sd Insurance
+\sdn Insurans
+
+\is 7
+\sd Physical actions
+\sdn
+
+\is 7.1
+\sd Posture
+\sdn Postur/gaya tubuh badan
+
+\is 7.1.1
+\sd Stand
+\sdn Berdiri
+
+\is 7.1.2
+\sd Sit
+\sdn Duduk
+
+\is 7.1.3
+\sd Lie down
+\sdn Baring
+
+\is 7.1.4
+\sd Kneel
+\sdn Bertelut/berlutut
+
+\is 7.1.5
+\sd Bow
+\sdn Tunduk
+
+\is 7.1.6
+\sd Lean
+\sdn Bersandar
+
+\is 7.1.7
+\sd Straight posture
+\sdn Postur tegak
+
+\is 7.1.7.1
+\sd Relaxed posture
+\sdn Postur santai
+
+\is 7.1.8
+\sd Bend down
+\sdn Membongkok
+
+\is 7.1.9
+\sd Move a part of the body
+\sdn Menggerakkan sebahagian daripada anggota tubuh badan.
+
+\is 7.2
+\sd Move
+\sdn Gerak
+
+\is 7.2.1
+\sd Manner of movement
+\sdn Cara pergerakan
+
+\is 7.2.1.1
+\sd Walk
+\sdn Berjalan
+
+\is 7.2.1.1.1
+\sd Run
+\sdn Lari
+
+\is 7.2.1.1.2
+\sd Crawl
+\sdn
+
+\is 7.2.1.1.3
+\sd Jump
+\sdn Lompat
+
+\is 7.2.1.2
+\sd Move quickly
+\sdn Bergerak cepat
+
+\is 7.2.1.2.1
+\sd Move slowly
+\sdn Bergerak lambat
+
+\is 7.2.1.3
+\sd Wander
+\sdn Mengembara/berjalan tanpa destinasi tertentu
+
+\is 7.2.1.4
+\sd Graceful
+\sdn Lemah lembut
+
+\is 7.2.1.4.1
+\sd Clumsy
+\sdn Kekok
+
+\is 7.2.1.5
+\sd Walk with difficulty
+\sdn Berjalan dengan susah payah
+
+\is 7.2.1.5.1
+\sd Slip, slide
+\sdn Menggelincir, menggelongsor
+
+\is 7.2.1.6
+\sd Steady, unsteady
+\sdn Mantap, ketidakmantapan
+
+\is 7.2.1.6.1
+\sd Balance
+\sdn Imbangan
+
+\is 7.2.1.7
+\sd Move noisily
+\sdn
+
+\is 7.2.2
+\sd Move in a direction
+\sdn Bergerak ke arah tujuan
+
+\is 7.2.2.1
+\sd Move forward
+\sdn Maju/Bergerak ke depan
+
+\is 7.2.2.2
+\sd Move back
+\sdn Berundur
+
+\is 7.2.2.3
+\sd Move sideways
+\sdn Bergerak ke tepi
+
+\is 7.2.2.4
+\sd Move up
+\sdn Bergerak ke atas
+
+\is 7.2.2.5
+\sd Move down
+\sdn Bergerak ke bawah/Turun
+
+\is 7.2.2.5.1
+\sd Fall
+\sdn
+
+\is 7.2.2.6
+\sd Turn
+\sdn Pusing
+
+\is 7.2.2.7
+\sd Move in a circle
+\sdn Bergerak di dalam bulatan
+
+\is 7.2.2.8
+\sd Move back and forth
+\sdn Bergerak ke depan dan ke belakang
+
+\is 7.2.2.9
+\sd Move straight without turning
+\sdn Bergerak terus tanpa berpusing balik
+
+\is 7.2.3
+\sd Move toward something
+\sdn Bergerak ke arah sesuatu
+
+\is 7.2.3.1
+\sd Move away
+\sdn Berpindah
+
+\is 7.2.3.2
+\sd Go
+\sdn Pergi
+
+\is 7.2.3.2.1
+\sd Come
+\sdn Datang
+
+\is 7.2.3.3
+\sd Leave
+\sdn Meninggalkan
+
+\is 7.2.3.3.1
+\sd Arrive
+\sdn Tiba
+
+\is 7.2.3.4
+\sd Move in
+\sdn Masuk
+
+\is 7.2.3.4.1
+\sd Move out
+\sdn Keluar
+
+\is 7.2.3.5
+\sd Move past, over, through
+\sdn Melewati, melombol, melalui
+
+\is 7.2.3.6
+\sd Return
+\sdn Kembali
+
+\is 7.2.4
+\sd Travel
+\sdn Perjalanan
+
+\is 7.2.4.1
+\sd Travel by land
+\sdn Perjalanan melalui darat
+
+\is 7.2.4.1.1
+\sd Vehicle
+\sdn Kenderaan
+
+\is 7.2.4.1.2
+\sd Railroad
+\sdn
+
+\is 7.2.4.2
+\sd Travel by water
+\sdn Perjalanan melalui air
+
+\is 7.2.4.2.1
+\sd Boat
+\sdn Kapal
+
+\is 7.2.4.2.2
+\sd Swim
+\sdn Berenang
+
+\is 7.2.4.2.3
+\sd Dive
+\sdn Selam
+
+\is 7.2.4.3
+\sd Fly
+\sdn
+
+\is 7.2.4.4
+\sd Travel in space
+\sdn Pengembaraan ke angkasa lepas
+
+\is 7.2.4.5
+\sd Move to a new house
+\sdn Berpindah ke rumah baru
+
+\is 7.2.4.6
+\sd Way, route
+\sdn
+
+\is 7.2.4.7
+\sd Lose your way
+\sdn Sesat
+
+\is 7.2.4.8
+\sd Map
+\sdn
+
+\is 7.2.5
+\sd Accompany
+\sdn Menemankan
+
+\is 7.2.5.1
+\sd Go first
+\sdn Mendahului/dahulu
+
+\is 7.2.5.2
+\sd Follow
+\sdn Susul
+
+\is 7.2.5.3
+\sd Guide
+\sdn
+
+\is 7.2.5.4
+\sd Move together
+\sdn
+
+\is 7.2.6
+\sd Pursue
+\sdn
+
+\is 7.2.6.1
+\sd Catch, capture
+\sdn
+
+\is 7.2.6.2
+\sd Prevent from moving
+\sdn
+
+\is 7.2.6.3
+\sd Escape
+\sdn Melepaskan diri
+
+\is 7.2.6.4
+\sd Set free
+\sdn Membebaskan
+
+\is 7.2.7
+\sd Not moving
+\sdn
+
+\is 7.2.7.1
+\sd Stop moving
+\sdn Berhenti daripada bergerak
+
+\is 7.2.7.2
+\sd Stay, remain
+\sdn Tinggal, berada tetap (di sesuatu tempat)
+
+\is 7.2.7.3
+\sd Wait
+\sdn Menunggu
+
+\is 7.2.8
+\sd Send someone
+\sdn Mengutus seseorang
+
+\is 7.3
+\sd Move something
+\sdn Memindahkan sesuatu
+
+\is 7.3.1
+\sd Carry
+\sdn Angkat
+
+\is 7.3.1.1
+\sd Throw
+\sdn
+
+\is 7.3.1.2
+\sd Catch
+\sdn Tangkap
+
+\is 7.3.1.3
+\sd Shake
+\sdn Goncang
+
+\is 7.3.1.4
+\sd Knock over
+\sdn Ketuk
+
+\is 7.3.1.5
+\sd Set upright
+\sdn Menegakkan
+
+\is 7.3.2
+\sd Move something in a direction
+\sdn Menggerakkan sesuatu di dalam arah yang tertentu
+
+\is 7.3.2.1
+\sd Put in front
+\sdn Meletakkan di hadapan
+
+\is 7.3.2.2
+\sd Put in back
+\sdn Meletakkan di belakang
+
+\is 7.3.2.3
+\sd Put aside
+\sdn Menangguhkan/Meletakkan sesuatu di sisi
+
+\is 7.3.2.4
+\sd Lift
+\sdn Angkat
+
+\is 7.3.2.4.1
+\sd Hang
+\sdn Gantung
+
+\is 7.3.2.5
+\sd Lower something
+\sdn Menurunkan sesuatu
+
+\is 7.3.2.6
+\sd Put in
+\sdn Masukkan
+
+\is 7.3.2.7
+\sd Take something out of something
+\sdn
+
+\is 7.3.2.8
+\sd Pull
+\sdn Tarik
+
+\is 7.3.2.9
+\sd Push
+\sdn Tolak
+
+\is 7.3.3
+\sd Take somewhere
+\sdn Membawa ke tempat lain
+
+\is 7.3.3.1
+\sd Take something from somewhere
+\sdn
+
+\is 7.3.3.2
+\sd Return something
+\sdn Mengembalikan sesuatu
+
+\is 7.3.3.3
+\sd Send
+\sdn Hantar
+
+\is 7.3.3.4
+\sd Chase away
+\sdn Usir
+
+\is 7.3.3.5
+\sd Drive along
+\sdn
+
+\is 7.3.4
+\sd Handle something
+\sdn Memegang sesuatu
+
+\is 7.3.4.1
+\sd Touch
+\sdn Sentuh
+
+\is 7.3.4.2
+\sd Pick up
+\sdn Kutip
+
+\is 7.3.4.3
+\sd Put down
+\sdn Letak
+
+\is 7.3.4.4
+\sd Hold
+\sdn Pegang
+
+\is 7.3.4.5
+\sd Actions of the hand
+\sdn Pergerakan tangan
+
+\is 7.3.4.6
+\sd Support
+\sdn Menyokong/menyangga
+
+\is 7.3.4.7
+\sd Extend
+\sdn Menambahkan
+
+\is 7.3.5
+\sd Turn something
+\sdn Memusingkan sesuatu
+
+\is 7.3.6
+\sd Open
+\sdn Buka
+
+\is 7.3.6.1
+\sd Shut, close
+\sdn Tutup
+
+\is 7.3.6.2
+\sd Block, dam up
+\sdn Menghalang, mengempang
+
+\is 7.3.6.3
+\sd Limit
+\sdn Had
+
+\is 7.3.7
+\sd Cover
+\sdn Menutupi
+
+\is 7.3.7.1
+\sd Uncover
+\sdn Membuka
+
+\is 7.3.7.2
+\sd Wrap
+\sdn Bungkus
+
+\is 7.3.7.3
+\sd Spread, smear
+\sdn
+
+\is 7.3.8
+\sd Transport
+\sdn
+
+\is 7.4
+\sd Have, be with
+\sdn
+
+\is 7.4.1
+\sd Give, hand to
+\sdn Beri
+
+\is 7.4.2
+\sd Receive
+\sdn Terima
+
+\is 7.4.3
+\sd Get
+\sdn
+
+\is 7.4.4
+\sd Distribute
+\sdn Mengagihkan
+
+\is 7.4.5
+\sd Keep something
+\sdn Menyimpan sesuatu
+
+\is 7.4.5.1
+\sd Leave something
+\sdn Meninggalkan sesuatu
+
+\is 7.4.5.2
+\sd Throw away
+\sdn Membuang
+
+\is 7.4.6
+\sd Not have
+\sdn
+
+\is 7.5
+\sd Arrange
+\sdn
+
+\is 7.5.1
+\sd Gather
+\sdn Mengumpul
+
+\is 7.5.1.1
+\sd Separate, scatter
+\sdn Berasing-asing, serak
+
+\is 7.5.1.2
+\sd Include
+\sdn Ketermasukan
+
+\is 7.5.1.3
+\sd Special
+\sdn Istimewa
+
+\is 7.5.2
+\sd Join, attach
+\sdn
+
+\is 7.5.2.1
+\sd Link, connect
+\sdn
+
+\is 7.5.2.2
+\sd Stick together
+\sdn
+
+\is 7.5.2.3
+\sd Add to something
+\sdn
+
+\is 7.5.2.4
+\sd Remove, take apart
+\sdn
+
+\is 7.5.3
+\sd Mix
+\sdn Campur
+
+\is 7.5.3.1
+\sd Pure, unmixed
+\sdn Tulin, tidak bercampur
+
+\is 7.5.4
+\sd Tie
+\sdn Ikat
+
+\is 7.5.4.1
+\sd Rope, string
+\sdn Tali
+
+\is 7.5.4.2
+\sd Tangle
+\sdn Kusut
+
+\is 7.5.5
+\sd Organize
+\sdn
+
+\is 7.5.5.1
+\sd Disorganized
+\sdn
+
+\is 7.5.6
+\sd Substitute
+\sdn Pengganti
+
+\is 7.5.7
+\sd Multiple things moving
+\sdn Pelbagai benda atau hal bergerak
+
+\is 7.5.8
+\sd Simple, complicated
+\sdn
+
+\is 7.5.9
+\sd Put
+\sdn
+
+\is 7.5.9.1
+\sd Load, pile
+\sdn
+
+\is 7.5.9.2
+\sd Fill, cover
+\sdn
+
+\is 7.6
+\sd Hide
+\sdn Sembunyi
+
+\is 7.6.1
+\sd Search
+\sdn Mendapatkan
+
+\is 7.6.2
+\sd Find
+\sdn Cari
+
+\is 7.6.3
+\sd Lose, misplace
+\sdn Hilang, Salahletak
+
+\is 7.7
+\sd Physical impact
+\sdn Hentaman fizikal
+
+\is 7.7.1
+\sd Hit
+\sdn Terpukul, terlanggar
+
+\is 7.7.2
+\sd Aim at a target
+\sdn Membidik sasaran
+
+\is 7.7.3
+\sd Kick
+\sdn Tendang
+
+\is 7.7.4
+\sd Press
+\sdn Tekan
+
+\is 7.7.5
+\sd Rub
+\sdn Gilap
+
+\is 7.7.6
+\sd Grind
+\sdn Kisar
+
+\is 7.7.7
+\sd Mark
+\sdn Menandakan
+
+\is 7.8
+\sd Divide into pieces
+\sdn Dibahagikan ke dalam kepingan
+
+\is 7.8.1
+\sd Break
+\sdn Pecahkan
+
+\is 7.8.2
+\sd Crack
+\sdn Rekah
+
+\is 7.8.3
+\sd Cut
+\sdn Potong
+
+\is 7.8.4
+\sd Tear, rip
+\sdn Koyak, rabak
+
+\is 7.8.5
+\sd Make hole, opening
+\sdn Membuat lubang
+
+\is 7.8.6
+\sd Dig
+\sdn Korek
+
+\is 7.9
+\sd Break, wear out
+\sdn
+
+\is 7.9.1
+\sd Damage
+\sdn Rosak
+
+\is 7.9.2
+\sd Tear down
+\sdn Merobohkan
+
+\is 7.9.3
+\sd Destroy
+\sdn Memusnahkan
+
+\is 7.9.4
+\sd Repair
+\sdn Membaiki
+
+\is 8
+\sd States
+\sdn Keadaan
+
+\is 8.1
+\sd Quantity
+\sdn Jumlah
+
+\is 8.1.1
+\sd Number
+\sdn Angka
+
+\is 8.1.1.1
+\sd Cardinal numbers
+\sdn Angka kardinal
+
+\is 8.1.1.1.1
+\sd One
+\sdn
+
+\is 8.1.1.1.2
+\sd Two
+\sdn
+
+\is 8.1.1.2
+\sd Ordinal numbers
+\sdn Nombor ordinal
+
+\is 8.1.1.3
+\sd Number of times
+\sdn Nombor waktu
+
+\is 8.1.1.4
+\sd Multiples
+\sdn Berganda
+
+\is 8.1.1.5
+\sd Numbered group
+\sdn
+
+\is 8.1.1.6
+\sd Fraction
+\sdn Pecahan
+
+\is 8.1.1.7
+\sd Number series
+\sdn
+
+\is 8.1.2
+\sd Count
+\sdn Membilang
+
+\is 8.1.2.1
+\sd Mathematics
+\sdn
+
+\is 8.1.2.2
+\sd Add numbers
+\sdn
+
+\is 8.1.2.3
+\sd Subtract numbers
+\sdn
+
+\is 8.1.2.4
+\sd Multiply numbers
+\sdn
+
+\is 8.1.2.5
+\sd Divide numbers
+\sdn
+
+\is 8.1.3
+\sd Plural
+\sdn
+
+\is 8.1.3.1
+\sd Many, much
+\sdn
+
+\is 8.1.3.2
+\sd Few, little
+\sdn
+
+\is 8.1.3.3
+\sd Group of things
+\sdn Sekumpulan benda
+
+\is 8.1.4
+\sd More
+\sdn Lebih banyak
+
+\is 8.1.4.1
+\sd Less
+\sdn Kurang
+
+\is 8.1.4.2
+\sd Increase
+\sdn Kenaikan
+
+\is 8.1.4.3
+\sd Decrease
+\sdn Berkurang
+
+\is 8.1.5
+\sd All
+\sdn Seluruh
+
+\is 8.1.5.1
+\sd Some
+\sdn Beberapa/Sedikit
+
+\is 8.1.5.2
+\sd None, nothing
+\sdn
+
+\is 8.1.5.3
+\sd Both
+\sdn Kedua-dua
+
+\is 8.1.5.4
+\sd Most, almost all
+\sdn
+
+\is 8.1.5.5
+\sd Most, least
+\sdn
+
+\is 8.1.5.6
+\sd Almost
+\sdn Hampir
+
+\is 8.1.5.7
+\sd Only
+\sdn Hanya
+
+\is 8.1.5.8
+\sd Exact
+\sdn
+
+\is 8.1.5.8.1
+\sd Approximate
+\sdn
+
+\is 8.1.5.9
+\sd Average
+\sdn Purata
+
+\is 8.1.6
+\sd Whole, complete
+\sdn
+
+\is 8.1.6.1
+\sd Part
+\sdn Bahagian
+
+\is 8.1.6.2
+\sd Piece
+\sdn
+
+\is 8.1.7
+\sd Enough
+\sdn
+
+\is 8.1.7.1
+\sd Extra
+\sdn
+
+\is 8.1.7.2
+\sd Lack
+\sdn
+
+\is 8.1.7.3
+\sd Need
+\sdn
+
+\is 8.1.7.4
+\sd Remain, remainder
+\sdn
+
+\is 8.1.8
+\sd Full
+\sdn Penuh
+
+\is 8.1.8.1
+\sd Empty
+\sdn Kosong
+
+\is 8.2
+\sd Big
+\sdn Besar
+
+\is 8.2.1
+\sd Small
+\sdn Kecil
+
+\is 8.2.2
+\sd Long
+\sdn Panjang
+
+\is 8.2.2.1
+\sd Short, not long
+\sdn
+
+\is 8.2.2.2
+\sd Tall
+\sdn Tinggi
+
+\is 8.2.2.3
+\sd Short, not tall
+\sdn
+
+\is 8.2.3
+\sd Thick
+\sdn
+
+\is 8.2.3.1
+\sd Thin thing
+\sdn
+
+\is 8.2.3.2
+\sd Fat person
+\sdn
+
+\is 8.2.3.3
+\sd Thin person
+\sdn
+
+\is 8.2.4
+\sd Wide
+\sdn Luas/Lebar/Lapang
+
+\is 8.2.4.1
+\sd Narrow
+\sdn Sempit
+
+\is 8.2.5
+\sd Big area
+\sdn
+
+\is 8.2.5.1
+\sd Big container, volume
+\sdn
+
+\is 8.2.6
+\sd Distance
+\sdn
+
+\is 8.2.6.1
+\sd Far
+\sdn Jauh
+
+\is 8.2.6.2
+\sd Near
+\sdn Dekat
+
+\is 8.2.6.3
+\sd High
+\sdn Tinggi
+
+\is 8.2.6.4
+\sd Low
+\sdn Rendah
+
+\is 8.2.6.5
+\sd Deep, shallow
+\sdn Dalam, cetek
+
+\is 8.2.7
+\sd Fit, size
+\sdn Sesuai, ukuran
+
+\is 8.2.7.1
+\sd Tight
+\sdn
+
+\is 8.2.7.2
+\sd Loose
+\sdn
+
+\is 8.2.7.3
+\sd Wedged in, stuck
+\sdn Terpasak, tersekat
+
+\is 8.2.8
+\sd Measure
+\sdn Ukuran
+
+\is 8.2.9
+\sd Weigh
+\sdn
+
+\is 8.2.9.1
+\sd Heavy
+\sdn Berat
+
+\is 8.2.9.2
+\sd Light in weight
+\sdn Ringan dalam berat
+
+\is 8.3
+\sd Quality
+\sdn Mutu
+
+\is 8.3.1
+\sd Shape
+\sdn Bentuk
+
+\is 8.3.1.1
+\sd Point, dot
+\sdn Titik, bintik
+
+\is 8.3.1.2
+\sd Line
+\sdn Garisan
+
+\is 8.3.1.3
+\sd Straight
+\sdn Lurus
+
+\is 8.3.1.3.1
+\sd Flat
+\sdn Rata
+
+\is 8.3.1.4
+\sd Horizontal
+\sdn Mendatar/Melintang
+
+\is 8.3.1.4.1
+\sd Vertical
+\sdn Tegak/Menegak
+
+\is 8.3.1.4.2
+\sd Leaning, sloping
+\sdn Condong, Cerun
+
+\is 8.3.1.5
+\sd Bend
+\sdn
+
+\is 8.3.1.5.1
+\sd Roll up
+\sdn
+
+\is 8.3.1.5.2
+\sd Twist, wring
+\sdn Pintalan, pulasan
+
+\is 8.3.1.5.3
+\sd Fold
+\sdn
+
+\is 8.3.1.6
+\sd Round
+\sdn Bulat
+
+\is 8.3.1.6.1
+\sd Concave
+\sdn Cekung
+
+\is 8.3.1.6.2
+\sd Convex
+\sdn Cembung/Mungkum
+
+\is 8.3.1.6.3
+\sd Hollow
+\sdn
+
+\is 8.3.1.7
+\sd Square
+\sdn Persegi
+
+\is 8.3.1.8
+\sd Pattern, design
+\sdn
+
+\is 8.3.1.8.1
+\sd Symmetrical
+\sdn Simetri
+
+\is 8.3.1.9
+\sd Stretch
+\sdn Regang
+
+\is 8.3.2
+\sd Texture
+\sdn Tekstur
+
+\is 8.3.2.1
+\sd Smooth
+\sdn Licin
+
+\is 8.3.2.2
+\sd Rough
+\sdn Kasar
+
+\is 8.3.2.3
+\sd Sharp
+\sdn Tajam
+
+\is 8.3.2.3.1
+\sd Pointed
+\sdn Runcing
+
+\is 8.3.2.4
+\sd Blunt
+\sdn Tumpul
+
+\is 8.3.2.5
+\sd Furrow
+\sdn Alur
+
+\is 8.3.3
+\sd Light
+\sdn Cahaya
+
+\is 8.3.3.1
+\sd Shine
+\sdn Kilauan
+
+\is 8.3.3.1.1
+\sd Light source
+\sdn Sumber cahaya
+
+\is 8.3.3.1.2
+\sd Bright
+\sdn Terang
+
+\is 8.3.3.2
+\sd Dark
+\sdn Gelap
+
+\is 8.3.3.2.1
+\sd Shadow
+\sdn Bayang-bayang
+
+\is 8.3.3.3
+\sd Color
+\sdn Warna
+
+\is 8.3.3.3.1
+\sd White
+\sdn Putih
+
+\is 8.3.3.3.2
+\sd Black
+\sdn Hitam
+
+\is 8.3.3.3.3
+\sd Gray
+\sdn Kelabu
+
+\is 8.3.3.3.4
+\sd Colors of the spectrum
+\sdn Warna-warna spektrum
+
+\is 8.3.3.3.5
+\sd Animal color, marking
+\sdn Warna haiwan, tanda
+
+\is 8.3.3.3.6
+\sd Change color
+\sdn
+
+\is 8.3.3.3.7
+\sd Multicolored
+\sdn
+
+\is 8.3.3.4
+\sd Shiny
+\sdn
+
+\is 8.3.4
+\sd Hot
+\sdn Panas
+
+\is 8.3.4.1
+\sd Cold
+\sdn Dingin
+
+\is 8.3.5
+\sd Type, kind
+\sdn
+
+\is 8.3.5.1
+\sd Nature, character
+\sdn Sifat semulaji, peribadi
+
+\is 8.3.5.2
+\sd Compare
+\sdn Membandingkan
+
+\is 8.3.5.2.1
+\sd Same
+\sdn Sama
+
+\is 8.3.5.2.2
+\sd Like, similar
+\sdn Macam, serupa
+
+\is 8.3.5.2.3
+\sd Different
+\sdn Berbeza
+
+\is 8.3.5.2.4
+\sd Other
+\sdn Yang lain
+
+\is 8.3.5.2.5
+\sd Various
+\sdn
+
+\is 8.3.5.2.6
+\sd Opposite
+\sdn
+
+\is 8.3.5.3
+\sd Common
+\sdn Biasa
+
+\is 8.3.5.3.1
+\sd Usual
+\sdn Lazim/Biasa
+
+\is 8.3.5.3.2
+\sd Unusual
+\sdn Luar biasa
+
+\is 8.3.5.3.3
+\sd Unique
+\sdn Unik/Tersendiri
+
+\is 8.3.5.3.4
+\sd Strange
+\sdn Ganjil
+
+\is 8.3.5.4
+\sd Pattern, model
+\sdn Bentuk, contoh
+
+\is 8.3.5.5
+\sd Imitate
+\sdn Meniru
+
+\is 8.3.5.6
+\sd Copy
+\sdn
+
+\is 8.3.6
+\sd Made of, material
+\sdn
+
+\is 8.3.6.1
+\sd Strong, brittle
+\sdn Kukuh, rapuh
+
+\is 8.3.6.2
+\sd Hard, firm
+\sdn Keras, teguh
+
+\is 8.3.6.3
+\sd Stiff, flexible
+\sdn
+
+\is 8.3.6.4
+\sd Dense
+\sdn Tebal
+
+\is 8.3.6.5
+\sd Soft, flimsy
+\sdn Lembut, tipis
+
+\is 8.3.7
+\sd Good
+\sdn Baik
+
+\is 8.3.7.1
+\sd Bad
+\sdn Buruk
+
+\is 8.3.7.2
+\sd Better
+\sdn
+
+\is 8.3.7.2.1
+\sd Worse
+\sdn
+
+\is 8.3.7.3
+\sd Perfect
+\sdn Sempurna
+
+\is 8.3.7.4
+\sd Mediocre
+\sdn Sederhana
+
+\is 8.3.7.5
+\sd Important
+\sdn Penting
+
+\is 8.3.7.5.1
+\sd Basic
+\sdn Asas
+
+\is 8.3.7.6
+\sd Improve
+\sdn Lebih baik
+
+\is 8.3.7.7
+\sd Right, proper
+\sdn
+
+\is 8.3.7.7.1
+\sd Wrong, unsuitable
+\sdn
+
+\is 8.3.7.7.2
+\sd Convenient
+\sdn Mudah
+
+\is 8.3.7.7.3
+\sd Compatible
+\sdn
+
+\is 8.3.7.8
+\sd Decay
+\sdn
+
+\is 8.3.7.8.1
+\sd Rust
+\sdn
+
+\is 8.3.7.8.2
+\sd Blemish
+\sdn Kecacatan
+
+\is 8.3.7.8.3
+\sd Garbage
+\sdn Sampah
+
+\is 8.3.7.8.4
+\sd Preserve
+\sdn Mengawet
+
+\is 8.3.7.9
+\sd Value
+\sdn Nilai
+
+\is 8.3.8
+\sd Decorated
+\sdn
+
+\is 8.3.8.1
+\sd Simple, plain
+\sdn Sederhana, biasa
+
+\is 8.3.8.2
+\sd Glory
+\sdn Kemuliaan
+
+\is 8.4
+\sd Time
+\sdn Waktu
+
+\is 8.4.1
+\sd Period of time
+\sdn Jangka waktu
+
+\is 8.4.1.1
+\sd Calendar
+\sdn Haribulan
+
+\is 8.4.1.2
+\sd Day
+\sdn Hari
+
+\is 8.4.1.2.1
+\sd Night
+\sdn Malam
+
+\is 8.4.1.2.2
+\sd Yesterday, today, tomorrow
+\sdn
+
+\is 8.4.1.2.3
+\sd Time of the day
+\sdn Waktu dalam hari
+
+\is 8.4.1.3
+\sd Week
+\sdn Minggu
+
+\is 8.4.1.3.1
+\sd Days of the week
+\sdn Hari-hari dalam seminggu
+
+\is 8.4.1.4
+\sd Month
+\sdn Bulan
+
+\is 8.4.1.4.1
+\sd Months of the year
+\sdn Bulan bagi setahun
+
+\is 8.4.1.5
+\sd Season
+\sdn Musim
+
+\is 8.4.1.6
+\sd Year
+\sdn Tahun
+
+\is 8.4.1.7
+\sd Era
+\sdn Zaman
+
+\is 8.4.1.8
+\sd Special days
+\sdn Hari-hari istimewa
+
+\is 8.4.2
+\sd Take time
+\sdn Mengambil masa
+
+\is 8.4.2.1
+\sd A short time
+\sdn Masa singkat
+
+\is 8.4.2.2
+\sd A long time
+\sdn Masa yang lama
+
+\is 8.4.2.3
+\sd Forever
+\sdn Selama-lamanya
+
+\is 8.4.2.4
+\sd Temporary
+\sdn Sementara
+
+\is 8.4.3
+\sd Indefinite time
+\sdn Masa tidak pasti
+
+\is 8.4.4
+\sd Telling time
+\sdn Menjelaskan masa
+
+\is 8.4.4.1
+\sd Plan a time
+\sdn
+
+\is 8.4.4.2
+\sd Clock, watch
+\sdn
+
+\is 8.4.5
+\sd Relative time
+\sdn Penghubung masa
+
+\is 8.4.5.1
+\sd Order, sequence
+\sdn Tertib, berurut-urutan
+
+\is 8.4.5.1.1
+\sd Series
+\sdn
+
+\is 8.4.5.1.2
+\sd First
+\sdn
+
+\is 8.4.5.1.3
+\sd Next
+\sdn
+
+\is 8.4.5.1.4
+\sd Last
+\sdn
+
+\is 8.4.5.1.5
+\sd Regular
+\sdn Biasa/Lazim
+
+\is 8.4.5.1.6
+\sd Alternate
+\sdn
+
+\is 8.4.5.2
+\sd Before
+\sdn
+
+\is 8.4.5.2.1
+\sd After
+\sdn
+
+\is 8.4.5.2.2
+\sd At the same time
+\sdn
+
+\is 8.4.5.2.3
+\sd During
+\sdn
+
+\is 8.4.5.3
+\sd Right time
+\sdn
+
+\is 8.4.5.3.1
+\sd Early
+\sdn Awal/Dini/Dulu
+
+\is 8.4.5.3.2
+\sd On time
+\sdn Tepat waktu
+
+\is 8.4.5.3.3
+\sd Late
+\sdn Lambat
+
+\is 8.4.5.3.4
+\sd Delay
+\sdn Melambatkan
+
+\is 8.4.5.3.5
+\sd Postpone
+\sdn Menanguhkan/Menunda
+
+\is 8.4.6
+\sd Aspectual time
+\sdn
+
+\is 8.4.6.1
+\sd Start something
+\sdn
+
+\is 8.4.6.1.1
+\sd Beginning
+\sdn
+
+\is 8.4.6.1.2
+\sd Stop something
+\sdn
+
+\is 8.4.6.1.3
+\sd End
+\sdn
+
+\is 8.4.6.1.4
+\sd Until
+\sdn Sehingga
+
+\is 8.4.6.1.5
+\sd Since, from
+\sdn
+
+\is 8.4.6.2
+\sd Past
+\sdn Masa lampau
+
+\is 8.4.6.2.1
+\sd Recently
+\sdn
+
+\is 8.4.6.3
+\sd Present
+\sdn Masa sekarang
+
+\is 8.4.6.3.1
+\sd Now
+\sdn Masa kini
+
+\is 8.4.6.4
+\sd Future
+\sdn Masa hadapan
+
+\is 8.4.6.4.1
+\sd Soon
+\sdn Akan datang
+
+\is 8.4.6.4.2
+\sd Not yet
+\sdn Belum lagi
+
+\is 8.4.6.4.3
+\sd Eventually
+\sdn Akhirnya
+
+\is 8.4.6.4.4
+\sd Immediately
+\sdn
+
+\is 8.4.6.5
+\sd Age
+\sdn Usia
+
+\is 8.4.6.5.1
+\sd Young
+\sdn
+
+\is 8.4.6.5.2
+\sd Old, not young
+\sdn
+
+\is 8.4.6.5.3
+\sd New
+\sdn Baru
+
+\is 8.4.6.5.4
+\sd Old, not new
+\sdn
+
+\is 8.4.6.5.5
+\sd Modern
+\sdn
+
+\is 8.4.6.5.6
+\sd Old fashioned
+\sdn
+
+\is 8.4.6.6
+\sd Once
+\sdn Sekali
+
+\is 8.4.6.6.1
+\sd Again
+\sdn Lagi/Semula
+
+\is 8.4.6.6.2
+\sd Sometimes
+\sdn Kadang-kadang
+
+\is 8.4.6.6.3
+\sd Often
+\sdn
+
+\is 8.4.6.6.4
+\sd All the time
+\sdn Sentiasa
+
+\is 8.4.6.6.5
+\sd Every time
+\sdn Setiap kali
+
+\is 8.4.6.6.6
+\sd Never
+\sdn Tidak pernah
+
+\is 8.4.7
+\sd Continue, persevere
+\sdn
+
+\is 8.4.7.1
+\sd Interrupt
+\sdn Mengganggu
+
+\is 8.4.7.2
+\sd Start again
+\sdn Semula
+
+\is 8.4.7.3
+\sd Interval
+\sdn Selang
+
+\is 8.4.8
+\sd Speed
+\sdn Kepantasan
+
+\is 8.4.8.1
+\sd Quick
+\sdn Serta-merta/Pantas
+
+\is 8.4.8.2
+\sd Slow
+\sdn Perlahan
+
+\is 8.4.8.3
+\sd Sudden
+\sdn Tiba-tiba
+
+\is 8.5
+\sd Location
+\sdn Kedudukan
+
+\is 8.5.1
+\sd Here, there
+\sdn
+
+\is 8.5.1.1
+\sd In front of
+\sdn Di hadapan
+
+\is 8.5.1.1.1
+\sd Behind
+\sdn Belakang
+
+\is 8.5.1.2
+\sd Beside
+\sdn Berhampiran
+
+\is 8.5.1.2.1
+\sd Around
+\sdn Sekeliling
+
+\is 8.5.1.2.2
+\sd Between
+\sdn Di antara
+
+\is 8.5.1.3
+\sd On
+\sdn Di atas
+
+\is 8.5.1.3.1
+\sd Above
+\sdn
+
+\is 8.5.1.3.2
+\sd Under, below
+\sdn Di bawah,
+
+\is 8.5.1.4
+\sd Inside
+\sdn Di dalam
+
+\is 8.5.1.4.1
+\sd Out, outside
+\sdn
+
+\is 8.5.1.5
+\sd Touching, contact
+\sdn
+
+\is 8.5.1.5.1
+\sd Next to
+\sdn
+
+\is 8.5.1.6
+\sd Across
+\sdn Seberang
+
+\is 8.5.1.7
+\sd Indefinite location
+\sdn Lokasi tidak tentu
+
+\is 8.5.2
+\sd Direction
+\sdn Haluan/arah
+
+\is 8.5.2.1
+\sd Forward
+\sdn
+
+\is 8.5.2.2
+\sd Backward
+\sdn
+
+\is 8.5.2.3
+\sd Right, left
+\sdn Kanan, kiri
+
+\is 8.5.2.4
+\sd Up
+\sdn
+
+\is 8.5.2.5
+\sd Down
+\sdn
+
+\is 8.5.2.6
+\sd Away from
+\sdn
+
+\is 8.5.2.7
+\sd Towards
+\sdn
+
+\is 8.5.2.8
+\sd North, south, east, west
+\sdn Utara, selatan, timur, barat
+
+\is 8.5.3
+\sd Be at a place
+\sdn Berada di satu tempat
+
+\is 8.5.3.1
+\sd Absent
+\sdn Tidak hadir
+
+\is 8.5.4
+\sd Area
+\sdn Kawasan
+
+\is 8.5.4.1
+\sd Vicinity
+\sdn Kawasan/Sekitar
+
+\is 8.5.4.2
+\sd Occupy an area
+\sdn Menhuni sesuatu kawasan
+
+\is 8.5.4.3
+\sd Space, room
+\sdn Ruang, bilik
+
+\is 8.5.4.4
+\sd Interval, space
+\sdn Jarak, ruang
+
+\is 8.5.5
+\sd Spatial relations
+\sdn
+
+\is 8.5.6
+\sd Contain
+\sdn
+
+\is 8.6
+\sd Parts of things
+\sdn Bahagian benda
+
+\is 8.6.1
+\sd Front
+\sdn
+
+\is 8.6.1.1
+\sd Back
+\sdn
+
+\is 8.6.2
+\sd Top
+\sdn
+
+\is 8.6.2.1
+\sd Bottom
+\sdn
+
+\is 8.6.3
+\sd Side
+\sdn
+
+\is 8.6.4
+\sd Inner part
+\sdn
+
+\is 8.6.4.1
+\sd Outer part
+\sdn
+
+\is 8.6.5
+\sd Middle
+\sdn
+
+\is 8.6.6
+\sd Edge
+\sdn
+
+\is 8.6.7
+\sd End, point
+\sdn
+
