@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37220ccb87ce015af83b12547b170177",
+    "content-hash": "5267f1bb151f38ba2254937a4f76195b",
     "packages": [
         {
             "name": "composer/installers",
@@ -1166,15 +1166,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "8.2.0",
+            "version": "8.3.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/8.2.0"
+                "reference": "tags/8.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.2.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.3.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1418,15 +1418,15 @@
         },
         {
             "name": "wpackagist-plugin/really-simple-ssl",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
-                "reference": "tags/5.2.0"
+                "reference": "tags/5.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.5.2.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.5.2.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1597,22 +1597,22 @@
             "homepage": "https://wordpress.org/plugins/wps-menu-exporter/"
         },
         {
-            "name": "wpackagist-theme/twentytwenty",
-            "version": "1.8",
+            "name": "wpackagist-theme/twentytwentyone",
+            "version": "1.4",
             "source": {
                 "type": "svn",
-                "url": "https://themes.svn.wordpress.org/twentytwenty/",
-                "reference": "1.8"
+                "url": "https://themes.svn.wordpress.org/twentytwentyone/",
+                "reference": "1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/twentytwenty.1.8.zip"
+                "url": "https://downloads.wordpress.org/theme/twentytwentyone.1.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-theme",
-            "homepage": "https://wordpress.org/themes/twentytwenty/"
+            "homepage": "https://wordpress.org/themes/twentytwentyone/"
         }
     ],
     "packages-dev": [
