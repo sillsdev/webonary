@@ -1,0 +1,7200 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "Cakerawala, ciptaan"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "Langit"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "Matahari"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "Bulan"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "Bintang"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "Planet"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "Udara"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "Hembusan udara"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "Cuaca"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "Angin"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "Awan"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "Hujan"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "Salji, ais"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "Ribut"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "Kilat, guruh"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "Banjir"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "Kemarau"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "Dunia"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "Tanah"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "Gunung"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "Gunung Berapi"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "Rata, dataran"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "Lembah"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "Bawah tanah"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "Hutan, padang rumput, gurun"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "Gempa bumi"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "Bahan, benda"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "Tanah, kotoran"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "Batu"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "Logam"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "Galian"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "Permata"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "Pejal, cair, gas"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "Cecair"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "Minyak"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "Gas"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "Air"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "Kumpulan-kumpulan air"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "Laut, tasik"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "Paya"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "Sungai"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "Mata air, Perigi"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "Pulau, pantai"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "Pergerakan Air"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "Aliran"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "Curah"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "Titisan"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "Ombak"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "Tenang, bergoncang"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "Air pasang"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "Basah"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "Kering"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "Berada dalam air"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "Larutan air"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "Kualiti Air"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "Hidupan"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "Benda mati"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "Roh-roh/semangat benda"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "Tumbuhan"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "Pokok"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "Belukar / tumbuhan renek"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "Rumput, herba, pokok menjalar"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "Lumut, kulat, rumpair"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "Bahagian suatu tumbuhan"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "Pertumbuhan tumbuhan"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "Penyakit-penyakit tumbuhan"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "Haiwan"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "Jenis-jenis haiwan"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "Mamalia"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "Primat"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "Karnivor"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "Haiwan berkukuh"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "Rodensia"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "Marsupial"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "Binatang pemakan semut, aardvark"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "Mamalia laut"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "Kelawar"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "Burung"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "Reptilia"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "Ular"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "Cicak"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "Penyu"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "Buaya"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "Amfibia"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "Ikan"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "Jerung, ikan pari"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "Serangga"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "Labah-labah"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "Haiwan-haiwan kecil"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "Bahagian-bahagian daripada haiwan"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "Bahagian-bahagian daripada seekor burung"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "Bahagian-bahagian daripada seekor reptilia"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "Bahagian daripada ikan"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "Bahagian daripada serangga"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "Bahagian daripada haiwan kecil"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "Kitaran hidup haiwan"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "Telur"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "Tindakan haiwan"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "Pergerakan Haiwan"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "Haiwan sedang makan"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "Bunyi-bunyi haiwan"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "Kediaman Haiwan"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "Kumpulan Haiwan"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "Haiwan jantan dan betina"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "Alam, persekitaran"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "Semula jadi"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr ""
+
+#: default_domains.php:113
+msgid "Body"
+msgstr ""
+
+#: default_domains.php:114
+msgid "Head"
+msgstr ""
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "Mata"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "Telinga"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "Hidung"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "Mulut"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "Gigi"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "Badan/Torso"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "Tangan/Kaki"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "Lengan/Tangan"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "Kaki"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "Jari tangan, jari kaki"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "Kulit"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "Rambut"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "Tulang, Persendian"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "Daging"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "Organ-organ dalaman"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "Jantung"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "Perut"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr ""
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "Organ perempuan"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "Fungsi-fungsi Tubuh"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "Bernafas, nafas"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "Batuk, bersin"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "Air ludah, air liur"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "Hingus"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "Berdarah, darah"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "Peluh"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "Buang air kecil, air kencing"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "Air besar, tahi"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "Deria, rasa"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "Melihat"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "Tengok"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "Memperhatikan"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "Memeriksa"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr ""
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "Boleh dilihat"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "Muncul"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "Lut Sinar"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "Pantulan, cermin"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "Rupa"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "Cantik"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "Hodoh"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr ""
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr ""
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "Mendengar"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr ""
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr ""
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "Bunyi kuat"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "Senyap"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "Rasa"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "Bau"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "Deria sentuh"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "Selesa"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "Keadaan Tubuh"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "Kuat"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "Lemah"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "Penuh bertenaga"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "Penat"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "Rehat"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "Sihat"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "Sakit"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "Pulih dari sakit"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr ""
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "Pemakanan Tak Seimbang, Kebuluran"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "Penyakit kulit"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "Penyakit Perut"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "Kerosakan gigi"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "Kecederaan"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "Amputasi/Memotong"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "Racun"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "Hilang Keupayaan"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "Buta"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "Kabur/lemah penglihatan"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "Pekak"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "Bisu"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "Lahir cacat"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "Penyebab Penyakit"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "Gejala penyakit"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "Sakit"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "Demam"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "Bengkak"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "Tidak sedar"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "Bingung, keliru"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "Bayangan, Halusinasi"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "Rawatan penyakit"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "Doktor, jururawat"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "Ubat"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "Tumbuh-tumbuhan berubat"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "Hospital"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr ""
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "Penyakit mental"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr ""
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr ""
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr ""
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr ""
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr ""
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr ""
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "Percintaan yang romantik"
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr ""
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr ""
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr ""
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "Kesumbangan seksual"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr ""
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr ""
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr ""
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr ""
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr ""
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr ""
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr ""
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr ""
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "Subur, Tidak subur"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr ""
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr ""
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr ""
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "Menjaga seorang bayi"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr ""
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "Membesarkan seorang anak"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr ""
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr ""
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr ""
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "Meningkat dewasa, membesar"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "Inisiasi"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "Kelompok sebaya"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr ""
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "Lelaki"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "Wanita"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr ""
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr ""
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr ""
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr ""
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr ""
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "mengabadikan"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr ""
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "Mewarisi"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "Kehidupan setelah mati"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr ""
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "Jiwa, Roh"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "Keperibadian"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "Keadaan Mental"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "Cergas"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "Lihat"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr ""
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "Tidak menghiraukan"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "Berfikir"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "MInda"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr ""
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "Membayangkan"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "Berakal, Cerdik"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "Jahil"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "Munasabah"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "Naluri"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "Belajar"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr ""
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "Memeriksa"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "Menilai, Menguji"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "Menduga"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "Mengatasi"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr ""
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "Sedia Belajar"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "Tahu, Mengetahui"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "Dikenali, Tidak dikenali"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "Bidang Pengetahuan"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr ""
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "Memahami"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "Salah Faham"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "Boleh Difahami"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr ""
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr ""
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "Mempercayai"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr ""
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "Tidak Mempercayai"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "Keraguan"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr ""
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr ""
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr ""
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "Falsafah"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "Sikap"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "Kepercayaan Yang Melampaui Batas"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr ""
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr ""
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "Mengingati"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "Melupakan"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr ""
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr ""
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr ""
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "Berharap"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "Mengharapkan"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "Tiada harapan"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr ""
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "Kecenderungan"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "Mahu, Ingin"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "Memutuskan,Merancang"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr ""
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "Memilih"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr ""
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr ""
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "Sengaja"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr ""
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "Berdegil"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "Berahi"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "Meminta, Memohon"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr ""
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr ""
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "Memohon Bagi Sesuatu Pihak"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr ""
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "Mempengaruhi"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "Mencadangkan"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "Menasihatkan"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr ""
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr ""
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "Menggerakkan"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "Menguasai"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "Memberi Amaran"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr ""
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr ""
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr ""
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "Enggan memberi kebenaran"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "Pengecualian"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr ""
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr ""
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "Menawarkan"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr ""
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "Menolak"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "Pengalaman Batin"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr ""
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "Suka"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr ""
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "Kehormatan Diri"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr ""
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr ""
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr ""
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "Kepuasan hati"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "Bersukacita"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "Berkenan terhadap"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr ""
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "Lega"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "Tenang"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr ""
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr ""
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr ""
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "Ghairah"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr ""
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "Mempesona"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "Tidak Peduli"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr ""
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "Yakin, Berkeyakinan"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr ""
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "Sedih"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr ""
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr ""
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr ""
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "Kecewa"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "Sepi"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr ""
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "Terperanjat"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "Cemburu"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "Tidak puas hati"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr ""
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr ""
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr ""
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "Marah"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr ""
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr ""
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr ""
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "Gelisah"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "Segan, Takut"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr ""
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "Perhubungan"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr ""
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "Suara"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr ""
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "Berbicara Dengan Suara Yang Kecil"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "Berbicara Panjang"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "Tidak Banyak Berbicara"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr ""
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "Gaya Bicara"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "Pandai Berbicara"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "Tidak Pandai Berbicara"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr ""
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "Mengumumkan"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "Menjelaskan"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr ""
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr ""
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "Memperkenalkan"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "Mengulangi"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "Meringkaskan"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "Menitikberatkan"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr ""
+
+#: default_domains.php:402
+msgid "True"
+msgstr "Benar"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr ""
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr ""
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "Membantah"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "Memdedahkan kepalsuan"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr ""
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "Tokok Tambah"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "Berbual Dengan Orang Lain"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "Memanggil"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr ""
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "Menyambut"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "Mengucapkan Selamat Jalan Atau Selamat Tinggal"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "Serentak Bersuara"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "Meminta"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "Menjawab"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "Memberi Keterangan"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "Menyembunyikan Perasaan Jiwa (Buah Fikiran)"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "Perbahasan"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "Menunjukkan"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "Pertengkaran, pergaduhan"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr ""
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "Berterima kasih"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "Mengampu"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "Memborakkan"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "Mengkritik"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr ""
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "Mencaci"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "Mencela"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "Mengumpat"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr ""
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "Berjanji"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "Berpidato"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "Melaporkan"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "Warta Berita"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "Bersifat Kiasan"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "Mengaku"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "Bahasa"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "Perkataan"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "Maklumat"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr ""
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "Cerita Dogeng, Hikayat Purbakala"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr ""
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "Teka-teki"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "Puisi"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "Sejarah"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "Tradisi Lisan"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "Kata Bicara Orang Bodah"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "Kelucahan"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "Isyarat, Lambang"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "Mengisyaratkan"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr ""
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "Air Muka"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "Ketawa"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr ""
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "Membaca Dan Menulis"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "Tulis, Menulis"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "Hasil Cipta Penulisan"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "Baca, Membaca"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "Menerbitkan"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "Catat, Mencatat"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "Senarai"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr ""
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "Mentafsirkan Maklumat"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "Erti"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "Tidak Bererti, Sia-sia"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "Tidak Dapat Difahami"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "Membuktikan, Menandakan"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "Media Massa"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "Radio, Televisyen"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "Telefon"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "Surat Khabar"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "Wayang Gambar"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr ""
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "Kemudahan Perhubungan"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "Mengajar"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "Memberi Tunjuk Ajar, Menerangkan"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "Institusi Pendidikan"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "Matapelajaran"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr ""
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "Membetulkan"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "Sains"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "Ujian"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "Jawapan Ujian"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "Tatalaku kemasyarakatan"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "Perhubungan"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr ""
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "Teman perempuan Teman lelaki"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr ""
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr ""
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr ""
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "Pertama kali berkenalan"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "Jiran"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "Lapisan masyarakat"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "Perpaduan"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "Ketidaksatuan"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr ""
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "Menyendiri"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "Berseorangan"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "Seseorang yang berdikari"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "Peribadi, Awam"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "Memulakan Suatu Perhubungan"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "Memutuskan suatu perhubungan"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "Menunjukkan kemesraan"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr ""
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "Perhubungan baka"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "Datuk, Nenek"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "Ibu, Bapa"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "Abang, Kakak, Adik lelaki, Adik perempuan"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "Anak lelaki, Anak perempuan"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "Cucu lelaki, Cucu perempuan"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "Bapa saudara, Ibu saudara"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "Ipar"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "Anak saudara lelaki, Anak saudara perempuan"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "Urutan kelahiran"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "Perhubungan hasil perkahwinan"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "Suami, Isteri"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "Mentua"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "Janda, Duda"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "Yatim Piatu"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "Anak luar nikah"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "Menjadikan seseorang sebagai anak angkat"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "Tiada kaitan persaudaraan"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "Kaum keluarga, Puak suku bangsa"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr ""
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "Kegiatan sosial"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr ""
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "Menjemput"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "Bersua"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "Berkumpul bersama-sama"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "Melawat"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "Mengalu-alukan, Menyambut"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "Memberi layanan mesra"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "Pertemuan, Perhimpunan"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr ""
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "Perkumpulan tanpa struktur"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr ""
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr ""
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr ""
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr ""
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr ""
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "Acara sosial"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "Upacara"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr ""
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "Merayakan"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "Muzik"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr ""
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr ""
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "Nyanyi"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "Ahli muzik"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr ""
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "Tarian"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "Drama"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "Hiburan, rekreasi"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "Permainan"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr ""
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "Permainan catur"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "Olahraga"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr ""
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr ""
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "Bersenam"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "Berjudi"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "Bermain, berseronok"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "Kebolehan berlucu"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr ""
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "Bercuti"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr ""
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "Kelakuan"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr ""
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr ""
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "Memenuhi piawaian"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "Pencapaian kurang baik (sempurna)"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr ""
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr ""
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr ""
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr ""
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "Sabar"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "Tidak sabar"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "Cepat marah"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr ""
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr ""
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "Merendahkan diri"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "Angkuh"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr ""
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "Mengasihi"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr ""
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "Tidak mempedulikan"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "Meninggalkan"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "Berbuat baik terhadap"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "Berbuat jahat terhadap"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "Bantuan"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "Menghalang"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "Berkerjasama dengan"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "Bertanding dengan"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "Mengutamakan kesenangan orang lain, tidak mementingkan diri sendiri"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "Hanya mementingkan diri sendiri"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr ""
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "Membahagi bersama-sama"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "Membekalkan keperluan"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "Mempedulikan"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "Mempercayakan penjagaan"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "Campur tangan tanpa memanfaatkan"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr ""
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "Menceroboh"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr ""
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "Kejam"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr ""
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "Tidak jujur"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "Setia"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "Boleh dipercayai"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "Tidak boleh diharap"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "Memperdaya"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "Munafik"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "Berkemampuan menguasai diri sendiri"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "Lemah mengawal diri"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr ""
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr ""
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr ""
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr ""
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "Tidak sopan"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "Gila"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "Berubah tabiat"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "Menurut akur"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "Kebudayaan"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "Adat resam"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "Tabiat"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "Kemakmuran & kesusahan"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "Kemakmuran"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "Kesusahan"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "Masalah"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "Bahaya"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "Kemalangan"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "Bencana, malapetaka"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "Terasing, bersendirian"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "Menderita"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "Tindakan terhadap kesusahan"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr ""
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "Sifat penakut, ketakutan"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr ""
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "Berhati-hati, berjaga-jaga"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "Menyelesaikan suatu masalah"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "Bertahan"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "Terselamat"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "Bertindak terhadap seseorang yang dilanda kesusahan"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr ""
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "Menunjukkan simpati, menyokong"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "Beradab"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "Menyelamatkan daripada kesusahan"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr ""
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "Bebas daripada terkurung"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "Bantuan"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "Risiko"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "Suatu kemungkinan"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr ""
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr ""
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "Wibawa, kewibawaan"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "Pihak berkuasa"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "Berwibawa"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "Menggunakan wibawa"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "Memimpin"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "Memerintah"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "Mendisiplin, melatih"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "Melantik, Diberi kuasa mewakili"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "Mengakui pihak berkuasa"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "Patuh"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "Tidak patuh"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "Berkhidmat"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr ""
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "Ikut, Meneladani"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "Memberontak terhadap pihak berkuasa"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "Merdeka"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "Memberi penghormatan, Menjunjung"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "Gelaran penghormatan"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "Kurang ajar"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "Kedudukan"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "Berkedudukan tinggi"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "Berkedudukan rendah"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "Kerajaan"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr ""
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "Kerabat diraja"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr ""
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "Warganegara"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "Orang asing"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "Jentera kerajaan"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr ""
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "Memerintah"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "Menawan"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "Fungsi-fungsi kerajaan"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "Polis"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "Memberkas"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "Keadilan di luar perundangan, Penghakiman yang subjektif"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "Diplomasi"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr ""
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "Pilihan raya"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr ""
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "Kawasan"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "Negara"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "Kota"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "Desa"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "Masyarakat"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "Undang-undang"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "Hukum-hukum, Perundangan"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "Meluluskan rang undang-undang"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "Melanggar undang-undang"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "Mahkamah"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "Orang yang terlibat dalam pengurusan pembicaraan mahkamah"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr ""
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr ""
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr ""
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "Menuduh, Berdepan muka"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr ""
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "Bersaksi, Memberi Kesaksian"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "Membatalkan dakwaan-dakwaan"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "Mengangkat sumpah"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "Mengesahkan kebenaran"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "Mengadili, Memberi keputusan"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "Membebaskan"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "Menyalahkan, didapati bersalah"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "Kesalahan"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "Menghukum"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "Ganjaran"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "Denda"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "Memenjarakan"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "Menjalankan hukuman mati"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "Memulaukan"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "Pengampunan, Pembebasan"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr ""
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "Perjanjian rasmi"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "Perjanjian kekeluargaan"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "Tamatkan ikatan kontrak"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "Keadilan"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "Adil"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "Tidak adil"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "Berhak"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "Membeza-bezakan tanpa berlaku adil, Tidak adil"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "Berlaku kasar"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "Menindas"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr ""
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr ""
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr ""
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "Berlawan"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr ""
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr ""
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "Menyerang"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "Menyerang hendap"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "Membela"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "Membalas dendam"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "Rusuhan"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "Mengkhianati"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr ""
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "Musuh"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "Perang"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "Kekalahan"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr ""
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr ""
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "Menyerah"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "Tawanan peperangan"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr ""
+
+#: default_domains.php:759
+msgid "Army"
+msgstr ""
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr ""
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr ""
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "Askar"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "Pengintip"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr ""
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr ""
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr ""
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "Aman damai"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "Menegur"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "Membuat rayuan"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "Mendamaikan"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "Berunding"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "Membatalkan tuntutan, Mempersetujui"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "Bertaubat"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "Memohon pengampunan"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "Mengampuni"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "Tindakan berdamai"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "Henti berlawan"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "Memperdamaikan"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "Agama"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "Tuhan"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "Makhluk luar biasa"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "Teologi"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "Bahan-bahan tulisan suci"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr ""
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "Ilmu Sihir"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "Kerasukan roh syaitan"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "Memberkati"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "Menyumpah"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "Akhirat"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "Nubuat"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "Telahan"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "Mengamalkan prinsip-prinsip agama"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "Beriman"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "Berdoa"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "Beribadah"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr ""
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr ""
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "Penyucian menurut adat istiadat agama"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "Larangan agama atau adat"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "Keselamatan"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "Mentahbiskan untuk pelayanan Tuhan"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "Berpuasa"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "Syurga, Neraka"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "Kebangkitan"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "Organisasi keagamaan"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr ""
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "Agama Kristian, Kepercayaan umat Kristian, Kepercayaan pengikut-pengikut Kristus"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "Agama Islam, Kepercayaan umat Islam"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "Agama Hindu, Kepercayaan umat Hindu"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "Agama Buddha"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "Agama Yahudi, Kepercayaan umat Yahudi"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr ""
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr ""
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "Berhala"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "Tempat penyembahan"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "Anti-Tuhan, ketidakagamaan"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr ""
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr ""
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr ""
+
+#: default_domains.php:820
+msgid "Table"
+msgstr ""
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr ""
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr ""
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr ""
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr ""
+
+#: default_domains.php:825
+msgid "Food"
+msgstr ""
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr ""
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr ""
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr ""
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr ""
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr ""
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr ""
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr ""
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr ""
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr ""
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr ""
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr ""
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr ""
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr ""
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr ""
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr ""
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr ""
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr ""
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr ""
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr ""
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr ""
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr ""
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr ""
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr ""
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr ""
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr ""
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr ""
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr ""
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr ""
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr ""
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr ""
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr ""
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr ""
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr ""
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr ""
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr ""
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr ""
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr ""
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr ""
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr ""
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr ""
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr ""
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr ""
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr ""
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr ""
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr ""
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr ""
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr ""
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr ""
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr ""
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr ""
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr ""
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr ""
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr ""
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr ""
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr ""
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr ""
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr ""
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr ""
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr ""
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr ""
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr ""
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr ""
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr ""
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr ""
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr ""
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr ""
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr ""
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr ""
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr ""
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr ""
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr ""
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr ""
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr ""
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr ""
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr ""
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr ""
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr ""
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr ""
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr ""
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr ""
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr ""
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr ""
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr ""
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr ""
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr ""
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr ""
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr ""
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr ""
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr ""
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr ""
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr ""
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "Kerja dan pekerjaan"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "Kerja"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "Pekerja"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "Pakar"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "Kaedah"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr ""
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "Guna"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr ""
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr ""
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "Senantiasa ada"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "Digunakan"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "Menjaga sesuatu"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "Pembaziran"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "Kerja dengan baik"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "Berhati-hati"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "Kerja keras"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "Sibuk"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "Kuasa, kekuatan"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "Selesai, habis"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "Bercita-cita tinggi"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "Kerja yang tidak baik"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "Cuai, tidak bertanggungjawab"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "Malas"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "Menyerah"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "Rancangan"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr ""
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "Memabatalkan sesuatu acara"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "Sedia"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr ""
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "Berkesan"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "Cekap"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "Kesempatan"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "Susah, mustahil"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "Senang, mungkin"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "Berjaya"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "Gagal"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr ""
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "Pekerjaan yang menyenangkan"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "Menganggur, tidak bekerja"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "Dibuat dengan tangan"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "Tiruan"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "Berpengalaman"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "Biasa dengan"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "Pertanian"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "Penanaman tanam-tanaman"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "Penanaman bijirin"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr ""
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr ""
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr ""
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr ""
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr ""
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr ""
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr ""
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr ""
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr ""
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr ""
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr ""
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr ""
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr ""
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "Penanaman bunga"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "Penanaman pokok-pokok"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr ""
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr ""
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "Persiapan tanah"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "Membersihkan ladang"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "Membajak ladang"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "Membaja ladang"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "Menanam ladang"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "Menjaga ladang"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "Potong rumput"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr "Mencabut tanaman"
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "Membekalkan air"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "Memangkas tanaman"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "Mengabaikan tanaman"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "Tuai"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "Buah pertama"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "Kegagalan tanam-tanaman"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "Mengumpulkan tanaman liar"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "Hasil tanaman"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "Memproses tuaian"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "Menampi bijirin"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "Menggiling bijirin"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "Membanting"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "Menyimpan tuaian"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr ""
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr ""
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr ""
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "Ladang binatang"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "Binatang pelihara"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "Lembu"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "Biri-biri/domba"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "Kambing"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "Babi"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "Anjing"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "Kucing"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "Binatang mengangkat beban"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "Menjaga binatang di padang"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "Memerah susu"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "Memotong, sembelih"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "Penghasilan bulu"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "Ternakan ayam itik"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "Ayam"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "Hasil binatang"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "Sains haiwan"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "Penyakit binatang"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "Mengembiri binatang"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "Memburu dan menangkap ikan"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "Memburu"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "Mengikuti jejak binatang"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "Perangkap"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "Memburu burung"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "Memelihara lebah"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "Menangkap ikan"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "Menjala ikan"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "Menangkap ikan dengan mata kail"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "Peralatan menangkap ikan"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "Perkara yang dibuat terhadap binatang"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "Bekerja dengan bangunan"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "Bangunan"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr ""
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "Jenis-jenis rumah"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr ""
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr ""
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr ""
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "Bahagian sebuah bangunan"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "Dinding"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "Atap"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "Lantai"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "Pintu"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "Jendela, tingkap"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "Asas"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "Bilik"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr ""
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "Bahan bangunan"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "Peralatan bangunan dan penjagaan"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "Infrastruktur"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "Jalan"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "Sempadan"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr ""
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "Bekerja dengan kain"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "Kain"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "Memintal benang"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "Mengait"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr ""
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "Bekerja dengan bahan galian"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "Melombong"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "Peleburan"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "Bekerja dengan logam"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "Bekerja dengan tanah liat"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "Bekerja dengan kaca"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "Bekerja dengan minyak dan gas"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "Bekerja dengan batu"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "Bekerja dengan batu bata"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "Bekerja dengan bahan kimia"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "Meletup"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "Bekerja dengan kayu"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "Pembalakan"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "Kayu"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "Bekerja dengan kertas"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "Kesenian"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "Tali-temali"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr ""
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "Bekerja dengan kulit"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "Bekerja dengan tulang"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "Kesenian"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "Melukis, mewarna"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "Fotografi"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "Seni arca"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "Bekerja dengan tanah"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "Bekerja dengan air"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "Tukang paip"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "Penghantaran air"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "Pengawalan air"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "Bekerja dalam laut"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "Bekerja dengan mesin"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "Bekerja dengan elektrik"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "Alat"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "Alat pemotong"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "Alat pengesan"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "Alat penggali"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "Alat pemukul"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "Alat pengangkat"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr ""
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr ""
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr ""
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "Bekas"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "Beg"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "Sarung"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "Bahagian-bahagian alat"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "Mesin-mesin"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "Kewangan"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "Ada harta"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr ""
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr ""
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "Miskin"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "Mengumpulkan harta"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr ""
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "Mengumpulkan harta"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "Menghasilkan harta"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "Menguntungkan"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "Kehilangan harta"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "Berhemat"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "Tamak"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr ""
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr ""
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "Mengongsikan harta"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "Memberi, menderma"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "Murah hati"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "Kedekut"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "Merayu"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr ""
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "Membeli"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "Jual"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr ""
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "Mahal"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "Murah"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "Percuma"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "Jual murah"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "Bayar"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "Sewa,upah"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "Mengguna"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "Stor, pasar"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "Tukar-menukar, jual beli"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "Pinjam"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "Pinjamkan"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "Memberi perjanjian, jaminan"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "Berhutang"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "Membayar hutang"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "Kredit"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "Wang"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "Unit kewangan"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "Perakaunan"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "Cukai"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "Kegiatan kewangan yang tidak jujur"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "Mencuri"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "Menipu"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "Wang desakan"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "Mengambil dengan paksa"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "Memberi rasuah"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr ""
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "Organisasi perniagaan"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "Pengurusan"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr ""
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "Pemasaran"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "Perdagangan"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "Ekonomi"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "Insurans"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr ""
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "Postur/gaya tubuh badan"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "Berdiri"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "Duduk"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "Baring"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "Bertelut/berlutut"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "Tunduk"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "Bersandar"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "Postur tegak"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "Postur santai"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "Membongkok"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "Menggerakkan sebahagian daripada anggota tubuh badan."
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "Gerak"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "Cara pergerakan"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "Berjalan"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "Lari"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr ""
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "Lompat"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "Bergerak cepat"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "Bergerak lambat"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "Mengembara/berjalan tanpa destinasi tertentu"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "Lemah lembut"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "Kekok"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "Berjalan dengan susah payah"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "Menggelincir, menggelongsor"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "Mantap, ketidakmantapan"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "Imbangan"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr ""
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "Bergerak ke arah tujuan"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "Maju/Bergerak ke depan"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "Berundur"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "Bergerak ke tepi"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "Bergerak ke atas"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "Bergerak ke bawah/Turun"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr ""
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "Pusing"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "Bergerak di dalam bulatan"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "Bergerak ke depan dan ke belakang"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "Bergerak terus tanpa berpusing balik"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "Bergerak ke arah sesuatu"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "Berpindah"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "Pergi"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "Datang"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "Meninggalkan"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "Tiba"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "Masuk"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "Keluar"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "Melewati, melombol, melalui"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "Kembali"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "Perjalanan"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "Perjalanan melalui darat"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "Kenderaan"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr ""
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "Perjalanan melalui air"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "Kapal"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "Berenang"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "Selam"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr ""
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "Pengembaraan ke angkasa lepas"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "Berpindah ke rumah baru"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr ""
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "Sesat"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr ""
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "Menemankan"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "Mendahului/dahulu"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "Susul"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr ""
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr ""
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr ""
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr ""
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr ""
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "Melepaskan diri"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "Membebaskan"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr ""
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "Berhenti daripada bergerak"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "Tinggal, berada tetap (di sesuatu tempat)"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "Menunggu"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "Mengutus seseorang"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "Memindahkan sesuatu"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "Angkat"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr ""
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "Tangkap"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "Goncang"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "Ketuk"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "Menegakkan"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "Menggerakkan sesuatu di dalam arah yang tertentu"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "Meletakkan di hadapan"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "Meletakkan di belakang"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "Menangguhkan/Meletakkan sesuatu di sisi"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "Angkat"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "Gantung"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "Menurunkan sesuatu"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "Masukkan"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr ""
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "Tarik"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "Tolak"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "Membawa ke tempat lain"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr ""
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "Mengembalikan sesuatu"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "Hantar"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "Usir"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr ""
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "Memegang sesuatu"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "Sentuh"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "Kutip"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "Letak"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "Pegang"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "Pergerakan tangan"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "Menyokong/menyangga"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "Menambahkan"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "Memusingkan sesuatu"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "Buka"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "Tutup"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "Menghalang, mengempang"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "Had"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "Menutupi"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "Membuka"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "Bungkus"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr ""
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr ""
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr ""
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "Beri"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "Terima"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr ""
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "Mengagihkan"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "Menyimpan sesuatu"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "Meninggalkan sesuatu"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "Membuang"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr ""
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr ""
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "Mengumpul"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "Berasing-asing, serak"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "Ketermasukan"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "Istimewa"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr ""
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr ""
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr ""
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr ""
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr ""
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "Campur"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "Tulin, tidak bercampur"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "Ikat"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "Tali"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "Kusut"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr ""
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr ""
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "Pengganti"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "Pelbagai benda atau hal bergerak"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr ""
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr ""
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr ""
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr ""
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "Sembunyi"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "Mendapatkan"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "Cari"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "Hilang, Salahletak"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "Hentaman fizikal"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "Terpukul, terlanggar"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "Membidik sasaran"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "Tendang"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "Tekan"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "Gilap"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "Kisar"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "Menandakan"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "Dibahagikan ke dalam kepingan"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "Pecahkan"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "Rekah"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "Potong"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "Koyak, rabak"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "Membuat lubang"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "Korek"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr ""
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "Rosak"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "Merobohkan"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "Memusnahkan"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "Membaiki"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "Keadaan"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "Jumlah"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "Angka"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "Angka kardinal"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr ""
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr ""
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "Nombor ordinal"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "Nombor waktu"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "Berganda"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr ""
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "Pecahan"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr ""
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "Membilang"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr ""
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr ""
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr ""
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr ""
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr ""
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr ""
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr ""
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr ""
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "Sekumpulan benda"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "Lebih banyak"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "Kurang"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "Kenaikan"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "Berkurang"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "Seluruh"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "Beberapa/Sedikit"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr ""
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "Kedua-dua"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr ""
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr ""
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "Hampir"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "Hanya"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr ""
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr ""
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "Purata"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr ""
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "Bahagian"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr ""
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr ""
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr ""
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr ""
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr ""
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr ""
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "Penuh"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "Kosong"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "Besar"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "Kecil"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr "Panjang"
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr ""
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "Tinggi"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr ""
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr ""
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr ""
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr ""
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr ""
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "Luas/Lebar/Lapang"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "Sempit"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr ""
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr ""
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr ""
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "Jauh"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "Dekat"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "Tinggi"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "Rendah"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "Dalam, cetek"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "Sesuai, ukuran"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr ""
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr ""
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "Terpasak, tersekat"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "Ukuran"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr ""
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "Berat"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "Ringan dalam berat"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "Mutu"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "Bentuk"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "Titik, bintik"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "Garisan"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "Lurus"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "Rata"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "Mendatar/Melintang"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "Tegak/Menegak"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "Condong, Cerun"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr ""
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr ""
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "Pintalan, pulasan"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr ""
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "Bulat"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "Cekung"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "Cembung/Mungkum"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr ""
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "Persegi"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr ""
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "Simetri"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "Regang"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "Tekstur"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "Licin"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "Kasar"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "Tajam"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "Runcing"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "Tumpul"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "Alur"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "Cahaya"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "Kilauan"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "Sumber cahaya"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "Terang"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "Gelap"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "Bayang-bayang"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "Warna"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "Putih"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "Hitam"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "Kelabu"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "Warna-warna spektrum"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "Warna haiwan, tanda"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr ""
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr ""
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr ""
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr "Panas"
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "Dingin"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr ""
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "Sifat semulaji, peribadi"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "Membandingkan"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "Sama"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "Macam, serupa"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "Berbeza"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "Yang lain"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr ""
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr ""
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "Biasa"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "Lazim/Biasa"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "Luar biasa"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "Unik/Tersendiri"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "Ganjil"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "Bentuk, contoh"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "Meniru"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr ""
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr ""
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "Kukuh, rapuh"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "Keras, teguh"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr ""
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "Tebal"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "Lembut, tipis"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "Baik"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "Buruk"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr ""
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr ""
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "Sempurna"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "Sederhana"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "Penting"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "Asas"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "Lebih baik"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr ""
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr ""
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "Mudah"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr ""
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr ""
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr ""
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "Kecacatan"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "Sampah"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "Mengawet"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "Nilai"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr ""
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "Sederhana, biasa"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "Kemuliaan"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "Waktu"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "Jangka waktu"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "Haribulan"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "Hari"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "Malam"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr ""
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "Waktu dalam hari"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "Minggu"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "Hari-hari dalam seminggu"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "Bulan"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "Bulan bagi setahun"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "Musim"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "Tahun"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "Zaman"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "Hari-hari istimewa"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "Mengambil masa"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "Masa singkat"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "Masa yang lama"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "Selama-lamanya"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "Sementara"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "Masa tidak pasti"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "Menjelaskan masa"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr ""
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr ""
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "Penghubung masa"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "Tertib, berurut-urutan"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr ""
+
+#: default_domains.php:1532
+msgid "First"
+msgstr ""
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr ""
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr ""
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "Biasa/Lazim"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr ""
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr ""
+
+#: default_domains.php:1538
+msgid "After"
+msgstr ""
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr ""
+
+#: default_domains.php:1540
+msgid "During"
+msgstr ""
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr ""
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "Awal/Dini/Dulu"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "Tepat waktu"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "Lambat"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "Melambatkan"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "Menanguhkan/Menunda"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr ""
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr ""
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr ""
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr ""
+
+#: default_domains.php:1551
+msgid "End"
+msgstr ""
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "Sehingga"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr ""
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "Masa lampau"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr ""
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "Masa sekarang"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "Masa kini"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "Masa hadapan"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "Akan datang"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "Belum lagi"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "Akhirnya"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr ""
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "Usia"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr ""
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr ""
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "Baru"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr ""
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr ""
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr ""
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "Sekali"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "Lagi/Semula"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "Kadang-kadang"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr ""
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "Sentiasa"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "Setiap kali"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "Tidak pernah"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr ""
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "Mengganggu"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "Semula"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "Selang"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "Kepantasan"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "Serta-merta/Pantas"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "Perlahan"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "Tiba-tiba"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "Kedudukan"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr ""
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "Di hadapan"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "Belakang"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "Berhampiran"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "Sekeliling"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "Di antara"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "Di atas"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr ""
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "Di bawah,"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "Di dalam"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr ""
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr ""
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr ""
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "Seberang"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "Lokasi tidak tentu"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "Haluan/arah"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr ""
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr ""
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "Kanan, kiri"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr ""
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr ""
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr ""
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr ""
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "Utara, selatan, timur, barat"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "Berada di satu tempat"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "Tidak hadir"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "Kawasan"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "Kawasan/Sekitar"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "Menhuni sesuatu kawasan"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "Ruang, bilik"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "Jarak, ruang"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr ""
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr ""
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "Bahagian benda"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr ""
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr ""
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr ""
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr ""
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr ""
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr ""
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr ""
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr ""
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr ""
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr ""
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr ""
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr ""
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr ""
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr ""
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr ""
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr ""
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr ""
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr ""
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr ""
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr ""
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr ""
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr ""
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr ""
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr ""
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr ""
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr ""
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr ""
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr ""
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr ""
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr ""
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr ""
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr ""
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr ""
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr ""
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr ""
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr ""
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr ""
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr ""
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr ""
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr ""
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr ""
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr ""
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr ""
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr ""
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr ""
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr ""
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr ""
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr ""
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr ""
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr ""
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr ""
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr ""
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr ""
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr ""
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr ""
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr ""
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr ""
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr ""
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr ""
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr ""
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr ""
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr ""
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr ""
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr ""
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr ""
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr ""
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr ""
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr ""
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr ""
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr ""
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr ""
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr ""
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr ""
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr ""
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr ""
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr ""
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr ""
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr ""
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr ""
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr ""
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr ""
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr ""
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr ""
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr ""
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr ""
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr ""
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr ""
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr ""
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr ""
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr ""
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr ""
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr ""
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr ""
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr ""
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr ""
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr ""
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr ""
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr ""
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr ""
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr ""
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr ""
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr ""
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr ""
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr ""
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr ""
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr ""
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr ""
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr ""
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr ""
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr ""
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr ""
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr ""
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr ""
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr ""
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr ""
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr ""
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr ""
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr ""
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr ""
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr ""
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr ""
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr ""
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr ""
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr ""
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr ""
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr ""
+
+#: default_domains.php:1746
+msgid "But"
+msgstr ""
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr ""
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr ""
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr ""
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr ""
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr ""
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr ""
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr ""
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr ""
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr ""
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr ""
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr ""
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr ""
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr ""
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr ""
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr ""
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr ""
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr ""
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr ""
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr ""
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr ""
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr ""
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr ""
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr ""
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr ""
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr ""
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr ""
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr ""
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr ""
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr ""
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr ""
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr ""
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr ""
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr ""
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr ""
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr ""
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr ""
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr ""
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr ""
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr ""
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr ""
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr ""
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr ""
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr ""
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr ""
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr ""
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr ""
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr ""
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr ""
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr ""
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr ""
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr ""

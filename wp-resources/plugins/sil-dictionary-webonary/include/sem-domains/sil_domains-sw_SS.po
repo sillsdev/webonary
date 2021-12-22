@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "Ulimwengu, uumbaji"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "Anga"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "Jua"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "Mwezi"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "Nyota"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "Sayari, vimondo na vinginevyo"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "Hewa"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "Kupuliza hewa"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "Hali ya hewa"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "Upepo"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "Wingu"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "Mvua"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "Theluji, barafu"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "Dhoruba"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "Radi na ngurumo"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "Mafuriko"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "Ukame"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "Dunia"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "Ardhi"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "Mlima"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "Volkeno (Mlima wa moto)"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "Nchi tambarare, uwanda"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "Bonde"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "Chini ya ardhi"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "Msitu, mbuga, jangwa"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "Tetemeko la ardhi"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "Nyenzo, vitu"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "Udongo"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "Mwamba"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "Chuma"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "Madini"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "Kito cha thamani"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "Imara, ya majimaji, ya hewa"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "Kitu cha majimaji"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "Mafuta"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "Gesi (Hewa)"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "Maji"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "Maumbo ya maji"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "Bahari, ziwa"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "Ziwa la matope"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "Mto"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "Chemchemi, kisima"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "Kisiwa, pwani"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "Mwendo wa maji"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "Kutiririka"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "Kumimina"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "Kudondoka"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "Wimbi"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "Utulivu, msukosuko"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "Mawimbi (maji kujaa na kupwa)"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "Kulowa"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "Kukauka"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "Kuwa ndani ya maji"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "Miyeyusho ya maji"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "Ubora wa maji"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "Viumbe hai"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "Viumbe visivyo na uhai"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "Roho za vitu"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "Mmea"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "Mti"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "Kichaka"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "Majani, mitishamba, mimea inayotambaa"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "Uyoga, kuvumwani, ugozi"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "Sehemu za mimea"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "Ukuaji wa mimea"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "Magonjwa ya mimea"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "Mnyama"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "Aina za wanyama"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "Mamalia (wanyama wanaonyonyesha watoto wao)"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "Mamalia wa hali ya juu"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "Wala nyama"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "Wanyama wenye makwato"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "Wanyama wanaotafuna"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "Wanyama wabebao watoto wao katika mfuko tumboni"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "Kakakuona, muhanga"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "Mamalia wa baharini"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "Popo"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "Ndege"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "Wanyama watambaazi"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "Nyoka"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "Mjusi"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "Kobe, kasa"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "Mamba"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "Wanyama wanaoishi nchi kavu na baharini"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "Samaki"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "Papa, samaki taa"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "Wadudu"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "Buibui"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "Wanyama wadogo (minyoo)"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "Sehemu za mnyama"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "Sehemu za ndege"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "Sehemu za mnyama mtambaazi"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "Sehemu za samaki"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "Sehemu za mdudu"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "Sehemu za wanyama wadogo"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "Mzunguko wa maisha ya mnyama"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "Yai"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "Vitendo vya mnyama"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "Mwendo wa mnyama"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "Mnyama alavyo"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "Sauti za wanyama"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "Maskani ya mnyama"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "Kundi la wanyama"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "Wanyama dume na jike"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "Vitu vya asili, mazingira"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "Cha asili"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "Mtu"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "Mwili"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "Kichwa"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "Jicho"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "Sikio"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "Pua"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "Mdomo"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "Jino"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "Kiwiliwili"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "Kiungo"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "Mkono"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "Mguu"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "Vidole vya mkono, vidole vya mguu"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "Ngozi"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "Nywele"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "Mfupa, kiungo na fundo"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "Nyama ya mtu"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "Viungo vya ndani"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "Moyo"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "Tumbo"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "Viungo vya uzazi vya kiume"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "Viungo vya uzazi vya kike"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "Utendaji wa mwili"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "Kuhema, pumzi"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "Kukohoa, kupiga chafya"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "Kutema mate"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "Kamasi"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "Damu"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "Jasho"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "Kukojoa, mkojo"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "Kunya, kinyesi"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "Kufahamu, kuhisi"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "Kuona"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "Kuangalia"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "Kutazama"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "Kuchungua"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "Kuonyesha"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "Kuonekana"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "Kutokea"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "Kupenyeza nuru"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "Kuakisi, kioo"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "Sura"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "Nzuri"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "Mbaya"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "Kitu kinachotumika kwa kuona"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "Kusikia"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "Kusikiliza"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "Sauti"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "Aina za sauti"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "Sauti kubwa"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "Sauti ndogo, utulivu"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "Kuonja"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "Kunusa"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "Mlango wa kugusa"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "Kustarehe"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "Hali ya mwili"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "Kuwa na nguvu"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "Dhaifu"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "Mchangamfu"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "Kuchoka"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "Kupumzika"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "Kuwa na afya"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "Kuugua"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "Kupata nafuu ya ugonjwa"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "Maradhi"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "Utapiamlo, njaa"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "Ugonjwa wa ngozi"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "Ugonjwa wa tumbo"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "Kuoza kwa meno"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "Kujeruhi"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "Kukatwa kiungo cha mwili"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "Sumu"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "Kudhoofika"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "Upofu"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "Uwezo mbaya wa kuona kwa macho"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "Kiziwi"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "Bubu"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "Kasoro za kuzaliwa"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "Sababu za maradhi"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "Dalili ya maradhi"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "Maumivu"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "Homa"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "Kuvimba"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "Kupoteza fahamu"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "Kupumbazika"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "Maono, njozi"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "Kutibu maradhi"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "Mganga, muuguzi"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "Dawa"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "Dawa za mitishamba"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "Hospitali"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "Dawa za kienyeji"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "Kuvia akili"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "Maisha"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "Ndoa"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr "Kuandaa ndoa"
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "Harusi"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "Kutokuoa, kutokuolewa"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "Talaka"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "Upendo wa kusisimua au kuvutia"
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "Mahusiano ya tendo la ndoa"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "Ubikira"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr "Kuvutia kingono"
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "Uasherati"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "Kuzaliwa"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "Mimba"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "Mtoto kabla ya kuzaliwa, kijusi"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "Kuharibika mimba"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "Maumivu na uchungu wa kuzaa"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "Kuzalisha, kumsaidia mwanamke wakati anapojifungua"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "Kuzaa kusiko kwa kawaida"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "Uzazi unaozidi"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "Kuweza kuzaa, kutokuweza kuzaa"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "Sherehe ya kuzaliwa"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "Hatua za maisha"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "Mtoto mchanga"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "Kutunza mtoto mchanga"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "Mtoto"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "Kulea mtoto"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "Kijana"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "Mtu mzima"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr "Mzee"
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "Kukua"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "Mwanzo, jando, unyago"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "Rika"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "Kiume, kike"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "Mwanamume"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "Mwanamke"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "Kufa"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "Kuua"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "Maiti"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "Mazishi"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "Kuomboleza"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "Kuzika"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "Kaburi"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "Kurithi"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "Maisha baada ya kifo"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "Lugha na wazo"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "Nafsi, roho"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "Tabia, hulka"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "Hali ya akili"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "Wepesi"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "Kugundua"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr "Uangalifu"
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "Kudharau"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "Kufikiri"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "Ufahamu"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr "Kufikiri kuhusu"
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "Kuwazia"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "Kuwa na akili"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "Mpumbavu"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "Mantiki"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "Silika"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "Kujifunza"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr "Kujifunza kwa kusoma"
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "Kuhakikisha"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "Kutathmini, kupima"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "Kukisia"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "Kutatua, kufumbua"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr "Kutambua, kuelewa"
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "Kupenda kujifunza"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "Kujua"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "Kujulikana, kutojulikana"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "Eneo la maarifa"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr "Siri"
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "Kufahamu"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "Kuelewa vibaya"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "Kufahamika"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr "Tatanisha"
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "Maoni"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "Kuamini"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr "Amani"
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "Kutoamini"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "Shaka"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr "Kukubaliana na mtu"
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr "Kutokubali"
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr "Kupinga"
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "Falsafa"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "Mtazamo"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "Imani iliyovuka mipaka"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "Kubadili fikra zako"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr "Kuafiki jambo fulani"
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "Kukumbuka"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "Kusahau"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr "Kutambua"
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr "Kukariri"
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr "Kukumbusha"
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "Kutazamia"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "Kutumaini"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "Kukosa tumaini"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr "Kubashiri, kutabiri"
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "Uelekeo"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "Kutaka"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "Kuamua, kupanga"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr "Kusudi, lengo"
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "Kuchagua"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr "Bahati nasibu"
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "Kukusudia, kunuia"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "Kwa kudhamiria"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "Mwenye makusudi au dhamira"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "Mgumu wa moyo"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "Tamaa"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "Kusihi"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr "Kubali kufanya jambo fulani"
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr "Kukataa kufanya jambo fulani"
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "Kuombea"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "Utayari"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "Mvuto"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "Kupendekeza"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "Kushauri"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "Kushawishi"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "Kusisitiza"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "Kushurutisha"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "Kudhibiti"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "Kuonya"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "Kutishia"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr "Kuomba ruhusa"
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr "Kupa ruhusa"
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "Kukataa ruhusa"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "Kuachilia"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr "Kuzuia"
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr "Uhuru wa kufanya unachotaka"
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "Kutoa"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr "Kukubali"
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "Kukataa"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "Hisia"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr "Kuhisi vizuri"
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "Kupenda"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr "Kujisikia vizuri kufanya jambo fulani"
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "Kujiheshimu"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr "Kupendelea"
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr "Kufahamika sana, kupendwa"
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr "Mtindo"
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "Kutosheka"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "Kufurahia juu ya mtu fulani"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "Kupendezwa na mtu fulani"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "Kufurahi"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "Kupumzika"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "Utulivu"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "Kustaajabu"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "Kuwa na shauku"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "Kuchangamka"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "Shauku"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr "Tamaa, kufilisiwa"
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "Kuvutia"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "Kutojali"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "Kutokuwa na mvuto"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "Kujiamini"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr "Kujisikia vibaya"
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "Kujisikia huzuni"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr "Kutokupenda"
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr "Kuchukia"
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr "Kinyaa"
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "Kuvunjwa matumaini"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "Upweke"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr "Kuhangaika"
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "Mshtuko"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "Wivu, kijicho"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "Kutotosheka"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr "Samahani"
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr "Kuwa na aibu"
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr "Kuaibishwa"
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "Kuwa na hasira"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr "Kukerwa"
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr "Kuwa na hofu"
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr "Kuwa na wasiwasi"
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "Kuwa na woga"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "Soni, haya"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr "Kuchanganyikiwa"
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "Mawasiliano"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "Kusema"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "Sauti"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "Kuongea na sauti kubwa"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "Kusema kwa sauti ya chini, kunong'ona"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "Kusema sana"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "Kusema kidogo"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr "Kutokusema kitu"
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "Mtindo wa msemo"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "Kuzungumza vizuri"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "Kuzungumza vibaya"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr "Kuzungumza kuhusu mada au somo"
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "Kutangaza"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "Kuelezea"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr "Kufafanua"
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr "Kutaja"
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "Kutambulisha"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "Kurudia"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "Kufanya muhtasari"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "Kusisitiza, kutia mkazo"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr "Kuhusu, mada"
+
+#: default_domains.php:402
+msgid "True"
+msgstr "Kweli"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr "Kusema ukweli"
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr "Kusema uongo"
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "Kukanusha"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "Kuweka wazi uongo"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr "Halisi"
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "Kuongeza sifa (kutia chumvi)"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "Kuzungumza na wengine"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "Kuita"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr "Kuwasiliana"
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "Kusalimu"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "Kuaga"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "Kusema kwa sauti ya pamoja"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "Kuuliza"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "Kujibu"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "Kufichua"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "Kuficha mawazo yako"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "Mdahalo"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "Kuonyesha"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "Kugombana"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr "Kusifu"
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "Kushukuru"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "Kujipendekeza, kubembeleza"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "Kujigamba"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "Kukosoa"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr "Kulaumu"
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "Kutukana matusi"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "Kudhihaki"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "Kupiga porojo"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr "Kulalamika"
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "Kuahidi"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "Kuhutubia"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "Kusimulia"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "Habari, ujumbe"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "Tamathali za usemi"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "Kuungama"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "Lugha"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "Neno"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "Taarifa"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr "Simulizi"
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "Hadithi, hekaya"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr "Msemo, methali"
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "Kitendawili"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "Mashairi"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "Historia"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "Mapokeo"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "Mazungumzo ya kijinga"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "Lugha chafu"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "Ishara, mfano, alama"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "Ishara za mikono"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "Kuonyesha kitu kwa kidole au mwili"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "Onyesho la sura"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "Kucheka"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr "Kulia, chozi"
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "Kusoma na kuandika"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "Kuandika"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "Maandishi"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "Kusoma"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "Kuchapisha vitabu"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "Kuandika kumbukumbu"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "Orodha"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr "Barua"
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "Kutafsiri jumbe, kueleza jumbe"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "Maana"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "Kisicho na maana"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "Kisichoeleweka"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "Kuonyesha, kudokeza"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "Vyombo vya habari"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "Redio, televisheni"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "Simu"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "Gazeti"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "Sinema"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "Muziki iliyorekodiwa"
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "Mashine za mawasiliano"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "Kufundisha"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "Kuonyesha, kueleza, kufafanua"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "Shule"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "Somo la kufundishia"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr "Darasa, kipindi"
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "Kusahihisha"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "Sayansi"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "Mtihani"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "Jibu katika mtihani"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "Mwenendo wa jamii"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "Mahusiano"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr "Rafiki"
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "Mpenzi"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "Aina za watu"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "Mahusiano ya kikazi"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr "Kumfahamu mtu fulani"
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "Kukutana kwa mara ya kwanza"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "Jirani"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "Matabaka katika jamii"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "Umoja"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "Utengano"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr "Mkimwa"
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "Kujitenga wewe mwenyewe"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "Peke yako"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "Mkinaifu"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "Faraghani, hadharani"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "Kuanzisha uhusiano"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "Kuvunja uhusiano"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "Kuonyesha upendo"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr "Undugu"
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "Kuhusiana kwa kuzaliwa"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "Babu, bibi"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "Baba, mama"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "Kaka, dada"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "Mwana, binti"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "Mjukuu"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "Kaka za wazazi wako, dada za wazazi wako"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "Binamu, watoto wa kaka na dada za wazazi wako"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "Mpwa, watoto wa kaka na dada zako"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "Utaratibu wa kuzaliwa, mpangilio wa kuzaliwa"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "Kuhusiana kwa ndoa"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "Mume, mke"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "Mkwe, shemeji"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "Mjane"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "Yatima"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "Mtoto wa nje ya ndoa"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "Kumlea mtoto asiye wako"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "Asiye na undugu"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "Familia, ukoo"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "Taifa, mbegu"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "Shughuli za kijamii"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr "Kukutana, kuunda kundi"
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "Kualika"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "Kukuta"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "Kukutana"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "Kutembelea"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "Kukaribisha, kupokea"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "Kuonyesha ukarimu"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "Mkutano, mkusanyiko"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "Kushiriki"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "Umati, kundi"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr "Shirika"
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr "Kujiunga na shirika"
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr "Kuondoka kwenye shirika"
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr "Kuwa sehemu ya shirika"
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr "Kundi la kijamii"
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "Tukio la kijamii"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "Sherehe"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr "Maadhimisho, maonyesho"
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "Kusherehekea"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "Muziki"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr "Kutunga muziki"
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "Kupiga muziki"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "Kuimba"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "Mwanamuziki"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "Chombo cha muziki"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "Kucheza ngoma"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "Mchezo wa kuigiza"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "Burudani"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "Mchezo wa mashindano"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr "Mchezo wa karata"
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "Bao"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "Michezo, mashindano ya riadha"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr "Mpira wa miguu, soka"
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr "Mpira wa kikapu"
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "Mazoezi ya mwili"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "Kucheza kamari"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "Kucheza (hasa kwa watoto)"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "Ucheshi"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr "Kuwa siriasi, kutocheka"
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "Likizo"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr "Muda huru"
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "Mwenendo"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr "Mwema, mwadilifu"
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr "Mbaya, mwovu"
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "Kufikia kiwango"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "Chini ya kiwango"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr "Mpevu"
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr "Asiye mpevu"
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr "Mzingativu"
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr "Sifa"
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "Mvumilivu"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "Mwenye pupa"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "Mtu chungu"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr "Kumwajabia mtu"
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr "Kumdharau mtu"
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "Mnyenyekevu"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "Mwenye fahari au majivuno"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr "Kujigamba"
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "Pendo"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr "Chukio"
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "Kutokujali"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "Kuacha pekee"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "Kumtendea mema"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "Kumtendea mabaya"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "Kusaidia"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "Kumzuia au kumpinga mwingine"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "Kushirikiana na"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "Kushindana na"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "Asiye na ubinafsi"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "Ubinafsi"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr "Kumtumia mtu"
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "Kushirikishana na"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "Kutegemeza"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "Kumtunza mtu, kumjalia mtu"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "Kukabidhi kwa kutunzwa"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "Kujiingiza bure"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr "Kuharibu, kuozesha"
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "Kujiingiza kwa nguvu"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr "Kuteka nyara"
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "Mkatili, mwonevu"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr "Mwadilifu, anayesema ukweli"
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "Asiyesema ukweli"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "Mwaminifu"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "Anayetumainiwa"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "Asiyetumainiwa"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "Kudanganya"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "Mnafiki"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "Kujidhibiti nafsi"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "Kutojidhibiti nafsi"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr "Nadhifu"
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr "Si nadhifu"
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr "Kosa"
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr "Kuheshimu, kuadibu"
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "Kutokuwa adibu"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "Kichaa"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "Kubadili mwenendo"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "Ulinganifu"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "Utamaduni"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "Mila, desturi"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "Mazoea"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "Mafanikio, kushindwa"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "Ustawi"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "Taabu"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "Tatizo"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "Hatari"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "Ajali"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "Maafa"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "Kutenganisha, upweke"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "Kuteseka"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "Kuitikia taabu"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr "Mjasiri"
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "Woga"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr "Kukwepa"
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "Hadhari"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "Kutatua tatizo"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "Kuvumilia shida"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "Kunusurika"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "Kumsaidia aliye katika shida"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr "Rehema"
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "Kuhurumia, kusaidia"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "Mpole"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "Kuokoa katika shida"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr "Kulinda"
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "Kuachilia huru kutoka uja au utumwa"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "Nafuu"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "Hatari"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "Bahati"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr "Kuwa na bahati nzuri"
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr "Kuwa na bahati mbaya"
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "Mamlaka"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "Mtu mwenye mamlaka"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "Kuwa na mamlaka"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "Kutumia mamlaka"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "Kuongoza"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "Kuamrisha"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "Nidhamu, kufunza"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "Kuteua, kuagiza"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "Kujiweka chini ya mamlaka"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "Kutii"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "Kutotii"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "Kutumikia"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr "Mtumwa"
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "Kufuata, kuwa mwanafunzi"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "Kuasi mamlaka"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "Huru"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "Kuheshimu"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "Jina la cheo, jina la heshima"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "Kukosa adabu"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "Cheo, hadhi"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "Daraja la juu"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "Daraja la chini"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "Serikali"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr "Mtawala"
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "Familia ya mfalme"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr "Afisa wa serikali"
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "Raia"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "Mgeni"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "Shirika la serikali"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr "Dola zinazotawala"
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "Kutawala"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "Kutiisha"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "Kazi za serikali"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "Polisi"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "Kukamata mhalifu"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "Kuhukumu kusiko rasmi"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "Usuluhishi"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr "Kuwakilisha"
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "Uchaguzi"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr "Siasa"
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "Mkoa"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "Nchi"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "Jiji"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "Mashambani"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "Jumuia"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "Sheria"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "Sheria fulani"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "Kuidhinisha sheria"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "Kuvunja sheria"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "Mahakama ya sheria"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "Afisa wa mambo ya sheria"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr "Utaratibu wa maswala ya kisheria, kesi"
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr "Kuchunguza jinai"
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr "Kutilia shaka"
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "Kushitaki"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr "Kutetea dhidi ya mashitaka"
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "Shahidi, kushuhudia"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "Kubatilisha mashitaka"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "Kuapa, kiapo"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "Kuthibitisha"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "Kuhukumu, kutoa maamuzi"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "Kumwachilia mtu"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "Kushutumu, kupatikana na hatia"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "Hatia"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "Kuadhibu"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "Thawabu"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "Faini"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "Kufunga gerezani, kutia kifungoni"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "Kuadhibu kifo"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "Kufukuza kwa kutenga"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "Kusamehe, kuachilia huru"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr "Kulipia kosa au dhambi"
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "Mkataba wa kisheria"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "Agano"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "Kuvunja mkataba"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "Haki, uadilifu"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "Asiyependelea"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "Kutokuwa na haki"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "Kustahili"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "Kubagua, kutokuwa mwadilifu"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "Kutenda kwa purukushani"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "Kukandamiza, kuonea"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr "Magombano"
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr "Uhasama, uadui"
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr "Kupinga"
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "Kupigana"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr "Kupigania jambo jema"
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr "Kupigana dhidi ya jambo baya"
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "Kushambulia"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "Kuvizia"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "Kutetea, kujihami"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "Kisasi"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "Ghasia"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "Kusaliti"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr "Kuwa na ukali, mjeuri"
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "Adui"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "Vita"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "Kuwashinda watu"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "Kushinda ushindi"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "Kushindwa katika mapigano"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "Kujisalimisha"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "Mateka wa vita, mfungwa wa vita"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "Shirika la kijeshi"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr "Jeshi"
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr "Uanamaji"
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr "Jeshi la anga"
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "Askari"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "Mpelelezi"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "Ngome"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "Silaha, kupiga risasi"
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr "Kupora"
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "Amani"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "Kukemea"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "Kukata rufani"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "Kusuluhisha"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "Kufanya mapatano"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "Kukanusha madai, kukubali masharti"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "Kutubu, toba"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "Kuomba msamaha"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "Kusamehe"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "Kufanya amani"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "Kuacha kupigana"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "Kupatanisha"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "Dini"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "Mungu"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "Kiumbe cha kiroho"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "Theolojia"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "Maandiko matakatifu"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "Muujiza, nguvu ya kiroho"
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "Uchawi"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "Kupagawa na pepo mchafu"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "Kubariki"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "Kulaani"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "Kudura na bahati"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "Unabii"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "Dalili mbaya, uaguzi"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "Kutumia dini, kuzoelea dini"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "Kujitoa wakfu, kumcha Mungu"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "Kusali, kuomba"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "Kuabudu"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr "Ibada ya kidini"
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "Dhabihu"
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "Utakaso wa kidini"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "Mwiko"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "Wokovu"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "Kuweka wakfu"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "Kufunga chakula"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "Mbinguni, jehanamu"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "Ufufuo"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "Shirika la kidini"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "Wanasheria wa dini"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "Ukristo"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "Uislamu"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "Dini ya Kibaniani au Kihindu"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "Ubudha"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "Uyahudi"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr "Upagani, ushenzi"
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr "Vitu vya kidini"
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "Sanamu"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "Mahali pa kuabudia"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "Kupinga dini, dini isiyo halisi"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr "Maisha ya kila siku"
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr "Vifaa vya nyumba"
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "Samani"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "Meza"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "Kiti"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "Kitanda"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "Kabati"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr "Pambo la nyumba"
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "Chakula"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "Maandalizi ya chakula"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr "Mbinu za kupika"
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "Hatua za maandalizi ya chakula"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "Kuondoa gamba au ngozi"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "Kutwanga kwa kutumia kinu na mchi"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "Kusaga unga"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr "Vyombo vya kupikia"
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "Ghala za chakula"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "Kuhudumia chakula"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "Kula"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr "Kuuma, kutafuna"
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "Mlo"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "Karamu"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "Jinsi za kula"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "Njaa, kiu"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "Kushiba, kutosheka"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "Kunywa"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "Kifaa cha kulia"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "Kufunga, kutokula"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "Aina za vyakula"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "Chakula kinachotokana na mimea"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "Chakula kinachotokana na mbegu"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "Chakula kinachotokana na matunda"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "Chakula kinachotokana na mboga au majani"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "Chakula kinachotokana na majani ya mimea"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "Chakula kinachotokana na mizizi"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "Chakula kinachotokana na wanyama"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "Nyama"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "Maziwa na mazao yake"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr "Chakula kinachotokana na mayai"
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "Viambato vya kupikia"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "Sukari"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "Chumvi"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "Viungo"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "Chachu"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "Mafuta ya kupikia"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "Chakula kilichokwisha kupikwa"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "Chakula kilicho mwiko"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr "Kinywaji (kisicholevya)"
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "Kinywaji cha kulevya"
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "Maandalizi ya kileo"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr "Mlevi"
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr "Tumbaku"
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr "Dawa za kulevya"
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr "Dawa zinzochangamsha mtu"
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "Mavazi"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr "Mavazi ya wanaume"
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr "Mavazi ya wanawake"
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr "Nguo za kimila"
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "Nguo kwa matukio maalumu"
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr "Nguo kwa ajili ya watu maalumu"
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr "Sehemu za mavazi"
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr "Kuvaa nguo"
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr "Kuwa uchi"
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr "Mtindo wa mavazi"
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "Urembo"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr "Mapambo kwenye mwili, mapambo ya vito vya thamani"
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr "Vipodozi"
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr "Kutunza nywele"
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr "Kuchana nywele"
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr "Kusuka nywele"
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr "Kuweka rangi kwenye nyweli"
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr "Mitindo ya nywele"
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr "Kunyoa nywele, kukata nywele"
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr "Kunyoa"
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr "Kutunza meno"
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr "Kupaka mafuta au marashi kwenye mwili"
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr "Kovu la ibada"
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr "Tohara"
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr "Kutunza kucha za vidole"
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "Moto"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr "Kuwasha moto"
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr "Kutunza moto"
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "Kuzima moto"
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr "Kuwaka kwa moto"
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr "Matokeo ya moto"
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr "Vitu vinavyoweza kuwaka"
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr "Mahali penye moto"
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr "Kusafisha"
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr "Safi, chafu"
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr "Kuoga"
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr "Kuosha vyombo"
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr "Kufua nguo"
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr "Kufagia"
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr "Kupangusa, kufuta"
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr "Usingizi"
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr "Kulala usingizi"
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr "Kuota ndoto"
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr "Kuamka"
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr "Kusimamia nyumba"
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr "Kuishi, kukaa"
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "Kazi na shughuli"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "Kazi"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "Mfanyakazi"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "Mtaalamu, mzoefu"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "Mbinu"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr "Kujaribu, jaribio"
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "Kutumia"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr "Kuwa na manufaa"
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr "Kutokuwa na manufaa"
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "Kupatikana"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "Kuishia"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "Kuangalia au kutunza kitu fulani"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "Kutumia vibaya"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "Kufanya kazi vizuri"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "Mwangalifu"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "Kufanya kazi kwa bidii"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "Kuwa na majukumu mengi, kuwa bizi"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "Nguvu"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "Kumaliza"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "Kuwa na malengo yanayosukuma"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "Kufanya kazi vibaya"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "Mzembe, asiyetumainika"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "Mvivu"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "Kukata tamaa"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "Mpango"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr "Kupanga tukio"
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "Kubatilisha au kutangua tukio"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "Kujiandaa"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr "Kuandaa kitu fulani kwa kutumika"
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "Kuwa na matokeo yanayotarajiwa"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "Madhubuti"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "Nafasi, fursa"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "Vigumu, isiyowezekana"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "Rahisi, inayowezekana"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "Kufanikiwa"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "Kushindwa"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr "Manufaa, faida"
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "Utoshelezi wa kazi"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "Asiyeajiriwa, asiyefanya kazi"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "Kilichotengenezwa kwa mkono"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "Kisicho cha asili"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "Mzoefu"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "Kuzoea"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "Kilimo"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "Kuotesha mazao, kulima mazao"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "Kuotesha nafaka, kulima nafaka"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr "Kuotesha mchele, kulima mchele"
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr "Kuotesha ngano, kulima ngano"
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr "Kuotesha mahindi, kulima mahindi"
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr "Kuotesha au kulima mazao yanayotokana na mizizi"
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr "Kuotesha viazi, kulima viazi"
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr "Kulima muhogo"
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr "Kuotesha au kulima mboga za majani"
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr "Kuotesha au kulima matunda"
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr "Kuotesha zabibu, kulima zabibu"
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr "Kulima ndizi"
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr "Kuotesha nyasi, kulima nyasi"
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr "Kuotesha miwa, kulima miwa"
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr "Kuotesha tumbaku, kulima tumbaku"
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "Kuotesha maua"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "Kuotesha miti"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr "Kuotesha nazi, kulima nazi"
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr "Kuotesha kahawa, kulima kahawa"
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "Maandalizi ya mashamba"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "Kusafisha shamba"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "Kulima shamba"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "Kuweka mbolea shambani"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "Kupanda shamba"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "Kutunza shamba"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "Kufyeka nyasi"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr "Kung'oa mimea"
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "Kumwagilia"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "Kukatia mimea"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "Kutotunza mimea"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "Mavuno"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "Malimbuko"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "Uhaba wa mavuno"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "Kukusanya mimea pori, kuchuma"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "Uzao wa mmea"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "Kutengeneza mavuno"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "Kupepeta nafaka"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "Kusaga nafaka"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "Kupura nafaka"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "Kuhifadhi mavuno, kuweka akiba"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr "Mfanyakazi shambani"
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr "Kifaa cha kilimo"
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr "Eneo la shamba"
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "Ufugaji"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "Wanyama wanaofugwa"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "Ng'ombe"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "Kondoo"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "Mbuzi"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "Nguruwe"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "Mbwa"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "Paka"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "Mnyama anayebeba mizigo"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "Kuchunga mifugo"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "Kukamua maziwa"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "Kuchinja mnyama"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "Uzalishaji wa sufu"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "Kufuga ndege wa kufugwa"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "Kuku"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "Bidhaa zilizotokana na wanyama"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "Elimu ya maradhi ya wanyama"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "Magonjwa ya wanyama"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "Kuhasi mnyama"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "Kuwinda wanyama na kuvua samaki"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "Kuwinda wanyama"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "Kumfuata mnyama wa porini"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "Kutega"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "Kuwinda ndege"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "Ufugaji wa nyuki"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "Uvuvi"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "Kuvua na nyavu"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "Kuvua na ndoano"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "Vifaa vya uvuvi"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "Mambo wanayofanyiwa wanyama"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "Ujenzi"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "Majengo"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr "Nyumba"
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "Aina za nyumba"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr "Eneo, Kiwanja"
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr "Uwanja"
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr "Ua, ukuta"
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "Sehemu za jengo"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "Ukuta"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "Paa, dari"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "Sakafu"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "Mlango"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "Dirisha"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "Msingi"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "Chumba"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr "Ghorofa"
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "Vifaa vya kujengea"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "Vifaa na utunzaji wa majengo"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "Muundombinu"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "Barabara"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "Mpaka"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr "Kazi, shughuli"
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "Ushonaji"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "Aina ya kitambaa"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "Kusokota nyuzi"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "Kufuma"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr "Kufuma kitambaa"
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "Kufanya kazi na madini"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "Uchimbaji"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "Kuyeyusha mawe ya madini"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "Kufanya kazi na chuma"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "Ufinyanzi, kufanya kazi na udongo"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "Kufanya kazi na kioo"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "Kufanya kazi na mafuta au gesi"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "Kufanya kazi na mawe"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "Uashi, kufanya kazi na matofali"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "Kemia, kufanya kazi na dawa au kemikali"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "Kulipua"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "Useremala, kufanya kazi na mbao"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "Ukataji miti"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "Mbao za kujengea"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "Kufanya kazi na karatasi"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "Ufundi"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "Kamba"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr "Kufuma kikapu na mkeka"
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "Kufanya kazi na ngozi ya mnyama"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "Kufanya kazi na mifupa"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "Sanaa"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "Kuchora, kupaka rangi"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "Kupiga picha"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "Uchongaji (vinyago)"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "Kufanyia kazi ardhi"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "Kufanyia kazi maji"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "Fundi bomba"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "Kuwasilisha maji"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "Kuzuia maji"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "Kufanya kazi baharini"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "Kufanyia kazi mashine"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "Kufanyia kazi umeme"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "Zana"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "Zana za kukatia"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "Zana za kutobolea"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "Zana za kuchimbia"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "Zana za kutwangia"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "Zana za kubebea"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr "Zana za kuinulia"
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr "Zana za kufungia"
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr "Zana za kushikilia"
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "Chombo, kopo"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "Mfuko"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "Ala ya kisu"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "Sehemu za zana"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "Mashine, mtambo"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "Mambo ya fedha"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "Utajiri, kupata mali"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr "Kumiliki"
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr "Mtajiri"
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "Maskini"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "Kuweka akiba ya mali"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr "Mali, miliki"
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "Kukusanya mali"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "Kuzalisha mali"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "Kuleta faida"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "Kupoteza mali"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "Wekevu"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "Mroho"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr "Kukusanya"
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr "Kuchuma pesa"
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "Kugawa utajiri"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "Kutolea, kuchangia"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "Mkarimu"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "Choyo"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "Kuombaomba"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr "Shughuli za kifedha"
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "Kununua"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "Kuuza"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr "Bei"
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "Bei ghali"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "Bei rahisi"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "Bure"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "Mapatano ya bei"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "Kulipa"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "Kukodi, kupanga"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "Kutumia"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "Soko, duka"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "Biashara, uchuuzi"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "Kukopa, kuazima"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "Kukopesha"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "Kuweka rehani"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "Kuwiwa, kudaiwa"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "Kulipia deni"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "Mpe, maingizo ya fedha"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "Pesa"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "Vima vya pesa"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "Uhasibu"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "Ushuru"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "Kutokuwa mwaminifu katika fedha"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "Kuiba"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "Kupunja"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "Kupokonya fedha"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "Kuchukua kwa nguvu"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "Rushwa"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr "Kufanya magendo"
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "Shirika la biashara"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "Uongozi"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr "Kuajiriwa na mtu"
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "Elimu ya soko, uuzaji"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "Biashara"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "Uchumi"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "Bima"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "Vitendo vya mwili"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "Mkao"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "Kusimama"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "Kukaa, kuketi"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "Kulala chini"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "Kupiga magoti"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "Kuinama"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "Kuegama"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "Mkao ulionyooka"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "Mkao wa ulegevu"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "Kuinamia chini"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "Kusogeza au kutikisa sehemu ya mwili"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "Kusogea, kwenda"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "Namna za mwendo"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "Kutembea"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "Kukimbia"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "Kutambaa"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "Kuruka juu"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "Kwenda kwa haraka"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "Kwenda polepole"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "Kuzurura"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "Kwenda kwa kudundika"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "Kwenda kwa maringo"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "Kutembea kwa shida, kujikwaa"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "Kuteleza"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "Imara, geugeu"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "Kusawazisha"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr "Kwenda au kusogea kwa kupiga kelele"
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "Kwenda kwa mwelekeo mmoja"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "Kwenda mbele"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "Kwenda nyuma"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "Kwenda kwa upande"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "Kwenda juu"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "Kwenda chini"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr "Kuanguka"
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "Kugeuka"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "Kwenda kwa duara"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "Kusogea mbele na nyuma"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "Kwenda moja kwa moja bila kugeuka"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "Kwendea"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "Kusogea mbali"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "Kwenda"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "Kuja"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "Kuondoka"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "Kufika, kuwasili"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "Kuingia"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "Kutoka"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "Kupita"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "Kurudi"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "Kusafiri"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "Kusafiri kwa nchi kavu"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "Gari"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr "Reli"
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "Kusafiri kwa njia ya majini"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "Meli, mashua"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "Kuogelea"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "Kupiga mbizi, kuzamia majini"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "Kuruka angani"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "Kusafiri katika anga za juu"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "Kuhamia"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr "Njia"
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "Kupoteza njia"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "Ramani"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "Kufuatana, kusindikiza"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "Kutangulia"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "Kufuata"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "Kuongoza kwa kuonyesha njia"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr "Kuongozana"
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "Kufuata ili kukamata"
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr "Kukamata"
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "Kuzuia kitu kisiende"
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "Kutoroka"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "Kuweka huru"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "Kutokwenda, kutosogea"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "Kuacha kusogea"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "Kukaa, kubaki"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "Kungojea, kusubiri"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "Kumtuma mtu"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "Kusogeza kitu"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "Kubeba"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "Kurusha"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "Kudaka"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "Kutikisa"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "Kuangusha"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "Kuweka kiwima"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "Kusogeza kitu katika uelekeo mmoja"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "Kuweka mbele"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "Kuweka nyuma"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "Kuweka pembeni"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "Kuinua juu"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "Kutundika"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "Kushusha kitu"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "Kuingiza"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "Kutoa kitu kutoka kitu kingine"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "Kuvuta"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "Kusukuma"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "Kupeleka mahali"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "Kuleta kitu kutoka mahali fulani"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "Kurudisha kitu"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "Kutuma"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "Kufukuza"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr "Kuhamisha, kuswaga"
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "Kusogeza kitu kwa mikono"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "Kugusa"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "Kuokota"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "Kuweka chini"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "Kushika"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "Vitendo vya mikono"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "Kuegemeza"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "Kueneza"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "Kugeuza kitu"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "Kufungua"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "Kufunga"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "Kuziba, kuzuia"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "Kuweka mpaka"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "Kufunika"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "Kufunua"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "Kufungia"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr "Kupaka, kuenea"
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr "Kusafirisha"
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "Kuwa na"
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "Kupa"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "Kupokea"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr "Kupata"
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "Kugawia"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "Kubaki na kitu"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "Kuacha kitu"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "Kutupa"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr "Kutokuwa na"
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr "Kupanga"
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "Kukusanya"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "Kutenga, kutawanya"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "Kuingiza katika kundi"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "Maalumu"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "Kuunganisha"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr "Kuambatana"
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr "Kushikamana"
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr "Kuongeza"
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "Kuondoa, kuchangua"
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "Kuchanganya"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "Kuwa fasaha au safi, kisichochanganywa"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "Kufunga, kupiga fundo"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "Kamba, uzi"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "Kupindamana"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr "Kupanga, kurekebisha"
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "Kupangua"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "Kuweka badala ya"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "Kusogea kwa vitu vingi"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "Rahisi, yenye utata"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr "Kuweka"
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr "Mzigo, lundo"
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr "Kujaza, kufunika"
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "Kuficha"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "Kutafuta"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "Kugundua, kupata"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "Kupoteza"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "Matokeo ya mgongano"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "Kupiga"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "Kulenga shabaha"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "Kupiga teke"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "Kubonyeza"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "Kuchua"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "Kusaga"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "Kutia doa"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "Kugawanya katika vipande"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "Kuvunja"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "Ufa"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "Kukata"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "Kuchana, kupasua"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "Kufanya shimo"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "Kuchimba"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr "Kuharibika, kuchakaa"
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "Kuharibu kiasi"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "Kubomoa"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "Kuteketeza, kuharibu kabisa"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "Kukarabati"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "Hali"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "Kiasi"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "Namba"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "Namba kamili"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr "Moja"
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr "Mbili"
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "Namba za mpango"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "Idadi ya mara"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "Kuleta wingi"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr "Kundi likihesabika"
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "Sehemu"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr "Mifuatano ya namba"
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "Kuhesabu"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr "Hisabati"
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr "Kujumlisha namba"
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr "Kutoa namba"
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr "Kuzidisha namba"
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr "Kugawanya namba"
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr "Wingi"
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr "Tele"
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr "Chache"
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "Kundi la vitu"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "Zaidi"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "Ndogo zaidi"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "Kuongezeka"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "Kupungua"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "Yote"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "Baadhi"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr "Bila, hakuna kitu"
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "Zote Mbili"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr "Karibu yote"
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr "Zaidi, kidogo"
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "Karibu"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "Tu"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr "Kamili"
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr "Kukadiria"
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "Wastani"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr "Zima, kamili"
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "Sehemu"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr "Kipande"
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr "Kutosha"
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr "Ya ziada"
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr "Utovu"
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr "Hitaji"
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr "Kubaki, salio"
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "Kujaa"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "Tupu"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "Kubwa"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "Ndogo"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr "Ndefu"
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr "Urefu Mdogo"
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "Mrefu"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr "Fupi"
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr "Upana na unene"
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr "Kitu chembamba"
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr "Mtu mnene"
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr "Mtu mwembamba"
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "Pana"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "Finyu"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr "Eneo kubwa"
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr "Chombo kikubwa, ujazo"
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr "Umbali"
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "Mbali"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "Karibu"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "Juu"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "Chini"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "Urefu wa kwenda chini"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "Kukaa vizuri, saizi"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr "Kukaza"
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr "Kulegea"
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "Kukwama"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "Kupima"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr "Kupima uzito"
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "Nzito"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "Nyepesi kwa uzito"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "Sifa"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "Umbo"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "Ncha, nukta"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "Mstari"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "Kunyooka"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "Bapa"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "Mlalo"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "Wima"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "Kuegemea, kuinama"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr "Kufanya kisinyooke"
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr "Kuviringisha"
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "Kusokota"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr "Kukunja"
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "Mviringo"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "Mbonyeo"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "Mbinuko"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr "Tupu"
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "Mraba"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr "Ruwaza, mchoro"
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "Mlingano"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "Kunyosha"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "Msokotano"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "Laini"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "Kukwaruza"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "Kali"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "Kuchongoka"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "Butu"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "Mfuo"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "Nuru"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "Angavu"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "Chanzo cha nuru"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "Yenye kung'aa"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "Giza"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "Kivuli"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "Rangi"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "Nyeupe"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "Nyeusi"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "Rangi ya kijivu"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "Rangi za upinde wa mvua"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "Rangi za wanyama na madoadoa ya wanyama"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr "Kubadilisha rangi"
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr "Yenye rangi nyingi"
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr "Kuakisi mwanga"
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr "Joto"
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "Baridi"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr "Aina, namna"
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "Asili, tabia"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "Kulinganisha"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "Sawasawa"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "Kufanana"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "Tofauti"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "Nyingine"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr "Mbalimbali"
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr "Kinyume cha"
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "Kawaida"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "Sifa za kawaida"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "Isiyo ya kawaida"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "Ya pekee"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "Ya ajabu"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "Mfano, kiolezo"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "Kuiga"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr "Kunakili"
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr "Nyenzo, kutenganezwa na"
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "Iliyo na nguvu, dhaifu"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "Ngumu, thabiti"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "Nzito, yenye kupindika"
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "Nzito"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "Nyororo"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "Njema"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "Mbaya"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr "Bora"
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr "Mbaya zaidi"
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "Iliyokamilika"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "Ya kadiri"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "Muhimu"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "Ya msingi"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "Kuboresha"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr "Sahihi, ya kufaa"
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr "Si sahihi, isiyofaa"
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "Kufalia"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr "Kupatana"
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr "Kuoza"
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr "Kutu"
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "Dosari"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "Takataka"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "Kuhifadhi"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "Thamani"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr "Kupambika"
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "Sahili, rahisi"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "Fahari"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "Muda"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "Kipindi cha muda"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "Kalenda"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "Siku, mchana"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "Usiku"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr "Jana, leo, kesho"
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "Saa la siku"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "Wiki"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "Siku za wiki"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "Mwezi"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "Miezi ya mwaka"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "Majira"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "Mwaka"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "Vipindi katika historia"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "Siku maalumu"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "Kuchukua muda"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "Muda mfupi"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "Muda mrefu"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "Milele"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "Kwa muda tu"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "Muda usio dhahiri"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "Kujua majira, kujua saa"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr "Kupanga saa"
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr "Mitambo inayoonyesha saa"
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "Muda unaohusiana"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "Taratibu, ufuatano"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr "Mfululizo"
+
+#: default_domains.php:1532
+msgid "First"
+msgstr "Ya kwanza"
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr "Inayofuata, ijayo"
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr "Ya mwisho"
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "Ya kawaida"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr "Kipokee"
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr "Kabla ya"
+
+#: default_domains.php:1538
+msgid "After"
+msgstr "Baada ya"
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr "Kutokea pamoja"
+
+#: default_domains.php:1540
+msgid "During"
+msgstr "Wakati wa"
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr "Muda mwafaka"
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "Kuwahi, mapema"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "Kwa wakati wake"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "Kuchelewa"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "Kukawisha"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "Kuahirisha"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr "Wakati wenye hali fulani"
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr "Kuanzisha"
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr "Mwanzo"
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr "Kuachisha"
+
+#: default_domains.php:1551
+msgid "End"
+msgstr "Mwisho"
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "Mpaka"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr "Tangu"
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "Muda uliopita"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr "Hivi karibuni"
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "Muda uliopo"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "Sasa"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "Muda ujao"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "Karibu"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "Bado"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "Mwishowe"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr "Moja kwa moja"
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "Umri"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr "Changa"
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr "Kizee, kisicho changa"
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "Mpya"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr "Cha zamani, kisicho kipya"
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr "Cha kisasa"
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr "Kisicho cha kisasa"
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "Mara moja tu"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "Tena"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "Pengine"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr "Mara kwa mara"
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "Wakati wote"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "Kila mara"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "Kamwe"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr "Kuendelea, kustahamili"
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "Kukatiza"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "Kuanza tena"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "Muda baina ya matukio mawili"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "Mbio"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "Haraka"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "Polepole"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "Ghafla"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "Mahali"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr "Hapa, pale"
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "Mbele"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "Nyuma"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "Pembeni"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "Kuzunguka"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "Katikati ya"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "Kukaa juu"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "Juu"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "Chini"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "Ndani"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr "Nje"
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr "Kugusana, mgusano"
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr "Kando ya"
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "Ng'ambo"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "Mahali pasipo dhahiri"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "Mwelekeo"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr "Mwelekeo wa mbele"
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr "Mwelekeo wa nyuma"
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "Kulia, kushoto"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr "Mwelekeo wa juu"
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr "Mwelekeo wa kwenda chini"
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr "Kutoka"
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr "Kuelekea"
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "Kaskazini, kusini, mashariki, magharibi"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "Kuwepo mahali"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "Kutokuwepo"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "Eneo"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "Ujirani"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "Kutwaa eneo"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "Nafasi kwenye eneo"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "Nafasi kati ya"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr "Mahusiano ya mahali pa matukio"
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr "Kuwa na ndani"
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "Sehemu"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr "Sehemu ya mbele"
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr "Sehemu ya nyuma"
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr "Sehemu ya juu"
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr "Sehemu ya chini"
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr "Sehemiu ya pembeni"
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr "Sehemu ya ndani"
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr "Sehemu ya nje"
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr "Sehemu ya katikati"
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr "Sehemu ya ukingo"
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr "Sehemu ya kikomo"
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr "Sarufi"
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr "Maneno ya kawaida"
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr "Kuwa"
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr "Kuwepo"
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr "Kuwa, kubadili hali"
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr "Kuwa na"
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr "Uangamaji"
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr "Kufanya, kutenda"
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr "Kutokea"
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr "Kuitikia"
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr "Kuumba"
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr "Kupanga"
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr "Kutenganeza, kufanya"
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr "Kubadili kitu"
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr "Vihusishi vya tukio"
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr "Kitu"
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "Kitu cha maumbile, cha kiroho"
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr "Hali"
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr "Vivumishi vya kawaida"
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr "Kielezi cha kawaida"
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr "Aina za maneno"
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr "Vihusishi"
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr "Vielezi"
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr "Viwakilishi"
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "Viwakilishi jirejee"
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "Viwakilishi jumla"
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "Viwakilishi rejeshi"
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr "Maneno ya maswali"
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "Viwakilishi onyeshi"
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr ""
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr ""
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr ""
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr ""
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr ""
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr ""
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr ""
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr ""
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr ""
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr ""
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr ""
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr ""
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr ""
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr ""
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr ""
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr "Kiwango"
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr ""
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr ""
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr ""
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr ""
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr ""
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr ""
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr "Kufanya kwa nguvu"
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "Uangamaji wa kiangama"
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "Viambajengo vya kisemantiki vinavyohusu vitenzi"
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "Nyakati na hali za vitenzi"
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr "Nyakati za vitenzi"
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "Hali ya mwendo wa kitenzi"
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "Hali ya kutendeka"
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr "Nyakati za vitenzi zinazohusiana"
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "Vipengele vya dhamira vinavyomhusu mtendi"
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr ""
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr ""
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr "Lazima"
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr "Dhamira"
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr "Agizi"
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr "Dhamira ya kuonya au kuhimiza"
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr "Ulizi"
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "Dhamira za ufahamu"
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr ""
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr ""
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr ""
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr "Iwezekanayo"
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr "Isiyo na hakika"
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr ""
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr ""
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr ""
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr ""
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr ""
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr ""
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr ""
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr "Ushahidi"
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr "Utathmini"
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr ""
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr ""
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "Vitambulishi vonavyotazamia jibu la uthibitisho"
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "Vitambulisho vinavyotazamia jibu la ukanushaji"
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr ""
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "Kishazi elezi"
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr "Uhusika"
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr ""
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "Mnufaishwa wa tukio"
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr "Uhusika wa ala"
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr "Njia"
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr ""
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "Hali zinazoambatana"
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr ""
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr ""
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr ""
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr ""
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr ""
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "Matukio yanayofanana kimaana"
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr ""
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr ""
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr ""
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr ""
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr ""
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "Uhusika wa yambwa tendwa"
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr ""
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr ""
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr ""
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr ""
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "Mahusiano ya ratibu"
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr ""
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr ""
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr "Mwandamano"
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr "Mahusiano ya muungano"
+
+#: default_domains.php:1746
+msgid "But"
+msgstr ""
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr ""
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr ""
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr "Utengano"
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr "Mgawo"
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr "Usawa"
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr "Mahusiano ya uegemezi"
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr "Asili"
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "Mpaka wa kiini cha habari"
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr ""
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "Mahusiano ya mlingano"
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr "Msingi"
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr ""
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr ""
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr "Pasipo sababu"
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr "Matokeo"
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr "Pasipo matokeo"
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr "Kusudi"
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr "Pasipo kusudi"
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "Sharti"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr "Vipashio vya kuridhia"
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr "Vitambulishi vya usemi"
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr "Vipashio vya mpito"
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "Vipashio vya mkazo"
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "Vipashio vya usikivu"
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "Vipashio vya kuita kwa jina au cheo"
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "Vipashio vya utambulisho"
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr ""
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr ""
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr ""
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr "Jina"
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr "Jina la mtu"
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr "Majina ya watu"
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr "Majina ya familia"
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr "Majina ya ukoo"
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr "Majina ya kabila"
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr "Majina ya lugha"
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr ""
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "Majina ya wapenzi"
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr ""
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr "Majina ya nchi"
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr "Majina ya mikoa na ya maeneo"
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr "Majina ya miji na vijiji"
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr "Majina ya mitaa"
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "Majina ya vitu katika anga"
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr "Majina ya mabara"
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr "Majina ya milima"
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "Majina ya bahari na ya maziwa"
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr "Majina ya mito"
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr ""
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr ""
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr ""
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr ""

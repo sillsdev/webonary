@@ -78,13 +78,23 @@ class Webonary_Configuration
 	{
 		global $wpdb;
 
-		if (is_null($language_code))
-			$language_code = '';
-		else
+		if (is_null($language_code)) {
+
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT s.language_code, MAX(t.`name`) AS `name`
+FROM {$wpdb->prefix}sil_search AS s
+LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
+WHERE IFNULL(s.language_code, '') <> ''
+GROUP BY s.language_code
+ORDER BY s.language_code
+SQL;
+		}
+		else {
 			$language_code = trim($language_code);
 
-		/** @noinspection SqlResolve */
-		$sql = <<<SQL
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
 SELECT s.language_code, MAX(t.`name`) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
 LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
@@ -92,7 +102,9 @@ WHERE IF(%s = '', s.language_code, %s) = s.language_code
 GROUP BY s.language_code
 ORDER BY s.language_code
 SQL;
-		$sql = $wpdb->prepare($sql, array($language_code, $language_code));
+			$sql = $wpdb->prepare($sql, array($language_code, $language_code));
+		}
+
 
 		return $wpdb->get_results($sql, 'ARRAY_A');
 	}

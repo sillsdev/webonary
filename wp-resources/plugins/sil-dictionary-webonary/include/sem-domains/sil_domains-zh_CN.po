@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "宇宙、万物"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "天空"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "太阳"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "月亮"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "星星"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "行星"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "空气"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "吹气"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "天气"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "风"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "云"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "雨"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "雪、冰"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "风暴"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "闪电、雷"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "洪水"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "干旱"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "世界"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "陆地"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "山"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "火山"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "平原、高原"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "山谷"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "地下"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "森林、草原、沙漠"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "地震"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "物质、物体"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "土壤、尘土"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "岩石"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "金属"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "矿物"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "宝石"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "固体、液体、气体"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "液体"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "油"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "气"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "水"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "水体"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "海、湖"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "沼泽"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "河"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "泉、井"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "岛、岸"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "水的流动"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "流动"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "倾倒"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "滴"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "波浪"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "平静、起伏"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "潮水"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "湿"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "干"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "在水里"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "水溶液"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "水的质量"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "生物"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "死物"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "灵"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "植物"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "树"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "灌木"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "草、药草、藤蔓"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "苔藓、真菌、藻类"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "植物的组成部分"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "植物的生长"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "植物疾病"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "动物"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "动物的种类"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "哺乳动物"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "灵长目动物"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "食肉动物"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "有蹄动物"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "啮齿目"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "有袋目"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "食蚁动物、土豚"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "海洋哺乳动物"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "蝙蝠"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "鸟"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "爬行动物"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "蛇"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "蜥蜴"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "龟"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "鳄鱼"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "两栖动物"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "鱼"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "鲨鱼、鳐鱼"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "昆虫"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "蜘蛛"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "小型动物"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "动物身体的组成部分"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "鸟类身体的组成部分"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "爬行动物身体的组成部分"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "鱼身体的组成部分"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "昆虫身体的组成部分"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "小型动物的身体组成部分"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "动物的生命周期"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "蛋"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "动物的行为"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "动物的动作"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "动物吃东西"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "动物发出的声音"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "动物的家"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "动物群"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "动物的雌雄"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "自然、环境"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "天然"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "人"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "身体"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "头"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "眼睛"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "耳朵"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "鼻子"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "嘴"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "牙齿"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "躯干"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "肢体"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "手臂"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "腿"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "手指、脚趾"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "皮肤"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "毛发"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "骨头、关节"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "肉"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "内脏"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "心脏"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "胃"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "男性器官"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "女性器官"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "身体功能"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "呼吸"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "咳嗽，打喷嚏"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "唾液、口水"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "鼻涕"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "血、流血"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "汗"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "撒尿、小便"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "排泄、粪便"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "感官，察觉"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "看见"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "看"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "察看"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "核查"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "显示，让人看见"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "可见"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "显露"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "透明"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr ""
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "外表"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr ""
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr ""
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "观看的工具"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "听见"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr ""
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "声音"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "声音的类型"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr ""
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr ""
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "食物的味道"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "气味"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "触觉"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "舒服"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "身体状况"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "强壮"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "虚弱"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr ""
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "累"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "休息"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "健康"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "生病"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "恢复"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "疾病"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "营养不良、饥饿"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "皮肤病"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "胃肠性疾病"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "蛀牙"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr ""
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr ""
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "毒药"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "残疾"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "失明"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "弱视"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "聋"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "哑"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr ""
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr ""
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr ""
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "痛"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "发烧"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "肿胀"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "意识不清"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "茫然、困惑"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "幻象、幻觉"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "治疗疾病"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "医生、护士"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "药"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "药草"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "医院"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "传统医学"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr ""
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "生命"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "婚姻"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr ""
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "婚礼"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "未婚"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "离婚"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr ""
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "性关系"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "童贞"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr ""
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr ""
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "出生"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "怀孕"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "胎儿"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "流产"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "分娩和产痛"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "帮助生产"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "非正常生产"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "多胎"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr ""
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "出生仪式"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "生命的各阶段"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "婴儿"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "照顾婴儿"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "孩子"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "抚养孩子"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "青年"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "成年"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr ""
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr ""
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "成人"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "同龄人"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "男、女"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "男人"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "女人"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "死"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "杀人"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "尸体"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "葬礼"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "哀悼"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "埋葬"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "坟墓"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr ""
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr ""
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "语言和思想"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "灵、灵魂"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "性格"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "精神状态"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "警惕"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "注意"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr ""
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "忽视"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "思考"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "思想"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr ""
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "想象"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "聪明"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "愚蠢"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "逻辑"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "本能"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "学习"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr ""
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "核查"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "评估、试验"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "猜测"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "解决"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr ""
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "学习愿望"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "知道"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "已知、未知"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "知识领域"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr ""
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "理解"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "误解"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "可理解的"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr ""
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "看法"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "相信"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr ""
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "不信"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "怀疑"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr ""
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr ""
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr ""
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "哲学"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "态度"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "极端的看法"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "改变思想"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr ""
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "记住"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "忘记"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr ""
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr ""
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr ""
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "期待"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "希望"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "没有希望"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr ""
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "倾向"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr ""
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "决定、计划"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr ""
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "选择"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr ""
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "打算"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "故意"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "决意"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "固执"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "情欲"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "要求"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr ""
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr ""
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "调解"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "愿意"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "影响"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "提议"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "建议"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "说服"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "坚持"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "强迫"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "控制"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "警告"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "威胁"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr ""
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr ""
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr ""
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "免除"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr ""
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr ""
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "提供"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr ""
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "回绝"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "情绪"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr ""
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "喜欢、爱"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr ""
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "自豪"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr ""
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr ""
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr ""
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "满意"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "为…开心"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "因…而开心"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "快乐"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "放松"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "平静"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "惊奇"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "感兴趣"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "兴奋"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "热情"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr ""
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "吸引"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "冷漠"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "乏味"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "自信"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr ""
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "忧伤"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr ""
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr ""
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr ""
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "失望"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "孤独"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr ""
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "打击"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "嫉妒"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "不满"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr ""
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr ""
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr ""
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "生气"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr ""
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr ""
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr ""
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "紧张"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "害羞、胆小"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr ""
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "传达"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "说"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "声音"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "喊叫"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "说话轻声"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "话多"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "话少"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr ""
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "说话的方式"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "能言"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "口拙"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr ""
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "宣布"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "描述"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr ""
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr ""
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "介绍"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "重复"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "总结"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "强调"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr ""
+
+#: default_domains.php:402
+msgid "True"
+msgstr "真实"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr ""
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr ""
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "矛盾"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "暴露虚假"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr ""
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "夸张"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "交谈"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "呼、叫"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr ""
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "问候"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "告别"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "一齐说"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "问"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "答"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "揭露"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "隐藏你的想法"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "争论"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "表明、证实"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "争吵"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr ""
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "感谢"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "奉承"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "夸口"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr ""
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr ""
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "侮辱"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "嘲弄"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "闲话"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr ""
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "承诺"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "演说"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "报告"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "新闻、消息"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "比喻"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "承认"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "语言"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "单词"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "信息"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr ""
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "寓言、神话"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr ""
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "谜语"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "诗"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "历史"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "口传的传统"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "愚蠢的谈话"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "冒犯语"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "符号、标志"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "肢体语言"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "指着"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "面部表情"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "笑"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr ""
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "读写"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "写"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "书面材料"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "读"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "出版"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "记录"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "清单、列表"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr ""
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "解释信息"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "意义"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "没有意义"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "难以理解"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "展示、表明"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "大众传播"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "广播、电视"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "电话"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "报纸"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "电影"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "录音"
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "通信传播设备"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "教导"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "展示、解释"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "学校"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "教导的主题"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr ""
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "纠正"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "科学"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "测验"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "在测验中回答问题"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "社交行为"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "关系"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr ""
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "男朋友、女朋友"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "人的类型"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "工作关系"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr ""
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "初次相识"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "邻居"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "社会等级"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "合一"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "不合"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr ""
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "孤立自己"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "独处"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "独立的人"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "私人的、公共的"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "开始一种关系"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "结束一种关系"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "表达感情"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr ""
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "因出生而有关"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "祖父母"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "父母"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "兄弟姐妹"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "儿女"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "孙子、孙女"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "叔伯、姑姨"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "堂、表弟兄姐妹"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "侄儿、侄女"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "排行"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "联姻"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "夫妻"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "姻亲"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "鳏夫、寡妇"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "孤儿"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "私生子"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "收养"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "非亲属"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "家族、部族"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "种族"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "社交活动"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr ""
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "邀请"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "遭遇"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "相会"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "拜访"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "欢迎、接待"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "表现得好客"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "会议、集会"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "旁观者"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "群、伙"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr ""
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr ""
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr ""
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr ""
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr ""
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "社交活动"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "仪式"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr ""
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "庆祝、纪念、歌颂"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "音乐"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr ""
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "演奏音乐"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "演唱"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "音乐家"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "乐器"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "跳舞"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "戏剧"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "娱乐、消遣"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "游戏"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr ""
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr ""
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "体育"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr ""
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr ""
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "锻炼"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "赌博"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "玩、娱乐"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "幽默"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr ""
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "假期"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr ""
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "行为"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr ""
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr ""
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "达到标准"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "达不到标准"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr ""
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr ""
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr ""
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr ""
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "耐心"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "没有耐心"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "脾气坏"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr ""
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr ""
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "谦卑"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "骄傲"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr ""
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "爱"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr ""
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "不在乎"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "遗弃"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr ""
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr ""
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "帮助"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "阻碍"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "合作"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "和…竞争"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "无私"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "自私"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr ""
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "和…分享"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "为…提供、支持"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "关心"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "托付给…照顾"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "管闲事"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr ""
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "闯入"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr ""
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "残酷"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr ""
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "不诚实"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "忠实"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "可靠"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "不可靠"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "欺骗"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "伪君子"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "自控"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "缺乏自制"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr ""
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr ""
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr ""
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr ""
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "无礼"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "疯狂"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "改变"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr ""
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "文化"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "风俗"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "习惯"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "好、坏"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "兴旺"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "麻烦"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "问题"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "危险"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "意外"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "灾难"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "个别、单独"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "受苦"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "对麻烦的反应"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr ""
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "胆怯"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr ""
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "谨慎"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "解决问题"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "忍受"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "幸存"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "回应在麻烦中的人"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr ""
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "表示同情、支持"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "温和"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "救难"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr ""
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "脱离束缚"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "减轻痛苦"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "冒险"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "碰巧"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr ""
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr ""
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "权力"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "当权者"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "有权力"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "行使权力"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "领导"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "命令"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "训练"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "任命、委派"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "服从权威"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "顺从"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "不顺从"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "服侍"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr ""
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "跟随、做门徒"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "造反"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "独立"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "尊敬"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "表示尊敬的称呼"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "缺乏尊敬"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "地位"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "地位高"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "地位低"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "政府"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr ""
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "王室"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr ""
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "公民"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "外国人"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "政府组织"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr ""
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "统治"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "征服"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "政府职能"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "警察"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "逮捕"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "私刑"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "外交"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr ""
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "选举"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr ""
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "区域"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "国家"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "城镇"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "乡下"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "社区"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "法律"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "法规"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "立法"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "违法"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "法院"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "法律人员"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr ""
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr ""
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr ""
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "控告、指责"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr ""
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "作证"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "撤诉"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "发誓"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "澄清指控"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "判决"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "宣告无罪"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "定罪"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "过错"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "惩罚"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "奖赏"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "罚款"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "关押"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "处死"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "流放"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "赦免、释放"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr ""
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "法律合约"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "契约"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "违反合约"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "正义"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "公平"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "不公"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "应得的"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "歧视"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "行为严厉残酷"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "压迫"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr ""
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr ""
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr ""
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "战斗"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr ""
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr ""
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "攻击"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "伏击"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "防卫进攻"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "报复"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr ""
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "背叛"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr ""
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "敌人"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "伤亡"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "击败"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "胜利"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "失败"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "投降"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr ""
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "军事组织"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr ""
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr ""
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr ""
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "军人"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "间谍"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "堡垒、要塞"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "武器、射击"
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr ""
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "和平"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "指责"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "请求"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "安抚"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "谈判"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "放弃权利、退让"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "悔改"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "请求宽恕"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "原谅"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "促成和平"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "停战"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "和好"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "宗教信仰"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "神"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "超自然体"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "神学"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "宗教经典"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr ""
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr ""
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "鬼附身"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "祝福"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "诅咒"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "命运"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "预言"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr ""
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "活出信仰"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "虔诚"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "祷告"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "敬拜"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr ""
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr ""
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "洁净"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "禁忌"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "拯救"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "分别为圣"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "禁食"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "天堂、地狱"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "复活"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "宗教组织"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "宗教人员"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "基督教"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "伊斯兰教"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "印度教"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "佛教"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "犹太教"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr ""
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr ""
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "偶像"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "敬拜的场所"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "反宗教"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr ""
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr ""
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "家具"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "桌子"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "椅子"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "床"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "橱柜"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr ""
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "食物"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "食物制作"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr ""
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "准备食物的步骤"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "去壳、去皮"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "在研钵里捣碎"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "磨面"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr ""
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "保存食物"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "上饭菜"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "吃"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr ""
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "一日三餐"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "宴席"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "吃的方式"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "饥渴"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "饱"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "喝"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "餐具"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "禁食、不吃东西"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "食物的种类"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "植物性食物"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "种子性食物"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "水果"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "蔬菜"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "可吃的茎叶"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "可吃的根"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "动物性食物"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "肉"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "奶制品"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr ""
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "配料"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "糖"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "盐"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "调料"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "酵母"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "食油"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "预制食品"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "禁忌食物"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr ""
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr ""
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "酿酒"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr ""
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr "烟草"
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr "麻醉品"
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr ""
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "衣服"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr "男装"
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr "女装"
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr "传统服装"
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "特殊场合穿的服装"
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr "特殊的人穿的衣服"
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr "衣服的组成部分"
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr "穿衣服"
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr "赤身"
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr "服装的式样"
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "饰物"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr "珠宝"
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr "化妆品"
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr ""
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr ""
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr ""
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr ""
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr ""
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr ""
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr "修面"
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr ""
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr ""
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr ""
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr "割礼"
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr ""
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "火"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr "点火"
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr "护火"
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "灭火"
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr ""
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr "火的产物"
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr "燃料"
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr "炉灶"
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr "清洁"
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr "干净、脏"
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr "洗澡"
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr "洗碗"
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr "洗衣服"
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr "扫、耙"
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr "擦、抹"
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr "睡觉"
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr "上床睡觉"
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr "梦"
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr "醒来"
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr "管家"
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr "居住、逗留"
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "工作和职业"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "工作"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "工人"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "专家"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "方法"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr ""
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "使用"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr ""
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr ""
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "可用"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "用完"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "照顾东西"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "浪费"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "工作好"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "慎重"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "工作努力"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "忙"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "动力、力量"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "完成、结束"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "抱负"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "工作糟糕"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "粗心、不负责任"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "懒"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "放弃"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "计划"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr "安排活动"
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "取消活动"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "准备"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr ""
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "有效"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "有效率"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "机会"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "困难、不可能"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "容易、可能"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "成功"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "失败"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr ""
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "对工作的满意"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "失业、没有工作"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "手工制造"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "人造的"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "有经验的"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "习惯于"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "农业"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "种植农作物"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "种谷物"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr ""
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr ""
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr ""
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr ""
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr ""
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr ""
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr ""
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr ""
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr ""
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr ""
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr ""
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr ""
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr ""
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "养花"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "种树"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr ""
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr ""
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "预备土地"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "清理土地"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "犁地"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "施肥"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "栽种"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "田间管理"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "割草"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr ""
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "灌溉"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "修枝"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "忽略管理"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "收获"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "最初的收成"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "农作物歉收"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "采集野生植物"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "植物产品"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "处理收成"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "杨谷物"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "磨谷物"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "打谷"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "储存收成"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr ""
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr ""
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr "田地"
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "畜牧业"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "家养动物"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "牛"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "绵羊"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "山羊"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "猪"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "狗"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "猫"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "力畜"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "照看原野里的畜群"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "奶"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "屠夫、屠宰"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "羊毛制品"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "养家禽"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "鸡"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "动物产品"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "兽医"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "兽疫"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "阉割动物"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "打猎和捕鱼"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "打猎"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "追踪动物"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "陷阱"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "捕鸟"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "养蜂"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "捕鱼"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "用网捕鱼"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "钓鱼"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "渔具"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "对动物做的事情"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "建筑"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "建筑物"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr ""
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "房屋的类型"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr ""
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr ""
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr ""
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "建筑的组成部分"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "墙"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "屋顶"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "地板"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "门"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "窗"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "地基"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "房间"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr ""
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "建筑材料"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "建筑设备及维护"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "基础设施"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "路"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "界限"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr ""
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "和布有关的工作"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "布"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "纺"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "织"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr ""
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "针对矿的工作"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "采矿"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "冶炼"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "金属制造"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "粘土制造"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "玻璃制造"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "油气制造"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "石器制造"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "砌砖"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "有关化学品的工作"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "爆炸"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "木活"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "木材业"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "木头"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "纸业"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "手艺"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "绳索"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr ""
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "皮革制造"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "和骨头有关的工作"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "艺术"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "绘画"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "摄影"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "雕塑"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "和土地有关的工作"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "和水有关的工作"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "水暖工"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "送水"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "治水"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "和海有关的工作"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "用机器工作"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "和电有关的工作"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "工具"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "切割工具"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "刺戳工具"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "挖掘工具"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "敲打工具"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "运送工具"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr ""
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr ""
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr ""
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "容器"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "包"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "套"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "工具的组成部分"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "机器"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "财政"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "拥有财富"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr ""
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr ""
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "贫穷"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "积存财富"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr ""
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "积累财富"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "制造财富"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "赢利"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "失去财富"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "节俭"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "贪婪"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr ""
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr ""
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "分享财富"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "给、赠送"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "慷慨"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "吝啬"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "乞讨"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr ""
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "买"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "卖"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr ""
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "贵"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "便宜"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "免费"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "讲价"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "付钱"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "租借"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "花费"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "商店、商场"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "交易"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "借入"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "借出"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "担保、抵押"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "欠"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "还债"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "存款"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "钱"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "货币单位"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "会计学"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "税"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "不诚实的金融行为"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "偷抢"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "欺骗"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "敲诈勒索"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "夺取"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "贿赂"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr ""
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "企业组织"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "管理"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr ""
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "营销"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "商业"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "经济学"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "保险"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "人体动作"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "姿势"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "站"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "坐"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "躺下"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "下跪"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "鞠躬"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "靠"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "挺直的姿势"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "放松的姿势"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "弯腰"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "移动身体的某个部分"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "移动"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "动作的样子"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "走"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "跑"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "爬"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "跳"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "快速移动"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "缓慢移动"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "游荡"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "优雅"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "笨拙"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "行走困难"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "滑"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "稳、不稳"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "平衡"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr ""
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "向某个方向移动"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "前进"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "后退"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "往旁边移动"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "上升"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "下降"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr ""
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "拐弯"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "转动"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "来回移动"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "直行"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "靠近什么东西"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "离开"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "去"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "来"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "离开"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "到达"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "进"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "出"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "经过、穿过、越过"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "返回"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "旅行"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "陆路旅行"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "车辆"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr ""
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "水上旅行"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "船"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "游泳"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "潜水"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "空中旅行"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "太空旅行"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "搬进新家"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr ""
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "迷路"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "地图"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "陪伴"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "带领"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "跟随"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "引路"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr ""
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "逃跑、追踪"
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr ""
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr ""
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "逃跑"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "释放"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "静止"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "停止移动"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "停留"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "等待"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "派遣某人"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "移动东西"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "搬运"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "扔"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "抓住"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "摇"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "打倒"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "竖直"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "往某个方向移动东西"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "放在前面"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "放在后面"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "放在旁边"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "举"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "挂"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "降低"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "放入"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "取出"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "拉"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "推"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "把东西带到什么地方"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "把东西带离什么地方"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "归还"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "寄送"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "驱逐"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr ""
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "处理事情"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "触摸"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "捡起"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "放下"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "握住"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "手的动作"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "支撑"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "扩张"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "转动"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "开"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "关"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "阻挡"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "限度"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "遮盖"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "揭开"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "包裹"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr ""
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr ""
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "有"
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "交给"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "得到"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr ""
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "分发"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "保留"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "遗弃"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "扔掉"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr ""
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr ""
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "聚集"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "分散"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "包含"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "特别"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "连接"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr ""
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr ""
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr ""
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr ""
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "混合"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "纯粹"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "系"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "绳"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "缠绕"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr ""
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "扰乱"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "替换"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "群体移动"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "简单、复杂"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr ""
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr ""
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr ""
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "隐藏"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "搜寻"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "发现"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "遗失、放错地方"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "身体碰撞"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "反弹"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "瞄准目标"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "踢"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "按压"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "擦"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "磨"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "标记"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "分"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "打碎"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "裂缝"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "砍切"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "撕、扯"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "打洞、开口"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "挖"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr ""
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "损坏"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "拆毁"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "摧毁"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "修补"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "状况"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "数量"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "数"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "基数词"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr ""
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr ""
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "序数词"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "次数"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "倍数"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr ""
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "分数"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr ""
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "计算"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr ""
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr ""
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr ""
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr ""
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr ""
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr "复数"
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr ""
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr ""
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "事物群体"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "更多"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "更少"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "增加"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "减少"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "所有"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "一些"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr ""
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "两者"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr ""
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr ""
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "几乎"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "唯一"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr ""
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr ""
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "平均"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr ""
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "部分"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr ""
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr ""
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr ""
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr ""
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr ""
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr ""
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "满"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "空"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "大"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "小"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr ""
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr ""
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "高"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr ""
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr ""
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr ""
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr ""
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr ""
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "宽"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "窄"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr ""
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr "体积"
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr "距离"
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "远"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "近"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "高"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "低"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "深、浅"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "尺寸合适"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr ""
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr ""
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "挤住、卡住"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "计量"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr ""
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "重"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "轻"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "性质"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "形状"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "点"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "线"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "直"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "平"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "水平"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "垂直"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "倾斜"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr ""
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr ""
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "拧、扭"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr ""
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "圆"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "凹"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "凸"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr "空心"
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "方"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr ""
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "对称"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "伸展"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "质地"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "光滑"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "粗糙"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "锋利"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "尖"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "钝"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "沟槽"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "光"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "发光"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "光源"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "明亮"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "昏暗"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "阴影"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "颜色"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "白"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "黑"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "灰"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "光谱色"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "动物的颜色、斑纹"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr ""
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr ""
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr ""
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr ""
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "冷"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr ""
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "性质、特征"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "比较"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "相同"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "像、类似"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "不同"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "其它"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr ""
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr ""
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "普通"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "正常"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "反常"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "独特"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "奇怪"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "模型、样式"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "模仿"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr "复制"
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr ""
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "坚固、脆弱"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "硬、结实"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "僵硬、灵活"
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "密"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "柔软、脆弱"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "好"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "坏"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr ""
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr ""
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "完美"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "一般"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "重要"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "基本"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "改善"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr ""
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr ""
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "方便"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr ""
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr "腐烂"
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr ""
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "瑕疵"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "垃圾"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "保存"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "价值"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr ""
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "简单、朴素"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "荣耀"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "时间"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "时间段"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "日历"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "日"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "夜"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr ""
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "白天的时间"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "星期"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "一个星期当中的每一天"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "月"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "月份"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "季节"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "年"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "时代"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "特殊日期"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "花时间"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "短时间"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "长时间"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "永远"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "暂时"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "不确定的时间"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "报时"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr "计划时间"
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr ""
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "相关时间"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "次序"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr ""
+
+#: default_domains.php:1532
+msgid "First"
+msgstr ""
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr "前进"
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr ""
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "规律"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr ""
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr "之前"
+
+#: default_domains.php:1538
+msgid "After"
+msgstr "之后"
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr ""
+
+#: default_domains.php:1540
+msgid "During"
+msgstr ""
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr ""
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "早"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "准时"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "迟"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "耽搁"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "推迟"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr "译文不能确定"
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr ""
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr ""
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr ""
+
+#: default_domains.php:1551
+msgid "End"
+msgstr ""
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "直到"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr ""
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "过去"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr ""
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "现在"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "目前"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "将来"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "不久"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "尚未"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "最后"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr ""
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "新旧"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr ""
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr ""
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "新"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr ""
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr ""
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr ""
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "一次"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "再"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "有时"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr ""
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "始终"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "每次"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "从不"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr ""
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "打断"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "再次开始"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "间隔"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "速度"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "快"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "慢"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "突然"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "位置"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr ""
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "前"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "后"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "旁边"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "周围"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "之间"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "上"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "上"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "下"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "里"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr ""
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr "接触、联系"
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr "紧挨"
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "对面"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "不确定的位置"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "方向"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr "前进"
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr ""
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "左、右"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr ""
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr ""
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr ""
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr ""
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "东西南北"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "在某个地方"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "缺席"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "面积"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "附近"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "占据某个区域"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "空间"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "间隔"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr "空间关系"
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr ""
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "物体的组成部分"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr ""
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr "上一步"
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr "上"
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr "下"
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr ""
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr ""
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr ""
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr ""
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr ""
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr ""
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr ""
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr "普通词"
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr "是"
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr "存在"
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr "变得、改变状态"
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr ""
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr "属性"
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr "做"
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr "发生"
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr "反应"
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr "创造"
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr ""
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr ""
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr "改变事物"
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr "事件命题"
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr "物"
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "物质的、非物质的"
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr "局势"
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr "普通形容词"
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr "普通副词"
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr "词性"
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr "形容词"
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr "副词"
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr "代词"
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "反身代词"
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "不定代词"
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "关系代词"
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr "疑问词"
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "指示代词"
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr "亲自"
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr "前置词、后置词"
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr "连词"
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr "短语连词"
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr "从句连词"
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr "句连词"
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr "小品词"
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr ""
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr "感叹词"
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr "象声词"
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr "词缀"
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr "动词词缀"
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr "名词词缀"
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr "派生词缀"
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr ""
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr "程度"
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr ""
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr ""
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr ""
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr ""
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr "完全"
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr ""
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr "加紧做"
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "特征的属性"
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "和动词相关的语义成分"
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "时态和体"
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr "时态"
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "体—动态动词"
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "体—陈述性动词"
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr "相关时态"
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "面向行动者的形式"
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr ""
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr ""
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr "必要"
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr "语气"
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr "祁使语气"
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr ""
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr "疑问"
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "认知语气"
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr ""
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr ""
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr ""
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr "可能"
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr "不确定"
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr ""
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr ""
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr ""
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr "似乎"
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr ""
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr ""
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr ""
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr "举证"
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr "评价词"
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr "肯定"
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr "否定"
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "期待肯定回答的标志"
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "期待否定回答的标志"
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr ""
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "状语从句"
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr "格"
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr "一级格"
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "事件的受益人"
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr "工具"
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr "方法"
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr ""
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "伴随的情况"
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr "一件事情的空间定位"
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr ""
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr ""
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr ""
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr ""
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "语义类似的事件"
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr ""
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr ""
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr ""
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr ""
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr ""
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "和被动者相关的格"
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr ""
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr ""
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr ""
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr ""
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "同等关系"
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr ""
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr ""
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr "关联"
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr "结合关系"
+
+#: default_domains.php:1746
+msgid "But"
+msgstr ""
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr ""
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr ""
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr "脱离"
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr "散布"
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr "等值"
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr "依靠关系"
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr "出处"
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "话题的限定"
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr "通常"
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "含有一致性的关系"
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr "基础"
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr ""
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr ""
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr "没有原因"
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr "结果"
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr "没有结果"
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr "目的"
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr "没有目的"
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "条件"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr "让步"
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr "论述标志"
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr "过渡性标志"
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "强调性标志"
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "提醒注意"
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "直接称呼的标志"
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "鉴定与说明性从句的标志"
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr "焦点标志"
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr "犹豫时的填补"
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr ""
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr "名称"
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr "人名"
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr "人名"
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr "姓"
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr "宗族名"
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr "部落名"
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr "语言的名称"
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr "诨名"
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "爱称"
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr ""
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr "国名"
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr "地区名"
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr "城市名"
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr "街名"
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "天体名"
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr "大陆名"
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr "山名"
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "海洋、湖泊名"
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr "河流名"
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr "物名"
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr "动物名"
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr ""
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr "语义范围"

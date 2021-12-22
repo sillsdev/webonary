@@ -5218,7 +5218,7 @@ msgstr ""
 msgid "Interjections"
 msgstr "感叹词"
 
-msgid "Idiophones"
+msgid "Ideophones"
 msgstr "象声词"
 
 msgid "Affixes"
