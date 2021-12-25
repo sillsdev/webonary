@@ -4,9 +4,9 @@
 
 class Webonary2_Customize
 {
-	public static function init()
+	public static function Init()
 	{
-		add_action( 'customize_register', array( __CLASS__, 'register' ) );
+		add_action('customize_register', array(__CLASS__, 'register'));
 	}
 
 	/**
@@ -17,7 +17,7 @@ class Webonary2_Customize
 	 *
 	 * @return void
 	 */
-	public static function register( WP_Customize_Manager $wp_customize)
+	public static function Register( WP_Customize_Manager $wp_customize)
 	{
 		// Change site-title & description to postMessage.
 		$wp_customize->get_setting('blogname')->transport = 'postMessage';
@@ -28,7 +28,7 @@ class Webonary2_Customize
 			'blogname',
 			array(
 				'selector'        => '.site-title',
-				'render_callback' => array(__CLASS__, 'partial_blogname'),
+				'render_callback' => array(__CLASS__, 'PartialBlogName'),
 			)
 		);
 
@@ -37,7 +37,7 @@ class Webonary2_Customize
 			'blogdescription',
 			array(
 				'selector'        => '.site-description',
-				'render_callback' => array(__CLASS__, 'partial_blogdescription'),
+				'render_callback' => array(__CLASS__, 'PartialBlogDescription'),
 			)
 		);
 
@@ -47,7 +47,7 @@ class Webonary2_Customize
 			array(
 				'capability'        => 'edit_theme_options',
 				'default'           => true,
-				'sanitize_callback' => array(__CLASS__, 'sanitize_checkbox'),
+				'sanitize_callback' => array(__CLASS__, 'SanitizeCheckbox'),
 			)
 		);
 
@@ -61,6 +61,9 @@ class Webonary2_Customize
 			)
 		);
 
+
+
+
 		/**
 		 * webonary settings
 		 */
@@ -68,63 +71,50 @@ class Webonary2_Customize
 			'webonary_settings',
 			array(
 				'title'    => esc_html__('Webonary Settings', WEBONARY_THEME_DOMAIN),
-				'priority' => 120,
+				'priority' => 30
 			)
 		);
 
 		$wp_customize->add_setting(
 			'webonary_logo',
 			array(
-				'capability'        => 'edit_theme_options',
-				'default'           => '',
-				'sanitize_callback' => function( $value ) {
-					return 'excerpt' === $value || 'full' === $value ? $value : 'excerpt';
-				},
+				'capability' => 'edit_theme_options',
+				'default'    => 'https://www.webonary.org/wp-content/uploads/webonary.png',
+				'transport'  => 'refresh'
 			)
 		);
 
 		$wp_customize->add_control(
-			'display_excerpt_or_full_post',
-			array(
-				'type'    => 'radio',
-				'section' => 'excerpt_settings',
-				'label'   => esc_html__( 'On Archive Pages, posts show:', 'twentytwentyone' ),
-				'choices' => array(
-					'excerpt' => esc_html__( 'Summary', 'twentytwentyone' ),
-					'full'    => esc_html__( 'Full text', 'twentytwentyone' ),
-				),
-			)
-		);
-
-		return;
-		// Background color.
-		// Include the custom control class.
-		include_once get_theme_file_path( 'classes/class-twenty-twenty-one-customize-color-control.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-
-		// Register the custom control.
-		$wp_customize->register_control_type( 'Twenty_Twenty_One_Customize_Color_Control' );
-
-		// Get the palette from theme-supports.
-		$palette = get_theme_support( 'editor-color-palette' );
-
-		// Build the colors array from theme-support.
-		$colors = array();
-		if ( isset( $palette[0] ) && is_array( $palette[0] ) ) {
-			foreach ( $palette[0] as $palette_color ) {
-				$colors[] = $palette_color['color'];
-			}
-		}
-
-		// Add the control. Overrides the default background-color control.
-		$wp_customize->add_control(
-			new Twenty_Twenty_One_Customize_Color_Control(
+			new WP_Customize_Image_Control(
 				$wp_customize,
-				'background_color',
+				'logo',
 				array(
-					'label'   => esc_html_x( 'Background color', 'Customizer control', 'twentytwentyone' ),
-					'section' => 'colors',
-					'palette' => $colors,
+					'label'    => esc_html__('Upload a logo', WEBONARY_THEME_DOMAIN),
+					'section'  => 'webonary_settings',
+					'settings' => 'webonary_logo',
+					'context'  => 'webonary_options'
 				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'webonary_copyright',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '© [year] SIL International<sup>®</sup>',
+				'transport'  => 'refresh'
+			)
+		);
+
+		$wp_customize->add_control(
+			'copyright_field',
+			array(
+
+				'type'     => 'text',
+				'section'  => 'webonary_settings',
+				'settings' => 'webonary_copyright',
+				'label'    => esc_html__('Site Copyright', WEBONARY_THEME_DOMAIN),
+				'description' => esc_html__('[year] will be replaced with the current year', WEBONARY_THEME_DOMAIN)
 			)
 		);
 	}
@@ -136,7 +126,7 @@ class Webonary2_Customize
 	 *
 	 * @return bool
 	 */
-	public static function sanitize_checkbox( ?bool $checked = null ): bool
+	public static function SanitizeCheckbox( ?bool $checked = null ): bool
 	{
 		return isset( $checked ) && true === $checked;
 	}
@@ -146,7 +136,7 @@ class Webonary2_Customize
 	 *
 	 * @return void
 	 */
-	public function partial_blogname() {
+	public function PartialBlogName() {
 		bloginfo( 'name' );
 	}
 
@@ -157,7 +147,18 @@ class Webonary2_Customize
 	 *
 	 * @return void
 	 */
-	public function partial_blogdescription() {
+	public function PartialBlogDescription() {
 		bloginfo( 'description' );
+	}
+
+	/**
+	 * We will handle jQuery and Bootstrap ourselves in the index.php file
+	 *
+	 * @return void
+	 */
+	public static function UnqueueJquery()
+	{
+		wp_deregister_script( 'jquery-core' );
+		wp_deregister_script( 'jquery-migrate' );
 	}
 }

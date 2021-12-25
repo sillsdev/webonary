@@ -16,6 +16,7 @@ cd /var/www/sites/
 git clone https://github.com/sillsdev/webonary.git
 cd webonary
 composer install
+npm install
 ```
 
 Next, make a copy of `shared/config/wp-config-sample.php` and name it

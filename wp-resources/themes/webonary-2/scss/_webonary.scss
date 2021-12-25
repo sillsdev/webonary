@@ -1,0 +1,52 @@
+
+html {font-size: 12px;}
+
+a {outline: 0;}
+
+.bg-medium {
+  background-color: rgba($gray-200, 1) !important;
+}
+
+div, .container, .container-fluid, .container-xl, .container-lg {
+  overflow: auto;
+}
+
+@include media-breakpoint-up(sm) {
+  html {font-size: 13px;}
+}
+
+@include media-breakpoint-up(md) {
+  html {font-size: 14px;}
+}
+
+@include media-breakpoint-up(lg) {
+  html {font-size: 15px;}
+}
+
+@include media-breakpoint-up(xl) {
+  html {font-size: 16px;}
+}
+
+@include media-breakpoint-up(xxl) {
+  html {font-size: 17px;}
+}
+
+@include media-breakpoint-down(xl) {
+
+}
+
+@include media-breakpoint-down(lg) {
+
+}
+
+@include media-breakpoint-down(md) {
+
+}
+
+@include media-breakpoint-down(sm) {
+
+}
+
+@include media-breakpoint-down(xs) {
+
+}

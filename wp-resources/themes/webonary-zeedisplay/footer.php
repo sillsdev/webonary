@@ -131,7 +131,7 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 			$color="blue";
 		}
 		?>
-		<div id="footer" class=<?php echo $color; ?> style="text-align:center; padding-bottom: 8px; font-size:12px;">
+		<div id="footer" class="<?php echo $color; ?>" style="text-align:center; padding-bottom: 8px; font-size:12px;">
 			<div style="text-align:center;"><?php echo str_replace("[year]", date("Y"),$options['themeZee_footer']); ?></div>
 			<hr style="font-size:5px; margin-bottom: 4px; clear:both;">
 			<div id="copyright">
