@@ -19,9 +19,9 @@ class Webonary2_Functions
 
 		if (is_null(self::$is_test_server)) {
 			if (Webonary2_Functions::IsTestServer())
-				self::$default_css = '/wp-content/themes/webonary-2/js/style.css';
+				self::$default_css = '/wp-content/themes/webonary-2/css/style.css';
 			else
-				self::$default_css = '/wp-content/themes/webonary-2/js/style.min.css';
+				self::$default_css = '/wp-content/themes/webonary-2/css/style.min.css';
 		}
 
 		return self::$default_css;

@@ -11,10 +11,10 @@ for file in "${files[@]}"
 do
    printf "   Compiling %s.scss... " "${file}"
 
-   "${thisDir}/node_modules/.bin/sass" "${thisDir}/wp-resources/themes/webonary-2/scss/${file}.scss" "${thisDir}/wp-resources/themes/webonary-2/js/${file}.css"
+   "${thisDir}/node_modules/.bin/sass" "${thisDir}/wp-resources/themes/webonary-2/scss/${file}.scss" "${thisDir}/wp-resources/themes/webonary-2/css/${file}.css"
 
    printf "compressing... "
-   "${thisDir}/node_modules/.bin/sass" --style=compressed --no-source-map "${thisDir}/wp-resources/themes/webonary-2/scss/${file}.scss" "${thisDir}/wp-resources/themes/webonary-2/js/${file}.min.css"
+   "${thisDir}/node_modules/.bin/sass" --style=compressed --no-source-map "${thisDir}/wp-resources/themes/webonary-2/scss/${file}.scss" "${thisDir}/wp-resources/themes/webonary-2/css/${file}.min.css"
 
 #   printf "removing BOM... "
 #   sed -i '1s/^\xEF\xBB\xBF//' "${thisDir}/sass/compiled/${file}.css"

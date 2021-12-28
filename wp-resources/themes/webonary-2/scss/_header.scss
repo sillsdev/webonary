@@ -106,7 +106,7 @@ html[dir=rtl] {
       bottom: 0;
       right: 0;
       left: unset;
-      width: calc(100vw - 180px);
+      width: calc(100% - 180px);
 
       #navbar-toggler-div {
         position: absolute;

@@ -9,7 +9,14 @@ $font-family-sans-serif: Lato, "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-
 $font-family-serif:      serif !default;
 $font-family-monospace:  monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
+
 $headings-font-family:   $font-family-sans-serif !default;
+//$headings-margin-bottom:      $spacer * .5 !default;
+//$headings-font-family:        null !default;
+//$headings-font-style:         null !default;
+$headings-font-weight:        700;
+//$headings-line-height:        1.2 !default;
+//$headings-color:              null !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:   1.25rem !default;
@@ -59,6 +66,7 @@ $cyan:    #17a2b8;
 
 $webonary-primary:   #85005B;
 $webonary-secondary: #008554;
+$webonary-link:      #855600;
 
 $colors: (
         "blue":       $blue,
@@ -126,7 +134,7 @@ $container-max-widths: (
 //$body-bg:    #f1f3f2 !default;
 //$body-color: $gray-900 !default;
 
-$link-color: $blue;
+
 
 
 // WEBONARY OVERRIDES
@@ -134,3 +142,5 @@ $navbar-nav-link-padding-x: 1rem;
 
 $navbar-toggler-padding-y: .75rem !default;
 $navbar-toggler-padding-x: .75rem !default;
+
+$link-color: $webonary-link;

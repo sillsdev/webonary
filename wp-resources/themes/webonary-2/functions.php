@@ -47,10 +47,10 @@ function webonary2_setup()
 	// add_action('login_enqueue_scripts', array('Webonary2_Customize', 'UnqueueJquery'), 5);
 
 	/*
- * Enable support for Post Thumbnails on posts and pages.
- *
- * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
- */
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 1568, 9999 );
 
@@ -79,10 +79,10 @@ function webonary2_setup()
 	);
 
 	/*
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
+	 * Add support for core custom logo.
+	 *
+	 * @link https://codex.wordpress.org/Theme_Logo
+	 */
 	$logo_width  = 300;
 	$logo_height = 100;
 
@@ -96,45 +96,51 @@ function webonary2_setup()
 			'unlink-homepage-logo' => true,
 		)
 	);
+
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	// Add support for Block Styles.
+	add_theme_support( 'wp-block-styles' );
+
+	// Add support for full and wide align images.
+	add_theme_support( 'align-wide' );
+
+	// Add support for editor styles.
+	add_theme_support( 'editor-styles' );
+//	$background_color = get_theme_mod( 'background_color', 'D1E4DD' );
+//	if ( 127 > Twenty_Twenty_One_Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
+//		add_theme_support( 'dark-editor-style' );
+//	}
+
+	$editor_stylesheet_path = './css/style.css';
+
+	// Note, the is_IE global variable is defined by WordPress and is used
+	// to detect if the current browser is internet explorer.
+	global $is_IE;
+	if ( $is_IE ) {
+		$editor_stylesheet_path = './assets/css/ie-editor.css';
+	}
+
+	// Enqueue editor styles.
+	add_editor_style( $editor_stylesheet_path );
 }
 add_action('after_setup_theme', 'webonary2_setup');
 
-function webonary2_menu_item_class($classes, $item, $args)
+function webonary2_published_site_count(): ?string
 {
-	if ($args->container_id != 'webonary-main-menu')
-		return $classes;
+	global $wpdb;
 
-	if (!in_array('nav-item', $classes))
-		$classes[] = 'nav-item';
-
-	if (in_array('menu-item-has-children', $item->classes))
-		$classes[] = 'dropdown';
-
-	return $classes;
+	$sql = <<<SQL
+SELECT COUNT(link_url) AS publishedSitesCount
+FROM wp_links
+  INNER JOIN wp_term_relationships ON wp_links.link_id = wp_term_relationships.object_id
+  INNER JOIN wp_terms ON wp_terms.term_id = wp_term_relationships.term_taxonomy_id
+WHERE wp_terms.slug = 'available-dictionaries'
+SQL;
+	return $wpdb->get_var($sql);
 }
-add_filter('nav_menu_css_class', 'webonary2_menu_item_class', 10, 3);
-
-function webonary2_menu_link_attributes($atts, $item, $args)
-{
-	if ($item->current)
-		$atts['class'] = 'nav-link active';
-	else
-		$atts['class'] = 'nav-link';
-
-	if (in_array('menu-item-has-children', $item->classes))
-		$atts['class'] .= ' dropdown-toggle';
-
-	return $atts;
-}
-add_filter('nav_menu_link_attributes', 'webonary2_menu_link_attributes', 10, 4);
-
-function webonary2_nav_menu_items($items, $args)
-{
-	$args = func_get_args();
-
-	return $items;
-}
-add_filter('wp_nav_menu_items', 'webonary2_nav_menu_items', 10, 4);
+add_shortcode('publishedSitesCount', 'webonary2_published_site_count');
 
 // Customizer additions.
 Webonary2_Customize::Init();

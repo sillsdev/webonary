@@ -10,6 +10,26 @@ else
 $copyright = get_theme_mod('webonary_copyright') ?? '';
 $copyright = str_replace('[year]', date('Y'), $copyright);
 
+//$tag_templates = array(
+//	'is_embed'             => 'get_embed_template',
+//	'is_404'               => 'get_404_template',
+//	'is_search'            => 'get_search_template',
+//	'is_front_page'        => 'get_front_page_template',
+//	'is_home'              => 'get_home_template',
+//	'is_privacy_policy'    => 'get_privacy_policy_template',
+//	'is_post_type_archive' => 'get_post_type_archive_template',
+//	'is_tax'               => 'get_taxonomy_template',
+//	'is_attachment'        => 'get_attachment_template',
+//	'is_single'            => 'get_single_template',
+//	'is_page'              => 'get_page_template',
+//	'is_singular'          => 'get_singular_template',
+//	'is_category'          => 'get_category_template',
+//	'is_tag'               => 'get_tag_template',
+//	'is_author'            => 'get_author_template',
+//	'is_date'              => 'get_date_template',
+//	'is_archive'           => 'get_archive_template',
+//);
+
 ?>
 <!--suppress HtmlRequiredLangAttribute -->
 <html <?php language_attributes(); ?> dir="ltr">
@@ -19,12 +39,16 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 
     <title><?php echo Webonary2_Functions::PageTitle(); ?></title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link href="<?php echo Webonary2_Functions::DefaultCSS(); ?>" rel="stylesheet">
 
     <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 	<?php wp_head(); ?>
+
+
 </head>
 <body>
 <header>
@@ -56,15 +80,20 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 
     </nav>
 
-    <div class="title-bar container-fluid">
+    <div class="title-bar container-fluid mb-4">
         <h2 class="my-2"><?php bloginfo('name'); ?></h2>
     </div>
 </header>
 
 <div class="container">
-    <div class="row">
-        content here
-    </div>
+	<?php
+    if (is_search()) {
+        include 'templates/search.php';
+    }
+    elseif (is_page()) {
+	    include 'templates/page.php';
+    }
+	?>
 </div>
 
 <footer class="<?php echo $footer_class ?> text-center">
@@ -81,7 +110,7 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <?php wp_footer(); ?>
 

@@ -11,6 +11,10 @@ div, .container, .container-fluid, .container-xl, .container-lg {
   overflow: auto;
 }
 
+.map.undefined {
+  margin-bottom: 0.5rem;
+}
+
 @include media-breakpoint-up(sm) {
   html {font-size: 13px;}
 }
