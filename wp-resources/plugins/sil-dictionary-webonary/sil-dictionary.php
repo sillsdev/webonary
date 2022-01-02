@@ -152,7 +152,6 @@ function add_rewrite_rules($aRules)
 	$aRules = $aNewRules + $aRules;
 	return $aRules;
 }
-
 add_filter('post_rewrite_rules', 'add_rewrite_rules');
 
 function add_query_vars($qvars)
@@ -161,5 +160,11 @@ function add_query_vars($qvars)
 		$qvars[] = 'clean';
 	return $qvars;
 }
-
 add_filter('query_vars', 'add_query_vars');
+
+// register the search widget
+function register_custom_widgets()
+{
+	register_widget('Webonary_Search_Widget');
+}
+add_action('widgets_init', 'register_custom_widgets');

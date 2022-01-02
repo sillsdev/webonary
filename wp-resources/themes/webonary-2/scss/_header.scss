@@ -1,0 +1,161 @@
+header {
+  .header {
+    .container-fluid {
+      flex-direction: row;
+
+    }
+  }
+
+  nav {
+    div, .container, .container-fluid, .container-xl, .container-lg {
+      overflow: visible;
+    }
+
+    &.navbar {
+      padding: 0;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: start;
+      }
+
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            font-weight: 700;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            &:hover, &:focus {
+              background-color: $gray-300;
+            }
+
+            &.active {
+              color: $white;
+              background-color: $gray-600;
+            }
+          }
+        }
+
+      }
+
+      .navbar-brand {
+        padding: 0;
+        margin: 0;
+
+        img {
+          height: 60px;
+          margin-bottom: 1px;
+        }
+
+      }
+    }
+  }
+
+  .title-bar {
+    background-color: $webonary-primary;
+    color: $white;
+
+  }
+
+  #custom_header {
+    img {
+      width: 100%;
+    }
+
+  }
+}
+
+
+#primary-menu {
+  //text-align: right;
+}
+
+html[dir=rtl] {
+
+  header {
+    nav.navbar {
+      .navbar-brand {
+        //margin: 0 0 0 1rem;
+      }
+    }
+  }
+
+  #primary-menu {
+    //text-align: left;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+
+}
+
+@include media-breakpoint-up(md) {
+  header {
+    nav.navbar {
+      .navbar-brand {
+        img { height: 80px; }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+
+  header {
+    nav.navbar {
+      .navbar-brand {
+        margin: 0 1rem 0 0;
+
+        img { height: 93px; }
+      }
+    }
+
+    #top-nav-div {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: unset;
+      width: calc(100% - 180px);
+
+      #navbar-toggler-div {
+        position: absolute;
+        bottom: 0;
+      }
+
+      #top-nav-search-div {
+        margin: 0.5rem 1rem 0 auto;
+      }
+    }
+  }
+
+  html[dir=rtl] {
+    header {
+      nav.navbar {
+        .navbar-brand {
+          margin: 0 0 0 1rem;
+        }
+      }
+
+      #top-nav-div {
+        left: 0;
+        right: unset;
+
+        #top-nav-search-div {
+          margin: 0.5rem auto 0 1rem;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+
+}
+
+@include media-breakpoint-up(xxl) {
+
+}

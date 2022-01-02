@@ -11,6 +11,10 @@ Author URI: http://www.jenst.se
 function wp_page_numbers_stylesheet()
 {
 	$settings = get_option('wp_page_numbers_array');
+
+    if ($settings === false)
+        return;
+
 	$head_stylesheet = $settings["head_stylesheetsheet"];
 	$head_stylesheet_folder_name = $settings["head_stylesheetsheet_folder_name"];
 	$style_theme = $settings["style_theme"];
