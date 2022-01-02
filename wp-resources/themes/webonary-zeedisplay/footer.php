@@ -144,7 +144,3 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 </div>
 </body>
 </html>
-<?php
-		//echo var_dump($wpdb->queries);
-		//error_log(printf($wpdb->queries));
-?>

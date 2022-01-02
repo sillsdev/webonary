@@ -26,11 +26,11 @@ foreach ( (array) $cats as $cat ) {
 		$countryOutput .= '<option value="'.$country->term_id.'">'.$country->name.'</option>';
 	}
 ?>
-<select id="countries" name="link-dropdown1" onchange="onUserSelectCountry()" style="margin-bottom:3px;" title="">
+<select id="countries" name="link-dropdown1" onchange="onUserSelectCountry()" style="margin-bottom:3px;" class="form-select" title="">
 	<option value="8"><?php echo gettext("Select Country") ?></option>
 	<?php echo $countryOutput ?>
 </select>
-<select id="publishedSites" name="link-dropdown2" onchange="onUserSelectsDictionary()" title="">
+<select id="publishedSites" name="link-dropdown2" onchange="onUserSelectsDictionary()" style="margin-bottom:3px;" class="form-select d-inline-block" title="">
 	<option value=""><?php echo $default_option ?></option>
 	<?php // echo $linkOutput ?>
 </select><button type="button" name="btnLinkGo" id=linkGo value="Go" onclick="onUserClicked()">Go</button>

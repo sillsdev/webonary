@@ -1,10 +1,11 @@
 <?php
 
+if (!defined('DS'))
+	define('DS', DIRECTORY_SEPARATOR);
+
 const WEBONARY_THEME_DOMAIN = 'webonary2';
 $webonary2_class_path = get_template_directory() . DS . 'classes';
 
-if (!defined('DS'))
-	define('DS', DIRECTORY_SEPARATOR);
 
 /**
  * The auto-loader for the theme
@@ -43,7 +44,7 @@ spl_autoload_register('webonary2_autoloader');
 
 function webonary2_setup()
 {
-	add_action('wp_enqueue_scripts', array('Webonary2_Customize', 'UnqueueJquery'), 5);
+	add_action('wp_enqueue_scripts', array('Webonary2_Customize', 'EnqueueScripts'), 5);
 	// add_action('login_enqueue_scripts', array('Webonary2_Customize', 'UnqueueJquery'), 5);
 
 	/*
@@ -65,18 +66,7 @@ function webonary2_setup()
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
 	 */
-	add_theme_support(
-		'html5',
-		array(
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-			'navigation-widgets',
-		)
-	);
+	add_theme_support('html5');
 
 	/*
 	 * Add support for core custom logo.
@@ -108,10 +98,6 @@ function webonary2_setup()
 
 	// Add support for editor styles.
 	add_theme_support( 'editor-styles' );
-//	$background_color = get_theme_mod( 'background_color', 'D1E4DD' );
-//	if ( 127 > Twenty_Twenty_One_Custom_Colors::get_relative_luminance_from_hex( $background_color ) ) {
-//		add_theme_support( 'dark-editor-style' );
-//	}
 
 	$editor_stylesheet_path = './css/style.css';
 
@@ -127,6 +113,33 @@ function webonary2_setup()
 }
 add_action('after_setup_theme', 'webonary2_setup');
 
+function webonary2_widgets_init()
+{
+	register_sidebar([
+		'name' => 'Sidebar Front Page',
+		'id' => 'sidebar-front',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>'
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Pages',
+		'id' => 'sidebar-pages'
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Posts',
+		'id' => 'sidebar-posts',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>'
+	]);
+}
+add_action( 'widgets_init', 'webonary2_widgets_init' );
+
 function webonary2_published_site_count(): ?string
 {
 	global $wpdb;
@@ -141,6 +154,23 @@ SQL;
 	return $wpdb->get_var($sql);
 }
 add_shortcode('publishedSitesCount', 'webonary2_published_site_count');
+
+function webonary2_custom_header_setup() {
+	$args = array(
+		'default-image'      => home_url() . 'files/img/default-image.jpg',
+		'default-text-color' => '000',
+		'width'              => 1000,
+		'height'             => 250,
+		'flex-width'         => true,
+		'flex-height'        => true,
+	);
+    add_theme_support('custom-header', $args);
+}
+add_action('after_setup_theme', 'webonary2_custom_header_setup');
+
+// set preferred datatables version for bootstrap 5
+add_filter('gdoc_enqueued_front_end_scripts', 'Webonary2_Customize::FilterDataTablesScriptsBootstrap5');
+add_filter('gdoc_enqueued_front_end_styles', '\Webonary2_Customize::FilterDataTablesStylesBootstrap5');
 
 // Customizer additions.
 Webonary2_Customize::Init();

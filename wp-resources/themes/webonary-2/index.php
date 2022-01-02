@@ -35,23 +35,22 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 <html <?php language_attributes(); ?> dir="ltr">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title><?php echo Webonary2_Functions::PageTitle(); ?></title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <link href="<?php echo Webonary2_Functions::DefaultCSS(); ?>" rel="stylesheet">
+
 
     <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 	<?php wp_head(); ?>
-
+    <link href="<?php echo Webonary2_Functions::DefaultCSS(); ?>" rel="stylesheet">
 
 </head>
 <body>
-<header>
+<header class="mb-4">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid p-0">
 	        <?php echo Webonary2_Functions::SiteLogo(); ?>
@@ -80,12 +79,14 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 
     </nav>
 
-    <div class="title-bar container-fluid mb-4">
+    <div class="title-bar container-fluid">
         <h2 class="my-2"><?php bloginfo('name'); ?></h2>
     </div>
+
+	<?php echo Webonary2_Functions::HeaderImage(); ?>
 </header>
 
-<div class="container">
+<main class="container">
 	<?php
     if (is_search()) {
         include 'templates/search.php';
@@ -94,7 +95,7 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 	    include 'templates/page.php';
     }
 	?>
-</div>
+</main>
 
 <footer class="<?php echo $footer_class ?> text-center">
     <div class="container-fluid d-flex flex-column">
@@ -103,8 +104,8 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
         </div>
         <hr>
         <div id="bottom-branding" class="container-fluid d-flex flex-row flex-wrap justify-content-between">
-            <div><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="width: 20%; margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
-            <div><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <a href="https://www.webonary.org" target="_blank">Webonary.org</a></div>
+            <div><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;" alt=""> <span style="width: 20%; margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
+            <div><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;" alt=""> <a href="https://www.webonary.org" target="_blank">Webonary.org</a></div>
             <div><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>" style="width:20%;"><?php _e("Terms of Service", ZEE_LANG); ?></a></div>
         </div>
     </div>
@@ -112,6 +113,20 @@ $copyright = str_replace('[year]', date('Y'), $copyright);
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function() {
+        jQuery('#slideshow')
+            .cycle({
+                fx: 'scrollHorz',
+                speed: 1000,
+                timeout: 10000,
+                next: '#slide_next',
+                prev: '#slide_prev'
+            });
+    });
+
+</script>
 <?php wp_footer(); ?>
 
 </body>

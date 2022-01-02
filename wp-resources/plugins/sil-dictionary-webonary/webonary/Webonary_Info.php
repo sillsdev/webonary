@@ -124,6 +124,7 @@ class Webonary_Info
 		return $status;
 	}
 
+	/** @noinspection PhpArrayAccessCanBeReplacedWithForeachValueInspection */
 	public static function number_of_entries()
 	{
 		global $wpdb;

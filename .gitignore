@@ -4,6 +4,7 @@
 /srdb/
 /*.sh
 !/sass.sh
+!/minify-js.sh
 !/composer_links.sh
 /node_modules/
 /vendor/

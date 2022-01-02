@@ -47,6 +47,19 @@ class Webonary2_Functions
 			return $title . wp_title('&raquo;', false);
 	}
 
+	public static function HeaderImage(): string {
 
+		$header_image = get_header_image();
+
+		if ($header_image === false)
+			return '';
+
+		return <<<HTML
+<div id="custom_header">
+    <img src="$header_image" alt="">
+</div>
+HTML;
+
+	}
 
 }

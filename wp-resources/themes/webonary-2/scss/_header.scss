@@ -6,50 +6,63 @@ header {
     }
   }
 
-  nav.navbar {
-    padding: 0;
-
-    ul {
-      list-style: none;
-      padding: 0;
-      text-align: start;
+  nav {
+    div, .container, .container-fluid, .container-xl, .container-lg {
+      overflow: visible;
     }
 
-    .navbar-nav {
-      .nav-item {
-        .nav-link {
-          font-weight: 700;
-          padding-left: 1rem;
-          padding-right: 1rem;
+    &.navbar {
+      padding: 0;
 
-          &:hover, &:focus {
-            background-color: $gray-300;
-          }
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: start;
+      }
 
-          &.active {
-            color: $white;
-            background-color: $gray-600;
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            font-weight: 700;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            &:hover, &:focus {
+              background-color: $gray-300;
+            }
+
+            &.active {
+              color: $white;
+              background-color: $gray-600;
+            }
           }
         }
+
       }
 
-    }
+      .navbar-brand {
+        padding: 0;
+        margin: 0;
 
-    .navbar-brand {
-      padding: 0;
-      margin: 0;
+        img {
+          height: 60px;
+          margin-bottom: 1px;
+        }
 
-      img {
-        height: 60px;
-        margin-bottom: 1px;
       }
-
     }
   }
 
   .title-bar {
     background-color: $webonary-primary;
     color: $white;
+
+  }
+
+  #custom_header {
+    img {
+      width: 100%;
+    }
 
   }
 }
