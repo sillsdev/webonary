@@ -87,6 +87,11 @@ input, textarea {
   text-align: left;
   background: #fff;
 }
+.full-width  #wrap {
+  max-width: 1800px;
+  overflow: hidden;
+}
+
 #navbar {
   float: left;
     position: static;
