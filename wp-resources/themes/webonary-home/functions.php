@@ -265,3 +265,8 @@ function webonary_home_enqueue_jquery() {
 // load jquery first
 add_action('wp_enqueue_scripts', 'webonary_home_enqueue_jquery', 5);
 add_action('login_enqueue_scripts', 'webonary_home_enqueue_jquery', 5);
+
+function full_width_body_classes($classes) {
+	$classes[] = 'full-width';
+	return $classes;
+}

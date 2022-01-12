@@ -2,8 +2,10 @@
 /*
 Template Name: Page Fullwidth
 */
-?>
-<?php get_header(); ?>
+
+add_filter('body_class','full_width_body_classes');
+
+get_header(); ?>
 
   <div class="fullwidth">
 
@@ -21,7 +23,6 @@ Template Name: Page Fullwidth
           <?php wp_link_pages(); ?>
         </div>
 
-
       </div>
 
     <?php endwhile; ?>
@@ -30,4 +31,4 @@ Template Name: Page Fullwidth
 
   </div>
 
-<?php get_footer(); ?>
+<?php get_footer();
