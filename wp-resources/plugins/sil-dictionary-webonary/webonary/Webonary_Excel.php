@@ -165,8 +165,7 @@ class Webonary_Excel
 
 		$sites = self::GetAllSites();
 
-		$is_excel = strtolower($atts['excel'] ?? '');
-		if ($is_excel == 'yes' || $is_excel == 'true' || $is_excel == '1')
+		if ($is_excel)
 			self::ExcelRows($sites);
 		else
 			self::EchoRows($sites);
