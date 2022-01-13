@@ -1,13 +1,13 @@
-<?php 
+<?php
 add_action('wp_head', 'themezee_css_layout');
 function themezee_css_layout() {
-	
-	echo '<style type="text/css">';
+
+	echo '<style>';
 	$options = get_option('themezee_options');
-	
+
 	// Rounded Corners?
 	if ( $options['themeZee_general_corners'] == 'no' ) {
-	
+
 		echo '
 			#wrap, #sidebar .widgettitle, #sidebar ul li ul, #sidebar ul li div, #searchsubmit, .widget-tabnav li a,
 			#topnavi, #topnav ul, #navi, .moretext, .arh, .postinfo, .author_box, #frontpage_widgets .widgettitle,
@@ -22,11 +22,11 @@ function themezee_css_layout() {
 			}
 		';
 	}
-	
+
 	// Add Custom CSS
 	if ( $options['themeZee_general_css'] <> '' ) {
 		echo $options['themeZee_general_css'];
 	}
-	
+
 	echo '</style>';
 }

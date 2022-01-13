@@ -1,5 +1,6 @@
 #publishedSites, #countries {
-	width: 230px;
+	width: auto;
+	max-width: calc(100% - 50px);
 	padding: 5px;
 	font-size: 1em;
 	color: #474747;
@@ -7,9 +8,9 @@
 	outline: 0;
 }
 
-#publishedSites, #countries option{
-	font-size: 1em !important;
-}
+/*#publishedSites option, #countries option{*/
+/*	font-size: 1em !important;*/
+/*}*/
 
 #linkGo {
 	padding: 7px;

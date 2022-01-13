@@ -352,7 +352,7 @@ class Webonary_Utility
 		}
 	}
 
-	public static function includeTemplate($template_name, $substitutions)
+	public static function includeTemplate($template_name, $substitutions = null)
 	{
 		global $webonary_template_path;
 
@@ -582,5 +582,48 @@ class Webonary_Utility
 		$include_dir = 'sil-dictionary-webonary/include';
 		load_plugin_textdomain('sil_dictionary', false, $include_dir . '/lang');
 		load_plugin_textdomain('sil_domains', false, $include_dir . '/sem-domains');
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as a string
+	 * @param string $variable_name
+	 * @param string $default
+	 * @return string
+	 */
+	public static function GetStr($variable_name, $default = '')
+	{
+		$val = filter_input(INPUT_GET, $variable_name, FILTER_UNSAFE_RAW) ?? $default;
+		return ($val === false) ? $default : (string)$val;
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as a float
+	 * @param string $variable_name
+	 * @param float $default
+	 * @param int|null $decimal_places
+	 * @return float
+	 */
+	public static function GetFloat($variable_name, $default = 0.0, $decimal_places = null)
+	{
+		$val = filter_input(INPUT_GET, $variable_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) ?? $default;
+
+		if ($val === false || $val === '')
+			$val = $default;
+
+		if ($decimal_places != null) $val = number_format($val, $decimal_places);
+
+		return (float) $val;
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as an int
+	 * @param string $variable_name
+	 * @param int $default
+	 * @return int
+	 */
+	public static function GetInt($variable_name, $default = 0)
+	{
+		$val = self::GetFloat($variable_name, $default, 0);
+		return (int)$val;
 	}
 }
