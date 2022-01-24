@@ -7298,27 +7298,27 @@ msgstr ""
 
 #: include/infrastructure.php:159
 msgid "Rough draft"
-msgstr ""
+msgstr "खेस्रा"
 
 #: include/infrastructure.php:160
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "स्व-समीक्षित खेस्रा"
 
 #: include/infrastructure.php:161
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "समूदाय समीक्षित खेस्रा"
 
 #: include/infrastructure.php:162
 msgid "Consultant approved"
-msgstr ""
+msgstr "परामर्शदाताद्वारा अनुमोदित"
 
 #: include/infrastructure.php:163
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "सम्पन्‍न (अप्रकाशित)"
 
 #: include/infrastructure.php:164
 msgid "Formally published"
-msgstr ""
+msgstr "प्रकाशित"
 
 #: include/infrastructure.php:167
 msgid "Search Options:"
@@ -7710,3 +7710,7 @@ msgstr ""
 #: include/xhtml-importer.php:2145
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Publication Status"
+msgstr "प्रकाशन स्थिति"
