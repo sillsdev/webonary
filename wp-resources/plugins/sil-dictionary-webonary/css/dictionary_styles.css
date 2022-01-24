@@ -63,7 +63,7 @@ span.comment {background: none; padding: 0}
 .reversalindexentry,
 .minorentrycomplex,
 .minorentryvariant,
-.mainentrysubentries .mainentrysubentry {clear:none !important; white-space:unset !important}
+.mainentrysubentries .mainentrysubentry {clear:none !important;}
 
 td {
     font-size: 9pt;
