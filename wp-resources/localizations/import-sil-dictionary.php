@@ -1,8 +1,8 @@
 <?php
 
 
-$lang_code = 'fr';
-$locale_code = 'fr_FR';
+$lang_code = 'in';
+$locale_code = 'in_ID';
 
 
 include_once 'shared-functions.php';
@@ -67,7 +67,7 @@ while (($line = fgets($handle)) !== false) {
 
 fclose($handle);
 
-$lines = getXmlPOLines($words);
+$lines = getPOLines($words);
 
 makePOFile($po_file_name, $lines);
 makeMOFile($po_file_name);

@@ -7428,27 +7428,27 @@ msgstr ""
 
 #: include/configuration.php:535
 msgid "Rough draft"
-msgstr ""
+msgstr "Borrador"
 
 #: include/configuration.php:536
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Versión preliminar"
 
 #: include/configuration.php:537
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Revisado por habladores nativos"
 
 #: include/configuration.php:538
 msgid "Consultant approved"
-msgstr ""
+msgstr "Revisado por un asesor técnico"
 
 #: include/configuration.php:539
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Contenido y diseño aprobados para publicarse"
 
 #: include/configuration.php:540
 msgid "Formally published"
-msgstr ""
+msgstr "Edición oficial actual"
 
 # @ sil_dictionary
 #: include/configuration.php:543
@@ -8755,3 +8755,7 @@ msgstr ""
 #, fuzzy
 #~ msgid "Number of Dictionary Entries"
 #~ msgstr "Nombres de países"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Estado editorial"

@@ -77,27 +77,27 @@ msgstr ""
 
 #: include/configuration.php:409
 msgid "Rough draft"
-msgstr ""
+msgstr "Первый черновик"
 
 #: include/configuration.php:410
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Редактируется издателем"
 
 #: include/configuration.php:411
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Редактируется сообществом"
 
 #: include/configuration.php:412
 msgid "Consultant approved"
-msgstr ""
+msgstr "Одобрен консультантом"
 
 #: include/configuration.php:413
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Закончен (не опубликован)"
 
 #: include/configuration.php:414
 msgid "Formally published"
-msgstr ""
+msgstr "Официально опубликован"
 
 #: include/configuration.php:418
 msgid "Delete Data"
@@ -5854,3 +5854,7 @@ msgstr "Семантические Области"
 #: semantic domain 9.2.8
 msgid "Onomatopoeic words"
 msgstr "Идеофоны, звукоподражательные элементы речи"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Статус словаря"

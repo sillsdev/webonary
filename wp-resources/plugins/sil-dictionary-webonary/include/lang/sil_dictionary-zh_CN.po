@@ -108,27 +108,27 @@ msgstr ""
 
 #: include/configuration.php:250
 msgid "Rough draft"
-msgstr ""
+msgstr "草稿"
 
 #: include/configuration.php:251
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "自审稿"
 
 #: include/configuration.php:252
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "共审稿"
 
 #: include/configuration.php:253
 msgid "Consultant approved"
-msgstr ""
+msgstr "被调查人通过稿"
 
 #: include/configuration.php:254
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "终稿（未出版)"
 
 #: include/configuration.php:255
 msgid "Formally published"
-msgstr ""
+msgstr "终稿（已出版)"
 
 # @ sil_dictionary
 #: include/configuration.php:259
@@ -5916,3 +5916,7 @@ msgstr ""
 #: include/xhtml-importer.php:2177
 msgid "Import posts from an SIL FLEX XHTML file."
 msgstr ""
+
+#: extra string
+msgid "Publication Status"
+msgstr "项目目前状态"
