@@ -90,6 +90,8 @@ img {
 }
 
 /*============================ STRUCTURE ============================*/
+#wrapper {max-width: 1200px;}
+
 #wrap {
   clear: both;
   margin: 30px auto;

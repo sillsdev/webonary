@@ -34,7 +34,7 @@ else {
 <div align="center">
 <!-- My IME complains about an unmatched div here and below, but matching the
      divs causes problems with the site. I assume they are closed elsewhere.-->
-<div id="wrapper" <?php if(!isMobile()) { ?>style=max-width:900px; <?php } ?>>
+<div id="wrapper">
 
 	<div id="wrap">
 		<div id="head">
@@ -107,7 +107,7 @@ else {
 			<?php } ?>
 
 	<?php if (has_nav_menu('top_navi')){?>
-		<div id="navbar" <?php if(!isMobile()) { ?>style="max-width: 900px;" <?php } ?>><div id="navtitle"><?php bloginfo('name'); ?></div></div>
+		<div id="navbar"><div id="navtitle"><?php bloginfo('name'); ?></div></div>
 	<?php } ?>
 
 		<?php if (has_nav_menu('main_navi')){?>
