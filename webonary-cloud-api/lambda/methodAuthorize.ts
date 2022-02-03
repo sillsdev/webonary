@@ -43,8 +43,8 @@ export async function handler(
 
     console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
     // Same user should have the same access to post/delete dictionary entry data as well as files.
-    const principalId = credentials.username;
-    const resourceRegex = /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\/(.+)$/i;
+    const principalId = `${dictionaryId}::${credentials.username}`;
+    const resourceRegex = /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\/$/i;
 
     // Call Webonary.org for user authentication
     axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -69,7 +69,7 @@ export async function handler(
     } catch (error) {
       const resources = [event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`)];
 
-      console.log(`Denying ${principalId} to access {resources}`);
+      console.log(`Denying ${principalId} to access ${resources}`, error);
       return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
     }
   }

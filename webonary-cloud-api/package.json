@@ -13,9 +13,10 @@
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "post-legacy": "env-cmd ts-node tools/post-legacy.ts",
-    "test": "jest",
+    "test": "rimraf **/*.ts.snap && jest --bail",
     "test-coverage": "jest --collectCoverage",
-    "watch": "npx tsc -w"
+    "watch": "npx tsc -w",
+    "clean": "rimraf {bin,lambda,lib,tools}/{,__tests__/}*.{d.t,j}s **/*.ts.snap"
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.72.0",
@@ -43,6 +44,7 @@
     "jest": "^24.9.0",
     "parse5": "^5.1.1",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.5.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"

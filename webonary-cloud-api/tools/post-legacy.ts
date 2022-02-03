@@ -171,7 +171,7 @@ const [, , ...args] = process.argv;
 if (
   process.env.API_DOMAIN_NAME &&
   process.env.API_DOMAIN_BASE_PATH &&
-  process.env.API_DOMAIN_CERT_ARN
+  process.env.API_DOMAIN_CERT_ARN // TODO: should this really be getting checked here, it's not being used?
 ) {
   axios.defaults.baseURL = `https://${process.env.API_DOMAIN_NAME}/${process.env.API_DOMAIN_BASE_PATH}`;
 } else {
