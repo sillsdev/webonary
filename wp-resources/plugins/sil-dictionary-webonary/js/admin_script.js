@@ -100,18 +100,21 @@ function RestartIndexing() {
 document.addEventListener('DOMContentLoaded', function() {
 
     // site-address must be lowercase, and replace underscore with hyphen
-    document.getElementById('site-address').onkeyup = function(evt) {
+    let site_address = document.getElementById('site-address');
+    if (site_address) {
+        document.getElementById('site-address').onkeyup = function(evt) {
 
-        // skip if it is not a printable character key
-        let char = evt.key || '';
-        if (char.length !== 1)
-            return;
+            // skip if it is not a printable character key
+            let char = evt.key || '';
+            if (char.length !== 1)
+                return;
 
-        let start = this.selectionStart;
-        let end = this.selectionEnd;
-        this.value = this.value.toLowerCase().replace(/_/g, '-');
-        this.setSelectionRange(start, end);
-    };
+            let start = this.selectionStart;
+            let end = this.selectionEnd;
+            this.value = this.value.toLowerCase().replace(/_/g, '-');
+            this.setSelectionRange(start, end);
+        };
+    }
 
     // start the count updater
     window.setTimeout(GetCurrentImportedCount, 5000);
