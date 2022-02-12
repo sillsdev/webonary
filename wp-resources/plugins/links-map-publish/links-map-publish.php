@@ -36,28 +36,45 @@ function change_link_updated($link) {
 }
 
 /**
+ * @return array
  * @throws Exception
+ */
+function process_ethnologue_language_file(): array {
+
+	// decode the JSON into an associative array
+	$json = json_decode(file_get_contents(__DIR__ . '/languages.json'), true);
+
+	$languages = $json[0]['leaflet'][0]['features'];
+	$data = [];
+
+	// robust languages
+	getEthnologueData($data, $languages[0]['features']);
+
+	// endangered languages
+	getEthnologueData($data, $languages[1]['features']);
+
+	// store the processed data
+	file_put_contents(__DIR__ . '/processed_languages.dat', serialize($data));
+
+	return $data;
+}
+
+/**
+ * @throws Exception
+ * @noinspection JSUnresolvedVariable
  */
 function add_links_to_map()
 {
-	$str = file_get_contents(__DIR__ . '/languages.json');
+	$data_file = __DIR__ . '/processed_languages.dat';
+	if (is_file($data_file)) {
+		$ethnologueData = unserialize(file_get_contents($data_file), ['allowed_classes' => false]);
+	}
+	else {
+		$ethnologueData = process_ethnologue_language_file();
+	}
 
-	$json = json_decode($str, true); // decode the JSON into an associative array
-
-	//Robust languages
-	$mapPoints = $json[0]['leaflet'][0]['features'][0]['features'];
-	//echo var_dump($json[0]['leaflet'][0]['features']) . "\n";
-	$e = 0;
-
-	$ethnologueData = [];
-	$ethnologueData = getEthnologueData($ethnologueData, $e, $mapPoints);
-
-	//Endangered languages
-	$mapPoints = $json[0]['leaflet'][0]['features'][1]['features'];
-	$ethnologueData = getEthnologueData($ethnologueData, $e, $mapPoints);
-
-    $has_not = display_links_coordinates(false, $ethnologueData, 0);
-	$has = display_links_coordinates(true, $ethnologueData, count($has_not));
+    $has_not = display_links_coordinates(false, $ethnologueData);
+	$has = display_links_coordinates(true, $ethnologueData);
     $url = admin_url('admin-ajax.php');
 
     $has_not_str = implode(PHP_EOL, $has_not);
@@ -93,51 +110,37 @@ function add_links_to_map()
 <script type="text/javascript">
 
     document.getElementById('map-coordinates-form').addEventListener('input', function (evt) {
-        // tag elements that have changed
-        evt.target['dataset'].changed = '1';
+        // tag rows that have changed
+        jQuery(evt.target).closest('tr')[0]['dataset'].changed = '1';
     });
 
     function saveMapCoordinates() {
         
         // get the values that have changed
-        const elements = document.querySelectorAll("[data-changed]");
+        const elements = document.querySelectorAll("[data-changed='1']");
         
         if (elements.length === 0) {
             toastr.info('Nothing to save.');
             return;
         }
         
-        const regex = /.*\[(\d+)\]/;
-        let ids = [];
-        
-        console.log(elements);
-        
-        elements.forEach(el => {
-            
-            // get the index
-            ids.push(el.name.match(regex)[1]);
-        })
-        
-        // remove duplicates
-        ids = [...new Set(ids)];
-        
         // collect the data for changed items
         let changed = [];
         
-        for (let i=0; i < ids.length; i++) {
+        elements.forEach(tr => {
             
-            let idx = ids[i];
-
+            let jqtr = jQuery(tr);
+            
             changed.push(
                 {
-                    link_id: document.getElementsByName('linkid[' + idx + ']')[0].value,
-                    marker_id: document.getElementsByName('markerid[' + idx + ']')[0].value,
-                    lat: document.getElementsByName('lat[' + idx + ']')[0].value,
-                    lon: document.getElementsByName('lon[' + idx + ']')[0].value
+                    link_id: jqtr.data('linkId'),
+                    marker_id: jqtr.data('markerId'),
+                    lat: jqtr.find('.coordinate.lat').val(),
+                    lon: jqtr.find('.coordinate.lon').val()
                 }
             )
-        }
-        
+        })
+
         // send to the server
         jQuery.ajax({
             url: '$url',
@@ -149,28 +152,14 @@ function add_links_to_map()
             // check for error condition
             if ('success' in data && data['success'] === 'OK') {
                 
-                // remove the changed flag
-                elements.forEach(el => {
-                    el.removeAttribute('data-changed');
-                });
-                
-                // update the "Find coordinates" link
-	            for (let i=0; i < ids.length; i++) {
-	            
-		            let idx = ids[i];
-	                let lat = document.getElementsByName('lat[' + idx + ']')[0].value;
-	                let lon = document.getElementsByName('lon[' + idx + ']')[0].value;
-	                
-		            document.getElementById('map-link-' + idx.toString()).setAttribute('href', 'https://www.whatsmygps.com/index.php?lat=' + lat + '&lng=' + lon);
-		        }
-        
-                toastr.success('Data saved');
+                // reload the page
+                location.reload();
                 return;
             }
 
             toastr.warning('Unexpected response. Data may not be saved.')
             
-        }).fail(function (jqXHR, textStatus, errorThrown) {
+        }).fail(function () {
             toastr.warning('Failed. Data may not be saved.')
         });
     }
@@ -178,7 +167,13 @@ function add_links_to_map()
 HTML;
 }
 
-function display_links_coordinates($hasCoordinates, $ethnologueData, $i): array
+/**
+ * @param bool $hasCoordinates
+ * @param array $ethnologueData
+ *
+ * @return array
+ */
+function display_links_coordinates(bool $hasCoordinates, array $ethnologueData): array
 {
 	global $wpdb;
 
@@ -203,14 +198,11 @@ SQL;
 
 	/** @noinspection HtmlUnknownTarget */
 	$template = <<<'HTML'
-<tr>
-<td><a href="%1$s" target="_blank">%2$s</a>
-<input type="hidden" name="linkid[%3$d]" value="%4$d">
-<input type="hidden" name="markerid[%3$d]" value="%5$d">
-</td>
-<td>Lat: <input class="coordinate" type="text" name="lat[%3$d]" value="%6$s"></td>
-<td>Lon: <input class="coordinate" type="text" name="lon[%3$d]" value="%7$s"></td>
-<td><a id="map-link-%3$d" href="https://www.whatsmygps.com/index.php?lat=%6$s&lng=%7$s" target="_blank">Find coordinates</a></td>
+<tr data-link-id="%3$d" data-marker-id="%4$d" data-changed="%7$d">
+<td><a href="%1$s" target="_blank">%2$s</a></td>
+<td>Lat: <input class="coordinate lat" type="text" name="lat[]" value="%5$s"></td>
+<td>Lon: <input class="coordinate lon" type="text" name="lon[]" value="%6$s"></td>
+<td><a href="https://www.whatsmygps.com/index.php?lat=%5$s&lng=%6$s" target="_blank">Find coordinates</a></td>
 </tr>
 HTML;
 
@@ -237,20 +229,27 @@ HTML;
 		$sql = "SELECT REPLACE(meta_value, 'https://www.ethnologue.com/language/','') AS ethnologueCode " . " FROM wp_" . $blog_id . "_postmeta " . " WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%ethnologue%'";
 
 		$ethnologue_code = trim($wpdb->get_var ( $sql ));
+		$changed = 0;
 
-		$n = searchForId($ethnologue_code,$ethnologueData, 'code');
-
-		$lat = $ethnologueData[$n]['lat'];
-		$lon = $ethnologueData[$n]['lon'];
-
-		if($link->lat != null && $link->lon != null)
-		{
+		if ($link->lat != null && $link->lon != null) {
 			$lat = $link->lat;
 			$lon = $link->lon;
 		}
+		elseif (isset($ethnologueData[$ethnologue_code])) {
+			$lat = $ethnologueData[$ethnologue_code]['lat'];
+			$lon = $ethnologueData[$ethnologue_code]['lon'];
+		}
+		else {
+			$lat = '';
+			$lon = '';
+		}
 
-        $values[] = sprintf($template, $link->link_url, $link->link_name, $i, $link->link_id, $link->markerid, $lat, $lon);
-        $i++;
+		if (!$hasCoordinates) {
+			if ($lat && $lon)
+				$changed = 1;
+		}
+
+        $values[] = sprintf($template, $link->link_url, $link->link_name, $link->link_id, $link->markerid, $lat, $lon, $changed);
 	}
 
     return $values;
@@ -271,38 +270,27 @@ function create_map_table () {
 
 /**
  * @param $ethnologueData
- * @param $e
  * @param $mapPoints
  *
- * @return mixed
  * @throws Exception
  */
-function getEthnologueData($ethnologueData, &$e, $mapPoints)
+function getEthnologueData(&$ethnologueData, $mapPoints)
 {
 	foreach($mapPoints as $point)
 	{
+		// get the language code from the href of the anchor tag
 		$url = $point['popup'];
 		$a = new SimpleXMLElement($url);
-		//echo var_dump($a) . "\n";
-		//echo $e . ": " . $a[2] . "\n";
-		$ethnologueCode = str_replace('https://www.ethnologue.com/language/', '', $a['href']);
-		//echo $ethnologueCode . "\n";
-		$ethnologueData[$e]['code'] = $ethnologueCode;
-		$ethnologueData[$e]['lat'] = $point['lat'];
-		$ethnologueData[$e]['lon'] = $point['lon'];
-		$e++;
-	}
+		$code = substr($a['href'], strrpos($a['href'], '/') + 1);
 
-	return $ethnologueData;
-}
-
-function searchForId($id, $array, $column) {
-	foreach ($array as $key => $val) {
-		if ($val[$column] === $id) {
-			return $key;
-		}
+		// Round values to 5 decimal places (about 1 meter).
+		// The source file has 15 decimal places (less than 1 nanometer).
+		$ethnologueData[$code] = [
+			'name' => (string)$a,
+			'lat' => round((float)$point['lat'], 5),
+			'lon' => round((float)$point['lon'], 5)
+		];
 	}
-	return null;
 }
 
 function saveMapCoordinates()
@@ -384,7 +372,10 @@ XML;
 		if ($body != '')
 			$body .= PHP_EOL;
 
-        $body .= sprintf($template, $link->lat, $link->lon, $link->link_url, $link->link_name, htmlentities( $link->link_description ));
+	    // Round values to 5 decimal places (about 1 meter).
+	    $lat = round((float)$link->lat, 5);
+		$lon = round((float)$link->lon, 5);
+        $body .= sprintf($template, $lat, $lon, $link->link_url, $link->link_name, htmlentities( $link->link_description ));
     }
 
     $timestamp = date('Y-m-d H:i:s');
