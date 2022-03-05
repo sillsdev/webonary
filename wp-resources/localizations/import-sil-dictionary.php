@@ -1,8 +1,8 @@
 <?php
 
 
-$lang_code = 'in';
-$locale_code = 'in_ID';
+$lang_code = 'es';
+$locale_code = 'es_ES';
 
 
 include_once 'shared-functions.php';
