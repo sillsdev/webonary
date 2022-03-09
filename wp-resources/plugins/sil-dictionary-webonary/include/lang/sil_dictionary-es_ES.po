@@ -89,7 +89,7 @@ msgstr "Número de entradas"
 
 #: include/searchform_func.php:339 webonary/Webonary_Search_Widget.php:82
 msgid "Last update:"
-msgstr ""
+msgstr "Última actualización:"
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
 msgid "Date published:"
@@ -138,10 +138,6 @@ msgstr "Tepehuán del sureste"
 #: extra string
 msgid "Spanish"
 msgstr "Español"
-
-#: extra string
-msgid "Last update"
-msgstr "Última actualización"
 
 #: extra string
 msgid "SIL Mexico"
