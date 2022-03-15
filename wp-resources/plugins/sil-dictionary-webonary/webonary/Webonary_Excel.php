@@ -161,24 +161,27 @@ class Webonary_Excel
 	 */
 	public static function DisplayAllSites($is_excel)
 	{
-		set_time_limit(300);
-
-		$sites = self::GetAllSites();
-
-		if ($is_excel)
+		if ($is_excel) {
+			set_time_limit(300);
+			$sites = self::GetAllSites();
 			self::ExcelRows($sites);
-		else
-			self::EchoRows($sites);
+		}
+		else {
+			self::BuildTable();
+		}
 	}
 
 	/**
 	 * @return string[][]
 	 */
-	private static function GetAllSites(): array
+	public static function GetAllSites($include_header_row = true): array
 	{
 		global $wpdb;
 
-		$rows = [['Site Title', 'Country', 'URL', 'Copyright', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastImport']];
+		$rows = [];
+
+		if ($include_header_row)
+			$rows[] = ['Site Title', 'Country', 'URL', 'Copyright', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastImport'];
 
 		$sql =  "SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered FROM $wpdb->blogs
     WHERE blog_id != $wpdb->blogid
@@ -207,9 +210,9 @@ class Webonary_Excel
 
 			preg_match_all('~[:en]](.+?)[\\[]~', $blog_details->blogname, $blognameMatches);
 			if(count($blognameMatches[0]) > 0)
-				$fields[] = $blognameMatches[1][0];
+				$fields[] = trim($blognameMatches[1][0]);
 			else
-				$fields[] = $blog_details->blogname;
+				$fields[] = trim($blog_details->blogname);
 
 			$fields[] = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name = 'countryName'");
 
@@ -265,63 +268,11 @@ class Webonary_Excel
 			}, $fields);
 
 			$rows[] = $mapped;
-
-			restore_current_blog();
 		}
+
+		restore_current_blog();
 
 		return $rows;
-///** @noinspection PhpUnhandledExceptionInspection */
-//Webonary_Excel::ToExcel( 'WebonarySites_' . $now, 'Webonary Sites: ' . $today, $rows);
-	}
-
-	private static function EchoRows($rows)
-	{
-		$row_count = count($rows);
-
-		if ($row_count == 0) {
-			echo '<p>No results found.</p>';
-			return;
-		}
-
-		echo '<div style="overflow-x: auto"><table style="white-space: nowrap">';
-
-		// the header row
-		$row = $rows[0];
-		$cells = '<th>&nbsp;</th>';
-		foreach($row as $col) {
-			$cells .= "<td>$col</td>";
-		}
-
-		echo <<<HTML
-<thead>
-<tr>
-  <th>$cells</th>
-</tr>
-</thead>
-<tbody>
-HTML;
-
-		// the data rows
-		for ($i=1; $i < $row_count; $i++) {
-
-			$cells = "<td>$i</td>";
-
-			foreach($rows[$i] as $col) {
-
-				if (strpos($col, 'http') === 0)
-					$col = "<a href='$col' target='_blank'>$col</a>";
-
-				$cells .= "<td>$col</td>";
-			}
-
-			echo <<<HTML
-<tr>
-  <th>$cells</th>
-</tr>
-HTML;
-		}
-
-		echo '</tbody></table></div>';
 	}
 
 	/**
@@ -336,5 +287,129 @@ HTML;
 		$now = gmdate('Y-m-d\TH.i.s\Z');
 		$today = gmdate('Y-m-d');
 		Webonary_Excel::ToExcel( 'WebonarySites_' . $now, 'Webonary Sites: ' . $today, $rows);
+	}
+
+
+	private static function BuildTable()
+	{
+		$url = admin_url('admin-ajax.php');
+		if (strpos($url, '?') === false)
+			$url .= '?action=getAjaxDisplaySites';
+		else
+			$url .= '&action=getAjaxDisplaySites';
+
+		echo <<<HTML
+<style>
+  #all-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
+  #all-sites-table span {border-bottom: 1px dashed #000}
+  div.dt-buttons {display: none}
+</style>
+<div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
+  <table id="all-sites-table" style="width: 100%; box-sizing: border-box">
+    <thead>
+      <tr>
+        <th>Site Title</th>
+        <th>Country</th>
+        <th>URL</th>
+        <th>Copyright</th>
+        <th>Code</th>
+        <th>Entries</th>
+        <th>Create Date</th>
+        <th>Publish Date</th>
+        <th>Contact Email</th>
+        <th>Notes</th>
+        <th>Last Import</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+<script type="text/javascript">
+
+    function fixedRender(data, len) {
+        if (data.length <= len) 
+            return data;
+        
+        return '<span title="' + data + '">' + data.substring(0, len) + '</span>';
+    } 
+    
+    function dateTimeRender(data) {
+    	return '<span style="white-space: nowrap">' + data + '</span>';    
+    }
+    
+    function setTableHeight() {
+
+        let container = $('#all-sites-table').closest('.dataTables_scroll');
+        let tbody = container.find('.dataTables_scrollBody');
+        let offset = tbody.offset().top + 1;
+
+        let card = tbody.closest('#table-container-div');
+        let padding = parseInt(card.css('padding-bottom'));
+        if (padding)
+            offset += padding;
+
+        let paginate = $('#list-table_paginate');
+        if (paginate.length)
+            offset += paginate.outerHeight(true) + 2;
+
+        let filter = $('div.list-table-filter');
+        if (filter.length) {
+
+            if (!paginate.length) {
+                offset += filter.outerHeight(true) + 2;
+            }
+        }
+
+        let footer = container.find('.dataTables_scrollFootInner');
+        if (footer.length)
+            offset += footer.outerHeight(true) + 2;
+
+        tbody.css('max-height', 'calc(100vh - ' + (offset + 30).toString() + 'px)');
+    }
+    
+	$(document).ready(function() {
+        let table = $('#all-sites-table');
+        
+	    table.DataTable({
+	        ajax: '$url',
+	        paging: false,
+	        sScrollY: 'auto',
+            scrollY: false,
+            sScrollX: '100%',
+            scrollX: true,
+	        ordering: true,
+	        order: [[0, 'asc']],
+	        columnDefs: [
+                {
+                    targets: 2,
+                    render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
+                },
+                {
+                    targets: 4,
+                    render: function(data) { return fixedRender(data, 6); }
+                }
+                ,
+                {
+                    targets: [6, 7, 10],
+                    render: function(data) { return dateTimeRender(data); }
+                }
+	        ],
+	        initComplete: function() {
+                setTableHeight();
+	        }
+	    });
+        
+        let tbody = table.find('tbody');
+        
+        tbody.on('click', 'tr', function() {
+
+	        let tr = $(this).closest('tr');
+	        let tbl = $(this).closest('table').DataTable();
+	        tbl.row(tr).select();
+	        tbl.rows(tr.siblings()).deselect();
+        });
+	});
+</script>
+HTML;
 	}
 }
