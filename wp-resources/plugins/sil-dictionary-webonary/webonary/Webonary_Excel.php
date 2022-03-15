@@ -301,7 +301,7 @@ class Webonary_Excel
 		echo <<<HTML
 <style>
   #all-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
-  #all-sites-table span {text-decoration: dashed}
+  #all-sites-table span {border-bottom: 1px dashed #000}
   div.dt-buttons {display: none}
 </style>
 <div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
