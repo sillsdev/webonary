@@ -1,5 +1,216 @@
 [
   {
+    "type": "get",
+    "url": "/get/dictionary/:dictionaryId",
+    "title": "Get dictionary",
+    "description": "<p>Gets the metadata of a dictionary.</p>",
+    "name": "GetDictionary",
+    "group": "Dictionary",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Id of the dictionary</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "mainLanguage",
+            "description": "<p>Dictionary language metadata</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "mainLanguage.lang",
+            "description": "<p>ISO language code</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "mainLanguage.title",
+            "description": "<p>ISO language name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "mainLanguage.letters",
+            "description": "<p>ISO Letters for the language</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "mainLanguage.cssFiles",
+            "description": "<p>Css files used to displaying entries from this language (in order)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "mainLanguage.entriesCount",
+            "description": "<p>Number of entries in this dictionary</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "partsOfSpeech",
+            "description": "<p>Parts of speech short codes for this language</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "partsOfSpeech.lang",
+            "description": "<p>ISO language code</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "partsOfSpeech.abbreviation",
+            "description": "<p>Abbreviation of this part of speech</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "partsOfSpeech.name",
+            "description": "<p>Name of this part of speech</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "partsOfSpeech.guid",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "reversalLanguages",
+            "description": "<p>Reversal languages defined for the main language</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reversalLanguages.lang",
+            "description": "<p>ISO language code</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "reversalLanguages.title",
+            "description": "<p>ISO language name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "reversalLanguages.letters",
+            "description": "<p>ISO Letters for the language</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "reversalLanguages.cssFiles",
+            "description": "<p>Css files used to displaying entries from this language (in order)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "reversalLanguages.entriesCount",
+            "description": "<p>Number of reversal entries for this reversal language and dictionary</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "semanticDomains",
+            "description": "<p>Semantic Domains used in dictionary entries (language specific)</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "semanticDomains.lang",
+            "description": "<p>ISO language code</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "semanticDomains.abbreviation",
+            "description": "<p>Abbreviation of this semantic domain</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "semanticDomains.name",
+            "description": "<p>Name of this semantic domain</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "semanticDomains.guid",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "semanticDomains.nameInsensitive",
+            "description": "<p>Lowercase name of this semantic domain</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "updatedAt",
+            "description": "<p>Time (UTC) that the dictionary metadata was last updated. Updates to the dictionary and reversal entries do not count. See <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString\"> Date.prototype.toUTCString()</a> for format details.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "updatedBy",
+            "description": "<p>Username of the person who performed the last update to the dictionary metadata. Updates to the dictionary and reversal entries do not count.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>Cannot find a dictionary with the supplied id.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/getDictionary.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
     "type": "post",
     "url": "/post/dictionary/:dictionaryId",
     "title": "Post dictionary",
