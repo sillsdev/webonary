@@ -39,6 +39,7 @@
     "ext-gettext": "*",
     "johnpbloch/wordpress": ">=5.6",
     "phpoffice/phpspreadsheet": "^1.17.1",
+    "qtranslate/qtranslate-xt": "dev-master",
     "wpackagist-plugin/akismet": "^4.1",
     "wpackagist-plugin/blog-copier": "^1.0",
     "wpackagist-plugin/classic-editor": "^1.6",
