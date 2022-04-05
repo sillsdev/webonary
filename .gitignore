@@ -11,3 +11,4 @@
 /wordpress/
 wp-resources/plugins/sil-dictionary-webonary/include/lang/*.old
 wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.old
+/PRIVATE_NOTES.md
