@@ -1,3 +1,25 @@
+/**
+ * @api {get} /search/entry/:dictionaryId Search dictionary entries
+ * @apiName SearchDictionaryEntries
+ * @apiDescription Searches the dictionary for entries that match. Returns an array of DictionaryEntryItem's.
+ * (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)
+ * @apiGroup Dictionary
+ * @apiUse DictionaryIdPath
+ * @apiParam {String} text
+ * @apiParam {String} [mainLang] Main language of the dictionary, used for setting the db locale.
+ * @apiParam {String} [lang] Language to search through.
+ * @apiParam {String} [partOfSpeech] Filter results by part of speech.
+ * @apiParam {Number=0,1} [matchPartial] 1 to allow partial matches, and 0 otherwise. Defaults to 0.
+ * @apiParam {Number=0,1} [matchAccents] 1 to match accents, and 0 otherwise. Defaults to 0.
+ * @apiParam {String} [semDomAbbrev] Filter by semantic domain abbreviation.
+ * @apiParam {String} [searchSemDoms] 1 to search by demantic domains, and 0 otherwise. Defaults to 0.
+ * @apiParam {Number=0,1} [countTotalOnly] 1 to return only the count, and 0 otherwise. Defaults to 0.
+ * @apiParam {Number} [pageNumber] 1-indexed page number for the results. Defaults to 1.
+ * @apiParam {Number} [pageLimit] Number of entries per page. Max is 100. Defaults to 100.
+ *
+ * @apiError (404) NotFound There are no matching entries.
+ */
+
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';

@@ -1,3 +1,20 @@
+/**
+ * @api {delete} /delete/entry/:dictionaryId Delete entry
+ * @apiName DeleteEntry
+ * @apiDescription Deletes a dictionary main or reversal entry.
+ * @apiGroup Dictionary
+ * @apiPermission dictionary admin in Webonary
+ * @apiUse BasicAuthHeader
+ * @apiUse DictionaryIdPath
+ * @apiParam {GUID} guid Id of the entry.
+ * @apiParam {String=entry,reversalindexentry} [entryType] Type of the entry to get: 'entry' for main entry and
+ * 'reversalindexentry' for reversal entry. Defaults to 'entry'.
+ *
+ * @apiSuccess {Number} deletedEntryCount The number of main entries deleted.
+ *
+ * @apiError (404) NotFound Cannot find the specified dictionary.
+ */
+
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
 import { connectToDB } from './mongo';

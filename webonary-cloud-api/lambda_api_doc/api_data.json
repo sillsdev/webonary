@@ -1,6 +1,300 @@
 [
   {
     "type": "get",
+    "url": "/browse/entry/:dictionaryId",
+    "title": "Get dictionary entries for a letter head.",
+    "name": "BrowseDictionaryEntries",
+    "description": "<p>Gets dictionary or reversal entries that match the specified letter head. Returns ReversalEntryItem's if entryType == 'reversalindexentry' else DictionaryEntryItem's. (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)</p>",
+    "group": "Dictionary",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Letter head to browse.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "mainLang",
+            "description": "<p>Main language of the dictionary, used for setting the db locale.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "lang",
+            "description": "<p>Language to search through. This must be specified for browsing reversal entries.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "entry",
+              "reversalindexentry"
+            ],
+            "optional": true,
+            "field": "entryType",
+            "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": true,
+            "field": "countTotalOnly",
+            "description": "<p>1 to return only the count, and 0 otherwise. Defaults to 0.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pageNumber",
+            "description": "<p>1-indexed page number for the results. Defaults to 1.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pageLimit",
+            "description": "<p>Number of entries per page. Max is 100. Defaults to 100.</p>"
+          }
+        ],
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>There are no matching entries.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/browseEntries.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
+    "type": "delete",
+    "url": "/delete/dictionary/:dictionaryId",
+    "title": "Delete dictionary",
+    "name": "DeleteDictionary",
+    "description": "<p>Deletes a dictionary and all its associated entries, returning the count of everything deleted.</p>",
+    "group": "Dictionary",
+    "permission": [
+      {
+        "name": "dictionary admin in Webonary"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "deleteDictionaryCount",
+            "description": "<p>The number of dictionaries deleted.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "deletedEntryCount",
+            "description": "<p>The number of main entries deleted.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "deletedReversalCount",
+            "description": "<p>The number of reversal entries deleted.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "deletedFilesCount",
+            "description": "<p>The number of files deleted.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>Cannot find the specified dictionary.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/deleteDictionary.ts",
+    "groupTitle": "Dictionary",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "\"Authorization: Basic YWRtaW46cGFzc3dvcmQ=\"",
+          "type": "Header"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/delete/entry/:dictionaryId",
+    "title": "Delete entry",
+    "name": "DeleteEntry",
+    "description": "<p>Deletes a dictionary main or reversal entry.</p>",
+    "group": "Dictionary",
+    "permission": [
+      {
+        "name": "dictionary admin in Webonary"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "GUID",
+            "optional": false,
+            "field": "guid",
+            "description": "<p>Id of the entry.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "entry",
+              "reversalindexentry"
+            ],
+            "optional": true,
+            "field": "entryType",
+            "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
+          }
+        ],
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "deletedEntryCount",
+            "description": "<p>The number of main entries deleted.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>Cannot find the specified dictionary.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/deleteEntry.ts",
+    "groupTitle": "Dictionary",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Basic Auth value corresponding to <a href=https://www.webonary.org>Webonary</a> dictionary site's admin username and password</p>"
+          },
+          {
+            "group": "Header",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>application/json</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "\"Authorization: Basic YWRtaW46cGFzc3dvcmQ=\"",
+          "type": "Header"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
     "url": "/get/dictionary/:dictionaryId",
     "title": "Get dictionary",
     "description": "<p>Gets the metadata of a dictionary.</p>",
@@ -208,6 +502,62 @@
     },
     "version": "0.0.0",
     "filename": "lambda/getDictionary.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
+    "type": "get",
+    "url": "/get/entry/:dictionaryId",
+    "title": "Get dictionary or reversal entry",
+    "name": "GetDictionaryEntry",
+    "description": "<p>Gets a single dictionary or reversal entry. Returns a ReversalEntryItem if entryType == 'reversalindexentry' else a DictionaryEntryItem. (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)</p>",
+    "group": "Dictionary",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "GUID",
+            "optional": false,
+            "field": "guid",
+            "description": "<p>Id of the entry.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "entry",
+              "reversalindexentry"
+            ],
+            "optional": true,
+            "field": "entryType",
+            "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
+          }
+        ],
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>Cannot find the specified entry.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/getEntry.ts",
     "groupTitle": "Dictionary"
   },
   {
@@ -1085,6 +1435,133 @@
     },
     "version": "0.0.0",
     "filename": "lambda/s3Authorize.ts",
+    "groupTitle": "Dictionary"
+  },
+  {
+    "type": "get",
+    "url": "/search/entry/:dictionaryId",
+    "title": "Search dictionary entries",
+    "name": "SearchDictionaryEntries",
+    "description": "<p>Searches the dictionary for entries that match. Returns an array of DictionaryEntryItem's. (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)</p>",
+    "group": "Dictionary",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "mainLang",
+            "description": "<p>Main language of the dictionary, used for setting the db locale.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "lang",
+            "description": "<p>Language to search through.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "partOfSpeech",
+            "description": "<p>Filter results by part of speech.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": true,
+            "field": "matchPartial",
+            "description": "<p>1 to allow partial matches, and 0 otherwise. Defaults to 0.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": true,
+            "field": "matchAccents",
+            "description": "<p>1 to match accents, and 0 otherwise. Defaults to 0.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "semDomAbbrev",
+            "description": "<p>Filter by semantic domain abbreviation.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "searchSemDoms",
+            "description": "<p>1 to search by demantic domains, and 0 otherwise. Defaults to 0.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "0",
+              "1"
+            ],
+            "optional": true,
+            "field": "countTotalOnly",
+            "description": "<p>1 to return only the count, and 0 otherwise. Defaults to 0.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pageNumber",
+            "description": "<p>1-indexed page number for the results. Defaults to 1.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pageLimit",
+            "description": "<p>Number of entries per page. Max is 100. Defaults to 100.</p>"
+          }
+        ],
+        "Path": [
+          {
+            "group": "Path",
+            "type": "String",
+            "optional": false,
+            "field": ":dictionaryId",
+            "description": "<p>Unique dictionary id registered in <a href=https://www.webonary.org>Webonary</a></p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "404": [
+          {
+            "group": "404",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>There are no matching entries.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "lambda/searchEntries.ts",
     "groupTitle": "Dictionary"
   }
 ]
