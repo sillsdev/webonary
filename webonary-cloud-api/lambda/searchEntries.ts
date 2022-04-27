@@ -16,7 +16,7 @@ import { getDbSkip } from './utils';
 
 import * as Response from './response';
 
-interface SearchEntriesArguments {
+export interface SearchEntriesArguments {
   pageNumber: number;
   pageLimit: number;
   dictionaryId: string | undefined;
@@ -32,7 +32,7 @@ interface SearchEntriesArguments {
   $language: string;
 }
 
-export async function searchEntries(args: SearchEntriesArguments): Promise<object> {
+export async function searchEntries(args: SearchEntriesArguments): Promise<Response.Response> {
   try {
     const dbClient: MongoClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
