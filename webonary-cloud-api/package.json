@@ -41,6 +41,7 @@
     "form-data": "^3.0.0",
     "fs": "0.0.1-security",
     "jest": "^24.9.0",
+    "mongodb-memory-server": "^8.5.1",
     "parse5": "^5.1.1",
     "prettier": "^1.19.1",
     "ts-jest": "^25.5.1",
