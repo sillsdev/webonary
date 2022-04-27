@@ -45,15 +45,15 @@ add_filter( 'plugin_action_links', 'qaplus_action_links', 10, 2 );
 
 function qaplus_rewrites() {
 	global $qaplus_options;
-	if ( ! $qaplus_options['faq_slug'] ) { $slug = 'faqs'; } else { $slug = strtolower( $qaplus_options['faq_slug'] ); }
+	$slug = strtolower($qaplus_options['faq_slug'] ?? 'faqs');
 
-	add_rewrite_rule( $qaplus_options['faq_slug'] . '/search/?([^/]*)','index.php?s=$matches[1]&post_type=qa_faqs','top');
+	add_rewrite_rule( $slug . '/search/?([^/]*)','index.php?s=$matches[1]&post_type=qa_faqs','top');
 
-	add_rewrite_rule( $qaplus_options['faq_slug'] . '/page/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&paged=$matches[1]','top');
+	add_rewrite_rule( $slug . '/page/?([^/]*)','index.php?pagename=' . $slug . '&paged=$matches[1]','top');
 
-	add_rewrite_rule( $qaplus_options['faq_slug'] . '/category/?([^/]*)/page/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&category_name=$matches[1]&paged=$matches[2]','top');
+	add_rewrite_rule( $slug . '/category/?([^/]*)/page/?([^/]*)','index.php?pagename=' . $slug . '&category_name=$matches[1]&paged=$matches[2]','top');
 
-	add_rewrite_rule( $qaplus_options['faq_slug'] . '/category/?([^/]*)','index.php?pagename=' . $qaplus_options['faq_slug'] . '&category_name=$matches[1]','top');
+	add_rewrite_rule( $slug . '/category/?([^/]*)','index.php?pagename=' . $slug . '&category_name=$matches[1]','top');
 
 }
 
@@ -67,18 +67,22 @@ if ( ! is_admin() ) {
 
 function qaplus_public() {
 	global $qaplus_options;
+
+	$version = $qaplus_options['version'] ?? '0.0.0';
+	$jquery = $qaplus_options['jquery'] ?? '';
+
 	// jQuery
-	if ( $qaplus_options['jquery'] == "force" ) {
+	if ( $jquery == 'force' ) {
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', ( "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ), false, '1', false);
+		wp_register_script( 'jquery', ( 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' ), false, '1', false);
 		wp_enqueue_script( 'jquery' );
-	} elseif ( $qaplus_options['jquery'] == "wp" ) {
+	} elseif ( $jquery == 'wp' ) {
 		wp_enqueue_script( 'jquery' );
 	}
 
-	wp_enqueue_script( 'q-a-plus', Q_A_PLUS_URL . '/js/q-a-plus.js', false, $qaplus_options['version'], true );
+	wp_enqueue_script( 'q-a-plus', Q_A_PLUS_URL . '/js/q-a-plus.js', false, $version, true );
 
-	wp_enqueue_style( 'q-a-plus', Q_A_PLUS_URL . '/css/q-a-plus.css', false, $qaplus_options['version'], 'screen' );
+	wp_enqueue_style( 'q-a-plus', Q_A_PLUS_URL . '/css/q-a-plus.css', false, $version, 'screen' );
 }
 
 add_action( 'wp_head', 'qaplus_head' );
