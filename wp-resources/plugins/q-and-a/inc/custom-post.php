@@ -1,9 +1,10 @@
-<?php 
+<?php
 add_action( 'init', 'create_qa_post_types', 0 );
 function create_qa_post_types() {
-	 
+
 	 global $qaplus_options;
-	 
+	 $slug = strtolower($qaplus_options['faq_slug'] ?? 'faqs');
+
 	 $labels = array(
 		'name' => _x( 'FAQ Categories', 'qa-free' ),
 		'singular_name' => _x( 'FAQ Category', 'qa-free'),
@@ -11,7 +12,7 @@ function create_qa_post_types() {
 		'all_items' => __( 'All FAQ Categories', 'qa-free' ),
 		'parent_item' => __( 'Parent FAQ Category', 'qa-free' ),
 		'parent_item_colon' => __( 'Parent FAQ Category:', 'qa-free'),
-		'edit_item' => __( 'Edit FAQ Category', 'qa-free'), 
+		'edit_item' => __( 'Edit FAQ Category', 'qa-free'),
 		'update_item' => __( 'Update FAQ Category', 'qa-free'),
 		'add_new_item' => __( 'Add New FAQ Category', 'qa-free'),
 		'new_item_name' => __( 'New FAQ Category Name', 'qa-free')
@@ -28,12 +29,12 @@ function create_qa_post_types() {
 			'public' => true,
 			'show_ui' => true,
 			'capability_type' => 'post',
-			'rewrite' => array( 'slug' => $qaplus_options['faq_slug'], 'with_front' => false ),
+			'rewrite' => array( 'slug' => $slug, 'with_front' => false ),
 			'taxonomies' => array( 'FAQs '),
-			'supports' => array('title','editor')	
+			'supports' => array('title','editor')
 		)
-	); 	
-  
+	);
+
   	register_taxonomy('faq_category',array('qa_faqs'), array(
 		'hierarchical' => true,
 		'labels' => $labels,
@@ -41,17 +42,17 @@ function create_qa_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'faq-category' ),
   ));
-  
-}	
+
+}
 
 add_action('restrict_manage_posts','restrict_listings_by_categories');
 function restrict_listings_by_categories() {
     global $typenow;
     global $wp_query;
     if ($typenow=='qa_faqs') {
-        
+
 		$tax_slug = 'faq_category';
-        
+
 		// retrieve the taxonomy object
 		$tax_obj = get_taxonomy($tax_slug);
 		$tax_name = $tax_obj->labels->name;
@@ -96,7 +97,6 @@ function qa_show_columns($name) {
 			}
 			break;
 		default :
-			break;	
+			break;
 	}
 }
-

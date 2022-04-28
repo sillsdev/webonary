@@ -39,7 +39,7 @@ This is the format of the short-code tag:
 ### How to get uploaded site files
 
 ```
-rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' your_name@server_name.org:/var/www/webonary.org/htdocs/wp/wp-content/blogs.dir /var/www/projects/webonary2/wordpress/wp-content
+rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' your_name@server_name.org:/var/www/sites/webonary/shared/blogs.dir /var/www/projects/webonary2/wordpress/wp-content
 ```
 
 
