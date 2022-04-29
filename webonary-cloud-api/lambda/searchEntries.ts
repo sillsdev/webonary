@@ -12,7 +12,7 @@
  * @apiParam {Number=0,1} [matchPartial] 1 to allow partial matches, and 0 otherwise. Defaults to 0.
  * @apiParam {Number=0,1} [matchAccents] 1 to match accents, and 0 otherwise. Defaults to 0.
  * @apiParam {String} [semDomAbbrev] Filter by semantic domain abbreviation.
- * @apiParam {String} [searchSemDoms] 1 to search by demantic domains, and 0 otherwise. Defaults to 0.
+ * @apiParam {String} [searchSemDoms] 1 to search by semantic domains, and 0 otherwise. Defaults to 0.
  * @apiParam {Number=0,1} [countTotalOnly] 1 to return only the count, and 0 otherwise. Defaults to 0.
  * @apiParam {Number} [pageNumber] 1-indexed page number for the results. Defaults to 1.
  * @apiParam {Number} [pageLimit] Number of entries per page. Max is 100. Defaults to 100.
