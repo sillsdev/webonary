@@ -1001,7 +1001,7 @@
             "type": "Object[]",
             "optional": false,
             "field": "body.reversalLetterHeads",
-            "description": "<p>Reversal entry letter heads</p>"
+            "description": "<p>Reversal entry head letters</p>"
           },
           {
             "group": "Post Body",
@@ -1015,7 +1015,7 @@
             "type": "String",
             "optional": false,
             "field": "body.reversalLetterHeads.value",
-            "description": "<p>Reversal entry word letter head</p>"
+            "description": "<p>Reversal entry word head letter</p>"
           },
           {
             "group": "Post Body",

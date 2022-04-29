@@ -61,7 +61,7 @@ export async function handler(
     );
 
     if (text === '') {
-      return callback(null, Response.badRequest('Browse letter head must be specified.'));
+      return callback(null, Response.badRequest('Browse head letter must be specified.'));
     }
 
     let dbCollection = '';
