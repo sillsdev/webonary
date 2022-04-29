@@ -6,13 +6,13 @@ import * as s3 from '@aws-cdk/aws-s3';
 import { Certificate } from '@aws-cdk/aws-certificatemanager';
 import { envSpecific } from './config';
 
-function defaultLambdaFunctionProps(functionName: string): lambda.FunctionProps {
+function defaultLambdaFunctionProps(functionName: string, environment = {}): lambda.FunctionProps {
   const props: lambda.FunctionProps = {
-    functionName: envSpecific(functionName),
     runtime: lambda.Runtime.NODEJS_12_X,
     code: new lambda.AssetCode('lambda'),
     handler: `${functionName}.handler`,
     timeout: cdk.Duration.seconds(60),
+    environment,
   };
   return props;
 }
@@ -35,7 +35,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const DB_NAME = process.env.DB_NAME ?? 'webonary';
 
     // S3
-    const dictionaryBucket = new s3.Bucket(this, 'dictionaryBucket', {
+    const dictionaryBucket = new s3.Bucket(this, envSpecific('dictionaryBucket'), {
       encryption: s3.BucketEncryption.S3_MANAGED,
       publicReadAccess: true,
       bucketName: S3_DOMAIN_NAME,
@@ -47,12 +47,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const methodAuthorizeFunction = new lambda.Function(
       this,
       'methodAuthorize',
-      Object.assign(defaultLambdaFunctionProps('methodAuthorize'), {
-        environment: {
-          WEBONARY_URL,
-          WEBONARY_AUTH_PATH,
-        },
-      }),
+      defaultLambdaFunctionProps('methodAuthorize', { WEBONARY_URL, WEBONARY_AUTH_PATH }),
     );
 
     const methodAuthorizer = new apigateway.RequestAuthorizer(this, 'methodAuthorizer', {
@@ -60,12 +55,11 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       identitySources: [apigateway.IdentitySource.header('Authorization')],
     });
 
-    const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 's3Authorize.handler',
-      environment: { S3_DOMAIN_NAME },
-    });
+    const s3AuthorizeFunction = new lambda.Function(
+      this,
+      's3Authorize',
+      defaultLambdaFunctionProps('s3Authorize', { S3_DOMAIN_NAME }),
+    );
 
     // Give permission to list add and get file
     s3AuthorizeFunction.addToRolePolicy(
@@ -86,30 +80,24 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const postDictionaryFunction = new lambda.Function(
       this,
       'postDictionary',
-      Object.assign(defaultLambdaFunctionProps('postDictionary'), {
-        environment: {
-          DB_URL,
-          DB_NAME,
-          WEBONARY_URL,
-          WEBONARY_RESET_DICTIONARY_PATH,
-        },
+      defaultLambdaFunctionProps('postDictionary', {
+        DB_URL,
+        DB_NAME,
+        WEBONARY_URL,
+        WEBONARY_RESET_DICTIONARY_PATH,
       }),
     );
 
     const getDictionaryFunction = new lambda.Function(
       this,
       'getDictionary',
-      Object.assign(defaultLambdaFunctionProps('getDictionary'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('getDictionary', { DB_URL, DB_NAME }),
     );
 
     const deleteDictionaryFunction = new lambda.Function(
       this,
       'deleteDictionary',
-      Object.assign(defaultLambdaFunctionProps('deleteDictionary'), {
-        environment: { DB_URL, DB_NAME, S3_DOMAIN_NAME },
-      }),
+      defaultLambdaFunctionProps('deleteDictionary', { DB_URL, DB_NAME, S3_DOMAIN_NAME }),
     );
 
     // Give permission to list all files in the dictionary folder, and delete each
@@ -132,45 +120,35 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const postEntryFunction = new lambda.Function(
       this,
       'postEntry',
-      Object.assign(defaultLambdaFunctionProps('postEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('postEntry', { DB_URL, DB_NAME }),
     );
 
     const getEntryFunction = new lambda.Function(
       this,
       'getEntry',
-      Object.assign(defaultLambdaFunctionProps('getEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('getEntry', { DB_URL, DB_NAME }),
     );
 
     const deleteEntryFunction = new lambda.Function(
       this,
       'deleteEntry',
-      Object.assign(defaultLambdaFunctionProps('deleteEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('deleteEntry', { DB_URL, DB_NAME }),
     );
 
     const browseEntriesFunction = new lambda.Function(
       this,
       'browseEntries',
-      Object.assign(defaultLambdaFunctionProps('browseEntries'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('browseEntries', { DB_URL, DB_NAME }),
     );
 
     const searchEntriesFunction = new lambda.Function(
       this,
       'searchEntries',
-      Object.assign(defaultLambdaFunctionProps('searchEntries'), {
-        environment: { DB_URL, DB_NAME },
-      }),
+      defaultLambdaFunctionProps('searchEntries', { DB_URL, DB_NAME }),
     );
 
     // API and resources
-    const api = new apigateway.RestApi(this, 'webonary-cloud-api', {
+    const api = new apigateway.RestApi(this, envSpecific('webonary-cloud-api'), {
       restApiName: envSpecific('webonaryCloudApi'),
     });
 
@@ -179,11 +157,11 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     if (domainName && domainCertArn) {
       const certificate = Certificate.fromCertificateArn(
         this,
-        'apiDomainCertificate',
+        envSpecific('apiDomainCertificate'),
         domainCertArn,
       );
 
-      const apiDomainName = new apigateway.DomainName(this, 'apiDomain', {
+      const apiDomainName = new apigateway.DomainName(this, envSpecific('apiDomain'), {
         domainName,
         certificate,
       });
