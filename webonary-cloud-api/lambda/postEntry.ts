@@ -35,9 +35,9 @@
  * @apiParam (Post Body) {String} body.pronunciations.lang ISO language code for pronunciation
  * @apiParam (Post Body) {String} body.pronunciations.type Type of pronunciation
  * @apiParam (Post Body) {String} body.pronunciations.value Pronunciation phonetic guide
- * @apiParam (Post Body) {Object[]} body.reversalLetterHeads Reversal entry letter heads
+ * @apiParam (Post Body) {Object[]} body.reversalLetterHeads Reversal entry head letters
  * @apiParam (Post Body) {String} body.reversalLetterHeads.lang ISO language code for the reversal entry
- * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word letter head
+ * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word head letter
  * @apiParam (Post Body) {Object[]} body.senses Senses for this entry
  * @apiParam (Post Body) {Object[]} body.senses.definitionOrGloss Definition or gloss for the entry
  * @apiParam (Post Body) {String} body.senses.definitionOrGloss.lang ISO language code
