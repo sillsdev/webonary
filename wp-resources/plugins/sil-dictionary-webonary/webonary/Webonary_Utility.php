@@ -1,4 +1,6 @@
 <?php
+/** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
 /** @noinspection SqlResolve */
 
@@ -11,7 +13,7 @@ class Webonary_Utility
 	private static $current_page_number = 0;
 
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
-	public static function unzip($zipfile, $uploadPath, $zipFolderPath)
+	public static function unzip($zip_file, $uploadPath, $zipFolderPath)
 	{
 		if (!function_exists('wp_handle_upload'))
 		{
@@ -19,12 +21,12 @@ class Webonary_Utility
 		}
 
 		$overrides = array( 'test_form' => false, 'test_type' => false );
-		$file = wp_handle_upload($zipfile, $overrides);
+		$file = wp_handle_upload($zip_file, $overrides);
 
 		if (isset( $file['error']))
 		{
 			error_log('Error: Upload failed: ' . $file['error']);
-			unlink($uploadPath . '/' . $zipfile['name']);
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
@@ -34,11 +36,11 @@ class Webonary_Utility
 		}
 
 		$zip = new ZipArchive;
-		$res = $zip->open($uploadPath . '/' . $zipfile['name']);
+		$res = $zip->open($uploadPath . '/' . $zip_file['name']);
 		if ($res === FALSE)
 		{
-			error_log('Error: ' . $zipfile['name'] . ' is not a valid zip file');
-			unlink($uploadPath . '/' . $zipfile['name']);
+			error_log('Error: ' . $zip_file['name'] . ' is not a valid zip file');
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
@@ -47,11 +49,11 @@ class Webonary_Utility
 		if(!$unzip_success)
 		{
 			error_log('Error: could not extract zip file to ' . $uploadPath);
-			unlink($uploadPath . '/' . $zipfile['name']);
+			unlink($uploadPath . '/' . $zip_file['name']);
 			return false;
 		}
 
-		unlink($uploadPath . '/' . $zipfile['name']);
+		unlink($uploadPath . '/' . $zip_file['name']);
 		return true;
 	}
 
@@ -165,7 +167,7 @@ class Webonary_Utility
 
 				// will be false if getimagesize fails
 				if ($image_info === false) {
-					$messages[] = "Ignoring \"{$entry}\": file is not a valid image file.";
+					$messages[] = "Ignoring \"$entry\": file is not a valid image file.";
 					continue;
 				}
 
@@ -176,19 +178,19 @@ class Webonary_Utility
 
 				// make sure the image is an allowed type
 				if (!in_array($img_type, $allowed_types)) {
-					$messages[] = "Ignoring \"{$entry}\": file is not an allowed image type.";
+					$messages[] = "Ignoring \"$entry\": file is not an allowed image type.";
 					continue;
 				}
 
 				// skip zero-width images
 				if ($width == 0) {
-					$messages[] = "Ignoring \"{$entry}\": image has a width of zero.";
+					$messages[] = "Ignoring \"$entry\": image has a width of zero.";
 					continue;
 				}
 
 				// skip zero-height images
 				if ($height == 0) {
-					$messages[] = "Ignoring \"{$entry}\": image has a height of zero.";
+					$messages[] = "Ignoring \"$entry\": image has a height of zero.";
 					continue;
 				}
 
@@ -199,7 +201,7 @@ class Webonary_Utility
 					$result = self::ResizeThisImage($img_type, $width, $height, $w, $h, $file_name, $dst_dir);
 
 					if ($result === false)
-						$messages[] = "Warning: not able to save thumbnail \"{$entry}\".";
+						$messages[] = "Warning: not able to save thumbnail \"$entry\".";
 				}
 				else
 				{
@@ -208,13 +210,13 @@ class Webonary_Utility
 					$result = copy($src_dir . '/' . $entry, $dst_dir . '/' . $entry);
 
 					if ($result === false)
-						$messages[] = "Warning: not able to copy thumbnail \"{$entry}\".";
+						$messages[] = "Warning: not able to copy thumbnail \"$entry\".";
 				}
 			}
 			catch(Exception $e) {
 				$err_msg = $e->getMessage();
-				$messages[] = "Error resizing image \"{$entry}\": " . $err_msg;
-				error_log("Error: There was an error converting image file \"{$entry}\" to thumbnail: " . $err_msg);
+				$messages[] = "Error resizing image \"$entry\": " . $err_msg;
+				error_log("Error: There was an error converting image file \"$entry\" to thumbnail: " . $err_msg);
 			}
 		}
 
@@ -239,8 +241,6 @@ class Webonary_Utility
 		// calculate new dimensions - make sure both dimensions are inside the [$w, $h] rectangle
 		$rect = self::CalculateRectangle($src_width, $src_height, $max_width, $max_height);
 		$entry = basename($src_file_name);
-
-		$src_image = null;
 
 		switch ($img_type) {
 			case IMAGETYPE_PNG:
@@ -352,7 +352,7 @@ class Webonary_Utility
 		}
 	}
 
-	public static function includeTemplate($template_name, $substitutions)
+	public static function includeTemplate($template_name, $substitutions = null)
 	{
 		global $webonary_template_path;
 
@@ -457,7 +457,7 @@ class Webonary_Utility
 			return self::$current_page_number;
 
 		// first check for a page number in the URI
-		$re  = '/(?:\/page\/)(\d+)/';
+		$re  = '/\/page\/(\d+)/';
 		$uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		$matches = null;
 		$found = preg_match($re, $uri, $matches);
@@ -480,5 +480,150 @@ class Webonary_Utility
 
 		if (self::$current_page_number < 1)
 			self::$current_page_number = 1;
+	}
+
+	public static function escapeSql($string): string
+	{
+		return addcslashes($string, "\0..\37\"'\\");
+	}
+
+	public static function escapeSqlLike($string): string
+	{
+		return addcslashes($string, "\0..\37\"'_%\\");
+	}
+
+	/**
+	 * Utility function to convert pseudo-links in entry xml from FLex into actual Webonary site links
+	 * @param string $entry_xml
+	 * @return string $entry_xml
+	 */
+	public static function fix_entry_xml_links($entry_xml)
+	{
+		//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
+		//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
+		//but it will keep a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268" onclick="document.getElementById('g635754005092954976ã').play()"
+		//which is important for playing audio
+
+		//first make sure audio href only contains a hastag (or any href with onclick after it)
+		$entry_xml = preg_replace('/href="(#)([^"]+)" onclick/', 'href="#$2" onclick', $entry_xml);
+
+		//closing tag for <a .play()"/>, needs to have an empty space between > </a>
+		$entry_xml = str_replace('></a>', '> </a>', $entry_xml);
+
+		//make all links that are not using onclick (e.g. have format "#">) use the url path
+		$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . get_bloginfo('wpurl') . '/\\2">', $entry_xml);
+
+		$entry_xml = addslashes($entry_xml);
+		$entry_xml = stripslashes($entry_xml);
+
+		/** @noinspection PhpMultipleClassDeclarationsInspection */
+		return normalizer_normalize($entry_xml, Normalizer::NFC );
+	}
+
+	/** @noinspection PhpUnused */
+	public static function EnqueueJsAndCss()
+	{
+		if (!is_admin()) {
+			wp_register_script('webonary_plugin_script', plugin_dir_url(__DIR__) . 'js/webonary.js', [], false, true);
+			wp_enqueue_script('webonary_plugin_script');
+		}
+
+		wp_register_style(
+			'webonary_dictionary_style',
+			plugin_dir_url(__DIR__) . 'css/dictionary_styles.css',
+			[],
+			date('U')
+		);
+		wp_enqueue_style('webonary_dictionary_style');
+
+		// <link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); // >/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
+
+		if (is_page())
+			return;
+
+		if (get_option('useCloudBackend'))
+		{
+			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+			Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId, ['webonary_dictionary_style']);
+		}
+		else
+		{
+			$upload_dir = wp_upload_dir();
+			wp_register_style(
+				'configured_stylesheet',
+				$upload_dir['baseurl'] . '/imported-with-xhtml.css',
+				['webonary_dictionary_style'],
+				date('U')
+			);
+			wp_enqueue_style('configured_stylesheet');
+
+			$overrides_css = $upload_dir['basedir'] . '/ProjectDictionaryOverrides.css';
+			if (!file_exists($overrides_css))
+				$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
+
+			if (file_exists($overrides_css))
+			{
+				wp_register_style(
+					'overrides_stylesheet',
+					$overrides_css,
+					['webonary_dictionary_style', 'configured_stylesheet'],
+					date('U')
+				);
+				wp_enqueue_style('overrides_stylesheet');
+			}
+		}
+	}
+
+	/**
+	 * Loads the translated strings
+	 */
+	public static function LoadTextDomains()
+	{
+		$include_dir = 'sil-dictionary-webonary/include';
+		load_plugin_textdomain('sil_dictionary', false, $include_dir . '/lang');
+		load_plugin_textdomain('sil_domains', false, $include_dir . '/sem-domains');
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as a string
+	 * @param string $variable_name
+	 * @param string $default
+	 * @return string
+	 */
+	public static function GetStr($variable_name, $default = '')
+	{
+		$val = filter_input(INPUT_GET, $variable_name, FILTER_UNSAFE_RAW) ?? $default;
+		return ($val === false) ? $default : (string)$val;
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as a float
+	 * @param string $variable_name
+	 * @param float $default
+	 * @param int|null $decimal_places
+	 * @return float
+	 */
+	public static function GetFloat($variable_name, $default = 0.0, $decimal_places = null)
+	{
+		$val = filter_input(INPUT_GET, $variable_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) ?? $default;
+
+		if ($val === false || $val === '')
+			$val = $default;
+
+		if ($decimal_places != null) $val = number_format($val, $decimal_places);
+
+		return (float) $val;
+	}
+
+	/**
+	 * Returns the $_GET[$variable_name] value as an int
+	 * @param string $variable_name
+	 * @param int $default
+	 * @return int
+	 */
+	public static function GetInt($variable_name, $default = 0)
+	{
+		$val = self::GetFloat($variable_name, $default, 0);
+		return (int)$val;
 	}
 }

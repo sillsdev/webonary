@@ -1,0 +1,442 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 16:39-0500\n"
+"PO-Revision-Date: 2021-12-15 16:39-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:141
+msgid "No entries exist for"
+msgstr "X ရှာမတွေ့ဘူး"
+
+#: include/browseview_func.php:260
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:260
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:642
+msgid "Entry not found"
+msgstr ""
+
+#: include/browseview_func.php:832
+msgid "No entries exist starting with this letter."
+msgstr "ဤအက္ခရာနှင့်စသောစကားလုံးမရှိပေ"
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/configuration.php:249
+msgid "Settings saved"
+msgstr ""
+
+#: include/configuration.php:351
+msgid "Webonary"
+msgstr ""
+
+#: include/configuration.php:353
+msgid ""
+"Webonary provides the administration tools and framework for using WordPress "
+"for dictionaries. See <a href=\"https://www.webonary.org/help\" target="
+"\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+#: include/configuration.php:358
+#, php-format
+msgid "Click to switch to %s"
+msgstr ""
+
+#: include/configuration.php:391
+msgid "Upload Data"
+msgstr ""
+
+#: include/configuration.php:404
+msgid "Publication status:"
+msgstr ""
+
+#: include/configuration.php:406
+msgid "no status set"
+msgstr ""
+
+#: include/configuration.php:407 include/searchform_func.php:404
+msgid "Rough draft"
+msgstr "မူကြမ်း"
+
+#: include/configuration.php:408 include/searchform_func.php:405
+msgid "Self-reviewed draft"
+msgstr "ကိုယ်တိုင် ဆန်စစ်သောမူကြမ်း"
+
+#: include/configuration.php:409 include/searchform_func.php:406
+msgid "Community-reviewed draft"
+msgstr "လူထုနှင့် ဆန်စစ်သောမူကြမ်း"
+
+#: include/configuration.php:410 include/searchform_func.php:407
+msgid "Consultant approved"
+msgstr "အတိုင်ပင်ခံပုဂ္ဂိုလ်ကနေ ဆန်စစ်ပြီ"
+
+#: include/configuration.php:411 include/searchform_func.php:408
+msgid "Finished (no formal publication)"
+msgstr "အပြီးသတ်သော (ပုံနှိပ်ထုတ်ဝေခြင်းမရှိသေး)"
+
+#: include/configuration.php:412 include/searchform_func.php:409
+msgid "Formally published"
+msgstr "ပုံနှိပ်ထုတ်ဝေပြီ"
+
+#: include/configuration.php:416
+msgid "Delete Data"
+msgstr ""
+
+#: include/configuration.php:425
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+#: include/configuration.php:429
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+#: include/configuration.php:441
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+#: include/configuration.php:442
+msgid "Delete"
+msgstr ""
+
+#: include/configuration.php:444
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/configuration.php:453
+msgid "Default Search Options"
+msgstr ""
+
+#: include/configuration.php:510
+msgid "Special character input buttons"
+msgstr ""
+
+#: include/configuration.php:553
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/configuration.php:568
+msgid "Vernacular Browse view:"
+msgstr ""
+
+#: include/configuration.php:571 include/configuration.php:641
+#: include/configuration.php:692 include/configuration.php:723
+msgid "Language Name:"
+msgstr ""
+
+#: include/configuration.php:574
+msgid "Vernacular Alphabet"
+msgstr ""
+
+#: include/configuration.php:574 include/configuration.php:664
+#: include/configuration.php:696 include/configuration.php:726
+msgid "configure in FLEx"
+msgstr ""
+
+#: include/configuration.php:607 include/configuration.php:678
+#: include/configuration.php:709 include/configuration.php:740
+msgid "Display right-to-left"
+msgstr ""
+
+#: include/configuration.php:617
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/configuration.php:620
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/configuration.php:636
+msgid "1. Reversal index"
+msgstr ""
+
+#: include/configuration.php:664 include/configuration.php:695
+#: include/configuration.php:726
+msgid "Alphabet:"
+msgstr ""
+
+#: include/configuration.php:687
+msgid "2. Reversal index"
+msgstr ""
+
+#: include/configuration.php:718
+msgid "3. Reversal index"
+msgstr ""
+
+#: include/dictionary-search.php:46
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr "ရှာသောစကားလုံးတိုလွန်လို့ စကားလုံးအစိတ်အပိုင်းများတွင် မရှာထားဘူး (စကားလုံးတစ်ခုလုံးပဲ ရှာထားသည်)"
+
+#: include/dictionary-search.php:49
+msgid "Click here to include searching through partial words."
+msgstr "စကားလုံးအစိတ်အပိုင်းများတွင်ရှာရန် ဒီမှာ နှိပ်ပါ"
+
+#: include/infrastructure.php:168
+msgid "Search Domains"
+msgstr ""
+
+#: include/infrastructure.php:169
+msgid "All Semantic Domains"
+msgstr ""
+
+#: include/infrastructure.php:170
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:171
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: include/infrastructure.php:172
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:173
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:174
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:175
+msgid "New Semantic Domain Name"
+msgstr ""
+
+#: include/infrastructure.php:176
+msgid "Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:202 include/infrastructure.php:210
+msgid "Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:203 include/searchform_func.php:63
+#: include/searchform_func.php:150
+msgid "All Parts of Speech"
+msgstr "ဝါစင်္ဂအားလုံး"
+
+#: include/infrastructure.php:204
+msgid "Parent Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:205
+msgid "Parent Part of Speech:"
+msgstr ""
+
+#: include/infrastructure.php:206
+msgid "Edit Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:207
+msgid "Update Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:208
+msgid "Add New Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:209
+msgid "New Part of Speech Name"
+msgstr ""
+
+#: include/infrastructure.php:236 include/infrastructure.php:244
+msgid "Language"
+msgstr ""
+
+#: include/infrastructure.php:237 include/searchform_func.php:310
+msgid "All Languages"
+msgstr "ဘာသာစကားအားလုံး"
+
+#: include/infrastructure.php:238
+msgid "Parent Language"
+msgstr ""
+
+#: include/infrastructure.php:239
+msgid "Parent Language:"
+msgstr ""
+
+#: include/infrastructure.php:240
+msgid "Edit Language"
+msgstr ""
+
+#: include/infrastructure.php:241
+msgid "Update Language"
+msgstr ""
+
+#: include/infrastructure.php:242
+msgid "Add New Language"
+msgstr ""
+
+#: include/infrastructure.php:243
+msgid "New Language Name"
+msgstr ""
+
+#: include/infrastructure.php:270 include/infrastructure.php:278
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:271
+msgid "All Website strings"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Parent Website strings"
+msgstr ""
+
+#: include/infrastructure.php:273
+msgid "Parent Website strings:"
+msgstr ""
+
+#: include/infrastructure.php:274
+msgid "Edit Website strings"
+msgstr ""
+
+#: include/infrastructure.php:275
+msgid "Update Website strings"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Add New Website strings"
+msgstr ""
+
+#: include/infrastructure.php:277
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:301 webonary/Webonary_Configuration.php:55
+msgid "Search"
+msgstr "ရှာပါ"
+
+#: include/searchform_func.php:303
+msgid "Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:305
+msgid "Hide Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:319
+msgid "Match whole words"
+msgstr ""
+
+#: include/searchform_func.php:321
+msgid "Match accents and tones"
+msgstr ""
+
+#: include/searchform_func.php:328
+msgid "Number of Entries"
+msgstr ""
+
+#: include/searchform_func.php:345
+msgid "Last update:"
+msgstr "နောက်ဆုံးပြုပြင်မွမ်းမံခြင်း"
+
+#: include/searchform_func.php:355
+msgid "Date published:"
+msgstr "ထုပ်ဝေသောရက်စွဲ"
+
+#: include/searchform_func.php:366
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+#: include/searchform_func.php:403
+msgid "Publication Status"
+msgstr "အဘိဓာန်၏ လက်ရှိအခြေအနေ"
+
+#: sil-dictionary.php:120
+msgid "This API can only be called if you are logged in first."
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:54
+msgid "Data (Upload)"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:56
+msgid "Browse Views"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:57
+msgid "Fonts"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:59
+msgid "Super Admin"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:217
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:219
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:264
+msgid "Finished!"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:564
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
+#: webonary/Webonary_Pathway_Xhtml_Import.php:593
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:584
+msgid "**XHTML file must be sorted. Webonary does not sort the entries.**"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:592
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:606
+msgid "Language Code:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:750
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:1598
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "စကားလုံးအရေအတွက်"

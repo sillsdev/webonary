@@ -1,0 +1,22 @@
+
+.btn-special-char {
+  min-width: 30px;
+  margin: 0 5px 5px 0;
+}
+html[dir=rtl] .btn-special-char { margin: 0 0 5px 5px; }
+
+#webonary-search-submit { margin: 0 0 0 2px; }
+html[dir=rtl] #webonary-search-submit { margin: 0 2px 0 0; }
+
+#advancedSearch select {
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 0.25rem !important;
+}
+
+table {
+  td, th {font-size: unset;}
+  td {font-weight: unset;}
+  .odd {background-color: unset}
+  .even {background-color: unset}
+}

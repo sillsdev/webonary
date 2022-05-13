@@ -3,6 +3,17 @@
 
 use Overtrue\Pinyin\Pinyin;
 
+
+// Include the WordPress Importer.
+include_once ABSPATH . 'wp-admin/includes/import.php';
+
+if (!class_exists('WP_Importer')) {
+	$class_wp_importer = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
+	if (file_exists($class_wp_importer))
+		include_once $class_wp_importer;
+}
+
+
 class Webonary_Pathway_Xhtml_Import extends WP_Importer
 {
 	public $api = false; //if data is sent from an external program
@@ -849,7 +860,7 @@ SQL;
 
 		$entry_xml = $doc->saveXML($entry, LIBXML_NOEMPTYTAG);
 
-		$entry_xml = Webonary_Pathway_Xhtml_Import::fix_entry_xml_links($entry_xml);
+		$entry_xml = Webonary_Utility::fix_entry_xml_links($entry_xml);
 
 		$browse_letter = normalizer_normalize($browse_letter, Normalizer::NFC );
 
@@ -1686,34 +1697,6 @@ SQL;
 		$url = get_admin_url() . 'admin.php?page=webonary';
 		//header('refresh:2;url=' . $url);
 		header('Location: ' . $url);
-	}
-
-	/**
-	 * Utility function to convert pseudo-links in entry xml from FLex into actual Webonary site links
-	 * @param string $entry_xml
-	 * @return string $entry_xml
-	 */
-	public static function fix_entry_xml_links($entry_xml)
-	{
-		//this replaces a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268">
-		//to this: <a href="/gcec78a67-91e9-4e72-82d3-4be7b316b268">
-		//but it will keep a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268" onclick="document.getElementById('g635754005092954976ã').play()"
-		//which is important for playing audio
-
-		//first make sure audio href only contains a hastag (or any href with onclick after it)
-		$entry_xml = preg_replace('/href="(#)([^"]+)" onclick/', 'href="#$2" onclick', $entry_xml);
-
-		//closing tag for <a .play()"/>, needs to have an empty space between > </a>
-		$entry_xml = str_replace('></a>', '> </a>', $entry_xml);
-
-		//make all links that are not using onclick (e.g. have format "#">) use the url path
-		$entry_xml = preg_replace('/href="(#)([^"]+)">/', 'href="' . get_bloginfo('wpurl') . '/\\2">', $entry_xml);
-
-		$entry_xml = addslashes($entry_xml);
-		$entry_xml = stripslashes($entry_xml);
-		$entry_xml = normalizer_normalize($entry_xml, Normalizer::NFC );
-
-		return $entry_xml;
 	}
 
 	/**

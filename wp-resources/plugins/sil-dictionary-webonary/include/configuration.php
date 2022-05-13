@@ -7,6 +7,7 @@ add_action('wp_ajax_nopriv_getAjaxLanguage', 'Webonary_Ajax::ajaxLanguage');
 add_action('wp_ajax_getAjaxCurrentIndexedCount', 'Webonary_Ajax::ajaxCurrentIndexedCount');
 add_action('wp_ajax_getAjaxCurrentImportedCount', 'Webonary_Ajax::ajaxCurrentImportedCount');
 add_action('wp_ajax_getAjaxRestartIndexing', 'Webonary_Ajax::ajaxRestartIndexing');
+add_action('wp_ajax_getAjaxDisplaySites', 'Webonary_Ajax::ajaxDisplaySites');
 
 function relevanceSave()
 {
@@ -396,8 +397,6 @@ function webonary_conf_widget($showTitle = false)
 					<?php echo $import_status ?>
 				</div>
 			</form>
-
-			<p><a href="admin.php?import=pathway-xhtml" style="font-size:16px;"><?php _e('Click here to upload your FLEx data', 'sil_dictionary'); ?></a></p>
 
 			<form id="configuration-form" method="post" action="">
 				<button type="submit" disabled style="display: none" aria-hidden="true"></button>

@@ -38,7 +38,7 @@ fi
 
 
 # set default favicon
-FILE="${thisDir}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
+FILE="${thisDir}/wp-resources/plugins/shockingly-simple-favicon/default/favicon.ico"
 if [[ -f "$FILE" ]]; then
   rm -f "$FILE"
 fi
@@ -77,4 +77,18 @@ do
   fn=$(basename "$d")
   target="${thisDir}/wordpress/wp-content/themes/${fn}"
   ln -sfn "${d}" "${target}"
+done
+
+
+# copy additional default localizations
+mkdir -p "${thisDir}/wordpress/wp-content/languages"
+FILES="${thisDir}/wp-resources/localizations/wordpress-base/*.mo"
+for f in $FILES
+do
+  fn=$(basename "$f")
+  target="${thisDir}/wordpress/wp-content/languages/${fn}"
+
+  if [[ ! -f "$target" ]]; then
+    cp "$f" "$target"
+  fi
 done

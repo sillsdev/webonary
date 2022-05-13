@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "خلقت، هستی"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "آسمان"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "خورشید"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "ماه"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "ستاره"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "سیاره"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "هوا"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "وزش هوا"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "آب و هوا"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "باد"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "ابر"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "باران"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "یخ، برف"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "طوفان"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "رعد، برق"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "سیل"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "خشک سالی"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "جهان"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "زمین"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "کوهستان"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "آتشفشان"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "فلات، دشت"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "دره"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "زیرزمین"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "صحرا، سبزه‌زار، جنگل"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "زمین لرزه"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "جسم، ماده"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "چرک، ماسه"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "صخره"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "فلز"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "مواد معدنی"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "جواهر"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "گاز، مایع، جامد"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "مایع"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "نفت"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "گاز"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "آب"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "انواع  آب محیط"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "دریاچه، اقیانوس"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "مرداب"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "رودخانه"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "چاه، چشمه"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "ساحل، جزیره"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "حرکت آب"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "جریان"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "ریختن"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "چکه(قطره)"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "موج"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "شدید، آرام"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "ایجاد جزر و مد"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "خیس(مرطوب)"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "خشک"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "در آب ماندن"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "محلولهای آب"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "کیفیت آب"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "موجودات زنده"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "موجودات مرده"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "روح موجودات"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "گیاه"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "درخت"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "درختچه، بوته"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "تاک، گیاه، چمن"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "جلبک، قارچ، خزه"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "بخشهای یک گیاه"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "رشد گیاهان"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "بیماری گیاه"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "جانور"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "گونه‌های جانوران"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "پستاندار"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "پستانداران نخستین پایه"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "گوشتخوار"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "جانوران نعل‌دار"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "جوندگان"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "کیسه‌داران"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "جانور پستاندار مورچه‌خوار"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "پستاندار دریایی"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "خفاش"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "پرنده"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "جانور خزنده"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "مار"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "مارمولک"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "لاک‌پشت"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "تمساح"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "دوزیستان"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "ماهی"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "کوسه"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "حشره"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "عنکبوت"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "جانور کوچک"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "اعضای جسم یک جانور"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "اعضای جسم یک پرنده"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "اعضای جسم یک جانور خزنده"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "اعضای جسم یک ماهی"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "اعضای جسم یک حشره"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "اعضای جسم جانوران کوچک"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "چرخه حیات جانور"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "تخم"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "فعالیتهای جانور"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "جنبش جانور"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "خوردن جانور"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "صداهای جانور"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "جانه جانور"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "گروه جانور"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "حیوانات مونث و مذکر"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "محیط، طبیعت"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "طبیعی"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "شخص"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "بدن"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "سر"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "چشم"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "گوش"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "بینی"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "دهان"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "دندان"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "نیم تنه"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "دست و پا"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "بازو"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "ران"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "انگشت دست، انگشت پا"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "پوست"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "مو"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "استخوان، مفصل"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "گوشت"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "اعضای/اندام داخلی"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "قلب"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "معده/شکم"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "اعضای جنس مذکر"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "اعضای جنس مونث/زن"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "عملکرد بدن"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "تنفس، نفس کشدین"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "سرفه، عطسه"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "تف، بزاق"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "خلط"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "خون، خونریزی"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "عرق"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "ادرار کردن، ادرار"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "مدفوع کردن، مدفوع"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "حس، درک"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "دیدن"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "نگاه کردن"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "دیدن"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "بررسی، بازدید، بازرسی کردن"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "نشان دادن، اجازه دادن به کسی تا ببیند"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "مرئی"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "ظاهر، ظاهر شدن"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "شفاف، پشت نما"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "انعکاس، آئینه"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "ظاهر"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "زیبا"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "زشت"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "چیزهایی که با استفاده از آنها می بینیم"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "شنیدن"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "گوش دادن"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "صدا"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "انواع صداها"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "بلند آوا، صدای بلند"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "صدای آرام"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "چشیدن،چشایی"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "بو، بوئیدن"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "حس لامسه"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "راحت"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "وضعیت/حالت بدن"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "قوی"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "ضعیف"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "پرتکاپو، دارای انرژی"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "خسته"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "استراحت"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "سالم، تندرست"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "مریضی، مریض"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "بهبودی از بیماری"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "مرض"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "سو تغذیه، گرسنگی"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "مرض پوست"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "امراض معده"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "پوسیدگی دندان"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "آسیب"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "قطع اندام کردن"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "زهر، سم"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "از کار افتاده"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "نابینا، کور"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "چشم ضعیف"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "ناشنوا، کر"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "لال"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "نقص تولد"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "سبب امراض"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "نشانه مرض، علائم امراض"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "درد"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "طب"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "تورم، متورم شدن"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "از هوش رفتن، بیهوش شدن"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "گیجی، اغتشاش"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "رویا، خیال، وهم"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "درمان امراض"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "پزشک، پرستار"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "دارو"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "گیاهان دارویی/طبی"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "بیمارستان"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "داروهای سنتی"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "بیماری روحی/مغزی"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "حیات/زندگی"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "ازدواج"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr "ازدواج از پیش تایين شده"
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "ازدواج"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "مجرد، ازدواج نکرده"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "طلاق"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "عشق "
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "روابط جنسی"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "بکارت"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr "از نظر جنسی جلب کردن"
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "فساد جنسی"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "تولد"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "حاملگی"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "جنین"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "سقط جنین"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "درد زایمان و زاییدن"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "کمک برای زایمان کردن"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "تولد غیرعادی"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "تولد چندگانه/متعدد"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "بارور، بی بار"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "مراسم تولد"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "مراحل زندگی"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "طفل"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "نگهداری از طفل"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "بچه"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "تربیت و نگهدای بچه"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "نوجوانی، جوانی"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "بالغ"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr "شخص پیر/مسن"
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "رشد کردن، بزرگ شدن"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "آغاز، ورود"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "گروه همطراز"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "مذکر، مونث"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "مرد"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "زن"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "مردن"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "کشتن"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "جسد"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "مراسم دفن/تشییع جنازه"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "عزاداری"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "دفن"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "قبر"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "ارث"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "زندگی/حیات پس از مرگ"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "زبان و افکار"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "روح، جان"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "شخصیت"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "حالت روحی"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "بیدار، آگاه"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "دقت، ملاحظه"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr "توجه"
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "چشم پوشی، نادیده گرفتن"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "فکر کردن"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "فکر، ذهن"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr "فکر کردن در مورد"
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "تصور کردن"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "باهوش"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "احمق، نفهم"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "منطقی"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "غریزه، شعور"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "یاد گرفتن"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr "مطالعه"
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "بررسی، بازرسی"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "ارزیابی، امتحان"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "حدس"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "حل کردن"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr "پی بردن، فهمیدن"
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "تمایل به یاد گرفتن"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "دانستن"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "معلوم/شناخته، نامعلوم/ناشناخته"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "ناحیه آگاهی"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr "راز"
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "فهمیدن، دریافتن"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "درست نفهمیدن، سو تفاهم کردن"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "قابل درک"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr "مرموز"
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "نظر، عقیده"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "ایمان داشتن، باور داشتن"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr "اعتماد"
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "باور/اعتماد نکردن"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "شک"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr "با کسی موافق بودن"
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr "مخالف بودن"
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr "اعتراض کردن"
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "فلسفه"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "طرز فکر، روش و رفتار"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "ایمان مفرط"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "تغییر رای دادن، از خیالی منصرف شدن"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr "موافقت کردن با چیزی"
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "یاد آوردن"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "فراموش کردن"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr "شناختن، باز شناختن"
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr "از بر کردن"
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr "یادآوری کردن"
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "انتظار داشتن، چشم داشتن"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "امید"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "ناامید"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr "پیشگویی کردن"
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "گرایش، تمایل"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "خواستن"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "تصمیم گرفتن، نقشه کشیدن"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr "هدف، مقصد"
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "انتخاب کردن"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr "قرعه انداختن"
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "خواستن، قصد داشتن"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "عمدا، از روی عمد"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "مصمم"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "لجوج"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "شهوت"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "تقاضا"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr "موافقت کردن برای انجام دادن کاری"
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr "نپذیرفتن انجام کاری"
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "شفاعت کردن، پا در میانی، وساطت"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "مایل، راغب"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "تاثیر"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "پیشنهاد کردن، اظهار کردن"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "نصیحت، توصیه کردن"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "وادار کردن، ترغیب کردن"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "اصرار ورزیدن، پافشاری کردن"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "مجبور کردن، وادار کردن"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "کنترل کردن، "
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "اخطار"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "تهدید کردن"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr "اجازه خواستن"
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr "اجازه دادن"
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "اجازه ندادن"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "معاف"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr "مانع شدن"
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr "آزاد در انجام دادن آنچه دلتان می خواهد"
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "تقدیم داشتن، ارائه"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr "قبول کردن"
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "رد کردن"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "احساسات"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr "احساس خوب"
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "دوست داشتن، عشق ورزیدن"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr "لذت بردن از انجام کاری"
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "خود بینی، احترام به نفس"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr "ترجیح دادن"
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr "معروف"
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr "مد،  مرسوم"
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "قناعت، رضایت"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "خوشحال بودن برای"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "خشنود بودن با"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "خوشحال"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "راحت"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "آرام"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "غافلگیر کردن، متعجب ساختن"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "علاقه مند"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "هیجان زده"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "مشتاق، علاقه مند"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr "عقده روحی داشتن"
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "جذب کردن"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "بی تفاوت"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "بی علاقه، بی حوصله"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "مطمئن"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr "احساس بد"
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "ناراحت، غمگین"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr "دوست نداشتن"
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr "متنفر بودن، نفرت کردن"
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr "بیزار، انزجار"
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "مایوس، دلشکسته"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "تنها"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr "آشفته، مضطرب"
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "ضربت سخت، صدمه، تکان، شوک"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "حسود"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "نارضایتی"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr "افسوس، تاسف"
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr "شرمنده، خجل"
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr "خجالت زده"
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "عصبانی"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr "رنجیده"
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr "ترسیده، ترسیدن"
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr "نگران"
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "عصبی"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "خجالتی، کمرو"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr "گیج، آشفته"
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "ارتباط"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "گفتن"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "صدا"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "فریاد، داد"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "ملایم صحبت کردن"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "زیاد صحبت کردن"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "کم صحبت کردن"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr "چیزی نگفتن"
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "شیوه یا سبک گفتار"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "خوب صحبت کردن"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "بطور ناقص یا ناخوش صحبت کردن"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr "در مورد موضوعی صحبت کردن"
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "اعلام کردن"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "توصیف کردن"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr "توضیح دادن"
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr "ذکر کردن"
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "معرفی کردن"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "تکرار کردن"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "خلاصه کردن"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "تاکید کردن"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr "راجع به، موضوع"
+
+#: default_domains.php:402
+msgid "True"
+msgstr "صحیح، درست"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr "گفتن حقیقت"
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr "دروغ گفتن"
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "تناقض داشتن با، ناسازگار بودن با"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "آشکار کردن اشتباه"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr "حقیقی، واقعی"
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "اغراق آمیز کردن"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "با دیگران صحبت کردن"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "صدا، خواندن، دعوت"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr "تماس گرفتن"
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "سلام احوال پرسی کردن"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "خداحافظی کردن"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "با هم صدایی صحبت کردن"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "پرسیدن، سوال کردن، خواستن"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "جواب، پاسخ"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "افشار کردن"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "مخفی کردن افکار"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "بحث، مذاکره"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "نمایش، تظاهر"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "دعوا کردن"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr "ستایش، تحسین"
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "تشکر"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "چاپلوسی، تملق"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "لاف زدن"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "انتقاد کردن"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr ""
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr ""
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr ""
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr ""
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr ""
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "قول"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "سخنرانی کردن"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "گزارش"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "اخبار، پیام"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "مجازی، تمثیلی، کنایه ای"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "پذیرفتن"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "زبان"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "واژه"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "اطلاعات"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr "حکایت، داستان، قصه، نقل"
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "افسانه، "
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr "امثال، پند"
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "معما، چیستان"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "شعر"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "تاریخ"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "رسومات شفاهی"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "صحبت ابلهانه"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "کراهت، زشتی، وقاحت"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "نشانه، سمبل"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "حرکت و رفتار"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "اشاره کردن به"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "ابرازات صورت"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "خنده"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr "گریه، اشک"
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "خواندن و نوشتن"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "نوشته، نوشتن"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "لوازم نوشتن"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "خواندن، بخوان"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "چاپ کردن، انتشار"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "ثبت و نگارش"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "فهرست"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr "نامه"
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "ترجمه پیامها"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "معنی "
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "بی معنی"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "نامفهوم"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "نشان دادن، اشاره کردن"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "ارتباطات جمعی"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "رادیو، تلویزیون"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "تلفن"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "روزنامه"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "فیلم"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "موسیقی ضبط شده "
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "وسایل ارتباط"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "یاد دادن، تعلیم دادن"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "نشان دادن، توضیح دادن"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "مدرسه"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "موضوع درس"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr "کلاس، درس"
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "صحیح"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "علوم"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "امتحان"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "جواب در یک امتحان"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "رفتار اجتماعی"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "روابط"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr "دوست"
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "دوست دختر، دوست پسر"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "انواع مردم"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "رابطه کاری"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr "شناختن کسی"
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "ملاقات کردن با کسی برای اولین بار"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "همسایه"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "طبقه اجتماعی"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "اتحاد"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "گسستگی"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr "غیر دوستانه"
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "خود را جدا کردن"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "تنها"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "فرد مستقل"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "خصوصی، عمومی"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "شروع یک رابطه"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "تمام کردن یک رابطه"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "ابراز احساسات"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr "خویشاوندی"
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "نسبت خونی داشتن"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "پدربزرگ، مادربزرگ"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "پدر، مادر"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "برادر، خواهر"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "پسر، دختر"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "نوه (دختر و پسر)"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "عمو/دائی، عمه/خاله"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "دختر یا پسر خاله/عمو/عمه/دائی"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "خواهر/برادر زاده"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "ترتیب تولد"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "قوم و خویشان بخاطر ازدواج"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "شوهر، زن"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "پدر/مادر شوهر یا پدر/مادر زن"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "بیوه زن و بیوه مرد"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "یتیم"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "فرزند حرامزاده"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "فرزند خواندگی"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "بدون اقوام، نسبت نداشتن"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "خانوادهف خاندان"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "نژاد"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "فعالیت اجتماعی"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr "با هم جمع شدن، تشکیل گروه دادن"
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "دعوت کردن"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "ملاقات کردن"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "ملاقات یکدیگر"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "بازدید، ملاقات"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "خوش آمد، دریافت کردن، پذیرفتن"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "مهمان نوازی کردن"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "جلسه، گرد هم آمدن"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "شرکت کردن"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "جمعیت، گروه"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr "سازمان"
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr "پیوستن به سازمانی"
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr "ترک کردن سازمانی"
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr "تعلق داشتن به سازمانی"
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr "گروه اجتماعی/دوستی"
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "اتفاق یا واقعۀ اجتماعی"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "مراسم"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr "جشن، سور"
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "جشن گرفتن"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "موسیقی"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr "تنظیم موسیقی، ساختن موسیقی"
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "نواختن موسیقی"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "سرائیدن، خواندن"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "موسیقی دان"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "آلات موسیقی"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "رقصیدن"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "تئاتر"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "سرگرمی، تفریح"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "بازی"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr "بازی ورق"
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "شطرنج"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "ورزشی"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr "فوتبال"
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr "بسکتبال"
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "تمرین، نرمش"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "قمار بازی"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "بازی، تفریح"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "شوخی"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr "جدی"
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "تعطیلات"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr ""
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "رفتار"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr "خوب، اخلاقی"
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr "بد، غیراخلاقی"
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "رسیدن به معیار"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "زیر استاندار، به معیار نرسیدن"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr "بالغ در رفتار"
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr "نابالغ در رفتار"
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr "معقول"
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr "شهرت، آبرو"
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "صبر"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "بی صبر"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "بد اخلاقی"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr "تحسین کردن شخصی"
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr "خوار شمردن شخصی"
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "فروتن"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "مغرور"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr "خود نمایی کردن"
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "دوست داشتن، عاشق بودن"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr "نفرت، سو نیت"
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "اهمیت ندادن، "
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "ترک، رها"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "خوبی کردن به"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "بدی کردن به"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "کمک، یاری"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "مانع"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "همکاری کردن با"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "رقابت کردن با"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "بشر دوست، فارغ از خود"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "خود خواه"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr "استفاده از یک شخص"
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "تقسیم کردن با، شریک شدن با"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "فراهم کردن برای، حمایت کردن"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "مواظبت کردن از"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "به مواظبت کسی سپردن"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "فضول، مداخله کننده"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr "خراب کردن"
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "به زور وارد شدن"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr "آدم دزدی کردن"
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "ستمکار، بیرحم"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr "امین، بی ریا"
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "نادرست، متقلب"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "وفادار، خوش قول"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "معتمد ،قابل اعتماد"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "غیر قابل اعتماد"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "فریفتن، گول زدن"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "ریا کار"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "خویشتندار"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "خویشتندار نبودن"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr "مرتب"
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr "نامرتب"
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr "اشتباه"
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr "مودب"
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "بی ادب"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "دبوانه"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "تغییر دادن رفتار"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "وفق دادن ،تطبیق کردن"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "فرهنگ"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "رسم و رسوم"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "عادت"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "سعادت و خوشبختی ، زحمت و  سختی"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "سعادت و خوشبختی"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "زحمت، سختی"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "مشکل"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "خطر"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "تصادف"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "بلا"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "جدا، تنها"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "تحمل کردن، رنج بردن"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "پاسخ  به مشکل"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr "شجاع"
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "ترسو، بزدل"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr "دوری و احتراز کردن"
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "احتیاط"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "حل کردن مشکلی"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "تاب و تحمل"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "باقی، زنده"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "پاسخ دادن/رسیدگی کردن به کسی که در مشکل است"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr "رحمت"
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "نشان دادن همدردی، حمایت کردن"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "ملایم"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "نجات دادن از مشکل"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr "محافظت کردن"
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "آزاد از بند "
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "آزادی، گشایش"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "ریسک، احتمال خطر"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "شانس"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr "خوش شانس"
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr "تبره بخت، بد یمن"
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "اقتدار، قدرت"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "فرد صاحب اختیار/قدرت"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "صاحت قدرت بودن"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "بکار بردن اقتدار"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "رهبری کردن"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "دستور"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "تربیت، تعلیم"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "مقرر کردن، سپردن"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "تسلیم قدرت شدن"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "اطاعت"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "نااطاعتی کردن"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "خدمت کردن"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr "برده"
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "پیروی کردن، شاگرد بودن"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "بر ضد دولت یا اقتداری طغیان کردن"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "مستقل"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "احترام"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "عنوان، نام محترم"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "نداشتن احترام"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "وضع، وضعیت"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "مقام بالا"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "مقام پایین"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "دولت"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr "حاکم"
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "خانوادۀ پادشاه"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr "کارمند دولت، صاحب مقام"
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "شهروند"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "بیگانه، اجنبی"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "سازمان دولتی"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr "هیئت دولت"
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "حکومت"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "مطیع کردن"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "وظایف دولت"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "پلیس"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "بازداشت"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "عدالت غیر رسمی"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "سیاستمداری"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr "نمایندگی کردن"
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "رای گیری"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr "سیایت"
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "منطقه"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "کشور"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "شهر"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "حومه شهر"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "جامعه"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "قانون"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "قوانین"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "تصویب قوانین"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "قانون شکنی"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "دادگاه قانون"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "پرسنل قانونی"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr "محاکمه"
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr "رسیدگی کردن به جرم"
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr "مظنون"
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "تهمت زدن، روبرو کردن"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr "در مقابل تهمت دفاع کردن"
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "شهادت دادن"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "پس گرفتن ادعا"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "سوگند خوردن"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "حمایت کردن از"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "رای صادر کردن"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "تبرئه کردن"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "محکوم کردن، گناهکار شمردن"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "اشتباه، تقصیر، گناه"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "مجازات کردن"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "پاداش"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "جریمه"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "زندانی کردن"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "اعدام"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "  تبعید کردن  "
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "بخششش، آزاد کردن"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr "کفاره، تاوان"
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "قرارداد قانونی"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "عهد"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "شکستن قرارداد"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "عدالت"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "بیطرف"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "غیرمنصفانه"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "سزاوار بودن، شایسته بودن"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "تبعیض قایل شدن، "
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "با خشونت عمل کردن"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "فرو نشاندن، خوار و خفیف کردن"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr "زد و خورد، کشمکش"
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr "دشمنی"
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr "ضدیت کردن"
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "جنگیدن"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr "جنگیدن برای چیزی خوب"
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr "جنگ برضد چیزی بد"
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "حمله"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "کمین، دام"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "دفاع"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "انتقام "
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "آشوب"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "خیانت کردن"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr "وحشی"
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "دشمن"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "جنگ"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "شکست دادن"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "پیروزی، بردن"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "باختن در درگیری"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "تسلیم شدن"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "زندانی جنگ"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "سازمان نظامی"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr "ارتش، سپاه"
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr "نیروی دریایی"
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr "نیروی هوایی"
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "سرباز"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "جاسوس"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "سنگر"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "اسلحه، شکیک "
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr "غارت، چپاول"
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "صلح"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "توبیخ کردن"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "درخواست کردن"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "آرام کردن، ساکت کردن"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "مذاکره"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "واگذار کردن، کناره گیری"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "توبه کردن"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "طلب بخشش کردن"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "آمرزیدن، بخشیدن"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "صلح کردن"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "خاتمه دادن به جنگ/درگیری"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "آشتی کردن"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "مذهب، دین"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "خدا"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "وجود مافوق الطبیعی"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "الهیات، خداشناسی"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "نوشته های مقدس"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "معجزه، قدرت مافوق طبیعی"
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "جادوگری"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "دبوزده"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "برکت دادن"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "لعنت کردن"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "سرنوشت"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "پیشگویی، نبوت"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "فال، فالگیری"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "انجام اعمال مذهبی"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "دیندار"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "دعا کردن"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "پرستش"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr "مراسم مذهبی"
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "هدایا، قربانی"
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "تطهیر مذهبی"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "قدغن، نهی"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "نجات"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "تخصیص دادن برای کاربرد مذهبی"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "روره"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "بهشت، جهنم"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "قیام، زنده شدن بعد از مرگ"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "سازمان مذهبی"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "فرد مذهبی"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "مسیحیت"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "اسلام"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "هندویسم"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "بودیسم"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "یهودیت"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr "اعتقاد به اینکه روح اساس زندگی است"
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr "چیزهای مذهبی"
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "بت"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "مکان پرستش"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "غیر مذهبی"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr "زندگی روزمره"
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr "وسایل خانگی"
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "اثاث خانه"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "پادری"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "صندلی"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "تخت خواب"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "گنجه و کابینت"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr "آرایش کردن و تزیین خانه"
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "خوراک و غذا"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "تهیهٔ خوراک و غذا"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr "روشهای آشپزی"
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "مراحل تهیهٔ خوراک و غذا"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "پوست کندن، پوست کشیدن"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "کوبیدن و هاون کردن"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "آسیاب کردن"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr "لوازم آشپزخانه"
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "انبار مواد خوراکی و غذایی"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "سرو کردن غذا و خوراک"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "خوردن"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr "گاز گرفتن، جویدن"
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "وعده غذایی"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "جشن و سرور"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "رفتار غذاخوری"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "تشنه، گرسنه"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "سیر، شکم پر"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "نوشیدنی"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "لوازم غذاخوری"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "روزه، صرف نکردن غذا"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "انواع خوراک"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "خوراک و غذای گیاهی"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "خوراک دانه‌ای (از دانه)"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "میوهٔ خوراکی"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "سبزیجات خوراکی"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "خوراک از برگ درخت"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "خوراک از ریشه"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "خوراک از جانوران"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "گوشت"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "فرآورده‌های لبنی"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr "انواع غذاها از تخم مرغ"
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "مواد مورد نیاز آشپزی"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "شکر"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "نمک"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "چاشنی و ادویه"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "خمیرمایه"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "روغن خوراکی"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "تهیهٔ خوراک"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "غذا و خوراک ممنوع"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr "شربت"
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "نوشابه الکلی"
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "تهیهٔ الکل"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr "مستی"
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr ""
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr ""
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr ""
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "لباس"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr ""
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr ""
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr ""
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr ""
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr ""
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr ""
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr ""
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr ""
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr ""
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "آرایش و زینت"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr ""
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr ""
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr ""
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr ""
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr ""
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr ""
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr ""
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr ""
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr ""
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr ""
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr ""
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr ""
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr ""
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr ""
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "آتش"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr ""
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr ""
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr ""
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr ""
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr ""
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr ""
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr ""
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr ""
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr ""
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr ""
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr ""
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr ""
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr ""
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr ""
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr ""
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr ""
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr ""
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr ""
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr ""
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr ""
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr ""
+
+#: default_domains.php:918
+msgid "Work"
+msgstr ""
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr ""
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr ""
+
+#: default_domains.php:921
+msgid "Method"
+msgstr ""
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr ""
+
+#: default_domains.php:923
+msgid "Use"
+msgstr ""
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr ""
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr ""
+
+#: default_domains.php:926
+msgid "Available"
+msgstr ""
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr ""
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr ""
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr ""
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr ""
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr ""
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr ""
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr ""
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr ""
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr ""
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr ""
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr ""
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr ""
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr ""
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr ""
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr ""
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr ""
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr ""
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr ""
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr ""
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr ""
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr ""
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr ""
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr ""
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr ""
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr ""
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr ""
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr ""
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr ""
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr ""
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr ""
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr ""
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr ""
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr ""
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "کشاورزی"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr ""
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr ""
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr ""
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr ""
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr ""
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr ""
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr ""
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr ""
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr ""
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr ""
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr ""
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr ""
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr ""
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr ""
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr ""
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr ""
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr ""
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr ""
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr ""
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr ""
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr ""
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr ""
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr ""
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr ""
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr ""
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr ""
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr ""
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr ""
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr ""
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr ""
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr ""
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr ""
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr ""
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr ""
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr ""
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr ""
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr ""
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr ""
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr ""
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr ""
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr ""
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr ""
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr ""
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr ""
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr ""
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr ""
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr ""
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr ""
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr ""
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr ""
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr ""
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr ""
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr ""
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr ""
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr ""
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr ""
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr ""
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr ""
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr ""
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr ""
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr ""
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr ""
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr ""
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr ""
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr ""
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr ""
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr ""
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr ""
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "ماهیگری"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr ""
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr ""
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr ""
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr ""
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr ""
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr ""
+
+#: default_domains.php:1036
+msgid "House"
+msgstr ""
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr ""
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr ""
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr ""
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr ""
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr ""
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr ""
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr ""
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr ""
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr ""
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr ""
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr ""
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr ""
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr ""
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr ""
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr ""
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr ""
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr ""
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr ""
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr ""
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr ""
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr ""
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr ""
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr ""
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr ""
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr ""
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr ""
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr ""
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr ""
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr ""
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr ""
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr ""
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr ""
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr ""
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr ""
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr ""
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr ""
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "چوب بری"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr ""
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr ""
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr ""
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "طنابهای کشتی"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr ""
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr ""
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr ""
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr ""
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr ""
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "عکاسی"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr ""
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr ""
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr ""
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr ""
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr ""
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr ""
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr ""
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr ""
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr ""
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr ""
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr ""
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr ""
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr ""
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr ""
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr ""
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr ""
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr ""
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr ""
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr ""
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr ""
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr ""
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr ""
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr ""
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "علم دارایی"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr ""
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr ""
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr ""
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr ""
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr ""
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr ""
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr ""
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr ""
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr ""
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr ""
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr ""
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr ""
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr ""
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr ""
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr ""
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr ""
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr ""
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr ""
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr ""
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr ""
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr ""
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr ""
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr ""
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr ""
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr ""
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr ""
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr ""
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr ""
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr ""
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr ""
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr ""
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr ""
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr ""
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr ""
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr ""
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr ""
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr ""
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "اعتبار"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr ""
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr ""
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "حسابداری"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr ""
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr ""
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr ""
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr ""
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr ""
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr ""
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr ""
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr ""
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr ""
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr ""
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr ""
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "بازاریابی"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr ""
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "اقتصاد"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "بیمه"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "کنشهای فیزیکی یا جسمی (حرکات جسمی)"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "وضعیت بدن"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "ایستادن"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "نشستن"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "دراز کشیدن"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "زانو زدن"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "تعظیم کردن"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "تکیه کردن"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "وضعیت عمودی یا راست"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "وضعیت راحت"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "خم شدن"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "حرکت دادن بخشی از بدن"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "حرکت کردن"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "حالت حرکت"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "قدم زدن"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "دویدن"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "خزیدن"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "پریدن"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "حرکت سریع"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "آرام حرکت کردن"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "سرگردان گشتن"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "حرکت باوقار"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "ناهمگون"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "به سختی حرکت کردن"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "سرخوردن"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "استوار و پایدار، ناپایدار و بی‌قوام"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "تعادل"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr "حرکت همراه با سر و صدا"
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "حرکت در جهت حرکت بدن"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "حرکت رو به جلو"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "حرکت به عقب"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "حرکت به طرفین"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "حرکت به سمت بالا"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "حرکت به سمت پایین"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr "افتادن"
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "دور زدن"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "دایره‌وار حرکت کردن                                                                                                                      "
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr " عقب و جلو حرکت کردن                                                                                                                     "
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "حرکت به جلو بدون گردش یا چرخش"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "به سمت چیزی حرکت کردن"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "دور شدن                                                                                                                                        "
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "رفتن"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "آمدن"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "ترک کردن"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "رسیدن"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "داخل شدن"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "بیرون رفتن"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "رد‌شدن از کنار، روی، میان                                                                                                                   "
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "برگشتن"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "مسافرت‌کردن                                                                                                                                   "
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "مسافرت زمینی                                                                                                                                "
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "وسیلۀ نقلیه                                                                                                                                       "
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr "راه‌آهن                                                                                                                                           "
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "مسافرت از راه آب                                                                                                                            "
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "قایق                                                                                                                                          "
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "شنا کردن"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "شیرجه‌رفتن"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "پرواز‌کردن"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "مسافرت در فضا"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "نقل مکان به خانه جدید (اسباب کشی)"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr "راه، جاده"
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "گم‌کردن راه"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "نقشه"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "مشایعت"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "جلو رفتن"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "دنباله‌روی"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "هدایت‌کردن"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr "با‌هم حرکت‌کردن"
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "تعقیب کردن "
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr "دستگیر کردن، گرفتن"
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "مانع از حرکت شدن"
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "فرار کردن"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "آزاد سازی"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "حرکت نکردن"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "متوقف شدن"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "ماندن"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "منتظر ماندن"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "کسی را فرستادن"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "حرکت دادن چیزی"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "بر دوش کشیدن"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "پرتاب کردن"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "گرفتن"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "لرزیدن"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "چپه کردن"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "عمود کردن"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "چیزی را در جهتی به حرکت درآوردن"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "مقابل قرار دادن"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "پشت قرار دادن"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "کنار قرار دادن"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr " بالا بردن"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "آویختن"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "پایین‌تر گذاشتن"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "داخل کردن"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "چیزی را از دیگری بیرون آوردن"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "کشیدن"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "هل دادن"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "جایی بردن"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "بردن چیزی از جایی"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "برگرداندن چیزی"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "فرستادن"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "فراری دادن"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr "حرکت دادن"
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "چیزی را دستکاری‌کردن"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "لمس کردن"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "بلند کردن"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "پایین گذاشتن"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "(با دست) گرفتن"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "عملکردهای دست"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "نگه داشتن"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "گستردن"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "گرداندن چیزی"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "باز کردن"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "مسدود کردن، بستن"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "سدکردن، بندآوردن"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "محدود کردن، حد"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "پوشاندن"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "پوشش چیزی را برداشتن"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "لفاف"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr "پاشاندن، آغشتن"
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr "حمل و نقل کردن"
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "داشتن، چیزی پیش یا مال کسی بودن "
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "دادن، به دست کسی دادن"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "دریافت کردن"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr "گرفتن"
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "پخش کردن"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "نگه داشتن چیزی"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "چیزی جا گذاشتن"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "دور انداختن"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr "نداشتن"
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr "مرتب کردن"
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "گردآوری کردن"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "جدا کردن، پراکندن"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "شامل بودن"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "خاص"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "متصل کردن، الصاق کردن"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr "پیوند، مربوط کردن"
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr "به هم چسبیدن"
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr "اضافه کردن به چیزی"
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "جابجا کردن، جدا کردن"
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "مخلوط کردن"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "خالص، پاک"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "بستن"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "طناب، ریسمان"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "درهم و برهمی"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr "سازمان دادن"
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "نابسامان"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "جانشین، جایگزین کردن"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "حرکت چندین چیز"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "ساده، پیچیده"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr "گذاشتن"
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr "بارزدن، تلنبار کردن"
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr "پر کردن، پوشاندن"
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "پنهان کردن"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "جستجو کردن"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "پیدا کردن"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "گم کردن، در جای خود‌ نگذاشتن"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "اثر مادی"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "زدن به"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "به هدف نشانه‌‌گرفتن"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "لگد زدن"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "فشردن"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "مالش دادن"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "آسیاب کردن"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "علامت گذاری "
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "به چند تکه تقسیم کردن"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "شکستن"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "ترک"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "بریدن"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "دریدن، جر‌دادن"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "سوراخ کردن، روزنه"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "کندن"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr "خراب شدن، مندرس شدن"
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "صدمه زدن"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "ویران کردن"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "نابود کردن"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "تعمیر کردن"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "چگونگی و حالت"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "کمیّت"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "عدد"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "اعداد اصلی"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr "یک"
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr ""
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr ""
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr ""
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr ""
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr ""
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr ""
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr ""
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr ""
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr "ریاضیات"
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr ""
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr ""
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr ""
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr ""
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr ""
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr ""
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr ""
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr ""
+
+#: default_domains.php:1362
+msgid "More"
+msgstr ""
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr ""
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr ""
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr ""
+
+#: default_domains.php:1366
+msgid "All"
+msgstr ""
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr ""
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr ""
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr ""
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr ""
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr ""
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr ""
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr ""
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr ""
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr ""
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr ""
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr ""
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "بخش"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr ""
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr ""
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr ""
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr ""
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr ""
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr ""
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr ""
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr ""
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr ""
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr ""
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr ""
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr ""
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr ""
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr ""
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr ""
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr ""
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr ""
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr ""
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr ""
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr ""
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr ""
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr ""
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr ""
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr ""
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr ""
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "بالا"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "پایین"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr ""
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr ""
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr ""
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr ""
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr ""
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr ""
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr ""
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr ""
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr ""
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr ""
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr ""
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr ""
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr ""
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr ""
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr ""
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr ""
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr ""
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr ""
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr ""
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr ""
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr ""
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr ""
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr ""
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr ""
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr ""
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr ""
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr ""
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr ""
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr ""
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr ""
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr ""
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr ""
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr ""
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr ""
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr ""
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr ""
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr ""
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "نور"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr ""
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr ""
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr ""
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr ""
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr ""
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr ""
+
+#: default_domains.php:1450
+msgid "White"
+msgstr ""
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr ""
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr ""
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr ""
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr ""
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr ""
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr ""
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr ""
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr ""
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr ""
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr ""
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr ""
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "تطبیقی"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr ""
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr ""
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr ""
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr ""
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr ""
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr ""
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr ""
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr ""
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr ""
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr ""
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr ""
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr ""
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr ""
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr ""
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr ""
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr ""
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr ""
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr ""
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr ""
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr ""
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr ""
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr ""
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr ""
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr ""
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr ""
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr ""
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr ""
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr ""
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr ""
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr ""
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr ""
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr ""
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr ""
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr ""
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr ""
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr ""
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr ""
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr ""
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr ""
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr ""
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr ""
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr ""
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr ""
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr ""
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "تقویم"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr ""
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr ""
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr ""
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr ""
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr ""
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr ""
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr ""
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr ""
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr ""
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr ""
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr ""
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr ""
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr ""
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr ""
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr ""
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr ""
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr ""
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr ""
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr ""
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr ""
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr ""
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr ""
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr ""
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr ""
+
+#: default_domains.php:1532
+msgid "First"
+msgstr ""
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr ""
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr ""
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr ""
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr ""
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr ""
+
+#: default_domains.php:1538
+msgid "After"
+msgstr ""
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr ""
+
+#: default_domains.php:1540
+msgid "During"
+msgstr ""
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr ""
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr ""
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr ""
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr ""
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr ""
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr ""
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr ""
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr ""
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr ""
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr ""
+
+#: default_domains.php:1551
+msgid "End"
+msgstr ""
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr ""
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr ""
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr ""
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr ""
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr ""
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr ""
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr ""
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr ""
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr ""
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr ""
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr ""
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr ""
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr ""
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr ""
+
+#: default_domains.php:1566
+msgid "New"
+msgstr ""
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr ""
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr ""
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr ""
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr ""
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr ""
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr ""
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr ""
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr ""
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr ""
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr ""
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr ""
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr ""
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr ""
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr ""
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr ""
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr ""
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr ""
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr ""
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "وضع و جایگاه"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr ""
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr ""
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr ""
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr ""
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr ""
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr ""
+
+#: default_domains.php:1592
+msgid "On"
+msgstr ""
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "بالا"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr ""
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr ""
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr ""
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr ""
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr ""
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr ""
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr ""
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "جهت خط"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr ""
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr ""
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr ""
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr ""
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr ""
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr ""
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr ""
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr ""
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr ""
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr ""
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr ""
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr ""
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr ""
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr ""
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr ""
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr ""
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr ""
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr ""
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr ""
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr ""
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr ""
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr ""
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr ""
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr ""
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr ""
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr ""
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr ""
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr ""
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr "دستورزبان"
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr ""
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr ""
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr ""
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr ""
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr ""
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr ""
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr ""
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr ""
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr ""
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr ""
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr ""
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr ""
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr ""
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr ""
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr ""
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr ""
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr ""
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr ""
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr ""
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr ""
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr ""
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr ""
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr ""
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr ""
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr ""
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr ""
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr ""
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr ""
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr ""
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr ""
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr ""
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr ""
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr ""
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr ""
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr ""
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr ""
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr ""
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr "Idiophones"
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr ""
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr ""
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr ""
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr ""
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr ""
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr ""
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr ""
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr ""
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr ""
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr ""
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr ""
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr ""
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr ""
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr ""
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr ""
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr ""
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr ""
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr ""
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr ""
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr ""
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr ""
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr ""
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr ""
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr ""
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr ""
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr ""
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr ""
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr ""
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr ""
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr ""
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr ""
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr ""
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr ""
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr ""
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr ""
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr ""
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr ""
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr ""
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr ""
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr ""
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr ""
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr ""
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr ""
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr ""
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr ""
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr ""
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr ""
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr ""
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr ""
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr ""
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr ""
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr ""
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr ""
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr ""
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr ""
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr ""
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr ""
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr ""
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr ""
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr ""
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr ""
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr ""
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr ""
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr ""
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr ""
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr ""
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr ""
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr ""
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr ""
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr ""
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr ""
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr ""
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr ""
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr ""
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr ""
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr ""
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr ""
+
+#: default_domains.php:1746
+msgid "But"
+msgstr ""
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr ""
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr ""
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr ""
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr ""
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr ""
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr ""
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr ""
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr ""
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr ""
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr ""
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr ""
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr ""
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr ""
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr ""
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr ""
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr ""
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr ""
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr ""
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "شرط"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr ""
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr ""
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr ""
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr ""
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr ""
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr ""
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr ""
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr ""
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr ""
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr ""
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr ""
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr ""
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr ""
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr ""
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr ""
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr ""
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr ""
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr ""
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr ""
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr ""
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr ""
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr ""
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr ""
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr ""
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr ""
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr ""
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr ""
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr ""
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr ""
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr ""
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr ""
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr ""
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr "حوضه معنایی"

@@ -22,80 +22,12 @@
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
-	/*
-	function SearchFilter($query) {
-		// If 's' request variable is set but empty
-		if(isset($_GET['s']))
-		{
-			if (strlen(trim($_GET['s'])) == 0){
-				$query->query_vars['s'] = '-';
-			}
-		}
-		return $query;
-	}
-	add_filter('pre_get_posts','SearchFilter');
-	*/
-
-//---------------------------------------------------------------------------//
-
-function my_enqueue_css() {
-
-	wp_register_style(
-		'webonary_dictionary_style',
-		plugin_dir_url(__DIR__) . 'css/dictionary_styles.css',
-		[],
-		date('U'),
-		'all'
-	);
-	wp_enqueue_style('webonary_dictionary_style');
-
-	// <link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); // >/wp-content/plugins/wp-page-numbers/classic/wp-page-numbers.css" />
-
-	if (is_page())
-		return;
-
-	if (get_option('useCloudBackend'))
-	{
-		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId, ['webonary_dictionary_style']);
-	}
-	else
-	{
-		$upload_dir = wp_upload_dir();
-		wp_register_style(
-			'configured_stylesheet',
-			$upload_dir['baseurl'] . '/imported-with-xhtml.css',
-			['webonary_dictionary_style'],
-			date('U'),
-			'all'
-		);
-		wp_enqueue_style('configured_stylesheet');
-
-		$overrides_css = $upload_dir['basedir'] . '/ProjectDictionaryOverrides.css';
-		if (!file_exists($overrides_css))
-			$overrides_css = $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css';
-
-		if (file_exists($overrides_css))
-		{
-			wp_register_style(
-				'overrides_stylesheet',
-				$overrides_css,
-				['webonary_dictionary_style', 'configured_stylesheet'],
-				date('U'),
-				'all'
-			);
-			wp_enqueue_style('overrides_stylesheet');
-		}
-
-	}
-}
-
 //---------------------------------------------------------------------------//
 
 
 function sil_dictionary_custom_message()
 {
-	$search_term = isset($_GET['s']) ? trim($_GET['s']): '';
+	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 	$match_whole_words = is_match_whole_words(mb_strlen($search_term));
 
 	if($match_whole_words == 0)
@@ -264,26 +196,22 @@ add_filter('the_content', 'filter_the_content_in_the_main_loop');
 
 function get_subquery_where($query)
 {
-	mb_internal_encoding("UTF-8");
+	mb_internal_encoding('UTF-8');
 
 	$search = trim($query->query_vars['s'] ?? '');
 
 	if(empty($search)) {
-		return "";
+		return '';
 	}
 
 	//search string gets trimmed and normalized to NFC
-	if (class_exists("Normalizer", $autoload = false))
+	if (class_exists('Normalizer', false))
 	{
 		$normalization = Normalizer::FORM_C;
-		if(get_option("normalization") == "FORM_D")
-		{
+		if(get_option('normalization') == 'FORM_D')
 			$normalization = Normalizer::FORM_D;
-		}
 
-		//$normalization = Normalizer::NFD;
 		$search = normalizer_normalize($search, $normalization);
-		//$search = normalizer_normalize($search, Normalizer::FORM_D);
 	}
 
 	$search = strtolower($search);
@@ -298,11 +226,10 @@ function get_subquery_where($query)
 		$key = '';
 	}
 
-	$subquery_where = "";
-	if( strlen( trim( $key ) ) > 0)
-		$subquery_where .= " WHERE " . SEARCHTABLE . ".language_code = '$key' ";
+	$subqueries = [];
 
-	$subquery_where .= empty( $subquery_where ) ? " WHERE " : " AND ";
+	if( strlen( trim( $key ) ) > 0)
+		$subqueries[] = SEARCHTABLE . ".language_code = '$key' ";
 
 	//using search form
 	$match_accents = false;
@@ -318,53 +245,54 @@ function get_subquery_where($query)
 		$collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 	}
 
-	$searchquery = $search;
+	$expanded_search = $search;
 	//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
 	if(preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1)
 	{
 		//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
-		$searchquery = preg_replace('/(^[aeiou])/u', '($1)', $searchquery);
+		$expanded_search = preg_replace('/(^[aeiou])/u', '($1)', $expanded_search);
 		//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
 		//the mysql regular expression can't find words with  accented characters if we don't include them
-		$searchquery = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $searchquery);
-		$searchquery = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $searchquery);
-		$searchquery = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $searchquery);
-		$searchquery = preg_replace('/([ɛ])/u', '(ɛ', $searchquery);
-		$searchquery = preg_replace('/([ə])/u', '(ə́|ə', $searchquery);
-		$searchquery = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $searchquery);
-		$searchquery = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $searchquery);
-		$searchquery = preg_replace('/([ɔ])/u', '(ɔ', $searchquery);
-		$searchquery = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $searchquery);
+		$expanded_search = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $expanded_search);
+		$expanded_search = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $expanded_search);
+		$expanded_search = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $expanded_search);
+		$expanded_search = preg_replace('/([ɛ])/u', '(ɛ', $expanded_search);
+		$expanded_search = preg_replace('/([ə])/u', '(ə́|ə', $expanded_search);
+		$expanded_search = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $expanded_search);
+		$expanded_search = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $expanded_search);
+		$expanded_search = preg_replace('/([ɔ])/u', '(ɔ', $expanded_search);
+		$expanded_search = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $expanded_search);
 		//for vowels we add [^a-z]* which will search for any character that comes after the normal character
 		//one can't see it, but composed characters actually consist of two characters, for instance the a in ya̧g
-		$searchquery = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $searchquery);
+		$expanded_search = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $expanded_search);
 	}
-
-	$searchquery = str_replace("'", "\'", $searchquery);
 
 	$match_whole_words = is_match_whole_words($search);
 
 	if (is_CJK( $search ) || $match_whole_words == 0)
 	{
-		if(get_option("searchSomposedCharacters") == 1)
-		{
-			$subquery_where .= " LOWER(search_strings) REGEXP '" . $searchquery . "' " . $collateSearch;
-		}
+		if(get_option('searchSomposedCharacters') == 1)
+			$subqueries[] = 'LOWER(search_strings) REGEXP \'' . Webonary_Utility::escapeSql($expanded_search) . '\' ' . $collateSearch;
 		else
-		{
-			$subquery_where .= " LOWER(search_strings) LIKE '%" .
-					addslashes( $search ) . "%' " . $collateSearch;
-		}
+			$subqueries[] = 'LOWER(search_strings) LIKE \'%' . Webonary_Utility::escapeSqlLike($search) . '%\' ' . $collateSearch;
 	}
 	else
 	{
 		if(mb_strlen($search) > 1)
 		{
-			$subquery_where .= "search_strings REGEXP '[[:<:]]" .
-					$searchquery . "[[:digit:]]?[[:>:]]' " . $collateSearch;
+			$expanded_search = Webonary_Utility::escapeSql($expanded_search);
+
+			if (mb_strpos($search, '\'') === false)
+				$subqueries[] = "search_strings REGEXP '[[:<:]]{$expanded_search}[[:digit:]]?[[:>:]]' $collateSearch";
+			else
+				$subqueries[] = "search_strings REGEXP '([[:blank:][:punct:]]|^){$expanded_search}[[:digit:]]?([[:punct:][:blank:]]|$)' $collateSearch";
 		}
 	}
-	return $subquery_where;
+
+	if (empty($subqueries))
+		return '';
+
+	return 'WHERE ' . implode(' AND ', $subqueries);
 }
 
 /**
@@ -407,7 +335,7 @@ function replace_default_search_filter($input, $query=null)
 	}
 	elseif (is_search() && (isset($_GET['s']) || isset($query->query_vars['s'])))
 	{
-		$searchWord = isset($_GET['s']) ? $_GET['s'] : $query->query_vars['s'];
+		$searchWord = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => $query->query_vars['s']]]);
 		$search_tbl = SEARCHTABLE;
 		$where = empty($searchWord) ? 'WHERE post_id < 0' : get_subquery_where($query);
 
