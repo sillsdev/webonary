@@ -370,7 +370,7 @@ class Webonary_Cloud
 				[
 					'key' => ['filter' => FILTER_UNSAFE_RAW],
 					'tax' => ['filter' => FILTER_UNSAFE_RAW],
-					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '1']],
+					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']],
 					'match_accents' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']]
 				]
 			);
@@ -379,7 +379,7 @@ class Webonary_Cloud
 				'text' => $searchText,
 				'lang' => $getParams['key'],
 				'partOfSpeech' => $getParams['tax'],
-				'matchPartial' => $getParams['match_whole_words'] ?? '',
+				'matchPartial' => $getParams['match_whole_words'] ? '' : '1',  // note reverse logic, b/c params are opposite
 				'matchAccents' => is_null($getParams['match_accents']) ? '' : '1'
 			];
 		}
