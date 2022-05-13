@@ -1,0 +1,110 @@
+name: Webonary Cloud API PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+    paths:
+      - "webonary-cloud-api/**"
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  CDK_DEPLOY_ACCOUNT: ${{ secrets.CDK_DEPLOY_ACCOUNT }}
+  CDK_DEPLOY_REGION: ${{ secrets.CDK_DEPLOY_REGION }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set env to stage if PR is for merging to master
+        if: github.event.pull_request.base.ref == 'master'
+        run: |
+          echo "DEPLOY_ENV=dev" >> $GITHUB_ENV
+
+          # Mongo Atlas info
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME_dev }}"  >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD_dev }}"  >> $GITHUB_ENV
+          echo "DB_URI=${{ secrets.DB_URI_dev }}"  >> $GITHUB_ENV
+
+      - name: Set env to production if PR is for merging to stable
+        if: github.event.pull_request.base.ref == 'stable'
+        run: |
+          echo "DEPLOY_ENV=live" >> $GITHUB_ENV
+          echo "LAMBDA_MIN_CONCURRENCY=1" >> $GITHUB_ENV
+          echo "LAMBDA_MAX_CONCURRENCY=10" >> $GITHUB_ENV
+          echo "ANALYTICS_DB_CLUSTER_ARN=${{ secrets.ANALYTICS_DB_CLUSTER_ARN_PROD }}"  >> $GITHUB_ENV
+          echo "ANALYTICS_DB_SECRETS_ARN=${{ secrets.ANALYTICS_DB_SECRETS_ARN_PROD }}"  >> $GITHUB_ENV
+          echo "REACT_APP_AWS_S3_BUCKET=${{ secrets.PORTAL_S3_BUCKET_PROD }}"  >> $GITHUB_ENV
+          echo "REACT_APP_COGNITO_IDENTITY_POOL_ID=${{ secrets.IDENTITY_POOL_ID_PROD }}"  >> $GITHUB_ENV
+          echo "REACT_APP_COGNITO_USER_POOL_ID=${{ secrets.USER_POOLS_ID_PROD }}" >> $GITHUB_ENV
+          echo "REACT_APP_COGNITO_USER_POOL_WEB_CLIENT_ID=${{ secrets.USER_POOLS_WEB_CLIENT_ID_PROD }}"  >> $GITHUB_ENV
+          echo "REACT_APP_PORT_API_URL=${{ secrets.REACT_APP_PORT_API_URL_PROD }}"  >> $GITHUB_ENV
+          echo "REACT_APP_API_ROOT=rest.api.bible"  >> $GITHUB_ENV
+          echo "REACT_APP_API_SITE_URL=https://api.bible"  >> $GITHUB_ENV
+          echo "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY_PROD }}"  >> $GITHUB_ENV
+          echo "STRIPE_PUBLISHABLE_KEY=${{ secrets.STRIPE_PUBLISHABLE_KEY_PROD }}"  >> $GITHUB_ENV
+          echo "STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET_PROD }}"  >> $GITHUB_ENV
+          echo "STRIPE_PAYMENT_METHOD_TYPES=${{ secrets.STRIPE_PAYMENT_METHOD_TYPES_PROD }}"  >> $GITHUB_ENV
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Setup java for dynamodb tests
+        uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "15"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.CDK_DEPLOY_REGION }}
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.X"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: NPM latest (7.6.0)
+        run: npm install -g npm@7.6.0
+
+      - name: NPM clean install api-bible-shared-lib
+        run: cd api-bible-shared-lib; npm ci
+
+      - name: NPM build api-bible-shared-lib
+        run: cd api-bible-shared-lib; npm run build;
+
+      - name: NPM clean install shared cdk lib package
+        run: cd api-bible-shared-cdk; npm ci
+
+      - name: NPM clean install common lambda layer package
+        run: cd api-bible-common-layers/api_bible_layer/nodejs/api_bible_layer; npm ci
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: NPM test common lambda layer package
+        run: cd api-bible-common-layers/api_bible_layer/nodejs/api_bible_layer; npm test
+
+      - name: NPM clean install main package
+        run: cd api-bible-portal; npm ci
+
+      - name: NPM clean install lambda package
+        run: cd api-bible-portal/lambda; npm ci
+
+      - name: NPM clean install client package
+        run: cd api-bible-portal-client; npm ci
+
+      - name: Build portal client
+        run: cd api-bible-portal-client; NODE_ENV=production npx craco build
+
+      - name: Lint, build, and test
+        run: cd api-bible-portal; npm run test
+
+      - name: Run cdk diff
+        run: set -o pipefail; cd api-bible-portal; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
