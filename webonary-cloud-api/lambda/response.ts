@@ -2,7 +2,13 @@ export const BAD_REQUEST = 'BadRequest';
 
 type ResponseBody = string | object;
 
-function buildResponse(statusCode: number, response: ResponseBody, header?: object): object {
+export interface Response {
+  statusCode: number;
+  headers: object;
+  body: string;
+}
+
+function buildResponse(statusCode: number, response: ResponseBody, header?: object): Response {
   let headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
@@ -22,25 +28,25 @@ function buildResponse(statusCode: number, response: ResponseBody, header?: obje
     body = JSON.stringify(response);
   }
 
-  return { statusCode, headers, body };
+  return { statusCode, headers, body: body as string };
 }
 
-export function success(body: ResponseBody): object {
+export function success(body: ResponseBody): Response {
   return buildResponse(200, body);
 }
 
-export function badRequest(body: ResponseBody): object {
+export function badRequest(body: ResponseBody): Response {
   return buildResponse(400, { errorType: BAD_REQUEST, errorMessage: body });
 }
 
-export function failure(body: ResponseBody): object {
+export function failure(body: ResponseBody): Response {
   return buildResponse(500, body);
 }
 
-export function notFound(body: ResponseBody): object {
+export function notFound(body: ResponseBody): Response {
   return buildResponse(404, body);
 }
 
-export function redirect(location: string): object {
+export function redirect(location: string): Response {
   return buildResponse(302, '', { Location: location });
 }
