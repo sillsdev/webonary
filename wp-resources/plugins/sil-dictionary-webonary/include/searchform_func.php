@@ -336,17 +336,19 @@ SQL;
 
 		if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
 		{
-			_e('Last update:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($lastEditDate));
+			_e('Last update:', 'sil_dictionary');
+            echo ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($lastEditDate));
 		}
 
-		$siteurlNoHttp = preg_replace('@http[s]?://@m', '', get_bloginfo('wpurl'));
+		$siteurlNoHttp = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
 
 		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($siteurlNoHttp) . "' OR link_url LIKE 'http_://" . trim($siteurlNoHttp) . "/'");
 
 		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
 		{
-			echo "<br>";
-			_e('Date published:', 'sil_dictionary'); echo " " . strftime("%b %e, %Y", strtotime($publishedDate));
+			echo '<br>';
+			_e('Date published:', 'sil_dictionary');
+            echo ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($publishedDate));
 		}
 		?>
 		</div>

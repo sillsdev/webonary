@@ -57,7 +57,7 @@ msgstr "Haga clic aquí para incluir búsqueda de palabras parciales"
 #: include/searchform_func.php:57 include/searchform_func.php:144
 #: webonary/Webonary_Search_Widget.php:267
 msgid "All Parts of Speech"
-msgstr "Toda parte del discurso"
+msgstr "Clasificación gramatical"
 
 #: include/searchform_func.php:295 webonary/Webonary_Search_Widget.php:57
 msgid "Search"
@@ -73,15 +73,15 @@ msgstr "Ocultar búsqueda avanzada"
 
 #: include/searchform_func.php:304 webonary/Webonary_Search_Widget.php:251
 msgid "All Languages"
-msgstr "Todo idioma"
+msgstr "Todos los idiomas"
 
 #: include/searchform_func.php:313 webonary/Webonary_Search_Widget.php:64
 msgid "Match whole words"
-msgstr "Coincidir palabras completas"
+msgstr "Solo palabras completas"
 
 #: include/searchform_func.php:315 webonary/Webonary_Search_Widget.php:66
 msgid "Match accents and tones"
-msgstr "Coincidir acentos y tonos"
+msgstr "Palabras con sus acentos y tonos"
 
 #: include/searchform_func.php:322 webonary/Webonary_Search_Widget.php:68
 msgid "Number of Entries"
@@ -121,7 +121,7 @@ msgstr "Revisado por un asesor técnico"
 
 #: include/searchform_func.php:400
 msgid "Finished (no formal publication)"
-msgstr "Contenido y diseño aprobados para publicarse"
+msgstr "Contenido y diseño aprobados para publicación"
 
 #: include/searchform_func.php:401
 msgid "Formally published"
