@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8be5b25ad00e0f6b3fa353bdc866e725",
+    "content-hash": "959b72ae1e3b787610ac0126333992f2",
     "packages": [
         {
             "name": "composer/installers",
@@ -210,20 +210,20 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "5.9.2",
+            "version": "5.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "e929834ba93c3de1d6b832162eda5af469041ea6"
+                "reference": "8d0788bd5553c897b12bbf0e122c2fc5c4129914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/e929834ba93c3de1d6b832162eda5af469041ea6",
-                "reference": "e929834ba93c3de1d6b832162eda5af469041ea6",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/8d0788bd5553c897b12bbf0e122c2fc5c4129914",
+                "reference": "8d0788bd5553c897b12bbf0e122c2fc5c4129914",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "5.9.2",
+                "johnpbloch/wordpress-core": "5.9.3",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=5.6.20"
             },
@@ -252,20 +252,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2022-03-11T00:51:43+00:00"
+            "time": "2022-04-05T19:23:54+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.9.2",
+            "version": "5.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "0eb92a65ce99816683e2c0d50e83774ae5bfcf1a"
+                "reference": "455d38c7b7bcdce3e0a1c6108eccca8de1860361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/0eb92a65ce99816683e2c0d50e83774ae5bfcf1a",
-                "reference": "0eb92a65ce99816683e2c0d50e83774ae5bfcf1a",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/455d38c7b7bcdce3e0a1c6108eccca8de1860361",
+                "reference": "455d38c7b7bcdce3e0a1c6108eccca8de1860361",
                 "shasum": ""
             },
             "require": {
@@ -273,7 +273,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "5.9.2"
+                "wordpress/core-implementation": "5.9.3"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -300,7 +300,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2022-03-11T00:51:39+00:00"
+            "time": "2022-04-05T19:23:48+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -596,16 +596,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.22.0",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "3a9e29b4f386a08a151a33578e80ef1747037a48"
+                "reference": "21e4cf62699eebf007db28775f7d1554e612ed9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/3a9e29b4f386a08a151a33578e80ef1747037a48",
-                "reference": "3a9e29b4f386a08a151a33578e80ef1747037a48",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/21e4cf62699eebf007db28775f7d1554e612ed9e",
+                "reference": "21e4cf62699eebf007db28775f7d1554e612ed9e",
                 "shasum": ""
             },
             "require": {
@@ -629,7 +629,7 @@
                 "php": "^7.3 || ^8.0",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
-                "psr/simple-cache": "^1.0"
+                "psr/simple-cache": "^1.0 || ^2.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
@@ -694,9 +694,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.22.0"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.23.0"
             },
-            "time": "2022-02-18T12:57:07+00:00"
+            "time": "2022-04-24T13:53:10+00:00"
         },
         {
             "name": "psr/http-client",
@@ -915,12 +915,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qtranslate/qtranslate-xt.git",
-                "reference": "324f3f64cbbfda7c4dc4a68508a08ca6fed3ae44"
+                "reference": "c894fbd5c1fa83f7c148f17c870d9556ff6e19e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/324f3f64cbbfda7c4dc4a68508a08ca6fed3ae44",
-                "reference": "324f3f64cbbfda7c4dc4a68508a08ca6fed3ae44",
+                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/c894fbd5c1fa83f7c148f17c870d9556ff6e19e6",
+                "reference": "c894fbd5c1fa83f7c148f17c870d9556ff6e19e6",
                 "shasum": ""
             },
             "require": {
@@ -978,7 +978,7 @@
                 "source": "https://github.com/qtranslate/qtranslate-xt",
                 "wiki": "https://github.com/qtranslate/qtranslate-xt/wiki"
             },
-            "time": "2022-04-02T09:03:30+00:00"
+            "time": "2022-05-13T22:29:47+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1065,15 +1065,15 @@
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "4.2.2",
+            "version": "4.2.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/4.2.2"
+                "reference": "tags/4.2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.4.2.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/akismet.4.2.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1119,15 +1119,15 @@
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
-            "version": "5.5.6",
+            "version": "5.5.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/5.5.6"
+                "reference": "tags/5.5.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.5.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.5.6.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1245,15 +1245,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "8.5.0",
+            "version": "8.5.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/8.5.0"
+                "reference": "tags/8.5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.5.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.5.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1281,15 +1281,15 @@
         },
         {
             "name": "wpackagist-plugin/imsanity",
-            "version": "2.7.2",
+            "version": "2.8.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imsanity/",
-                "reference": "tags/2.7.2"
+                "reference": "tags/2.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imsanity.2.7.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/imsanity.2.8.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1353,15 +1353,15 @@
         },
         {
             "name": "wpackagist-plugin/jquery-updater",
-            "version": "3.6.0.1",
+            "version": "3.6.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jquery-updater/",
-                "reference": "tags/3.6.0.1"
+                "reference": "tags/3.6.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jquery-updater.3.6.0.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/jquery-updater.3.6.0.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1497,15 +1497,15 @@
         },
         {
             "name": "wpackagist-plugin/really-simple-ssl",
-            "version": "5.3.1",
+            "version": "5.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
-                "reference": "tags/5.3.1"
+                "reference": "tags/5.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.5.3.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.5.3.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1587,15 +1587,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.5.9",
+            "version": "7.5.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.5.9"
+                "reference": "tags/7.5.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.10.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1921,16 +1921,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.7",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "900275254f0a1a2afff1ab0e11abd5587a10e1d6"
+                "reference": "ffe3aed36c4d60da2cf1b0a1cee6b8f2e5fa881b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/900275254f0a1a2afff1ab0e11abd5587a10e1d6",
-                "reference": "900275254f0a1a2afff1ab0e11abd5587a10e1d6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/ffe3aed36c4d60da2cf1b0a1cee6b8f2e5fa881b",
+                "reference": "ffe3aed36c4d60da2cf1b0a1cee6b8f2e5fa881b",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2000,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.7"
+                "source": "https://github.com/symfony/console/tree/v5.4.8"
             },
             "funding": [
                 {
@@ -2016,7 +2016,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-31T17:09:19+00:00"
+            "time": "2022-04-12T16:02:29+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2496,16 +2496,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.4.7",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "38a44b2517b470a436e1c944bf9b9ba3961137fb"
+                "reference": "597f3fff8e3e91836bb0bd38f5718b56ddbde2f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/38a44b2517b470a436e1c944bf9b9ba3961137fb",
-                "reference": "38a44b2517b470a436e1c944bf9b9ba3961137fb",
+                "url": "https://api.github.com/repos/symfony/process/zipball/597f3fff8e3e91836bb0bd38f5718b56ddbde2f3",
+                "reference": "597f3fff8e3e91836bb0bd38f5718b56ddbde2f3",
                 "shasum": ""
             },
             "require": {
@@ -2538,7 +2538,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v5.4.7"
+                "source": "https://github.com/symfony/process/tree/v5.4.8"
             },
             "funding": [
                 {
@@ -2554,7 +2554,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-18T16:18:52+00:00"
+            "time": "2022-04-08T05:07:18+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -2619,16 +2619,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.3",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "92043b7d8383e48104e411bc9434b260dbeb5a10"
+                "reference": "3c061a76bff6d6ea427d85e12ad1bb8ed8cd43e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/92043b7d8383e48104e411bc9434b260dbeb5a10",
-                "reference": "92043b7d8383e48104e411bc9434b260dbeb5a10",
+                "url": "https://api.github.com/repos/symfony/string/zipball/3c061a76bff6d6ea427d85e12ad1bb8ed8cd43e8",
+                "reference": "3c061a76bff6d6ea427d85e12ad1bb8ed8cd43e8",
                 "shasum": ""
             },
             "require": {
@@ -2685,7 +2685,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.3"
+                "source": "https://github.com/symfony/string/tree/v5.4.8"
             },
             "funding": [
                 {
@@ -2701,7 +2701,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-04-19T10:40:37+00:00"
         },
         {
             "name": "symfony/yaml",
