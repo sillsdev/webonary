@@ -1,3 +1,18 @@
+/**
+ * @api {get} /get/entry/:dictionaryId Get dictionary or reversal entry
+ * @apiName GetDictionaryEntry
+ * @apiDescription Gets a single dictionary or reversal entry. Returns a ReversalEntryItem if entryType ==
+ * 'reversalindexentry' else a DictionaryEntryItem.
+ * (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)
+ * @apiGroup Dictionary
+ * @apiUse DictionaryIdPath
+ * @apiParam {GUID} guid Id of the entry.
+ * @apiParam {String=entry,reversalindexentry} [entryType] Type of the entry to get: 'entry' for main entry and
+ * 'reversalindexentry' for reversal entry. Defaults to 'entry'.
+ *
+ * @apiError (404) NotFound Cannot find the specified entry.
+ */
+
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';

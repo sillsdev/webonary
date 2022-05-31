@@ -79,7 +79,7 @@ class Webonary_Search_Widget extends WP_Widget {
         if (empty($this->last_edit_date))
 	        $substitutions['@last_update@'] = '';
         else
-	        $substitutions['@last_update@'] = __('Last update:', 'sil_dictionary') . ' ' . strftime('%b %e, %Y', strtotime($this->last_edit_date));
+	        $substitutions['@last_update@'] = __('Last update:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
 
 		echo Webonary_Utility::includeTemplate('search-script.html');
         echo Webonary_Utility::includeTemplate('search-form.html', $substitutions);
@@ -310,12 +310,12 @@ HTML;
 
         global $wpdb;
 
-	    $site_url_no_http = preg_replace('@http[s]?://@m', '', get_bloginfo('wpurl'));
+	    $site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
 
 	    $published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($site_url_no_http) . "' OR link_url LIKE 'http_://" . trim($site_url_no_http) . "/'");
 
 	    if(!empty($published_date) && $published_date != '0000-00-00 00:00:00')
-            return __('Date published:', 'sil_dictionary') . ' ' . strftime('%b %e, %Y', strtotime($published_date));
+            return __('Date published:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($published_date));
 
         return '';
     }

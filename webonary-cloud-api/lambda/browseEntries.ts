@@ -1,3 +1,23 @@
+/**
+ * @api {get} /browse/entry/:dictionaryId Get dictionary entries for a letter head.
+ * @apiName BrowseDictionaryEntries
+ * @apiDescription Gets dictionary or reversal entries that match the specified letter head. Returns ReversalEntryItem's
+ *  if entryType == 'reversalindexentry' else DictionaryEntryItem's.
+ * (https://github.com/sillsdev/webonary/blob/develop/webonary-cloud-api/lambda/entry.model.ts)
+ * @apiGroup Dictionary
+ * @apiUse DictionaryIdPath
+ * @apiParam {String} text Letter head to browse.
+ * @apiParam {String} [mainLang] Main language of the dictionary, used for setting the db locale.
+ * @apiParam {String} [lang] Language to search through. This must be specified for browsing reversal entries.
+ * @apiParam {String=entry,reversalindexentry} [entryType] Type of the entry to get: 'entry' for main entry and
+ * 'reversalindexentry' for reversal entry. Defaults to 'entry'.
+ * @apiParam {Number=0,1} [countTotalOnly] 1 to return only the count, and 0 otherwise. Defaults to 0.
+ * @apiParam {Number} [pageNumber] 1-indexed page number for the results. Defaults to 1.
+ * @apiParam {Number} [pageLimit] Number of entries per page. Max is 100. Defaults to 100.
+ *
+ * @apiError (404) NotFound There are no matching entries.
+ */
+
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
@@ -41,7 +61,7 @@ export async function handler(
     );
 
     if (text === '') {
-      return callback(null, Response.badRequest('Browse letter head must be specified.'));
+      return callback(null, Response.badRequest('Browse head letter must be specified.'));
     }
 
     let dbCollection = '';

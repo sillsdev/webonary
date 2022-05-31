@@ -15,7 +15,7 @@ const dictionaryId = 'testDictionary';
 
 const event: CustomAuthorizerEvent = {
   type: 'testEventType',
-  methodArn: 'POST/post/entry/',
+  methodArn: `arn:something-something/POST/post/entry/${dictionaryId}`,
   pathParameters: { dictionaryId },
   headers,
 };
@@ -37,13 +37,18 @@ const context: Context = {
 
 describe('methodAuthorize', () => {
   test('successful auth', async (): Promise<void> => {
-    mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: '' }));
+    mockedAxios.post.mockImplementation(() =>
+      Promise.resolve({ status: 200, data: 'test-dictionary1,test-dictionary2' }),
+    );
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(`${dictionaryId}::${username}`);
+      expect(result.principalId).toEqual(username);
       expect(result.policyDocument.Statement[0].Effect).toBe('Allow');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
-      expect(result.policyDocument.Statement[0].Resource).toBe('POST/post/*/');
+      expect(result.policyDocument.Statement[0].Resource).toStrictEqual([
+        'arn:something-something/*/*/test-dictionary1',
+        'arn:something-something/*/*/test-dictionary2',
+      ]);
     });
 
     return expect.hasAssertions();
@@ -54,7 +59,7 @@ describe('methodAuthorize', () => {
 
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(`${dictionaryId}::${username}`);
+      expect(result.principalId).toEqual(username);
       expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
     });
@@ -97,17 +102,15 @@ describe('methodAuthorize', () => {
 
   test('auth throws error', async (): Promise<void> => {
     const errorMessage = 'threw an error';
-    try {
-      mockedAxios.post.mockImplementation(() => {
-        throw new Error(errorMessage);
-      });
+    mockedAxios.post.mockImplementation(() => {
+      throw new Error(errorMessage);
+    });
 
-      await lambdaHandler(event, context, error => {
-        expect(error).toEqual(new Error(errorMessage));
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await lambdaHandler(event, context, (error, result) => {
+      expect(error).toBe(null);
+      expect(result.policyDocument.Statement.length === 1);
+      expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
+    });
 
     return expect.hasAssertions();
   });

@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnused */
 /** @noinspection PhpMissingParamTypeInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
@@ -11,6 +12,7 @@ class Webonary_Utility
 
 	private static $posts_per_page = 0;
 	private static $current_page_number = 0;
+	private static $date_formatter;
 
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
 	public static function unzip($zip_file, $uploadPath, $zipFolderPath)
@@ -504,7 +506,7 @@ class Webonary_Utility
 		//but it will keep a link like this: <a href="#gcec78a67-91e9-4e72-82d3-4be7b316b268" onclick="document.getElementById('g635754005092954976ã').play()"
 		//which is important for playing audio
 
-		//first make sure audio href only contains a hastag (or any href with onclick after it)
+		//first make sure audio href only contains a hashtag (or any href with onclick after it)
 		$entry_xml = preg_replace('/href="(#)([^"]+)" onclick/', 'href="#$2" onclick', $entry_xml);
 
 		//closing tag for <a .play()"/>, needs to have an empty space between > </a>
@@ -625,5 +627,21 @@ class Webonary_Utility
 	{
 		$val = self::GetFloat($variable_name, $default, 0);
 		return (int)$val;
+	}
+
+	public static function GetDateFormatter()
+	{
+		if (!empty(self::$date_formatter))
+			return self::$date_formatter;
+
+		self::$date_formatter = new IntlDateFormatter(
+			get_locale(),
+			IntlDateFormatter::LONG,
+			IntlDateFormatter::NONE,
+			IntlTimeZone::getGMT(),
+			IntlDateFormatter::GREGORIAN
+		);
+
+		return self::$date_formatter;
 	}
 }
