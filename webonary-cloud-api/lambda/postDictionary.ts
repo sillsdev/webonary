@@ -141,8 +141,7 @@ export async function upsertDictionary(
   // fulltext index (case and diacritic insensitive by default)
   await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
     {
-      [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-      [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
+      [DbPaths.ENTRY_DISPLAY_TEXT]: 'text',
     },
     { name: 'wordsFulltextIndex', default_language: 'none' },
   );

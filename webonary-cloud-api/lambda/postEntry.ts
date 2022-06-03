@@ -213,6 +213,7 @@
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import * as sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
   DB_NAME,
@@ -232,6 +233,16 @@ import * as Response from './response';
 
 let dbClient: MongoClient;
 
+/**
+ * Removes any HTML from a string.
+ */
+function stripHtml(html: string): string {
+  return sanitizeHtml(html, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+}
+
 export async function upsertEntries(
   postedEntries: Array<object>,
   isReversalEntry: boolean,
@@ -245,7 +256,9 @@ export async function upsertEntries(
     const entry = isReversalEntry
       ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
       : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
-    return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    entry.displayText = stripHtml(entry.displayXhtml);
+    return entry;
   });
 
   dbClient = await connectToDB();
