@@ -227,6 +227,7 @@ import {
   ReversalEntryItem,
   EntryItemType,
   ENTRY_TYPE_REVERSAL,
+  EntryValueItem,
 } from './entry.model';
 import { copyObjectIgnoreKeyCase, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
@@ -243,6 +244,20 @@ function stripHtml(html: string): string {
   });
 }
 
+/**
+ * Fills in empty DictionaryEntry fields from other fields that were supplied.
+ */
+/* eslint-disable no-param-reassign */
+function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
+  destination.mainHeadWord = destination.mainHeadWord.filter(word => word.value);
+  if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
+    destination.mainHeadWord = source.headword.map((word: never) =>
+      copyObjectIgnoreKeyCase(new EntryValueItem(), word),
+    );
+  }
+}
+/* eslint-enable no-param-reassign */
+
 export async function upsertEntries(
   postedEntries: Array<object>,
   isReversalEntry: boolean,
@@ -257,6 +272,9 @@ export async function upsertEntries(
       ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
       : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
     Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    if (entry instanceof DictionaryEntryItem) {
+      fillDictionaryEntryFields(postedEntry, entry);
+    }
     entry.displayText = stripHtml(entry.displayXhtml);
     return entry;
   });
