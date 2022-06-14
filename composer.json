@@ -61,7 +61,7 @@
     "wpackagist-plugin/magazine-columns": "^1.0",
     "wpackagist-plugin/multisite-plugin-manager": "^3.1",
     "wpackagist-plugin/opml-importer": "^0.2.0",
-    "wpackagist-plugin/osm": "^5.7",
+    "wpackagist-plugin/osm": "^5.7|^6.0",
     "wpackagist-plugin/pdf-embedder": "^4.6",
     "wpackagist-plugin/plugin-activation-status": "1.0.2.1",
     "wpackagist-plugin/really-simple-ssl": "^5.1",
@@ -74,7 +74,8 @@
     "wpackagist-plugin/wp-google-fonts": "^3.1",
     "wpackagist-plugin/wp-super-cache": "^1.7",
     "wpackagist-plugin/wps-menu-exporter": "^1.3",
-    "wpackagist-theme/twentytwentyone": "^1.4"
+    "wpackagist-theme/twentytwentyone": "^1.4",
+    "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "^3.1"
   },
   "extra": {
     "installer-paths": {
