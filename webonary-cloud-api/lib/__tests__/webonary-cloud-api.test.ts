@@ -5,11 +5,6 @@ import * as WebonaryCloudApi from '../webonary-cloud-api-stack';
 const app = new cdk.App();
 const stack = new WebonaryCloudApi.WebonaryCloudApiStack(app, 'MyTestStack');
 
-// See https://docs.aws.amazon.com/cdk/latest/guide/testing.html
-test('Snapshot test', () => {
-  expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
-});
-
 // See https://github.com/aws/aws-cdk/tree/master/packages/%40aws-cdk/assert
 test('S3 exists', () => {
   expectCDK(stack).to(
