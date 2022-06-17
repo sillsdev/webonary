@@ -55,7 +55,12 @@ async function deleteDictionary(
   try {
     return await axios.delete(path, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError)
+    {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -73,7 +78,12 @@ async function postDictionary(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError)
+    {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -92,7 +102,12 @@ async function postEntry(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError)
+    {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -151,15 +166,23 @@ async function postFile(
         };
         try {
           return await axios.put(signedUrl, fileContent, fileConfig);
-        } catch (error) {
-          logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
+        } catch (error: any) {
+          if ('message' in error) {
+            logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
+          } else {
+            logMessage(`postEntry Error: ${JSON.stringify(error)}`);
+          }
         }
       } else {
         logMessage(`Warning: File ${file} does not exist!`);
       }
     }
-  } catch (error) {
-    logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
+  } catch (error: any) {
+    if ('message' in error) {
+      logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
+    } else {
+      logMessage(`postFile Error: ${JSON.stringify(error)}`);
+    }
   }
 
   return undefined;

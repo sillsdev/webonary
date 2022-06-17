@@ -32,7 +32,7 @@ import {
 } from './db';
 import { DbFindParameters } from './base.model';
 import { DictionaryEntry, ReversalEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
-import { getDbSkip } from './utils';
+import {createFailureResponse, getDbSkip} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -67,7 +67,7 @@ export async function handler(
     let dbCollection = '';
     let dbSort = {};
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
-    let entries: DictionaryEntry[] | ReversalEntry[];
+    let entries: Document[];
     let primarySearch = true;
     const dbFind: DbFindParameters = { dictionaryId };
     const dbSkip = getDbSkip(pageNumber, pageLimit);
@@ -146,13 +146,13 @@ export async function handler(
         const count = await db
           .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
           .aggregate(pipeline)
-          .next();
+          .next() ?? "0";
         return callback(null, Response.success(count));
       }
 
       pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } });
       entries = await db
-        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+        .collection<DictionaryEntry> (DB_COLLECTION_DICTIONARY_ENTRIES)
         .aggregate(pipeline, {
           collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY },
         })
@@ -169,7 +169,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 

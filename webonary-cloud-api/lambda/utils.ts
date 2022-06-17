@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
+import { failure } from "./response";
 
 export interface BasicAuthCredentials {
   username: string;
@@ -88,6 +89,15 @@ export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): o
     }
   });
   return copyObject;
+}
+
+export function createFailureResponse(error: any) {
+  if (error instanceof Error)
+  {
+    return failure({ errorType: error.name, errorMessage: error.message });
+  } else {
+    return failure({error: error});
+  }
 }
 
 export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[] {

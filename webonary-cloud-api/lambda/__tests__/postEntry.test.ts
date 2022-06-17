@@ -10,7 +10,7 @@ const testUsername = 'test-username';
 async function findEntryByGuid(guid: string): Promise<DictionaryEntryItem | null> {
   const dbClient = await connectToDB();
   const db = dbClient.db(DB_NAME);
-  return db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).findOne({ guid });
+  return db.collection<DictionaryEntryItem>(DB_COLLECTION_DICTIONARY_ENTRIES).findOne({ guid });
 }
 
 describe('postEntries', () => {

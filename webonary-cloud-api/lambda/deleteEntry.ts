@@ -16,11 +16,12 @@
  */
 
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
+import { MongoClient, DeleteResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_COLLECTION_REVERSAL_ENTRIES } from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
+import {createFailureResponse} from "./utils";
 
 let dbClient: MongoClient;
 
@@ -55,7 +56,7 @@ export async function handler(
       return callback(null, Response.notFound({}));
     }
 
-    const dbResultEntry: DeleteWriteOpResultObject = await db
+    const dbResultEntry: DeleteResult = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .deleteOne({ guid, dictionaryId });
 
@@ -70,7 +71,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 

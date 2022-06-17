@@ -57,6 +57,7 @@ import { DbPaths } from './entry.model';
 
 import { DbFindParameters } from './base.model';
 import * as Response from './response';
+import {createFailureResponse} from "./utils";
 
 let dbClient: MongoClient;
 
@@ -75,7 +76,7 @@ export async function handler(
     dbClient = await connectToDB();
     const db = dbClient.db(DB_NAME);
     const dbItem: Dictionary | null = await db
-      .collection(DB_COLLECTION_DICTIONARIES)
+      .collection<Dictionary>(DB_COLLECTION_DICTIONARIES)
       .findOne({ _id: dictionaryId });
 
     if (!dbItem) {
@@ -103,7 +104,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 
