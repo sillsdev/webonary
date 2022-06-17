@@ -7,9 +7,7 @@ export async function connectToDB(): Promise<MongoClient> {
     return Promise.resolve(cachedDb);
   }
 
-  const client = await MongoClient.connect(process.env.DB_URL as string, {
-    useNewUrlParser: true,
-  });
+  const client = await MongoClient.connect(process.env.DB_URL as string);
 
   cachedDb = client;
 
