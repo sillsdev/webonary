@@ -138,8 +138,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
     } else {
       langFilter = {
         $or: [
-          { [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: regexFilter },
-          { [DbPaths.ENTRY_DEFINITION_VALUE]: regexFilter },
+          { [DbPaths.ENTRY_DISPLAY_TEXT]: regexFilter },
         ],
       };
     }
