@@ -414,6 +414,10 @@ function webonary_conf_widget($showTitle = false)
 					</select>
 				</p>
 
+                <p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
+                    Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
+                </p>
+
 				<h3><?php _e('Delete Data', 'sil_dictionary'); ?></h3>
 				<p>
 					<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
@@ -873,9 +877,6 @@ function webonary_conf_widget($showTitle = false)
 				</p>
 				<p>
 					Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option('noSearch')); ?> />
-				</p>
-				<p>
-					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
 				</p>
 				<p>
 					<?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
