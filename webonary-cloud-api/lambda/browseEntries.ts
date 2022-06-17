@@ -31,7 +31,7 @@ import {
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
-import { DictionaryEntry, ReversalEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
+import { DictionaryEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
 import {createFailureResponse, getDbSkip} from './utils';
 import * as Response from './response';
 
