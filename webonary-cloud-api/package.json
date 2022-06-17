@@ -61,10 +61,5 @@
     "mime-types": "^2.1.35",
     "npm-check-updates": "^14.0.1",
     "sanitize-html": "^2.7.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js"
-    ]
   }
 }
