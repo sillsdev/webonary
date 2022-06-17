@@ -7,16 +7,16 @@ setupMongo();
 
 const defaultArguments: SearchEntriesArguments = {
   $language: '',
-  countTotalOnly: undefined,
+  countTotalOnly: false,
   dictionaryId: 'test-dictionary-default',
   lang: undefined,
   mainLang: undefined,
-  matchAccents: undefined,
-  matchPartial: undefined,
+  matchAccents: false,
+  matchPartial: false,
   pageLimit: 10,
   pageNumber: 1,
   partOfSpeech: undefined,
-  searchSemDoms: undefined,
+  searchSemDoms: false,
   semDomAbbrev: undefined,
   text: 'test-text',
 };
