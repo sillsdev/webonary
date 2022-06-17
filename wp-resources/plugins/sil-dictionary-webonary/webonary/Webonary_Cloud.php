@@ -340,6 +340,7 @@ class Webonary_Cloud
 	}
 
 	public static function searchEntries($posts, WP_Query $query): ?array {
+		global $search_cookie;
 
 		if (!$query->is_main_query())
 			return null;
@@ -369,9 +370,7 @@ class Webonary_Cloud
 				INPUT_GET,
 				[
 					'key' => ['filter' => FILTER_UNSAFE_RAW],
-					'tax' => ['filter' => FILTER_UNSAFE_RAW],
-					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']],
-					'match_accents' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']]
+					'tax' => ['filter' => FILTER_UNSAFE_RAW]
 				]
 			);
 
@@ -379,8 +378,8 @@ class Webonary_Cloud
 				'text' => $searchText,
 				'lang' => $getParams['key'],
 				'partOfSpeech' => $getParams['tax'],
-				'matchPartial' => $getParams['match_whole_words'] ? '' : '1',  // note reverse logic, b/c params are opposite
-				'matchAccents' => is_null($getParams['match_accents']) ? '' : '1'
+				'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
+				'matchAccents' => $search_cookie->match_accents ? '1' : ''
 			];
 		}
 
