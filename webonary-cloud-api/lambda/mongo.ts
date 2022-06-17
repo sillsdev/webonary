@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 let cachedDb: MongoClient;
 
 export async function connectToDB(): Promise<MongoClient> {
-  if (cachedDb && cachedDb.isConnected()) {
+  if (cachedDb) {
     return Promise.resolve(cachedDb);
   }
 
