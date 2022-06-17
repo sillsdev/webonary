@@ -131,4 +131,219 @@ describe('searchEntries', () => {
 
     expect(searchResponse.statusCode).toBe(404);
   });
+
+  // TODO: Write a test for languages. I'm not sure what it means to filter by a language. The WordPress implementation
+  // seems to assign each entry at most one language, but each entry in the Mongo implementation can have many langs.
+
+  test('partOfSpeech filters out the irrelevant entries', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'guidA',
+            displayXhtml: `text`,
+            morphoSyntaxAnalysis: {
+              partOfSpeech: [
+                {value: 'partA'},
+              ]
+            }
+          },
+          {
+            guid: 'guidAB',
+            displayXhtml: `text`,
+            morphoSyntaxAnalysis: {
+              partOfSpeech: [
+                {value: 'partA'},
+                {value: 'partB'},
+              ]
+            }
+          },
+          {
+            guid: 'guidC',
+            displayXhtml: `text`,
+            morphoSyntaxAnalysis: {
+              partOfSpeech: [
+                {value: 'partC'},
+              ]
+            }
+          },
+          {
+            guid: 'guidCD',
+            displayXhtml: `text`,
+            morphoSyntaxAnalysis: {
+              partOfSpeech: [
+                {value: 'partC'},
+                {value: 'partD'},
+              ]
+            }
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      partOfSpeech: 'partA',
+    });
+
+    const actualGuids = JSON.parse(searchResponse.body)
+        .map((entry: any) => entry.guid)
+        .sort();
+    expect(actualGuids).toEqual(['guidA', 'guidAB']);
+  });
+
+  test('matchPartial match parts of words', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'word',
+            displayXhtml: `word`,
+          },
+          {
+            guid: 'or',
+            displayXhtml: `or`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'or',
+      matchPartial: true
+    });
+
+    const responseBody = JSON.parse(searchResponse.body);
+    expect(responseBody.length).toBe(2);
+  });
+
+  test('ignore accents and tones with clean search matches all accents and tones', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'accent',
+            displayXhtml: `wórd`,
+          },
+          {
+            guid: 'no-accent',
+            displayXhtml: `word`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'word',
+      matchAccents: false
+    });
+
+    const responseBody = JSON.parse(searchResponse.body);
+    expect(responseBody.length).toBe(2);
+  });
+
+  test('ignore accents and tones with accented search matches all accents and tones', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'accent',
+            displayXhtml: `wórd`,
+          },
+          {
+            guid: 'no-accent',
+            displayXhtml: `word`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'wórd',
+      matchAccents: false
+    });
+
+    const responseBody = JSON.parse(searchResponse.body);
+    expect(responseBody.length).toBe(2);
+  });
+
+  test('match accents and tones filters out accents and tones', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'accent',
+            displayXhtml: `wórd`,
+          },
+          {
+            guid: 'no-accent',
+            displayXhtml: `word`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'word',
+      matchAccents: true
+    });
+
+    const responseBody = JSON.parse(searchResponse.body);
+    expect(responseBody.length).toBe(1);
+    expect(responseBody[0].guid).toBe('no-accent');
+  });
+
+  test('match accents and tones matches only the searched accents and tones', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'accent-1',
+            displayXhtml: `wórd`,
+          },
+          {
+            guid: 'accent-2',
+            displayXhtml: `wṓrd`,
+          },
+          {
+            guid: 'no-accent',
+            displayXhtml: `word`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'wṓrd',
+      matchAccents: true
+    });
+
+    const responseBody = JSON.parse(searchResponse.body);
+    expect(responseBody.length).toBe(1);
+    expect(responseBody[0].guid).toBe('accent-2');
+  });
 });
