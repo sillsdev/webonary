@@ -1,16 +1,21 @@
 # Webonary Cloud API (WCA)
+
 Webonary Cloud API provides a way for dictionary data from [FieldWorks (FLex)](https://github.com/sillsdev/FieldWorks) to be stored in AWS Cloud and accessed by applications, including [Webonary (2.0)](https://www.webonary.org).
 
 Complete list of API calls are found in [Webonary Cloud API Guide](./lambda_api_doc/index.html).
+
 ## Architecture
+
 WCA is a serverless, cloud-based architecture consisting of:
+
 1. AWS API Gateway
 2. AWS S3
 3. AWS Lambda (Typescript)
 4. MongoDB Atlas
-5. (Optional) AWS Certificate Manager and Route 53 
+5. (Optional) AWS Certificate Manager and Route 53
 
 ## Technology Stack
+
 1. AWS Cloud Development Kit (CDK) for infrastructure provisioning
 2. Typescript for Lamda and CDK
 3. AWS Serverless Application Model (SAM) for local Lambda testing
@@ -18,16 +23,17 @@ WCA is a serverless, cloud-based architecture consisting of:
 5. (Recommended) Visual Studio Code
 
 ## Installation and Prerequisites
+
 1. Clone this [repository](https://github.com/sillsdev/webonary.git) using [git](https://git-scm.com/).
    1. Note that this is a monorepo, containing code for Webonary Wordpress site, as well as WCA. If you are interested in only WCA, you might consider using [git sparse-checkout](https://github.blog/2020-01-17-bring-your-monorepo-down-to-size-with-sparse-checkout/).
    2. The code for WCA exists in the directory [webonary-cloud-api](https://github.com/sillsdev/webonary/tree/master/webonary-cloud-api).
-   3. WCA was scaffolded using [cdk init --typescript](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html). 
+   3. WCA was scaffolded using [cdk init --typescript](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html).
 2. Directory structure:
    1. Root directory is `webonary-cloud-api`.
    2. CDK stack provisioning code is in `lib`.
    3. Lamda functions are in `lambda`.
-   4. Tools and utilities are in `tools`. 
-   5. Unit tests are stored in `__tests__` within the directory where the code to be tested is. 
+   4. Tools and utilities are in `tools`.
+   5. Unit tests are stored in `__tests__` within the directory where the code to be tested is.
    6. Unit code test coverage information goes to `coverage`.
    7. Once AWS assets are deployed using `cdk deploy`, asset files and CloudFormation templates are stored in `cdk.out`.
 3. Install required node modules using [node and npm or a node version manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Currently, node version 12.4.0 is being used as it is the [latest version](https://aws.amazon.com/blogs/compute/node-js-12-x-runtime-now-available-in-aws-lambda/) supported for Lambda.
@@ -39,8 +45,9 @@ WCA is a serverless, cloud-based architecture consisting of:
 7. Install [apidoc](https://apidocjs.com) by doing `npm install -g apidoc`. This will be used to generate API documentation.
 
 ## Development
-1. This project is already set up for Typescript linting using [eslint](https://eslint.org/) with [AirBnB styles](https://www.npmjs.com/package/eslint-config-airbnb-typescript) and formatting with [prettier](https://github.com/prettier/prettier-eslint). 
-2. [Visual Studio Code (vscode)](https://code.visualstudio.com/) can be (configured)[https://levelup.gitconnected.com/setting-up-eslint-with-prettier-typescript-and-visual-studio-code-d113bbec9857] so automatic changes by eslint and prettier can be done as you save your code. 
+
+1. This project is already set up for Typescript linting using [eslint](https://eslint.org/) with [AirBnB styles](https://www.npmjs.com/package/eslint-config-airbnb-typescript) and formatting with [prettier](https://github.com/prettier/prettier-eslint).
+2. [Visual Studio Code (vscode)](https://code.visualstudio.com/) can be (configured)[https://levelup.gitconnected.com/setting-up-eslint-with-prettier-typescript-and-visual-studio-code-d113bbec9857] so automatic changes by eslint and prettier can be done as you save your code.
    1. Alternately, you can run `npm run lint` from the root directory to detect problems and make automatic changes in all your Typescript files.
 3. While coding, you can open a shell terminal or do so within vscode and run `npm run watch` from the root directory for automatic compilation of your Typescript code into javascript.
    1. Alternately, you can run `npm run build` from the root directory.
@@ -51,6 +58,7 @@ WCA is a serverless, cloud-based architecture consisting of:
    1. To completely destroy your stack and your code in AWS, do `cdk destroy`.
 
 ## Documentation
+
 Documentation for APIs is generated from specially formatted comments using [apidoc](https://apidocjs.com).
 
 1. Add documentation to Typescript files in the `lambda` directory.
@@ -58,22 +66,25 @@ Documentation for APIs is generated from specially formatted comments using [api
 3. Running `npm run build` or `npm run deploy` will also cause `apidoc` to be run.
 
 ## Local development and testing
+
 1. During development, you can execute Lambda functions for testing, without deployment to AWS Cloud, using [AWS SAM](https://aws.amazon.com/serverless/sam/).
 
-To do so, run  `npm run deploy-local` from a terminal on your machine or from vscode's own terminal. This executes `cdk synth --no-staging >| template.yaml && sam local start-api`, which will update your CloudFormation template, and start SAM. Once started, your Lambda functions can be executed locally at `http://127.0.0.1:3000` by using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. Note that `deploy-local` is run in the foreground continually. To stop, you can issue a kill signal (`Ctrl + c`).
+To do so, run `npm run deploy-local` from a terminal on your machine or from vscode's own terminal. This executes `cdk synth --no-staging >| template.yaml && sam local start-api`, which will update your CloudFormation template, and start SAM. Once started, your Lambda functions can be executed locally at `http://127.0.0.1:3000` by using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. Note that `deploy-local` is run in the foreground continually. To stop, you can issue a kill signal (`Ctrl + c`).
 
-If you change your Typescript code, then you should either do `npm run build` or make sure `npm run watch` is also being run in another terminal.  
+If you change your Typescript code, then you should either do `npm run build` or make sure `npm run watch` is also being run in another terminal.
 
 2. In your local Wordpress installation, set the following variables in `wp-config.php`:
+
 ```
 /* Webonary Cloud Backend */
 define('WEBONARY_CLOUD_API_URL', 'https://cloud-api.webonary.work/v1/');
 define('WEBONARY_CLOUD_FILE_URL', 'https://s3.us-east-2.amazonaws.com/cloud-storage.webonary.work/');
 ```
 
-This will allow your local Wordpress to access test data in `webonary.work`. 
+This will allow your local Wordpress to access test data in `webonary.work`.
 
 To import dictionary data to `webonary.work`, set the following environment variable before running FLex:
+
 ```
 WEBONARYSERVER=webonary.work
 ```
@@ -81,7 +92,9 @@ WEBONARYSERVER=webonary.work
 3. More to come... (how to set up Dockerized version of MongoDb to store dictionary data)
 
 ## Integration Testing
+
 1. To simulate loading of test data into Mongo from FLex, you can run `post-legacy.ts` script found in the `tools` directory.
+
    1. Testing should not be done against the live [Webonary site](https://www.webonary.org), so make sure to set variables in `.env` pertaining to Webonary and your API custom domain name. During development set `DEPLOY_ENV=dev` in your `.env` file to deploy to your development stack. Deployment to the `live` stack should be done through CI/CD with `DEPLOY_ENV=live`.
    2. Obtain a dictionary data zip file produced by FLex. This zip file should be unzipped and stored as a subdirectory in `tools` using the dictionary name as its subdirectory name.
    3. This subdirectory should contain the following files and directories:
@@ -90,20 +103,22 @@ WEBONARYSERVER=webonary.work
       3. ProjectDictionaryOverrides.css
       4. AudioVisual directory (optional)
       5. pictures directory (optional)
-   
-2. Make sure `.env` file in your root directory is set up with the Webonary username and password for that dictionary. WCA uses Webonary's Wordpress username and password for authorization (using http basic authentication). 
+
+2. Make sure `.env` file in your root directory is set up with the Webonary username and password for that dictionary. WCA uses Webonary's Wordpress username and password for authorization (using http basic authentication).
 
 3. To load the entire dictionary, run `npm run post-legacy dictionary_name configured.xhtml` where dictionary_name is the dictionary site name in Webonary.
    1. To limit the number of entries loaded, you can pass in a number as the final argument. For example, to load only the first 10 items, do `npm run post-legacy dictionary_name configured.xhtml 10`.
-   2. Note that the post-legacy script was written to accommodate only a few model dictionaries, such as 
+   2. Note that the post-legacy script was written to accommodate only a few model dictionaries, such as
       1. spanish-englishfooddictionary (small sample, but no images and sound files)
       2. moore (large dictionary with both images and sound files)
       3. marwari (Hindic dictionary with some images and sounds)
-   3. Once the data is loaded, you can test various view, browse, and search APIs using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON. 
+   3. Once the data is loaded, you can test various view, browse, and search APIs using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON.
 
 ## Other Useful Commands
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+
+- `cdk diff` compare deployed stack with current state
+- `cdk synth` emits the synthesized CloudFormation template
 
 ## Roadmap
+
 More to come...
