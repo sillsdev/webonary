@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set env to stage if PR is for merging to develop
+      - name: Set env to dev if PR is for merging to develop
         if: github.event.pull_request.base.ref == 'develop'
         run: |
           echo "DEPLOY_ENV=dev" >> $GITHUB_ENV
@@ -75,8 +75,8 @@ jobs:
           node-version: "12.X"
           registry-url: "https://registry.npmjs.org"
 
-      - name: NPM 6.14.8
-        run: npm install -g npm@6.14.8
+      - name: NPM 6.x latest
+        run: npm install -g npm@~6
 
       - name: NPM clean install main package
         run: cd webonary-cloud-api; npm ci
