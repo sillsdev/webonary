@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "ចក្រវាល, ការ​បង្កើត"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "មេឃ"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "ព្រះអាទិត្យ"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "ព្រះចន្ទ"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "ផ្កាយ"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "ភព"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "ខ្យល់"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "ចលនាខ្យល់"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "អាកាស​ធាតុ"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "ខ្យល់"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "ពពក"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "ភ្លៀង"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "ព្រិល, ទឹក​កក"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "ខ្យល់​ព្យុះ"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "ផ្លេកបន្ទោរ/រន្ទះ, ផ្គរ"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "ទឹក​ជំនន់"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "រាំង​ស្ងួត"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "ពិភពលោក"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "ដី"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "ភ្នំ"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "ភ្នំ​ភ្លើង"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "ទំនាប ខ្ពង់​រាប"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "ជ្រលង"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "ក្រោម​ដី"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "ព្រៃ​ឈើ វាល​ស្មៅ វាល​ខ្សាច់"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "រញ្ជួយ​ផែនដី"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "សារធាតុ, រូបធាតុ"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "ដី, ធូលី"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "ថ្ម"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "លោហ​​ធាតុ"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "រ៉ែ"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "គ្រឿ​អលង្ការ"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "វត្ថុ​​រឹង, វត្ថុ​រាវ, ឧស្ម័ន"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "វត្ថុ​រាវ"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "ប្រេង"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "ឧស្ម័ន"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "ទឹក"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "ពាក្យ​ដែល​ទាក់ទងនឹង​ទឹក"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "មហាសមុទ្រ, បឹង"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "វាល​ភក់​ល្បាប់"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "ទន្លេ"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "ទឹក​ផុស, អណ្តូងទឹក"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "កោះ, ច្រាំង"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "ចលនា​ទឹក"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "ហូរ"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "ចាក់/បង្ហូរ"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "ស្រក់ (តក់ៗ)"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "រលក"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "ស្ងប់, មាន​រលក​បោកបក់"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "ជំនោរ/​លំនាច"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "សើម"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "ស្ងួត"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "នៅ​ក្នុង​ទឹក"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "ល្បាយ​ (ទឹក)"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "គុណភាព​ទឹក"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "ភាវរស់"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "វត្ថុ​/ភាវៈគ្មាន​ជីវិត"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "ដួង​ព្រលឹង​នៃ​វត្ថុ​/​ភាវៈ"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "រុក្ខជាតិ"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "ដើមឈើ"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "គុម្ពោត, គុម្ពឈើ"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "ស្មៅ, តិណជាតិ, វល្លិ"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "ស្លែ, រុក្ខជាតិជំពូកផ្សិត, វារិជតិណជាតិ"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "ផ្នែក​នៃ​រុក្ខជាតិ"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "ការ​លូត​លាស់​នៃ​រុក្ខជាតិ"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "ជំងឺ​រុក្ខជាតិ"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "សត្វ"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "ប្រភេទ​សត្វ"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "ថនិកសត្វ"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "ថនិកសត្វ​ថ្នាក់​ខ្ពស់"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "មំសាសី"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "សត្វ​ដែល​មាន​រង្វង់​ក្រចក (សេះ ក្តាន់ គោ)"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "ពពួកសត្វកកេរ"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "ថនិកសត្វ (ដែលមាន​ថង់​​សម្រាប់​ដាក់​កូននៅ​ត្រង់​ពោះ ដូច​សត្វ​កង់គូរូ)"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "ថនិកសត្វ (ដែល​​ស៊ី​សត្វល្អិត​ជា​អាហារ)"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "ថនិកសត្វ (នៅ​ក្នុង​សមុទ្រ)"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "ប្រចៀវ"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "បក្សី"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "ល្មូន"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "ពស់"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "ថ្លែន, ពង្គួយ, ជីងចក់??"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "កន្ធាយ"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "ក្រពើ"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "ថលជលិក"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "ត្រី"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "ត្រីឆ្លាម, ត្រីបបែល"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "សត្វល្អិត"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "ពីងពាង"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "សត្វ​តូច​ៗ"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "អវយវៈ​សត្វ"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "អវយវៈ​​បក្សី"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "អវយវៈ​​ពួក​ល្មួន"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "អវយវៈ​​ត្រី"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "អវយវៈ​​សត្វ​ល្អិត"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "អវយវៈ​សត្វ​តូច​ៗ"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "វដ្ត​ជីវិត​សត្វ"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "ស៊ុត"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "សកម្មភាព​សត្វ"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "បំលាស់ទីសត្វ"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "ការ​ស៊ី​ចំណី​របស់​សត្វ"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "សំឡេង​សត្វ"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "ជម្រក​សត្វ"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "ហ្វូង​/​ក្រុម​សត្វ"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "សត្វ​ញី​ និង​ឈ្មោល"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "ធម្មជាតិ, បរិស្ថាន"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "ធម្មជាតិ"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "មនុស្ស"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "រាងកាយ"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "ក្បាល"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "ភ្នែក"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "ត្រចៀក"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "ច្រមុះ"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "មាត់"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "ធ្មេញ"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "ដង​ខ្លួន"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "អវយវៈដៃជើង"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "ដៃ"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "ជើង"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "ម្រាម​ដៃ, ម្រាម​ជើង"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "ស្បែក"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "សក់"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "ឆ្អឹង, ឆ្អឹង​សន្លាក់"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "សាច់"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "សរីរាង្គ​ខាង​ក្នុង"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "បេះដូង"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "ក្រពះ"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "សរីរាង្គបុរស/​​ឈ្មោល"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "សរីរាង​ស្រ្តី/​ញី"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "មុខងារ​រាងកាយ"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "ដក​ដង្ហើម,​ ខ្យល់​ដង្ហើម"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "ក្អក, កណ្ដាស់"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "ខាក​ស្ដោះ, ទឹក​មាត់"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "សម្បោរ"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "ហូរ​ឈាម, ឈាម"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "ញើស"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "បត់​ជើង​តូច, ទឹក​នោម"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "បត់​ជើង​ធំ​, លាមក"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "ញាណ, ដឹង (ដោយ​ញាណ)"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "ឃើញ"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "សម្លឹង"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "មើល"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "ពិនិត្យ"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "បង្ហាញ, អនុញ្ញាត​​ឱ្យ​អ្នក​ណា​ឃើញ"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "រូបី"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "លេច​​ឡើង​​/​​បង្ហាញ​ខ្លួន"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "ច្បាស់​ក្រឡែត/ភ្លឺ​ថ្លា"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "ឆ្លុះ, កញ្ចក់"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "រូបរាង"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "ស្អាត"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "អាក្រក់"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "អ្វី​ដែល​ធ្លាប់​ឃើញ"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "ឮ"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "ស្តាប់"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "សំឡេង"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "ប្រភេទ​សំឡេង"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "ឮខ្លាំង"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "ស្ងប់​ស្ងាត់"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "រស​ជាតិ"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "ក្លិន"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "កាយវិញ្ញាណ"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "ផាសុកភាព"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "កាយសម្បទា"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "មាំមួន"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "ទន់​ខ្សោយ"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "មាន​កម្លាំង"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "នឿយ​ហត់"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "សម្រាក"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "សុខភាពល្អ"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "ឈឺ"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "សះស្បើយពីជំងឺ"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "ជំងឺ"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "កង្វះ​អាហារូបត្ថម្ភ, ភាព​អត់​ឃ្លាន"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "ជំងឺ​សើ​ស្បែក"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "ជំងឺ​ក្រពះ"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "ជំងឺពុកធ្មេញ"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "រងរបួស"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "ការ​កាត់​អវយវៈ"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "ពុល"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "ពិការ"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "ខ្វាក់"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "ភ្នែកមើលមិនច្បាស់/ម៉្ញូប??"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "ថ្លង់"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "គរ"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "ជំងឺ​/​ពិការ​​ពី​កំណើត"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "មូលហេតុ​ជំងឺ"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "រោគ​សញ្ញា​នៃ​ជំងឺ"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "ឈឺ​ចាប់"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "គ្រុន"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "ហើម"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "សន្លប់"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "ស្រឡាំងកាំង, ភាន់ច្រឡំ"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "ចក្ខុវិញ្ញាណ, ការមមើមមាយ"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "ព្យាបាលជំងឺ"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "វេជ្ជបណ្ឌិត, គិលានុបដ្ឋាក"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "ថ្នាំ​ពេទ្យ"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "ឱសថូបករណ៍ (ផ្សំពីរុក្ខជាតិ)"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "មន្ទីរពេទ្យ"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "ឱសថ​បុរាណ"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "ជំងឺផ្លូវ​ចិត្ត"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "ជីវិត"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "អាពាហ៍ពិពាហ៍"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr "រៀបចំពិធីអាពាហ៍ពិពាហ៍"
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "ពិធីអាពាហ៍ពិពាហ៍"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "មិនទាន់រៀបការ"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "លែងលះ"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "ស្នេហាជ្រាលជ្រៅ"
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "ទំនាក់ទំនងផ្លូវភេទ"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "ព្រហ្មចារី"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr "ទាក់ទាញកាមតណ្ហា"
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "អសីលធម៌ផ្នែកកាមតណ្ហា"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "កំណើត"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "មានគភ៌"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "ទារក​ក្នុងផ្ទៃ"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "រលូតកូន"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "ឈឺ​ពោះ​សម្រាលកូន"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "ជួ​យ​សម្រាល​​កូន"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "ការ​សម្រាល​​កូន​មិន​ធម្មតា"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "ការ​សម្រាលកូនភ្លោះ"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "អាច​បង្ក​កំណើត​បាន, មិន​អាច​បង្ក​កំណើត​បាន"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "ពិធីបុណ្យ​ទាក់ទង​នឹង​កំណើត​កូន"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "ដំណាក់កាលនៃជីវិត"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "ទារក"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "ការថែទាំទារក"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "កុមារ"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "ចិញ្ចឹមថែទាំកុមារ"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "យុវជន"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "មនុស្សពេញវ័យ"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr "មនុស្សវ័យចំណាស់"
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "ធំធាត់, លូតលាស់"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "ការចាប់ផ្តើម"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "ក្រុមដែលមានវ័យស្របាលគ្នា"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "ភេទប្រុស, ភេទស្រី"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "បុរស"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "ស្ត្រី"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "ស្លាប់"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "សម្លាប់"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "សាកសព"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "បុណ្យសព"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "កាន់ទុក្ខ"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "បញ្ចុះសព"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "ផ្នូរ"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "ស្នងមរតក"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "ជីវិតក្រោយពេលមរណៈ"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "ភាសា និងគំនិត"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "ដួងព្រលឹង, វិញ្ញាណ"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "បុគ្គលិកលក្ខណៈ"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "សភាពផ្លូវចិត្ត"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "ប្រុងជើងការ"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "សម្គាល់"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr "ការយកចិត្តទុកដាក់"
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "ព្រងើយកន្តើយ"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "គិត"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "សតិ"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr "គិតពី/ដល់"
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "ស្រមើស្រមៃ"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "ឈ្លាសវៃ"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "ល្ងង់/ភ្លីភ្លើ"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "សមហេតុផល"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "សភាវគតិ"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "រៀនសូត្រ"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr "សិក្សា"
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "ពិនិត្យ"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "វាយតម្លៃ, សាកល្បង"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "ទាយ/ស្មាន"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "ដោះស្រាយ"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr "យល់ដឹង"
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "រីករាយនឹងរៀន"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "ដឹង"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "ស្គាល់, មិនស្គាល់"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "ដែនចំណេះដឹង"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr "ការសម្ងាត់"
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "យល់"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "យល់ខុស"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "ដែលអាចយល់បាន"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr "អាថ៌កំបាំង"
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "មតិ"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "ជឿ"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr "ទុកចិត្ត"
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "មិនជឿ"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "សង្ស័យ"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr "យល់ព្រមជាមួយនរណាម្នាក់"
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr "មិនយល់ព្រម"
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr "តវ៉ា"
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "ទស្សនវិជ្ជា"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "ឥរិយាបថ"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "ជំនឿជ្រុលនិយម"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "ផ្លាស់ប្តូរគំនិត"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr "យល់ស្រប"
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "ចងចាំ"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "ភ្លេច"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr "ទទួលស្គាល់"
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr "ទន្ទេញ"
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr "រម្លឹក"
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "រំពឹង"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "សង្ឃឹម"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "គ្មានសង្ឃឹម"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr "ព្យាករណ៍"
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "និន្នាការ"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "ចង់"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "សម្រេចចិត្ត, គ្រោងផែនការ"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr "គោលបំណង, គោលដៅ"
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "ជ្រើសរើស"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr "ចាប់ឆ្នោត"
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "មានបំណង/​ចេតនា"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "ដោយចេតនា"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "ប្តេជ្ញា"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "មានះ"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "លោភលន់"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "សំណើ"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr "យល់ព្រមធ្វើអ្វីមួយ"
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr "បដិសេធមិនធ្វើអ្វីមួយ"
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "អន្តរាគមន៍លើកលែងទោស"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "សុខចិត្ត/​ស្ម័គ្រចិត្ត"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "ឥទ្ធិពល"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "ស្នើ"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "ផ្តល់យោបល់"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "បញ្ចុះបញ្ចូល"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "ទទូច"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "បង្ខិតបង្ខំ"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "ត្រួតត្រា"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "ព្រមាន"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "គំរាមកំហែង"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr "សុំការអនុញ្ញាត"
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr "អនុញ្ញាត"
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "មិនអនុញ្ញាត"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "លើកលែង/អនុញ្ញាតឱ្យរួចផុត"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr "ទប់ស្កាត់"
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr "មានសេរីភាពធ្វើអ្វីតាមចិត្តចង់"
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "ផ្តល់ឱ្យ"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr "ទទួល"
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "ច្រានចោល"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "អារម្មណ៍"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr "មានអារម្មណ៍ល្អ"
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "ចូលចិត្ត, ស្រឡាញ់"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr "សប្បាយនឹងធ្វើអ្វីមួយ"
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "មានជំនឿចិត្តលើខ្លួនឯង"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr "ចូលចិត្ត​(អ្វីមួយ)​ជាង"
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr "មានប្រជាប្រិយភាព"
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr "ទាន់សម័យ"
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "គាប់ចិត្ត/ស្កប់ចិត្ត"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "ជួយអបអរ"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "សប្បាយនឹង"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "សប្បាយ"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "ធូរអារម្មណ៍"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "ស្ងប់អារម្មណ៍"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "ភ្ញាក់ផ្អើល"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "ចាប់អារម្មណ៍"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "រំភើប"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "មានក្ដីសាទរ"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr "ងប់ងុល"
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "ទាក់ទាញ"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "មិនខ្វល់ខ្វាយ"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "មិនគួរឱ្យចាប់អារម្មណ៍, អផ្សុក/ធុញទ្រាន់"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "មានទំនុកចិត្ត"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr "មានអារម្មណ៍មិនល្អ"
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "ទុក្ខព្រួយ"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr "មិនចូលចិត្ត"
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr "ស្អប់"
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr "ស្អប់ខ្ពើម"
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "ខកចិត្ត"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "ឯកា"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr "កើតទុក្ខ"
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "រន្ធត់"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "ច្រណែន/ប្រចណ្ឌ"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "ទោមនស្ស"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr "សោកស្តាយ"
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr "អាម៉ាស់"
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr "អៀនខ្មាស/អាប់មុខ"
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "ខឹង"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr "រំខាន"
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr "ភ័យខ្លាច"
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr "ព្រួយបារម្ភ"
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "ញ័រភ័យ"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "អៀន, កំសាក"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr "ភាន់ច្រឡំ"
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "ទំនាក់ទំនង"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "និយាយ"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "សំឡេង (មនុស្ស)"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "ស្រែក"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "និយាយខ្សឹបៗ"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "និយាយច្រើន"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "មិនសូវនិយាយ"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr "មិនបាននិយាយអ្វីទាំងអស់"
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "របៀបនិយាយ"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "និយាយបានល្អ"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "និយាយមិនបានល្អ"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr "និយាយពីប្រធានបទអ្វីមួយ"
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "ប្រកាស"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "រៀបរាប់"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr "ពន្យល់"
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr "លើកឡើង"
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "ណែនាំ"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "ធ្វើ/និយាយម្តងទៀត"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "សង្ខេប"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "បញ្ជាក់"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr "ទាក់ទងនឹង"
+
+#: default_domains.php:402
+msgid "True"
+msgstr "ការពិត"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr "និយាយការពិត"
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr "និយាយកុហក"
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "មានគំនិតផ្ទុយគ្នា"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "លាតត្រដាងការពិត"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr "ពិត"
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "និយាយបំផ្លើស"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "និយាយជាមួយអ្នកដទៃ"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "ហៅ"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr "ទាក់ទង"
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "ស្វាគមន៍/ជម្រាបសួរ"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "និយាយលាគ្នា"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "និយាយស្រុះគ្នា"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "សួរ"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "ឆ្លើយ"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "បញ្ចេញឱ្យដឹង"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "លាក់គំនិត"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "ពិភាក្សាតទល់"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "បង្ហាញ"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "ឈ្លោះប្រកែក"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr "សរសើរ"
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "អរគុណ"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "បញ្ជោរ"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "និយាយអួត"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "រិះគន់"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr "ស្តីបន្ទោស"
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "ជេរ/ប្រមាថ"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "ចំអក"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "និយាយដើម"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr "រអ៊ូរទាំ"
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "សន្យា"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "ថ្លែង​សុន្ទរ​កថា/ថ្លែងសេចក្ដី"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "របាយការណ៍"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "ព័ត៌មាន, សារ"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "ប្រៀបធៀប"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "ទទួលសារភាព"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "ភាសា"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "ពាក្យ"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "ដំណឹង"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr "រឿង"
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "រឿងនិទាន, រឿងព្រេង"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr "ពាក្យ​ទំនឹម, សុភាសិត"
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "ពាក្យបណ្តៅ"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "កំណាព្យ"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "ប្រវតិ្តសាស្រ្ត"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "ទំនៀមទម្លាប់​ក្នុងការនិយាយ"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "សម្តីល្ងីល្ងើ"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "ភាសាអាសគ្រាម"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "សញ្ញាសម្គាល់, និមិត្តសញ្ញា"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "កាយវិការ"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "ចង្អុល"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "ការសម្ដែង​ទឹកមុខ"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "សើច"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr "យំ, ទឹកភ្នែក"
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "ការអាន និងការសរសេរ"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "សរសេរ"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "ឯកសារ (សរសេរ)"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "អាន"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "ចេញផ្សាយ"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "កត់ត្រា"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "ចុះបញ្ជី"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr "សំបុត្រ"
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "ការបកប្រែសារ"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "មានន័យ"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "គ្មានន័យ"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "មិនអាចយល់"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "បង្ហាញ, បញ្ជាក់"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "ប្រព័ន្ធទំនាក់ទំនងសកល"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "វិទ្យុ, ទូរទស្សន៍"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "ទូរសព្ទ"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "កាសែត"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "ភាពយន្ត"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "តន្ត្រី"
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "ឧបករណ៍ទំនាក់ទំនង"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "បង្រៀន"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "បង្ហាញ, ពន្យល់"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "សាលារៀន"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "មុខវិជ្ជាបង្រៀន"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr "ថ្នាក់រៀន, មេរៀន"
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "កែតម្រូវ"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "វិទ្យាសាស្រ្ត"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "ការប្រលង"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "ចម្លើយក្នុងការប្រលង"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "ឥរិយាបថសង្គម"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "ចំណង/ទំនាក់ទំនង"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr "មិត្តភក្ដិ"
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "មិត្តស្រី, មិត្តប្រុស"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "ប្រភេទមនុស្ស"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "ទំនាក់ទំនងការងារ"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr "ស្គាល់នរណាម្នាក់"
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "ជួបជាលើកដំបូង"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "អ្នកជិតខាង"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "វណ្ណៈសង្គម"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "រួបរួម/​សាម្គីភាព"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "មិនរួបរួម​/​បែកបាក់​សាម្គី"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr "មិនរួសរាយ"
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "ញែកចេញពីគ្នា"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "ឯកា"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "មនុស្សឯករាជ"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "ឯកជន, សាធារណៈ"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "ចាប់ផ្តើមទំនាក់ទំនង"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "បញ្ចប់ទំនាក់ទំនង"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "បង្ហាញសេចក្តីស្រឡាញ់"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr "ញាតិសន្តាន"
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "សាច់ញាតិ (បង្កើត)"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "ជីតា, ជីដូន"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "ឪពុក, ម្តាយ"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "បងប្អូន (ប្រុស/ស្រី )"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "កូនប្រុស, កូនស្រី"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "ចៅប្រុស, ចៅស្រី"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "ពូ/អ៊ំប្រុស, មីង/អ៊ំស្រី"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "បងប្អូនជីដូនមួយ"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "ក្មួយប្រុស, ក្មួយស្រី"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "លំដាប់​នៃកំណើត (កូនទី១ ទី២...)"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "សាច់ញាតិ (អាពាហ៍ពិពាហ៍​)"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "ប្តី, ប្រពន្ធ"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "សាច់ថ្លៃ"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "មេម៉ាយ, ពោះម៉ាយ"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "កូនកំព្រា"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "កូនឥតខាន់ស្លា"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "យកមកចិញ្ចឹម"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "មិនជាប់សាច់ញាតិ"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "គ្រួសារ, អម្បូរ"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "ជាតិសាសន៍"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "សកម្មភាពសង្គម"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr "មកជុំគ្នា, បង្កើតជាក្រុម"
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "អញ្ជើញ"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "ជួបប្រទះ"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "ជួបជុំគ្នា"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "ទៅសួរសុខទុក្ខ/ទៅលេង"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "ស្វាគមន៍, ទទួល"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "ទទួលស្វាគមន៍/ធ្វើបដិសណ្ឋារៈ"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "កិច្ច​ប្រជុំ, សន្និបាត"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "ចូលរួម"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "ហ្វូង, ក្រុម"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr "អង្គការ"
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr "ចូលរួមក្នុងអង្គការ"
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr "ចាកចេញពីអង្គការ"
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr "សមាជិកអង្គការ"
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr "ក្រុមក្នុងសង្គម"
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "ព្រឹត្តិការណ៍សង្គម"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "ពិធីបុណ្យ"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr "ពិធីបុណ្យ, សម្តែង"
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "ប្រារព្ធ"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "តន្រ្តី"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr "និពន្ធតន្ត្រី"
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "ប្រគំតន្ត្រី"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "ច្រៀង"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "តន្រ្តីករ"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "ឧបករណ៍តន្ត្រី"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "រាំ/របាំ"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "ល្ខោន"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "ការកំសាន្ត, សកម្មភាព​កំសាន្ត"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "ល្បែង"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr "ល្បែបៀ"
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "ល្បែងចត្រង្គ (អុក)"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "កីឡា"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr "បាល់ទាត់"
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr "បាល់បោះ"
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "លំហាត់ប្រាណ"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "ល្បែងស៊ីសង"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "លេង, សប្បាយ"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "កំប្លែង"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr "ម៉ឺងម៉ាត់"
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "ថ្ងៃឈប់​សម្រាក"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr "ពេលទំនេរ"
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "ឥរិយាបថ"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr "ល្អ, មានសីលធម៌"
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr "មិនល្អ, អសីលធម៌"
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "ត្រូវតាមនិយាម/បទដ្ឋាន"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "មិនត្រូវតាមនិយាម/បទដ្ឋាន"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr "ឥរិយាបថចាស់ទុំ"
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr "ឥរិយាបថនៅក្មេងខ្ចី"
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr "មានសុភនិច្ឆ័យ"
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr "កេរ្តិ៍ឈ្មោះ"
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "អត់ធ្មត់"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "គ្មានការអត់ធ្មត់"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "ឆេវឆាវ"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr "កោតសរសើរនរណាម្នាក់"
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr "ស្អប់ខ្ពើមនរណាម្នាក់"
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "ដាក់ខ្លួន"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "មានមោទនភាព"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr "អួតអាង/សម្ដែង​ឫក"
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "ស្រឡាញ់"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr "ស្អប់, សេចក្ដីប្រាថ្នាអាក្រក់លើអ្នកដទៃ"
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "មិនយកចិត្តទុកដាក់"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "បោះបង់ចោល"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "ធ្វើល្អចំពោះ"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "ធ្វើអាក្រក់ចំពោះ"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "ជួយ"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "បង្អាក់"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "សហការជាមួយ"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "ប្រកួតប្រជែងជាមួយ"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "ជួយយកអាសាមិនគិតពី​ខ្លួន​ឯង"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "អាត្មានិយម"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr "ប្រើមនុស្ស"
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "ចែករំលែក"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "ផ្គត់ផ្គង់, ឧបត្ថម្ភ/គាំទ្រ"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "ថែរក្សា"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "ទុកចិត្តអ្នកផ្សេងឱ្យមើលថែ"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "ឈឺឆ្អាល"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr "ទម្រើស"
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "ចូលលុកលុយ"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr "ចាប់ជំរិត"
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "ឃោរឃៅ"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr "ស្មោះត្រង់/សុចរិត"
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "មិនស្មោះត្រង់/ទុច្ចរិត"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "ស្វាមីភក្តិ"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "គួរឱ្យទុកចិត្ត"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "មិនគួរឱ្យទុកចិត្ត"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "បោកប្រាស់"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "អ្នកមានពុតត្បុត"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "មានម្ចាស់ការ"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "គ្មានម្ចាស់ការ"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr "រៀបរយ"
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr "រាត់រាយ"
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr "កំហុស"
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr "គួរសម"
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "មិនគួរសម"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "ឆ្កួត"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "ផ្លាស់ប្តូរឥរិយាបថ"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "គោរពប្រតិបត្តិ"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "វប្បធម៌"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "ទំនៀមទម្លាប់"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "ទម្លាប់"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "ភាពចម្រុងចម្រើន, បញ្ហា"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "ភាពចម្រុងចម្រើន"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "បញ្ហា"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "បញ្ហា"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "គ្រោះថ្នាក់"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "ឧបទ្ទវហេតុ"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "គ្រោះមហន្តរាយ"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "បែកចេញពីគ្នា, ឯកា"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "ទទួលរង(ការឈឺចាប់)"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "ឆ្លើយតបទៅនឹងបញ្ហា"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr "ភាពក្លាហាន"
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "ភាពកំសាក"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr "ចៀសវាង"
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "ការប្រយ័ត្នប្រយែង"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "ដោះស្រាយបញ្ហា"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "ស៊ូទ្រាំ"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "រស់រាន"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "ឆ្លើយតបទៅនឹងនរណាម្នាក់ចំពោះបញ្ហា"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr "ក្តីមេត្តា"
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "បង្ហាញក្តីអាណិតអាសូរ, គាំទ្រ"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "សុភាព"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "ជួយសង្រ្គោះ"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr "ការពារ"
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "រួចផុតពីទាសភាព"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "ភាពធូរស្បើយ/ធូរស្រាល"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "ហានិភ័យ/ការប្រថុយប្រថាន"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "ឱកាស"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr "សំណាងល្អ"
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr "សំណាងអាក្រក់"
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "អាជ្ញា/សិទ្ធិអំណាច"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "អាជ្ញាធរ"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "មានសិទ្ធិអំណាច"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "ប្រើប្រាស់សិទ្ធិ​អំណាច"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "ដឹកនាំ"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "បញ្ជា"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "វិន័យ, បណ្តុះបណ្តាល"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "តែងតាំង, ចាត់តាំង"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "ប្រតិបត្តិតាមអាជ្ញា"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "គោរពតាម"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "មិនគោរពតាម"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "បម្រើ"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr "ទាសករ"
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "ដើរតាម, អ្នកដើរតាម"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "តទល់ប្រឆាំងនឹងអាជ្ញាធរ"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "ឯករាជ្យ"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "កិត្តិយស"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "ងារ, គោរមងារ"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "ខ្វះការគោរព"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "ឋានៈ"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "ឋានៈខ្ពស់"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "ឋានៈទាប"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "រដ្ឋាភិបាល"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr "អ្នកកាន់អំណាច"
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "រាជវង្ស"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr "មន្ត្រីរដ្ឋាភិបាល"
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "ប្រជាពលរដ្ឋ"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "ជនបរទេស"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "ស្ថានប័នរដ្ឋ"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr "អង្គភាពរដ្ឋបាល"
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "គ្រប់​គ្រង"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "បង្ក្រាប"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "មុខងាររដ្ឋាភិបាល"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "ប៉ូលិស"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "ចាប់ខ្លួន"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "យុត្តិធម៌ក្រៅប្រព័ន្ធតុលាការ"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "ការទូត"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr "តំណាង"
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "ការបោះឆ្នោត"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr "នយោបាយ"
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "សាសនា"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "ប្រទេស"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "ទីក្រុង/ក្រុង"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "ជនបទ"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "សហគមន៍"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "ច្បាប់"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "ច្បាប់"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "អនុម័តច្បាប់"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "ល្មើសច្បាប់"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "តុលាការ"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "មន្ត្រី/បុគ្គលិកផ្នែកច្បាប់"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr "ការជំនុំជម្រះក្តី"
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr "ស៊ើបអង្កេតបទឧក្រិដ"
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr "សង្ស័យ/ជនសង្ស័យ"
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "ចោទប្រកាន់, ប្រឈមមុខ"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr "ការពារតទល់នឹងការចោទប្រកាន់"
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "សាក្សី, ធ្វើ/ផ្តល់កសិណសាក្សី"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "ដកពាក្យបណ្ដឹង"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "ធ្វើសច្ចាប្រណិធាន"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "បង្ហាញភ័ស្តុតាងថាគ្មានទោស"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "ចៅក្រម, ចេញសាលក្រម"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "សម្រចចិត្តឱ្យរួចទោស"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "ថ្កោលទោស, រក​ឃើញថាមាន​កំហុស"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "កំហុស"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "ពិន័យ/ដាក់​ទណ្ឌ​កម្ម"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "ផ្តល់រង្វាន់"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "ពិន័យជា​ប្រាក់"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "ដាក់ពន្ធនាគារ"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "កាត់ទោសប្រហារជីវិត"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "បណ្តេញចេញពីក្រុម"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "លើកលែងទោស, ដោះលែង"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr "លុបលាងកំហុស, បដិទាន"
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "កិច្ចសន្យាផ្លូវការ"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "កិច្ចព្រមព្រៀង"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "បំពានកិច្ចសន្យា"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "យុត្តិធម៌"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "មិនលម្អៀង"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "អយុត្តិធម៌"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "សមនឹងទទួល"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "រើសអើង, អយុត្តិធម៌"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "ប្រពឹត្តអំពើឃោរឃៅ"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "គាបសង្កត់"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr "ជម្លោះ"
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr "អរិភាព"
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr "ប្រឆាំង"
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "ប្រយុទ្ធ"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr "ប្រយុទ្ធគាំទ្រអំពើល្អ"
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr "ប្រយុទ្ធប្រឆាំងអំពើអាក្រក់"
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "វាយប្រហារ"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "វាយឆ្មក់"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "ការពារខ្លួ​ន"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "សងសឹក"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "កុបកម្ម"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "ក្បត់"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr "ហិង្សា"
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "សត្រូវ"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "សង្គ្រាម"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "យកឈ្នះ"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "ឈ្នះ"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "ចាញ់ការ​ប្រ​យុទ្ធ"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "ចុះចាញ់"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "អ្នកទោសសង្គ្រាម"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "អង្គភាពយោធា"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr "កងទ័ព"
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr "កងទ័ពជើងទឹក"
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr "កងទ័ពជើងអាកាស"
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "ទាហាន"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "ចារកម្ម"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "បន្ទាយការពារ"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "អាវុធ, បាញ់"
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr "លួចប្លន់ (ពេលមានសង្គ្រាម)"
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "សន្តិភាព"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "ស្តីបន្ទោស"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "ប្តឹងឧទ្ធរណ៍"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "សម្រួល/ធ្វើឱ្យមានសន្តិភាព"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "ចរចា"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "លះបង់ការអះអាង, សុខចិត្តទទួលស្គាល់"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "ស្តាយក្រោយ"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "ស្នើសុំការលើកលែងទោស"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "លើកលែងទោស"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "បង្កើតឱ្យមាន​សន្តិភាព"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "ឈប់ប្រយុទ្ធ"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "ផ្សះផ្សា"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "សាសនា"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "ព្រះ"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "ភាវៈដែលអស្ចារ្យលើសធម្មជាតិ"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "សាសនវិទ្យា"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "គម្ពីរសាសនា"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "អព្ភូតហេតុ, ថាមពលវិសេស​ (លើស​ធម្មជាតិ)"
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "អំពើអាបធ្មប់"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "ខ្មោច​ចូល"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "ប្រសិទ្ធពរ/​ព្រះពរ"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "បណ្តាសា"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "វាសនា"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "ទំនាយ"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "ប្រផ្នូល, ការទាយ"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "ការគោរពប្រតិបត្តិតាមសាសនា"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "ដែលគោរពប្រតិបត្តិខ្ជាប់​ខ្ជួន"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "អធិស្ឋាន/សូត្រ​ធម៌/បន់ស្រន់"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "សក្ការ/ថ្វាយ​បង្គំព្រះ"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr "ពិធីបុណ្យសាសនា"
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "ថ្វាយតង្វាយ/ប្រគេន, បូជា"
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "ពិធីបុណ្យលាងបាប/រំដោះ​គ្រោះ"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "ត្រណម"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "សេចក្តីសង្គ្រោះ"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "កំណត់​របស់​ប្រើ​ប្រាស់​ក្នុង​សាសនា"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "ការតមអាហារ"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "ឋានសួគ៌, ឋាននរក"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "ការរស់ឡើងវិញ"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "ស្ថាប័នសាសនា"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "អ្នកកាន់សាសនា"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "សាសនាគ្រិស្ត"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "សាសនាឥស្លាម"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "សាសនាហិណ្ឌូ"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "សាសនាព្រះពុទ្ធ"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "សាសនាយូដា"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr "ជំនឿលើវិញ្ញាណអារក្សអ្នកតា"
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr "កិច្ចការសាសនា"
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "បដិមា"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "ទីសក្ការបូជា"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "ដែលទទួលយកសាសនា"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr "ការរស់នៅប្រចាំថ្ងៃ"
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr "សម្ភារក្នុងផ្ទះ"
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "គ្រឿងសង្ហារិម"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "តុ"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "កៅអី"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "គ្រែ"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "ទូ"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr "ការតុបតែងផ្ទះ"
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "អាហារ"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "ការរៀបម្ហូបចំអាហារ"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr "វិធីចម្អិន​ម្ហូប"
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "ដំណាក់កាល​ក្នុងការរៀបចំអាហារ"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "បកសម្បក, ស្បែក"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "បុកដោយប្រើត្បាល់ និងអង្រែ"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "កិនម្សៅ"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr "សម្ភារផ្ទះបាយ"
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "ការស្តុកអាហារ"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "ផ្តល់អាហារ"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "ញ៉ាំ"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr "ខាំ, ទំពា"
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "អាហារពេល"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "ពិធីជប់លៀងញ៉ាំអាហារ"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "ឥរិយាបថនៃការញ៉ាំ"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "ឃ្លាន, ស្រេកទឹក"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "ញ៉ាំឆ្អែត"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "ផឹក"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "ភាជនភណ្ឌ"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "តមអាហារ"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "ប្រភេទអាហារ"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "អាហារផ្សំពីរុក្ខជាតិ"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "អាហារផ្សំពីគ្រាប់ធញ្ញជាតិ"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "អាហារផ្សំពីផ្លែឈើ"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "អាហារផ្សំពីបន្លែ"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "អាហារផ្សំពីស្លឹកឈើ"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "អាហារផ្សំពីឫសឈើ"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "អាហារផ្សំពីសាច់សត្វ"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "សាច់"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "ផលិតផលទឹកដោះ"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr "ស៊ុត (ម្ហូប)"
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "គ្រឿងផ្សំធ្វើម្ហូប"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "ស្ករ"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "អំបិល"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "គ្រឿងទេស"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "ដំបែ"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "ប្រេងឆា"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "អាហារធ្វើស្រាប់"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "អាហារដែលហាមឃាត់"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr "ភេសជ្ជៈ"
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "គ្រឿងស្រវឹង"
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "ការផ្សំជាតិអាកុល"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr "ស្រវឹង"
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr "ថ្នាំជក់"
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr "សារជាតិនីកូទីន"
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr "សារជាតិដាស់អារម្មណ៍"
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "សម្លៀកបំពាក់"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr "សម្លៀកបំពាក់បុរស"
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr "សម្លៀកបំពាក់នារី"
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr "សម្លៀកបំពាក់ប្រពៃណី"
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "សម្លៀកបំពាក់សម្រាប់ឱកាសពិសេស"
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr "សម្លៀកបំពាក់សម្រាប់មនុស្សពិសេស"
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr "ផ្នែកនៃសម្លៀកបំពាក់"
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr "ស្លៀកសម្លៀកបំពាក់"
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr "អាក្រាត"
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr "ម៉ូដសម្លៀក​បំពាក់"
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "តុបតែងខ្លួន"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr "គ្រឿងអលង្ការ"
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr "គ្រឿងសម្អាង"
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr "ថែទាំសក់"
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr "សិតសក់"
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr "ក្រងសក់"
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr "លាបពណ៌សក់"
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr "ម៉ូដសក់"
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr "កាត់សក់"
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr "កោរ"
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr "ថែទាំធ្មេញ"
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr "លាបប្រេងលើខ្លួនប្រាណ"
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr "ស្លាកស្នាមលើ​រាងកាយ​តាមបែបប្រពៃណី"
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr "ការកាត់ស្បែកចុងនៃអង្គជាតចេញ"
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr "ថែទាំក្រចកដៃ"
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "ភ្លើង"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr "ដុត/បង្កាត់ភ្លើង"
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr "មើលភ្លើង"
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "ពន្លត់ភ្លើង"
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr "ដុត"
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr "អ្វីដែលភ្លើងបង្កើត"
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr "ឥន្ធនៈ"
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr "គុកភ្លើង​ (កំដៅផ្ទះ)"
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr "សម្អាត"
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr "ស្អាត កខ្វក់"
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr "ងូតទឹក"
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr "លាងចាន"
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr "បោកសម្លៀក​បំពាក់"
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr "បោស, កើប"
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr "ជូត, លុបចោល"
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr "គេង"
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr "ទៅគេង"
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr "សុបិន"
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr "ភ្ញាក់ពីគេង"
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr "ចាត់ចែងផ្ទះសម្បែង"
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr "រស់នៅ, ស្នាក់នៅ"
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "ការងារ និងមុខរបរ"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "ធ្វើការ"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "អ្នកធ្វើការ"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "អ្នកជំនាញ"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "វិធីសាស្ត្រ"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr "សាកល្បង, ព្យាយាម"
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "ប្រើប្រាស់"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr "មានប្រយោជន៍"
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr "ឥតប្រយោជន៍"
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "ដែលអាចរកបាន"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "ប្រើអស់"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "ថែរក្សាអ្វីមួយ"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "ខ្ជះខ្ជាយ"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "ធ្វើការបានល្អ"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "ប្រុងប្រយ័ត្ន"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "ខិតខំធ្វើការ"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "រវល់"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "ថាមពល, កម្លាំង"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "បំពេញ, បញ្ចប់"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "មហិច្ឆតា"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "ធ្វើការមិនបានល្អ"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "ធ្វេសប្រហែស, គ្មានទំនួលខុសត្រូវ"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "ខ្ជិល"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "បោះបង់ចោល"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "គ្រោង/ផែនការ"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr "រៀបចំព្រឹត្តិការណ៍"
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "លុបចោល​កម្មវិធី"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "រៀបចំ"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr "រៀបចំរបស់ទុកប្រើប្រាស់"
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "ប្រសិទ្ធភាព"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "ប្រសិទ្ធផល"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "ឱកាស"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "ពិបាក, មិនអាចទៅរួច"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "ងាយស្រួល, អាចទៅរួច"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "ជោគជ័យ"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "បរាជ័យ"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr "គុណសម្បត្តិ"
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "ការពេញចិត្តការងារ"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "គ្មានការងារធ្វើ, មិនធ្វើការ"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "ធ្វើដោយដៃ"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "សិប្បនិម្មិត"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "បទពិសោធន៍"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "ធ្លាប់/ស៊ាំ"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "កសិកម្ម"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "ការដាំដំណាំ"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "ការដាំគ្រាប់ធញ្ញជាតិ"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr "ការដាំស្រូវ"
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr "ការដាំស្រូវសាលី"
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr "ការដាំពោត"
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr "ការដាំដំណាំមើម"
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr "ការដាំដំឡូង"
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr "ការដាំដំឡូង​មី"
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr "ការដាំបន្លែ"
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr "ការដាំផ្លែឈើ"
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr "ការដាំទំពាំងបាយជូរ"
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr "ការដាំចេក"
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr "ការដាំស្មៅ"
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr "ការដាំអំពៅ"
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr "ការដាំថ្នាំជក់"
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "ការដាំផ្កា"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "ការដាំដើមឈើ"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr "ការដាំដូង"
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr "ការដាំកាហ្វេ"
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "ការរៀបចំថ្នាល"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "ជម្រះដី"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "ភ្ជួរដី"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "ដាក់ជី"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "សាបព្រោះ"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "ថែទាំដី"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "ជម្រះ/កាត់​ ស្មៅ"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr "ដកឫសឈើ"
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "បញ្ចូលទឹក (ក្នុងស្រែ)"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "តម្រឹមដំណាំ"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "មិនថែទាំដំណាំ"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "ច្រូតកាត់​/​​ប្រមូល​ផល"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "ផលដំបូង"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "ខូតខាតផលដំណាំ"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "ប្រមូលរុក្ខជាតិព្រៃ"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "ផលានុផល"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "ដំណើរការ​ច្រូតកាត់​/​ប្រមូល​ផល"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "បកសម្បកគ្រាប់ធញ្ញជាតិ"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "កិនគ្រាប់ធញ្ញជាតិ"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "បោក/ប្រឡេះយកគ្រាប់"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "រក្សាផលដំណាំទុក"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr "អ្នកធ្វើការនៅកសិដ្ឋាន"
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr "សម្ភារកសិកម្ម"
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr "ដីកសិដ្ឋាន"
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "កសិដ្ឋានចិញ្ចឹមសត្វ"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "សត្វស្រុក"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "គោ/ក្របី"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "ចៀម"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "ពពែ"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "ជ្រូក"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "ឆ្កែ"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "ឆ្មា"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "សត្វពាហនៈ"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "ឃ្វាលហ្វូងសត្វក្នុងវាលស្រែ"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "ទឹកដោះគោ"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "អ្នកលក់សាច់, អ្នកសម្លាប់សត្វយកសាច់"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "ផលិតកម្មរោមចៀម"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "ការចិញ្ចឹមបសុបក្សី"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "មាន់"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "ផលិតផលសាច់សត្វ"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "វិទ្យាសាស្ត្រខាងព្យាបាលសត្វ"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "ជំងឺសត្វ"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "គ្រៀវសត្វ"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "ប្រមាញ់ និងនេសាទ"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "ប្រមាញ់"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "តាមដានជើងសត្វ"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "ដាក់អន្ទាក់"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "ប្រមាញ់សត្វស្លាប"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "ការចិញ្ចឹមឃ្មុំ"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "នេសាទ"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "នេសាទដោយប្រើមង"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "នេសាទដោយប្រើសន្ទូច"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "នេសាទុបករណ៍"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "កិច្ចការ​ដែលធ្វើទៅលើសត្វ"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "ធ្វើការខាងសំណង់"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "សាងសង់"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr "ផ្ទះ"
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "ប្រភេទផ្ទះ"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr "ដីធ្លី, ទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr "ទីធ្លា/រានហាល"
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr "របង, ជញ្ជាំង"
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "ផ្នែកនៃអគារ"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "ជញ្ជាំង"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "ដំបូល"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "កម្រាលឥដ្ឋ"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "ទ្វារ"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "បង្អួច"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "គ្រឹះ"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "បន្ទប់"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr "ជាន់ (អគារ)"
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "សម្ភារសំណង់"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "​ការ​ថែ​រក្សា និងការបំពាក់គ្រឿងបរិក្ខារក្នុងអគារ"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "ហេដ្ឋារចនាសម្ពន្ធ"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "ផ្លូវ"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "ព្រំដែន"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr "មុខរបរ"
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "ការងារតម្បាញ"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "ក្រណាត់"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "រវៃ​អំបោះ"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "ចាក់ (សម្លៀកបំពាក់)"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr "ត្បាញក្រណាត់"
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "ការងារទាក់ទងនឹងរ៉ែ"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "ការជីកយករ៉ែ"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "ការរំលាយ"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "ការងារទាក់ទងនឹងលោហធាតុ"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "ការងារទាក់ទងនឹងដីឥដ្ឋ"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "ការងារទាក់ទងនឹងកញ្ចក់"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "ការងារទាក់ទងនឹងប្រេង និងឧស្ម័ន"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "ការងារទាក់ទងនឹងថ្ម"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "ការងារទាក់ទងនឹងដុំឥដ្ឋ"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "ការងារទាក់ទងនឹងសារធាតុគីមី"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "ផ្ទុះ"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "ការងារទាក់ទងនឹងឈើ"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "ការកាប់ឈើហុប"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "ឈើ"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "ការងារទាក់ទងនឹងក្រដាស"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "សិប្បកម្ម"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "ខ្សែពួរ"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr "ត្បាញកន្ត្រក និងកន្ទេល"
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "ការងារទាក់ទងនឹងស្បែកសត្វ"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "ការងារទាក់ទងនឹងឆ្អឹង"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "សិល្បៈ"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "គូរ, ផាត់/លាបពណ៌"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "រូបថត"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "ចម្លាក់"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "ការងារទាក់ទងនឹងដី"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "ការងារទាក់ទងនឹងទឹក"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "ជាងជួសជុលបំពង់ទឹក"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "បង្ហូរទឹកចេញ"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "គ្រប់គ្រងទឹក"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "ការងារនៅទាក់ទងនឹងទឹកសមុទ្រ"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "ការងារខាងគ្រឿងម៉ាស៊ីន"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "ការងារខាងអគិ្គសនី"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "ឧបករណ៍"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "ឧបករណ៍សម្រាប់កាត់"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "ឧបករណ៍សម្រាប់ចាក់"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "ឧបករណ៍សម្រាប់ជីក"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "ឧបករណ៍សម្រាប់បុក"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "ឧបករណ៍សម្រាប់យួរ/ដឹកជញ្ជូន"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr "ឧបករណ៍សម្រាប់គាស់/លើក"
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr "ឧបករណ៍សម្រាប់រឹត"
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr "ឧបករណ៍សម្រាប់ព្យួរ/ទ្រ"
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "ប្រអប់/ធុង"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "ថង់/កញ្ចប់"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "ស្រោម"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "ផ្នែកនៃឧបករណ៍"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "ម៉ាស៊ីន"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "ហិរញ្ញវត្ថុ"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "មានទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr "ជាកម្មសិទ្ធិ, ជាម្ចាស់"
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr "មាន"
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "ក្រ"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "រក្សាទុកទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr "កម្មសិទ្ធិ, ទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "សន្សំទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "បង្កើតទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "រកប្រាក់ចំណេញ"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "បាត់បង់ទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "សន្សំសំចៃ"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "លោភលន់"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr "ប្រមូល"
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr "រកចំណូល"
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "ចែកទ្រព្យសម្បត្តិ"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "ឱ្យ, បរិច្ចាគ"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "ចិត្តសប្បុរស"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "ចិត្តកំណាញ់"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "សុំទាន"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr "កិច្ចការជំនួញ"
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "ទិញ"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "លក់"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr "តម្លៃ"
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "ថ្លៃ"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "ថោក"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "ឥតគិតថ្លៃ"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "តថ្លៃ"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "បង់ប្រាក់"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "ជួល"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "ចំណាយ"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "ហាងលក់ទំនិញ, ទីផ្សា"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "ការដោះដូរ, ជំនួញ"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "សុំខ្ចី"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "ឱ្យខ្ចី"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "ផ្តល់កិច្ចសន្យាខ្ចីប្រាក់, សញ្ញាប័ណ្ណ"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "ចំពាក់"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "សងបំណុល"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "ឥណទាន"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "ប្រាក់"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "ឯកតា​រូបិយប័ណ្ណ"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "គណនេយ្យ"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "ពន្ធដារ"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "សកម្មភាពមិនទៀងត្រង់ទាក់ទិននឹងសាច់ប្រាក់"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "លួច"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "បោកបន្លំ"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "ជំរិតទារប្រាក់"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "យកដោយបង្ខំ"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "សូកប៉ាន់"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr "ជួញដូរខុសច្បាប់"
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "ស្ថាប័នពាណិជ្ជកម្ម"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "ការគ្រប់គ្រង"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr "ធ្វើការឱ្យគេ"
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "ទីផ្សារ"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "ពាណិជ្ជកម្ម"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "សេដ្ឋកិច្ច"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "ការធានារ៉ាប់រង"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "សកម្មភាពរាងកាយ"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "ឥរិយាបថ"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "ឈរ"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "អង្គុយ"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "ដេក/ក្រាបចុះ"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "លុតជង្គង់"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "ឱន"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "ផ្អែក/ទម្រេត"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "ឥរិយាបថត្រង់​ខ្លួន"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "ឥរិយាបថបន្ធូរអារម្មណ៍"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "បន្ទន់/ពត់"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "កម្រើកផ្នែកមួយនៃរាងកាយ"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "កម្រើក/​ផ្លាស់ទី"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "លក្ខណៈនៃការ​ផ្លាស់ទី"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "ដើរ"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "រត់"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "វារ"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "លោត"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "ផ្លាស់ទីយ៉ាងរហ័ស"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "ផ្លាស់ទីសន្សឹមៗ"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "ដើរ (លេងៗ)"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "រម្យទម"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "មិនចេះប្រុងប្រយ័ត្ន"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "ដើរដោយមានការពិបាក"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "រអិល, រម្អិល"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "នឹងថ្កល់, ទ្រេតទ្រោត"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "តុល្យការ"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr "ផ្លាស់ទីឮសំឡេងខ្លាំង"
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "ផ្លាស់ទី​ក្នុងទិសដៅមួយ"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "ផ្លាស់ទីទៅមុខ"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "ផ្លាស់ទី​ថយក្រោយ"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "ផ្លាស់ទីទៅខាង​ (ឆ្វេង ឬ ស្តាំ)"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "ផ្លាស់ទីឡើងលើ"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "ផ្លាស់ទីចុះក្រោម"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr "ធ្លាក់"
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "វិល/បត់"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "ផ្លាស់ទីជារាងរង្វង់"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "ផ្លាស់ទីទៅមុខទៅក្រោយ"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "ផ្លាស់ទី​ទៅត្រង់ភ្លឹង"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "ផ្លាស់ទីឆ្ពោះទៅរកអ្វីមួយ"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "ផ្លាស់ទី​ទៅឆ្ងាយ"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "ទៅ"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "មក"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "ចាកចេញ"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "មកដល់"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "ផ្លាស់ទីចូលមក"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "ផ្លាស់ទីចេញទៅ"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "ផ្លាស់ទីកាត់, ផ្លាស់ទីពីលើ"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "ត្រឡប់ក្រោយ"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "ធ្វើដំណើរ"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "ធ្វើដំណើរតាមផ្លូវគោក"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "យានជំនិះ"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr "ផ្លូវរថភ្លើង"
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "ធ្វើដំណើរតាមផ្លូវទឹក"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "ទូក"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "ហែលទឹក"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "ជ្រមុជ/លោត (ចូលក្នុងទឹក)"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "ហោះ"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "ធ្វើដំណើរក្នុងលំហអាកាស"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "រើទៅផ្ទះថ្មី"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr "ផ្លូវ"
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "វង្វេងផ្លូវ"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "ផែនទី"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "រួម/អមដំណើរ"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "ទៅមុន"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "តាមពីក្រោយ"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "នាំផ្លូវ"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr "រើទៅទាំងអស់គ្នា"
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "ដេញតាម"
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr "ចាប់ខ្លួន, ឃាត់​ខ្លួន"
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "ទប់ស្កាត់មិនឱ្យកម្រើក"
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "គេចខ្លួន"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "ដោះលែងឱ្យមានសេរីភាព"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "មិនកម្រើក"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "ឈប់កម្រើក"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "នៅស្ងៀម, នៅដដែល"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "រងចាំ"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "ផ្ញើទៅនរណាម្នាក់"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "ផ្លាស់ទីអ្វីមួយ"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "កាន់/យួរ"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "គប់/គ្រវែង"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "ចាប់"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "អង្រួន/រលាក់/ក្រឡុក"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "ផ្តួល"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "ដាក់ឱ្យត្រង់ភ្លឹង"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "ផ្លាស់ទីអ្វីមួយក្នុងទិសដៅមួយ"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "ដាក់នៅខាងមុខ"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "ដាក់នៅខាងក្រោយ"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "ដាក់ទៅខាង (ឆ្វេង ឬ ស្តាំ)"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "លើក"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "ព្យួរ"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "បន្ទាបអ្វីមួយ"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "ដំឡើង"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "ដកអ្វីមួយចេញពីអ្វីមួយ"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "ទាញ"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "រុញ"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "នាំទៅកន្លែងណាមួយ"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "យកអ្វីមួយពីកន្លែងណាមួយ"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "ប្រគល់អ្វីមួយវិញ"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "ផ្ញើ"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "ដេញឱ្យទៅឆ្ងាយ"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr "បើកតាមបណ្តោយ"
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "កាន់អ្វីមួយ"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "ប៉ះ"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "រើស/បេះ"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "ដាក់ចុះ"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "កាន់"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "សកម្មភាពនៃដៃ"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "ទ្រ"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "លាតសន្ធឹង/បន្លាយ"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "មួល/បង្វិលអ្វីមួយ"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "បើក"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "បិទ"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "បំបិទ, ទប់"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "កំណត់"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "គ្របគម្រប"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "បើកគម្រប"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "រុំ/ខ្ចប់"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr "បៀក, ប៉ាត"
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr "ដឹកជញ្ជូន"
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "មាន,​ នៅជាមួយ"
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "ឱ្យ, ប្រគល់ឱ្យ"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "ទទួលយក"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr "ទទួលបាន"
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "ចែកចាយ"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "រក្សាទុកអ្វីមួយ"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "ទុកអ្វីមួយចោល"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "គ្រវែងទៅឆ្ងាយ"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr "គ្មាន"
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr "រៀបចំ/តម្រៀប"
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "ប្រមូល"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "ញែក, ពង្រាយ"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "រួមបញ្ចូល"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "ពិសេស"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "ចូលរួម, ភ្ជាប់"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr "តភ្ជាប់, តបណ្តាញ"
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr "រួបរួមគ្នា"
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr "បន្ថែមលើអ្វីមួយ"
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "ដកចេញ, ញែកចេញពីគ្នា"
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "ផ្សំ/លាយ"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "សុទ្ធ, មិនលាយ"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "ចង"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "ខ្សែពួរ, ខ្សែ"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "ខ្សែចំពាក់គ្នា"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr "ចាត់ចែង"
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "គ្មានរបៀបរៀបរយ"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "ជំនួស"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "របស់ជាច្រើនកម្រើក"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "សាមញ្ញ, ស្មុគ្រស្មាញ"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr "ដាក់"
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr "ផ្ទុក, គរ"
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr "បំពេញ, គ្រប"
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "លាក់"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "ស្រាវជ្រាវ"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "ស្វែងរក"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "បាត់បង់, ច្រឡំដៃដាក់"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "ផលប៉ះពាល់ដល់រាងកាយ"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "វាយ"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "តម្រង់ទៅរកគោលដៅ"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "ទាត់/ធាក់"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "សង្កត់"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "ត្រដុស/ដុស/ខាត់"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "កិន"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "ធ្វើឱ្យដាន/មានស្នាម"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "ចែកទៅជាចំណែកតូចៗ"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "បំបាក់/បាក់"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "ប្រេះ/រយះ"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "កាត់"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "រហែក, ហែក"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "ចោះប្រហោង, បើក"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "ជីក"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr "ខូច, ប្រើលែងកើត"
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "ខូចខាត"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "វាយរម្លំ"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "បំផ្លាញ"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "ជួសជុល"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "សភាព"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "បរិមាណ"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "ចំនួន"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "បកតិ​សំខ្យា"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr "មួយ"
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr "ពីរ"
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "បូរណ​សំខ្យា"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "ចំនួនដង"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "ចម្រុះ"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr "ចំនួនរបាប់??"
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "ប្រភាគ"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr "លេខស្វីត"
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "រាប់"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr "គណិតវិទ្យា"
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr "បូកលេខ"
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr "ដកលេខ"
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr "គុណលេខ"
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr "ចែកលេខ"
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr "ពហុវចន"
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr "ច្រើន"
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr "តិចតួច"
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "ចំនួនប្រមូលផ្ដុំ??"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "ច្រើនជាង"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "តិចជាង"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "កើនឡើង"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "ថយចុះ"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "ទាំងអស់"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "ខ្លះ"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr "គ្មានសោះ, ទទេ"
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "ទាំងពីរ"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr "ភាគច្រើន, ស្ទើរតែទាំងអស់"
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr "ច្រើនបំផុត, តិចបំផុត"
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "ស្ទើរតែ"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "ត្រឹមតែ"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr "ពិតប្រាកដ"
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr "ប្រហែល"
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "មធ្យម"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr "ទាំងមូល, ទាំងស្រុង"
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "ផ្នែក"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr "ចំណែក/ចំណិត"
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr "គ្រប់គ្រាន់"
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr "បន្ថែម"
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr "ខ្វះខាត"
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr "ត្រូវការ"
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr "នៅសល់, សំណល់"
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "ពេញ"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "ទទេ"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "ធំ"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "តូច"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr "វែង"
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr "ខ្លី"
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "ខ្ពស់"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr "ទាប"
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr "ក្រាស់"
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr "ស្តើង"
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr "មនុស្សធាត់"
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr "មនុស្សស្គម"
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "ទូលាយ"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "ចង្អៀត"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr "តំបន់/ផ្ទៃ ធំ"
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr "ធុងធំ, ចំណុះ"
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr "ចម្ងាយ"
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "ឆ្ងាយ"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "ក្បែរ/ជិត"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "ខ្ពស់"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "ទាប"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "ជ្រៅ, រាក់"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "សមល្មម, ទំហំ"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr "តឹង"
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr "រលុង"
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "សៀតជាប់, ជាប់គាំង"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "ខ្នាត/រង្វាស់"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr "ទម្ងន់"
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "ធ្ងន់"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "ស្រាល"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "គុណភាព"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "ទ្រង់ទ្រាយ"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "ចុច, ចំណុច"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "បន្ទាត់"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "ត្រង់"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "សំប៉ែត"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "បន្ទាត់ដេក"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "បន្ទាត់ឈរ"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "ទ្រេត, ទេរ"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr "ពត់"
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr "រមូរ"
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "មួល, ច្របាច់/ពូត"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr "បត់"
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "រង្វង់មូល"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "ខូង/ផត"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "ប៉ោង"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr "ប្រហោង/រូង"
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "ការេ"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr "បែបផែន, រចនា"
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "ស៊ីមេទ្រី/ឆ្លុះគ្នា"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "ពន្លាត/លាត"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "សណ្ឋានផ្ទៃ"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "រលោង"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "គ្រើម"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "មុត"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "ចុងស្រួច"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "សឹករឹល"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "ស្នាមដាន/ខូង"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "ពន្លឺ"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "បញ្ចេញពន្លឺ"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "ប្រភពពន្លឺ"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "ភ្លឺថ្លា"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "ងងឹត"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "ស្រមោល"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "ពណ៌"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "ស"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "ខ្មៅ"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "ប្រផេះ"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "បាច់ពន្លឺ"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "ពណ៌, សញ្ញាសម្គាល់របស់សត្វ"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr "ប្តូរពណ៌"
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr "ចម្រុះពណ៌"
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr "ភ្លឺចែងចាំង"
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr "ក្តៅ"
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "ត្រជាក់"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr "ប្រភេទ"
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "ធម្មជាតិ, លក្ខណៈ"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "ប្រៀបធៀប"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "ដូចគ្នា"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "ស្រដៀង"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "ខុសគ្នា"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "ដទៃ"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr "នានា"
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr "ផ្ទុយ"
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "សាមញ្ញ"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "ធម្មតា"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "មិនធម្មតា"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "ដែលមានតែមួយគត់"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "ចម្លែក"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "បែបផែន, គំរូ"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "ធ្វើត្រាប់តាម"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr "ចម្លង"
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr "ធ្វើពី (វត្ថុ)"
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "រឹងមាំ, ផុយស្រួយ"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "រឹង, មិនស្រុត"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "រឹង, អាចពត់/បត់បែនបាន"
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "ខាប់"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "ទន់, ស្តើង/ងាយខូច"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "ល្អ"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "អាក្រក់"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr "ល្អជាង"
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr "អាក្រក់ជាង"
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "ល្អឥតខ្ចោះ"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "បង្គួរ"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "សំខាន់"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "មូលដ្ឋាន"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "រីកចម្រើន"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr "ត្រឹមត្រូវ, ស័ក្តិសម"
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr "ខុស, មិនស័ក្តិសម"
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "ងាយស្រួល"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr "ចុះសម្រុងគ្នា/អាច​ប្រើ​ជាមួយ​គ្នាបាន"
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr "ពុកផុយ"
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr "ច្រេះ"
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "ជាំ"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "សំរាម"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "រក្សាទុក/ការពារ"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "តម្លៃ"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr "តុបតែង"
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "សាមញ្ញ, ធម្មតា"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "សោភ័ណ"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "ពេលវេលា"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "អំឡុងពេល"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "ប្រតិទិន"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "ថ្ងៃ"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "យប់"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr "ម្សិលមិញ, ថ្ងៃនេះ, ថ្ងៃស្អែក"
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "ពេល​ (នៃថ្ងៃ)"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "សប្តាហ៍"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "ថ្ងៃ (នៃសប្តាហ៍)"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "ខែ"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "ខែ (នៃឆ្នាំ)"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "រដូវ"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "ឆ្នាំ"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "សម័យ"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "ថ្ងៃពិសេស"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "ចំណាយពេលវេលា"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "ពេលវេលាខ្លី"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "ពេលវេលាវែង/យូរ"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "ជារៀងរហូត"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "បណ្តោះអាសន្ន"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "ពេលវេលាមិនច្បាស់លាស់"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "ប្រាប់ពីពេលវេលា"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr "គ្រោងពេលវេលា"
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr "នាឡិកាប៉ោល, នាឡិកាដៃ"
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "ពេលវេលា​ប្រៀបធៀប"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "លំដាប់, រៀង"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr "បន្តបន្ទាប់គ្នា"
+
+#: default_domains.php:1532
+msgid "First"
+msgstr "ទីមួយ"
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr "បន្ទាប់"
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr "ចុងក្រោយ"
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "ទៀងទាត់"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr "ឆ្លាស់គ្នា"
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr "មុន"
+
+#: default_domains.php:1538
+msgid "After"
+msgstr "ក្រោយ"
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr "នៅពេលដំណាលគ្នា"
+
+#: default_domains.php:1540
+msgid "During"
+msgstr "ក្នុងអំឡុងពេល"
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr "ពេលវេលាស័ក្តិសម"
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "មុនពេលកំណត់"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "ទាន់ពេល"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "យឺត"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "ពន្យាពេល"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "លើកពេល"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr "កម្មកាល??​ (ពាក្យ​សម្រាប់​សម្គាល់​អំឡុងពេល ឬលក្ខណៈនៃសកម្មភាព)"
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr "ចាប់ផ្តើមអ្វីមួយ"
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr "កំពុងចាប់ផ្តើម"
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr "បញ្ឈប់អ្វីមួយ"
+
+#: default_domains.php:1551
+msgid "End"
+msgstr "បញ្ចប់"
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "រហូតដល់"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr "ចាប់តាំងពី, ពី"
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "អតីតកាល"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr "ថ្មីៗនេះ"
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "បច្ចុប្បន្ន"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "ឥឡូវ"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "អនាគត"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "ឆាប់"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "មិនទាន់"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "ចុងបញ្ចប់"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr "ភ្លាមៗ"
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "អាយុ/វ័យ"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr "ក្មេង"
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr "ចាស់ (មិននៅក្មេង)"
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "ថ្មី"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr "ចាស់ (មិនមែនថ្មី)"
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr "ទំនើប"
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr "បុរាណ/ចាស់គំរឹល"
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "ម្តង"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "ម្តងទៀត"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "ពេលខ្លះ/ជួនកាល"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr "ញឹកញាប់"
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "គ្រប់ពេលវេលា"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "រាល់ពេល"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "មិនធ្លាប់/មិនដែល"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr "បន្ត, បន្តព្យាយាម"
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "បង្អាក់"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "ចាប់ផ្តើមម្តងទៀត"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "ចន្លោះ/គម្លាត"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "ល្បឿន"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "រហ័ស"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "យឺត"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "ភ្លាមៗ"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "ទីតាំង"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr "ទីនេះ, ទីនោះ"
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "នៅពីមុខ"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "ពីក្រោយ"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "ក្បែរ"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "ជុំ​វិញ"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "រវាង/ចន្លោះ"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "លើ"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "លើ"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "ក្រោម"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "ខាងក្នុង"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr "ខាងក្រៅ"
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr "ប៉ះ"
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr "ជាប់គ្នា/បន្ទាប់គ្នា"
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "ឆ្លងកាត់"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "ទីតាំងមិនជាក់លាក់"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "ទិសដៅ"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr "ទៅមុខ"
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr "ថយក្រោយ"
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "ស្តាំ, ឆ្វេង"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr "លើ"
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr "ក្រោម"
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr "ឆ្ងាយពី"
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr "ឆ្ពោះទៅ"
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "ជើង, ត្បូង, កើត, លិច"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "មានវត្តមាននៅនឹងកន្លែង"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "អវត្តមាន"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "តំបន់"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "តំបន់ជុំវិញ"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "កាន់កាប់តំបន់មួយ"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "ទីទំនេរ, បន្ទប់"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "ចន្លោះ, លម្ហ"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr "ទំនាក់ទំនងក្នុងលម្ហ​ (ex??)"
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr "(មាន/ដាក់) ចំណុះ"
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "ផ្នែកនៃវត្ថុ"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr "មុខ"
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr "ក្រោយ"
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr "កំពូល"
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr "បាត"
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr "ខាង (ឆ្វេង/ស្តាំ)"
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr "ផ្នែកខាងក្នុង"
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr "ផ្នែកខាងក្រៅ"
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr "កណ្តាល"
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr "គែម/ជាយ"
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr "ចុង"
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr "វេយ្យាករណ៍"
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr "ពាក្យទូទៅ"
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr "គឺ/ជា/នៅ"
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr "មាននៅ/កើតមាន"
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr "ក្លាយជា, ផ្លាស់ប្តូរសភាព"
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr "មាន, នៃ"
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr "ការសន្មត់"
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr "ធ្វើ"
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr "កើតឡើង"
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr "មានប្រតិកម្ម, ឆ្លើយតប"
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr "បង្កើត"
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr "រចនា"
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr "ធ្វើ/ផលិត"
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr "ផ្លាស់ប្តូរអ្វីមួយ"
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr "សំណើសុំរៀបចំព្រឹត្តិការណ៍"
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr "វត្ថុ"
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "រូបី, អរូបី"
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr "ស្ថានភាព"
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr "គុណនាមទូទៅ"
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr "គុណកិរិយាទូទៅ"
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr "ថ្នាក់ពាក្យ"
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr "គុណនាម"
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr "គុណកិរិយា"
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr "សព្វនាម"
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "សព្វនាមឆ្លុះ??"
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "សព្វនាមមិនច្បាស់"
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "សព្វនាមឈ្នាប់"
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr "ពាក្យសម្រាប់ចោទសួរ"
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "សព្វនាម​ចង្អុល"
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr "ផ្ទាល់ខ្លួន"
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr "ធ្នាក់"
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr "ឈ្នាប់"
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr "ឈ្នាប់ចង"
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr "ឈ្នាប់ចង"
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr "ឈ្នាប់ឃ្លា"
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr "ពាក្យ​សម្រាប់សម្គាល់ពាក្យទាំងឡាយណាដែល​គេមិនដឹងច្បាស់ពីថ្នាក់ពាក្យ??"
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr "នាមរនាប់"
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr "ឧទានសព្ទ"
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr "ប្រភេទឧទានសព្ទ​ (បែបរណ្ដំ)"
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr "ផ្នត់"
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr "ផ្នត់ (កិរិយាសព្ទ)"
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr "ផ្នត់ (នាម)"
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr "ផ្នត់ (កម្លាយ)"
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr "ណាស់/ខ្លាំងណាស់"
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr "កម្រិត"
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr "ក្នុងកម្រិតច្រើន"
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr "ក្នុងកម្រិតតិច"
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr "ក្នុងកម្រិតច្រើនជាងនេះ"
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr "ក្នុងកម្រិតតិចជាងនេះ"
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr "ទាំងស្រុង/ពេញលេញ"
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr "ដោយផ្នែក"
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr "ធ្វើដោយម៉ឺងម៉ាត់"
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "ការសន្មត់ពីលក្ខណៈសម្បត្តិ"
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "សមាសភាពន័យដែលទាក់ទងនឹងកិរិយាសព្ទ"
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "កាល និង កម្មកាល??"
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr "កាល"
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "កម្មកាល-សកម្មកិរិយា"
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "កម្មកាល-អកម្មកិរិយា"
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr "កាលដែលមានការពាក់ព័ន្ធគ្នា"
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "កិរិយាសព្ទជំនួយផ្តោតលើប្រធានធ្វើអំពើ"
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr "អាច"
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr "មិនអាច"
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr "ចាំបាច់"
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr "ឥរិយាបថនៃ​ប្រយោគ"
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr "បែប​បញ្ជា"
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr "បែប​បញ្ចុះបញ្ចូល"
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr "សំណួរ"
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "ឥរិយាបថសន្មតសមហេតុផល??"
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr "ប្រាកដជា, ពិតជា"
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr "ច្បាស់"
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr "ប្រហែលជា"
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr "អាចទៅរួច"
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr "មិនប្រាកដ"
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr "មិនច្បាស់"
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr "គិតដូចច្នោះ"
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr "ប្រហែលជា"
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr "ទំនងជា"
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr "ទើបតែ, ស្ទើរតែមិន"
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr "មិនគិតដូចច្នោះ, សង្ស័យ"
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr "មិនអាចទៅរួច"
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr "ឃ្លាភ័ស្តុតាង/អំណះអំណាង"
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr "អ្នកវាយតម្លៃ??​ How this different from evidentials?"
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr "ទេ, អត់/មិន"
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "ពាក្យបញ្ជាក់ពីការរំពឹងចម្លើយវិជ្ជមាន"
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "ពាក្យបញ្ជាក់ពីការរំពឹងចម្លើយអវិជ្ជមាន"
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr "ពាក្យ​សម្រាប់សម្គាល់ពាក្យទាំងឡាយណាដែល​គេមិនដឹងច្បាស់ពីថ្នាក់ពាក្យ ហើយប្រើក្នុងឃ្លារណប"
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "ឃ្លាគុណកិរិយា"
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr "ករណី"
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr "ករណីបឋម"
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "អ្នកទទួលផលប្រយោជន៍ពីព្រឹត្តិការណ៍អ្វីមួយ"
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr "ឧបករណ៍"
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr "វិធីសាស្ត្រ"
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr "លក្ខណៈ, បែបបទ"
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "កាលៈទេសៈ"
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr "ស្ថានភាពទីតាំងនៃព្រឹត្តិការណ៍"
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr "ប្រភព (នៃចលនា)"
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr "គន្លងនៃចលនា"
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr "គោលដៅ (នៃចលនា)"
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr "ប្រភពដើម (នៃមនុស្ស)"
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "ព្រឹត្តិការណ៍ដែលមានអត្ថន័យស្រដៀងគ្នា"
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr "រួមគ្នា"
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr "ជាមួយ, នៅជាមួយ"
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr "ជាមួយ, ធ្វើការជាមួយនរណាម្នាក់"
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr "ជាមួយគ្នា/ទៅវិញទៅមក"
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr "ជាក្រុម/ក្នុងក្រុម"
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "ករណីទាក់ទងនឹងអ្នកជំងឺ"
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr "អ្នកទទួលផលប្រយោជន៍ពីអ្នកជំងឺ"
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr "អ្នកទទួល (អ្នកជំងឺ)"
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr "ជាមួយអ្នកជំងឺ"
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr "ទាក់ទង, ពាក់ព័ន្ធ"
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "សម្របសម្រួលទំនាក់ទំនង"
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr "និង, ផងដែរ"
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr "ឬ, ឬក៏"
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr "ការចូលរួម/ពាក់ព័ន្ធ"
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr "ទំនាក់ទំនងរួមគ្នា??"
+
+#: default_domains.php:1746
+msgid "But"
+msgstr "ប៉ុន្តែ/តែ"
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr "លើកលែង/ក្រៅពី"
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr "ជំនួស/ផ្ទុយទៅវិញ"
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr "ការដកខ្លួនចេញ"
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr "ការចែកចាយ"
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr "សមមូល/សមាមាត្រ"
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr "ទំនាក់ទំនងចំណុះអ្នកដទៃ"
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr "ដើមកំណើត/ពាក្យកម្លាយ"
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "ការកំណត់ប្រធានបទ"
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr "ជាទូទៅ/ជារួម"
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "ទំនាក់ទំនងដែលមានការពាក់ព័ន្ធ"
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr "មូលដ្ឋាន/គោលការណ៍"
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr "បុព្វហេតុ"
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr "មូលហេតុ"
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr "ដោយគ្មានបុព្វហេតុ"
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr "លទ្ធផល"
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr "ដោយគ្មានលទ្ធផល"
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr "គោលបំណង"
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr "ដោយគ្មានគោលបំណង"
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "លក្ខខណ្ឌ"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr "សម្បទាន"
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr "ពាក្យសម្គាល់នៃអត្ថបទ ឬការសន្ទនា"
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr "ពាក្យសម្គាល់នៃការភ្ជាប់"
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "ពាក្យសម្គាល់នៃការសង្កត់បញ្ជាក់"
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "ពាក្យសម្គាល់នៃការចាប់អារម្មណ៍"
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "ពាក្យសម្គាល់នៃការហៅ"
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "ពាក្យសម្គាល់នៃឃ្លាកំណត់ និងពន្យល់"
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr "ពាក្យសម្គាល់នៃចំណុចផ្តោត"
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr "ពាក្យបំពេញ​ (ខណៈពេលកំពុងស្ទាក់ស្ទើរ)"
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr "គោរមងារ"
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr "ឈ្មោះ/នាម"
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr "ឈ្មោះមនុស្ស"
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr "នាមខ្លួន"
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr "គោត្តនាម"
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr "ឈ្មោះតំណ​វង្សត្រកូល"
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr "ឈ្មោះក្រុមកុលសម្ពន្ធ"
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr "ឈ្មោះភាសា"
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr "ឈ្មោះហៅក្រៅ"
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "ពាក្យពេចន៍ស្នេហា"
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr "ឈ្មោះទីកន្លែង"
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr "ឈ្មោះប្រទេស"
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr "ឈ្មោះតំបន់"
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr "ឈ្មោះទីក្រុង"
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr "ឈ្មោះផ្លូវ"
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "ឈ្មោះវត្ថុនានាក្នុងលំហមេឃ"
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr "ឈ្មោះទ្វីប"
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr "ឈ្មោះភ្នំ"
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "ឈ្មោះមហាសមុទ្រ និង​បឹង"
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr "ឈ្មោះទន្លេ"
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr "ឈ្មោះវត្ថុ"
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr "ឈ្មោះសត្វ"
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr "ឈ្មោះអគារ"
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr ""

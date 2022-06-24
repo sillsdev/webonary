@@ -35,9 +35,9 @@
  * @apiParam (Post Body) {String} body.pronunciations.lang ISO language code for pronunciation
  * @apiParam (Post Body) {String} body.pronunciations.type Type of pronunciation
  * @apiParam (Post Body) {String} body.pronunciations.value Pronunciation phonetic guide
- * @apiParam (Post Body) {Object[]} body.reversalLetterHeads Reversal entry letter heads
+ * @apiParam (Post Body) {Object[]} body.reversalLetterHeads Reversal entry head letters
  * @apiParam (Post Body) {String} body.reversalLetterHeads.lang ISO language code for the reversal entry
- * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word letter head
+ * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word head letter
  * @apiParam (Post Body) {Object[]} body.senses Senses for this entry
  * @apiParam (Post Body) {Object[]} body.senses.definitionOrGloss Definition or gloss for the entry
  * @apiParam (Post Body) {String} body.senses.definitionOrGloss.lang ISO language code
@@ -232,6 +232,40 @@ import * as Response from './response';
 
 let dbClient: MongoClient;
 
+export async function upsertEntries(
+  postedEntries: Array<object>,
+  isReversalEntry: boolean,
+  dictionaryId: string,
+  username: string,
+): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
+  const updatedAt = new Date().toUTCString();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
+    const { guid } = postedEntry;
+    const entry = isReversalEntry
+      ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
+      : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
+    return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+  });
+
+  dbClient = await connectToDB();
+  const db = dbClient.db(DB_NAME);
+  const dbCollection = isReversalEntry
+    ? DB_COLLECTION_REVERSAL_ENTRIES
+    : DB_COLLECTION_DICTIONARY_ENTRIES;
+
+  const promises = entries.map(
+    (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
+      return db
+        .collection(dbCollection)
+        .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+    },
+  );
+
+  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
+  return { updatedAt, dbResults };
+}
+
 export async function handler(
   event: APIGatewayEvent,
   context: Context,
@@ -243,79 +277,58 @@ export async function handler(
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId;
   const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
-  if (dictionaryId && authHeaders) {
-    try {
-      const credentials = getBasicAuthCredentials(authHeaders);
-
-      const postedEntries = JSON.parse(event.body as string);
-
-      let errorMessage = '';
-      if (!Array.isArray(postedEntries)) {
-        errorMessage = 'Input must be an array of dictionary entry objects';
-      } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
-        errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-      } else if (postedEntries.find(entry => typeof entry !== 'object')) {
-        errorMessage = 'Each dictionary entry must be a valid JSON object';
-      } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
-        errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
-      }
-
-      if (errorMessage) {
-        return callback(null, Response.badRequest(errorMessage));
-      }
-
-      const updatedAt = new Date().toUTCString();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
-        const { guid } = postedEntry;
-        const entry = isReversalEntry
-          ? new ReversalEntryItem(guid, dictionaryId, credentials.username, updatedAt)
-          : new DictionaryEntryItem(guid, dictionaryId, credentials.username, updatedAt);
-        return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
-      });
-
-      dbClient = await connectToDB();
-      const db = dbClient.db(DB_NAME);
-      const dbCollection = isReversalEntry
-        ? DB_COLLECTION_REVERSAL_ENTRIES
-        : DB_COLLECTION_DICTIONARY_ENTRIES;
-
-      const promises = entries.map(
-        (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
-          return db
-            .collection(dbCollection)
-            .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
-        },
-      );
-
-      const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
-
-      const updatedCount = dbResults
-        .filter(result => result.modifiedCount)
-        .reduce((total, result) => total + result.modifiedCount, 0);
-
-      const insertedIds = dbResults
-        .filter(result => result.upsertedCount)
-        .map(result => result.upsertedId._id);
-
-      const postResult: PostResult = {
-        updatedAt,
-        updatedCount,
-        insertedCount: insertedIds.length,
-        insertedIds: insertedIds.map(objectId => objectId.toString()),
-      };
-
-      return callback(null, Response.success(postResult));
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-      return callback(
-        null,
-        Response.failure({ errorType: error.name, errorMessage: error.message }),
-      );
-    }
+  const eventBody = event.body;
+  if (!dictionaryId || !authHeaders) {
+    return callback(null, Response.badRequest('Invalid parameters'));
   }
-  return callback(null, Response.badRequest('Invalid parameters'));
+
+  try {
+    const { username } = getBasicAuthCredentials(authHeaders);
+
+    const postedEntries = JSON.parse(eventBody as string);
+
+    let errorMessage = '';
+    if (!Array.isArray(postedEntries)) {
+      errorMessage = 'Input must be an array of dictionary entry objects';
+    } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
+      errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
+    } else if (postedEntries.find(entry => typeof entry !== 'object')) {
+      errorMessage = 'Each dictionary entry must be a valid JSON object';
+    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
+      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
+    }
+
+    if (errorMessage) {
+      return callback(null, Response.badRequest(errorMessage));
+    }
+    const { updatedAt, dbResults } = await upsertEntries(
+      postedEntries,
+      isReversalEntry,
+      dictionaryId,
+      username,
+    );
+
+    const updatedCount = dbResults
+      .filter(result => result.modifiedCount)
+      .reduce((total, result) => total + result.modifiedCount, 0);
+
+    const insertedIds = dbResults
+      .filter(result => result.upsertedCount)
+      .map(result => result.upsertedId._id);
+
+    const postResult: PostResult = {
+      updatedAt,
+      updatedCount,
+      insertedCount: insertedIds.length,
+      insertedIds: insertedIds.map(objectId => objectId.toString()),
+    };
+
+    return callback(null, Response.success(postResult));
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+  }
 }
 
 export default handler;

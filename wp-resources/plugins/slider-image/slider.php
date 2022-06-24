@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingReturnTypeInspection */
 
 /*
 Plugin Name: Huge IT Slider
@@ -259,9 +260,9 @@ final class Hugeit_Slider {
 	 */
 	private function __clone() {}
 
-	private function __sleep() {}
+	public function __sleep() {}
 
-	private function __wakeup()	{}
+	public function __wakeup()	{}
 
 	/**
 	 * Get plugin version.

@@ -1,3 +1,20 @@
+/**
+ * @api {delete} /delete/dictionary/:dictionaryId Delete dictionary
+ * @apiName DeleteDictionary
+ * @apiDescription Deletes a dictionary and all its associated entries, returning the count of everything deleted.
+ * @apiGroup Dictionary
+ * @apiPermission dictionary admin in Webonary
+ * @apiUse BasicAuthHeader
+ * @apiUse DictionaryIdPath
+ *
+ * @apiSuccess {Number} deleteDictionaryCount The number of dictionaries deleted.
+ * @apiSuccess {Number} deletedEntryCount The number of main entries deleted.
+ * @apiSuccess {Number} deletedReversalCount The number of reversal entries deleted.
+ * @apiSuccess {Number} deletedFilesCount The number of files deleted.
+ *
+ * @apiError (404) NotFound Cannot find the specified dictionary.
+ */
+
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
 import { connectToDB } from './mongo';

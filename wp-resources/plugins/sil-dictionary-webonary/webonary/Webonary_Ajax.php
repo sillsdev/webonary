@@ -61,4 +61,12 @@ class Webonary_Ajax
 
 		$import->index_searchstrings();
 	}
+
+	public static function ajaxDisplaySites()
+	{
+		header('Content-Type: application/json');
+		$data = ['data' => Webonary_Excel::GetAllSites(false)];
+		echo json_encode($data);
+		exit();
+	}
 }

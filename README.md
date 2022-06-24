@@ -39,5 +39,29 @@ This is the format of the short-code tag:
 ### How to get uploaded site files
 
 ```
-rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' your_name@server_name.org:/var/www/webonary.org/htdocs/wp/wp-content/blogs.dir /var/www/projects/webonary2/wordpress/wp-content
+rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' your_name@server_name.org:/var/www/sites/webonary/shared/blogs.dir /var/www/projects/webonary2/wordpress/wp-content
+```
+
+
+### How to copy uploaded files from one site to another
+
+__This copies from site 266 to site 895__
+
+```bash
+cp -R /var/www/sites/webonary/shared/blogs.dir/266/files/* /var/www/sites/webonary/shared/blogs.dir/895/files/
+
+mysql
+```
+
+```mysql
+# noinspection SqlResolve
+INSERT INTO webonary.wp_895_posts (post_author, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count)
+SELECT 3, post_date, post_date_gmt, post_content, post_title, post_excerpt, post_status, comment_status, ping_status, post_password, post_name, to_ping, pinged, post_modified, post_modified_gmt, post_content_filtered, post_parent, guid, menu_order, post_type, post_mime_type, comment_count
+FROM webonary.wp_266_posts
+WHERE post_type = 'attachment';
+
+# noinspection SqlResolve
+UPDATE webonary.wp_895_posts
+SET guid = CONCAT('https://www.webonary.org/test-tepehuan5', SUBSTRING(guid, LOCATE('/files/', guid)))
+WHERE post_type = 'attachment' AND LOCATE('/files/', guid) > 0;
 ```

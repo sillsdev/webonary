@@ -1,0 +1,5860 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-01 09:17-0500\n"
+"PO-Revision-Date: 2021-12-01 09:17-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: include/browseview_func.php:140
+msgid "No entries exist for"
+msgstr ""
+
+#: include/browseview_func.php:262
+msgid "Page"
+msgstr ""
+
+#: include/browseview_func.php:262
+msgid "of"
+msgstr ""
+
+#: include/browseview_func.php:649
+msgid "Entry not found"
+msgstr ""
+
+#: include/browseview_func.php:839
+msgid "No entries exist starting with this letter."
+msgstr ""
+
+#: include/comments_func.php:25
+msgid "Re-syncing comments"
+msgstr ""
+
+#: include/configuration.php:249
+msgid "Settings saved"
+msgstr ""
+
+#: include/configuration.php:351
+msgid "Webonary"
+msgstr ""
+
+#: include/configuration.php:353
+msgid ""
+"Webonary provides the administration tools and framework for using WordPress "
+"for dictionaries. See <a href=\"https://www.webonary.org/help\" target="
+"\"_blank\">Webonary Support</a> for help."
+msgstr ""
+
+#: include/configuration.php:358
+#, php-format
+msgid "Click to switch to %s"
+msgstr ""
+
+#: include/configuration.php:391
+msgid "Upload Data"
+msgstr ""
+
+#: include/configuration.php:400
+msgid "Click here to upload your FLEx data"
+msgstr ""
+
+#: include/configuration.php:406
+msgid "Publication status:"
+msgstr ""
+
+#: include/configuration.php:408
+msgid "no status set"
+msgstr ""
+
+#: include/configuration.php:409
+msgid "Rough draft"
+msgstr "Первый черновик"
+
+#: include/configuration.php:410
+msgid "Self-reviewed draft"
+msgstr "Редактируется издателем"
+
+#: include/configuration.php:411
+msgid "Community-reviewed draft"
+msgstr "Редактируется сообществом"
+
+#: include/configuration.php:412
+msgid "Consultant approved"
+msgstr "Одобрен консультантом"
+
+#: include/configuration.php:413
+msgid "Finished (no formal publication)"
+msgstr "Закончен (не опубликован)"
+
+#: include/configuration.php:414
+msgid "Formally published"
+msgstr "Официально опубликован"
+
+#: include/configuration.php:418
+msgid "Delete Data"
+msgstr ""
+
+#: include/configuration.php:427
+msgid "Lists are kept unless you check the following:"
+msgstr ""
+
+#: include/configuration.php:431
+msgid "Delete lists such as Part of Speech?"
+msgstr ""
+
+#: include/configuration.php:443
+msgid "Are you sure you want to delete the dictionary data?"
+msgstr ""
+
+#: include/configuration.php:444
+msgid "Delete"
+msgstr ""
+
+#: include/configuration.php:446
+msgid "(deletes all posts in the category \"webonary\")"
+msgstr ""
+
+#: include/configuration.php:455
+msgid "Default Search Options"
+msgstr ""
+
+#: include/configuration.php:512
+msgid "Special character input buttons"
+msgstr ""
+
+#: include/configuration.php:555
+msgid "Display subentries as main entries"
+msgstr ""
+
+#: include/configuration.php:570
+msgid "Vernacular Browse view:"
+msgstr ""
+
+#: include/configuration.php:573 include/configuration.php:643
+#: include/configuration.php:694 include/configuration.php:725
+msgid "Language Name:"
+msgstr ""
+
+#: include/configuration.php:576
+msgid "Vernacular Alphabet"
+msgstr ""
+
+#: include/configuration.php:576 include/configuration.php:666
+#: include/configuration.php:698 include/configuration.php:728
+msgid "configure in FLEx"
+msgstr ""
+
+#: include/configuration.php:609 include/configuration.php:680
+#: include/configuration.php:711 include/configuration.php:742
+msgid "Display right-to-left"
+msgstr ""
+
+#: include/configuration.php:619
+msgid ""
+"Include characters with diacritics (e.g. words starting with ä, à, etc. will "
+"all display under a)"
+msgstr ""
+
+#: include/configuration.php:622
+msgid "Reversal Indexes:"
+msgstr ""
+
+#: include/configuration.php:638
+msgid "1. Reversal index"
+msgstr ""
+
+#: include/configuration.php:666 include/configuration.php:697
+#: include/configuration.php:728
+msgid "Alphabet:"
+msgstr ""
+
+#: include/configuration.php:689
+msgid "2. Reversal index"
+msgstr ""
+
+#: include/configuration.php:720
+msgid "3. Reversal index"
+msgstr ""
+
+#: include/default_domains.php:438 include/infrastructure.php:236
+#: include/infrastructure.php:244
+msgid "Language"
+msgstr "Язык, речь"
+
+#: include/default_domains.php:439
+msgid "Word"
+msgstr "Слово"
+
+#: include/default_domains.php:440
+msgid "Information"
+msgstr "Информация"
+
+#: include/default_domains.php:441
+msgid "Story"
+msgstr "Повесть, рассказ"
+
+#: include/default_domains.php:442
+msgid "Fable, myth"
+msgstr "Басня, вымысел"
+
+#: include/default_domains.php:443
+msgid "Saying, proverb"
+msgstr "Выражение, пословица, поговорка"
+
+#: include/default_domains.php:444
+msgid "Riddle"
+msgstr "Говорить загадками"
+
+#: include/default_domains.php:445
+msgid "Poetry"
+msgstr "Поэзия, стихи"
+
+#: include/default_domains.php:446
+msgid "History"
+msgstr "История"
+
+#: include/default_domains.php:447
+msgid "Verbal tradition"
+msgstr "Устные традиции"
+
+#: include/default_domains.php:448
+msgid "Foolish talk"
+msgstr "Глупая болтовня"
+
+#: include/default_domains.php:449
+msgid "Obscenity"
+msgstr "Непристойность, похабщина"
+
+#: include/default_domains.php:450
+msgid "Sign, symbol"
+msgstr "Знак, символ"
+
+#: include/default_domains.php:451
+msgid "Gesture"
+msgstr "Жест"
+
+#: include/default_domains.php:452
+msgid "Point at"
+msgstr "Указывать на что-то"
+
+#: include/default_domains.php:453
+msgid "Facial expression"
+msgstr "Выражение лица"
+
+#: include/default_domains.php:454
+msgid "Laugh"
+msgstr "Смех"
+
+#: include/default_domains.php:455
+msgid "Cry, tear"
+msgstr "Плач, слёзы"
+
+#: include/default_domains.php:456
+msgid "Reading and writing"
+msgstr "Чтение и писание"
+
+#: include/default_domains.php:457
+msgid "Write"
+msgstr "Писать"
+
+#: include/default_domains.php:458
+msgid "Written material"
+msgstr "Написанные сведения"
+
+#: include/default_domains.php:459
+msgid "Read"
+msgstr "Читать"
+
+#: include/default_domains.php:460
+msgid "Publish"
+msgstr "Издавать, публиковать"
+
+#: include/default_domains.php:461
+msgid "Record"
+msgstr "Запись"
+
+#: include/default_domains.php:462
+msgid "List"
+msgstr "Список, перечень"
+
+#: include/default_domains.php:463
+msgid "Letter"
+msgstr "Письмо"
+
+#: include/default_domains.php:464
+msgid "Interpreting messages"
+msgstr "Интерпретировать, объяснять сообщения"
+
+#: include/default_domains.php:465
+msgid "Meaning"
+msgstr "Значение, смысл"
+
+#: include/default_domains.php:466
+msgid "Meaningless"
+msgstr "Бессмысленный"
+
+#: include/default_domains.php:467
+msgid "Unintelligible"
+msgstr "Непонятный, неясный"
+
+#: include/default_domains.php:468
+msgid "Show, indicate"
+msgstr "Показывать, указывать"
+
+#: include/default_domains.php:469
+msgid "Mass communication"
+msgstr "Массовые средства информации"
+
+#: include/default_domains.php:470
+msgid "Radio, television"
+msgstr "Радио, телевидение"
+
+#: include/default_domains.php:471
+msgid "Telephone"
+msgstr "Телефон"
+
+#: include/default_domains.php:472
+msgid "Newspaper"
+msgstr "Газета"
+
+#: include/default_domains.php:473
+msgid "Movie"
+msgstr "Кинофильм"
+
+#: include/default_domains.php:474
+msgid "Recorded music"
+msgstr "Записанная музыка"
+
+#: include/default_domains.php:475
+msgid "Communication devices"
+msgstr "Устройство связи"
+
+#: include/default_domains.php:476
+msgid "Teach"
+msgstr "Учить, обучать"
+
+#: include/default_domains.php:477
+msgid "Show, explain"
+msgstr "Показывать, объяснять"
+
+#: include/default_domains.php:478
+msgid "School"
+msgstr "Школа"
+
+#: include/default_domains.php:479
+msgid "Subject of teaching"
+msgstr "Предмет обучения"
+
+#: include/default_domains.php:480
+msgid "Class, lesson"
+msgstr "Занятие, урок"
+
+#: include/default_domains.php:481
+msgid "Correct"
+msgstr "Исправлять"
+
+#: include/default_domains.php:482
+msgid "Science"
+msgstr "Наука"
+
+#: include/default_domains.php:483
+msgid "Test"
+msgstr "Проверка, испытание; тест"
+
+#: include/default_domains.php:484
+msgid "Answer in a test"
+msgstr "Отвечать на вопросы теста"
+
+#: include/default_domains.php:485 webonary/Webonary_SemanticDomains.php:132
+msgid "Social behavior"
+msgstr "Социальное поведение"
+
+#: include/default_domains.php:486
+msgid "Relationships"
+msgstr "Взаимоотношения"
+
+#: include/default_domains.php:487
+msgid "Friend"
+msgstr "Друг"
+
+#: include/default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "Подружка, друг"
+
+#: include/default_domains.php:489
+msgid "Types of people"
+msgstr "Типы людей"
+
+#: include/default_domains.php:490
+msgid "Working relationship"
+msgstr "Трудовые отношения"
+
+#: include/default_domains.php:491
+msgid "Know someone"
+msgstr "Знать кого-л."
+
+#: include/default_domains.php:492
+msgid "Meet for the first time"
+msgstr "Встречать впервые"
+
+#: include/default_domains.php:493
+msgid "Neighbor"
+msgstr "Сосед"
+
+#: include/default_domains.php:494
+msgid "Social class"
+msgstr "Класс общества"
+
+#: include/default_domains.php:495
+msgid "Unity"
+msgstr "Единство, сплоченность"
+
+#: include/default_domains.php:496
+msgid "Disunity"
+msgstr "Разобщённость, разъединённость"
+
+#: include/default_domains.php:497
+msgid "Unfriendly"
+msgstr "Недружелюбный, враждебный"
+
+#: include/default_domains.php:498
+msgid "Set self apart"
+msgstr "Отделять себя, ставить себя обособленно"
+
+#: include/default_domains.php:499
+msgid "Alone"
+msgstr "Одинокий"
+
+#: include/default_domains.php:500
+msgid "Independent person"
+msgstr "Независимый человек"
+
+#: include/default_domains.php:501
+msgid "Private, public"
+msgstr "Личный (частный), общественный"
+
+#: include/default_domains.php:502
+msgid "Begin a relationship"
+msgstr "Начинать взаимоотношения"
+
+#: include/default_domains.php:503
+msgid "End a relationship"
+msgstr "Прекращение отношений"
+
+#: include/default_domains.php:504
+msgid "Show affection"
+msgstr "Проявлять любовь (привязанность)"
+
+#: include/default_domains.php:505
+msgid "Kinship"
+msgstr "(Кровное) родство"
+
+#: include/default_domains.php:506
+msgid "Related by birth"
+msgstr "Иметь родственные связи по рождению"
+
+#: include/default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "Дедушка, бабушка"
+
+#: include/default_domains.php:508
+msgid "Father, mother"
+msgstr "Отец, мать"
+
+#: include/default_domains.php:509
+msgid "Brother, sister"
+msgstr "Брат, сестра"
+
+#: include/default_domains.php:510
+msgid "Son, daughter"
+msgstr "Сын, дочь"
+
+#: include/default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "Внук, внучка"
+
+#: include/default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "Дядя, тётя"
+
+#: include/default_domains.php:513
+msgid "Cousin"
+msgstr "Двоюродный брат, кузен; двоюродная сестра, кузина"
+
+#: include/default_domains.php:514
+msgid "Nephew, niece"
+msgstr "Племянник, племянница"
+
+#: include/default_domains.php:515
+msgid "Birth order"
+msgstr "Очередность рождения"
+
+#: include/default_domains.php:516
+msgid "Related by marriage"
+msgstr "Иметь родственные связи по браку"
+
+#: include/default_domains.php:517
+msgid "Husband, wife"
+msgstr "Муж, жена"
+
+#: include/default_domains.php:518
+msgid "In-law"
+msgstr "Родственник (родственница) по браку"
+
+#: include/default_domains.php:519
+msgid "Widow, widower"
+msgstr "Вдова, вдовец"
+
+#: include/default_domains.php:520
+msgid "Orphan"
+msgstr "Сирота"
+
+#: include/default_domains.php:521
+msgid "Illegitimate child"
+msgstr "Незаконный ребенок"
+
+#: include/default_domains.php:522
+msgid "Adopt"
+msgstr "Усыновлять, удочерять"
+
+#: include/default_domains.php:523
+msgid "Non-relative"
+msgstr "Не состоящие в родстве"
+
+#: include/default_domains.php:524
+msgid "Family, clan"
+msgstr "Семья, род"
+
+#: include/default_domains.php:525
+msgid "Race"
+msgstr "Раса"
+
+#: include/default_domains.php:526
+msgid "Social activity"
+msgstr "Общественная активность"
+
+#: include/default_domains.php:527
+msgid "Come together, form a group"
+msgstr "Собираться вместе, образовывать группу"
+
+#: include/default_domains.php:528
+msgid "Invite"
+msgstr "Приглашать"
+
+#: include/default_domains.php:529
+msgid "Encounter"
+msgstr "(Случайная) встреча"
+
+#: include/default_domains.php:530
+msgid "Meet together"
+msgstr "Встречаться, видеться"
+
+#: include/default_domains.php:531
+msgid "Visit"
+msgstr "Визит"
+
+#: include/default_domains.php:532
+msgid "Welcome, receive"
+msgstr "Приветствовать (кого-л.) ; (радушно) принимать"
+
+#: include/default_domains.php:533
+msgid "Show hospitality"
+msgstr "Оказывать гостеприимство"
+
+#: include/default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "Собрание, встреча"
+
+#: include/default_domains.php:535
+msgid "Participate"
+msgstr "Участвовать, принимать участие"
+
+#: include/default_domains.php:536
+msgid "Crowd, group"
+msgstr "Толпа, группа"
+
+#: include/default_domains.php:537
+msgid "Organization"
+msgstr "Организация"
+
+#: include/default_domains.php:538
+msgid "Join an organization"
+msgstr "Присоединяться к организации"
+
+#: include/default_domains.php:539
+msgid "Leave an organization"
+msgstr "Покидать организацию"
+
+#: include/default_domains.php:540
+msgid "Belong to an organization"
+msgstr "Принадлежать к организации"
+
+#: include/default_domains.php:541
+msgid "Social group"
+msgstr "Социальная группа"
+
+#: include/default_domains.php:542
+msgid "Social event"
+msgstr "Общественное мероприятие (приём, встреча)"
+
+#: include/default_domains.php:543
+msgid "Ceremony"
+msgstr "Церемония; торжество"
+
+#: include/default_domains.php:544
+msgid "Festival, show"
+msgstr "Празднество, фестиваль, представление"
+
+#: include/default_domains.php:545
+msgid "Celebrate"
+msgstr "Праздновать"
+
+#: include/default_domains.php:546
+msgid "Music"
+msgstr "Музыка"
+
+#: include/default_domains.php:547
+msgid "Compose music"
+msgstr "Сочинять музыку"
+
+#: include/default_domains.php:548
+msgid "Play music"
+msgstr "Играть музыку"
+
+#: include/default_domains.php:549
+msgid "Sing"
+msgstr "Петь"
+
+#: include/default_domains.php:550
+msgid "Musician"
+msgstr "Музыкант"
+
+#: include/default_domains.php:551
+msgid "Musical instrument"
+msgstr "Музыкальный инструмент"
+
+#: include/default_domains.php:552
+msgid "Dance"
+msgstr "Танцевать"
+
+#: include/default_domains.php:553
+msgid "Drama"
+msgstr "Драма (театральная пьеса)"
+
+#: include/default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "Развлечение, отдых"
+
+#: include/default_domains.php:555
+msgid "Game"
+msgstr "Игра"
+
+#: include/default_domains.php:556
+msgid "Card game"
+msgstr "Карточная игра"
+
+#: include/default_domains.php:557
+msgid "Chess"
+msgstr "Шахматы"
+
+#: include/default_domains.php:558
+msgid "Sports"
+msgstr "Виды спорта"
+
+#: include/default_domains.php:559
+msgid "Football, soccer"
+msgstr "Футбол"
+
+#: include/default_domains.php:560
+msgid "Basketball"
+msgstr "Баскетбол"
+
+#: include/default_domains.php:561
+msgid "Exercise"
+msgstr "Упражнение, тренировка"
+
+#: include/default_domains.php:562
+msgid "Gambling"
+msgstr "Азартная игра"
+
+#: include/default_domains.php:563
+msgid "Play, fun"
+msgstr "Развлекаться, забавляться"
+
+#: include/default_domains.php:564
+msgid "Humor"
+msgstr "Юмор"
+
+#: include/default_domains.php:565
+msgid "Serious"
+msgstr "Серьезный"
+
+#: include/default_domains.php:566
+msgid "Holiday"
+msgstr "Отпуск; каникулы"
+
+#: include/default_domains.php:567
+msgid "Free time"
+msgstr "Свободное время"
+
+#: include/default_domains.php:568
+msgid "Behavior"
+msgstr "Поведение, образ действий"
+
+#: include/default_domains.php:569
+msgid "Good, moral"
+msgstr "Хороший, порядочный"
+
+#: include/default_domains.php:570
+msgid "Bad, immoral"
+msgstr "Плохой, безнравственный"
+
+#: include/default_domains.php:571
+msgid "Meet a standard"
+msgstr "Соответствовать стандарту"
+
+#: include/default_domains.php:572
+msgid "Below standard"
+msgstr "Не соответствовать принятому стандарту"
+
+#: include/default_domains.php:573
+msgid "Mature in behavior"
+msgstr "Сформировавшееся поведение"
+
+#: include/default_domains.php:574
+msgid "Immature in behavior"
+msgstr "Незрелое поведение"
+
+#: include/default_domains.php:575
+msgid "Sensible"
+msgstr "Благоразумный, здравомыслящий"
+
+#: include/default_domains.php:576
+msgid "Reputation"
+msgstr "Репутация"
+
+#: include/default_domains.php:577
+msgid "Patient"
+msgstr "Терпеливый"
+
+#: include/default_domains.php:578
+msgid "Impatient"
+msgstr "Нетерпеливый"
+
+#: include/default_domains.php:579
+msgid "Bad-tempered"
+msgstr "Раздражительный, в плохом настроении"
+
+#: include/default_domains.php:580
+msgid "Admire someone"
+msgstr "Восхищаться кем-либо"
+
+#: include/default_domains.php:581
+msgid "Despise someone"
+msgstr "Презирать кого-либо"
+
+#: include/default_domains.php:582
+msgid "Humble"
+msgstr "Скромный, смиренный"
+
+#: include/default_domains.php:583
+msgid "Proud"
+msgstr "Гордый"
+
+#: include/default_domains.php:584
+msgid "Show off"
+msgstr "Хвастаться, выставлять на показ"
+
+#: include/default_domains.php:585
+msgid "Love"
+msgstr "Любовь, любить"
+
+#: include/default_domains.php:586
+msgid "Hate, ill will"
+msgstr "Ненависть, недоброжелательность"
+
+#: include/default_domains.php:587
+msgid "Not care"
+msgstr "Не заботиться"
+
+#: include/default_domains.php:588
+msgid "Abandon"
+msgstr "Покидать, оставлять"
+
+#: include/default_domains.php:589
+msgid "Do good to"
+msgstr "Делать добро"
+
+#: include/default_domains.php:590
+msgid "Do evil to"
+msgstr "Творить зло"
+
+#: include/default_domains.php:591
+msgid "Help"
+msgstr "Помогать"
+
+#: include/default_domains.php:592
+msgid "Hinder"
+msgstr "Мешать, препятствовать (кому/чему-л.)"
+
+#: include/default_domains.php:593
+msgid "Cooperate with"
+msgstr "Сотрудничать с кем-л., взаимодействовать"
+
+#: include/default_domains.php:594
+msgid "Compete with"
+msgstr "Соревноваться; конкурировать; соперничать"
+
+#: include/default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "Альтруистический, бескорыстный"
+
+#: include/default_domains.php:596
+msgid "Selfish"
+msgstr "Эгоистичный, себялюбивый"
+
+#: include/default_domains.php:597
+msgid "Use a person"
+msgstr "Использовать человека"
+
+#: include/default_domains.php:598
+msgid "Share with"
+msgstr "Делиться с кем-либо"
+
+#: include/default_domains.php:599
+msgid "Provide for, support"
+msgstr "Обеспечивать; поддерживать, помогать"
+
+#: include/default_domains.php:600
+msgid "Care for"
+msgstr "Заботиться"
+
+#: include/default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "Возлагать заботу"
+
+#: include/default_domains.php:602
+msgid "Meddle"
+msgstr "Вмешиваться (во что-либо), словаться не в свое дело"
+
+#: include/default_domains.php:603
+msgid "Spoil"
+msgstr "Портить; наносить ущерб"
+
+#: include/default_domains.php:604
+msgid "Enter by force"
+msgstr "Входить, проникать (в какое-л. помещение, место)  посредством силы"
+
+#: include/default_domains.php:605
+msgid "Kidnap"
+msgstr "Похищать людей (особенно детей)"
+
+#: include/default_domains.php:606
+msgid "Cruel"
+msgstr "Жестокий"
+
+#: include/default_domains.php:607
+msgid "Honest"
+msgstr "Честный"
+
+#: include/default_domains.php:608
+msgid "Dishonest"
+msgstr "Нечестный"
+
+#: include/default_domains.php:609
+msgid "Faithful"
+msgstr "Верный, преданный"
+
+#: include/default_domains.php:610
+msgid "Reliable"
+msgstr "Надёжный, заслуживающий доверия"
+
+#: include/default_domains.php:611
+msgid "Unreliable"
+msgstr "Ненадежный"
+
+#: include/default_domains.php:612
+msgid "Deceive"
+msgstr "Обманывать"
+
+#: include/default_domains.php:613
+msgid "Hypocrite"
+msgstr "Лицемер, притворщик"
+
+#: include/default_domains.php:614
+msgid "Self-controlled"
+msgstr "Умеющий владеть собой"
+
+#: include/default_domains.php:615
+msgid "Lack self-control"
+msgstr "Отсутствие самоконтроля"
+
+#: include/default_domains.php:616
+msgid "Tidy"
+msgstr "Аккуратный, опрятный"
+
+#: include/default_domains.php:617
+msgid "Untidy"
+msgstr "Неаккуратный, неряшливый"
+
+#: include/default_domains.php:618
+msgid "Mistake"
+msgstr "Ошибаться; неправильно понимать; заблуждаться"
+
+#: include/default_domains.php:619
+msgid "Polite"
+msgstr "Вежливый, обходительный"
+
+#: include/default_domains.php:620
+msgid "Impolite"
+msgstr "Невежливый, неучтивый"
+
+#: include/default_domains.php:621
+msgid "Crazy"
+msgstr "Ненормальный, сумасшедший"
+
+#: include/default_domains.php:622
+msgid "Change behavior"
+msgstr "Менять поведение"
+
+#: include/default_domains.php:623
+msgid "Conform"
+msgstr "Согласовывать(ся), приспосабливать(ся)"
+
+#: include/default_domains.php:624
+msgid "Culture"
+msgstr "Культура"
+
+#: include/default_domains.php:625
+msgid "Custom"
+msgstr "Обычай, традиция (в масштабах одного народа, культуры)"
+
+#: include/default_domains.php:626
+msgid "Habit"
+msgstr "Привычка, обыкновение (конкретного человека)"
+
+#: include/default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "Преуспевание, беда (трудности)"
+
+#: include/default_domains.php:628
+msgid "Prosperity"
+msgstr "Преуспевание"
+
+#: include/default_domains.php:629
+msgid "Trouble"
+msgstr "Беда, трудности (несчастье)"
+
+#: include/default_domains.php:630
+msgid "Problem"
+msgstr "Проблема"
+
+#: include/default_domains.php:631
+msgid "Danger"
+msgstr "Опасность"
+
+#: include/default_domains.php:632
+msgid "Accident"
+msgstr "Несчастный случай, катастрофа"
+
+#: include/default_domains.php:633
+msgid "Disaster"
+msgstr "Бедствие, несчастье"
+
+#: include/default_domains.php:634
+msgid "Separate, alone"
+msgstr "Отдельный, обособленный"
+
+#: include/default_domains.php:635
+msgid "Suffer"
+msgstr "Страдать"
+
+#: include/default_domains.php:636
+msgid "Respond to trouble"
+msgstr "Реагировать на беду"
+
+#: include/default_domains.php:637
+msgid "Brave"
+msgstr "Смелый, храбрый"
+
+#: include/default_domains.php:638
+msgid "Cowardice"
+msgstr "Трусость"
+
+#: include/default_domains.php:639
+msgid "Avoid"
+msgstr "Избегать, уклоняться"
+
+#: include/default_domains.php:640
+msgid "Caution"
+msgstr "Осмотрительность, осторожность"
+
+#: include/default_domains.php:641
+msgid "Solve a problem"
+msgstr "Решать проблему"
+
+#: include/default_domains.php:642
+msgid "Endure"
+msgstr "Вынести, вытерпеть"
+
+#: include/default_domains.php:643
+msgid "Survive"
+msgstr "Выдержать, пережить, перенести"
+
+#: include/default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "Откликаться на чью-либо беду"
+
+#: include/default_domains.php:645
+msgid "Mercy"
+msgstr "Милосердие"
+
+#: include/default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "Проявлять сочувствие , поддерживать"
+
+#: include/default_domains.php:647
+msgid "Gentle"
+msgstr "Кроткий, тихий, нежный"
+
+#: include/default_domains.php:648
+msgid "Save from trouble"
+msgstr "Спасти от беды"
+
+#: include/default_domains.php:649
+msgid "Protect"
+msgstr "Защищать"
+
+#: include/default_domains.php:650
+msgid "Free from bondage"
+msgstr "Свободный от рабства (неволи)"
+
+#: include/default_domains.php:651
+msgid "Relief"
+msgstr "Облегчение, успокоение, утешение"
+
+#: include/default_domains.php:652
+msgid "Risk"
+msgstr "Опасность, угроза"
+
+#: include/default_domains.php:653
+msgid "Chance"
+msgstr "Случайность, случай"
+
+#: include/default_domains.php:654
+msgid "Lucky"
+msgstr "Счастливый, удачный;"
+
+#: include/default_domains.php:655
+msgid "Unlucky"
+msgstr "Несчастливый, неудачный"
+
+#: include/default_domains.php:656
+msgid "Authority"
+msgstr "Власть"
+
+#: include/default_domains.php:657
+msgid "Person in authority"
+msgstr "Лицо, облеченное властью"
+
+#: include/default_domains.php:658
+msgid "Have authority"
+msgstr "Обладать властью"
+
+#: include/default_domains.php:659
+msgid "Exercise authority"
+msgstr "Осуществлять власть"
+
+#: include/default_domains.php:660
+msgid "Lead"
+msgstr "Возглавлять, руководить, управлять"
+
+#: include/default_domains.php:661
+msgid "Command"
+msgstr "Приказывать, командовать"
+
+#: include/default_domains.php:662
+msgid "Discipline, train"
+msgstr "Дисциплинировать; тренировать, упражнять"
+
+#: include/default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "Назначать, предписывать; поручать"
+
+#: include/default_domains.php:664
+msgid "Submit to authority"
+msgstr "Подчиняться власти"
+
+#: include/default_domains.php:665
+msgid "Obey"
+msgstr "Подчиняться, слушаться, повиноваться"
+
+#: include/default_domains.php:666
+msgid "Disobey"
+msgstr "Не повиноваться, не подчиняться, не слушаться"
+
+#: include/default_domains.php:667
+msgid "Serve"
+msgstr "Служить"
+
+#: include/default_domains.php:668
+msgid "Slave"
+msgstr "Раб"
+
+#: include/default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "Следовать, быть учеником (последователем)"
+
+#: include/default_domains.php:670
+msgid "Rebel against authority"
+msgstr "Восставать против власти"
+
+#: include/default_domains.php:671
+msgid "Independent"
+msgstr "Независимый"
+
+#: include/default_domains.php:672
+msgid "Honor"
+msgstr "Почитать, уважать"
+
+#: include/default_domains.php:673
+msgid "Title, name of honor"
+msgstr "Титул, (почетное) звание"
+
+#: include/default_domains.php:674
+msgid "Lack respect"
+msgstr "Отсутствие уважения"
+
+#: include/default_domains.php:675
+msgid "Status"
+msgstr "Общественное положение"
+
+#: include/default_domains.php:676
+msgid "High status"
+msgstr "Высокое общественное положение"
+
+#: include/default_domains.php:677
+msgid "Low status"
+msgstr "Низкое общественное положение"
+
+#: include/default_domains.php:678
+msgid "Government"
+msgstr "Правительство"
+
+#: include/default_domains.php:679
+msgid "Ruler"
+msgstr "Правитель, властелин"
+
+#: include/default_domains.php:680
+msgid "King's family"
+msgstr "Царская семья"
+
+#: include/default_domains.php:681
+msgid "Government official"
+msgstr "Государственный чиновник"
+
+#: include/default_domains.php:682
+msgid "Citizen"
+msgstr "Гражданин; гражданка"
+
+#: include/default_domains.php:683
+msgid "Foreigner"
+msgstr "Иностранец, иностранка"
+
+#: include/default_domains.php:684
+msgid "Government organization"
+msgstr "Государственная организация"
+
+#: include/default_domains.php:685
+msgid "Governing body"
+msgstr "Руководство, управляющий орган"
+
+#: include/default_domains.php:686
+msgid "Rule"
+msgstr "Править"
+
+#: include/default_domains.php:687
+msgid "Subjugate"
+msgstr "Подчинять, покорять"
+
+#: include/default_domains.php:688
+msgid "Government functions"
+msgstr "Государственная деятельность"
+
+#: include/default_domains.php:689
+msgid "Police"
+msgstr "Полиция"
+
+#: include/default_domains.php:690
+msgid "Arrest"
+msgstr "Арестовывать"
+
+#: include/default_domains.php:691
+msgid "Informal justice"
+msgstr "Неофициальное правосудие"
+
+#: include/default_domains.php:692
+msgid "Diplomacy"
+msgstr "Дипломатия"
+
+#: include/default_domains.php:693
+msgid "Represent"
+msgstr "Быть представителем, представлять (какое-л. лицо)"
+
+#: include/default_domains.php:694
+msgid "Election"
+msgstr "Выборы, избирательная компания"
+
+#: include/default_domains.php:695
+msgid "Politics"
+msgstr "Политика, политическая деятельность"
+
+#: include/default_domains.php:696
+msgid "Region"
+msgstr "Пространство, территория; область"
+
+#: include/default_domains.php:697
+msgid "Country"
+msgstr "Страна"
+
+#: include/default_domains.php:698
+msgid "City"
+msgstr "Город (большой город)"
+
+#: include/default_domains.php:699
+msgid "Countryside"
+msgstr "Сельская местность, деревня"
+
+#: include/default_domains.php:700
+msgid "Community"
+msgstr "Община; население; вместе живущие люди"
+
+#: include/default_domains.php:701
+msgid "Law"
+msgstr "Закон"
+
+#: include/default_domains.php:702
+msgid "Laws"
+msgstr "Законы; законодательство"
+
+#: include/default_domains.php:703
+msgid "Pass laws"
+msgstr "Принятие законов"
+
+#: include/default_domains.php:704
+msgid "Break the law"
+msgstr "Нарушать закон"
+
+#: include/default_domains.php:705
+msgid "Court of law"
+msgstr "Суд, действующий по нормам статутного и общего права"
+
+#: include/default_domains.php:706
+msgid "Legal personnel"
+msgstr "Судебный персонал"
+
+#: include/default_domains.php:707
+msgid "Trial"
+msgstr "Судебное разбирательство; судебный процесс, суд"
+
+#: include/default_domains.php:708
+msgid "Investigate a crime"
+msgstr "Расследовать преступление"
+
+#: include/default_domains.php:709
+msgid "Suspect"
+msgstr "Подозреваемый"
+
+#: include/default_domains.php:710
+msgid "Accuse, confront"
+msgstr "Обвинять, проводить очную ставку"
+
+#: include/default_domains.php:711
+msgid "Defend against accusation"
+msgstr "Защищать(ся) против обвинений"
+
+#: include/default_domains.php:712
+msgid "Witness, testify"
+msgstr "Свидетель, давать показания"
+
+#: include/default_domains.php:713
+msgid "Drop charges"
+msgstr "Отказ от обвинения"
+
+#: include/default_domains.php:714
+msgid "Take oath"
+msgstr "Присягать, приносить присягу"
+
+#: include/default_domains.php:715
+msgid "Vindicate"
+msgstr "Оправдывать"
+
+#: include/default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "Выносить приговор, выносить вердикт"
+
+#: include/default_domains.php:717
+msgid "Acquit"
+msgstr "Оправдывать (по суду), признавать невиновным"
+
+#: include/default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "Осуждать, признавать виновным"
+
+#: include/default_domains.php:719
+msgid "Fault"
+msgstr "Вина, проступок"
+
+#: include/default_domains.php:720
+msgid "Punish"
+msgstr "Наказывать, налагать взыскание"
+
+#: include/default_domains.php:721
+msgid "Reward"
+msgstr "Награда"
+
+#: include/default_domains.php:722
+msgid "Fine"
+msgstr "Денежное взыскание, штраф"
+
+#: include/default_domains.php:723
+msgid "Imprison"
+msgstr "Заключать в тюрьму; лишать свободы"
+
+#: include/default_domains.php:724
+msgid "Execute"
+msgstr "Исполнять, приводить в исполнение (постановление суда)"
+
+#: include/default_domains.php:725
+msgid "Ostracize"
+msgstr "Подвергать остракизму; изгонять из общества"
+
+#: include/default_domains.php:726
+msgid "Pardon, release"
+msgstr "Оставлять без наказания, освобождать (из заключения)"
+
+#: include/default_domains.php:727
+msgid "Atone, restitution"
+msgstr "Компенсировать, возмещать убытки, реституция"
+
+#: include/default_domains.php:728
+msgid "Legal contract"
+msgstr "Законный контракт"
+
+#: include/default_domains.php:729
+msgid "Covenant"
+msgstr "Договорённость, соглашение; договор"
+
+#: include/default_domains.php:730
+msgid "Break a contract"
+msgstr "Нарушить контракт"
+
+#: include/default_domains.php:731
+msgid "Justice"
+msgstr "Справедливость"
+
+#: include/default_domains.php:732
+msgid "Impartial"
+msgstr "Беспристрастный, справедливый"
+
+#: include/default_domains.php:733
+msgid "Unfair"
+msgstr "Несправедливый, нечестный"
+
+#: include/default_domains.php:734
+msgid "Deserve"
+msgstr "Заслуживать, быть достойным чего-л."
+
+#: include/default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "Относиться по-разному, проявлять пристрастие, дискриминировать"
+
+#: include/default_domains.php:736
+msgid "Act harshly"
+msgstr "Действовать резко, жестоко"
+
+#: include/default_domains.php:737
+msgid "Oppress"
+msgstr "Подавлять, притеснять, угнетать"
+
+#: include/default_domains.php:738
+msgid "Conflict"
+msgstr "Конфликт, столкновение"
+
+#: include/default_domains.php:739
+msgid "Hostility"
+msgstr "Враждебность"
+
+#: include/default_domains.php:740
+msgid "Oppose"
+msgstr "Быть против, возражать"
+
+#: include/default_domains.php:741
+msgid "Fight"
+msgstr "Драться, сражаться"
+
+#: include/default_domains.php:742
+msgid "Fight for something good"
+msgstr "Борьба за что-то хорошее"
+
+#: include/default_domains.php:743
+msgid "Fight against something bad"
+msgstr "Борьба против чего-то плохого"
+
+#: include/default_domains.php:744
+msgid "Attack"
+msgstr "Атаковать, нападать"
+
+#: include/default_domains.php:745
+msgid "Ambush"
+msgstr "Засада, находиться, сидеть в засаде"
+
+#: include/default_domains.php:746
+msgid "Defend"
+msgstr "Защищаться, обороняться"
+
+#: include/default_domains.php:747
+msgid "Revenge"
+msgstr "Месть, мщение"
+
+#: include/default_domains.php:748
+msgid "Riot"
+msgstr "Бунт, восстание, мятеж"
+
+#: include/default_domains.php:749
+msgid "Betray"
+msgstr "Изменять, предавать"
+
+#: include/default_domains.php:750
+msgid "Violent"
+msgstr "Жестокий, насильственный"
+
+#: include/default_domains.php:751
+msgid "Enemy"
+msgstr "Враг, неприятель"
+
+#: include/default_domains.php:752
+msgid "War"
+msgstr "Война"
+
+#: include/default_domains.php:753
+msgid "Defeat"
+msgstr "Одержать победу (над кем-л.) , наносить поражение (кому-л.)"
+
+#: include/default_domains.php:754
+msgid "Win"
+msgstr "Победить, выиграть"
+
+#: include/default_domains.php:755
+msgid "Lose a fight"
+msgstr "Проиграть сражение"
+
+#: include/default_domains.php:756
+msgid "Surrender"
+msgstr "Сдаваться; капитулировать"
+
+#: include/default_domains.php:757
+msgid "Prisoner of war"
+msgstr "Военнопленный"
+
+#: include/default_domains.php:758
+msgid "Military organization"
+msgstr "Военная организация"
+
+#: include/default_domains.php:759
+msgid "Army"
+msgstr "Армия, вооруженные силы"
+
+#: include/default_domains.php:760
+msgid "Navy"
+msgstr "Военно-морской флот, военно-морские силы"
+
+#: include/default_domains.php:761
+msgid "Air force"
+msgstr "Военно-воздушные силы"
+
+#: include/default_domains.php:762
+msgid "Soldier"
+msgstr "Солдат"
+
+#: include/default_domains.php:763
+msgid "Spy"
+msgstr "Шпион (разведчик)"
+
+#: include/default_domains.php:764
+msgid "Fort"
+msgstr "Форт, крепость"
+
+#: include/default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "Оружие, стрелять"
+
+#: include/default_domains.php:766
+msgid "Plunder"
+msgstr "Трофеи; добыча, награбленное (у врага)"
+
+#: include/default_domains.php:767
+msgid "Peace"
+msgstr "Мир (покой)"
+
+#: include/default_domains.php:768
+msgid "Rebuke"
+msgstr "Упрекать винить"
+
+#: include/default_domains.php:769
+msgid "Make an appeal"
+msgstr "Обращаться, выступать с призывом"
+
+#: include/default_domains.php:770
+msgid "Appease"
+msgstr "Успокаивать; умиротворять"
+
+#: include/default_domains.php:771
+msgid "Negotiate"
+msgstr "Вести переговоры, договариваться"
+
+#: include/default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "Отказываться от требования (претензии), уступать (что-л.)"
+
+#: include/default_domains.php:773
+msgid "Repent"
+msgstr "Раскаиваться; каяться, сожалеть"
+
+#: include/default_domains.php:774
+msgid "Request forgiveness"
+msgstr "Просить прощение"
+
+#: include/default_domains.php:775
+msgid "Forgive"
+msgstr "Прощать"
+
+#: include/default_domains.php:776
+msgid "Make peace"
+msgstr "Заключать мир, мириться"
+
+#: include/default_domains.php:777
+msgid "Stop fighting"
+msgstr "Прекращать сражение (боевых действия)"
+
+#: include/default_domains.php:778
+msgid "Reconcile"
+msgstr "Мириться, примиряться"
+
+#: include/default_domains.php:779
+msgid "Religion"
+msgstr "Религия"
+
+#: include/default_domains.php:780
+msgid "God"
+msgstr "Бог"
+
+#: include/default_domains.php:781
+msgid "Supernatural being"
+msgstr "Сверхъестественное существо"
+
+#: include/default_domains.php:782
+msgid "Theology"
+msgstr "Теология, богословие"
+
+#: include/default_domains.php:783
+msgid "Sacred writings"
+msgstr "Священное Писание"
+
+#: include/default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "Чудо, сверхъестественная сила"
+
+#: include/default_domains.php:785
+msgid "Sorcery"
+msgstr "Магия, колдовство"
+
+#: include/default_domains.php:786
+msgid "Demon possession"
+msgstr "Одержимость, демоническая зависимость"
+
+#: include/default_domains.php:787
+msgid "Bless"
+msgstr "Благословлять; давать благословение"
+
+#: include/default_domains.php:788
+msgid "Curse"
+msgstr "Проклинать"
+
+#: include/default_domains.php:789
+msgid "Destiny"
+msgstr "Рок, судьба, участь"
+
+#: include/default_domains.php:790
+msgid "Prophecy"
+msgstr "Предсказание, пророчество"
+
+#: include/default_domains.php:791
+msgid "Omen, divination"
+msgstr "Предвещать; предсказание, прорицание"
+
+#: include/default_domains.php:792
+msgid "Practice religion"
+msgstr "Религиозная практика"
+
+#: include/default_domains.php:793
+msgid "Devout"
+msgstr "Набожный, благочестивый, религиозный"
+
+#: include/default_domains.php:794
+msgid "Pray"
+msgstr "Молиться"
+
+#: include/default_domains.php:795
+msgid "Worship"
+msgstr "Поклоняться, почитать"
+
+#: include/default_domains.php:796
+msgid "Religious ceremony"
+msgstr "Религиозный обряд"
+
+#: include/default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "Приношение, жертва"
+
+#: include/default_domains.php:798
+msgid "Religious purification"
+msgstr "Духовное очищение"
+
+#: include/default_domains.php:799
+msgid "Taboo"
+msgstr "Табу, запрет"
+
+#: include/default_domains.php:800
+msgid "Salvation"
+msgstr "Спасение, избавление"
+
+#: include/default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "Посвящать для религиозного применения"
+
+#: include/default_domains.php:802
+msgid "Fasting"
+msgstr "Поститься, воздерживаться от пищи"
+
+#: include/default_domains.php:803
+msgid "Heaven, hell"
+msgstr "Небеса, преисподняя, ад"
+
+#: include/default_domains.php:804
+msgid "Resurrection"
+msgstr "Воскресение, восстание из мёртвых"
+
+#: include/default_domains.php:805
+msgid "Religious organization"
+msgstr "Религиозная организация"
+
+#: include/default_domains.php:806
+msgid "Religious person"
+msgstr "Верующий человек"
+
+#: include/default_domains.php:807
+msgid "Christianity"
+msgstr "Христианство"
+
+#: include/default_domains.php:808
+msgid "Islam"
+msgstr "Ислам"
+
+#: include/default_domains.php:809
+msgid "Hinduism"
+msgstr "Индуизм"
+
+#: include/default_domains.php:810
+msgid "Buddhism"
+msgstr "Буддизм"
+
+#: include/default_domains.php:811
+msgid "Judaism"
+msgstr "Иудаизм"
+
+#: include/default_domains.php:812
+msgid "Animism"
+msgstr "Анимизм"
+
+#: include/default_domains.php:813
+msgid "Religious things"
+msgstr "Вещи, имеющие отношение к религиозной практике"
+
+#: include/default_domains.php:814
+msgid "Idol"
+msgstr "Идол"
+
+#: include/default_domains.php:815
+msgid "Place of worship"
+msgstr "Место поклонения"
+
+#: include/default_domains.php:816
+msgid "Irreligion"
+msgstr "Неверие"
+
+#: include/default_domains.php:817 webonary/Webonary_SemanticDomains.php:133
+msgid "Daily life"
+msgstr "Повседневная жизнь"
+
+#: include/default_domains.php:818
+msgid "Household equipment"
+msgstr "Хозяйственный инвентарь"
+
+#: include/default_domains.php:820
+msgid "Table"
+msgstr "Стол"
+
+#: include/default_domains.php:821
+msgid "Chair"
+msgstr "Стул, кресло"
+
+#: include/default_domains.php:822
+msgid "Bed"
+msgstr "Кровать. ложе, постель"
+
+#: include/default_domains.php:823
+msgid "Cabinet"
+msgstr "Шкаф"
+
+#: include/default_domains.php:824
+msgid "Household decoration"
+msgstr "Домашнее убранство"
+
+#: include/default_domains.php:825
+msgid "Food"
+msgstr "Пища, питание, еда"
+
+#: include/default_domains.php:826
+msgid "Food preparation"
+msgstr "Приготовление пищи"
+
+#: include/default_domains.php:827
+msgid "Cooking methods"
+msgstr "Методы приготовления пищи"
+
+#: include/default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "Очередность действий по приготовлению еды"
+
+#: include/default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "Очищать скорлупу, кожу"
+
+#: include/default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "Толочь, раздроблять; растирать пестом; толочь в ступе"
+
+#: include/default_domains.php:831
+msgid "Grind flour"
+msgstr "Молоть муку"
+
+#: include/default_domains.php:832
+msgid "Cooking utensil"
+msgstr "Кухонные принадлежности"
+
+#: include/default_domains.php:833
+msgid "Food storage"
+msgstr "Хранение продовольствия"
+
+#: include/default_domains.php:834
+msgid "Serve food"
+msgstr "Подавать пищу на стол"
+
+#: include/default_domains.php:835
+msgid "Eat"
+msgstr "Есть, принимать пищу"
+
+#: include/default_domains.php:836
+msgid "Bite, chew"
+msgstr "Кусать, жевать"
+
+#: include/default_domains.php:837
+msgid "Meal"
+msgstr "Приём пищи; еда"
+
+#: include/default_domains.php:838
+msgid "Feast"
+msgstr "Празднование, званый обед /ужин; банкет"
+
+#: include/default_domains.php:839
+msgid "Manner of eating"
+msgstr "Манера принимать пищу"
+
+#: include/default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "Голодный, испытывающий жажду"
+
+#: include/default_domains.php:841
+msgid "Satiated, full"
+msgstr "Сытый, насытившийся"
+
+#: include/default_domains.php:842
+msgid "Drink"
+msgstr "Пить; питье"
+
+#: include/default_domains.php:843
+msgid "Eating utensil"
+msgstr "Посуда для приема пищи"
+
+#: include/default_domains.php:844
+msgid "Fast, not eat"
+msgstr "Воздерживаться от пищи, не есть"
+
+#: include/default_domains.php:845
+msgid "Types of food"
+msgstr "Виды пищи"
+
+#: include/default_domains.php:846
+msgid "Food from plants"
+msgstr "Пища из растений"
+
+#: include/default_domains.php:847
+msgid "Food from seeds"
+msgstr "Пища из зерна"
+
+#: include/default_domains.php:848
+msgid "Food from fruit"
+msgstr "Пища из фруктов"
+
+#: include/default_domains.php:849
+msgid "Food from vegetables"
+msgstr "Пища из овощей"
+
+#: include/default_domains.php:850
+msgid "Food from leaves"
+msgstr "Пища из листьев"
+
+#: include/default_domains.php:851
+msgid "Food from roots"
+msgstr "Пища из кореньев (корнеплодов)"
+
+#: include/default_domains.php:852
+msgid "Food from animals"
+msgstr "Животная пища"
+
+#: include/default_domains.php:854
+msgid "Milk products"
+msgstr "Молочные продукты"
+
+#: include/default_domains.php:855
+msgid "Egg dishes"
+msgstr "Блюда из яиц"
+
+#: include/default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "Ингредиенты для приготовления блюда"
+
+#: include/default_domains.php:857
+msgid "Sugar"
+msgstr "Сахар"
+
+#: include/default_domains.php:858
+msgid "Salt"
+msgstr "Соль"
+
+#: include/default_domains.php:860
+msgid "Leaven"
+msgstr "Дрожжи, закваска"
+
+#: include/default_domains.php:861
+msgid "Cooking oil"
+msgstr "Кулинарное (растительное) масло"
+
+#: include/default_domains.php:862
+msgid "Prepared food"
+msgstr "Готовая пища"
+
+#: include/default_domains.php:863
+msgid "Prohibited food"
+msgstr "Запрещенная пища"
+
+#: include/default_domains.php:864
+msgid "Beverage"
+msgstr "Напиток"
+
+#: include/default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "Алкогольные напитки"
+
+#: include/default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "Приготовление спиртных напитков"
+
+#: include/default_domains.php:867
+msgid "Drunk"
+msgstr "Пьяный, опьянённый"
+
+#: include/default_domains.php:868
+msgid "Tobacco"
+msgstr "Табак"
+
+#: include/default_domains.php:869
+msgid "Narcotic"
+msgstr "Наркотик"
+
+#: include/default_domains.php:870
+msgid "Stimulant"
+msgstr "Возбуждающее средство, стимулятор"
+
+#: include/default_domains.php:871
+msgid "Clothing"
+msgstr "Одежда"
+
+#: include/default_domains.php:872
+msgid "Men's clothing"
+msgstr "Мужская одежда"
+
+#: include/default_domains.php:873
+msgid "Women's clothing"
+msgstr "Женская одежда"
+
+#: include/default_domains.php:874
+msgid "Traditional clothing"
+msgstr "Традиционная одежда"
+
+#: include/default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "Одежда для специальных (особенных) случаев"
+
+#: include/default_domains.php:876
+msgid "Clothes for special people"
+msgstr "Одежда для особых (специальных) людей"
+
+#: include/default_domains.php:878
+msgid "Wear clothing"
+msgstr "Носить одежду"
+
+#: include/default_domains.php:879
+msgid "Naked"
+msgstr "Голый, обнажённый"
+
+#: include/default_domains.php:880
+msgid "Style of clothing"
+msgstr "Стиль (фасон) одежды"
+
+#: include/default_domains.php:881
+msgid "Adornment"
+msgstr "Украшение"
+
+#: include/default_domains.php:883
+msgid "Cosmetics"
+msgstr "Косметические средства"
+
+#: include/default_domains.php:884
+msgid "Care for hair"
+msgstr "Уход за волосами"
+
+#: include/default_domains.php:885
+msgid "Comb hair"
+msgstr "Расчесывать волосы"
+
+#: include/default_domains.php:886
+msgid "Plait hair"
+msgstr "Заплетать волосы"
+
+#: include/default_domains.php:887
+msgid "Dye hair"
+msgstr "Окраска волос"
+
+#: include/default_domains.php:888
+msgid "Hairstyle"
+msgstr "Прическа"
+
+#: include/default_domains.php:889
+msgid "Cut hair"
+msgstr "Стрижка волос"
+
+#: include/default_domains.php:890
+msgid "Shave"
+msgstr "Брить(ся)"
+
+#: include/default_domains.php:891
+msgid "Care for the teeth"
+msgstr "Уход за зубами"
+
+#: include/default_domains.php:892
+msgid "Anoint the body"
+msgstr "Намазывать (смазывать) тело"
+
+#: include/default_domains.php:893
+msgid "Ritual scar"
+msgstr "Ритуальный шрам (рубец)"
+
+#: include/default_domains.php:894
+msgid "Circumcision"
+msgstr "Обрезание, обряд обрезания"
+
+#: include/default_domains.php:895
+msgid "Care for the fingernails"
+msgstr "Уход за ногтями"
+
+#: include/default_domains.php:896
+msgid "Fire"
+msgstr "Огонь, пламя"
+
+#: include/default_domains.php:897
+msgid "Light a fire"
+msgstr "Зажечь огонь"
+
+#: include/default_domains.php:898
+msgid "Tend a fire"
+msgstr "Присмотр за огнем"
+
+#: include/default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "Гасить (тушить) огонь"
+
+#: include/default_domains.php:900
+msgid "Burn"
+msgstr "Гореть, пылать"
+
+#: include/default_domains.php:901
+msgid "What fires produce"
+msgstr "Что производит огонь"
+
+#: include/default_domains.php:902
+msgid "Fuel"
+msgstr "Горючее, топливо"
+
+#: include/default_domains.php:903
+msgid "Fireplace"
+msgstr "Камин, очаг"
+
+#: include/default_domains.php:904
+msgid "Cleaning"
+msgstr "Чистка, уборка"
+
+#: include/default_domains.php:905
+msgid "Clean, dirty"
+msgstr "Чистый, грязный"
+
+#: include/default_domains.php:906
+msgid "Bathe"
+msgstr "Купание"
+
+#: include/default_domains.php:907
+msgid "Wash dishes"
+msgstr "Мыть посуду после еды"
+
+#: include/default_domains.php:908
+msgid "Wash clothes"
+msgstr "Стирать белье"
+
+#: include/default_domains.php:909
+msgid "Sweep, rake"
+msgstr "Подметать, сгребать, скрести"
+
+#: include/default_domains.php:910
+msgid "Wipe, erase"
+msgstr "Вытирать, стирать (соскабливать, удалять)"
+
+#: include/default_domains.php:911
+msgid "Sleep"
+msgstr "Сон; спать"
+
+#: include/default_domains.php:912
+msgid "Go to sleep"
+msgstr "Заснуть, засыпать"
+
+#: include/default_domains.php:913
+msgid "Dream"
+msgstr "Сон, сновидение"
+
+#: include/default_domains.php:914
+msgid "Wake up"
+msgstr "Просыпаться"
+
+#: include/default_domains.php:915
+msgid "Manage a house"
+msgstr "Ведение домашнего хозяйства"
+
+#: include/default_domains.php:916
+msgid "Live, stay"
+msgstr "Жить, проживать, останавливаться (у кого-либо)"
+
+#: include/default_domains.php:917 webonary/Webonary_SemanticDomains.php:134
+msgid "Work and occupation"
+msgstr "Работа и род занятий"
+
+#: include/default_domains.php:918
+msgid "Work"
+msgstr "Работа"
+
+#: include/default_domains.php:919
+msgid "Worker"
+msgstr "Рабочий"
+
+#: include/default_domains.php:920
+msgid "Expert"
+msgstr "Специалист, мастер"
+
+#: include/default_domains.php:921
+msgid "Method"
+msgstr "Метод, способ, прием"
+
+#: include/default_domains.php:922
+msgid "Try, attempt"
+msgstr "Пытаться, стараться, стремиться, прилагать усилия"
+
+#: include/default_domains.php:923
+msgid "Use"
+msgstr "Использовать, применять"
+
+#: include/default_domains.php:924
+msgid "Useful"
+msgstr "Полезный, пригодный, применимый"
+
+#: include/default_domains.php:925
+msgid "Useless"
+msgstr "Бесполезный; никуда не годный"
+
+#: include/default_domains.php:926
+msgid "Available"
+msgstr "Доступный; имеющийся в распоряжении (в наличии)"
+
+#: include/default_domains.php:927
+msgid "Use up"
+msgstr "Израсходовать, использовать; истратить"
+
+#: include/default_domains.php:928
+msgid "Take care of something"
+msgstr "Заботиться о чем-либо, смотреть за чем-либо"
+
+#: include/default_domains.php:929
+msgid "Waste"
+msgstr "Тратить впустую, растрачивать"
+
+#: include/default_domains.php:930
+msgid "Work well"
+msgstr "Работать хорошо"
+
+#: include/default_domains.php:931
+msgid "Careful"
+msgstr "Старательный, тщательный"
+
+#: include/default_domains.php:932
+msgid "Work hard"
+msgstr "Трудиться, усердно работать"
+
+#: include/default_domains.php:933
+msgid "Busy"
+msgstr "Деятельный, занятой"
+
+#: include/default_domains.php:934
+msgid "Power, force"
+msgstr "Сила, энергия, мощь"
+
+#: include/default_domains.php:935
+msgid "Complete, finish"
+msgstr "Заканчивать, завершать, выполнять"
+
+#: include/default_domains.php:936
+msgid "Ambitious"
+msgstr "Амбициозный, честолюбивый"
+
+#: include/default_domains.php:937
+msgid "Work poorly"
+msgstr "Работать плохо"
+
+#: include/default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "Небрежный, безответственный"
+
+#: include/default_domains.php:939
+msgid "Lazy"
+msgstr "Ленивый"
+
+#: include/default_domains.php:940
+msgid "Give up"
+msgstr "Оставлять, отказываться, уступать"
+
+#: include/default_domains.php:941
+msgid "Plan"
+msgstr "Планировать, строить планы"
+
+#: include/default_domains.php:942
+msgid "Arrange an event"
+msgstr "Организовывать мероприятие"
+
+#: include/default_domains.php:943
+msgid "Cancel an event"
+msgstr "Отменять мероприятие"
+
+#: include/default_domains.php:944
+msgid "Prepare"
+msgstr "Готовить, подготавливать"
+
+#: include/default_domains.php:945
+msgid "Prepare something for use"
+msgstr "Подготавливать что-либо к применению"
+
+#: include/default_domains.php:946
+msgid "Effective"
+msgstr "Действенный, результативный, эффективный"
+
+#: include/default_domains.php:947
+msgid "Efficient"
+msgstr "Действенный, результативный"
+
+#: include/default_domains.php:948
+msgid "Opportunity"
+msgstr "Возможность, удобный случай"
+
+#: include/default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "Трудный, сложный; невозможный, невыполнимый"
+
+#: include/default_domains.php:950
+msgid "Easy, possible"
+msgstr "Легкий, нетрудный; вероятный, возможный"
+
+#: include/default_domains.php:951
+msgid "Succeed"
+msgstr "Получаться, выходить удачным, хорошим; удаваться; преуспевать, иметь успех"
+
+#: include/default_domains.php:952
+msgid "Fail"
+msgstr "Потерпеть неудачу, не иметь успеха; не исполнить"
+
+#: include/default_domains.php:953
+msgid "Advantage"
+msgstr "Преимущество, выгода"
+
+#: include/default_domains.php:954
+msgid "Job satisfaction"
+msgstr "Удовлетворение от работы, удовлетворенность работой"
+
+#: include/default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "Безработный, не работающий"
+
+#: include/default_domains.php:956
+msgid "Made by hand"
+msgstr "Сделано вручную"
+
+#: include/default_domains.php:957
+msgid "Artificial"
+msgstr "Искусственный, ненатуральный"
+
+#: include/default_domains.php:958
+msgid "Experienced"
+msgstr "Знающий, опытный"
+
+#: include/default_domains.php:959
+msgid "Accustomed to"
+msgstr "Привыкший, приученный (к чему-л)"
+
+#: include/default_domains.php:960
+msgid "Agriculture"
+msgstr "Сельское хозяйство; земледелие"
+
+#: include/default_domains.php:961
+msgid "Growing crops"
+msgstr "Выращивание зерновых"
+
+#: include/default_domains.php:962
+msgid "Growing grain"
+msgstr "Выращивание хлебных злаков"
+
+#: include/default_domains.php:963
+msgid "Growing rice"
+msgstr "Выращивание риса"
+
+#: include/default_domains.php:964
+msgid "Growing wheat"
+msgstr "Выращивание пшеницы"
+
+#: include/default_domains.php:965
+msgid "Growing maize"
+msgstr "Выращивание кукурузы"
+
+#: include/default_domains.php:966
+msgid "Growing roots"
+msgstr "Выращивание корнеплодов"
+
+#: include/default_domains.php:967
+msgid "Growing potatoes"
+msgstr "Выращивание картофеля"
+
+#: include/default_domains.php:968
+msgid "Growing cassava"
+msgstr "Выращивание маниока"
+
+#: include/default_domains.php:969
+msgid "Growing vegetables"
+msgstr "Выращивание овощей"
+
+#: include/default_domains.php:970
+msgid "Growing fruit"
+msgstr "Выращивание фруктов"
+
+#: include/default_domains.php:971
+msgid "Growing grapes"
+msgstr "Выращивание винограда"
+
+#: include/default_domains.php:972
+msgid "Growing bananas"
+msgstr "Выращивание бананов"
+
+#: include/default_domains.php:973
+msgid "Growing grass"
+msgstr "Выращивание трав"
+
+#: include/default_domains.php:974
+msgid "Growing sugarcane"
+msgstr "Выращивание сахарного тростника"
+
+#: include/default_domains.php:975
+msgid "Growing tobacco"
+msgstr "Выращивание табака"
+
+#: include/default_domains.php:976
+msgid "Growing flowers"
+msgstr "Выращивание цветов"
+
+#: include/default_domains.php:977
+msgid "Growing trees"
+msgstr "Выращивание деревьев"
+
+#: include/default_domains.php:978
+msgid "Growing coconuts"
+msgstr "Выращивание кокосов"
+
+#: include/default_domains.php:979
+msgid "Growing coffee"
+msgstr "Выращивание кофе"
+
+#: include/default_domains.php:980
+msgid "Land preparation"
+msgstr "Подготовка земли"
+
+#: include/default_domains.php:981
+msgid "Clear a field"
+msgstr "Очистка поля"
+
+#: include/default_domains.php:982
+msgid "Plow a field"
+msgstr "Вспахивать поле"
+
+#: include/default_domains.php:983
+msgid "Fertilize a field"
+msgstr "Удобрять поле"
+
+#: include/default_domains.php:984
+msgid "Plant a field"
+msgstr "Засаживать поле какой-л. культурой"
+
+#: include/default_domains.php:985
+msgid "Tend a field"
+msgstr "Уход за полем"
+
+#: include/default_domains.php:986
+msgid "Cut grass"
+msgstr "Косить траву"
+
+#: include/default_domains.php:987
+msgid "Uproot plants"
+msgstr "Выкорчевывать растения"
+
+#: include/default_domains.php:988
+msgid "Irrigate"
+msgstr "Орошать"
+
+#: include/default_domains.php:989
+msgid "Trim plants"
+msgstr "Подрезка растений"
+
+#: include/default_domains.php:990
+msgid "Neglect plants"
+msgstr "Запускать растения; не осуществлять нужного ухода за растениями"
+
+#: include/default_domains.php:991
+msgid "Harvest"
+msgstr "Жатва; сбор (урожая)"
+
+#: include/default_domains.php:992
+msgid "First fruits"
+msgstr "Первые плоды"
+
+#: include/default_domains.php:993
+msgid "Crop failure"
+msgstr "Неурожай"
+
+#: include/default_domains.php:994
+msgid "Gather wild plants"
+msgstr "Сбор дикорастущих растений"
+
+#: include/default_domains.php:995
+msgid "Plant product"
+msgstr "Растительная продукция"
+
+#: include/default_domains.php:996
+msgid "Process harvest"
+msgstr "Обработка урожая"
+
+#: include/default_domains.php:997
+msgid "Winnow grain"
+msgstr "Веять зерно"
+
+#: include/default_domains.php:998
+msgid "Mill grain"
+msgstr "Молоть зерно"
+
+#: include/default_domains.php:999
+msgid "Thresh"
+msgstr "Молотить, обмолачивать"
+
+#: include/default_domains.php:1000
+msgid "Store the harvest"
+msgstr "Убирать на хранение собранный урожай"
+
+#: include/default_domains.php:1001
+msgid "Farm worker"
+msgstr "Сельскохозяйственный рабочий"
+
+#: include/default_domains.php:1002
+msgid "Agricultural tool"
+msgstr "Сельскохозяйственный (земледельческий) инструмент"
+
+#: include/default_domains.php:1003
+msgid "Farmland"
+msgstr "Земля, пригодная для обработки; обрабатываемая земля"
+
+#: include/default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "Животноводство (скотоводство)"
+
+#: include/default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "Домашнее животное"
+
+#: include/default_domains.php:1006
+msgid "Cattle"
+msgstr "Крупный рогатый скот"
+
+#: include/default_domains.php:1007
+msgid "Sheep"
+msgstr "Овца"
+
+#: include/default_domains.php:1008
+msgid "Goat"
+msgstr "Козёл; коза"
+
+#: include/default_domains.php:1009
+msgid "Pig"
+msgstr "Свинья"
+
+#: include/default_domains.php:1010
+msgid "Dog"
+msgstr "Собака"
+
+#: include/default_domains.php:1011
+msgid "Cat"
+msgstr "Кошка"
+
+#: include/default_domains.php:1012
+msgid "Beast of burden"
+msgstr "Вьючное животное"
+
+#: include/default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "Присмотр за стадом в поле"
+
+#: include/default_domains.php:1014
+msgid "Milk"
+msgstr "Молоко"
+
+#: include/default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "Мясник, убой скота"
+
+#: include/default_domains.php:1016
+msgid "Wool production"
+msgstr "Производство шерсти"
+
+#: include/default_domains.php:1017
+msgid "Poultry raising"
+msgstr "Разведение домашней птицы"
+
+#: include/default_domains.php:1018
+msgid "Chicken"
+msgstr "Курица"
+
+#: include/default_domains.php:1019
+msgid "Animal products"
+msgstr "Животная продукция"
+
+#: include/default_domains.php:1020
+msgid "Veterinary science"
+msgstr "Ветеринария"
+
+#: include/default_domains.php:1021
+msgid "Animal diseases"
+msgstr "Болезни животных"
+
+#: include/default_domains.php:1022
+msgid "Castrate animal"
+msgstr "Кастрировать животное"
+
+#: include/default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "Охотиться и рыбачить"
+
+#: include/default_domains.php:1024
+msgid "Hunt"
+msgstr "Охотиться"
+
+#: include/default_domains.php:1025
+msgid "Track an animal"
+msgstr "Выслеживать зверя"
+
+#: include/default_domains.php:1026
+msgid "Trap"
+msgstr "Ловить в ловушку, капкан"
+
+#: include/default_domains.php:1027
+msgid "Hunting birds"
+msgstr "Охота на птиц"
+
+#: include/default_domains.php:1028
+msgid "Beekeeping"
+msgstr "Пчеловодство"
+
+#: include/default_domains.php:1029
+msgid "Fishing"
+msgstr "Рыбная ловля"
+
+#: include/default_domains.php:1030
+msgid "Fish with net"
+msgstr "Ловля рыбы сетью"
+
+#: include/default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "Ловля рыбы на крючок"
+
+#: include/default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "Рыболовная оснастка"
+
+#: include/default_domains.php:1033
+msgid "Things done to animals"
+msgstr "Виды действий, совершаемых по отношению к животным"
+
+#: include/default_domains.php:1034
+msgid "Working with buildings"
+msgstr "Сооружение строений"
+
+#: include/default_domains.php:1035
+msgid "Building"
+msgstr "Здание, сооружение"
+
+#: include/default_domains.php:1036
+msgid "House"
+msgstr "Дом, жилище"
+
+#: include/default_domains.php:1038
+msgid "Land, property"
+msgstr "Земельная собственность, поместье"
+
+#: include/default_domains.php:1039
+msgid "Yard"
+msgstr "Внутренний двор"
+
+#: include/default_domains.php:1040
+msgid "Fence, wall"
+msgstr "Забор, изгородь, стена"
+
+#: include/default_domains.php:1041
+msgid "Parts of a building"
+msgstr "Компоненты здания (сооружения)"
+
+#: include/default_domains.php:1042
+msgid "Wall"
+msgstr "Стена"
+
+#: include/default_domains.php:1043
+msgid "Roof"
+msgstr "Крыша, кровля"
+
+#: include/default_domains.php:1044
+msgid "Floor"
+msgstr "Пол, настил"
+
+#: include/default_domains.php:1045
+msgid "Door"
+msgstr "Дверь"
+
+#: include/default_domains.php:1046
+msgid "Window"
+msgstr "Окно"
+
+#: include/default_domains.php:1047
+msgid "Foundation"
+msgstr "Фундамент, основание"
+
+#: include/default_domains.php:1048
+msgid "Room"
+msgstr "Комната"
+
+#: include/default_domains.php:1049
+msgid "Floor, story"
+msgstr "Пол, перекрытие, ярус"
+
+#: include/default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "Строительное оборудование и эксплуатация (уход)"
+
+#: include/default_domains.php:1052
+msgid "Infrastructure"
+msgstr "Инфраструктура (инженерные коммуникации)"
+
+#: include/default_domains.php:1053
+msgid "Road"
+msgstr "Дорога"
+
+#: include/default_domains.php:1054
+msgid "Boundary"
+msgstr "Граница, межа"
+
+#: include/default_domains.php:1055
+msgid "Occupation"
+msgstr "Занятие; род занятий, профессия"
+
+#: include/default_domains.php:1056
+msgid "Working with cloth"
+msgstr "Работа с тканью"
+
+#: include/default_domains.php:1057
+msgid "Cloth"
+msgstr "Ткань, материя"
+
+#: include/default_domains.php:1058
+msgid "Spinning thread"
+msgstr "Прядение нитей"
+
+#: include/default_domains.php:1059
+msgid "Knitting"
+msgstr "Вязание"
+
+#: include/default_domains.php:1060
+msgid "Weaving cloth"
+msgstr "Изготовление ткани"
+
+#: include/default_domains.php:1061
+msgid "Working with minerals"
+msgstr "Работа с полезными ископаемыми"
+
+#: include/default_domains.php:1062
+msgid "Mining"
+msgstr "Горная промышленность; горные работы; разработка месторождения"
+
+#: include/default_domains.php:1063
+msgid "Smelting"
+msgstr "Плавка металлов"
+
+#: include/default_domains.php:1064
+msgid "Working with metal"
+msgstr "Работа с металлом"
+
+#: include/default_domains.php:1065
+msgid "Working with clay"
+msgstr "Работа с глиной"
+
+#: include/default_domains.php:1066
+msgid "Working with glass"
+msgstr "Работа со стеклом"
+
+#: include/default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "Работа с нефтью и газом"
+
+#: include/default_domains.php:1068
+msgid "Working with stone"
+msgstr "Работа с камнем"
+
+#: include/default_domains.php:1069
+msgid "Working with bricks"
+msgstr "Работа с кирпичами"
+
+#: include/default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "Работа с химикатами"
+
+#: include/default_domains.php:1071
+msgid "Explode"
+msgstr "Взрываться"
+
+#: include/default_domains.php:1072
+msgid "Working with wood"
+msgstr "Работа с древесиной"
+
+#: include/default_domains.php:1073
+msgid "Lumbering"
+msgstr "Лесозаготовка"
+
+#: include/default_domains.php:1074
+msgid "Wood"
+msgstr "Дерево (материал) ; древесина"
+
+#: include/default_domains.php:1075
+msgid "Working with paper"
+msgstr "Работа с бумагой"
+
+#: include/default_domains.php:1076
+msgid "Crafts"
+msgstr "Ремесла; профессии"
+
+#: include/default_domains.php:1077
+msgid "Cordage"
+msgstr "Снасти, такелаж"
+
+#: include/default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr "Плетение корзин, циновок"
+
+#: include/default_domains.php:1079
+msgid "Working with leather"
+msgstr "Работа с кожей"
+
+#: include/default_domains.php:1080
+msgid "Working with bone"
+msgstr "Работа с костью"
+
+#: include/default_domains.php:1081
+msgid "Art"
+msgstr "Искусство"
+
+#: include/default_domains.php:1082
+msgid "Draw, paint"
+msgstr "Рисовать, писать красками"
+
+#: include/default_domains.php:1083
+msgid "Photography"
+msgstr "Фотографирование, фотография"
+
+#: include/default_domains.php:1084
+msgid "Sculpture"
+msgstr "Скульптура"
+
+#: include/default_domains.php:1085
+msgid "Working with land"
+msgstr "Работа с землей"
+
+#: include/default_domains.php:1086
+msgid "Working with water"
+msgstr "Работа с водой"
+
+#: include/default_domains.php:1087
+msgid "Plumber"
+msgstr "Водопроводчик"
+
+#: include/default_domains.php:1088
+msgid "Conveying water"
+msgstr "Подача воды"
+
+#: include/default_domains.php:1089
+msgid "Controlling water"
+msgstr "Регулирование воды"
+
+#: include/default_domains.php:1090
+msgid "Working in the sea"
+msgstr "Работа в море"
+
+#: include/default_domains.php:1091
+msgid "Working with machines"
+msgstr "Работа с машинами, механизмами"
+
+#: include/default_domains.php:1092
+msgid "Working with electricity"
+msgstr "Работа с электричеством"
+
+#: include/default_domains.php:1093
+msgid "Tool"
+msgstr "Инструмент; орудие труда"
+
+#: include/default_domains.php:1094
+msgid "Cutting tool"
+msgstr "Режущий инструмент"
+
+#: include/default_domains.php:1095
+msgid "Poking tool"
+msgstr "Дыропробивной инструмент, инструмент для проделывания (прокалывания) отверстий"
+
+#: include/default_domains.php:1096
+msgid "Digging tool"
+msgstr "Инструменты для копки"
+
+#: include/default_domains.php:1097
+msgid "Pounding tool"
+msgstr "Дробильный инструмент"
+
+#: include/default_domains.php:1098
+msgid "Carrying tool"
+msgstr "Инструмент (приспособление) для переноса (чего-л)"
+
+#: include/default_domains.php:1099
+msgid "Lifting tool"
+msgstr "Подъемные инструменты (приспособления)"
+
+#: include/default_domains.php:1100
+msgid "Fastening tool"
+msgstr "Крепежный инструмент"
+
+#: include/default_domains.php:1101
+msgid "Holding tool"
+msgstr "Удерживающий (фиксирующий) инструмент"
+
+#: include/default_domains.php:1102
+msgid "Container"
+msgstr "Контейнер; сосуд; ёмкость"
+
+#: include/default_domains.php:1103
+msgid "Bag"
+msgstr "Мешок, сумка"
+
+#: include/default_domains.php:1104
+msgid "Sheath"
+msgstr "Ножны (футляр)"
+
+#: include/default_domains.php:1105
+msgid "Parts of tools"
+msgstr "Части инструментов"
+
+#: include/default_domains.php:1106
+msgid "Machine"
+msgstr "Машина, механизм"
+
+#: include/default_domains.php:1107
+msgid "Finance"
+msgstr "Финансы"
+
+#: include/default_domains.php:1108
+msgid "Have wealth"
+msgstr "Иметь богатство, состояние"
+
+#: include/default_domains.php:1109
+msgid "Own, possess"
+msgstr "Владеть, иметь, обладать"
+
+#: include/default_domains.php:1110
+msgid "Rich"
+msgstr "Богатый, состоятельный"
+
+#: include/default_domains.php:1111
+msgid "Poor"
+msgstr "Бедный, неимущий"
+
+#: include/default_domains.php:1112
+msgid "Store wealth"
+msgstr "Сохранять, хранить богатство"
+
+#: include/default_domains.php:1113
+msgid "Possession, property"
+msgstr "Владение, имущество, собственность"
+
+#: include/default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "Накапливать богатство"
+
+#: include/default_domains.php:1115
+msgid "Produce wealth"
+msgstr "Производить богатства (материальные ценности)"
+
+#: include/default_domains.php:1116
+msgid "Make profit"
+msgstr "Получать прибыль, извлекать прибыль"
+
+#: include/default_domains.php:1117
+msgid "Lose wealth"
+msgstr "Терять, утрачивать богатства"
+
+#: include/default_domains.php:1118
+msgid "Frugal"
+msgstr "Бережливый, экономный"
+
+#: include/default_domains.php:1119
+msgid "Greedy"
+msgstr "Жадный"
+
+#: include/default_domains.php:1120
+msgid "Collect"
+msgstr "Собирать, коллекционировать"
+
+#: include/default_domains.php:1121
+msgid "Earn"
+msgstr "Зарабатывать, получать доход"
+
+#: include/default_domains.php:1122
+msgid "Share wealth"
+msgstr "Разделять богатство"
+
+#: include/default_domains.php:1123
+msgid "Give, donate"
+msgstr "Давать, дарить, жертвовать"
+
+#: include/default_domains.php:1124
+msgid "Generous"
+msgstr "Щедрый, великодушный"
+
+#: include/default_domains.php:1125
+msgid "Stingy"
+msgstr "Скупой"
+
+#: include/default_domains.php:1126
+msgid "Beg"
+msgstr "Просить (подаяния)"
+
+#: include/default_domains.php:1127
+msgid "Financial transaction"
+msgstr "Финансовые операции"
+
+#: include/default_domains.php:1128
+msgid "Buy"
+msgstr "Покупать"
+
+#: include/default_domains.php:1129
+msgid "Sell"
+msgstr "Продавать"
+
+#: include/default_domains.php:1130
+msgid "Price"
+msgstr "Цена, стоимость"
+
+#: include/default_domains.php:1131
+msgid "Expensive"
+msgstr "Дорогой, дорогостоящий"
+
+#: include/default_domains.php:1132
+msgid "Cheap"
+msgstr "Дешевый, недорогой"
+
+#: include/default_domains.php:1133
+msgid "Free of charge"
+msgstr "Бесплатный"
+
+#: include/default_domains.php:1134
+msgid "Bargain"
+msgstr "Торговаться"
+
+#: include/default_domains.php:1135
+msgid "Pay"
+msgstr "Платить"
+
+#: include/default_domains.php:1136
+msgid "Hire, rent"
+msgstr "Нанимать, арендовать"
+
+#: include/default_domains.php:1137
+msgid "Spend"
+msgstr "Тратить, расходовать"
+
+#: include/default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "Магазин, рынок"
+
+#: include/default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "Обмен, торговля"
+
+#: include/default_domains.php:1140
+msgid "Borrow"
+msgstr "Занимать, брать на время"
+
+#: include/default_domains.php:1141
+msgid "Lend"
+msgstr "Одалживать, давать взаймы"
+
+#: include/default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "Давать залог, обязательство"
+
+#: include/default_domains.php:1143
+msgid "Owe"
+msgstr "Быть должным (кому-л.) ; быть в долгу (перед кем-л.)"
+
+#: include/default_domains.php:1144
+msgid "Repay debt"
+msgstr "Возвращать долг"
+
+#: include/default_domains.php:1145
+msgid "Credit"
+msgstr "Кредит"
+
+#: include/default_domains.php:1146
+msgid "Money"
+msgstr "Деньги"
+
+#: include/default_domains.php:1147
+msgid "Monetary units"
+msgstr "Денежные единицы"
+
+#: include/default_domains.php:1148
+msgid "Accounting"
+msgstr "Бухгалтерское дело"
+
+#: include/default_domains.php:1149
+msgid "Tax"
+msgstr "Налог"
+
+#: include/default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "Нечестная финансовая практика"
+
+#: include/default_domains.php:1151
+msgid "Steal"
+msgstr "Воровать, красть"
+
+#: include/default_domains.php:1152
+msgid "Cheat"
+msgstr "Жульничать, мошенничать"
+
+#: include/default_domains.php:1153
+msgid "Extort money"
+msgstr "Вымогать деньги"
+
+#: include/default_domains.php:1154
+msgid "Take by force"
+msgstr "Брать силой"
+
+#: include/default_domains.php:1155
+msgid "Bribe"
+msgstr "Подкупать; давать взятку"
+
+#: include/default_domains.php:1156
+msgid "Smuggle"
+msgstr "Заниматься контрабандой, провозить контрабандой"
+
+#: include/default_domains.php:1157
+msgid "Business organization"
+msgstr "Организация бизнеса"
+
+#: include/default_domains.php:1158
+msgid "Management"
+msgstr "Менеджмент, руководство"
+
+#: include/default_domains.php:1159
+msgid "Work for someone"
+msgstr "Работать для кого-либо"
+
+#: include/default_domains.php:1160
+msgid "Marketing"
+msgstr "Сбыт, маркетинг"
+
+#: include/default_domains.php:1161
+msgid "Commerce"
+msgstr "Торговля (оптовая); коммерция"
+
+#: include/default_domains.php:1162
+msgid "Economics"
+msgstr "Экономика"
+
+#: include/default_domains.php:1163
+msgid "Insurance"
+msgstr "Страхование"
+
+#: include/default_domains.php:1164 webonary/Webonary_SemanticDomains.php:135
+msgid "Physical actions"
+msgstr "Физическая деятельность, физическая активность"
+
+#: include/default_domains.php:1165
+msgid "Posture"
+msgstr "Поза, положение (фигуры)"
+
+#: include/default_domains.php:1166
+msgid "Stand"
+msgstr "Стоять, вставать"
+
+#: include/default_domains.php:1167
+msgid "Sit"
+msgstr "Сидеть, садиться"
+
+#: include/default_domains.php:1168
+msgid "Lie down"
+msgstr "Ложиться"
+
+#: include/default_domains.php:1169
+msgid "Kneel"
+msgstr "Становиться на колени, преклонять колени"
+
+#: include/default_domains.php:1170
+msgid "Bow"
+msgstr "Сгибаться, наклоняться, кланяться"
+
+#: include/default_domains.php:1171
+msgid "Lean"
+msgstr "Наклоняться, прислоняться"
+
+#: include/default_domains.php:1172
+msgid "Straight posture"
+msgstr "Прямая (неизогнутая) поза"
+
+#: include/default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "Расслабленная поза"
+
+#: include/default_domains.php:1174
+msgid "Bend down"
+msgstr "Нагнуться, наклониться"
+
+#: include/default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "Двигать (шевелить) частью тела"
+
+#: include/default_domains.php:1176
+msgid "Move"
+msgstr "Двигаться, передвигаться, перемещаться"
+
+#: include/default_domains.php:1177
+msgid "Manner of movement"
+msgstr "Способ передвижения"
+
+#: include/default_domains.php:1178
+msgid "Walk"
+msgstr "Идти, ходить"
+
+#: include/default_domains.php:1179
+msgid "Run"
+msgstr "Бежать, бегать"
+
+#: include/default_domains.php:1180
+msgid "Crawl"
+msgstr "Ползать"
+
+#: include/default_domains.php:1181
+msgid "Jump"
+msgstr "Прыгать, скакать"
+
+#: include/default_domains.php:1182
+msgid "Move quickly"
+msgstr "Двигаться быстро"
+
+#: include/default_domains.php:1183
+msgid "Move slowly"
+msgstr "Двигаться медленно"
+
+#: include/default_domains.php:1184
+msgid "Wander"
+msgstr "Бродить, прохаживаться, прогуливаться"
+
+#: include/default_domains.php:1185
+msgid "Graceful"
+msgstr "Элегантный, грациозный, изящный"
+
+#: include/default_domains.php:1186
+msgid "Clumsy"
+msgstr "Неповоротливый, неуклюжий"
+
+#: include/default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "Ходить с трудом"
+
+#: include/default_domains.php:1188
+msgid "Slip, slide"
+msgstr "Скользить, скольжение"
+
+#: include/default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "Устойчивый, неустойчивый"
+
+#: include/default_domains.php:1190
+msgid "Balance"
+msgstr "Быть в равновесии, сохранять равновесие"
+
+#: include/default_domains.php:1191
+msgid "Move noisily"
+msgstr "Передвигаться шумно"
+
+#: include/default_domains.php:1192
+msgid "Move in a direction"
+msgstr "Двигаться в определенном направлении"
+
+#: include/default_domains.php:1193
+msgid "Move forward"
+msgstr "Двигаться вперед"
+
+#: include/default_domains.php:1194
+msgid "Move back"
+msgstr "Двигаться назад"
+
+#: include/default_domains.php:1195
+msgid "Move sideways"
+msgstr "Двигаться в сторону"
+
+#: include/default_domains.php:1196
+msgid "Move up"
+msgstr "Двигаться вверх"
+
+#: include/default_domains.php:1197
+msgid "Move down"
+msgstr "Двигаться вниз"
+
+#: include/default_domains.php:1198
+msgid "Fall"
+msgstr "Падать (с высоты)"
+
+#: include/default_domains.php:1199
+msgid "Turn"
+msgstr "Поворачивать(ся)"
+
+#: include/default_domains.php:1200
+msgid "Move in a circle"
+msgstr "Движение по кругу (по окружности)"
+
+#: include/default_domains.php:1201
+msgid "Move back and forth"
+msgstr "Движение вперед и назад"
+
+#: include/default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "Двигаться прямо без поворотов"
+
+#: include/default_domains.php:1203
+msgid "Move toward something"
+msgstr "Двигаться по направлению к чему-либо"
+
+#: include/default_domains.php:1204
+msgid "Move away"
+msgstr "Двигаться прочь"
+
+#: include/default_domains.php:1205
+msgid "Go"
+msgstr "Уходить, уезжать"
+
+#: include/default_domains.php:1206
+msgid "Come"
+msgstr "Приходить"
+
+#: include/default_domains.php:1207
+msgid "Leave"
+msgstr "Покидать, оставлять"
+
+#: include/default_domains.php:1208
+msgid "Arrive"
+msgstr "Прибывать, приезжать"
+
+#: include/default_domains.php:1209
+msgid "Move in"
+msgstr "Двигаться, перемещаться внутрь (чего-л)"
+
+#: include/default_domains.php:1210
+msgid "Move out"
+msgstr "Двигаться, перемещаться из чего-либо"
+
+#: include/default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "Двигаться вдоль (мимо), над (поверх), через (сквозь)"
+
+#: include/default_domains.php:1212
+msgid "Return"
+msgstr "Возвращаться, идти обратно"
+
+#: include/default_domains.php:1213
+msgid "Travel"
+msgstr "Путешествовать, странствовать"
+
+#: include/default_domains.php:1214
+msgid "Travel by land"
+msgstr "Путешествие по суше"
+
+#: include/default_domains.php:1215
+msgid "Vehicle"
+msgstr "Транспортное средство"
+
+#: include/default_domains.php:1216
+msgid "Railroad"
+msgstr "Рельсовая дорога; железная дорога"
+
+#: include/default_domains.php:1217
+msgid "Travel by water"
+msgstr "Путешествие по воде"
+
+#: include/default_domains.php:1218
+msgid "Boat"
+msgstr "Лодка"
+
+#: include/default_domains.php:1219
+msgid "Swim"
+msgstr "Плавать"
+
+#: include/default_domains.php:1220
+msgid "Dive"
+msgstr "Нырять"
+
+#: include/default_domains.php:1221
+msgid "Fly"
+msgstr "Летать"
+
+#: include/default_domains.php:1222
+msgid "Travel in space"
+msgstr "Путешествие в космическом пространстве"
+
+#: include/default_domains.php:1223
+msgid "Move to a new house"
+msgstr "Переезжать в новый дом"
+
+#: include/default_domains.php:1224
+msgid "Way, route"
+msgstr "Дорога, путь"
+
+#: include/default_domains.php:1225
+msgid "Lose your way"
+msgstr "Потерять свой путь"
+
+#: include/default_domains.php:1226
+msgid "Map"
+msgstr "Карта (географическая)"
+
+#: include/default_domains.php:1227
+msgid "Accompany"
+msgstr "Сопровождать, следовать вместе"
+
+#: include/default_domains.php:1228
+msgid "Go first"
+msgstr "Идти первым"
+
+#: include/default_domains.php:1229
+msgid "Follow"
+msgstr "Следовать, идти за"
+
+#: include/default_domains.php:1230
+msgid "Guide"
+msgstr "Вести, направлять; быть чьим-л. проводником"
+
+#: include/default_domains.php:1231
+msgid "Move together"
+msgstr "Двигаться вместе"
+
+#: include/default_domains.php:1232
+msgid "Pursue"
+msgstr "Преследовать (кого-л.) ; гнаться, бежать (за кем-л.)"
+
+#: include/default_domains.php:1233
+msgid "Catch, capture"
+msgstr "Ловить; поймать; схватить"
+
+#: include/default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "Предотвращать движение"
+
+#: include/default_domains.php:1235
+msgid "Escape"
+msgstr "Бежать от, избегать, избавляться (спасаться)"
+
+#: include/default_domains.php:1236
+msgid "Set free"
+msgstr "Освобождать"
+
+#: include/default_domains.php:1237
+msgid "Not moving"
+msgstr "Не двигаться"
+
+#: include/default_domains.php:1238
+msgid "Stop moving"
+msgstr "Прекращать движение"
+
+#: include/default_domains.php:1239
+msgid "Stay, remain"
+msgstr "Находиться, оставаться (в каком-л. положении), пребывать"
+
+#: include/default_domains.php:1240
+msgid "Wait"
+msgstr "Ждать, выжидать"
+
+#: include/default_domains.php:1241
+msgid "Send someone"
+msgstr "Посылать, отправлять кого-либо"
+
+#: include/default_domains.php:1242
+msgid "Move something"
+msgstr "Перемещать что-либо"
+
+#: include/default_domains.php:1243
+msgid "Carry"
+msgstr "Переносить, перевозить"
+
+#: include/default_domains.php:1244
+msgid "Throw"
+msgstr "Бросать, кидать"
+
+#: include/default_domains.php:1245
+msgid "Catch"
+msgstr "Ловить; поймать; схватить"
+
+#: include/default_domains.php:1246
+msgid "Shake"
+msgstr "Трясти; встряхивать; сотрясать"
+
+#: include/default_domains.php:1247
+msgid "Knock over"
+msgstr "Опрокинуть, свалить"
+
+#: include/default_domains.php:1248
+msgid "Set upright"
+msgstr "Ставить в вертикальное положение"
+
+#: include/default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "Перемещать что-либо в каком-то направлении"
+
+#: include/default_domains.php:1250
+msgid "Put in front"
+msgstr "Ставить (размещать) впереди (перед чем-л.)"
+
+#: include/default_domains.php:1251
+msgid "Put in back"
+msgstr "Ставить (размещать) сзади (за чем-л.)"
+
+#: include/default_domains.php:1252
+msgid "Put aside"
+msgstr "Отложить в сторону, разместить в стороне"
+
+#: include/default_domains.php:1253
+msgid "Lift"
+msgstr "Поднимать, повышать"
+
+#: include/default_domains.php:1254
+msgid "Hang"
+msgstr "Вешать, подвешивать"
+
+#: include/default_domains.php:1255
+msgid "Lower something"
+msgstr "Спускать, опускать (что-л.)"
+
+#: include/default_domains.php:1256
+msgid "Put in"
+msgstr "Помещать внутри (внутрь чего-л.)"
+
+#: include/default_domains.php:1257
+msgid "Take something out of something"
+msgstr "Вынимать, удалять из (чего-л.)"
+
+#: include/default_domains.php:1258
+msgid "Pull"
+msgstr "Тянуть, тащить"
+
+#: include/default_domains.php:1259
+msgid "Push"
+msgstr "Толкать"
+
+#: include/default_domains.php:1260
+msgid "Take somewhere"
+msgstr "Доставлять (брать с собой) куда-либо"
+
+#: include/default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "Брать (забирать) что-либо откуда-нибудь"
+
+#: include/default_domains.php:1262
+msgid "Return something"
+msgstr "Возвращать что-либо"
+
+#: include/default_domains.php:1263
+msgid "Send"
+msgstr "Посылать, отправлять"
+
+#: include/default_domains.php:1264
+msgid "Chase away"
+msgstr "Прогнать, развеять (прочь)"
+
+#: include/default_domains.php:1265
+msgid "Drive along"
+msgstr "Гнать, перемещать (что-л.)"
+
+#: include/default_domains.php:1266
+msgid "Handle something"
+msgstr "Обходиться, обращаться; управляться, справляться (с чем-л.)"
+
+#: include/default_domains.php:1267
+msgid "Touch"
+msgstr "(При)касаться, трогать"
+
+#: include/default_domains.php:1268
+msgid "Pick up"
+msgstr "Поднимать, подбирать"
+
+#: include/default_domains.php:1269
+msgid "Put down"
+msgstr "Класть, положить"
+
+#: include/default_domains.php:1270
+msgid "Hold"
+msgstr "Держать, удерживать"
+
+#: include/default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "Действия руки"
+
+#: include/default_domains.php:1272
+msgid "Support"
+msgstr "Поддерживать"
+
+#: include/default_domains.php:1273
+msgid "Extend"
+msgstr "Вытягивать (удлинять), растягивать"
+
+#: include/default_domains.php:1274
+msgid "Turn something"
+msgstr "Поворачивать что-либо"
+
+#: include/default_domains.php:1275
+msgid "Open"
+msgstr "Открывать, раскрывать"
+
+#: include/default_domains.php:1276
+msgid "Shut, close"
+msgstr "Закрывать, запирать"
+
+#: include/default_domains.php:1277
+msgid "Block, dam up"
+msgstr "Преграждать, блокировать, перегораживать"
+
+#: include/default_domains.php:1278
+msgid "Limit"
+msgstr "Ограничивать, ставить предел"
+
+#: include/default_domains.php:1279
+msgid "Cover"
+msgstr "Накрывать, покрывать"
+
+#: include/default_domains.php:1280
+msgid "Uncover"
+msgstr "Снимать покров, раскрывать"
+
+#: include/default_domains.php:1281
+msgid "Wrap"
+msgstr "Заворачивать, обертывать"
+
+#: include/default_domains.php:1282
+msgid "Spread, smear"
+msgstr "Распространять, расстилать, развертывать, намазывать, размазывать"
+
+#: include/default_domains.php:1283
+msgid "Transport"
+msgstr "Перевозить, транспортировать"
+
+#: include/default_domains.php:1284
+msgid "Have, be with"
+msgstr "Иметь, обладать"
+
+#: include/default_domains.php:1285
+msgid "Give, hand to"
+msgstr "Давать, отдать"
+
+#: include/default_domains.php:1286
+msgid "Receive"
+msgstr "Получить"
+
+#: include/default_domains.php:1287
+msgid "Get"
+msgstr "Получить (в собственность), добыть, приобрести; стать обладателем"
+
+#: include/default_domains.php:1288
+msgid "Distribute"
+msgstr "Распределять, раздавать"
+
+#: include/default_domains.php:1289
+msgid "Keep something"
+msgstr "Хранить, сохранять что-либо"
+
+#: include/default_domains.php:1290
+msgid "Leave something"
+msgstr "Оставлять что-либо"
+
+#: include/default_domains.php:1291
+msgid "Throw away"
+msgstr "Выкидывать, выбрасывать"
+
+#: include/default_domains.php:1292
+msgid "Not have"
+msgstr "Не иметь"
+
+#: include/default_domains.php:1293
+msgid "Arrange"
+msgstr "Приводить в порядок; расставлять"
+
+#: include/default_domains.php:1294
+msgid "Gather"
+msgstr "Собирать"
+
+#: include/default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "Отделять, разделять; разбрасывать"
+
+#: include/default_domains.php:1296
+msgid "Include"
+msgstr "Присоединять, включать (в себя), содержать в себе"
+
+#: include/default_domains.php:1297
+msgid "Special"
+msgstr "Особый, особенный, специальный"
+
+#: include/default_domains.php:1298
+msgid "Join, attach"
+msgstr "Соединять, прикреплять"
+
+#: include/default_domains.php:1299
+msgid "Link, connect"
+msgstr "Смыкать, сцеплять, соединять, подключать"
+
+#: include/default_domains.php:1300
+msgid "Stick together"
+msgstr "Склеивать вместе"
+
+#: include/default_domains.php:1301
+msgid "Add to something"
+msgstr "Прибавлять, присоединять к чему-либо"
+
+#: include/default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "Удалять, устранять, разбирать (на части)"
+
+#: include/default_domains.php:1303
+msgid "Mix"
+msgstr "Смешивать, перемешивать"
+
+#: include/default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "Чистый; беспримесный, несмешанный"
+
+#: include/default_domains.php:1305
+msgid "Tie"
+msgstr "Связывать, привязывать"
+
+#: include/default_domains.php:1306
+msgid "Rope, string"
+msgstr "Верёвка; завязка, шнурок"
+
+#: include/default_domains.php:1307
+msgid "Tangle"
+msgstr "Спутанный (клубок); запутывать"
+
+#: include/default_domains.php:1308
+msgid "Organize"
+msgstr "Организовывать, устраивать"
+
+#: include/default_domains.php:1309
+msgid "Disorganized"
+msgstr "Неорганизованный"
+
+#: include/default_domains.php:1310
+msgid "Substitute"
+msgstr "Заменять, использовать вместо чего-л."
+
+#: include/default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "Сложное движение предметов"
+
+#: include/default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "Несложный, простой; сложный, трудный"
+
+#: include/default_domains.php:1313
+msgid "Put"
+msgstr "Класть, ставить"
+
+#: include/default_domains.php:1314
+msgid "Load, pile"
+msgstr "Грузить, складывать, сваливать в кучу"
+
+#: include/default_domains.php:1315
+msgid "Fill, cover"
+msgstr "Наполнять; накрывать, покрывать"
+
+#: include/default_domains.php:1316
+msgid "Hide"
+msgstr "Прятать(ся), скрывать(ся)"
+
+#: include/default_domains.php:1317 include/searchform_func.php:281
+#: webonary/Webonary_Configuration.php:55
+msgid "Search"
+msgstr "поиск"
+
+#: include/default_domains.php:1318
+msgid "Find"
+msgstr "Находить, обнаруживать"
+
+#: include/default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "Потерять; положить, поставить не на то место"
+
+#: include/default_domains.php:1320
+msgid "Physical impact"
+msgstr "Физическое воздействие"
+
+#: include/default_domains.php:1321
+msgid "Hit"
+msgstr "Ударять(ся) (по чему-л.)"
+
+#: include/default_domains.php:1322
+msgid "Aim at a target"
+msgstr "Прицелиться, метиться в цель"
+
+#: include/default_domains.php:1323
+msgid "Kick"
+msgstr "Ударять ногой; пинать"
+
+#: include/default_domains.php:1324
+msgid "Press"
+msgstr "Жать, давить"
+
+#: include/default_domains.php:1325
+msgid "Rub"
+msgstr "Тереть"
+
+#: include/default_domains.php:1326
+msgid "Grind"
+msgstr "Зачищать, шлифовать, тереть со скрипом и скрежетом"
+
+#: include/default_domains.php:1327
+msgid "Mark"
+msgstr "Ставить знак (метку)"
+
+#: include/default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "Делить на части"
+
+#: include/default_domains.php:1329
+msgid "Break"
+msgstr "Ломать, разбивать (на части)"
+
+#: include/default_domains.php:1330
+msgid "Crack"
+msgstr "Трескаться, растрескиваться"
+
+#: include/default_domains.php:1331
+msgid "Cut"
+msgstr "Резать"
+
+#: include/default_domains.php:1332
+msgid "Tear, rip"
+msgstr "Рвать, разрывать (одним быстрым движением))"
+
+#: include/default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "Делать дыру, отверстие"
+
+#: include/default_domains.php:1334
+msgid "Dig"
+msgstr "Копать, рыть"
+
+#: include/default_domains.php:1335
+msgid "Break, wear out"
+msgstr "Разрушаться, изнашиваться"
+
+#: include/default_domains.php:1336
+msgid "Damage"
+msgstr "Повреждать, портить; наносить ущерб"
+
+#: include/default_domains.php:1337
+msgid "Tear down"
+msgstr "Сносить (сооружение)"
+
+#: include/default_domains.php:1338
+msgid "Destroy"
+msgstr "Разрушать, рушить"
+
+#: include/default_domains.php:1339
+msgid "Repair"
+msgstr "Чинить, ремонтировать"
+
+#: include/default_domains.php:1340 webonary/Webonary_SemanticDomains.php:136
+msgid "States"
+msgstr "Состояние, положение"
+
+#: include/default_domains.php:1341
+msgid "Quantity"
+msgstr "Количество"
+
+#: include/default_domains.php:1342
+msgid "Number"
+msgstr "Число"
+
+#: include/default_domains.php:1344
+msgid "One"
+msgstr "Один (число)"
+
+#: include/default_domains.php:1345
+msgid "Two"
+msgstr "Два (число)"
+
+#: include/default_domains.php:1347
+msgid "Number of times"
+msgstr "Количество раз"
+
+#: include/default_domains.php:1348
+msgid "Multiples"
+msgstr "Кратные числа"
+
+#: include/default_domains.php:1349
+msgid "Numbered group"
+msgstr "Нумерованная группа"
+
+#: include/default_domains.php:1350
+msgid "Fraction"
+msgstr "Дробное число; часть, дробь"
+
+#: include/default_domains.php:1351
+msgid "Number series"
+msgstr "Последовательность чисел"
+
+#: include/default_domains.php:1352
+msgid "Count"
+msgstr "Считать, подсчитывать"
+
+#: include/default_domains.php:1353
+msgid "Mathematics"
+msgstr "Математика"
+
+#: include/default_domains.php:1354
+msgid "Add numbers"
+msgstr "Сложение чисел"
+
+#: include/default_domains.php:1355
+msgid "Subtract numbers"
+msgstr "Вычитание чисел"
+
+#: include/default_domains.php:1356
+msgid "Multiply numbers"
+msgstr "Умножение чисел"
+
+#: include/default_domains.php:1357
+msgid "Divide numbers"
+msgstr "Деление чисел"
+
+#: include/default_domains.php:1358
+msgid "Plural"
+msgstr "Множественное число"
+
+#: include/default_domains.php:1359
+msgid "Many, much"
+msgstr "Многие, множество, много"
+
+#: include/default_domains.php:1360
+msgid "Few, little"
+msgstr "Мало, немного, небольшой"
+
+#: include/default_domains.php:1361
+msgid "Group of things"
+msgstr "Группа предметов"
+
+#: include/default_domains.php:1362
+msgid "More"
+msgstr "Больший, более, больше"
+
+#: include/default_domains.php:1363
+msgid "Less"
+msgstr "Меньший, менее, меньше"
+
+#: include/default_domains.php:1364
+msgid "Increase"
+msgstr "Возрастать, увеличиваться"
+
+#: include/default_domains.php:1365
+msgid "Decrease"
+msgstr "Уменьшаться, убывать, сокращаться"
+
+#: include/default_domains.php:1366
+msgid "All"
+msgstr "Весь, вся, всё; всякий, любой; целый"
+
+#: include/default_domains.php:1367
+msgid "Some"
+msgstr "Некоторый; несколько"
+
+#: include/default_domains.php:1368
+msgid "None, nothing"
+msgstr "Ни один из (общего числа), ничего, ничто"
+
+#: include/default_domains.php:1369
+msgid "Both"
+msgstr "Оба, обе"
+
+#: include/default_domains.php:1370
+msgid "Most, almost all"
+msgstr "Большинство (большая часть), почти все"
+
+#: include/default_domains.php:1371
+msgid "Most, least"
+msgstr "Самый большой, наибольший; самый маленький, наименьший"
+
+#: include/default_domains.php:1372
+msgid "Almost"
+msgstr "Почти; едва не"
+
+#: include/default_domains.php:1373
+msgid "Only"
+msgstr "Только, единственно"
+
+#: include/default_domains.php:1374
+msgid "Exact"
+msgstr "Точный, верный"
+
+#: include/default_domains.php:1375
+msgid "Approximate"
+msgstr "Приблизительный, примерный"
+
+#: include/default_domains.php:1376
+msgid "Average"
+msgstr "Средний, средняя величина"
+
+#: include/default_domains.php:1377
+msgid "Whole, complete"
+msgstr "Весь, целый. полный"
+
+#: include/default_domains.php:1378
+msgid "Part"
+msgstr "Часть, доля"
+
+#: include/default_domains.php:1379
+msgid "Piece"
+msgstr "Кусок, часть"
+
+#: include/default_domains.php:1380
+msgid "Enough"
+msgstr "Достаточный, достаточно"
+
+#: include/default_domains.php:1381
+msgid "Extra"
+msgstr "Добавочный, дополнительный; дополнительно"
+
+#: include/default_domains.php:1382
+msgid "Lack"
+msgstr "Недостаток, нужда; отсутствие (чего-л.)"
+
+#: include/default_domains.php:1383
+msgid "Need"
+msgstr "Необходимость, надобность, нужда"
+
+#: include/default_domains.php:1384
+msgid "Remain, remainder"
+msgstr "Оставаться, остаток"
+
+#: include/default_domains.php:1385
+msgid "Full"
+msgstr "Полный"
+
+#: include/default_domains.php:1386
+msgid "Empty"
+msgstr "Пустой, порожний"
+
+#: include/default_domains.php:1387
+msgid "Big"
+msgstr "Большой"
+
+#: include/default_domains.php:1388
+msgid "Small"
+msgstr "Маленький"
+
+#: include/default_domains.php:1389
+msgid "Long"
+msgstr "Длинный"
+
+#: include/default_domains.php:1390
+msgid "Short, not long"
+msgstr "Короткий, недлинный"
+
+#: include/default_domains.php:1391
+msgid "Tall"
+msgstr "Высокий, высокорослый"
+
+#: include/default_domains.php:1392
+msgid "Short, not tall"
+msgstr "Короткий, невысокий"
+
+#: include/default_domains.php:1393
+msgid "Thick"
+msgstr "Толстый, полный"
+
+#: include/default_domains.php:1394
+msgid "Thin thing"
+msgstr "Тонкий предмет"
+
+#: include/default_domains.php:1395
+msgid "Fat person"
+msgstr "Толстый человек"
+
+#: include/default_domains.php:1396
+msgid "Thin person"
+msgstr "Тонкий человек"
+
+#: include/default_domains.php:1397
+msgid "Wide"
+msgstr "Широкий"
+
+#: include/default_domains.php:1398
+msgid "Narrow"
+msgstr "Узкий"
+
+#: include/default_domains.php:1399
+msgid "Big area"
+msgstr "Большая территория (пространство)"
+
+#: include/default_domains.php:1400
+msgid "Big container, volume"
+msgstr "Большая емкость, объем"
+
+#: include/default_domains.php:1401
+msgid "Distance"
+msgstr "Расстояние, дистанция"
+
+#: include/default_domains.php:1402
+msgid "Far"
+msgstr "Далекий, дальний"
+
+#: include/default_domains.php:1403
+msgid "Near"
+msgstr "Ближний, близлежащий, близко расположенный"
+
+#: include/default_domains.php:1404
+msgid "High"
+msgstr "Высокий, высоко"
+
+#: include/default_domains.php:1405
+msgid "Low"
+msgstr "Низкий, низко"
+
+#: include/default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "Глубокий, мелкий"
+
+#: include/default_domains.php:1407
+msgid "Fit, size"
+msgstr "Быть впору, быть в самый раз, подходить (к чему-л.); размер"
+
+#: include/default_domains.php:1408
+msgid "Tight"
+msgstr "Туго натянутый, плотно прилегающий, тесный"
+
+#: include/default_domains.php:1409
+msgid "Loose"
+msgstr "Свободный, просторный"
+
+#: include/default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "Вклинивать, втыкать, воткнутый"
+
+#: include/default_domains.php:1411
+msgid "Measure"
+msgstr "Мерить, измерять"
+
+#: include/default_domains.php:1412
+msgid "Weigh"
+msgstr "Взвешивать"
+
+#: include/default_domains.php:1413
+msgid "Heavy"
+msgstr "Тяжелый"
+
+#: include/default_domains.php:1414
+msgid "Light in weight"
+msgstr "Легкий по весу"
+
+#: include/default_domains.php:1415
+msgid "Quality"
+msgstr "Качество, достоинство"
+
+#: include/default_domains.php:1416
+msgid "Shape"
+msgstr "Форма, очертание"
+
+#: include/default_domains.php:1417
+msgid "Point, dot"
+msgstr "Точка, пятнышко, отметка"
+
+#: include/default_domains.php:1418
+msgid "Line"
+msgstr "Линия, черта"
+
+#: include/default_domains.php:1419
+msgid "Straight"
+msgstr "Прямой"
+
+#: include/default_domains.php:1420
+msgid "Flat"
+msgstr "Ровный, плоский"
+
+#: include/default_domains.php:1421
+msgid "Horizontal"
+msgstr "Горизонтальный"
+
+#: include/default_domains.php:1422
+msgid "Vertical"
+msgstr "Вертикальный"
+
+#: include/default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "Наклон, склон; наклонный, покатый"
+
+#: include/default_domains.php:1424
+msgid "Bend"
+msgstr "Сгибать, гнуть"
+
+#: include/default_domains.php:1425
+msgid "Roll up"
+msgstr "Завертывать, закручивать"
+
+#: include/default_domains.php:1426
+msgid "Twist, wring"
+msgstr "Скручивать, сплетать"
+
+#: include/default_domains.php:1427
+msgid "Fold"
+msgstr "Сгибать, складывать, сворачивать"
+
+#: include/default_domains.php:1428
+msgid "Round"
+msgstr "Круглый, шарообразный"
+
+#: include/default_domains.php:1429
+msgid "Concave"
+msgstr "Вогнутый, впалый"
+
+#: include/default_domains.php:1430
+msgid "Convex"
+msgstr "Выпуклый"
+
+#: include/default_domains.php:1431
+msgid "Hollow"
+msgstr "Пустой, полый"
+
+#: include/default_domains.php:1432
+msgid "Square"
+msgstr "Квадратный"
+
+#: include/default_domains.php:1433
+msgid "Pattern, design"
+msgstr "Образец, модель, эскиз"
+
+#: include/default_domains.php:1434
+msgid "Symmetrical"
+msgstr "Симметричный"
+
+#: include/default_domains.php:1435
+msgid "Stretch"
+msgstr "Растягивание, удлинение"
+
+#: include/default_domains.php:1436
+msgid "Texture"
+msgstr "Структура, фактура"
+
+#: include/default_domains.php:1437
+msgid "Smooth"
+msgstr "Гладкий, ровный"
+
+#: include/default_domains.php:1438
+msgid "Rough"
+msgstr "Грубый, шероховатый"
+
+#: include/default_domains.php:1439
+msgid "Sharp"
+msgstr "Острый, остроконечный"
+
+#: include/default_domains.php:1440
+msgid "Pointed"
+msgstr "Остроконечный, заостренный"
+
+#: include/default_domains.php:1441
+msgid "Blunt"
+msgstr "Тупой, тупоконечный"
+
+#: include/default_domains.php:1442
+msgid "Furrow"
+msgstr "Борозда, колея, жёлоб"
+
+#: include/default_domains.php:1443
+msgid "Light"
+msgstr "Свет, освещение"
+
+#: include/default_domains.php:1444
+msgid "Shine"
+msgstr "Светить"
+
+#: include/default_domains.php:1445
+msgid "Light source"
+msgstr "Источник света"
+
+#: include/default_domains.php:1446
+msgid "Bright"
+msgstr "Яркий, светящийся"
+
+#: include/default_domains.php:1447
+msgid "Dark"
+msgstr "Темный, лишенный света"
+
+#: include/default_domains.php:1448
+msgid "Shadow"
+msgstr "Тень"
+
+#: include/default_domains.php:1449
+msgid "Color"
+msgstr "Цвет"
+
+#: include/default_domains.php:1450
+msgid "White"
+msgstr "Белый"
+
+#: include/default_domains.php:1451
+msgid "Black"
+msgstr "Черный"
+
+#: include/default_domains.php:1452
+msgid "Gray"
+msgstr "Серый"
+
+#: include/default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "Спектр цветов"
+
+#: include/default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "Цвет животных, расцветка; окраска"
+
+#: include/default_domains.php:1455
+msgid "Change color"
+msgstr "Изменять цвет"
+
+#: include/default_domains.php:1456
+msgid "Multicolored"
+msgstr "Многоцветный, разноцветный"
+
+#: include/default_domains.php:1457
+msgid "Shiny"
+msgstr "Освещенный (солнцем), блестящий"
+
+#: include/default_domains.php:1458
+msgid "Hot"
+msgstr "Горячий, жаркий"
+
+#: include/default_domains.php:1459
+msgid "Cold"
+msgstr "Холодный"
+
+#: include/default_domains.php:1460
+msgid "Type, kind"
+msgstr "Тип, вид, сорт"
+
+#: include/default_domains.php:1461
+msgid "Nature, character"
+msgstr "Природа, характер"
+
+#: include/default_domains.php:1462
+msgid "Compare"
+msgstr "Сравнивать, сличать"
+
+#: include/default_domains.php:1463
+msgid "Same"
+msgstr "Тот (же) самый; этот же; один и тот же"
+
+#: include/default_domains.php:1464
+msgid "Like, similar"
+msgstr "Аналогичный, подобный, похожий"
+
+#: include/default_domains.php:1465
+msgid "Different"
+msgstr "Непохожий, другой"
+
+#: include/default_domains.php:1466
+msgid "Other"
+msgstr "Другой, иной"
+
+#: include/default_domains.php:1467
+msgid "Various"
+msgstr "Различный, разнообразный"
+
+#: include/default_domains.php:1468
+msgid "Opposite"
+msgstr "Противоположный (по природе, характеру, свойствам)"
+
+#: include/default_domains.php:1469
+msgid "Common"
+msgstr "Общий, общепринятый"
+
+#: include/default_domains.php:1470
+msgid "Usual"
+msgstr "Обычный, обыкновенный"
+
+#: include/default_domains.php:1471
+msgid "Unusual"
+msgstr "Необыкновенный, необычный"
+
+#: include/default_domains.php:1472
+msgid "Unique"
+msgstr "Уникальный, единственный в своём роде, исключительный"
+
+#: include/default_domains.php:1473
+msgid "Strange"
+msgstr "Странный, чуждый; необыкновенный"
+
+#: include/default_domains.php:1474
+msgid "Pattern, model"
+msgstr "Образец, модель"
+
+#: include/default_domains.php:1475
+msgid "Imitate"
+msgstr "Подражать, копировать"
+
+#: include/default_domains.php:1476
+msgid "Copy"
+msgstr "Копировать"
+
+#: include/default_domains.php:1477
+msgid "Made of, material"
+msgstr "Сделанный из, материал (вещество)"
+
+#: include/default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "Прочный, крепкий; ломкий (хрупкий)"
+
+#: include/default_domains.php:1479
+msgid "Hard, firm"
+msgstr "Твердый, жесткий, крепкий"
+
+#: include/default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "Жёсткий (негибкий); гибкий, эластичный"
+
+#: include/default_domains.php:1481
+msgid "Dense"
+msgstr "Плотный, густой, частый"
+
+#: include/default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "Мягкий (нежный), тонкий"
+
+#: include/default_domains.php:1483
+msgid "Good"
+msgstr "Хороший"
+
+#: include/default_domains.php:1484
+msgid "Bad"
+msgstr "Плохой"
+
+#: include/default_domains.php:1485
+msgid "Better"
+msgstr "Лучший, лучше"
+
+#: include/default_domains.php:1486
+msgid "Worse"
+msgstr "Худший, хуже"
+
+#: include/default_domains.php:1487
+msgid "Perfect"
+msgstr "Совершенный, безупречный"
+
+#: include/default_domains.php:1488
+msgid "Mediocre"
+msgstr "Посредственный; заурядный"
+
+#: include/default_domains.php:1489
+msgid "Important"
+msgstr "Важный, значительный"
+
+#: include/default_domains.php:1490
+msgid "Basic"
+msgstr "Основной, главный, базовый"
+
+#: include/default_domains.php:1491
+msgid "Improve"
+msgstr "Улучшать, совершенствовать"
+
+#: include/default_domains.php:1492
+msgid "Right, proper"
+msgstr "Правильный, надлежащий; подходящий"
+
+#: include/default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr "Неправильный, неверный, неподходящий"
+
+#: include/default_domains.php:1494
+msgid "Convenient"
+msgstr "Удобный, подходящий"
+
+#: include/default_domains.php:1495
+msgid "Compatible"
+msgstr "Совместимый, сочетаемый"
+
+#: include/default_domains.php:1496
+msgid "Decay"
+msgstr "Гнить, разлагаться"
+
+#: include/default_domains.php:1497
+msgid "Rust"
+msgstr "Ржаветь, подвергаться коррозии"
+
+#: include/default_domains.php:1498
+msgid "Blemish"
+msgstr "Физический дефект, недостаток"
+
+#: include/default_domains.php:1499
+msgid "Garbage"
+msgstr "Мусор, отходы"
+
+#: include/default_domains.php:1500
+msgid "Preserve"
+msgstr "Сохранять, сберегать, консервировать"
+
+#: include/default_domains.php:1501
+msgid "Value"
+msgstr "Ценность, важность"
+
+#: include/default_domains.php:1502
+msgid "Decorated"
+msgstr "Декорированный, украшенный"
+
+#: include/default_domains.php:1503
+msgid "Simple, plain"
+msgstr "Простой, незамысловатый, скромный (без украшений)"
+
+#: include/default_domains.php:1504
+msgid "Glory"
+msgstr "Великолепие (неземная красота, слава)"
+
+#: include/default_domains.php:1505
+msgid "Time"
+msgstr "Время"
+
+#: include/default_domains.php:1506
+msgid "Period of time"
+msgstr "Период (промежуток) времени"
+
+#: include/default_domains.php:1507
+msgid "Calendar"
+msgstr "Календарь"
+
+#: include/default_domains.php:1508
+msgid "Day"
+msgstr "День"
+
+#: include/default_domains.php:1509
+msgid "Night"
+msgstr "Ночь"
+
+#: include/default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr "Вчера, сегодня, завтра"
+
+#: include/default_domains.php:1511
+msgid "Time of the day"
+msgstr "Дневное время"
+
+#: include/default_domains.php:1512
+msgid "Week"
+msgstr "Неделя"
+
+#: include/default_domains.php:1513
+msgid "Days of the week"
+msgstr "Дни недели"
+
+#: include/default_domains.php:1514
+msgid "Month"
+msgstr "Месяц"
+
+#: include/default_domains.php:1515
+msgid "Months of the year"
+msgstr "Месяцы в году"
+
+#: include/default_domains.php:1516
+msgid "Season"
+msgstr "Время года"
+
+#: include/default_domains.php:1517
+msgid "Year"
+msgstr "Год"
+
+#: include/default_domains.php:1518
+msgid "Era"
+msgstr "Эра, эпоха"
+
+#: include/default_domains.php:1519
+msgid "Special days"
+msgstr "Специальные дни"
+
+#: include/default_domains.php:1520
+msgid "Take time"
+msgstr "Занимать время (требовать времени) для чего-л."
+
+#: include/default_domains.php:1521
+msgid "A short time"
+msgstr "Короткое время, короткий срок"
+
+#: include/default_domains.php:1522
+msgid "A long time"
+msgstr "Долго, долгий срок"
+
+#: include/default_domains.php:1523
+msgid "Forever"
+msgstr "Навсегда, нескончаемо долгий период времени"
+
+#: include/default_domains.php:1524
+msgid "Temporary"
+msgstr "Временный"
+
+#: include/default_domains.php:1525
+msgid "Indefinite time"
+msgstr "Неопределенное время"
+
+#: include/default_domains.php:1526
+msgid "Telling time"
+msgstr "Сообщать время"
+
+#: include/default_domains.php:1527
+msgid "Plan a time"
+msgstr "Планирование времени"
+
+#: include/default_domains.php:1528
+msgid "Clock, watch"
+msgstr "Часы (настенные, карманные)"
+
+#: include/default_domains.php:1529
+msgid "Relative time"
+msgstr "Относительное время"
+
+#: include/default_domains.php:1530
+msgid "Order, sequence"
+msgstr "Порядок, последовательность, очередность"
+
+#: include/default_domains.php:1531
+msgid "Series"
+msgstr "Ряд, последовательность"
+
+#: include/default_domains.php:1532
+msgid "First"
+msgstr "Первый (по счёту, по порядку)"
+
+#: include/default_domains.php:1533
+msgid "Next"
+msgstr "Следующий"
+
+#: include/default_domains.php:1534
+msgid "Last"
+msgstr "Последний"
+
+#: include/default_domains.php:1535
+msgid "Regular"
+msgstr "Регулярный, систематический"
+
+#: include/default_domains.php:1536
+msgid "Alternate"
+msgstr "Поочередный, чередующийся"
+
+#: include/default_domains.php:1537
+msgid "Before"
+msgstr "Раньше, до того как"
+
+#: include/default_domains.php:1538
+msgid "After"
+msgstr "Вслед за, после (того как)"
+
+#: include/default_domains.php:1539
+msgid "At the same time"
+msgstr "В это же время"
+
+#: include/default_domains.php:1540
+msgid "During"
+msgstr "В течение, в продолжение, во время"
+
+#: include/default_domains.php:1541
+msgid "Right time"
+msgstr "Правильное (удобное) время, подходящий момент"
+
+#: include/default_domains.php:1542
+msgid "Early"
+msgstr "Ранний"
+
+#: include/default_domains.php:1543
+msgid "On time"
+msgstr "Вовремя, в срок"
+
+#: include/default_domains.php:1544
+msgid "Late"
+msgstr "Поздний, запоздалый"
+
+#: include/default_domains.php:1545
+msgid "Delay"
+msgstr "Задержка"
+
+#: include/default_domains.php:1546
+msgid "Postpone"
+msgstr "Откладывать, отсрочивать"
+
+#: include/default_domains.php:1547
+msgid "Aspectual time"
+msgstr "Аспектное время"
+
+#: include/default_domains.php:1548
+msgid "Start something"
+msgstr "Начинать что-либо"
+
+#: include/default_domains.php:1549
+msgid "Beginning"
+msgstr "Начало"
+
+#: include/default_domains.php:1550
+msgid "Stop something"
+msgstr "Останавливать, прекращать что-л., заканчивать(ся)"
+
+#: include/default_domains.php:1551
+msgid "End"
+msgstr "Заканчивать, завершать"
+
+#: include/default_domains.php:1552
+msgid "Until"
+msgstr "До (тех пор), пока (не)"
+
+#: include/default_domains.php:1553
+msgid "Since, from"
+msgstr "С тех пор, с, начиная с"
+
+#: include/default_domains.php:1554
+msgid "Past"
+msgstr "Прошлое, прошедшее"
+
+#: include/default_domains.php:1555
+msgid "Recently"
+msgstr "Недавно; на днях, в последнее время"
+
+#: include/default_domains.php:1556
+msgid "Present"
+msgstr "Настоящее время"
+
+#: include/default_domains.php:1557
+msgid "Now"
+msgstr "Сейчас, теперь"
+
+#: include/default_domains.php:1558
+msgid "Future"
+msgstr "Будущее"
+
+#: include/default_domains.php:1559
+msgid "Soon"
+msgstr "Скоро, вскоре"
+
+#: include/default_domains.php:1560
+msgid "Not yet"
+msgstr "Ещё не(т), нет пока"
+
+#: include/default_domains.php:1561
+msgid "Eventually"
+msgstr "В конечном счёте, в итоге, в конце концов"
+
+#: include/default_domains.php:1562
+msgid "Immediately"
+msgstr "Немедленно, тотчас же, сразу"
+
+#: include/default_domains.php:1563
+msgid "Age"
+msgstr "Возраст"
+
+#: include/default_domains.php:1564
+msgid "Young"
+msgstr "Молодой"
+
+#: include/default_domains.php:1565
+msgid "Old, not young"
+msgstr "Старый, немолодой"
+
+#: include/default_domains.php:1566
+msgid "New"
+msgstr "Новый"
+
+#: include/default_domains.php:1567
+msgid "Old, not new"
+msgstr "Старый, не новый"
+
+#: include/default_domains.php:1568
+msgid "Modern"
+msgstr "Современный"
+
+#: include/default_domains.php:1569
+msgid "Old fashioned"
+msgstr "Старомодный"
+
+#: include/default_domains.php:1570
+msgid "Once"
+msgstr "Один раз, однажды"
+
+#: include/default_domains.php:1571
+msgid "Again"
+msgstr "Вновь, опять, еще"
+
+#: include/default_domains.php:1572
+msgid "Sometimes"
+msgstr "Иногда, временами"
+
+#: include/default_domains.php:1573
+msgid "Often"
+msgstr "Часто, много раз"
+
+#: include/default_domains.php:1574
+msgid "All the time"
+msgstr "Все время, всегда"
+
+#: include/default_domains.php:1575
+msgid "Every time"
+msgstr "Каждый раз, всегда"
+
+#: include/default_domains.php:1576
+msgid "Never"
+msgstr "Никогда"
+
+#: include/default_domains.php:1577
+msgid "Continue, persevere"
+msgstr "Продолжать(ся), длиться; упорно продолжать"
+
+#: include/default_domains.php:1578
+msgid "Interrupt"
+msgstr "Прерывать, внезапно прекращать"
+
+#: include/default_domains.php:1579
+msgid "Start again"
+msgstr "Начать заново (еще раз)"
+
+#: include/default_domains.php:1580
+msgid "Interval"
+msgstr "Интервал, промежуток"
+
+#: include/default_domains.php:1581
+msgid "Speed"
+msgstr "Скорость"
+
+#: include/default_domains.php:1582
+msgid "Quick"
+msgstr "Быстрый, быстро"
+
+#: include/default_domains.php:1583
+msgid "Slow"
+msgstr "Медленный, медленно"
+
+#: include/default_domains.php:1584
+msgid "Sudden"
+msgstr "Внезапный, неожиданный"
+
+#: include/default_domains.php:1585
+msgid "Location"
+msgstr "Размещение; определение места (для чего-л.)"
+
+#: include/default_domains.php:1586
+msgid "Here, there"
+msgstr "Здесь, тут, там"
+
+#: include/default_domains.php:1587
+msgid "In front of"
+msgstr "Впереди, перед"
+
+#: include/default_domains.php:1588
+msgid "Behind"
+msgstr "Сзади, позади"
+
+#: include/default_domains.php:1589
+msgid "Beside"
+msgstr "Рядом с, около"
+
+#: include/default_domains.php:1590
+msgid "Around"
+msgstr "Вокруг, кругом"
+
+#: include/default_domains.php:1591
+msgid "Between"
+msgstr "Между"
+
+#: include/default_domains.php:1592
+msgid "On"
+msgstr "На (в пространственном значении указывает на нахождение на поверхности какого-л. предмета)"
+
+#: include/default_domains.php:1593
+msgid "Above"
+msgstr "Наверху, над"
+
+#: include/default_domains.php:1594
+msgid "Under, below"
+msgstr "Под, ниже, внизу"
+
+#: include/default_domains.php:1595
+msgid "Inside"
+msgstr "Внутри"
+
+#: include/default_domains.php:1596
+msgid "Out, outside"
+msgstr "Вне, снаружи, за пределами (чего-л)"
+
+#: include/default_domains.php:1597
+msgid "Touching, contact"
+msgstr "Прикосновение, контакт"
+
+#: include/default_domains.php:1598
+msgid "Next to"
+msgstr "Следующий, ближайший к (чему-л)"
+
+#: include/default_domains.php:1599
+msgid "Across"
+msgstr "Поперёк, через"
+
+#: include/default_domains.php:1600
+msgid "Indefinite location"
+msgstr "Неопределенное местоположение"
+
+#: include/default_domains.php:1601
+msgid "Direction"
+msgstr "Направление"
+
+#: include/default_domains.php:1602
+msgid "Forward"
+msgstr "Вперед (по ходу движения)"
+
+#: include/default_domains.php:1603
+msgid "Backward"
+msgstr "Назад"
+
+#: include/default_domains.php:1604
+msgid "Right, left"
+msgstr "Правый, левый"
+
+#: include/default_domains.php:1605
+msgid "Up"
+msgstr "Вверх, наверх"
+
+#: include/default_domains.php:1606
+msgid "Down"
+msgstr "Вниз"
+
+#: include/default_domains.php:1607
+msgid "Away from"
+msgstr "От (чего-л)"
+
+#: include/default_domains.php:1608
+msgid "Towards"
+msgstr "К, по направлению к (чему-л)"
+
+#: include/default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "Север, юг, восток, запад"
+
+#: include/default_domains.php:1610
+msgid "Be at a place"
+msgstr "Быть на каком-то месте"
+
+#: include/default_domains.php:1611
+msgid "Absent"
+msgstr "Отсутствующий"
+
+#: include/default_domains.php:1612
+msgid "Area"
+msgstr "Площадь, территория"
+
+#: include/default_domains.php:1613
+msgid "Vicinity"
+msgstr "Близость, соседство, окрестности"
+
+#: include/default_domains.php:1614
+msgid "Occupy an area"
+msgstr "Занимать территорию"
+
+#: include/default_domains.php:1615
+msgid "Space, room"
+msgstr "Пространство, площадь"
+
+#: include/default_domains.php:1616
+msgid "Interval, space"
+msgstr "Интервал, промежуток, пространство"
+
+#: include/default_domains.php:1617
+msgid "Spatial relations"
+msgstr "Пространственные отношения"
+
+#: include/default_domains.php:1618
+msgid "Contain"
+msgstr "Содержать в себе, включать"
+
+#: include/default_domains.php:1619
+msgid "Parts of things"
+msgstr "Части предметов"
+
+#: include/default_domains.php:1620
+msgid "Front"
+msgstr "Передняя сторона чего-л"
+
+#: include/default_domains.php:1621
+msgid "Back"
+msgstr "Задняя часть (задняя сторона)"
+
+#: include/default_domains.php:1622
+msgid "Top"
+msgstr "Верхняя часть"
+
+#: include/default_domains.php:1623
+msgid "Bottom"
+msgstr "Нижняя часть"
+
+#: include/default_domains.php:1624
+msgid "Side"
+msgstr "Боковая сторона (часть)"
+
+#: include/default_domains.php:1625
+msgid "Inner part"
+msgstr "Внутренняя часть"
+
+#: include/default_domains.php:1626
+msgid "Outer part"
+msgstr "Внешняя часть"
+
+#: include/default_domains.php:1627
+msgid "Middle"
+msgstr "Средняя часть"
+
+#: include/default_domains.php:1628
+msgid "Edge"
+msgstr "Кромка, край, грань"
+
+#: include/default_domains.php:1629
+msgid "End, point"
+msgstr "Конец (острый), кончик, остриё"
+
+#: include/default_domains.php:1630 webonary/Webonary_SemanticDomains.php:137
+msgid "Grammar"
+msgstr "Грамматика"
+
+#: include/default_domains.php:1631
+msgid "General words"
+msgstr "Общие (наиболее широко распространённые) слова"
+
+#: include/default_domains.php:1632
+msgid "Be"
+msgstr "Быть"
+
+#: include/default_domains.php:1633
+msgid "Exist"
+msgstr "Существовать"
+
+#: include/default_domains.php:1634
+msgid "Become, change state"
+msgstr "Становиться, изменять состояние"
+
+#: include/default_domains.php:1635
+msgid "Have, of"
+msgstr "Иметь, предлог 'of' - в англ. (указывающий на отношение принадлежности или владение чем-л)"
+
+#: include/default_domains.php:1636
+msgid "Attribution"
+msgstr "Атрибуция, определение (объекта)"
+
+#: include/default_domains.php:1637
+msgid "Do"
+msgstr "Делать"
+
+#: include/default_domains.php:1638
+msgid "Happen"
+msgstr "Случаться, происходить"
+
+#: include/default_domains.php:1639
+msgid "React, respond"
+msgstr "Реагировать, отвечать"
+
+#: include/default_domains.php:1640
+msgid "Create"
+msgstr "Создавать, творить"
+
+#: include/default_domains.php:1641
+msgid "Design"
+msgstr "Придумывать, проектировать, замышлять"
+
+#: include/default_domains.php:1642
+msgid "Make"
+msgstr "Делать, изготавливать"
+
+#: include/default_domains.php:1643
+msgid "Change something"
+msgstr "Изменять что-либо"
+
+#: include/default_domains.php:1644
+msgid "Event propositions"
+msgstr "Событийные пропозиции"
+
+#: include/default_domains.php:1645
+msgid "Thing"
+msgstr "Вещь, предмет"
+
+#: include/default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "Физический (материальный), не физический (не осязаемый)"
+
+#: include/default_domains.php:1647
+msgid "Situation"
+msgstr "Ситуация"
+
+#: include/default_domains.php:1648
+msgid "General adjectives"
+msgstr "Обобщающие прилагательные"
+
+#: include/default_domains.php:1649
+msgid "General adverbs"
+msgstr "Обобщающие наречия"
+
+#: include/default_domains.php:1650
+msgid "Part of speech"
+msgstr "Часть речи"
+
+#: include/default_domains.php:1651
+msgid "Adjectives"
+msgstr "Имя прилагательное"
+
+#: include/default_domains.php:1652
+msgid "Adverbs"
+msgstr "Наречия"
+
+#: include/default_domains.php:1653
+msgid "Pronouns"
+msgstr "Местоимения"
+
+#: include/default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "Возвратные местоимения"
+
+#: include/default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "Неопределенные местоимения"
+
+#: include/default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "Относительные местоимения"
+
+#: include/default_domains.php:1657
+msgid "Question words"
+msgstr "Вопросительные слова"
+
+#: include/default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "Указательные местоимения"
+
+#: include/default_domains.php:1659
+msgid "Personally"
+msgstr "Лично, персонально, сам"
+
+#: include/default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr "Предлоги, послелоги"
+
+#: include/default_domains.php:1661
+msgid "Conjunctions"
+msgstr "Союзы"
+
+#: include/default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr "Фразовые (соединительные) союзы"
+
+#: include/default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr "Союзы соединяющие придаточные предложения"
+
+#: include/default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr "Союзы соединяющие предложения"
+
+#: include/default_domains.php:1665
+msgid "Particles"
+msgstr "Частицы"
+
+#: include/default_domains.php:1666
+msgid "Classifiers"
+msgstr "Классные показатели (классификаторы)"
+
+#: include/default_domains.php:1667
+msgid "Interjections"
+msgstr "Междометия"
+
+#: include/default_domains.php:1668
+msgid "Ideophones"
+msgstr ""
+
+#: include/default_domains.php:1669
+msgid "Affixes"
+msgstr "Аффиксы"
+
+#: include/default_domains.php:1670
+msgid "Verb affixes"
+msgstr "Глагольные аффиксы"
+
+#: include/default_domains.php:1671
+msgid "Noun affixes"
+msgstr "Аффиксы существительных"
+
+#: include/default_domains.php:1672
+msgid "Derivational affixes"
+msgstr "Словообразовательные аффиксы"
+
+#: include/default_domains.php:1673
+msgid "Very"
+msgstr "Весьма, очень, сильно"
+
+#: include/default_domains.php:1674
+msgid "Degree"
+msgstr "Уровень, степень, величина"
+
+#: include/default_domains.php:1675
+msgid "To a large degree"
+msgstr "В значительной степени"
+
+#: include/default_domains.php:1676
+msgid "To a small degree"
+msgstr "Незначительно, немного"
+
+#: include/default_domains.php:1677
+msgid "To a larger degree"
+msgstr "В значительно большей степени"
+
+#: include/default_domains.php:1678
+msgid "To a smaller degree"
+msgstr "Незначительно, несущественно, немного"
+
+#: include/default_domains.php:1679
+msgid "Completely"
+msgstr "Полностью, целиком"
+
+#: include/default_domains.php:1680
+msgid "Partly"
+msgstr "Частично"
+
+#: include/default_domains.php:1681
+msgid "Do intensely"
+msgstr "Делать с напряжением (интенсивно)"
+
+#: include/default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "Приписывание атрибута к атрибуту"
+
+#: include/default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "Семантические компоненты связанные с глаголами"
+
+#: include/default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "Грамматическое время и вид"
+
+#: include/default_domains.php:1685
+msgid "Tense"
+msgstr "Грамматическое время"
+
+#: include/default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "Аспект (вид) -- глаголы движения"
+
+#: include/default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "Аспект -- глаголы состояния"
+
+#: include/default_domains.php:1688
+msgid "Relational tenses"
+msgstr "Относительные (реляционные) грамматические времена"
+
+#: include/default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "Модальности ориентированные на агенс"
+
+#: include/default_domains.php:1690
+msgid "Can"
+msgstr "Мочь, быть в состоянии (что-л. делать)"
+
+#: include/default_domains.php:1691
+msgid "Can't"
+msgstr "Не мочь"
+
+#: include/default_domains.php:1692
+msgid "Necessary"
+msgstr "Необходимый, нужный, требуемый"
+
+#: include/default_domains.php:1693
+msgid "Moods"
+msgstr "Наклонение"
+
+#: include/default_domains.php:1694
+msgid "Imperative"
+msgstr "Императив (повелительное наклонение)"
+
+#: include/default_domains.php:1695
+msgid "Hortative"
+msgstr "Хортатив (увещевательное наклонение)"
+
+#: include/default_domains.php:1696
+msgid "Interrogative"
+msgstr "Вопросительный"
+
+#: include/default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "Эпистемическое наклонение"
+
+#: include/default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr "Конечно, непременно, определенно, точно"
+
+#: include/default_domains.php:1699
+msgid "Sure"
+msgstr "Уверенный, конечно, непременно"
+
+#: include/default_domains.php:1700
+msgid "Probably"
+msgstr "Вероятно, наверное"
+
+#: include/default_domains.php:1701
+msgid "Possible"
+msgstr "Возможный"
+
+#: include/default_domains.php:1702
+msgid "Uncertain"
+msgstr "Неопределённый; неясный, точно не известный"
+
+#: include/default_domains.php:1703
+msgid "Unsure"
+msgstr "Неуверенный"
+
+#: include/default_domains.php:1704
+msgid "Think so"
+msgstr "Думать так"
+
+#: include/default_domains.php:1705
+msgid "Maybe"
+msgstr "Может быть"
+
+#: include/default_domains.php:1706
+msgid "Seem"
+msgstr "Казаться, представляться"
+
+#: include/default_domains.php:1707
+msgid "Just, almost not"
+msgstr "Только, едва, почти не, еле"
+
+#: include/default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr "Так не думать, сомневаться, считать маловероятным"
+
+#: include/default_domains.php:1709
+msgid "Impossible"
+msgstr "Невозможный"
+
+#: include/default_domains.php:1710
+msgid "Evidentials"
+msgstr "Доказательства, свидетельства"
+
+#: include/default_domains.php:1711
+msgid "Evaluator"
+msgstr "Оцениватель"
+
+#: include/default_domains.php:1712
+msgid "Yes"
+msgstr "Да, утверждение"
+
+#: include/default_domains.php:1713
+msgid "No, not"
+msgstr "Не, нет"
+
+#: include/default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "Маркеры, предполагающие утвердительный ответ"
+
+#: include/default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "Маркеры, предполагающие негативный ответ"
+
+#: include/default_domains.php:1716
+msgid "Subordinating particles"
+msgstr "Подчинительные частицы"
+
+#: include/default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "Обстоятельственные придаточные"
+
+#: include/default_domains.php:1718
+msgid "Case"
+msgstr "Падеж"
+
+#: include/default_domains.php:1719
+msgid "Primary cases"
+msgstr "Основные падежи"
+
+#: include/default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "Бенефициар события (получатель выгоды от события)"
+
+#: include/default_domains.php:1721
+msgid "Instrument"
+msgstr "Орудие, инструмент"
+
+#: include/default_domains.php:1722
+msgid "Means"
+msgstr "Средство, способ"
+
+#: include/default_domains.php:1723
+msgid "Way, manner"
+msgstr "Способ, образ действий"
+
+#: include/default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "Сопутствующие обстоятельства"
+
+#: include/default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr "Пространственное местоположение события"
+
+#: include/default_domains.php:1726
+msgid "Source (of movement)"
+msgstr "Источник (перемещения)"
+
+#: include/default_domains.php:1727
+msgid "Path (of movement)"
+msgstr "Путь (перемещения)"
+
+#: include/default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr "Цель, место назначения (перемещения)"
+
+#: include/default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr "Происхождение (человека)"
+
+#: include/default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "События со сходной семантикой"
+
+#: include/default_domains.php:1731
+msgid "Together"
+msgstr "Вместе, совместно"
+
+#: include/default_domains.php:1732
+msgid "With, be with"
+msgstr "С, вместе с"
+
+#: include/default_domains.php:1733
+msgid "With, do with someone"
+msgstr "С, делать вместе с кем-л."
+
+#: include/default_domains.php:1734
+msgid "Each other"
+msgstr "Друг другу (каждый другому)"
+
+#: include/default_domains.php:1735
+msgid "In groups"
+msgstr "По группам"
+
+#: include/default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "Падежи соотносимые с с пациенсом"
+
+#: include/default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr "Бенефициар (пациенса)"
+
+#: include/default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr "Получатель (реципиент) (пациенса)"
+
+#: include/default_domains.php:1739
+msgid "With (a patient)"
+msgstr "Вместе с (пациенсом)"
+
+#: include/default_domains.php:1740
+msgid "Connected with, related"
+msgstr "Связанный с, имеющий отношение"
+
+#: include/default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "Равные (согласованные) отношения"
+
+#: include/default_domains.php:1742
+msgid "And, also"
+msgstr "И, также"
+
+#: include/default_domains.php:1743
+msgid "Or, either"
+msgstr "Или, иначе"
+
+#: include/default_domains.php:1744
+msgid "Association"
+msgstr "Ассоциация, объединение, связь"
+
+#: include/default_domains.php:1745
+msgid "Combinative relation"
+msgstr "Комбинаторные отношения"
+
+#: include/default_domains.php:1746
+msgid "But"
+msgstr "Но, однако"
+
+#: include/default_domains.php:1747
+msgid "Except"
+msgstr "За исключением, кроме"
+
+#: include/default_domains.php:1748
+msgid "Instead"
+msgstr "Вместо, взамен"
+
+#: include/default_domains.php:1749
+msgid "Dissociation"
+msgstr "Отделение, разобщение"
+
+#: include/default_domains.php:1750
+msgid "Distribution"
+msgstr "Распределение"
+
+#: include/default_domains.php:1751
+msgid "Equivalence"
+msgstr "Эквивалентность, равноценность"
+
+#: include/default_domains.php:1752
+msgid "Dependency relations"
+msgstr "Отношения подчинения"
+
+#: include/default_domains.php:1753
+msgid "Derivation"
+msgstr "Происхождение"
+
+#: include/default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "Ограничение предмета обсуждения"
+
+#: include/default_domains.php:1755
+msgid "In general"
+msgstr "В общем"
+
+#: include/default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "Отношения, включающие соответствие"
+
+#: include/default_domains.php:1757
+msgid "Basis"
+msgstr "Основа, базис"
+
+#: include/default_domains.php:1758
+msgid "Cause"
+msgstr "Причина"
+
+#: include/default_domains.php:1759
+msgid "Reason"
+msgstr "Причина, повод"
+
+#: include/default_domains.php:1760
+msgid "Without cause"
+msgstr "Без повода, без оснований"
+
+#: include/default_domains.php:1761
+msgid "Result"
+msgstr "Результат"
+
+#: include/default_domains.php:1762
+msgid "Without result"
+msgstr "Без результата, безрезультатно"
+
+#: include/default_domains.php:1763
+msgid "Purpose"
+msgstr "Цель, намерение"
+
+#: include/default_domains.php:1764
+msgid "Without purpose"
+msgstr "Без цели, бесцельный"
+
+#: include/default_domains.php:1765
+msgid "Condition"
+msgstr "Условие, положение"
+
+#: include/default_domains.php:1766
+msgid "Concession"
+msgstr "Уступка"
+
+#: include/default_domains.php:1767
+msgid "Discourse markers"
+msgstr "Речевые маркеры"
+
+#: include/default_domains.php:1768
+msgid "Markers of transition"
+msgstr "Маркеры перехода"
+
+#: include/default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "Маркеры фразового выделения"
+
+#: include/default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "Выражения, привлекающие внимание"
+
+#: include/default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "Маркеры прямого обращения"
+
+#: include/default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "Маркеры идентификационных и пояснительных предложений"
+
+#: include/default_domains.php:1773
+msgid "Markers of focus"
+msgstr "Маркеры средоточия внимания"
+
+#: include/default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr "Слова-заполнители выражающие сомнение или неуверенность (слова, заполняющие паузы в речи, когда возникает сомнение)"
+
+#: include/default_domains.php:1775
+msgid "Honorifics"
+msgstr "Слова вежливости (слова, выражающие почтение)"
+
+#: include/default_domains.php:1776
+msgid "Name"
+msgstr "Имя"
+
+#: include/default_domains.php:1777
+msgid "Name of a person"
+msgstr "Имя человека"
+
+#: include/default_domains.php:1778
+msgid "Personal names"
+msgstr "Личные имена"
+
+#: include/default_domains.php:1779
+msgid "Family names"
+msgstr "Фамилия"
+
+#: include/default_domains.php:1780
+msgid "Clan names"
+msgstr "Имена (названия) кланов (родов)"
+
+#: include/default_domains.php:1781
+msgid "Tribal names"
+msgstr "Имена (названия) племен"
+
+#: include/default_domains.php:1782
+msgid "Names of languages"
+msgstr "Имена (названия) языков"
+
+#: include/default_domains.php:1783
+msgid "Nickname"
+msgstr "Прозвище, кличка"
+
+#: include/default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "Ласкательные выражения"
+
+#: include/default_domains.php:1785
+msgid "Name of a place"
+msgstr "Названия мест"
+
+#: include/default_domains.php:1786
+msgid "Names of countries"
+msgstr "Названия стран"
+
+#: include/default_domains.php:1787
+msgid "Names of regions"
+msgstr "Названия областей"
+
+#: include/default_domains.php:1788
+msgid "Names of cities"
+msgstr "Названия городов"
+
+#: include/default_domains.php:1789
+msgid "Names of streets"
+msgstr "Названия улиц"
+
+#: include/default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "Названия небесных тел"
+
+#: include/default_domains.php:1791
+msgid "Names of continents"
+msgstr "Названия континентов"
+
+#: include/default_domains.php:1792
+msgid "Names of mountains"
+msgstr "Названия гор"
+
+#: include/default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "Названия океанов и озер"
+
+#: include/default_domains.php:1794
+msgid "Names of rivers"
+msgstr "Названия рек"
+
+#: include/default_domains.php:1795
+msgid "Name of a thing"
+msgstr "Название вещи (предмета)"
+
+#: include/default_domains.php:1796
+msgid "Names of animals"
+msgstr "Имена (названия) животных"
+
+#: include/default_domains.php:1797
+msgid "Names of buildings"
+msgstr "Названия зданий"
+
+#: include/dictionary-search.php:114
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+
+#: include/dictionary-search.php:117
+msgid "Click here to include searching through partial words."
+msgstr ""
+
+#: include/infrastructure.php:168
+msgid "Search Domains"
+msgstr ""
+
+#: include/infrastructure.php:169
+msgid "All Semantic Domains"
+msgstr ""
+
+#: include/infrastructure.php:170
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:171
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: include/infrastructure.php:172
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:173
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:174
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:175
+msgid "New Semantic Domain Name"
+msgstr ""
+
+#: include/infrastructure.php:176
+msgid "Semantic Domain"
+msgstr ""
+
+#: include/infrastructure.php:202 include/infrastructure.php:210
+msgid "Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:203 include/searchform_func.php:64
+#: include/searchform_func.php:135
+msgid "All Parts of Speech"
+msgstr ""
+
+#: include/infrastructure.php:204
+msgid "Parent Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:205
+msgid "Parent Part of Speech:"
+msgstr ""
+
+#: include/infrastructure.php:206
+msgid "Edit Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:207
+msgid "Update Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:208
+msgid "Add New Part of Speech"
+msgstr ""
+
+#: include/infrastructure.php:209
+msgid "New Part of Speech Name"
+msgstr ""
+
+#: include/infrastructure.php:237 include/searchform_func.php:290
+msgid "All Languages"
+msgstr ""
+
+#: include/infrastructure.php:238
+msgid "Parent Language"
+msgstr ""
+
+#: include/infrastructure.php:239
+msgid "Parent Language:"
+msgstr ""
+
+#: include/infrastructure.php:240
+msgid "Edit Language"
+msgstr ""
+
+#: include/infrastructure.php:241
+msgid "Update Language"
+msgstr ""
+
+#: include/infrastructure.php:242
+msgid "Add New Language"
+msgstr ""
+
+#: include/infrastructure.php:243
+msgid "New Language Name"
+msgstr ""
+
+#: include/infrastructure.php:270 include/infrastructure.php:278
+msgid "Website strings"
+msgstr ""
+
+#: include/infrastructure.php:271
+msgid "All Website strings"
+msgstr ""
+
+#: include/infrastructure.php:272
+msgid "Parent Website strings"
+msgstr ""
+
+#: include/infrastructure.php:273
+msgid "Parent Website strings:"
+msgstr ""
+
+#: include/infrastructure.php:274
+msgid "Edit Website strings"
+msgstr ""
+
+#: include/infrastructure.php:275
+msgid "Update Website strings"
+msgstr ""
+
+#: include/infrastructure.php:276
+msgid "Add New Website strings"
+msgstr ""
+
+#: include/infrastructure.php:277
+msgid "New Website strings Name"
+msgstr ""
+
+#: include/searchform_func.php:283
+msgid "Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:285
+msgid "Hide Advanced Search"
+msgstr ""
+
+#: include/searchform_func.php:299
+msgid "Match whole words"
+msgstr ""
+
+#: include/searchform_func.php:301
+msgid "Match accents and tones"
+msgstr ""
+
+#: include/searchform_func.php:308
+msgid "Number of Entries"
+msgstr ""
+
+#: include/searchform_func.php:326
+msgid "Last update:"
+msgstr ""
+
+#: include/searchform_func.php:337
+msgid "Date published:"
+msgstr ""
+
+#: include/searchform_func.php:348
+msgid "Found in Semantic Domains:"
+msgstr ""
+
+#: include/xhtml-importer.php:51
+msgid "SIL FLEX XHTML"
+msgstr ""
+
+#: include/xhtml-importer.php:52
+msgid "Import posts from an SIL FLEX XHTML file."
+msgstr ""
+
+#: sil-dictionary.php:116
+msgid "This API can only be called if you are logged in first."
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:54
+msgid "Data (Upload)"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:56
+msgid "Browse Views"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:57
+msgid "Fonts"
+msgstr ""
+
+#: webonary/Webonary_Configuration.php:59
+msgid "Super Admin"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:206
+msgid ""
+"Howdy! This importer allows you to import SIL FLEX XHTML data into your "
+"WordPress site."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:208
+msgid ""
+"Before re-importing, it's best to delete your existing entries. Go to <a "
+"href=\"../wp-admin/admin.php?page=webonary\">Webonary</a>... 'Delete Data' "
+"to do this."
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:253
+msgid "Finished!"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:553
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:571
+msgid "Choose an XHTML file from your computer:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:571
+#: webonary/Webonary_Pathway_Xhtml_Import.php:582
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:573
+msgid "**XHTML file must be sorted. Webonary does not sort the entries.**"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:581
+msgid "Choose a CSS file from your computer (optional):"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:595
+msgid "Language Code:"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:739
+msgid "Import SIL FLEX XHTML"
+msgstr ""
+
+#: webonary/Webonary_Pathway_Xhtml_Import.php:1587
+msgid ""
+"The file is either empty, or uploads are disabled in your php.ini, or "
+"post_max_size is defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: webonary/Webonary_SemanticDomains.php:138
+msgid "Custom Domains"
+msgstr ""
+
+#: semantic domain
+msgid "Semantic Domains"
+msgstr "Семантические Области"
+
+#: semantic domain 9.2.8
+msgid "Onomatopoeic words"
+msgstr "Идеофоны, звукоподражательные элементы речи"
+
+#: extra string
+msgid "Publication Status"
+msgstr "Статус словаря"

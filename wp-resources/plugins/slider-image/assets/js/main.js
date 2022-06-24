@@ -4,7 +4,7 @@
  * https://github.com/sachinchoolur/lightslider
  */
 
-(function ($) {
+function huge_it_slider_main ($) {
 
     'use strict';
 
@@ -1832,19 +1832,13 @@
         return this;
     };
 
-})(jQuery);
-
-
-
+}
 
 
 //////////////////////////////////////////
 
 
-
-
-
-(function ($, window, document) {
+function huge_it_slider_main2 ($, window, document) {
 
     'use strict';
 
@@ -2838,13 +2832,34 @@
         });
     }
 
-})(window.jQuery, window, window.document);
+}
 
-jQuery(window).load(function () {
+
+let main_try_count = 0;
+
+function load_huge_it_slider_main() {
+
+    main_try_count++;
+
+    if (typeof jQuery === 'undefined') {
+
+        // do not try forever
+        if (main_try_count > 15)
+            return;
+
+        window.setTimeout(load_huge_it_slider_main, 200);
+        return;
+    }
+
+    huge_it_slider_main(jQuery);
+    huge_it_slider_main2(window.jQuery, window, window.document);
+
     jQuery('div[class*=slider-loader-]').css({
         display: 'none'
     });
     jQuery('.huge-it-wrap, .rwd-SlideOuter, .huge-it-slider').css({
         opacity: '1'
     });
-});
+}
+
+window.setTimeout(load_huge_it_slider_main, 100);

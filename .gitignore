@@ -3,6 +3,12 @@
 /*.iml
 /srdb/
 /*.sh
+!/sass.sh
+!/minify-js.sh
 !/composer_links.sh
+/node_modules/
 /vendor/
 /wordpress/
+wp-resources/plugins/sil-dictionary-webonary/include/lang/*.old
+wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.old
+/PRIVATE_NOTES.md

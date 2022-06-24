@@ -90,6 +90,8 @@ img {
 }
 
 /*============================ STRUCTURE ============================*/
+#wrapper {max-width: 1200px;}
+
 #wrap {
   clear: both;
   margin: 30px auto;
@@ -121,6 +123,8 @@ img {
   margin-top: 5px;
   text-align: right;
 }
+
+html[dir=rtl] #navlanguage { float: left; }
 
 .qtrans_language_chooser li { float:left; margin-right:5px;}
 .qtrans_language_chooser li  a { text-decoration:underline; }
@@ -286,10 +290,13 @@ background: url(images/button_hover.png) repeat-x #eee;
     width: 100%;
 }
 #logo {
-  float: left;
-  width: 170px;
+  display: table-cell;
+  width: 166px;
   margin-top: 0;
 }
+
+#logo img { width: 100%; }
+
 #logo h1 {
   padding: 0 10px;
   font-size: 2.1em;
@@ -299,7 +306,16 @@ background: url(images/button_hover.png) repeat-x #eee;
 #topnavi {
   padding: 0 0;
   background: #ffffff;
+  position: static;
+  float: right;
+  margin: 0 10px 0 0;
 }
+
+html[dir=rtl] #topnavi {
+  float: left;
+  margin: 0 0 0 10px;
+}
+
 #topnavi ul{
   margin: 0;
   padding: 0;
@@ -650,7 +666,14 @@ blockquote:after{
 .pageentry img {
   max-width: 100%;
   height: auto;
+  overflow: hidden;
 }
+
+/*=========================== Ken Zook Table ===========================*/
+div.pageentry .senses .tables table {border: none;}
+div.pageentry .senses .tables table th {text-align: center;}
+div.pageentry .senses .tables table td {border: none; text-align: left; font-weight: 400;}
+
 .wp-caption  {
   margin: 5px;
   max-width: 100%;
@@ -944,4 +967,3 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
 		padding: 10px 10px;
 	}
 }
-

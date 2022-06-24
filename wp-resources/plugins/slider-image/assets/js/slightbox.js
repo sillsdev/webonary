@@ -1,4 +1,4 @@
-(function ($) {
+function webonary_slightbox ($) {
 
     'use strict';
 
@@ -787,4 +787,25 @@
 
     $.fn.lightbox.lightboxModul.modul = Modul;
 
-})(jQuery);
+}
+
+let slightbox_try_count = 0;
+
+function load_slightbox() {
+
+    slightbox_try_count++;
+
+    if (typeof jQuery === 'undefined') {
+
+        // do not try forever
+        if (slightbox_try_count > 15)
+            return;
+
+        window.setTimeout(load_slightbox, 200);
+        return;
+    }
+
+    webonary_slightbox(jQuery);
+}
+
+window.setTimeout(load_slightbox, 100);

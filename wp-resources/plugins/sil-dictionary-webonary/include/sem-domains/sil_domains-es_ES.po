@@ -1,0 +1,7204 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary\n"
+"POT-Creation-Date: 2021-12-15 11:44-0500\n"
+"PO-Revision-Date: 2021-12-15 11:44-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary/include\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: browseview_func.php\n"
+"X-Poedit-SearchPathExcluded-1: comments_func.php\n"
+"X-Poedit-SearchPathExcluded-2: configuration.php\n"
+"X-Poedit-SearchPathExcluded-3: default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: defines.php\n"
+"X-Poedit-SearchPathExcluded-6: dictionary-search.php\n"
+"X-Poedit-SearchPathExcluded-7: infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-8: modifycontent.php\n"
+"X-Poedit-SearchPathExcluded-9: run_import.php\n"
+"X-Poedit-SearchPathExcluded-10: searchform_func.php\n"
+"X-Poedit-SearchPathExcluded-11: widgets.php\n"
+"X-Poedit-SearchPathExcluded-12: xhtml-importer.php\n"
+"X-Poedit-SearchPathExcluded-13: default-locale\n"
+"X-Poedit-SearchPathExcluded-14: lang\n"
+"X-Poedit-SearchPathExcluded-15: pinyin\n"
+
+#: default_domains.php:6
+msgid "Universe, creation"
+msgstr "Universo, la creación"
+
+#: default_domains.php:7
+msgid "Sky"
+msgstr "Cielo, atmósfera, firmamento, esfera celeste, espacio celestial, infinito, inmensidad"
+
+#: default_domains.php:8
+msgid "Sun"
+msgstr "Sol"
+
+#: default_domains.php:9
+msgid "Moon"
+msgstr "Luna"
+
+#: default_domains.php:10
+msgid "Star"
+msgstr "Estrella"
+
+#: default_domains.php:11
+msgid "Planet"
+msgstr "Planeta"
+
+#: default_domains.php:12
+msgid "Air"
+msgstr "Aire"
+
+#: default_domains.php:13
+msgid "Blow air"
+msgstr "Soplar aire"
+
+#: default_domains.php:14
+msgid "Weather"
+msgstr "Clima"
+
+#: default_domains.php:15
+msgid "Wind"
+msgstr "Viento"
+
+#: default_domains.php:16
+msgid "Cloud"
+msgstr "Nube"
+
+#: default_domains.php:17
+msgid "Rain"
+msgstr "Lluvia"
+
+#: default_domains.php:18
+msgid "Snow, ice"
+msgstr "Nieve, hielo"
+
+#: default_domains.php:19
+msgid "Storm"
+msgstr "Tormenta"
+
+#: default_domains.php:20
+msgid "Lightning, thunder"
+msgstr "Relámpago / rayo, trueno"
+
+#: default_domains.php:21
+msgid "Flood"
+msgstr "Inundación"
+
+#: default_domains.php:22
+msgid "Drought"
+msgstr "Sequía"
+
+#: default_domains.php:23
+msgid "World"
+msgstr "Mundo"
+
+#: default_domains.php:24
+msgid "Land"
+msgstr "Tierra"
+
+#: default_domains.php:25
+msgid "Mountain"
+msgstr "Montaña"
+
+#: default_domains.php:26
+msgid "Volcano"
+msgstr "Volcán"
+
+#: default_domains.php:27
+msgid "Plain, plateau"
+msgstr "Planicie, (llano, llanura), meseta, (altiplanicie)"
+
+#: default_domains.php:28
+msgid "Valley"
+msgstr "Valle"
+
+#: default_domains.php:29
+msgid "Underground"
+msgstr "Subterráneo, Bajo tierra"
+
+#: default_domains.php:30
+msgid "Forest, grassland, desert"
+msgstr "Bosque, pradera (prado), desierto (páramo)"
+
+#: default_domains.php:31
+msgid "Earthquake"
+msgstr "Terremoto"
+
+#: default_domains.php:32
+msgid "Substance, matter"
+msgstr "Sustancia (esencia), materia"
+
+#: default_domains.php:33
+msgid "Soil, dirt"
+msgstr "Tierra, Polvo"
+
+#: default_domains.php:34
+msgid "Rock"
+msgstr "Roca"
+
+#: default_domains.php:35
+msgid "Metal"
+msgstr "Metal"
+
+#: default_domains.php:36
+msgid "Mineral"
+msgstr "Mineral"
+
+#: default_domains.php:37
+msgid "Jewel"
+msgstr "Joya"
+
+#: default_domains.php:38
+msgid "Solid, liquid, gas"
+msgstr "Sólido, líquido, gaseoso"
+
+#: default_domains.php:39
+msgid "Liquid"
+msgstr "Líquido"
+
+#: default_domains.php:40
+msgid "Oil"
+msgstr "Aceite"
+
+#: default_domains.php:41
+msgid "Gas"
+msgstr "Gas"
+
+#: default_domains.php:42
+msgid "Water"
+msgstr "Agua"
+
+#: default_domains.php:43
+msgid "Bodies of water"
+msgstr "Cuerpos de agua"
+
+#: default_domains.php:44
+msgid "Ocean, lake"
+msgstr "Océano, lago"
+
+#: default_domains.php:45
+msgid "Swamp"
+msgstr "Pantano"
+
+#: default_domains.php:46
+msgid "River"
+msgstr "Río"
+
+#: default_domains.php:47
+msgid "Spring, well"
+msgstr "Manantial, pozo"
+
+#: default_domains.php:48
+msgid "Island, shore"
+msgstr "Isla, orilla/playa"
+
+#: default_domains.php:49
+msgid "Movement of water"
+msgstr "Movimiento del agua"
+
+#: default_domains.php:50
+msgid "Flow"
+msgstr "Fluir"
+
+#: default_domains.php:51
+msgid "Pour"
+msgstr "Echar, verter"
+
+#: default_domains.php:52
+msgid "Drip"
+msgstr "Gotear"
+
+#: default_domains.php:53
+msgid "Wave"
+msgstr "Ola"
+
+#: default_domains.php:54
+msgid "Calm, rough"
+msgstr "Apacible, agitada"
+
+#: default_domains.php:55
+msgid "Tide"
+msgstr "Marea"
+
+#: default_domains.php:56
+msgid "Wet"
+msgstr "Mojado"
+
+#: default_domains.php:57
+msgid "Dry"
+msgstr "Seco"
+
+#: default_domains.php:58
+msgid "Be in water"
+msgstr "Estar en el agua"
+
+#: default_domains.php:59
+msgid "Solutions of water"
+msgstr "Soluciones del agua"
+
+#: default_domains.php:60
+msgid "Water quality"
+msgstr "Calidad del agua"
+
+#: default_domains.php:61
+msgid "Living things"
+msgstr "Cosas vivas"
+
+#: default_domains.php:62
+msgid "Dead things"
+msgstr "Cosas muertas"
+
+#: default_domains.php:63
+msgid "Spirits of things"
+msgstr "Espíritu de cosas"
+
+#: default_domains.php:64
+msgid "Plant"
+msgstr "Planta"
+
+#: default_domains.php:65
+msgid "Tree"
+msgstr "Árbol"
+
+#: default_domains.php:66
+msgid "Bush, shrub"
+msgstr "Arbusto, maleza, matorral"
+
+#: default_domains.php:67
+msgid "Grass, herb, vine"
+msgstr "Césped/pasto, hierba, enredadera"
+
+#: default_domains.php:68
+msgid "Moss, fungus, algae"
+msgstr "Musgo, hongos, alga"
+
+#: default_domains.php:69
+msgid "Parts of a plant"
+msgstr "Partes de una planta"
+
+#: default_domains.php:70
+msgid "Growth of plants"
+msgstr "Crecimiento de plantas"
+
+#: default_domains.php:71
+msgid "Plant diseases"
+msgstr "Enfermedades de plantas"
+
+#: default_domains.php:72
+msgid "Animal"
+msgstr "Animal"
+
+#: default_domains.php:73
+msgid "Types of animals"
+msgstr "Clases de animales"
+
+#: default_domains.php:74
+msgid "Mammal"
+msgstr "Mamífero"
+
+#: default_domains.php:75
+msgid "Primate"
+msgstr "Primate"
+
+#: default_domains.php:76
+msgid "Carnivore"
+msgstr "Carnívoro"
+
+#: default_domains.php:77
+msgid "Hoofed animals"
+msgstr "Animales con pezuña"
+
+#: default_domains.php:78
+msgid "Rodent"
+msgstr "Roedor"
+
+#: default_domains.php:79
+msgid "Marsupial"
+msgstr "Marsupial"
+
+#: default_domains.php:80
+msgid "Anteater, aardvark"
+msgstr "Oso hormiguero, aardvark"
+
+#: default_domains.php:81
+msgid "Sea mammal"
+msgstr "Mamífero de mar"
+
+#: default_domains.php:82
+msgid "Bat"
+msgstr "Murciélago"
+
+#: default_domains.php:83
+msgid "Bird"
+msgstr "Ave"
+
+#: default_domains.php:84
+msgid "Reptile"
+msgstr "Reptil"
+
+#: default_domains.php:85
+msgid "Snake"
+msgstr "Víbora"
+
+#: default_domains.php:86
+msgid "Lizard"
+msgstr "Lagartija"
+
+#: default_domains.php:87
+msgid "Turtle"
+msgstr "Tortuga"
+
+#: default_domains.php:88
+msgid "Crocodile"
+msgstr "Cocodrilo"
+
+#: default_domains.php:89
+msgid "Amphibian"
+msgstr "Anfibio"
+
+#: default_domains.php:90
+msgid "Fish"
+msgstr "Pez"
+
+#: default_domains.php:91
+msgid "Shark, ray"
+msgstr "Tiburón, ray (pez con esqueleto cartilaginosos, cuerpo aplanado y cola estrecha)"
+
+#: default_domains.php:92
+msgid "Insect"
+msgstr "Insecto"
+
+#: default_domains.php:93
+msgid "Spider"
+msgstr "Araña"
+
+#: default_domains.php:94
+msgid "Small animals"
+msgstr "Animales pequeños"
+
+#: default_domains.php:95
+msgid "Parts of an animal"
+msgstr "Partes de un animal"
+
+#: default_domains.php:96
+msgid "Parts of a bird"
+msgstr "Partes de un ave"
+
+#: default_domains.php:97
+msgid "Parts of a reptile"
+msgstr "Partes de un reptil"
+
+#: default_domains.php:98
+msgid "Parts of a fish"
+msgstr "Partes de un pez"
+
+#: default_domains.php:99
+msgid "Parts of an insect"
+msgstr "Partes de un insecto"
+
+#: default_domains.php:100
+msgid "Parts of small animals"
+msgstr "Partes de animales pequeños"
+
+#: default_domains.php:101
+msgid "Animal life cycle"
+msgstr "Ciclo de vida animal"
+
+#: default_domains.php:102
+msgid "Egg"
+msgstr "Huevo"
+
+#: default_domains.php:103
+msgid "Animal actions"
+msgstr "Acciones de los animales"
+
+#: default_domains.php:104
+msgid "Animal movement"
+msgstr "Movimiento animal"
+
+#: default_domains.php:105
+msgid "Animal eating"
+msgstr "Alimentación animal"
+
+#: default_domains.php:106
+msgid "Animal sounds"
+msgstr "Sonidos de animales"
+
+#: default_domains.php:107
+msgid "Animal home"
+msgstr "Casa de animales"
+
+#: default_domains.php:108
+msgid "Animal group"
+msgstr "Grupo animal"
+
+#: default_domains.php:109
+msgid "Male and female animals"
+msgstr "Animales Machos y Hembras"
+
+#: default_domains.php:110
+msgid "Nature, environment"
+msgstr "Naturaleza, ambiente"
+
+#: default_domains.php:111
+msgid "Natural"
+msgstr "Natural"
+
+#: default_domains.php:112
+msgid "Person"
+msgstr "Persona"
+
+#: default_domains.php:113
+msgid "Body"
+msgstr "Cuerpo"
+
+#: default_domains.php:114
+msgid "Head"
+msgstr "Cabeza"
+
+#: default_domains.php:115
+msgid "Eye"
+msgstr "Ojo"
+
+#: default_domains.php:116
+msgid "Ear"
+msgstr "Oído"
+
+#: default_domains.php:117
+msgid "Nose"
+msgstr "Nariz"
+
+#: default_domains.php:118
+msgid "Mouth"
+msgstr "Boca"
+
+#: default_domains.php:119
+msgid "Tooth"
+msgstr "Diente"
+
+#: default_domains.php:120
+msgid "Torso"
+msgstr "Torso/Tronco del cuerpo"
+
+#: default_domains.php:121
+msgid "Limb"
+msgstr "Extremidad"
+
+#: default_domains.php:122
+msgid "Arm"
+msgstr "Brazo"
+
+#: default_domains.php:123
+msgid "Leg"
+msgstr "Pierna"
+
+#: default_domains.php:124
+msgid "Finger, toe"
+msgstr "Dedos de la mano/del pie"
+
+#: default_domains.php:125
+msgid "Skin"
+msgstr "Piel"
+
+#: default_domains.php:126
+msgid "Hair"
+msgstr "Pelo"
+
+#: default_domains.php:127
+msgid "Bone, joint"
+msgstr "Hueso, articulación"
+
+#: default_domains.php:128
+msgid "Flesh"
+msgstr "Carne"
+
+#: default_domains.php:129
+msgid "Internal organs"
+msgstr "Órganos internos"
+
+#: default_domains.php:130
+msgid "Heart"
+msgstr "Corazón"
+
+#: default_domains.php:131
+msgid "Stomach"
+msgstr "Estómago"
+
+#: default_domains.php:132
+msgid "Male organs"
+msgstr "Órganos masculinos"
+
+#: default_domains.php:133
+msgid "Female organs"
+msgstr "Órganos femeninos"
+
+#: default_domains.php:134
+msgid "Body functions"
+msgstr "Funciones del cuerpo"
+
+#: default_domains.php:135
+msgid "Breathe, breath"
+msgstr "Respirar, respiración"
+
+#: default_domains.php:136
+msgid "Cough, sneeze"
+msgstr "Tos, estornudo"
+
+#: default_domains.php:137
+msgid "Spit, saliva"
+msgstr "Escupir, saliva"
+
+#: default_domains.php:138
+msgid "Mucus"
+msgstr "Moco (mucosidad)"
+
+#: default_domains.php:139
+msgid "Bleed, blood"
+msgstr "Sangrar, sangre"
+
+#: default_domains.php:140
+msgid "Sweat"
+msgstr "Sudor"
+
+#: default_domains.php:141
+msgid "Urinate, urine"
+msgstr "Orinar, orina"
+
+#: default_domains.php:142
+msgid "Defecate, feces"
+msgstr "Defecar, heces"
+
+#: default_domains.php:143
+msgid "Sense, perceive"
+msgstr "Sentir, percibir"
+
+#: default_domains.php:144
+msgid "See"
+msgstr "Vista"
+
+#: default_domains.php:145
+msgid "Look"
+msgstr "Mirar"
+
+#: default_domains.php:146
+msgid "Watch"
+msgstr "Ver (observar)"
+
+#: default_domains.php:147
+msgid "Examine"
+msgstr "Examinar (estudiar)"
+
+#: default_domains.php:148
+msgid "Show, let someone see"
+msgstr "Mostrar, permitir que alguien vea"
+
+#: default_domains.php:149
+msgid "Visible"
+msgstr "Visible"
+
+#: default_domains.php:150
+msgid "Appear"
+msgstr "Aparecer"
+
+#: default_domains.php:151
+msgid "Transparent"
+msgstr "Transparente"
+
+#: default_domains.php:152
+msgid "Reflect, mirror"
+msgstr "Reflejo, espejo"
+
+#: default_domains.php:153
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: default_domains.php:154
+msgid "Beautiful"
+msgstr "Hermoso (bello)"
+
+#: default_domains.php:155
+msgid "Ugly"
+msgstr "Feo"
+
+#: default_domains.php:156
+msgid "Something used to see"
+msgstr "Algo que se usa para ver"
+
+#: default_domains.php:157
+msgid "Hear"
+msgstr "Escuchar"
+
+#: default_domains.php:158
+msgid "Listen"
+msgstr "Escucha"
+
+#: default_domains.php:159
+msgid "Sound"
+msgstr "Sonido"
+
+#: default_domains.php:160
+msgid "Types of sounds"
+msgstr "Clases de sonidos"
+
+#: default_domains.php:161
+msgid "Loud"
+msgstr "Ruidoso"
+
+#: default_domains.php:162
+msgid "Quiet"
+msgstr "Silencioso"
+
+#: default_domains.php:163
+msgid "Taste"
+msgstr "Gusto"
+
+#: default_domains.php:164
+msgid "Smell"
+msgstr "Oler"
+
+#: default_domains.php:165
+msgid "Sense of touch"
+msgstr "Sentido del tacto"
+
+#: default_domains.php:166
+msgid "Comfortable"
+msgstr "Cómodo"
+
+#: default_domains.php:167
+msgid "Body condition"
+msgstr "Condición física del cuerpo"
+
+#: default_domains.php:168
+msgid "Strong"
+msgstr "Fuerte"
+
+#: default_domains.php:169
+msgid "Weak"
+msgstr "Débil"
+
+#: default_domains.php:170
+msgid "Energetic"
+msgstr "Enérgico"
+
+#: default_domains.php:171
+msgid "Tired"
+msgstr "Cansado"
+
+#: default_domains.php:172
+msgid "Rest"
+msgstr "Descanso"
+
+#: default_domains.php:173
+msgid "Healthy"
+msgstr "Sano"
+
+#: default_domains.php:174
+msgid "Sick"
+msgstr "Enfermo"
+
+#: default_domains.php:175
+msgid "Recover from sickness"
+msgstr "Recuperarse de una enfermedad"
+
+#: default_domains.php:176
+msgid "Disease"
+msgstr "Enfermedad"
+
+#: default_domains.php:177
+msgid "Malnutrition, starvation"
+msgstr "Desnutrición, hambre/inanición"
+
+#: default_domains.php:178
+msgid "Skin disease"
+msgstr "Enfermedades de la piel"
+
+#: default_domains.php:179
+msgid "Stomach illness"
+msgstr "Enfermedad del estómago"
+
+#: default_domains.php:180
+msgid "Tooth decay"
+msgstr "Caries dental"
+
+#: default_domains.php:181
+msgid "Injure"
+msgstr "Lecionar (dañar), ofender"
+
+#: default_domains.php:182
+msgid "Amputate"
+msgstr "Amputado"
+
+#: default_domains.php:183
+msgid "Poison"
+msgstr "Veneno"
+
+#: default_domains.php:184
+msgid "Disabled"
+msgstr "Discapacitado/Incapacitado"
+
+#: default_domains.php:185
+msgid "Blind"
+msgstr "Ciego"
+
+#: default_domains.php:186
+msgid "Poor eyesight"
+msgstr "Visión mala"
+
+#: default_domains.php:187
+msgid "Deaf"
+msgstr "Sordo"
+
+#: default_domains.php:188
+msgid "Mute"
+msgstr "Mudo"
+
+#: default_domains.php:189
+msgid "Birth defect"
+msgstr "Defecto/Problema de nacimiento"
+
+#: default_domains.php:190
+msgid "Cause of disease"
+msgstr "Causa de la enfermedad"
+
+#: default_domains.php:191
+msgid "Symptom of disease"
+msgstr "Síntoma de enfermedad"
+
+#: default_domains.php:192
+msgid "Pain"
+msgstr "Dolor"
+
+#: default_domains.php:193
+msgid "Fever"
+msgstr "Fiebre"
+
+#: default_domains.php:194
+msgid "Swell"
+msgstr "Hincharse"
+
+#: default_domains.php:195
+msgid "Lose consciousness"
+msgstr "Pérdida del conocimiento"
+
+#: default_domains.php:196
+msgid "Dazed, confused"
+msgstr "Aturdido, confundido"
+
+#: default_domains.php:197
+msgid "Vision, hallucination"
+msgstr "Visión, alucinación"
+
+#: default_domains.php:198
+msgid "Treat disease"
+msgstr "Tratar/atender la enfermedad"
+
+#: default_domains.php:199
+msgid "Doctor, nurse"
+msgstr "Doctor, enfermera"
+
+#: default_domains.php:200
+msgid "Medicine"
+msgstr "Medicina"
+
+#: default_domains.php:201
+msgid "Medicinal plants"
+msgstr "Plantas medicinales"
+
+#: default_domains.php:202
+msgid "Hospital"
+msgstr "Hospital"
+
+#: default_domains.php:203
+msgid "Traditional medicine"
+msgstr "Medicina tradicional"
+
+#: default_domains.php:204
+msgid "Mental illness"
+msgstr "Enfermedad mental"
+
+#: default_domains.php:205
+msgid "Life"
+msgstr "Vida"
+
+#: default_domains.php:206
+msgid "Marriage"
+msgstr "Matrimonio"
+
+#: default_domains.php:207
+msgid "Arrange a marriage"
+msgstr "Arreglar (organizar) un matrimonio"
+
+#: default_domains.php:208
+msgid "Wedding"
+msgstr "Boda"
+
+#: default_domains.php:209
+msgid "Unmarried"
+msgstr "Soltero"
+
+#: default_domains.php:210
+msgid "Divorce"
+msgstr "Divorcio"
+
+#: default_domains.php:211
+msgid "Romantic love"
+msgstr "Amor romántico"
+
+#: default_domains.php:212
+msgid "Sexual relations"
+msgstr "Relaciones sexuales"
+
+#: default_domains.php:213
+msgid "Virginity"
+msgstr "Virginidad"
+
+#: default_domains.php:214
+msgid "Attract sexually"
+msgstr "Atracción sexual"
+
+#: default_domains.php:215
+msgid "Sexual immorality"
+msgstr "Inmoralidad sexual"
+
+#: default_domains.php:216
+msgid "Birth"
+msgstr "Nacimiento"
+
+#: default_domains.php:217
+msgid "Pregnancy"
+msgstr "Embarazo"
+
+#: default_domains.php:218
+msgid "Fetus"
+msgstr "Feto"
+
+#: default_domains.php:219
+msgid "Miscarriage"
+msgstr "Aborto involuntario"
+
+#: default_domains.php:220
+msgid "Labor and birth pains"
+msgstr "Dolores de parto y de nacimiento"
+
+#: default_domains.php:221
+msgid "Help to give birth"
+msgstr "Ayudar a dar a luz"
+
+#: default_domains.php:222
+msgid "Unusual birth"
+msgstr "Nacimiento inusitado"
+
+#: default_domains.php:223
+msgid "Multiple births"
+msgstr "Partos múltiples"
+
+#: default_domains.php:224
+msgid "Fertile, infertile"
+msgstr "Fértil, estéril"
+
+#: default_domains.php:225
+msgid "Birth ceremony"
+msgstr "Ceremonia de nacimiento"
+
+#: default_domains.php:226
+msgid "Stage of life"
+msgstr "Etapas de la vida"
+
+#: default_domains.php:227
+msgid "Baby"
+msgstr "Bebé"
+
+#: default_domains.php:228
+msgid "Care for a baby"
+msgstr "Cuidar a un bebé"
+
+#: default_domains.php:229
+msgid "Child"
+msgstr "Niño"
+
+#: default_domains.php:230
+msgid "Rear a child"
+msgstr "Criar a un niño"
+
+#: default_domains.php:231
+msgid "Youth"
+msgstr "Juventud"
+
+#: default_domains.php:232
+msgid "Adult"
+msgstr "Adulto"
+
+#: default_domains.php:233
+msgid "Old person"
+msgstr "Persona mayor "
+
+#: default_domains.php:234
+msgid "Grow, get bigger"
+msgstr "Crecer, hacerse grande"
+
+#: default_domains.php:235
+msgid "Initiation"
+msgstr "Iniciación"
+
+#: default_domains.php:236
+msgid "Peer group"
+msgstr "Compañero de grupo"
+
+#: default_domains.php:237
+msgid "Male, female"
+msgstr "Masculino, femenino"
+
+#: default_domains.php:238
+msgid "Man"
+msgstr "Hombre"
+
+#: default_domains.php:239
+msgid "Woman"
+msgstr "Mujer"
+
+#: default_domains.php:240
+msgid "Die"
+msgstr "Morir"
+
+#: default_domains.php:241
+msgid "Kill"
+msgstr "Matar"
+
+#: default_domains.php:242
+msgid "Corpse"
+msgstr "Cuerpo"
+
+#: default_domains.php:243
+msgid "Funeral"
+msgstr "Funeral"
+
+#: default_domains.php:244
+msgid "Mourn"
+msgstr "Guardar luto"
+
+#: default_domains.php:245
+msgid "Bury"
+msgstr "Sepultar"
+
+#: default_domains.php:246
+msgid "Grave"
+msgstr "Sepultura"
+
+#: default_domains.php:247
+msgid "Inherit"
+msgstr "Heredar"
+
+#: default_domains.php:248
+msgid "Life after death"
+msgstr "Vida después de la muerte"
+
+#: default_domains.php:249
+msgid "Language and thought"
+msgstr "Lengua y pensamiento"
+
+#: default_domains.php:250
+msgid "Soul, spirit"
+msgstr "Alma, espíritu"
+
+#: default_domains.php:251
+msgid "Personality"
+msgstr "Personalidad"
+
+#: default_domains.php:252
+msgid "Mental state"
+msgstr "Estado Mental"
+
+#: default_domains.php:253
+msgid "Alert"
+msgstr "Alerta"
+
+#: default_domains.php:254
+msgid "Notice"
+msgstr "Notar"
+
+#: default_domains.php:255
+msgid "Attention"
+msgstr "Atención"
+
+#: default_domains.php:256
+msgid "Ignore"
+msgstr "Ignorar"
+
+#: default_domains.php:257
+msgid "Think"
+msgstr "Pensar"
+
+#: default_domains.php:258
+msgid "Mind"
+msgstr "Mente"
+
+#: default_domains.php:259
+msgid "Think about"
+msgstr "Pensar en"
+
+#: default_domains.php:260
+msgid "Imagine"
+msgstr "Imaginar"
+
+#: default_domains.php:261
+msgid "Intelligent"
+msgstr "Inteligente"
+
+#: default_domains.php:262
+msgid "Stupid"
+msgstr "Estúpido"
+
+#: default_domains.php:263
+msgid "Logical"
+msgstr "Lógico"
+
+#: default_domains.php:264
+msgid "Instinct"
+msgstr "Instinto"
+
+#: default_domains.php:265
+msgid "Learn"
+msgstr "Aprender"
+
+#: default_domains.php:266
+msgid "Study"
+msgstr "Estudiar"
+
+#: default_domains.php:267
+msgid "Check"
+msgstr "Revisar"
+
+#: default_domains.php:268
+msgid "Evaluate, test"
+msgstr "Evaluar, examinar"
+
+#: default_domains.php:269
+msgid "Guess"
+msgstr "Suponer"
+
+#: default_domains.php:270
+msgid "Solve"
+msgstr "Solucionar"
+
+#: default_domains.php:271
+msgid "Realize"
+msgstr "Darse cuenta"
+
+#: default_domains.php:272
+msgid "Willing to learn"
+msgstr "Dispuesto a aprender"
+
+#: default_domains.php:273
+msgid "Know"
+msgstr "Saber"
+
+#: default_domains.php:274
+msgid "Known, unknown"
+msgstr "Conocido, desconocido"
+
+#: default_domains.php:275
+msgid "Area of knowledge"
+msgstr "Area del conocimiento"
+
+#: default_domains.php:276
+msgid "Secret"
+msgstr "Secreto"
+
+#: default_domains.php:277
+msgid "Understand"
+msgstr "Entender"
+
+#: default_domains.php:278
+msgid "Misunderstand"
+msgstr "Entender mal"
+
+#: default_domains.php:279
+msgid "Understandable"
+msgstr "Comprensible/Entendible"
+
+#: default_domains.php:280
+msgid "Mysterious"
+msgstr "Misterioso"
+
+#: default_domains.php:281
+msgid "Opinion"
+msgstr "Opinión"
+
+#: default_domains.php:282
+msgid "Believe"
+msgstr "Creer"
+
+#: default_domains.php:283
+msgid "Trust"
+msgstr "Confiar"
+
+#: default_domains.php:284
+msgid "Disbelief"
+msgstr "Incredulidad"
+
+#: default_domains.php:285
+msgid "Doubt"
+msgstr "Duda"
+
+#: default_domains.php:286
+msgid "Agree with someone"
+msgstr "Estar de acuerdo con alguien"
+
+#: default_domains.php:287
+msgid "Disagree"
+msgstr "Discrepar, disentir"
+
+#: default_domains.php:288
+msgid "Protest"
+msgstr "Protestar"
+
+#: default_domains.php:289
+msgid "Philosophy"
+msgstr "Filosofía"
+
+#: default_domains.php:290
+msgid "Attitude"
+msgstr "Actitud"
+
+#: default_domains.php:291
+msgid "Extreme belief"
+msgstr "Creencia extremista"
+
+#: default_domains.php:292
+msgid "Change your mind"
+msgstr "Cambiar de opinión"
+
+#: default_domains.php:293
+msgid "Approve of something"
+msgstr "Aprobación de algo"
+
+#: default_domains.php:294
+msgid "Remember"
+msgstr "Recordar"
+
+#: default_domains.php:295
+msgid "Forget"
+msgstr "Olvidar"
+
+#: default_domains.php:296
+msgid "Recognize"
+msgstr "Reconocer"
+
+#: default_domains.php:297
+msgid "Memorize"
+msgstr "Memorizar"
+
+#: default_domains.php:298
+msgid "Remind"
+msgstr "Recordar"
+
+#: default_domains.php:299
+msgid "Expect"
+msgstr "Esperar"
+
+#: default_domains.php:300
+msgid "Hope"
+msgstr "Esperanza"
+
+#: default_domains.php:301
+msgid "Hopeless"
+msgstr "Desesperado"
+
+#: default_domains.php:302
+msgid "Predict"
+msgstr "Predecir"
+
+#: default_domains.php:303
+msgid "Tendency"
+msgstr "Tendencia"
+
+#: default_domains.php:304
+msgid "Want"
+msgstr "Querer"
+
+#: default_domains.php:305
+msgid "Decide, plan"
+msgstr "Decidir, planear"
+
+#: default_domains.php:306
+msgid "Purpose, goal"
+msgstr "Propósito, meta"
+
+#: default_domains.php:307
+msgid "Choose"
+msgstr "Elegir"
+
+#: default_domains.php:308
+msgid "Cast lots"
+msgstr "Echar la suerte"
+
+#: default_domains.php:309
+msgid "Intend"
+msgstr "Proponerse"
+
+#: default_domains.php:310
+msgid "Deliberately"
+msgstr "Deliberadamente"
+
+#: default_domains.php:311
+msgid "Determined"
+msgstr "Decidido"
+
+#: default_domains.php:312
+msgid "Stubborn"
+msgstr "Terco, obstinado"
+
+#: default_domains.php:313
+msgid "Lust"
+msgstr "Codiciar"
+
+#: default_domains.php:314
+msgid "Request"
+msgstr "Solicitar"
+
+#: default_domains.php:315
+msgid "Agree to do something"
+msgstr "Acceder hacer algo"
+
+#: default_domains.php:316
+msgid "Refuse to do something"
+msgstr "Rehusar hacer algo"
+
+#: default_domains.php:317
+msgid "Intercede"
+msgstr "Interceder"
+
+#: default_domains.php:318
+msgid "Willing"
+msgstr "Dispuesto a"
+
+#: default_domains.php:319
+msgid "Influence"
+msgstr "Influencia"
+
+#: default_domains.php:320
+msgid "Suggest"
+msgstr "Sugerir"
+
+#: default_domains.php:321
+msgid "Advise"
+msgstr "Aconsejar"
+
+#: default_domains.php:322
+msgid "Persuade"
+msgstr "Persuadir"
+
+#: default_domains.php:323
+msgid "Insist"
+msgstr "Insistir"
+
+#: default_domains.php:324
+msgid "Compel"
+msgstr "Obligar"
+
+#: default_domains.php:325
+msgid "Control"
+msgstr "Controlar"
+
+#: default_domains.php:326
+msgid "Warn"
+msgstr "Prevenir"
+
+#: default_domains.php:327
+msgid "Threaten"
+msgstr "Amenazar"
+
+#: default_domains.php:328
+msgid "Ask permission"
+msgstr "Pedir permiso"
+
+#: default_domains.php:329
+msgid "Give permission"
+msgstr "Dar permiso"
+
+#: default_domains.php:330
+msgid "Refuse permission"
+msgstr "Negar el permiso"
+
+#: default_domains.php:331
+msgid "Exempt"
+msgstr "Exento"
+
+#: default_domains.php:332
+msgid "Prevent"
+msgstr "Impedir"
+
+#: default_domains.php:333
+msgid "Free to do what you want"
+msgstr "Libre de hacer lo que desea"
+
+#: default_domains.php:334
+msgid "Offer"
+msgstr "Ofrecer"
+
+#: default_domains.php:335
+msgid "Accept"
+msgstr "Aceptar"
+
+#: default_domains.php:336
+msgid "Reject"
+msgstr "Rechazar"
+
+#: default_domains.php:337
+msgid "Emotion"
+msgstr "Emoción"
+
+#: default_domains.php:338
+msgid "Feel good"
+msgstr "Sentirse bien"
+
+#: default_domains.php:339
+msgid "Like, love"
+msgstr "Gustar, amar"
+
+#: default_domains.php:340
+msgid "Enjoy doing something"
+msgstr "Disfrutar hacer algo"
+
+#: default_domains.php:341
+msgid "Self-esteem"
+msgstr "Auto-estima"
+
+#: default_domains.php:342
+msgid "Prefer"
+msgstr "Preferir"
+
+#: default_domains.php:343
+msgid "Popular"
+msgstr "Popular"
+
+#: default_domains.php:344
+msgid "Fashionable"
+msgstr "De moda"
+
+#: default_domains.php:345
+msgid "Contentment"
+msgstr "Satisfacción, contentamiento"
+
+#: default_domains.php:346
+msgid "Happy for"
+msgstr "Feliz por"
+
+#: default_domains.php:347
+msgid "Pleased with"
+msgstr "Contento con, satisfecho con"
+
+#: default_domains.php:348
+msgid "Happy"
+msgstr "Feliz/Alegre/Contento"
+
+#: default_domains.php:349
+msgid "Relaxed"
+msgstr "Relajado"
+
+#: default_domains.php:350
+msgid "Calm"
+msgstr "Calma"
+
+#: default_domains.php:351
+msgid "Surprise"
+msgstr "Sorpresa"
+
+#: default_domains.php:352
+msgid "Interested"
+msgstr "Interesado"
+
+#: default_domains.php:353
+msgid "Excited"
+msgstr "Emocionado"
+
+#: default_domains.php:354
+msgid "Enthusiastic"
+msgstr "Entusiasmado"
+
+#: default_domains.php:355
+msgid "Obsessed"
+msgstr "Obsesionado"
+
+#: default_domains.php:356
+msgid "Attract"
+msgstr "Atraer"
+
+#: default_domains.php:357
+msgid "Indifferent"
+msgstr "Indiferente"
+
+#: default_domains.php:358
+msgid "Uninterested, bored"
+msgstr "Desinteresado(a), aburrido(a)"
+
+#: default_domains.php:359
+msgid "Confident"
+msgstr "Confiado, Seguro"
+
+#: default_domains.php:360
+msgid "Feel bad"
+msgstr "Sentirse mal"
+
+#: default_domains.php:361
+msgid "Sad"
+msgstr "Triste"
+
+#: default_domains.php:362
+msgid "Dislike"
+msgstr "Desagradar"
+
+#: default_domains.php:363
+msgid "Hate, detest"
+msgstr "Odiar, detestar"
+
+#: default_domains.php:364
+msgid "Disgusted"
+msgstr "Asqueado/hastiado"
+
+#: default_domains.php:365
+msgid "Disappointed"
+msgstr "Desilusionado/Decepcionado"
+
+#: default_domains.php:366
+msgid "Lonely"
+msgstr "Solitario"
+
+#: default_domains.php:367
+msgid "Upset"
+msgstr "Molesto/Contrariado"
+
+#: default_domains.php:368
+msgid "Shock"
+msgstr "Conmoción"
+
+#: default_domains.php:369
+msgid "Jealous"
+msgstr "Celoso"
+
+#: default_domains.php:370
+msgid "Discontent"
+msgstr "Descontento/desagrado"
+
+#: default_domains.php:371
+msgid "Sorry"
+msgstr "Arrepentir"
+
+#: default_domains.php:372
+msgid "Ashamed"
+msgstr "Avergonzado"
+
+#: default_domains.php:373
+msgid "Embarrassed"
+msgstr "Apenado"
+
+#: default_domains.php:374
+msgid "Angry"
+msgstr "Enojado"
+
+#: default_domains.php:375
+msgid "Annoyed"
+msgstr "Molesto"
+
+#: default_domains.php:376
+msgid "Afraid"
+msgstr "Miedo/Temor"
+
+#: default_domains.php:377
+msgid "Worried"
+msgstr "Preocupado"
+
+#: default_domains.php:378
+msgid "Nervous"
+msgstr "Nervioso"
+
+#: default_domains.php:379
+msgid "Shy, timid"
+msgstr "Cohibido, tímido"
+
+#: default_domains.php:380
+msgid "Confused"
+msgstr "Confuso"
+
+#: default_domains.php:381
+msgid "Communication"
+msgstr "Comunicación"
+
+#: default_domains.php:382
+msgid "Say"
+msgstr "Decir"
+
+#: default_domains.php:383
+msgid "Voice"
+msgstr "Voz"
+
+#: default_domains.php:384
+msgid "Shout"
+msgstr "Gritar"
+
+#: default_domains.php:385
+msgid "Speak quietly"
+msgstr "Hablar calladamente"
+
+#: default_domains.php:386
+msgid "Speak a lot"
+msgstr "Hablar mucho"
+
+#: default_domains.php:387
+msgid "Speak little"
+msgstr "Hablar poco"
+
+#: default_domains.php:388
+msgid "Say nothing"
+msgstr "No decir nada"
+
+#: default_domains.php:389
+msgid "Speech style"
+msgstr "Estilo de hablar"
+
+#: default_domains.php:390
+msgid "Speak well"
+msgstr "Hablar bien"
+
+#: default_domains.php:391
+msgid "Speak poorly"
+msgstr "Hablar mal"
+
+#: default_domains.php:392
+msgid "Talk about a subject"
+msgstr "Hablar acerca de un tema"
+
+#: default_domains.php:393
+msgid "Announce"
+msgstr "Anunciar"
+
+#: default_domains.php:394
+msgid "Describe"
+msgstr "Describir"
+
+#: default_domains.php:395
+msgid "Explain"
+msgstr "Explicar"
+
+#: default_domains.php:396
+msgid "Mention"
+msgstr "Mencionar"
+
+#: default_domains.php:397
+msgid "Introduce"
+msgstr "Presentar"
+
+#: default_domains.php:398
+msgid "Repeat"
+msgstr "Repetir"
+
+#: default_domains.php:399
+msgid "Summarize"
+msgstr "Resumir"
+
+#: default_domains.php:400
+msgid "Emphasize"
+msgstr "Enfatizar"
+
+#: default_domains.php:401
+msgid "Be about, subject"
+msgstr "Acerca de, tema"
+
+#: default_domains.php:402
+msgid "True"
+msgstr "Cierto"
+
+#: default_domains.php:403
+msgid "Tell the truth"
+msgstr "Decir la verdad"
+
+#: default_domains.php:404
+msgid "Tell a lie"
+msgstr "Decir una mentira"
+
+#: default_domains.php:405
+msgid "Contradict"
+msgstr "Contradecir"
+
+#: default_domains.php:406
+msgid "Expose falsehood"
+msgstr "Descubrir el engaño"
+
+#: default_domains.php:407
+msgid "Real"
+msgstr "Real"
+
+#: default_domains.php:408
+msgid "Exaggerate"
+msgstr "Exagerar"
+
+#: default_domains.php:409
+msgid "Speak with others"
+msgstr "Conversar"
+
+#: default_domains.php:410
+msgid "Call"
+msgstr "Llamar"
+
+#: default_domains.php:411
+msgid "Contact"
+msgstr "Contactar"
+
+#: default_domains.php:412
+msgid "Greet"
+msgstr "Saludar"
+
+#: default_domains.php:413
+msgid "Say farewell"
+msgstr "Decir adiós"
+
+#: default_domains.php:414
+msgid "Speak in unison"
+msgstr "Hablar al unísono"
+
+#: default_domains.php:415
+msgid "Ask"
+msgstr "Preguntar"
+
+#: default_domains.php:416
+msgid "Answer"
+msgstr "Contestar/Responder"
+
+#: default_domains.php:417
+msgid "Disclose"
+msgstr "Revelar"
+
+#: default_domains.php:418
+msgid "Hide your thoughts"
+msgstr "Ocultar sus pensamientos"
+
+#: default_domains.php:419
+msgid "Debate"
+msgstr "Debatir"
+
+#: default_domains.php:420
+msgid "Demonstrate"
+msgstr "Probar"
+
+#: default_domains.php:421
+msgid "Quarrel"
+msgstr "Discutir"
+
+#: default_domains.php:422
+msgid "Praise"
+msgstr "Elogiar/alabar"
+
+#: default_domains.php:423
+msgid "Thank"
+msgstr "Agradecer"
+
+#: default_domains.php:424
+msgid "Flatter"
+msgstr "Adular"
+
+#: default_domains.php:425
+msgid "Boast"
+msgstr "Presumir"
+
+#: default_domains.php:426
+msgid "Criticize"
+msgstr "Criticar"
+
+#: default_domains.php:427
+msgid "Blame"
+msgstr "Culpar"
+
+#: default_domains.php:428
+msgid "Insult"
+msgstr "Insultar"
+
+#: default_domains.php:429
+msgid "Mock"
+msgstr "Ridiculizar"
+
+#: default_domains.php:430
+msgid "Gossip"
+msgstr "Chismear"
+
+#: default_domains.php:431
+msgid "Complain"
+msgstr "Quejarse"
+
+#: default_domains.php:432
+msgid "Promise"
+msgstr "Prometer"
+
+#: default_domains.php:433
+msgid "Make speech"
+msgstr "Dar un discurso"
+
+#: default_domains.php:434
+msgid "Report"
+msgstr "informar"
+
+#: default_domains.php:435
+msgid "News, message"
+msgstr "Noticias, mensaje"
+
+#: default_domains.php:436
+msgid "Figurative"
+msgstr "Figurado"
+
+#: default_domains.php:437
+msgid "Admit"
+msgstr "Admitir"
+
+#: default_domains.php:438
+msgid "Language"
+msgstr "Idioma"
+
+#: default_domains.php:439
+msgid "Word"
+msgstr "Palabra"
+
+#: default_domains.php:440
+msgid "Information"
+msgstr "Información"
+
+#: default_domains.php:441
+msgid "Story"
+msgstr "Historia"
+
+#: default_domains.php:442
+msgid "Fable, myth"
+msgstr "Fábula, mito"
+
+#: default_domains.php:443
+msgid "Saying, proverb"
+msgstr "Dicho, proverbio"
+
+#: default_domains.php:444
+msgid "Riddle"
+msgstr "Acertijo/Adivinanza"
+
+#: default_domains.php:445
+msgid "Poetry"
+msgstr "Poesía"
+
+#: default_domains.php:446
+msgid "History"
+msgstr "Historia"
+
+#: default_domains.php:447
+msgid "Verbal tradition"
+msgstr "Tradición oral"
+
+#: default_domains.php:448
+msgid "Foolish talk"
+msgstr "Plática absurda/sin sentido"
+
+#: default_domains.php:449
+msgid "Obscenity"
+msgstr "Obscenidad"
+
+#: default_domains.php:450
+msgid "Sign, symbol"
+msgstr "Señal, símbolo"
+
+#: default_domains.php:451
+msgid "Gesture"
+msgstr "Gesticular"
+
+#: default_domains.php:452
+msgid "Point at"
+msgstr "Señalar"
+
+#: default_domains.php:453
+msgid "Facial expression"
+msgstr "Expresiones faciales"
+
+#: default_domains.php:454
+msgid "Laugh"
+msgstr "Reír"
+
+#: default_domains.php:455
+msgid "Cry, tear"
+msgstr "Llorar, lágrima"
+
+#: default_domains.php:456
+msgid "Reading and writing"
+msgstr "Leer y escribir"
+
+#: default_domains.php:457
+msgid "Write"
+msgstr "Escribir"
+
+#: default_domains.php:458
+msgid "Written material"
+msgstr "Material escrito"
+
+#: default_domains.php:459
+msgid "Read"
+msgstr "Leer"
+
+#: default_domains.php:460
+msgid "Publish"
+msgstr "Publicar"
+
+#: default_domains.php:461
+msgid "Record"
+msgstr "Registro"
+
+#: default_domains.php:462
+msgid "List"
+msgstr "Lista"
+
+#: default_domains.php:463
+msgid "Letter"
+msgstr "Carta"
+
+#: default_domains.php:464
+msgid "Interpreting messages"
+msgstr "Interpretar mensajes"
+
+#: default_domains.php:465
+msgid "Meaning"
+msgstr "Significar"
+
+#: default_domains.php:466
+msgid "Meaningless"
+msgstr "Sin sentido"
+
+#: default_domains.php:467
+msgid "Unintelligible"
+msgstr "Ininteligible"
+
+#: default_domains.php:468
+msgid "Show, indicate"
+msgstr "Mostrar, indicar"
+
+#: default_domains.php:469
+msgid "Mass communication"
+msgstr "Comunicación masiva"
+
+#: default_domains.php:470
+msgid "Radio, television"
+msgstr "Radio, televisión"
+
+#: default_domains.php:471
+msgid "Telephone"
+msgstr "Teléfono"
+
+#: default_domains.php:472
+msgid "Newspaper"
+msgstr "Periódico"
+
+#: default_domains.php:473
+msgid "Movie"
+msgstr "Película"
+
+#: default_domains.php:474
+msgid "Recorded music"
+msgstr "Grabar música"
+
+#: default_domains.php:475
+msgid "Communication devices"
+msgstr "Aparatos de comunicación"
+
+#: default_domains.php:476
+msgid "Teach"
+msgstr "Enseñar"
+
+#: default_domains.php:477
+msgid "Show, explain"
+msgstr "Mostrar, explicar"
+
+#: default_domains.php:478
+msgid "School"
+msgstr "Escuela"
+
+#: default_domains.php:479
+msgid "Subject of teaching"
+msgstr "Materia de enseñanza"
+
+#: default_domains.php:480
+msgid "Class, lesson"
+msgstr "Clase, lección"
+
+#: default_domains.php:481
+msgid "Correct"
+msgstr "Corregir"
+
+#: default_domains.php:482
+msgid "Science"
+msgstr "Ciencia"
+
+#: default_domains.php:483
+msgid "Test"
+msgstr "Examen"
+
+#: default_domains.php:484
+msgid "Answer in a test"
+msgstr "Contestar un examen"
+
+#: default_domains.php:485
+msgid "Social behavior"
+msgstr "Comportamiento social"
+
+#: default_domains.php:486
+msgid "Relationships"
+msgstr "Relaciones"
+
+#: default_domains.php:487
+msgid "Friend"
+msgstr "Amigo"
+
+#: default_domains.php:488
+msgid "Girlfriend, boyfriend"
+msgstr "Novia, novio"
+
+#: default_domains.php:489
+msgid "Types of people"
+msgstr "Clases de gente"
+
+#: default_domains.php:490
+msgid "Working relationship"
+msgstr "Relación de trabajo"
+
+#: default_domains.php:491
+msgid "Know someone"
+msgstr "Conocer a alguien"
+
+#: default_domains.php:492
+msgid "Meet for the first time"
+msgstr "Conocerse por primera vez"
+
+#: default_domains.php:493
+msgid "Neighbor"
+msgstr "Vecino"
+
+#: default_domains.php:494
+msgid "Social class"
+msgstr "Clase social"
+
+#: default_domains.php:495
+msgid "Unity"
+msgstr "Unidad"
+
+#: default_domains.php:496
+msgid "Disunity"
+msgstr "Desunión"
+
+#: default_domains.php:497
+msgid "Unfriendly"
+msgstr "Hostil (poco amigable)"
+
+#: default_domains.php:498
+msgid "Set self apart"
+msgstr "Separarse uno mismo"
+
+#: default_domains.php:499
+msgid "Alone"
+msgstr "Solo"
+
+#: default_domains.php:500
+msgid "Independent person"
+msgstr "Persona independiente"
+
+#: default_domains.php:501
+msgid "Private, public"
+msgstr "Privado, público"
+
+#: default_domains.php:502
+msgid "Begin a relationship"
+msgstr "Inicio de una relación"
+
+#: default_domains.php:503
+msgid "End a relationship"
+msgstr "Fin de una relación"
+
+#: default_domains.php:504
+msgid "Show affection"
+msgstr "Mostrar afecto"
+
+#: default_domains.php:505
+msgid "Kinship"
+msgstr "Parentesco"
+
+#: default_domains.php:506
+msgid "Related by birth"
+msgstr "Relación por naciminto"
+
+#: default_domains.php:507
+msgid "Grandfather, grandmother"
+msgstr "Abuelo, Abuela"
+
+#: default_domains.php:508
+msgid "Father, mother"
+msgstr "Padre, madre"
+
+#: default_domains.php:509
+msgid "Brother, sister"
+msgstr "Hermano, hermana"
+
+#: default_domains.php:510
+msgid "Son, daughter"
+msgstr "Hijo, hija"
+
+#: default_domains.php:511
+msgid "Grandson, granddaughter"
+msgstr "Nieto, nieta"
+
+#: default_domains.php:512
+msgid "Uncle, aunt"
+msgstr "Tío, tía"
+
+#: default_domains.php:513
+msgid "Cousin"
+msgstr "Primo"
+
+#: default_domains.php:514
+msgid "Nephew, niece"
+msgstr "Sobrino, sobrina"
+
+#: default_domains.php:515
+msgid "Birth order"
+msgstr "Orden de nacimiento"
+
+#: default_domains.php:516
+msgid "Related by marriage"
+msgstr "Parentesco por medio del casamiento"
+
+#: default_domains.php:517
+msgid "Husband, wife"
+msgstr "Esposo, esposa"
+
+#: default_domains.php:518
+msgid "In-law"
+msgstr "Familia política"
+
+#: default_domains.php:519
+msgid "Widow, widower"
+msgstr "Viudo, viuda"
+
+#: default_domains.php:520
+msgid "Orphan"
+msgstr "Huérfano"
+
+#: default_domains.php:521
+msgid "Illegitimate child"
+msgstr "Hijo ilegítimo"
+
+#: default_domains.php:522
+msgid "Adopt"
+msgstr "Adoptar"
+
+#: default_domains.php:523
+msgid "Non-relative"
+msgstr "Sin parentesco"
+
+#: default_domains.php:524
+msgid "Family, clan"
+msgstr "Familia, clan"
+
+#: default_domains.php:525
+msgid "Race"
+msgstr "Raza"
+
+#: default_domains.php:526
+msgid "Social activity"
+msgstr "Actividad social"
+
+#: default_domains.php:527
+msgid "Come together, form a group"
+msgstr "Reunirse, formar un grupo"
+
+#: default_domains.php:528
+msgid "Invite"
+msgstr "Invitar"
+
+#: default_domains.php:529
+msgid "Encounter"
+msgstr "Encuentro"
+
+#: default_domains.php:530
+msgid "Meet together"
+msgstr "Reunirse"
+
+#: default_domains.php:531
+msgid "Visit"
+msgstr "Visitar"
+
+#: default_domains.php:532
+msgid "Welcome, receive"
+msgstr "Bienvenida, recibimiento"
+
+#: default_domains.php:533
+msgid "Show hospitality"
+msgstr "Muestra de hospitalidad"
+
+#: default_domains.php:534
+msgid "Meeting, assembly"
+msgstr "Reunión, asamblea"
+
+#: default_domains.php:535
+msgid "Participate"
+msgstr "Participar"
+
+#: default_domains.php:536
+msgid "Crowd, group"
+msgstr "Multitud, grupo"
+
+#: default_domains.php:537
+msgid "Organization"
+msgstr "Organización"
+
+#: default_domains.php:538
+msgid "Join an organization"
+msgstr "Unirse a una organización"
+
+#: default_domains.php:539
+msgid "Leave an organization"
+msgstr "Abandonar una organización"
+
+#: default_domains.php:540
+msgid "Belong to an organization"
+msgstr "Pertenecer a una organización"
+
+#: default_domains.php:541
+msgid "Social group"
+msgstr "Grupo social"
+
+#: default_domains.php:542
+msgid "Social event"
+msgstr "Evento social"
+
+#: default_domains.php:543
+msgid "Ceremony"
+msgstr "Ceremonia"
+
+#: default_domains.php:544
+msgid "Festival, show"
+msgstr "Festival, espectáculo"
+
+#: default_domains.php:545
+msgid "Celebrate"
+msgstr "Celebrar"
+
+#: default_domains.php:546
+msgid "Music"
+msgstr "Música"
+
+#: default_domains.php:547
+msgid "Compose music"
+msgstr "Componer música"
+
+#: default_domains.php:548
+msgid "Play music"
+msgstr "Tocar música"
+
+#: default_domains.php:549
+msgid "Sing"
+msgstr "Cantar"
+
+#: default_domains.php:550
+msgid "Musician"
+msgstr "Músico"
+
+#: default_domains.php:551
+msgid "Musical instrument"
+msgstr "Instrumento musical"
+
+#: default_domains.php:552
+msgid "Dance"
+msgstr "Baile"
+
+#: default_domains.php:553
+msgid "Drama"
+msgstr "Obra de Actuación"
+
+#: default_domains.php:554
+msgid "Entertainment, recreation"
+msgstr "Entretenimiento, recreación"
+
+#: default_domains.php:555
+msgid "Game"
+msgstr "Juego"
+
+#: default_domains.php:556
+msgid "Card game"
+msgstr "Juego de cartas"
+
+#: default_domains.php:557
+msgid "Chess"
+msgstr "Ajedrez"
+
+#: default_domains.php:558
+msgid "Sports"
+msgstr "Deportes"
+
+#: default_domains.php:559
+msgid "Football, soccer"
+msgstr "Futbol"
+
+#: default_domains.php:560
+msgid "Basketball"
+msgstr "Baloncesto"
+
+#: default_domains.php:561
+msgid "Exercise"
+msgstr "Ejercicio"
+
+#: default_domains.php:562
+msgid "Gambling"
+msgstr "Apostar"
+
+#: default_domains.php:563
+msgid "Play, fun"
+msgstr "Jugar"
+
+#: default_domains.php:564
+msgid "Humor"
+msgstr "Humor"
+
+#: default_domains.php:565
+msgid "Serious"
+msgstr "Serio"
+
+#: default_domains.php:566
+msgid "Holiday"
+msgstr "Día Festivo"
+
+#: default_domains.php:567
+msgid "Free time"
+msgstr "Tiempo libre"
+
+#: default_domains.php:568
+msgid "Behavior"
+msgstr "Comportamiento"
+
+#: default_domains.php:569
+msgid "Good, moral"
+msgstr "Bueno, moral"
+
+#: default_domains.php:570
+msgid "Bad, immoral"
+msgstr "Malo, inmoral"
+
+#: default_domains.php:571
+msgid "Meet a standard"
+msgstr "Reunir las cualidades"
+
+#: default_domains.php:572
+msgid "Below standard"
+msgstr "Comportamiento inaceptable"
+
+#: default_domains.php:573
+msgid "Mature in behavior"
+msgstr "Comportamiento maduro"
+
+#: default_domains.php:574
+msgid "Immature in behavior"
+msgstr "Comportamiento inmaduro"
+
+#: default_domains.php:575
+msgid "Sensible"
+msgstr "Sensato"
+
+#: default_domains.php:576
+msgid "Reputation"
+msgstr "Reputación"
+
+#: default_domains.php:577
+msgid "Patient"
+msgstr "Paciente"
+
+#: default_domains.php:578
+msgid "Impatient"
+msgstr "Impaciente"
+
+#: default_domains.php:579
+msgid "Bad-tempered"
+msgstr "Mal genio"
+
+#: default_domains.php:580
+msgid "Admire someone"
+msgstr "Admirar a alguien"
+
+#: default_domains.php:581
+msgid "Despise someone"
+msgstr "Despreciar a alguien"
+
+#: default_domains.php:582
+msgid "Humble"
+msgstr "Humilde"
+
+#: default_domains.php:583
+msgid "Proud"
+msgstr "Orgulloso"
+
+#: default_domains.php:584
+msgid "Show off"
+msgstr "Exhibirse"
+
+#: default_domains.php:585
+msgid "Love"
+msgstr "Amar"
+
+#: default_domains.php:586
+msgid "Hate, ill will"
+msgstr "Odiar, mala voluntad"
+
+#: default_domains.php:587
+msgid "Not care"
+msgstr "Desinterés"
+
+#: default_domains.php:588
+msgid "Abandon"
+msgstr "Abandonar"
+
+#: default_domains.php:589
+msgid "Do good to"
+msgstr "Hacer el bien"
+
+#: default_domains.php:590
+msgid "Do evil to"
+msgstr "Hacer maldad"
+
+#: default_domains.php:591
+msgid "Help"
+msgstr "Ayudar"
+
+#: default_domains.php:592
+msgid "Hinder"
+msgstr "Oponerse"
+
+#: default_domains.php:593
+msgid "Cooperate with"
+msgstr "Cooperar con"
+
+#: default_domains.php:594
+msgid "Compete with"
+msgstr "Competir con"
+
+#: default_domains.php:595
+msgid "Altruistic, selfless"
+msgstr "Altruista, desinteresado"
+
+#: default_domains.php:596
+msgid "Selfish"
+msgstr "Egoista"
+
+#: default_domains.php:597
+msgid "Use a person"
+msgstr "Utilizar a una persona"
+
+#: default_domains.php:598
+msgid "Share with"
+msgstr "Compartir con"
+
+#: default_domains.php:599
+msgid "Provide for, support"
+msgstr "Proveer para, apoyar"
+
+#: default_domains.php:600
+msgid "Care for"
+msgstr "Interesarse por"
+
+#: default_domains.php:601
+msgid "Entrust to the care of"
+msgstr "Asignar el cuidado de"
+
+#: default_domains.php:602
+msgid "Meddle"
+msgstr "Entrometerse"
+
+#: default_domains.php:603
+msgid "Spoil"
+msgstr "Estropear"
+
+#: default_domains.php:604
+msgid "Enter by force"
+msgstr "Entrar por la fuerza"
+
+#: default_domains.php:605
+msgid "Kidnap"
+msgstr "Secuestrar"
+
+#: default_domains.php:606
+msgid "Cruel"
+msgstr "Cruel"
+
+#: default_domains.php:607
+msgid "Honest"
+msgstr "Honesto"
+
+#: default_domains.php:608
+msgid "Dishonest"
+msgstr "Deshonesto"
+
+#: default_domains.php:609
+msgid "Faithful"
+msgstr "Fiel"
+
+#: default_domains.php:610
+msgid "Reliable"
+msgstr "Confiable"
+
+#: default_domains.php:611
+msgid "Unreliable"
+msgstr "Que no es confiable"
+
+#: default_domains.php:612
+msgid "Deceive"
+msgstr "Defraudar"
+
+#: default_domains.php:613
+msgid "Hypocrite"
+msgstr "Hipócrita"
+
+#: default_domains.php:614
+msgid "Self-controlled"
+msgstr "Dominio propio"
+
+#: default_domains.php:615
+msgid "Lack self-control"
+msgstr "Falta de dominio propio"
+
+#: default_domains.php:616
+msgid "Tidy"
+msgstr "Ordenado"
+
+#: default_domains.php:617
+msgid "Untidy"
+msgstr "Desordenado"
+
+#: default_domains.php:618
+msgid "Mistake"
+msgstr "Equivocar"
+
+#: default_domains.php:619
+msgid "Polite"
+msgstr "Educado"
+
+#: default_domains.php:620
+msgid "Impolite"
+msgstr "Mal educado"
+
+#: default_domains.php:621
+msgid "Crazy"
+msgstr "Loco"
+
+#: default_domains.php:622
+msgid "Change behavior"
+msgstr "Cambio de comportamiento"
+
+#: default_domains.php:623
+msgid "Conform"
+msgstr "Adaptarse"
+
+#: default_domains.php:624
+msgid "Culture"
+msgstr "Cultura"
+
+#: default_domains.php:625
+msgid "Custom"
+msgstr "Costumbres"
+
+#: default_domains.php:626
+msgid "Habit"
+msgstr "Hábito"
+
+#: default_domains.php:627
+msgid "Prosperity, trouble"
+msgstr "Prosperidad, crisis"
+
+#: default_domains.php:628
+msgid "Prosperity"
+msgstr "Prosperidad"
+
+#: default_domains.php:629
+msgid "Trouble"
+msgstr "Problema"
+
+#: default_domains.php:630
+msgid "Problem"
+msgstr "Problema"
+
+#: default_domains.php:631
+msgid "Danger"
+msgstr "Peligro"
+
+#: default_domains.php:632
+msgid "Accident"
+msgstr "Accidente"
+
+#: default_domains.php:633
+msgid "Disaster"
+msgstr "Desastre"
+
+#: default_domains.php:634
+msgid "Separate, alone"
+msgstr "Separado, solo"
+
+#: default_domains.php:635
+msgid "Suffer"
+msgstr "Sufrir"
+
+#: default_domains.php:636
+msgid "Respond to trouble"
+msgstr "Enfrentar el problema"
+
+#: default_domains.php:637
+msgid "Brave"
+msgstr "Valentía"
+
+#: default_domains.php:638
+msgid "Cowardice"
+msgstr "Cobardía"
+
+#: default_domains.php:639
+msgid "Avoid"
+msgstr "Evitar (evadir)"
+
+#: default_domains.php:640
+msgid "Caution"
+msgstr "Precaución"
+
+#: default_domains.php:641
+msgid "Solve a problem"
+msgstr "Solucionar un problema"
+
+#: default_domains.php:642
+msgid "Endure"
+msgstr "Resistir"
+
+#: default_domains.php:643
+msgid "Survive"
+msgstr "Sobrevivir"
+
+#: default_domains.php:644
+msgid "Respond to someone in trouble"
+msgstr "Ayudar a alguien que está en problemas"
+
+#: default_domains.php:645
+msgid "Mercy"
+msgstr "Misericordia"
+
+#: default_domains.php:646
+msgid "Show sympathy, support"
+msgstr "Mostrar simpatía, apoyo"
+
+#: default_domains.php:647
+msgid "Gentle"
+msgstr "Amable"
+
+#: default_domains.php:648
+msgid "Save from trouble"
+msgstr "Salvar de un problema"
+
+#: default_domains.php:649
+msgid "Protect"
+msgstr "Proteger"
+
+#: default_domains.php:650
+msgid "Free from bondage"
+msgstr "Libre de esclavitud"
+
+#: default_domains.php:651
+msgid "Relief"
+msgstr "Alivio"
+
+#: default_domains.php:652
+msgid "Risk"
+msgstr "Riesgo"
+
+#: default_domains.php:653
+msgid "Chance"
+msgstr "Casualidad"
+
+#: default_domains.php:654
+msgid "Lucky"
+msgstr "Suerte"
+
+#: default_domains.php:655
+msgid "Unlucky"
+msgstr "Desafortunado"
+
+#: default_domains.php:656
+msgid "Authority"
+msgstr "Autoridad"
+
+#: default_domains.php:657
+msgid "Person in authority"
+msgstr "Persona con autoridad"
+
+#: default_domains.php:658
+msgid "Have authority"
+msgstr "Tener autoridad"
+
+#: default_domains.php:659
+msgid "Exercise authority"
+msgstr "Ejercer autoridad"
+
+#: default_domains.php:660
+msgid "Lead"
+msgstr "Dirigir"
+
+#: default_domains.php:661
+msgid "Command"
+msgstr "Ordenar"
+
+#: default_domains.php:662
+msgid "Discipline, train"
+msgstr "Disciplinar"
+
+#: default_domains.php:663
+msgid "Appoint, delegate"
+msgstr "Designar, delegar"
+
+#: default_domains.php:664
+msgid "Submit to authority"
+msgstr "Someterse a la autoridad"
+
+#: default_domains.php:665
+msgid "Obey"
+msgstr "Obedecer"
+
+#: default_domains.php:666
+msgid "Disobey"
+msgstr "Desobedecer"
+
+#: default_domains.php:667
+msgid "Serve"
+msgstr "Servir"
+
+#: default_domains.php:668
+msgid "Slave"
+msgstr "Esclavo"
+
+#: default_domains.php:669
+msgid "Follow, be a disciple"
+msgstr "Seguir, ser discípulo"
+
+#: default_domains.php:670
+msgid "Rebel against authority"
+msgstr "Rebelarse contra la autoridad"
+
+#: default_domains.php:671
+msgid "Independent"
+msgstr "Independiente"
+
+#: default_domains.php:672
+msgid "Honor"
+msgstr "Honor"
+
+#: default_domains.php:673
+msgid "Title, name of honor"
+msgstr "Título, nombre de honor"
+
+#: default_domains.php:674
+msgid "Lack respect"
+msgstr "Falta de respeto"
+
+#: default_domains.php:675
+msgid "Status"
+msgstr "Posición Social"
+
+#: default_domains.php:676
+msgid "High status"
+msgstr "Posición elevada"
+
+#: default_domains.php:677
+msgid "Low status"
+msgstr "Posición baja"
+
+#: default_domains.php:678
+msgid "Government"
+msgstr "Gobierno"
+
+#: default_domains.php:679
+msgid "Ruler"
+msgstr "Gobernante"
+
+#: default_domains.php:680
+msgid "King's family"
+msgstr "Familia del rey"
+
+#: default_domains.php:681
+msgid "Government official"
+msgstr "Funcionario del gobierno"
+
+#: default_domains.php:682
+msgid "Citizen"
+msgstr "Ciudadano"
+
+#: default_domains.php:683
+msgid "Foreigner"
+msgstr "Extranjero"
+
+#: default_domains.php:684
+msgid "Government organization"
+msgstr "Organización gubernamental"
+
+#: default_domains.php:685
+msgid "Governing body"
+msgstr "Cuerpo gubernamental"
+
+#: default_domains.php:686
+msgid "Rule"
+msgstr "Gobernar"
+
+#: default_domains.php:687
+msgid "Subjugate"
+msgstr "Subyugar"
+
+#: default_domains.php:688
+msgid "Government functions"
+msgstr "Funciones gubernamentales"
+
+#: default_domains.php:689
+msgid "Police"
+msgstr "Policía"
+
+#: default_domains.php:690
+msgid "Arrest"
+msgstr "Arrestar"
+
+#: default_domains.php:691
+msgid "Informal justice"
+msgstr "Linchamiento"
+
+#: default_domains.php:692
+msgid "Diplomacy"
+msgstr "Diplomacia"
+
+#: default_domains.php:693
+msgid "Represent"
+msgstr "Representante"
+
+#: default_domains.php:694
+msgid "Election"
+msgstr "Elección"
+
+#: default_domains.php:695
+msgid "Politics"
+msgstr "Política"
+
+#: default_domains.php:696
+msgid "Region"
+msgstr "Región"
+
+#: default_domains.php:697
+msgid "Country"
+msgstr "País"
+
+#: default_domains.php:698
+msgid "City"
+msgstr "Ciudad"
+
+#: default_domains.php:699
+msgid "Countryside"
+msgstr "Campo"
+
+#: default_domains.php:700
+msgid "Community"
+msgstr "Comunidad"
+
+#: default_domains.php:701
+msgid "Law"
+msgstr "Ley"
+
+#: default_domains.php:702
+msgid "Laws"
+msgstr "Leyes"
+
+#: default_domains.php:703
+msgid "Pass laws"
+msgstr "Aprobar leyes"
+
+#: default_domains.php:704
+msgid "Break the law"
+msgstr "Violar la ley"
+
+#: default_domains.php:705
+msgid "Court of law"
+msgstr "Corte de Justicia"
+
+#: default_domains.php:706
+msgid "Legal personnel"
+msgstr "Personal legal"
+
+#: default_domains.php:707
+msgid "Trial"
+msgstr "Juicio"
+
+#: default_domains.php:708
+msgid "Investigate a crime"
+msgstr "Investigar un delito"
+
+#: default_domains.php:709
+msgid "Suspect"
+msgstr "Sospechar"
+
+#: default_domains.php:710
+msgid "Accuse, confront"
+msgstr "Acusar, confrontar"
+
+#: default_domains.php:711
+msgid "Defend against accusation"
+msgstr "Defenderse de la acusación"
+
+#: default_domains.php:712
+msgid "Witness, testify"
+msgstr "Testigo, testificar"
+
+#: default_domains.php:713
+msgid "Drop charges"
+msgstr "Retirar la denuncia"
+
+#: default_domains.php:714
+msgid "Take oath"
+msgstr "Prestar juramento"
+
+#: default_domains.php:715
+msgid "Vindicate"
+msgstr "Reivindicar"
+
+#: default_domains.php:716
+msgid "Judge, render a verdict"
+msgstr "Juzgar, dar un veredicto"
+
+#: default_domains.php:717
+msgid "Acquit"
+msgstr "Absolver"
+
+#: default_domains.php:718
+msgid "Condemn, find guilty"
+msgstr "Condenar, encontrar culpable"
+
+#: default_domains.php:719
+msgid "Fault"
+msgstr "Culpa"
+
+#: default_domains.php:720
+msgid "Punish"
+msgstr "Castigar"
+
+#: default_domains.php:721
+msgid "Reward"
+msgstr "Recompensa"
+
+#: default_domains.php:722
+msgid "Fine"
+msgstr "Multar"
+
+#: default_domains.php:723
+msgid "Imprison"
+msgstr "Encarcelar"
+
+#: default_domains.php:724
+msgid "Execute"
+msgstr "Ejecutar"
+
+#: default_domains.php:725
+msgid "Ostracize"
+msgstr "Desterrar"
+
+#: default_domains.php:726
+msgid "Pardon, release"
+msgstr "Perdón, indulto"
+
+#: default_domains.php:727
+msgid "Atone, restitution"
+msgstr "Expiar, restituir"
+
+#: default_domains.php:728
+msgid "Legal contract"
+msgstr "Contrato legal"
+
+#: default_domains.php:729
+msgid "Covenant"
+msgstr "Convenio"
+
+#: default_domains.php:730
+msgid "Break a contract"
+msgstr "Romper un contrato"
+
+#: default_domains.php:731
+msgid "Justice"
+msgstr "Justicia"
+
+#: default_domains.php:732
+msgid "Impartial"
+msgstr "Imparcial"
+
+#: default_domains.php:733
+msgid "Unfair"
+msgstr "Injusto"
+
+#: default_domains.php:734
+msgid "Deserve"
+msgstr "Merecer"
+
+#: default_domains.php:735
+msgid "Discriminate, be unfair"
+msgstr "Discriminar, ser injusto"
+
+#: default_domains.php:736
+msgid "Act harshly"
+msgstr "Actuar severamente"
+
+#: default_domains.php:737
+msgid "Oppress"
+msgstr "Oprimir"
+
+#: default_domains.php:738
+msgid "Conflict"
+msgstr "Conflicto"
+
+#: default_domains.php:739
+msgid "Hostility"
+msgstr "Hostilidad"
+
+#: default_domains.php:740
+msgid "Oppose"
+msgstr "Oponerse"
+
+#: default_domains.php:741
+msgid "Fight"
+msgstr "Lucha (pelea)"
+
+#: default_domains.php:742
+msgid "Fight for something good"
+msgstr "Luchar por algo bueno"
+
+#: default_domains.php:743
+msgid "Fight against something bad"
+msgstr "Luchar contra algo malo"
+
+#: default_domains.php:744
+msgid "Attack"
+msgstr "atacar"
+
+#: default_domains.php:745
+msgid "Ambush"
+msgstr "Emboscada"
+
+#: default_domains.php:746
+msgid "Defend"
+msgstr "Repeler"
+
+#: default_domains.php:747
+msgid "Revenge"
+msgstr "Venganza"
+
+#: default_domains.php:748
+msgid "Riot"
+msgstr "Disturbio"
+
+#: default_domains.php:749
+msgid "Betray"
+msgstr "Traicionar"
+
+#: default_domains.php:750
+msgid "Violent"
+msgstr "Violento"
+
+#: default_domains.php:751
+msgid "Enemy"
+msgstr "Enemigo"
+
+#: default_domains.php:752
+msgid "War"
+msgstr "Víctima"
+
+#: default_domains.php:753
+msgid "Defeat"
+msgstr "Derrotar"
+
+#: default_domains.php:754
+msgid "Win"
+msgstr "Ganar"
+
+#: default_domains.php:755
+msgid "Lose a fight"
+msgstr "Perder un combate"
+
+#: default_domains.php:756
+msgid "Surrender"
+msgstr "Rendirse"
+
+#: default_domains.php:757
+msgid "Prisoner of war"
+msgstr "Prisionero de guerra"
+
+#: default_domains.php:758
+msgid "Military organization"
+msgstr "Organizaciones militares"
+
+#: default_domains.php:759
+msgid "Army"
+msgstr "Ejército"
+
+#: default_domains.php:760
+msgid "Navy"
+msgstr "Naval"
+
+#: default_domains.php:761
+msgid "Air force"
+msgstr "Fuerza aérea"
+
+#: default_domains.php:762
+msgid "Soldier"
+msgstr "Soldado"
+
+#: default_domains.php:763
+msgid "Spy"
+msgstr "Espía"
+
+#: default_domains.php:764
+msgid "Fort"
+msgstr "Fuerte"
+
+#: default_domains.php:765
+msgid "Weapon, shoot"
+msgstr "Arma, disparo"
+
+#: default_domains.php:766
+msgid "Plunder"
+msgstr "Saquear"
+
+#: default_domains.php:767
+msgid "Peace"
+msgstr "Paz"
+
+#: default_domains.php:768
+msgid "Rebuke"
+msgstr "Reprender"
+
+#: default_domains.php:769
+msgid "Make an appeal"
+msgstr "Hacer una apelación"
+
+#: default_domains.php:770
+msgid "Appease"
+msgstr "Acallar"
+
+#: default_domains.php:771
+msgid "Negotiate"
+msgstr "Negociar"
+
+#: default_domains.php:772
+msgid "Renounce claim, concede"
+msgstr "Renuncia a una demanda, conceder"
+
+#: default_domains.php:773
+msgid "Repent"
+msgstr "Arrepentir"
+
+#: default_domains.php:774
+msgid "Request forgiveness"
+msgstr "Pedir perdón"
+
+#: default_domains.php:775
+msgid "Forgive"
+msgstr "Perdonar"
+
+#: default_domains.php:776
+msgid "Make peace"
+msgstr "Hacer la paz"
+
+#: default_domains.php:777
+msgid "Stop fighting"
+msgstr "Dejar de pelear"
+
+#: default_domains.php:778
+msgid "Reconcile"
+msgstr "Reconciliar"
+
+#: default_domains.php:779
+msgid "Religion"
+msgstr "Religión"
+
+#: default_domains.php:780
+msgid "God"
+msgstr "Dios"
+
+#: default_domains.php:781
+msgid "Supernatural being"
+msgstr "Ser sobrenatural"
+
+#: default_domains.php:782
+msgid "Theology"
+msgstr "Teología"
+
+#: default_domains.php:783
+msgid "Sacred writings"
+msgstr "Escritos sagrados"
+
+#: default_domains.php:784
+msgid "Miracle, supernatural power"
+msgstr "Milagro, poder sobrenatural"
+
+#: default_domains.php:785
+msgid "Sorcery"
+msgstr "Hechicería"
+
+#: default_domains.php:786
+msgid "Demon possession"
+msgstr "Posesión demoniaca"
+
+#: default_domains.php:787
+msgid "Bless"
+msgstr "Bendecir"
+
+#: default_domains.php:788
+msgid "Curse"
+msgstr "Maldecir"
+
+#: default_domains.php:789
+msgid "Destiny"
+msgstr "Destino"
+
+#: default_domains.php:790
+msgid "Prophecy"
+msgstr "Profecía"
+
+#: default_domains.php:791
+msgid "Omen, divination"
+msgstr "Presagio, adivinación"
+
+#: default_domains.php:792
+msgid "Practice religion"
+msgstr "Práctica de una religión"
+
+#: default_domains.php:793
+msgid "Devout"
+msgstr "Deboto"
+
+#: default_domains.php:794
+msgid "Pray"
+msgstr "Orar"
+
+#: default_domains.php:795
+msgid "Worship"
+msgstr "Adoración"
+
+#: default_domains.php:796
+msgid "Religious ceremony"
+msgstr "Ceremonia religiosa"
+
+#: default_domains.php:797
+msgid "Offering, sacrifice"
+msgstr "Ofrenda, sacrificio"
+
+#: default_domains.php:798
+msgid "Religious purification"
+msgstr "Purificación religiosa"
+
+#: default_domains.php:799
+msgid "Taboo"
+msgstr "Tabú"
+
+#: default_domains.php:800
+msgid "Salvation"
+msgstr "Salvación"
+
+#: default_domains.php:801
+msgid "Dedicate to religious use"
+msgstr "Dedicar al uso religioso"
+
+#: default_domains.php:802
+msgid "Fasting"
+msgstr "Ayunar"
+
+#: default_domains.php:803
+msgid "Heaven, hell"
+msgstr "Cielo, infierno"
+
+#: default_domains.php:804
+msgid "Resurrection"
+msgstr "Resurrección"
+
+#: default_domains.php:805
+msgid "Religious organization"
+msgstr "Organización religiosa"
+
+#: default_domains.php:806
+msgid "Religious person"
+msgstr "Persona religiosa"
+
+#: default_domains.php:807
+msgid "Christianity"
+msgstr "Cristianismo"
+
+#: default_domains.php:808
+msgid "Islam"
+msgstr "Islamismo"
+
+#: default_domains.php:809
+msgid "Hinduism"
+msgstr "Hinduismo"
+
+#: default_domains.php:810
+msgid "Buddhism"
+msgstr "Budismo"
+
+#: default_domains.php:811
+msgid "Judaism"
+msgstr "Judaísmo"
+
+#: default_domains.php:812
+msgid "Animism"
+msgstr "Animismo"
+
+#: default_domains.php:813
+msgid "Religious things"
+msgstr "Objetos religiosos"
+
+#: default_domains.php:814
+msgid "Idol"
+msgstr "Ídolo"
+
+#: default_domains.php:815
+msgid "Place of worship"
+msgstr "Lugar de adoración"
+
+#: default_domains.php:816
+msgid "Irreligion"
+msgstr "Sin religión"
+
+#: default_domains.php:817
+msgid "Daily life"
+msgstr "Vida diaria"
+
+#: default_domains.php:818
+msgid "Household equipment"
+msgstr "Equipos doméstico"
+
+#: default_domains.php:819
+msgid "Furniture"
+msgstr "Mobiliario"
+
+#: default_domains.php:820
+msgid "Table"
+msgstr "Mesa"
+
+#: default_domains.php:821
+msgid "Chair"
+msgstr "Silla"
+
+#: default_domains.php:822
+msgid "Bed"
+msgstr "Cama"
+
+#: default_domains.php:823
+msgid "Cabinet"
+msgstr "Gabinete"
+
+#: default_domains.php:824
+msgid "Household decoration"
+msgstr "Decoración del hogar"
+
+#: default_domains.php:825
+msgid "Food"
+msgstr "Comida"
+
+#: default_domains.php:826
+msgid "Food preparation"
+msgstr "Preparación de comida/alimentos"
+
+#: default_domains.php:827
+msgid "Cooking methods"
+msgstr "Métodos para cocinar"
+
+#: default_domains.php:828
+msgid "Steps in food preparation"
+msgstr "Pasos en la preparación de alimentos"
+
+#: default_domains.php:829
+msgid "Remove shell, skin"
+msgstr "Quitar la cáscara, la piel"
+
+#: default_domains.php:830
+msgid "Pound in mortar and pestle"
+msgstr "Moler en molcajete"
+
+#: default_domains.php:831
+msgid "Grind flour"
+msgstr "Pulverizar harina"
+
+#: default_domains.php:832
+msgid "Cooking utensil"
+msgstr "Utensilios de cocina"
+
+#: default_domains.php:833
+msgid "Food storage"
+msgstr "Almacenamiento de alimentos"
+
+#: default_domains.php:834
+msgid "Serve food"
+msgstr "Servir los alimentos"
+
+#: default_domains.php:835
+msgid "Eat"
+msgstr "Comer"
+
+#: default_domains.php:836
+msgid "Bite, chew"
+msgstr "Morder, masticar"
+
+#: default_domains.php:837
+msgid "Meal"
+msgstr "Comida"
+
+#: default_domains.php:838
+msgid "Feast"
+msgstr "Banquete"
+
+#: default_domains.php:839
+msgid "Manner of eating"
+msgstr "Forma de comer"
+
+#: default_domains.php:840
+msgid "Hungry, thirsty"
+msgstr "Hambriento, sediento"
+
+#: default_domains.php:841
+msgid "Satiated, full"
+msgstr "Saciado, lleno"
+
+#: default_domains.php:842
+msgid "Drink"
+msgstr "Beber"
+
+#: default_domains.php:843
+msgid "Eating utensil"
+msgstr "Utensilios para comer"
+
+#: default_domains.php:844
+msgid "Fast, not eat"
+msgstr "Ayunar, no comer"
+
+#: default_domains.php:845
+msgid "Types of food"
+msgstr "Tipos de alimentos"
+
+#: default_domains.php:846
+msgid "Food from plants"
+msgstr "Alimentos procedentes de plantas"
+
+#: default_domains.php:847
+msgid "Food from seeds"
+msgstr "Alimentos procedentes de semillas"
+
+#: default_domains.php:848
+msgid "Food from fruit"
+msgstr "Alimentos procedentes de frutas"
+
+#: default_domains.php:849
+msgid "Food from vegetables"
+msgstr "Alimentos procedentes de vegetales"
+
+#: default_domains.php:850
+msgid "Food from leaves"
+msgstr "Alimentos procedentes de hojas"
+
+#: default_domains.php:851
+msgid "Food from roots"
+msgstr "Alimento procedentes de raíces"
+
+#: default_domains.php:852
+msgid "Food from animals"
+msgstr "Alimentos procedentes de animales"
+
+#: default_domains.php:853
+msgid "Meat"
+msgstr "Carne"
+
+#: default_domains.php:854
+msgid "Milk products"
+msgstr "Productos lácteos"
+
+#: default_domains.php:855
+msgid "Egg dishes"
+msgstr "Platillos con huevos"
+
+#: default_domains.php:856
+msgid "Cooking ingredients"
+msgstr "Ingredientes para cocinar"
+
+#: default_domains.php:857
+msgid "Sugar"
+msgstr "Azúcar"
+
+#: default_domains.php:858
+msgid "Salt"
+msgstr "Sal"
+
+#: default_domains.php:859
+msgid "Spice"
+msgstr "Especia/Condimiento"
+
+#: default_domains.php:860
+msgid "Leaven"
+msgstr "Levadura"
+
+#: default_domains.php:861
+msgid "Cooking oil"
+msgstr "Aceite de cocina"
+
+#: default_domains.php:862
+msgid "Prepared food"
+msgstr "Alimentos Preparados"
+
+#: default_domains.php:863
+msgid "Prohibited food"
+msgstr "Alimentos prohibidos"
+
+#: default_domains.php:864
+msgid "Beverage"
+msgstr "Bebida"
+
+#: default_domains.php:865
+msgid "Alcoholic beverage"
+msgstr "Bebida alcohólica"
+
+#: default_domains.php:866
+msgid "Alcohol preparation"
+msgstr "Preparación de bebidas alcohólicas"
+
+#: default_domains.php:867
+msgid "Drunk"
+msgstr "Borracho (ebrio)"
+
+#: default_domains.php:868
+msgid "Tobacco"
+msgstr "Tabaco"
+
+#: default_domains.php:869
+msgid "Narcotic"
+msgstr "Nartcóticos"
+
+#: default_domains.php:870
+msgid "Stimulant"
+msgstr "Estimulante"
+
+#: default_domains.php:871
+msgid "Clothing"
+msgstr "Ropa"
+
+#: default_domains.php:872
+msgid "Men's clothing"
+msgstr "Ropa para Caballeros"
+
+#: default_domains.php:873
+msgid "Women's clothing"
+msgstr "Ropa para Damas"
+
+#: default_domains.php:874
+msgid "Traditional clothing"
+msgstr "Ropa tradicional/convencional"
+
+#: default_domains.php:875
+msgid "Clothes for special occasions"
+msgstr "Ropa para ocasiones especiales"
+
+#: default_domains.php:876
+msgid "Clothes for special people"
+msgstr "Ropa para personas especiales"
+
+#: default_domains.php:877
+msgid "Parts of clothing"
+msgstr "Partes del vestido"
+
+#: default_domains.php:878
+msgid "Wear clothing"
+msgstr "Usar prendas de vestir"
+
+#: default_domains.php:879
+msgid "Naked"
+msgstr "Desnudo"
+
+#: default_domains.php:880
+msgid "Style of clothing"
+msgstr "Estilo de ropa"
+
+#: default_domains.php:881
+msgid "Adornment"
+msgstr "Adorno"
+
+#: default_domains.php:882
+msgid "Jewelry"
+msgstr "Joyería"
+
+#: default_domains.php:883
+msgid "Cosmetics"
+msgstr "Cosméticos"
+
+#: default_domains.php:884
+msgid "Care for hair"
+msgstr "Cuidado del cabello"
+
+#: default_domains.php:885
+msgid "Comb hair"
+msgstr "Peinar el cabello"
+
+#: default_domains.php:886
+msgid "Plait hair"
+msgstr "Pelo trenzado"
+
+#: default_domains.php:887
+msgid "Dye hair"
+msgstr "Tinte para el cabello"
+
+#: default_domains.php:888
+msgid "Hairstyle"
+msgstr "Peinado"
+
+#: default_domains.php:889
+msgid "Cut hair"
+msgstr "Cortar el pelo"
+
+#: default_domains.php:890
+msgid "Shave"
+msgstr "Rasurar"
+
+#: default_domains.php:891
+msgid "Care for the teeth"
+msgstr "Cuidado de los dientes"
+
+#: default_domains.php:892
+msgid "Anoint the body"
+msgstr "Unge el cuerpo"
+
+#: default_domains.php:893
+msgid "Ritual scar"
+msgstr "Cicatriz ritual"
+
+#: default_domains.php:894
+msgid "Circumcision"
+msgstr "Circuncisión"
+
+#: default_domains.php:895
+msgid "Care for the fingernails"
+msgstr "Cuidado de las uñas"
+
+#: default_domains.php:896
+msgid "Fire"
+msgstr "Fuego"
+
+#: default_domains.php:897
+msgid "Light a fire"
+msgstr "Prender fuego"
+
+#: default_domains.php:898
+msgid "Tend a fire"
+msgstr "Mantener un fuego"
+
+#: default_domains.php:899
+msgid "Extinguish a fire"
+msgstr "Apagar un fuego"
+
+#: default_domains.php:900
+msgid "Burn"
+msgstr "Quemar"
+
+#: default_domains.php:901
+msgid "What fires produce"
+msgstr "Lo que produce el fuego"
+
+#: default_domains.php:902
+msgid "Fuel"
+msgstr "Combustible"
+
+#: default_domains.php:903
+msgid "Fireplace"
+msgstr "Chimenea"
+
+#: default_domains.php:904
+msgid "Cleaning"
+msgstr "Limpiar"
+
+#: default_domains.php:905
+msgid "Clean, dirty"
+msgstr "Limpio, sucio"
+
+#: default_domains.php:906
+msgid "Bathe"
+msgstr "Bañar"
+
+#: default_domains.php:907
+msgid "Wash dishes"
+msgstr "Lavar las vasijas"
+
+#: default_domains.php:908
+msgid "Wash clothes"
+msgstr "Lavar la ropa"
+
+#: default_domains.php:909
+msgid "Sweep, rake"
+msgstr "Barrer, rastrillar"
+
+#: default_domains.php:910
+msgid "Wipe, erase"
+msgstr "Limpiar/sacudir, remover"
+
+#: default_domains.php:911
+msgid "Sleep"
+msgstr "Dormir"
+
+#: default_domains.php:912
+msgid "Go to sleep"
+msgstr "Irse a dormir"
+
+#: default_domains.php:913
+msgid "Dream"
+msgstr "Soñar"
+
+#: default_domains.php:914
+msgid "Wake up"
+msgstr "Depertarse"
+
+#: default_domains.php:915
+msgid "Manage a house"
+msgstr "Encargarse de una casa"
+
+#: default_domains.php:916
+msgid "Live, stay"
+msgstr "Vivir, habitar"
+
+#: default_domains.php:917
+msgid "Work and occupation"
+msgstr "Trabajar y Ocupación"
+
+#: default_domains.php:918
+msgid "Work"
+msgstr "Trabajo"
+
+#: default_domains.php:919
+msgid "Worker"
+msgstr "Trabajador"
+
+#: default_domains.php:920
+msgid "Expert"
+msgstr "Experto"
+
+#: default_domains.php:921
+msgid "Method"
+msgstr "Método"
+
+#: default_domains.php:922
+msgid "Try, attempt"
+msgstr "Probar, intentar"
+
+#: default_domains.php:923
+msgid "Use"
+msgstr "Usar"
+
+#: default_domains.php:924
+msgid "Useful"
+msgstr "Útil"
+
+#: default_domains.php:925
+msgid "Useless"
+msgstr "Inservible"
+
+#: default_domains.php:926
+msgid "Available"
+msgstr "Disponible"
+
+#: default_domains.php:927
+msgid "Use up"
+msgstr "Consumir"
+
+#: default_domains.php:928
+msgid "Take care of something"
+msgstr "Cuidar algo"
+
+#: default_domains.php:929
+msgid "Waste"
+msgstr "Desperdiciar"
+
+#: default_domains.php:930
+msgid "Work well"
+msgstr "Trabajar bien"
+
+#: default_domains.php:931
+msgid "Careful"
+msgstr "Cuidadoso"
+
+#: default_domains.php:932
+msgid "Work hard"
+msgstr "Trabajar duro"
+
+#: default_domains.php:933
+msgid "Busy"
+msgstr "Ocupado"
+
+#: default_domains.php:934
+msgid "Power, force"
+msgstr "Poder, fuerza"
+
+#: default_domains.php:935
+msgid "Complete, finish"
+msgstr "Completar, finalizar"
+
+#: default_domains.php:936
+msgid "Ambitious"
+msgstr "Ambicioso"
+
+#: default_domains.php:937
+msgid "Work poorly"
+msgstr "Trabajar pobremente"
+
+#: default_domains.php:938
+msgid "Careless, irresponsible"
+msgstr "Descuidado, irresponsable"
+
+#: default_domains.php:939
+msgid "Lazy"
+msgstr "Haragán"
+
+#: default_domains.php:940
+msgid "Give up"
+msgstr "Renunciar"
+
+#: default_domains.php:941
+msgid "Plan"
+msgstr "Plan"
+
+#: default_domains.php:942
+msgid "Arrange an event"
+msgstr "Organizar un evento"
+
+#: default_domains.php:943
+msgid "Cancel an event"
+msgstr "Cancelar un evento"
+
+#: default_domains.php:944
+msgid "Prepare"
+msgstr "Preparar"
+
+#: default_domains.php:945
+msgid "Prepare something for use"
+msgstr "Preparar algo para su uso"
+
+#: default_domains.php:946
+msgid "Effective"
+msgstr "Efectivo"
+
+#: default_domains.php:947
+msgid "Efficient"
+msgstr "Eficiente"
+
+#: default_domains.php:948
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#: default_domains.php:949
+msgid "Difficult, impossible"
+msgstr "Difícil, imposible"
+
+#: default_domains.php:950
+msgid "Easy, possible"
+msgstr "Fácil, posible"
+
+#: default_domains.php:951
+msgid "Succeed"
+msgstr "Tener éxito"
+
+#: default_domains.php:952
+msgid "Fail"
+msgstr "Fracasar"
+
+#: default_domains.php:953
+msgid "Advantage"
+msgstr "Ventaja"
+
+#: default_domains.php:954
+msgid "Job satisfaction"
+msgstr "Satisfacción profesional"
+
+#: default_domains.php:955
+msgid "Unemployed, not working"
+msgstr "Desempleado, sin trabajo"
+
+#: default_domains.php:956
+msgid "Made by hand"
+msgstr "Hecho a mano"
+
+#: default_domains.php:957
+msgid "Artificial"
+msgstr "Artificial"
+
+#: default_domains.php:958
+msgid "Experienced"
+msgstr "Experimentado"
+
+#: default_domains.php:959
+msgid "Accustomed to"
+msgstr "Acostumbrado a"
+
+#: default_domains.php:960
+msgid "Agriculture"
+msgstr "Agricultura"
+
+#: default_domains.php:961
+msgid "Growing crops"
+msgstr "Cultivo de cosechas"
+
+#: default_domains.php:962
+msgid "Growing grain"
+msgstr "Cultivo de granos"
+
+#: default_domains.php:963
+msgid "Growing rice"
+msgstr "Cultivo de arroz"
+
+#: default_domains.php:964
+msgid "Growing wheat"
+msgstr "Cultivo de trigo"
+
+#: default_domains.php:965
+msgid "Growing maize"
+msgstr "Cultivo maíz"
+
+#: default_domains.php:966
+msgid "Growing roots"
+msgstr "Cultivo de raíces"
+
+#: default_domains.php:967
+msgid "Growing potatoes"
+msgstr "Cultivo de papas"
+
+#: default_domains.php:968
+msgid "Growing cassava"
+msgstr "Cultivo de yuca/casabe/mandioca"
+
+#: default_domains.php:969
+msgid "Growing vegetables"
+msgstr "Cultivo de vegetales"
+
+#: default_domains.php:970
+msgid "Growing fruit"
+msgstr "Cultivo de frutas"
+
+#: default_domains.php:971
+msgid "Growing grapes"
+msgstr "Cultivo de uvas"
+
+#: default_domains.php:972
+msgid "Growing bananas"
+msgstr "Cultivo de plátanos"
+
+#: default_domains.php:973
+msgid "Growing grass"
+msgstr "Cultivo de herbaje"
+
+#: default_domains.php:974
+msgid "Growing sugarcane"
+msgstr "Cultivo de la caña de azúcar"
+
+#: default_domains.php:975
+msgid "Growing tobacco"
+msgstr "Cultivo de tabaco"
+
+#: default_domains.php:976
+msgid "Growing flowers"
+msgstr "Cultivo de flores"
+
+#: default_domains.php:977
+msgid "Growing trees"
+msgstr "Cultivo de árboles"
+
+#: default_domains.php:978
+msgid "Growing coconuts"
+msgstr "Cultivo de cocoteros"
+
+#: default_domains.php:979
+msgid "Growing coffee"
+msgstr "Cultivo de cafetales"
+
+#: default_domains.php:980
+msgid "Land preparation"
+msgstr "Preparación del terreno"
+
+#: default_domains.php:981
+msgid "Clear a field"
+msgstr "Limpiar un terreno"
+
+#: default_domains.php:982
+msgid "Plow a field"
+msgstr "Arar un terreno"
+
+#: default_domains.php:983
+msgid "Fertilize a field"
+msgstr "Fertilizar un campo"
+
+#: default_domains.php:984
+msgid "Plant a field"
+msgstr "Sembrar un terreno"
+
+#: default_domains.php:985
+msgid "Tend a field"
+msgstr "Cuidar un terreno"
+
+#: default_domains.php:986
+msgid "Cut grass"
+msgstr "Cortar el pasto/césped/pastizal"
+
+#: default_domains.php:987
+msgid "Uproot plants"
+msgstr "Arrancar las plantas"
+
+#: default_domains.php:988
+msgid "Irrigate"
+msgstr "Irrigar"
+
+#: default_domains.php:989
+msgid "Trim plants"
+msgstr "Podar plantas"
+
+#: default_domains.php:990
+msgid "Neglect plants"
+msgstr "Descuidar plantas"
+
+#: default_domains.php:991
+msgid "Harvest"
+msgstr "Cosechar"
+
+#: default_domains.php:992
+msgid "First fruits"
+msgstr "Primeros frutos"
+
+#: default_domains.php:993
+msgid "Crop failure"
+msgstr "Pérdida de una cosecha"
+
+#: default_domains.php:994
+msgid "Gather wild plants"
+msgstr "Recoger plantas silvestres"
+
+#: default_domains.php:995
+msgid "Plant product"
+msgstr "Producto vegetal"
+
+#: default_domains.php:996
+msgid "Process harvest"
+msgstr "Procesar la cosecha"
+
+#: default_domains.php:997
+msgid "Winnow grain"
+msgstr "Aventar el grano"
+
+#: default_domains.php:998
+msgid "Mill grain"
+msgstr "Moler granos"
+
+#: default_domains.php:999
+msgid "Thresh"
+msgstr "Trillar"
+
+#: default_domains.php:1000
+msgid "Store the harvest"
+msgstr "Almacenar la cosecha"
+
+#: default_domains.php:1001
+msgid "Farm worker"
+msgstr "Trabajador agrícola"
+
+#: default_domains.php:1002
+msgid "Agricultural tool"
+msgstr "Herramienta agrícola"
+
+#: default_domains.php:1003
+msgid "Farmland"
+msgstr "Granja"
+
+#: default_domains.php:1004
+msgid "Animal husbandry"
+msgstr "Cría de animales"
+
+#: default_domains.php:1005
+msgid "Domesticated animal"
+msgstr "Animales domésticos"
+
+#: default_domains.php:1006
+msgid "Cattle"
+msgstr "Ganado"
+
+#: default_domains.php:1007
+msgid "Sheep"
+msgstr "Ovejas"
+
+#: default_domains.php:1008
+msgid "Goat"
+msgstr "Cabra"
+
+#: default_domains.php:1009
+msgid "Pig"
+msgstr "Cerdo"
+
+#: default_domains.php:1010
+msgid "Dog"
+msgstr "Perro"
+
+#: default_domains.php:1011
+msgid "Cat"
+msgstr "Gato"
+
+#: default_domains.php:1012
+msgid "Beast of burden"
+msgstr "Bestias de carga"
+
+#: default_domains.php:1013
+msgid "Tend herds in fields"
+msgstr "Apacentar rebaños en el campo"
+
+#: default_domains.php:1014
+msgid "Milk"
+msgstr "Ordeñar"
+
+#: default_domains.php:1015
+msgid "Butcher, slaughter"
+msgstr "Carnicero, matador"
+
+#: default_domains.php:1016
+msgid "Wool production"
+msgstr "Producción de lana"
+
+#: default_domains.php:1017
+msgid "Poultry raising"
+msgstr "Avicultura"
+
+#: default_domains.php:1018
+msgid "Chicken"
+msgstr "Pollo"
+
+#: default_domains.php:1019
+msgid "Animal products"
+msgstr "Productos procedentes de animales"
+
+#: default_domains.php:1020
+msgid "Veterinary science"
+msgstr "Ciencia Veterinaria"
+
+#: default_domains.php:1021
+msgid "Animal diseases"
+msgstr "Enfermedades de animales"
+
+#: default_domains.php:1022
+msgid "Castrate animal"
+msgstr "Castrar animales"
+
+#: default_domains.php:1023
+msgid "Hunt and fish"
+msgstr "Cacería y pesca"
+
+#: default_domains.php:1024
+msgid "Hunt"
+msgstr "Cacería"
+
+#: default_domains.php:1025
+msgid "Track an animal"
+msgstr "Rastrear un animal"
+
+#: default_domains.php:1026
+msgid "Trap"
+msgstr "Atrapar"
+
+#: default_domains.php:1027
+msgid "Hunting birds"
+msgstr "Cazar aves"
+
+#: default_domains.php:1028
+msgid "Beekeeping"
+msgstr "Apicultura"
+
+#: default_domains.php:1029
+msgid "Fishing"
+msgstr "Pesca"
+
+#: default_domains.php:1030
+msgid "Fish with net"
+msgstr "Pescar con redes"
+
+#: default_domains.php:1031
+msgid "Fish with hooks"
+msgstr "Pescar con anzuelo"
+
+#: default_domains.php:1032
+msgid "Fishing equipment"
+msgstr "Equipo de pesca"
+
+#: default_domains.php:1033
+msgid "Things done to animals"
+msgstr "Cosas que se hacen a los animales"
+
+#: default_domains.php:1034
+msgid "Working with buildings"
+msgstr "Trabajar con edificios"
+
+#: default_domains.php:1035
+msgid "Building"
+msgstr "Edificio/Construcción"
+
+#: default_domains.php:1036
+msgid "House"
+msgstr "Casa"
+
+#: default_domains.php:1037
+msgid "Types of houses"
+msgstr "Tipos de casas"
+
+#: default_domains.php:1038
+msgid "Land, property"
+msgstr "Terreno, propiedad"
+
+#: default_domains.php:1039
+msgid "Yard"
+msgstr "Patio"
+
+#: default_domains.php:1040
+msgid "Fence, wall"
+msgstr "Valla, muro"
+
+#: default_domains.php:1041
+msgid "Parts of a building"
+msgstr "Partes de un edificio"
+
+#: default_domains.php:1042
+msgid "Wall"
+msgstr "Muro"
+
+#: default_domains.php:1043
+msgid "Roof"
+msgstr "Techo"
+
+#: default_domains.php:1044
+msgid "Floor"
+msgstr "Piso"
+
+#: default_domains.php:1045
+msgid "Door"
+msgstr "Puerta"
+
+#: default_domains.php:1046
+msgid "Window"
+msgstr "Ventana"
+
+#: default_domains.php:1047
+msgid "Foundation"
+msgstr "Cimientos"
+
+#: default_domains.php:1048
+msgid "Room"
+msgstr "Cuarto"
+
+#: default_domains.php:1049
+msgid "Floor, story"
+msgstr "Pisos, niveles"
+
+#: default_domains.php:1050
+msgid "Building materials"
+msgstr "Materiales de construcción"
+
+#: default_domains.php:1051
+msgid "Building equipment and maintenance"
+msgstr "Equipo de construcción y de mantenimiento"
+
+#: default_domains.php:1052
+msgid "Infrastructure"
+msgstr "Infraestructura"
+
+#: default_domains.php:1053
+msgid "Road"
+msgstr "Camino"
+
+#: default_domains.php:1054
+msgid "Boundary"
+msgstr "Límite"
+
+#: default_domains.php:1055
+msgid "Occupation"
+msgstr "Ocupación"
+
+#: default_domains.php:1056
+msgid "Working with cloth"
+msgstr "Trabajar con tela"
+
+#: default_domains.php:1057
+msgid "Cloth"
+msgstr "Tela"
+
+#: default_domains.php:1058
+msgid "Spinning thread"
+msgstr "Devanar hilo"
+
+#: default_domains.php:1059
+msgid "Knitting"
+msgstr "Tejer (trabajo de punto)"
+
+#: default_domains.php:1060
+msgid "Weaving cloth"
+msgstr "Tejido de tela"
+
+#: default_domains.php:1061
+msgid "Working with minerals"
+msgstr "Trabajar con minerales"
+
+#: default_domains.php:1062
+msgid "Mining"
+msgstr "Minería"
+
+#: default_domains.php:1063
+msgid "Smelting"
+msgstr "Fundir"
+
+#: default_domains.php:1064
+msgid "Working with metal"
+msgstr "Trabajar con metales"
+
+#: default_domains.php:1065
+msgid "Working with clay"
+msgstr "Trabajar con barro"
+
+#: default_domains.php:1066
+msgid "Working with glass"
+msgstr "Trabajar con vidrio"
+
+#: default_domains.php:1067
+msgid "Working with oil and gas"
+msgstr "Trabajar con gas y petróleo"
+
+#: default_domains.php:1068
+msgid "Working with stone"
+msgstr "Trabajar con piedra"
+
+#: default_domains.php:1069
+msgid "Working with bricks"
+msgstr "Trabajar con ladrillos"
+
+#: default_domains.php:1070
+msgid "Working with chemicals"
+msgstr "Trabajar con productos químicos"
+
+#: default_domains.php:1071
+msgid "Explode"
+msgstr "Explotar"
+
+#: default_domains.php:1072
+msgid "Working with wood"
+msgstr "Trabajar con madera"
+
+#: default_domains.php:1073
+msgid "Lumbering"
+msgstr "Industria maderera"
+
+#: default_domains.php:1074
+msgid "Wood"
+msgstr "Madera"
+
+#: default_domains.php:1075
+msgid "Working with paper"
+msgstr "Trabajar con papel"
+
+#: default_domains.php:1076
+msgid "Crafts"
+msgstr "Artesanías"
+
+#: default_domains.php:1077
+msgid "Cordage"
+msgstr "Cordaje"
+
+#: default_domains.php:1078
+msgid "Weaving baskets and mats"
+msgstr "Tejiendo cestas y esteras"
+
+#: default_domains.php:1079
+msgid "Working with leather"
+msgstr "Trabajar con cuero"
+
+#: default_domains.php:1080
+msgid "Working with bone"
+msgstr "Trabajar con hueso"
+
+#: default_domains.php:1081
+msgid "Art"
+msgstr "Arte"
+
+#: default_domains.php:1082
+msgid "Draw, paint"
+msgstr "Dibujar, pintar"
+
+#: default_domains.php:1083
+msgid "Photography"
+msgstr "Fotografía"
+
+#: default_domains.php:1084
+msgid "Sculpture"
+msgstr "Escultura"
+
+#: default_domains.php:1085
+msgid "Working with land"
+msgstr "Trabajar con terrenos"
+
+#: default_domains.php:1086
+msgid "Working with water"
+msgstr "Trabajar con agua"
+
+#: default_domains.php:1087
+msgid "Plumber"
+msgstr "Plomero"
+
+#: default_domains.php:1088
+msgid "Conveying water"
+msgstr "Transportar agua"
+
+#: default_domains.php:1089
+msgid "Controlling water"
+msgstr "Controlar el agua"
+
+#: default_domains.php:1090
+msgid "Working in the sea"
+msgstr "Trabajar en el mar"
+
+#: default_domains.php:1091
+msgid "Working with machines"
+msgstr "Trabajar con máquinas"
+
+#: default_domains.php:1092
+msgid "Working with electricity"
+msgstr "Trabajar con electricidad"
+
+#: default_domains.php:1093
+msgid "Tool"
+msgstr "Herramienta"
+
+#: default_domains.php:1094
+msgid "Cutting tool"
+msgstr "Instrumento para cortar"
+
+#: default_domains.php:1095
+msgid "Poking tool"
+msgstr "Herramientas para perforar"
+
+#: default_domains.php:1096
+msgid "Digging tool"
+msgstr "Herramienta para cavar"
+
+#: default_domains.php:1097
+msgid "Pounding tool"
+msgstr "Herramientas para martillar"
+
+#: default_domains.php:1098
+msgid "Carrying tool"
+msgstr "Herramienta para transportar"
+
+#: default_domains.php:1099
+msgid "Lifting tool"
+msgstr "Herramienta para levantar"
+
+#: default_domains.php:1100
+msgid "Fastening tool"
+msgstr "Herramienta de fijación"
+
+#: default_domains.php:1101
+msgid "Holding tool"
+msgstr "Herramienta para sostener"
+
+#: default_domains.php:1102
+msgid "Container"
+msgstr "Recipiente"
+
+#: default_domains.php:1103
+msgid "Bag"
+msgstr "Bolsa"
+
+#: default_domains.php:1104
+msgid "Sheath"
+msgstr "Funda"
+
+#: default_domains.php:1105
+msgid "Parts of tools"
+msgstr "Partes de las herramientas"
+
+#: default_domains.php:1106
+msgid "Machine"
+msgstr "Máquina"
+
+#: default_domains.php:1107
+msgid "Finance"
+msgstr "Finanzas"
+
+#: default_domains.php:1108
+msgid "Have wealth"
+msgstr "Tener riqueza"
+
+#: default_domains.php:1109
+msgid "Own, possess"
+msgstr "Ser dueño de, poseer"
+
+#: default_domains.php:1110
+msgid "Rich"
+msgstr "Rico (acaudalado)"
+
+#: default_domains.php:1111
+msgid "Poor"
+msgstr "Pobre"
+
+#: default_domains.php:1112
+msgid "Store wealth"
+msgstr "Acumular riqueza"
+
+#: default_domains.php:1113
+msgid "Possession, property"
+msgstr "Posesión, propiedad"
+
+#: default_domains.php:1114
+msgid "Accumulate wealth"
+msgstr "Acumular riqueza"
+
+#: default_domains.php:1115
+msgid "Produce wealth"
+msgstr "Producir riqueza"
+
+#: default_domains.php:1116
+msgid "Make profit"
+msgstr "Obtener ganancias"
+
+#: default_domains.php:1117
+msgid "Lose wealth"
+msgstr "Perder riqueza"
+
+#: default_domains.php:1118
+msgid "Frugal"
+msgstr "Ahorrativo"
+
+#: default_domains.php:1119
+msgid "Greedy"
+msgstr "Avaricioso"
+
+#: default_domains.php:1120
+msgid "Collect"
+msgstr "Coleccionar"
+
+#: default_domains.php:1121
+msgid "Earn"
+msgstr "Ganar"
+
+#: default_domains.php:1122
+msgid "Share wealth"
+msgstr "Compartir riqueza"
+
+#: default_domains.php:1123
+msgid "Give, donate"
+msgstr "Dar, donar"
+
+#: default_domains.php:1124
+msgid "Generous"
+msgstr "Generoso"
+
+#: default_domains.php:1125
+msgid "Stingy"
+msgstr "Tacaño"
+
+#: default_domains.php:1126
+msgid "Beg"
+msgstr "Mendigar"
+
+#: default_domains.php:1127
+msgid "Financial transaction"
+msgstr "Transacción financiera"
+
+#: default_domains.php:1128
+msgid "Buy"
+msgstr "Comprar"
+
+#: default_domains.php:1129
+msgid "Sell"
+msgstr "Vender"
+
+#: default_domains.php:1130
+msgid "Price"
+msgstr "Precio"
+
+#: default_domains.php:1131
+msgid "Expensive"
+msgstr "Caro"
+
+#: default_domains.php:1132
+msgid "Cheap"
+msgstr "Barato"
+
+#: default_domains.php:1133
+msgid "Free of charge"
+msgstr "Libre de costo"
+
+#: default_domains.php:1134
+msgid "Bargain"
+msgstr "Regatear"
+
+#: default_domains.php:1135
+msgid "Pay"
+msgstr "Pagar"
+
+#: default_domains.php:1136
+msgid "Hire, rent"
+msgstr "Alquilar, rentar"
+
+#: default_domains.php:1137
+msgid "Spend"
+msgstr "Gastar"
+
+#: default_domains.php:1138
+msgid "Store, marketplace"
+msgstr "Tienda, mercado"
+
+#: default_domains.php:1139
+msgid "Exchange, trade"
+msgstr "Intercambio, negocio"
+
+#: default_domains.php:1140
+msgid "Borrow"
+msgstr "Pedir/tomar prestado"
+
+#: default_domains.php:1141
+msgid "Lend"
+msgstr "Prestar"
+
+#: default_domains.php:1142
+msgid "Give pledge, bond"
+msgstr "Comprometerse, depositar"
+
+#: default_domains.php:1143
+msgid "Owe"
+msgstr "Deber, adeudar"
+
+#: default_domains.php:1144
+msgid "Repay debt"
+msgstr "Pagar una deuda"
+
+#: default_domains.php:1145
+msgid "Credit"
+msgstr "Crédito"
+
+#: default_domains.php:1146
+msgid "Money"
+msgstr "Dinero"
+
+#: default_domains.php:1147
+msgid "Monetary units"
+msgstr "Unidades monetarias"
+
+#: default_domains.php:1148
+msgid "Accounting"
+msgstr "Contabilidad"
+
+#: default_domains.php:1149
+msgid "Tax"
+msgstr "Impuesto"
+
+#: default_domains.php:1150
+msgid "Dishonest financial practices"
+msgstr "Prácticas financieras deshonestas"
+
+#: default_domains.php:1151
+msgid "Steal"
+msgstr "Robar"
+
+#: default_domains.php:1152
+msgid "Cheat"
+msgstr "Engañar"
+
+#: default_domains.php:1153
+msgid "Extort money"
+msgstr "Extorsionar por dinero"
+
+#: default_domains.php:1154
+msgid "Take by force"
+msgstr "Tomar a la fuerza"
+
+#: default_domains.php:1155
+msgid "Bribe"
+msgstr "Soborno"
+
+#: default_domains.php:1156
+msgid "Smuggle"
+msgstr "Contrabandear"
+
+#: default_domains.php:1157
+msgid "Business organization"
+msgstr "Organización administrativa"
+
+#: default_domains.php:1158
+msgid "Management"
+msgstr "Administración"
+
+#: default_domains.php:1159
+msgid "Work for someone"
+msgstr "Trabajar para alguien"
+
+#: default_domains.php:1160
+msgid "Marketing"
+msgstr "Mercadeo"
+
+#: default_domains.php:1161
+msgid "Commerce"
+msgstr "Comercio"
+
+#: default_domains.php:1162
+msgid "Economics"
+msgstr "Economía"
+
+#: default_domains.php:1163
+msgid "Insurance"
+msgstr "Aseguranza"
+
+#: default_domains.php:1164
+msgid "Physical actions"
+msgstr "Actividades Físicas"
+
+#: default_domains.php:1165
+msgid "Posture"
+msgstr "Postura"
+
+#: default_domains.php:1166
+msgid "Stand"
+msgstr "Estar de pie"
+
+#: default_domains.php:1167
+msgid "Sit"
+msgstr "Sentarse"
+
+#: default_domains.php:1168
+msgid "Lie down"
+msgstr "Acostarse"
+
+#: default_domains.php:1169
+msgid "Kneel"
+msgstr "Arrodillarse"
+
+#: default_domains.php:1170
+msgid "Bow"
+msgstr "Hacer Reverencia"
+
+#: default_domains.php:1171
+msgid "Lean"
+msgstr "Reclinarse"
+
+#: default_domains.php:1172
+msgid "Straight posture"
+msgstr "Postura erguida"
+
+#: default_domains.php:1173
+msgid "Relaxed posture"
+msgstr "Postura relajada"
+
+#: default_domains.php:1174
+msgid "Bend down"
+msgstr "Agacharse"
+
+#: default_domains.php:1175
+msgid "Move a part of the body"
+msgstr "Mover una parte del cuerpo"
+
+#: default_domains.php:1176
+msgid "Move"
+msgstr "Moverse"
+
+#: default_domains.php:1177
+msgid "Manner of movement"
+msgstr "Manera de moverse"
+
+#: default_domains.php:1178
+msgid "Walk"
+msgstr "Caminar"
+
+#: default_domains.php:1179
+msgid "Run"
+msgstr "Correr"
+
+#: default_domains.php:1180
+msgid "Crawl"
+msgstr "Arrastrarse"
+
+#: default_domains.php:1181
+msgid "Jump"
+msgstr "Saltar"
+
+#: default_domains.php:1182
+msgid "Move quickly"
+msgstr "Moverse apresuradamente"
+
+#: default_domains.php:1183
+msgid "Move slowly"
+msgstr "Moverse lentamente"
+
+#: default_domains.php:1184
+msgid "Wander"
+msgstr "Vagar"
+
+#: default_domains.php:1185
+msgid "Graceful"
+msgstr "Con gracia"
+
+#: default_domains.php:1186
+msgid "Clumsy"
+msgstr "Torpe"
+
+#: default_domains.php:1187
+msgid "Walk with difficulty"
+msgstr "Caminar con dificultad"
+
+#: default_domains.php:1188
+msgid "Slip, slide"
+msgstr "Resbalarse"
+
+#: default_domains.php:1189
+msgid "Steady, unsteady"
+msgstr "Firme, inestable"
+
+#: default_domains.php:1190
+msgid "Balance"
+msgstr "Equilibrio"
+
+#: default_domains.php:1191
+msgid "Move noisily"
+msgstr "Moverse ruidosamente"
+
+#: default_domains.php:1192
+msgid "Move in a direction"
+msgstr "Moverse en una dirección"
+
+#: default_domains.php:1193
+msgid "Move forward"
+msgstr "Avanzar"
+
+#: default_domains.php:1194
+msgid "Move back"
+msgstr "Retroceder"
+
+#: default_domains.php:1195
+msgid "Move sideways"
+msgstr "Moverse hacia los lados"
+
+#: default_domains.php:1196
+msgid "Move up"
+msgstr "Ascender"
+
+#: default_domains.php:1197
+msgid "Move down"
+msgstr "Descender"
+
+#: default_domains.php:1198
+msgid "Fall"
+msgstr "Caer"
+
+#: default_domains.php:1199
+msgid "Turn"
+msgstr "Dar vuelta"
+
+#: default_domains.php:1200
+msgid "Move in a circle"
+msgstr "Moverse en círculos"
+
+#: default_domains.php:1201
+msgid "Move back and forth"
+msgstr "Moverse hacia atrás y hacia adelante"
+
+#: default_domains.php:1202
+msgid "Move straight without turning"
+msgstr "Moverse en línea recta sin dar vuelta"
+
+#: default_domains.php:1203
+msgid "Move toward something"
+msgstr "Moverse hacia algo"
+
+#: default_domains.php:1204
+msgid "Move away"
+msgstr "Alejarse"
+
+#: default_domains.php:1205
+msgid "Go"
+msgstr "Ir"
+
+#: default_domains.php:1206
+msgid "Come"
+msgstr "Venir"
+
+#: default_domains.php:1207
+msgid "Leave"
+msgstr "Partir"
+
+#: default_domains.php:1208
+msgid "Arrive"
+msgstr "Llegar"
+
+#: default_domains.php:1209
+msgid "Move in"
+msgstr "Mudarse a"
+
+#: default_domains.php:1210
+msgid "Move out"
+msgstr "Mudarse de"
+
+#: default_domains.php:1211
+msgid "Move past, over, through"
+msgstr "Pasar sobre, a través de"
+
+#: default_domains.php:1212
+msgid "Return"
+msgstr "Regresar"
+
+#: default_domains.php:1213
+msgid "Travel"
+msgstr "Viajar"
+
+#: default_domains.php:1214
+msgid "Travel by land"
+msgstr "Viajar por tierra"
+
+#: default_domains.php:1215
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#: default_domains.php:1216
+msgid "Railroad"
+msgstr "Ferrocarril"
+
+#: default_domains.php:1217
+msgid "Travel by water"
+msgstr "Viajar por agua"
+
+#: default_domains.php:1218
+msgid "Boat"
+msgstr "Embarcación"
+
+#: default_domains.php:1219
+msgid "Swim"
+msgstr "Nadar"
+
+#: default_domains.php:1220
+msgid "Dive"
+msgstr "Bucear"
+
+#: default_domains.php:1221
+msgid "Fly"
+msgstr "Viajar por aire"
+
+#: default_domains.php:1222
+msgid "Travel in space"
+msgstr "Viajar en el espacio"
+
+#: default_domains.php:1223
+msgid "Move to a new house"
+msgstr "Mudarse a una casa nueva"
+
+#: default_domains.php:1224
+msgid "Way, route"
+msgstr "Camino, ruta"
+
+#: default_domains.php:1225
+msgid "Lose your way"
+msgstr "Perderse"
+
+#: default_domains.php:1226
+msgid "Map"
+msgstr "Mapa"
+
+#: default_domains.php:1227
+msgid "Accompany"
+msgstr "Acompañar"
+
+#: default_domains.php:1228
+msgid "Go first"
+msgstr "Ir primero"
+
+#: default_domains.php:1229
+msgid "Follow"
+msgstr "Seguir"
+
+#: default_domains.php:1230
+msgid "Guide"
+msgstr "Guiar"
+
+#: default_domains.php:1231
+msgid "Move together"
+msgstr "Moverse juntos"
+
+#: default_domains.php:1232
+msgid "Pursue"
+msgstr "Huir, perseguir"
+
+#: default_domains.php:1233
+msgid "Catch, capture"
+msgstr "Atrapar, capturar"
+
+#: default_domains.php:1234
+msgid "Prevent from moving"
+msgstr "Evitar que se mueva"
+
+#: default_domains.php:1235
+msgid "Escape"
+msgstr "Escapar"
+
+#: default_domains.php:1236
+msgid "Set free"
+msgstr "Ser liberado"
+
+#: default_domains.php:1237
+msgid "Not moving"
+msgstr "Sin moverse"
+
+#: default_domains.php:1238
+msgid "Stop moving"
+msgstr "Dejar de moverse"
+
+#: default_domains.php:1239
+msgid "Stay, remain"
+msgstr "Quedarse, permanecer"
+
+#: default_domains.php:1240
+msgid "Wait"
+msgstr "Esperar"
+
+#: default_domains.php:1241
+msgid "Send someone"
+msgstr "Enviar a alguien"
+
+#: default_domains.php:1242
+msgid "Move something"
+msgstr "Mover algo"
+
+#: default_domains.php:1243
+msgid "Carry"
+msgstr "Acarrear"
+
+#: default_domains.php:1244
+msgid "Throw"
+msgstr "Lanzar"
+
+#: default_domains.php:1245
+msgid "Catch"
+msgstr "Atrapar"
+
+#: default_domains.php:1246
+msgid "Shake"
+msgstr "Sacudir"
+
+#: default_domains.php:1247
+msgid "Knock over"
+msgstr "Sacar a golpes"
+
+#: default_domains.php:1248
+msgid "Set upright"
+msgstr "Enderezar"
+
+#: default_domains.php:1249
+msgid "Move something in a direction"
+msgstr "Mover algo en una dirección"
+
+#: default_domains.php:1250
+msgid "Put in front"
+msgstr "Poner en frente"
+
+#: default_domains.php:1251
+msgid "Put in back"
+msgstr "Echar atrás"
+
+#: default_domains.php:1252
+msgid "Put aside"
+msgstr "Poner a un lado"
+
+#: default_domains.php:1253
+msgid "Lift"
+msgstr "Levantar"
+
+#: default_domains.php:1254
+msgid "Hang"
+msgstr "Colgar"
+
+#: default_domains.php:1255
+msgid "Lower something"
+msgstr "Bajar algo"
+
+#: default_domains.php:1256
+msgid "Put in"
+msgstr "Meter"
+
+#: default_domains.php:1257
+msgid "Take something out of something"
+msgstr "Sacar algo de cualquier otra cosa"
+
+#: default_domains.php:1258
+msgid "Pull"
+msgstr "Halar/jalar"
+
+#: default_domains.php:1259
+msgid "Push"
+msgstr "Empujar"
+
+#: default_domains.php:1260
+msgid "Take somewhere"
+msgstr "Llevar a un lugar"
+
+#: default_domains.php:1261
+msgid "Take something from somewhere"
+msgstr "Tomar algo de un lugar"
+
+#: default_domains.php:1262
+msgid "Return something"
+msgstr "Devolver algo"
+
+#: default_domains.php:1263
+msgid "Send"
+msgstr "Enviar"
+
+#: default_domains.php:1264
+msgid "Chase away"
+msgstr "Ahuyentar"
+
+#: default_domains.php:1265
+msgid "Drive along"
+msgstr "Mover contigo"
+
+#: default_domains.php:1266
+msgid "Handle something"
+msgstr "Manipular algo"
+
+#: default_domains.php:1267
+msgid "Touch"
+msgstr "Tocar"
+
+#: default_domains.php:1268
+msgid "Pick up"
+msgstr "Recoger"
+
+#: default_domains.php:1269
+msgid "Put down"
+msgstr "Asentar"
+
+#: default_domains.php:1270
+msgid "Hold"
+msgstr "Sostener"
+
+#: default_domains.php:1271
+msgid "Actions of the hand"
+msgstr "Actividades de la mano"
+
+#: default_domains.php:1272
+msgid "Support"
+msgstr "Sostener"
+
+#: default_domains.php:1273
+msgid "Extend"
+msgstr "Extender"
+
+#: default_domains.php:1274
+msgid "Turn something"
+msgstr "Girar algo"
+
+#: default_domains.php:1275
+msgid "Open"
+msgstr "Abrir"
+
+#: default_domains.php:1276
+msgid "Shut, close"
+msgstr "Cerrar"
+
+#: default_domains.php:1277
+msgid "Block, dam up"
+msgstr "Atajar, obstruir"
+
+#: default_domains.php:1278
+msgid "Limit"
+msgstr "Límite"
+
+#: default_domains.php:1279
+msgid "Cover"
+msgstr "Cubrir"
+
+#: default_domains.php:1280
+msgid "Uncover"
+msgstr "Descubrir"
+
+#: default_domains.php:1281
+msgid "Wrap"
+msgstr "Envolver"
+
+#: default_domains.php:1282
+msgid "Spread, smear"
+msgstr "Untar, embarrar"
+
+#: default_domains.php:1283
+msgid "Transport"
+msgstr "Transportar"
+
+#: default_domains.php:1284
+msgid "Have, be with"
+msgstr "Tener, estar con"
+
+#: default_domains.php:1285
+msgid "Give, hand to"
+msgstr "Dar"
+
+#: default_domains.php:1286
+msgid "Receive"
+msgstr "Recibir"
+
+#: default_domains.php:1287
+msgid "Get"
+msgstr "Obtener"
+
+#: default_domains.php:1288
+msgid "Distribute"
+msgstr "Distribuir"
+
+#: default_domains.php:1289
+msgid "Keep something"
+msgstr "Quedarse con algo"
+
+#: default_domains.php:1290
+msgid "Leave something"
+msgstr "Dejar algo"
+
+#: default_domains.php:1291
+msgid "Throw away"
+msgstr "Tirar"
+
+#: default_domains.php:1292
+msgid "Not have"
+msgstr "No tener"
+
+#: default_domains.php:1293
+msgid "Arrange"
+msgstr "Arreglar"
+
+#: default_domains.php:1294
+msgid "Gather"
+msgstr "Juntar"
+
+#: default_domains.php:1295
+msgid "Separate, scatter"
+msgstr "Separar, esparcir"
+
+#: default_domains.php:1296
+msgid "Include"
+msgstr "Incluir"
+
+#: default_domains.php:1297
+msgid "Special"
+msgstr "Especial"
+
+#: default_domains.php:1298
+msgid "Join, attach"
+msgstr "Unir, adjuntar"
+
+#: default_domains.php:1299
+msgid "Link, connect"
+msgstr "Enlazar, conectar"
+
+#: default_domains.php:1300
+msgid "Stick together"
+msgstr "Adherirse el uno al otro"
+
+#: default_domains.php:1301
+msgid "Add to something"
+msgstr "Añadir a algo"
+
+#: default_domains.php:1302
+msgid "Remove, take apart"
+msgstr "Remover, desprender"
+
+#: default_domains.php:1303
+msgid "Mix"
+msgstr "Mezclar"
+
+#: default_domains.php:1304
+msgid "Pure, unmixed"
+msgstr "Puro, no mezclado"
+
+#: default_domains.php:1305
+msgid "Tie"
+msgstr "Atar"
+
+#: default_domains.php:1306
+msgid "Rope, string"
+msgstr "Lazo, cuerda"
+
+#: default_domains.php:1307
+msgid "Tangle"
+msgstr "Enredo"
+
+#: default_domains.php:1308
+msgid "Organize"
+msgstr "Organizar"
+
+#: default_domains.php:1309
+msgid "Disorganized"
+msgstr "Desorganizado"
+
+#: default_domains.php:1310
+msgid "Substitute"
+msgstr "Substituir"
+
+#: default_domains.php:1311
+msgid "Multiple things moving"
+msgstr "Movimiento de múltiples cosas"
+
+#: default_domains.php:1312
+msgid "Simple, complicated"
+msgstr "Sencillo, complicado"
+
+#: default_domains.php:1313
+msgid "Put"
+msgstr "Poner"
+
+#: default_domains.php:1314
+msgid "Load, pile"
+msgstr "Carga,r, apilar"
+
+#: default_domains.php:1315
+msgid "Fill, cover"
+msgstr "Rellenar, cubrir"
+
+#: default_domains.php:1316
+msgid "Hide"
+msgstr "Esconder"
+
+#: default_domains.php:1317
+msgid "Search"
+msgstr "Buscar"
+
+#: default_domains.php:1318
+msgid "Find"
+msgstr "Encontrar"
+
+#: default_domains.php:1319
+msgid "Lose, misplace"
+msgstr "Perder, extraviar"
+
+#: default_domains.php:1320
+msgid "Physical impact"
+msgstr "Impacto físico"
+
+#: default_domains.php:1321
+msgid "Hit"
+msgstr "Rebotar"
+
+#: default_domains.php:1322
+msgid "Aim at a target"
+msgstr "Apuntar al blanco"
+
+#: default_domains.php:1323
+msgid "Kick"
+msgstr "Patear"
+
+#: default_domains.php:1324
+msgid "Press"
+msgstr "Presionar"
+
+#: default_domains.php:1325
+msgid "Rub"
+msgstr "Frotar"
+
+#: default_domains.php:1326
+msgid "Grind"
+msgstr "Moler"
+
+#: default_domains.php:1327
+msgid "Mark"
+msgstr "Marcar"
+
+#: default_domains.php:1328
+msgid "Divide into pieces"
+msgstr "Dividir en pedazos"
+
+#: default_domains.php:1329
+msgid "Break"
+msgstr "Quebrar"
+
+#: default_domains.php:1330
+msgid "Crack"
+msgstr "Agrietar"
+
+#: default_domains.php:1331
+msgid "Cut"
+msgstr "Cortar"
+
+#: default_domains.php:1332
+msgid "Tear, rip"
+msgstr "Rasgar, desgarrar"
+
+#: default_domains.php:1333
+msgid "Make hole, opening"
+msgstr "Hacer un hoyo, abertura"
+
+#: default_domains.php:1334
+msgid "Dig"
+msgstr "Cavar"
+
+#: default_domains.php:1335
+msgid "Break, wear out"
+msgstr "Descomponer, desgastar"
+
+#: default_domains.php:1336
+msgid "Damage"
+msgstr "Dañar"
+
+#: default_domains.php:1337
+msgid "Tear down"
+msgstr "Derrumbar"
+
+#: default_domains.php:1338
+msgid "Destroy"
+msgstr "Destruir"
+
+#: default_domains.php:1339
+msgid "Repair"
+msgstr "Reparar"
+
+#: default_domains.php:1340
+msgid "States"
+msgstr "Estados"
+
+#: default_domains.php:1341
+msgid "Quantity"
+msgstr "Monto"
+
+#: default_domains.php:1342
+msgid "Number"
+msgstr "Número"
+
+#: default_domains.php:1343
+msgid "Cardinal numbers"
+msgstr "Números cardinales"
+
+#: default_domains.php:1344
+msgid "One"
+msgstr "Uno"
+
+#: default_domains.php:1345
+msgid "Two"
+msgstr "Dos"
+
+#: default_domains.php:1346
+msgid "Ordinal numbers"
+msgstr "Números ordinales"
+
+#: default_domains.php:1347
+msgid "Number of times"
+msgstr "Números de veces"
+
+#: default_domains.php:1348
+msgid "Multiples"
+msgstr "Múltiplos, Múltiples"
+
+#: default_domains.php:1349
+msgid "Numbered group"
+msgstr "Grupo numerado"
+
+#: default_domains.php:1350
+msgid "Fraction"
+msgstr "Fracción"
+
+#: default_domains.php:1351
+msgid "Number series"
+msgstr "Serie de números"
+
+#: default_domains.php:1352
+msgid "Count"
+msgstr "Conteo"
+
+#: default_domains.php:1353
+msgid "Mathematics"
+msgstr "Matemáticas"
+
+#: default_domains.php:1354
+msgid "Add numbers"
+msgstr "Sumar números"
+
+#: default_domains.php:1355
+msgid "Subtract numbers"
+msgstr "Restar números"
+
+#: default_domains.php:1356
+msgid "Multiply numbers"
+msgstr "Multiplicar números"
+
+#: default_domains.php:1357
+msgid "Divide numbers"
+msgstr "Dividir números"
+
+#: default_domains.php:1358
+msgid "Plural"
+msgstr "Plural"
+
+#: default_domains.php:1359
+msgid "Many, much"
+msgstr "Muchos"
+
+#: default_domains.php:1360
+msgid "Few, little"
+msgstr "Pocos"
+
+#: default_domains.php:1361
+msgid "Group of things"
+msgstr "Grupo de cosas"
+
+#: default_domains.php:1362
+msgid "More"
+msgstr "Más cantidad"
+
+#: default_domains.php:1363
+msgid "Less"
+msgstr "Menos cantidad"
+
+#: default_domains.php:1364
+msgid "Increase"
+msgstr "Aumentar"
+
+#: default_domains.php:1365
+msgid "Decrease"
+msgstr "Disminuir"
+
+#: default_domains.php:1366
+msgid "All"
+msgstr "Todo"
+
+#: default_domains.php:1367
+msgid "Some"
+msgstr "Unos, algunos"
+
+#: default_domains.php:1368
+msgid "None, nothing"
+msgstr "Nada"
+
+#: default_domains.php:1369
+msgid "Both"
+msgstr "Ambos"
+
+#: default_domains.php:1370
+msgid "Most, almost all"
+msgstr "La mayoría, casi todo"
+
+#: default_domains.php:1371
+msgid "Most, least"
+msgstr "El mayor, el menor"
+
+#: default_domains.php:1372
+msgid "Almost"
+msgstr "Casi"
+
+#: default_domains.php:1373
+msgid "Only"
+msgstr "Sólo, únicamente"
+
+#: default_domains.php:1374
+msgid "Exact"
+msgstr "Exactamente"
+
+#: default_domains.php:1375
+msgid "Approximate"
+msgstr "Aproximadamente"
+
+#: default_domains.php:1376
+msgid "Average"
+msgstr "Promedio"
+
+#: default_domains.php:1377
+msgid "Whole, complete"
+msgstr "Entero, completo"
+
+#: default_domains.php:1378
+msgid "Part"
+msgstr "Parte"
+
+#: default_domains.php:1379
+msgid "Piece"
+msgstr "Trozo (pieza)"
+
+#: default_domains.php:1380
+msgid "Enough"
+msgstr "Suficiente"
+
+#: default_domains.php:1381
+msgid "Extra"
+msgstr "Extra (sobrante)"
+
+#: default_domains.php:1382
+msgid "Lack"
+msgstr "Faltante"
+
+#: default_domains.php:1383
+msgid "Need"
+msgstr "Necesidad"
+
+#: default_domains.php:1384
+msgid "Remain, remainder"
+msgstr "Restante"
+
+#: default_domains.php:1385
+msgid "Full"
+msgstr "Lleno, completo"
+
+#: default_domains.php:1386
+msgid "Empty"
+msgstr "Vacío"
+
+#: default_domains.php:1387
+msgid "Big"
+msgstr "Grande"
+
+#: default_domains.php:1388
+msgid "Small"
+msgstr "Pequeño"
+
+#: default_domains.php:1389
+msgid "Long"
+msgstr "Largo"
+
+#: default_domains.php:1390
+msgid "Short, not long"
+msgstr "Corto, no tan largo"
+
+#: default_domains.php:1391
+msgid "Tall"
+msgstr "Alto"
+
+#: default_domains.php:1392
+msgid "Short, not tall"
+msgstr "Pequeño, no tan alto"
+
+#: default_domains.php:1393
+msgid "Thick"
+msgstr "Grueso"
+
+#: default_domains.php:1394
+msgid "Thin thing"
+msgstr "Delgado"
+
+#: default_domains.php:1395
+msgid "Fat person"
+msgstr "Persona gorda"
+
+#: default_domains.php:1396
+msgid "Thin person"
+msgstr "Persona delgada"
+
+#: default_domains.php:1397
+msgid "Wide"
+msgstr "Ancho"
+
+#: default_domains.php:1398
+msgid "Narrow"
+msgstr "Angosto"
+
+#: default_domains.php:1399
+msgid "Big area"
+msgstr "Área grande"
+
+#: default_domains.php:1400
+msgid "Big container, volume"
+msgstr "Contenedor grande, volumen"
+
+#: default_domains.php:1401
+msgid "Distance"
+msgstr "Distancia"
+
+#: default_domains.php:1402
+msgid "Far"
+msgstr "Lejos"
+
+#: default_domains.php:1403
+msgid "Near"
+msgstr "Cerca"
+
+#: default_domains.php:1404
+msgid "High"
+msgstr "Alto"
+
+#: default_domains.php:1405
+msgid "Low"
+msgstr "Bajo"
+
+#: default_domains.php:1406
+msgid "Deep, shallow"
+msgstr "Profundo, superficial"
+
+#: default_domains.php:1407
+msgid "Fit, size"
+msgstr "Tamaño"
+
+#: default_domains.php:1408
+msgid "Tight"
+msgstr "Estrecho"
+
+#: default_domains.php:1409
+msgid "Loose"
+msgstr "Suelto"
+
+#: default_domains.php:1410
+msgid "Wedged in, stuck"
+msgstr "Encajar, atorar"
+
+#: default_domains.php:1411
+msgid "Measure"
+msgstr "Medida"
+
+#: default_domains.php:1412
+msgid "Weigh"
+msgstr "Pesar"
+
+#: default_domains.php:1413
+msgid "Heavy"
+msgstr "Pesado"
+
+#: default_domains.php:1414
+msgid "Light in weight"
+msgstr "Ligero en peso"
+
+#: default_domains.php:1415
+msgid "Quality"
+msgstr "Calidad"
+
+#: default_domains.php:1416
+msgid "Shape"
+msgstr "Forma"
+
+#: default_domains.php:1417
+msgid "Point, dot"
+msgstr "Punto"
+
+#: default_domains.php:1418
+msgid "Line"
+msgstr "Línea"
+
+#: default_domains.php:1419
+msgid "Straight"
+msgstr "Rectilíneo"
+
+#: default_domains.php:1420
+msgid "Flat"
+msgstr "Plano"
+
+#: default_domains.php:1421
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: default_domains.php:1422
+msgid "Vertical"
+msgstr "Vertical"
+
+#: default_domains.php:1423
+msgid "Leaning, sloping"
+msgstr "Inclinado, recostado, en declive"
+
+#: default_domains.php:1424
+msgid "Bend"
+msgstr "Doblar"
+
+#: default_domains.php:1425
+msgid "Roll up"
+msgstr "Enrollar"
+
+#: default_domains.php:1426
+msgid "Twist, wring"
+msgstr "Torcer, retorcer"
+
+#: default_domains.php:1427
+msgid "Fold"
+msgstr "Doblar"
+
+#: default_domains.php:1428
+msgid "Round"
+msgstr "Redondo"
+
+#: default_domains.php:1429
+msgid "Concave"
+msgstr "Cóncavo"
+
+#: default_domains.php:1430
+msgid "Convex"
+msgstr "Convexo"
+
+#: default_domains.php:1431
+msgid "Hollow"
+msgstr "Hueco"
+
+#: default_domains.php:1432
+msgid "Square"
+msgstr "Cuadrado"
+
+#: default_domains.php:1433
+msgid "Pattern, design"
+msgstr "Patrón, diseño"
+
+#: default_domains.php:1434
+msgid "Symmetrical"
+msgstr "Simétrico"
+
+#: default_domains.php:1435
+msgid "Stretch"
+msgstr "Estirar"
+
+#: default_domains.php:1436
+msgid "Texture"
+msgstr "Textura"
+
+#: default_domains.php:1437
+msgid "Smooth"
+msgstr "Suave"
+
+#: default_domains.php:1438
+msgid "Rough"
+msgstr "Aspero"
+
+#: default_domains.php:1439
+msgid "Sharp"
+msgstr "Afilado"
+
+#: default_domains.php:1440
+msgid "Pointed"
+msgstr "Picudo/puntiagudo"
+
+#: default_domains.php:1441
+msgid "Blunt"
+msgstr "Despuntado, desafilado"
+
+#: default_domains.php:1442
+msgid "Furrow"
+msgstr "Hendidura"
+
+#: default_domains.php:1443
+msgid "Light"
+msgstr "Luz"
+
+#: default_domains.php:1444
+msgid "Shine"
+msgstr "Brillo"
+
+#: default_domains.php:1445
+msgid "Light source"
+msgstr "Fuente de luz"
+
+#: default_domains.php:1446
+msgid "Bright"
+msgstr "Brillante"
+
+#: default_domains.php:1447
+msgid "Dark"
+msgstr "Oscuro"
+
+#: default_domains.php:1448
+msgid "Shadow"
+msgstr "Sombra"
+
+#: default_domains.php:1449
+msgid "Color"
+msgstr "Color"
+
+#: default_domains.php:1450
+msgid "White"
+msgstr "Blanco"
+
+#: default_domains.php:1451
+msgid "Black"
+msgstr "Negro"
+
+#: default_domains.php:1452
+msgid "Gray"
+msgstr "Gris"
+
+#: default_domains.php:1453
+msgid "Colors of the spectrum"
+msgstr "Espectro de colores"
+
+#: default_domains.php:1454
+msgid "Animal color, marking"
+msgstr "Colores de animales, marcas"
+
+#: default_domains.php:1455
+msgid "Change color"
+msgstr "Cambiar el color"
+
+#: default_domains.php:1456
+msgid "Multicolored"
+msgstr "Multicolor"
+
+#: default_domains.php:1457
+msgid "Shiny"
+msgstr "Brillante"
+
+#: default_domains.php:1458
+msgid "Hot"
+msgstr "Caliente"
+
+#: default_domains.php:1459
+msgid "Cold"
+msgstr "Frío"
+
+#: default_domains.php:1460
+msgid "Type, kind"
+msgstr "Tipo, clase"
+
+#: default_domains.php:1461
+msgid "Nature, character"
+msgstr "Naturaleza, carácter"
+
+#: default_domains.php:1462
+msgid "Compare"
+msgstr "Comparar"
+
+#: default_domains.php:1463
+msgid "Same"
+msgstr "Lo mismo"
+
+#: default_domains.php:1464
+msgid "Like, similar"
+msgstr "Parecido, similar"
+
+#: default_domains.php:1465
+msgid "Different"
+msgstr "Diferente"
+
+#: default_domains.php:1466
+msgid "Other"
+msgstr "Otro, otros"
+
+#: default_domains.php:1467
+msgid "Various"
+msgstr "Varios"
+
+#: default_domains.php:1468
+msgid "Opposite"
+msgstr "Opuesto"
+
+#: default_domains.php:1469
+msgid "Common"
+msgstr "Común"
+
+#: default_domains.php:1470
+msgid "Usual"
+msgstr "Usual"
+
+#: default_domains.php:1471
+msgid "Unusual"
+msgstr "Inusual"
+
+#: default_domains.php:1472
+msgid "Unique"
+msgstr "Unico"
+
+#: default_domains.php:1473
+msgid "Strange"
+msgstr "Extraño"
+
+#: default_domains.php:1474
+msgid "Pattern, model"
+msgstr "Patrón, modelo"
+
+#: default_domains.php:1475
+msgid "Imitate"
+msgstr "Imitar"
+
+#: default_domains.php:1476
+msgid "Copy"
+msgstr "Copiar"
+
+#: default_domains.php:1477
+msgid "Made of, material"
+msgstr "Hecho de, material"
+
+#: default_domains.php:1478
+msgid "Strong, brittle"
+msgstr "Fuerte, frágil"
+
+#: default_domains.php:1479
+msgid "Hard, firm"
+msgstr "Duro, firme"
+
+#: default_domains.php:1480
+msgid "Stiff, flexible"
+msgstr "Rígido, flexible"
+
+#: default_domains.php:1481
+msgid "Dense"
+msgstr "Denso"
+
+#: default_domains.php:1482
+msgid "Soft, flimsy"
+msgstr "Suave, débil"
+
+#: default_domains.php:1483
+msgid "Good"
+msgstr "Bueno"
+
+#: default_domains.php:1484
+msgid "Bad"
+msgstr "Malo"
+
+#: default_domains.php:1485
+msgid "Better"
+msgstr "Mejor"
+
+#: default_domains.php:1486
+msgid "Worse"
+msgstr "Peor"
+
+#: default_domains.php:1487
+msgid "Perfect"
+msgstr "Perfecto"
+
+#: default_domains.php:1488
+msgid "Mediocre"
+msgstr "Mediocre"
+
+#: default_domains.php:1489
+msgid "Important"
+msgstr "Importante"
+
+#: default_domains.php:1490
+msgid "Basic"
+msgstr "Básico"
+
+#: default_domains.php:1491
+msgid "Improve"
+msgstr "Mejorar"
+
+#: default_domains.php:1492
+msgid "Right, proper"
+msgstr "Correcto, adecuado"
+
+#: default_domains.php:1493
+msgid "Wrong, unsuitable"
+msgstr "Equivocado, no apropiado"
+
+#: default_domains.php:1494
+msgid "Convenient"
+msgstr "Conveniente"
+
+#: default_domains.php:1495
+msgid "Compatible"
+msgstr "Compatible"
+
+#: default_domains.php:1496
+msgid "Decay"
+msgstr "Descomponerse"
+
+#: default_domains.php:1497
+msgid "Rust"
+msgstr "Óxido"
+
+#: default_domains.php:1498
+msgid "Blemish"
+msgstr "Defecto"
+
+#: default_domains.php:1499
+msgid "Garbage"
+msgstr "Basura"
+
+#: default_domains.php:1500
+msgid "Preserve"
+msgstr "Preservar"
+
+#: default_domains.php:1501
+msgid "Value"
+msgstr "Valor"
+
+#: default_domains.php:1502
+msgid "Decorated"
+msgstr "Decorado"
+
+#: default_domains.php:1503
+msgid "Simple, plain"
+msgstr "Simple, sencillo"
+
+#: default_domains.php:1504
+msgid "Glory"
+msgstr "Gloria"
+
+#: default_domains.php:1505
+msgid "Time"
+msgstr "Tiempo"
+
+#: default_domains.php:1506
+msgid "Period of time"
+msgstr "Período de tiempo"
+
+#: default_domains.php:1507
+msgid "Calendar"
+msgstr "Calendario"
+
+#: default_domains.php:1508
+msgid "Day"
+msgstr "Día"
+
+#: default_domains.php:1509
+msgid "Night"
+msgstr "Noche"
+
+#: default_domains.php:1510
+msgid "Yesterday, today, tomorrow"
+msgstr "Ayere, hoy, mañana"
+
+#: default_domains.php:1511
+msgid "Time of the day"
+msgstr "Hora del día"
+
+#: default_domains.php:1512
+msgid "Week"
+msgstr "Semana"
+
+#: default_domains.php:1513
+msgid "Days of the week"
+msgstr "Días de la semana"
+
+#: default_domains.php:1514
+msgid "Month"
+msgstr "Mes"
+
+#: default_domains.php:1515
+msgid "Months of the year"
+msgstr "Meses del año"
+
+#: default_domains.php:1516
+msgid "Season"
+msgstr "Estación del año"
+
+#: default_domains.php:1517
+msgid "Year"
+msgstr "Año"
+
+#: default_domains.php:1518
+msgid "Era"
+msgstr "Era"
+
+#: default_domains.php:1519
+msgid "Special days"
+msgstr "Días especiales"
+
+#: default_domains.php:1520
+msgid "Take time"
+msgstr "Llevarse tiempo"
+
+#: default_domains.php:1521
+msgid "A short time"
+msgstr "Un corto tiempo"
+
+#: default_domains.php:1522
+msgid "A long time"
+msgstr "Mucho tiempo"
+
+#: default_domains.php:1523
+msgid "Forever"
+msgstr "Para siempre"
+
+#: default_domains.php:1524
+msgid "Temporary"
+msgstr "Temporal"
+
+#: default_domains.php:1525
+msgid "Indefinite time"
+msgstr "Tiempo no definido"
+
+#: default_domains.php:1526
+msgid "Telling time"
+msgstr "Decir la hora"
+
+#: default_domains.php:1527
+msgid "Plan a time"
+msgstr "Planear un tiempo"
+
+#: default_domains.php:1528
+msgid "Clock, watch"
+msgstr "Reloj"
+
+#: default_domains.php:1529
+msgid "Relative time"
+msgstr "Tiempo relativo"
+
+#: default_domains.php:1530
+msgid "Order, sequence"
+msgstr "Orden, secuencia"
+
+#: default_domains.php:1531
+msgid "Series"
+msgstr "Series"
+
+#: default_domains.php:1532
+msgid "First"
+msgstr "Primero"
+
+#: default_domains.php:1533
+msgid "Next"
+msgstr "Siguiente"
+
+#: default_domains.php:1534
+msgid "Last"
+msgstr "Último"
+
+#: default_domains.php:1535
+msgid "Regular"
+msgstr "Regular"
+
+#: default_domains.php:1536
+msgid "Alternate"
+msgstr "Alternar"
+
+#: default_domains.php:1537
+msgid "Before"
+msgstr "Ocurrir antes"
+
+#: default_domains.php:1538
+msgid "After"
+msgstr "Después"
+
+#: default_domains.php:1539
+msgid "At the same time"
+msgstr "Al mismo tiempo"
+
+#: default_domains.php:1540
+msgid "During"
+msgstr "Durante"
+
+#: default_domains.php:1541
+msgid "Right time"
+msgstr "Momento oportuno"
+
+#: default_domains.php:1542
+msgid "Early"
+msgstr "Temprano"
+
+#: default_domains.php:1543
+msgid "On time"
+msgstr "A tiempo"
+
+#: default_domains.php:1544
+msgid "Late"
+msgstr "Tarde"
+
+#: default_domains.php:1545
+msgid "Delay"
+msgstr "Atrasar"
+
+#: default_domains.php:1546
+msgid "Postpone"
+msgstr "Posponer"
+
+#: default_domains.php:1547
+msgid "Aspectual time"
+msgstr "Tiempo aspectual"
+
+#: default_domains.php:1548
+msgid "Start something"
+msgstr "Empezar algo"
+
+#: default_domains.php:1549
+msgid "Beginning"
+msgstr "Inicio"
+
+#: default_domains.php:1550
+msgid "Stop something"
+msgstr "Detener algo"
+
+#: default_domains.php:1551
+msgid "End"
+msgstr "Final"
+
+#: default_domains.php:1552
+msgid "Until"
+msgstr "Hasta que"
+
+#: default_domains.php:1553
+msgid "Since, from"
+msgstr "Desde, de"
+
+#: default_domains.php:1554
+msgid "Past"
+msgstr "Pasado"
+
+#: default_domains.php:1555
+msgid "Recently"
+msgstr "Recientemente"
+
+#: default_domains.php:1556
+msgid "Present"
+msgstr "Presente"
+
+#: default_domains.php:1557
+msgid "Now"
+msgstr "Ahora"
+
+#: default_domains.php:1558
+msgid "Future"
+msgstr "Futuro"
+
+#: default_domains.php:1559
+msgid "Soon"
+msgstr "Pronto"
+
+#: default_domains.php:1560
+msgid "Not yet"
+msgstr "Todavía no"
+
+#: default_domains.php:1561
+msgid "Eventually"
+msgstr "Eventualmente"
+
+#: default_domains.php:1562
+msgid "Immediately"
+msgstr "Inmediatamente"
+
+#: default_domains.php:1563
+msgid "Age"
+msgstr "Edad"
+
+#: default_domains.php:1564
+msgid "Young"
+msgstr "Joven"
+
+#: default_domains.php:1565
+msgid "Old, not young"
+msgstr "Viejo, no joven"
+
+#: default_domains.php:1566
+msgid "New"
+msgstr "Nuevo"
+
+#: default_domains.php:1567
+msgid "Old, not new"
+msgstr "Antiguo, no nuevo"
+
+#: default_domains.php:1568
+msgid "Modern"
+msgstr "Moderno"
+
+#: default_domains.php:1569
+msgid "Old fashioned"
+msgstr "Anticuado"
+
+#: default_domains.php:1570
+msgid "Once"
+msgstr "Una vez"
+
+#: default_domains.php:1571
+msgid "Again"
+msgstr "Otra vez"
+
+#: default_domains.php:1572
+msgid "Sometimes"
+msgstr "De vez en cuando"
+
+#: default_domains.php:1573
+msgid "Often"
+msgstr "Frecuente"
+
+#: default_domains.php:1574
+msgid "All the time"
+msgstr "Todo el tiempo"
+
+#: default_domains.php:1575
+msgid "Every time"
+msgstr "Cada vez"
+
+#: default_domains.php:1576
+msgid "Never"
+msgstr "Nunca"
+
+#: default_domains.php:1577
+msgid "Continue, persevere"
+msgstr "Continuar, perseverar"
+
+#: default_domains.php:1578
+msgid "Interrupt"
+msgstr "Interrumpir"
+
+#: default_domains.php:1579
+msgid "Start again"
+msgstr "Empezar de nuevo"
+
+#: default_domains.php:1580
+msgid "Interval"
+msgstr "Intervalo"
+
+#: default_domains.php:1581
+msgid "Speed"
+msgstr "Velocidad"
+
+#: default_domains.php:1582
+msgid "Quick"
+msgstr "Rápido"
+
+#: default_domains.php:1583
+msgid "Slow"
+msgstr "Lento"
+
+#: default_domains.php:1584
+msgid "Sudden"
+msgstr "De repente"
+
+#: default_domains.php:1585
+msgid "Location"
+msgstr "Ubicación"
+
+#: default_domains.php:1586
+msgid "Here, there"
+msgstr "Aquí, allá"
+
+#: default_domains.php:1587
+msgid "In front of"
+msgstr "En frente de"
+
+#: default_domains.php:1588
+msgid "Behind"
+msgstr "Atrás"
+
+#: default_domains.php:1589
+msgid "Beside"
+msgstr "Al lado de"
+
+#: default_domains.php:1590
+msgid "Around"
+msgstr "Alrededor de"
+
+#: default_domains.php:1591
+msgid "Between"
+msgstr "Entre"
+
+#: default_domains.php:1592
+msgid "On"
+msgstr "Sobre de"
+
+#: default_domains.php:1593
+msgid "Above"
+msgstr "Por encima de"
+
+#: default_domains.php:1594
+msgid "Under, below"
+msgstr "Abajo de, debajo de"
+
+#: default_domains.php:1595
+msgid "Inside"
+msgstr "Adentro"
+
+#: default_domains.php:1596
+msgid "Out, outside"
+msgstr "afuera"
+
+#: default_domains.php:1597
+msgid "Touching, contact"
+msgstr "Tocar, contacto"
+
+#: default_domains.php:1598
+msgid "Next to"
+msgstr "Enseguida de"
+
+#: default_domains.php:1599
+msgid "Across"
+msgstr "Al otro lado de"
+
+#: default_domains.php:1600
+msgid "Indefinite location"
+msgstr "Punto indefinido"
+
+#: default_domains.php:1601
+msgid "Direction"
+msgstr "Dirección"
+
+#: default_domains.php:1602
+msgid "Forward"
+msgstr "Hacia adelante"
+
+#: default_domains.php:1603
+msgid "Backward"
+msgstr "Hacia atrás"
+
+#: default_domains.php:1604
+msgid "Right, left"
+msgstr "Derecha, izquierda"
+
+#: default_domains.php:1605
+msgid "Up"
+msgstr "Arriba"
+
+#: default_domains.php:1606
+msgid "Down"
+msgstr "Abajo"
+
+#: default_domains.php:1607
+msgid "Away from"
+msgstr "Lejos de"
+
+#: default_domains.php:1608
+msgid "Towards"
+msgstr "Hacia"
+
+#: default_domains.php:1609
+msgid "North, south, east, west"
+msgstr "Norte, sur, este, oeste"
+
+#: default_domains.php:1610
+msgid "Be at a place"
+msgstr "Estar en un lugar"
+
+#: default_domains.php:1611
+msgid "Absent"
+msgstr "Ausente"
+
+#: default_domains.php:1612
+msgid "Area"
+msgstr "Area"
+
+#: default_domains.php:1613
+msgid "Vicinity"
+msgstr "Vecindad"
+
+#: default_domains.php:1614
+msgid "Occupy an area"
+msgstr "Ocupar un área"
+
+#: default_domains.php:1615
+msgid "Space, room"
+msgstr "Espacio, lugar"
+
+#: default_domains.php:1616
+msgid "Interval, space"
+msgstr "Intervalo, espacio"
+
+#: default_domains.php:1617
+msgid "Spatial relations"
+msgstr "Relaciones espaciales"
+
+#: default_domains.php:1618
+msgid "Contain"
+msgstr "Contiene"
+
+#: default_domains.php:1619
+msgid "Parts of things"
+msgstr "Partes de cosas"
+
+#: default_domains.php:1620
+msgid "Front"
+msgstr "Frente"
+
+#: default_domains.php:1621
+msgid "Back"
+msgstr "Detrás"
+
+#: default_domains.php:1622
+msgid "Top"
+msgstr "Arriba"
+
+#: default_domains.php:1623
+msgid "Bottom"
+msgstr "Abajo"
+
+#: default_domains.php:1624
+msgid "Side"
+msgstr "Lado"
+
+#: default_domains.php:1625
+msgid "Inner part"
+msgstr "Parte interior"
+
+#: default_domains.php:1626
+msgid "Outer part"
+msgstr "Parte exterior"
+
+#: default_domains.php:1627
+msgid "Middle"
+msgstr "Medio"
+
+#: default_domains.php:1628
+msgid "Edge"
+msgstr "Borde"
+
+#: default_domains.php:1629
+msgid "End, point"
+msgstr "Fin, punto"
+
+#: default_domains.php:1630
+msgid "Grammar"
+msgstr "Gramática"
+
+#: default_domains.php:1631
+msgid "General words"
+msgstr "Palabras generales"
+
+#: default_domains.php:1632
+msgid "Be"
+msgstr "Ser/Estar"
+
+#: default_domains.php:1633
+msgid "Exist"
+msgstr "Existencial"
+
+#: default_domains.php:1634
+msgid "Become, change state"
+msgstr "Convertirse en, cambiar de estado"
+
+#: default_domains.php:1635
+msgid "Have, of"
+msgstr "Tener, de"
+
+#: default_domains.php:1636
+msgid "Attribution"
+msgstr "Atribución"
+
+#: default_domains.php:1637
+msgid "Do"
+msgstr "Hacer"
+
+#: default_domains.php:1638
+msgid "Happen"
+msgstr "Ocurrir"
+
+#: default_domains.php:1639
+msgid "React, respond"
+msgstr "Reaccionar, responder"
+
+#: default_domains.php:1640
+msgid "Create"
+msgstr "Crear"
+
+#: default_domains.php:1641
+msgid "Design"
+msgstr "Diseño"
+
+#: default_domains.php:1642
+msgid "Make"
+msgstr "Hacer"
+
+#: default_domains.php:1643
+msgid "Change something"
+msgstr "Cambiar algo"
+
+#: default_domains.php:1644
+msgid "Event propositions"
+msgstr "Proposiciones de eventos"
+
+#: default_domains.php:1645
+msgid "Thing"
+msgstr "Cosa"
+
+#: default_domains.php:1646
+msgid "Physical, non-physical"
+msgstr "Físico,  no físico"
+
+#: default_domains.php:1647
+msgid "Situation"
+msgstr "Situación"
+
+#: default_domains.php:1648
+msgid "General adjectives"
+msgstr "Adjetivos generales"
+
+#: default_domains.php:1649
+msgid "General adverbs"
+msgstr "Adverbios generales"
+
+#: default_domains.php:1650
+msgid "Part of speech"
+msgstr "Componentes del discurso"
+
+#: default_domains.php:1651
+msgid "Adjectives"
+msgstr "Adjetivos"
+
+#: default_domains.php:1652
+msgid "Adverbs"
+msgstr "Adverbios"
+
+#: default_domains.php:1653
+msgid "Pronouns"
+msgstr "Pronombres"
+
+#: default_domains.php:1654
+msgid "Reflexive pronouns"
+msgstr "Pronombres reflexivos"
+
+#: default_domains.php:1655
+msgid "Indefinite pronouns"
+msgstr "Pronombres impersonales"
+
+#: default_domains.php:1656
+msgid "Relative pronouns"
+msgstr "Pronombres relativos"
+
+#: default_domains.php:1657
+msgid "Question words"
+msgstr "Palabras interrogantes"
+
+#: default_domains.php:1658
+msgid "Demonstrative pronouns"
+msgstr "Pronombres demostrativos"
+
+#: default_domains.php:1659
+msgid "Personally"
+msgstr "Personalmente"
+
+#: default_domains.php:1660
+msgid "Prepositions, postpositions"
+msgstr "Preposiciones, postposiciones"
+
+#: default_domains.php:1661
+msgid "Conjunctions"
+msgstr "Conjunciones"
+
+#: default_domains.php:1662
+msgid "Phrase conjunctions"
+msgstr "Conjunciones de frases"
+
+#: default_domains.php:1663
+msgid "Clause conjunctions"
+msgstr "Conjunciones de cláusulas"
+
+#: default_domains.php:1664
+msgid "Sentence conjunctions"
+msgstr "Conjunciones de oraciones"
+
+#: default_domains.php:1665
+msgid "Particles"
+msgstr "Partículas"
+
+#: default_domains.php:1666
+msgid "Classifiers"
+msgstr "Clasificadores"
+
+#: default_domains.php:1667
+msgid "Interjections"
+msgstr "Interjecciones/Exclamaciones"
+
+#: default_domains.php:1668
+msgid "Ideophones"
+msgstr "Idiófonos"
+
+#: default_domains.php:1669
+msgid "Affixes"
+msgstr "Afijos"
+
+#: default_domains.php:1670
+msgid "Verb affixes"
+msgstr "Afijos de verbos"
+
+#: default_domains.php:1671
+msgid "Noun affixes"
+msgstr "Afijos de sustantivos"
+
+#: default_domains.php:1672
+msgid "Derivational affixes"
+msgstr "Afijos derivativos"
+
+#: default_domains.php:1673
+msgid "Very"
+msgstr "Muy"
+
+#: default_domains.php:1674
+msgid "Degree"
+msgstr "Grado"
+
+#: default_domains.php:1675
+msgid "To a large degree"
+msgstr "En gran medida"
+
+#: default_domains.php:1676
+msgid "To a small degree"
+msgstr "En un pequeño grado"
+
+#: default_domains.php:1677
+msgid "To a larger degree"
+msgstr "En mayor medida"
+
+#: default_domains.php:1678
+msgid "To a smaller degree"
+msgstr "En menor medida"
+
+#: default_domains.php:1679
+msgid "Completely"
+msgstr "Completamente"
+
+#: default_domains.php:1680
+msgid "Partly"
+msgstr "En parte"
+
+#: default_domains.php:1681
+msgid "Do intensely"
+msgstr "Hacer intensamente"
+
+#: default_domains.php:1682
+msgid "Attribution of an attribute"
+msgstr "Designación de un atributo"
+
+#: default_domains.php:1683
+msgid "Semantic constituents related to verbs"
+msgstr "Constituyentes semánticos que tienen que ver con los verbos"
+
+#: default_domains.php:1684
+msgid "Tense and aspect"
+msgstr "Tiempo y aspecto"
+
+#: default_domains.php:1685
+msgid "Tense"
+msgstr "Tiempo"
+
+#: default_domains.php:1686
+msgid "Aspect--dynamic verbs"
+msgstr "Aspecto--verbos dinámicos"
+
+#: default_domains.php:1687
+msgid "Aspect--stative verbs"
+msgstr "Aspecto--verbos stativos"
+
+#: default_domains.php:1688
+msgid "Relational tenses"
+msgstr "Tiempos relacionales"
+
+#: default_domains.php:1689
+msgid "Agent-oriented modalities"
+msgstr "Modalidades Agente-orientado"
+
+#: default_domains.php:1690
+msgid "Can"
+msgstr "Poder"
+
+#: default_domains.php:1691
+msgid "Can't"
+msgstr "No poder"
+
+#: default_domains.php:1692
+msgid "Necessary"
+msgstr "Necesario"
+
+#: default_domains.php:1693
+msgid "Moods"
+msgstr "Humores"
+
+#: default_domains.php:1694
+msgid "Imperative"
+msgstr "Imperativo"
+
+#: default_domains.php:1695
+msgid "Hortative"
+msgstr "Exhortativo"
+
+#: default_domains.php:1696
+msgid "Interrogative"
+msgstr "Interrogativa"
+
+#: default_domains.php:1697
+msgid "Epistemic moods"
+msgstr "Humores epistemológico"
+
+#: default_domains.php:1698
+msgid "Certainly, definitely"
+msgstr "Ciertamente, definitivamente"
+
+#: default_domains.php:1699
+msgid "Sure"
+msgstr "Seguro"
+
+#: default_domains.php:1700
+msgid "Probably"
+msgstr "Probablemente"
+
+#: default_domains.php:1701
+msgid "Possible"
+msgstr "Posible"
+
+#: default_domains.php:1702
+msgid "Uncertain"
+msgstr "Incierto"
+
+#: default_domains.php:1703
+msgid "Unsure"
+msgstr "Inseguro"
+
+#: default_domains.php:1704
+msgid "Think so"
+msgstr "Creo que sí"
+
+#: default_domains.php:1705
+msgid "Maybe"
+msgstr "Quizás"
+
+#: default_domains.php:1706
+msgid "Seem"
+msgstr "Parecer"
+
+#: default_domains.php:1707
+msgid "Just, almost not"
+msgstr "Apenas, casi no"
+
+#: default_domains.php:1708
+msgid "Don't think so, doubt it"
+msgstr "No lo creo así, lo dudo"
+
+#: default_domains.php:1709
+msgid "Impossible"
+msgstr "Imposible"
+
+#: default_domains.php:1710
+msgid "Evidentials"
+msgstr "Probatorios"
+
+#: default_domains.php:1711
+msgid "Evaluator"
+msgstr "Evaluador"
+
+#: default_domains.php:1712
+msgid "Yes"
+msgstr "Afirmación"
+
+#: default_domains.php:1713
+msgid "No, not"
+msgstr "Negativa"
+
+#: default_domains.php:1714
+msgid "Markers expecting an affirmative answer"
+msgstr "Indicadores que esperan una respuesta afirmativa"
+
+#: default_domains.php:1715
+msgid "Markers expecting a negative answer"
+msgstr "Indicadores que esperan una respuesta negativa"
+
+#: default_domains.php:1716
+msgid "Subordinating particles"
+msgstr "Partículas subordinadas"
+
+#: default_domains.php:1717
+msgid "Adverbial clauses"
+msgstr "Cláusulas adverbiales"
+
+#: default_domains.php:1718
+msgid "Case"
+msgstr "Caso"
+
+#: default_domains.php:1719
+msgid "Primary cases"
+msgstr "Casos primarios"
+
+#: default_domains.php:1720
+msgid "Beneficiary of an event"
+msgstr "Beneficiario de un suceso"
+
+#: default_domains.php:1721
+msgid "Instrument"
+msgstr "Instrumento"
+
+#: default_domains.php:1722
+msgid "Means"
+msgstr "Significa"
+
+#: default_domains.php:1723
+msgid "Way, manner"
+msgstr "Manera"
+
+#: default_domains.php:1724
+msgid "Attendant circumstances"
+msgstr "Circunstancias del asistente"
+
+#: default_domains.php:1725
+msgid "Spatial location of an event"
+msgstr "Ubicación espacial de un evento"
+
+#: default_domains.php:1726
+msgid "Source (of movement)"
+msgstr "Procedencia (del movimiento)"
+
+#: default_domains.php:1727
+msgid "Path (of movement)"
+msgstr "curso (del movimiento)"
+
+#: default_domains.php:1728
+msgid "Goal (of movement)"
+msgstr "El blanco (del movimiento)"
+
+#: default_domains.php:1729
+msgid "Origin (of a person)"
+msgstr "Origen (de una persona)"
+
+#: default_domains.php:1730
+msgid "Semantically similar events"
+msgstr "Eventos semánticamente similares"
+
+#: default_domains.php:1731
+msgid "Together"
+msgstr "Juntos"
+
+#: default_domains.php:1732
+msgid "With, be with"
+msgstr "con, estar con"
+
+#: default_domains.php:1733
+msgid "With, do with someone"
+msgstr "Con, hacer con alguien"
+
+#: default_domains.php:1734
+msgid "Each other"
+msgstr "El uno al otro"
+
+#: default_domains.php:1735
+msgid "In groups"
+msgstr "En grupos"
+
+#: default_domains.php:1736
+msgid "Patient-related cases"
+msgstr "Pasivo-casos relacionados"
+
+#: default_domains.php:1737
+msgid "Beneficiary (of a patient)"
+msgstr "Beneficiario (de un paciente)"
+
+#: default_domains.php:1738
+msgid "Recipient (of a patient)"
+msgstr "Receptor (de un paciente)"
+
+#: default_domains.php:1739
+msgid "With (a patient)"
+msgstr "Con (un pasivo)"
+
+#: default_domains.php:1740
+msgid "Connected with, related"
+msgstr "relacionarse con, relacionado"
+
+#: default_domains.php:1741
+msgid "Coordinate relations"
+msgstr "Relaciones coordinadas"
+
+#: default_domains.php:1742
+msgid "And, also"
+msgstr "Y, también"
+
+#: default_domains.php:1743
+msgid "Or, either"
+msgstr "O, cualquiera,"
+
+#: default_domains.php:1744
+msgid "Association"
+msgstr "Sociedad"
+
+#: default_domains.php:1745
+msgid "Combinative relation"
+msgstr "Relación combinatoria"
+
+#: default_domains.php:1746
+msgid "But"
+msgstr "Pero"
+
+#: default_domains.php:1747
+msgid "Except"
+msgstr "Excepto"
+
+#: default_domains.php:1748
+msgid "Instead"
+msgstr "En lugar de"
+
+#: default_domains.php:1749
+msgid "Dissociation"
+msgstr "Disociación"
+
+#: default_domains.php:1750
+msgid "Distribution"
+msgstr "Distribución"
+
+#: default_domains.php:1751
+msgid "Equivalence"
+msgstr "Equivalencia"
+
+#: default_domains.php:1752
+msgid "Dependency relations"
+msgstr "Relaciones de dependencia"
+
+#: default_domains.php:1753
+msgid "Derivation"
+msgstr "Derivación"
+
+#: default_domains.php:1754
+msgid "Limitation of topic"
+msgstr "Limitante del tema"
+
+#: default_domains.php:1755
+msgid "In general"
+msgstr "En general"
+
+#: default_domains.php:1756
+msgid "Relations involving correspondences"
+msgstr "Relaciones que implica correspondencias"
+
+#: default_domains.php:1757
+msgid "Basis"
+msgstr "Base"
+
+#: default_domains.php:1758
+msgid "Cause"
+msgstr "Causa"
+
+#: default_domains.php:1759
+msgid "Reason"
+msgstr "Razón (motivo)"
+
+#: default_domains.php:1760
+msgid "Without cause"
+msgstr "Sin justificación"
+
+#: default_domains.php:1761
+msgid "Result"
+msgstr "Resultado"
+
+#: default_domains.php:1762
+msgid "Without result"
+msgstr "Sin resultado"
+
+#: default_domains.php:1763
+msgid "Purpose"
+msgstr "Propósito"
+
+#: default_domains.php:1764
+msgid "Without purpose"
+msgstr "Sin objetivo"
+
+#: default_domains.php:1765
+msgid "Condition"
+msgstr "Condición"
+
+#: default_domains.php:1766
+msgid "Concession"
+msgstr "Concesión"
+
+#: default_domains.php:1767
+msgid "Discourse markers"
+msgstr "Indicadores del discurso"
+
+#: default_domains.php:1768
+msgid "Markers of transition"
+msgstr "Indicadores de transición"
+
+#: default_domains.php:1769
+msgid "Markers of emphasis"
+msgstr "Indicadores de énfasis"
+
+#: default_domains.php:1770
+msgid "Prompters of attention"
+msgstr "Impulsores de atención"
+
+#: default_domains.php:1771
+msgid "Markers of direct address"
+msgstr "Indicadores de ubicación directa"
+
+#: default_domains.php:1772
+msgid "Markers of identificational and explanatory clauses"
+msgstr "Indicadores de cláusulas identificadoras y explicativas"
+
+#: default_domains.php:1773
+msgid "Markers of focus"
+msgstr "Indicadores del foco de atención"
+
+#: default_domains.php:1774
+msgid "Hesitation fillers"
+msgstr "Titubeos de relleno"
+
+#: default_domains.php:1775
+msgid "Honorifics"
+msgstr "Títulos honoríficos"
+
+#: default_domains.php:1776
+msgid "Name"
+msgstr "Nombre"
+
+#: default_domains.php:1777
+msgid "Name of a person"
+msgstr "Nombre de una persona"
+
+#: default_domains.php:1778
+msgid "Personal names"
+msgstr "Nombres personales"
+
+#: default_domains.php:1779
+msgid "Family names"
+msgstr "Nombres de la familia"
+
+#: default_domains.php:1780
+msgid "Clan names"
+msgstr "Nombres del clan"
+
+#: default_domains.php:1781
+msgid "Tribal names"
+msgstr "Nombres de tribus"
+
+#: default_domains.php:1782
+msgid "Names of languages"
+msgstr "Nombres de idiomas"
+
+#: default_domains.php:1783
+msgid "Nickname"
+msgstr "Apodo, sobrenombre"
+
+#: default_domains.php:1784
+msgid "Terms of endearment"
+msgstr "Términos cariñosos"
+
+#: default_domains.php:1785
+msgid "Name of a place"
+msgstr "Nombre de un lugar"
+
+#: default_domains.php:1786
+msgid "Names of countries"
+msgstr "Nombres de países"
+
+#: default_domains.php:1787
+msgid "Names of regions"
+msgstr "Nombres de regiones"
+
+#: default_domains.php:1788
+msgid "Names of cities"
+msgstr "Nombres de ciudades"
+
+#: default_domains.php:1789
+msgid "Names of streets"
+msgstr "Nombres de calles"
+
+#: default_domains.php:1790
+msgid "Names of heavenly bodies"
+msgstr "Nombres de Cuerpos Celestes"
+
+#: default_domains.php:1791
+msgid "Names of continents"
+msgstr "Nombres de continentes"
+
+#: default_domains.php:1792
+msgid "Names of mountains"
+msgstr "Nombres de montañas"
+
+#: default_domains.php:1793
+msgid "Names of oceans and lakes"
+msgstr "Nombres de Océanos y lagos"
+
+#: default_domains.php:1794
+msgid "Names of rivers"
+msgstr "Nombres de ríos"
+
+#: default_domains.php:1795
+msgid "Name of a thing"
+msgstr "Nombre de una cosa"
+
+#: default_domains.php:1796
+msgid "Names of animals"
+msgstr "Nombres de animales"
+
+#: default_domains.php:1797
+msgid "Names of buildings"
+msgstr "Nombres de edificios"
+
+#: semantic domain 
+msgid "Semantic Domains"
+msgstr "Dominios semánticos"
