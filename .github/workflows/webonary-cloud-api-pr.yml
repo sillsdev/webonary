@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Set env to dev if PR is for merging to develop
-        if: github.event.pull_request.base.ref == 'develop'
+        if: endsWith(github.ref, '/develop')
         run: |
           echo "DEPLOY_ENV=dev" >> $GITHUB_ENV
 
@@ -41,8 +41,8 @@ jobs:
           echo "S3_DOMAIN_NAME=cloud-storage.webonary.work" >> $GITHUB_ENV
           echo "WEBONARY_URL=https://www.webonary.work" >> $GITHUB_ENV
 
-      - name: Set env to production if PR is for merging to stable
-        if: github.event.pull_request.base.ref == 'master'
+      - name: Set env to production if PR is for merging to master
+        if: endsWith(github.ref, '/master')
         run: |
           echo "DEPLOY_ENV=live" >> $GITHUB_ENV
 
