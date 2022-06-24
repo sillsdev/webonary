@@ -118,7 +118,3 @@ WEBONARYSERVER=webonary.work
 
 - `cdk diff` compare deployed stack with current state
 - `cdk synth` emits the synthesized CloudFormation template
-
-## Roadmap
-
-More to come...
