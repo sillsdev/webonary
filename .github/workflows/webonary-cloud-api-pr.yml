@@ -1,4 +1,4 @@
-name: Webonary Cloud API PR
+name: Webonary Cloud API PR pull request and merge
 
 on:
   pull_request:
