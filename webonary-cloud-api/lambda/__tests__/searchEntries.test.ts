@@ -2,6 +2,7 @@ import { searchEntries, SearchEntriesArguments } from '../searchEntries';
 
 import { upsertEntries } from '../postEntry';
 import { createDictionary, setupMongo } from './databaseSetup';
+import { Response } from '../response';
 
 setupMongo();
 
@@ -21,17 +22,24 @@ const defaultArguments: SearchEntriesArguments = {
   text: 'test-text',
 };
 
+function parseGuids(response: Response): string[] {
+  return JSON.parse(response.body)
+      .map((entry: any) => entry.guid)
+      .filter((guid: string) => guid)
+      .sort();
+}
+
 const testUsername = 'test-username';
 describe('searchEntries', () => {
   test('empty dictionary returns 404', async () => {
     const dictionaryId = await createDictionary();
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
     });
 
-    expect(searchResponse.statusCode).toBe(404);
+    expect(response.statusCode).toBe(404);
   });
 
   test('matches text only in displayXhtml', async () => {
@@ -50,17 +58,14 @@ describe('searchEntries', () => {
       testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: searchText,
     });
 
-    expect(searchResponse.statusCode).toBe(200);
-    const responseBody = JSON.parse(searchResponse.body);
-    expect(responseBody.length).toBe(1);
-    expect(responseBody[0].dictionaryId).toBe(dictionaryId);
-    expect(responseBody[0].guid).toBe(matchingGuid);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
   test('does not match tags in displayXhtml', async () => {
@@ -77,13 +82,13 @@ describe('searchEntries', () => {
       testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'div',
     });
 
-    expect(searchResponse.statusCode).toBe(404);
+    expect(response.statusCode).toBe(404);
   });
 
   test('does not match tag attributes in displayXhtml', async () => {
@@ -100,13 +105,13 @@ describe('searchEntries', () => {
       testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'href',
     });
 
-    expect(searchResponse.statusCode).toBe(404);
+    expect(response.statusCode).toBe(404);
   });
 
   test('does not match tag attribute values in displayXhtml', async () => {
@@ -123,13 +128,13 @@ describe('searchEntries', () => {
       testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'localhost',
     });
 
-    expect(searchResponse.statusCode).toBe(404);
+    expect(response.statusCode).toBe(404);
   });
 
   // TODO: Write a test for languages. I'm not sure what it means to filter by a language. The WordPress implementation
@@ -183,17 +188,14 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'text',
       partOfSpeech: 'partA',
     });
 
-    const actualGuids = JSON.parse(searchResponse.body)
-        .map((entry: any) => entry.guid)
-        .sort();
-    expect(actualGuids).toEqual(['guidA', 'guidAB']);
+    expect(parseGuids(response)).toEqual(['guidA', 'guidAB']);
   });
 
   test('matchPartial match parts of words', async () => {
@@ -214,14 +216,14 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'or',
       matchPartial: true
     });
 
-    const responseBody = JSON.parse(searchResponse.body);
+    const responseBody = JSON.parse(response.body);
     expect(responseBody.length).toBe(2);
   });
 
@@ -243,14 +245,14 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'word',
       matchAccents: false
     });
 
-    const responseBody = JSON.parse(searchResponse.body);
+    const responseBody = JSON.parse(response.body);
     expect(responseBody.length).toBe(2);
   });
 
@@ -272,14 +274,14 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'wórd',
       matchAccents: false
     });
 
-    const responseBody = JSON.parse(searchResponse.body);
+    const responseBody = JSON.parse(response.body);
     expect(responseBody.length).toBe(2);
   });
 
@@ -301,16 +303,14 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'word',
       matchAccents: true
     });
 
-    const responseBody = JSON.parse(searchResponse.body);
-    expect(responseBody.length).toBe(1);
-    expect(responseBody[0].guid).toBe('no-accent');
+    expect(parseGuids(response)).toEqual(['no-accent']);
   });
 
   test('match accents and tones matches only the searched accents and tones', async () => {
@@ -335,15 +335,13 @@ describe('searchEntries', () => {
         testUsername,
     );
 
-    const searchResponse = await searchEntries({
+    const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'wṓrd',
       matchAccents: true
     });
 
-    const responseBody = JSON.parse(searchResponse.body);
-    expect(responseBody.length).toBe(1);
-    expect(responseBody[0].guid).toBe('accent-2');
+    expect(parseGuids(response)).toEqual(['accent-2']);
   });
 });
