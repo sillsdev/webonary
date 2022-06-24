@@ -20,20 +20,20 @@
  * @apiError (404) NotFound There are no matching entries.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient } from 'mongodb';
-import { connectToDB } from './mongo';
+import {APIGatewayEvent, Callback, Context} from 'aws-lambda';
+import {MongoClient} from 'mongodb';
+import {connectToDB} from './mongo';
 import {
-  DB_NAME,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+  DB_COLLATION_LOCALES,
   DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
   DB_COLLATION_STRENGTH_FOR_SENSITIVITY,
-  DB_COLLATION_LOCALES,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_MAX_DOCUMENTS_PER_CALL,
+  DB_NAME,
 } from './db';
-import { DbFindParameters } from './base.model';
-import { DbPaths } from './entry.model';
+import {DbFindParameters} from './base.model';
+import {DbPaths} from './entry.model';
 import {createFailureResponse, getDbSkip} from './utils';
 
 import * as Response from './response';
@@ -64,7 +64,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
     let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
     const dbSkip = getDbSkip(args.pageNumber, args.pageLimit);
-    const primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
+    let primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
 
     // Semantic domains search
     if (args.searchSemDoms) {
@@ -108,9 +108,6 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       return Response.success(entries);
     }
 
-    let langFilter: DbFindParameters;
-    const regexFilter: DbFindParameters = { $regex: args.text, $options: 'i' };
-
     if (args.partOfSpeech) {
       primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = args.partOfSpeech;
     }
@@ -120,32 +117,26 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
         locale = args.lang;
       }
 
-      let langFieldToFilter: string;
-      if (args.mainLang && args.mainLang === args.lang) {
-        langFieldToFilter = 'mainHeadWord';
-      } else {
-        langFieldToFilter = 'senses.definitionOrGloss';
-      }
-
-      langFilter = {
-        [langFieldToFilter]: {
-          $elemMatch: {
-            lang: args.lang,
-            value: regexFilter,
+      primaryFilter = {
+        $and: [
+          primaryFilter,
+          {
+            $or: [
+              {"mainHeadWord.lang": args.lang},
+              {"senses.definitionOrGloss.lang": args.lang},
+              {"reversalLetterHeads.lang": args.lang},
+              {"pronunciations.lang": args.lang},
+              {"morphoSyntaxAnalysis.partOfSpeech.lang": args.lang},
+            ],
           },
-        },
-      };
-    } else {
-      langFilter = {
-        $or: [
-          { [DbPaths.ENTRY_DISPLAY_TEXT]: regexFilter },
         ],
       };
     }
 
     if (args.matchPartial) {
       const dictionaryPartialSearch = {
-        $and: [primaryFilter, langFilter],
+        ...primaryFilter,
+        [DbPaths.ENTRY_DISPLAY_TEXT]: {$regex: args.text, $options: 'i'},
       };
 
       if (args.matchAccents) {
@@ -188,9 +179,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       const $text = { $search: `"${args.text}"`, $language: args.$language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
       if (args.lang) {
-        const dbFind = [{ $match: dictionaryFulltextSearch }, { $match: langFilter }];
-
-        console.log(`Searching ${args.dictionaryId} using fulltext ${JSON.stringify(dbFind)}`);
+        console.log(`Searching ${args.dictionaryId} using fulltext ${JSON.stringify(dictionaryFulltextSearch)}`);
 
         if (args.countTotalOnly) {
           /* TODO: There might be a way to count docs in aggregation, but I have not figured it out yet...
@@ -198,7 +187,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
           */
           entries = await db
             .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-            .aggregate(dbFind)
+            .find(dictionaryFulltextSearch)
             .toArray();
           const count = entries.length;
 
@@ -207,7 +196,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
 
         entries = await db
           .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .aggregate(dbFind)
+          .find(dictionaryFulltextSearch)
           .skip(dbSkip)
           .limit(args.pageLimit)
           .toArray();
