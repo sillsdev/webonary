@@ -214,9 +214,6 @@ describe('searchEntries', () => {
         'guid-matching-5']);
   });
 
-  // TODO: Write a test for languages. I'm not sure what it means to filter by a language. The WordPress implementation
-  // seems to assign each entry at most one language, but each entry in the Mongo implementation can have many langs.
-
   test('partOfSpeech filters out the irrelevant entries', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
