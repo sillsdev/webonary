@@ -143,54 +143,55 @@ describe('searchEntries', () => {
     await upsertEntries(
         [
           {
-            guid: 'guid-matching-1',
-            displayXhtml: `text`,
-            mainHeadWord: [{
-              lang: 'matching-lang',
-            }],
-          },
-          {
-            guid: 'guid-matching-2',
-            displayXhtml: `text`,
-            senses: [{
-              definitionOrGloss: [{
-                lang: 'matching-lang',
+              guid: 'guid-matching-1',
+              displayXhtml: `text`,
+              mainHeadWord: [{
+                  value: 'test-value',
+                  lang: 'matching-lang',
               }],
-            }],
           },
           {
-            guid: 'guid-matching-3',
-            displayXhtml: `text`,
-            reversalLetterHeads: [{
-              lang: 'matching-lang',
-            }],
-          },
-          {
-            guid: 'guid-matching-4',
-            displayXhtml: `text`,
-            pronunciations: [{
-              lang: 'matching-lang',
-            }],
-          },
-          {
-            guid: 'guid-matching-5',
-            displayXhtml: `text`,
-            morphoSyntaxAnalysis: [{
-              partOfSpeech: [{
-                lang: 'matching-lang',
+              guid: 'guid-matching-2',
+              displayXhtml: `text`,
+              senses: [{
+                  definitionOrGloss: [{
+                      lang: 'matching-lang',
+                  }],
               }],
-            }],
           },
           {
-            guid: 'guid-other',
-            displayXhtml: `text`,
-            mainHeadWord: [{
-              lang: 'other-lang',
-            }],
+              guid: 'guid-matching-3',
+              displayXhtml: `text`,
+              reversalLetterHeads: [{
+                  lang: 'matching-lang',
+              }],
           },
           {
-            guid: 'guid-missing-lang',
-            displayXhtml: `text`,
+              guid: 'guid-matching-4',
+              displayXhtml: `text`,
+              pronunciations: [{
+                  lang: 'matching-lang',
+              }],
+          },
+          {
+              guid: 'guid-matching-5',
+              displayXhtml: `text`,
+              morphoSyntaxAnalysis: [{
+                  partOfSpeech: [{
+                      lang: 'matching-lang',
+                  }],
+              }],
+          },
+          {
+              guid: 'guid-other',
+              displayXhtml: `text`,
+              mainHeadWord: [{
+                  lang: 'other-lang',
+              }],
+          },
+          {
+              guid: 'guid-missing-lang',
+              displayXhtml: `text`,
           },
         ],
         false,
