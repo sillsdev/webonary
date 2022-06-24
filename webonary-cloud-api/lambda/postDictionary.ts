@@ -105,7 +105,7 @@
 
 import axios from 'axios';
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateResult } from 'mongodb';
+import { MongoClient, UpdateWriteOpResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
   DB_NAME,
@@ -117,7 +117,12 @@ import {
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
 import { DbPaths } from './entry.model';
-import {copyObjectIgnoreKeyCase, setSearchableEntries, getBasicAuthCredentials, createFailureResponse} from './utils';
+import {
+  copyObjectIgnoreKeyCase,
+  setSearchableEntries,
+  getBasicAuthCredentials,
+  createFailureResponse,
+} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -126,7 +131,7 @@ export async function upsertDictionary(
   eventBody: string | null,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
+): Promise<{ dbResult: UpdateWriteOpResult; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
 
   const posted = JSON.parse(eventBody as string);

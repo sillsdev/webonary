@@ -212,7 +212,7 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient , UpdateResult } from 'mongodb';
+import { MongoClient, UpdateWriteOpResult } from 'mongodb';
 import * as sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
@@ -229,7 +229,7 @@ import {
   ENTRY_TYPE_REVERSAL,
   EntryValueItem,
 } from './entry.model';
-import {copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials} from './utils';
+import { copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -263,7 +263,7 @@ export async function upsertEntries(
   isReversalEntry: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
+): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
@@ -286,14 +286,14 @@ export async function upsertEntries(
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
   const promises = entries.map(
-    (entry: EntryItemType): Promise<UpdateResult> => {
+    (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
       return db
         .collection(dbCollection)
         .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
     },
   );
 
-  const dbResults: UpdateResult[] = await Promise.all(promises);
+  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
   return { updatedAt, dbResults };
 }
 
