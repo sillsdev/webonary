@@ -210,6 +210,10 @@ describe('searchEntries', () => {
             guid: 'or',
             displayXhtml: `or`,
           },
+          {
+            guid: 'other',
+            displayXhtml: `other`,
+          },
         ],
         false,
         dictionaryId,
@@ -223,8 +227,7 @@ describe('searchEntries', () => {
       matchPartial: true
     });
 
-    const responseBody = JSON.parse(response.body);
-    expect(responseBody.length).toBe(2);
+    expect(parseGuids(response)).toEqual(['or', 'word']);
   });
 
   test('ignore accents and tones with clean search matches all accents and tones', async () => {
@@ -252,8 +255,7 @@ describe('searchEntries', () => {
       matchAccents: false
     });
 
-    const responseBody = JSON.parse(response.body);
-    expect(responseBody.length).toBe(2);
+    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
   });
 
   test('ignore accents and tones with accented search matches all accents and tones', async () => {
@@ -281,8 +283,7 @@ describe('searchEntries', () => {
       matchAccents: false
     });
 
-    const responseBody = JSON.parse(response.body);
-    expect(responseBody.length).toBe(2);
+    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
   });
 
   test('match accents and tones filters out accents and tones', async () => {
