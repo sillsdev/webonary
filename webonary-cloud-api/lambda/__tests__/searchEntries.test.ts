@@ -137,6 +137,82 @@ describe('searchEntries', () => {
     expect(response.statusCode).toBe(404);
   });
 
+
+  test('lang filters down to only entries with matching lang', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+          {
+            guid: 'guid-matching-1',
+            displayXhtml: `text`,
+            mainHeadWord: [{
+              lang: 'matching-lang',
+            }],
+          },
+          {
+            guid: 'guid-matching-2',
+            displayXhtml: `text`,
+            senses: [{
+              definitionOrGloss: [{
+                lang: 'matching-lang',
+              }],
+            }],
+          },
+          {
+            guid: 'guid-matching-3',
+            displayXhtml: `text`,
+            reversalLetterHeads: [{
+              lang: 'matching-lang',
+            }],
+          },
+          {
+            guid: 'guid-matching-4',
+            displayXhtml: `text`,
+            pronunciations: [{
+              lang: 'matching-lang',
+            }],
+          },
+          {
+            guid: 'guid-matching-5',
+            displayXhtml: `text`,
+            morphoSyntaxAnalysis: [{
+              partOfSpeech: [{
+                lang: 'matching-lang',
+              }],
+            }],
+          },
+          {
+            guid: 'guid-other',
+            displayXhtml: `text`,
+            mainHeadWord: [{
+              lang: 'other-lang',
+            }],
+          },
+          {
+            guid: 'guid-missing-lang',
+            displayXhtml: `text`,
+          },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      lang: 'matching-lang',
+    });
+
+    expect(parseGuids(response)).toEqual([
+        'guid-matching-1',
+        'guid-matching-2',
+        'guid-matching-3',
+        'guid-matching-4',
+        'guid-matching-5']);
+  });
+
   // TODO: Write a test for languages. I'm not sure what it means to filter by a language. The WordPress implementation
   // seems to assign each entry at most one language, but each entry in the Mongo implementation can have many langs.
 
