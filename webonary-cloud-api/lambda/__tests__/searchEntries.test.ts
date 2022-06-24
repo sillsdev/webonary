@@ -1,32 +1,9 @@
-// It's there in devDependencies. Not sure why it's not working.
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { MongoMemoryServer } from 'mongodb-memory-server';
 import { searchEntries, SearchEntriesArguments } from '../searchEntries';
-import { upsertDictionary } from '../postDictionary';
 
 import { upsertEntries } from '../postEntry';
+import { createDictionary, setupMongo } from './databaseSetup';
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-  process.env.DB_URL = mongoServer.getUri();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
-});
-
-let nextDictionaryNumber = 1;
-/** Inserts a new dictionary into the database and returns its dictionaryId. */
-async function createDictionary(): Promise<string> {
-  const dictionaryId = `test-dictionary-${nextDictionaryNumber}`;
-  nextDictionaryNumber += 1;
-
-  await upsertDictionary('{}', dictionaryId, 'test-user');
-
-  return dictionaryId;
-}
+setupMongo();
 
 const defaultArguments: SearchEntriesArguments = {
   $language: '',
@@ -44,6 +21,7 @@ const defaultArguments: SearchEntriesArguments = {
   text: 'test-text',
 };
 
+const testUsername = 'test-username';
 describe('searchEntries', () => {
   test('empty dictionary returns 404', async () => {
     const dictionaryId = await createDictionary();
@@ -56,7 +34,7 @@ describe('searchEntries', () => {
     expect(searchResponse.statusCode).toBe(404);
   });
 
-  test('mainHeadWord exact match', async () => {
+  test('matches text only in displayXhtml', async () => {
     const dictionaryId = await createDictionary();
     const searchText = 'test-mainHeadWord';
     const matchingGuid = 'test-matching-guid';
@@ -64,16 +42,12 @@ describe('searchEntries', () => {
       [
         {
           guid: matchingGuid,
-          mainHeadWord: [{ value: searchText }],
-        },
-        {
-          guid: 'test-not-matching-guid',
-          mainHeadWord: [{ value: 'something-else-entirely' }],
+          displayXhtml: `<div>${searchText}</div>`,
         },
       ],
       false,
       dictionaryId,
-      'test-username',
+      testUsername,
     );
 
     const searchResponse = await searchEntries({
@@ -87,5 +61,74 @@ describe('searchEntries', () => {
     expect(responseBody.length).toBe(1);
     expect(responseBody[0].dictionaryId).toBe(dictionaryId);
     expect(responseBody[0].guid).toBe(matchingGuid);
+  });
+
+  test('does not match tags in displayXhtml', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'test-guid',
+          displayXhtml: `<div>some text</div>`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'div',
+    });
+
+    expect(searchResponse.statusCode).toBe(404);
+  });
+
+  test('does not match tag attributes in displayXhtml', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'test-guid',
+          displayXhtml: `<a href="http://localhost">some text</a>`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'href',
+    });
+
+    expect(searchResponse.statusCode).toBe(404);
+  });
+
+  test('does not match tag attribute values in displayXhtml', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'test-guid',
+          displayXhtml: `<a href="http://localhost">some text</a>`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const searchResponse = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'localhost',
+    });
+
+    expect(searchResponse.statusCode).toBe(404);
   });
 });

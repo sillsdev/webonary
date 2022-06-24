@@ -212,7 +212,8 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient , UpdateResult } from 'mongodb';
+import * as sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
   DB_NAME,
@@ -226,18 +227,43 @@ import {
   ReversalEntryItem,
   EntryItemType,
   ENTRY_TYPE_REVERSAL,
+  EntryValueItem,
 } from './entry.model';
-import { copyObjectIgnoreKeyCase, getBasicAuthCredentials } from './utils';
+import {copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
+
+/**
+ * Removes any HTML from a string.
+ */
+function stripHtml(html: string): string {
+  return sanitizeHtml(html, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+}
+
+/**
+ * Fills in empty DictionaryEntry fields from other fields that were supplied.
+ */
+/* eslint-disable no-param-reassign */
+function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
+  destination.mainHeadWord = destination.mainHeadWord.filter(word => word.value);
+  if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
+    destination.mainHeadWord = source.headword.map((word: never) =>
+      copyObjectIgnoreKeyCase(new EntryValueItem(), word),
+    );
+  }
+}
+/* eslint-enable no-param-reassign */
 
 export async function upsertEntries(
   postedEntries: Array<object>,
   isReversalEntry: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
+): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
@@ -245,7 +271,12 @@ export async function upsertEntries(
     const entry = isReversalEntry
       ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
       : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
-    return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    if (entry instanceof DictionaryEntryItem) {
+      fillDictionaryEntryFields(postedEntry, entry);
+    }
+    entry.displayText = stripHtml(entry.displayXhtml);
+    return entry;
   });
 
   dbClient = await connectToDB();
@@ -255,14 +286,14 @@ export async function upsertEntries(
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
   const promises = entries.map(
-    (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
+    (entry: EntryItemType): Promise<UpdateResult> => {
       return db
         .collection(dbCollection)
         .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
     },
   );
 
-  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
+  const dbResults: UpdateResult[] = await Promise.all(promises);
   return { updatedAt, dbResults };
 }
 
@@ -314,7 +345,7 @@ export async function handler(
 
     const insertedIds = dbResults
       .filter(result => result.upsertedCount)
-      .map(result => result.upsertedId._id);
+      .map(result => result.upsertedId.toString());
 
     const postResult: PostResult = {
       updatedAt,
@@ -327,7 +358,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 

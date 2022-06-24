@@ -34,7 +34,7 @@ import {
 } from './db';
 import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
-import { getDbSkip } from './utils';
+import {createFailureResponse, getDbSkip} from './utils';
 
 import * as Response from './response';
 
@@ -241,7 +241,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return Response.failure({ errorType: error.name, errorMessage: error.message });
+    return createFailureResponse(error);
   }
 }
 

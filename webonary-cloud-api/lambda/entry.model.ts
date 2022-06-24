@@ -104,6 +104,9 @@ export class EntryItem implements Entry {
 
   displayXhtml: string;
 
+  // This is a copy of displayXhtml with all the HTML stripped. This is used for full text search.
+  displayText: string;
+
   updatedAt?: string;
 
   updatedBy?: string;
@@ -201,6 +204,7 @@ export const ENTRY_TYPE_MAIN = 'entry';
 export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
 
 export enum DbPaths {
+  ENTRY_DISPLAY_TEXT = 'displayText',
   ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
   ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.value',
   ENTRY_SENSES = 'senses',
