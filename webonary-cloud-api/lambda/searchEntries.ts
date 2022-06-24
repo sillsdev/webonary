@@ -187,50 +187,24 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       const $diacriticSensitive = args.matchAccents;
       const $text = { $search: `"${args.text}"`, $language: args.$language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
-      if (args.lang) {
-        const dbFind = [{ $match: dictionaryFulltextSearch }, { $match: langFilter }];
+      console.log(
+        `Searching ${args.dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`,
+      );
 
-        console.log(`Searching ${args.dictionaryId} using fulltext ${JSON.stringify(dbFind)}`);
-
-        if (args.countTotalOnly) {
-          /* TODO: There might be a way to count docs in aggregation, but I have not figured it out yet...
-          const count = await db.collection(DB_COLLECTION_ENTRIES).countDocuments(dbFind);
-          */
-          entries = await db
-            .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-            .aggregate(dbFind)
-            .toArray();
-          const count = entries.length;
-
-          return Response.success({ count });
-        }
-
-        entries = await db
+      if (args.countTotalOnly) {
+        const count = await db
           .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .aggregate(dbFind)
-          .skip(dbSkip)
-          .limit(args.pageLimit)
-          .toArray();
-      } else {
-        console.log(
-          `Searching ${args.dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`,
-        );
+          .countDocuments(dictionaryFulltextSearch);
 
-        if (args.countTotalOnly) {
-          const count = await db
-            .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-            .countDocuments(dictionaryFulltextSearch);
-
-          return Response.success({ count });
-        }
-
-        entries = await db
-          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .find(dictionaryFulltextSearch)
-          .skip(dbSkip)
-          .limit(args.pageLimit)
-          .toArray();
+        return Response.success({ count });
       }
+
+      entries = await db
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+        .find(dictionaryFulltextSearch)
+        .skip(dbSkip)
+        .limit(args.pageLimit)
+        .toArray();
     }
 
     if (!entries.length) {
