@@ -304,7 +304,7 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual(['or', 'word']);
   });
 
-  test('ignore accents and tones with clean search matches all accents and tones', async () => {
+  test('!matchAccents with clean search matches all accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
         [
@@ -332,7 +332,7 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
   });
 
-  test('ignore accents and tones with accented search matches all accents and tones', async () => {
+  test('!matchAccents with accented search matches all accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
         [
@@ -360,7 +360,7 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
   });
 
-  test('match accents and tones filters out accents and tones', async () => {
+  test('matchAccents filters out accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
         [
@@ -388,7 +388,7 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual(['no-accent']);
   });
 
-  test('match accents and tones matches only the searched accents and tones', async () => {
+  test('matchAccents matches only the searched accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
         [
