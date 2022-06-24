@@ -419,4 +419,37 @@ describe('searchEntries', () => {
 
     expect(parseGuids(response)).toEqual(['accent-2']);
   });
+  
+  test('matchPartial and matchAccents matches only the searched accents and tones', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+        [
+            {
+                guid: 'accent-1',
+                displayXhtml: `wórd`,
+            },
+            {
+                guid: 'accent-2',
+                displayXhtml: `wṓrd`,
+            },
+            {
+                guid: 'no-accent',
+                displayXhtml: `word`,
+            },
+        ],
+        false,
+        dictionaryId,
+        testUsername,
+    );
+    
+    const response = await searchEntries({
+        ...defaultArguments,
+        dictionaryId,
+        text: 'wṓ',
+        matchPartial: true,
+        matchAccents: true
+    });
+      
+    expect(parseGuids(response)).toEqual(['accent-2']);
+  });
 });
