@@ -7,6 +7,12 @@ on:
       - master
     paths:
       - "webonary-cloud-api/**"
+  push:
+    branches:
+      - develop
+      - master
+    paths:
+      - "webonary-cloud-api/**"
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -73,13 +79,18 @@ jobs:
         run: npm install -g npm@6.14.8
 
       - name: NPM clean install main package
-        run: webonary-cloud-api; npm ci
+        run: cd webonary-cloud-api; npm ci
 
       - name: NPM clean install lambda package
-        run: webonary-cloud-api/lambda; npm ci
+        run: cd webonary-cloud-api/lambda; npm ci
 
       - name: Lint, build, and test
-        run: webonary-cloud-api; npm run test
+        run: cd webonary-cloud-api; npm run test
 
       - name: Run cdk diff
-        run: set -o pipefail; webonary-cloud-api; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
+        if: ${{ github.event_name == 'pull_request' }}
+        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
+
+      - name: Run cdk deploy
+        if: ${{ github.event_name == 'push' }}
+        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk deploy --require-approval never --no-color 2>&1
