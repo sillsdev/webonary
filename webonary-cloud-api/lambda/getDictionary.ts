@@ -57,7 +57,7 @@ import { DbPaths } from './entry.model';
 
 import { DbFindParameters } from './base.model';
 import * as Response from './response';
-import {createFailureResponse} from "./utils";
+import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 

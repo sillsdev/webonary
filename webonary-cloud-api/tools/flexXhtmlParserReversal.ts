@@ -1,7 +1,5 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { Options, FlexXhtmlParser } from './flexXhtmlParser';
-
 import {
   Entry,
   ReversalEntry,
@@ -9,6 +7,7 @@ import {
   EntryValue,
   ENTRY_TYPE_REVERSAL,
 } from '../lambda/entry.model';
+import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
 export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public parsedReversalEntries: ReversalEntry[];

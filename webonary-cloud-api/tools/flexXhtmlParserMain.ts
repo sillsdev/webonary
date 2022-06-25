@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 import {
   DictionaryEntry,
   Entry,
@@ -10,6 +9,7 @@ import {
   ENTRY_TYPE_MAIN,
 } from '../lambda/entry.model';
 import { DictionaryItem, ListOption } from '../lambda/dictionary.model';
+import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
 export class FlexXhtmlParserMain extends FlexXhtmlParser {
   public parsedFonts: Map<string, string>;

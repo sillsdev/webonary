@@ -55,8 +55,7 @@ async function deleteDictionary(
   try {
     return await axios.delete(path, config);
   } catch (error) {
-    if (error instanceof AxiosError)
-    {
+    if (error instanceof AxiosError) {
       handleAxiosError(error);
     } else {
       throw error;
@@ -78,8 +77,7 @@ async function postDictionary(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    if (error instanceof AxiosError)
-    {
+    if (error instanceof AxiosError) {
       handleAxiosError(error);
     } else {
       throw error;
@@ -102,8 +100,7 @@ async function postEntry(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    if (error instanceof AxiosError)
-    {
+    if (error instanceof AxiosError) {
       handleAxiosError(error);
     } else {
       throw error;
@@ -166,7 +163,8 @@ async function postFile(
         };
         try {
           return await axios.put(signedUrl, fileContent, fileConfig);
-        } catch (error: any) {
+        } catch (e) {
+          const error = e as Error;
           if ('message' in error) {
             logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
           } else {
@@ -177,7 +175,8 @@ async function postFile(
         logMessage(`Warning: File ${file} does not exist!`);
       }
     }
-  } catch (error: any) {
+  } catch (e) {
+    const error = e as Error;
     if ('message' in error) {
       logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
     } else {

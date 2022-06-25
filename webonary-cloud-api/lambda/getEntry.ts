@@ -19,7 +19,7 @@ import { connectToDB } from './mongo';
 import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_COLLECTION_REVERSAL_ENTRIES } from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
-import {createFailureResponse} from "./utils";
+import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 

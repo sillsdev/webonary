@@ -76,7 +76,7 @@ describe('methodAuthorize', () => {
     };
 
     try {
-      await lambdaHandler(emptyEvent, context, error => {
+      await lambdaHandler(emptyEvent, context, (error) => {
         expect(error).toBe('Unauthorized');
       });
     } catch (error) {
@@ -90,7 +90,7 @@ describe('methodAuthorize', () => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 500, data: 'some error' }));
 
     try {
-      await lambdaHandler(event, context, error => {
+      await lambdaHandler(event, context, (error) => {
         expect(error).toBe('Unauthorized');
       });
     } catch (error) {
