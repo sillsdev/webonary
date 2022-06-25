@@ -85,7 +85,7 @@ jobs:
         run: cd webonary-cloud-api/lambda; npm ci
 
       - name: Lint, build, and test
-        run: cd webonary-cloud-api; npm run build && npm run test
+        run: cd webonary-cloud-api; npm run lint && npm run test
 
       - name: Run cdk diff
         if: ${{ github.event_name == 'pull_request' }}
