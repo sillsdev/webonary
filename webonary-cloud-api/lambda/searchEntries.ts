@@ -34,7 +34,7 @@ import {
 } from './db';
 import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
-import {createFailureResponse, getDbSkip} from './utils';
+import { createFailureResponse, getDbSkip } from './utils';
 
 import * as Response from './response';
 

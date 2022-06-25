@@ -10,8 +10,6 @@ export function deployEnvPrefix(): string {
   }
 }
 
-export function envSpecific(logicalName: string | Function): string {
-  const suffix = typeof logicalName === 'function' ? logicalName.name : logicalName;
-
-  return `${deployEnvPrefix()}${suffix}`;
+export function envSpecific(logicalName: string): string {
+  return `${deployEnvPrefix()}${logicalName}`;
 }

@@ -16,7 +16,7 @@
  */
 
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient, DeleteResult } from 'mongodb';
+import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
   DB_NAME,
@@ -26,7 +26,7 @@ import {
 } from './db';
 import { deleteS3Folder } from './s3Utils';
 import * as Response from './response';
-import {createFailureResponse} from "./utils";
+import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 
@@ -57,15 +57,15 @@ export async function handler(
       return callback(null, Response.notFound({}));
     }
 
-    const dbResultDictionary: DeleteResult = await db
+    const dbResultDictionary = await db
       .collection(DB_COLLECTION_DICTIONARIES)
       .deleteOne({ _id: dictionaryId });
 
-    const dbResultEntry: DeleteResult = await db
+    const dbResultEntry: DeleteWriteOpResultObject = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .deleteMany({ dictionaryId });
 
-    const dbResultReversal: DeleteResult = await db
+    const dbResultReversal: DeleteWriteOpResultObject = await db
       .collection(DB_COLLECTION_REVERSAL_ENTRIES)
       .deleteMany({ dictionaryId });
 

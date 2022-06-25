@@ -212,7 +212,7 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient , UpdateResult } from 'mongodb';
+import { MongoClient, UpdateWriteOpResult } from 'mongodb';
 import * as sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
@@ -229,7 +229,7 @@ import {
   ENTRY_TYPE_REVERSAL,
   EntryValueItem,
 } from './entry.model';
-import {copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials} from './utils';
+import { copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -249,7 +249,7 @@ function stripHtml(html: string): string {
  */
 /* eslint-disable no-param-reassign */
 function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
-  destination.mainHeadWord = destination.mainHeadWord.filter(word => word.value);
+  destination.mainHeadWord = destination.mainHeadWord.filter((word) => word.value);
   if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
     destination.mainHeadWord = source.headword.map((word: never) =>
       copyObjectIgnoreKeyCase(new EntryValueItem(), word),
@@ -263,7 +263,7 @@ export async function upsertEntries(
   isReversalEntry: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
+): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
@@ -285,15 +285,13 @@ export async function upsertEntries(
     ? DB_COLLECTION_REVERSAL_ENTRIES
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
-  const promises = entries.map(
-    (entry: EntryItemType): Promise<UpdateResult> => {
-      return db
-        .collection(dbCollection)
-        .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
-    },
-  );
+  const promises = entries.map((entry: EntryItemType): Promise<UpdateWriteOpResult> => {
+    return db
+      .collection(dbCollection)
+      .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+  });
 
-  const dbResults: UpdateResult[] = await Promise.all(promises);
+  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
   return { updatedAt, dbResults };
 }
 
@@ -323,9 +321,9 @@ export async function handler(
       errorMessage = 'Input must be an array of dictionary entry objects';
     } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-    } else if (postedEntries.find(entry => typeof entry !== 'object')) {
+    } else if (postedEntries.find((entry) => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
+    } else if (postedEntries.find((entry) => !('guid' in entry && entry.guid))) {
       errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
     }
 
@@ -340,18 +338,18 @@ export async function handler(
     );
 
     const updatedCount = dbResults
-      .filter(result => result.modifiedCount)
+      .filter((result) => result.modifiedCount)
       .reduce((total, result) => total + result.modifiedCount, 0);
 
     const insertedIds = dbResults
-      .filter(result => result.upsertedCount)
-      .map(result => result.upsertedId.toString());
+      .filter((result) => result.upsertedCount)
+      .map((result) => result.upsertedId.toString());
 
     const postResult: PostResult = {
       updatedAt,
       updatedCount,
       insertedCount: insertedIds.length,
-      insertedIds: insertedIds.map(objectId => objectId.toString()),
+      insertedIds: insertedIds.map((objectId) => objectId.toString()),
     };
 
     return callback(null, Response.success(postResult));

@@ -72,7 +72,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: "12.X"
+          node-version: "14.X"
           registry-url: "https://registry.npmjs.org"
 
       - name: NPM 6.x latest
@@ -85,7 +85,7 @@ jobs:
         run: cd webonary-cloud-api/lambda; npm ci
 
       - name: Lint, build, and test
-        run: cd webonary-cloud-api; npm run test
+        run: cd webonary-cloud-api; npm run lint && npm run test
 
       - name: Run cdk diff
         if: ${{ github.event_name == 'pull_request' }}

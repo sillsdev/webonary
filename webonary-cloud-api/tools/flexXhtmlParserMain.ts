@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 import {
   DictionaryEntry,
   Entry,
@@ -8,8 +7,9 @@ import {
   EntryValue,
   EntrySemanticDomain,
   ENTRY_TYPE_MAIN,
-} from '../lambda/entry.model';
-import { DictionaryItem, ListOption } from '../lambda/dictionary.model';
+} from 'lambda/entry.model';
+import { DictionaryItem, ListOption } from 'lambda/dictionary.model';
+import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
 export class FlexXhtmlParserMain extends FlexXhtmlParser {
   public parsedFonts: Map<string, string>;
@@ -21,7 +21,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     super(toBeParsed, { ...options, entryClass: ENTRY_TYPE_MAIN });
 
-    this.parsedDictionaryEntries = this.parsedEntries.map(entry =>
+    this.parsedDictionaryEntries = this.parsedEntries.map((entry) =>
       FlexXhtmlParserMain.parseDictionaryEntry(entry),
     );
 
@@ -57,19 +57,13 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
 
     const mainHeadWord: EntryValue[] = [];
     $('span.mainheadword span a').map((i, elem) => {
-      const lang =
-        $(elem)
-          .parent()
-          .attr('lang') ?? '';
+      const lang = $(elem).parent().attr('lang') ?? '';
       const value = $(elem).text();
       mainHeadWord.push({ lang, value });
     });
 
     const audioId = $('audio').attr('id') ?? '';
-    const audioSrc =
-      $('audio > source')
-        .attr('src')
-        ?.replace(/\\/g, '/') ?? '';
+    const audioSrc = $('audio > source').attr('src')?.replace(/\\/g, '/') ?? '';
     const fileClass = $('audio + a').attr('class') ?? '';
     const audio: EntryFile = { id: audioId, src: audioSrc, fileClass };
 
@@ -77,24 +71,14 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
     const pictures: EntryFile[] = [];
     $('span.pictures div.picture img').map((i, elem) => {
       const id = $(elem).attr('id') ?? '';
-      const src =
-        $(elem)
-          .attr('src')
-          ?.replace(/\\/g, '/') ?? '';
-      const caption =
-        $(elem)
-          .next()
-          .find('span.headword span')
-          .text() ?? '';
+      const src = $(elem).attr('src')?.replace(/\\/g, '/') ?? '';
+      const caption = $(elem).next().find('span.headword span').text() ?? '';
       pictures.push({ id, src, caption });
     });
 
     const pronunciations: EntryValue[] = [];
     $('span.pronunciations span.pronunciation span span').map((i, elem) => {
-      const key =
-        $(elem)
-          .parent()
-          .attr('class') ?? '';
+      const key = $(elem).parent().attr('class') ?? '';
       const lang = $(elem).attr('lang') ?? '';
       const value = $(elem).text();
       pronunciations.push({ lang, value, key });
@@ -143,7 +127,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       (letterHeads: EntryValue[], definitionEntry: EntryValue): EntryValue[] => {
         const { lang } = definitionEntry;
         const value = definitionEntry.value.toLowerCase().substring(0, 1);
-        if (!letterHeads.some(letter => letter.lang === lang && letter.value === value)) {
+        if (!letterHeads.some((letter) => letter.lang === lang && letter.value === value)) {
           letterHeads.push({ lang, value });
         }
         return letterHeads;
@@ -166,10 +150,10 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   }
 
   public getDictionaryData(): DictionaryItem | undefined {
-    const _id = this.options.dictionaryId;
-    const dictionary = new DictionaryItem(_id);
+    const id = this.options.dictionaryId;
+    const dictionary = new DictionaryItem(id);
 
-    if (_id && this.parsedDictionaryEntries.length) {
+    if (id && this.parsedDictionaryEntries.length) {
       // We can safely assume that all the entries have same main language
       const mainLang = this.parsedDictionaryEntries[0].mainHeadWord[0].lang ?? '';
       dictionary.mainLanguage = {
@@ -183,12 +167,12 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
         (partsOfSpeech: ListOption[], entry) => {
           const newDictionaryPartsOfSpeech = partsOfSpeech;
           if (entry.morphoSyntaxAnalysis) {
-            entry.morphoSyntaxAnalysis.partOfSpeech.forEach(entryPartOfSpeech => {
+            entry.morphoSyntaxAnalysis.partOfSpeech.forEach((entryPartOfSpeech) => {
               if (
                 entryPartOfSpeech.lang !== '' &&
                 entryPartOfSpeech.value !== '' &&
                 !newDictionaryPartsOfSpeech.find(
-                  item =>
+                  (item) =>
                     item.lang === entryPartOfSpeech.lang &&
                     item.abbreviation === entryPartOfSpeech.value &&
                     item.name === entryPartOfSpeech.value,
@@ -210,14 +194,14 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       dictionary.semanticDomains = this.parsedDictionaryEntries.reduce(
         (semDoms: ListOption[], entry) => {
           const newDictionarySemDoms = semDoms;
-          entry.senses.forEach(sense => {
+          entry.senses.forEach((sense) => {
             if (sense.semanticDomains && sense.semanticDomains.length) {
-              sense.semanticDomains.forEach(semDom => {
-                semDom.abbreviation.forEach(abbreviation => {
-                  const matchingName = semDom.name.find(item => item.lang === abbreviation.lang);
+              sense.semanticDomains.forEach((semDom) => {
+                semDom.abbreviation.forEach((abbreviation) => {
+                  const matchingName = semDom.name.find((item) => item.lang === abbreviation.lang);
                   if (matchingName) {
                     const foundAbbreviation = newDictionarySemDoms.find(
-                      item =>
+                      (item) =>
                         item.abbreviation === abbreviation.value &&
                         item.lang === abbreviation.lang &&
                         item.name === matchingName.value,

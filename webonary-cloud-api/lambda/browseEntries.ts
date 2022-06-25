@@ -32,7 +32,7 @@ import {
 } from './db';
 import { DbFindParameters } from './base.model';
 import { DictionaryEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
-import {createFailureResponse, getDbSkip} from './utils';
+import { createFailureResponse, getDbSkip } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -143,16 +143,14 @@ export async function handler(
 
       if (countTotalOnly && countTotalOnly === '1') {
         pipeline.push({ $count: 'count' });
-        const count = await db
-          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .aggregate(pipeline)
-          .next() ?? "0";
+        const count =
+          (await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).aggregate(pipeline).next()) ?? '0';
         return callback(null, Response.success(count));
       }
 
       pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } });
       entries = await db
-        .collection<DictionaryEntry> (DB_COLLECTION_DICTIONARY_ENTRIES)
+        .collection<DictionaryEntry>(DB_COLLECTION_DICTIONARY_ENTRIES)
         .aggregate(pipeline, {
           collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY },
         })
