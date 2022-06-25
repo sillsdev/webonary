@@ -1,0 +1,96 @@
+name: Webonary Cloud API PR pull request and merge
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+    paths:
+      - "webonary-cloud-api/**"
+  push:
+    branches:
+      - develop
+      - master
+    paths:
+      - "webonary-cloud-api/**"
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set env to dev if PR is for merging to develop
+        if: github.event.pull_request.base.ref == 'develop' || endsWith(github.ref, '/develop')
+        run: |
+          echo "DEPLOY_ENV=dev" >> $GITHUB_ENV
+
+          # Mongo Atlas info
+          echo "DB_NAME=webonary-work" >> $GITHUB_ENV
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME_DEV }}"  >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD_DEV }}"  >> $GITHUB_ENV
+          echo "DB_URI=${{ secrets.DB_URI_DEV }}"  >> $GITHUB_ENV
+
+          # Custom domain:
+          echo "API_DOMAIN_NAME=cloud-api.webonary.work" >> $GITHUB_ENV
+          echo "API_DOMAIN_BASE_PATH=v1" >> $GITHUB_ENV
+          echo "API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_DEV }}"  >> $GITHUB_ENV
+          echo "S3_DOMAIN_NAME=cloud-storage.webonary.work" >> $GITHUB_ENV
+          echo "WEBONARY_URL=https://www.webonary.work" >> $GITHUB_ENV
+
+      - name: Set env to production if PR is for merging to master
+        if: github.event.pull_request.base.ref == 'master' || endsWith(github.ref, '/master')
+        run: |
+          echo "DEPLOY_ENV=live" >> $GITHUB_ENV
+
+          # Mongo Atlas info
+          echo "DB_NAME=webonary" >> $GITHUB_ENV
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME_LIVE }}"  >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD_LIVE }}"  >> $GITHUB_ENV
+          echo "DB_URI=${{ secrets.DB_URI_LIVE }}"  >> $GITHUB_ENV
+
+          # Custom domain:
+          echo "API_DOMAIN_NAME=cloud-api.webonary.org" >> $GITHUB_ENV
+          echo "API_DOMAIN_BASE_PATH=v1" >> $GITHUB_ENV
+          echo "API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_LIVE }}"  >> $GITHUB_ENV
+          echo "S3_DOMAIN_NAME=cloud-storage.webonary.org" >> $GITHUB_ENV
+          echo "WEBONARY_URL=https://www.webonary.org" >> $GITHUB_ENV
+
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.X"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: NPM 6.x latest
+        run: npm install -g npm@~6
+
+      - name: NPM clean install main package
+        run: cd webonary-cloud-api; npm ci
+
+      - name: NPM clean install lambda package
+        run: cd webonary-cloud-api/lambda; npm ci
+
+      - name: Lint, build, and test
+        run: cd webonary-cloud-api; npm run test
+
+      - name: Run cdk diff
+        if: ${{ github.event_name == 'pull_request' }}
+        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
+
+      - name: Run cdk deploy
+        if: ${{ github.event_name == 'push' }}
+        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk deploy --require-approval never --no-color 2>&1
