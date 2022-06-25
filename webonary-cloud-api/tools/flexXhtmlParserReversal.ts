@@ -6,7 +6,7 @@ import {
   ReversalSense,
   EntryValue,
   ENTRY_TYPE_REVERSAL,
-} from '../lambda/entry.model';
+} from 'lambda/entry.model';
 import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
 export class FlexXhtmlParserReversal extends FlexXhtmlParser {
@@ -15,7 +15,7 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     super(toBeParsed, { ...options, entryClass: ENTRY_TYPE_REVERSAL });
 
-    this.parsedReversalEntries = this.parsedEntries.map(entry =>
+    this.parsedReversalEntries = this.parsedEntries.map((entry) =>
       FlexXhtmlParserReversal.parseReversalEntry(entry),
     );
   }

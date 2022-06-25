@@ -12,7 +12,7 @@
     "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
-    "post-legacy": "env-cmd ts-node tools/post-legacy.ts",
+    "post-legacy": "env-cmd ts-node -r tsconfig-paths/register tools/post-legacy.ts",
     "test": "jest",
     "test-coverage": "jest --collectCoverage",
     "watch": "npx tsc -w"
@@ -47,6 +47,7 @@
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.3"
   },
   "dependencies": {
@@ -59,7 +60,6 @@
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
     "mime-types": "^2.1.35",
-    "npm-check-updates": "^14.0.1",
-    "sanitize-html": "^2.7.0"
+    "npm-check-updates": "^14.0.1"
   }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import * as cheerio from 'cheerio';
-import { Entry } from '../lambda/entry.model';
+import { Entry } from 'lambda/entry.model';
 
 export interface Options {
   dictionaryId: string;
