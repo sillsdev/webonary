@@ -24,9 +24,9 @@ const defaultArguments: SearchEntriesArguments = {
 
 function parseGuids(response: Response): string[] {
   return JSON.parse(response.body)
-      .map((entry: any) => entry.guid)
-      .filter((guid: string) => guid)
-      .sort();
+    .map((entry: any) => entry.guid)
+    .filter((guid: string) => guid)
+    .sort();
 }
 
 const testUsername = 'test-username';
@@ -137,66 +137,81 @@ describe('searchEntries', () => {
     expect(response.statusCode).toBe(404);
   });
 
-
   test('lang filters down to only entries with matching lang', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-              guid: 'guid-matching-1',
-              displayXhtml: `text`,
-              mainHeadWord: [{
-                  value: 'test-value',
+      [
+        {
+          guid: 'guid-matching-1',
+          displayXhtml: `text`,
+          mainHeadWord: [
+            {
+              value: 'test-value',
+              lang: 'matching-lang',
+            },
+          ],
+        },
+        {
+          guid: 'guid-matching-2',
+          displayXhtml: `text`,
+          senses: [
+            {
+              definitionOrGloss: [
+                {
                   lang: 'matching-lang',
-              }],
-          },
-          {
-              guid: 'guid-matching-2',
-              displayXhtml: `text`,
-              senses: [{
-                  definitionOrGloss: [{
-                      lang: 'matching-lang',
-                  }],
-              }],
-          },
-          {
-              guid: 'guid-matching-3',
-              displayXhtml: `text`,
-              reversalLetterHeads: [{
+                },
+              ],
+            },
+          ],
+        },
+        {
+          guid: 'guid-matching-3',
+          displayXhtml: `text`,
+          reversalLetterHeads: [
+            {
+              lang: 'matching-lang',
+            },
+          ],
+        },
+        {
+          guid: 'guid-matching-4',
+          displayXhtml: `text`,
+          pronunciations: [
+            {
+              lang: 'matching-lang',
+            },
+          ],
+        },
+        {
+          guid: 'guid-matching-5',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: [
+            {
+              partOfSpeech: [
+                {
                   lang: 'matching-lang',
-              }],
-          },
-          {
-              guid: 'guid-matching-4',
-              displayXhtml: `text`,
-              pronunciations: [{
-                  lang: 'matching-lang',
-              }],
-          },
-          {
-              guid: 'guid-matching-5',
-              displayXhtml: `text`,
-              morphoSyntaxAnalysis: [{
-                  partOfSpeech: [{
-                      lang: 'matching-lang',
-                  }],
-              }],
-          },
-          {
-              guid: 'guid-other',
-              displayXhtml: `text`,
-              mainHeadWord: [{
-                  lang: 'other-lang',
-              }],
-          },
-          {
-              guid: 'guid-missing-lang',
-              displayXhtml: `text`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          guid: 'guid-other',
+          displayXhtml: `text`,
+          mainHeadWord: [
+            {
+              lang: 'other-lang',
+            },
+          ],
+        },
+        {
+          guid: 'guid-missing-lang',
+          displayXhtml: `text`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
@@ -207,59 +222,50 @@ describe('searchEntries', () => {
     });
 
     expect(parseGuids(response)).toEqual([
-        'guid-matching-1',
-        'guid-matching-2',
-        'guid-matching-3',
-        'guid-matching-4',
-        'guid-matching-5']);
+      'guid-matching-1',
+      'guid-matching-2',
+      'guid-matching-3',
+      'guid-matching-4',
+      'guid-matching-5',
+    ]);
   });
 
   test('partOfSpeech filters out the irrelevant entries', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'guidA',
-            displayXhtml: `text`,
-            morphoSyntaxAnalysis: {
-              partOfSpeech: [
-                {value: 'partA'},
-              ]
-            }
+      [
+        {
+          guid: 'guidA',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }],
           },
-          {
-            guid: 'guidAB',
-            displayXhtml: `text`,
-            morphoSyntaxAnalysis: {
-              partOfSpeech: [
-                {value: 'partA'},
-                {value: 'partB'},
-              ]
-            }
+        },
+        {
+          guid: 'guidAB',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
           },
-          {
-            guid: 'guidC',
-            displayXhtml: `text`,
-            morphoSyntaxAnalysis: {
-              partOfSpeech: [
-                {value: 'partC'},
-              ]
-            }
+        },
+        {
+          guid: 'guidC',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }],
           },
-          {
-            guid: 'guidCD',
-            displayXhtml: `text`,
-            morphoSyntaxAnalysis: {
-              partOfSpeech: [
-                {value: 'partC'},
-                {value: 'partD'},
-              ]
-            }
+        },
+        {
+          guid: 'guidCD',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
           },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
@@ -275,30 +281,30 @@ describe('searchEntries', () => {
   test('matchPartial match parts of words', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'word',
-            displayXhtml: `word`,
-          },
-          {
-            guid: 'or',
-            displayXhtml: `or`,
-          },
-          {
-            guid: 'other',
-            displayXhtml: `other`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'word',
+          displayXhtml: `word`,
+        },
+        {
+          guid: 'or',
+          displayXhtml: `or`,
+        },
+        {
+          guid: 'other',
+          displayXhtml: `other`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'or',
-      matchPartial: true
+      matchPartial: true,
     });
 
     expect(parseGuids(response)).toEqual(['or', 'word']);
@@ -307,26 +313,26 @@ describe('searchEntries', () => {
   test('!matchAccents with clean search matches all accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'accent',
-            displayXhtml: `wórd`,
-          },
-          {
-            guid: 'no-accent',
-            displayXhtml: `word`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'accent',
+          displayXhtml: `wórd`,
+        },
+        {
+          guid: 'no-accent',
+          displayXhtml: `word`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'word',
-      matchAccents: false
+      matchAccents: false,
     });
 
     expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
@@ -335,26 +341,26 @@ describe('searchEntries', () => {
   test('!matchAccents with accented search matches all accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'accent',
-            displayXhtml: `wórd`,
-          },
-          {
-            guid: 'no-accent',
-            displayXhtml: `word`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'accent',
+          displayXhtml: `wórd`,
+        },
+        {
+          guid: 'no-accent',
+          displayXhtml: `word`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'wórd',
-      matchAccents: false
+      matchAccents: false,
     });
 
     expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
@@ -363,26 +369,26 @@ describe('searchEntries', () => {
   test('matchAccents filters out accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'accent',
-            displayXhtml: `wórd`,
-          },
-          {
-            guid: 'no-accent',
-            displayXhtml: `word`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'accent',
+          displayXhtml: `wórd`,
+        },
+        {
+          guid: 'no-accent',
+          displayXhtml: `word`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'word',
-      matchAccents: true
+      matchAccents: true,
     });
 
     expect(parseGuids(response)).toEqual(['no-accent']);
@@ -391,65 +397,65 @@ describe('searchEntries', () => {
   test('matchAccents matches only the searched accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-          {
-            guid: 'accent-1',
-            displayXhtml: `wórd`,
-          },
-          {
-            guid: 'accent-2',
-            displayXhtml: `wṓrd`,
-          },
-          {
-            guid: 'no-accent',
-            displayXhtml: `word`,
-          },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'accent-1',
+          displayXhtml: `wórd`,
+        },
+        {
+          guid: 'accent-2',
+          displayXhtml: `wṓrd`,
+        },
+        {
+          guid: 'no-accent',
+          displayXhtml: `word`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
 
     const response = await searchEntries({
       ...defaultArguments,
       dictionaryId,
       text: 'wṓrd',
-      matchAccents: true
+      matchAccents: true,
     });
 
     expect(parseGuids(response)).toEqual(['accent-2']);
   });
-  
+
   test('matchPartial and matchAccents matches only the searched accents and tones', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
-        [
-            {
-                guid: 'accent-1',
-                displayXhtml: `wórd`,
-            },
-            {
-                guid: 'accent-2',
-                displayXhtml: `wṓrd`,
-            },
-            {
-                guid: 'no-accent',
-                displayXhtml: `word`,
-            },
-        ],
-        false,
-        dictionaryId,
-        testUsername,
+      [
+        {
+          guid: 'accent-1',
+          displayXhtml: `wórd`,
+        },
+        {
+          guid: 'accent-2',
+          displayXhtml: `wṓrd`,
+        },
+        {
+          guid: 'no-accent',
+          displayXhtml: `word`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
     );
-    
+
     const response = await searchEntries({
-        ...defaultArguments,
-        dictionaryId,
-        text: 'wṓ',
-        matchPartial: true,
-        matchAccents: true
+      ...defaultArguments,
+      dictionaryId,
+      text: 'wṓ',
+      matchPartial: true,
+      matchAccents: true,
     });
-      
+
     expect(parseGuids(response)).toEqual(['accent-2']);
   });
 });
