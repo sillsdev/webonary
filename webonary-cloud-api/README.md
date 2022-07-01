@@ -114,6 +114,42 @@ WEBONARYSERVER=webonary.work
       3. marwari (Hindic dictionary with some images and sounds)
    3. Once the data is loaded, you can test various view, browse, and search APIs using tools like [curl](https://curl.haxx.se/) or [postman](https://www.postman.com/) or any browser with an [extension](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) for viewing JSON.
 
+## MongoDb backup, restore, and refresh
+
+MongoDb provides [utilities ](https://www.mongodb.com/docs/database-tools/) to create backups and restoring data.
+
+Once you [install](https://www.mongodb.com/docs/database-tools/installation/installation/) them in your machine, you can run [mongo-dump-restore.sh](./mongo_utils/mongo-dump-restore.sh) shell script to conveniently backup and restore webonary data. As a precaution, this script will not allow you to restore to the live environment.
+
+To run the script, first copy [mongo-dump-restore-sample.yaml](./mongo_utils/mongo-dump-restore-sample.yaml) to `webonary-work.yaml` and `webonary-org.yaml` and modify it with appropriate credentials.
+
+Generally, you can do
+
+```
+cd mongo_utils
+./mongo-dump-restore.sh [-r <dump|restore|refresh>] [-d <restoreDir>] [-e <webonary-work|webonary-org|other_env>]
+```
+
+For example, to backup webonary.org data,
+
+```
+./mongo-dump-restore.sh -r dump -e webonary-org
+```
+
+This will create a directory like `dump_2022-07-01T0413Z` with the timestamp of the execution in its name. Inside it, there will be a subdirectory named `webonary` that will contain the dump files for each collection in `bson` format.
+
+To restore this to webonary.org, you can do:
+
+```
+./mongo-dump-restore.sh -r restore -e webonary-work -d dump_2022-07-01T0413Z/webonary
+```
+
+To restore webonary.work with webonary.org data, and create backups of both, do:
+
+```
+./mongo-dump-restore.sh -r refresh
+
+```
+
 ## Other Useful Commands
 
 - `cdk diff` compare deployed stack with current state
