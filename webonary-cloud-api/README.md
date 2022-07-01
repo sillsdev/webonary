@@ -36,7 +36,7 @@ WCA is a serverless, cloud-based architecture consisting of:
    5. Unit tests are stored in `__tests__` within the directory where the code to be tested is.
    6. Unit code test coverage information goes to `coverage`.
    7. Once AWS assets are deployed using `cdk deploy`, asset files and CloudFormation templates are stored in `cdk.out`.
-3. Install required node modules using [node and npm or a node version manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Currently, node version 12.4.0 is being used as it is the [latest version](https://aws.amazon.com/blogs/compute/node-js-12-x-runtime-now-available-in-aws-lambda/) supported for Lambda.
+3. Install required node modules using [node and npm or a node version manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Currently, node version 14 is being used.
    1. In the root directory, install required npm packages using `npm install`.
    2. In `lambda` subdirectory, where Lambda functions are stored, install required packages using `npm install`.
 4. Install [AWS command line interface](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) with your AWS credentials.
