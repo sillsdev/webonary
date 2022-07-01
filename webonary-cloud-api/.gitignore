@@ -13,6 +13,10 @@ template.yaml
 
 # test data files
 data
+mongo_utils/dump_*
+mongo_utils/refresh_*
+mongo_utils/webonary*.yaml
+
 
 # testing
 coverage
