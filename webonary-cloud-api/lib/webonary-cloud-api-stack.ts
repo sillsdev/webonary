@@ -8,7 +8,7 @@ import { envSpecific } from './config';
 
 function defaultLambdaFunctionProps(functionName: string, environment = {}): lambda.FunctionProps {
   const props: lambda.FunctionProps = {
-    runtime: lambda.Runtime.NODEJS_12_X,
+    runtime: lambda.Runtime.NODEJS_14_X,
     code: new lambda.AssetCode('lambda'),
     handler: `${functionName}.handler`,
     timeout: cdk.Duration.seconds(60),
