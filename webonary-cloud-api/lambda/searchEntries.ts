@@ -64,7 +64,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
     let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
     let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
     const dbSkip = getDbSkip(args.pageNumber, args.pageLimit);
-    const primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
+    let primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
 
     // Semantic domains search
     if (args.searchSemDoms) {
@@ -108,9 +108,6 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       return Response.success(entries);
     }
 
-    let langFilter: DbFindParameters;
-    const regexFilter: DbFindParameters = { $regex: args.text, $options: 'i' };
-
     if (args.partOfSpeech) {
       primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = args.partOfSpeech;
     }
@@ -120,32 +117,26 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
         locale = args.lang;
       }
 
-      let langFieldToFilter: string;
-      if (args.mainLang && args.mainLang === args.lang) {
-        langFieldToFilter = 'mainHeadWord';
-      } else {
-        langFieldToFilter = 'senses.definitionOrGloss';
-      }
-
-      langFilter = {
-        [langFieldToFilter]: {
-          $elemMatch: {
-            lang: args.lang,
-            value: regexFilter,
+      primaryFilter = {
+        $and: [
+          primaryFilter,
+          {
+            $or: [
+              { 'mainHeadWord.lang': args.lang },
+              { 'senses.definitionOrGloss.lang': args.lang },
+              { 'reversalLetterHeads.lang': args.lang },
+              { 'pronunciations.lang': args.lang },
+              { 'morphoSyntaxAnalysis.partOfSpeech.lang': args.lang },
+            ],
           },
-        },
-      };
-    } else {
-      langFilter = {
-        $or: [
-          { [DbPaths.ENTRY_DISPLAY_TEXT]: regexFilter },
         ],
       };
     }
 
     if (args.matchPartial) {
       const dictionaryPartialSearch = {
-        $and: [primaryFilter, langFilter],
+        ...primaryFilter,
+        [DbPaths.ENTRY_DISPLAY_TEXT]: { $regex: args.text, $options: 'i' },
       };
 
       if (args.matchAccents) {
