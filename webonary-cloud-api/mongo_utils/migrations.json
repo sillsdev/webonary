@@ -1,0 +1,9 @@
+{
+  "useEnv": true,
+  "environment": {
+    "uriVar": "DB_URI",
+    "databaseVar": "DB_NAME"
+  },
+  "migrationsDir": "migrations",
+  "migrationsCollection": "migrations_changelog"
+}

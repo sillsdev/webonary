@@ -150,6 +150,34 @@ To restore webonary.work with webonary.org data, and create backups of both, do:
 
 ```
 
+## MongoDb Migration
+
+Database migrations for MongoDb is implemented through [mongo-migrate-ts](https://www.npmjs.com/package/mongo-migrate-ts), which adds Typescript support for the more popular [migrate-mongo](https://www.npmjs.com/package/migrate-mongo).
+
+To add a new migration script, go to [mongo_utils/migrations](./mongo_utils/migrations) and create a new Typescript file with a prefix that begins with a date format created from the Unix command `date -u +"%Y*%m*%dT%H%MZ"`, e.g. [2022_07_06T1320Z_CreateIndexes.ts](./mongo_utils/migrations/2022_07_06T1320Z_CreateIndexes.ts). This file naming convention is to ensure uniqueness as well as to be self-documenting.
+
+A migration script should contain the following boiler plate code:
+
+```
+import { Db } from 'mongodb';
+import { MigrationInterface } from 'mongo-migrate-ts';
+
+import { someHelperFunction } from 'lambda/someHelperFile;
+
+export class Migration_SomeFileNameWithTimestamp implements MigrationInterface {
+  public async up(db: Db): Promise<any> {
+    // some MongoDb commands to run
+    // await db.someCommand
+  }
+
+  public async down(db: Db): Promise<any> {
+    // some MongoDb commands to undo
+    // await db.someUndoCommand
+   }
+}
+
+```
+
 ## Other Useful Commands
 
 - `cdk diff` compare deployed stack with current state
