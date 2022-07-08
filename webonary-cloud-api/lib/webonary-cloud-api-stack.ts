@@ -30,9 +30,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-storage.webonary.org';
 
     // Mongo
-    const { DB_URI, DB_USERNAME, DB_PASSWORD } = process.env;
-    const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_URI}`;
-    const DB_NAME = process.env.DB_NAME ?? 'webonary';
+    const MONGO_DB_NAME = process.env.MONGO_DB_NAME ?? 'webonary';
+    const MONGO_DB_URI = `${process.env.MONGO_DB_URI}/${MONGO_DB_NAME}?retryWrites=true&w=majority`;
 
     // S3
     const dictionaryBucket = new s3.Bucket(this, envSpecific('dictionaryBucket'), {
@@ -81,8 +80,8 @@ export class WebonaryCloudApiStack extends cdk.Stack {
       this,
       'postDictionary',
       defaultLambdaFunctionProps('postDictionary', {
-        DB_URL,
-        DB_NAME,
+        MONGO_DB_URI,
+        MONGO_DB_NAME,
         WEBONARY_URL,
         WEBONARY_RESET_DICTIONARY_PATH,
       }),
@@ -91,13 +90,17 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const getDictionaryFunction = new lambda.Function(
       this,
       'getDictionary',
-      defaultLambdaFunctionProps('getDictionary', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('getDictionary', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     const deleteDictionaryFunction = new lambda.Function(
       this,
       'deleteDictionary',
-      defaultLambdaFunctionProps('deleteDictionary', { DB_URL, DB_NAME, S3_DOMAIN_NAME }),
+      defaultLambdaFunctionProps('deleteDictionary', {
+        MONGO_DB_URI,
+        MONGO_DB_NAME,
+        S3_DOMAIN_NAME,
+      }),
     );
 
     // Give permission to list all files in the dictionary folder, and delete each
@@ -120,31 +123,31 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const postEntryFunction = new lambda.Function(
       this,
       'postEntry',
-      defaultLambdaFunctionProps('postEntry', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('postEntry', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     const getEntryFunction = new lambda.Function(
       this,
       'getEntry',
-      defaultLambdaFunctionProps('getEntry', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('getEntry', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     const deleteEntryFunction = new lambda.Function(
       this,
       'deleteEntry',
-      defaultLambdaFunctionProps('deleteEntry', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('deleteEntry', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     const browseEntriesFunction = new lambda.Function(
       this,
       'browseEntries',
-      defaultLambdaFunctionProps('browseEntries', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('browseEntries', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     const searchEntriesFunction = new lambda.Function(
       this,
       'searchEntries',
-      defaultLambdaFunctionProps('searchEntries', { DB_URL, DB_NAME }),
+      defaultLambdaFunctionProps('searchEntries', { MONGO_DB_URI, MONGO_DB_NAME }),
     );
 
     // API and resources
@@ -252,7 +255,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     // eslint-disable-next-line no-new
     new cdk.CfnOutput(this, 'db-url', {
-      value: DB_URL,
+      value: MONGO_DB_URI,
     });
   }
 }

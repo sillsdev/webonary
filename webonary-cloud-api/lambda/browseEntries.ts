@@ -22,7 +22,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
-  DB_NAME,
+  MONGO_DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
@@ -113,7 +113,7 @@ export async function handler(
     }
 
     dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
+    const db = dbClient.db(MONGO_DB_NAME);
 
     if (primarySearch) {
       dbFind.letterHead = text;

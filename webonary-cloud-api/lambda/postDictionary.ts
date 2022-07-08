@@ -105,10 +105,10 @@
 
 import axios from 'axios';
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient, UpdateResult } from 'mongodb';
 
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
 import {
@@ -125,7 +125,7 @@ export async function upsertDictionary(
   eventBody: string | null,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResult: UpdateWriteOpResult; updatedAt: string }> {
+): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
 
   const posted = JSON.parse(eventBody as string);
@@ -135,7 +135,7 @@ export async function upsertDictionary(
     dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
   }
   dbClient = await connectToDB();
-  const db = dbClient.db(DB_NAME);
+  const db = dbClient.db(MONGO_DB_NAME);
 
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)

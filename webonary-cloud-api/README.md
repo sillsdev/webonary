@@ -152,31 +152,45 @@ To restore webonary.work with webonary.org data, and create backups of both, do:
 
 ## MongoDb Migration
 
-Database migrations for MongoDb is implemented through [mongo-migrate-ts](https://www.npmjs.com/package/mongo-migrate-ts), which adds Typescript support for the more popular [migrate-mongo](https://www.npmjs.com/package/migrate-mongo).
+Database migrations for MongoDb are implemented through [mongo-migrate-ts](https://www.npmjs.com/package/mongo-migrate-ts), which adds Typescript support for the more popular [migrate-mongo](https://www.npmjs.com/package/migrate-mongo).
 
-To add a new migration script, go to [mongo_utils/migrations](./mongo_utils/migrations) and create a new Typescript file with a prefix that begins with a date format created from the Unix command `date -u +"%Y*%m*%dT%H%MZ"`, e.g. [2022_07_06T1320Z_CreateIndexes.ts](./mongo_utils/migrations/2022_07_06T1320Z_CreateIndexes.ts). This file naming convention is to ensure uniqueness as well as to be self-documenting.
+To add a new migration script, go to [mongo_utils/migrations](./mongo_utils/migrations) and create a new Typescript file using the following Unix command and then rename it with a descriptive name, e.g. [Migration20220706T1320ZCreateIndexes.ts](./mongo_utils/migrations/Migration20220706T1320ZCreateIndexes.ts)
 
-A migration script should contain the following boiler plate code:
+```
+touch `date -u +"Migration%Y%m%dT%H%MZYourDescription.ts"`
+```
+
+The migration script should contain something like the following boiler plate code:
 
 ```
 import { Db } from 'mongodb';
 import { MigrationInterface } from 'mongo-migrate-ts';
 
-import { someHelperFunction } from 'lambda/someHelperFile;
+/* eslint-disable-next-line */
+import { someHelperFunction, anotherFunction } from '../../lambda/db'; // use relative path so the cli can find it
 
-export class Migration_SomeFileNameWithTimestamp implements MigrationInterface {
+export class Migration20220706T1320ZYourDescription implements MigrationInterface {
   public async up(db: Db): Promise<any> {
-    // some MongoDb commands to run
-    // await db.someCommand
+    await someHelperFunction(db)
   }
 
   public async down(db: Db): Promise<any> {
-    // some MongoDb commands to undo
-    // await db.someUndoCommand
-   }
+    await anotherFunction(db);
+  }
 }
+```
+
+To manually run and test its installation, then back out of it, and then see the status, you can run the following series of commands. This script uses the same `.env` file in your project's root directory, which is also used for deployment and running other scripts.
 
 ```
+npm run migrate status
+npm run migrate up
+npm run migrate -- down --last
+npm run migrate status
+
+```
+
+Github action scripts will always run `npm run migrate up` whenever a change in the [mongo_utils/migrations](./mongo_utils/migrations) directory is detected.
 
 ## Other Useful Commands
 

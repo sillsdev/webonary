@@ -26,7 +26,7 @@ describe('Gateway domain', () => {
     process.env.WEBONARY_URL = 'https://www.testsite.com';
     process.env.WEBONARY_AUTH_PATH = 'testAuthPath';
     process.env.WEBONARY_RESET_DICTIONARY_PATH = 'testResetPath';
-    process.env.DB_NAME = 'testDb';
+    process.env.MONGO_DB_NAME = 'testDb';
     process.env.API_DOMAIN_NAME = 'some-api.test-site.com';
     process.env.API_DOMAIN_CERT_ARN = 'arn:aws:acm:test';
   });
