@@ -14,8 +14,8 @@
     "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "migrate": "cd mongo_utils && env-cmd -f ../.env mongo-migrate",
     "post-legacy": "env-cmd ts-node -r tsconfig-paths/register tools/post-legacy.ts",
-    "test": "jest",
-    "test-coverage": "jest --collectCoverage",
+    "test": "jest --detectOpenHandles --runInBand --force-exit",
+    "test-coverage": "npm run test --collectCoverage",
     "watch": "tsc -w"
   },
   "devDependencies": {
