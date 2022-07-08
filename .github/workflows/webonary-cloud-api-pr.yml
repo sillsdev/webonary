@@ -36,7 +36,7 @@ jobs:
 
           # Mongo Atlas info
           echo 'MONGO_DB_NAME=webonary-work' >> $GITHUB_ENV
-          echo 'MONGO_DB_URI=${{ secrets.DB_URI_DEV }}'  >> $GITHUB_ENV
+          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_DEV }}'  >> $GITHUB_ENV
 
           # Custom domain:
           echo 'API_DOMAIN_NAME=cloud-api.webonary.work' >> $GITHUB_ENV
@@ -52,7 +52,7 @@ jobs:
 
           # Mongo Atlas info
           echo 'MONGO_DB_NAME=webonary' >> $GITHUB_ENV
-          echo 'MONGO_DB_URI=${{ secrets.DB_URI_LIVE }}'  >> $GITHUB_ENV
+          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_DEV }}'  >> $GITHUB_ENV
 
           # Custom domain:
           echo 'API_DOMAIN_NAME=cloud-api.webonary.org' >> $GITHUB_ENV
@@ -95,7 +95,7 @@ jobs:
 
       - name: Mongo migrations status check
         if: ${{ github.event_name == 'pull_request' }} && steps.changes.outputs.migrations == 'true'
-        run: cd webonary-cloud-api; npm run migrate status
+        run: cd webonary-cloud-api/mongo_utils; npx mongo-migrate status
 
       - name: Run cdk deploy
         if: ${{ github.event_name == 'push' }}
@@ -103,4 +103,4 @@ jobs:
 
       - name: Mongo migrations up
         if: ${{ github.event_name == 'push' }} && steps.changes.outputs.migrations == 'true'
-        run: cd webonary-cloud-api; npm run migrate up
+        run: cd webonary-cloud-api/mongo_utils; npx mongo-migrate up
