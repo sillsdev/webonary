@@ -24,7 +24,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
-  DB_NAME,
+  MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
@@ -57,7 +57,7 @@ export interface SearchEntriesArguments {
 export async function searchEntries(args: SearchEntriesArguments): Promise<Response.Response> {
   try {
     const dbClient: MongoClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
+    const db = dbClient.db(MONGO_DB_NAME);
 
     // set up main search
     let entries;

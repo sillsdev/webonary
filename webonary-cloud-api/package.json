@@ -6,16 +6,17 @@
   },
   "scripts": {
     "apidoc": "apidoc -f '^[^.]+\\.ts$' -i lambda/ -e lambda/__tests__ -e lambda/node_modules  -o lambda_api_doc/",
-    "build": "npx tsc",
+    "build": "tsc",
     "cdk": "env-cmd cdk",
     "deploy": "npm run build && env-cmd cdk deploy",
     "deploy-local": "env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --quiet --fix",
     "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
+    "migrate": "cd mongo_utils && env-cmd -f ../.env mongo-migrate",
     "post-legacy": "env-cmd ts-node -r tsconfig-paths/register tools/post-legacy.ts",
-    "test": "jest",
-    "test-coverage": "jest --collectCoverage",
-    "watch": "npx tsc -w"
+    "test": "jest --detectOpenHandles --runInBand --force-exit",
+    "test-coverage": "npm run test --collectCoverage",
+    "watch": "tsc -w"
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.161.0",
@@ -60,6 +61,8 @@
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
     "mime-types": "^2.1.35",
+    "mongo-migrate-ts": "^1.1.1",
+    "mongodb": "^4.7.0",
     "npm-check-updates": "^14.0.1"
   }
 }

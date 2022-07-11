@@ -1,0 +1,13 @@
+{
+  "useEnv": true,
+  "environment": {
+    "uriVar": "MONGO_DB_URI",
+    "databaseVar": "MONGO_DB_NAME"
+  },
+  "migrationsDir": "migrations",
+  "migrationsCollection": "migrations_changelog",
+  "options": {
+    "retryWrites": true,
+    "w": "majority"
+  }
+}

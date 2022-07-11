@@ -150,6 +150,48 @@ To restore webonary.work with webonary.org data, and create backups of both, do:
 
 ```
 
+## MongoDb Migration
+
+Database migrations for MongoDb are implemented through [mongo-migrate-ts](https://www.npmjs.com/package/mongo-migrate-ts), which adds Typescript support for the more popular [migrate-mongo](https://www.npmjs.com/package/migrate-mongo).
+
+To add a new migration script, go to [mongo_utils/migrations](./mongo_utils/migrations) and create a new Typescript file using the following Unix command and then rename it with a descriptive name, e.g. [Migration20220706T1320ZCreateIndexes.ts](./mongo_utils/migrations/Migration20220706T1320ZCreateIndexes.ts)
+
+```
+touch `date -u +"Migration%Y%m%dT%H%MZYourDescription.ts"`
+```
+
+The migration script should contain something like the following boiler plate code:
+
+```
+import { Db } from 'mongodb';
+import { MigrationInterface } from 'mongo-migrate-ts';
+
+/* eslint-disable-next-line */
+import { someHelperFunction, anotherFunction } from '../../lambda/db'; // use relative path so the cli can find it
+
+export class Migration20220706T1320ZYourDescription implements MigrationInterface {
+  public async up(db: Db): Promise<any> {
+    await someHelperFunction(db)
+  }
+
+  public async down(db: Db): Promise<any> {
+    await anotherFunction(db);
+  }
+}
+```
+
+To manually run and test its installation, then back out of it, and then see the status, you can run the following series of commands. This script uses the same `.env` file in your project's root directory, which is also used for deployment and running other scripts.
+
+```
+npm run migrate status
+npm run migrate up
+npm run migrate -- down --last
+npm run migrate status
+
+```
+
+Github action scripts will always run `npm run migrate up` whenever a change in the [mongo_utils/migrations](./mongo_utils/migrations) directory is detected.
+
 ## Other Useful Commands
 
 - `cdk diff` compare deployed stack with current state

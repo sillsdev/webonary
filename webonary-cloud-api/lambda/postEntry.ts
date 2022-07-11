@@ -212,11 +212,11 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient, UpdateResult } from 'mongodb';
 import * as sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
-  DB_NAME,
+  MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
   DB_MAX_UPDATES_PER_CALL,
@@ -263,7 +263,7 @@ export async function upsertEntries(
   isReversalEntry: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
+): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
@@ -280,18 +280,18 @@ export async function upsertEntries(
   });
 
   dbClient = await connectToDB();
-  const db = dbClient.db(DB_NAME);
+  const db = dbClient.db(MONGO_DB_NAME);
   const dbCollection = isReversalEntry
     ? DB_COLLECTION_REVERSAL_ENTRIES
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
-  const promises = entries.map((entry: EntryItemType): Promise<UpdateWriteOpResult> => {
+  const promises = entries.map((entry: EntryItemType): Promise<UpdateResult> => {
     return db
       .collection(dbCollection)
       .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
   });
 
-  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
+  const dbResults: UpdateResult[] = await Promise.all(promises);
   return { updatedAt, dbResults };
 }
 

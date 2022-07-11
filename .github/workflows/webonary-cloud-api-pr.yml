@@ -19,45 +19,47 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            migrations:
+              - 'webonary-cloud-api/mongo_utils/migrations/**'
+
       - name: Set env to dev if PR is for merging to develop
         if: github.event.pull_request.base.ref == 'develop' || endsWith(github.ref, '/develop')
         run: |
-          echo "DEPLOY_ENV=dev" >> $GITHUB_ENV
+          echo 'DEPLOY_ENV=dev' >> $GITHUB_ENV
 
           # Mongo Atlas info
-          echo "DB_NAME=webonary-work" >> $GITHUB_ENV
-          echo "DB_USERNAME=${{ secrets.DB_USERNAME_DEV }}"  >> $GITHUB_ENV
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD_DEV }}"  >> $GITHUB_ENV
-          echo "DB_URI=${{ secrets.DB_URI_DEV }}"  >> $GITHUB_ENV
+          echo 'MONGO_DB_NAME=webonary-work' >> $GITHUB_ENV
+          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_DEV }}'  >> $GITHUB_ENV
 
           # Custom domain:
-          echo "API_DOMAIN_NAME=cloud-api.webonary.work" >> $GITHUB_ENV
-          echo "API_DOMAIN_BASE_PATH=v1" >> $GITHUB_ENV
-          echo "API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_DEV }}"  >> $GITHUB_ENV
-          echo "S3_DOMAIN_NAME=cloud-storage.webonary.work" >> $GITHUB_ENV
-          echo "WEBONARY_URL=https://www.webonary.work" >> $GITHUB_ENV
+          echo 'API_DOMAIN_NAME=cloud-api.webonary.work' >> $GITHUB_ENV
+          echo 'API_DOMAIN_BASE_PATH=v1' >> $GITHUB_ENV
+          echo 'API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_DEV }}'  >> $GITHUB_ENV
+          echo 'S3_DOMAIN_NAME=cloud-storage.webonary.work' >> $GITHUB_ENV
+          echo 'WEBONARY_URL=https://www.webonary.work' >> $GITHUB_ENV
 
       - name: Set env to production if PR is for merging to master
         if: github.event.pull_request.base.ref == 'master' || endsWith(github.ref, '/master')
         run: |
-          echo "DEPLOY_ENV=live" >> $GITHUB_ENV
+          echo 'DEPLOY_ENV=live' >> $GITHUB_ENV
 
           # Mongo Atlas info
-          echo "DB_NAME=webonary" >> $GITHUB_ENV
-          echo "DB_USERNAME=${{ secrets.DB_USERNAME_LIVE }}"  >> $GITHUB_ENV
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD_LIVE }}"  >> $GITHUB_ENV
-          echo "DB_URI=${{ secrets.DB_URI_LIVE }}"  >> $GITHUB_ENV
+          echo 'MONGO_DB_NAME=webonary' >> $GITHUB_ENV
+          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_DEV }}'  >> $GITHUB_ENV
 
           # Custom domain:
-          echo "API_DOMAIN_NAME=cloud-api.webonary.org" >> $GITHUB_ENV
-          echo "API_DOMAIN_BASE_PATH=v1" >> $GITHUB_ENV
-          echo "API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_LIVE }}"  >> $GITHUB_ENV
-          echo "S3_DOMAIN_NAME=cloud-storage.webonary.org" >> $GITHUB_ENV
-          echo "WEBONARY_URL=https://www.webonary.org" >> $GITHUB_ENV
+          echo 'API_DOMAIN_NAME=cloud-api.webonary.org' >> $GITHUB_ENV
+          echo 'API_DOMAIN_BASE_PATH=v1' >> $GITHUB_ENV
+          echo 'API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_LIVE }}'  >> $GITHUB_ENV
+          echo 'S3_DOMAIN_NAME=cloud-storage.webonary.org' >> $GITHUB_ENV
+          echo 'WEBONARY_URL=https://www.webonary.org' >> $GITHUB_ENV
 
       - name: Git checkout
         uses: actions/checkout@v2
@@ -91,6 +93,14 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
 
+      - name: Mongo migrations status check
+        if: ${{ github.event_name == 'pull_request' }} && steps.changes.outputs.migrations == 'true'
+        run: cd webonary-cloud-api/mongo_utils; npx mongo-migrate status
+
       - name: Run cdk deploy
         if: ${{ github.event_name == 'push' }}
         run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk deploy --require-approval never --no-color 2>&1
+
+      - name: Mongo migrations up
+        if: ${{ github.event_name == 'push' }} && steps.changes.outputs.migrations == 'true'
+        run: cd webonary-cloud-api/mongo_utils; npx mongo-migrate up

@@ -1,6 +1,9 @@
 // 'mongodb-memory-server' is' there in devDependencies. Not sure why it's not working.
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import { connectToDB } from '../mongo';
+import { MONGO_DB_NAME, createIndexes } from '../db';
+
 import { upsertDictionary } from '../postDictionary';
 
 export function setupMongo(): void {
@@ -8,7 +11,11 @@ export function setupMongo(): void {
 
   beforeAll(async () => {
     mongoServer = await MongoMemoryServer.create();
-    process.env.DB_URL = mongoServer.getUri();
+    process.env.MONGO_DB_URI = mongoServer.getUri();
+
+    const dbClient = await connectToDB();
+    const db = dbClient.db(MONGO_DB_NAME);
+    await createIndexes(db);
   });
 
   afterAll(async () => {
@@ -23,6 +30,5 @@ export async function createDictionary(): Promise<string> {
   nextDictionaryNumber += 1;
 
   await upsertDictionary('{}', dictionaryId, 'test-user');
-
   return dictionaryId;
 }

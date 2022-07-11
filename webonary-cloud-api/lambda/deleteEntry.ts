@@ -16,9 +16,13 @@
  */
 
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient, DeleteWriteOpResultObject } from 'mongodb';
+import { MongoClient, DeleteResult } from 'mongodb';
 import { connectToDB } from './mongo';
-import { DB_NAME, DB_COLLECTION_DICTIONARY_ENTRIES, DB_COLLECTION_REVERSAL_ENTRIES } from './db';
+import {
+  MONGO_DB_NAME,
+  DB_COLLECTION_DICTIONARY_ENTRIES,
+  DB_COLLECTION_REVERSAL_ENTRIES,
+} from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
 import { createFailureResponse } from './utils';
@@ -48,7 +52,7 @@ export async function handler(
     }
 
     dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
+    const db = dbClient.db(MONGO_DB_NAME);
 
     const count = await db.collection(dbCollection).countDocuments({ guid, dictionaryId });
 
@@ -56,7 +60,7 @@ export async function handler(
       return callback(null, Response.notFound({}));
     }
 
-    const dbResultEntry: DeleteWriteOpResultObject = await db
+    const dbResultEntry: DeleteResult = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .deleteOne({ guid, dictionaryId });
 
