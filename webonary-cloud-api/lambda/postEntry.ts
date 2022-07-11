@@ -330,6 +330,7 @@ export async function handler(
     if (errorMessage) {
       return callback(null, Response.badRequest(errorMessage));
     }
+
     const { updatedAt, dbResults } = await upsertEntries(
       postedEntries,
       isReversalEntry,
