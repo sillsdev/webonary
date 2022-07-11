@@ -22,7 +22,11 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: dorny/paths-filter@v2
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Filter if migrations directory was changed
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
@@ -60,9 +64,6 @@ jobs:
           echo 'API_DOMAIN_CERT_ARN=${{ secrets.API_DOMAIN_CERT_ARN_LIVE }}'  >> $GITHUB_ENV
           echo 'S3_DOMAIN_NAME=cloud-storage.webonary.org' >> $GITHUB_ENV
           echo 'WEBONARY_URL=https://www.webonary.org' >> $GITHUB_ENV
-
-      - name: Git checkout
-        uses: actions/checkout@v2
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
