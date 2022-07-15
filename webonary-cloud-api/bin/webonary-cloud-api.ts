@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { App } from '@aws-cdk/core';
+import { App } from 'aws-cdk-lib';
 import { WebonaryCloudApiStack } from '../lib/webonary-cloud-api-stack';
 import { envSpecific } from '../lib/config';
 

@@ -92,7 +92,7 @@ jobs:
 
       - name: Run cdk diff
         if: github.event_name == 'pull_request'
-        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
+        run: set -o pipefail; cd webonary-cloud-api; npx cdk diff -c aws-cdk:enableDiffNoFail=true --no-color 2>&1
 
       - name: Mongo migrations status check
         if: github.event_name == 'pull_request' && steps.filter.outputs.migrations == 'true'
@@ -100,7 +100,7 @@ jobs:
 
       - name: Run cdk deploy
         if: github.event_name == 'push'
-        run: set -o pipefail; cd webonary-cloud-api; node_modules/.bin/cdk deploy --require-approval never --no-color 2>&1
+        run: set -o pipefail; cd webonary-cloud-api; npx cdk deploy --require-approval never --no-color 2>&1
 
       - name: Mongo migrations installation
         if: github.event_name == 'push' && steps.filter.outputs.migrations == 'true'

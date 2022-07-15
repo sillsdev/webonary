@@ -1,5 +1,5 @@
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
-import { App } from '@aws-cdk/core';
+import { App } from 'aws-cdk-lib';
 import { WebonaryCloudApiStack } from '../webonary-cloud-api-stack';
 
 const app = new App();

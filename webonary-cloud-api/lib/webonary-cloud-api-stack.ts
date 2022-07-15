@@ -1,18 +1,17 @@
-import { App, CfnOutput, Construct, Duration, Stack, StackProps } from '@aws-cdk/core';
-
-import { CfnPermission, Runtime } from '@aws-cdk/aws-lambda';
-import { NodejsFunction, NodejsFunctionProps } from '@aws-cdk/aws-lambda-nodejs';
-
+import { Construct } from 'constructs';
+import { App, CfnOutput, Duration, Stack, StackProps } from 'aws-cdk-lib';
+import { CfnPermission, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import {
   DomainName,
   IdentitySource,
   LambdaIntegration,
   RequestAuthorizer,
   RestApi,
-} from '@aws-cdk/aws-apigateway';
-import { Effect, PolicyStatement } from '@aws-cdk/aws-iam';
-import { Bucket, BucketEncryption } from '@aws-cdk/aws-s3';
-import { Certificate } from '@aws-cdk/aws-certificatemanager';
+} from 'aws-cdk-lib/aws-apigateway';
 
 import { readFileSync } from 'fs';
 
