@@ -1,15 +1,15 @@
-import * as fs from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
 
 const BYTE_ORDER_MARKER = '\uFEFF';
 
 class FileGrabber {
   public async getFile(directory: string, fileName: string): Promise<string> {
     const localDir = `data/${directory}/${fileName}`;
-    const fileExists = fs.existsSync(localDir);
+    const fileExists = existsSync(localDir);
 
     let returned = '';
     if (fileExists) {
-      returned = fs.readFileSync(localDir).toString();
+      returned = readFileSync(localDir).toString();
 
       // remove BOM from UTF8 files
       const regex = new RegExp(`^${BYTE_ORDER_MARKER}`);
@@ -19,7 +19,7 @@ class FileGrabber {
   }
 
   public async getFilenames(directory: string): Promise<string[]> {
-    return fs.readdirSync(`data/${directory}`);
+    return readdirSync(`data/${directory}`);
   }
 }
 

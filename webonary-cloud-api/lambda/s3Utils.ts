@@ -1,4 +1,4 @@
-import * as S3 from 'aws-sdk/clients/s3';
+import S3 from 'aws-sdk/clients/s3';
 
 const S3_CONFIG: S3.ClientConfiguration = { signatureVersion: 'v4' };
 

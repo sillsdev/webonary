@@ -41,6 +41,7 @@ export async function handler(
   if (dictionaryId && authHeaders) {
     const credentials = getBasicAuthCredentials(authHeaders);
 
+    // eslint-disable-next-line no-console
     console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
     // Same user should have the same access to post/delete dictionary entry data as well as files.
     const principalId = credentials.username;
@@ -63,12 +64,14 @@ export async function handler(
           return event.methodArn.replace(resourceRegex, `*/*/${id}`);
         });
 
+        // eslint-disable-next-line no-console
         console.log(`Creating policy for ${principalId} to access ${resources}`);
         return callback(null, generatePolicy(principalId, 'Allow', resources));
       }
     } catch (error) {
       const resources = [event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`)];
 
+      // eslint-disable-next-line no-console
       console.log(`Denying ${principalId} to access {resources}`);
       return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
     }

@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import * as cheerio from 'cheerio';
+import { load } from 'cheerio';
 import { Entry } from 'lambda/entry.model';
 
 export interface Options {
@@ -27,7 +27,7 @@ export class FlexXhtmlParser {
   }
 
   protected parseBody(): Entry[] {
-    const $ = cheerio.load(this.toBeParsed);
+    const $ = load(this.toBeParsed);
 
     const entries: Entry[] = [];
     let letterHead = '';

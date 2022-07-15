@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import * as mime from 'mime-types';
-import * as fs from 'fs';
+import { lookup } from 'mime-types';
+import { existsSync, readFileSync } from 'fs';
 import { Dictionary, LanguageItem } from 'lambda/dictionary.model';
 import {
   DictionaryEntry,
@@ -157,10 +157,10 @@ async function postFile(
     const signedUrl = response.data;
     if (typeof signedUrl === 'string') {
       const filePath = `data/${dictionaryId}/${file}`;
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(`data/${dictionaryId}/${file}`);
+      if (existsSync(filePath)) {
+        const fileContent = readFileSync(`data/${dictionaryId}/${file}`);
         const fileConfig: AxiosRequestConfig = {
-          headers: { 'Content-Type': mime.lookup(file) },
+          headers: { 'Content-Type': lookup(file) },
         };
         try {
           return await axios.put(signedUrl, fileContent, fileConfig);
