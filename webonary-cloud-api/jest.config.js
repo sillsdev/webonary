@@ -1,6 +1,6 @@
 module.exports = {
+  modulePaths: ['<rootDir>'],
   roots: ['<rootDir>/lib/__tests__', '<rootDir>/lambda/__tests__'],
-  preset: 'ts-jest',
   testEnvironment: 'node',
   coverageThreshold: {
     global: {
@@ -11,7 +11,6 @@ module.exports = {
     },
   },
   testMatch: ['**/*.test.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '.js'],
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },

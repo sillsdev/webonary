@@ -143,6 +143,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
         strength = DB_COLLATION_STRENGTH_FOR_SENSITIVITY;
       }
 
+      // eslint-disable-next-line no-console
       console.log(
         `Searching ${
           args.dictionaryId
@@ -178,6 +179,8 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       const $diacriticSensitive = args.matchAccents;
       const $text = { $search: `"${args.text}"`, $language: args.$language, $diacriticSensitive };
       const dictionaryFulltextSearch = { ...primaryFilter, $text };
+
+      // eslint-disable-next-line no-console
       console.log(
         `Searching ${args.dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`,
       );

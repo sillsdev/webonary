@@ -213,7 +213,7 @@
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
-import * as sanitizeHtml from 'sanitize-html';
+import sanitizeHtml from 'sanitize-html';
 import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
@@ -247,10 +247,12 @@ function stripHtml(html: string): string {
 /**
  * Fills in empty DictionaryEntry fields from other fields that were supplied.
  */
-/* eslint-disable no-param-reassign */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
+  // eslint-disable-next-line no-param-reassign
   destination.mainHeadWord = destination.mainHeadWord.filter((word) => word.value);
   if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
+    // eslint-disable-next-line no-param-reassign
     destination.mainHeadWord = source.headword.map((word: never) =>
       copyObjectIgnoreKeyCase(new EntryValueItem(), word),
     );

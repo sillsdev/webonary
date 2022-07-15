@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import * as cheerio from 'cheerio';
+import { load } from 'cheerio';
 import {
   DictionaryEntry,
   Entry,
@@ -34,7 +34,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   protected parseHead(): void {
     const startIndex = this.toBeParsed.indexOf('<head>');
     const endIndex = this.toBeParsed.indexOf('</head>');
-    const $ = cheerio.load(this.toBeParsed.substring(startIndex + 6, endIndex));
+    const $ = load(this.toBeParsed.substring(startIndex + 6, endIndex));
 
     $('meta').map((i, elem) => {
       const name = $(elem).attr('name');
@@ -53,7 +53,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   }
 
   public static parseDictionaryEntry(entry: Entry): DictionaryEntry {
-    const $ = cheerio.load(entry.displayXhtml);
+    const $ = load(entry.displayXhtml);
 
     const mainHeadWord: EntryValue[] = [];
     $('span.mainheadword span a').map((i, elem) => {

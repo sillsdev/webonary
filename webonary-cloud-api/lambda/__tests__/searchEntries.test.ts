@@ -23,10 +23,13 @@ const defaultArguments: SearchEntriesArguments = {
 };
 
 function parseGuids(response: Response): string[] {
-  return JSON.parse(response.body)
-    .map((entry: any) => entry.guid)
-    .filter((guid: string) => guid)
-    .sort();
+  return (
+    JSON.parse(response.body)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((entry: any) => entry.guid)
+      .filter((guid: string) => guid)
+      .sort()
+  );
 }
 
 const testUsername = 'test-username';

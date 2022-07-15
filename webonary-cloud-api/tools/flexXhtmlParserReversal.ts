@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import * as cheerio from 'cheerio';
+import { load } from 'cheerio';
 import {
   Entry,
   ReversalEntry,
@@ -21,7 +21,7 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   }
 
   public static parseReversalEntry(entry: Entry): ReversalEntry {
-    const $ = cheerio.load(entry.displayXhtml);
+    const $ = load(entry.displayXhtml);
 
     const reversalForm: EntryValue[] = [];
     $('span.reversalform span').map((i, elem) => {
