@@ -136,8 +136,11 @@ function save_configurations()
 		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
 		update_option('DisplaySubentriesAsMainEntries', (isset($_POST['DisplaySubentriesAsMainEntries']) ? 1 : 'no'));
 		update_option('languagecode', $_POST['languagecode']);
+
 		if(is_super_admin()) {
-			update_option('vernacular_alphabet', $_POST['vernacular_alphabet']);
+            $letters = trim($_POST['vernacular_alphabet'] ?? '');
+            if (strlen($letters) > 0)
+			    update_option('vernacular_alphabet', $letters);
 		}
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx

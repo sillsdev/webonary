@@ -446,7 +446,9 @@ class Webonary_Cloud
 			$language = $dictionary->mainLanguage;
 			update_option('languagecode', $language->lang);
 			update_option('totalConfiguredEntries', $language->entriesCount);
-			update_option('vernacular_alphabet', implode(',', $language->letters));
+
+			if (!empty($language->letters))
+				update_option('vernacular_alphabet', implode(',', $language->letters));
 
 			wp_insert_term(
 				$language->title,

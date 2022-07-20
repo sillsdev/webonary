@@ -1885,7 +1885,8 @@ SQL;
 
 		if($filetype == 'configured')
 		{
-			update_option('vernacular_alphabet', $alphabet);
+            if (strlen($alphabet) > 0)
+			    update_option('vernacular_alphabet', $alphabet);
 
 			update_option('totalConfiguredEntries', ($entry_counter - 1));
 
