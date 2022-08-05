@@ -136,8 +136,11 @@ function save_configurations()
 		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
 		update_option('DisplaySubentriesAsMainEntries', (isset($_POST['DisplaySubentriesAsMainEntries']) ? 1 : 'no'));
 		update_option('languagecode', $_POST['languagecode']);
+
 		if(is_super_admin()) {
-			update_option('vernacular_alphabet', $_POST['vernacular_alphabet']);
+			$letters = trim($_POST['vernacular_alphabet'] ?? '');
+			if (strlen($letters) > 0)
+				update_option('vernacular_alphabet', $letters);
 		}
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
@@ -414,9 +417,9 @@ function webonary_conf_widget($showTitle = false)
 					</select>
 				</p>
 
-                <p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
-                    Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
-                </p>
+				<p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
+					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
+				</p>
 
 				<h3><?php _e('Delete Data', 'sil_dictionary'); ?></h3>
 				<p>
