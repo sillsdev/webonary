@@ -1,0 +1,13 @@
+{
+  "plugins": ["../wp-resources/plugins/sil-dictionary-webonary/"],
+  "themes": ["../wp-resources/themes/webonary-zeedisplay/"],
+  "config": {
+    "DB_CHARSET": "utf8mb4",
+    "DB_COLLATE": "",
+    "WP_DEFAULT_THEME": "webonary-zeedisplay",
+    "WP_DEBUG_DISPLAY": false,
+    "WEBONARY_CLOUD_API_URL": "your_webonary_cloud_api_url",
+    "WEBONARY_CLOUD_FILE_URL": "your_webonary_cloud_file_url/",
+    "WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID": "your_test_dictionary_id"
+  }
+}

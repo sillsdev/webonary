@@ -4,7 +4,38 @@ Installation of WordPress and most plugins is handled with Composer. If
 you aren't familiar with Composer, you can get instructions on installation
 and how to use it here (<https://getcomposer.org/>).
 
-### Getting Started
+## Getting Started (Webonary cloud api integration development only)
+
+If you are working on Webonary integration with the Cloud API backend only, you can use
+[wp-env](https://www.npmjs.com/package/@wordpress/env)
+for local development using [Docker](https://www.docker.com/).
+
+To start, clone this full repo and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) packages and install Wordpress plugins through [composer](https://getcomposer.org/).
+
+```bash
+git clone https://github.com/sillsdev/webonary.git
+
+npm install
+
+cd webonary
+composer install
+```
+
+Then, copy sample [wp-env.json](.wp-env.json.sample) configuration file and modify it to point to a valid Webonary Cloud API environment and a test dictionary.
+
+```bash
+cp ../.wp-env.json.sample .wp-env.json
+```
+
+The local environment will be available at http://localhost:8888 (Username: admin, Password: password) once you start it by:
+
+```bash
+npx wp-env start
+```
+
+See [here for more instructions on wp-env](https://www.npmjs.com/package/@wordpress/env)
+
+## Getting Started (full local WordPress development)
 
 The first steps are to clone the repository and install WordPress. The
 recommended location is a directory accessible by Apache. Possibilities
@@ -35,7 +66,6 @@ Add the following line to `/etc/hosts`
 127.0.0.1   webonary.localhost
 ```
 
-
 Add the following Apache virtual host. On Ubuntu the file is `/etc/apache2/sites-available/000-default.conf`
 
 ```bash
@@ -58,13 +88,11 @@ Add the following Apache virtual host. On Ubuntu the file is `/etc/apache2/sites
 </VirtualHost>
 ```
 
-
 Finally, restart Apache:
 
 ```bash
 sudo service apache2 restart
 ```
-
 
 ### Install WP CLI
 
@@ -77,7 +105,6 @@ php wp-cli.phar --info
 chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 ```
-
 
 ### Deploying to webonary.work
 
@@ -100,9 +127,10 @@ make test
 
 ### Restore MySQL backup to webonary.work
 
-*NOTE: this process may take several hours.*
+_NOTE: this process may take several hours._
 
 For this to work, you will need to create a MySQL config file `~/.mysql/my.local.conf` and put this in it:
+
 ```ini
 [mysql]
 user=your_user
@@ -126,6 +154,7 @@ port=3306
    rsync -avz --chmod=D2775,F664 -e 'ssh' ~/Downloads/webonary.sql.gz sysops.webonary.work:~/webonary.sql.gz
    ```
 4. On webonary.work run these commands:
+
    ```
    cd ~/
    rm -f webonary.sql
@@ -140,4 +169,5 @@ port=3306
    wp eval-file updateDataLive2Work.php --path='/var/www/sites/webonary/current/wordpress'
    wp cache flush --path='/var/www/sites/webonary/current/wordpress'
    ```
+
 5. That's it, you're finished!

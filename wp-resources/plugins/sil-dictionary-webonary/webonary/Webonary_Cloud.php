@@ -198,12 +198,16 @@ class Webonary_Cloud
 	}
 
 	public static function getBlogDictionaryId() {
-		return (
-			is_subdomain_install()
-			? explode('.', $_SERVER['HTTP_HOST'])[0]
-			: str_replace('/', '', get_blog_details()->path)
-		);
+		if (function_exists('is_subdomain_install')) {
+			return (
+				is_subdomain_install()
+				? explode('.', $_SERVER['HTTP_HOST'])[0]
+				: str_replace('/', '', get_blog_details()->path)
+			);
+		}
+		return WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID;
 	}
+
 
 	public static function getCurrentLanguage() {
 		return (
