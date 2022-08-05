@@ -76,7 +76,7 @@ function categories_func($atts, $content, $shortcode_tag)
 	foreach ( $arrDomains as &$domain ) {
 
 		// check if value is only digits or dash
-		if ( ! preg_match( '/^([0-9\-]+)$/', $domain['slug'] ) ) {
+		if ( ! preg_match( '/^([\d\-]+)$/', $domain['slug'] ) ) {
 			continue;
 		}
 
@@ -229,7 +229,6 @@ HTML;
 
 function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languageCode, $requestName = null, $currentPage = null)
 {
-	$display = '';
 	if(!isset($requestName))
 		$requestName = 'letter';
 
@@ -242,9 +241,6 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 	if ($totalPages <= 1)
 		return '';
-
-
-
 
 
 	$next_page = '&gt;';
@@ -691,11 +687,13 @@ function getVernacularEntries(string $letter, string $langcode, int $page, int $
 		$collate = "";
 	}
 
-	$sql = "SELECT SQL_CALC_FOUND_ROWS ID, post_content";
-	$sql .= " FROM $wpdb->posts";
-	$sql .= " WHERE post_content_filtered = %s $collate";
-	$sql .= " ORDER BY menu_order ASC";
-	$sql .= $limitSql;
+	$sql = <<<SQL
+SELECT SQL_CALC_FOUND_ROWS ID, post_content
+FROM $wpdb->posts
+WHERE IFNULL(post_content_filtered, '') <> '' AND post_content_filtered = %s $collate
+ORDER BY menu_order
+$limitSql
+SQL;
 
 	$arrEntries = $wpdb->get_results($wpdb->prepare($sql, $letter));
 
@@ -730,13 +728,13 @@ function getVernacularEntries(string $letter, string $langcode, int $page, int $
 	return $arrEntries;
 }
 
-function getVernacularHeadword($postid, $languagecode)
+function getVernacularHeadword($post_id, $language_code)
 {
 	global $wpdb;
 
 	$sql = "SELECT search_strings " .
 	" FROM " . SEARCHTABLE .
-	" WHERE post_id = " . $postid . " AND relevance = 100 AND language_code = '" . $languagecode . "'";
+	" WHERE post_id = " . $post_id . " AND relevance = 100 AND language_code = '" . $language_code . "'";
 
 	return $wpdb->get_var($sql);
 
@@ -845,7 +843,7 @@ HTML;
 		foreach($arrPosts as $my_post)
 		{
 			//legacy
-			if($displaySubentriesAsMinorEntries == true)
+			if($displaySubentriesAsMinorEntries)
 			{
 				if(trim($my_post->post_title ?? '') != trim($my_post->search_strings ?? ''))
 				{
