@@ -33,7 +33,7 @@ html[dir=rtl] #navtitle, html[dir=rtl] #wrap .pageentry {text-align: right;}
 }
 .lpTitleLetterCell:hover {background-color: #ddd;}
 .lpTitleLetterCell a.not-configured {padding: 2px}
-.lpTitleLetterCell span, .lpTitleLetterCell span a {display: block; text-decoration: none;}
+.lpTitleLetterCell span, .lpTitleLetterCell span a, .pageentry .lpTitleLetterCell span a {display: block; text-decoration: none !important;}
 
 #searchresults {display: table; margin: 0 auto}
 #searchresults div {box-sizing: border-box}
