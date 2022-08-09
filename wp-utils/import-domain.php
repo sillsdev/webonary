@@ -112,7 +112,7 @@ foreach ($root_domains as $root_domain) {
 	DoSubPossibilities($root_domain);
 }
 
-$db = new mysqli('localhost', 'webonary', 'yranobew23');
+$db = new mysqli('localhost', 'REPLACE_WITH_USERNAME', 'REPLACE_WITH_PASSWORD');
 $db->set_charset('utf8mb4');
 $db->select_db('webonary');
 
