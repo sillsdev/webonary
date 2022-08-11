@@ -165,6 +165,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
         .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .find(dictionaryPartialSearch)
         .collation({ locale, strength })
+        .sort({ 'mainHeadWord.value': 1, _id: 1 })
         .skip(dbSkip)
         .limit(args.pageLimit)
         .toArray();
@@ -196,6 +197,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       entries = await db
         .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
         .find(dictionaryFulltextSearch)
+        .sort({ 'mainHeadWord.value': 1, _id: 1 })
         .skip(dbSkip)
         .limit(args.pageLimit)
         .toArray();

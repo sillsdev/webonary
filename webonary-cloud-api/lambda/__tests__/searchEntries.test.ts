@@ -28,7 +28,6 @@ function parseGuids(response: Response): string[] {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .map((entry: any) => entry.guid)
       .filter((guid: string) => guid)
-      .sort()
   );
 }
 
@@ -224,7 +223,7 @@ describe('searchEntries', () => {
       lang: 'matching-lang',
     });
 
-    expect(parseGuids(response)).toEqual([
+    expect(parseGuids(response).sort()).toEqual([
       'guid-matching-1',
       'guid-matching-2',
       'guid-matching-3',
@@ -460,5 +459,107 @@ describe('searchEntries', () => {
     });
 
     expect(parseGuids(response)).toEqual(['accent-2']);
+  });
+
+  test('match partial results should be sorted', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'sorted-match-partial-2',
+          mainHeadWord: [
+            {
+              value: 'b',
+            },
+          ],
+          displayXhtml: `b text`,
+        },
+        {
+          guid: 'sorted-match-partial-3',
+          mainHeadWord: [
+            {
+              value: 'c',
+            },
+          ],
+          displayXhtml: `c text`,
+        },
+        {
+          guid: 'sorted-match-partial-1',
+          mainHeadWord: [
+            {
+              value: 'a',
+            },
+          ],
+          displayXhtml: `a text`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      matchPartial: true,
+    });
+
+    expect(parseGuids(response)).toEqual([
+      'sorted-match-partial-1',
+      'sorted-match-partial-2',
+      'sorted-match-partial-3',
+    ]);
+  });
+
+  test('match whole words results should be sorted', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'sorted-match-partial-2',
+          mainHeadWord: [
+            {
+              value: 'b',
+            },
+          ],
+          displayXhtml: `b text`,
+        },
+        {
+          guid: 'sorted-match-partial-3',
+          mainHeadWord: [
+            {
+              value: 'c',
+            },
+          ],
+          displayXhtml: `c text`,
+        },
+        {
+          guid: 'sorted-match-partial-1',
+          mainHeadWord: [
+            {
+              value: 'a',
+            },
+          ],
+          displayXhtml: `a text`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      matchPartial: false,
+    });
+
+    expect(parseGuids(response)).toEqual([
+      'sorted-match-partial-1',
+      'sorted-match-partial-2',
+      'sorted-match-partial-3',
+    ]);
   });
 });
