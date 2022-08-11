@@ -70,6 +70,38 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
+  test('tags are treated as word boundaries', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'test-matching-guid-1',
+          displayXhtml: `abc`,
+        },
+        {
+          guid: 'test-matching-guid-2',
+          displayXhtml: `<span>abc</span><span>something else</span>`,
+        },
+        {
+          guid: 'test-not-matching-guid-1',
+          displayXhtml: `a<div>bc</div> a<span>bc</span>`,
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'abc',
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual(['test-matching-guid-1', 'test-matching-guid-2']);
+  });
+
   test('does not match tags in displayXhtml', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
