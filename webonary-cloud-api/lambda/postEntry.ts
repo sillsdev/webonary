@@ -213,7 +213,7 @@
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
-import sanitizeHtml from 'sanitize-html';
+import { compile as compileHtmlToText } from 'html-to-text';
 import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
@@ -237,12 +237,9 @@ let dbClient: MongoClient;
 /**
  * Removes any HTML from a string.
  */
-function stripHtml(html: string): string {
-  return sanitizeHtml(html, {
-    allowedTags: [],
-    allowedAttributes: {},
-  });
-}
+const stripHtml = compileHtmlToText({
+  selectors: [{ selector: 'a', format: 'inline' }], // don't display href attributes of links
+});
 
 /**
  * Fills in empty DictionaryEntry fields from other fields that were supplied.
