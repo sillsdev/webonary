@@ -241,14 +241,14 @@ ul.qtrans_language_chooser li.active { display:none }
 #searchsubmit:hover {
   background: url(images/button_hover.png) repeat-x #eee;
 }
-#spbutton {
+.spbutton {
   background: url(images/button.png) repeat-x #eee;
   border-radius: 5px;
   -moz-border-radius: 5px; /* Firefox */
   -webkit-border-radius: 5px; /* Safari, Chrome */
   -khtml-border-radius: 5px; /* Konqueror */
 }
-#spbutton:hover {
+.spbutton:hover {
 background: url(images/button_hover.png) repeat-x #eee;
 }
 

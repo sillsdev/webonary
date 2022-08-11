@@ -19,6 +19,8 @@ function webonary_searchform() {
 	if(get_option('noSearch') == 1)
 		return;
 
+	$special_chars_class = get_option('special_characters_rtl') == '1' ? 'rtl' : 'ltr';
+
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
@@ -200,27 +202,17 @@ SQL;
 	-->
 	</script>
 	<?php
-		if(get_option('vernacularRightToLeft') == 1)
+		if(get_option('vernacularRightToLeft') == 1 || $special_chars_class == 'rtl')
+			echo '<style> .spbutton { float: right; } </style>';
+
+		$input_font = get_option('inputFont');
+		if($input_font)
 		{
 		?>
-		<style>
-		#spbutton {
-		 float: right;
-		}
-		</style>
-		<?php
-		}
-		if(get_option('inputFont') != "")
-		{
-		?>
-			<style>
-			input, textarea {
-				font-family: "<?php echo get_option('inputFont'); ?>";
-			}
-			#s {
-			font-family: "<?php echo get_option('inputFont'); ?>";
-			}
-			</style>
+<style>
+input, textarea { font-family: "<?php echo $input_font; ?>" !important; }
+#s { font-family: "<?php echo $input_font; ?>" !important; }
+</style>
 		<?php
 		}
 		?>
@@ -230,60 +222,50 @@ SQL;
 				<!-- search text box -->
 				<?php
 				$special_characters = get_option('special_characters');
-				$special_characters = str_replace("empty", "", $special_characters);
-				if((trim($special_characters)) != "")
+				$special_characters = str_replace('empty', '', $special_characters);
+				if((trim($special_characters)) != '')
 				{
 				?>
-				<style>
-				select {
-					padding: 5px;
-				}
-				</style>
-				<script type="text/javascript">
+<style> select { padding: 5px; } </style>
+<script type="text/javascript">
 
-				function addchar(button)
-				{
-					let searchfield = document.getElementById('s');
-                    let currentPos = theCursorPosition(searchfield);
-                    let origValue = searchfield.value;
-                    searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
+function addchar(button) {
+	let searchfield = document.getElementById('s');
+	let currentPos = theCursorPosition(searchfield);
+	let origValue = searchfield.value;
+	searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
 
-					searchfield.focus();
+	searchfield.focus();
 
-				    return true;
-				}
+	return true;
+}
 
-				function theCursorPosition(ofThisInput) {
-					// set a fallback cursor location
-                    let theCursorLocation = 0;
+function theCursorPosition(ofThisInput) {
+	// set a fallback cursor location
+	let theCursorLocation = 0;
 
-					// find the cursor location via IE method...
-					if (document.selection) {
-						ofThisInput.focus();
-                        let theSelectionRange = document.selection.createRange();
-						theSelectionRange.moveStart('character', -ofThisInput.value.length);
-						theCursorLocation = theSelectionRange.text.length;
-					} else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
-						// or the FF way
-						theCursorLocation = ofThisInput.selectionStart;
-					}
-					return theCursorLocation;
-				}
-				</script>
-			<?php
+	// find the cursor location via IE method...
+	if (document.selection) {
+		ofThisInput.focus();
+		let theSelectionRange = document.selection.createRange();
+		theSelectionRange.moveStart('character', -ofThisInput.value.length);
+		theCursorLocation = theSelectionRange.text.length;
+	} else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
+		// or the FF way
+		theCursorLocation = ofThisInput.selectionStart;
+	}
+	return theCursorLocation;
+}
+</script>
+				<?php
 					$arrChar = explode(",", $special_characters);
-					foreach($arrChar as $char)
-					{
-					?>
-					<input
-						id="spbutton" type="button" width="20" class="button"
-						value="<?php echo $char; ?>" onClick="addchar(this)"
-						style="padding: 5px">
-								<?php
+					$btn_html = '<input class="button spbutton %2$s" type="button" value="%1$s" onClick="addchar(this)">';
+					foreach ($arrChar as $char) {
+						printf($btn_html, trim($char), $special_chars_class);
 					}
 				}
-				echo "<br>";
 				?>
+				<p class="clear" style="margin-bottom: 10px"></p>
 				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40 title="">
 
 				<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
