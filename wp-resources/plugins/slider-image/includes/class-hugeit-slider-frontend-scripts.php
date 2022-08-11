@@ -65,7 +65,7 @@ class Hugeit_Slider_Frontend_Scripts {
 			'share_buttons_style' => Hugeit_Slider_Options::get_share_buttons_style(),
 			'share_buttons_hover_style' => Hugeit_Slider_Options::get_share_buttons_hover_style(),
 		);
-		wp_localize_script('hugeit_slider_frontend_main', 'hugeitSliderUrl', HUGEIT_SLIDER_FRONT_IMAGES_URL);
+		wp_localize_script('hugeit_slider_frontend_main', 'hugeitSliderUrl', [HUGEIT_SLIDER_FRONT_IMAGES_URL]);
 		wp_localize_script('hugeit_slider_frontend_main', 'hugeitSliderObj', $slider_options);
 	}
 
