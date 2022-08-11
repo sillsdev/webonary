@@ -238,7 +238,12 @@ let dbClient: MongoClient;
  * Removes any HTML from a string.
  */
 const stripHtml = compileHtmlToText({
-  selectors: [{ selector: 'a', format: 'inline' }], // don't display href attributes of links
+  selectors: [
+    // don't display href attributes of links
+    { selector: 'a', format: 'inline' },
+    // treat span tags as word separators
+    { selector: 'span', format: 'paragraph' },
+  ],
 });
 
 /**
