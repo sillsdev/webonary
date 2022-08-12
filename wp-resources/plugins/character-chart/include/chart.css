@@ -1,24 +1,39 @@
-body{
-	margin-left: 0.5em;
-	margin-right: auto;
-	width: auto;
-	font-size: 95%;
-	background-color: #FFFFFF;
-	text-align: center;
-	}
+body {
+    margin-left: 0.5em;
+    margin-right: auto;
+    width: auto;
+    background-color: #FFFFFF;
+    text-align: center;
+}
 
 table {
-    border-collapse: collapse;    
-    font-size: 10pt;
-    }
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
 /* all cells have 1pt solid border */
 td, th {
     border: 1px solid #000000;
     text-align: center;
-    }
+    padding: 6px;
+}
+
 .chartLink, .chartLink:visited {
-    color: black;
-	text-decoration: none; 
-	border-bottom: none; 
- }
-    
+    color: #000;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.spbutton {
+    cursor: pointer;
+}
+
+.spbutton:hover {
+    color: #fff !important;
+    background-color: #85005b;
+    border-color: #57013c;
+}
+
+.spbutton:hover a {
+    color: #fff !important;
+}

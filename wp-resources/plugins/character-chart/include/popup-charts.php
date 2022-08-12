@@ -40,11 +40,12 @@ class popup_charts extends WP_Widget {
 		$title = apply_filters('widget_title', $instance['title']);
 		$popupWidth = $instance['popupWidth'];
 		$popupHeight = $instance['popupHeight'];
+		$blog_url = get_bloginfo('wpurl');
 		echo $before_widget;
 		?>
 			&nbsp;<a href="" id=popuppage1 style="text-decoration: underline;"
 			 onclick="window.open(
-				'/wp-content/plugins/character-chart/include/chart.php','popuppage1','width=<?php echo $popupWidth; ?>,height=<?php echo $popupHeight; ?>,top=50,left=200,scrollbars=yes');
+				'<?php echo $blog_url; ?>/wp-content/plugins/character-chart/include/chart.php','popuppage1','width=<?php echo $popupWidth; ?>,height=<?php echo $popupHeight; ?>,top=50,left=200,scrollbars=yes');
 				return false;"><?php echo $title; ?></a>
 		<?php
 		//<div style="height:5px"></div>
@@ -141,5 +142,3 @@ class popup_charts extends WP_Widget {
 			</p>
         <?php 	}
 }
-
-?>
