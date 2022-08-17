@@ -399,13 +399,15 @@ class Webonary_Cloud
 	public static function registerApiRoutes() {
 		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiValidate'
+				'callback' => __CLASS__ . '::apiValidate',
+				'permission_callback' => '__return_true'
 			)
 		);
 
 		register_rest_route(self::$apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiResetDictionary'
+				'callback' => __CLASS__ . '::apiResetDictionary',
+				'permission_callback' => '__return_true'
 			)
 		);
 	}
