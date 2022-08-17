@@ -119,7 +119,7 @@ function save_configurations()
 	}
 	if (!empty($_POST['save_settings'])) {
 		update_option('publicationStatus', $_POST['publicationStatus']);
-		update_option('searchSomposedCharacters', $_POST['search_composed_characters']);
+		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
 		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
 		if(isset($_POST['normalization'])) {
 			update_option('normalization', $_POST['normalization']);
@@ -130,11 +130,12 @@ function save_configurations()
 			$special_characters = 'empty';
 
 		update_option('special_characters', $special_characters);
+		update_option('special_characters_rtl', $_POST['special_characters_rtl'] ?? 'no');
 		update_option('inputFont', $_POST['inputFont']);
 		update_option('vernacularLettersFont', $_POST['vernacularLettersFont']);
 
 		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
-		update_option('DisplaySubentriesAsMainEntries', (isset($_POST['DisplaySubentriesAsMainEntries']) ? 1 : 'no'));
+		update_option('DisplaySubentriesAsMainEntries', $_POST['DisplaySubentriesAsMainEntries'] ?? 'no');
 		update_option('languagecode', $_POST['languagecode']);
 
 		if(is_super_admin()) {
@@ -144,25 +145,25 @@ function save_configurations()
 		}
 
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
-		update_option('IncludeCharactersWithDiacritics', (isset($_POST['IncludeCharactersWithDiacritics']) ? 1 : 'no'));
+		update_option('IncludeCharactersWithDiacritics', $_POST['IncludeCharactersWithDiacritics'] ?? 'no');
 
 		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
 
-		update_option('vernacularRightToLeft', (isset($_POST['vernacularRightToLeft']) ? 1 : 'no'));
+		update_option('vernacularRightToLeft', $_POST['vernacularRightToLeft'] ?? 'no');
 
-		update_option('reversal1_langcode', $_POST['reversal1_langcode']);
-		update_option('reversal2_langcode', $_POST['reversal2_langcode']);
-		update_option('reversal3_langcode', $_POST['reversal3_langcode']);
+		update_option('reversal1_langcode', $_POST['reversal1_langcode'] ?? '');
+		update_option('reversal2_langcode', $_POST['reversal2_langcode'] ?? '');
+		update_option('reversal3_langcode', $_POST['reversal3_langcode'] ?? '');
 		if(is_super_admin())
 		{
-			update_option('reversal1_alphabet', $_POST['reversal1_alphabet']);
-			update_option('reversal2_alphabet', $_POST['reversal2_alphabet']);
-			update_option('reversal3_alphabet', $_POST['reversal3_alphabet']);
+			update_option('reversal1_alphabet', $_POST['reversal1_alphabet'] ?? '');
+			update_option('reversal2_alphabet', $_POST['reversal2_alphabet'] ?? '');
+			update_option('reversal3_alphabet', $_POST['reversal3_alphabet'] ?? '');
 		}
 
-		update_option('reversal1RightToLeft', (isset($_POST['reversal1RightToLeft']) ? 1 : 'no'));
-		update_option('reversal2RightToLeft', (isset($_POST['reversal2RightToLeft']) ? 1 : 'no'));
-		update_option('reversal3RightToLeft', (isset($_POST['reversal3RightToLeft']) ? 1 : 'no'));
+		update_option('reversal1RightToLeft', $_POST['reversal1RightToLeft'] ?? 'no');
+		update_option('reversal2RightToLeft', $_POST['reversal2RightToLeft'] ?? 'no');
+		update_option('reversal3RightToLeft', $_POST['reversal3RightToLeft'] ?? 'no');
 
 		if(trim(strlen($_POST['txtVernacularName'])) == 0)
 			echo '<br><span style="color:red">Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.</span><br>';
@@ -178,7 +179,7 @@ function save_configurations()
 
 		foreach($arrLanguages as $language) {
 
-			if(strlen(trim($_POST[$language['code']])) != 0) {
+			if(strlen(trim($_POST[$language['code']] ?? '')) != 0) {
 
 				$sql = $wpdb->prepare("SELECT term_id, `name` FROM {$wpdb->terms} WHERE slug = %s", array($_POST[$language['code']]));
 				$arrLanguageNames = $wpdb->get_results($sql);
@@ -366,9 +367,9 @@ function webonary_conf_widget($showTitle = false)
 		// enctype="multipart/form-data"
 		?>
 		<script>
-			function getLanguageName(selectbox, langname)
+			function getLanguageName(select_box, lang_name)
 			{
-				let e = document.getElementById(selectbox);
+				let e = document.getElementById(select_box);
 				let langcode = e.options[e.selectedIndex].value;
 
 				jQuery.ajax({
@@ -377,7 +378,7 @@ function webonary_conf_widget($showTitle = false)
 					type:'POST',
 					dataType: 'html',
 					success: function(output_string){
-						jQuery('#' + langname).val(output_string);
+						jQuery('#' + lang_name).val(output_string);
 					}
 				})
 			}
@@ -498,50 +499,50 @@ function webonary_conf_widget($showTitle = false)
 				{
 					//this is here for legacy purposes. The special characters used to be Widget in a separate plugin.
 					//we need to get those characters for older dictionary sites and display them in the dashboard.
-					/** @noinspection PhpUndefinedClassInspection */
 					$charWidget = new special_characters();
-					/** @noinspection PhpUndefinedMethodInspection */
 					$settings = $charWidget->get_settings();
 					$settings = reset($settings);
 				}
 				$special_characters = get_option('special_characters');
 				if(!empty($settings['characters'])
 					&& trim($special_characters) == ''
-					&& !isset($_POST['characters'])
-					&& trim($special_characters) != 'empty')
+					&& !isset($_POST['characters']))
 				{
 					$special_characters = $settings['characters'];
 				}
 				$special_characters = str_replace('empty', '', $special_characters);
 				?>
-				<p>
-					<strong><?php _e('Special character input buttons');?></strong>
-					<br>
-					These will appear above the search field.<br>
-					Separate the characters by comma:
-					<input type="text" name="characters" id=characters value="<?php echo $special_characters; ?>">
-				</p>
-				<b>Font to use for the search field and character buttons:</b>
-				<br>
-				<select name=inputFont>
-					<option value=""></option>
-					<?php
-					$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
-					if(isset($arrUniqueCSSFonts))
-					{
-						foreach($arrUniqueCSSFonts as $font)
-						{
-							?>
-							<option value="<?php echo $font;?>" <?php if($font == $input_font) { echo 'selected'; } ?>><?php echo $font;?></option>
-							<?php
+				<div style="margin: 1em 0">
+					<strong><?php _e('Special character input buttons');?></strong><br>
+					These will appear above the search field.<br>Separate the characters by comma:
+					<input type="text" name="characters" id=characters style="display: block; width: 100%" value="<?php echo $special_characters; ?>">
+				</div>
+				<div style="margin: 1em 0">
+					<input name="special_characters_rtl" type="checkbox" value="1" <?php checked('1', get_option('special_characters_rtl')); ?> /><?php _e('Display right-to-left') ?>
+				</div>
+				<div style="margin: 1em 0">
+					<b>Font to use for the search field and character buttons:</b>
+					<select name="inputFont" style="display: block">
+						<option value=""></option>
+						<?php
+						$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+						if (isset($arrUniqueCSSFonts)) {
+
+							/** @noinspection HtmlUnknownAttribute */
+							$option_html = '<option value="%1$s" %2$s>%1$s</option>' . PHP_EOL;
+
+							foreach ($arrUniqueCSSFonts as $font) {
+								$selected = ($font == $input_font) ? 'selected' : '';
+								echo sprintf($option_html, $font, $selected);
+							}
 						}
-					}
-					?>
-				</select>
-				<br><br>
-				<!--suppress HtmlUnknownAnchorTarget -->
-				<a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
-				<br><br>
+						?>
+					</select>
+				</div>
+				<p>
+					<!--suppress HtmlUnknownAnchorTarget -->
+					<a href="?page=webonary&changerelevance=true#search">Relevance Settings for Fields</a>
+				</p>
 				<?php
 				Webonary_Configuration::admin_section_end('search', 'Save Changes');
 

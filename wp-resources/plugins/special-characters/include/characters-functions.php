@@ -86,11 +86,7 @@ function theCursorPosition(ofThisInput) {
 </script>
 
 			<?php
-			$html = <<<HTML
-<input id="spbutton" type="button" width="20" class="button"
-       value="%s" onClick="addchar(this)"
-       style="padding: 5px">
-HTML;
+			$html = '<input class="button spbutton" type="button" value="%s" onClick="addchar(this)">';
 
 			foreach ( $arrChar as $char ) {
 				printf( $html, $char );

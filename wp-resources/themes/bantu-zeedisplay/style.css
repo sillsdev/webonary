@@ -201,7 +201,6 @@ input, textarea {
 	padding: 6px 5px;
 	font-family: Andika, "Arial Unicode MS", serif;
 	font-size: 1.0em;
-	font-weight: bold;
 	color: #333;
 	width: 150px;
 }
@@ -222,15 +221,22 @@ input, textarea {
 #searchsubmit:hover {
 	background: url(images/button_hover.png) repeat-x #eee;
 }
-#spbutton {
-	background: url(images/button.png) repeat-x #eee;
-	border-radius: 5px;
-	-moz-border-radius: 5px; /* Firefox */
-	-webkit-border-radius: 5px; /* Safari, Chrome */
-	-khtml-border-radius: 5px; /* Konqueror */
+
+.spbutton {
+    padding: 7px;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 1px solid #ccc;
+    margin-left: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #000 !important;
+    min-width: 1.8rem;
 }
-#spbutton:hover {
-background: url(images/button_hover.png) repeat-x #eee;
+.spbutton:hover, .spbuttonhighlight {
+    color: #fff !important;
+    background-color: #85005b;
+    border-color: #57013c;
 }
 
 .hilite {background-color:#CCFFFF;}
