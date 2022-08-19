@@ -37,6 +37,7 @@
   "require": {
     "php": ">=7.3",
     "ext-gettext": "*",
+    "ext-json": "*",
     "johnpbloch/wordpress": ">=5.6",
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "dev-master",
