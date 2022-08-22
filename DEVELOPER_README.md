@@ -1,8 +1,10 @@
 # Instructions for WordPress Developers
 
-Installation of WordPress and most plugins is handled with Composer. If
+First, [install PHP 7.3 on your machine](https://kinsta.com/blog/install-php/).
+
+Installation of WordPress and most plugins is handled with [Composer](https://getcomposer.org/). If
 you aren't familiar with Composer, you can get instructions on installation
-and how to use it here (<https://getcomposer.org/>).
+and how to use it [here](https://getcomposer.org/doc/00-intro.md).
 
 ## Getting Started (Webonary cloud api integration development only)
 
@@ -15,9 +17,10 @@ To start, clone this full repo and install [npm](https://docs.npmjs.com/download
 ```bash
 git clone https://github.com/sillsdev/webonary.git
 
+cd webonary
+
 npm install
 
-cd webonary
 composer install
 ```
 
