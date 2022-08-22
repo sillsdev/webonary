@@ -17,7 +17,7 @@ WCA is a serverless, cloud-based architecture consisting of:
 ## Technology Stack
 
 1. AWS Cloud Development Kit (CDK) for infrastructure provisioning
-2. Typescript for Lamda and CDK
+2. Typescript for Lambda and CDK
 3. AWS Serverless Application Model (SAM) for local Lambda testing
 4. Jest for unit testing
 5. (Recommended) Visual Studio Code
