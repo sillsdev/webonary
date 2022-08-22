@@ -56,7 +56,7 @@ jobs:
 
           # Mongo Atlas info
           echo 'MONGO_DB_NAME=webonary' >> $GITHUB_ENV
-          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_DEV }}'  >> $GITHUB_ENV
+          echo 'MONGO_DB_URI=${{ secrets.MONGO_DB_URI_LIVE }}'  >> $GITHUB_ENV
 
           # Custom domain:
           echo 'API_DOMAIN_NAME=cloud-api.webonary.org' >> $GITHUB_ENV
