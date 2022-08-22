@@ -9,7 +9,12 @@ class Webonary_API_MyType
 
 		register_rest_route($namespace, '/import', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => 'Webonary_API_MyType::Import'
+				'callback' => 'Webonary_API_MyType::Import',
+				'permission_callback' => function() {
+					$data = get_userdata(get_current_user_id());
+					$role = $data->roles;
+					return (is_super_admin() || (isset($role[0]) && $role[0] == "administrator"));
+				}
 			)
 		);
 
@@ -20,6 +25,7 @@ class Webonary_API_MyType
 				'methods' => WP_REST_Server::READABLE,
 				'callback' => 'Webonary_API_MyType::Query',
 				'args' => array(),
+				'permission_callback' => '__return_true'
 			)
 		);
 	}

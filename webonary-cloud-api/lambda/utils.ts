@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
+import { failure } from './response';
 
 export interface BasicAuthCredentials {
   username: string;
@@ -9,9 +10,7 @@ export interface BasicAuthCredentials {
 
 export function getBasicAuthCredentials(authHeaders: string): BasicAuthCredentials {
   const encodedCredentials = authHeaders.split(' ')[1];
-  const [username, password] = Buffer.from(encodedCredentials, 'base64')
-    .toString()
-    .split(':');
+  const [username, password] = Buffer.from(encodedCredentials, 'base64').toString().split(':');
 
   return { username, password };
 }
@@ -39,10 +38,10 @@ export function copyObjectKeyValueIgnoreKeyCase(
   const toObjectArray = fromObjectArray.map((fromObject: any) => {
     const toObject: { [key: string]: any } = {};
 
-    toSubKeys.forEach(subKey => {
+    toSubKeys.forEach((subKey) => {
       const subKeyLowerCase = subKey.toLowerCase();
       const fromObjectKey = Object.keys(fromObject).find(
-        key => key.toLowerCase() === subKeyLowerCase,
+        (key) => key.toLowerCase() === subKeyLowerCase,
       );
       if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
         toObject[subKey] = fromObject[fromObjectKey];
@@ -57,12 +56,12 @@ export function copyObjectKeyValueIgnoreKeyCase(
 
 export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): object {
   const copyObject: any = toObject;
-  Object.keys(toObject).forEach(toObjectKey => {
+  Object.keys(toObject).forEach((toObjectKey) => {
     const toObjectKeyLowercase = toObjectKey.toLowerCase();
 
     if (hasKey(toObject, toObjectKey)) {
       const fromObjectKey = Object.keys(fromObject).find(
-        key => key.toLowerCase() === toObjectKeyLowercase,
+        (key) => key.toLowerCase() === toObjectKeyLowercase,
       );
 
       if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
@@ -90,8 +89,15 @@ export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): o
   return copyObject;
 }
 
+export function createFailureResponse(error: any) {
+  if (error instanceof Error) {
+    return failure({ errorType: error.name, errorMessage: error.message });
+  }
+  return failure({ error });
+}
+
 export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[] {
-  return entries.map(entry => {
+  return entries.map((entry) => {
     const newEntry = entry;
     if ('name' in entry && typeof entry.name === 'string' && entry.name !== '')
       newEntry.nameInsensitive = entry.name.toLowerCase().normalize();
@@ -103,8 +109,8 @@ export function sortEntries(entries: DictionaryEntry[], lang?: string): Dictiona
   let entriesSorted: DictionaryEntry[] = [];
   if (lang !== '') {
     entriesSorted = entries.sort((a, b) => {
-      const aWord = a.senses[0].definitionOrGloss.find(letter => letter.lang === lang);
-      const bWord = b.senses[0].definitionOrGloss.find(letter => letter.lang === lang);
+      const aWord = a.senses[0].definitionOrGloss.find((letter) => letter.lang === lang);
+      const bWord = b.senses[0].definitionOrGloss.find((letter) => letter.lang === lang);
       if (aWord && bWord) {
         return aWord.value.localeCompare(bWord.value);
       }

@@ -212,10 +212,11 @@
  */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient, UpdateResult } from 'mongodb';
+import { compile as compileHtmlToText } from 'html-to-text';
 import { connectToDB } from './mongo';
 import {
-  DB_NAME,
+  MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
   DB_MAX_UPDATES_PER_CALL,
@@ -226,18 +227,47 @@ import {
   ReversalEntryItem,
   EntryItemType,
   ENTRY_TYPE_REVERSAL,
+  EntryValueItem,
 } from './entry.model';
-import { copyObjectIgnoreKeyCase, getBasicAuthCredentials } from './utils';
+import { copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
+
+/**
+ * Removes any HTML from a string.
+ */
+const stripHtml = compileHtmlToText({
+  selectors: [
+    // don't display href attributes of links
+    { selector: 'a', format: 'inline' },
+    // treat span tags as word separators
+    { selector: 'span', format: 'paragraph' },
+  ],
+});
+
+/**
+ * Fills in empty DictionaryEntry fields from other fields that were supplied.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
+  // eslint-disable-next-line no-param-reassign
+  destination.mainHeadWord = destination.mainHeadWord.filter((word) => word.value);
+  if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
+    // eslint-disable-next-line no-param-reassign
+    destination.mainHeadWord = source.headword.map((word: never) =>
+      copyObjectIgnoreKeyCase(new EntryValueItem(), word),
+    );
+  }
+}
+/* eslint-enable no-param-reassign */
 
 export async function upsertEntries(
   postedEntries: Array<object>,
   isReversalEntry: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateWriteOpResult[]; updatedAt: string }> {
+): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
@@ -245,24 +275,27 @@ export async function upsertEntries(
     const entry = isReversalEntry
       ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
       : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
-    return Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
+    if (entry instanceof DictionaryEntryItem) {
+      fillDictionaryEntryFields(postedEntry, entry);
+    }
+    entry.displayText = stripHtml(entry.displayXhtml);
+    return entry;
   });
 
   dbClient = await connectToDB();
-  const db = dbClient.db(DB_NAME);
+  const db = dbClient.db(MONGO_DB_NAME);
   const dbCollection = isReversalEntry
     ? DB_COLLECTION_REVERSAL_ENTRIES
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
-  const promises = entries.map(
-    (entry: EntryItemType): Promise<UpdateWriteOpResult> => {
-      return db
-        .collection(dbCollection)
-        .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
-    },
-  );
+  const promises = entries.map((entry: EntryItemType): Promise<UpdateResult> => {
+    return db
+      .collection(dbCollection)
+      .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+  });
 
-  const dbResults: UpdateWriteOpResult[] = await Promise.all(promises);
+  const dbResults: UpdateResult[] = await Promise.all(promises);
   return { updatedAt, dbResults };
 }
 
@@ -292,15 +325,16 @@ export async function handler(
       errorMessage = 'Input must be an array of dictionary entry objects';
     } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
       errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-    } else if (postedEntries.find(entry => typeof entry !== 'object')) {
+    } else if (postedEntries.find((entry) => typeof entry !== 'object')) {
       errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (postedEntries.find(entry => !('guid' in entry && entry.guid))) {
+    } else if (postedEntries.find((entry) => !('guid' in entry && entry.guid))) {
       errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
     }
 
     if (errorMessage) {
       return callback(null, Response.badRequest(errorMessage));
     }
+
     const { updatedAt, dbResults } = await upsertEntries(
       postedEntries,
       isReversalEntry,
@@ -309,25 +343,25 @@ export async function handler(
     );
 
     const updatedCount = dbResults
-      .filter(result => result.modifiedCount)
+      .filter((result) => result.modifiedCount)
       .reduce((total, result) => total + result.modifiedCount, 0);
 
     const insertedIds = dbResults
-      .filter(result => result.upsertedCount)
-      .map(result => result.upsertedId._id);
+      .filter((result) => result.upsertedCount)
+      .map((result) => result.upsertedId.toString());
 
     const postResult: PostResult = {
       updatedAt,
       updatedCount,
       insertedCount: insertedIds.length,
-      insertedIds: insertedIds.map(objectId => objectId.toString()),
+      insertedIds: insertedIds.map((objectId) => objectId.toString()),
     };
 
     return callback(null, Response.success(postResult));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 

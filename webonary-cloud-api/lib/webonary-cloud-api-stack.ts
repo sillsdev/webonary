@@ -1,24 +1,57 @@
-import * as cdk from '@aws-cdk/core';
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as apigateway from '@aws-cdk/aws-apigateway';
-import * as iam from '@aws-cdk/aws-iam';
-import * as s3 from '@aws-cdk/aws-s3';
-import { Certificate } from '@aws-cdk/aws-certificatemanager';
+import { Construct } from 'constructs';
+import { App, CfnOutput, Duration, Stack, StackProps } from 'aws-cdk-lib';
+import { CfnPermission, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import { Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
+import {
+  DomainName,
+  IdentitySource,
+  LambdaIntegration,
+  RequestAuthorizer,
+  RestApi,
+} from 'aws-cdk-lib/aws-apigateway';
+
+import { readFileSync } from 'fs';
+
 import { envSpecific } from './config';
 
-function defaultLambdaFunctionProps(functionName: string): lambda.FunctionProps {
-  const props: lambda.FunctionProps = {
-    functionName: envSpecific(functionName),
-    runtime: lambda.Runtime.NODEJS_12_X,
-    code: new lambda.AssetCode('lambda'),
-    handler: `${functionName}.handler`,
-    timeout: cdk.Duration.seconds(60),
-  };
-  return props;
-}
+const getExternalDependencies = (packageFile: string) => {
+  const packageInfo = JSON.parse(readFileSync(packageFile).toString());
+  return Object.keys(packageInfo.devDependencies);
+};
 
-export class WebonaryCloudApiStack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+const createLambdaFunction = (
+  scope: Construct,
+  handlerName: string,
+  optionsOverrides: NodejsFunctionProps = {},
+): NodejsFunction => {
+  const functionName = `${scope.toString()}-${handlerName}`;
+  const externalDependencies = getExternalDependencies('./lambda/package.json');
+
+  const functionProps: NodejsFunctionProps = {
+    runtime: Runtime.NODEJS_14_X,
+    entry: `./lambda/${handlerName}.ts`,
+    functionName,
+    timeout: Duration.seconds(60), // maximum value is 15 minutes
+    ...optionsOverrides,
+    environment: {
+      ...optionsOverrides.environment,
+    },
+    bundling: {
+      ...optionsOverrides.bundling,
+      minify: true,
+      sourceMap: true,
+      externalModules: [...externalDependencies],
+    },
+  };
+
+  return new NodejsFunction(scope, functionName, functionProps);
+};
+
+export class WebonaryCloudApiStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props);
 
     // Webonary web site
@@ -30,13 +63,12 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const S3_DOMAIN_NAME = process.env.S3_DOMAIN_NAME ?? 'cloud-storage.webonary.org';
 
     // Mongo
-    const { DB_URI, DB_USERNAME, DB_PASSWORD } = process.env;
-    const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_URI}`;
-    const DB_NAME = process.env.DB_NAME ?? 'webonary';
+    const MONGO_DB_NAME = process.env.MONGO_DB_NAME ?? 'webonary';
+    const MONGO_DB_URI = `${process.env.MONGO_DB_URI}/${MONGO_DB_NAME}?retryWrites=true&w=majority`;
 
     // S3
-    const dictionaryBucket = new s3.Bucket(this, 'dictionaryBucket', {
-      encryption: s3.BucketEncryption.S3_MANAGED,
+    const dictionaryBucket = new Bucket(this, envSpecific('dictionaryBucket'), {
+      encryption: BucketEncryption.S3_MANAGED,
       publicReadAccess: true,
       bucketName: S3_DOMAIN_NAME,
     });
@@ -44,133 +76,95 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Lambda functions
 
     // API Authorizer for posting dictionary file or entry
-    const methodAuthorizeFunction = new lambda.Function(
-      this,
-      'methodAuthorize',
-      Object.assign(defaultLambdaFunctionProps('methodAuthorize'), {
-        environment: {
-          WEBONARY_URL,
-          WEBONARY_AUTH_PATH,
-        },
-      }),
-    );
-
-    const methodAuthorizer = new apigateway.RequestAuthorizer(this, 'methodAuthorizer', {
-      handler: methodAuthorizeFunction,
-      identitySources: [apigateway.IdentitySource.header('Authorization')],
+    const methodAuthorizeFunction = createLambdaFunction(this, 'methodAuthorize', {
+      environment: { WEBONARY_URL, WEBONARY_AUTH_PATH },
     });
 
-    const s3AuthorizeFunction = new lambda.Function(this, 's3Authorize', {
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.AssetCode('lambda'),
-      handler: 's3Authorize.handler',
+    const methodAuthorizer = new RequestAuthorizer(this, 'methodAuthorizer', {
+      handler: methodAuthorizeFunction,
+      identitySources: [IdentitySource.header('Authorization')],
+    });
+
+    const s3AuthorizeFunction = createLambdaFunction(this, 's3Authorize', {
       environment: { S3_DOMAIN_NAME },
     });
 
     // Give permission to list add and get file
     s3AuthorizeFunction.addToRolePolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
+      new PolicyStatement({
+        effect: Effect.ALLOW,
         actions: ['s3:PutObject', 's3:GetObject'],
         resources: [`${dictionaryBucket.bucketArn}/*`],
       }),
     );
 
     // eslint-disable-next-line no-new
-    new lambda.CfnPermission(this, 's3AuthorizeApiGtwLambdaPermission', {
+    new CfnPermission(this, 's3AuthorizeApiGtwLambdaPermission', {
       functionName: s3AuthorizeFunction.functionArn,
       action: 'lambda:InvokeFunction',
       principal: 'apigateway.amazonaws.com',
     });
 
-    const postDictionaryFunction = new lambda.Function(
-      this,
-      'postDictionary',
-      Object.assign(defaultLambdaFunctionProps('postDictionary'), {
-        environment: {
-          DB_URL,
-          DB_NAME,
-          WEBONARY_URL,
-          WEBONARY_RESET_DICTIONARY_PATH,
-        },
-      }),
-    );
+    const postDictionaryFunction = createLambdaFunction(this, 'postDictionary', {
+      environment: {
+        MONGO_DB_URI,
+        MONGO_DB_NAME,
+        WEBONARY_URL,
+        WEBONARY_RESET_DICTIONARY_PATH,
+      },
+    });
 
-    const getDictionaryFunction = new lambda.Function(
-      this,
-      'getDictionary',
-      Object.assign(defaultLambdaFunctionProps('getDictionary'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const getDictionaryFunction = createLambdaFunction(this, 'getDictionary', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
-    const deleteDictionaryFunction = new lambda.Function(
-      this,
-      'deleteDictionary',
-      Object.assign(defaultLambdaFunctionProps('deleteDictionary'), {
-        environment: { DB_URL, DB_NAME, S3_DOMAIN_NAME },
-      }),
-    );
+    const deleteDictionaryFunction = createLambdaFunction(this, 'deleteDictionary', {
+      environment: {
+        MONGO_DB_URI,
+        MONGO_DB_NAME,
+        S3_DOMAIN_NAME,
+      },
+    });
 
     // Give permission to list all files in the dictionary folder, and delete each
     deleteDictionaryFunction.addToRolePolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
+      new PolicyStatement({
+        effect: Effect.ALLOW,
         actions: ['s3:ListBucket'],
         resources: [`${dictionaryBucket.bucketArn}`],
       }),
     );
 
     deleteDictionaryFunction.addToRolePolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
+      new PolicyStatement({
+        effect: Effect.ALLOW,
         actions: ['s3:DeleteObject'],
         resources: [`${dictionaryBucket.bucketArn}/*`],
       }),
     );
 
-    const postEntryFunction = new lambda.Function(
-      this,
-      'postEntry',
-      Object.assign(defaultLambdaFunctionProps('postEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const postEntryFunction = createLambdaFunction(this, 'postEntry', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
-    const getEntryFunction = new lambda.Function(
-      this,
-      'getEntry',
-      Object.assign(defaultLambdaFunctionProps('getEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const getEntryFunction = createLambdaFunction(this, 'getEntry', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
-    const deleteEntryFunction = new lambda.Function(
-      this,
-      'deleteEntry',
-      Object.assign(defaultLambdaFunctionProps('deleteEntry'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const deleteEntryFunction = createLambdaFunction(this, 'deleteEntry', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
-    const browseEntriesFunction = new lambda.Function(
-      this,
-      'browseEntries',
-      Object.assign(defaultLambdaFunctionProps('browseEntries'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const browseEntriesFunction = createLambdaFunction(this, 'browseEntries', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
-    const searchEntriesFunction = new lambda.Function(
-      this,
-      'searchEntries',
-      Object.assign(defaultLambdaFunctionProps('searchEntries'), {
-        environment: { DB_URL, DB_NAME },
-      }),
-    );
+    const searchEntriesFunction = createLambdaFunction(this, 'searchEntries', {
+      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+    });
 
     // API and resources
-    const api = new apigateway.RestApi(this, 'webonary-cloud-api', {
+    const api = new RestApi(this, envSpecific('webonary-cloud-api'), {
       restApiName: envSpecific('webonaryCloudApi'),
     });
 
@@ -179,11 +173,11 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     if (domainName && domainCertArn) {
       const certificate = Certificate.fromCertificateArn(
         this,
-        'apiDomainCertificate',
+        envSpecific('apiDomainCertificate'),
         domainCertArn,
       );
 
-      const apiDomainName = new apigateway.DomainName(this, 'apiDomain', {
+      const apiDomainName = new DomainName(this, envSpecific('apiDomain'), {
         domainName,
         certificate,
       });
@@ -199,21 +193,21 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     const apiPostFile = apiPost.addResource('file');
     const apiPostFileForDictionary = apiPostFile.addResource('{dictionaryId}');
-    const s3AuthorizeLambda = new apigateway.LambdaIntegration(s3AuthorizeFunction);
+    const s3AuthorizeLambda = new LambdaIntegration(s3AuthorizeFunction);
     apiPostFileForDictionary.addMethod('POST', s3AuthorizeLambda, {
       authorizer: methodAuthorizer,
     });
 
     const apiPostDictionary = apiPost.addResource('dictionary');
     const apiPostDictionaryForDictionary = apiPostDictionary.addResource('{dictionaryId}');
-    const postDictionaryLambda = new apigateway.LambdaIntegration(postDictionaryFunction);
+    const postDictionaryLambda = new LambdaIntegration(postDictionaryFunction);
     apiPostDictionaryForDictionary.addMethod('POST', postDictionaryLambda, {
       authorizer: methodAuthorizer,
     });
 
     const apiPostEntry = apiPost.addResource('entry');
     const apiPostEntryForDictionary = apiPostEntry.addResource('{dictionaryId}');
-    const postEntryLambda = new apigateway.LambdaIntegration(postEntryFunction);
+    const postEntryLambda = new LambdaIntegration(postEntryFunction);
     apiPostEntryForDictionary.addMethod('POST', postEntryLambda, {
       authorizer: methodAuthorizer,
     });
@@ -223,14 +217,14 @@ export class WebonaryCloudApiStack extends cdk.Stack {
 
     const apiDeleteDictionary = apiDelete.addResource('dictionary');
     const apiDeleteDictionaryForDictionary = apiDeleteDictionary.addResource('{dictionaryId}');
-    const deleteDictionaryLambda = new apigateway.LambdaIntegration(deleteDictionaryFunction);
+    const deleteDictionaryLambda = new LambdaIntegration(deleteDictionaryFunction);
     apiDeleteDictionaryForDictionary.addMethod('DELETE', deleteDictionaryLambda, {
       authorizer: methodAuthorizer,
     });
 
     const apiDeleteEntry = apiDelete.addResource('entry');
     const apiDeleteEntryForDictionary = apiDeleteEntry.addResource('{dictionaryId}');
-    const deleteEntryLambda = new apigateway.LambdaIntegration(deleteEntryFunction);
+    const deleteEntryLambda = new LambdaIntegration(deleteEntryFunction);
     apiDeleteEntryForDictionary.addMethod('DELETE', deleteEntryLambda, {
       authorizer: methodAuthorizer,
     });
@@ -241,13 +235,13 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // dictionary meta data
     const apiGetDictionary = apiGet.addResource('dictionary');
     const apiGetDictionaryById = apiGetDictionary.addResource('{dictionaryId}');
-    const getDictionaryLambda = new apigateway.LambdaIntegration(getDictionaryFunction);
+    const getDictionaryLambda = new LambdaIntegration(getDictionaryFunction);
     apiGetDictionaryById.addMethod('GET', getDictionaryLambda);
 
     // dictionary entry
     const apiGetEntry = apiGet.addResource('entry');
     const apiGetEntryByDictionaryId = apiGetEntry.addResource('{dictionaryId}');
-    const getEntryLambda = new apigateway.LambdaIntegration(getEntryFunction);
+    const getEntryLambda = new LambdaIntegration(getEntryFunction);
     apiGetEntryByDictionaryId.addMethod('GET', getEntryLambda);
 
     // Browse documents
@@ -256,7 +250,7 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     // Browse entries, all and by starting letter
     const apiBrowseEntries = apiBrowse.addResource('entry');
     const apiBrowseEntriesByDictionaryId = apiBrowseEntries.addResource('{dictionaryId}');
-    const browseEntriesLambda = new apigateway.LambdaIntegration(browseEntriesFunction);
+    const browseEntriesLambda = new LambdaIntegration(browseEntriesFunction);
     apiBrowseEntriesByDictionaryId.addMethod('GET', browseEntriesLambda);
 
     // Search documents
@@ -266,15 +260,15 @@ export class WebonaryCloudApiStack extends cdk.Stack {
     const apiSearchEntries = apiSearch.addResource('entry');
     const apiSearchEntriesByDictionaryId = apiSearchEntries.addResource('{dictionaryId}');
 
-    const searchEntriesLambda = new apigateway.LambdaIntegration(searchEntriesFunction);
+    const searchEntriesLambda = new LambdaIntegration(searchEntriesFunction);
     apiSearchEntriesByDictionaryId.addMethod('GET', searchEntriesLambda);
 
     // the main magic to easily pass the lambda version to stack in another region
     // this output is required
 
     // eslint-disable-next-line no-new
-    new cdk.CfnOutput(this, 'db-url', {
-      value: DB_URL,
+    new CfnOutput(this, 'db-url', {
+      value: MONGO_DB_URI,
     });
   }
 }

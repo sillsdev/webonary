@@ -58,5 +58,3 @@ function popup_init() {
     load_plugin_textdomain('popup', false, dirname(plugin_basename(__FILE__ )).'/lang/');
 }
 add_action('init', 'popup_init');
-
-?>

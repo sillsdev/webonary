@@ -340,6 +340,7 @@ class Webonary_Cloud
 	}
 
 	public static function searchEntries($posts, WP_Query $query): ?array {
+		global $search_cookie;
 
 		if (!$query->is_main_query())
 			return null;
@@ -369,9 +370,7 @@ class Webonary_Cloud
 				INPUT_GET,
 				[
 					'key' => ['filter' => FILTER_UNSAFE_RAW],
-					'tax' => ['filter' => FILTER_UNSAFE_RAW],
-					'match_whole_words' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '1']],
-					'match_accents' => ['filter' => FILTER_UNSAFE_RAW, 'options' => ['default' => '0']]
+					'tax' => ['filter' => FILTER_UNSAFE_RAW]
 				]
 			);
 
@@ -379,8 +378,8 @@ class Webonary_Cloud
 				'text' => $searchText,
 				'lang' => $getParams['key'],
 				'partOfSpeech' => $getParams['tax'],
-				'matchPartial' => $getParams['match_whole_words'] ?? '',
-				'matchAccents' => is_null($getParams['match_accents']) ? '' : '1'
+				'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
+				'matchAccents' => $search_cookie->match_accents ? '1' : ''
 			];
 		}
 
@@ -400,13 +399,15 @@ class Webonary_Cloud
 	public static function registerApiRoutes() {
 		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiValidate'
+				'callback' => __CLASS__ . '::apiValidate',
+				'permission_callback' => '__return_true'
 			)
 		);
 
 		register_rest_route(self::$apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiResetDictionary'
+				'callback' => __CLASS__ . '::apiResetDictionary',
+				'permission_callback' => '__return_true'
 			)
 		);
 	}
@@ -447,7 +448,9 @@ class Webonary_Cloud
 			$language = $dictionary->mainLanguage;
 			update_option('languagecode', $language->lang);
 			update_option('totalConfiguredEntries', $language->entriesCount);
-			update_option('vernacular_alphabet', implode(',', $language->letters));
+
+			if (!empty($language->letters))
+				update_option('vernacular_alphabet', implode(',', $language->letters));
 
 			wp_insert_term(
 				$language->title,

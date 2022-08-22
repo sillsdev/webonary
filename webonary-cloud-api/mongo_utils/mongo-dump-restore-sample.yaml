@@ -1,0 +1,1 @@
+uri: mongodb+srv://your_db_username:your_db_password@clouter0.your_cluster_id.mongodb.net/your_db_name?retryWrites=true&w=majority

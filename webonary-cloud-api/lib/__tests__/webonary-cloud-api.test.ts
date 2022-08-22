@@ -1,14 +1,9 @@
-import { expect as expectCDK, haveResource, SynthUtils } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
-import * as WebonaryCloudApi from '../webonary-cloud-api-stack';
+import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
+import { App } from 'aws-cdk-lib';
+import { WebonaryCloudApiStack } from '../webonary-cloud-api-stack';
 
-const app = new cdk.App();
-const stack = new WebonaryCloudApi.WebonaryCloudApiStack(app, 'MyTestStack');
-
-// See https://docs.aws.amazon.com/cdk/latest/guide/testing.html
-test('Snapshot test', () => {
-  expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
-});
+const app = new App();
+const stack = new WebonaryCloudApiStack(app, 'MyTestStack');
 
 // See https://github.com/aws/aws-cdk/tree/master/packages/%40aws-cdk/assert
 test('S3 exists', () => {
@@ -31,15 +26,14 @@ describe('Gateway domain', () => {
     process.env.WEBONARY_URL = 'https://www.testsite.com';
     process.env.WEBONARY_AUTH_PATH = 'testAuthPath';
     process.env.WEBONARY_RESET_DICTIONARY_PATH = 'testResetPath';
-    process.env.DB_NAME = 'testDb';
+    process.env.MONGO_DB_NAME = 'testDb';
     process.env.API_DOMAIN_NAME = 'some-api.test-site.com';
     process.env.API_DOMAIN_CERT_ARN = 'arn:aws:acm:test';
   });
 
   test('Gateway domain name exists', async () => {
     // Next, post the module – do it dynamically, not at the top of the file!
-    const appWithDomain = new cdk.App();
-    const WebonaryCloudApiStack = (await import('../webonary-cloud-api-stack')).default;
+    const appWithDomain = new App();
     const stackWithDomain = new WebonaryCloudApiStack(appWithDomain, 'MyTestStackWithDomain');
 
     expectCDK(stackWithDomain).to(
@@ -57,8 +51,7 @@ describe('Gateway domain', () => {
     process.env.API_DOMAIN_BASE_PATH = 'v999';
 
     // Next, post the module – do it dynamically, not at the top of the file!
-    const appWithDomainAndPath = new cdk.App();
-    const WebonaryCloudApiStack = (await import('../webonary-cloud-api-stack')).default;
+    const appWithDomainAndPath = new App();
     const stackWithDomainAndPath = new WebonaryCloudApiStack(
       appWithDomainAndPath,
       'MyTestStackWithDomain',

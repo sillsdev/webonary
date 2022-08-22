@@ -31,8 +31,9 @@ html[dir=rtl] #navtitle, html[dir=rtl] #wrap .pageentry {text-align: right;}
     border: 1px solid #c0c0c0;
     position: relative;
 }
+.lpTitleLetterCell:hover {background-color: #ddd;}
 .lpTitleLetterCell a.not-configured {padding: 2px}
-.lpTitleLetterCell span, .lpTitleLetterCell span a {display: block}
+.lpTitleLetterCell span, .lpTitleLetterCell span a, .pageentry .lpTitleLetterCell span a {display: block; text-decoration: none !important;}
 
 #searchresults {display: table; margin: 0 auto}
 #searchresults div {box-sizing: border-box}

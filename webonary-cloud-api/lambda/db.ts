@@ -1,4 +1,7 @@
-export const DB_NAME = process.env.DB_NAME as string;
+import { Db } from 'mongodb';
+import { DbPaths } from './entry.model';
+
+export const MONGO_DB_NAME = process.env.MONGO_DB_NAME as string;
 
 export const DB_MAX_DOCUMENTS_PER_CALL = 100;
 export const DB_MAX_UPDATES_PER_CALL = 50;
@@ -123,3 +126,38 @@ export const DB_COLLATION_LOCALES = [
 export const DB_COLLECTION_DICTIONARIES = 'webonaryDictionaries';
 export const DB_COLLECTION_DICTIONARY_ENTRIES = 'webonaryEntries';
 export const DB_COLLECTION_REVERSAL_ENTRIES = 'webonaryReversals';
+
+export const entriesFulltextIndexName = 'wordsFulltextIndex';
+export const entriesHeadwordIndexName = `${DbPaths.ENTRY_MAIN_HEADWORD_LANG}_1_${DbPaths.ENTRY_MAIN_HEADWORD_VALUE}_1`;
+
+export const createIndexes = async (db: Db) => {
+  // fulltext index (case and diacritic insensitive by default)
+  await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
+    {
+      [DbPaths.ENTRY_DISPLAY_TEXT]: 'text',
+    },
+    {
+      name: entriesFulltextIndexName,
+      default_language: 'none',
+    },
+  );
+
+  // case and diacritic insensitive index for semantic domains
+  await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
+    {
+      [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
+      [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
+    },
+    {
+      name: entriesHeadwordIndexName,
+      collation: {
+        locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+        strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
+      },
+    },
+  );
+};
+
+export const dropIndexes = async (db: Db) => {
+  await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).dropIndexes();
+};

@@ -22,7 +22,7 @@ import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
-  DB_NAME,
+  MONGO_DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
@@ -31,8 +31,8 @@ import {
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
-import { DictionaryEntry, ReversalEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
-import { getDbSkip } from './utils';
+import { DictionaryEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
+import { createFailureResponse, getDbSkip } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -67,7 +67,7 @@ export async function handler(
     let dbCollection = '';
     let dbSort = {};
     let dbLocale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
-    let entries: DictionaryEntry[] | ReversalEntry[];
+    let entries: Document[];
     let primarySearch = true;
     const dbFind: DbFindParameters = { dictionaryId };
     const dbSkip = getDbSkip(pageNumber, pageLimit);
@@ -113,7 +113,7 @@ export async function handler(
     }
 
     dbClient = await connectToDB();
-    const db = dbClient.db(DB_NAME);
+    const db = dbClient.db(MONGO_DB_NAME);
 
     if (primarySearch) {
       dbFind.letterHead = text;
@@ -143,16 +143,14 @@ export async function handler(
 
       if (countTotalOnly && countTotalOnly === '1') {
         pipeline.push({ $count: 'count' });
-        const count = await db
-          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .aggregate(pipeline)
-          .next();
+        const count =
+          (await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).aggregate(pipeline).next()) ?? '0';
         return callback(null, Response.success(count));
       }
 
       pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_VALUE]: 1 } });
       entries = await db
-        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+        .collection<DictionaryEntry>(DB_COLLECTION_DICTIONARY_ENTRIES)
         .aggregate(pipeline, {
           collation: { locale: dbLocale, strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY },
         })
@@ -169,7 +167,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 

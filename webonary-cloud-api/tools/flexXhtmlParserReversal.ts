@@ -1,14 +1,13 @@
 /* eslint-disable array-callback-return */
-import * as cheerio from 'cheerio';
-import { Options, FlexXhtmlParser } from './flexXhtmlParser';
-
+import { load } from 'cheerio';
 import {
   Entry,
   ReversalEntry,
   ReversalSense,
   EntryValue,
   ENTRY_TYPE_REVERSAL,
-} from '../lambda/entry.model';
+} from 'lambda/entry.model';
+import { Options, FlexXhtmlParser } from './flexXhtmlParser';
 
 export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public parsedReversalEntries: ReversalEntry[];
@@ -16,13 +15,13 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
     super(toBeParsed, { ...options, entryClass: ENTRY_TYPE_REVERSAL });
 
-    this.parsedReversalEntries = this.parsedEntries.map(entry =>
+    this.parsedReversalEntries = this.parsedEntries.map((entry) =>
       FlexXhtmlParserReversal.parseReversalEntry(entry),
     );
   }
 
   public static parseReversalEntry(entry: Entry): ReversalEntry {
-    const $ = cheerio.load(entry.displayXhtml);
+    const $ = load(entry.displayXhtml);
 
     const reversalForm: EntryValue[] = [];
     $('span.reversalform span').map((i, elem) => {

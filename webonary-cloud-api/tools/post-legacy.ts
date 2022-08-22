@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import axios, { AxiosBasicCredentials, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import * as mime from 'mime-types';
-import * as fs from 'fs';
-import { Dictionary, LanguageItem } from '../lambda/dictionary.model';
+import { lookup } from 'mime-types';
+import { existsSync, readFileSync } from 'fs';
+import { Dictionary, LanguageItem } from 'lambda/dictionary.model';
 import {
   DictionaryEntry,
   EntryFile,
   ReversalEntry,
   ENTRY_TYPE_MAIN,
   ENTRY_TYPE_REVERSAL,
-} from '../lambda/entry.model';
+} from 'lambda/entry.model';
 import fileGrabber from './fileGrabber';
 import { FlexXhtmlParserMain } from './flexXhtmlParserMain';
 import { FlexXhtmlParserReversal } from './flexXhtmlParserReversal';
@@ -55,7 +55,11 @@ async function deleteDictionary(
   try {
     return await axios.delete(path, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError) {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -73,7 +77,11 @@ async function postDictionary(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError) {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -92,7 +100,11 @@ async function postEntry(
   try {
     return await axios.post(path, data, config);
   } catch (error) {
-    handleAxiosError(error);
+    if (error instanceof AxiosError) {
+      handleAxiosError(error);
+    } else {
+      throw error;
+    }
   }
 
   return undefined;
@@ -107,8 +119,9 @@ async function postEntries(
 ): Promise<void> {
   const startPostingEntriesTime = Date.now();
   logMessage(
-    `Start posting ${entries.length} ${reversalLang ??
-      'main'} entries in chunks of ${chunkSize}...`,
+    `Start posting ${entries.length} ${
+      reversalLang ?? 'main'
+    } entries in chunks of ${chunkSize}...`,
   );
 
   const chunkedParsedItem = chunkArray(entries, chunkSize);
@@ -144,22 +157,32 @@ async function postFile(
     const signedUrl = response.data;
     if (typeof signedUrl === 'string') {
       const filePath = `data/${dictionaryId}/${file}`;
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(`data/${dictionaryId}/${file}`);
+      if (existsSync(filePath)) {
+        const fileContent = readFileSync(`data/${dictionaryId}/${file}`);
         const fileConfig: AxiosRequestConfig = {
-          headers: { 'Content-Type': mime.lookup(file) },
+          headers: { 'Content-Type': lookup(file) },
         };
         try {
           return await axios.put(signedUrl, fileContent, fileConfig);
-        } catch (error) {
-          logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
+        } catch (e) {
+          const error = e as Error;
+          if ('message' in error) {
+            logMessage(`postEntry Error: ${JSON.stringify(error.message)}`);
+          } else {
+            logMessage(`postEntry Error: ${JSON.stringify(error)}`);
+          }
         }
       } else {
         logMessage(`Warning: File ${file} does not exist!`);
       }
     }
-  } catch (error) {
-    logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
+  } catch (e) {
+    const error = e as Error;
+    if ('message' in error) {
+      logMessage(`postFile Error: ${JSON.stringify(error.message)}`);
+    } else {
+      logMessage(`postFile Error: ${JSON.stringify(error)}`);
+    }
   }
 
   return undefined;
@@ -241,8 +264,8 @@ if (args[0]) {
     logMessage('Start parsing reversal xhtml files...');
     const reversals = await Promise.all(
       dictionaryFiles
-        .filter(file => file.endsWith('.xhtml') && file !== mainFile)
-        .map(async file => {
+        .filter((file) => file.endsWith('.xhtml') && file !== mainFile)
+        .map(async (file) => {
           const lang = file.substring(file.lastIndexOf('_') + 1, file.lastIndexOf('.'));
           const parser = new FlexXhtmlParserReversal(
             await fileGrabber.getFile(dictionaryId, file),
@@ -289,7 +312,7 @@ if (args[0]) {
           files.push(entry.audio);
         }
         if (entry.pictures.length) {
-          entry.pictures.forEach(picture => {
+          entry.pictures.forEach((picture) => {
             if (picture.src) {
               files.push(picture);
             }
@@ -311,11 +334,9 @@ if (args[0]) {
       const startChunkTime = Date.now();
       logMessage(`Posting chunk ${index + 1}...`);
 
-      const promises = chunk.map(
-        (entryFile): Promise<AxiosResponse | undefined> => {
-          return postFile(dictionaryId, entryFile.src, credentials);
-        },
-      );
+      const promises = chunk.map((entryFile): Promise<AxiosResponse | undefined> => {
+        return postFile(dictionaryId, entryFile.src, credentials);
+      });
 
       /* eslint-disable no-await-in-loop */
       await Promise.all(promises);
@@ -331,13 +352,13 @@ if (args[0]) {
       dictionaryPost.updatedBy = credentials.username;
       dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
 
-      dictionaryPost.reversalLanguages = reversals.map(reversal => {
+      dictionaryPost.reversalLanguages = reversals.map((reversal) => {
         const item = new LanguageItem();
         item.lang = reversal.lang;
         item.letters = reversal.parser.parsedLetters;
         item.title = mainParser.parsedLanguages.get(item.lang) ?? '';
 
-        [`reversal_${item.lang}.css`, 'ProjectReversalOverrides.css'].forEach(file => {
+        [`reversal_${item.lang}.css`, 'ProjectReversalOverrides.css'].forEach((file) => {
           if (dictionaryFiles.includes(file)) {
             item.cssFiles.push(file);
           }
@@ -348,12 +369,10 @@ if (args[0]) {
 
       logMessage(`Posting dictionary css files...`);
       const promises = dictionaryFiles
-        .filter(file => file.endsWith('.css'))
-        .map(
-          (file): Promise<AxiosResponse | undefined> => {
-            return postFile(dictionaryId, file, credentials);
-          },
-        );
+        .filter((file) => file.endsWith('.css'))
+        .map((file): Promise<AxiosResponse | undefined> => {
+          return postFile(dictionaryId, file, credentials);
+        });
       await Promise.all(promises);
 
       logMessage(`Posting dictionary metadata...`);

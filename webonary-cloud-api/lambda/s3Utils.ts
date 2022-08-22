@@ -1,4 +1,4 @@
-import * as S3 from 'aws-sdk/clients/s3';
+import S3 from 'aws-sdk/clients/s3';
 
 const S3_CONFIG: S3.ClientConfiguration = { signatureVersion: 'v4' };
 
@@ -24,7 +24,7 @@ export async function deleteS3Folder(bucket: string, dictionaryId: string): Prom
   let deletedFilesCount = listedObjects.Contents?.length ?? 0;
 
   if (listedObjects.Contents && deletedFilesCount) {
-    const objectsToDelete = listedObjects.Contents.map(object => {
+    const objectsToDelete = listedObjects.Contents.map((object) => {
       const Key = object.Key ?? '';
       return { Key };
     });

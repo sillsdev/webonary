@@ -14,7 +14,10 @@ class Hugeit_Slider_Admin_Assets {
 	}
 
 	public function enqueue($hook) {
-		if (in_array($hook, Hugeit_Slider()->admin->get_pages())) {
+
+		$pages = Hugeit_Slider()->admin->get_pages();
+
+		if (is_array($pages) && in_array($hook, $pages)) {
 			$this->enqueue_scripts();
 			$this->enqueue_styles($hook);
 			$this->localize_script();

@@ -2,9 +2,7 @@
   "name": "webonary",
   "version": "2.0.0",
   "private": true,
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/bootstrap": "5.1.3",
     "@types/jquery": "^3.5.10",

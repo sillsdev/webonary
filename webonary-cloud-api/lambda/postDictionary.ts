@@ -105,19 +105,18 @@
 
 import axios from 'axios';
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateWriteOpResult } from 'mongodb';
+import { MongoClient, UpdateResult } from 'mongodb';
+
 import { connectToDB } from './mongo';
-import {
-  DB_NAME,
-  DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
-} from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
-import { DbPaths } from './entry.model';
-import { copyObjectIgnoreKeyCase, setSearchableEntries, getBasicAuthCredentials } from './utils';
+import {
+  copyObjectIgnoreKeyCase,
+  setSearchableEntries,
+  getBasicAuthCredentials,
+  createFailureResponse,
+} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -126,7 +125,7 @@ export async function upsertDictionary(
   eventBody: string | null,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResult: UpdateWriteOpResult; updatedAt: string }> {
+): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
   const updatedAt = new Date().toUTCString();
 
   const posted = JSON.parse(eventBody as string);
@@ -136,30 +135,7 @@ export async function upsertDictionary(
     dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
   }
   dbClient = await connectToDB();
-  const db = dbClient.db(DB_NAME);
-
-  // fulltext index (case and diacritic insensitive by default)
-  await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
-    {
-      [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-      [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
-    },
-    { name: 'wordsFulltextIndex', default_language: 'none' },
-  );
-
-  // case and diacritic insensitive index for semantic domains
-  await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).createIndex(
-    {
-      [DbPaths.ENTRY_MAIN_HEADWORD_LANG]: 1,
-      [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 1,
-    },
-    {
-      collation: {
-        locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-        strength: DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
-      },
-    },
-  );
+  const db = dbClient.db(MONGO_DB_NAME);
 
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)
@@ -221,7 +197,7 @@ export async function handler(
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, Response.failure({ errorType: error.name, errorMessage: error.message }));
+    return callback(null, createFailureResponse(error));
   }
 }
 
