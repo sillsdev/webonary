@@ -1,6 +1,10 @@
 # Monorepo of everything Webonary!
 
-###  How to restore a backup locally
+### For developers
+
+See [Developer README](./DEVELOPER_README.md).
+
+### How to restore a backup locally
 
 If you haven't done it already, copy `updateDataLive2Work.php` to your
 home directory.
@@ -22,6 +26,7 @@ listed in the `show_submenu` value. The value must be the slug (the last
 value in the permalink), not the title or ID of the post.
 
 This is the format of the short-code tag:
+
 ```
 [menu show_submenu="overview"]
 ```
@@ -31,10 +36,10 @@ This is the format of the short-code tag:
 The branch submenu tag will display all the children of the current page.
 
 This is the format of the short-code tag:
+
 ```
 [menu show_branch=1]
 ```
-
 
 ### How to get uploaded site files
 
@@ -42,10 +47,9 @@ This is the format of the short-code tag:
 rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' your_name@server_name.org:/var/www/sites/webonary/shared/blogs.dir /var/www/projects/webonary2/wordpress/wp-content
 ```
 
-
 ### How to copy uploaded files from one site to another
 
-__This copies from site 266 to site 895__
+**This copies from site 266 to site 895**
 
 ```bash
 cp -R /var/www/sites/webonary/shared/blogs.dir/266/files/* /var/www/sites/webonary/shared/blogs.dir/895/files/
