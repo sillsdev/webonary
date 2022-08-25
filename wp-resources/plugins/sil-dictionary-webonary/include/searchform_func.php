@@ -68,6 +68,9 @@ function webonary_searchform() {
 				$sem_term = strtolower($search_term);
 				foreach($dictionary->semanticDomains as $item)
 				{
+					if (empty($item->nameInsensitive))
+						continue;
+
 					if(strpos($item->nameInsensitive, $sem_term) !== false)
 					{
 						$sem_domain = new stdClass();
