@@ -80,7 +80,7 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	private static function sematicDomainToLink($lang, $domain): string {
+	private static function semanticDomainToLink($lang, $domain): string {
 		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
 	}
 
@@ -127,7 +127,7 @@ class Webonary_Cloud
 						// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
 						$newSemDom = str_replace(
 							$semDomNameSpan,
-							'<span lang="' . $lang . '">' . self::sematicDomainToLink($lang, $domain) . '</span>',
+							'<span lang="' . $lang . '">' . self::semanticDomainToLink($lang, $domain) . '</span>',
 							$newSemDom);
 					}
 					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
@@ -358,7 +358,7 @@ class Webonary_Cloud
 			return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 		}
 
-		$searchText = trim(get_search_query());
+		$searchText = trim(get_search_query(false));
 		if ($searchText === '') {
 			$tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
 			if ($tax !== '') {
