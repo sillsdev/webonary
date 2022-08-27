@@ -369,7 +369,7 @@ describe('searchEntries', () => {
       matchAccents: false,
     });
 
-    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
+    expect(parseGuids(response)).toEqual(['no-accent', 'accent']);
   });
 
   test('!matchAccents with accented search matches all accents and tones', async () => {
@@ -397,7 +397,7 @@ describe('searchEntries', () => {
       matchAccents: false,
     });
 
-    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
+    expect(parseGuids(response)).toEqual(['no-accent', 'accent']);
   });
 
   test('matchAccents filters out accents and tones', async () => {
@@ -499,11 +499,6 @@ describe('searchEntries', () => {
       [
         {
           guid: 'sorted-match-partial-2',
-          mainHeadWord: [
-            {
-              value: 'b',
-            },
-          ],
           displayXhtml: `b text`,
         },
         {
@@ -511,6 +506,9 @@ describe('searchEntries', () => {
           mainHeadWord: [
             {
               value: 'c',
+            },
+            {
+              value: '0',
             },
           ],
           displayXhtml: `c text`,
@@ -550,11 +548,6 @@ describe('searchEntries', () => {
       [
         {
           guid: 'sorted-match-partial-2',
-          mainHeadWord: [
-            {
-              value: 'b',
-            },
-          ],
           displayXhtml: `b text`,
         },
         {
@@ -562,6 +555,9 @@ describe('searchEntries', () => {
           mainHeadWord: [
             {
               value: 'c',
+            },
+            {
+              value: '0',
             },
           ],
           displayXhtml: `c text`,
