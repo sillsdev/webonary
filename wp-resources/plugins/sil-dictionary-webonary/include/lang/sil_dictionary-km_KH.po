@@ -347,7 +347,7 @@ msgid "Number of Entries"
 msgstr ""
 
 #: include/searchform_func.php:345
-msgid "Last update:"
+msgid "Last upload:"
 msgstr "ធ្វើ​បច្ចុប្បន្នភាព​ចុងក្រោយ៖"
 
 #: include/searchform_func.php:355

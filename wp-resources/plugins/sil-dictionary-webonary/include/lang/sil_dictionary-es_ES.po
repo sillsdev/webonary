@@ -88,7 +88,7 @@ msgid "Number of Entries"
 msgstr "Número de entradas"
 
 #: include/searchform_func.php:339 webonary/Webonary_Search_Widget.php:82
-msgid "Last update:"
+msgid "Last upload:"
 msgstr "Última actualización:"
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
