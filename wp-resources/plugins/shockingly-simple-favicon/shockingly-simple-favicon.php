@@ -76,11 +76,11 @@ function favi_head() {
 if ( is_admin() ) {	add_action('admin_head', 'favi_admin_head'); }
 function favi_admin_head() {
 	$opt = get_option('favi_options');
-	if ( $opt['admin'] == 'default' ) {
-		echo '<link rel="shortcut icon" href="' . get_option('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico" type="image/x-icon" /><!-- Favi -->';
-	} 	else if ( $opt['admin'] == 'blog' ) {
-		echo '<link rel="shortcut icon" href="' . favi_geturl() . '" type="image/x-icon" /><!-- Favi -->';
-	}
+
+	if (empty($opt) || $opt['admin'] == 'blog')
+		echo '<link rel="shortcut icon" href="' . favi_geturl() . '" type="image/x-icon" />';
+	else
+		echo '<link rel="shortcut icon" href="' . get_option('siteurl') . '/wp-content/plugins/shockingly-simple-favicon/admin/favicon.ico" type="image/x-icon" />';
 }
 
 // INITIALIZATION - locales @ /lang/
