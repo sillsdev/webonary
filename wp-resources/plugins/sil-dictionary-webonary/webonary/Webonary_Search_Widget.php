@@ -77,9 +77,9 @@ class Webonary_Search_Widget extends WP_Widget {
 	        $substitutions['@qtrans_language@'] = '';
 
         if (empty($this->last_edit_date))
-	        $substitutions['@last_update@'] = '';
+	        $substitutions['@last_upload@'] = '';
         else
-	        $substitutions['@last_update@'] = __('Last update:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
+	        $substitutions['@last_upload@'] = __('Last upload:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
 
 		echo Webonary_Utility::includeTemplate('search-script.html');
         echo Webonary_Utility::includeTemplate('search-form.html', $substitutions);

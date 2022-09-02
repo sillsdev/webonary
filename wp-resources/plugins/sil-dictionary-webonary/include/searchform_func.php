@@ -318,7 +318,7 @@ function theCursorPosition(ofThisInput) {
 
 		if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
 		{
-			_e('Last update:', 'sil_dictionary');
+			_e('Last upload:', 'sil_dictionary');
             echo ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($lastEditDate));
 		}
 
