@@ -93,8 +93,7 @@ function webonary_searchform() {
             }));
 
 			if (count($dictionary->reversalLanguages)) {
-				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? ' selected' : '';
-				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";
+				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "' selected>" . $indexed->language_name . "</option>";
 				foreach($dictionary->reversalLanguages as $reversal)
 				{
 					$indexed = new stdClass();
@@ -117,18 +116,19 @@ function webonary_searchform() {
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
 		if ( ! empty( $arrLanguages ) ) {
 
-            $lang_code = get_option('languagecode');
+        	$lang_code = get_option('languagecode');
 
 			$vernacularLanguages = array_values(array_filter($arrLanguages, function($v) use($lang_code) {
-                return $v['language_code'] == $lang_code;
+    			return $v['language_code'] == $lang_code;
             }));
 
 			if ( ! empty( $vernacularLanguages ) ) {
 
 				$vernacularLanguageName = $vernacularLanguages[0]['name'];
+				$language_dropdown_options .= '<option value="' . $lang_code . '" selected>' . $vernacularLanguageName . '</option>';
 				foreach ( $arrLanguages as $language ) {
 
-					if ( $language['name'] != $vernacularLanguageName || $language['language_code'] == $lang_code ) {
+					if ( $language['name'] != $vernacularLanguageName) {
 
 						$language_dropdown_options .= '<option value="' . $language['language_code'] . '"';
 						if ( $selected_language == $language['language_code'] ) {
@@ -286,7 +286,6 @@ function theCursorPosition(ofThisInput) {
 					<?php
 						if ($language_dropdown_options !== '') {
 							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
-							$language_dropdown .= '<option value="">' . __('All Languages','sil_dictionary') .'</option>';
 							$language_dropdown .= $language_dropdown_options;
 							$language_dropdown .= '</select>';
 							echo $language_dropdown . '<br>';
