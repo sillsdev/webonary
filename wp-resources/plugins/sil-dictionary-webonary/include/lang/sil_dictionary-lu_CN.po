@@ -326,14 +326,6 @@ msgstr ""
 msgid "Search"
 msgstr "ᦌᦸᦰ ᦠᦱ"
 
-#: include/searchform_func.php:303
-msgid "Advanced Search"
-msgstr "ᦌᦸᦰ ᦠᦱ ᦅᧄ ᦍᦱᧅ"
-
-#: include/searchform_func.php:305
-msgid "Hide Advanced Search"
-msgstr "ᦊᦱᧈ ᦌᦸᦰ ᦠᦱ ᦅᧄ ᦍᦱᧅ"
-
 #: include/searchform_func.php:319
 msgid "Match whole words"
 msgstr "ᦊᦱᧈ ᦺᦡᧉ ᦌᦸᦰ ᦆᦹᧂᧈ ᦅᧄ"

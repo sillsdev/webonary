@@ -104,14 +104,6 @@ msgstr ""
 msgid "Search"
 msgstr "Rechercher"
 
-#: include/searchform_func.php:135
-msgid "Advanced Search"
-msgstr "Recherche avancée"
-
-#: include/searchform_func.php:137
-msgid "Hide Advanced Search"
-msgstr "Cacher 'Recherche avancée'"
-
 # @ default
 # @ sil_dictionary
 #: include/searchform_func.php:153 include/infrastructure.php:195

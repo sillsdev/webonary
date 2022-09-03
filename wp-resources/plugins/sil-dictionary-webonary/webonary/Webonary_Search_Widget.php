@@ -48,15 +48,9 @@ class Webonary_Search_Widget extends WP_Widget {
 		else
 			$this->getMySqlLists($taxonomy, $search_term, $selected_language);
 
-		$advanced_search = Webonary_Utility::GetInt('displayAdvancedSearchName');
-
-        echo "<input type=\"hidden\" id=\"display-advanced\" value=\"$advanced_search\">";
-
         $substitutions = [
             '@url@' => get_bloginfo('url', 'display'),
             '@search@' => __('Search', 'sil_dictionary'),
-            '@advanced_search@' => __('Advanced Search', 'sil_dictionary'),
-            '@hide_advanced_search@' => __('Hide Advanced Search', 'sil_dictionary'),
             '@search_query@' => get_search_query(),
             '@language_dropdown@' => $this->GetLanguageDropdown(),
             '@parts_of_speech_dropdown@' => $this->GetPartsOfSpeechDropdown(),

@@ -326,14 +326,6 @@ msgstr ""
 msgid "Search"
 msgstr "ស្វែងរក"
 
-#: include/searchform_func.php:303
-msgid "Advanced Search"
-msgstr "ការស្វែងរក​កម្រិតខ្ពស់"
-
-#: include/searchform_func.php:305
-msgid "Hide Advanced Search"
-msgstr "លាក់​ការស្វែងរក​កម្រិត​ខ្ពស់"
-
 #: include/searchform_func.php:319
 msgid "Match whole words"
 msgstr "ត្រូវ​នឹង​​ពាក្យ​ទាំង​មូល"
