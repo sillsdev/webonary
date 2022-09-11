@@ -915,7 +915,9 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
  * The languages drop down box was too wide for a loooong language name.
  */
 .webonary_searchform_language_select {
-  max-width:250px;
+  max-width: 250px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .pageentry p {
