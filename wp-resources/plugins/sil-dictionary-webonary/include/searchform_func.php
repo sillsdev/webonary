@@ -57,7 +57,7 @@ function webonary_searchform() {
 
 				if ($options !== '') {
 					$options = "<option value=''>" . __('All Parts of Speech','sil_dictionary') ."</options>" . $options;
-					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform' >" . $options . "</select>";
+					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform webonary_searchform_language_select' >" . $options . "</select>";
 				}
 			}
 
@@ -93,8 +93,7 @@ function webonary_searchform() {
             }));
 
 			if (count($dictionary->reversalLanguages)) {
-				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? ' selected' : '';
-				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "'" . $selected . ">" . $indexed->language_name . "</option>";
+				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "' selected>" . $indexed->language_name . "</option>";
 				foreach($dictionary->reversalLanguages as $reversal)
 				{
 					$indexed = new stdClass();
@@ -117,18 +116,19 @@ function webonary_searchform() {
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
 		if ( ! empty( $arrLanguages ) ) {
 
-            $lang_code = get_option('languagecode');
+        	$lang_code = get_option('languagecode');
 
 			$vernacularLanguages = array_values(array_filter($arrLanguages, function($v) use($lang_code) {
-                return $v['language_code'] == $lang_code;
+    			return $v['language_code'] == $lang_code;
             }));
 
 			if ( ! empty( $vernacularLanguages ) ) {
 
 				$vernacularLanguageName = $vernacularLanguages[0]['name'];
+				$language_dropdown_options .= '<option value="' . $lang_code . '" selected>' . $vernacularLanguageName . '</option>';
 				foreach ( $arrLanguages as $language ) {
 
-					if ( $language['name'] != $vernacularLanguageName || $language['language_code'] == $lang_code ) {
+					if ( $language['name'] != $vernacularLanguageName) {
 
 						$language_dropdown_options .= '<option value="' . $language['language_code'] . '"';
 						if ( $selected_language == $language['language_code'] ) {
@@ -145,10 +145,16 @@ function webonary_searchform() {
 		if($parts_of_speech)
 		{
 			$parts_of_speech_dropdown = wp_dropdown_categories(
-				"show_option_none=" .
-				__('All Parts of Speech','sil_dictionary') .
-				"&show_count=1&selected=" . $taxonomy .
-				"&orderby=name&echo=0&name=tax&taxonomy=sil_parts_of_speech"
+				[
+					'show_option_none' => __('All Parts of Speech','sil_dictionary'),
+					'show_count' => 1,
+					'selected' => $taxonomy,
+					'orderby' => 'name',
+					'echo' => 0,
+					'name' => 'tax',
+					'taxonomy' => 'sil_parts_of_speech',
+					'class' => 'webonary_searchform_language_select'
+				]
 			);
 		}
 
@@ -281,19 +287,16 @@ function theCursorPosition(ofThisInput) {
 				<br>
 				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch();" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php _e('Advanced Search', 'sil_dictionary'); ?></a>
 				<div id=advancedSearch style="display:none; border: 0; padding: 2px; font-size: 14px;">
-				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline;"><?php _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
-				<p style="margin-bottom: 6px;"></p>
+				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline; display: block; margin-bottom: 8px"><?php _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
 					<?php
 						if ($language_dropdown_options !== '') {
 							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
-							$language_dropdown .= '<option value="">' . __('All Languages','sil_dictionary') .'</option>';
 							$language_dropdown .= $language_dropdown_options;
 							$language_dropdown .= '</select>';
-							echo $language_dropdown . '<br>';
+							echo $language_dropdown;
 						}
 					?>
 					<?php echo $parts_of_speech_dropdown; ?>
-					<br>
                     <input type="hidden" name="search_options_set" value="1">
                     <input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
 					<br>

@@ -164,8 +164,7 @@ class Webonary_Search_Widget extends WP_Widget {
 		    }));
 
 		    if (count($dictionary->reversalLanguages)) {
-			    $selected = ($dictionary->mainLanguage->lang === $selected_language) ? 'selected' : '';
-                $this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" $selected>$indexed->language_name</option>";
+                $this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" selected>$indexed->language_name</option>";
 
 			    foreach($dictionary->reversalLanguages as $reversal)
 			    {
@@ -201,9 +200,10 @@ class Webonary_Search_Widget extends WP_Widget {
 		    if (!empty($vernacular_languages)) {
 
 			    $vernacular_language_name = $vernacular_languages[0]['name'];
-			    foreach ( $languages as $language ) {
+				$this->language_options[] = "<option value=\"{$lang_code}\" selected>{$vernacular_language_name}</option>";
+				foreach ( $languages as $language ) {
 
-				    if ( $language['name'] != $vernacular_language_name || $language['language_code'] == $lang_code ) {
+				    if ( $language['name'] != $vernacular_language_name ) {
 
 					    $selected = ($selected_language == $language['language_code']) ? 'selected' : '';
 					    $this->language_options[] = "<option value=\"{$language['language_code']}\" $selected>{$language['name']}</option>";
@@ -248,12 +248,10 @@ SQL;
         if (empty($this->language_options))
             return '';
 
-        $all_languages = __('All Languages', 'sil_dictionary');
         $options = implode(PHP_EOL, $this->language_options);
 
         return <<<HTML
 <select name="key" class="webonary_searchform_language_select form-select">
-  <option value="">$all_languages</option>
   $options
 </select>
 HTML;
