@@ -181,35 +181,6 @@ SQL;
 	}
 
 	?>
-	<script type="text/javascript">
-	<!--
-	window.onload = function()
-	{
-		<?php
-		if(isset($_GET['displayAdvancedSearchName']) && $_GET['displayAdvancedSearchName'] == 1)
-		{
-		?>
-		displayAdvancedSearch();
-		<?php
-		}
-		?>
-	}
-
-	function displayAdvancedSearch()
-	{
-		document.getElementById("advancedSearch").style.display = 'block';
-		document.getElementById("advancedSearchLink").style.display = 'none';
-		document.getElementById("displayAdvancedSearchId").value = "1";
-	}
-
-	function hideAdvancedSearch()
-	{
-		document.getElementById("advancedSearch").style.display = 'none';
-		document.getElementById("advancedSearchLink").style.display = 'block';
-		document.getElementById("displayAdvancedSearchId").value = "0";
-	}
-	-->
-	</script>
 	<?php
 		if(get_option('vernacularRightToLeft') == 1 || $special_chars_class == 'rtl')
 			echo '<style> .spbutton { float: right; } </style>';
@@ -285,9 +256,7 @@ function theCursorPosition(ofThisInput) {
 				<!-- search button -->
 				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
 				<br>
-				<a id=advancedSearchLink href="#" onclick="displayAdvancedSearch();" style="margin-left: 3px; font-size:14px; text-decoration: underline;"><?php _e('Advanced Search', 'sil_dictionary'); ?></a>
-				<div id=advancedSearch style="display:none; border: 0; padding: 2px; font-size: 14px;">
-				<a id=advancedSearchLink href="#" onclick="hideAdvancedSearch()" style="font-size:12px; text-decoration: underline; display: block; margin-bottom: 8px"><?php _e('Hide Advanced Search', 'sil_dictionary'); ?></a>
+				<p style="margin-bottom: 6px;"></p>
 					<?php
 						if ($language_dropdown_options !== '') {
 							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
@@ -301,7 +270,6 @@ function theCursorPosition(ofThisInput) {
                     <input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
 					<br>
                     <input id="match_accents" name="match_accents" <?php echo $accents_checked; ?> type="checkbox"> <label for="match_accents"><?php _e('Match accents and tones', 'sil_dictionary'); ?></label>
-					<input id=displayAdvancedSearchId name="displayAdvancedSearchName" type="hidden" value="0">
 				</div>
 			</div>
 		</form>

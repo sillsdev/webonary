@@ -1,26 +1,6 @@
 <script type="text/javascript">
-    window.onload = function() {
-        let show_advanced = document.getElementById('display-advanced').value === '1';
-        if (show_advanced)
-            displayAdvancedSearch();
-    }
-
-    function displayAdvancedSearch() {
-        document.getElementById('advancedSearch').style.display = 'block';
-        document.getElementById('advancedSearchLink').style.display = 'none';
-        document.getElementById('displayAdvancedSearchId').value = '1';
-        return false;
-    }
-
-    function hideAdvancedSearch() {
-        document.getElementById('advancedSearch').style.display = 'none';
-        document.getElementById('advancedSearchLink').style.display = 'block';
-        document.getElementById('displayAdvancedSearchId').value = '0';
-        return false;
-    }
-
     function addChar(button) {
-        let search_field = document.getElementById('s');
+        let search_field = document.getElementById("s");
         let current_pos = theCursorPosition(search_field);
         let orig_value = search_field.value;
         search_field.value = orig_value.substr(0, current_pos) + button.value.trim() + orig_value.substr(current_pos);
@@ -38,7 +18,7 @@
         if (document.selection) {
             ofThisInput.focus();
             let theSelectionRange = document.selection.createRange();
-            theSelectionRange.moveStart('character', -ofThisInput.value.length);
+            theSelectionRange.moveStart("character", -ofThisInput.value.length);
             theCursorLocation = theSelectionRange.text.length;
         } else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
             // or the FF way

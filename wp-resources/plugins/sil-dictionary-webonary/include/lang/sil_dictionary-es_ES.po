@@ -63,14 +63,6 @@ msgstr "Clasificación gramatical"
 msgid "Search"
 msgstr "Buscar"
 
-#: include/searchform_func.php:297 webonary/Webonary_Search_Widget.php:58
-msgid "Advanced Search"
-msgstr "Búsqueda avanzada"
-
-#: include/searchform_func.php:299 webonary/Webonary_Search_Widget.php:59
-msgid "Hide Advanced Search"
-msgstr "Ocultar búsqueda avanzada"
-
 #: include/searchform_func.php:304 webonary/Webonary_Search_Widget.php:251
 msgid "All Languages"
 msgstr "Todos los idiomas"
