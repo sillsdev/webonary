@@ -107,6 +107,28 @@ export class EntryItem implements Entry {
   // This is a copy of displayXhtml with all the HTML stripped. This is used for full text search.
   displayText: string;
 
+  headword: string[];
+
+  definitions: string[];
+
+  // Definitions of the subentries.
+  subentryDefinitions: string[];
+
+  // The headwords of the subentries.
+  subentryHeadwords: string[];
+
+  examples: string[];
+
+  translations: string[];
+
+  variantForms: string[];
+
+  scientificNames: string[];
+
+  plurals: string[];
+
+  citationForms: string[];
+
   updatedAt?: string;
 
   updatedBy?: string;
