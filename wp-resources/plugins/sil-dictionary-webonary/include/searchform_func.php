@@ -13,7 +13,7 @@ function custom_query_vars_filter($vars) {
 }
 add_filter( 'query_vars', 'custom_query_vars_filter' );
 
-function webonary_searchform() {
+function webonary_searchform($use_li = false) {
 	global $wpdb, $search_cookie;
 
 	if(get_option('noSearch') == 1)
@@ -180,32 +180,34 @@ SQL;
 		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}
 
-	?>
-	<?php
-		if(get_option('vernacularRightToLeft') == 1 || $special_chars_class == 'rtl')
-			echo '<style> .spbutton { float: right; } </style>';
+	if(get_option('vernacularRightToLeft') == 1 || $special_chars_class == 'rtl')
+		echo '<style> .spbutton { float: right; } </style>';
 
-		$input_font = get_option('inputFont');
-		if($input_font)
-		{
-		?>
-<style>
-input, textarea { font-family: "<?php echo $input_font; ?>" !important; }
-#s { font-family: "<?php echo $input_font; ?>" !important; }
-</style>
-		<?php
-		}
-		?>
-		 <form name="searchform" id="searchform" method="get" action="<?php bloginfo('url'); ?>">
-			<div class="normalSearch">
-				<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
-				<!-- search text box -->
-				<?php
-				$special_characters = get_option('special_characters');
-				$special_characters = str_replace('empty', '', $special_characters);
-				if((trim($special_characters)) != '')
-				{
-				?>
+	$input_font = get_option('inputFont');
+	if($input_font)
+	{
+	?>
+
+	<style>
+		input, textarea { font-family: "<?php echo $input_font; ?>" !important; }
+		#s { font-family: "<?php echo $input_font; ?>" !important; }
+	</style>
+	<?php
+	}
+
+	if ($use_li)
+		echo '<li id="search-2" class="widget widget_search">' . PHP_EOL;
+
+	?>
+	<form name="searchform" id="searchform" method="get" action="<?php bloginfo('url'); ?>">
+		<div class="normalSearch">
+			<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
+			<!-- search text box -->
+			<?php
+			$special_characters = get_option('special_characters');
+			$special_characters = str_replace('empty', '', $special_characters);
+			if((trim($special_characters)) != '') {
+			?>
 <style> select { padding: 5px; } </style>
 <script type="text/javascript">
 
@@ -237,95 +239,125 @@ function theCursorPosition(ofThisInput) {
 	return theCursorLocation;
 }
 </script>
-				<?php
-					$arrChar = explode(",", $special_characters);
-					$btn_html = '<input class="button spbutton %2$s" type="button" value="%1$s" onClick="addchar(this)">';
-					foreach ($arrChar as $char) {
-						printf($btn_html, trim($char), $special_chars_class);
-					}
+			<?php
+				$arrChar = explode(",", $special_characters);
+				$btn_html = '<input class="button spbutton %2$s" type="button" value="%1$s" onClick="addchar(this)">';
+				foreach ($arrChar as $char) {
+					printf($btn_html, trim($char), $special_chars_class);
 				}
-				?>
-				<p class="clear" style="margin-bottom: 10px"></p>
-				<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40 title="">
-
-				<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
-				<?php if (function_exists('qtrans_getLanguage')) {?>
-					<input type="hidden" id="lang" name="lang" value="<?php echo qtrans_getLanguage(); ?>"/>
-				<?php }?>
-
-				<!-- search button -->
-				<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
-				<br>
-				<p style="margin-bottom: 6px;"></p>
-					<?php
-						if ($language_dropdown_options !== '') {
-							$language_dropdown  = '<select name="key" class="webonary_searchform_language_select">';
-							$language_dropdown .= $language_dropdown_options;
-							$language_dropdown .= '</select>';
-							echo $language_dropdown;
-						}
-					?>
-					<?php echo $parts_of_speech_dropdown; ?>
-                    <input type="hidden" name="search_options_set" value="1">
-                    <input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
-					<br>
-                    <input id="match_accents" name="match_accents" <?php echo $accents_checked; ?> type="checkbox"> <label for="match_accents"><?php _e('Match accents and tones', 'sil_dictionary'); ?></label>
-				</div>
-			</div>
-		</form>
-		<br>
-		<div style="padding:3px; border:none;">
-		<h2 class="widgettitle"><?php _e('Number of Entries', 'sil_dictionary'); ?></h2>
-		<?php
-		$numberOfEntriesText = '';
-		$reversals = [];
-		foreach($arrIndexed as $indexed)
-		{
-            if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
-                continue;
-
-            $numberOfEntriesText .= $indexed->language_name . ':&nbsp;'. $indexed->totalIndexed. '<br>';
-			$reversals[] = $indexed->language_name;
-		}
-		echo $numberOfEntriesText;
-		echo '<br>';
-
-		if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
-		{
-			_e('Last upload:', 'sil_dictionary');
-            echo ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($lastEditDate));
-		}
-
-		$siteurlNoHttp = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
-
-		$publishedDate = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($siteurlNoHttp) . "' OR link_url LIKE 'http_://" . trim($siteurlNoHttp) . "/'");
-
-		if(isset($publishedDate) && $publishedDate != "0000-00-00 00:00:00")
-		{
-			echo '<br>';
-			_e('Date published:', 'sil_dictionary');
-            echo ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($publishedDate));
-		}
-		?>
-		</div>
-		<?php
-		if($search_term !== '')
-		{
-			if(count($sem_domains) > 0 && count($sem_domains) <= 10)
-			{
-				echo "<p>&nbsp;</p>";
-				echo "<strong>";
-				 _e('Found in Semantic Domains:', 'sil_dictionary');
-				echo "</strong>";
-				echo "<ul>";
-				foreach ($sem_domains as $sem_domain ) {
-				  echo '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>';
-				}
-				echo "</ul>";
 			}
+			?>
+			<p class="clear" style="margin-bottom: 10px"></p>
+			<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40 title="">
+
+			<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
+			<?php if (function_exists('qtrans_getLanguage')) {?>
+				<input type="hidden" id="lang" name="lang" value="<?php echo qtrans_getLanguage(); ?>"/>
+			<?php }?>
+
+			<!-- search button -->
+			<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
+			<br>
+			<p style="margin-bottom: 6px;"></p>
+			<?php
+			if ($language_dropdown_options !== '') {
+				$language_dropdown = '<select name="key" class="webonary_searchform_language_select">';
+				$language_dropdown .= $language_dropdown_options;
+				$language_dropdown .= '</select>';
+				echo $language_dropdown;
+			}
+			echo $parts_of_speech_dropdown;
+			?>
+			<input type="hidden" name="search_options_set" value="1">
+			<input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
+			<br>
+			<input id="match_accents" name="match_accents" <?php echo $accents_checked; ?> type="checkbox"> <label for="match_accents"><?php _e('Match accents and tones', 'sil_dictionary'); ?></label>
+		</div>
+	</form>
+	<?php
+
+	if ($use_li)
+		echo '</li>' . PHP_EOL;
+
+	webonary_status($arrIndexed, $lastEditDate, $use_li);
+	found_semantic_domains($search_term, $sem_domains, $use_li);
+}
+
+function webonary_status($indexed_languages, $lastEditDate, $use_li)
+{
+	global $wpdb;
+
+	$num_entries_header = __('Number of Entries', 'sil_dictionary');
+
+	$num_entries_text = '';
+	$reversals = [];
+
+	foreach($indexed_languages as $indexed) {
+		if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
+			continue;
+
+		$num_entries_text .= $indexed->language_name . ':&nbsp;'. $indexed->totalIndexed. '<br>';
+		$reversals[] = $indexed->language_name;
+	}
+
+	if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
+		$last_edit = __('Last upload:', 'sil_dictionary') . '&nbsp;' . Webonary_Utility::GetDateFormatter()->format(strtotime($lastEditDate)) . '<br>';
+	else
+		$last_edit = '';
+
+	$site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
+
+	$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%://" . trim($site_url_no_http) . "' OR link_url LIKE '%://" . trim($site_url_no_http) . "/'");
+
+	if(isset($published_date) && $published_date != "0000-00-00 00:00:00")
+		$published = __('Date published:', 'sil_dictionary') . ':&nbsp;'. Webonary_Utility::GetDateFormatter()->format(strtotime($published_date)) . '<br>';
+	else
+		$published = '';
+
+	if ($use_li)
+		echo '<li>' . PHP_EOL;
+
+	echo <<<HTML
+	<div class="dictionary-stats">
+		<h2 class="widgettitle">$num_entries_header</h2>
+		$num_entries_text
+		<br>
+		$last_edit
+		$published
+	</div>
+HTML;
+
+	if ($use_li)
+		echo '</li>' . PHP_EOL;
+}
+
+function found_semantic_domains($search_term, $sem_domains, $use_li)
+{
+	if($search_term !== '')
+	{
+		if(count($sem_domains) > 0 && count($sem_domains) <= 10)
+		{
+			$found_header = __('Found in Semantic Domains:', 'sil_dictionary');
+
+			$found_text = '';
+			foreach ($sem_domains as $sem_domain ) {
+				$found_text .= '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>' . PHP_EOL;
+			}
+
+			if ($use_li)
+				echo '<li>' . PHP_EOL;
+
+			echo <<<HTML
+<strong>$found_header</strong>
+<ul>
+	$found_text
+</ul>
+HTML;
+
+			if ($use_li)
+				echo '</li>' . PHP_EOL;
 		}
-		?>
-<?php
+	}
 }
 
 function add_header()
