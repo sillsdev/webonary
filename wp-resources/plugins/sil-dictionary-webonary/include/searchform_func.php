@@ -276,14 +276,18 @@ function theCursorPosition(ofThisInput) {
 	</form>
 	<?php
 
-	if ($use_li)
+	if ($use_li) {
 		echo '</li>' . PHP_EOL;
-
-	webonary_status($arrIndexed, $lastEditDate, $use_li);
-	found_semantic_domains($search_term, $sem_domains, $use_li);
+		echo '<li>' . PHP_EOL . webonary_status($arrIndexed, $lastEditDate) . '</li>' . PHP_EOL;
+		echo '<li>' . PHP_EOL . found_semantic_domains($search_term, $sem_domains) . '</li>' . PHP_EOL;
+	}
+	else {
+		echo webonary_status($arrIndexed, $lastEditDate);
+		echo found_semantic_domains($search_term, $sem_domains);
+	}
 }
 
-function webonary_status($indexed_languages, $lastEditDate, $use_li)
+function webonary_status($indexed_languages, $lastEditDate): string
 {
 	global $wpdb;
 
@@ -314,24 +318,20 @@ function webonary_status($indexed_languages, $lastEditDate, $use_li)
 	else
 		$published = '';
 
-	if ($use_li)
-		echo '<li>' . PHP_EOL;
-
-	echo <<<HTML
+	return <<<HTML
 	<div class="dictionary-stats">
 		<h2 class="widgettitle">$num_entries_header</h2>
-		$num_entries_text
-		<br>
-		$last_edit
-		$published
+		<div class="dictionary-stats" style="padding:5px">
+			$num_entries_text
+			<br>
+			$last_edit
+			$published
+        </div>
 	</div>
 HTML;
-
-	if ($use_li)
-		echo '</li>' . PHP_EOL;
 }
 
-function found_semantic_domains($search_term, $sem_domains, $use_li)
+function found_semantic_domains($search_term, $sem_domains): string
 {
 	if($search_term !== '')
 	{
@@ -344,20 +344,16 @@ function found_semantic_domains($search_term, $sem_domains, $use_li)
 				$found_text .= '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>' . PHP_EOL;
 			}
 
-			if ($use_li)
-				echo '<li>' . PHP_EOL;
-
-			echo <<<HTML
+			return <<<HTML
 <strong>$found_header</strong>
 <ul>
 	$found_text
 </ul>
 HTML;
-
-			if ($use_li)
-				echo '</li>' . PHP_EOL;
 		}
 	}
+
+	return '';
 }
 
 function add_header()
