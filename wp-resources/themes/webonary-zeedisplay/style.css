@@ -288,9 +288,6 @@ ul.qtrans_language_chooser li.active { display:none }
     border-color: #57013c;
 }
 
-#termsofservice {
-	text-align:right;
-}
 .hilite {background-color:#CCFFFF;}
 .highlight { background-color: #CCFFFF; display: inline; }
 
@@ -860,21 +857,29 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
 #footer {
   clear: both;
   margin: 0 0 10px 0;
-  padding: 3px 5px 3px 10px;
-  height: 100%;
+  padding: 3px 10px;
   line-height: 1.2em;
   font-family: tahoma, arial, sans-serif;
   color: #fff;
 }
 #copyright {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	display: block;
+    position: relative;
+    text-align: center;
 }
 #copyright > div {
-	min-width: 200px;
-	flex: 1;
+  display: inline-block;
+    margin-bottom: 5px;
 }
+#copyright > .cr-left {
+  position: absolute;
+  left: 0
+}
+#copyright > .cr-right {
+  position: absolute;
+  right: 0
+}
+
 .pink
 {
   background: #85005B;
@@ -983,4 +988,17 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
 		clear: both;
 		padding: 10px 10px;
 	}
+
+    #copyright {
+        display: block;
+    }
+    #copyright > div {
+        display: block
+    }
+    #copyright > .cr-left {
+        position: unset;
+    }
+    #copyright > .cr-right {
+        position: unset;
+    }
 }
