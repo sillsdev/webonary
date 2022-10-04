@@ -4,33 +4,44 @@
     }
 </style>
 <form name="searchform" id="searchform" method="get" action="@url@">
-    <input type="hidden" id="lang" name="lang" value="@qtrans_language@">
-    <input type="hidden" name="search_options_set" value="1">
-    <input id=displayAdvancedSearchId name="displayAdvancedSearchName" type="hidden" value="0">
+    <input type="hidden" id="lang" name="lang" value="@qtrans_language@" />
+    <input type="hidden" name="search_options_set" value="1" />
 
     <div class="normalSearch">
-        <div>
-            @special_buttons@
-        </div>
+        <div>@special_buttons@</div>
         <table style="width: 100%">
             <tr>
-                <td><input type="text" name="s" id="s" value="@search_query@" title="" class="form-control" style="width: 100%"></td>
-                <td style="width: 20px"><button type="submit" id="webonary-search-submit" name="search" value="@search@" class="btn btn-secondary">@search@</button></td>
+                <td>
+                    <input
+                        type="text"
+                        name="s"
+                        id="s"
+                        value="@search_query@"
+                        title=""
+                        class="form-control"
+                        style="width: 100%"
+                    />
+                </td>
+                <td style="width: 20px">
+                    <button
+                        type="submit"
+                        id="webonary-search-submit"
+                        name="search"
+                        value="@search@"
+                        class="btn btn-secondary"
+                    >
+                        @search@
+                    </button>
+                </td>
             </tr>
         </table>
-        <a id=advancedSearchLink href="#" onclick="return displayAdvancedSearch();">@advanced_search@</a>
-        <div id=advancedSearch style="display:none; ">
-            <div class="mb-1">
-                <a href="#" onclick="return hideAdvancedSearch();">@hide_advanced_search@</a>
-            </div>
-
-            @language_dropdown@
-            @parts_of_speech_dropdown@
-
-            <input id="match_whole_words" name="match_whole_words" value="1" @whole_words_checked@ type="checkbox"> <label for="match_whole_words">@match_whole_words@</label>
-            <br>
-            <input id="match_accents" name="match_accents" @accents_checked@ type="checkbox"> <label for="match_accents">@match_accents@</label>
-
+        <div id="advancedSearch" style="display: block">
+            @language_dropdown@ @parts_of_speech_dropdown@
+            <input id="match_whole_words" name="match_whole_words" value="1" @whole_words_checked@ type="checkbox" />
+            <label for="match_whole_words">@match_whole_words@</label>
+            <br />
+            <input id="match_accents" name="match_accents" @accents_checked@ type="checkbox" />
+            <label for="match_accents">@match_accents@</label>
         </div>
     </div>
 </form>
@@ -38,12 +49,6 @@
     <h2>@num_entries_title@</h2>
     @num_entries@
 </div>
-<div>
-    @last_update@
-</div>
-<div>
-    @date_published@
-</div>
-<div>
-    @semantic_domains@
-</div>
+<div>@last_upload@</div>
+<div>@date_published@</div>
+<div>@semantic_domains@</div>

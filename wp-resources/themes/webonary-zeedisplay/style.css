@@ -151,7 +151,8 @@ ul.qtrans_language_chooser li.active { display:none }
 .fullwidth {
   width: 100%;
 }
-/*============================ SIDEBAR ============================*/
+
+/*region SIDEBAR*/
 #sidebar {
   flex: 1;
   width: 38%;
@@ -189,6 +190,12 @@ ul.qtrans_language_chooser li.active { display:none }
   -webkit-border-radius: 10px; /* Safari, Chrome */
   -khtml-border-radius: 10px; /* Konqueror */
 }
+
+#sidebar ul li div.dictionary-stats {
+  border: none;
+  padding: 0 3px;
+}
+
 #sidebar ul li div ul, #sidebar ul li div ul li {
   border: none;
   margin: 0;
@@ -223,6 +230,8 @@ ul.qtrans_language_chooser li.active { display:none }
   margin-left: 10px;
   background: none;
 }
+/*endregion*/
+
 /* Theme SocialMedia Widget */
 #socialmedia_buttons img{
   margin: 1px;
@@ -279,9 +288,6 @@ ul.qtrans_language_chooser li.active { display:none }
     border-color: #57013c;
 }
 
-#termsofservice {
-	text-align:right;
-}
 .hilite {background-color:#CCFFFF;}
 .highlight { background-color: #CCFFFF; display: inline; }
 
@@ -851,21 +857,29 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
 #footer {
   clear: both;
   margin: 0 0 10px 0;
-  padding: 3px 5px 3px 10px;
-  height: 100%;
+  padding: 3px 10px;
   line-height: 1.2em;
   font-family: tahoma, arial, sans-serif;
   color: #fff;
 }
 #copyright {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	display: block;
+    position: relative;
+    text-align: center;
 }
 #copyright > div {
-	min-width: 200px;
-	flex: 1;
+  display: inline-block;
+    margin-bottom: 5px;
 }
+#copyright > .cr-left {
+  position: absolute;
+  left: 0
+}
+#copyright > .cr-right {
+  position: absolute;
+  right: 0
+}
+
 .pink
 {
   background: #85005B;
@@ -915,7 +929,9 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
  * The languages drop down box was too wide for a loooong language name.
  */
 .webonary_searchform_language_select {
-  max-width:250px;
+  max-width: 250px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .pageentry p {
@@ -972,4 +988,17 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
 		clear: both;
 		padding: 10px 10px;
 	}
+
+    #copyright {
+        display: block;
+    }
+    #copyright > div {
+        display: block
+    }
+    #copyright > .cr-left {
+        position: unset;
+    }
+    #copyright > .cr-right {
+        position: unset;
+    }
 }

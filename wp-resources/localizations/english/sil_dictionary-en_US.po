@@ -63,14 +63,6 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: include/searchform_func.php:297 webonary/Webonary_Search_Widget.php:58
-msgid "Advanced Search"
-msgstr ""
-
-#: include/searchform_func.php:299 webonary/Webonary_Search_Widget.php:59
-msgid "Hide Advanced Search"
-msgstr ""
-
 #: include/searchform_func.php:304 webonary/Webonary_Search_Widget.php:251
 msgid "All Languages"
 msgstr ""
@@ -88,7 +80,7 @@ msgid "Number of Entries"
 msgstr ""
 
 #: include/searchform_func.php:339 webonary/Webonary_Search_Widget.php:82
-msgid "Last update:"
+msgid "Last upload:"
 msgstr ""
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318

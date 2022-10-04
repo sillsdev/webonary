@@ -326,14 +326,6 @@ msgstr ""
 msgid "Search"
 msgstr "Axtarış"
 
-#: include/searchform_func.php:303
-msgid "Advanced Search"
-msgstr ""
-
-#: include/searchform_func.php:305
-msgid "Hide Advanced Search"
-msgstr ""
-
 #: include/searchform_func.php:319
 msgid "Match whole words"
 msgstr ""
@@ -347,7 +339,7 @@ msgid "Number of Entries"
 msgstr ""
 
 #: include/searchform_func.php:345
-msgid "Last update:"
+msgid "Last upload:"
 msgstr "Son yeniləmə:"
 
 #: include/searchform_func.php:355

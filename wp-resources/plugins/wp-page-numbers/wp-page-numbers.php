@@ -8,6 +8,8 @@ Author: Jens T&ouml;rnell
 Author URI: http://www.jenst.se
 */
 
+/** @noinspection PhpMissingReturnTypeInspection */
+
 function wp_page_numbers_stylesheet()
 {
 	$settings = get_option('wp_page_numbers_array');
@@ -15,30 +17,31 @@ function wp_page_numbers_stylesheet()
     if ($settings === false)
         return;
 
-	$head_stylesheet = $settings["head_stylesheetsheet"];
-	$head_stylesheet_folder_name = $settings["head_stylesheetsheet_folder_name"];
-	$style_theme = $settings["style_theme"];
+	$head_stylesheet = $settings['head_stylesheetsheet'];
+	$head_stylesheet_folder_name = $settings['head_stylesheetsheet_folder_name'];
+	$style_theme = $settings['style_theme'];
 
-	if($head_stylesheet == "on" || $head_stylesheet == "" && (is_archive() || is_search() || is_home() ||is_page()))
+	if($head_stylesheet == 'on' || $head_stylesheet == '' && (is_archive() || is_search() || is_home() ||is_page()))
 	{
 		echo '<link rel="stylesheet" href="'. get_bloginfo('wpurl') . '/wp-content/plugins/wp-page-numbers/';
-		if($head_stylesheet_folder_name == "")
+		if($head_stylesheet_folder_name == '')
 		{
-			if($style_theme == "default")
-				echo 'default';
-			elseif($style_theme == "classic")
-				echo 'classic';
-			elseif($style_theme == "tiny")
-				echo 'tiny';
-			elseif($style_theme == "panther")
-				echo 'panther';
-			elseif($style_theme == "stylish")
-				echo 'stylish';
-			else
-				echo 'default';
+			switch ($style_theme) {
+				case 'default':
+				case 'classic':
+				case 'tiny':
+				case 'panther':
+				case 'stylish':
+					echo $style_theme;
+					break;
+
+				default:
+					echo 'default';
+			}
 		}
-		else
+		else {
 			echo $head_stylesheet_folder_name;
+		}
 		echo '/wp-page-numbers.css" type="text/css" media="screen" />';
 	}
 }
@@ -46,26 +49,26 @@ add_action('wp_head', 'wp_page_numbers_stylesheet');
 
 function wp_page_numbers_check_num($num)
 {
-  return ($num%2) ? true : false;
+  return (bool)(($num % 2));
 }
 
 function wp_page_numbers_page_of_page($max_page, $paged, $page_of_page_text, $page_of_of)
 {
-	$pagingString = "";
+	$pagingString = '';
 	if ( $max_page > 1)
 	{
 		$pagingString .= '<li class="page_info">';
-		if($page_of_page_text == "")
+		if($page_of_page_text == '')
 			$pagingString .= 'Page ';
 		else
 			$pagingString .= $page_of_page_text . ' ';
 
-		if ( $paged != "" )
+		if ( $paged != '' )
 			$pagingString .= $paged;
 		else
 			$pagingString .= 1;
 
-		if($page_of_of == "")
+		if($page_of_of == '')
 			$pagingString .= ' of ';
 		else
 			$pagingString .= ' ' . $page_of_of . ' ';
@@ -74,16 +77,16 @@ function wp_page_numbers_page_of_page($max_page, $paged, $page_of_page_text, $pa
 	return $pagingString;
 }
 
-function wp_page_numbers_prevpage($paged, $max_page, $prevpage)
+function wp_page_numbers_prev_page($paged, $max_page, $prev_page)
 {
 	if( $max_page > 1 && $paged > 1 )
-		$pagingString = '<li><a href="'.get_pagenum_link($paged-1). '">'.$prevpage.'</a></li>';
-	return $pagingString;
+		$pagingString = '<li><a href="'.get_pagenum_link($paged-1). '">'.$prev_page.'</a></li>';
+	return $pagingString ?? '';
 }
 
-function wp_page_numbers_left_side($max_page, $limit_pages, $paged, $pagingString)
+function wp_page_numbers_left_side($max_page, $limit_pages, $paged)
 {
-	$pagingString = "";
+	$pagingString = '';
 	$page_check_max = false;
 	$page_check_min = false;
 	if($max_page > 1)
@@ -92,7 +95,7 @@ function wp_page_numbers_left_side($max_page, $limit_pages, $paged, $pagingStrin
 		{
 			if( $i <= $limit_pages )
 			{
-				if ($paged == $i || ($paged == "" && $i == 1))
+				if ($paged == $i || ($paged == '' && $i == 1))
 					$pagingString .= '<li class="active_page"><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
 				else
 					$pagingString .= '<li><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
@@ -104,63 +107,68 @@ function wp_page_numbers_left_side($max_page, $limit_pages, $paged, $pagingStrin
 		}
 		return array($pagingString, $page_check_max, $page_check_min);
 	}
+
+	return null;
 }
 
 function wp_page_numbers_middle_side($max_page, $paged, $limit_pages_left, $limit_pages_right)
 {
-	$pagingString = "";
+	$pagingString = '';
 	$page_check_max = false;
 	$page_check_min = false;
-	for($i=1; $i<($max_page+1); $i++)
-	{
-		if($paged-$i <= $limit_pages_left && $paged+$limit_pages_right >= $i)
-		{
-			if ($paged == $i)
-				$pagingString .= '<li class="active_page"><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
-			else
-				$pagingString .= '<li><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
+
+	for ($i = 1; $i < ($max_page + 1); $i++) {
+		if ($paged - $i <= $limit_pages_left && $paged + $limit_pages_right >= $i) {
+			$pagingString .= wp_page_numbers_get_link_li($paged, $i);
 
 			if ($i == 1)
 				$page_check_min = true;
+
 			if ($max_page == $i)
 				$page_check_max = true;
 		}
 	}
+
 	return array($pagingString, $page_check_max, $page_check_min);
 }
 
-function wp_page_numbers_right_side($max_page, $limit_pages, $paged, $pagingString)
+function wp_page_numbers_right_side($max_page, $limit_pages, $paged)
 {
-	$pagingString = "";
+	$pagingString = '';
 	$page_check_max = false;
 	$page_check_min = false;
-	for($i=1; $i<($max_page+1); $i++)
-	{
-		if( ($max_page + 1 - $i) <= $limit_pages )
-		{
-			if ($paged == $i)
-				$pagingString .= '<li class="active_page"><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
-			else
-				$pagingString .= '<li><a href="'.get_pagenum_link($i). '">'.$i.'</a></li>'."\n";
+
+	for ($i = 1; $i < ($max_page + 1); $i++) {
+		if (($max_page + 1 - $i) <= $limit_pages) {
+			$pagingString .= wp_page_numbers_get_link_li($paged, $i);
 
 			if ($i == 1)
-			$page_check_min = true;
+				$page_check_min = true;
 		}
+
 		if ($max_page == $i)
 			$page_check_max = true;
-
 	}
+
 	return array($pagingString, $page_check_max, $page_check_min);
 }
 
-function wp_page_numbers_nextpage($paged, $max_page, $nextpage)
+function wp_page_numbers_get_link_li($paged, $i)
 {
-	if( $paged != "" && $paged < $max_page)
-		$pagingString = '<li><a href="'.get_pagenum_link($paged+1). '">'.$nextpage.'</a></li>'."\n";
-	return $pagingString;
+	if ($paged == $i)
+		return sprintf('<li class="active_page"><a href="%s">%s</a></li>%s', get_pagenum_link($i), $i, PHP_EOL);
+	else
+		return sprintf('<li><a href="%s">%s</a></li>%s', get_pagenum_link($i), $i, PHP_EOL);
 }
 
-function wp_page_numbers($start = "", $end = "")
+function wp_page_numbers_next_page($paged, $max_page, $next_page)
+{
+	if( $paged != '' && $paged < $max_page)
+		$pagingString = '<li><a href="'.get_pagenum_link($paged+1). '">'.$next_page.'</a></li>'."\n";
+	return $pagingString ?? '';
+}
+
+function wp_page_numbers($start = '', $end = '')
 {
 	global $wp_query;
 	global $max_page;
@@ -169,29 +177,29 @@ function wp_page_numbers($start = "", $end = "")
 	if ( !$paged ) { $paged = 1; }
 
 	$settings = get_option('wp_page_numbers_array');
-	$page_of_page = $settings["page_of_page"];
-	$page_of_page_text = $settings["page_of_page_text"];
-	$page_of_of = $settings["page_of_of"];
+	$page_of_page = $settings['page_of_page'];
+	$page_of_page_text = $settings['page_of_page_text'];
+	$page_of_of = $settings['page_of_of'];
 
-	$next_prev_text = $settings["next_prev_text"];
-	$show_start_end_numbers = $settings["show_start_end_numbers"];
-	$show_page_numbers = $settings["show_page_numbers"];
+	$next_prev_text = $settings['next_prev_text'];
+	$show_start_end_numbers = $settings['show_start_end_numbers'];
+	$show_page_numbers = $settings['show_page_numbers'];
 
-	$limit_pages = $settings["limit_pages"];
-	$nextpage = $settings["nextpage"];
-	$prevpage = $settings["prevpage"];
-	$startspace = $settings["startspace"];
-	$endspace = $settings["endspace"];
+	$limit_pages = $settings['limit_pages'];
+	$next_page = $settings['nextpage'];
+	$prev_page = $settings['prevpage'];
+	$start_space = $settings['startspace'];
+	$end_space = $settings['endspace'];
 
-	if( $nextpage == "" ) { $nextpage = "&gt;"; }
-	if( $prevpage == "" ) { $prevpage = "&lt;"; }
-	if( $startspace == "" ) { $startspace = "..."; }
-	if( $endspace == "" ) { $endspace = "..."; }
+	if( $next_page == '' ) { $next_page = '&gt;'; }
+	if( $prev_page == '' ) { $prev_page = '&lt;'; }
+	if( $start_space == '' ) { $start_space = '...'; }
+	if( $end_space == '' ) { $end_space = '...'; }
 
-	if($limit_pages == "") { $limit_pages = "10"; }
-	elseif ( $limit_pages == "0" ) { $limit_pages = $max_page; }
+	if($limit_pages == '') { $limit_pages = '10'; }
+	elseif ( $limit_pages == '0' ) { $limit_pages = $max_page; }
 
-	if(wp_page_numbers_check_num($limit_pages) == true)
+	if(wp_page_numbers_check_num($limit_pages))
 	{
 		$limit_pages_left = ($limit_pages-1)/2;
 		$limit_pages_right = ($limit_pages-1)/2;
@@ -204,55 +212,46 @@ function wp_page_numbers($start = "", $end = "")
 
 	if( $max_page <= $limit_pages ) { $limit_pages = $max_page; }
 
-	$pagingString = "<div id='wp_page_numbers'>\n";
+	$pagingString = '<div id="wp_page_numbers">' . PHP_EOL;
 	$pagingString .= '<ul>';
 
-	if($page_of_page != "no")
+	if($page_of_page != 'no')
 		$pagingString .= wp_page_numbers_page_of_page($max_page, $paged, $page_of_page_text, $page_of_of);
 
-	if( ($paged) <= $limit_pages_left )
-	{
-		list ($value1, $value2, $page_check_min) = wp_page_numbers_left_side($max_page, $limit_pages, $paged, $pagingString);
-		$pagingMiddleString .= $value1;
-	}
-	elseif( ($max_page+1 - $paged) <= $limit_pages_right )
-	{
-		list ($value1, $value2, $page_check_min) = wp_page_numbers_right_side($max_page, $limit_pages, $paged, $pagingString);
-		$pagingMiddleString .= $value1;
-	}
-	else
-	{
+	if (($paged) <= $limit_pages_left) {
+		list ($value1, $value2, $page_check_min) = wp_page_numbers_left_side($max_page, $limit_pages, $paged);
+	} elseif (($max_page + 1 - $paged) <= $limit_pages_right) {
+		list ($value1, $value2, $page_check_min) = wp_page_numbers_right_side($max_page, $limit_pages, $paged);
+	} else {
 		list ($value1, $value2, $page_check_min) = wp_page_numbers_middle_side($max_page, $paged, $limit_pages_left, $limit_pages_right);
-		$pagingMiddleString .= $value1;
 	}
-	if($next_prev_text != "no")
-		$pagingString .= wp_page_numbers_prevpage($paged, $max_page, $prevpage);
 
-		if ($page_check_min == false && $show_start_end_numbers != "no")
-		{
-			$pagingString .= "<li class=\"first_last_page\">";
-			$pagingString .= "<a href=\"" . get_pagenum_link(1) . "\">1</a>";
-			$pagingString .= "</li>\n<li  class=\"space\">".$startspace."</li>\n";
-		}
+	$pagingMiddleString = $value1;
 
-	if($show_page_numbers != "no")
+	if ($next_prev_text != 'no')
+		$pagingString .= wp_page_numbers_prev_page($paged, $max_page, $prev_page);
+
+	if (!$page_check_min && $show_start_end_numbers != 'no') {
+		$pagingString .= '<li class="first_last_page"><a href="' . get_pagenum_link() . '">1</a></li>' . PHP_EOL;
+		$pagingString .= '<li  class="space">' . $start_space . '</li>' . PHP_EOL;
+	}
+
+	if($show_page_numbers != 'no')
 		$pagingString .= $pagingMiddleString;
 
-		if ($value2 == false && $show_start_end_numbers != "no")
+		if (!$value2 && $show_start_end_numbers != 'no')
 		{
-			$pagingString .= "<li class=\"space\">".$endspace."</li>\n";
-			$pagingString .= "<li class=\"first_last_page\">";
-			$pagingString .= "<a href=\"" . get_pagenum_link($max_page) . "\">" . $max_page . "</a>";
-			$pagingString .= "</li>\n";
+			$pagingString .= '<li class="space">'.$end_space.'</li>' . PHP_EOL;
+			$pagingString .= '<li class="first_last_page"><a href=\"' . get_pagenum_link($max_page) . '">' . $max_page . '</a></li>' . PHP_EOL;
 		}
 
-	if($next_prev_text != "no")
-		$pagingString .= wp_page_numbers_nextpage($paged, $max_page, $nextpage);
+	if($next_prev_text != 'no')
+		$pagingString .= wp_page_numbers_next_page($paged, $max_page, $next_page);
 
-	$pagingString .= "</ul>\n";
+	$pagingString .= '</ul>' . PHP_EOL;
 
-	$pagingString .= "<div style='float: none; clear: both;'></div>\n";
-	$pagingString .= "</div>\n";
+	$pagingString .= '<div style="float: none; clear: both;"></div>' . PHP_EOL;
+	$pagingString .= '</div>' . PHP_EOL;
 
 	if($max_page > 1)
 		echo $start . $pagingString . $end;
@@ -262,62 +261,65 @@ function wp_page_numbers_settings()
 {
     if(isset($_POST['submitted']))
 	{
-		if($_POST["head_stylesheetsheet"] == "")
-			$_POST["head_stylesheetsheet"] = "no";
-		if($_POST["page_of_page"] == "")
-			$_POST["page_of_page"] = "no";
-		if($_POST["next_prev_text"] == "")
-			$_POST["next_prev_text"] = "no";
-		if($_POST["show_start_end_numbers"] == "")
-			$_POST["show_start_end_numbers"] = "no";
-		if($_POST["show_page_numbers"] == "")
-			$_POST["show_page_numbers"] = "no";
-		if($_POST["style_theme"] == "")
-			$_POST["style_theme"] = "default";
+		if($_POST['head_stylesheetsheet'] == '')
+			$_POST['head_stylesheetsheet'] = 'no';
+		if($_POST['page_of_page'] == '')
+			$_POST['page_of_page'] = 'no';
+		if($_POST['next_prev_text'] == '')
+			$_POST['next_prev_text'] = 'no';
+		if($_POST['show_start_end_numbers'] == '')
+			$_POST['show_start_end_numbers'] = 'no';
+		if($_POST['show_page_numbers'] == '')
+			$_POST['show_page_numbers'] = 'no';
+		if($_POST['style_theme'] == '')
+			$_POST['style_theme'] = 'default';
 
 		$settings = array (
-			"head_stylesheetsheet"				=> $_POST["head_stylesheetsheet"],
-			"head_stylesheetsheet_folder_name"	=> $_POST["head_stylesheetsheet_folder_name"],
-			"page_of_page"						=> $_POST["page_of_page"],
-			"page_of_page_text"					=> $_POST["page_of_page_text"],
-			"page_of_of"						=> $_POST["page_of_of"],
-			"next_prev_text"					=> $_POST["next_prev_text"],
-			"show_start_end_numbers"			=> $_POST["show_start_end_numbers"],
-			"show_page_numbers"					=> $_POST["show_page_numbers"],
-			"limit_pages"						=> $_POST["limit_pages"],
-			"nextpage"							=> $_POST["nextpage"],
-			"prevpage"							=> $_POST["prevpage"],
-			"startspace"						=> $_POST["startspace"],
-			"endspace"							=> $_POST["endspace"],
-			"style_theme"						=> $_POST["style_theme"],
+			'head_stylesheetsheet'				=> $_POST['head_stylesheetsheet'],
+			'head_stylesheetsheet_folder_name'	=> $_POST['head_stylesheetsheet_folder_name'],
+			'page_of_page'						=> $_POST['page_of_page'],
+			'page_of_page_text'					=> $_POST['page_of_page_text'],
+			'page_of_of'						=> $_POST['page_of_of'],
+			'next_prev_text'					=> $_POST['next_prev_text'],
+			'show_start_end_numbers'			=> $_POST['show_start_end_numbers'],
+			'show_page_numbers'					=> $_POST['show_page_numbers'],
+			'limit_pages'						=> $_POST['limit_pages'],
+			'nextpage'							=> $_POST['nextpage'],
+			'prevpage'							=> $_POST['prevpage'],
+			'startspace'						=> $_POST['startspace'],
+			'endspace'							=> $_POST['endspace'],
+			'style_theme'						=> $_POST['style_theme'],
 		);
 		update_option('wp_page_numbers_array', $settings);
 
-		echo "<div id=\"message\" class=\"updated fade\"><p><strong>WP Page Numbers plugin options updated.</strong></p></div>";
+		echo '<div id="message" class="updated fade"><p><strong>WP Page Numbers plugin options updated.</strong></p></div>';
     }
 
 	$settings = get_option('wp_page_numbers_array');
 
-	$style_theme = $settings["style_theme"];
+	$style_theme = $settings['style_theme'];
 
-	$head_stylesheet = $settings["head_stylesheetsheet"];
-	$head_stylesheet_folder_name = $settings["head_stylesheetsheet_folder_name"];
-	$page_of_page = $settings["page_of_page"];
-	$page_of_page_text = $settings["page_of_page_text"];
-	$page_of_of = $settings["page_of_of"];
+	$head_stylesheet = $settings['head_stylesheetsheet'];
+	$head_stylesheet_folder_name = $settings['head_stylesheetsheet_folder_name'];
+	$page_of_page = $settings['page_of_page'];
+	$page_of_page_text = $settings['page_of_page_text'];
+	$page_of_of = $settings['page_of_of'];
 
-	$next_prev_text = $settings["next_prev_text"];
-	$show_start_end_numbers = $settings["show_start_end_numbers"];
-	$show_page_numbers = $settings["show_page_numbers"];
+	$next_prev_text = $settings['next_prev_text'];
+	$show_start_end_numbers = $settings['show_start_end_numbers'];
+	$show_page_numbers = $settings['show_page_numbers'];
 
-	$limit_pages = $settings["limit_pages"];
+	$limit_pages = $settings['limit_pages'];
 
-	$nextpage = $settings["nextpage"];
-	$prevpage = $settings["prevpage"];
-	$startspace = $settings["startspace"];
-	$endspace = $settings["endspace"];
+	$next_page = $settings['nextpage'];
+	$prev_page = $settings['prevpage'];
+	$start_space = $settings['startspace'];
+	$end_space = $settings['endspace'];
 
     ?>
+<!--suppress HtmlUnknownTarget -->
+<!--suppress HtmlFormInputWithoutLabel -->
+<!--suppress HtmlDeprecatedAttribute -->
 <form method="post" name="options" target="_self">
 
 <div class="wrap">
@@ -327,7 +329,7 @@ function wp_page_numbers_settings()
 		<td><strong>Use themes?</strong></td>
 		<td>
 			<input type="checkbox" name="head_stylesheetsheet" <?php
-			if($head_stylesheet == "on" || $head_stylesheet == "")
+			if($head_stylesheet == "on" || $head_stylesheet == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -338,7 +340,7 @@ function wp_page_numbers_settings()
 		<td style="width: 400px;"><strong>Modern</strong></td>
 		<td style="padding-top: 5px; padding-bottom: 5px;">
 			<input type="radio" name="style_theme" value="default" <?php
-			if( ( $style_theme == "default" || $style_theme == "" ) && $head_stylesheet_folder_name == "" )
+			if( ( $style_theme == "default" || $style_theme == '' ) && $head_stylesheet_folder_name == '' )
 			{
 				echo 'checked="checked"';
 			}
@@ -350,7 +352,7 @@ function wp_page_numbers_settings()
 		<td><strong>Classic</strong></td>
 		<td style="padding-top: 5px; padding-bottom: 5px;">
 			<input type="radio" name="style_theme" value="classic" <?php
-			if($style_theme == "classic" && $head_stylesheet_folder_name == "")
+			if($style_theme == "classic" && $head_stylesheet_folder_name == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -362,7 +364,7 @@ function wp_page_numbers_settings()
 		<td><strong>Tiny</strong></td>
 		<td style="padding-top: 5px; padding-bottom: 5px;">
 			<input type="radio" name="style_theme" value="tiny" <?php
-			if($style_theme == "tiny" && $head_stylesheet_folder_name == "")
+			if($style_theme == "tiny" && $head_stylesheet_folder_name == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -374,7 +376,7 @@ function wp_page_numbers_settings()
 		<td><strong>Panther</strong></td>
 		<td style="padding-top: 5px; padding-bottom: 5px;">
 			<input type="radio" name="style_theme" value="panther" <?php
-			if($style_theme == "panther" && $head_stylesheet_folder_name == "")
+			if($style_theme == "panther" && $head_stylesheet_folder_name == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -386,7 +388,7 @@ function wp_page_numbers_settings()
 		<td><strong>Stylish</strong></td>
 		<td style="padding-top: 5px; padding-bottom: 5px;">
 			<input type="radio" name="style_theme" value="stylish" <?php
-			if($style_theme == "stylish" && $head_stylesheet_folder_name == "")
+			if($style_theme == "stylish" && $head_stylesheet_folder_name == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -432,28 +434,28 @@ function wp_page_numbers_settings()
 	<tr>
 		<td><strong>Default text: </strong>&lt;</td>
 		<td colspan="3">
-			<input name="prevpage" type="text" style="width:100%;" value="<?php echo $prevpage; ?>" />
+			<input name="prevpage" type="text" style="width:100%;" value="<?php echo $prev_page; ?>" />
 		</td>
 	</tr>
 
 	<tr>
 		<td><strong>Default text: </strong>...</td>
 		<td colspan="3">
-			<input name="startspace" type="text" style="width:100%;" value="<?php echo $startspace; ?>" />
+			<input name="startspace" type="text" style="width:100%;" value="<?php echo $start_space; ?>" />
 		</td>
 	</tr>
 
 	<tr>
 		<td><strong>Default text: </strong>...</td>
 		<td colspan="3">
-			<input name="endspace" type="text" style="width:100%;" value="<?php echo $endspace; ?>" />
+			<input name="endspace" type="text" style="width:100%;" value="<?php echo $end_space; ?>" />
 		</td>
 	</tr>
 
 	<tr>
 		<td><strong>Default text: </strong>&gt;</td>
 		<td colspan="3">
-			<input name="nextpage" type="text" style="width:100%;" value="<?php echo $nextpage; ?>" />
+			<input name="nextpage" type="text" style="width:100%;" value="<?php echo $next_page; ?>" />
 		</td>
 	</tr>
 </table>
@@ -467,7 +469,7 @@ function wp_page_numbers_settings()
 		<td style="width: 400px;"><strong>Show page info</strong></td>
 		<td>
 			<input type="checkbox" name="page_of_page" <?php
-			if($page_of_page == "on" || $page_of_page == "")
+			if($page_of_page == "on" || $page_of_page == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -479,7 +481,7 @@ function wp_page_numbers_settings()
 		<td><strong>Show next / previous page text</td>
 		<td>
 			<input type="checkbox" name="next_prev_text" <?php
-			if($next_prev_text == "on" || $next_prev_text == "")
+			if($next_prev_text == "on" || $next_prev_text == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -491,7 +493,7 @@ function wp_page_numbers_settings()
 		<td><strong>Show start and end numbers</td>
 		<td>
 			<input type="checkbox" name="show_start_end_numbers" <?php
-			if($show_start_end_numbers == "on" || $show_start_end_numbers == "")
+			if($show_start_end_numbers == "on" || $show_start_end_numbers == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -503,7 +505,7 @@ function wp_page_numbers_settings()
 		<td><strong>Show page numbers</td>
 		<td>
 			<input type="checkbox" name="show_page_numbers" <?php
-			if($show_page_numbers == "on" || $show_page_numbers == "")
+			if($show_page_numbers == "on" || $show_page_numbers == '')
 			{
 				echo 'checked="checked"';
 			}
@@ -560,7 +562,7 @@ function wp_page_numbers_settings()
 			<td><strong>Number of pages to show</strong></td>
 		</tr>
 		<tr>
-			<td>This will limit your paging menu. Set a of maximum amount of pages to be displayed at the same time. If the textfield is blank, 10 is set by default. If 0 is set, it will not limit the paging.<br /><br /></td>
+			<td>This will limit your paging menu. Set a maximum amount of pages to be displayed at the same time. If the textfield is blank, 10 is set by default. If 0 is set, it will not limit the paging.<br /><br /></td>
 		</tr>
 		<tr>
 			<td><strong>Theme folder name</strong></td>
@@ -583,12 +585,11 @@ function wp_page_numbers_settings()
 		<input name="submitted" type="hidden" value="yes" />
 		<input type="submit" name="Submit" value="Update Settings &raquo;" />
 	</p>
-</form>
-</div><?php
+</div>
+</form><?php
 }
 
 function wp_page_numbers_add_to_menu() {
     add_submenu_page('options-general.php', 'WP Page Numbers Options', 'Page Numbers', 'edit_theme_options', __FILE__, 'wp_page_numbers_settings');
 }
 add_action('admin_menu', 'wp_page_numbers_add_to_menu');
-?>

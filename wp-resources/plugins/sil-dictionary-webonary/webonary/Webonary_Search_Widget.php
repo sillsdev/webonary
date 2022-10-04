@@ -48,15 +48,9 @@ class Webonary_Search_Widget extends WP_Widget {
 		else
 			$this->getMySqlLists($taxonomy, $search_term, $selected_language);
 
-		$advanced_search = Webonary_Utility::GetInt('displayAdvancedSearchName');
-
-        echo "<input type=\"hidden\" id=\"display-advanced\" value=\"$advanced_search\">";
-
         $substitutions = [
             '@url@' => get_bloginfo('url', 'display'),
             '@search@' => __('Search', 'sil_dictionary'),
-            '@advanced_search@' => __('Advanced Search', 'sil_dictionary'),
-            '@hide_advanced_search@' => __('Hide Advanced Search', 'sil_dictionary'),
             '@search_query@' => get_search_query(),
             '@language_dropdown@' => $this->GetLanguageDropdown(),
             '@parts_of_speech_dropdown@' => $this->GetPartsOfSpeechDropdown(),
@@ -77,9 +71,9 @@ class Webonary_Search_Widget extends WP_Widget {
 	        $substitutions['@qtrans_language@'] = '';
 
         if (empty($this->last_edit_date))
-	        $substitutions['@last_update@'] = '';
+	        $substitutions['@last_upload@'] = '';
         else
-	        $substitutions['@last_update@'] = __('Last update:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
+	        $substitutions['@last_upload@'] = __('Last upload:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
 
 		echo Webonary_Utility::includeTemplate('search-script.html');
         echo Webonary_Utility::includeTemplate('search-form.html', $substitutions);
@@ -164,8 +158,7 @@ class Webonary_Search_Widget extends WP_Widget {
 		    }));
 
 		    if (count($dictionary->reversalLanguages)) {
-			    $selected = ($dictionary->mainLanguage->lang === $selected_language) ? 'selected' : '';
-                $this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" $selected>$indexed->language_name</option>";
+                $this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" selected>$indexed->language_name</option>";
 
 			    foreach($dictionary->reversalLanguages as $reversal)
 			    {
@@ -201,9 +194,10 @@ class Webonary_Search_Widget extends WP_Widget {
 		    if (!empty($vernacular_languages)) {
 
 			    $vernacular_language_name = $vernacular_languages[0]['name'];
-			    foreach ( $languages as $language ) {
+				$this->language_options[] = "<option value=\"{$lang_code}\" selected>{$vernacular_language_name}</option>";
+				foreach ( $languages as $language ) {
 
-				    if ( $language['name'] != $vernacular_language_name || $language['language_code'] == $lang_code ) {
+				    if ( $language['name'] != $vernacular_language_name ) {
 
 					    $selected = ($selected_language == $language['language_code']) ? 'selected' : '';
 					    $this->language_options[] = "<option value=\"{$language['language_code']}\" $selected>{$language['name']}</option>";
@@ -248,12 +242,10 @@ SQL;
         if (empty($this->language_options))
             return '';
 
-        $all_languages = __('All Languages', 'sil_dictionary');
         $options = implode(PHP_EOL, $this->language_options);
 
         return <<<HTML
 <select name="key" class="webonary_searchform_language_select form-select">
-  <option value="">$all_languages</option>
   $options
 </select>
 HTML;

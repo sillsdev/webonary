@@ -5728,14 +5728,6 @@ msgstr ""
 msgid "New Website strings Name"
 msgstr ""
 
-#: include/searchform_func.php:283
-msgid "Advanced Search"
-msgstr ""
-
-#: include/searchform_func.php:285
-msgid "Hide Advanced Search"
-msgstr ""
-
 #: include/searchform_func.php:299
 msgid "Match whole words"
 msgstr ""
@@ -5749,7 +5741,7 @@ msgid "Number of Entries"
 msgstr ""
 
 #: include/searchform_func.php:326
-msgid "Last update:"
+msgid "Last upload:"
 msgstr ""
 
 #: include/searchform_func.php:337

@@ -181,7 +181,7 @@ class Webonary_Excel
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['Site Title', 'Country', 'URL', 'Copyright', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastImport'];
+			$rows[] = ['SiteTitle', 'Country', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastUpload'];
 
 		$sql =  "SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered FROM $wpdb->blogs
     WHERE blog_id != $wpdb->blogid
@@ -236,7 +236,27 @@ class Webonary_Excel
 			$ethnologue_code = trim($wpdb->get_var ( $sql ));
 			$fields[] = $ethnologue_code;
 
-			$numpost = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post'");
+			if (get_option('useCloudBackend')) {
+				$fields[] = 'Cloud';
+	
+				$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
+				$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+				if (is_null($dictionary)) {
+					$numpost = '';
+					$lastEditDate = '';
+				}
+				else {
+					$numpost = $dictionary->mainLanguage->entriesCount;
+                    $lastEditDate = date("Y-m-d H:m:s", strtotime($dictionary->updatedAt));
+				}
+			}
+			else {
+				$fields[] = 'Wordpress';
+
+				$numpost = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post'");
+				$lastEditDate = $wpdb->get_var("SELECT post_date FROM wp_" . $blog ['blog_id'] . "_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+			}
+
 			$fields[] = $numpost;
 			$fields[] = $blog['registered'];
 
@@ -252,7 +272,6 @@ class Webonary_Excel
 
 			$fields[] = stripslashes($notes);
 
-			$lastEditDate = $wpdb->get_var("SELECT post_date FROM wp_" . $blog ['blog_id'] . "_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 			if (empty($lastEditDate))
 				$fields[] = '';
 			elseif ($lastEditDate == '0000-00-00 00:00:00')
@@ -313,12 +332,13 @@ class Webonary_Excel
         <th>URL</th>
         <th>Copyright</th>
         <th>Code</th>
+        <th>Backend</th>
         <th>Entries</th>
         <th>Create Date</th>
         <th>Publish Date</th>
         <th>Contact Email</th>
         <th>Notes</th>
-        <th>Last Import</th>
+        <th>Last Upload</th>
       </tr>
     </thead>
     <tbody></tbody>

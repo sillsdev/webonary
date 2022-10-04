@@ -7648,7 +7648,7 @@ msgid "Number of Entries"
 msgstr "𖼰𖽙𖾐 𖽂𖽙𖾐 𖼺𖽪𖾐 𖼈𖽜𖾐 𖼮𖽑𖽡𖽺"
 
 #: include/searchform_func.php:170
-msgid "Last update:"
+msgid "Last upload:"
 msgstr "𖼄𖽳𖾑 𖼊𖽺𖾐 𖼊𖽑𖽡 𖼂𖽦𖾑 𖼖𖽳𖾑 𖼳𖽸 𖼐𖽑𖽡𖾐 𖼦𖽑𖽦："
 
 #: include/searchform_func.php:176

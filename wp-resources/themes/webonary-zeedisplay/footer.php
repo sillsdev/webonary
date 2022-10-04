@@ -1,14 +1,12 @@
 <?php
 global $blog_id;
 ?>
-<script language="javascript" type="text/javascript">
-<!--
-function popitup(url) {
-	newwindow=window.open(url,'name','height=600,width=500,scrollbars=yes');
-	if (window.focus) {newwindow.focus()}
-	return false;
-}
-// -->
+<script type="text/javascript">
+	function popitup(url) {
+		let new_window=window.open(url,'name','height=600,width=500,scrollbars=yes');
+		if (window.focus) {new_window.focus()}
+		return false;
+	}
 </script>
 	<div style="clear: both;"></div>
 
@@ -135,9 +133,10 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 			<div style="text-align:center;"><?php echo str_replace("[year]", date("Y"),$options['themeZee_footer']); ?></div>
 			<hr style="font-size:5px; margin-bottom: 4px; clear:both;">
 			<div id="copyright">
-				<div><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="width: 20%; margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
-				<div style="text-align:center;"><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <span style="margin-right:30px;"><a href="https://www.webonary.org" target="_blank">Webonary.org</a></span></div>
-				<div id=termsofservice><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>" style="width:20%;"><?php _e("Terms of Service", ZEE_LANG); ?></a></div>
+				<div class="cr-left"><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="https://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
+				<div class="cr-center"><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <span><a href="https://www.webonary.org" target="_blank">Webonary.org</a></span></div>
+				<div class="cr-right"><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>"><?php _e("Terms of Service", ZEE_LANG); ?></a></div>
+				<div class="clear"></div>
 			</div>
 		</div>
 	</div>

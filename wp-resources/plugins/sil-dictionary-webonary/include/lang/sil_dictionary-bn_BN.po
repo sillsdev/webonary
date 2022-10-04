@@ -7645,7 +7645,7 @@ msgid "Number of Entries"
 msgstr "লিপিবদ্ধকৃত সংখ্যা "
 
 #: include/searchform_func.php:170
-msgid "Last update:"
+msgid "Last upload:"
 msgstr "সর্বশেষ সংযোজন:"
 
 #: include/searchform_func.php:176

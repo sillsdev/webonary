@@ -7640,7 +7640,7 @@ msgid "Number of Entries"
 msgstr ""
 
 #: include/searchform_func.php:171
-msgid "Last update:"
+msgid "Last upload:"
 msgstr ""
 
 #: include/searchform_func.php:186
