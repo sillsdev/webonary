@@ -105,7 +105,7 @@ msgstr "Versión preliminar"
 
 #: include/searchform_func.php:398
 msgid "Community-reviewed draft"
-msgstr "Revisado por habladores nativos"
+msgstr "Revisado por hablantes nativos"
 
 #: include/searchform_func.php:399
 msgid "Consultant approved"
