@@ -13,6 +13,8 @@
  * @apiSuccess {String[]} mainLanguage.cssFiles Css files used to displaying entries from this language (in order)
  * @apiSuccess {Number} mainLanguage.entriesCount Number of entries in this dictionary
  *
+ * @apiSuccess {String[]} definitionOrGlossLangs Distinct language codes used in definitions
+ *
  * @apiSuccess {Object[]} partsOfSpeech Parts of speech short codes for this language
  * @apiSuccess {String} partsOfSpeech.lang ISO language code
  * @apiSuccess {String} partsOfSpeech.abbreviation Abbreviation of this part of speech
@@ -83,12 +85,20 @@ export async function handler(
       return callback(null, Response.notFound({}));
     }
 
+    // get unique language codes from definitionOrGloss
+    // TODO: Populate this during dictionary upload
+    dbItem.definitionOrGlossLangs = await db
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .distinct(DbPaths.ENTRY_DEFINITION_LANG, dbFind);
+
     // get total entries
+    // TODO: Populate this during dictionary upload
     dbItem.mainLanguage.entriesCount = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .countDocuments(dbFind);
 
     // get reversal entry counts
+    // TODO: Populate this during dictionary upload
     const reversalEntriesCounts = await Promise.all(
       dbItem.reversalLanguages.map(async ({ lang }) => {
         dbFind[DbPaths.ENTRY_REVERSAL_FORM_LANG] = lang;

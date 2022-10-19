@@ -40,6 +40,7 @@ export class ListOptionItem implements ListOption {
 export interface Dictionary {
   _id: string;
   mainLanguage: Language;
+  definitionOrGlossLangs?: string[];
   reversalLanguages: Language[];
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
