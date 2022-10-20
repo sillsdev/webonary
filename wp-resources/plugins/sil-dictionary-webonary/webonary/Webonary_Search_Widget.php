@@ -148,30 +148,35 @@ class Webonary_Search_Widget extends WP_Widget {
 		    }
 
 		    // set up dictionary info
-		    $indexed = new stdClass();
-		    $indexed->language_name = $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang;
-		    $indexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
-		    $this->indexed_entries[] = $indexed;
+		    $mainIndexed = new stdClass();
+		    $mainIndexed->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
+		    $mainIndexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
+		    $this->indexed_entries[] = $mainIndexed;
 
-		    $dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
+			$dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
 			    return !empty($v->lang);
 		    }));
 
-		    if (count($dictionary->reversalLanguages)) {
-                $this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" selected>$indexed->language_name</option>";
+			foreach($dictionary->reversalLanguages as $reversal)
+			{
+				$indexed = new stdClass();
+				$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
+				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
+				$this->indexed_entries[] = $indexed;
+			}
 
-			    foreach($dictionary->reversalLanguages as $reversal)
-			    {
-				    $indexed = new stdClass();
-				    $indexed->language_name = $reversal->title ?? $reversal->lang;
-				    $indexed->totalIndexed = $reversal->entriesCount ?? 0;
-				    $this->indexed_entries[] = $indexed;
-
-				    // set up languages dropdown options
-				    $selected = ($reversal->lang === $selected_language) ? 'selected' : '';
-				    $this->language_options[] = "<option value=\"$reversal->lang\" $selected>$indexed->language_name</option>";
-			    }
-		    }
+			// set up languages dropdown options
+			$other_search_languages = array_diff($dictionary->definitionOrGlossLangs, ["", $dictionary->mainLanguage->lang]);
+			if (count($other_search_languages))
+			{
+				$this->language_options[] = "<option value=\"{$dictionary->mainLanguage->lang}\" selected>$mainIndexed->language_name</option>";
+				foreach($other_search_languages as $lang)
+				{
+					$selected = ($lang === $selected_language) ? 'selected' : '';
+					$language_name = Webonary_Cloud::getLanguageName($lang);
+					$this->language_options[] = "<option value=\"$lang\" $selected>$language_name</option>";
+				}
+			}
 
 		    $this->last_edit_date = $dictionary->updatedAt;
 	    }
