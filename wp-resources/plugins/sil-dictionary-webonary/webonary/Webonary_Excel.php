@@ -181,7 +181,7 @@ class Webonary_Excel
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['SiteTitle', 'Country', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'Notes', 'LastUpload'];
+			$rows[] = ['SiteTitle', 'Country', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
 
 		$sql =  "SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered FROM $wpdb->blogs
     WHERE blog_id != $wpdb->blogid
@@ -214,7 +214,7 @@ class Webonary_Excel
 			else
 				$fields[] = trim($blog_details->blogname);
 
-			$fields[] = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name = 'countryName'");
+			$fields[] = get_option('countryName');
 
 			$fields[] = 'https://' . $domainPath;
 
@@ -264,13 +264,7 @@ class Webonary_Excel
 			$publishedDate = $wpdb->get_var( "SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM wp_links WHERE link_url LIKE '%" . $domainPath . "%'");
 			$fields[]      = $publishedDate;
 
-			$email = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name = 'admin_email'");
-
-			$fields[] = $email;
-
-			$notes = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name = 'notes'");
-
-			$fields[] = stripslashes($notes);
+			$fields[] = get_option('admin_email');
 
 			if (empty($lastEditDate))
 				$fields[] = '';
@@ -278,6 +272,8 @@ class Webonary_Excel
 				$fields[] = '';
 			else
 				$fields[] = $lastEditDate;
+
+			$fields[] = stripslashes(get_option('notes'));
 
 			$mapped = array_map(function($a) {
 
@@ -337,9 +333,9 @@ class Webonary_Excel
         <th>Create Date</th>
         <th>Publish Date</th>
         <th>Contact Email</th>
-        <th>Notes</th>
         <th>Last Upload</th>
-      </tr>
+        <th>Notes</th>
+	</tr>
     </thead>
     <tbody></tbody>
   </table>
