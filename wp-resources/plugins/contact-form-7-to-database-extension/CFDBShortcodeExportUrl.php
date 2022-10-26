@@ -50,7 +50,7 @@ class CFDBShortcodeExportUrl extends ShortCodeLoader {
                 }
             }
         }
-        $url = implode($params);
+        $url = implode('', $params);
 
         if (isset($atts['urlonly']) && $atts['urlonly'] == 'true') {
             return $url;
