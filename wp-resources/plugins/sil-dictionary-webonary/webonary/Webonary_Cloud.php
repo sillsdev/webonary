@@ -236,10 +236,19 @@ class Webonary_Cloud {
     }
 
     public static function getDictionary($dictionaryId) {
-        $request = self::$doGetDictionary . '/' . $dictionaryId;
-        $response = self::remoteGetJson($request);
+		$dictionary = get_option('dictionary');
+		if (!empty($dictionary)) {
+			return $dictionary;
+		}
 
-        return (self::isValidDictionary($response)) ? $response : null;
+		$request = self::$doGetDictionary . '/' . $dictionaryId;
+		$response = self::remoteGetJson($request);
+		if (self::isValidDictionary($response)) {
+			update_option('dictionary', $response);
+			return $response;
+		}
+
+        return null;
     }
 
     public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()): int {
@@ -465,7 +474,10 @@ class Webonary_Cloud {
     }
 
     public static function resetDictionary($dictionaryId) {
-        $dictionary = self::getDictionary($dictionaryId);
+		// Since dictionary is persisted in options, unset it first
+		delete_option('dictionary');
+
+		$dictionary = self::getDictionary($dictionaryId);
         if (!is_null($dictionary)) {
             $language = $dictionary->mainLanguage;
             update_option('languagecode', $language->lang);
