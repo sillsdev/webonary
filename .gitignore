@@ -9,7 +9,10 @@
 /node_modules/
 /vendor/
 /wordpress/
-wp-resources/plugins/sil-dictionary-webonary/include/lang/*.old
-wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.old
+/wp-resources/plugins/sil-dictionary-webonary/include/lang/*.old
+/wp-resources/plugins/sil-dictionary-webonary/include/lang/*.mo
+/wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.old
+/wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.mo
+/wp-resources/themes/webonary-zeedisplay/includes/lang/*.old
 /PRIVATE_NOTES.md
 .DS_Store
