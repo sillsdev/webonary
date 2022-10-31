@@ -10,13 +10,12 @@
  * @apiSuccess {Number} deleteDictionaryCount The number of dictionaries deleted.
  * @apiSuccess {Number} deletedEntryCount The number of main entries deleted.
  * @apiSuccess {Number} deletedReversalCount The number of reversal entries deleted.
- * @apiSuccess {Number} deletedFilesCount The number of files deleted.
  *
- * @apiError (404) NotFound Cannot find the specified dictionary.
+ * @apiUse BadRequest
  */
 
 import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient, DeleteResult } from 'mongodb';
+import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
@@ -24,7 +23,6 @@ import {
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_COLLECTION_REVERSAL_ENTRIES,
 } from './db';
-import { deleteS3Folder } from './s3Utils';
 import * as Response from './response';
 import { createFailureResponse } from './utils';
 
@@ -40,55 +38,48 @@ export async function handler(
   context: Context,
   callback: Callback,
 ): Promise<void> {
+  // eslint-disable-next-line no-param-reassign
+  context.callbackWaitsForEmptyEventLoop = false;
+
+  const dictionaryId = event.pathParameters?.dictionaryId ?? '';
+  if (!dictionaryId) {
+    return callback(null, Response.badRequest('Invalid parameters'));
+  }
+
+  dbClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
+
   try {
-    // eslint-disable-next-line no-param-reassign
-    context.callbackWaitsForEmptyEventLoop = false;
+    // eslint-disable-next-line no-console
+    console.log(`Start deleting dictionary ${dictionaryId}`);
 
-    const dictionaryId = event.pathParameters?.dictionaryId ?? '';
-
-    dbClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
-
-    const count = await db
-      .collection(DB_COLLECTION_DICTIONARIES)
-      .countDocuments({ _id: dictionaryId });
-
-    if (!count) {
-      return callback(null, Response.notFound({}));
-    }
-
-    const dbResultDictionary = await db
-      .collection(DB_COLLECTION_DICTIONARIES)
-      .deleteOne({ _id: dictionaryId });
-
-    const dbResultEntry: DeleteResult = await db
-      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-      .deleteMany({ dictionaryId });
-
-    const dbResultReversal: DeleteResult = await db
-      .collection(DB_COLLECTION_REVERSAL_ENTRIES)
-      .deleteMany({ dictionaryId });
+    const [dbResultDictionary, dbResultEntry, dbResultReversal] = await Promise.all([
+      db.collection(DB_COLLECTION_DICTIONARIES).deleteOne({ _id: dictionaryId }),
+      db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).deleteMany({ dictionaryId }),
+      db.collection(DB_COLLECTION_REVERSAL_ENTRIES).deleteMany({ dictionaryId }),
+    ]);
 
     /*
      * NOTE: deleteDictionaryFolder can take longer than API Gateway max timeout, which is 30 seconds.
      * This will result in 504 Gateway timeout, with message "Endpoint request timed out".
      * There is no way to capture that in a Lambda function, which has a 120 second timeout.
-     * But this should be plenty of time to delete all files for a dictionary.
+     * So we will not delete files, except via clean up script (TODO).
      */
-    const deletedFilesCount = await deleteS3Folder(dictionaryBucket, dictionaryId);
 
-    return callback(
-      null,
-      Response.success({
-        deleteDictionaryCount: dbResultDictionary.deletedCount,
-        deletedEntryCount: dbResultEntry.deletedCount,
-        deletedReversalCount: dbResultReversal.deletedCount,
-        deletedFilesCount,
-      }),
-    );
+    // const deletedFilesCount = await deleteS3Folder(dictionaryBucket, dictionaryId);
+
+    const result = {
+      deleteDictionaryCount: dbResultDictionary.deletedCount,
+      deletedEntryCount: dbResultEntry.deletedCount,
+      deletedReversalCount: dbResultReversal.deletedCount,
+    };
+
+    // eslint-disable-next-line no-console
+    console.log(`Completed deleting dictionary ${dictionaryId}`);
+    return callback(null, Response.success(result));
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log(error);
+    console.log(`ERROR: while deleting dictionary ${dictionaryId}`, error);
     return callback(null, createFailureResponse(error));
   }
 }
