@@ -6,18 +6,20 @@ import lambdaHandler from '../methodAuthorize';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
+function constructHeaders(username: string, password: string) {
+  const base64Credentials = Buffer.from(`${username}:${password}`).toString('base64');
+  return { Authorization: `Basic ${base64Credentials}` };
+}
+
 const username = 'testUser';
 const password = 'testPassword!';
-const base64Credentials = Buffer.from(`${username}:${password}`).toString('base64');
-const headers = { Authorization: `Basic ${base64Credentials}` };
-
 const dictionaryId = 'testDictionary';
 
 const event: CustomAuthorizerEvent = {
   type: 'testEventType',
   methodArn: `arn:something-something/POST/post/entry/${dictionaryId}`,
   pathParameters: { dictionaryId },
-  headers,
+  headers: constructHeaders(username, password),
 };
 
 const context: Context = {
@@ -42,7 +44,6 @@ describe('methodAuthorize', () => {
     );
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(username);
       expect(result.policyDocument.Statement[0].Effect).toBe('Allow');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
       expect(result.policyDocument.Statement[0].Resource).toStrictEqual([
@@ -54,17 +55,45 @@ describe('methodAuthorize', () => {
     return expect.hasAssertions();
   });
 
+  test('principalId is a hash of auth header', async () => {
+    mockedAxios.post.mockImplementation(() =>
+      Promise.resolve({ status: 200, data: 'test-dictionary' }),
+    );
+    await lambdaHandler(event, context, (error, result) => {
+      expect(result.principalId).toEqual('c877f338f4db1f933af876a3bd68ecefa834a0a0');
+    });
+
+    return expect.hasAssertions();
+  });
+
+  test('when password changes, principalId changes', async () => {
+    await lambdaHandler(
+      { ...event, headers: constructHeaders(username, 'password1') },
+      context,
+      async (unused1, result1) => {
+        await lambdaHandler(
+          { ...event, headers: constructHeaders(username, 'password2') },
+          context,
+          (unused2, result2) => {
+            expect(result1.principalId).not.toEqual(result2.principalId);
+          },
+        );
+      },
+    );
+
+    return expect.hasAssertions();
+  });
+
   test('auth denied', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 401, data: 'some error' }));
 
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
-      expect(result.principalId).toEqual(username);
       expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
     });
 
-    await expect.assertions(4);
+    await expect.assertions(3);
   });
 
   test('auth error no headers', async (): Promise<void> => {

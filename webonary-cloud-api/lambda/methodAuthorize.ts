@@ -1,5 +1,6 @@
 import { CustomAuthorizerEvent, APIGatewayAuthorizerResult, Context, Callback } from 'aws-lambda';
 import axios from 'axios';
+import { createHash } from 'crypto';
 
 import { getBasicAuthCredentials } from './utils';
 
@@ -27,6 +28,12 @@ function generatePolicy(
   return authResult;
 }
 
+function getPrincipalId(authorizationHeader: string): string {
+  const sha1 = createHash('sha1');
+  sha1.update(authorizationHeader);
+  return sha1.digest('hex');
+}
+
 export async function handler(
   event: CustomAuthorizerEvent,
   context: Context,
@@ -47,7 +54,7 @@ export async function handler(
   // eslint-disable-next-line no-console
   console.log(`Processing policy for ${credentials.username} to resource ${event.methodArn}`);
   // Same user should have the same access to post/delete dictionary entry data as well as files.
-  const principalId = credentials.username;
+  const principalId = getPrincipalId(authHeaders);
   const resourceRegex = /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\/(.+)$/i;
 
   async function getAuthPolicy() {
