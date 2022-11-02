@@ -1,4 +1,4 @@
-import { CustomAuthorizerEvent, APIGatewayAuthorizerResult, Context, Callback } from 'aws-lambda';
+import { APIGatewayAuthorizerResult, Callback, Context, CustomAuthorizerEvent } from 'aws-lambda';
 import axios from 'axios';
 import { createHash } from 'crypto';
 
@@ -11,7 +11,7 @@ function generatePolicy(
   effect: Effect,
   resources: string[],
 ): APIGatewayAuthorizerResult {
-  const authResult: APIGatewayAuthorizerResult = {
+  return {
     principalId,
     policyDocument: {
       Version: '2012-10-17',
@@ -24,8 +24,6 @@ function generatePolicy(
       ],
     },
   };
-
-  return authResult;
 }
 
 function getPrincipalId(authorizationHeader: string): string {
