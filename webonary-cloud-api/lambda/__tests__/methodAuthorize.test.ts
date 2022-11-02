@@ -55,7 +55,7 @@ describe('methodAuthorize', () => {
   });
 
   test('auth denied', async (): Promise<void> => {
-    mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 200, data: 'some error' }));
+    mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 401, data: 'some error' }));
 
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
@@ -64,7 +64,7 @@ describe('methodAuthorize', () => {
       expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
     });
 
-    return expect.hasAssertions();
+    await expect.assertions(4);
   });
 
   test('auth error no headers', async (): Promise<void> => {
@@ -75,13 +75,9 @@ describe('methodAuthorize', () => {
       methodArn: '',
     };
 
-    try {
-      await lambdaHandler(emptyEvent, context, (error) => {
-        expect(error).toBe('Unauthorized');
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await lambdaHandler(emptyEvent, context, (error) => {
+      expect(error).toBe('Unauthorized');
+    });
 
     return expect.hasAssertions();
   });
@@ -89,13 +85,9 @@ describe('methodAuthorize', () => {
   test('auth error generic', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 500, data: 'some error' }));
 
-    try {
-      await lambdaHandler(event, context, (error) => {
-        expect(error).toBe('Unauthorized');
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    await lambdaHandler(event, context, (error) => {
+      expect(error).toBe('Unauthorized');
+    });
 
     return expect.hasAssertions();
   });
@@ -106,10 +98,8 @@ describe('methodAuthorize', () => {
       throw new Error(errorMessage);
     });
 
-    await lambdaHandler(event, context, (error, result) => {
-      expect(error).toBe(null);
-      expect(result.policyDocument.Statement.length === 1);
-      expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
+    await lambdaHandler(event, context, (error) => {
+      expect(error).toBe('Unauthorized');
     });
 
     return expect.hasAssertions();

@@ -50,16 +50,25 @@ export async function handler(
   const principalId = credentials.username;
   const resourceRegex = /(POST\/post|DELETE\/delete)\/(dictionary|entry|file)\/(.+)$/i;
 
-  // Call Webonary.org for user authentication
-  axios.defaults.headers.post['Content-Type'] = 'application/json';
-  const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
+  async function getAuthPolicy() {
+    try {
+      // Call Webonary.org for user authentication
+      axios.defaults.headers.post['Content-Type'] = 'application/json';
+      const authPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_AUTH_PATH}`;
+      const response = await axios.post(authPath, '{}', {
+        auth: credentials,
+      });
 
-  try {
-    const response = await axios.post(authPath, '{}', {
-      auth: credentials,
-    });
+      if (response.status === 401) {
+        return generatePolicy(principalId, 'Deny', [
+          event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`),
+        ]);
+      }
 
-    if (response.status === 200 && response.data) {
+      if (response.status !== 200 || !response.data) {
+        return null;
+      }
+
       const resources = response.data.split(',').map((id: string) => {
         // To allow for correct caching behavior, we use wildcards for method (POST or DELETE) and path. E.g.:
         // arn:aws:execute-api:region:zz:zzz/prod/POST/post/dictionary/myDictionary will be replaced with
@@ -69,15 +78,20 @@ export async function handler(
 
       // eslint-disable-next-line no-console
       console.log(`Creating policy for ${principalId} to access ${resources}`);
-      return callback(null, generatePolicy(principalId, 'Allow', resources));
+      return generatePolicy(principalId, 'Allow', resources);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(`Not generating an auth policy because of error: ${error}`);
+      return null;
     }
-  } catch (error) {
-    const resources = [event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`)];
-
-    // eslint-disable-next-line no-console
-    console.log(`Denying ${principalId} to access ${resources}: ${error}`);
-    return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
   }
+
+  const authPolicy = await getAuthPolicy();
+  if (!authPolicy) {
+    return callback('Unauthorized');
+  }
+
+  return callback(null, await getAuthPolicy());
 }
 
 export default handler;
