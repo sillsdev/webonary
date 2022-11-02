@@ -75,7 +75,7 @@ export async function handler(
     const resources = [event.methodArn.replace(resourceRegex, `*/*/${dictionaryId}`)];
 
     // eslint-disable-next-line no-console
-    console.log(`Denying ${principalId} to access {resources}`);
+    console.log(`Denying ${principalId} to access ${resources}: ${error}`);
     return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
   }
 }
