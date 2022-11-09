@@ -46,7 +46,7 @@ export async function handler(
     // eslint-disable-next-line no-param-reassign
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const dictionaryId = event.pathParameters?.dictionaryId;
+    const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
     const text = event.queryStringParameters?.text ?? '';
     const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
     const lang = event.queryStringParameters?.lang ?? ''; // this is used to limit which language to search
