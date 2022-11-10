@@ -36,7 +36,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   const authHeaders = event.headers?.Authorization;
-  const dictionaryId = event.pathParameters?.dictionaryId;
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
 
   if (dictionaryId && authHeaders) {
     const credentials = getBasicAuthCredentials(authHeaders);

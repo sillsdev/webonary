@@ -41,7 +41,7 @@ export async function handler(
   // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false;
 
-  const dictionaryId = event.pathParameters?.dictionaryId ?? '';
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   if (!dictionaryId) {
     return callback(null, Response.badRequest('Invalid parameters'));
   }

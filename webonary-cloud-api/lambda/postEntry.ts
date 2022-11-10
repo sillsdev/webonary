@@ -308,7 +308,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   const authHeaders = event.headers?.Authorization;
-  const dictionaryId = event.pathParameters?.dictionaryId;
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
   const eventBody = event.body;
   if (!dictionaryId || !authHeaders) {
