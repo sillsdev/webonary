@@ -107,7 +107,13 @@ export async function handler(
       return callback(null, Response.badRequest(errorMessage));
     }
 
-    const signedUrl = getSignedUrl(dictionaryBucket, action, objectId);
+    // Ensure that dictionaryId is lowercase
+    const [dictionaryId, ...fileName] = objectId.split('/');
+    const signedUrl = getSignedUrl(
+      dictionaryBucket,
+      action,
+      `${dictionaryId.toLocaleLowerCase()}/${fileName.join('/')}`,
+    );
 
     return callback(null, Response.success(signedUrl));
   } catch (error) {
