@@ -31,8 +31,8 @@ require("highlight-code.php");
         		{
 				 echo "search results:"; //doesn't seem to be used anymore...
         		}
-        		?></div>				
-        		<p><?php if (function_exists(sil_dictionary_custom_message)) { sil_dictionary_custom_message(); } ?></p>												
+        ?>
+        </div>				
 				<div id="searchresults">												           
                 <?php while (have_posts()) : the_post(); ?>                    
                 <div class="item entry" id="post-<?php the_ID(); ?>">
@@ -78,11 +78,9 @@ require("highlight-code.php");
                 </div> 
 				 
         <?php else : ?>
-        		<p><?php if (function_exists(sil_dictionary_custom_message)) { sil_dictionary_custom_message(); } ?></p>        		
                 <div class="yui-ge"><?php _e('No search results', 'dictrans'); ?>
 	                <p><?php printf(__('We did not find any posts containing the string %s','dictrans'), "'" . $query . "'") ?>.</p>
                 </div>
- 
         <?php endif; ?>
 <!-- end content -->
 
