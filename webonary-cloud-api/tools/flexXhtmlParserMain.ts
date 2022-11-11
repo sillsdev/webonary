@@ -150,7 +150,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   }
 
   public getDictionaryData(): DictionaryItem | undefined {
-    const id = this.options.dictionaryId;
+    const id = this.options.dictionaryId.toLowerCase();
     const dictionary = new DictionaryItem(id);
 
     if (id && this.parsedDictionaryEntries.length) {

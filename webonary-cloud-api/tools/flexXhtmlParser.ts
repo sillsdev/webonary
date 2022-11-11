@@ -7,6 +7,13 @@ export interface Options {
   entryClass: string;
 }
 
+interface ParseEntry extends Options {
+  guid: string;
+  letterHead: string;
+  sortIndex: number;
+  entryData: string;
+}
+
 export class FlexXhtmlParser {
   protected options: Options;
 
@@ -51,14 +58,14 @@ export class FlexXhtmlParser {
         const sortIndex = index * 100;
 
         entries.push(
-          FlexXhtmlParser.parseEntry(
-            this.options.dictionaryId,
-            this.options.entryClass,
+          FlexXhtmlParser.parseEntry({
+            dictionaryId: this.options.dictionaryId.toLowerCase(),
+            entryClass: this.options.entryClass,
             guid,
             letterHead,
             sortIndex,
             entryData,
-          ),
+          }),
         );
       }
     });
@@ -66,14 +73,14 @@ export class FlexXhtmlParser {
     return entries;
   }
 
-  public static parseEntry(
-    dictionaryId: string,
-    entryClass: string,
-    guid: string,
-    letterHead: string,
-    sortIndex: number,
-    entryData: string,
-  ): Entry {
+  public static parseEntry({
+    dictionaryId,
+    entryClass,
+    guid,
+    letterHead,
+    sortIndex,
+    entryData,
+  }: ParseEntry): Entry {
     // const $ = cheerio.load(entryData);
 
     // NOTE: guid field in Webonary and FLex actually includes the character 'g' at the beginning

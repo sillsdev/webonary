@@ -147,7 +147,7 @@ async function postFile(
 ): Promise<AxiosResponse | undefined> {
   const path = `/post/file/${dictionaryId}`;
   const data = JSON.stringify({
-    objectId: `${dictionaryId}/${file}`,
+    objectId: `${dictionaryId.toLowerCase()}/${file}`,
     action: 'putObject',
   });
   const config: AxiosRequestConfig = { auth: credentials };
