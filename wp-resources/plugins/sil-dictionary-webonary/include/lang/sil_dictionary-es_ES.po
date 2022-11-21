@@ -85,7 +85,7 @@ msgstr "Última actualización:"
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
 msgid "Date published:"
-msgstr "Privado, público:"
+msgstr "Fecha de publicación:"
 
 #: include/searchform_func.php:360 webonary/Webonary_Search_Widget.php:338
 msgid "Found in Semantic Domains:"
