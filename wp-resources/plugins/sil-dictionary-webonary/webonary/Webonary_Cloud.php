@@ -387,7 +387,7 @@ class Webonary_Cloud {
 
         $searchText = trim(get_search_query(false));
         if ($searchText === '') {
-            $tax = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+            $tax = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
             if ($tax !== '') {
                 // This is a listing by semantic domains
                 $apiParams = array(

@@ -229,14 +229,13 @@ function save_configurations()
 		$useCloudBackend = filter_input(
 			INPUT_POST,
 			'useCloudBackend',
-			FILTER_SANITIZE_STRING,
+			FILTER_UNSAFE_RAW,
 			array('options' => array('default' => '')));
 
 		if($useCloudBackend != get_option('useCloudBackend', ''))
 		{
 			if (is_plugin_active('wp-super-cache/wp-cache.php'))
 			{
-				/** @noinspection PhpUndefinedFunctionInspection */
 				prune_super_cache(get_supercache_dir(), true);
 			}
 
