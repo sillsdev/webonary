@@ -212,6 +212,7 @@
  */
 
 /* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
@@ -251,19 +252,41 @@ const stripHtml = compileHtmlToText({
 /**
  * Fills in empty DictionaryEntry fields from other fields that were supplied.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function fillDictionaryEntryFields(destination: DictionaryEntryItem, source: any): void {
-  const possibleMainHeadWordFields = ['citationform', 'lexemeform', 'headword'];
-  destination.mainHeadWord = destination.mainHeadWord.filter((item) => item.value);
-  while (!destination.mainHeadWord.length || possibleMainHeadWordFields.length) {
-    const possibleField = possibleMainHeadWordFields.shift();
+const fillFromAlternateFields = ({
+  entryValueItems,
+  alternateFields,
+  source,
+}: {
+  entryValueItems: EntryValueItem[];
+  alternateFields: string[];
+  source: any;
+}) => {
+  entryValueItems = entryValueItems.filter((item) => item.value);
+  while (!entryValueItems.length || alternateFields.length) {
+    const possibleField = alternateFields.shift();
     if (possibleField && Array.isArray(source[possibleField]) && source[possibleField].length) {
-      destination.mainHeadWord = source[possibleField].map((item: never) =>
+      entryValueItems = source[possibleField].map((item: never) =>
         copyObjectIgnoreKeyCase(new EntryValueItem(), item),
       );
     }
   }
-}
+};
+
+export const fillDictionaryEntryFields = (destination: DictionaryEntryItem, source: any) => {
+  fillFromAlternateFields({
+    entryValueItems: destination.mainHeadWord,
+    alternateFields: ['citationform', 'lexemeform', 'headword'],
+    source,
+  });
+
+  destination.senses.forEach((sense) => {
+    fillFromAlternateFields({
+      entryValueItems: sense.definitionOrGloss,
+      alternateFields: ['definition', 'gloss'],
+      source: source.senses,
+    });
+  });
+};
 
 export async function upsertEntries(
   postedEntries: Array<object>,
