@@ -14,10 +14,76 @@ async function findEntryByGuid(guid: string): Promise<DictionaryEntryItem | null
 }
 
 describe('postEntries', () => {
-  test('empty entry created', async () => {
-    const dictionaryId = await createDictionary();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let testPost: any;
+  let dictionaryId: string;
 
-    const entryGuid = 'entry-guid';
+  beforeAll(async () => {
+    dictionaryId = await createDictionary();
+  });
+
+  beforeEach(() => {
+    testPost = {
+      guid: 'testGuid',
+      mainheadword: [
+        {
+          lang: 'testLang',
+          value: 'testMainHeadWord',
+        },
+      ],
+      citationform: [
+        {
+          lang: 'testLang',
+          value: 'testCitationForm',
+        },
+        {
+          lang: 'testLang2',
+          value: 'testCitationForm2',
+        },
+      ],
+      lexemeform: [
+        {
+          lang: 'testLang2',
+          value: 'testLexemeForm2',
+        },
+      ],
+      headword: [
+        {
+          lang: 'testLang',
+          value: 'testHeadWord',
+        },
+      ],
+      senses: [
+        {
+          definitionOrGloss: [
+            {
+              lang: 'testLang',
+              value: 'definitionOrGlossValue',
+            },
+            {
+              lang: 'testLang2',
+              value: 'definitionOrGlossValue2',
+            },
+          ],
+          definition: [
+            {
+              lang: 'testLang',
+              value: 'definitionValue',
+            },
+          ],
+          gloss: [
+            {
+              lang: 'testLang2',
+              value: 'glossValue',
+            },
+          ],
+        },
+      ],
+    };
+  });
+
+  test('empty entry created', async () => {
+    const entryGuid = 'empty-guid';
     await upsertEntries(
       [
         {
@@ -34,62 +100,74 @@ describe('postEntries', () => {
     expect(actualEntry).not.toBeNull();
   });
 
-  test('fill mainheadWord from headword', async () => {
-    const dictionaryId = await createDictionary();
+  test('mainHeadWord exists, ignore other alternate forms', async () => {
+    testPost.guid = 'guid-with-mainheadword';
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
 
-    const entryGuid = 'headword-entry-guid';
-    const headWordValue = 'head-word-value';
-    await upsertEntries(
-      [
-        {
-          guid: entryGuid,
-          headword: [
-            {
-              value: headWordValue,
-            },
-          ],
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const actualEntry = await findEntryByGuid(entryGuid);
-
-    expect(actualEntry?.mainHeadWord.length).toBe(1);
-    expect(actualEntry?.mainHeadWord[0].value).toBe(headWordValue);
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.mainHeadWord).toEqual(testPost.mainheadword);
   });
 
-  test('mainHeadWord exists, ignore headword', async () => {
-    const dictionaryId = await createDictionary();
+  test('fill mainheadWord from citationform', async () => {
+    testPost.guid = 'guid-use-citationform';
+    delete testPost.mainheadword;
 
-    const entryGuid = 'main-headword-entry-guid';
-    const mainHeadWordValue = 'main-head-word-value';
-    await upsertEntries(
-      [
-        {
-          guid: entryGuid,
-          mainHeadWord: [
-            {
-              value: mainHeadWordValue,
-            },
-          ],
-          headword: [
-            {
-              value: 'head-word-value',
-            },
-          ],
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
 
-    const actualEntry = await findEntryByGuid(entryGuid);
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.mainHeadWord).toEqual(testPost.citationform);
+  });
 
-    expect(actualEntry?.mainHeadWord.length).toBe(1);
-    expect(actualEntry?.mainHeadWord[0].value).toBe(mainHeadWordValue);
+  test('fill mainheadWord from lexemeform', async () => {
+    testPost.guid = 'guid-use-lexemeform';
+    delete testPost.mainheadword;
+    delete testPost.citationform;
+
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
+
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.mainHeadWord).toEqual(testPost.lexemeform);
+  });
+
+  test('fill mainheadWord from headword', async () => {
+    testPost.guid = 'guid-use-headword';
+    delete testPost.mainheadword;
+    delete testPost.citationform;
+    delete testPost.lexemeform;
+
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
+
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.mainHeadWord).toEqual(testPost.headword);
+  });
+
+  test('dictionaryOrGloss exists, ignore other alternate forms', async () => {
+    testPost.guid = 'guid-with-dictionaryOrGloss';
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
+
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    delete testPost.senses[0].definition;
+    delete testPost.senses[0].gloss;
+
+    expect(actualEntry?.senses).toEqual(testPost.senses);
+  });
+
+  test('fill dictionaryOrGloss from definition', async () => {
+    testPost.guid = 'guid-with-definition';
+    delete testPost.senses[0].definitionOrGloss;
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
+
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.senses[0].definitionOrGloss).toEqual(testPost.senses[0].definition);
+  });
+
+  test('fill dictionaryOrGloss from gloss', async () => {
+    testPost.guid = 'guid-with-gloss';
+    delete testPost.senses[0].definitionOrGloss;
+    delete testPost.senses[0].definition;
+    await upsertEntries([testPost], false, dictionaryId, testUsername);
+
+    const actualEntry = await findEntryByGuid(testPost.guid);
+    expect(actualEntry?.senses[0].definitionOrGloss).toEqual(testPost.senses[0].gloss);
   });
 });

@@ -261,8 +261,12 @@ function fillFromAlternateFields({
   alternateFields: string[];
   source: any;
 }) {
+  if (!source) {
+    return entryValueItems;
+  }
+
   entryValueItems = entryValueItems.filter((item) => item.value);
-  while (!entryValueItems.length || alternateFields.length) {
+  while (!entryValueItems.length && alternateFields.length) {
     const possibleField = alternateFields.shift();
     if (possibleField && Array.isArray(source[possibleField]) && source[possibleField].length) {
       entryValueItems = source[possibleField].map((item: never) =>
@@ -270,21 +274,23 @@ function fillFromAlternateFields({
       );
     }
   }
+  return entryValueItems;
 }
 
 function fillDictionaryEntryFields(destination: DictionaryEntryItem, source: any) {
-  fillFromAlternateFields({
+  destination.mainHeadWord = fillFromAlternateFields({
     entryValueItems: destination.mainHeadWord,
     alternateFields: ['citationform', 'lexemeform', 'headword'],
     source,
   });
 
-  destination.senses.forEach((sense) => {
-    fillFromAlternateFields({
+  destination.senses = destination.senses.map((sense) => {
+    sense.definitionOrGloss = fillFromAlternateFields({
       entryValueItems: sense.definitionOrGloss,
       alternateFields: ['definition', 'gloss'],
       source: source.senses,
     });
+    return sense;
   });
 }
 
@@ -309,6 +315,7 @@ export async function upsertEntries(
         new DictionaryEntryItem(guid, dictionaryId, username, updatedAt),
         postedEntry,
       ) as DictionaryEntryItem;
+
       fillDictionaryEntryFields(entry, postedEntry);
     }
     entry.displayText = stripHtml(entry.displayXhtml);

@@ -10,10 +10,6 @@ export class EntryFileItem implements EntryFile {
   id = '';
 
   src = '';
-
-  fileClass? = '';
-
-  caption? = '';
 }
 
 export interface EntryValue {
@@ -28,12 +24,6 @@ export class EntryValueItem implements EntryValue {
   lang = '';
 
   value = '';
-
-  guid? = '';
-
-  key? = '';
-
-  valueInsensitive? = '';
 }
 
 export interface EntryAnalysis {
@@ -76,8 +66,6 @@ export class EntrySenseItem implements EntrySense {
   examplesContents? = Array(new EntryExampleContentItem());
 
   semanticDomains? = Array(new EntrySemanticDomainItem());
-
-  guid? = '';
 }
 
 export interface Entry {
