@@ -211,6 +211,8 @@
  * @apiUse TypeError
  */
 
+/* eslint-disable no-param-reassign */
+
 import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
 import { compile as compileHtmlToText } from 'html-to-text';
@@ -250,17 +252,18 @@ const stripHtml = compileHtmlToText({
  * Fills in empty DictionaryEntry fields from other fields that were supplied.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
-  // eslint-disable-next-line no-param-reassign
-  destination.mainHeadWord = destination.mainHeadWord.filter((word) => word.value);
-  if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
-    // eslint-disable-next-line no-param-reassign
-    destination.mainHeadWord = source.headword.map((word: never) =>
-      copyObjectIgnoreKeyCase(new EntryValueItem(), word),
-    );
+export function fillDictionaryEntryFields(destination: DictionaryEntryItem, source: any): void {
+  const possibleMainHeadWordFields = ['citationform', 'lexemeform', 'headword'];
+  destination.mainHeadWord = destination.mainHeadWord.filter((item) => item.value);
+  while (!destination.mainHeadWord.length || possibleMainHeadWordFields.length) {
+    const possibleField = possibleMainHeadWordFields.shift();
+    if (possibleField && Array.isArray(source[possibleField]) && source[possibleField].length) {
+      destination.mainHeadWord = source[possibleField].map((item: never) =>
+        copyObjectIgnoreKeyCase(new EntryValueItem(), item),
+      );
+    }
   }
 }
-/* eslint-enable no-param-reassign */
 
 export async function upsertEntries(
   postedEntries: Array<object>,
@@ -272,12 +275,18 @@ export async function upsertEntries(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
     const { guid } = postedEntry;
-    const entry = isReversalEntry
-      ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
-      : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
-    Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
-    if (entry instanceof DictionaryEntryItem) {
-      fillDictionaryEntryFields(postedEntry, entry);
+    let entry: DictionaryEntryItem | ReversalEntryItem;
+    if (isReversalEntry) {
+      entry = copyObjectIgnoreKeyCase(
+        new ReversalEntryItem(guid, dictionaryId, username, updatedAt),
+        postedEntry,
+      ) as ReversalEntryItem;
+    } else {
+      entry = copyObjectIgnoreKeyCase(
+        new DictionaryEntryItem(guid, dictionaryId, username, updatedAt),
+        postedEntry,
+      ) as DictionaryEntryItem;
+      fillDictionaryEntryFields(entry, postedEntry);
     }
     entry.displayText = stripHtml(entry.displayXhtml);
     return entry;
