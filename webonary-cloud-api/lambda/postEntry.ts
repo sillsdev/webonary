@@ -252,7 +252,7 @@ const stripHtml = compileHtmlToText({
 /**
  * Fills in empty DictionaryEntry fields from other fields that were supplied.
  */
-const fillFromAlternateFields = ({
+function fillFromAlternateFields({
   entryValueItems,
   alternateFields,
   source,
@@ -260,7 +260,7 @@ const fillFromAlternateFields = ({
   entryValueItems: EntryValueItem[];
   alternateFields: string[];
   source: any;
-}) => {
+}) {
   entryValueItems = entryValueItems.filter((item) => item.value);
   while (!entryValueItems.length || alternateFields.length) {
     const possibleField = alternateFields.shift();
@@ -270,9 +270,9 @@ const fillFromAlternateFields = ({
       );
     }
   }
-};
+}
 
-export const fillDictionaryEntryFields = (destination: DictionaryEntryItem, source: any) => {
+function fillDictionaryEntryFields(destination: DictionaryEntryItem, source: any) {
   fillFromAlternateFields({
     entryValueItems: destination.mainHeadWord,
     alternateFields: ['citationform', 'lexemeform', 'headword'],
@@ -286,7 +286,7 @@ export const fillDictionaryEntryFields = (destination: DictionaryEntryItem, sour
       source: source.senses,
     });
   });
-};
+}
 
 export async function upsertEntries(
   postedEntries: Array<object>,
