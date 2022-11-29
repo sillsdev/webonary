@@ -1,5 +1,3 @@
-// 'mongodb-memory-server' is' there in devDependencies. Not sure why it's not working.
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { connectToDB } from '../mongo';
 import { MONGO_DB_NAME, createIndexes } from '../db';

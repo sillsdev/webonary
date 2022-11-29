@@ -2,7 +2,8 @@
   "name": "lambda",
   "version": "0.1.0",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.101"
+    "@types/aws-lambda": "^8.10.101",
+    "mongodb-memory-server": "^8.10.1"
   },
   "dependencies": {
     "@types/html-to-text": "^8.1.0",
