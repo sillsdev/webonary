@@ -46,6 +46,9 @@ function webonary_searchform($use_li = false) {
 			// set up parts of speech dropdown
 			if(count($dictionary->partsOfSpeech))
 			{
+				// sort the list by name
+				usort($dictionary->partsOfSpeech, function($a, $b) { return strcasecmp($a->name, $b->name); });
+
 				$options = '';
 				foreach($dictionary->partsOfSpeech as $part)
 				{
