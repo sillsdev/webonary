@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { CustomAuthorizerEvent, Context } from 'aws-lambda';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import lambdaHandler from '../methodAuthorize';
 
 jest.mock('axios');
@@ -60,11 +60,6 @@ describe('methodAuthorize', () => {
 
   test('auth denied invalid username or password', async (): Promise<void> => {
     mockedAxios.post.mockRejectedValueOnce({ response: { status: 401 } });
-
-    // mockedAxios.post.mockImplementation(() => {
-    //   throw new AxiosError('Invalid username or password', '401');
-    // });
-
     await lambdaHandler(event, context, (error, result) => {
       expect(error).toBe(null);
       expect(result.principalId).toEqual(username);
