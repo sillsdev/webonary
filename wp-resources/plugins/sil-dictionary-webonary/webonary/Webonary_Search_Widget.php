@@ -39,7 +39,7 @@ class Webonary_Search_Widget extends WP_Widget {
 			return;
         }
 
-		$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, ['options' => ['default' => '']]);
+		$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		$selected_language = $_REQUEST['key'] ?? '';
 

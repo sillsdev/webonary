@@ -24,7 +24,7 @@ function webonary_searchform($use_li = false) {
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
-	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, ['options' => ['default' => '']]);
+	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 
 	$arrIndexed = array();
