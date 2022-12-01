@@ -219,7 +219,6 @@ function save_configurations()
 			$noSearchForm = $_POST['noSearchForm'];
 			if (is_plugin_active('wp-super-cache/wp-cache.php') && $noSearchForm == 1)
 			{
-				/** @noinspection PhpUndefinedFunctionInspection */
 				prune_super_cache(get_supercache_dir(), true);
 			}
 
@@ -229,8 +228,11 @@ function save_configurations()
 		$useCloudBackend = filter_input(
 			INPUT_POST,
 			'useCloudBackend',
-			FILTER_UNSAFE_RAW,
+			FILTER_SANITIZE_NUMBER_INT,
 			array('options' => array('default' => '')));
+
+		if ($useCloudBackend !== '1')
+			$useCloudBackend = '';
 
 		if($useCloudBackend != get_option('useCloudBackend', ''))
 		{
