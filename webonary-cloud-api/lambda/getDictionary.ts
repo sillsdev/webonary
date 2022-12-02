@@ -72,7 +72,7 @@ export async function handler(
     // eslint-disable-next-line no-param-reassign
     context.callbackWaitsForEmptyEventLoop = false;
 
-    const dictionaryId = event.pathParameters?.dictionaryId;
+    const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
     const dbFind: DbFindParameters = { dictionaryId };
 
     dbClient = await connectToDB();

@@ -152,7 +152,7 @@ export async function handler(
   context.callbackWaitsForEmptyEventLoop = false;
 
   const authHeaders = event.headers?.Authorization;
-  const dictionaryId = event.pathParameters?.dictionaryId;
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const eventBody = event.body;
   if (!dictionaryId || !authHeaders) {
     return callback(null, Response.badRequest('Invalid parameters'));

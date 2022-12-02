@@ -10,7 +10,6 @@ function openImage(image)
 
 	<div id="content">
 		<h2 class="arh"><?php _e('Search results', ZEE_LANG); ?></h2>
-		<p><?php if (function_exists(sil_dictionary_custom_message)) { sil_dictionary_custom_message(); } ?></p>		
 		<?php if (have_posts()) : 
 		$query = stripslashes($_GET['s']);
 		//echo $wp_query->found_posts . " "; 

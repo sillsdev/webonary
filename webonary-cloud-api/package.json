@@ -11,11 +11,11 @@
     "deploy": "npm run test && npm run cdk deploy",
     "deploy-local": "npm run env-cmd cdk synth --no-staging >| template.yaml && sam local start-api",
     "lint": "tsc --noEmit && eslint '*/**/*.ts' --fix",
-    "lint-dry-run": "npx tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
+    "lint-dry-run": "tsc --noEmit && eslint '*/**/*.ts' --fix-dry-run",
     "migrate": "cd mongo_utils && env-cmd -f ../.env mongo-migrate",
     "post-legacy": "env-cmd ts-node -r tsconfig-paths/register tools/post-legacy.ts",
-    "test": "npm run build && jest --detectOpenHandles --runInBand --force-exit",
-    "test-coverage": "npm run build && jest --detectOpenHandles --runInBand --force-exit --collectCoverage",
+    "test": "tsc && jest --detectOpenHandles --runInBand --force-exit",
+    "test-coverage": "tsc && jest --detectOpenHandles --runInBand --force-exit --collectCoverage",
     "watch": "tsc -w"
   },
   "devDependencies": {

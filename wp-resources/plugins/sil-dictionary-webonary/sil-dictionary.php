@@ -80,7 +80,6 @@ add_filter('monsterinsights_show_dashboard_widget', '__return_false');
 
 
 /* Search hook */
-add_filter('search_message', 'sil_dictionary_custom_message');
 
 /* post query hooks */
 add_filter('posts_request','replace_default_search_filter', 10, 2);

@@ -24,36 +24,6 @@ if ( ! defined('ABSPATH') )
 
 //---------------------------------------------------------------------------//
 
-
-function sil_dictionary_custom_message()
-{
-	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
-	$match_whole_words = is_match_whole_words(mb_strlen($search_term));
-
-	if($match_whole_words == 0)
-	{
-		return;
-	}
-
-	$partialsearch = filter_input(INPUT_GET, 'partialsearch', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]);
-
-	mb_internal_encoding("UTF-8");
-	if($partialsearch != 1)
-	{
-		if(!is_CJK($search_term) && mb_strlen($search_term) > 0 && (mb_strlen($search_term) <= 3 || $match_whole_words == 1))
-		{
-			//echo getstring("partial-search-omitted");
-			_e('Because of the brevity of your search term, partial search was omitted.', 'sil_dictionary');
-			echo "<br>";
-			$replacedQueryString = str_replace("match_whole_words=1", "match_whole_words=0", $_SERVER["QUERY_STRING"]);
-			echo '<a href="?partialsearch=1&' . $replacedQueryString . '" style="text-decoration: underline;">'; _e('Click here to include searching through partial words.', 'sil_dictionary'); echo '</a>';
-		}
-	}
-}
-
-
-//---------------------------------------------------------------------------//
-
 /**
  * Does the string have Chinese, Japanese, or Korean characters?
  * @param string $string = string to check
