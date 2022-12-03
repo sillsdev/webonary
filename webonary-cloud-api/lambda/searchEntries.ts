@@ -47,7 +47,9 @@ export interface SearchEntriesArguments {
   lang: string | undefined;
   text: string;
   countTotalOnly: boolean;
-  partOfSpeech: string | undefined;
+  // Filter to the specified parts of speech.
+  // If this is undefined or an empty array, then no filter is applied.
+  partOfSpeech: string[] | undefined;
   mainLang: string | undefined;
   matchPartial: boolean;
   matchAccents: boolean;
@@ -108,8 +110,10 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<Respo
       return Response.success(entries);
     }
 
-    if (args.partOfSpeech) {
-      primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = args.partOfSpeech;
+    if (args.partOfSpeech && args.partOfSpeech.length > 0) {
+      primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = {
+        $in: args.partOfSpeech,
+      };
     }
 
     if (args.lang) {
@@ -227,7 +231,7 @@ export async function handler(
   const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
   const lang = event.queryStringParameters?.lang; // this is used to limit which language to search
 
-  const partOfSpeech = event.queryStringParameters?.partOfSpeech;
+  const partOfSpeech = event.multiValueQueryStringParameters?.partOfSpeech;
   const matchPartial = event.queryStringParameters?.matchPartial === '1';
   const matchAccents = event.queryStringParameters?.matchAccents === '1'; // NOTE: matching accent works only for fulltext searching
 

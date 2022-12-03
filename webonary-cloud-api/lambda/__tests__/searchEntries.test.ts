@@ -306,10 +306,106 @@ describe('searchEntries', () => {
       ...defaultArguments,
       dictionaryId,
       text: 'text',
-      partOfSpeech: 'partA',
+      partOfSpeech: ['partA'],
     });
 
     expect(parseGuids(response)).toEqual(['guidA', 'guidAB']);
+  });
+
+  test('multiple partOfSpeech matches any of them', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'guidA',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }],
+          },
+        },
+        {
+          guid: 'guidAB',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
+          },
+        },
+        {
+          guid: 'guidC',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }],
+          },
+        },
+        {
+          guid: 'guidCD',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
+          },
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      partOfSpeech: ['partB', 'partD'],
+    });
+
+    expect(parseGuids(response)).toEqual(['guidAB', 'guidCD']);
+  });
+
+  test('empty partsOfSpeech does not filter', async () => {
+    const dictionaryId = await createDictionary();
+    await upsertEntries(
+      [
+        {
+          guid: 'guidA',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }],
+          },
+        },
+        {
+          guid: 'guidAB',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
+          },
+        },
+        {
+          guid: 'guidC',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }],
+          },
+        },
+        {
+          guid: 'guidCD',
+          displayXhtml: `text`,
+          morphoSyntaxAnalysis: {
+            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
+          },
+        },
+      ],
+      false,
+      dictionaryId,
+      testUsername,
+    );
+
+    const response = await searchEntries({
+      ...defaultArguments,
+      dictionaryId,
+      text: 'text',
+      partOfSpeech: [],
+    });
+
+    expect(parseGuids(response)).toEqual(['guidA', 'guidAB', 'guidC', 'guidCD']);
   });
 
   test('matchPartial match parts of words', async () => {
