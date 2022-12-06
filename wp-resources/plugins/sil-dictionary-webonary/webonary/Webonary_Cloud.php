@@ -1,17 +1,18 @@
 <?php
 
-class Webonary_Cloud {
-    public static $doBrowseByLetter = 'browse/entry';
+class Webonary_Cloud
+{
+    public static string $doBrowseByLetter = 'browse/entry';
 
-    public static $doGetDictionary = 'get/dictionary';
+    public static string $doGetDictionary = 'get/dictionary';
 
-    public static $doGetEntry = 'get/entry';
+    public static string $doGetEntry = 'get/entry';
 
-    public static $doSearchEntry = 'search/entry';
+    public static string $doSearchEntry = 'search/entry';
 
-    public static $apiNamespace = 'webonary-cloud/v1';
+    public static string $apiNamespace = 'webonary-cloud/v1';
 
-    public static $languageCategory = 'sil_writing_systems';
+    public static string $languageCategory = 'sil_writing_systems';
 
     private static function isValidDictionary($dictionary): bool {
         return is_object($dictionary) && isset($dictionary->_id);
@@ -30,9 +31,26 @@ class Webonary_Cloud {
         $encoded_path = array_map('rawurlencode', explode('/', $path));
         $url = rtrim(WEBONARY_CLOUD_API_URL, '/') . '/' . implode('/', $encoded_path);
 
-        if (count($apiParams)) {
-            $url .= '?' . build_query(array_map('urlencode', $apiParams));
-        }
+		if (count($apiParams)) {
+
+			// expanded this to allow for an array of 'parts of speech' to be passed as a value
+			$pieces = [];
+			foreach ($apiParams AS $key => $val) {
+
+				if (is_array($val)) {
+
+					// send each value in the array separately, using the same key
+					foreach($val AS $v) {
+						$pieces[] = $key . '=' . urlencode($v);
+					}
+				}
+				else {
+					$pieces[] = $key . '=' . urlencode($val);
+				}
+			}
+
+			$url .= '?' . implode('&', $pieces);
+		}
 
         if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
             error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
@@ -198,7 +216,7 @@ class Webonary_Cloud {
         return $reversal;
     }
 
-    public static function getBlogDictionaryId() {
+    public static function getBlogDictionaryId(): string {
         if (function_exists('is_subdomain_install')) {
             return (
                 is_subdomain_install()
@@ -206,7 +224,11 @@ class Webonary_Cloud {
                 : str_replace('/', '', get_blog_details()->path)
             );
         }
-        return WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID;
+
+		if (defined('WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID'))
+        	return WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID;
+
+		return '';
     }
 
 
@@ -235,7 +257,12 @@ class Webonary_Cloud {
         return $name;
     }
 
-    public static function getDictionary($dictionaryId) {
+	/**
+	 * @param $dictionaryId
+	 * @return ICloudDictionary|stdClass|null
+	 */
+    public static function getDictionary($dictionaryId): ICloudDictionary|stdClass|null
+	{
 		$dictionary = get_option('dictionary');
 		if (!empty($dictionary)) {
 			return $dictionary;
@@ -370,7 +397,8 @@ class Webonary_Cloud {
         return null;
     }
 
-    public static function searchEntries($posts, WP_Query $query): ?array {
+    public static function searchEntries($posts, WP_Query $query): ?array
+	{
         global $search_cookie;
 
         if (!$query->is_main_query())
@@ -386,29 +414,24 @@ class Webonary_Cloud {
         }
 
         $searchText = trim(get_search_query(false));
+		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
+
         if ($searchText === '') {
-            $tax = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
-            if ($tax !== '') {
+            if (!empty($taxonomies[0])) {
                 // This is a listing by semantic domains
                 $apiParams = array(
-                    'text' => $tax,
+                    'text' => $taxonomies[0],
                     'searchSemDoms' => '1'
                 );
             }
         }
         else {
-            $getParams = filter_input_array(
-                INPUT_GET,
-                [
-                    'key' => ['filter' => FILTER_UNSAFE_RAW],
-                    'tax' => ['filter' => FILTER_UNSAFE_RAW]
-                ]
-            );
+			$key = filter_input(INPUT_GET, 'key', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 
             $apiParams = [
                 'text' => $searchText,
-                'lang' => $getParams['key'],
-                'partOfSpeech' => $getParams['tax'],
+                'lang' => $key,
+                'partOfSpeech' => $taxonomies,
                 'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
                 'matchAccents' => $search_cookie->match_accents ? '1' : ''
             ];

@@ -5,7 +5,7 @@
   "license": "proprietary",
   "config": {
     "platform": {
-      "php": "7.3"
+      "php": "8.1"
     },
     "preferred-install": {
       "*": "dist"
@@ -39,7 +39,7 @@
     "deployer/deployer": "v6.7.3"
   },
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.3|>8.1",
     "ext-gettext": "*",
     "ext-json": "*",
     "johnpbloch/wordpress": ">=5.6",
