@@ -25,10 +25,10 @@ export function setupMongo(): void {
 
 let nextDictionaryNumber = 1;
 /** Inserts a new dictionary into the database and returns its dictionaryId. */
-export async function createDictionary(): Promise<string> {
+export async function createDictionary(data = '{}'): Promise<string> {
   const dictionaryId = `test-dictionary-${nextDictionaryNumber}`;
   nextDictionaryNumber += 1;
 
-  await upsertDictionary('{}', dictionaryId, 'test-user');
+  await upsertDictionary(data, dictionaryId, 'test-user');
   return dictionaryId;
 }

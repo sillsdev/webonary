@@ -90,11 +90,12 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   // get reversal entry counts
   // TODO: Populate this during dictionary upload
-
   const reversalEntriesCounts = await Promise.all(
     dbItem.reversalLanguages.map(async ({ lang }) => {
-      dbFind[DbPaths.ENTRY_REVERSAL_FORM_LANG] = lang;
-      return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments(dbFind);
+      return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments({
+        ...dbFind,
+        [DbPaths.ENTRY_REVERSAL_FORM_LANG]: lang,
+      });
     }),
   );
 
