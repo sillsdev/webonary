@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { APIGatewayRequestAuthorizerEvent, APIGatewayAuthorizerResult } from 'aws-lambda';
-import axios, { AxiosError } from 'axios';
+import { APIGatewayRequestAuthorizerEvent } from 'aws-lambda';
+import axios from 'axios';
 import lambdaHandler from '../methodAuthorize';
 
 jest.mock('axios');
