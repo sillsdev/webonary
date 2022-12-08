@@ -89,13 +89,6 @@ export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): o
   return copyObject;
 }
 
-export function createFailureResponse(error: any) {
-  if (error instanceof Error) {
-    return failure({ errorType: error.name, errorMessage: error.message });
-  }
-  return failure({ error });
-}
-
 export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[] {
   return entries.map((entry) => {
     const newEntry = entry;

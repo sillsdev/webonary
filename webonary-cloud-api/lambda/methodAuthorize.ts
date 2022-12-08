@@ -1,4 +1,4 @@
-import { CustomAuthorizerEvent, APIGatewayAuthorizerResult, Context, Callback } from 'aws-lambda';
+import { APIGatewayRequestAuthorizerEvent, APIGatewayAuthorizerResult } from 'aws-lambda';
 import axios, { AxiosError } from 'axios';
 
 import { getBasicAuthCredentials } from './utils';
@@ -28,19 +28,14 @@ function generatePolicy(
 }
 
 export async function handler(
-  event: CustomAuthorizerEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
+  event: APIGatewayRequestAuthorizerEvent,
+): Promise<APIGatewayAuthorizerResult> {
   const authHeaders = event.headers?.Authorization;
   const dictionaryPath = event.pathParameters?.dictionaryId ?? '';
   const dictionaryId = dictionaryPath.toLowerCase();
 
   if (!dictionaryId || !authHeaders) {
-    return callback('Unauthorized');
+    throw Error('Unauthorized');
   }
 
   const credentials = getBasicAuthCredentials(authHeaders);
@@ -63,12 +58,12 @@ export async function handler(
     );
 
     if (response.status !== 200 || !response.data) {
-      return callback('Unauthorized');
+      throw Error('Unauthorized');
     }
 
     const allowedDictionaries = response.data.split(','); // will always lowercase
     if (!allowedDictionaries.includes(dictionaryId)) {
-      return callback('Unauthorized');
+      throw Error('Unauthorized');
     }
 
     if (dictionaryId !== dictionaryPath) {
@@ -86,7 +81,7 @@ export async function handler(
 
     // eslint-disable-next-line no-console
     console.log(`Creating policy for ${principalId} to access ${resources}`);
-    return callback(null, generatePolicy(principalId, 'Allow', resources));
+    return generatePolicy(principalId, 'Allow', resources);
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response?.status === 401) {
@@ -94,12 +89,12 @@ export async function handler(
 
       // eslint-disable-next-line no-console
       console.log(`Denying ${principalId} to access ${resources}: ${axiosError.response.data}`);
-      return callback(null, generatePolicy(principalId, 'Deny', resources)); // 403
+      return generatePolicy(principalId, 'Deny', resources); // 403
     }
 
     // eslint-disable-next-line no-console
     console.log(`Unknown error for ${principalId} to access ${dictionaryId}`, axiosError.response);
-    return callback('Unauthorized');
+    throw Error('Unauthorized');
   }
 }
 

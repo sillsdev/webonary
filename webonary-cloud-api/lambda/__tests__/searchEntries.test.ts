@@ -1,8 +1,8 @@
-import { searchEntries, SearchEntriesArguments } from '../searchEntries';
+import { APIGatewayProxyResult } from 'aws-lambda';
 
+import { searchEntries, SearchEntriesArguments } from '../searchEntries';
 import { upsertEntries } from '../postEntry';
 import { createDictionary, setupMongo } from './databaseSetup';
-import { Response } from '../response';
 
 setupMongo();
 
@@ -22,7 +22,7 @@ const defaultArguments: SearchEntriesArguments = {
   text: 'test-text',
 };
 
-function parseGuids(response: Response): string[] {
+function parseGuids(response: APIGatewayProxyResult): string[] {
   return (
     JSON.parse(response.body)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -20,7 +20,7 @@
  * @apiError (404) NotFound There are no matching entries.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
@@ -34,7 +34,7 @@ import {
 } from './db';
 import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
-import { createFailureResponse, getDbSkip } from './utils';
+import { getDbSkip } from './utils';
 
 import * as Response from './response';
 
@@ -56,176 +56,161 @@ export interface SearchEntriesArguments {
   $language: string;
 }
 
-export async function searchEntries(args: SearchEntriesArguments): Promise<Response.Response> {
-  try {
-    const dbClient: MongoClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
+export async function searchEntries(args: SearchEntriesArguments): Promise<APIGatewayProxyResult> {
+  const dbClient: MongoClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
 
-    // set up main search
-    let entries;
-    let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
-    let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
-    const dbSkip = getDbSkip(args.pageNumber, args.pageLimit);
-    let primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
+  // set up main search
+  let entries;
+  let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
+  let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
+  const dbSkip = getDbSkip(args.pageNumber, args.pageLimit);
+  let primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
 
-    // Semantic domains search
-    if (args.searchSemDoms) {
-      let dbFind;
-      if (args.semDomAbbrev && args.semDomAbbrev !== '') {
-        const abbreviationRegex = {
-          $in: [args.semDomAbbrev, new RegExp(`^${args.semDomAbbrev}.`)],
-        };
-        if (args.lang) {
-          dbFind = {
-            ...primaryFilter,
-            [DbPaths.ENTRY_SEM_DOMS_ABBREV]: {
-              $elemMatch: {
-                lang: args.lang,
-                value: abbreviationRegex,
-              },
+  // Semantic domains search
+  if (args.searchSemDoms) {
+    let dbFind;
+    if (args.semDomAbbrev && args.semDomAbbrev !== '') {
+      const abbreviationRegex = {
+        $in: [args.semDomAbbrev, new RegExp(`^${args.semDomAbbrev}.`)],
+      };
+      if (args.lang) {
+        dbFind = {
+          ...primaryFilter,
+          [DbPaths.ENTRY_SEM_DOMS_ABBREV]: {
+            $elemMatch: {
+              lang: args.lang,
+              value: abbreviationRegex,
             },
-          };
-        } else {
-          dbFind = {
-            ...primaryFilter,
-            [DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE]: abbreviationRegex,
-          };
-        }
-      } else {
-        dbFind = { ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: args.text };
-      }
-
-      if (args.countTotalOnly) {
-        const count = await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).countDocuments(dbFind);
-        return Response.success({ count });
-      }
-
-      entries = await db
-        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-        .find(dbFind)
-        .skip(dbSkip)
-        .limit(args.pageLimit)
-        .toArray();
-
-      return Response.success(entries);
-    }
-
-    if (args.partOfSpeech && args.partOfSpeech.length > 0) {
-      primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = {
-        $in: args.partOfSpeech,
-      };
-    }
-
-    if (args.lang) {
-      if (DB_COLLATION_LOCALES.includes(args.lang)) {
-        locale = args.lang;
-      }
-
-      primaryFilter = {
-        $and: [
-          primaryFilter,
-          {
-            $or: [
-              { 'mainHeadWord.lang': args.lang },
-              { 'senses.definitionOrGloss.lang': args.lang },
-              { 'reversalLetterHeads.lang': args.lang },
-              { 'pronunciations.lang': args.lang },
-              { 'morphoSyntaxAnalysis.partOfSpeech.lang': args.lang },
-            ],
           },
-        ],
-      };
-    }
-
-    if (args.matchPartial) {
-      const dictionaryPartialSearch = {
-        ...primaryFilter,
-        [DbPaths.ENTRY_DISPLAY_TEXT]: { $regex: args.text, $options: 'i' },
-      };
-
-      if (args.matchAccents) {
-        strength = DB_COLLATION_STRENGTH_FOR_SENSITIVITY;
+        };
+      } else {
+        dbFind = {
+          ...primaryFilter,
+          [DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE]: abbreviationRegex,
+        };
       }
-
-      // eslint-disable-next-line no-console
-      console.log(
-        `Searching ${
-          args.dictionaryId
-        } using partial match and locale ${locale} and strength ${strength} ${JSON.stringify(
-          dictionaryPartialSearch,
-        )}`,
-      );
-
-      if (args.countTotalOnly) {
-        // TODO: countDocuments might not be 100%, but should be more than the actual count, so it would page to the end
-        const count = await db
-          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .countDocuments(dictionaryPartialSearch);
-
-        return Response.success({ count });
-      }
-
-      entries = await db
-        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-        .find(dictionaryPartialSearch)
-        .collation({ locale, strength })
-        .sort({ 'mainHeadWord.value': 1, _id: 1 })
-        .skip(dbSkip)
-        .limit(args.pageLimit)
-        .toArray();
     } else {
-      // NOTE: Mongo text search can do language specific stemming,
-      // but then each search much specify correct language in a field named "language".
-      // To use this, we will need to distinguish between lang field in Entry, and a special language field
-      // that is one of the valid Mongo values, or "none".
-      // By setting $language: "none" in all queries and in index, we are skipping language-specific stemming.
-      // If we wanted to use language stemming, then we must specify language in each search,
-      // and UNION all searches if language-independent search is desired
-      const $diacriticSensitive = args.matchAccents;
-      const $text = { $search: `"${args.text}"`, $language: args.$language, $diacriticSensitive };
-      const dictionaryFulltextSearch = { ...primaryFilter, $text };
-
-      // eslint-disable-next-line no-console
-      console.log(
-        `Searching ${args.dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`,
-      );
-
-      if (args.countTotalOnly) {
-        const count = await db
-          .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-          .countDocuments(dictionaryFulltextSearch);
-
-        return Response.success({ count });
-      }
-
-      entries = await db
-        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-        .find(dictionaryFulltextSearch)
-        .sort({ 'mainHeadWord.value': 1, _id: 1 })
-        .skip(dbSkip)
-        .limit(args.pageLimit)
-        .toArray();
+      dbFind = { ...primaryFilter, [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: args.text };
     }
 
-    if (!entries.length) {
-      return Response.notFound([{}]);
+    if (args.countTotalOnly) {
+      const count = await db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).countDocuments(dbFind);
+      return Response.success({ count });
     }
+
+    entries = await db
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .find(dbFind)
+      .skip(dbSkip)
+      .limit(args.pageLimit)
+      .toArray();
+
     return Response.success(entries);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return createFailureResponse(error);
   }
+
+  if (args.partOfSpeech && args.partOfSpeech.length > 0) {
+    primaryFilter[DbPaths.ENTRY_PART_OF_SPEECH_VALUE] = {
+      $in: args.partOfSpeech,
+    };
+  }
+
+  if (args.lang) {
+    if (DB_COLLATION_LOCALES.includes(args.lang)) {
+      locale = args.lang;
+    }
+
+    primaryFilter = {
+      $and: [
+        primaryFilter,
+        {
+          $or: [
+            { 'mainHeadWord.lang': args.lang },
+            { 'senses.definitionOrGloss.lang': args.lang },
+            { 'reversalLetterHeads.lang': args.lang },
+            { 'pronunciations.lang': args.lang },
+            { 'morphoSyntaxAnalysis.partOfSpeech.lang': args.lang },
+          ],
+        },
+      ],
+    };
+  }
+
+  if (args.matchPartial) {
+    const dictionaryPartialSearch = {
+      ...primaryFilter,
+      [DbPaths.ENTRY_DISPLAY_TEXT]: { $regex: args.text, $options: 'i' },
+    };
+
+    if (args.matchAccents) {
+      strength = DB_COLLATION_STRENGTH_FOR_SENSITIVITY;
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(
+      `Searching ${
+        args.dictionaryId
+      } using partial match and locale ${locale} and strength ${strength} ${JSON.stringify(
+        dictionaryPartialSearch,
+      )}`,
+    );
+
+    if (args.countTotalOnly) {
+      // TODO: countDocuments might not be 100%, but should be more than the actual count, so it would page to the end
+      const count = await db
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+        .countDocuments(dictionaryPartialSearch);
+
+      return Response.success({ count });
+    }
+
+    entries = await db
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .find(dictionaryPartialSearch)
+      .collation({ locale, strength })
+      .sort({ 'mainHeadWord.value': 1, _id: 1 })
+      .skip(dbSkip)
+      .limit(args.pageLimit)
+      .toArray();
+  } else {
+    // NOTE: Mongo text search can do language specific stemming,
+    // but then each search much specify correct language in a field named "language".
+    // To use this, we will need to distinguish between lang field in Entry, and a special language field
+    // that is one of the valid Mongo values, or "none".
+    // By setting $language: "none" in all queries and in index, we are skipping language-specific stemming.
+    // If we wanted to use language stemming, then we must specify language in each search,
+    // and UNION all searches if language-independent search is desired
+    const $diacriticSensitive = args.matchAccents;
+    const $text = { $search: `"${args.text}"`, $language: args.$language, $diacriticSensitive };
+    const dictionaryFulltextSearch = { ...primaryFilter, $text };
+
+    // eslint-disable-next-line no-console
+    console.log(`Searching ${args.dictionaryId} using ${JSON.stringify(dictionaryFulltextSearch)}`);
+
+    if (args.countTotalOnly) {
+      const count = await db
+        .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+        .countDocuments(dictionaryFulltextSearch);
+
+      return Response.success({ count });
+    }
+
+    entries = await db
+      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+      .find(dictionaryFulltextSearch)
+      .sort({ 'mainHeadWord.value': 1, _id: 1 })
+      .skip(dbSkip)
+      .limit(args.pageLimit)
+      .toArray();
+  }
+
+  if (!entries.length) {
+    return Response.notFound();
+  }
+  return Response.success(entries);
 }
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const text = event.queryStringParameters?.text;
   const mainLang = event.queryStringParameters?.mainLang; // main language of the dictionary
@@ -248,7 +233,7 @@ export async function handler(
   );
 
   if (!text) {
-    return callback(null, Response.badRequest('Search text must be specified.'));
+    return Response.badRequest('Search text must be specified.');
   }
   const response = await searchEntries({
     pageNumber,
@@ -266,7 +251,7 @@ export async function handler(
     $language,
   });
 
-  return callback(null, response);
+  return response;
 }
 
 export default handler;

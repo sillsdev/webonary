@@ -104,19 +104,14 @@
  */
 
 import axios from 'axios';
-import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
 
 import { connectToDB } from './mongo';
 import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
 import { PostResult } from './base.model';
 import { DictionaryItem } from './dictionary.model';
-import {
-  copyObjectIgnoreKeyCase,
-  setSearchableEntries,
-  getBasicAuthCredentials,
-  createFailureResponse,
-} from './utils';
+import { copyObjectIgnoreKeyCase, setSearchableEntries, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -143,62 +138,49 @@ export async function upsertDictionary(
   return { updatedAt, dbResult };
 }
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const eventBody = event.body;
   if (!dictionaryId || !authHeaders) {
-    return callback(null, Response.badRequest('Invalid parameters'));
+    return Response.badRequest('Invalid parameters');
   }
 
+  const credentials = getBasicAuthCredentials(authHeaders);
+  const { updatedAt, dbResult } = await upsertDictionary(
+    eventBody,
+    dictionaryId,
+    credentials.username,
+  );
+
+  // Call Webonary to alert that dictionary data is ready and refreshed
+  axios.defaults.headers.post['Content-Type'] = 'application/json';
+  const resetPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_RESET_DICTIONARY_PATH}`;
+  let message = '';
+
   try {
-    const credentials = getBasicAuthCredentials(authHeaders);
-    const { updatedAt, dbResult } = await upsertDictionary(
-      eventBody,
-      dictionaryId,
-      credentials.username,
-    );
+    const response = await axios.post(resetPath, '{}', {
+      auth: credentials,
+    });
 
-    // Call Webonary to alert that dictionary data is ready and refreshed
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    const resetPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_RESET_DICTIONARY_PATH}`;
-    let message = '';
-
-    try {
-      const response = await axios.post(resetPath, '{}', {
-        auth: credentials,
-      });
-
-      if (response.status === 200 && response.data) {
-        message = response.data;
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-      message = JSON.stringify(error);
+    if (response.status === 200 && response.data) {
+      message = response.data;
     }
-
-    const postResult: PostResult = {
-      updatedAt,
-      updatedCount: dbResult.modifiedCount,
-      insertedCount: dbResult.upsertedCount,
-      insertedIds: [dictionaryId],
-      message,
-    };
-
-    return callback(null, Response.success({ ...postResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, createFailureResponse(error));
+    message = JSON.stringify(error);
   }
+
+  const postResult: PostResult = {
+    updatedAt,
+    updatedCount: dbResult.modifiedCount,
+    insertedCount: dbResult.upsertedCount,
+    insertedIds: [dictionaryId],
+    message,
+  };
+
+  return Response.success({ ...postResult });
 }
 
 export default handler;
