@@ -57,7 +57,7 @@ class Webonary_Cloud
             return null;
         }
 
-        if (WP_DEBUG_WEBONARY_CLOUD){
+        if (defined('WP_DEBUG_WEBONARY_CLOUD') && WP_DEBUG_WEBONARY_CLOUD) {
             error_log('Getting results from ' . $url);
         }
 
