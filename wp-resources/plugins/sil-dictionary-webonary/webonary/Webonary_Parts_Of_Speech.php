@@ -45,15 +45,15 @@ class Webonary_Parts_Of_Speech
 		$checked = (empty($this->selected_values) || in_array($value, $this->selected_values)) ? 'checked="checked"' : '';
 		$options[] = sprintf($template, $counter, $value, $checked, $all_parts);
 
-		foreach ($this->parts as $part) {
+		$this->GetPartsOfSpeechForLanguage($counter, $options, $this->current_lang_code, $template);
 
-			if (is_null($part->abbreviation) || $part->lang != $this->current_lang_code)
-				continue;
+		// if the list for the current language is empty, choose the first language
+		if (count($options) == 1 && !empty($this->parts)) {
 
-			$counter++;
-			$value = $part->abbreviation;
-			$checked = in_array($value, $this->selected_values) ? 'checked="checked"' : '';
-			$options[] = sprintf($template, $counter, $value, $checked, $part->name);
+			$language = $this->parts[0]->lang ?? '';
+
+			if ($language != '')
+				$this->GetPartsOfSpeechForLanguage($counter, $options, $language, $template);
 		}
 
 		$option_str = implode(PHP_EOL, $options);
@@ -152,6 +152,20 @@ HTML;
 		}
 
 		return $return_val;
+	}
+
+	private function GetPartsOfSpeechForLanguage(int &$counter, array &$options, string $language, string $template): void
+	{
+		foreach ($this->parts as $part) {
+
+			if (is_null($part->abbreviation) || $part->lang != $language)
+				continue;
+
+			$counter++;
+			$value = $part->abbreviation;
+			$checked = in_array($value, $this->selected_values) ? 'checked="checked"' : '';
+			$options[] = sprintf($template, $counter, $value, $checked, $part->name);
+		}
 	}
 
 	public function HasPartsOfSpeech(): bool
