@@ -13,7 +13,7 @@
  * @apiError (404) NotFound Cannot find the specified entry.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
@@ -23,18 +23,10 @@ import {
 } from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
-import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const guid = event.queryStringParameters?.guid;
 
@@ -45,22 +37,17 @@ export async function handler(
     : DB_COLLECTION_DICTIONARY_ENTRIES;
 
   if (!guid || guid === '') {
-    return callback(null, Response.badRequest('guid must be specified.'));
+    return Response.badRequest('guid must be specified.');
   }
 
-  try {
-    dbClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
-    const dbItem = await db.collection(dbCollection).findOne({ guid, dictionaryId });
-    if (!dbItem) {
-      return callback(null, Response.notFound({}));
-    }
-    return callback(null, Response.success(dbItem));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, createFailureResponse(error));
+  dbClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
+  const dbItem = await db.collection(dbCollection).findOne({ guid, dictionaryId });
+  if (!dbItem) {
+    return Response.notFound();
   }
+
+  return Response.success(dbItem);
 }
 
 export default handler;

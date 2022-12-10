@@ -77,7 +77,7 @@
  * </Error>
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { getSignedUrl } from './s3Utils';
 import * as Response from './response';
 
@@ -86,39 +86,31 @@ if (dictionaryBucket === '') {
   throw Error('S3 bucket not set');
 }
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  try {
-    const { objectId, action } = JSON.parse(event.body as string);
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  const { objectId, action } = JSON.parse(event.body as string);
 
-    let errorMessage = '';
+  let errorMessage = '';
 
-    if (!objectId) {
-      errorMessage = 'Missing objectId in the request body';
-    }
-    if (action !== 'putObject') {
-      errorMessage = 'Invalid action in the request body';
-    }
-
-    if (errorMessage) {
-      return callback(null, Response.badRequest(errorMessage));
-    }
-
-    // Ensure that dictionaryId is lowercase
-    const [dictionaryId, ...fileName] = objectId.split('/');
-    const signedUrl = getSignedUrl(
-      dictionaryBucket,
-      action,
-      `${dictionaryId.toLocaleLowerCase()}/${fileName.join('/')}`,
-    );
-
-    return callback(null, Response.success(signedUrl));
-  } catch (error) {
-    return callback(`Error occurred in S3 Authorizer: ${JSON.stringify(error)}`);
+  if (!objectId) {
+    errorMessage = 'Missing objectId in the request body';
   }
+  if (action !== 'putObject') {
+    errorMessage = 'Invalid action in the request body';
+  }
+
+  if (errorMessage) {
+    return Response.badRequest(errorMessage);
+  }
+
+  // Ensure that dictionaryId is lowercase
+  const [dictionaryId, ...fileName] = objectId.split('/');
+  const signedUrl = getSignedUrl(
+    dictionaryBucket,
+    action,
+    `${dictionaryId.toLocaleLowerCase()}/${fileName.join('/')}`,
+  );
+
+  return Response.success(signedUrl);
 }
 
 export default handler;

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { CustomAuthorizerEvent, Context } from 'aws-lambda';
-import axios, { AxiosError } from 'axios';
+import { APIGatewayRequestAuthorizerEvent } from 'aws-lambda';
+import axios from 'axios';
 import lambdaHandler from '../methodAuthorize';
 
 jest.mock('axios');
@@ -13,26 +13,10 @@ const headers = { Authorization: `Basic ${base64Credentials}` };
 
 const dictionaryId = 'testDictionary';
 
-const event: CustomAuthorizerEvent = {
-  type: 'testEventType',
+const event: Partial<APIGatewayRequestAuthorizerEvent> = {
   methodArn: `arn:something-something/POST/post/entry/${dictionaryId}`,
   pathParameters: { dictionaryId },
   headers,
-};
-
-const context: Context = {
-  callbackWaitsForEmptyEventLoop: false,
-  functionName: '',
-  functionVersion: '',
-  invokedFunctionArn: '',
-  memoryLimitInMB: '',
-  awsRequestId: '',
-  logGroupName: '',
-  logStreamName: '',
-  getRemainingTimeInMillis: () => 0,
-  done: () => undefined,
-  fail: () => undefined,
-  succeed: () => undefined,
 };
 
 describe('methodAuthorize', () => {
@@ -43,39 +27,29 @@ describe('methodAuthorize', () => {
         data: `${dictionaryId.toLowerCase()},another-dictionary`,
       }),
     );
-    await lambdaHandler(event, context, (error, result) => {
-      expect(error).toBe(null);
-      expect(result.principalId).toEqual(username);
-      expect(result.policyDocument.Statement[0].Effect).toBe('Allow');
-      expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
-      expect(result.policyDocument.Statement[0].Resource).toStrictEqual([
+    const result = await lambdaHandler(event as APIGatewayRequestAuthorizerEvent);
+    expect(result.principalId).toEqual(username);
+    expect(result.policyDocument.Statement[0]).toStrictEqual({
+      Action: 'execute-api:Invoke',
+      Effect: 'Allow',
+      Resource: [
         `arn:something-something/*/*/${dictionaryId.toLowerCase()}`,
         'arn:something-something/*/*/another-dictionary',
         `arn:something-something/*/*/${dictionaryId}`,
-      ]);
+      ],
     });
-
-    return expect.hasAssertions();
   });
 
   test('auth denied invalid username or password', async (): Promise<void> => {
     mockedAxios.post.mockRejectedValueOnce({ response: { status: 401 } });
 
-    // mockedAxios.post.mockImplementation(() => {
-    //   throw new AxiosError('Invalid username or password', '401');
-    // });
-
-    await lambdaHandler(event, context, (error, result) => {
-      expect(error).toBe(null);
-      expect(result.principalId).toEqual(username);
-      expect(result.policyDocument.Statement[0].Action).toBe('execute-api:Invoke');
-      expect(result.policyDocument.Statement[0].Effect).toBe('Deny');
-      expect(result.policyDocument.Statement[0].Resource).toStrictEqual([
-        `arn:something-something/*/*/${dictionaryId}`,
-      ]);
+    const result = await lambdaHandler(event as APIGatewayRequestAuthorizerEvent);
+    expect(result.principalId).toEqual(username);
+    expect(result.policyDocument.Statement[0]).toStrictEqual({
+      Action: 'execute-api:Invoke',
+      Effect: 'Deny',
+      Resource: [`arn:something-something/*/*/${dictionaryId}`],
     });
-
-    return expect.hasAssertions();
   });
 
   test('auth denied for dictionary', async (): Promise<void> => {
@@ -83,36 +57,29 @@ describe('methodAuthorize', () => {
       Promise.resolve({ status: 200, data: 'another-dictionary' }),
     );
 
-    await lambdaHandler(event, context, (error) => {
-      expect(error).toBe('Unauthorized');
-    });
-
-    return expect.hasAssertions();
+    await expect(lambdaHandler(event as APIGatewayRequestAuthorizerEvent)).rejects.toThrow(
+      'Unauthorized',
+    );
   });
 
   test('auth error no headers', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({}));
 
-    const emptyEvent: CustomAuthorizerEvent = {
-      type: '',
+    const emptyEvent: Partial<APIGatewayRequestAuthorizerEvent> = {
       methodArn: '',
     };
 
-    await lambdaHandler(emptyEvent, context, (error) => {
-      expect(error).toBe('Unauthorized');
-    });
-
-    return expect.hasAssertions();
+    await expect(lambdaHandler(emptyEvent as APIGatewayRequestAuthorizerEvent)).rejects.toThrow(
+      'Unauthorized',
+    );
   });
 
   test('auth error generic', async (): Promise<void> => {
     mockedAxios.post.mockImplementation(() => Promise.resolve({ status: 500, data: 'some error' }));
 
-    await lambdaHandler(event, context, (error) => {
-      expect(error).toBe('Unauthorized');
-    });
-
-    return expect.hasAssertions();
+    await expect(lambdaHandler(event as APIGatewayRequestAuthorizerEvent)).rejects.toThrow(
+      'Unauthorized',
+    );
   });
 
   test('auth throws an unknown error', async (): Promise<void> => {
@@ -121,10 +88,8 @@ describe('methodAuthorize', () => {
       throw new Error(errorMessage);
     });
 
-    await lambdaHandler(event, context, (error) => {
-      expect(error).toBe('Unauthorized');
-    });
-
-    return expect.hasAssertions();
+    await expect(lambdaHandler(event as APIGatewayRequestAuthorizerEvent)).rejects.toThrow(
+      'Unauthorized',
+    );
   });
 });

@@ -45,7 +45,7 @@
  * @apiError (404) NotFound Cannot find a dictionary with the supplied id.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
 import {
@@ -59,63 +59,51 @@ import { DbPaths } from './entry.model';
 
 import { DbFindParameters } from './base.model';
 import * as Response from './response';
-import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  try {
-    // eslint-disable-next-line no-param-reassign
-    context.callbackWaitsForEmptyEventLoop = false;
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
+  const dbFind: DbFindParameters = { dictionaryId };
 
-    const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
-    const dbFind: DbFindParameters = { dictionaryId };
+  dbClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
+  const dbItem: Dictionary | null = await db
+    .collection<Dictionary>(DB_COLLECTION_DICTIONARIES)
+    .findOne({ _id: dictionaryId });
 
-    dbClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
-    const dbItem: Dictionary | null = await db
-      .collection<Dictionary>(DB_COLLECTION_DICTIONARIES)
-      .findOne({ _id: dictionaryId });
-
-    if (!dbItem) {
-      return callback(null, Response.notFound({}));
-    }
-
-    // get unique language codes from definitionOrGloss
-    // TODO: Populate this during dictionary upload
-    dbItem.definitionOrGlossLangs = await db
-      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-      .distinct(DbPaths.ENTRY_DEFINITION_LANG, dbFind);
-
-    // get total entries
-    // TODO: Populate this during dictionary upload
-    dbItem.mainLanguage.entriesCount = await db
-      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-      .countDocuments(dbFind);
-
-    // get reversal entry counts
-    // TODO: Populate this during dictionary upload
-    const reversalEntriesCounts = await Promise.all(
-      dbItem.reversalLanguages.map(async ({ lang }) => {
-        dbFind[DbPaths.ENTRY_REVERSAL_FORM_LANG] = lang;
-        return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments(dbFind);
-      }),
-    );
-
-    reversalEntriesCounts.forEach((entriesCount, index) => {
-      dbItem.reversalLanguages[index].entriesCount = entriesCount;
-    });
-
-    return callback(null, Response.success(dbItem));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, createFailureResponse(error));
+  if (!dbItem) {
+    return Response.notFound();
   }
+
+  // get unique language codes from definitionOrGloss
+  // TODO: Populate this during dictionary upload
+  dbItem.definitionOrGlossLangs = await db
+    .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+    .distinct(DbPaths.ENTRY_DEFINITION_LANG, dbFind);
+
+  // get total entries
+  // TODO: Populate this during dictionary upload
+  dbItem.mainLanguage.entriesCount = await db
+    .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
+    .countDocuments(dbFind);
+
+  // get reversal entry counts
+  // TODO: Populate this during dictionary upload
+  const reversalEntriesCounts = await Promise.all(
+    dbItem.reversalLanguages.map(async ({ lang }) => {
+      return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments({
+        ...dbFind,
+        [DbPaths.ENTRY_REVERSAL_FORM_LANG]: lang,
+      });
+    }),
+  );
+
+  reversalEntriesCounts.forEach((entriesCount, index) => {
+    dbItem.reversalLanguages[index].entriesCount = entriesCount;
+  });
+
+  return Response.success(dbItem);
 }
 
 export default handler;
