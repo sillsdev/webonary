@@ -16,3 +16,4 @@
 /wp-resources/themes/webonary-zeedisplay/includes/lang/*.old
 /PRIVATE_NOTES.md
 .DS_Store
+/test*.*
