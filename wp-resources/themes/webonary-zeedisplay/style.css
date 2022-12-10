@@ -245,7 +245,7 @@ ul.qtrans_language_chooser li.active { display:none }
   display: none;
 }
 #s {
-  background: #eee;
+  background: buttonface;
   border: 1px solid #ddd;
   padding: 6px 5px;
   font-family: "Arial Unicode MS", serif;
@@ -930,8 +930,16 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
  */
 .webonary_searchform_language_select {
   max-width: 250px;
-  display: block;
-  margin-bottom: 8px;
+  display: inline-block;
+  margin: 0;
+  padding: 6px 5px;
+  font-size: 1rem;
+  background-color: buttonface;
+  border: 1px solid #ccc;
+}
+
+.normalSearch {
+  text-align: start;
 }
 
 .pageentry p {
@@ -962,6 +970,65 @@ span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-fa
 img.ft-node {width: 16px; height: 22px; border: 0; max-width: none}
 img.ft-blank2 {width: 2px; height: 2px; border: 0; max-width: none}
 img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
+
+#sidebar ul li div.pos-container {
+  padding: 0;
+  margin: 5px;
+  border: none;
+  border-radius: 0;
+}
+
+#sidebar ul li div.pos-container .pos-list {
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  position: absolute;
+  background-color: #f7f7f7;
+  z-index: 1000;
+}
+
+#sidebar ul li div.pos-container .pos-list .pos-entry {
+  padding: 0;
+  margin: 0 10px 0 2px;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+}
+
+#sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  width: 32px !important;
+  height: 32px !important;
+  color: #85005B !important;
+  background-color: #fff;
+}
+
+#sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"]::before {
+  font-family: 'Webonary Symbols';
+  content: "✔";
+  font-size: 28px;
+  line-height: 36px;
+  margin-left: 2px;
+  visibility: hidden;
+}
+
+#sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+.btn.btn-dropdown {
+  border: 1px solid #ccc;
+  color: #000;
+  font-size: 1rem;
+  padding: 6px 6px 6px 10px;
+  outline: 0;
+  background-color: buttonface;
+  cursor: pointer;
+  position: relative;
+}
 
 @media only screen and (max-width : 550px) {
 

@@ -14,5 +14,6 @@
 /wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.old
 /wp-resources/plugins/sil-dictionary-webonary/include/sem-domains/*.mo
 /wp-resources/themes/webonary-zeedisplay/includes/lang/*.old
+/wp-resources/themes/webonary-bootstrap-5/css/
 /PRIVATE_NOTES.md
 .DS_Store

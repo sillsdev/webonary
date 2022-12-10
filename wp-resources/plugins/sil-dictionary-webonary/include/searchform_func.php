@@ -13,7 +13,8 @@ function custom_query_vars_filter($vars) {
 }
 add_filter( 'query_vars', 'custom_query_vars_filter' );
 
-function webonary_searchform($use_li = false) {
+function webonary_searchform($use_li = false): void
+{
 	global $wpdb, $search_cookie;
 
 	if(get_option('noSearch') == 1)
@@ -24,7 +25,7 @@ function webonary_searchform($use_li = false) {
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
-	$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+	$selected_parts_of_speech = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
 	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 
 	$arrIndexed = array();
@@ -46,22 +47,8 @@ function webonary_searchform($use_li = false) {
 			// set up parts of speech dropdown
 			if(count($dictionary->partsOfSpeech))
 			{
-				// sort the list by name
-				usort($dictionary->partsOfSpeech, function($a, $b) { return strcasecmp($a->name, $b->name); });
-
-				$options = '';
-				foreach($dictionary->partsOfSpeech as $part)
-				{
-					if ($part->lang === $currentLanguage) {
-						$selected = ($part->abbreviation === $taxonomy) ? ' selected ' : '';
-						$options .= "<option value=" . $part->abbreviation . $selected . ">" . $part->name . "</option>";
-					}
-				}
-
-				if ($options !== '') {
-					$options = "<option value=''>" . __('All Parts of Speech','sil_dictionary') ."</options>" . $options;
-					$parts_of_speech_dropdown = "<select  name='tax' id='tax' class='postform webonary_searchform_language_select' >" . $options . "</select>";
-				}
+				$parts_of_speech = new Webonary_Parts_Of_Speech($currentLanguage, $dictionary->partsOfSpeech, $selected_parts_of_speech);
+				$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
 			}
 
 			//set up semantic domains links
@@ -150,22 +137,11 @@ function webonary_searchform($use_li = false) {
 		}
 
 		// set up parts of speech dropdown
-		$parts_of_speech = get_terms('sil_parts_of_speech');
-		if($parts_of_speech)
-		{
-			$parts_of_speech_dropdown = wp_dropdown_categories(
-				[
-					'show_option_none' => __('All Parts of Speech','sil_dictionary'),
-					'show_count' => 1,
-					'selected' => $taxonomy,
-					'orderby' => 'name',
-					'echo' => 0,
-					'name' => 'tax',
-					'taxonomy' => 'sil_parts_of_speech',
-					'class' => 'webonary_searchform_language_select'
-				]
-			);
-		}
+		$parts_of_speech = new Webonary_Parts_Of_Speech('en', null, $selected_parts_of_speech);
+		$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
+
+		if($parts_of_speech->HasPartsOfSpeech())
+			$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
 
 		// set up semantic domains links
 		if($search_term !== '')
@@ -217,7 +193,6 @@ SQL;
 			$special_characters = str_replace('empty', '', $special_characters);
 			if((trim($special_characters)) != '') {
 			?>
-<style> select { padding: 5px; } </style>
 <script type="text/javascript">
 
 function addchar(button) {
@@ -256,24 +231,22 @@ function theCursorPosition(ofThisInput) {
 				}
 			}
 			?>
-			<p class="clear" style="margin-bottom: 10px"></p>
-			<input type="text" name="s" id="s" value="<?php the_search_query(); ?>" size=40 title="">
+			<div class="pos-container">
+				<?php if (function_exists('qtrans_getLanguage')) {?>
+					<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
+					<input type="hidden" id="lang" name="lang" value="<?php echo qtrans_getLanguage(); ?>"/>
+				<?php }?>
+				<input type="text" name="s" id="s" style="margin: 0 5px 0 0" value="<?php the_search_query(); ?>" size=40 title="">
+				<!-- search button -->
+				<input type="submit" id="searchsubmit" name="search" style="margin: 0 0 0 5px" value="<?php _e('Search', 'sil_dictionary'); ?>" />
+			</div>
 
-			<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
-			<?php if (function_exists('qtrans_getLanguage')) {?>
-				<input type="hidden" id="lang" name="lang" value="<?php echo qtrans_getLanguage(); ?>"/>
-			<?php }?>
-
-			<!-- search button -->
-			<input type="submit" id="searchsubmit" name="search" value="<?php _e('Search', 'sil_dictionary'); ?>" />
-			<br>
-			<p style="margin-bottom: 6px;"></p>
 			<?php
 			if ($language_dropdown_options !== '') {
 				$language_dropdown = '<select name="key" class="webonary_searchform_language_select">';
 				$language_dropdown .= $language_dropdown_options;
 				$language_dropdown .= '</select>';
-				echo $language_dropdown;
+				echo '<div class="pos-container">' . $language_dropdown . '</div>';
 			}
 			echo $parts_of_speech_dropdown;
 			?>

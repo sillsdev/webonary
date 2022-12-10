@@ -59,6 +59,10 @@ msgstr ""
 msgid "All Parts of Speech"
 msgstr ""
 
+#: webonary/Webonary_Parts_Of_Speech.php:53
+msgid "Parts of Speech"
+msgstr ""
+
 #: include/searchform_func.php:295 webonary/Webonary_Search_Widget.php:57
 msgid "Search"
 msgstr ""

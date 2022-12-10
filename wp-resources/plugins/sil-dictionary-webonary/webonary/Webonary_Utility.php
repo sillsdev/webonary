@@ -644,4 +644,9 @@ class Webonary_Utility
 
 		return self::$date_formatter;
 	}
+
+	public static function RemoveEmptyStrings($array): array
+	{
+		return array_values(array_filter($array, function($val) { return strlen(trim($val)) > 0; }));
+	}
 }
