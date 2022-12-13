@@ -59,4 +59,3 @@
 <?php
 	//Reset Query
 	wp_reset_query();
-?>

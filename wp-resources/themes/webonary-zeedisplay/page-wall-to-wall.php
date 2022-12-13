@@ -38,4 +38,6 @@ Template Name: Wall to Wall
 
 	</div>
 
-<?php get_footer(); ?>
+<?php
+get_footer();
+

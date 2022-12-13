@@ -16,21 +16,21 @@ function openImage(image)
 	<div id="content">
 		<?php
 		$search_query = '';
-		$search = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+		$search = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 		if($search !== '')
 		{
 			$search_query = get_search_query();
 		}
 		else
 		{
-			$sem_domain = filter_input(INPUT_GET, 'semdomain', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+			$sem_domain = filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 			if($sem_domain !== '')
 			{
 				$search_query = $sem_domain;
 			}
 			else
 			{
-				$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_SANITIZE_STRING, array('options' => array('default' => '')));
+				$taxonomy = filter_input(INPUT_GET, 'tax', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 				if (get_option('useCloudBackend'))
 				{
 					$search_query = $taxonomy;
@@ -43,7 +43,7 @@ function openImage(image)
 			}
 		}
 		?>
-		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
+		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), htmlspecialchars($search_query));?></h2>
 		<?php
 
 		$query = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);

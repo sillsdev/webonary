@@ -35,4 +35,5 @@ Template Name: Page Fullwidth
 
 	</div>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

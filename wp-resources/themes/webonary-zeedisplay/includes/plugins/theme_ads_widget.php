@@ -58,4 +58,3 @@
 		}
 	}
 	register_widget('Theme_125_Ads');
-?>

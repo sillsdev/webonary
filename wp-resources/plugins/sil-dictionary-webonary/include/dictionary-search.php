@@ -275,7 +275,7 @@ function replace_default_search_filter($input, ?WP_Query $query=null): string
 	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => ($query->query_vars['s'] ?? '')]]);
 
 	// get the selected semantic domains
-	$semantic_domains = $wpdb->_escape(Webonary_Utility::RemoveEmptyStrings([$query->query_vars['semnumber']]));
+	$semantic_domains = $wpdb->_escape(Webonary_Utility::RemoveEmptyStrings([$query->query_vars['semnumber'] ?? '']));
 
 	$join_tables = [];
 	$where_and = [
