@@ -1,4 +1,9 @@
 <?php
+/** @noinspection SqlResolve */
+/** @noinspection HtmlRequiredAltAttribute */
+/** @noinspection HtmlFormInputWithoutLabel */
+/** @noinspection HtmlUnknownTarget */
+
 
 /**
  * Webonary Create Site
@@ -25,12 +30,11 @@ Stable tag: 0.1
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
-/* @todo Change the above Plugin URI */
-/* @todo Change the licensing above and below. If GPL2, see WP plugin doc about license. */
+
 
 // don't load directly
-if ( ! defined('ABSPATH') )
-	die( '-1' );
+if (!defined('ABSPATH'))
+	die('-1');
 
 if ( !class_exists('BlogCopier') ) {
 
@@ -462,7 +466,7 @@ if ( !class_exists('BlogCopier') ) {
 		 * @param bool $copy_files true if files should be copied
 		 * @return string status message
 		 */
-		public function copy_blog($domain, $title, $from_blog_id = 0, $copy_files = true, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus) {
+		public function copy_blog($domain, $title, $from_blog_id, $copy_files, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus) {
 			global $wpdb, $current_site, $base;
 
 			$admin_email = get_blog_option( $from_blog_id, 'admin_email' );

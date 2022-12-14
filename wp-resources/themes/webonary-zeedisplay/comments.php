@@ -42,4 +42,5 @@
 <?php if ( comments_open() ) : ?>
 	<?php comment_form(); ?>
 	<div class="clear"></div>
-<?php endif; ?>
+<?php
+endif;

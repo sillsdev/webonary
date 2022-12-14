@@ -21,4 +21,3 @@ function webonary_zeedisplay_page_navigation() {
 	<?php
 	}
 }
-?>

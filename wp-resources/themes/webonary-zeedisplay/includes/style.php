@@ -22,4 +22,3 @@ function webonary_zeedisplay_link_style_sheets() {
 	<?php
 }
 add_filter('webonary_zeedisplay_style_sheets', 'webonary_zeedisplay_link_style_sheets');
-?>

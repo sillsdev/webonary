@@ -29,4 +29,5 @@ Template Name: Page Categories
 		
 	</div>
 
-<?php get_footer(); ?>	
+<?php
+get_footer();
