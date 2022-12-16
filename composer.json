@@ -36,7 +36,7 @@
     }
   ],
   "require-dev": {
-    "deployer/deployer": "v6.7.3"
+    "deployer/deployer": "^v6.8"
   },
   "require": {
     "php": ">=7.3|>8.1",
@@ -50,7 +50,7 @@
     "wpackagist-plugin/blog-copier": "^1.0",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/jquery-collapse-o-matic": "^1.7",
-    "wpackagist-plugin/contact-form-7": "^5.3",
+    "wpackagist-plugin/contact-form-7": "^5.7",
     "wpackagist-plugin/database-collation-fix": "^1.2",
     "wpackagist-plugin/disable-comments-rb": "^1.0",
     "wpackagist-plugin/disable-real-mime-check": "^1.0",
