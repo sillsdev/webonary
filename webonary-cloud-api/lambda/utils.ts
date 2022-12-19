@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
-import { failure } from './response';
 
 export interface BasicAuthCredentials {
   username: string;

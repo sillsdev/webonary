@@ -349,7 +349,7 @@ if (args[0]) {
     logMessage(`Getting dictionary metadata...`);
     const dictionaryPost = mainParser.getDictionaryData();
     if (dictionaryPost) {
-      dictionaryPost.updatedBy = credentials.username;
+      dictionaryPost.updatedAt = undefined; // let postDictionary Lambda set it
       dictionaryPost.mainLanguage.cssFiles = mainCssFiles;
 
       dictionaryPost.reversalLanguages = reversals.map((reversal) => {

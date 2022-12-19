@@ -121,7 +121,7 @@ export async function upsertDictionary(
   dictionaryId: string,
   username: string,
 ): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
-  const updatedAt = new Date().toUTCString();
+  const updatedAt = new Date();
 
   const posted = JSON.parse(eventBody as string);
   let dictionaryItem = new DictionaryItem(dictionaryId, username, updatedAt);
@@ -135,7 +135,7 @@ export async function upsertDictionary(
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)
     .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
-  return { updatedAt, dbResult };
+  return { updatedAt: updatedAt.toUTCString(), dbResult };
 }
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
@@ -146,12 +146,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     return Response.badRequest('Invalid parameters');
   }
 
-  const credentials = getBasicAuthCredentials(authHeaders);
-  const { updatedAt, dbResult } = await upsertDictionary(
+  const auth = getBasicAuthCredentials(authHeaders);
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `Received request to post dictionary ${dictionaryId} by user ${auth.username}`,
     eventBody,
-    dictionaryId,
-    credentials.username,
   );
+  const { updatedAt, dbResult } = await upsertDictionary(eventBody, dictionaryId, auth.username);
 
   // Call Webonary to alert that dictionary data is ready and refreshed
   axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -159,9 +161,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   let message = '';
 
   try {
-    const response = await axios.post(resetPath, '{}', {
-      auth: credentials,
-    });
+    const response = await axios.post(resetPath, '{}', { auth });
 
     if (response.status === 200 && response.data) {
       message = response.data;
@@ -180,7 +180,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     message,
   };
 
-  return Response.success({ ...postResult });
+  // eslint-disable-next-line no-console
+  console.log(`Sending result for dictionary ${dictionaryId}`, postResult);
+  return Response.success(postResult);
 }
 
 export default handler;

@@ -87,7 +87,7 @@ export interface Entry {
   letterHead: string;
   sortIndex: number;
   displayXhtml: string;
-  updatedAt?: string;
+  updatedAt?: Date;
   updatedBy?: string;
 }
 
@@ -107,11 +107,11 @@ export class EntryItem implements Entry {
   // This is a copy of displayXhtml with all the HTML stripped. This is used for full text search.
   displayText: string;
 
-  updatedAt?: string;
+  updatedAt?: Date;
 
   updatedBy?: string;
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     this._id = `${dictionaryId}::${guid}`;
     this.guid = guid;
     this.dictionaryId = dictionaryId;
@@ -119,7 +119,7 @@ export class EntryItem implements Entry {
     this.sortIndex = 0;
     this.displayXhtml = '';
     this.updatedBy = updatedBy ?? '';
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    this.updatedAt = updatedAt ?? new Date();
   }
 }
 
@@ -148,7 +148,7 @@ export class DictionaryEntryItem extends EntryItem {
 
   pictures: EntryFileItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
@@ -188,7 +188,7 @@ export class ReversalEntryItem extends EntryItem {
 
   sensesRs: ReversalSenseItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying

@@ -44,7 +44,7 @@ export interface Dictionary {
   reversalLanguages: Language[];
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
-  updatedAt?: string;
+  updatedAt?: Date;
   updatedBy?: string;
 }
 
@@ -59,14 +59,14 @@ export class DictionaryItem implements Dictionary {
 
   semanticDomains?: ListOptionItem[];
 
-  updatedAt?: string;
+  updatedAt?: Date;
 
   updatedBy?: string;
 
-  constructor(dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     this._id = dictionaryId;
     this.updatedBy = updatedBy ?? '';
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    this.updatedAt = updatedAt ?? new Date();
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.mainLanguage = new LanguageItem();

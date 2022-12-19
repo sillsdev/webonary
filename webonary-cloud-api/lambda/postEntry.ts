@@ -268,7 +268,7 @@ export async function upsertEntries(
   dictionaryId: string,
   username: string,
 ): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
-  const updatedAt = new Date().toUTCString();
+  const updatedAt = new Date();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
     const { guid } = postedEntry;
@@ -296,7 +296,7 @@ export async function upsertEntries(
   });
 
   const dbResults: UpdateResult[] = await Promise.all(promises);
-  return { updatedAt, dbResults };
+  return { updatedAt: updatedAt.toUTCString(), dbResults };
 }
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
