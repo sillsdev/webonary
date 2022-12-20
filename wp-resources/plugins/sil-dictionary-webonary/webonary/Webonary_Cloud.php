@@ -10,6 +10,8 @@ class Webonary_Cloud
 
 	public static string $doSearchEntry = 'search/entry';
 
+	public static string $doDeleteDictionary = 'delete/dictionary';
+
 	public static string $apiNamespace = 'webonary-cloud/v1';
 
 	public static string $languageCategory = 'sil_writing_systems';
@@ -107,7 +109,7 @@ class Webonary_Cloud
 		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
 	}
 
-	private static function entryToDisplayXhtml($entry)
+	private static function entryToDisplayXhtml($entry): string
 	{
 		if (!isset($entry->displayXhtml) || $entry->displayXhtml === '') {
 			return '';
@@ -237,7 +239,6 @@ class Webonary_Cloud
 		return '';
 	}
 
-
 	public static function getCurrentLanguage()
 	{
 		return (
@@ -246,7 +247,6 @@ class Webonary_Cloud
 			: 'en'
 		);
 	}
-
 
 	public static function getLanguageName($code, $default = '')
 	{
@@ -348,7 +348,7 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-	public static function registerAndEnqueueMainStyles($dictionaryId, $deps = array())
+	public static function registerAndEnqueueMainStyles($dictionaryId, $deps = array()): void
 	{
 
 		$dictionary = self::getDictionary($dictionaryId);
@@ -372,7 +372,7 @@ class Webonary_Cloud
 		}
 	}
 
-	public static function registerAndEnqueueReversalStyles($dictionaryId, $lang)
+	public static function registerAndEnqueueReversalStyles($dictionaryId, $lang): void
 	{
 		$dictionary = self::getDictionary($dictionaryId);
 		$time = strtotime($dictionary->updatedAt);
@@ -410,6 +410,12 @@ class Webonary_Cloud
 		return null;
 	}
 
+	/**
+	 * @param $posts
+	 * @param WP_Query $query
+	 * @return array|null
+	 * @noinspection PhpUnusedParameterInspection
+	 */
 	public static function searchEntries($posts, WP_Query $query): ?array
 	{
 		global $search_cookie;
@@ -462,7 +468,7 @@ class Webonary_Cloud
 		return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
 	}
 
-	public static function registerApiRoutes()
+	public static function registerApiRoutes(): void
 	{
 		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
@@ -479,13 +485,13 @@ class Webonary_Cloud
 		);
 	}
 
-	public static function apiValidate($request)
+	public static function apiValidate($request): WP_REST_Response
 	{
 		$response = self::validatePermissionToPost($request->get_headers());
 		return new WP_REST_Response($response->message, $response->code);
 	}
 
-	public static function apiResetDictionary($request)
+	public static function apiResetDictionary($request): WP_REST_Response
 	{
 		$response = self::validatePermissionToPost($request->get_headers());
 
@@ -509,7 +515,7 @@ class Webonary_Cloud
 		return new WP_REST_Response($message, $code);
 	}
 
-	public static function resetDictionary($dictionaryId)
+	public static function resetDictionary($dictionaryId): void
 	{
 		// Since dictionary is persisted in options, unset it first
 		delete_option('dictionary');
@@ -548,5 +554,70 @@ class Webonary_Cloud
 			update_option('useCloudBackend', '1');
 			update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
 		}
+	}
+
+	/**
+	 * @param string $dictionary_id
+	 * @return array
+	 * @throws Exception
+	 */
+	public static function deleteDictionaryData(string $dictionary_id): array
+	{
+		// make sure the cloud path is set
+		if (!defined('WEBONARY_CLOUD_API_URL')) {
+			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
+			return ['deleted' => 0, 'msg' => 'WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.'];
+		}
+
+		// verify the password
+		$pwd = filter_input(INPUT_POST, 'pwd', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+		$user = wp_get_current_user();
+		if (!wp_check_password($pwd, $user->user_pass, $user->ID)) {
+			error_log('Invalid password entered.');
+			return ['deleted' => 0, 'msg' => __('Invalid password entered - no data was deleted', 'sil_dictionary')];
+		}
+
+		$response = new stdClass();
+
+		// set some headers
+		$headers = [
+			'User-agent: Webonary (' . $dictionary_id. ')',
+			'Accept: */*'
+		];
+
+		// build the URL
+		$url = rtrim(WEBONARY_CLOUD_API_URL, '/') . '/' . self::$doDeleteDictionary . '/' . rawurlencode($dictionary_id);
+
+		// initialize CURL
+		$ch = curl_init($url);
+		curl_setopt_array($ch, [
+			CURLOPT_CUSTOMREQUEST => 'DELETE',
+			CURLOPT_CONNECTTIMEOUT => 60,     // 60 second timeout waiting for connection
+			CURLOPT_TIMEOUT => 300,           // 5 minute timeout waiting for the server to finish deleting
+			CURLOPT_HTTPHEADER => $headers,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  // HTTP_2 does not work!
+			CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
+			CURLOPT_USERPWD => $user->user_login . ':' . $pwd
+		]);
+
+		// delete the data now
+		$response->Content = json_decode(curl_exec($ch));
+		$response->ErrorMessage = curl_error($ch);
+		curl_close($ch);
+
+		// first check for a successful response
+		if (isset($response->Content->deleteDictionaryCount))
+			return ['deleted' => 1, 'msg' => __('Finished deleting Webonary data', 'sil_dictionary')];
+
+		// we were not successful, build the error message
+		if (!empty($response->Content->Message))
+			$err_msg = $response->Content->Message;
+		elseif (!empty($response->ErrorMessage))
+			$err_msg = $response->ErrorMessage;
+		else
+			$err_msg = __('Not able to delete Webonary data', 'sil_dictionary');
+
+		return ['deleted' => 0, 'msg' => $err_msg];
 	}
 }
