@@ -34,18 +34,18 @@ describe('postEntries', () => {
     expect(actualEntry).not.toBeNull();
   });
 
-  test('fill mainheadWord from headword', async () => {
+  test('fill mainheadword from headword', async () => {
     const dictionaryId = await createDictionary();
 
     const entryGuid = 'headword-entry-guid';
-    const headWordValue = 'head-word-value';
+    const headwordValue = 'head-word-value';
     await upsertEntries(
       [
         {
           guid: entryGuid,
           headword: [
             {
-              value: headWordValue,
+              value: headwordValue,
             },
           ],
         },
@@ -57,22 +57,22 @@ describe('postEntries', () => {
 
     const actualEntry = await findEntryByGuid(entryGuid);
 
-    expect(actualEntry?.mainHeadWord.length).toBe(1);
-    expect(actualEntry?.mainHeadWord[0].value).toBe(headWordValue);
+    expect(actualEntry?.mainheadword.length).toBe(1);
+    expect(actualEntry?.mainheadword[0].value).toBe(headwordValue);
   });
 
-  test('mainHeadWord exists, ignore headword', async () => {
+  test('mainheadword exists, ignore headword', async () => {
     const dictionaryId = await createDictionary();
 
     const entryGuid = 'main-headword-entry-guid';
-    const mainHeadWordValue = 'main-head-word-value';
+    const mainheadwordValue = 'main-head-word-value';
     await upsertEntries(
       [
         {
           guid: entryGuid,
-          mainHeadWord: [
+          mainheadword: [
             {
-              value: mainHeadWordValue,
+              value: mainheadwordValue,
             },
           ],
           headword: [
@@ -89,7 +89,7 @@ describe('postEntries', () => {
 
     const actualEntry = await findEntryByGuid(entryGuid);
 
-    expect(actualEntry?.mainHeadWord.length).toBe(1);
-    expect(actualEntry?.mainHeadWord[0].value).toBe(mainHeadWordValue);
+    expect(actualEntry?.mainheadword.length).toBe(1);
+    expect(actualEntry?.mainheadword[0].value).toBe(mainheadwordValue);
   });
 });

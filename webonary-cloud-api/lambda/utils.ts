@@ -101,8 +101,8 @@ export function sortEntries(entries: DictionaryEntry[], lang?: string): Dictiona
   let entriesSorted: DictionaryEntry[] = [];
   if (lang !== '') {
     entriesSorted = entries.sort((a, b) => {
-      const aWord = a.senses[0].definitionOrGloss.find((letter) => letter.lang === lang);
-      const bWord = b.senses[0].definitionOrGloss.find((letter) => letter.lang === lang);
+      const aWord = a.senses[0].definitionorgloss.find((letter) => letter.lang === lang);
+      const bWord = b.senses[0].definitionorgloss.find((letter) => letter.lang === lang);
       if (aWord && bWord) {
         return aWord.value.localeCompare(bWord.value);
       }
@@ -110,7 +110,7 @@ export function sortEntries(entries: DictionaryEntry[], lang?: string): Dictiona
     });
   } else {
     entriesSorted = entries.sort((a, b) => {
-      return a.mainHeadWord[0].value.localeCompare(b.mainHeadWord[0].value);
+      return a.mainheadword[0].value.localeCompare(b.mainheadword[0].value);
     });
   }
   return entriesSorted;

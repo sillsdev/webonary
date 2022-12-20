@@ -46,7 +46,7 @@ describe('searchEntries', () => {
 
   test('matches text only in displayXhtml', async () => {
     const dictionaryId = await createDictionary();
-    const searchText = 'test-mainHeadWord';
+    const searchText = 'test-mainheadword';
     const matchingGuid = 'test-matching-guid';
     await upsertEntries(
       [
@@ -178,7 +178,7 @@ describe('searchEntries', () => {
         {
           guid: 'guid-matching-1',
           displayXhtml: `text`,
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'test-value',
               lang: 'matching-lang',
@@ -190,7 +190,7 @@ describe('searchEntries', () => {
           displayXhtml: `text`,
           senses: [
             {
-              definitionOrGloss: [
+              definitionorgloss: [
                 {
                   lang: 'matching-lang',
                 },
@@ -219,7 +219,7 @@ describe('searchEntries', () => {
         {
           guid: 'guid-matching-5',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: [
+          morphosyntaxanalysis: [
             {
               partOfSpeech: [
                 {
@@ -232,7 +232,7 @@ describe('searchEntries', () => {
         {
           guid: 'guid-other',
           displayXhtml: `text`,
-          mainHeadWord: [
+          mainheadword: [
             {
               lang: 'other-lang',
             },
@@ -264,35 +264,35 @@ describe('searchEntries', () => {
     ]);
   });
 
-  test('partOfSpeech filters out the irrelevant entries', async () => {
+  test('partofspeech filters out the irrelevant entries', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
       [
         {
           guid: 'guidA',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }],
           },
         },
         {
           guid: 'guidAB',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
           },
         },
         {
           guid: 'guidC',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }],
           },
         },
         {
           guid: 'guidCD',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
           },
         },
@@ -312,35 +312,35 @@ describe('searchEntries', () => {
     expect(parseGuids(response)).toEqual(['guidA', 'guidAB']);
   });
 
-  test('multiple partOfSpeech matches any of them', async () => {
+  test('multiple partofspeech matches any of them', async () => {
     const dictionaryId = await createDictionary();
     await upsertEntries(
       [
         {
           guid: 'guidA',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }],
           },
         },
         {
           guid: 'guidAB',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
           },
         },
         {
           guid: 'guidC',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }],
           },
         },
         {
           guid: 'guidCD',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
           },
         },
@@ -367,28 +367,28 @@ describe('searchEntries', () => {
         {
           guid: 'guidA',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }],
           },
         },
         {
           guid: 'guidAB',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
           },
         },
         {
           guid: 'guidC',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }],
           },
         },
         {
           guid: 'guidCD',
           displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
+          morphosyntaxanalysis: {
             partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
           },
         },
@@ -595,7 +595,7 @@ describe('searchEntries', () => {
       [
         {
           guid: 'sorted-match-partial-2',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'b',
             },
@@ -604,7 +604,7 @@ describe('searchEntries', () => {
         },
         {
           guid: 'sorted-match-partial-3',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'c',
             },
@@ -613,7 +613,7 @@ describe('searchEntries', () => {
         },
         {
           guid: 'sorted-match-partial-1',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'a',
             },
@@ -646,7 +646,7 @@ describe('searchEntries', () => {
       [
         {
           guid: 'sorted-match-partial-2',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'b',
             },
@@ -655,7 +655,7 @@ describe('searchEntries', () => {
         },
         {
           guid: 'sorted-match-partial-3',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'c',
             },
@@ -664,7 +664,7 @@ describe('searchEntries', () => {
         },
         {
           guid: 'sorted-match-partial-1',
-          mainHeadWord: [
+          mainheadword: [
             {
               value: 'a',
             },

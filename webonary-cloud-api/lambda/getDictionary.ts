@@ -52,7 +52,7 @@ import {
   MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARIES,
   DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
+  DB_COLLECTION_REVERSALS,
 } from './db';
 import { Dictionary } from './dictionary.model';
 import { DbPaths } from './entry.model';
@@ -76,7 +76,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     return Response.notFound();
   }
 
-  // get unique language codes from definitionOrGloss
+  // get unique language codes from definitionorgloss
   // TODO: Populate this during dictionary upload
   dbItem.definitionOrGlossLangs = await db
     .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
@@ -92,7 +92,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   // TODO: Populate this during dictionary upload
   const reversalEntriesCounts = await Promise.all(
     dbItem.reversalLanguages.map(async ({ lang }) => {
-      return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments({
+      return db.collection(DB_COLLECTION_REVERSALS).countDocuments({
         ...dbFind,
         [DbPaths.ENTRY_REVERSAL_FORM_LANG]: lang,
       });

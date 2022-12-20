@@ -42,9 +42,9 @@ describe('get Dictionary', () => {
 
   test('get dictionary reversal entries derived data', async () => {
     const guids = ['guid1', 'guid2'];
-    const reversalFormLangs = ['reversalLangA', 'reversalLangB'];
+    const reversalformLangs = ['reversalLangA', 'reversalLangB'];
     const dictionaryData: Partial<Dictionary> = {
-      reversalLanguages: reversalFormLangs.map((lang) => {
+      reversalLanguages: reversalformLangs.map((lang) => {
         return { lang, title: `title-${lang}`, letters: ['a'], cssFiles: [''] };
       }),
     };
@@ -54,12 +54,12 @@ describe('get Dictionary', () => {
     const posts = guids.map((guid) => {
       return {
         guid,
-        reversalform: reversalFormLangs.map((lang) => {
+        reversalform: reversalformLangs.map((lang) => {
           return { lang, value: `value-${lang}` };
         }),
       };
     });
-    posts.push({ guid: '3', reversalform: [{ lang: reversalFormLangs[0], value: 'value' }] });
+    posts.push({ guid: '3', reversalform: [{ lang: reversalformLangs[0], value: 'value' }] });
     await upsertEntries(posts, true, dictionaryId, testUsername);
 
     const event: Partial<APIGatewayEvent> = {

@@ -23,45 +23,45 @@ export class FlexXhtmlParserReversal extends FlexXhtmlParser {
   public static parseReversalEntry(entry: Entry): ReversalEntry {
     const $ = load(entry.displayXhtml);
 
-    const reversalForm: EntryValue[] = [];
+    const reversalform: EntryValue[] = [];
     $('span.reversalform span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const value = $(elem).text();
       if (lang && value) {
-        reversalForm.push({ lang, value });
+        reversalform.push({ lang, value });
       }
     });
 
-    const sensesRs: ReversalSense[] = [];
+    const sensesrs: ReversalSense[] = [];
     $('span.sensesr').map((i, elem) => {
       const guid = $(elem).attr('entryguid');
       if (guid) {
-        const headWord: EntryValue[] = [];
+        const headword: EntryValue[] = [];
         $('span.sensesr span.headword span').map((childIndex, childElem) => {
           const lang = $(childElem).attr('lang');
           const value = $(childElem).text();
           if (lang && value) {
-            headWord.push({ lang, value });
+            headword.push({ lang, value });
           }
         });
 
-        const partOfSpeech: EntryValue[] = [];
+        const partofspeech: EntryValue[] = [];
         $('span.morphosyntaxanalysis span.mlpartofspeech span').map((childIndex, childElem) => {
           const lang = $(childElem).attr('lang');
           const value = $(childElem).text();
           if (lang && value) {
-            partOfSpeech.push({ lang, value });
+            partofspeech.push({ lang, value });
           }
         });
 
-        sensesRs.push({ guid, headWord, partOfSpeech });
+        sensesrs.push({ guid, headword, partofspeech });
       }
     });
 
     const reversalEntry: ReversalEntry = {
       ...entry,
-      reversalForm,
-      sensesRs,
+      reversalform,
+      sensesrs,
     };
 
     return reversalEntry;

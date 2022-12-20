@@ -108,10 +108,9 @@ import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient, UpdateResult } from 'mongodb';
 
 import { connectToDB } from './mongo';
-import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES, createEntriesIndexes } from './db';
 import { PostResult } from './base.model';
-import { DictionaryItem } from './dictionary.model';
-import { copyObjectIgnoreKeyCase, setSearchableEntries, getBasicAuthCredentials } from './utils';
+import { setSearchableEntries, getBasicAuthCredentials } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -124,17 +123,20 @@ export async function upsertDictionary(
   const updatedAt = new Date();
 
   const posted = JSON.parse(eventBody as string);
-  let dictionaryItem = new DictionaryItem(dictionaryId, username, updatedAt);
-  dictionaryItem = Object.assign(dictionaryItem, copyObjectIgnoreKeyCase(dictionaryItem, posted));
+  const dictionaryItem = { ...posted, updatedAt, updatedBy: username };
   if (dictionaryItem.semanticDomains) {
     dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
   }
+
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
 
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)
     .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
+
+  await createEntriesIndexes(db, dictionaryId);
+
   return { updatedAt: updatedAt.toUTCString(), dbResult };
 }
 
@@ -181,7 +183,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   };
 
   // eslint-disable-next-line no-console
-  console.log(`Sending result for dictionary ${dictionaryId}`, postResult);
+  console.log(`Sending result for posting dictionary ${dictionaryId}`, postResult);
   return Response.success(postResult);
 }
 

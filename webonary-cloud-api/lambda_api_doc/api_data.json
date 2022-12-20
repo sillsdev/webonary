@@ -33,10 +33,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "allowedValues": [
-              "entry",
-              "reversalindexentry"
-            ],
+            "allowedValues": ["entry", "reversalindexentry"],
             "optional": true,
             "field": "entryType",
             "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
@@ -44,10 +41,7 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "allowedValues": [
-              "0",
-              "1"
-            ],
+            "allowedValues": ["0", "1"],
             "optional": true,
             "field": "countTotalOnly",
             "description": "<p>1 to return only the count, and 0 otherwise. Defaults to 0.</p>"
@@ -219,10 +213,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "allowedValues": [
-              "entry",
-              "reversalindexentry"
-            ],
+            "allowedValues": ["entry", "reversalindexentry"],
             "optional": true,
             "field": "entryType",
             "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
@@ -524,10 +515,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "allowedValues": [
-              "entry",
-              "reversalindexentry"
-            ],
+            "allowedValues": ["entry", "reversalindexentry"],
             "optional": true,
             "field": "entryType",
             "description": "<p>Type of the entry to get: 'entry' for main entry and 'reversalindexentry' for reversal entry. Defaults to 'entry'.</p>"
@@ -848,7 +836,7 @@
       "examples": [
         {
           "title": "Post Body Example",
-          "content": "[\n   {\n      \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n      \"dictionaryId\": \"moore\",\n      \"letterHead\": \"ã\",\n      \"mainHeadWord\": [\n        {\n          \"lang\": \"mos\",\n          \"value\": \"ãadga\"\n        }\n      ],\n      \"audio\": {\n        \"fileClass\": \"mos-Zxxx-x-audio\",\n        \"id\": \"g635754050803599765ãadga\",\n        \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n      },\n      \"pictures\": [\n        {\n          \"caption\": \"ãadga\",\n          \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n          \"src\": \"pictures/Vitex_doniana.jpg\"\n        }\n      ],\n      \"pronunciations\": [\n        {\n          \"lang\": \"mos\",\n          \"type\": \"form\",\n          \"value\": \"ã́-á\"\n        }\n      ],\n      \"reversalLetterHeads\": [\n        {\n          \"lang\": \"fr\",\n          \"value\": \"p\"\n        },\n        {\n          \"lang\": \"en\",\n          \"value\": \"b\"\n        }\n      ],\n      \"senses\": [\n        {\n          \"definitionOrGloss\": [\n            {\n              \"lang\": \"fr\",\n              \"value\": \"prunier noir\"\n            },\n            {\n              \"lang\": \"en\",\n              \"value\": \"blackberry tree, plum tree\"\n            }\n          ],\n          \"partOfSpeech\": {\n            \"lang\": \"fr\",\n            \"value\": \"n\"\n          }\n        }\n        \"semanticDomains\": [\n          {\n            \"key\": \"9\",\n            \"lang\": \"fr\",\n            \"value\": \"La Grammaire\"\n          },\n          {\n            \"key\": \"9\",\n            \"lang\": \"en\",\n            \"value\": \"Grammar\"\n          }\n        ]\n      ]\n   }\n]",
+          "content": "[\n   {\n      \"guid\": \"f9ae73a3-7b28-4fd3-bf89-2b23358b61c6\"\n      \"dictionaryId\": \"moore\",\n      \"letterHead\": \"ã\",\n      \"mainheadword\": [\n        {\n          \"lang\": \"mos\",\n          \"value\": \"ãadga\"\n        }\n      ],\n      \"audio\": {\n        \"fileClass\": \"mos-Zxxx-x-audio\",\n        \"id\": \"g635754050803599765ãadga\",\n        \"src\": \"AudioVisual/635754050803599765ãadga.mp3\"\n      },\n      \"pictures\": [\n        {\n          \"caption\": \"ãadga\",\n          \"id\": \"g8086aade-8416-4cc6-8bba-f8f8a8d54a4d\",\n          \"src\": \"pictures/Vitex_doniana.jpg\"\n        }\n      ],\n      \"pronunciations\": [\n        {\n          \"lang\": \"mos\",\n          \"type\": \"form\",\n          \"value\": \"ã́-á\"\n        }\n      ],\n      \"reversalLetterHeads\": [\n        {\n          \"lang\": \"fr\",\n          \"value\": \"p\"\n        },\n        {\n          \"lang\": \"en\",\n          \"value\": \"b\"\n        }\n      ],\n      \"senses\": [\n        {\n          \"definitionorgloss\": [\n            {\n              \"lang\": \"fr\",\n              \"value\": \"prunier noir\"\n            },\n            {\n              \"lang\": \"en\",\n              \"value\": \"blackberry tree, plum tree\"\n            }\n          ],\n          \"partofspeech\": {\n            \"lang\": \"fr\",\n            \"value\": \"n\"\n          }\n        }\n        \"semanticDomains\": [\n          {\n            \"key\": \"9\",\n            \"lang\": \"fr\",\n            \"value\": \"La Grammaire\"\n          },\n          {\n            \"key\": \"9\",\n            \"lang\": \"en\",\n            \"value\": \"Grammar\"\n          }\n        ]\n      ]\n   }\n]",
           "type": "json"
         }
       ],
@@ -895,21 +883,21 @@
             "group": "Post Body",
             "type": "Object[]",
             "optional": false,
-            "field": "body.mainHeadWord",
+            "field": "body.mainheadword",
             "description": "<p>Array of Entry head word data</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.mainHeadWord.lang",
+            "field": "body.mainheadword.lang",
             "description": "<p>ISO language code for the head word</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.mainHeadWord.value",
+            "field": "body.mainheadword.value",
             "description": "<p>ISO head word</p>"
           },
           {
@@ -1028,42 +1016,42 @@
             "group": "Post Body",
             "type": "Object[]",
             "optional": false,
-            "field": "body.senses.definitionOrGloss",
+            "field": "body.senses.definitionorgloss",
             "description": "<p>Definition or gloss for the entry</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.senses.definitionOrGloss.lang",
+            "field": "body.senses.definitionorgloss.lang",
             "description": "<p>ISO language code</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.senses.definitionOrGloss.value",
+            "field": "body.senses.definitionorgloss.value",
             "description": "<p>Definition or the gloss</p>"
           },
           {
             "group": "Post Body",
             "type": "Object",
             "optional": false,
-            "field": "body.senses.partOfSpeech",
+            "field": "body.senses.partofspeech",
             "description": "<p>Part of speech for this sense</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.senses.partOfSpeech.lang",
+            "field": "body.senses.partofspeech.lang",
             "description": "<p>ISO language code</p>"
           },
           {
             "group": "Post Body",
             "type": "String",
             "optional": false,
-            "field": "body.senses.partOfSpeech.value",
+            "field": "body.senses.partofspeech.value",
             "description": "<p>Part of speech abbreviation</p>"
           },
           {
@@ -1472,16 +1460,13 @@
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "partOfSpeech",
+            "field": "partofspeech",
             "description": "<p>Filter results by part of speech.</p>"
           },
           {
             "group": "Parameter",
             "type": "Number",
-            "allowedValues": [
-              "0",
-              "1"
-            ],
+            "allowedValues": ["0", "1"],
             "optional": true,
             "field": "matchPartial",
             "description": "<p>1 to allow partial matches, and 0 otherwise. Defaults to 0.</p>"
@@ -1489,10 +1474,7 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "allowedValues": [
-              "0",
-              "1"
-            ],
+            "allowedValues": ["0", "1"],
             "optional": true,
             "field": "matchAccents",
             "description": "<p>1 to match accents, and 0 otherwise. Defaults to 0.</p>"
@@ -1514,10 +1496,7 @@
           {
             "group": "Parameter",
             "type": "Number",
-            "allowedValues": [
-              "0",
-              "1"
-            ],
+            "allowedValues": ["0", "1"],
             "optional": true,
             "field": "countTotalOnly",
             "description": "<p>1 to return only the count, and 0 otherwise. Defaults to 0.</p>"

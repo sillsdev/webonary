@@ -55,11 +55,11 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
   public static parseDictionaryEntry(entry: Entry): DictionaryEntry {
     const $ = load(entry.displayXhtml);
 
-    const mainHeadWord: EntryValue[] = [];
+    const mainheadword: EntryValue[] = [];
     $('span.mainheadword span a').map((i, elem) => {
       const lang = $(elem).parent().attr('lang') ?? '';
       const value = $(elem).text();
-      mainHeadWord.push({ lang, value });
+      mainheadword.push({ lang, value });
     });
 
     const audioId = $('audio').attr('id') ?? '';
@@ -84,27 +84,27 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       pronunciations.push({ lang, value, key });
     });
 
-    const partOfSpeech: EntryValue[] = [];
+    const partofspeech: EntryValue[] = [];
     $('span.morphosyntaxanalysis span.partofspeech span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const value = $(elem).text();
       if (lang && value) {
-        partOfSpeech.push({ lang, value });
+        partofspeech.push({ lang, value });
       }
     });
 
-    const definitionOrGloss: EntryValue[] = [];
+    const definitionorgloss: EntryValue[] = [];
     $('span.definitionorgloss span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const value = $(elem).text();
       if (lang && value) {
         // TODO: this was in moore, but necessary?
         // if ($(elem).prev().hasClass('writingsystemprefix')) {
-        definitionOrGloss.push({ lang, value });
+        definitionorgloss.push({ lang, value });
       }
     });
 
-    const semanticDomains: EntrySemanticDomain[] = [];
+    const semanticdomains: EntrySemanticDomain[] = [];
     $('span.semanticdomain span.name span').map((i, elem) => {
       const lang = $(elem).attr('lang');
       const name = $(elem).text();
@@ -116,14 +116,14 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
           .children()
           .text();
 
-        semanticDomains.push({
+        semanticdomains.push({
           abbreviation: [{ lang, value: abbreviation }],
           name: [{ lang, value: name }],
         });
       }
     });
 
-    const reversalLetterHeads = definitionOrGloss.reduce(
+    const reversalLetterHeads = definitionorgloss.reduce(
       (letterHeads: EntryValue[], definitionEntry: EntryValue): EntryValue[] => {
         const { lang } = definitionEntry;
         const value = definitionEntry.value.toLowerCase().substring(0, 1);
@@ -137,11 +137,11 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
 
     const dictionaryEntry: DictionaryEntry = {
       ...entry,
-      mainHeadWord,
+      mainheadword,
       pronunciations,
-      senses: [{ definitionOrGloss, semanticDomains }],
+      senses: [{ definitionorgloss, semanticdomains }],
       reversalLetterHeads,
-      morphoSyntaxAnalysis: { partOfSpeech },
+      morphosyntaxanalysis: { partofspeech },
       audio,
       pictures,
     };
@@ -155,7 +155,7 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
 
     if (id && this.parsedDictionaryEntries.length) {
       // We can safely assume that all the entries have same main language
-      const mainLang = this.parsedDictionaryEntries[0].mainHeadWord[0].lang ?? '';
+      const mainLang = this.parsedDictionaryEntries[0].mainheadword[0].lang ?? '';
       dictionary.mainLanguage = {
         lang: mainLang,
         title: this.parsedLanguages.get(mainLang) ?? '',
@@ -166,8 +166,8 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
       dictionary.partsOfSpeech = this.parsedDictionaryEntries.reduce(
         (partsOfSpeech: ListOption[], entry) => {
           const newDictionaryPartsOfSpeech = partsOfSpeech;
-          if (entry.morphoSyntaxAnalysis) {
-            entry.morphoSyntaxAnalysis.partOfSpeech.forEach((entryPartOfSpeech) => {
+          if (entry.morphosyntaxanalysis) {
+            entry.morphosyntaxanalysis.partofspeech.forEach((entryPartOfSpeech) => {
               if (
                 entryPartOfSpeech.lang !== '' &&
                 entryPartOfSpeech.value !== '' &&
@@ -195,8 +195,8 @@ export class FlexXhtmlParserMain extends FlexXhtmlParser {
         (semDoms: ListOption[], entry) => {
           const newDictionarySemDoms = semDoms;
           entry.senses.forEach((sense) => {
-            if (sense.semanticDomains && sense.semanticDomains.length) {
-              sense.semanticDomains.forEach((semDom) => {
+            if (sense.semanticdomains && sense.semanticdomains.length) {
+              sense.semanticdomains.forEach((semDom) => {
                 semDom.abbreviation.forEach((abbreviation) => {
                   const matchingName = semDom.name.find((item) => item.lang === abbreviation.lang);
                   if (matchingName) {

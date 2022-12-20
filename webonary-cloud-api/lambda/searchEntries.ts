@@ -8,7 +8,7 @@
  * @apiParam {String} text
  * @apiParam {String} [mainLang] Main language of the dictionary, used for setting the db locale.
  * @apiParam {String} [lang] Language to search through.
- * @apiParam {String} [partOfSpeech] Filter results by part of speech.
+ * @apiParam {String} [partofspeech] Filter results by part of speech.
  * @apiParam {Number=0,1} [matchPartial] 1 to allow partial matches, and 0 otherwise. Defaults to 0.
  * @apiParam {Number=0,1} [matchAccents] 1 to match accents, and 0 otherwise. Defaults to 0.
  * @apiParam {String} [semDomAbbrev] Filter by semantic domain abbreviation.
@@ -28,8 +28,7 @@ import {
   DB_COLLECTION_DICTIONARY_ENTRIES,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY,
-  DB_COLLATION_STRENGTH_FOR_SENSITIVITY,
+  DbCollationStrength,
   DB_COLLATION_LOCALES,
 } from './db';
 import { DbFindParameters } from './base.model';
@@ -63,7 +62,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<APIGa
   // set up main search
   let entries;
   let locale = DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY;
-  let strength = DB_COLLATION_STRENGTH_FOR_CASE_INSENSITIVITY;
+  let strength = DbCollationStrength.CASE_INSENSITIVITY;
   const dbSkip = getDbSkip(args.pageNumber, args.pageLimit);
   let primaryFilter: DbFindParameters = { dictionaryId: args.dictionaryId };
 
@@ -125,11 +124,11 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<APIGa
         primaryFilter,
         {
           $or: [
-            { 'mainHeadWord.lang': args.lang },
-            { 'senses.definitionOrGloss.lang': args.lang },
+            { 'mainheadword.lang': args.lang },
+            { 'senses.definitionorgloss.lang': args.lang },
             { 'reversalLetterHeads.lang': args.lang },
             { 'pronunciations.lang': args.lang },
-            { 'morphoSyntaxAnalysis.partOfSpeech.lang': args.lang },
+            { 'morphosyntaxanalysis.partofspeech.lang': args.lang },
           ],
         },
       ],
@@ -139,11 +138,11 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<APIGa
   if (args.matchPartial) {
     const dictionaryPartialSearch = {
       ...primaryFilter,
-      [DbPaths.ENTRY_DISPLAY_TEXT]: { $regex: args.text, $options: 'i' },
+      [DbPaths.ENTRY_LANG_TEXTS]: { $regex: args.text, $options: 'i' },
     };
 
     if (args.matchAccents) {
-      strength = DB_COLLATION_STRENGTH_FOR_SENSITIVITY;
+      strength = DbCollationStrength.SENSITIVITY;
     }
 
     // eslint-disable-next-line no-console
@@ -168,7 +167,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<APIGa
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .find(dictionaryPartialSearch)
       .collation({ locale, strength })
-      .sort({ 'mainHeadWord.value': 1, _id: 1 })
+      .sort({ 'mainheadword.value': 1, _id: 1 })
       .skip(dbSkip)
       .limit(args.pageLimit)
       .toArray();
@@ -198,7 +197,7 @@ export async function searchEntries(args: SearchEntriesArguments): Promise<APIGa
     entries = await db
       .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
       .find(dictionaryFulltextSearch)
-      .sort({ 'mainHeadWord.value': 1, _id: 1 })
+      .sort({ 'mainheadword.value': 1, _id: 1 })
       .skip(dbSkip)
       .limit(args.pageLimit)
       .toArray();
