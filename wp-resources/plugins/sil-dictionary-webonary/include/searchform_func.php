@@ -61,7 +61,7 @@ function webonary_searchform($use_li = false): void
 					if (empty($item->nameInsensitive))
 						continue;
 
-					if(strpos($item->nameInsensitive, $sem_term) !== false)
+					if(str_contains($item->nameInsensitive, $sem_term))
 					{
 						$sem_domain = new stdClass();
 						$sem_domain->term_id = $item->name;
@@ -82,8 +82,8 @@ function webonary_searchform($use_li = false): void
 	            return !empty($v->lang);
             }));
 
-			foreach($dictionary->reversalLanguages as $reversal)
-			{
+			foreach ($dictionary->reversalLanguages as $reversal) {
+
 				$indexed = new stdClass();
 				$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
 				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
@@ -91,23 +91,31 @@ function webonary_searchform($use_li = false): void
 			}
 
 			// set up languages dropdown options
-			$other_search_languages = array_diff($dictionary->definitionOrGlossLangs, ["", $dictionary->mainLanguage->lang]);
-			if (count($other_search_languages))
-			{
-				$language_dropdown_options .= "<option value='" . $dictionary->mainLanguage->lang . "' selected>" . $mainIndexed->language_name . "</option>";
-				foreach($other_search_languages as $lang)
-				{
-					$selected = ($lang === $selected_language) ? 'selected' : '';
-					$language_name = Webonary_Cloud::getLanguageName($lang);
-					$language_dropdown_options .= "<option value='" . $lang . "'" . $selected . ">" . $language_name . "</option>";
+			$other_search_languages = array_filter($dictionary->reversalLanguages, function($lang) use($dictionary) {
+				return $lang->lang != $dictionary->mainLanguage->lang;
+			});
+
+			if (count($other_search_languages)) {
+
+				/** @noinspection HtmlUnknownAttribute */
+				$option_template = '<option value="%s" %s>%s</option>' . PHP_EOL;
+
+				// add the main language
+				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? 'selected' : '';
+				$language_dropdown_options .= sprintf($option_template, $dictionary->mainLanguage->lang, $selected, $mainIndexed->language_name);
+
+				// add the reversal languages
+				foreach ($other_search_languages as $lang) {
+
+					$selected = ($lang->lang === $selected_language) ? 'selected' : '';
+					$language_dropdown_options .= sprintf($option_template, $lang->lang, $selected, $lang->title);
 				}
 			}
 
 			$lastEditDate = $dictionary->updatedAt;
 		}
-	}
-	else
-	{
+	} else {
+
 		//$catalog_terms = get_terms('sil_writing_systems');
 		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
 		if ( ! empty( $arrLanguages ) ) {
@@ -199,7 +207,7 @@ function addchar(button) {
 	let searchfield = document.getElementById('s');
 	let currentPos = theCursorPosition(searchfield);
 	let origValue = searchfield.value;
-	searchfield.value = origValue.substr(0, currentPos) + button.value.trim() + origValue.substr(currentPos);
+	searchfield.value = origValue.substring(0, currentPos) + button.value.trim() + origValue.substring(currentPos);
 
 	searchfield.focus();
 
@@ -338,7 +346,7 @@ HTML;
 	return '';
 }
 
-function add_header()
+function add_header(): void
 {
 	 if(!is_front_page()) {
 ?>
@@ -430,7 +438,7 @@ HTML;
 
 }
 
-function add_footer()
+function add_footer(): void
 {
 	global $post, $wpdb;
 	$post_slug = is_null($post) ? '' : $post->post_name;
