@@ -985,6 +985,8 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
   position: absolute;
   background-color: #f7f7f7;
   z-index: 1000;
+  left: unset;
+  top: unset;
 }
 
 #sidebar ul li div.pos-container .pos-list .pos-entry {
@@ -1028,6 +1030,21 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
   background-color: buttonface;
   cursor: pointer;
   position: relative;
+}
+
+@media only screen and (min-width : 700px) {
+
+  #sidebar ul li div.pos-container .pos-list {
+    position: fixed;
+    top: 30px;
+    max-height: calc(100% - 50px);
+    overflow: auto;
+  }
+
+  .logged-in #sidebar ul li div.pos-container .pos-list {
+    top: 50px;
+    max-height: calc(100% - 70px);
+  }
 }
 
 @media only screen and (max-width : 550px) {
