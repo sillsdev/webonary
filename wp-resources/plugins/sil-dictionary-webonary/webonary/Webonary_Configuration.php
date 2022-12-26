@@ -69,9 +69,9 @@ class Webonary_Configuration
 	public static function admin_section_end($nm, $button_name=null, $button_class='button-primary')
 	{
 		if(!empty($button_name))
-			echo '<p class="submit" style="float:left;"><input type="submit" name="save_settings" class="'.$button_class.'" value="'.$button_name.'" /></p><br><br>';
+			echo '<div style="margin:2rem 0"><input type="submit" name="save_settings" class="'.$button_class.'" value="'.$button_name.'" /></div>';
 
-		echo '</div>'.PHP_EOL; //'<!-- id="tab-'.$nm.'" -->';
+		echo '</div><!-- id="tab-'.$nm.'" -->' . PHP_EOL;
 	}
 
 	public static function get_LanguageCodes($language_code = null)

@@ -40,6 +40,7 @@
   },
   "require": {
     "php": ">=7.3|>8.1",
+    "ext-curl": "*",
     "ext-gettext": "*",
     "ext-json": "*",
     "johnpbloch/wordpress": ">=5.6",

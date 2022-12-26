@@ -3,7 +3,7 @@
 
 class Webonary_API_MyType
 {
-	public static function Register_New_Routes()
+	public static function Register_New_Routes(): void
 	{
 		$namespace = 'webonary';
 
@@ -30,7 +30,7 @@ class Webonary_API_MyType
 		);
 	}
 
-	public static function Query($request)
+	public static function Query($request): WP_REST_Response
 	{
 		$data = get_indexed_entries($request['term'], $request['lang']);
 
@@ -40,8 +40,9 @@ class Webonary_API_MyType
 	/**
 	 * @param WP_REST_Request $_headers
 	 * @param bool $newAPI
+	 * @throws Exception
 	 */
-	public static function Import($_headers, $newAPI = true)
+	public static function Import(WP_REST_Request $_headers, bool $newAPI = true): void
 	{
 		$username = '';
 		$password = '';
@@ -144,10 +145,10 @@ class Webonary_API_MyType
 
 
 		//we first delete all existing posts (in category Webonary)
-		remove_entries('flexlinks');
+		Webonary_Delete_Data::RemoveEntries('flexlinks');
 
 		//deletes data that comes with the posts, but gets stored separately (e.g. 'parts of speech')
-		clean_out_dictionary_data(1);
+		Webonary_Delete_Data::DeleteDictionaryData(true);
 
 		// attempt to clear all buffered output so we can close the connection and release the client
 		$cleared = Webonary_Utility::clearResponse();
