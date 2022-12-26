@@ -79,9 +79,30 @@ class Webonary_Parts_Of_Speech
             }
         });
 	});
+    
+    function toggleDropdown(btn) {
+        
+        let list = jQuery('.pos-list');
+        list.toggle();
+        
+        let is_visible = list.is(':visible');
+        
+        if (window.innerWidth > 699) {
+            if (is_visible) {
+
+                // we have to set the left position after the element is no longer hidden
+                let rect = btn.getBoundingClientRect();
+        		let list_left = rect.x - list[0].offsetWidth;
+                list.css('left', list_left + 'px');
+            }
+        }
+        else {
+            list.css('left', 'unset')
+        }
+    }
 </script>
 <div class="pos-container">
-	<button type="button" class="btn btn-dropdown" onclick="jQuery('.pos-list').toggle();">$button_text<span>&ensp;&#x25BE;</span></button>
+	<button type="button" class="btn btn-dropdown" onclick="toggleDropdown(this);">$button_text<span>&ensp;&#x25BE;</span></button>
 	<div class="pos-list" style="display: none">
 	    $option_str
     </div>
