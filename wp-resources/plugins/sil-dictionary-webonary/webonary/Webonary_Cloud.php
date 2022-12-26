@@ -432,7 +432,7 @@ class Webonary_Cloud
 			return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 		}
 
-		$searchText = trim(get_search_query(false));
+		$searchText = Webonary_Utility::UnicodeTrim(get_search_query(false));
 		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
 
 		if ($searchText === '') {

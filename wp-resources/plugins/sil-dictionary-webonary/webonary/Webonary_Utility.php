@@ -649,4 +649,20 @@ class Webonary_Utility
 	{
 		return array_values(array_filter($array, function($val) { return strlen(trim($val)) > 0; }));
 	}
+
+	/**
+	 * Removes whitespace and separators from both ends of a string.
+	 *  - \p{Z} = any whitespace or invisible separator
+	 *  - \x{200B} = zero-width space
+	 *  - \x{200C} = zero-width non-joiner
+	 *  - \x{200D} = zero-width joiner
+	 *  - \x{2060} = word joiner
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	public static function UnicodeTrim(string $string): string
+	{
+		return preg_replace('/(^[\p{Z}\x{200B}-\x{200D}\x{2060}]+)|([\p{Z}\x{200B}-\x{200D}\x{2060}]+$)/u', '', $string);
+	}
 }
