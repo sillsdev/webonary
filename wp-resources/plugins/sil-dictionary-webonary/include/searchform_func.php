@@ -26,7 +26,7 @@ function webonary_searchform($use_li = false): void
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
 	$selected_parts_of_speech = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
-	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+	$search_term = Webonary_Utility::UnicodeTrim(filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
 
 	$arrIndexed = array();
 	$sem_domains = array();
