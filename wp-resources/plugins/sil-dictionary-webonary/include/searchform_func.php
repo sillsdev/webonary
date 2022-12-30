@@ -7,8 +7,9 @@
  */
 
 function custom_query_vars_filter($vars) {
-	$vars[] .= 'match_accents';
-	$vars[] .= 'match_whole_words';
+	$vars[] = 'match_accents';
+	$vars[] = 'match_whole_words';
+	$vars[] = 'semantic_domain';
 	return $vars;
 }
 add_filter( 'query_vars', 'custom_query_vars_filter' );
@@ -35,12 +36,12 @@ function webonary_searchform($use_li = false): void
 	$selected_language = $_REQUEST['key'] ?? '';
 	$language_dropdown_options = '';
 
+	$semantic_domains_dropdown = Webonary_SemanticDomains::GetDropdown();
 	$parts_of_speech_dropdown = '';
 	$lastEditDate = '';
-	if(get_option('useCloudBackend'))
-	{
-		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+	if (IS_CLOUD_BACKEND) {
+
+		$dictionary = Webonary_Cloud::getDictionary();
 		$currentLanguage = Webonary_Cloud::getCurrentLanguage();
 		if(!is_null($dictionary))
 		{
@@ -146,7 +147,6 @@ function webonary_searchform($use_li = false): void
 
 		// set up parts of speech dropdown
 		$parts_of_speech = new Webonary_Parts_Of_Speech('en', null, $selected_parts_of_speech);
-		$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
 
 		if($parts_of_speech->HasPartsOfSpeech())
 			$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
@@ -257,6 +257,7 @@ function theCursorPosition(ofThisInput) {
 				echo '<div class="pos-container">' . $language_dropdown . '</div>';
 			}
 			echo $parts_of_speech_dropdown;
+			echo $semantic_domains_dropdown;
 			?>
 			<input type="hidden" name="search_options_set" value="1">
 			<input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>

@@ -4,16 +4,14 @@ class Webonary_Infrastructure
 {
 	public static function InstallInfrastructure(): void
 	{
-		if (!is_admin())
-			return;
-
-		self::CreateCustomRelevance();
-		self::CreateSearchTables();
-		self::CreateReversalTables();
-		self::SetOptions();
-		self::RemoveDoubleTerms();
-
-		self::SetFieldSortOrder();
+		if (is_admin()) {
+			self::CreateCustomRelevance();
+			self::CreateSearchTables();
+			self::CreateReversalTables();
+			self::SetOptions();
+			self::RemoveDoubleTerms();
+			self::SetFieldSortOrder();
+		}
 
 		self::RegisterSemanticDomainsTaxonomy();
 		self::RegisterPartOfSpeechTaxonomy();

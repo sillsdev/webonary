@@ -928,8 +928,8 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
 /*
  * The languages drop down box was too wide for a loooong language name.
  */
-.webonary_searchform_language_select {
-  max-width: 250px;
+.webonary_searchform_language_select, .webonary_searchform_domain_select {
+  max-width: 100%;
   display: inline-block;
   margin: 0;
   padding: 6px 5px;
@@ -976,6 +976,35 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
   margin: 5px;
   border: none;
   border-radius: 0;
+}
+
+#sidebar ul li div.pos-container .pos-select {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  display: inline-block;
+}
+
+#sidebar ul li div.pos-container .pos-select .pos-cover {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+select {
+  margin: 0;
+  padding: 6px 5px;
+  font-size: 1rem;
+  background-color: buttonface;
+  border: 1px solid #ccc;
 }
 
 #sidebar ul li div.pos-container .pos-list {

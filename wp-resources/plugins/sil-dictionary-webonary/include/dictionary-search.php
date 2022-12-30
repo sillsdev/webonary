@@ -113,7 +113,7 @@ function get_CJK_unicode_ranges(): array
 //	}
 //}
 
-function get_indexed_entries($query, $language)
+function get_indexed_entries($query, $language): ?array
 {
 	global $wpdb;
 
@@ -140,7 +140,8 @@ function get_post_id_bycontent($query): ?string
 	return $wpdb->get_var($sql);
 }
 
-function my_404_override() {
+function my_404_override(): void
+{
 	global $wp_query;
 
 	if(is_404())
@@ -160,8 +161,8 @@ function my_404_override() {
 }
 add_filter('template_redirect', 'my_404_override');
 
-function filter_the_content_in_the_main_loop($content) {
-
+function filter_the_content_in_the_main_loop($content): bool|string
+{
 	return normalizer_normalize($content, Normalizer::NFC);
 }
 add_filter('the_content', 'filter_the_content_in_the_main_loop');
@@ -205,46 +206,50 @@ function get_subquery_where($query, $search): string
 
 	//by default d à, ä, etc. are handled as the same letters when searching
 	$collateSearch = "";
-	if (get_option('distinguish_diacritics') == 1 || $match_accents == true) {
+	if (get_option('distinguish_diacritics') == 1 || $match_accents) {
 		$collateSearch = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";
 	}
 
 	$expanded_search = $search;
 	//this is for creating a regular expression that searches words with accents & composed characters by only using base characters
-	if (preg_match('/([aeiou])/', $search) && $match_accents == false && get_option("searchSomposedCharacters") == 1) {
+	if (preg_match('/([aeiou])/', $search) && !$match_accents && get_option("searchSomposedCharacters") == 1) {
 		//first we add brackets around all letters that aren't a vowel, e.g. yag becomes (y)a(g)
 		$expanded_search = preg_replace('/(^[aeiou])/u', '($1)', $expanded_search);
 		//see https://en.wiktionary.org/wiki/Appendix:Variations_of_%22a%22
 		//the mysql regular expression can't find words with  accented characters if we don't include them
-		$expanded_search = preg_replace('/([a])/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $expanded_search);
-		$expanded_search = preg_replace('/([e])/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $expanded_search);
-		$expanded_search = preg_replace('/([ε])/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $expanded_search);
-		$expanded_search = preg_replace('/([ɛ])/u', '(ɛ', $expanded_search);
-		$expanded_search = preg_replace('/([ə])/u', '(ə́|ə', $expanded_search);
-		$expanded_search = preg_replace('/([i])/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $expanded_search);
-		$expanded_search = preg_replace('/([o])/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $expanded_search);
-		$expanded_search = preg_replace('/([ɔ])/u', '(ɔ', $expanded_search);
-		$expanded_search = preg_replace('/([u])/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $expanded_search);
+		$expanded_search = preg_replace('/(a)/u', '(à|ȁ|á|â|ấ|ầ|ẩ|ā|ä|ǟ|å|ǻ|ă|ặ|ȃ|ã|ą|ǎ|ȧ|ǡ|ḁ|ạ|ả|ẚ|a', $expanded_search);
+		$expanded_search = preg_replace('/(e)/u', '(ē|é|ě|è|ȅ|ê|ę|ë|ė|ẹ|ẽ|ĕ|ȇ|ȩ|ḕ|ḗ|ḙ|ḛ|ḝ|ė|e', $expanded_search);
+		$expanded_search = preg_replace('/(ε)/u', '(έ|ἐ|ἒ|ἑ|ἕ|ἓ|ὲ|ε', $expanded_search);
+		$expanded_search = preg_replace('/(ɛ)/u', '(ɛ', $expanded_search);
+		$expanded_search = preg_replace('/(ə)/u', '(ə́|ə', $expanded_search);
+		$expanded_search = preg_replace('/(i)/u', '(ı|ī|í|ǐ|ĭ|ì|î|î|į|ï|ï|ɨ|i', $expanded_search);
+		$expanded_search = preg_replace('/(o)/u', '(ō|ṓ|ó|ǒ|ò|ô|ö|õ|ő|ṓ|ø|ǫ|ȱ|ṏ|ȯ|ꝍ|o', $expanded_search);
+		$expanded_search = preg_replace('/(ɔ)/u', '(ɔ', $expanded_search);
+		$expanded_search = preg_replace('/(u)/u', '(ū|ú|ǔ|ù|ŭ|û|ü|ů|ų|ũ|ű|ȕ|ṳ|ṵ|ṷ|ṹ|ṻ|ʉ|u', $expanded_search);
 		//for vowels we add [^a-z]* which will search for any character that comes after the normal character
 		//one can't see it, but composed characters actually consist of two characters, for instance the a in ya̧g
 		$expanded_search = preg_replace('/([aeiouɛεəɔ])/u', '$1)[^a-z^ ]*', $expanded_search);
 	}
 
 	$match_whole_words = is_match_whole_words($search);
+	$expanded_search = Webonary_Utility::escapeSql($expanded_search);
 
 	if (is_CJK($search) || $match_whole_words == 0) {
 		if (get_option('searchSomposedCharacters') == 1)
-			$sub_queries[] = 'LOWER(search_strings) REGEXP \'' . Webonary_Utility::escapeSql($expanded_search) . '\' ' . $collateSearch;
+			$sub_queries[] = 'LOWER(search_strings) REGEXP \'' . $expanded_search . '\' ' . $collateSearch;
 		else
 			$sub_queries[] = 'LOWER(search_strings) LIKE \'%' . Webonary_Utility::escapeSqlLike($search) . '%\' ' . $collateSearch;
 	} else {
 		if (mb_strlen($search) > 1) {
-			$expanded_search = Webonary_Utility::escapeSql($expanded_search);
 
-			if (mb_strpos($search, '\'') === false)
+			if (mb_strpos($search, '\'') === false) {
+				/** @noinspection PhpUnnecessaryCurlyVarSyntaxInspection */
 				$sub_queries[] = "search_strings REGEXP '[[:<:]]{$expanded_search}[[:digit:]]?[[:>:]]' $collateSearch";
-			else
+			}
+			else {
+				/** @noinspection PhpUnnecessaryCurlyVarSyntaxInspection */
 				$sub_queries[] = "search_strings REGEXP '([[:blank:][:punct:]]|^){$expanded_search}[[:digit:]]?([[:punct:][:blank:]]|$)' $collateSearch";
+			}
 		}
 	}
 
@@ -265,89 +270,69 @@ function replace_default_search_filter($input, ?WP_Query $query=null): string
 {
 	global $wpdb;
 
-	if (empty($query) || get_option('useCloudBackend'))
+	if (empty($query) || IS_CLOUD_BACKEND || !$query->is_main_query() || !is_search())
 		return $input;
 
 	// get the selected parts of speech list, and escape it for SQL
 	$parts_of_speech = $wpdb->_escape(Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected());
 
 	// get the search term
-	$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => ($query->query_vars['s'] ?? '')]]);
+	$search_term = Webonary_Utility::UnicodeTrim(get_search_query(false));
 
 	// get the selected semantic domains
-	$semantic_domains = $wpdb->_escape(Webonary_Utility::RemoveEmptyStrings([$query->query_vars['semnumber'] ?? '']));
+	$semantic_domains = $wpdb->_escape(Webonary_Info::getSelectedSemanticDomains());
 
-	$join_tables = [];
-	$where_and = [
-		'p.post_type = \'post\'',
-	    'p.post_status = \'publish\''
-	];
+	$search_tbl = SEARCHTABLE;
+	$where = get_subquery_where($query, $search_term);
+	$sql = [];
 
+	$sql[] = <<<SQL
+SELECT SQL_CALC_FOUND_ROWS posts.*
+FROM (SELECT p.*, s.relevance
+      FROM $wpdb->posts AS p
+        INNER JOIN (
+          SELECT post_id, MAX(relevance) AS relevance
+          FROM $search_tbl
+          $where
+          GROUP BY post_id
+      ) AS s ON p.ID = s.post_id
+      WHERE p.post_type = 'post' AND p.post_status = 'publish') AS posts
+SQL;
 
-	// add additional conditions if 'Parts of Speech' or 'Semantic Domains' were selected
 	if (!empty($parts_of_speech)) {
 
 		$taxonomy_list = implode("','", $parts_of_speech);
 
-		$join_tables['r'] = "LEFT JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id";
-		$join_tables['t'] = "LEFT JOIN $wpdb->term_taxonomy AS t ON r.term_taxonomy_id = t.term_taxonomy_id";
-		$where_and[] = "t.term_id IN ('$taxonomy_list')";
+		$sql[] = <<<TXT
+INNER JOIN (SELECT r.object_id AS post_id
+  FROM $wpdb->term_relationships AS r
+	INNER JOIN $wpdb->term_taxonomy AS pos ON r.term_taxonomy_id = pos.term_taxonomy_id
+  WHERE pos.term_id IN ('$taxonomy_list')) AS parts_of_speech ON posts.ID = parts_of_speech.post_id
+TXT;
+	}
 
-	} elseif (!empty($semantic_domains)) {
-
-		$join_tables['r'] = "LEFT JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id";
-		$join_tables['t'] = "LEFT JOIN $wpdb->term_taxonomy AS t ON r.term_taxonomy_id = t.term_taxonomy_id";
-		$join_tables['m'] = "LEFT JOIN $wpdb->terms AS m ON t.term_id = m.term_id";
+	if (!empty($semantic_domains)) {
 
 		// the semantic domains will be joined by 'OR' rather than 'AND'
 		$sem_domain_where = [];
 		foreach ($semantic_domains AS $sd) {
-			$sem_domain_where[] = "m.slug REGEXP '^$sd([-]|$)'";
+			/** @noinspection PhpUnnecessaryCurlyVarSyntaxInspection */
+			$sem_domain_where[] = "m.slug REGEXP '^{$sd}[-.]*.*'";
 		}
 
-		$where_and[] = 't.taxonomy = \'sil_semantic_domains\'';
-		$where_and[] = '(' . implode(' OR ', $sem_domain_where) . ')';
-	}
+		$sem_domain_where_str = '(' . implode(' OR ', $sem_domain_where) . ')';
 
-	$join_tables_str = implode(PHP_EOL, $join_tables);
-	$where_and_str = implode(' AND ', $where_and);
-
-	// is this a search for a word or something else?
-	if (is_search() && !empty($search_term)) {
-
-		$search_tbl = SEARCHTABLE;
-		$where = get_subquery_where($query, $search_term);
-
-		$input = <<<SQL
-SELECT SQL_CALC_FOUND_ROWS DISTINCTROW p.*, s.relevance
-FROM {$wpdb->posts} AS p
-  INNER JOIN (
-			  SELECT post_id, MAX(relevance) AS relevance
-			  FROM $search_tbl 
-			  $where
-			  GROUP BY post_id
-			 ) AS s ON p.ID = s.post_id
-  $join_tables_str
-WHERE $where_and_str
-ORDER BY s.relevance DESC, p.post_title
-SQL;
-
-	} elseif (!empty($join_tables_str)) {
-
-		$input = <<<SQL
-SELECT SQL_CALC_FOUND_ROWS DISTINCTROW p.*
-FROM $wpdb->posts AS p
-  $join_tables_str
-WHERE $where_and_str
-ORDER BY s.relevance DESC, p.post_title
-SQL;
-
-	} else {
-
-		return $input;
+		$sql[] = <<<TXT
+INNER JOIN (SELECT r.object_id AS post_id
+  FROM $wpdb->term_relationships AS r
+	INNER JOIN $wpdb->term_taxonomy AS sem ON r.term_taxonomy_id = sem.term_taxonomy_id
+	INNER JOIN $wpdb->terms AS m ON sem.term_id = m.term_id
+  WHERE sem.taxonomy = 'sil_semantic_domains'
+	AND $sem_domain_where_str) AS sem_domains ON posts.ID = sem_domains.post_id
+TXT;
 	}
 
 	Webonary_Utility::setPageNumber((int)($query->query_vars['paged'] ?? 0));
 
-	return $input . PHP_EOL . getLimitSql();
+	return implode(PHP_EOL, $sql) . PHP_EOL . getLimitSql();
 }

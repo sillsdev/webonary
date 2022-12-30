@@ -3,6 +3,8 @@
 
 class Webonary_Info
 {
+	private static ?array $selected_semantic_domains = null;
+
 	public static function getCountIndexed()
 	{
 		$counts = self::postCountByImportStatus();
@@ -135,7 +137,7 @@ class Webonary_Info
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
 SELECT language_code, COUNT(post_id) AS totalIndexed
-FROM {$table_name}
+FROM $table_name
 WHERE relevance = 100
 GROUP BY language_code
 SQL;
@@ -146,7 +148,7 @@ SQL;
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
 SELECT r.language_code, COUNT(r.language_code) AS totalIndexed
-FROM {$table_name} AS r
+FROM $table_name AS r
 GROUP BY r.language_code
 ORDER BY r.language_code
 SQL;
@@ -161,8 +163,8 @@ SQL;
 			/** @noinspection SqlResolve */
 			$sqlLangName = <<<SQL
 SELECT `name`
-FROM {$wpdb->terms}
-WHERE slug = '{$indexed->language_code}'
+FROM $wpdb->terms
+WHERE slug = '$indexed->language_code'
 ORDER BY name, slug
 LIMIT 1
 SQL;
@@ -188,8 +190,8 @@ SQL;
 					/** @noinspection SqlResolve */
 					$sql = <<<SQL
 SELECT COUNT(DISTINCT search_strings)
-FROM {$table_name} 
-WHERE language_code = '{$indexed->language_code}'
+FROM $table_name 
+WHERE language_code = '$indexed->language_code'
 AND relevance >= 95
 SQL;
 					$arrIndexed[$key]->totalIndexed = $wpdb->get_var($sql);
@@ -209,9 +211,9 @@ SQL;
 		$sql = <<<SQL
 SELECT p.ID 
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
 SQL;
@@ -243,9 +245,9 @@ SQL;
 		$sql = <<<SQL
 SELECT COUNT(*)
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
 SQL;
@@ -273,7 +275,7 @@ SQL;
 
 		$sql = <<<SQL
 SELECT ID, post_title, post_content, post_parent, menu_order 
-FROM {$wpdb->posts} AS p
+FROM $wpdb->posts AS p
 WHERE ID = %s
 SQL;
 
@@ -287,10 +289,10 @@ SQL;
 
 		$sql = <<<SQL
 SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order 
-FROM {$wpdb->posts} AS p
-    INNER JOIN {$wpdb->term_relationships} AS r ON p.id = r.object_id
-    INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-    INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+FROM $wpdb->posts AS p
+    INNER JOIN $wpdb->term_relationships AS r ON p.id = r.object_id
+    INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+    INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary' 
   AND p.post_status = 'publish'
   AND p.pinged = ''
@@ -324,9 +326,9 @@ SELECT SUM(IF(p.pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count
        COUNT(*) AS total_count,
        TIMESTAMPDIFF(SECOND, MAX(p.post_date),NOW()) AS time_diff
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE p.post_type IN ('post', 'revision')
   AND t.slug = 'webonary';
 SQL;
@@ -350,8 +352,8 @@ SQL;
 			/** @noinspection SqlResolve */
 			$sql = <<<SQL
 SELECT COUNT(language_code) AS missing
-FROM {$table_name}
-WHERE post_id = 0 AND language_code = '{$indexed->language_code}'
+FROM $table_name
+WHERE post_id = 0 AND language_code = '$indexed->language_code'
 SQL;
 
 			$missingReversals = $wpdb->get_var($sql);
@@ -374,9 +376,29 @@ SQL;
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
 SELECT COUNT(*) 
-FROM {$table_name}
+FROM $table_name
 SQL;
 
 		return $wpdb->get_var($sql);
+	}
+
+	public static function getSelectedSemanticDomains(): array
+	{
+		if (!is_null(self::$selected_semantic_domains))
+			return self::$selected_semantic_domains;
+
+		if (isset($_GET['semantic_domain']))
+			$selected = trim((string)filter_input(INPUT_GET, 'semantic_domain', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
+		elseif (isset($_GET['semnumber']))
+			$selected = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
+		else
+			$selected = '';
+
+		if ($selected)
+			self::$selected_semantic_domains = [$selected];
+		else
+			self::$selected_semantic_domains = [];
+
+		return self::$selected_semantic_domains;
 	}
 }

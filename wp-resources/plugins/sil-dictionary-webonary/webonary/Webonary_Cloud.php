@@ -2,6 +2,9 @@
 
 class Webonary_Cloud
 {
+	private static ?string $dictionary_id = null;
+	private static ICloudDictionary|stdClass|null $dictionary = null;
+
 	public static string $doBrowseByLetter = 'browse/entry';
 
 	public static string $doGetDictionary = 'get/dictionary';
@@ -225,18 +228,22 @@ class Webonary_Cloud
 
 	public static function getBlogDictionaryId(): string
 	{
+		if (!is_null(self::$dictionary_id))
+			return self::$dictionary_id;
+
 		if (function_exists('is_subdomain_install')) {
-			return (
+			self::$dictionary_id = (
 			is_subdomain_install()
 				? explode('.', $_SERVER['HTTP_HOST'])[0]
 				: str_replace('/', '', get_blog_details()->path)
 			);
+		} elseif (defined('WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID')) {
+			self::$dictionary_id = WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID;
+		} else {
+			self::$dictionary_id = '';
 		}
 
-		if (defined('WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID'))
-			return WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID;
-
-		return '';
+		return self::$dictionary_id;
 	}
 
 	public static function getCurrentLanguage()
@@ -266,24 +273,32 @@ class Webonary_Cloud
 	}
 
 	/**
-	 * @param $dictionaryId
+	 * @param string|null $dictionaryId
 	 * @return ICloudDictionary|stdClass|null
 	 */
-	public static function getDictionary($dictionaryId): ICloudDictionary|stdClass|null
+	public static function getDictionary(?string $dictionaryId = null): ICloudDictionary|stdClass|null
 	{
+		if (!is_null(self::$dictionary))
+			return self::$dictionary;
+
 		$dictionary = get_option('dictionary');
 		if (!empty($dictionary)) {
-			return $dictionary;
+			self::$dictionary = $dictionary;
+		}
+		else {
+
+			if (empty($dictionaryId))
+				$dictionaryId = self::getBlogDictionaryId();
+
+			$request = self::$doGetDictionary . '/' . $dictionaryId;
+			$response = self::remoteGetJson($request);
+			if (self::isValidDictionary($response)) {
+				update_option('dictionary', $response);
+				self::$dictionary = $response;
+			}
 		}
 
-		$request = self::$doGetDictionary . '/' . $dictionaryId;
-		$response = self::remoteGetJson($request);
-		if (self::isValidDictionary($response)) {
-			update_option('dictionary', $response);
-			return $response;
-		}
-
-		return null;
+		return self::$dictionary;
 	}
 
 	public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()): int
@@ -348,10 +363,9 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-	public static function registerAndEnqueueMainStyles($dictionaryId, $deps = array()): void
+	public static function registerAndEnqueueMainStyles($deps = array()): void
 	{
-
-		$dictionary = self::getDictionary($dictionaryId);
+		$dictionary = self::getDictionary();
 
 		if (!is_null($dictionary)) {
 
@@ -365,16 +379,16 @@ class Webonary_Cloud
 					$handle = 'overrides_stylesheet' . $index;
 				}
 
-				$cssPath = $dictionaryId . '/' . $cssFile;
+				$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
 				wp_register_style($handle, self::remoteFileUrl($cssPath), $deps, $time);
 				wp_enqueue_style($handle);
 			}
 		}
 	}
 
-	public static function registerAndEnqueueReversalStyles($dictionaryId, $lang): void
+	public static function registerAndEnqueueReversalStyles($lang): void
 	{
-		$dictionary = self::getDictionary($dictionaryId);
+		$dictionary = self::getDictionary();
 		$time = strtotime($dictionary->updatedAt);
 		if (!is_null($dictionary)) {
 			//$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
@@ -382,7 +396,7 @@ class Webonary_Cloud
 				if ($lang === $reversal->lang) {
 					foreach ($reversal->cssFiles as $index => $cssFile) {
 						$handle = 'reversal_stylesheet' . ($index ?: '');
-						$cssPath = $dictionaryId . '/' . $cssFile;
+						$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
 						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
 						wp_enqueue_style($handle);
 					}
@@ -420,7 +434,7 @@ class Webonary_Cloud
 	{
 		global $search_cookie;
 
-		if (!$query->is_main_query())
+		if (!$query->is_main_query() || !is_search())
 			return null;
 
 		$dictionaryId = self::getBlogDictionaryId();
@@ -432,7 +446,13 @@ class Webonary_Cloud
 			return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
 		}
 
+		// get the selected semantic domains
+		$semantic_domains = Webonary_Info::getSelectedSemanticDomains();
+
+		// get the search term
 		$searchText = Webonary_Utility::UnicodeTrim(get_search_query(false));
+
+		// get the selected parts of speech list
 		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
 
 		if ($searchText === '') {
@@ -450,6 +470,7 @@ class Webonary_Cloud
 				'text' => $searchText,
 				'lang' => $key,
 				'partOfSpeech' => $taxonomies,
+				'semanticDomain' => $semantic_domains,
 				'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
 				'matchAccents' => $search_cookie->match_accents ? '1' : ''
 			];
@@ -519,8 +540,10 @@ class Webonary_Cloud
 	{
 		// Since dictionary is persisted in options, unset it first
 		delete_option('dictionary');
+		self::$dictionary = null;
+		self::$dictionary_id = $dictionaryId;
 
-		$dictionary = self::getDictionary($dictionaryId);
+		$dictionary = self::getDictionary();
 		if (!is_null($dictionary)) {
 			$language = $dictionary->mainLanguage;
 			update_option('languagecode', $language->lang);
@@ -619,5 +642,45 @@ class Webonary_Cloud
 			$err_msg = __('Not able to delete Webonary data', 'sil_dictionary');
 
 		return ['deleted' => 0, 'msg' => $err_msg];
+	}
+
+	/**
+	 * @param string $lang_code
+	 * @return array
+	 */
+	public static function getSemanticDomainSlugs(string $lang_code): array
+	{
+		$dictionary = self::getDictionary();
+
+		if (is_null($dictionary) || count($dictionary->semanticDomains) == 0)
+			return [$lang_code, []];
+
+		$domains = [];
+
+		// get the entries for the current language
+		$found = array_filter($dictionary->semanticDomains, function($val) use($lang_code) {
+			return $val->lang == $lang_code;
+		});
+
+		// if no entries for the current language, pick the first language
+		if (empty($found)){
+			$lang_code = $dictionary->semanticDomains[0]->lang;
+			$found = array_filter($dictionary->semanticDomains, function($val) use($lang_code) {
+				return $val->lang == $lang_code;
+			});
+		}
+
+		foreach($found as $domain) {
+
+			if (empty($domain->abbreviation))
+				continue;
+
+			// use the abbreviation as the key so we can sort the results
+			$domains[$domain->abbreviation] = array('slug' => $domain->abbreviation, 'name' => $domain->name);
+		}
+
+		ksort($domains, SORT_NATURAL);
+
+		return [$lang_code, $domains];
 	}
 }

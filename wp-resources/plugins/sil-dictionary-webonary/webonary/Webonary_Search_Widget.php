@@ -43,7 +43,7 @@ class Webonary_Search_Widget extends WP_Widget {
 		$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
 		$selected_language = $_REQUEST['key'] ?? '';
 
-		if(get_option('useCloudBackend'))
+		if(IS_CLOUD_BACKEND)
             $this->getCloudLists($taxonomy, $search_term, $selected_language);
 		else
 			$this->getMySqlLists($taxonomy, $search_term, $selected_language);
@@ -108,10 +108,9 @@ class Webonary_Search_Widget extends WP_Widget {
 		return $new_instance;
 	}
 
-    private function getCloudLists($taxonomy, $search_term, $selected_language) {
-
-	    $dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-	    $dictionary = Webonary_Cloud::getDictionary($dictionaryId);
+    private function getCloudLists($taxonomy, $search_term, $selected_language)
+	{
+	    $dictionary = Webonary_Cloud::getDictionary();
 	    $currentLanguage = Webonary_Cloud::getCurrentLanguage();
 	    if(!is_null($dictionary))
 	    {
