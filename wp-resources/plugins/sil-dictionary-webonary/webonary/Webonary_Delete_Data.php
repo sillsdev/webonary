@@ -18,7 +18,7 @@ class Webonary_Delete_Data
 		if (!$delete_taxonomies)
 			$delete_taxonomies = (bool)($_POST['delete_taxonomies'] ?? false);
 
-		if (get_option('useCloudBackend'))
+		if (IS_CLOUD_BACKEND)
 			return Webonary_Cloud::deleteDictionaryData(Webonary_Cloud::getBlogDictionaryId());
 
 		return self::DeleteMySqlDictionaryData($delete_taxonomies);

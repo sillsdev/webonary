@@ -16,7 +16,7 @@ class Webonary_Dashboard_Widget extends WP_Widget
 	{
 		$upload_status = self::GetImportStatus();
 		$publication_status = self::$publication_status[intval(get_option('publicationStatus', 0))];
-		$backend = get_option('useCloudBackend') ? 'Cloud backend' : 'WordPress backend';
+		$backend = IS_CLOUD_BACKEND ? 'Cloud backend' : 'WordPress backend';
 
 		echo <<<HTML
 <div style="padding:0 3px">
@@ -36,9 +36,9 @@ HTML;
 
 	private static function GetImportStatus(): string
 	{
-		if (get_option('useCloudBackend')) {
+		if (IS_CLOUD_BACKEND) {
 
-			$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
+			$dictionary = Webonary_Cloud::getDictionary();
 
 			if (is_null($dictionary))
 				return '<p style="font-weight:700">No dictionary data found.</p>';

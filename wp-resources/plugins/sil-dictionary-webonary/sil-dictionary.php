@@ -143,7 +143,7 @@ add_filter('rest_authentication_errors', function ($result) {
 //}
 //add_filter('post_class', 'filter_post_class', 10, 3);
 
-if (get_option('useCloudBackend')) {
+if (IS_CLOUD_BACKEND) {
 	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);
 }
 

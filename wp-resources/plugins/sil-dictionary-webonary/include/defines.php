@@ -18,6 +18,7 @@ if (!defined('DS'))
 define('MYSQL_CHARSET', $wpdb->charset);
 define('MYSQL_COLLATION', $wpdb->collate);
 
+define('IS_CLOUD_BACKEND', !empty(get_option('useCloudBackend')));
 
 // This is the Webonary Auto-Loader.
 // It must be loaded before the includes below.

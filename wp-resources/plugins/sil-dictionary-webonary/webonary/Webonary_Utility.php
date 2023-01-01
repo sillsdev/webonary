@@ -543,10 +543,9 @@ class Webonary_Utility
 		if (is_page())
 			return;
 
-		if (get_option('useCloudBackend'))
+		if (IS_CLOUD_BACKEND)
 		{
-			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-			Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId, ['webonary_dictionary_style']);
+			Webonary_Cloud::registerAndEnqueueMainStyles(['webonary_dictionary_style']);
 		}
 		else
 		{

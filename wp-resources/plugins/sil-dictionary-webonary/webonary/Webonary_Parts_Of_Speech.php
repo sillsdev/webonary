@@ -38,6 +38,7 @@ class Webonary_Parts_Of_Speech
 	{
 		$counter = 1;
 		$all_parts = __('All Parts of Speech', 'sil_dictionary');
+		/** @noinspection HtmlUnknownAttribute */
 		$template = '<div class="pos-entry"><input type="checkbox" name="tax" id="pos-%1$s" class="form-control mr-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
 		$options = [];
 
@@ -102,7 +103,10 @@ class Webonary_Parts_Of_Speech
     }
 </script>
 <div class="pos-container">
-	<button type="button" class="btn btn-dropdown" onclick="toggleDropdown(this);">$button_text<span>&ensp;&#x25BE;</span></button>
+	<div class="pos-select" onclick="toggleDropdown(this);">
+		<select class="form-select"><option>$button_text</option></select>
+		<div class="pos-cover"></div>
+	</div>
 	<div class="pos-list" style="display: none">
 	    $option_str
     </div>
@@ -157,6 +161,10 @@ HTML;
 	private function GetPartsOfSpeechFromWordpress(): array
 	{
 		$list = get_terms('sil_parts_of_speech');
+
+		if (is_a($list, WP_Error::class))
+			return [];
+
 		$return_val = [];
 
 		/** @var WP_Term $item */

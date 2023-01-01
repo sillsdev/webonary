@@ -305,9 +305,9 @@ function webonary_conf_widget($showTitle = false)
 
 	$arrLanguageCodes = array();
 	$noReversalEntries = true;
-	if (get_option('useCloudBackend')) {
-		$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-		$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+	if (IS_CLOUD_BACKEND) {
+
+		$dictionary = Webonary_Cloud::getDictionary();
 		$import_status = '';
 		if (!is_null($dictionary)) {
 			$import_status .= '<li>Last Upload: <em>' . $dictionary->updatedAt . '</em>';
@@ -416,7 +416,7 @@ function webonary_conf_widget($showTitle = false)
 				</div>
 
 				<p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
-					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
+					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', IS_CLOUD_BACKEND); ?> />
 				</p>
 
 				<h3><?php _e('Delete Data', 'sil_dictionary'); ?></h3>
@@ -447,7 +447,7 @@ function webonary_conf_widget($showTitle = false)
 					<input type="hidden" id="confirm-delete-text"
 						   value="<?php _e('Are you sure you want to delete the dictionary data?', 'sil_dictionary'); ?>">
 					<div id="webonary-delete-msg"></div>
-					<?php if (get_option('useCloudBackend')) { ?>
+					<?php if (IS_CLOUD_BACKEND) { ?>
 						<input type="hidden" id="pwd-required-text"
 							   value="<?php _e('Your password is required.', 'sil_dictionary'); ?>">
 						<div style="margin-bottom: 8px">
