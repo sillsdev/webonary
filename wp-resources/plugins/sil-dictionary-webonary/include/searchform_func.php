@@ -26,9 +26,9 @@ function webonary_searchform($use_li = false): void
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
-	$selected_parts_of_speech = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
 	$search_term = Webonary_Utility::UnicodeTrim(filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
 
+	/** @var ILanguageEntryCount[] $arrIndexed */
 	$arrIndexed = array();
 	$sem_domains = array();
 
@@ -36,28 +36,20 @@ function webonary_searchform($use_li = false): void
 	$selected_language = $_REQUEST['key'] ?? '';
 	$language_dropdown_options = '';
 
-	$semantic_domains_dropdown = Webonary_SemanticDomains::GetDropdown();
-	$parts_of_speech_dropdown = '';
 	$lastEditDate = '';
 	if (IS_CLOUD_BACKEND) {
 
 		$dictionary = Webonary_Cloud::getDictionary();
-		$currentLanguage = Webonary_Cloud::getCurrentLanguage();
+		$cloud_domains = Webonary_Cloud::getSemanticDomains();
+
 		if(!is_null($dictionary))
 		{
-			// set up parts of speech dropdown
-			if(count($dictionary->partsOfSpeech))
-			{
-				$parts_of_speech = new Webonary_Parts_Of_Speech($currentLanguage, $dictionary->partsOfSpeech, $selected_parts_of_speech);
-				$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
-			}
-
 			//set up semantic domains links
-			if($search_term !== '' && count($dictionary->semanticDomains))
+			if($search_term !== '' && count($cloud_domains))
 			{
 				// NOTE: Even though the current non-cloud search does not filter this by language, we should do so in the future
 				$sem_term = strtolower($search_term);
-				foreach($dictionary->semanticDomains as $item)
+				foreach($cloud_domains as $item)
 				{
 					if (empty($item->nameInsensitive))
 						continue;
@@ -74,9 +66,10 @@ function webonary_searchform($use_li = false): void
 			}
 
 			// set up dictionary info
+			/** @var ILanguageEntryCount $mainIndexed */
 			$mainIndexed = new stdClass();
 		    $mainIndexed->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-			$mainIndexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
+			$mainIndexed->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
 			$arrIndexed[] = $mainIndexed;
 
             $dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
@@ -87,7 +80,7 @@ function webonary_searchform($use_li = false): void
 
 				$indexed = new stdClass();
 				$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
-				$indexed->totalIndexed = $reversal->entriesCount ?? 0;
+				$indexed->total_indexed = $reversal->entriesCount ?? 0;
 				$arrIndexed[] = $indexed;
 			}
 
@@ -144,12 +137,6 @@ function webonary_searchform($use_li = false): void
 				}
 			}
 		}
-
-		// set up parts of speech dropdown
-		$parts_of_speech = new Webonary_Parts_Of_Speech('en', null, $selected_parts_of_speech);
-
-		if($parts_of_speech->HasPartsOfSpeech())
-			$parts_of_speech_dropdown = $parts_of_speech->GetDropdown();
 
 		// set up semantic domains links
 		if($search_term !== '')
@@ -256,8 +243,8 @@ function theCursorPosition(ofThisInput) {
 				$language_dropdown .= '</select>';
 				echo '<div class="pos-container">' . $language_dropdown . '</div>';
 			}
-			echo $parts_of_speech_dropdown;
-			echo $semantic_domains_dropdown;
+			echo Webonary_Parts_Of_Speech::GetDropdown();
+			echo Webonary_SemanticDomains::GetDropdown();
 			?>
 			<input type="hidden" name="search_options_set" value="1">
 			<input id="match_whole_words" name="match_whole_words" value="1" <?php echo $whole_words_checked; ?> type="checkbox"> <label for="match_whole_words"><?php _e('Match whole words', 'sil_dictionary'); ?></label>
@@ -291,7 +278,7 @@ function webonary_status($indexed_languages, $lastEditDate): string
 		if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
 			continue;
 
-		$num_entries_text .= $indexed->language_name . ':&nbsp;'. $indexed->totalIndexed. '<br>';
+		$num_entries_text .= $indexed->language_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
 		$reversals[] = $indexed->language_name;
 	}
 
@@ -367,81 +354,17 @@ function add_header(): void
 add_action('wp_head', 'add_header');
 
 
-function getDictStageFlex($status): string
-{
-	$header = __('Publication Status', 'sil_dictionary');
-	$rough = __('Rough draft', 'sil_dictionary');
-	$self = __('Self-reviewed draft', 'sil_dictionary');
-	$community = __('Community-reviewed draft', 'sil_dictionary');
-	$consultant = __('Consultant approved', 'sil_dictionary');
-	$no_formal = __('Finished (no formal publication)', 'sil_dictionary');
-	$formal = __('Formally published', 'sil_dictionary');
 
-	$status = (int)$status - 1;
-
-    if ($status < 0 || $status > 5)
-        $status = 0;
-
-    $active = ['', '', '', '', '', ''];
-    $active[$status] = 'active';
-
-
-	return <<<HTML
-<div class="status">
-    <p class="center">$header</p>
-    
-    <div class="status-flex">
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[0]"></div>
-                <div class="right-line purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$rough</p>
-            </div>
-        </div>
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[1]"></div>
-                <div class="purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$self</p>
-            </div>
-        </div>
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[2]"></div>
-                <div class="purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$community</p>
-            </div>
-        </div>    
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[3]"></div>
-                <div class="purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$consultant</p>
-            </div>
-        </div>    
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[4]"></div>
-                <div class="purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$no_formal</p>
-            </div>
-        </div>
-        <div class="stage">
-            <div class="stage-inner">
-                <div class="arrow $active[5]"></div>
-                <div class="left-line purple-line"><span class="dot"></span></div>
-                <p class="stage-text">$formal</p>
-            </div>
-        </div>
-    </div>
-</div>
-HTML;
-
-}
 
 function add_footer(): void
 {
 	global $post, $wpdb;
+
+	// for new themes this is implemented through a widget
+	$template = wp_get_theme()->get_template();
+	if ($template == 'bootscore')
+		return;
+
 	$post_slug = is_null($post) ? '' : $post->post_name;
 	if(is_front_page() || $post_slug == 'browse')
 	{
@@ -480,7 +403,7 @@ function add_footer(): void
 
 			if ( $publicationStatus > 0 ) {
 
-				echo getDictStageFlex( $publicationStatus );
+				echo Webonary_Published_Widget::getDictStageFlex( $publicationStatus );
 			}
 		}
 	}

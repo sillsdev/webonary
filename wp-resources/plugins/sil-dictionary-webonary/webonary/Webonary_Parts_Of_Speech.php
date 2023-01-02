@@ -2,60 +2,41 @@
 
 class Webonary_Parts_Of_Speech
 {
-	private string $current_lang_code;
-
 	/** @var ICloudPartOfSpeech[] */
-	private array $parts;
-
-	/** @var string[] */
-	private array $selected_values;
+	private static ?array $parts = null;
 
 	private static ?array $parts_of_speech_selected = null;
 
-	/**
-	 * @param string $current_lang_code
-	 * @param ICloudPartOfSpeech[]|null $parts
-	 * @param array $selected_values
-	 */
-	public function __construct(string $current_lang_code, ?array $parts, array $selected_values)
-	{
-		$this->current_lang_code = $current_lang_code;
-		$this->selected_values = $selected_values;
 
-		if (is_null($parts)) {
-			$this->parts = $this->GetPartsOfSpeechFromWordpress();
-		} else {
-			$this->parts = $parts;
-
-			// pre-sort the list
-			usort($this->parts, function ($a, $b) {
-				return strcasecmp($a->name, $b->name);
-			});
-		}
-	}
-
-	public function GetDropdown(): string
+	public static function GetDropdown(): string
 	{
 		$counter = 1;
 		$all_parts = __('All Parts of Speech', 'sil_dictionary');
 		/** @noinspection HtmlUnknownAttribute */
-		$template = '<div class="pos-entry"><input type="checkbox" name="tax" id="pos-%1$s" class="form-control mr-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
+		$template = '<div class="pos-entry"><input type="checkbox" name="tax" id="pos-%1$s" class="form-check form-check-input me-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
 		$options = [];
 
 		$value = '';
-		$checked = (empty($this->selected_values) || in_array($value, $this->selected_values)) ? 'checked="checked"' : '';
+		$selected_values = self::GetPartsOfSpeechSelected();
+
+		$checked = (empty($selected_values) || in_array($value, $selected_values)) ? 'checked="checked"' : '';
 		$options[] = sprintf($template, $counter, $value, $checked, $all_parts);
 
-		$this->GetPartsOfSpeechForLanguage($counter, $options, $this->current_lang_code, $template);
+		self::GetPartsOfSpeechForLanguage($counter, $options, self::GetCurrentLanguageCode(), $template);
 
 		// if the list for the current language is empty, choose the first language
-		if (count($options) == 1 && !empty($this->parts)) {
+		$parts = self::GetPartsOfSpeech();
+		if (count($options) == 1 && !empty($parts)) {
 
-			$language = $this->parts[0]->lang ?? '';
+			$language = $parts[0]->lang ?? '';
 
 			if ($language != '')
-				$this->GetPartsOfSpeechForLanguage($counter, $options, $language, $template);
+				self::GetPartsOfSpeechForLanguage($counter, $options, $language, $template);
 		}
+
+		// if no parts of speech found, return nothing
+		if (count($options) == 1)
+			return '';
 
 		$option_str = implode(PHP_EOL, $options);
 
@@ -155,10 +136,29 @@ HTML;
 		return self::$parts_of_speech_selected;
 	}
 
+	private static function GetPartsOfSpeech(): array
+	{
+		if (!is_null(self::$parts))
+			return self::$parts;
+
+		if (IS_CLOUD_BACKEND) {
+			self::$parts = Webonary_Cloud::getPartsOfSpeech();
+		}
+		else {
+			self::$parts = self::GetPartsOfSpeechFromWordpress();
+		}
+
+		usort(self::$parts, function ($a, $b) {
+			return strcasecmp($a->name, $b->name);
+		});
+
+		return self::$parts;
+	}
+
 	/**
 	 * @return ICloudPartOfSpeech[]
 	 */
-	private function GetPartsOfSpeechFromWordpress(): array
+	private static function GetPartsOfSpeechFromWordpress(): array
 	{
 		$list = get_terms('sil_parts_of_speech');
 
@@ -170,9 +170,12 @@ HTML;
 		/** @var WP_Term $item */
 		foreach ($list as $item) {
 
+			if (empty($item->term_id))
+				continue;
+
 			$part = [
 				'abbreviation' => $item->term_id,
-				'lang' => $this->current_lang_code,
+				'lang' => 'en',
 				'name' => $item->name . '&ensp;(' . $item->count . ')',
 				'guid' => $item->term_id
 			];
@@ -183,18 +186,29 @@ HTML;
 		return $return_val;
 	}
 
-	private function GetPartsOfSpeechForLanguage(int &$counter, array &$options, string $language, string $template): void
+	private static function GetPartsOfSpeechForLanguage(int &$counter, array &$options, string $language, string $template): void
 	{
-		foreach ($this->parts as $part) {
+		$parts = self::GetPartsOfSpeech();
+		$selected_values = self::GetPartsOfSpeechSelected();
+
+		foreach ($parts as $part) {
 
 			if (is_null($part->abbreviation) || $part->lang != $language)
 				continue;
 
 			$counter++;
 			$value = $part->abbreviation;
-			$checked = in_array($value, $this->selected_values) ? 'checked="checked"' : '';
+			$checked = in_array($value, $selected_values) ? 'checked="checked"' : '';
 			$options[] = sprintf($template, $counter, $value, $checked, $part->name);
 		}
+	}
+
+	private static function GetCurrentLanguageCode(): string
+	{
+		if (IS_CLOUD_BACKEND)
+			return Webonary_Cloud::getCurrentLanguage();
+
+		return 'en';
 	}
 
 	public function HasPartsOfSpeech(): bool

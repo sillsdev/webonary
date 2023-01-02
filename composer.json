@@ -36,21 +36,23 @@
     }
   ],
   "require-dev": {
-    "deployer/deployer": "^v6.8"
+    "deployer/deployer": "^6.8"
   },
   "require": {
     "php": ">=7.3|>8.1",
     "ext-curl": "*",
     "ext-gettext": "*",
     "ext-json": "*",
+    "composer/installers": "^2.2",
+    "bootscore/bootscore": "^5.2",
     "johnpbloch/wordpress": "dev-master",
     "mdsimpson/contact-form-7-to-database-extension": "2.10.37",
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "dev-master",
     "wpackagist-plugin/akismet": "^5.0",
     "wpackagist-plugin/blog-copier": "^1.0",
+    "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "^3.1",
     "wpackagist-plugin/classic-editor": "^1.6",
-    "wpackagist-plugin/jquery-collapse-o-matic": "^1.7",
     "wpackagist-plugin/contact-form-7": "^5.7",
     "wpackagist-plugin/database-collation-fix": "^1.2",
     "wpackagist-plugin/disable-comments-rb": "^1.0",
@@ -63,6 +65,7 @@
     "wpackagist-plugin/imsanity": "^2.7",
     "wpackagist-plugin/infinite-scroll": "^2.6",
     "wpackagist-plugin/inline-google-spreadsheet-viewer": "^0.13.2",
+    "wpackagist-plugin/jquery-collapse-o-matic": "^1.7",
     "wpackagist-plugin/jquery-updater": "^3.6",
     "wpackagist-plugin/list-categories": "^0.4.0",
     "wpackagist-plugin/magazine-columns": "^1.0",
@@ -72,6 +75,7 @@
     "wpackagist-plugin/pdf-embedder": "^4.6",
     "wpackagist-plugin/plugin-activation-status": "1.0.2.1",
     "wpackagist-plugin/really-simple-ssl": "^6.0",
+    "wpackagist-plugin/sidebar-manager": "^1.1",
     "wpackagist-plugin/tablepress": "^1.14",
     "wpackagist-plugin/timber-library": "^1.18",
     "wpackagist-plugin/tinymce-advanced": "^5.6",
@@ -79,16 +83,18 @@
     "wpackagist-plugin/wordfence": "^7.4",
     "wpackagist-plugin/wordpress-importer": "^0.8",
     "wpackagist-plugin/wp-google-fonts": "^3.1",
+    "wpackagist-plugin/wp-maintenance-mode": "^2.6",
     "wpackagist-plugin/wp-super-cache": "^1.7",
     "wpackagist-plugin/wps-menu-exporter": "^1.3",
-    "wpackagist-theme/twentytwentyone": "^1.4",
-    "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "^3.1",
-    "wpackagist-plugin/wp-maintenance-mode": "^2.6"
+    "wpackagist-theme/twentytwentyone": "^1.4"
   },
   "extra": {
     "installer-paths": {
       "wordpress/wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
+      ],
+      "wordpress/wp-content/plugins/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
       ],
       "wordpress/wp-content/themes/{$name}/": [
         "type:wordpress-theme"

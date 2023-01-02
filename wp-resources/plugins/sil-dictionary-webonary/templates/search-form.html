@@ -28,7 +28,7 @@
                         id="webonary-search-submit"
                         name="search"
                         value="@search@"
-                        class="btn btn-secondary"
+                        class="btn btn-secondary no-wrap"
                     >
                         @search@
                     </button>
@@ -37,11 +37,16 @@
         </table>
         <div id="advancedSearch" style="display: block">
             @language_dropdown@ @parts_of_speech_dropdown@
-            <input id="match_whole_words" name="match_whole_words" value="1" @whole_words_checked@ type="checkbox" />
-            <label for="match_whole_words">@match_whole_words@</label>
-            <br />
-            <input id="match_accents" name="match_accents" @accents_checked@ type="checkbox" />
-            <label for="match_accents">@match_accents@</label>
+            <div class="d-flex justify-content-start align-items-center gap-2 my-2">
+                <input id="match_whole_words" name="match_whole_words" class="form-check form-check-input m-0" value="1" @whole_words_checked@ type="checkbox" />
+                <label for="match_whole_words">@match_whole_words@</label>
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center gap-2 my-2">
+                <input id="match_accents" name="match_accents" class="form-check form-check-input m-0" @accents_checked@ type="checkbox" />
+                <label for="match_accents">@match_accents@</label>
+            </div>
+
         </div>
     </div>
 </form>

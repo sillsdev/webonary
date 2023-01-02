@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e93f120865f73f7b7d979272b8d2b7ad",
+    "content-hash": "81e91e17d041f9a6661758c6291154a8",
     "packages": [
+        {
+            "name": "bootscore/bootscore",
+            "version": "v5.2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bootscore/bootscore.git",
+                "reference": "7685ca4b860e1cb4104b9b51085f61091b811652"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/7685ca4b860e1cb4104b9b51085f61091b811652",
+                "reference": "7685ca4b860e1cb4104b9b51085f61091b811652",
+                "shasum": ""
+            },
+            "type": "wordpress-theme",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "The Bootscore Authors"
+                }
+            ],
+            "description": "A powerful, free Bootstrap 5 starter theme for WordPress.",
+            "homepage": "https://bootscore.me/",
+            "keywords": [
+                "bootcommerce",
+                "bootscore",
+                "bootstrap",
+                "theme",
+                "woocommerce",
+                "wordpress"
+            ],
+            "support": {
+                "docs": "https://bootscore.me/documentation/",
+                "forum": "https://github.com/bootscore/bootscore/discussions",
+                "issues": "https://github.com/bootscore/bootscore/issues",
+                "source": "https://github.com/bootscore/bootscore"
+            },
+            "time": "2022-12-16T15:55:01+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "dev-main",
@@ -266,12 +308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "78e120762c4e80ef1f929e565e80dbfac317818a"
+                "reference": "55097444437acede6c22f01f10deb4717cd4bdc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/78e120762c4e80ef1f929e565e80dbfac317818a",
-                "reference": "78e120762c4e80ef1f929e565e80dbfac317818a",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/55097444437acede6c22f01f10deb4717cd4bdc9",
+                "reference": "55097444437acede6c22f01f10deb4717cd4bdc9",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +349,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2022-12-28T14:11:45+00:00"
+            "time": "2023-01-02T00:56:13+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1521,6 +1563,24 @@
             "homepage": "https://wordpress.org/plugins/really-simple-ssl/"
         },
         {
+            "name": "wpackagist-plugin/sidebar-manager",
+            "version": "1.1.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/sidebar-manager/",
+                "reference": "tags/1.1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/sidebar-manager.1.1.7.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/sidebar-manager/"
+        },
+        {
             "name": "wpackagist-plugin/tablepress",
             "version": "1.14",
             "source": {
@@ -1957,12 +2017,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "58422fdcb0e715ed05b385f70d3e8b5ed4bbd45f"
+                "reference": "dccb8d251a9017d5994c988b034d3e18aaabf740"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/58422fdcb0e715ed05b385f70d3e8b5ed4bbd45f",
-                "reference": "58422fdcb0e715ed05b385f70d3e8b5ed4bbd45f",
+                "url": "https://api.github.com/repos/symfony/console/zipball/dccb8d251a9017d5994c988b034d3e18aaabf740",
+                "reference": "dccb8d251a9017d5994c988b034d3e18aaabf740",
                 "shasum": ""
             },
             "require": {
@@ -2048,7 +2108,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-28T14:15:31+00:00"
+            "time": "2023-01-01T08:32:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2622,12 +2682,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "6e75fe6874cbc7e4773d049616ab450eff537bf1"
+                "reference": "c5ba874c9b636dbccf761e22ce750e88ec3f55e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/6e75fe6874cbc7e4773d049616ab450eff537bf1",
-                "reference": "6e75fe6874cbc7e4773d049616ab450eff537bf1",
+                "url": "https://api.github.com/repos/symfony/process/zipball/c5ba874c9b636dbccf761e22ce750e88ec3f55e1",
+                "reference": "c5ba874c9b636dbccf761e22ce750e88ec3f55e1",
                 "shasum": ""
             },
             "require": {
@@ -2676,7 +2736,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-27T16:58:25+00:00"
+            "time": "2023-01-01T08:32:19+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -2770,12 +2830,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "145702685e0d12f81d755c71127bfff7582fdd36"
+                "reference": "a4740326ac21395aeb64a828e8c80f5544220cda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/145702685e0d12f81d755c71127bfff7582fdd36",
-                "reference": "145702685e0d12f81d755c71127bfff7582fdd36",
+                "url": "https://api.github.com/repos/symfony/string/zipball/a4740326ac21395aeb64a828e8c80f5544220cda",
+                "reference": "a4740326ac21395aeb64a828e8c80f5544220cda",
                 "shasum": ""
             },
             "require": {
@@ -2786,13 +2846,13 @@
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
-                "symfony/translation-contracts": "<2.0"
+                "symfony/translation-contracts": "<2.5"
             },
             "require-dev": {
                 "symfony/error-handler": "^5.4|^6.0",
                 "symfony/http-client": "^5.4|^6.0",
                 "symfony/intl": "^6.2",
-                "symfony/translation-contracts": "^2.0|^3.0",
+                "symfony/translation-contracts": "^2.5|^3.0",
                 "symfony/var-exporter": "^5.4|^6.0"
             },
             "type": "library",
@@ -2832,7 +2892,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/6.2"
+                "source": "https://github.com/symfony/string/tree/6.3"
             },
             "funding": [
                 {
@@ -2848,7 +2908,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-30T17:13:47+00:00"
+            "time": "2023-01-01T08:38:37+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -2856,12 +2916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "edcdc11498108f8967fe95118a7ec8624b94760e"
+                "reference": "74f2ca5a61222c9489daa3886e3a21d637739893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/edcdc11498108f8967fe95118a7ec8624b94760e",
-                "reference": "edcdc11498108f8967fe95118a7ec8624b94760e",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/74f2ca5a61222c9489daa3886e3a21d637739893",
+                "reference": "74f2ca5a61222c9489daa3886e3a21d637739893",
                 "shasum": ""
             },
             "require": {
@@ -2923,7 +2983,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-13T09:57:04+00:00"
+            "time": "2023-01-01T08:32:19+00:00"
         }
     ],
     "aliases": [],

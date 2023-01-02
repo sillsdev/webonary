@@ -5,6 +5,12 @@ class Webonary_Cloud
 	private static ?string $dictionary_id = null;
 	private static ICloudDictionary|stdClass|null $dictionary = null;
 
+	/** @var ICloudPartOfSpeech[]|null  */
+	private static ?array $parts_of_speech = null;
+
+	/** @var ICloudSemanticDomain[]|null  */
+	private static ?array $semantic_domains = null;
+
 	public static string $doBrowseByLetter = 'browse/entry';
 
 	public static string $doGetDictionary = 'get/dictionary';
@@ -255,14 +261,19 @@ class Webonary_Cloud
 		);
 	}
 
-	public static function getLanguageName($code, $default = '')
+	/**
+	 * @param string $code
+	 * @param string $default
+	 * @return string
+	 */
+	public static function getLanguageName(string $code, string $default = ''): string
 	{
 		$term = get_term_by('slug', $code, self::$languageCategory);
 		if ($term) {
 			return $term->name;
 		}
 
-		$name = ($default === '') ? $code : $default;
+		$name = $default ?: $code;
 		wp_insert_term(
 			$name,
 			self::$languageCategory,
@@ -301,17 +312,17 @@ class Webonary_Cloud
 		return self::$dictionary;
 	}
 
-	public static function getTotalCount($doAction, $dictionaryId, $apiParams = array()): int
+	public static function getTotalCount($doAction, $apiParams = array()): int
 	{
-		$request = $doAction . '/' . $dictionaryId;
+		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams['countTotalOnly'] = '1';
 		$response = self::remoteGetJson($request, $apiParams);
 		return $response->count ?? 0;
 	}
 
-	public static function getEntriesAsPosts($doAction, $dictionaryId, $apiParams = array()): array
+	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
-		$request = $doAction . '/' . $dictionaryId;
+		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$response = self::remoteGetJson($request, $apiParams);
 		if (empty($response))
 			return [];
@@ -328,9 +339,9 @@ class Webonary_Cloud
 		return $posts;
 	}
 
-	public static function getEntriesAsReversals($dictionaryId, $apiParams): array
+	public static function getEntriesAsReversals($apiParams): array
 	{
-		$request = self::$doBrowseByLetter . '/' . $dictionaryId;
+		$request = self::$doBrowseByLetter . '/' . self::getBlogDictionaryId();
 		$response = self::remoteGetJson($request, $apiParams);
 		if (empty($response))
 			return [];
@@ -345,9 +356,9 @@ class Webonary_Cloud
 		return $reversals;
 	}
 
-	public static function getEntryAsPost($doAction, $dictionaryId, $id): array
+	public static function getEntryAsPost($doAction, $id): array
 	{
-		$request = $doAction . '/' . $dictionaryId;
+		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams = array('guid' => $id);
 		$entry = self::remoteGetJson($request, $apiParams);
 		if (empty($entry))
@@ -437,13 +448,11 @@ class Webonary_Cloud
 		if (!$query->is_main_query() || !is_search())
 			return null;
 
-		$dictionaryId = self::getBlogDictionaryId();
-
 		$pageName = trim(get_query_var('name'));
 
 		// name begins with 'g', then followed by GUID
 		if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
-			return self::getEntryAsPost(self::$doGetEntry, $dictionaryId, $pageName);
+			return self::getEntryAsPost(self::$doGetEntry, $pageName);
 		}
 
 		// get the selected semantic domains
@@ -482,11 +491,11 @@ class Webonary_Cloud
 		$apiParams['pageNumber'] = $query->query_vars['paged'];
 		$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
 
-		$totalEntries = self::getTotalCount(self::$doSearchEntry, $dictionaryId, $apiParams);
+		$totalEntries = self::getTotalCount(self::$doSearchEntry, $apiParams);
 		$query->found_posts = $totalEntries;
 		$query->max_num_pages = ceil($totalEntries / $apiParams['pageLimit']);
 
-		return self::getEntriesAsPosts(self::$doSearchEntry, $dictionaryId, $apiParams);
+		return self::getEntriesAsPosts(self::$doSearchEntry, $apiParams);
 	}
 
 	public static function registerApiRoutes(): void
@@ -650,22 +659,22 @@ class Webonary_Cloud
 	 */
 	public static function getSemanticDomainSlugs(string $lang_code): array
 	{
-		$dictionary = self::getDictionary();
+		$sem_domains = self::getSemanticDomains();
 
-		if (is_null($dictionary) || count($dictionary->semanticDomains) == 0)
+		if (empty($sem_domains))
 			return [$lang_code, []];
 
 		$domains = [];
 
 		// get the entries for the current language
-		$found = array_filter($dictionary->semanticDomains, function($val) use($lang_code) {
+		$found = array_filter($sem_domains, function($val) use($lang_code) {
 			return $val->lang == $lang_code;
 		});
 
 		// if no entries for the current language, pick the first language
 		if (empty($found)){
-			$lang_code = $dictionary->semanticDomains[0]->lang;
-			$found = array_filter($dictionary->semanticDomains, function($val) use($lang_code) {
+			$lang_code = $sem_domains[0]->lang;
+			$found = array_filter($sem_domains, function($val) use($lang_code) {
 				return $val->lang == $lang_code;
 			});
 		}
@@ -682,5 +691,49 @@ class Webonary_Cloud
 		ksort($domains, SORT_NATURAL);
 
 		return [$lang_code, $domains];
+	}
+
+	/**
+	 * Filter the list to remove empty values
+	 *
+	 * @return ICloudPartOfSpeech[]
+	 */
+	public static function getPartsOfSpeech(): array
+	{
+		if (!is_null(self::$parts_of_speech))
+			return self::$parts_of_speech;
+
+		$dictionary = self::getDictionary();
+
+		if (!self::isValidDictionary($dictionary))
+			return [];
+
+		self::$parts_of_speech = array_filter($dictionary->partsOfSpeech, function($val) {
+			return !empty($val->abbreviation);
+		});
+
+		return self::$parts_of_speech;
+	}
+
+	/**
+	 * Filter the list to remove empty values
+	 *
+	 * @return ICloudSemanticDomain[]
+	 */
+	public static function getSemanticDomains(): array
+	{
+		if (!is_null(self::$semantic_domains))
+			return self::$semantic_domains;
+
+		$dictionary = self::getDictionary();
+
+		if (!self::isValidDictionary($dictionary))
+			return [];
+
+		self::$semantic_domains = array_filter($dictionary->semanticDomains, function($val) {
+			return !empty($val->abbreviation);
+		});
+
+		return self::$semantic_domains;
 	}
 }

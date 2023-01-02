@@ -1,0 +1,5 @@
+@import 'bscore_variables';
+@import 'bootstrap/bootstrap';  // Collecting Bootstrap source from parent-theme
+@import 'bscore_style';         // Collecting bootScore source from parent-theme
+@import 'bscore_custom';
+@import 'publication_status_widget.scss';
