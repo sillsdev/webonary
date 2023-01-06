@@ -126,3 +126,7 @@ msgstr ""
 #: webonary/Webonary_Search_Widget.php:19
 msgid "Webonary Search Widget"
 msgstr ""
+
+#: webonary/Webonary_Published_Widget.php:13
+msgid "Webonary Published Status Widget"
+msgstr ""

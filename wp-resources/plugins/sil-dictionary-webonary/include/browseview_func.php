@@ -81,8 +81,8 @@ function categories_func($atts, $content, $shortcode_tag)
 				'pageNumber' => $pagenr,
 				'pageLimit' => $postsPerPage
 			);
-			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
+			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $apiParams);
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $apiParams);
 		}
 		else
 		{
@@ -508,9 +508,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			'pageLimit' => $postsPerPage
 		);
 
-		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
-		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $apiParams);
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($apiParams);
 	}
 	else
 	{
@@ -771,15 +770,14 @@ function vernacularalphabet_func( $atts )
 
 	if(IS_CLOUD_BACKEND)
 	{
-		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
 		$apiParams = array(
 			'text' => $chosenLetter,
 			'mainLang' => $language_code,
 			'pageNumber' => $pagenr,
 			'pageLimit' => $postsPerPage);
 
-		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $apiParams);
 	}
 	else
 	{

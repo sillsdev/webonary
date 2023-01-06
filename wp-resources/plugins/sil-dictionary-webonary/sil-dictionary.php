@@ -169,6 +169,7 @@ add_filter('query_vars', 'add_query_vars');
 function register_custom_widgets(): void
 {
 	register_widget('Webonary_Search_Widget');
+	register_widget('Webonary_Published_Widget');
 }
 
 add_action('widgets_init', 'register_custom_widgets');

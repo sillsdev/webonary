@@ -187,7 +187,7 @@ class Webonary_SemanticDomains
 
 	private static function printRootDomainIfNeeded($domainNumber): string
 	{
-		$rootDomain = str_replace('-', '', substr($domainNumber, 0, 2));
+		$rootDomain = preg_replace('/[.-]/', '', substr($domainNumber, 0, 2));
 
 		$return_val = '';
 
@@ -284,12 +284,16 @@ JS;
 		global $webonary_include_path, $defaultDomain;
 
 		// check for numeric slugs
-		if (!preg_match('/^([\d\-.]+)$/', $domains[0]['slug']))
-			return;
+		$test = reset($domains);
+
+		if ($test !== false) {
+			if (!preg_match('/^([\d\-.]+)$/', $test['slug']))
+				return;
+		}
 
 		include_once $webonary_include_path . '/default_domains.php';
 
-		$use_dash = str_contains($domains[0]['slug'], '-');
+		$use_dash = str_contains($test['slug'] ?? '', '-');
 
 		foreach ($defaultDomain as $key => $value) {
 
