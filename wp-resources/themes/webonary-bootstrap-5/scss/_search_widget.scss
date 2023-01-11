@@ -1,0 +1,81 @@
+
+.pos-container {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+
+  .pos-select {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    position: relative;
+
+    .pos-cover {
+      padding: 0;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .pos-list {
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    position: absolute;
+    background-color: #f7f7f7;
+    z-index: 1000;
+    max-width: 80%;
+    box-shadow: 0 0 6px rgba(200, 200, 200, 0.9);
+    overflow: auto;
+
+    .pos-entry {
+      padding: 0 0.3rem;
+      margin: 0.2rem 0.1rem;
+      border: none;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: #000;
+        background-color: #e7e7e7;
+      }
+    }
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+@include media-breakpoint-up(md) {
+  .pos-container {
+    .pos-list {
+      border-radius: 6px;
+      max-height: 500px;
+      max-width: 360px;
+
+      .pos-entry {
+        margin: 0 0.1rem;
+      }
+    }
+  }
+
+  .logged-in {
+    #sidebar {
+      .pos-container {
+        .pos-list {
+          //top: 50px;
+          //max-height: calc(100% - 70px);
+        }
+      }
+    }
+  }
+}
