@@ -14,7 +14,7 @@ class Webonary_Parts_Of_Speech
 		$counter = 1;
 		$all_parts = __('All Parts of Speech', 'sil_dictionary');
 		/** @noinspection HtmlUnknownAttribute */
-		$template = '<div class="pos-entry"><input type="checkbox" name="tax" id="pos-%1$s" class="form-check form-check-input me-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
+		$template = '<div class="pos-entry"><input type="checkbox" name="pos" id="pos-%1$s" class="form-check form-check-input me-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
 		$options = [];
 
 		$value = '';
@@ -60,9 +60,8 @@ class Webonary_Parts_Of_Speech
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
 
-        
         jQuery('.pos-check').on('click', function() {
-            
+
             // un-check options that are excluded by the selected option
             if (this.checked) {
                 if (this.id === 'pos-1') {
@@ -74,6 +73,9 @@ class Webonary_Parts_Of_Speech
                     jQuery('#pos-1:checked').prop('checked', false);
                 }
             }
+
+            if (!jQuery('.pos-check:checked').length)
+                jQuery('#pos-1').prop('checked', true);
 
             // show the selected options
             let names = [];
@@ -103,34 +105,34 @@ class Webonary_Parts_Of_Speech
             return;
 
         if (window.innerWidth > 699) {
-			
+
             // layout for desktop and tablet
             list.css('position', 'absolute');
-            
+
 			let rect = document.getElementById('pos-select').getBoundingClientRect();
             let admin_bar = document.getElementById('wpadminbar');
             let admin_height = admin_bar ? admin_bar.offsetHeight : 0;
-			let win_height = window.innerHeight;        
-			let space_below = win_height - rect.bottom;          
+			let win_height = window.innerHeight;
+			let space_below = win_height - rect.bottom;
 			let space_above = rect.top - admin_height;
 
             let height = 500;
 			let top = rect.height;
-            
+
             // if the space below is greater than 500, all is good
 			if (space_below > 500) {
                 list.css('top', top.toString() + '.px');
                 return;
 			}
-				
+
 			if (space_above > space_below) {
-                
+
                 // put the list above the select element, there is more space above
-				height = space_above - 6;                  
+				height = space_above - 6;
 				top = (space_above - 6) * (-1);
 			}
-			else {   
-                
+			else {
+
                 // put the list below the select element, there is more space below
 				height = space_below - 6;
 			}
@@ -142,14 +144,14 @@ class Webonary_Parts_Of_Speech
 			list.css('top', top.toString() + 'px');
         }
         else {
-            
+
             // layout for mobile
             list.css('position', 'fixed');
-            
+
 			let win_height = window.innerHeight;
-            
+
             list.css('max-height', (win_height - 30).toString() + 'px');
-   
+
             let rect = document.getElementById('pos-list').getBoundingClientRect();
             let top = (win_height - rect.height) / 2;
             let left = (window.innerWidth - rect.width) / 2;
@@ -157,7 +159,7 @@ class Webonary_Parts_Of_Speech
             list.css('left', left.toString() + 'px');
         }
     }
-    
+
     // this event listener hides the list if the user clicks on something else
     window.addEventListener('click', function(evt) {
 
@@ -169,7 +171,7 @@ class Webonary_Parts_Of_Speech
         if (!document.getElementById('pos-list').contains(evt.target))
             jQuery('.pos-list').hide();
     });
-    
+
     // this event listener hides the list if the user scrolls the document
     document.addEventListener('scroll', function(evt) {
 
@@ -206,7 +208,7 @@ HTML;
 		$tax = array_values(
 			array_filter(
 				explode('&', $_SERVER['QUERY_STRING']),
-				function($val) { return str_starts_with($val, 'tax='); }
+				function($val) { return str_starts_with($val, 'pos='); }
 			)
 		);
 
