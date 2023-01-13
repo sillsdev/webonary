@@ -8,19 +8,23 @@ class Webonary_Parts_Of_Speech
 	private static ?array $parts_of_speech_selected = null;
 
 
+	/** @noinspection JSJQueryEfficiency */
 	public static function GetDropdown(): string
 	{
 		$counter = 1;
 		$all_parts = __('All Parts of Speech', 'sil_dictionary');
 		/** @noinspection HtmlUnknownAttribute */
-		$template = '<div class="pos-entry"><input type="checkbox" name="tax" id="pos-%1$s" class="form-check form-check-input me-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
+		$template = '<div class="pos-entry"><input type="checkbox" name="pos" id="pos-%1$s" class="form-check form-check-input me-2 pos-check" value="%2$s" %3$s>&nbsp;<label for="pos-%1$s">%4$s</label></div>';
 		$options = [];
 
 		$value = '';
 		$selected_values = self::GetPartsOfSpeechSelected();
+		$selected_text = [];
 
 		$checked = (empty($selected_values) || in_array($value, $selected_values)) ? 'checked="checked"' : '';
 		$options[] = sprintf($template, $counter, $value, $checked, $all_parts);
+		if ($checked)
+			$selected_text[] = $all_parts;
 
 		self::GetPartsOfSpeechForLanguage($counter, $options, self::GetCurrentLanguageCode(), $template);
 
@@ -34,61 +38,153 @@ class Webonary_Parts_Of_Speech
 				self::GetPartsOfSpeechForLanguage($counter, $options, $language, $template);
 		}
 
+		foreach ($parts as $part) {
+
+			if (is_null($part->abbreviation))
+				continue;
+
+			if (in_array($part->abbreviation, $selected_values))
+				$selected_text[] = $part->name;
+		}
+
 		// if no parts of speech found, return nothing
 		if (count($options) == 1)
 			return '';
 
 		$option_str = implode(PHP_EOL, $options);
 
-		$button_text = __('Parts of Speech', 'sil_dictionary');
+		$button_text = implode(' | ', $selected_text);
 
+		/** @noinspection JSPotentiallyInvalidUsageOfThis */
 		return <<<HTML
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() {
-        
-        // un-check options that are excluded by the selected option
-        jQuery('.pos-check').on('click', function() {
-            if (!this.checked)
-                return;
 
-            if (this.id === 'pos-1') {
-                // un-check everything else if 'All parts of speech' was selected
-                jQuery('.pos-check:checked').not(this).prop('checked', false);
+        jQuery('.pos-check').on('click', function() {
+
+            // un-check options that are excluded by the selected option
+            if (this.checked) {
+                if (this.id === 'pos-1') {
+                    // un-check everything else if 'All parts of speech' was selected
+                    jQuery('.pos-check:checked').not(this).prop('checked', false);
+                }
+                else {
+                    // un-check 'All parts of speech' if something else was selected
+                    jQuery('#pos-1:checked').prop('checked', false);
+                }
             }
-            else {
-                // un-check 'All parts of speech' if something else was selected
-                jQuery('#pos-1:checked').prop('checked', false);
-            }
+
+            if (!jQuery('.pos-check:checked').length)
+                jQuery('#pos-1').prop('checked', true);
+
+            // show the selected options
+            let names = [];
+            jQuery('.pos-check:checked').each(function() {
+                names.push(jQuery('label[for="' + this.id + '"]').text());
+            })
+
+			document.getElementById('pos-option').innerHTML = names.join(' | ');
+
         });
 	});
-    
-    function toggleDropdown(btn) {
-        
-        let list = jQuery('.pos-list');
-        list.toggle();
-        
-        let is_visible = list.is(':visible');
-        
-        if (window.innerWidth > 699) {
-            if (is_visible) {
 
-                // we have to set the left position after the element is no longer hidden
-                let rect = btn.getBoundingClientRect();
-        		let list_left = rect.x - list[0].offsetWidth;
-                list.css('left', list_left + 'px');
-            }
+    function toggleDropdown() {
+
+        let list = jQuery('.pos-list');
+        let is_visible = list.is(':visible');
+
+        if (!is_visible) {
+        	list.css('top', 'unset');
+            list.css('left', 'unset');
+            list.css('max-height', '500px');
+        }
+
+        list.toggle();
+
+        if (is_visible)
+            return;
+
+        if (window.innerWidth > 699) {
+
+            // layout for desktop and tablet
+            list.css('position', 'absolute');
+
+			let rect = document.getElementById('pos-select').getBoundingClientRect();
+            let admin_bar = document.getElementById('wpadminbar');
+            let admin_height = admin_bar ? admin_bar.offsetHeight : 0;
+			let win_height = window.innerHeight;
+			let space_below = win_height - rect.bottom;
+			let space_above = rect.top - admin_height;
+
+            let height = 500;
+			let top = rect.height;
+
+            // if the space below is greater than 500, all is good
+			if (space_below > 500) {
+                list.css('top', top.toString() + '.px');
+                return;
+			}
+
+			if (space_above > space_below) {
+
+                // put the list above the select element, there is more space above
+				height = space_above - 6;
+				top = (space_above - 6) * (-1);
+			}
+			else {
+
+                // put the list below the select element, there is more space below
+				height = space_below - 6;
+			}
+
+			if (height > 500)
+					height = 500;
+
+			list.css('max-height', height.toString() + 'px');
+			list.css('top', top.toString() + 'px');
         }
         else {
-            list.css('left', 'unset')
+
+            // layout for mobile
+            list.css('position', 'fixed');
+
+			let win_height = window.innerHeight;
+
+            list.css('max-height', (win_height - 30).toString() + 'px');
+
+            let rect = document.getElementById('pos-list').getBoundingClientRect();
+            let top = (win_height - rect.height) / 2;
+            let left = (window.innerWidth - rect.width) / 2;
+            list.css('top', top.toString() + 'px');
+            list.css('left', left.toString() + 'px');
         }
     }
+
+    // this event listener hides the list if the user clicks on something else
+    window.addEventListener('click', function(evt) {
+
+        if (evt.target['id'] === 'pos-cover') {
+            toggleDropdown();
+            return;
+        }
+
+        if (!document.getElementById('pos-list').contains(evt.target))
+            jQuery('.pos-list').hide();
+    });
+
+    // this event listener hides the list if the user scrolls the document
+    document.addEventListener('scroll', function(evt) {
+
+        if (!document.getElementById('pos-list').contains(evt.target))
+            jQuery('.pos-list').hide();
+    });
 </script>
 <div class="pos-container">
-	<div class="pos-select" onclick="toggleDropdown(this);">
-		<select class="form-select"><option>$button_text</option></select>
-		<div class="pos-cover"></div>
+	<div class="pos-select" id="pos-select">
+		<select class="form-select webonary_searchform_pos_select"><option id="pos-option">$button_text</option></select>
+		<div class="pos-cover" id="pos-cover"></div>
 	</div>
-	<div class="pos-list" style="display: none">
+	<div class="pos-list" id="pos-list" style="display: none">
 	    $option_str
     </div>
 </div>
@@ -112,13 +208,13 @@ HTML;
 		$tax = array_values(
 			array_filter(
 				explode('&', $_SERVER['QUERY_STRING']),
-				function($val) { return str_starts_with($val, 'tax='); }
+				function($val) { return str_starts_with($val, 'pos='); }
 			)
 		);
 
 		// remove 'tax=' from the part of speech values
 		if (!empty($tax))
-			$tax = array_map(function($val) { return substr($val, 4); }, $tax);
+			$tax = array_map(function($val) { return urldecode(substr($val, 4)); }, $tax);
 
 		// with multi-select, it is possible there are no part of speech options selected
 		if (empty($tax)) {

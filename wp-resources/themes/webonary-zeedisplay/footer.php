@@ -22,7 +22,10 @@ global $blog_id;
 <?php
 $menu_name = 'main';
 $menu = wp_get_nav_menu_object($menu_name);
-$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
+if (empty($menu))
+	$menuitems = [];
+else
+	$menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) );
 ?>
 <div id="responsive-menu-container" class="slide-left">
 	<div id="responsive-menu-wrapper">

@@ -308,12 +308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "55097444437acede6c22f01f10deb4717cd4bdc9"
+                "reference": "b0fdcd05bb91d468ebbdf15636253e60c7c8fbbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/55097444437acede6c22f01f10deb4717cd4bdc9",
-                "reference": "55097444437acede6c22f01f10deb4717cd4bdc9",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/b0fdcd05bb91d468ebbdf15636253e60c7c8fbbd",
+                "reference": "b0fdcd05bb91d468ebbdf15636253e60c7c8fbbd",
                 "shasum": ""
             },
             "require": {
@@ -349,7 +349,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-01-02T00:56:13+00:00"
+            "time": "2023-01-10T14:35:39+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1028,12 +1028,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/qtranslate/qtranslate-xt.git",
-                "reference": "e79ecf00c4c7053078496f200e57495896e153bf"
+                "reference": "b2d5f0dd7040632e41ab4ba7718c133f23886991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/e79ecf00c4c7053078496f200e57495896e153bf",
-                "reference": "e79ecf00c4c7053078496f200e57495896e153bf",
+                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/b2d5f0dd7040632e41ab4ba7718c133f23886991",
+                "reference": "b2d5f0dd7040632e41ab4ba7718c133f23886991",
                 "shasum": ""
             },
             "require": {
@@ -1092,7 +1092,7 @@
                 "source": "https://github.com/qtranslate/qtranslate-xt",
                 "wiki": "https://github.com/qtranslate/qtranslate-xt/wiki"
             },
-            "time": "2022-12-23T10:50:00+00:00"
+            "time": "2022-12-29T22:16:54+00:00"
         },
         {
             "name": "wpackagist-plugin/akismet",

@@ -928,7 +928,7 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
 /*
  * The languages drop down box was too wide for a loooong language name.
  */
-.webonary_searchform_language_select, .webonary_searchform_domain_select {
+.webonary_searchform_language_select, .webonary_searchform_domain_select, .webonary_searchform_pos_select {
   max-width: 100%;
   display: inline-block;
   margin: 0;
@@ -936,6 +936,7 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
   font-size: 1rem;
   background-color: buttonface;
   border: 1px solid #ccc;
+  text-overflow: ellipsis;
 }
 
 .normalSearch {
@@ -976,6 +977,7 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
   margin: 5px;
   border: none;
   border-radius: 0;
+  position: relative;
 }
 
 #sidebar ul li div.pos-container .pos-select {
@@ -985,6 +987,7 @@ img.ft-blank3 {width: 3px; height: 2px; border: 0; max-width: none}
   border-radius: 0;
   position: relative;
   display: inline-block;
+  max-width: 100%;
 }
 
 #sidebar ul li div.pos-container .pos-select .pos-cover {
@@ -1005,49 +1008,41 @@ select {
   font-size: 1rem;
   background-color: buttonface;
   border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 #sidebar ul li div.pos-container .pos-list {
   padding: 0;
-  border-radius: 0;
+  border-radius: 4px;
   border: 1px solid #ccc;
   position: absolute;
-  background-color: #f7f7f7;
+  background-color: #fcfbfc;
   z-index: 1000;
-  left: unset;
-  top: unset;
+  max-width: 80%;
+  box-shadow: 0 0 6px rgba(200, 200, 200, 0.9);
+  overflow: auto;
 }
 
 #sidebar ul li div.pos-container .pos-list .pos-entry {
-  padding: 0;
-  margin: 0 10px 0 2px;
+  padding: 2px 8px 2px 0;
+  margin: 0 2px;
   border: none;
   border-radius: 0;
   display: flex;
   align-items: center;
 }
 
+#sidebar ul li div.pos-container .pos-list .pos-entry:hover {
+  color: #000;
+  background-color: #e7e7e7;
+}
+
+
 #sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   position: relative;
-  width: 32px !important;
-  height: 32px !important;
-  color: #85005B !important;
+  width: 28px !important;
+  height: 28px !important;
   background-color: #fff;
-}
-
-#sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"]::before {
-  font-family: 'Webonary Symbols';
-  content: "✔";
-  font-size: 28px;
-  line-height: 36px;
-  margin-left: 2px;
-  visibility: hidden;
-}
-
-#sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"]:checked::before {
-  visibility: visible;
 }
 
 .btn.btn-dropdown {
@@ -1244,16 +1239,31 @@ html[dir=rtl] div.publication-status .purple-line.left-line .dot {
 
 @media only screen and (min-width : 700px) {
 
+  /*#sidebar ul li div.pos-container .pos-list {*/
+  /*  position: fixed;*/
+  /*  top: 30px;*/
+  /*  max-height: calc(100% - 50px);*/
+  /*  overflow: auto;*/
+  /*}*/
+
+  /*.logged-in #sidebar ul li div.pos-container .pos-list {*/
+  /*  top: 50px;*/
+  /*  max-height: calc(100% - 70px);*/
+  /*}*/
+
   #sidebar ul li div.pos-container .pos-list {
-    position: fixed;
-    top: 30px;
-    max-height: calc(100% - 50px);
-    overflow: auto;
+    border-radius: 6px;
+    max-height: 500px;
+    max-width: 360px;
   }
 
-  .logged-in #sidebar ul li div.pos-container .pos-list {
-    top: 50px;
-    max-height: calc(100% - 70px);
+  #sidebar ul li div.pos-container .pos-list .pos-entry {
+    padding: 1px 8px 1px 0;
+  }
+
+  #sidebar ul li div.pos-container .pos-list .pos-entry input[type="checkbox"] {
+    width: unset !important;
+    height: unset !important;
   }
 }
 
