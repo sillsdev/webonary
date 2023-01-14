@@ -445,15 +445,14 @@ class Webonary_Cloud
 	{
 		global $search_cookie;
 
-		if (!$query->is_main_query() || !is_search())
-			return null;
-
 		$pageName = trim(get_query_var('name'));
 
 		// name begins with 'g', then followed by GUID
-		if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName) === 1) {
+		if (preg_match('/^g[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $pageName))
 			return self::getEntryAsPost(self::$doGetEntry, $pageName);
-		}
+
+		if (!$query->is_main_query() || !is_search())
+			return null;
 
 		// get the selected semantic domains
 		$semantic_domains = Webonary_Info::getSelectedSemanticDomains();
