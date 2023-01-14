@@ -85,8 +85,8 @@ function webonary_searchform($use_li = false): void
 			}
 
 			// set up languages dropdown options
-			$other_search_languages = array_filter($dictionary->reversalLanguages, function($lang) use($dictionary) {
-				return $lang->lang != $dictionary->mainLanguage->lang;
+			$other_search_languages = array_filter($dictionary->definitionOrGlossLangs, function($lang) use($dictionary) {
+				return $lang != $dictionary->mainLanguage->lang;
 			});
 
 			if (count($other_search_languages)) {
@@ -101,8 +101,8 @@ function webonary_searchform($use_li = false): void
 				// add the reversal languages
 				foreach ($other_search_languages as $lang) {
 
-					$selected = ($lang->lang === $selected_language) ? 'selected' : '';
-					$language_dropdown_options .= sprintf($option_template, $lang->lang, $selected, $lang->title);
+					$selected = ($lang === $selected_language) ? 'selected' : '';
+					$language_dropdown_options .= sprintf($option_template, $lang, $selected, Webonary_Cloud::getLanguageName($lang));
 				}
 			}
 
