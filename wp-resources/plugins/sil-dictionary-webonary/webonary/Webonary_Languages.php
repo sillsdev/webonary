@@ -56,20 +56,19 @@ HTML;
 
 		$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
 
-		// get the reversal languages
+		// get the languages used in senses
 		self::$language_entries = array_map(
 			function($lang) {
 				/** @var ILanguageEntryCount $lang_entry */
 				$lang_entry = new stdClass();
-				$lang_entry->language_code = $lang->lang;
-				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang->lang, $lang->title);
-				$lang_entry->total_indexed = $lang->entriesCount ?? 0;
+				$lang_entry->language_code = $lang;
+				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang);
 				return $lang_entry;
 			},
 			array_filter(
-				$dictionary->reversalLanguages,
-				function ($v) use($dictionary) {
-					return !empty($v->lang) && $v->lang != $dictionary->mainLanguage->lang;
+				$dictionary->definitionOrGlossLangs,
+				function ($lang) use($dictionary) {
+					return $lang != $dictionary->mainLanguage->lang;
 				}
 			)
 		);
@@ -79,7 +78,6 @@ HTML;
 		$main_entry = new stdClass();
 		$main_entry->language_code = $dictionary->mainLanguage->lang;
 		$main_entry->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-		$main_entry->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
 		array_unshift(self::$language_entries, $main_entry);
 
 		return self::$language_entries;
