@@ -14,7 +14,7 @@ describe('get Dictionary', () => {
   test('get dictionary entries derived data', async () => {
     const guids = ['guid1', 'guid2'];
     const senseLangs = ['senseLangA', 'senseLangB'];
-    const dictionaryId = await createDictionary('{ "mainLanguage": "mainLangA" }');
+    const dictionaryId = await createDictionary('{ "mainLanguage": { "lang": "mainLangA" } }');
 
     const posts = guids.map((guid) => {
       return {
@@ -36,6 +36,7 @@ describe('get Dictionary', () => {
     };
     const results = await handler(event as APIGatewayEvent);
     const dictionary = JSON.parse(results.body);
+
     expect(dictionary.definitionOrGlossLangs).toStrictEqual(['senseLangA', 'senseLangB']);
     expect(dictionary.mainLanguage.entriesCount).toBe(2);
   });
@@ -44,6 +45,7 @@ describe('get Dictionary', () => {
     const guids = ['guid1', 'guid2'];
     const reversalformLangs = ['reversalLangA', 'reversalLangB'];
     const dictionaryData: Partial<Dictionary> = {
+      mainLanguage: { lang: 'mainLangA', title: '', letters: [''], cssFiles: [''] },
       reversalLanguages: reversalformLangs.map((lang) => {
         return { lang, title: `title-${lang}`, letters: ['a'], cssFiles: [''] };
       }),

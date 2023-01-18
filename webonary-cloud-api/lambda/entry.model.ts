@@ -206,18 +206,40 @@ export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
 export enum DbPaths {
   // dictionary entries
   ENTRY_MAIN_HEADWORD_LANG = 'mainheadword.lang',
+  ENTRY_MAIN_HEADWORD_VALUE = 'mainheadword.value',
   ENTRY_MAIN_HEADWORD_FIRST_VALUE = 'mainheadword.0.value',
   ENTRY_MAIN_HEADWORD_SECOND_VALUE = 'mainheadword.1.value',
+
+  ENTRY_HEADWORD_VALUE = 'headword.value', // minor entries
+  ENTRY_CITATION_FORM_VALUE = 'citationform.value',
+  ENTRY_LEXEME_FORM_VALUE = 'lexemeform.value',
+
   ENTRY_SENSES = 'senses',
-  ENTRY_DEFINITION = 'senses.definitionorgloss',
-  ENTRY_DEFINITION_LANG = 'senses.definitionorgloss.lang',
-  ENTRY_DEFINITION_VALUE = 'senses.definitionorgloss.value',
-  ENTRY_PART_OF_SPEECH_VALUE = 'morphosyntaxanalysis.partofspeech.value',
-  ENTRY_LANG_TEXTS = 'langTexts',
-  ENTRY_SEARCH_TEXTS = 'searchTexts',
+  ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
+  ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
+  ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
+  ENTRY_DEFINITION_VALUE = 'senses.definition.value',
+  ENTRY_GLOSS_VALUE = 'senses.gloss.value',
+
+  ENTRY_EXAMPLE_VALUE = 'senses.examplescontents.example.value',
+  ENTRY_EXAMPLE_TRANSLATION_VALUE = 'senses.examplescontents.translationcontents.translation.value',
+  ENTRY_SCIENTIFIC_NAME_VALUE = 'senses.scientificname.value',
+
   ENTRY_SEM_DOMS_ABBREV = 'senses.semanticdomains.abbreviation',
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticdomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticdomains.name.value',
+
+  ENTRY_PART_OF_SPEECH = 'morphosyntaxanalysis.partofspeech',
+  ENTRY_PART_OF_SPEECH_VALUE = 'morphosyntaxanalysis.partofspeech.value',
+  ENTRY_GRAM_INFO_ABBREV = 'morphosyntaxanalysis.graminfoabbrev',
+  ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
+  ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
+
+  ENTRY_PLURAL_VALUE = 'morphosyntaxanalysis.partofspeech.value',
+
+  ENTRY_LANG_TEXTS = 'langTexts',
+  ENTRY_LANG_UNACCENTED_TEXTS = 'langUnaccentedTexts',
+  ENTRY_SEARCH_TEXTS = 'searchTexts',
 
   // reversals
   ENTRY_REVERSAL_FORM_LANG = 'reversalform.lang',

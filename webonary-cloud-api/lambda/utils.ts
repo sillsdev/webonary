@@ -115,3 +115,11 @@ export function sortEntries(entries: DictionaryEntry[], lang?: string): Dictiona
   }
   return entriesSorted;
 }
+
+export function removeDiacritics(text: string) {
+  return text.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
+export function semanticDomainAbbrevRegex(abbrev: string) {
+  return { $in: [abbrev, new RegExp(`^${abbrev}.`)] };
+}
