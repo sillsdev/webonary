@@ -23,7 +23,9 @@
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
-import { connectToDB } from './mongo';
+
+import { DbFindParameters } from './base.model';
+import { DbPaths } from './entry.model';
 import {
   MONGO_DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
@@ -32,11 +34,14 @@ import {
   DB_COLLATION_LOCALES,
   dbCollectionEntries,
 } from './db';
-import { DbFindParameters } from './base.model';
-import { DbPaths } from './entry.model';
-import { getDbSkip, removeDiacritics, semanticDomainAbbrevRegex } from './utils';
-
+import { connectToDB } from './mongo';
 import * as Response from './response';
+import {
+  escapeStringRegexp,
+  getDbSkip,
+  removeDiacritics,
+  semanticDomainAbbrevRegex,
+} from './utils';
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
@@ -132,7 +137,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
       : DbCollationStrength.INSENSITIVITY;
 
     const searchPath = lang ? `${langTextsPath}.${lang}` : DbPaths.ENTRY_SEARCH_TEXTS;
-    dbFind[searchPath] = { $regex: text, $options: 'i' };
+    dbFind[searchPath] = { $regex: escapeStringRegexp(text), $options: 'i' };
 
     cursor = dbCollection
       .find(dbFind)
@@ -141,7 +146,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   } else {
     if (lang) {
       dbFind[`${langTextsPath}.${lang}`] = {
-        $regex: new RegExp(`(^|.*\\s+)${text}(\\s+.*|$)`), // whole word match within a language
+        $regex: new RegExp(`(^|.*\\s+)${escapeStringRegexp(text)}(\\s+.*|$)`), // whole word match within a language
         $options: 'i',
       };
     }

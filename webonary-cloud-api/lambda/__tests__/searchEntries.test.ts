@@ -39,27 +39,21 @@ describe('searchEntries search', () => {
   const matchingGuid = 'test-matching-guid';
   const partOfSpeech = 'testPartOfSpeech';
   const semanticDomain = '3.4';
+  const testEntry = {
+    guid: matchingGuid,
+    morphosyntaxanalysis: { partofspeech: [{ lang, value: partOfSpeech }] },
+    senses: {
+      semanticdomains: [{ abbreviation: [{ value: semanticDomain }] }],
+    },
+    displayXhtml: `<span lang="${lang}">${text}</span>`,
+  };
+
   let dictionaryId = '';
   let event: Partial<APIGatewayEvent> = {};
 
   beforeEach(async () => {
     dictionaryId = await createDictionary();
-
-    await upsertEntries(
-      [
-        {
-          guid: matchingGuid,
-          morphosyntaxanalysis: { partofspeech: [{ lang, value: partOfSpeech }] },
-          senses: {
-            semanticdomains: [{ abbreviation: [{ value: semanticDomain }] }],
-          },
-          displayXhtml: `<span lang="${lang}">${text}</span>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+    await upsertEntries([testEntry], false, dictionaryId, testUsername);
 
     event = {
       pathParameters: { dictionaryId },
@@ -247,6 +241,36 @@ describe('searchEntries search', () => {
     };
     const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(404);
+  });
+
+  test('search matches text with lang that has special characters', async () => {
+    const specialGuid = `${matchingGuid}-special`;
+    const specialCharsText = 'abc.d[e]f(g)h';
+    const specialCharsEntry = {
+      ...testEntry,
+      guid: specialGuid,
+      displayXhtml: `<span lang="${lang}">${specialCharsText}</span>`,
+    };
+
+    await upsertEntries([specialCharsEntry], false, dictionaryId, testUsername);
+
+    // fulltext search
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: specialCharsText },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([specialGuid]);
+
+    // partial text search
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: specialCharsText.substring(1), matchPartial: '1' },
+    };
+    const response2 = await handler(event as APIGatewayEvent);
+    expect(response2.statusCode).toBe(200);
+    expect(parseGuids(response2)).toEqual([specialGuid]);
   });
 
   test('matches and gives count', async () => {

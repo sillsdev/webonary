@@ -14,78 +14,8 @@ export function getBasicAuthCredentials(authHeaders: string): BasicAuthCredentia
   return { username, password };
 }
 
-export function hasKey<O>(obj: O, key: keyof any): key is keyof O {
-  return key in obj;
-}
-
 export function getDbSkip(pageNumber: number, pageLimit: number): number {
   return (pageNumber - 1) * pageLimit;
-}
-
-// TODO: This copies all the values of a key, but does not do so iteratively.
-// Once data coming from FLex is more settled, then we should do iterative copying per object/array for better type checking.
-export function copyObjectKeyValueIgnoreKeyCase(
-  toSubKeys: string[],
-  fromKey: string,
-  fromParentObject: any,
-): any {
-  const isArray = Array.isArray(fromParentObject[fromKey]);
-  const fromObjectArray = isArray
-    ? fromParentObject[fromKey]
-    : new Array(fromParentObject[fromKey]);
-
-  const toObjectArray = fromObjectArray.map((fromObject: any) => {
-    const toObject: { [key: string]: any } = {};
-
-    toSubKeys.forEach((subKey) => {
-      const subKeyLowerCase = subKey.toLowerCase();
-      const fromObjectKey = Object.keys(fromObject).find(
-        (key) => key.toLowerCase() === subKeyLowerCase,
-      );
-      if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
-        toObject[subKey] = fromObject[fromObjectKey];
-      }
-    });
-
-    return toObject;
-  });
-
-  return isArray ? toObjectArray : toObjectArray[0];
-}
-
-export function copyObjectIgnoreKeyCase(toObject: object, fromObject: object): object {
-  const copyObject: any = toObject;
-  Object.keys(toObject).forEach((toObjectKey) => {
-    const toObjectKeyLowercase = toObjectKey.toLowerCase();
-
-    if (hasKey(toObject, toObjectKey)) {
-      const fromObjectKey = Object.keys(fromObject).find(
-        (key) => key.toLowerCase() === toObjectKeyLowercase,
-      );
-
-      if (fromObjectKey && hasKey(fromObject, fromObjectKey)) {
-        if (typeof toObject[toObjectKey] === 'object') {
-          let toObjectSubKeys: string[] = [];
-          if (Array.isArray(toObject[toObjectKey])) {
-            const subArray = Object.entries(toObject[toObjectKey]);
-            const subArrayObject = subArray[0][1] as object;
-            toObjectSubKeys = Object.keys(subArrayObject);
-          } else {
-            toObjectSubKeys = Object.keys(toObject[toObjectKey]);
-          }
-
-          copyObject[toObjectKey] = copyObjectKeyValueIgnoreKeyCase(
-            toObjectSubKeys,
-            fromObjectKey,
-            fromObject,
-          );
-        } else {
-          copyObject[toObjectKey] = fromObject[fromObjectKey];
-        }
-      }
-    }
-  });
-  return copyObject;
 }
 
 export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[] {
@@ -120,6 +50,11 @@ export function removeDiacritics(text: string) {
   return text.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 }
 
+// See https://github.com/sindresorhus/escape-string-regexp/blob/main/index.js
+export function escapeStringRegexp(value: string) {
+  return value.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d');
+}
+
 export function semanticDomainAbbrevRegex(abbrev: string) {
-  return { $in: [abbrev, new RegExp(`^${abbrev}.`)] };
+  return { $in: [abbrev, new RegExp(`^${escapeStringRegexp(abbrev)}.`)] };
 }
