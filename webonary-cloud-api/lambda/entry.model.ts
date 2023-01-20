@@ -218,7 +218,9 @@ export enum DbPaths {
   ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
   ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
   ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
+  ENTRY_DEFINITION_LANG = 'senses.definition.lang',
   ENTRY_DEFINITION_VALUE = 'senses.definition.value',
+  ENTRY_GLOSS_LANG = 'senses.gloss.lang',
   ENTRY_GLOSS_VALUE = 'senses.gloss.value',
 
   ENTRY_EXAMPLE_VALUE = 'senses.examplescontents.example.value',
