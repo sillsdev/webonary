@@ -47,24 +47,25 @@
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
-import { connectToDB } from './mongo';
+
 import {
   MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
+  DB_COLLECTION_REVERSALS,
+  dbCollectionEntries,
 } from './db';
 import { Dictionary } from './dictionary.model';
 import { DbPaths } from './entry.model';
-
-import { DbFindParameters } from './base.model';
+import { connectToDB } from './mongo';
 import * as Response from './response';
 
 let dbClient: MongoClient;
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
-  const dbFind: DbFindParameters = { dictionaryId };
+  if (!dictionaryId) {
+    return Response.badRequest('Dictionary must be in the path.');
+  }
 
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
@@ -76,29 +77,34 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     return Response.notFound();
   }
 
-  // get unique language codes from definitionOrGloss
-  // TODO: Populate this during dictionary upload
-  dbItem.definitionOrGlossLangs = await db
-    .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-    .distinct(DbPaths.ENTRY_DEFINITION_LANG, dbFind);
+  // TODO: Populate these during dictionary upload
+
+  // get unique language codes from definitionorgloss
+  const entriesCollection = db.collection(dbCollectionEntries(dictionaryId));
+  const senseLangs = await Promise.all(
+    [
+      DbPaths.ENTRY_DEFINITION_OR_GLOSS_LANG,
+      DbPaths.ENTRY_DEFINITION_LANG,
+      DbPaths.ENTRY_GLOSS_LANG,
+    ].map((key) => entriesCollection.distinct(key)),
+  );
+  dbItem.definitionOrGlossLangs = [...new Set(senseLangs.flat(1))];
 
   // get total entries
-  // TODO: Populate this during dictionary upload
-  dbItem.mainLanguage.entriesCount = await db
-    .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-    .countDocuments(dbFind);
+  dbItem.mainLanguage.entriesCount = await entriesCollection.countDocuments();
 
   // get reversal entry counts
-  // TODO: Populate this during dictionary upload
+  if (!dbItem.reversalLanguages) {
+    dbItem.reversalLanguages = []; // FLex does not include this when there are no reversal langs
+  }
   const reversalEntriesCounts = await Promise.all(
     dbItem.reversalLanguages.map(async ({ lang }) => {
-      return db.collection(DB_COLLECTION_REVERSAL_ENTRIES).countDocuments({
-        ...dbFind,
+      return db.collection(DB_COLLECTION_REVERSALS).countDocuments({
+        dictionaryId,
         [DbPaths.ENTRY_REVERSAL_FORM_LANG]: lang,
       });
     }),
   );
-
   reversalEntriesCounts.forEach((entriesCount, index) => {
     dbItem.reversalLanguages[index].entriesCount = entriesCount;
   });

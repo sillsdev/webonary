@@ -213,7 +213,7 @@ class Webonary_Cloud
 	public static function entryToFakePost($entry): stdClass
 	{
 		$post = new stdClass();
-		$post->post_title = $entry->mainHeadWord[0]->value;
+		$post->post_title = $entry->mainheadword[0]->value;
 		$post->post_name = $entry->guid;
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';

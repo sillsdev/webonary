@@ -1,26 +1,14 @@
-import { APIGatewayProxyResult } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-import { searchEntries, SearchEntriesArguments } from '../searchEntries';
+import { handler } from '../searchEntries';
 import { upsertEntries } from '../postEntry';
 import { createDictionary, setupMongo } from './databaseSetup';
+import { removeDiacritics } from '../utils';
 
 setupMongo();
 
-const defaultArguments: SearchEntriesArguments = {
-  $language: '',
-  countTotalOnly: false,
-  dictionaryId: 'test-dictionary-default',
-  lang: undefined,
-  mainLang: undefined,
-  matchAccents: false,
-  matchPartial: false,
-  pageLimit: 10,
-  pageNumber: 1,
-  partOfSpeech: undefined,
-  searchSemDoms: false,
-  semDomAbbrev: undefined,
-  text: 'test-text',
-};
+const testUsername = 'test-username';
+const text = 'têstFullTextWôrd';
 
 function parseGuids(response: APIGatewayProxyResult): string[] {
   return (
@@ -31,663 +19,270 @@ function parseGuids(response: APIGatewayProxyResult): string[] {
   );
 }
 
-const testUsername = 'test-username';
-describe('searchEntries', () => {
+describe('searchEntries params', () => {
   test('empty dictionary returns 404', async () => {
     const dictionaryId = await createDictionary();
 
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-    });
+    const event: Partial<APIGatewayEvent> = {
+      pathParameters: { dictionaryId },
+      queryStringParameters: { text },
+    };
 
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(404);
   });
+});
 
-  test('matches text only in displayXhtml', async () => {
-    const dictionaryId = await createDictionary();
-    const searchText = 'test-mainHeadWord';
-    const matchingGuid = 'test-matching-guid';
-    await upsertEntries(
-      [
-        {
-          guid: matchingGuid,
-          displayXhtml: `<div>${searchText}</div>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+describe('searchEntries search', () => {
+  const partialText = text.substring(1);
+  const lang = 'testLang';
+  const matchingGuid = 'test-matching-guid';
+  const partOfSpeech = 'testPartOfSpeech';
+  const semanticDomain = '3.4';
+  const testEntry = {
+    guid: matchingGuid,
+    morphosyntaxanalysis: { partofspeech: [{ lang, value: partOfSpeech }] },
+    senses: {
+      semanticdomains: [{ abbreviation: [{ value: semanticDomain }] }],
+    },
+    displayXhtml: `<span lang="${lang}">${text}</span>`,
+  };
 
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: searchText,
-    });
+  let dictionaryId = '';
+  let event: Partial<APIGatewayEvent> = {};
 
+  beforeEach(async () => {
+    dictionaryId = await createDictionary();
+    await upsertEntries([testEntry], false, dictionaryId, testUsername);
+
+    // This is the base event, which all tests can start with.
+    // By itself, it will do a full text search in the dictionary
+    event = {
+      pathParameters: { dictionaryId },
+      queryStringParameters: { text },
+    };
+  });
+
+  test('matches word in displayXhtml', async () => {
+    // Use base event without modification
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(200);
     expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('tags are treated as word boundaries', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'test-matching-guid-1',
-          displayXhtml: `abc`,
-        },
-        {
-          guid: 'test-matching-guid-2',
-          displayXhtml: `<span>abc</span><span>something else</span>`,
-        },
-        {
-          guid: 'test-not-matching-guid-1',
-          displayXhtml: `a<div>bc</div> a<span>bc</span>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+  test('does not match word with wrong lang', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { ...event.queryStringParameters, lang: `${lang}Not` },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(404);
+  });
 
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'abc',
-    });
-
+  test('fulltext search matches word with lang', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+    };
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(200);
-    expect(parseGuids(response)).toEqual(['test-matching-guid-1', 'test-matching-guid-2']);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('does not match tags in displayXhtml', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'test-guid',
-          displayXhtml: `<div>some text</div>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'div',
-    });
-
+  test('fulltext search does not match partial text with lang', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: partialText },
+    };
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(404);
   });
 
-  test('does not match tag attributes in displayXhtml', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'test-guid',
-          displayXhtml: `<a href="http://localhost">some text</a>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+  test('partial search matches partial text with lang', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: partialText, matchPartial: '1' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
 
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'href',
-    });
+  test('fulltext search matches word case insensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: text.toUpperCase() },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
 
+  test('partial search matches partial text case insensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: partialText.toUpperCase(), matchPartial: '1' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
+
+  test('fulltext search matches word accent sensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, matchAccents: '1' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
+
+  test('partial search matches partial text accent sensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: partialText, matchAccents: '1', matchPartial: '1' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
+
+  test('fulltext search does not match accent sensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: {
+        lang,
+        text: removeDiacritics(text),
+        matchAccents: '1',
+      },
+    };
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(404);
   });
 
-  test('does not match tag attribute values in displayXhtml', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'test-guid',
-          displayXhtml: `<a href="http://localhost">some text</a>`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'localhost',
-    });
-
+  test('partial search does not match accent sensitive', async () => {
+    event = {
+      ...event,
+      queryStringParameters: {
+        lang,
+        text: removeDiacritics(partialText),
+        matchAccents: '1',
+        matchPartial: '1',
+      },
+    };
+    const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(404);
   });
 
-  test('lang filters down to only entries with matching lang', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'guid-matching-1',
-          displayXhtml: `text`,
-          mainHeadWord: [
-            {
-              value: 'test-value',
-              lang: 'matching-lang',
-            },
-          ],
-        },
-        {
-          guid: 'guid-matching-2',
-          displayXhtml: `text`,
-          senses: [
-            {
-              definitionOrGloss: [
-                {
-                  lang: 'matching-lang',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          guid: 'guid-matching-3',
-          displayXhtml: `text`,
-          reversalLetterHeads: [
-            {
-              lang: 'matching-lang',
-            },
-          ],
-        },
-        {
-          guid: 'guid-matching-4',
-          displayXhtml: `text`,
-          pronunciations: [
-            {
-              lang: 'matching-lang',
-            },
-          ],
-        },
-        {
-          guid: 'guid-matching-5',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: [
-            {
-              partOfSpeech: [
-                {
-                  lang: 'matching-lang',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          guid: 'guid-other',
-          displayXhtml: `text`,
-          mainHeadWord: [
-            {
-              lang: 'other-lang',
-            },
-          ],
-        },
-        {
-          guid: 'guid-missing-lang',
-          displayXhtml: `text`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      lang: 'matching-lang',
-    });
-
-    expect(parseGuids(response).sort()).toEqual([
-      'guid-matching-1',
-      'guid-matching-2',
-      'guid-matching-3',
-      'guid-matching-4',
-      'guid-matching-5',
-    ]);
+  test('matches part of speech', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+      multiValueQueryStringParameters: { partOfSpeech: [partOfSpeech, `${partOfSpeech}Not`] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('partOfSpeech filters out the irrelevant entries', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'guidA',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }],
-          },
-        },
-        {
-          guid: 'guidAB',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
-          },
-        },
-        {
-          guid: 'guidC',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }],
-          },
-        },
-        {
-          guid: 'guidCD',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
-          },
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      partOfSpeech: ['partA'],
-    });
-
-    expect(parseGuids(response)).toEqual(['guidA', 'guidAB']);
+  test('does not match part of speech', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+      multiValueQueryStringParameters: { partOfSpeech: [`${partOfSpeech}Not`] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(404);
   });
 
-  test('multiple partOfSpeech matches any of them', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'guidA',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }],
-          },
-        },
-        {
-          guid: 'guidAB',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
-          },
-        },
-        {
-          guid: 'guidC',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }],
-          },
-        },
-        {
-          guid: 'guidCD',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
-          },
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      partOfSpeech: ['partB', 'partD'],
-    });
-
-    expect(parseGuids(response)).toEqual(['guidAB', 'guidCD']);
+  test('matches semantic domain exactly', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, semanticDomain },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('empty partsOfSpeech does not filter', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'guidA',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }],
-          },
-        },
-        {
-          guid: 'guidAB',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partA' }, { value: 'partB' }],
-          },
-        },
-        {
-          guid: 'guidC',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }],
-          },
-        },
-        {
-          guid: 'guidCD',
-          displayXhtml: `text`,
-          morphoSyntaxAnalysis: {
-            partOfSpeech: [{ value: 'partC' }, { value: 'partD' }],
-          },
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      partOfSpeech: [],
-    });
-
-    expect(parseGuids(response)).toEqual(['guidA', 'guidAB', 'guidC', 'guidCD']);
+  test('matches semantic domain partially', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, semanticDomain: '3' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('matchPartial match parts of words', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'word',
-          displayXhtml: `word`,
-        },
-        {
-          guid: 'or',
-          displayXhtml: `or`,
-        },
-        {
-          guid: 'other',
-          displayXhtml: `other`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'or',
-      matchPartial: true,
-    });
-
-    expect(parseGuids(response)).toEqual(['or', 'word']);
+  test('does not match semantic domain', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, semanticDomain: `1.${semanticDomain}` },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(404);
   });
 
-  test('!matchAccents with clean search matches all accents and tones', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'accent',
-          displayXhtml: `wórd`,
-        },
-        {
-          guid: 'no-accent',
-          displayXhtml: `word`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'word',
-      matchAccents: false,
-    });
-
-    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
+  test('matches part of speech and semantic domain', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, semanticDomain },
+      multiValueQueryStringParameters: { partOfSpeech: [partOfSpeech] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
-  test('!matchAccents with accented search matches all accents and tones', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'accent',
-          displayXhtml: `wórd`,
-        },
-        {
-          guid: 'no-accent',
-          displayXhtml: `word`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'wórd',
-      matchAccents: false,
-    });
-
-    expect(parseGuids(response)).toEqual(['accent', 'no-accent']);
+  test('matches semantic domain but not part of speech', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, semanticDomain },
+      multiValueQueryStringParameters: { partOfSpeech: [`${partOfSpeech}Not`] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(404);
   });
 
-  test('matchAccents filters out accents and tones', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'accent',
-          displayXhtml: `wórd`,
-        },
-        {
-          guid: 'no-accent',
-          displayXhtml: `word`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
+  test('search matches text with lang that has special characters', async () => {
+    const specialGuid = `${matchingGuid}-special`;
+    const specialCharsText = 'abc.d[e]f(g)h';
+    const specialCharsEntry = {
+      ...testEntry,
+      guid: specialGuid,
+      displayXhtml: `<span lang="${lang}">${specialCharsText}</span>`,
+    };
 
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'word',
-      matchAccents: true,
-    });
+    await upsertEntries([specialCharsEntry], false, dictionaryId, testUsername);
 
-    expect(parseGuids(response)).toEqual(['no-accent']);
+    // fulltext search
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: specialCharsText },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([specialGuid]);
+
+    // partial text search
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: specialCharsText.substring(1), matchPartial: '1' },
+    };
+    const response2 = await handler(event as APIGatewayEvent);
+    expect(response2.statusCode).toBe(200);
+    expect(parseGuids(response2)).toEqual([specialGuid]);
   });
 
-  test('matchAccents matches only the searched accents and tones', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'accent-1',
-          displayXhtml: `wórd`,
-        },
-        {
-          guid: 'accent-2',
-          displayXhtml: `wṓrd`,
-        },
-        {
-          guid: 'no-accent',
-          displayXhtml: `word`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'wṓrd',
-      matchAccents: true,
-    });
-
-    expect(parseGuids(response)).toEqual(['accent-2']);
-  });
-
-  test('matchPartial and matchAccents matches only the searched accents and tones', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'accent-1',
-          displayXhtml: `wórd`,
-        },
-        {
-          guid: 'accent-2',
-          displayXhtml: `wṓrd`,
-        },
-        {
-          guid: 'no-accent',
-          displayXhtml: `word`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'wṓ',
-      matchPartial: true,
-      matchAccents: true,
-    });
-
-    expect(parseGuids(response)).toEqual(['accent-2']);
-  });
-
-  test('match partial results should be sorted', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'sorted-match-partial-2',
-          mainHeadWord: [
-            {
-              value: 'b',
-            },
-          ],
-          displayXhtml: `b text`,
-        },
-        {
-          guid: 'sorted-match-partial-3',
-          mainHeadWord: [
-            {
-              value: 'c',
-            },
-          ],
-          displayXhtml: `c text`,
-        },
-        {
-          guid: 'sorted-match-partial-1',
-          mainHeadWord: [
-            {
-              value: 'a',
-            },
-          ],
-          displayXhtml: `a text`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      matchPartial: true,
-    });
-
-    expect(parseGuids(response)).toEqual([
-      'sorted-match-partial-1',
-      'sorted-match-partial-2',
-      'sorted-match-partial-3',
-    ]);
-  });
-
-  test('match whole words results should be sorted', async () => {
-    const dictionaryId = await createDictionary();
-    await upsertEntries(
-      [
-        {
-          guid: 'sorted-match-partial-2',
-          mainHeadWord: [
-            {
-              value: 'b',
-            },
-          ],
-          displayXhtml: `b text`,
-        },
-        {
-          guid: 'sorted-match-partial-3',
-          mainHeadWord: [
-            {
-              value: 'c',
-            },
-          ],
-          displayXhtml: `c text`,
-        },
-        {
-          guid: 'sorted-match-partial-1',
-          mainHeadWord: [
-            {
-              value: 'a',
-            },
-          ],
-          displayXhtml: `a text`,
-        },
-      ],
-      false,
-      dictionaryId,
-      testUsername,
-    );
-
-    const response = await searchEntries({
-      ...defaultArguments,
-      dictionaryId,
-      text: 'text',
-      matchPartial: false,
-    });
-
-    expect(parseGuids(response)).toEqual([
-      'sorted-match-partial-1',
-      'sorted-match-partial-2',
-      'sorted-match-partial-3',
-    ]);
+  test('matches and gives count', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text, countTotalOnly: '1' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(JSON.parse(response.body).count).toEqual(1);
   });
 });

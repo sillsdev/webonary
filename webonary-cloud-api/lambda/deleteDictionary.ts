@@ -20,8 +20,9 @@ import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
+  DB_COLLECTION_ENTRIES,
+  DB_COLLECTION_REVERSALS,
+  dbCollectionEntries,
 } from './db';
 import * as Response from './response';
 
@@ -42,13 +43,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   const db = dbClient.db(MONGO_DB_NAME);
 
   // eslint-disable-next-line no-console
-  console.log(`Start deleting dictionary ${dictionaryId}`);
+  console.log(`Received request to delete dictionary ${dictionaryId}`);
 
-  const [dbResultDictionary, dbResultEntry, dbResultReversal] = await Promise.all([
-    db.collection(DB_COLLECTION_DICTIONARIES).deleteOne({ _id: dictionaryId }),
-    db.collection(DB_COLLECTION_DICTIONARY_ENTRIES).deleteMany({ dictionaryId }),
-    db.collection(DB_COLLECTION_REVERSAL_ENTRIES).deleteMany({ dictionaryId }),
-  ]);
+  const [dbResultDictionary, dbResultReversal, dbResultEntry, dbResultEntryLegacy] =
+    await Promise.all([
+      db.collection(DB_COLLECTION_DICTIONARIES).deleteOne({ _id: dictionaryId }),
+      db.collection(DB_COLLECTION_REVERSALS).deleteMany({ dictionaryId }),
+      db.collection(dbCollectionEntries(dictionaryId)).deleteMany({}),
+      db.collection(DB_COLLECTION_ENTRIES).deleteMany({ dictionaryId }),
+    ]);
 
   /*
    * NOTE: deleteDictionaryFolder can take longer than API Gateway max timeout, which is 30 seconds.
@@ -61,12 +64,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   const result = {
     deleteDictionaryCount: dbResultDictionary.deletedCount,
-    deletedEntryCount: dbResultEntry.deletedCount,
     deletedReversalCount: dbResultReversal.deletedCount,
+    deletedEntryCount: dbResultEntry.deletedCount,
+    deletedLegacyEntryCount: dbResultEntryLegacy.deletedCount,
   };
 
   // eslint-disable-next-line no-console
-  console.log(`Completed deleting dictionary ${dictionaryId}`);
+  console.log(`Sending result for deleting dictionary ${dictionaryId}`, result);
   return Response.success(result);
 }
 
