@@ -55,6 +55,8 @@ describe('searchEntries search', () => {
     dictionaryId = await createDictionary();
     await upsertEntries([testEntry], false, dictionaryId, testUsername);
 
+    // This is the base event, which all tests can start with.
+    // By itself, it will do a full text search in the dictionary
     event = {
       pathParameters: { dictionaryId },
       queryStringParameters: { text },
@@ -62,6 +64,7 @@ describe('searchEntries search', () => {
   });
 
   test('matches word in displayXhtml', async () => {
+    // Use base event without modification
     const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(200);
     expect(parseGuids(response)).toEqual([matchingGuid]);
