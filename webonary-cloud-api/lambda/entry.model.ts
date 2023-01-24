@@ -1,4 +1,13 @@
 /* eslint-disable max-classes-per-file */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type EntryType = Record<string, any> & {
+  _id: string;
+  guid: string;
+  dictionaryId: string;
+  updatedAt?: Date;
+  updatedBy?: string;
+};
+
 export interface EntryFile {
   id: string;
   src: string;

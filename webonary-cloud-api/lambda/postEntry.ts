@@ -225,7 +225,7 @@ import {
   reversalEntryId,
 } from './db';
 import { PostResult } from './base.model';
-import { ENTRY_TYPE_REVERSAL, DbPaths } from './entry.model';
+import { ENTRY_TYPE_REVERSAL, DbPaths, EntryType } from './entry.model';
 import { getBasicAuthCredentials, removeDiacritics } from './utils';
 import * as Response from './response';
 
@@ -237,8 +237,8 @@ let dbClient: MongoClient;
 const getLangTexts = (xhtml: string) => {
   const $ = load(xhtml);
 
-  const langTexts: Record<string, Array<string>> = {};
-  const langUnaccentedTexts: Record<string, Array<string>> = {};
+  const langTexts: Record<string, string[]> = {};
+  const langUnaccentedTexts: Record<string, string[]> = {};
   const searchTexts: string[] = [];
 
   // eslint-disable-next-line array-callback-return
@@ -285,6 +285,46 @@ const getLangTexts = (xhtml: string) => {
   return { langTexts, langUnaccentedTexts, searchTexts };
 };
 
+interface TransformPostedEntryParams {
+  postedEntry: Record<string, any>;
+  dictionaryId: string;
+}
+
+const transformToReversalEntry = ({
+  postedEntry,
+  dictionaryId,
+}: TransformPostedEntryParams): EntryType => {
+  return {
+    ...postedEntry,
+    _id: reversalEntryId({ dictionaryId, guid: postedEntry.guid }),
+    guid: postedEntry.guid,
+    dictionaryId,
+  };
+};
+
+export const transformToEntry = ({
+  postedEntry,
+  dictionaryId,
+}: TransformPostedEntryParams): EntryType => {
+  const extraTexts: Record<string, string[] | Record<string, string[]>> = {};
+  if (postedEntry.displayXhtml) {
+    const { langTexts, langUnaccentedTexts, searchTexts } = getLangTexts(postedEntry.displayXhtml);
+    if (searchTexts.length) {
+      extraTexts[DbPaths.ENTRY_SEARCH_TEXTS] = searchTexts;
+      extraTexts[DbPaths.ENTRY_LANG_TEXTS] = langTexts;
+      extraTexts[DbPaths.ENTRY_LANG_UNACCENTED_TEXTS] = langUnaccentedTexts;
+    }
+  }
+
+  return {
+    ...postedEntry,
+    _id: postedEntry.guid,
+    guid: postedEntry.guid,
+    dictionaryId,
+    ...extraTexts,
+  };
+};
+
 export async function upsertEntries(
   postedEntries: Array<any>,
   isReversal: boolean,
@@ -292,25 +332,11 @@ export async function upsertEntries(
   username: string,
 ): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
   const updatedAt = new Date();
-  const updatedBy = username;
+  const transformEntryFunction = isReversal ? transformToReversalEntry : transformToEntry;
   const entries = postedEntries.map((postedEntry) => {
-    const entry = { ...postedEntry, updatedAt, updatedBy };
-
-    if (isReversal) {
-      entry._id = reversalEntryId({ dictionaryId, guid: entry.guid });
-      entry.dictionaryId = dictionaryId;
-    } else {
-      entry._id = entry.guid;
-      if (entry.displayXhtml) {
-        const { langTexts, langUnaccentedTexts, searchTexts } = getLangTexts(entry.displayXhtml);
-        if (searchTexts.length) {
-          entry[DbPaths.ENTRY_SEARCH_TEXTS] = searchTexts;
-          entry[DbPaths.ENTRY_LANG_TEXTS] = langTexts;
-          entry[DbPaths.ENTRY_LANG_UNACCENTED_TEXTS] = langUnaccentedTexts;
-        }
-      }
-    }
-
+    const entry = transformEntryFunction({ postedEntry, dictionaryId });
+    entry.updatedAt = updatedAt;
+    entry.updatedBy = username;
     return entry;
   });
 
