@@ -67,6 +67,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     return Response.badRequest('Dictionary must be in the path.');
   }
 
+  // eslint-disable-next-line no-console
+  console.log(`Getting dictionary ${dictionaryId}...`);
+
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
   const dbItem: Dictionary | null = await db
@@ -108,6 +111,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   reversalEntriesCounts.forEach((entriesCount, index) => {
     dbItem.reversalLanguages[index].entriesCount = entriesCount;
   });
+
+  // eslint-disable-next-line no-console
+  console.log(`Found ${dictionaryId}`, dbItem);
 
   return Response.success(dbItem);
 }
