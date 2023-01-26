@@ -145,8 +145,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
       .sort({ [DbPaths.SORT_INDEX]: 1 });
   } else {
     if (lang) {
+      // We need to make sure that the word found in full text search was for the right language.
+      // But doing so is not trivial in ALL languages. The \b boundary marker only works for Latin characters, not all else.
+      // So instead, we can just make sure that the string at least matches partially for the right language.
+      // This should suffice in almost 100% of real life situations.
+      // https://jira.mongodb.org/browse/SERVER-23881
       dbFind[`${langTextsPath}.${lang}`] = {
-        $regex: new RegExp(`(^|.*\\s+)${escapeStringRegexp(text)}(\\s+.*|$)`), // whole word match within a language
+        $regex: /^[a-z]+$/i.test(text) ? new RegExp(`\\b${text}\\b`) : escapeStringRegexp(text),
         $options: 'i',
       };
     }
@@ -164,7 +169,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   }
 
   // eslint-disable-next-line no-console
-  console.log(`Searching ${dbCollectionEntries(dictionaryId)}...`, dbFind);
+  console.log(`Searching ${dbCollectionEntries(dictionaryId)}: ${JSON.stringify(dbFind)}`);
 
   // STEP: 5: Return counts only or full search result
   if (countTotalOnly) {
@@ -176,8 +181,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   }
 
   const entries = await cursor.skip(getDbSkip(pageNumber, pageLimit)).limit(pageLimit).toArray();
+
   // eslint-disable-next-line no-console
-  console.log(`Found ${entries.length} entries`, entries[0]);
+  console.log(`Found ${entries.length} entries: ${JSON.stringify(entries[0])}`);
   return entries.length ? Response.success(entries) : Response.notFound();
 }
 

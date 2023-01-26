@@ -75,10 +75,3 @@ export class DictionaryItem implements Dictionary {
     this.semanticDomains = Array(new ListOptionItem());
   }
 }
-
-export enum DbPaths {
-  SEM_DOMS_LANG = 'semanticDomains.lang',
-  SEM_DOMS_ABBREV = 'semanticDomains.abbrev',
-  SEM_DOMS_VALUE = 'semanticDomains.value',
-  SEM_DOMS_VALUE_INSENSITIVE = 'semanticDomains.valueInsensitive',
-}
