@@ -139,19 +139,31 @@ export const dbCollectionEntries = (dictionaryId: string) =>
 export const createEntriesIndexes = async (db: Db, dictionaryId: string) => {
   const collection = dbCollectionEntries(dictionaryId);
 
-  await Promise.all([
+  return Promise.all([
     // browsing by letter head
     db.collection(collection).createIndex({
       [DbPaths.LETTER_HEAD]: 1,
       [DbPaths.SORT_INDEX]: 1,
     }),
+    // case and diacritic insensitive index for semantic domains
+    db.collection(collection).createIndex(
+      {
+        [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: 1,
+      },
+      {
+        collation: {
+          locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
+          strength: DbCollationStrength.CASE_INSENSITIVITY,
+        },
+      },
+    ),
     // fulltext index (case and diacritic insensitive by default)
     db.collection(collection).createIndex(
       {
         [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 'text',
-        [DbPaths.ENTRY_HEADWORD_VALUE]: 'text',
         [DbPaths.ENTRY_CITATION_FORM_VALUE]: 'text',
         [DbPaths.ENTRY_LEXEME_FORM_VALUE]: 'text',
+        [DbPaths.ENTRY_HEADWORD_VALUE]: 'text',
         [DbPaths.ENTRY_DEFINITION_OR_GLOSS_VALUE]: 'text',
         [DbPaths.ENTRY_DEFINITION_VALUE]: 'text',
         [DbPaths.ENTRY_GLOSS_VALUE]: 'text',
@@ -159,35 +171,28 @@ export const createEntriesIndexes = async (db: Db, dictionaryId: string) => {
       },
       {
         weights: {
-          [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 10,
-          [DbPaths.ENTRY_HEADWORD_VALUE]: 10,
-          [DbPaths.ENTRY_CITATION_FORM_VALUE]: 9,
-          [DbPaths.ENTRY_LEXEME_FORM_VALUE]: 7,
-          [DbPaths.ENTRY_DEFINITION_OR_GLOSS_VALUE]: 5,
-          [DbPaths.ENTRY_DEFINITION_VALUE]: 5,
-          [DbPaths.ENTRY_GLOSS_VALUE]: 5,
+          [DbPaths.ENTRY_MAIN_HEADWORD_VALUE]: 50,
+          [DbPaths.ENTRY_CITATION_FORM_VALUE]: 40,
+          [DbPaths.ENTRY_LEXEME_FORM_VALUE]: 30,
+          [DbPaths.ENTRY_HEADWORD_VALUE]: 20,
+          [DbPaths.ENTRY_DEFINITION_OR_GLOSS_VALUE]: 10,
+          [DbPaths.ENTRY_DEFINITION_VALUE]: 10,
+          [DbPaths.ENTRY_GLOSS_VALUE]: 10,
         },
         default_language: 'none',
       },
     ),
   ]);
-  // case and diacritic insensitive index for semantic domains
-  await db.collection(collection).createIndex(
-    {
-      [DbPaths.ENTRY_SEM_DOMS_NAME_VALUE]: 1,
-    },
-    {
-      collation: {
-        locale: DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
-        strength: DbCollationStrength.CASE_INSENSITIVITY,
-      },
-    },
-  );
 };
 
-export const createIndexes = async (db: Db) => {
+export const dropEntriesIndexes = async (db: Db, dictionaryId: string) => {
+  const collection = dbCollectionEntries(dictionaryId);
+  return db.collection(collection).dropIndexes();
+};
+
+export const createReversalsIndexes = async (db: Db) => {
   // reversal browsing
-  await db.collection(DB_COLLECTION_REVERSALS).createIndex({
+  return db.collection(DB_COLLECTION_REVERSALS).createIndex({
     [DbPaths.DICTIONARY_ID]: 1,
     [DbPaths.ENTRY_REVERSAL_FORM_LANG]: 1,
     [DbPaths.LETTER_HEAD]: 1,
@@ -195,6 +200,6 @@ export const createIndexes = async (db: Db) => {
   });
 };
 
-export const dropIndexes = async (db: Db) => {
-  await db.collection(DB_COLLECTION_REVERSALS).dropIndexes();
+export const dropReversalsIndexes = async (db: Db) => {
+  return db.collection(DB_COLLECTION_REVERSALS).dropIndexes();
 };
