@@ -169,7 +169,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   }
 
   // eslint-disable-next-line no-console
-  console.log(`Searching ${dbCollectionEntries(dictionaryId)}...`, dbFind);
+  console.log(`Searching ${dbCollectionEntries(dictionaryId)}: ${JSON.stringify(dbFind)}`);
 
   // STEP: 5: Return counts only or full search result
   if (countTotalOnly) {
@@ -181,8 +181,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   }
 
   const entries = await cursor.skip(getDbSkip(pageNumber, pageLimit)).limit(pageLimit).toArray();
+
   // eslint-disable-next-line no-console
-  console.log(`Found ${entries.length} entries`, entries[0]);
+  console.log(`Found ${entries.length} entries: ${JSON.stringify(entries[0])}`);
   return entries.length ? Response.success(entries) : Response.notFound();
 }
 
