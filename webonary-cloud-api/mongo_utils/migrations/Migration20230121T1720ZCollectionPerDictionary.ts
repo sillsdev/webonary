@@ -28,18 +28,16 @@ export class Migration20230121T1720ZCollectionPerDictionary implements Migration
     // sequentially process to not overburden Mongo
     // eslint-disable-next-line no-restricted-syntax
     for (const dictionaryId of dictionaryIds) {
-      if (dictionaryId === 'orma') {
-        logMessage(`Started migrating dictionary ${dictionaryId}... `);
+      logMessage(`Started migrating dictionary ${dictionaryId}... `);
 
-        const resultCount = await this.migrateEntries(db, dictionaryId);
-        logMessage(`Completed migrating ${resultCount} dictionary ${dictionaryId} entries.`);
+      const resultCount = await this.migrateEntries(db, dictionaryId);
+      logMessage(`Completed migrating ${resultCount} dictionary ${dictionaryId} entries.`);
 
-        await createEntriesIndexes(db, dictionaryId);
-        logMessage(`Created indexes for ${dictionaryId} entries.`);
+      await createEntriesIndexes(db, dictionaryId);
+      logMessage(`Created indexes for ${dictionaryId} entries.`);
 
-        await db.collection(DB_COLLECTION_ENTRIES).deleteMany({ dictionaryId });
-        logMessage(`Deleted legacy ${dictionaryId} entries.`);
-      }
+      await db.collection(DB_COLLECTION_ENTRIES).deleteMany({ dictionaryId });
+      logMessage(`Deleted legacy ${dictionaryId} entries.`);
     }
   }
 
