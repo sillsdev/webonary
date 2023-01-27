@@ -131,7 +131,7 @@ export class Migration20230121T1720ZCollectionPerDictionary implements Migration
 
       return db
         .collection(entriesCollection)
-        .updateOne({ _id: migratedEntry._id }, { $set: { ...migratedEntry } }, { upsert: true });
+        .replaceOne({ _id: migratedEntry._id }, migratedEntry, { upsert: true });
     });
 
     await Promise.all(resultPromises);

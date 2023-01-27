@@ -330,7 +330,7 @@ export async function upsertEntries(
   isReversal: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
+) {
   const updatedAt = new Date();
   const transformEntryFunction = isReversal ? transformToReversalEntry : transformToEntry;
   const entries = postedEntries.map((postedEntry) => {
@@ -347,14 +347,12 @@ export async function upsertEntries(
   const db = dbClient.db(MONGO_DB_NAME);
   const dbCollection = isReversal ? DB_COLLECTION_REVERSALS : dbCollectionEntries(dictionaryId);
 
-  const promises = entries.map((entry): Promise<UpdateResult> => {
+  const promises = entries.map((entry) => {
     // reversal entries for all dictionaries are stored in a single collection
-    return db
-      .collection(dbCollection)
-      .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+    return db.collection(dbCollection).replaceOne({ _id: entry._id }, entry, { upsert: true });
   });
 
-  const dbResults: UpdateResult[] = await Promise.all(promises);
+  const dbResults = await Promise.all(promises);
 
   return { updatedAt: updatedAt.toUTCString(), dbResults };
 }

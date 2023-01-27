@@ -105,7 +105,7 @@
 
 import axios from 'axios';
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { MongoClient, UpdateResult } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 import { connectToDB } from './mongo';
 import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES, createEntriesIndexes } from './db';
@@ -119,7 +119,7 @@ export async function upsertDictionary(
   eventBody: string | null,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
+) {
   const updatedAt = new Date();
 
   const posted = JSON.parse(eventBody as string);
@@ -133,7 +133,7 @@ export async function upsertDictionary(
 
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)
-    .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
+    .replaceOne({ _id: dictionaryId }, dictionaryItem, { upsert: true });
 
   await createEntriesIndexes(db, dictionaryId);
 
