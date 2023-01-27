@@ -62,3 +62,7 @@ export function notFound(error = 'Not found'): APIGatewayProxyResult {
 export function failure(error = 'Internal Server Error'): APIGatewayProxyResult {
   return buildError(500, error);
 }
+
+export function temporarilyUnavailable(error = 'Temporarily Unavailable'): APIGatewayProxyResult {
+  return buildError(503, error);
+}

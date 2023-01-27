@@ -213,8 +213,8 @@
  */
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { MongoClient, UpdateResult } from 'mongodb';
 import { load } from 'cheerio';
+import { MongoClient, UpdateResult } from 'mongodb';
 
 import { connectToDB } from './mongo';
 import {
@@ -226,7 +226,12 @@ import {
 } from './db';
 import { PostResult } from './base.model';
 import { ENTRY_TYPE_REVERSAL, DbPaths, EntryType } from './entry.model';
-import { getBasicAuthCredentials, removeDiacritics } from './utils';
+import {
+  getBasicAuthCredentials,
+  isMaintenanceMode,
+  maintenanceModeMessage,
+  removeDiacritics,
+} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -360,6 +365,10 @@ export async function upsertEntries(
 }
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
+  }
+
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const isReversal = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;

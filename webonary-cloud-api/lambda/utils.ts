@@ -14,6 +14,17 @@ export function getBasicAuthCredentials(authHeaders: string): BasicAuthCredentia
   return { username, password };
 }
 
+export function isMaintenanceMode() {
+  return Boolean(process.env.MAINTENANCE_MODE);
+}
+
+export function maintenanceModeMessage() {
+  return (
+    process.env.MAINTENANCE_MODE_MESSAGE ||
+    'This service is temporarily unavailable. Please try again later.'
+  );
+}
+
 export function getDbSkip(pageNumber: number, pageLimit: number): number {
   return (pageNumber - 1) * pageLimit;
 }
@@ -56,5 +67,5 @@ export function escapeStringRegexp(value: string) {
 }
 
 export function semanticDomainAbbrevRegex(abbrev: string) {
-  return { $in: [abbrev, new RegExp(`^${escapeStringRegexp(abbrev)}.`)] };
+  return { $in: [abbrev, new RegExp(`^${escapeStringRegexp(abbrev)}.`, 'i')] };
 }
