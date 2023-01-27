@@ -66,6 +66,10 @@ export class WebonaryCloudApiStack extends Stack {
     const MONGO_DB_NAME = process.env.MONGO_DB_NAME ?? 'webonary';
     const MONGO_DB_URI = `${process.env.MONGO_DB_URI}/${MONGO_DB_NAME}?retryWrites=true&w=majority`;
 
+    // Maintenance mode, to be set manually in Lambda config as needed
+    const MAINTENANCE_MODE = ''; // put a truthy value to activate maintenance mode, e.g. 1
+    const MAINTENANCE_MODE_MESSAGE = ''; // message to return with 503
+
     // S3
     const dictionaryBucket = new Bucket(this, envSpecific('dictionaryBucket'), {
       encryption: BucketEncryption.S3_MANAGED,
@@ -107,6 +111,8 @@ export class WebonaryCloudApiStack extends Stack {
 
     const postDictionaryFunction = createLambdaFunction(this, 'postDictionary', {
       environment: {
+        MAINTENANCE_MODE,
+        MAINTENANCE_MODE_MESSAGE,
         MONGO_DB_URI,
         MONGO_DB_NAME,
         WEBONARY_URL,
@@ -120,6 +126,8 @@ export class WebonaryCloudApiStack extends Stack {
 
     const deleteDictionaryFunction = createLambdaFunction(this, 'deleteDictionary', {
       environment: {
+        MAINTENANCE_MODE,
+        MAINTENANCE_MODE_MESSAGE,
         MONGO_DB_URI,
         MONGO_DB_NAME,
         S3_DOMAIN_NAME,
@@ -144,7 +152,7 @@ export class WebonaryCloudApiStack extends Stack {
     );
 
     const postEntryFunction = createLambdaFunction(this, 'postEntry', {
-      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+      environment: { MAINTENANCE_MODE, MAINTENANCE_MODE_MESSAGE, MONGO_DB_URI, MONGO_DB_NAME },
     });
 
     const getEntryFunction = createLambdaFunction(this, 'getEntry', {
@@ -152,7 +160,7 @@ export class WebonaryCloudApiStack extends Stack {
     });
 
     const deleteEntryFunction = createLambdaFunction(this, 'deleteEntry', {
-      environment: { MONGO_DB_URI, MONGO_DB_NAME },
+      environment: { MAINTENANCE_MODE, MAINTENANCE_MODE_MESSAGE, MONGO_DB_URI, MONGO_DB_NAME },
     });
 
     const browseEntriesFunction = createLambdaFunction(this, 'browseEntries', {

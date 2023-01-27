@@ -16,6 +16,7 @@
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
+
 import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
@@ -24,6 +25,7 @@ import {
   DB_COLLECTION_REVERSALS,
   dbCollectionEntries,
 } from './db';
+import { isMaintenanceMode, maintenanceModeMessage } from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -34,6 +36,10 @@ if (dictionaryBucket === '') {
 }
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
+  }
+
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   if (!dictionaryId) {
     return Response.badRequest('Invalid parameters');

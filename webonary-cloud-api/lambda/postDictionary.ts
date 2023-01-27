@@ -110,7 +110,12 @@ import { MongoClient, UpdateResult } from 'mongodb';
 import { connectToDB } from './mongo';
 import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES, createEntriesIndexes } from './db';
 import { PostResult } from './base.model';
-import { setSearchableEntries, getBasicAuthCredentials } from './utils';
+import {
+  getBasicAuthCredentials,
+  isMaintenanceMode,
+  maintenanceModeMessage,
+  setSearchableEntries,
+} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
@@ -141,6 +146,10 @@ export async function upsertDictionary(
 }
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
+  }
+
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const eventBody = event.body;
