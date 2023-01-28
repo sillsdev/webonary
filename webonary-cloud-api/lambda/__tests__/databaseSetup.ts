@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { connectToDB } from '../mongo';
-import { MONGO_DB_NAME, createIndexes } from '../db';
+import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
 
 import { upsertDictionary } from '../postDictionary';
 
@@ -15,7 +15,7 @@ export function setupMongo(): void {
 
     const dbClient = await connectToDB();
     const db = dbClient.db(MONGO_DB_NAME);
-    await createIndexes(db);
+    await createReversalsIndexes(db);
   });
 
   afterAll(async () => {
