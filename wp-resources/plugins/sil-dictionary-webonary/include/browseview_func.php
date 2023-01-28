@@ -16,7 +16,7 @@
  */
 function categories_func($atts, $content, $shortcode_tag)
 {
-	global $wpdb, $defaultDomain, $wp_query;
+	global $wp_query;
 
 	Webonary_SemanticDomains::GetRoots();
 
@@ -38,55 +38,16 @@ function categories_func($atts, $content, $shortcode_tag)
 		}
 	}
 
-	$arrDomains = array();
 	$dictionaryId = null;
-	if (get_option('useCloudBackend'))
+	if (IS_CLOUD_BACKEND)
 	{
-		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
-
-		$dictionary = Webonary_Cloud::getDictionary($dictionaryId);
-		if(!is_null($dictionary) && count($dictionary->semanticDomains))
-		{
-			foreach($dictionary->semanticDomains as $domain)
-			{
-				if($domain->lang === $qTransLang) {
-					$arrDomains[$domain->abbreviation] = array('slug' => str_replace('.', '-', $domain->abbreviation), 'name' => $domain->name);
-				}
-			}
-			ksort($arrDomains, SORT_NATURAL);
-		}
+		Webonary_Cloud::registerAndEnqueueMainStyles();
 	}
 	else
 	{
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
 		wp_enqueue_style( 'configured_stylesheet');
-
-		$sql = "SELECT " . $wpdb->prefix . "terms.name, slug " .
-		" FROM " . $wpdb->prefix . "terms " .
-		" INNER JOIN " . $wpdb->prefix . "term_taxonomy ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id " .
-		" WHERE taxonomy = 'sil_semantic_domains'" .
-		" ORDER BY CAST(slug as SIGNED INTEGER) ASC, CAST(RPAD(REPLACE(REPLACE(slug, '-', ''), '10','99'), 5, '0') AS SIGNED INTEGER) ASC "; //this creates a numeric sort
-
-		$arrDomains = $wpdb->get_results($sql, ARRAY_A);
-	}
-
-	// translate the domain names
-	foreach ( $arrDomains as &$domain ) {
-
-		// check if value is only digits or dash
-		if ( ! preg_match( '/^([\d\-]+)$/', $domain['slug'] ) ) {
-			continue;
-		}
-
-		$domain_number = str_replace( '-', '.', $domain['slug'] ) . '.';
-
-		if ( $qTransLang == 'en' && isset( $defaultDomain[ $domain_number ] ) ) {
-			$domain['name'] = $defaultDomain[ $domain_number ];
-		} else {
-			$domain['name'] = __( $domain['name'], 'sil_dictionary' );
-		}
 	}
 
 	$blog_url = get_bloginfo('wpurl');
@@ -97,7 +58,7 @@ function categories_func($atts, $content, $shortcode_tag)
 	wp_register_script('webonary_ftiens_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js', [], false, true);
 	wp_enqueue_script('webonary_ftiens_script');
 
-	$js = Webonary_SemanticDomains::GetJavaScript($arrDomains, $defaultDomain, $qTransLang);
+	$js = Webonary_SemanticDomains::GetJavaScript($qTransLang);
 	wp_add_inline_script('webonary_ftiens_script', $js);
 
 	$pagenr = Webonary_Utility::getPageNumber();
@@ -110,7 +71,7 @@ function categories_func($atts, $content, $shortcode_tag)
 	$display .= '<div id="searchresults" class="semantic-domain">';
 	if($semnumber != '')
 	{
-		if(get_option('useCloudBackend'))
+		if(IS_CLOUD_BACKEND)
 		{
 			$apiParams = array(
 				'text' => $semdomain,
@@ -120,8 +81,8 @@ function categories_func($atts, $content, $shortcode_tag)
 				'pageNumber' => $pagenr,
 				'pageLimit' => $postsPerPage
 			);
-			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
-			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $dictionaryId, $apiParams);
+			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $apiParams);
+			$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $apiParams);
 		}
 		else
 		{
@@ -535,10 +496,9 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 	$displayXHTML = true;
 
-	if(get_option('useCloudBackend'))
+	if(IS_CLOUD_BACKEND)
 	{
-		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
-		Webonary_Cloud::registerAndEnqueueReversalStyles($dictionaryId, $langcode);
+		Webonary_Cloud::registerAndEnqueueReversalStyles($langcode);
 
 		$apiParams = array(
 			'text' => $chosenLetter,
@@ -548,8 +508,8 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 			'pageLimit' => $postsPerPage
 		);
 
-		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-		$arrReversals = Webonary_Cloud::getEntriesAsReversals($dictionaryId, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $apiParams);
+		$arrReversals = Webonary_Cloud::getEntriesAsReversals($apiParams);
 	}
 	else
 	{
@@ -687,6 +647,7 @@ function getVernacularEntries(string $letter, string $langcode, int $page, int $
 		$collate = "";
 	}
 
+	/** @noinspection SqlResolve */
 	$sql = <<<SQL
 SELECT SQL_CALC_FOUND_ROWS ID, post_content
 FROM $wpdb->posts
@@ -765,10 +726,9 @@ function vernacularalphabet_func( $atts )
 	$rtl = get_option('vernacularRightToLeft') == '1';
 	$align_class = $rtl ? 'right' : 'left';
 
-	if (get_option('useCloudBackend'))
+	if (IS_CLOUD_BACKEND)
 	{
-		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId);
+		Webonary_Cloud::registerAndEnqueueMainStyles();
 	}
 	else
 	{
@@ -808,17 +768,16 @@ function vernacularalphabet_func( $atts )
 	$pagenr = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
-	if(get_option('useCloudBackend'))
+	if(IS_CLOUD_BACKEND)
 	{
-		$dictionaryId = Webonary_Cloud::getBlogdictionaryId();
 		$apiParams = array(
 			'text' => $chosenLetter,
 			'mainLang' => $language_code,
 			'pageNumber' => $pagenr,
 			'pageLimit' => $postsPerPage);
 
-		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
-		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $dictionaryId, $apiParams);
+		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $apiParams);
+		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $apiParams);
 	}
 	else
 	{

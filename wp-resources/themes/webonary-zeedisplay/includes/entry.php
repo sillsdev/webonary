@@ -54,4 +54,3 @@ function webonary_zeedisplay_display_entry_footer() {
 		<?php
 	}
 }
-?>

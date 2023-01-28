@@ -15,68 +15,53 @@
  * @apiError (404) NotFound Cannot find the specified dictionary.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
-import { MongoClient, DeleteResult } from 'mongodb';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { MongoClient } from 'mongodb';
+
 import { connectToDB } from './mongo';
-import {
-  MONGO_DB_NAME,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
-} from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_REVERSALS, dbCollectionEntries } from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
+import { isMaintenanceMode, maintenanceModeMessage } from './utils';
 import * as Response from './response';
-import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  try {
-    // eslint-disable-next-line no-param-reassign
-    context.callbackWaitsForEmptyEventLoop = false;
-
-    const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
-    const guid = event.queryStringParameters?.guid;
-
-    const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
-
-    const dbCollection = isReversalEntry
-      ? DB_COLLECTION_REVERSAL_ENTRIES
-      : DB_COLLECTION_DICTIONARY_ENTRIES;
-
-    if (!guid || guid === '') {
-      return callback(null, Response.badRequest('guid must be specified.'));
-    }
-
-    dbClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
-
-    const count = await db.collection(dbCollection).countDocuments({ guid, dictionaryId });
-
-    if (!count) {
-      return callback(null, Response.notFound({}));
-    }
-
-    const dbResultEntry: DeleteResult = await db
-      .collection(DB_COLLECTION_DICTIONARY_ENTRIES)
-      .deleteOne({ guid, dictionaryId });
-
-    // TODO: How to delete S3 files in the dictionary folder???
-
-    return callback(
-      null,
-      Response.success({
-        deletedEntryCount: dbResultEntry.deletedCount,
-      }),
-    );
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, createFailureResponse(error));
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
   }
+
+  const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
+  if (!dictionaryId) {
+    return Response.badRequest('Dictionary must be in the path.');
+  }
+
+  const guid = event.queryStringParameters?.guid;
+  if (!guid) {
+    return Response.badRequest('guid must be specified.');
+  }
+
+  let dbCollection;
+  let dbFind;
+  if (event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL) {
+    dbCollection = DB_COLLECTION_REVERSALS;
+    dbFind = { dictionaryId, guid };
+  } else {
+    dbCollection = dbCollectionEntries(dictionaryId);
+    dbFind = { _id: guid };
+  }
+
+  dbClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
+  const dbResultEntry = await db.collection(dbCollection).deleteOne(dbFind);
+
+  if (!dbResultEntry.deletedCount) {
+    return Response.notFound();
+  }
+
+  return Response.success({
+    deletedEntryCount: dbResultEntry.deletedCount,
+  });
 }
 
 export default handler;

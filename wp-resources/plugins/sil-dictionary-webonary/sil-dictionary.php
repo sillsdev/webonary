@@ -34,7 +34,7 @@ include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . '
 
 global $wpdb, $search_cookie;
 
-function webonary_admin_script()
+function webonary_admin_script(): void
 {
 	wp_register_script('webonary_admin_script', plugin_dir_url(__FILE__) . 'js/admin_script.js', [], false, true);
 	wp_enqueue_script('webonary_admin_script');
@@ -44,13 +44,13 @@ function webonary_admin_script()
 		['ajax_url' => admin_url('admin-ajax.php')]
 	);
 
-	wp_register_style('webonary_admin_style', plugin_dir_url(__FILE__) . 'css/admin_styles.css', [], false, 'all');
+	wp_register_style('webonary_admin_style', plugin_dir_url(__FILE__) . 'css/admin_styles.css');
 	wp_enqueue_style('webonary_admin_style');
 
 	wp_register_script('webonary_toastr_script', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', [], false, true);
 	wp_enqueue_script('webonary_toastr_script');
 
-	wp_register_style('webonary_toastr_style', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', [], false, 'all');
+	wp_register_style('webonary_toastr_style', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css');
 	wp_enqueue_style('webonary_toastr_style');
 }
 add_action('admin_enqueue_scripts', 'webonary_admin_script');
@@ -72,10 +72,7 @@ add_filter('monsterinsights_show_dashboard_widget', '__return_false');
 	// The register_activation_hook() appears not to work for some reason. But the
 	// site won't start up that much any way, and it doesn't hurt anything to call
 	// it more than once.
-	add_action('init', 'install_sil_dictionary_infrastructure', 0);
-
-	// Take out the custom data when uninstalling the plugin.
-	register_uninstall_hook( __FILE__, 'uninstall_sil_dictionary_infrastructure' );
+	add_action('init', 'Webonary_Infrastructure::InstallInfrastructure', 0);
 //}
 
 
@@ -101,29 +98,35 @@ add_action('rest_api_init', 'Webonary_Cloud::registerApiRoutes');
 
 // Block all API requests from users not logged in, with exceptions
 // See https://developer.wordpress.org/rest-api/frequently-asked-questions/#require-authentication-for-all-requests
-add_filter('rest_authentication_errors', function($result) {
+add_filter('rest_authentication_errors', function ($result) {
+
 	// If a previous authentication check was applied, pass that result along without modification.
 	if (true === $result || is_wp_error($result)) {
+		return $result;
+	}
+
+	if (is_user_logged_in()) {
 		return $result;
 	}
 
 	// exceptions, by path
 	global $wp;
 	$path = add_query_arg(array(), $wp->request);
-	if ($path === 'wp-json/webonary/import'
-		|| strpos($path, 'wp-json/' . Webonary_Cloud::$apiNamespace) === 0) {
+
+	if (str_starts_with($path, 'wp-json/wordfence')) {
 		return $result;
 	}
 
-    if (!is_user_logged_in()) {
-		return new WP_Error(
-			'rest_not_logged_in',
-			__('This API can only be called if you are logged in first.'),
-			array( 'status' => 401 )
-		);
+	if ($path === 'wp-json/webonary/import'
+		|| str_starts_with($path, 'wp-json/' . Webonary_Cloud::$apiNamespace)) {
+		return $result;
 	}
 
-	return $result;
+	return new WP_Error(
+		'rest_not_logged_in',
+		__('This API can only be called if you are logged in first.'),
+		array('status' => 401)
+	);
 });
 
 // NOTE: this was removed because appears to be applying the vernacular settings to the UI language (which it shouldn't)
@@ -140,30 +143,33 @@ add_filter('rest_authentication_errors', function($result) {
 //}
 //add_filter('post_class', 'filter_post_class', 10, 3);
 
-if (get_option('useCloudBackend')) {
+if (IS_CLOUD_BACKEND) {
 	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);
 }
 
-function add_rewrite_rules($aRules)
+function add_rewrite_rules($aRules): array
 {
 	//echo "rewrite rules<br>";
 	$aNewRules = array('^/([^/]+)/?$' => 'index.php?clean=$matches[1]');
-	$aRules = $aNewRules + $aRules;
-	return $aRules;
+	return $aNewRules + $aRules;
 }
+
 add_filter('post_rewrite_rules', 'add_rewrite_rules');
 
-function add_query_vars($qvars)
+function add_query_vars($query_vars)
 {
-	if (!in_array('clean', $qvars))
-		$qvars[] = 'clean';
-	return $qvars;
+	if (!in_array('clean', $query_vars))
+		$query_vars[] = 'clean';
+	return $query_vars;
 }
+
 add_filter('query_vars', 'add_query_vars');
 
 // register the search widget
-function register_custom_widgets()
+function register_custom_widgets(): void
 {
 	register_widget('Webonary_Search_Widget');
+	register_widget('Webonary_Published_Widget');
 }
+
 add_action('widgets_init', 'register_custom_widgets');

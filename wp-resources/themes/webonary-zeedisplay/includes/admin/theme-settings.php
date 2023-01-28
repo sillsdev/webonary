@@ -103,5 +103,3 @@
 					"std" => "", // $default_logo, // default_logo has been commented out above, so is commented here also CP 2017-02
 					"type" => "logo",
 					"section" => "themeZee_main");
-	
-?>

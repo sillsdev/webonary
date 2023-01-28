@@ -98,4 +98,3 @@
 		}
 	}
 	register_widget('Theme_SocialMedia_Widget');
-?>

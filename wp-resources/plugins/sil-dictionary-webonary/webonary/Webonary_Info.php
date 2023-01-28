@@ -3,6 +3,8 @@
 
 class Webonary_Info
 {
+	private static ?array $selected_semantic_domains = null;
+
 	public static function getCountIndexed()
 	{
 		$counts = self::postCountByImportStatus();
@@ -24,12 +26,12 @@ class Webonary_Info
 
 		$counts = self::postCountByImportStatus();
 
-		if($counts->total_count == 0)
-			return 'No entries have been uploaded yet. <a href="' . $_SERVER['REQUEST_URI']  . '">refresh page</a>';
+		if ($counts->total_count == 0)
+			return 'No entries have been uploaded yet. <a href="' . $_SERVER['REQUEST_URI'] . '">refresh page</a>';
 
 		$import_status = get_option('importStatus');
 
-		if(empty($import_status))
+		if (empty($import_status))
 			return 'The upload status will display here.<br>';
 
 		$status = '';
@@ -39,17 +41,14 @@ class Webonary_Info
 		$countIndexed = self::getCountIndexed();
 		$countImported = self::getCountImported();
 
-		if($import_status == 'importFinished')
-		{
-			if(get_option('useSemDomainNumbers') != 0)
-			{
+		if ($import_status == 'importFinished') {
+			if (get_option('useSemDomainNumbers') != 0) {
 				/** @noinspection SqlResolve */
 				$sql = "SELECT COUNT(taxonomy) AS sdCount FROM {$wpdb->prefix}term_taxonomy WHERE taxonomy = 'sil_semantic_domains'";
 
 				$sdCount = $wpdb->get_var($sql);
 
-				if(empty($sdCount))
-				{
+				if (empty($sdCount)) {
 					$status .= '<br>';
 					$status .= '<span style="color:red;">It appears you uploaded semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
 					$status .= 'Tip: You can hide the domain numbers from displaying, <a href=" https://www.webonary.org/help/tips-tricks/" target=_"blank">see here</a>.';
@@ -57,29 +56,25 @@ class Webonary_Info
 				}
 			}
 
-			if(!empty($counts->indexed_date))
-			{
+			if (!empty($counts->indexed_date)) {
 				$status .= 'Last upload of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
 				$archiveFile = Webonary_Cloud::getBlogDictionaryId() . '.zip';
 
-				if(file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
+				if (file_exists(WP_CONTENT_DIR . '/archives/' . $archiveFile))
 					$status .= '<a href="/wp-content/archives/' . $archiveFile . '">' . $archiveFile . '</a>';
 				else
 					$status .= 'no longer available';
 
 				$status .= '<br>';
 			}
-		}
-		else
-		{
+		} else {
 			$status .= 'Uploading...';
 			$status .= '<p>You will receive an email when the upload has completed. You don\'t need to stay online.</p>';
 		}
 
-		if($import_status == 'indexing')
-		{
+		if ($import_status == 'indexing') {
 			$percent = (int)ceil(($countIndexed / $countImported) * 100);
 			if ($percent > 100)
 				$percent = 100;
@@ -91,26 +86,22 @@ class Webonary_Info
 			return $status;
 		}
 
-		if($import_status == 'configured')
-		{
+		if ($import_status == 'configured') {
 			$status .= '<span id="sil-count-imported" class="sil-bold">' . $countImported . '</span> entries uploadeded (not yet indexed)';
 
-			if($counts->time_diff > 5)
-			{
+			if ($counts->time_diff > 5) {
 				$status .= '<p>It appears the upload has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartImport" value="Restart Upload" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			}
 			return $status;
 		}
 
-		if($import_status == 'reversal')
-		{
+		if ($import_status == 'reversal') {
 			$status .= 'Uploading reversals. So far uploaded: <span id="sil-count-imported" class="sil-bold">' . $countReversals . '</span> entries.';
 			$status .= '<p>If you believe the upload has timed out, click here: <input style="margin-left:8px" class="button button-webonary" type="submit" name="btnRestartReversalImport" value="Restart Reversal Upload" formaction="admin.php?import=pathway-xhtml&step=2"></p>';
 			return $status;
 		}
 
-		if($import_status == 'importFinished')
-		{
+		if ($import_status == 'importFinished') {
 			$status .= '<br>';
 			$status .= '<div style="float: left;">';
 			$status .= '<strong>Number of indexed entries (by language code):</strong><br>';
@@ -124,80 +115,38 @@ class Webonary_Info
 		return $status;
 	}
 
-	/** @noinspection PhpArrayAccessCanBeReplacedWithForeachValueInspection */
-	public static function number_of_entries()
+	/**
+	 * @return ILanguageEntryCount[]
+	 */
+	public static function number_of_entries(): array
 	{
 		global $wpdb;
 
-		//gets the language codes for all entries plus number of indexed entries
-		//(number of reversal entries is not exact, which is why we get reversal entries separately)
-		$table_name = Webonary_Configuration::$search_table_name;
-		/** @noinspection SqlResolve */
+		$search_table = Webonary_Configuration::$search_table_name;
+		$reversal_table = Webonary_Configuration::$reversal_table_name;
+
 		$sql = <<<SQL
-SELECT language_code, COUNT(post_id) AS totalIndexed
-FROM {$table_name}
-WHERE relevance = 100
-GROUP BY language_code
+SELECT s.language_code, o.option_value AS language_name, IFNULL(r.totalIndexed, s.totalIndexed) AS total_indexed
+FROM (
+         SELECT language_code, COUNT(post_id) AS totalIndexed
+         FROM $search_table
+         WHERE relevance = 100
+         GROUP BY language_code
+     ) AS s
+  LEFT JOIN
+    (
+        SELECT language_code, COUNT(language_code) AS totalIndexed
+        FROM $reversal_table
+        GROUP BY language_code
+        ORDER BY language_code
+    ) AS r ON s.language_code = r.language_code
+  LEFT JOIN $wpdb->terms AS t ON s.language_code = t.slug
+  LEFT JOIN $wpdb->options AS o ON s.language_code = o.option_value
+WHERE o.option_name IN ('languagecode', 'reversal1_langcode', 'reversal2_langcode', 'reversal3_langcode')
+ORDER BY o.option_name, o.option_value
 SQL;
 
-		$arrIndexed = $wpdb->get_results($sql);
-
-		$table_name = Webonary_Configuration::$reversal_table_name;
-		/** @noinspection SqlResolve */
-		$sql = <<<SQL
-SELECT r.language_code, COUNT(r.language_code) AS totalIndexed
-FROM {$table_name} AS r
-GROUP BY r.language_code
-ORDER BY r.language_code
-SQL;
-
-		$arrReversals = $wpdb->get_results($sql);
-		foreach($arrReversals as $reversal) {
-			$reversals[$reversal->language_code] = $reversal->totalIndexed;
-		}
-
-		foreach($arrIndexed as $key => $indexed)
-		{
-			/** @noinspection SqlResolve */
-			$sqlLangName = <<<SQL
-SELECT `name`
-FROM {$wpdb->terms}
-WHERE slug = '{$indexed->language_code}'
-ORDER BY name, slug
-LIMIT 1
-SQL;
-
-			$language_name = $wpdb->get_var($sqlLangName);
-			$arrIndexed[$key]->language_name = $language_name;
-
-			if(isset($reversals[$indexed->language_code]))
-				$arrIndexed[$key]->totalIndexed = $reversals[$indexed->language_code];
-		}
-
-		//legacy code, to count approximate number of reversals before we imported reversal entries into
-		//the reversal table
-		if(count($arrReversals) == 0 && count($arrIndexed) > 0)
-		{
-			$table_name = Webonary_Configuration::$search_table_name;
-			$char_set = MYSQL_CHARSET;
-			$count_posts = count(self::posts(''));
-			foreach($arrIndexed as $key => $indexed)
-			{
-				if($count_posts != $indexed->totalIndexed && ($count_posts + 1) != $indexed->totalIndexed)
-				{
-					/** @noinspection SqlResolve */
-					$sql = <<<SQL
-SELECT COUNT(DISTINCT search_strings)
-FROM {$table_name} 
-WHERE language_code = '{$indexed->language_code}'
-AND relevance >= 95
-SQL;
-					$arrIndexed[$key]->totalIndexed = $wpdb->get_var($sql);
-				}
-			}
-		}
-
-		return $arrIndexed;
+		return $wpdb->get_results($sql);
 	}
 
 	public static function posts($index = '')
@@ -209,20 +158,18 @@ SQL;
 		$sql = <<<SQL
 SELECT p.ID 
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
 SQL;
 
-		if(strlen($index) > 0 && $index != '-')
-		{
+		if (strlen($index) > 0 && $index != '-') {
 			$sql .= ' AND pinged = %s';
 			$args[] = $index;
 		}
-		if($index == '-')
-		{
+		if ($index == '-') {
 			$sql .= ' AND pinged = \'\'';
 		}
 
@@ -243,20 +190,18 @@ SQL;
 		$sql = <<<SQL
 SELECT COUNT(*)
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
 SQL;
 
-		if(strlen($index) > 0 && $index != '-')
-		{
+		if (strlen($index) > 0 && $index != '-') {
 			$sql .= ' AND pinged = %s';
 			$args[] = $index;
 		}
-		if($index == '-')
-		{
+		if ($index == '-') {
 			$sql .= ' AND pinged = \'\'';
 		}
 
@@ -273,7 +218,7 @@ SQL;
 
 		$sql = <<<SQL
 SELECT ID, post_title, post_content, post_parent, menu_order 
-FROM {$wpdb->posts} AS p
+FROM $wpdb->posts AS p
 WHERE ID = %s
 SQL;
 
@@ -287,10 +232,10 @@ SQL;
 
 		$sql = <<<SQL
 SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order 
-FROM {$wpdb->posts} AS p
-    INNER JOIN {$wpdb->term_relationships} AS r ON p.id = r.object_id
-    INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-    INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+FROM $wpdb->posts AS p
+    INNER JOIN $wpdb->term_relationships AS r ON p.id = r.object_id
+    INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+    INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE t.slug = 'webonary' 
   AND p.post_status = 'publish'
   AND p.pinged = ''
@@ -324,9 +269,9 @@ SELECT SUM(IF(p.pinged IN ('indexed', 'linksconverted'), 1, 0)) AS indexed_count
        COUNT(*) AS total_count,
        TIMESTAMPDIFF(SECOND, MAX(p.post_date),NOW()) AS time_diff
 FROM {$wpdb->prefix}posts AS p
-  INNER JOIN {$wpdb->term_relationships} AS r ON p.ID = r.object_id
-  INNER JOIN {$wpdb->term_taxonomy} AS x ON r.term_taxonomy_id = x.term_taxonomy_id
-  INNER JOIN {$wpdb->terms} AS t ON x.term_id = t.term_id
+  INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+  INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
+  INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
 WHERE p.post_type IN ('post', 'revision')
   AND t.slug = 'webonary';
 SQL;
@@ -342,16 +287,15 @@ SQL;
 		global $wpdb;
 
 		$status = "";
-		foreach($arrIndexed as $indexed)
-		{
-			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;'. $indexed->totalIndexed;
+		foreach ($arrIndexed as $indexed) {
+			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;' . $indexed->totalIndexed;
 
 			$table_name = Webonary_Configuration::$search_table_name;
 			/** @noinspection SqlResolve */
 			$sql = <<<SQL
 SELECT COUNT(language_code) AS missing
-FROM {$table_name}
-WHERE post_id = 0 AND language_code = '{$indexed->language_code}'
+FROM $table_name
+WHERE post_id = 0 AND language_code = '$indexed->language_code'
 SQL;
 
 			$missingReversals = $wpdb->get_var($sql);
@@ -374,9 +318,29 @@ SQL;
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
 SELECT COUNT(*) 
-FROM {$table_name}
+FROM $table_name
 SQL;
 
 		return $wpdb->get_var($sql);
+	}
+
+	public static function getSelectedSemanticDomains(): array
+	{
+		if (!is_null(self::$selected_semantic_domains))
+			return self::$selected_semantic_domains;
+
+		if (isset($_GET['semantic_domain']))
+			$selected = trim((string)filter_input(INPUT_GET, 'semantic_domain', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
+		elseif (isset($_GET['semnumber']))
+			$selected = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]));
+		else
+			$selected = '';
+
+		if ($selected)
+			self::$selected_semantic_domains = [$selected];
+		else
+			self::$selected_semantic_domains = [];
+
+		return self::$selected_semantic_domains;
 	}
 }

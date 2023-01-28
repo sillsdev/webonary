@@ -543,10 +543,9 @@ class Webonary_Utility
 		if (is_page())
 			return;
 
-		if (get_option('useCloudBackend'))
+		if (IS_CLOUD_BACKEND)
 		{
-			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-			Webonary_Cloud::registerAndEnqueueMainStyles($dictionaryId, ['webonary_dictionary_style']);
+			Webonary_Cloud::registerAndEnqueueMainStyles(['webonary_dictionary_style']);
 		}
 		else
 		{
@@ -643,5 +642,26 @@ class Webonary_Utility
 		);
 
 		return self::$date_formatter;
+	}
+
+	public static function RemoveEmptyStrings($array): array
+	{
+		return array_values(array_filter($array, function($val) { return strlen(trim($val)) > 0; }));
+	}
+
+	/**
+	 * Removes whitespace and separators from both ends of a string.
+	 *  - \p{Z} = any whitespace or invisible separator
+	 *  - \x{200B} = zero-width space
+	 *  - \x{200C} = zero-width non-joiner
+	 *  - \x{200D} = zero-width joiner
+	 *  - \x{2060} = word joiner
+	 *
+	 * @param string $string
+	 * @return string
+	 */
+	public static function UnicodeTrim(string $string): string
+	{
+		return preg_replace('/(^[\p{Z}\x{200B}-\x{200D}\x{2060}]+)|([\p{Z}\x{200B}-\x{200D}\x{2060}]+$)/u', '', $string);
 	}
 }

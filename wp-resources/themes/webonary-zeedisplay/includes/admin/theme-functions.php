@@ -32,4 +32,3 @@ function theme_admin_head() {
 	wp_register_script('zee_mycolorpicker', get_template_directory_uri() .'/includes/admin/colorpicker/mycolorpicker.js', array('zee_utils'));
 	wp_enqueue_script('zee_mycolorpicker');
 }
-?>

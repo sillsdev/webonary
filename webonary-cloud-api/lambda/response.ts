@@ -1,52 +1,68 @@
-export const BAD_REQUEST = 'BadRequest';
+import { APIGatewayProxyResult } from 'aws-lambda';
 
-type ResponseBody = string | object;
+export type ResponseBody = string | object | [object];
 
-export interface Response {
-  statusCode: number;
-  headers: object;
-  body: string;
+function buildError(statusCode: number, error: ResponseBody): APIGatewayProxyResult {
+  return buildResponse(statusCode, typeof error === 'string' ? { message: error } : error);
 }
 
-function buildResponse(statusCode: number, response: ResponseBody, header?: object): Response {
-  let headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
+function buildResponse(
+  statusCode: number,
+  responseBody: ResponseBody,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  header?: object,
+): APIGatewayProxyResult {
+  const response: APIGatewayProxyResult = {
+    statusCode,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: '',
   };
 
   if (header) {
-    headers = { ...headers, ...header };
+    response.headers = { ...response.headers, ...header };
   }
 
-  let body = response;
-  if (typeof response === 'string') {
-    const contentType = {
-      'Content-Type': 'text/plain',
-    };
-    headers = { ...headers, ...contentType };
+  if (typeof responseBody === 'string') {
+    response.headers = { ...response.headers, 'Content-Type': 'text/plain' };
+    response.body = responseBody;
   } else {
-    body = JSON.stringify(response);
+    response.body = JSON.stringify(responseBody);
   }
 
-  return { statusCode, headers, body: body as string };
+  return response;
 }
 
-export function success(body: ResponseBody): Response {
+export function success(body: ResponseBody): APIGatewayProxyResult {
   return buildResponse(200, body);
 }
 
-export function badRequest(body: ResponseBody): Response {
-  return buildResponse(400, { errorType: BAD_REQUEST, errorMessage: body });
-}
-
-export function failure(body: ResponseBody): Response {
-  return buildResponse(500, body);
-}
-
-export function notFound(body: ResponseBody): Response {
-  return buildResponse(404, body);
-}
-
-export function redirect(location: string): Response {
+export function redirect(location: string): APIGatewayProxyResult {
   return buildResponse(302, '', { Location: location });
+}
+
+export function badRequest(error = 'Bad request'): APIGatewayProxyResult {
+  return buildError(400, error);
+}
+
+export function unauthorized(error = 'Unauthorized'): APIGatewayProxyResult {
+  return buildError(401, error);
+}
+
+export function forbidden(error = 'Forbidden'): APIGatewayProxyResult {
+  return buildError(403, error);
+}
+
+export function notFound(error = 'Not found'): APIGatewayProxyResult {
+  return buildError(404, error);
+}
+
+export function failure(error = 'Internal Server Error'): APIGatewayProxyResult {
+  return buildError(500, error);
+}
+
+export function temporarilyUnavailable(error = 'Temporarily Unavailable'): APIGatewayProxyResult {
+  return buildError(503, error);
 }

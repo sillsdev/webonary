@@ -18,6 +18,7 @@ if (!defined('DS'))
 define('MYSQL_CHARSET', $wpdb->charset);
 define('MYSQL_COLLATION', $wpdb->collate);
 
+define('IS_CLOUD_BACKEND', !empty(get_option('useCloudBackend')));
 
 // This is the Webonary Auto-Loader.
 // It must be loaded before the includes below.
@@ -56,7 +57,6 @@ function webonary_autoloader($class_name)
 	return null;
 }
 
-/** @noinspection PhpUnhandledExceptionInspection */
 spl_autoload_register('webonary_autoloader');
 
 
@@ -66,8 +66,6 @@ $webonary_class_path    = $root_dir . DS . 'webonary';
 $webonary_template_path = $root_dir . DS . 'templates';
 $webonary_include_path  = $root_dir . DS . 'include';
 
-// Infrastructure management: add and remove custom table(s) and custom taxonomies.
-include_once $webonary_include_path . '/infrastructure.php';
 // Configure Webonary Settings
 include_once $webonary_include_path . '/configuration.php';
 // Code for searching on dictionaries.

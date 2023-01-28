@@ -1,4 +1,13 @@
 /* eslint-disable max-classes-per-file */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type EntryType = Record<string, any> & {
+  _id: string;
+  guid: string;
+  dictionaryId: string;
+  updatedAt?: Date;
+  updatedBy?: string;
+};
+
 export interface EntryFile {
   id: string;
   src: string;
@@ -37,11 +46,11 @@ export class EntryValueItem implements EntryValue {
 }
 
 export interface EntryAnalysis {
-  partOfSpeech: EntryValue[];
+  partofspeech: EntryValue[];
 }
 
 export class EntryAnalysisItem implements EntryAnalysis {
-  partOfSpeech = Array(new EntryValueItem());
+  partofspeech = Array(new EntryValueItem());
 }
 
 export interface EntryExampleContent {
@@ -64,18 +73,18 @@ export class EntrySemanticDomainItem implements EntrySemanticDomain {
 }
 
 export interface EntrySense {
-  definitionOrGloss: EntryValue[];
-  examplesContents?: EntryExampleContent[];
-  semanticDomains?: EntrySemanticDomain[];
+  definitionorgloss: EntryValue[];
+  examplescontents?: EntryExampleContent[];
+  semanticdomains?: EntrySemanticDomain[];
   guid?: string;
 }
 
 export class EntrySenseItem implements EntrySense {
-  definitionOrGloss = Array(new EntryValueItem());
+  definitionorgloss = Array(new EntryValueItem());
 
-  examplesContents? = Array(new EntryExampleContentItem());
+  examplescontents? = Array(new EntryExampleContentItem());
 
-  semanticDomains? = Array(new EntrySemanticDomainItem());
+  semanticdomains? = Array(new EntrySemanticDomainItem());
 
   guid? = '';
 }
@@ -87,7 +96,7 @@ export interface Entry {
   letterHead: string;
   sortIndex: number;
   displayXhtml: string;
-  updatedAt?: string;
+  updatedAt?: Date;
   updatedBy?: string;
 }
 
@@ -107,11 +116,11 @@ export class EntryItem implements Entry {
   // This is a copy of displayXhtml with all the HTML stripped. This is used for full text search.
   displayText: string;
 
-  updatedAt?: string;
+  updatedAt?: Date;
 
   updatedBy?: string;
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     this._id = `${dictionaryId}::${guid}`;
     this.guid = guid;
     this.dictionaryId = dictionaryId;
@@ -119,22 +128,22 @@ export class EntryItem implements Entry {
     this.sortIndex = 0;
     this.displayXhtml = '';
     this.updatedBy = updatedBy ?? '';
-    this.updatedAt = updatedAt ?? new Date().toUTCString();
+    this.updatedAt = updatedAt ?? new Date();
   }
 }
 
 export interface DictionaryEntry extends Entry {
-  mainHeadWord: EntryValue[];
+  mainheadword: EntryValue[];
   senses: EntrySense[];
   reversalLetterHeads: EntryValue[];
   pronunciations?: EntryValue[];
-  morphoSyntaxAnalysis?: EntryAnalysis;
+  morphosyntaxanalysis?: EntryAnalysis;
   audio: EntryFile;
   pictures: EntryFile[];
 }
 
 export class DictionaryEntryItem extends EntryItem {
-  mainHeadWord: EntryValueItem[];
+  mainheadword: EntryValueItem[];
 
   senses: EntrySenseItem[];
 
@@ -142,21 +151,21 @@ export class DictionaryEntryItem extends EntryItem {
 
   pronunciations: EntryValueItem[];
 
-  morphoSyntaxAnalysis: EntryAnalysisItem;
+  morphosyntaxanalysis: EntryAnalysisItem;
 
   audio: EntryFileItem;
 
   pictures: EntryFileItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
-    this.mainHeadWord = Array(new EntryValueItem());
+    this.mainheadword = Array(new EntryValueItem());
     this.senses = Array(new EntrySenseItem());
     this.reversalLetterHeads = Array(new EntryValueItem());
     this.pronunciations = Array(new EntryValueItem());
-    this.morphoSyntaxAnalysis = new EntryAnalysisItem();
+    this.morphosyntaxanalysis = new EntryAnalysisItem();
     this.audio = new EntryFileItem();
     this.pictures = Array(new EntryFileItem());
   }
@@ -165,36 +174,36 @@ export class DictionaryEntryItem extends EntryItem {
 export interface ReversalSense {
   guid: string;
 
-  headWord: EntryValue[];
+  headword: EntryValue[];
 
-  partOfSpeech: EntryValue[];
+  partofspeech: EntryValue[];
 }
 
 export class ReversalSenseItem implements ReversalSense {
   guid = '';
 
-  headWord = Array(new EntryValueItem());
+  headword = Array(new EntryValueItem());
 
-  partOfSpeech = Array(new EntryValueItem());
+  partofspeech = Array(new EntryValueItem());
 }
 
 export interface ReversalEntry extends Entry {
-  reversalForm: EntryValue[];
-  sensesRs: ReversalSense[];
+  reversalform: EntryValue[];
+  sensesrs: ReversalSense[];
 }
 
 export class ReversalEntryItem extends EntryItem {
-  reversalForm: EntryValueItem[];
+  reversalform: EntryValueItem[];
 
-  sensesRs: ReversalSenseItem[];
+  sensesrs: ReversalSenseItem[];
 
-  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: string) {
+  constructor(guid: string, dictionaryId: string, updatedBy?: string, updatedAt?: Date) {
     super(guid, dictionaryId, updatedBy, updatedAt);
 
     // Set initial values so we can do Object.keys for dynamic case-insensitive copying
     this.letterHead = '';
-    this.reversalForm = Array(new EntryValueItem());
-    this.sensesRs = Array(new ReversalSenseItem());
+    this.reversalform = Array(new EntryValueItem());
+    this.sensesrs = Array(new ReversalSenseItem());
   }
 }
 
@@ -204,16 +213,52 @@ export const ENTRY_TYPE_MAIN = 'entry';
 export const ENTRY_TYPE_REVERSAL = 'reversalindexentry';
 
 export enum DbPaths {
-  ENTRY_DISPLAY_TEXT = 'displayText',
-  ENTRY_MAIN_HEADWORD_LANG = 'mainHeadWord.lang',
-  ENTRY_MAIN_HEADWORD_VALUE = 'mainHeadWord.value',
+  // dictionary entries
+  ENTRY_MAIN_HEADWORD_LANG = 'mainheadword.lang',
+  ENTRY_MAIN_HEADWORD_VALUE = 'mainheadword.value',
+  ENTRY_MAIN_HEADWORD_FIRST_VALUE = 'mainheadword.0.value',
+  ENTRY_MAIN_HEADWORD_SECOND_VALUE = 'mainheadword.1.value',
+
+  ENTRY_HEADWORD_VALUE = 'headword.value', // minor entries
+  ENTRY_CITATION_FORM_VALUE = 'citationform.value',
+  ENTRY_LEXEME_FORM_VALUE = 'lexemeform.value',
+
   ENTRY_SENSES = 'senses',
-  ENTRY_DEFINITION = 'senses.definitionOrGloss',
-  ENTRY_DEFINITION_LANG = 'senses.definitionOrGloss.lang',
-  ENTRY_DEFINITION_VALUE = 'senses.definitionOrGloss.value',
-  ENTRY_PART_OF_SPEECH_VALUE = 'morphoSyntaxAnalysis.partOfSpeech.value',
-  ENTRY_SEM_DOMS_ABBREV = 'senses.semanticDomains.abbreviation',
-  ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticDomains.abbreviation.value',
-  ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticDomains.name.value',
-  ENTRY_REVERSAL_FORM_LANG = 'reversalForm.lang',
+  ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
+  ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
+  ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
+  ENTRY_DEFINITION_LANG = 'senses.definition.lang',
+  ENTRY_DEFINITION_VALUE = 'senses.definition.value',
+  ENTRY_GLOSS_LANG = 'senses.gloss.lang',
+  ENTRY_GLOSS_VALUE = 'senses.gloss.value',
+
+  ENTRY_EXAMPLE_VALUE = 'senses.examplescontents.example.value',
+  ENTRY_EXAMPLE_TRANSLATION_VALUE = 'senses.examplescontents.translationcontents.translation.value',
+  ENTRY_SCIENTIFIC_NAME_VALUE = 'senses.scientificname.value',
+
+  ENTRY_SEM_DOMS_ABBREV = 'senses.semanticdomains.abbreviation',
+  ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticdomains.abbreviation.value',
+  ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticdomains.name.value',
+
+  ENTRY_PART_OF_SPEECH = 'morphosyntaxanalysis.partofspeech',
+  ENTRY_PART_OF_SPEECH_VALUE = 'morphosyntaxanalysis.partofspeech.value',
+  ENTRY_GRAM_INFO_ABBREV = 'morphosyntaxanalysis.graminfoabbrev',
+  ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
+  ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
+
+  ENTRY_PLURAL_VALUE = 'morphosyntaxanalysis.partofspeech.value',
+
+  ENTRY_LANG_TEXTS = 'langTexts',
+  ENTRY_LANG_UNACCENTED_TEXTS = 'langUnaccentedTexts',
+  ENTRY_SEARCH_TEXTS = 'searchTexts',
+
+  // reversals
+  ENTRY_REVERSAL_FORM_LANG = 'reversalform.lang',
+  ENTRY_REVERSAL_FORM_FIRST_VALUE = 'reversalform.0.value',
+  ENTRY_REVERSAL_FORM_SECOND_VALUE = 'reversalform.1.value',
+
+  // common to dictionary entries and reversals
+  DICTIONARY_ID = 'dictionaryId',
+  LETTER_HEAD = 'letterHead',
+  SORT_INDEX = 'sortIndex',
 }

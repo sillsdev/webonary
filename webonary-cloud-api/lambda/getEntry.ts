@@ -13,54 +13,47 @@
  * @apiError (404) NotFound Cannot find the specified entry.
  */
 
-import { APIGatewayEvent, Context, Callback } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { MongoClient } from 'mongodb';
 import { connectToDB } from './mongo';
-import {
-  MONGO_DB_NAME,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
-} from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_REVERSALS, dbCollectionEntries } from './db';
 import { ENTRY_TYPE_REVERSAL } from './entry.model';
 import * as Response from './response';
-import { createFailureResponse } from './utils';
 
 let dbClient: MongoClient;
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
-
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
+  if (!dictionaryId) {
+    return Response.badRequest('Dictionary must be in the path.');
+  }
+
   const guid = event.queryStringParameters?.guid;
-
-  const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
-
-  const dbCollection = isReversalEntry
-    ? DB_COLLECTION_REVERSAL_ENTRIES
-    : DB_COLLECTION_DICTIONARY_ENTRIES;
-
-  if (!guid || guid === '') {
-    return callback(null, Response.badRequest('guid must be specified.'));
+  if (!guid) {
+    return Response.badRequest('guid must be specified.');
   }
 
-  try {
-    dbClient = await connectToDB();
-    const db = dbClient.db(MONGO_DB_NAME);
-    const dbItem = await db.collection(dbCollection).findOne({ guid, dictionaryId });
-    if (!dbItem) {
-      return callback(null, Response.notFound({}));
-    }
-    return callback(null, Response.success(dbItem));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, createFailureResponse(error));
+  let dbCollection;
+  let dbFind;
+  if (event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL) {
+    dbCollection = DB_COLLECTION_REVERSALS;
+    dbFind = { dictionaryId, guid };
+  } else {
+    dbCollection = dbCollectionEntries(dictionaryId);
+    dbFind = { _id: guid };
   }
+
+  // eslint-disable-next-line no-console
+  console.log(`Getting entry from ${dbCollection}...`, dbFind);
+
+  dbClient = await connectToDB();
+  const db = dbClient.db(MONGO_DB_NAME);
+  const dbItem = await db.collection(dbCollection).findOne(dbFind);
+  if (!dbItem) {
+    return Response.notFound();
+  }
+
+  return Response.success(dbItem);
 }
 
 export default handler;

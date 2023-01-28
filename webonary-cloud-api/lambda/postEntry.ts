@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * @apiDefine BasicAuthHeader
  *
@@ -20,9 +21,9 @@
  * @apiParam (Post Body) {String} body.guid GUID of the entry
  * @apiParam (Post Body) {String} body.dictionaryId Unique code for dictionary
  * @apiParam (Post Body) {String} body.letterHead Letter that this entry should be listed under
- * @apiParam (Post Body) {Object[]} body.mainHeadWord Array of Entry head word data
- * @apiParam (Post Body) {String} body.mainHeadWord.lang ISO language code for the head word
- * @apiParam (Post Body) {String} body.mainHeadWord.value ISO head word
+ * @apiParam (Post Body) {Object[]} body.mainheadword Array of Entry head word data
+ * @apiParam (Post Body) {String} body.mainheadword.lang ISO language code for the head word
+ * @apiParam (Post Body) {String} body.mainheadword.value ISO head word
  * @apiParam (Post Body) {Object} body.audio Audio associated with the entry
  * @apiParam (Post Body) {String} body.audio.fileClass Css class for the audio
  * @apiParam (Post Body) {String} body.audio.id Unique id for audio file
@@ -39,16 +40,16 @@
  * @apiParam (Post Body) {String} body.reversalLetterHeads.lang ISO language code for the reversal entry
  * @apiParam (Post Body) {String} body.reversalLetterHeads.value Reversal entry word head letter
  * @apiParam (Post Body) {Object[]} body.senses Senses for this entry
- * @apiParam (Post Body) {Object[]} body.senses.definitionOrGloss Definition or gloss for the entry
- * @apiParam (Post Body) {String} body.senses.definitionOrGloss.lang ISO language code
- * @apiParam (Post Body) {String} body.senses.definitionOrGloss.value Definition or the gloss
- * @apiParam (Post Body) {Object} body.senses.partOfSpeech Part of speech for this sense
- * @apiParam (Post Body) {String} body.senses.partOfSpeech.lang ISO language code
- * @apiParam (Post Body) {String} body.senses.partOfSpeech.value Part of speech abbreviation
- * @apiParam (Post Body) {Object[]} body.senses.semanticDomains Semantic Domains used in dictionary entries (language specific)
- * @apiParam (Post Body) {String} body.senses.semanticDomains.key Hierarchical code
- * @apiParam (Post Body) {String} body.senses.semanticDomains.lang ISO language code
- * @apiParam (Post Body) {String} body.senses.semanticDomains.value Semantic domain name
+ * @apiParam (Post Body) {Object[]} body.senses.definitionorgloss Definition or gloss for the entry
+ * @apiParam (Post Body) {String} body.senses.definitionorgloss.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.definitionorgloss.value Definition or the gloss
+ * @apiParam (Post Body) {Object} body.senses.partofspeech Part of speech for this sense
+ * @apiParam (Post Body) {String} body.senses.partofspeech.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.partofspeech.value Part of speech abbreviation
+ * @apiParam (Post Body) {Object[]} body.senses.semanticdomains Semantic Domains used in dictionary entries (language specific)
+ * @apiParam (Post Body) {String} body.senses.semanticdomains.key Hierarchical code
+ * @apiParam (Post Body) {String} body.senses.semanticdomains.lang ISO language code
+ * @apiParam (Post Body) {String} body.senses.semanticdomains.value Semantic domain name
  */
 
 /**
@@ -121,7 +122,7 @@
  *       "guid": "f9ae73a3-7b28-4fd3-bf89-2b23358b61c6"
  *       "dictionaryId": "moore",
  *       "letterHead": "ã",
- *       "mainHeadWord": [
+ *       "mainheadword": [
  *         {
  *           "lang": "mos",
  *           "value": "ãadga"
@@ -158,7 +159,7 @@
  *       ],
  *       "senses": [
  *         {
- *           "definitionOrGloss": [
+ *           "definitionorgloss": [
  *             {
  *               "lang": "fr",
  *               "value": "prunier noir"
@@ -168,12 +169,12 @@
  *               "value": "blackberry tree, plum tree"
  *             }
  *           ],
- *           "partOfSpeech": {
+ *           "partofspeech": {
  *             "lang": "fr",
  *             "value": "n"
  *           }
  *         }
- *         "semanticDomains": [
+ *         "semanticdomains": [
  *           {
  *             "key": "9",
  *             "lang": "fr",
@@ -211,158 +212,223 @@
  * @apiUse TypeError
  */
 
-import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { load } from 'cheerio';
 import { MongoClient, UpdateResult } from 'mongodb';
-import { compile as compileHtmlToText } from 'html-to-text';
+
 import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
-  DB_COLLECTION_DICTIONARY_ENTRIES,
-  DB_COLLECTION_REVERSAL_ENTRIES,
+  DB_COLLECTION_REVERSALS,
   DB_MAX_UPDATES_PER_CALL,
+  dbCollectionEntries,
+  reversalEntryId,
 } from './db';
 import { PostResult } from './base.model';
+import { ENTRY_TYPE_REVERSAL, DbPaths, EntryType } from './entry.model';
 import {
-  DictionaryEntryItem,
-  ReversalEntryItem,
-  EntryItemType,
-  ENTRY_TYPE_REVERSAL,
-  EntryValueItem,
-} from './entry.model';
-import { copyObjectIgnoreKeyCase, createFailureResponse, getBasicAuthCredentials } from './utils';
+  getBasicAuthCredentials,
+  isMaintenanceMode,
+  maintenanceModeMessage,
+  removeDiacritics,
+} from './utils';
 import * as Response from './response';
 
 let dbClient: MongoClient;
 
 /**
- * Removes any HTML from a string.
+ * Searches for language texts and strips HTML and returns an object of text strings keyed by language
  */
-const stripHtml = compileHtmlToText({
-  selectors: [
-    // don't display href attributes of links
-    { selector: 'a', format: 'inline' },
-    // treat span tags as word separators
-    { selector: 'span', format: 'paragraph' },
-  ],
-});
+const getLangTexts = (xhtml: string) => {
+  const $ = load(xhtml);
 
-/**
- * Fills in empty DictionaryEntry fields from other fields that were supplied.
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function fillDictionaryEntryFields(source: any, destination: DictionaryEntryItem): void {
-  // eslint-disable-next-line no-param-reassign
-  destination.mainHeadWord = destination.mainHeadWord.filter((word) => word.value);
-  if (destination.mainHeadWord.length === 0 && source.headword && source.headword.length > 0) {
-    // eslint-disable-next-line no-param-reassign
-    destination.mainHeadWord = source.headword.map((word: never) =>
-      copyObjectIgnoreKeyCase(new EntryValueItem(), word),
-    );
-  }
+  const langTexts: Record<string, string[]> = {};
+  const langUnaccentedTexts: Record<string, string[]> = {};
+  const searchTexts: string[] = [];
+
+  // eslint-disable-next-line array-callback-return
+  $('span[lang]').each((index, elem) => {
+    const lang = $(elem).attr('lang');
+    const text = $(elem).text();
+    if (!lang || !text) {
+      return;
+    }
+
+    const parent = $(elem).parent();
+    if (
+      parent.hasClass('graminfoabbrev') ||
+      parent.hasClass('partofspeech') ||
+      parent.hasClass('ownertype_abbreviation') ||
+      parent.hasClass('reverseabbr') ||
+      parent.parent().hasClass('semanticdomains')
+    ) {
+      return;
+    }
+
+    // MongoDb does now allow diacritic insensitive search, except in text search, i.e. ENTRY_SEARCH_TEXTS
+    // So we search for any word with diacritics and then strip them and store them separately for use later
+    const unaccentedText = removeDiacritics(text);
+
+    if (langTexts[lang]) {
+      if (!langTexts[lang].includes(text)) {
+        langTexts[lang].push(text);
+      }
+
+      if (!langUnaccentedTexts[lang].includes(unaccentedText)) {
+        langUnaccentedTexts[lang].push(unaccentedText);
+      }
+    } else {
+      langTexts[lang] = [text];
+      langUnaccentedTexts[lang] = [unaccentedText];
+    }
+
+    if (!searchTexts.includes(text)) {
+      searchTexts.push(text);
+    }
+  });
+
+  return { langTexts, langUnaccentedTexts, searchTexts };
+};
+
+interface TransformPostedEntryParams {
+  postedEntry: Record<string, any>;
+  dictionaryId: string;
 }
-/* eslint-enable no-param-reassign */
+
+const transformToReversalEntry = ({
+  postedEntry,
+  dictionaryId,
+}: TransformPostedEntryParams): EntryType => {
+  return {
+    ...postedEntry,
+    _id: reversalEntryId({ dictionaryId, guid: postedEntry.guid }),
+    guid: postedEntry.guid,
+    dictionaryId,
+  };
+};
+
+export const transformToEntry = ({
+  postedEntry,
+  dictionaryId,
+}: TransformPostedEntryParams): EntryType => {
+  const extraTexts: Record<string, string[] | Record<string, string[]>> = {};
+  if (postedEntry.displayXhtml) {
+    const { langTexts, langUnaccentedTexts, searchTexts } = getLangTexts(postedEntry.displayXhtml);
+    if (searchTexts.length) {
+      extraTexts[DbPaths.ENTRY_SEARCH_TEXTS] = searchTexts;
+      extraTexts[DbPaths.ENTRY_LANG_TEXTS] = langTexts;
+      extraTexts[DbPaths.ENTRY_LANG_UNACCENTED_TEXTS] = langUnaccentedTexts;
+    }
+  }
+
+  return {
+    ...postedEntry,
+    _id: postedEntry.guid,
+    guid: postedEntry.guid,
+    dictionaryId,
+    ...extraTexts,
+  };
+};
 
 export async function upsertEntries(
-  postedEntries: Array<object>,
-  isReversalEntry: boolean,
+  postedEntries: Array<any>,
+  isReversal: boolean,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResults: UpdateResult[]; updatedAt: string }> {
-  const updatedAt = new Date().toUTCString();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const entries: EntryItemType[] = postedEntries.map((postedEntry: any) => {
-    const { guid } = postedEntry;
-    const entry = isReversalEntry
-      ? new ReversalEntryItem(guid, dictionaryId, username, updatedAt)
-      : new DictionaryEntryItem(guid, dictionaryId, username, updatedAt);
-    Object.assign(entry, copyObjectIgnoreKeyCase(entry, postedEntry));
-    if (entry instanceof DictionaryEntryItem) {
-      fillDictionaryEntryFields(postedEntry, entry);
-    }
-    entry.displayText = stripHtml(entry.displayXhtml);
+) {
+  const updatedAt = new Date();
+  const transformEntryFunction = isReversal ? transformToReversalEntry : transformToEntry;
+  const entries = postedEntries.map((postedEntry) => {
+    const entry = transformEntryFunction({ postedEntry, dictionaryId });
+    entry.updatedAt = updatedAt;
+    entry.updatedBy = username;
     return entry;
   });
 
+  // eslint-disable-next-line no-console
+  console.log(`Converted first posted entry to `, JSON.stringify(entries[0]));
+
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
-  const dbCollection = isReversalEntry
-    ? DB_COLLECTION_REVERSAL_ENTRIES
-    : DB_COLLECTION_DICTIONARY_ENTRIES;
+  const dbCollection = isReversal ? DB_COLLECTION_REVERSALS : dbCollectionEntries(dictionaryId);
 
-  const promises = entries.map((entry: EntryItemType): Promise<UpdateResult> => {
-    return db
-      .collection(dbCollection)
-      .updateOne({ _id: entry._id }, { $set: entry }, { upsert: true });
+  const promises = entries.map((entry) => {
+    // reversal entries for all dictionaries are stored in a single collection
+    return db.collection(dbCollection).replaceOne({ _id: entry._id }, entry, { upsert: true });
   });
 
-  const dbResults: UpdateResult[] = await Promise.all(promises);
-  return { updatedAt, dbResults };
+  const dbResults = await Promise.all(promises);
+
+  return { updatedAt: updatedAt.toUTCString(), dbResults };
 }
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
+  }
 
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
-  const isReversalEntry = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
+  const isReversal = event.queryStringParameters?.entryType === ENTRY_TYPE_REVERSAL;
   const eventBody = event.body;
   if (!dictionaryId || !authHeaders) {
-    return callback(null, Response.badRequest('Invalid parameters'));
+    return Response.badRequest('Invalid parameters');
   }
 
-  try {
-    const { username } = getBasicAuthCredentials(authHeaders);
+  const { username } = getBasicAuthCredentials(authHeaders);
+  const postedEntries = JSON.parse(eventBody as string);
 
-    const postedEntries = JSON.parse(eventBody as string);
+  // eslint-disable-next-line no-console
+  console.log(
+    `Received request to post ${postedEntries.length} entries for ${dictionaryId} by user ${username}`,
+    JSON.stringify(postedEntries[0]),
+  );
 
-    let errorMessage = '';
-    if (!Array.isArray(postedEntries)) {
-      errorMessage = 'Input must be an array of dictionary entry objects';
-    } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
-      errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
-    } else if (postedEntries.find((entry) => typeof entry !== 'object')) {
-      errorMessage = 'Each dictionary entry must be a valid JSON object';
-    } else if (postedEntries.find((entry) => !('guid' in entry && entry.guid))) {
-      errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
-    }
-
-    if (errorMessage) {
-      return callback(null, Response.badRequest(errorMessage));
-    }
-
-    const { updatedAt, dbResults } = await upsertEntries(
-      postedEntries,
-      isReversalEntry,
-      dictionaryId,
-      username,
-    );
-
-    const updatedCount = dbResults
-      .filter((result) => result.modifiedCount)
-      .reduce((total, result) => total + result.modifiedCount, 0);
-
-    const insertedIds = dbResults
-      .filter((result) => result.upsertedCount)
-      .map((result) => result.upsertedId.toString());
-
-    const postResult: PostResult = {
-      updatedAt,
-      updatedCount,
-      insertedCount: insertedIds.length,
-      insertedIds: insertedIds.map((objectId) => objectId.toString()),
-    };
-
-    return callback(null, Response.success(postResult));
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-    return callback(null, createFailureResponse(error));
+  let errorMessage = '';
+  if (!Array.isArray(postedEntries)) {
+    errorMessage = 'Input must be an array of dictionary entry objects';
+  } else if (postedEntries.length > DB_MAX_UPDATES_PER_CALL) {
+    errorMessage = `Input cannot be more than ${DB_MAX_UPDATES_PER_CALL} entries per API invocation`;
+  } else if (postedEntries.some((entry) => typeof entry !== 'object')) {
+    errorMessage = 'Each dictionary entry must be a valid JSON object';
+  } else if (postedEntries.some((entry) => !('guid' in entry && entry.guid))) {
+    errorMessage = 'Each dictionary entry must have guid as a globally unique identifier';
   }
+
+  if (errorMessage) {
+    return Response.badRequest(errorMessage);
+  }
+
+  const { updatedAt, dbResults } = await upsertEntries(
+    postedEntries,
+    isReversal,
+    dictionaryId,
+    username,
+  );
+
+  const updatedCount = dbResults
+    .filter((result) => result.modifiedCount)
+    .reduce((total, result) => total + result.modifiedCount, 0);
+
+  const insertedIds = dbResults
+    .filter((result) => result.upsertedCount)
+    .map((result) => result.upsertedId.toString());
+
+  const postResult: PostResult = {
+    updatedAt,
+    updatedCount,
+    insertedCount: insertedIds.length,
+    insertedIds: insertedIds.map((objectId) => objectId.toString()),
+  };
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `Sending results for posting ${
+      isReversal ? 'reversal' : ''
+    } entries to dictionary ${dictionaryId}`,
+    postResult,
+  );
+  return Response.success(postResult);
 }
 
 export default handler;

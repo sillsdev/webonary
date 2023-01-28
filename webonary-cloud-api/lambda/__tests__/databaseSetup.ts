@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { connectToDB } from '../mongo';
-import { MONGO_DB_NAME, createIndexes } from '../db';
+import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
 
 import { upsertDictionary } from '../postDictionary';
 
@@ -15,7 +15,7 @@ export function setupMongo(): void {
 
     const dbClient = await connectToDB();
     const db = dbClient.db(MONGO_DB_NAME);
-    await createIndexes(db);
+    await createReversalsIndexes(db);
   });
 
   afterAll(async () => {
@@ -25,10 +25,10 @@ export function setupMongo(): void {
 
 let nextDictionaryNumber = 1;
 /** Inserts a new dictionary into the database and returns its dictionaryId. */
-export async function createDictionary(): Promise<string> {
+export async function createDictionary(data = '{}'): Promise<string> {
   const dictionaryId = `test-dictionary-${nextDictionaryNumber}`;
   nextDictionaryNumber += 1;
 
-  await upsertDictionary('{}', dictionaryId, 'test-user');
+  await upsertDictionary(data, dictionaryId, 'test-user');
   return dictionaryId;
 }

@@ -236,11 +236,10 @@ class Webonary_Excel
 			$ethnologue_code = trim($wpdb->get_var ( $sql ));
 			$fields[] = $ethnologue_code;
 
-			if (get_option('useCloudBackend')) {
+			if (IS_CLOUD_BACKEND) {
 				$fields[] = 'Cloud';
-	
-				$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-				$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+
+				$dictionary = Webonary_Cloud::getDictionary();
 				if (is_null($dictionary)) {
 					$numpost = '';
 					$lastEditDate = '';

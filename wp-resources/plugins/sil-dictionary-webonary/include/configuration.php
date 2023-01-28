@@ -8,6 +8,7 @@ add_action('wp_ajax_getAjaxCurrentIndexedCount', 'Webonary_Ajax::ajaxCurrentInde
 add_action('wp_ajax_getAjaxCurrentImportedCount', 'Webonary_Ajax::ajaxCurrentImportedCount');
 add_action('wp_ajax_getAjaxRestartIndexing', 'Webonary_Ajax::ajaxRestartIndexing');
 add_action('wp_ajax_getAjaxDisplaySites', 'Webonary_Ajax::ajaxDisplaySites');
+add_action('wp_ajax_postAjaxDeleteData', 'Webonary_Ajax::deleteData');
 
 function relevanceSave()
 {
@@ -115,7 +116,7 @@ function save_configurations()
 	global $wpdb;
 
 	if (!empty($_POST['delete_data'])) {
-		clean_out_dictionary_data();
+		Webonary_Delete_Data::DeleteDictionaryData();
 	}
 	if (!empty($_POST['save_settings'])) {
 		update_option('publicationStatus', $_POST['publicationStatus']);
@@ -304,9 +305,9 @@ function webonary_conf_widget($showTitle = false)
 
 	$arrLanguageCodes = array();
 	$noReversalEntries = true;
-	if (get_option('useCloudBackend')) {
-		$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-		$dictionary = Webonary_Cloud::getDictionary($dictionary_id);
+	if (IS_CLOUD_BACKEND) {
+
+		$dictionary = Webonary_Cloud::getDictionary();
 		$import_status = '';
 		if (!is_null($dictionary)) {
 			$import_status .= '<li>Last Upload: <em>' . $dictionary->updatedAt . '</em>';
@@ -354,7 +355,7 @@ function webonary_conf_widget($showTitle = false)
 	<div class="wrap">
 		<?php
 		if($showTitle)
-			echo '<h2>' . _e('Webonary', 'webonary') . '</h2>' . PHP_EOL;
+			echo '<h2>' . __('Webonary', 'sil_dictionary') . '</h2>' . PHP_EOL;
 
 		_e('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary');
 
@@ -390,25 +391,20 @@ function webonary_conf_widget($showTitle = false)
 		 * Standard UI
 		 */
 		?>
+		<form id="configuration-form" method="post" action="">
 		<div class="tabs-content">
 			<?php
 			Webonary_Configuration::admin_section_start('import');
 			?>
-			<h3><?php _e('Upload Data', 'sil_dictionary'); ?></h3>
 
-			<form method="post" action="admin.php?import=pathway-xhtml&step=2">
-				<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
-					<strong>Upload Status:</strong>
-					<?php echo $import_status ?>
-				</div>
-			</form>
+			<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px; margin: 1rem 0">
+				<h3 style="margin: 0.5rem 0 1rem 0">Upload Status:</h3>
+				<?php echo $import_status ?>
+			</div>
 
-			<form id="configuration-form" method="post" action="">
-				<button type="submit" disabled style="display: none" aria-hidden="true"></button>
-
-				<p>
+				<div style="margin: 1rem 0">
 					<?php _e('Publication status:'); ?>
-					<select name=publicationStatus>
+					<select name="publicationStatus">
 						<option value=0><?php _e('no status set'); ?></option>
 						<option value=1 <?php selected(get_option('publicationStatus'), 1); ?>><?php _e('Rough draft'); ?></option>
 						<option value=2 <?php selected(get_option('publicationStatus'), 2); ?>><?php _e('Self-reviewed draft'); ?></option>
@@ -417,14 +413,14 @@ function webonary_conf_widget($showTitle = false)
 						<option value=5 <?php selected(get_option('publicationStatus'), 5); ?>><?php _e('Finished (no formal publication)'); ?></option>
 						<option value=6 <?php selected(get_option('publicationStatus'), 6); ?>><?php _e('Formally published'); ?></option>
 					</select>
-				</p>
+				</div>
 
 				<p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
-					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', get_option('useCloudBackend')); ?> />
+					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', IS_CLOUD_BACKEND); ?> />
 				</p>
 
 				<h3><?php _e('Delete Data', 'sil_dictionary'); ?></h3>
-				<p>
+				<div style="margin: 1rem 0">
 					<?php if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && is_super_admin()) { ?>
 						<strong style=color:red;>You are not in your testing environment!</strong>
 						<br>
@@ -448,11 +444,24 @@ function webonary_conf_widget($showTitle = false)
 						<?php
 					}
 					?>
-					<?php _e('Are you sure you want to delete the dictionary data?', 'sil_dictionary'); ?>
-					<input style="margin-left: 8px" class="button button-webonary" type="submit" name="delete_data" value="<?php _e('Delete', 'sil_dictionary'); ?>">
-					<br>
+					<input type="hidden" id="confirm-delete-text"
+						   value="<?php _e('Are you sure you want to delete the dictionary data?', 'sil_dictionary'); ?>">
+					<div id="webonary-delete-msg"></div>
+					<?php if (IS_CLOUD_BACKEND) { ?>
+						<input type="hidden" id="pwd-required-text"
+							   value="<?php _e('Your password is required.', 'sil_dictionary'); ?>">
+						<div style="margin-bottom: 8px">
+							<p style="margin-bottom: 3px">Enter your Webonary password to delete</p>
+							<input type="password" name="pwd" id="user_pass" aria-describedby="login-message"
+								   class="input password-input" value="" size="20" autocomplete="current-password">
+						</div>
+					<?php } ?>
+					<div>
+						<button style="margin: 0 0 12px 0" class="button button-webonary" type="button"
+								onclick="DeleteWebonaryData();"><?php _e('Delete', 'sil_dictionary'); ?></button>
+					</div>
 					<?php _e('(deletes all posts in the category "webonary")', 'sil_dictionary'); ?>
-				</p>
+				</div>
 
 				<?php
 				Webonary_Configuration::admin_section_end('import', 'Save Changes');
@@ -462,7 +471,7 @@ function webonary_conf_widget($showTitle = false)
 
 				<h3><?php _e('Default Search Options');?></h3>
 
-				<p>
+				<div style="margin:1rem 0">
 					<?php
 					if(get_option('hasComposedCharacters') == 1)
 					{
@@ -494,7 +503,7 @@ function webonary_conf_widget($showTitle = false)
 						<?php
 					}
 					?>
-				</p>
+				</div>
 				<?php
 				if(class_exists('special_characters'))
 				{
@@ -551,8 +560,9 @@ function webonary_conf_widget($showTitle = false)
 				?>
 
 				<h3>Browse Views</h3>
-				See <a href="https://www.webonary.org/help/creating-browse-views/" target="_blank">Help with creating Browse Views</a>
-				<p>
+				<p>See <a href="https://www.webonary.org/help/creating-browse-views/" target="_blank">Help with creating Browse Views</a></p>
+
+				<div style="margin:1rem 0">
 					<?php
 					$DisplaySubentriesAsMainEntries = get_option('DisplaySubentriesAsMainEntries');
 					if($DisplaySubentriesAsMainEntries == 1)
@@ -561,8 +571,8 @@ function webonary_conf_widget($showTitle = false)
 					<input name="DisplaySubentriesAsMainEntries" type="checkbox" value="1"
 						<?php checked('1', $DisplaySubentriesAsMainEntries); ?> />
 					<?php _e('Display subentries as main entries'); ?>
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					<?php
 					}
 					if(count($arrLanguageCodes) == 0)
@@ -579,8 +589,8 @@ function webonary_conf_widget($showTitle = false)
 					<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
 					<input type="hidden" name="languagecode" value="<?php echo get_option('languagecode'); ?>">
 					<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
 					<?php
 					if(is_super_admin())
@@ -594,8 +604,8 @@ function webonary_conf_widget($showTitle = false)
 					{
 						echo stripslashes(get_option('vernacular_alphabet'));
 					}?>
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					Font to use for the vernacular letters in browse view:
 					<select name=vernacularLettersFont>
 						<option value=""></option>
@@ -612,23 +622,23 @@ function webonary_conf_widget($showTitle = false)
 						}
 						?>
 					</select>
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					<input name="vernacularRightToLeft" type="checkbox" value="1" <?php checked('1', get_option('vernacularRightToLeft')); ?> /><?php _e('Display right-to-left') ?>
-				</p>
+				</div>
 			<?php
 			$IncludeCharactersWithDiacritics = get_option('IncludeCharactersWithDiacritics');
 			if($IncludeCharactersWithDiacritics == 1) {
 				$IncludeCharactersWithDiacritics = 1;
 			}
 			?>
-				<p>
+				<div style="margin:1rem 0">
 					<input name="IncludeCharactersWithDiacritics" type="checkbox" value="1" <?php checked('1', $IncludeCharactersWithDiacritics); ?> />
 					<?php _e('Include characters with diacritics (e.g. words starting with ä, à, etc. will all display under a)')?>
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					<b><?php _e('Reversal Indexes:'); ?></b>
-				</p>
+				</div>
 
 			<?php
 			if($noReversalEntries)
@@ -642,7 +652,7 @@ function webonary_conf_widget($showTitle = false)
 				if($k >= 0)
 				{
 					?>
-					<p>
+					<div style="margin:1rem 0">
 						<i><?php _e('1. Reversal index'); ?></i><br>
 						Shortcode: [reversalindex1]
 						<br><br>
@@ -686,7 +696,7 @@ function webonary_conf_widget($showTitle = false)
 						}
 						?>
 						<input name="reversal1RightToLeft" type="checkbox" value="1" <?php checked('1', get_option('reversal1RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
-					</p>
+					</div>
 					<?php
 				}
 
@@ -696,12 +706,12 @@ function webonary_conf_widget($showTitle = false)
 					<hr>
 					<i><?php _e('2. Reversal index'); ?></i><br>
 					Shortcode: [reversalindex2]
-					<p>
+					<div style="margin:1rem 0">
 						<input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
 						<?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
 						<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-					</p>
-					<p>
+					</div>
+					<div style="margin:1rem 0">
 						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/"
 													  target="_blank"><?php _e('configure in FLEx'); ?></a>):
 						<?php
@@ -717,7 +727,7 @@ function webonary_conf_widget($showTitle = false)
 						?>
 						<input name="reversal2RightToLeft" type="checkbox"
 							   value="1" <?php checked('1', get_option('reversal2RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
-					</p>
+					</div>
 					<?php
 				}
 
@@ -727,12 +737,12 @@ function webonary_conf_widget($showTitle = false)
 					<hr>
 					<i><?php _e('3. Reversal index'); ?></i><br>
 					Shortcode: [reversalindex3]
-					<p>
+					<div style="margin:1rem 0">
 						<input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
 						<?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
 						<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
-					</p>
-					<p>
+					</div>
+					<div style="margin:1rem 0">
 						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
 						<?php
 						if(is_super_admin())
@@ -748,7 +758,7 @@ function webonary_conf_widget($showTitle = false)
 						}
 						?>
 						<input name="reversal3RightToLeft" type="checkbox" value="1" <?php checked('1', get_option('reversal3RightToLeft')); ?> /><?php _e('Display right-to-left') ?>
-					</p>
+					</div>
 					<?php
 				}
 			}
@@ -812,6 +822,7 @@ function webonary_conf_widget($showTitle = false)
 
 						if(!strstr($userFont, 'default font'))
 						{
+							echo '<div style="margin:1rem 0">' . PHP_EOL;
 							echo "<strong>" . $userFont . "</strong><br>";
 							$fontLinked = false;
 							if(count($arrFontFacesFile) > 0)
@@ -862,7 +873,7 @@ function webonary_conf_widget($showTitle = false)
 								<?php
 								$fontNr++;
 							}
-							echo "<p></p>";
+							echo '</div>' . PHP_EOL;
 						}
 					}
 				}
@@ -873,20 +884,21 @@ function webonary_conf_widget($showTitle = false)
 				?>
 
 				<h3>Notes</h3>
-				Site ID: <?php echo get_current_blog_id(); ?>
+				<p>Site ID: <?php echo get_current_blog_id(); ?></p>
 				<p>
 					<span style="color:red">These notes are only visible to super admins.</span>
 				</p>
-				<p>
+				<div style="margin:1rem 0">
 					<textarea name=txtNotes cols=50 rows=6><?php echo stripslashes(get_option('notes'));?></textarea>
-				</p>
-				<p>
+				</div>
+				<div style="margin:1rem 0">
 					Hide search form: <input name="noSearchForm" type="checkbox" value="1" <?php checked('1', get_option('noSearch')); ?> />
-				</p>
-				<p>
-					<?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
-				</p>
-			</form>
+				</div>
+
+			    <?php Webonary_Configuration::admin_section_end('superadmin', 'Save Changes'); ?>
+
 		</div>
+		</form>
+	</div>
 	<?php
 }

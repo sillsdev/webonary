@@ -2,15 +2,15 @@
   "name": "lambda",
   "version": "0.1.0",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.101"
+    "@types/aws-lambda": "^8.10.101",
+    "mongodb-memory-server": "^8.10.2"
   },
   "dependencies": {
-    "@types/html-to-text": "^8.1.0",
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.691.0",
     "axios": "^0.27.2",
-    "html-to-text": "^8.2.1",
+    "cheerio": "^1.0.0-rc.12",
     "mongodb": "^4.7.0",
-    "mongodb-client-encryption": "^2.1.0"
+    "mongodb-client-encryption": "^2.3.0"
   }
 }

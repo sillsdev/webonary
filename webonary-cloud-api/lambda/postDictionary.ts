@@ -104,18 +104,17 @@
  */
 
 import axios from 'axios';
-import { APIGatewayEvent, Callback, Context } from 'aws-lambda';
-import { MongoClient, UpdateResult } from 'mongodb';
+import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { MongoClient } from 'mongodb';
 
 import { connectToDB } from './mongo';
-import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES } from './db';
+import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES, createEntriesIndexes } from './db';
 import { PostResult } from './base.model';
-import { DictionaryItem } from './dictionary.model';
 import {
-  copyObjectIgnoreKeyCase,
-  setSearchableEntries,
   getBasicAuthCredentials,
-  createFailureResponse,
+  isMaintenanceMode,
+  maintenanceModeMessage,
+  setSearchableEntries,
 } from './utils';
 import * as Response from './response';
 
@@ -125,80 +124,76 @@ export async function upsertDictionary(
   eventBody: string | null,
   dictionaryId: string,
   username: string,
-): Promise<{ dbResult: UpdateResult; updatedAt: string }> {
-  const updatedAt = new Date().toUTCString();
+) {
+  const updatedAt = new Date();
 
   const posted = JSON.parse(eventBody as string);
-  let dictionaryItem = new DictionaryItem(dictionaryId, username, updatedAt);
-  dictionaryItem = Object.assign(dictionaryItem, copyObjectIgnoreKeyCase(dictionaryItem, posted));
+  const dictionaryItem = { ...posted, updatedAt, updatedBy: username };
   if (dictionaryItem.semanticDomains) {
     dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
   }
+
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
 
   const dbResult = await db
     .collection(DB_COLLECTION_DICTIONARIES)
-    .updateOne({ _id: dictionaryId }, { $set: dictionaryItem }, { upsert: true });
-  return { updatedAt, dbResult };
+    .replaceOne({ _id: dictionaryId }, dictionaryItem, { upsert: true });
+
+  await createEntriesIndexes(db, dictionaryId);
+
+  return { updatedAt: updatedAt.toUTCString(), dbResult };
 }
 
-export async function handler(
-  event: APIGatewayEvent,
-  context: Context,
-  callback: Callback,
-): Promise<void> {
-  // eslint-disable-next-line no-param-reassign
-  context.callbackWaitsForEmptyEventLoop = false;
+export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
+  if (isMaintenanceMode()) {
+    return Response.temporarilyUnavailable(maintenanceModeMessage());
+  }
 
   const authHeaders = event.headers?.Authorization;
   const dictionaryId = event.pathParameters?.dictionaryId?.toLowerCase();
   const eventBody = event.body;
   if (!dictionaryId || !authHeaders) {
-    return callback(null, Response.badRequest('Invalid parameters'));
+    return Response.badRequest('Invalid parameters');
   }
 
+  const auth = getBasicAuthCredentials(authHeaders);
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `Received request to post dictionary ${dictionaryId} by user ${auth.username}`,
+    eventBody,
+  );
+  const { updatedAt, dbResult } = await upsertDictionary(eventBody, dictionaryId, auth.username);
+
+  // Call Webonary to alert that dictionary data is ready and refreshed
+  axios.defaults.headers.post['Content-Type'] = 'application/json';
+  const resetPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_RESET_DICTIONARY_PATH}`;
+  let message = '';
+
   try {
-    const credentials = getBasicAuthCredentials(authHeaders);
-    const { updatedAt, dbResult } = await upsertDictionary(
-      eventBody,
-      dictionaryId,
-      credentials.username,
-    );
+    const response = await axios.post(resetPath, '{}', { auth });
 
-    // Call Webonary to alert that dictionary data is ready and refreshed
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    const resetPath = `${process.env.WEBONARY_URL}/${dictionaryId}${process.env.WEBONARY_RESET_DICTIONARY_PATH}`;
-    let message = '';
-
-    try {
-      const response = await axios.post(resetPath, '{}', {
-        auth: credentials,
-      });
-
-      if (response.status === 200 && response.data) {
-        message = response.data;
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-      message = JSON.stringify(error);
+    if (response.status === 200 && response.data) {
+      message = response.data;
     }
-
-    const postResult: PostResult = {
-      updatedAt,
-      updatedCount: dbResult.modifiedCount,
-      insertedCount: dbResult.upsertedCount,
-      insertedIds: [dictionaryId],
-      message,
-    };
-
-    return callback(null, Response.success({ ...postResult }));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-    return callback(null, createFailureResponse(error));
+    message = JSON.stringify(error);
   }
+
+  const postResult: PostResult = {
+    updatedAt,
+    updatedCount: dbResult.modifiedCount,
+    insertedCount: dbResult.upsertedCount,
+    insertedIds: [dictionaryId],
+    message,
+  };
+
+  // eslint-disable-next-line no-console
+  console.log(`Sending result for posting dictionary ${dictionaryId}`, postResult);
+  return Response.success(postResult);
 }
 
 export default handler;
