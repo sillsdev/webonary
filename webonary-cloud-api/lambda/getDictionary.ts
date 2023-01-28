@@ -91,7 +91,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
       DbPaths.ENTRY_GLOSS_LANG,
     ].map((key) => entriesCollection.distinct(key)),
   );
-  dbItem.definitionOrGlossLangs = [...new Set(senseLangs.flat(1))];
+  dbItem.definitionOrGlossLangs = [...new Set(senseLangs.flat(1))].filter((lang) => lang !== '');
 
   // get total entries
   dbItem.mainLanguage.entriesCount = await entriesCollection.countDocuments();
