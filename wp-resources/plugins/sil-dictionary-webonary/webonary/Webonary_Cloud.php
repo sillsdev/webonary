@@ -638,8 +638,10 @@ class Webonary_Cloud
 		curl_close($ch);
 
 		// first check for a successful response
-		if (isset($response->Content->deleteDictionaryCount))
+		if (isset($response->Content->deleteDictionaryCount)) {
+			delete_option('dictionary');
 			return ['deleted' => 1, 'msg' => __('Finished deleting Webonary data', 'sil_dictionary')];
+		}
 
 		// we were not successful, build the error message
 		if (!empty($response->Content->Message))
