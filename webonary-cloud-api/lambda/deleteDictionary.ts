@@ -21,7 +21,6 @@ import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
   DB_COLLECTION_DICTIONARIES,
-  DB_COLLECTION_ENTRIES,
   DB_COLLECTION_REVERSALS,
   dbCollectionEntries,
 } from './db';
@@ -51,13 +50,13 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   // eslint-disable-next-line no-console
   console.log(`Received request to delete dictionary ${dictionaryId}`);
 
-  const [dbResultDictionary, dbResultReversal, dbResultEntry, dbResultEntryLegacy] =
-    await Promise.all([
-      db.collection(DB_COLLECTION_DICTIONARIES).deleteOne({ _id: dictionaryId }),
-      db.collection(DB_COLLECTION_REVERSALS).deleteMany({ dictionaryId }),
-      db.collection(dbCollectionEntries(dictionaryId)).deleteMany({}),
-      db.collection(DB_COLLECTION_ENTRIES).deleteMany({ dictionaryId }),
-    ]);
+  const dbEntriesCollection = dbCollectionEntries(dictionaryId);
+  const [dbResultDictionary, dbResultReversal, deletedEntryCount] = await Promise.all([
+    db.collection(DB_COLLECTION_DICTIONARIES).deleteOne({ _id: dictionaryId }),
+    db.collection(DB_COLLECTION_REVERSALS).deleteMany({ dictionaryId }),
+    db.collection(dbEntriesCollection).countDocuments(),
+  ]);
+  await db.collection(dbEntriesCollection).drop();
 
   /*
    * NOTE: deleteDictionaryFolder can take longer than API Gateway max timeout, which is 30 seconds.
@@ -71,8 +70,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   const result = {
     deleteDictionaryCount: dbResultDictionary.deletedCount,
     deletedReversalCount: dbResultReversal.deletedCount,
-    deletedEntryCount: dbResultEntry.deletedCount,
-    deletedLegacyEntryCount: dbResultEntryLegacy.deletedCount,
+    deletedEntryCount,
   };
 
   // eslint-disable-next-line no-console
