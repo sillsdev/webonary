@@ -236,7 +236,7 @@ class Webonary_Excel
 			$ethnologue_code = trim($wpdb->get_var ( $sql ));
 			$fields[] = $ethnologue_code;
 
-			if (IS_CLOUD_BACKEND) {
+			if (get_option('useCloudBackend')) {
 				$fields[] = 'Cloud';
 
 				$dictionary = Webonary_Cloud::getDictionary();
@@ -342,16 +342,16 @@ class Webonary_Excel
 <script type="text/javascript">
 
     function fixedRender(data, len) {
-        if (data.length <= len) 
+        if (data.length <= len)
             return data;
-        
+
         return '<span title="' + data + '">' + data.substring(0, len) + '</span>';
-    } 
-    
-    function dateTimeRender(data) {
-    	return '<span style="white-space: nowrap">' + data + '</span>';    
     }
-    
+
+    function dateTimeRender(data) {
+    	return '<span style="white-space: nowrap">' + data + '</span>';
+    }
+
     function setTableHeight() {
 
         let container = $('#all-sites-table').closest('.dataTables_scroll');
@@ -381,10 +381,10 @@ class Webonary_Excel
 
         tbody.css('max-height', 'calc(100vh - ' + (offset + 30).toString() + 'px)');
     }
-    
+
 	$(document).ready(function() {
         let table = $('#all-sites-table');
-        
+
 	    table.DataTable({
 	        ajax: '$url',
 	        paging: false,
@@ -413,9 +413,9 @@ class Webonary_Excel
                 setTableHeight();
 	        }
 	    });
-        
+
         let tbody = table.find('tbody');
-        
+
         tbody.on('click', 'tr', function() {
 
 	        let tr = $(this).closest('tr');
