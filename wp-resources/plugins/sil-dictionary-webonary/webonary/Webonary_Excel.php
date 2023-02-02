@@ -239,7 +239,8 @@ class Webonary_Excel
 			if (get_option('useCloudBackend')) {
 				$fields[] = 'Cloud';
 
-				$dictionary = Webonary_Cloud::getDictionary();
+                $dictionaryId = str_replace('/', '', $blog_details->path);
+                $dictionary = get_option('dictionary', null) ?? Webonary_Cloud::getDictionaryById($dictionaryId);
 				if (is_null($dictionary)) {
 					$numpost = '';
 					$lastEditDate = '';
