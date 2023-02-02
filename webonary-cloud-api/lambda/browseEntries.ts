@@ -24,7 +24,6 @@ import { connectToDB } from './mongo';
 import {
   MONGO_DB_NAME,
   DB_MAX_DOCUMENTS_PER_CALL,
-  DB_COLLECTION_ENTRIES,
   DB_COLLECTION_REVERSALS,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DbCollationStrength,
@@ -32,7 +31,7 @@ import {
   dbCollectionEntries,
 } from './db';
 import { DbFindParameters } from './base.model';
-import { DictionaryEntry, DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
+import { DbPaths, ENTRY_TYPE_REVERSAL } from './entry.model';
 import { getDbSkip } from './utils';
 import * as Response from './response';
 
@@ -89,19 +88,26 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
+  const collation = { locale: dbLocale, strength: DbCollationStrength.CASE_INSENSITIVITY };
 
   if (primarySearch) {
     dbFind[DbPaths.LETTER_HEAD] = text;
 
+    // eslint-disable-next-line no-console
+    console.log(`Browsing ${dbCollection} using ${JSON.stringify(dbFind)}`);
+
     if (countTotalOnly === '1') {
-      const count = await db.collection(dbCollection).countDocuments(dbFind);
+      const count = await db.collection(dbCollection).countDocuments(dbFind, { collation });
+
+      // eslint-disable-next-line no-console
+      console.log(`Found count ${count}`);
       return Response.success({ count });
     }
 
     entries = await db
       .collection(dbCollection)
       .find(dbFind)
-      .collation({ locale: dbLocale, strength: DbCollationStrength.CASE_INSENSITIVITY })
+      .collation(collation)
       .sort({ [DbPaths.SORT_INDEX]: 1 })
       .skip(dbSkip)
       .limit(pageLimit)
@@ -116,19 +122,22 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
       { $match: { [DbPaths.ENTRY_DEFINITION_OR_GLOSS_LANG]: lang } },
     ];
 
+    // eslint-disable-next-line no-console
+    console.log(`Browsing ${dbCollection} using ${JSON.stringify(dbFind)} and ${pipeline}`);
+
     if (countTotalOnly && countTotalOnly === '1') {
       pipeline.push({ $count: 'count' });
-      const count =
-        (await db.collection(dbCollectionEntries(dictionaryId)).aggregate(pipeline).next()) ?? '0';
+      const count = (await db.collection(dbCollection).aggregate(pipeline).next()) ?? '0';
+
+      // eslint-disable-next-line no-console
+      console.log(`Found count ${count}`);
       return Response.success(count);
     }
 
     pipeline.push({ $sort: { [DbPaths.ENTRY_DEFINITION_OR_GLOSS_VALUE]: 1 } });
     entries = await db
-      .collection<DictionaryEntry>(DB_COLLECTION_ENTRIES)
-      .aggregate(pipeline, {
-        collation: { locale: dbLocale, strength: DbCollationStrength.CASE_INSENSITIVITY },
-      })
+      .collection(dbCollection)
+      .aggregate(pipeline, { collation })
       .skip(dbSkip)
       .limit(pageLimit)
       .toArray();
@@ -137,6 +146,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   if (!entries.length) {
     return Response.notFound();
   }
+
+  // eslint-disable-next-line no-console
+  console.log(`Found first entry ${entries[0]}`);
 
   return Response.success(entries);
 }
