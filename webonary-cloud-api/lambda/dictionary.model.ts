@@ -44,6 +44,7 @@ export interface Dictionary {
   reversalLanguages: Language[];
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
+  semanticDomainAbbreviationsUsed?: string[];
   updatedAt?: Date;
   updatedBy?: string;
 }

@@ -384,6 +384,14 @@ SQL;
 		if (empty($domains))
 			return '';
 
+		if (IS_CLOUD_BACKEND) {
+			// For cloud, remove unused domains
+			$dictionary = Webonary_Cloud::getDictionary();
+			$domains = array_filter($domains, function ($value) use ($dictionary) {
+				return in_array($value[slug], $dictionary->semanticDomainAbbreviationsUsed);
+			});
+		}
+
 		$selected_domains = Webonary_Info::getSelectedSemanticDomains();
 
 		$options = ['<option value="">' . __('Semantic Domains', 'sil_domains') . '</option>'];

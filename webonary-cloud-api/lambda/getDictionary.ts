@@ -35,6 +35,8 @@
  * @apiSuccess {String} semanticDomains.guid
  * @apiSuccess {String} semanticDomains.nameInsensitive Lowercase name of this semantic domain
  *
+ * @apiSuccess {String[]} semanticDomainAbbreviationsUsed Distinct semantic domain abbreviations codes used in senses
+ *
  * @apiSuccess {Date} updatedAt Time (UTC) that the dictionary metadata was last updated. Updates to the dictionary and
  * reversal entries do not count. See
  * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString">
@@ -81,9 +83,19 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   }
 
   // TODO: Populate these during dictionary upload
+  const entriesCollection = db.collection(dbCollectionEntries(dictionaryId));
+
+  // get total entries and semantic domains used in senses
+  [dbItem.mainLanguage.entriesCount, dbItem.semanticDomainAbbreviationsUsed] = await Promise.all([
+    entriesCollection.countDocuments(),
+    entriesCollection.distinct(DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE),
+  ]);
+
+  dbItem.semanticDomainAbbreviationsUsed = Array.isArray(dbItem.semanticDomainAbbreviationsUsed)
+    ? dbItem.semanticDomainAbbreviationsUsed.filter((abbreviation) => abbreviation !== '')
+    : [];
 
   // get unique language codes from definitionorgloss
-  const entriesCollection = db.collection(dbCollectionEntries(dictionaryId));
   const senseLangs = await Promise.all(
     [
       DbPaths.ENTRY_DEFINITION_OR_GLOSS_LANG,
@@ -92,9 +104,6 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     ].map((key) => entriesCollection.distinct(key)),
   );
   dbItem.definitionOrGlossLangs = [...new Set(senseLangs.flat(1))].filter((lang) => lang !== '');
-
-  // get total entries
-  dbItem.mainLanguage.entriesCount = await entriesCollection.countDocuments();
 
   // get reversal entry counts
   if (!dbItem.reversalLanguages) {
