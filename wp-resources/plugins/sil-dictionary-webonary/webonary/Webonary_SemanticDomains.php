@@ -379,10 +379,36 @@ SQL;
 
 	public static function GetDropdown(string $lang_code = ''): string
 	{
-		// get the list of domains
-		$domains = self::GetTranslatedList($lang_code, false);
-		if (empty($domains))
-			return '';
+		// check for cached list
+		if (IS_CLOUD_BACKEND) {
+			$dictionary = Webonary_Cloud::getDictionary();
+
+			if (!empty($dictionary->usedSemanticDomains))
+				$domains = $dictionary->usedSemanticDomains;
+		}
+
+		// if no cached list, get from the database
+		if (empty($domains)) {
+			$domains = self::GetTranslatedList($lang_code, false);
+
+			// if no semantic domains were found, return now
+			if (empty($domains))
+				return '';
+		}
+
+		if (IS_CLOUD_BACKEND
+			&& empty($dictionary->usedSemanticDomains)
+			&& !empty($dictionary->semanticDomainAbbreviationsUsed)) {
+
+			// For cloud, remove unused domains
+			$domains = array_filter($domains, function ($value) use ($dictionary) {
+				return in_array($value['slug'], $dictionary->semanticDomainAbbreviationsUsed);
+			});
+
+			// cache the list of used domains
+			$dictionary->usedSemanticDomains = $domains;
+			update_option('dictionary', $dictionary);
+		}
 
 		$selected_domains = Webonary_Info::getSelectedSemanticDomains();
 
