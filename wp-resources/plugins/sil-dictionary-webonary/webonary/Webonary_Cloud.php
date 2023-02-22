@@ -284,32 +284,36 @@ class Webonary_Cloud
 	}
 
 	/**
-	 * @param string|null $dictionaryId
+	 * @param string $dictionaryId
 	 * @return ICloudDictionary|stdClass|null
 	 */
-	public static function getDictionary(?string $dictionaryId = null): ICloudDictionary|stdClass|null
+	public static function getDictionaryById(string $dictionaryId): ICloudDictionary|stdClass|null
 	{
-		if (!is_null(self::$dictionary))
-			return self::$dictionary;
-
-		$dictionary = get_option('dictionary');
-		if (!empty($dictionary)) {
-			self::$dictionary = $dictionary;
+		$request = self::$doGetDictionary . '/' . $dictionaryId;
+		$response = self::remoteGetJson($request);
+		if (self::isValidDictionary($response)) {
+			update_option('dictionary', $response);
+			return $response;
 		}
-		else {
+		
+		return null;
+	}
 
-			if (empty($dictionaryId))
-				$dictionaryId = self::getBlogDictionaryId();
+	/**
+	 * @return ICloudDictionary|stdClass|null
+	 */
+	public static function getDictionary(): ICloudDictionary|stdClass|null
+	{
+			if (!is_null(self::$dictionary))
+				return self::$dictionary;
 
-			$request = self::$doGetDictionary . '/' . $dictionaryId;
-			$response = self::remoteGetJson($request);
-			if (self::isValidDictionary($response)) {
-				update_option('dictionary', $response);
-				self::$dictionary = $response;
+			$dictionary = get_option('dictionary');
+			if (empty($dictionary)) {
+				$dictionary = self::getDictionaryById(self::getBlogDictionaryId());
 			}
-		}
 
-		return self::$dictionary;
+			self::$dictionary = $dictionary;
+			return self::$dictionary;
 	}
 
 	public static function getTotalCount($doAction, $apiParams = array()): int
@@ -319,7 +323,7 @@ class Webonary_Cloud
 		$response = self::remoteGetJson($request, $apiParams);
 		return $response->count ?? 0;
 	}
-
+		
 	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();

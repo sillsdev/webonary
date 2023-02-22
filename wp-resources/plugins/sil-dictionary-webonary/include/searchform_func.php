@@ -21,8 +21,6 @@ function webonary_searchform($use_li = false): void
 	if(get_option('noSearch') == 1)
 		return;
 
-	$special_chars_class = get_option('special_characters_rtl') == '1' ? 'rtl' : 'ltr';
-
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 
@@ -143,13 +141,13 @@ function webonary_searchform($use_li = false): void
 		{
             $escaped = Webonary_Utility::escapeSqlLike($search_term) ;
 			$query = <<<SQL
-SELECT t.*, tt.* 
-FROM $wpdb->terms AS t 
-    INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id 
-WHERE tt.taxonomy IN ('sil_semantic_domains') 
-  AND t.name LIKE '%$escaped%' 
-  AND tt.count > 0 
-GROUP BY t.name 
+SELECT t.*, tt.*
+FROM $wpdb->terms AS t
+    INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id
+WHERE tt.taxonomy IN ('sil_semantic_domains')
+  AND t.name LIKE '%$escaped%'
+  AND tt.count > 0
+GROUP BY t.name
 ORDER BY t.name
 SQL;
 			$sem_domains = $wpdb->get_results( $query );
@@ -159,9 +157,6 @@ SQL;
 		$arrIndexed = Webonary_Info::number_of_entries();
 		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}
-
-	if(get_option('vernacularRightToLeft') == 1 || $special_chars_class == 'rtl')
-		echo '<style> .spbutton { float: right; } </style>';
 
 	$input_font = get_option('inputFont');
 	if($input_font)
@@ -183,49 +178,7 @@ SQL;
 		<div class="normalSearch">
 			<!-- Search Bar Popups --> <?php !dynamic_sidebar( 'topsearchbar' ); ?><!-- end Search Bar Popups -->
 			<!-- search text box -->
-			<?php
-			$special_characters = get_option('special_characters');
-			$special_characters = str_replace('empty', '', $special_characters);
-			if((trim($special_characters)) != '') {
-			?>
-<script type="text/javascript">
-
-function addchar(button) {
-	let searchfield = document.getElementById('s');
-	let currentPos = theCursorPosition(searchfield);
-	let origValue = searchfield.value;
-	searchfield.value = origValue.substring(0, currentPos) + button.value.trim() + origValue.substring(currentPos);
-
-	searchfield.focus();
-
-	return true;
-}
-
-function theCursorPosition(ofThisInput) {
-	// set a fallback cursor location
-	let theCursorLocation = 0;
-
-	// find the cursor location via IE method...
-	if (document.selection) {
-		ofThisInput.focus();
-		let theSelectionRange = document.selection.createRange();
-		theSelectionRange.moveStart('character', -ofThisInput.value.length);
-		theCursorLocation = theSelectionRange.text.length;
-	} else if (ofThisInput.selectionStart || ofThisInput.selectionStart === 0) {
-		// or the FF way
-		theCursorLocation = ofThisInput.selectionStart;
-	}
-	return theCursorLocation;
-}
-</script>
-			<?php
-				$arrChar = explode(",", $special_characters);
-				$btn_html = '<input class="button spbutton %2$s" type="button" value="%1$s" onClick="addchar(this)">';
-				foreach ($arrChar as $char) {
-					printf($btn_html, trim($char), $special_chars_class);
-				}
-			}
-			?>
+			<?php echo get_special_char_buttons(); ?>
 			<div class="pos-container">
 				<?php if (function_exists('qtrans_getLanguage')) {?>
 					<!-- I'm not sure why qtrans_getLanguage() is here. It doesn't seem to do anything. -->
@@ -263,6 +216,33 @@ function theCursorPosition(ofThisInput) {
 		echo webonary_status($arrIndexed, $lastEditDate);
 		echo found_semantic_domains($search_term, $sem_domains);
 	}
+}
+
+function get_special_char_buttons(): string
+{
+	$special_characters = get_option('special_characters');
+	$special_characters = str_replace('empty', '', $special_characters);
+	if(trim($special_characters) == '')
+		return '';
+
+	$css_class = (get_option('special_characters_rtl') == 1 || get_option('vernacularRightToLeft') == 1) ? 'rtl' : 'ltr';
+
+	$arr_char = array_filter(explode(',', $special_characters));
+	$btn_html = '<input class="button spbutton %2$s" type="button" value="%1$s" onClick="addChar(this)">';
+	$buttons = '';
+	foreach ($arr_char as $char) {
+		$buttons .= sprintf($btn_html, trim($char), $css_class) . PHP_EOL;
+	}
+
+	wp_register_script('webonary_special_chars_script', plugin_dir_url(__DIR__) . 'js/special_characters.js', [], false, true);
+	wp_enqueue_script('webonary_special_chars_script');
+
+	return <<<HTML
+<div class="special-chars-div $css_class">
+$buttons
+</div>
+HTML;
+
 }
 
 function webonary_status($indexed_languages, $lastEditDate): string
