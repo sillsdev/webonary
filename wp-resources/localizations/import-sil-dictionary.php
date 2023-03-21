@@ -1,8 +1,8 @@
 <?php
 
 
-$lang_code = 'es';
-$locale_code = 'es_ES';
+$lang_code = 'hi';
+$locale_code = 'hi_IN';
 
 
 include_once 'shared-functions.php';
@@ -45,8 +45,8 @@ function getPOLines($words): array
 
 	// process the word array
 	foreach($words as $word) {
-		$key = trim($word[0]);
-		$val = trim($word[1]);
+		$key = trim($word[0] ?? '');
+		$val = trim($word[1] ?? '');
 		if (!empty($key) && !empty($val))
 			addOrReplacePO($key, $val, $lines);
 	}
