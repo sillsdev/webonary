@@ -1156,9 +1156,14 @@ function initializeDocument()
 
   setInitialLayout()
 
-  let cookie_val = GetCookie(highlightCookie);
-  if (PRESERVESTATE && cookie_val) {
-    let nodeObj = findObj(cookie_val)
+  if (!selected_idx) {
+    let cookie_val = GetCookie(highlightCookie);
+    if (PRESERVESTATE && cookie_val)
+      selected_idx = cookie_val;
+  }
+
+  if (selected_idx) {
+    let nodeObj = findObj(selected_idx)
     if (nodeObj != null){
       nodeObj.forceOpeningOfAncestorFolders()
       highlightObjLink(nodeObj);

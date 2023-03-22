@@ -24,19 +24,10 @@ function categories_func($atts, $content, $shortcode_tag)
 
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
-	$qTransLang = "en";
+	$qTransLang = Webonary_Cloud::getCurrentLanguage();
 
-	if (function_exists('qtranxf_init_language'))
-	{
-		if(qtranxf_getLanguage() != "en")
-		{
-			$qTransLang = qtranxf_getLanguage();
-			if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_" . $qTransLang . ".js"))
-			{
-				$qTransLang = "en";
-			}
-		}
-	}
+	if(!file_exists($_SERVER['DOCUMENT_ROOT'] . '/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_' . $qTransLang . '.js'))
+		$qTransLang = 'en';
 
 	$dictionaryId = null;
 	if (IS_CLOUD_BACKEND)
@@ -58,7 +49,8 @@ function categories_func($atts, $content, $shortcode_tag)
 	wp_register_script('webonary_ftiens_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js', [], false, true);
 	wp_enqueue_script('webonary_ftiens_script');
 
-	$js = Webonary_SemanticDomains::GetJavaScript($qTransLang);
+	$selected_domain_key = get_query_var('semnumber');
+	$js = Webonary_SemanticDomains::GetJavaScript($qTransLang, $selected_domain_key);
 	wp_add_inline_script('webonary_ftiens_script', $js);
 
 	$pagenr = Webonary_Utility::getPageNumber();
@@ -71,6 +63,9 @@ function categories_func($atts, $content, $shortcode_tag)
 	$display .= '<div id="searchresults" class="semantic-domain">';
 	if($semnumber != '')
 	{
+		if ($semdomain == '')
+			$semdomain = Webonary_SemanticDomains::GetDomainName($semnumber, $qTransLang);
+
 		if(IS_CLOUD_BACKEND)
 		{
 			$apiParams = array(

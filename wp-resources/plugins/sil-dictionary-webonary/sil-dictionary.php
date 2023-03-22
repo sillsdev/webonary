@@ -160,6 +160,13 @@ function add_query_vars($query_vars)
 {
 	if (!in_array('clean', $query_vars))
 		$query_vars[] = 'clean';
+
+	if (!in_array('semdomain', $query_vars))
+		$query_vars[] = 'semdomain';
+
+	if (!in_array('semnumber', $query_vars))
+		$query_vars[] = 'semnumber';
+
 	return $query_vars;
 }
 
