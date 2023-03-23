@@ -212,10 +212,10 @@ class Webonary_SemanticDomains
 
 	/**
 	 * @param string $lang_code
-	 *
+	 * @param string $selected_domain_key
 	 * @return string
 	 */
-	public static function GetJavaScript(string $lang_code): string
+	public static function GetJavaScript(string $lang_code, string $selected_domain_key): string
 	{
 		$js = <<<JS
 // You can find instructions for this here: https://www.treeview.net
@@ -227,6 +227,8 @@ foldersTree = gFld('', '');
 JS;
 
 		$domains = self::GetTranslatedList($lang_code);
+		$selected_index = 0;
+		$idx = 0;
 
 		foreach ($domains as $domain) {
 
@@ -237,6 +239,8 @@ JS;
 			if (!is_numeric($domainNumberAsInt))
 				continue;
 
+			$idx++;
+
 			$levelOfDomain = preg_match_all('/[.-]/', $domainNumber) + 1;
 
 			$js .= self::printRootDomainIfNeeded($domainNumber);
@@ -245,13 +249,16 @@ JS;
 			$domainNumberModified = str_replace('-', '.', $domainNumber) . '.';
 			$domainName = trim($domain['name']);
 
+			if ($domainNumberModified == $selected_domain_key)
+				$selected_index = $idx;
+
 			$newString = $domainNumberModified . ' ' . $domainName;
 			$js .= self::outputSemDomAsJava($levelOfDomain, $newString);
 			$currentDigits = preg_split('/[.-]/', $domainNumber);
 			self::setLastSemDom($currentDigits);
 		}
 
-		return $js . PHP_EOL . 'initializeDocument();' . PHP_EOL;
+		return $js . PHP_EOL . 'let selected_idx = ' . $selected_index . ';' . PHP_EOL . 'initializeDocument();' . PHP_EOL;
 	}
 
 	/**
@@ -435,5 +442,23 @@ SQL;
 	</select>
 </div>
 HTML;
+	}
+
+	public static function GetDomainName(string $domain_key, string $lang_code = ''): string
+	{
+		$domains = self::GetTranslatedList($lang_code);
+		$domain_key = rtrim($domain_key, '.');
+
+		$filtered = array_filter($domains, function ($val) use ($domain_key) {
+			return $val['slug'] == $domain_key;
+		});
+
+		if (!empty($filtered)) {
+			$found = reset($filtered);
+			if (!empty($found['name']))
+				return $found['name'];
+		}
+
+		return '';
 	}
 }

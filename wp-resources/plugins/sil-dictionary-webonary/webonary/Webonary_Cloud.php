@@ -254,11 +254,8 @@ class Webonary_Cloud
 
 	public static function getCurrentLanguage()
 	{
-		return (
-		function_exists('qtranxf_init_language')
-			? qtranxf_getLanguage()
-			: 'en'
-		);
+		$locale = get_bloginfo('language') ?? 'en';
+		return preg_split('/[-_]/', $locale)[0];
 	}
 
 	/**
@@ -295,7 +292,7 @@ class Webonary_Cloud
 			update_option('dictionary', $response);
 			return $response;
 		}
-		
+
 		return null;
 	}
 
@@ -323,7 +320,7 @@ class Webonary_Cloud
 		$response = self::remoteGetJson($request, $apiParams);
 		return $response->count ?? 0;
 	}
-		
+
 	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
@@ -467,15 +464,29 @@ class Webonary_Cloud
 		// get the selected parts of speech list
 		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
 
-		if ($searchText === '') {
-			if (!empty($taxonomies[0])) {
-				// This is a listing by semantic domains
-				$apiParams = array(
-					'text' => $taxonomies[0],
-					'searchSemDoms' => '1'
-				);
-			}
-		} else {
+		if ($searchText === '' && !empty($taxonomies[0])) {
+
+			// This is a listing by semantic domains
+			$apiParams = array(
+				'text' => $taxonomies[0],
+				'searchSemDoms' => '1'
+			);
+
+		}
+		elseif ($searchText === '' && !empty($semantic_domains) && !empty(get_page_by_path('/browse/categories'))) {
+
+			// redirect to the semantic domains page
+			$url_lang = get_query_var('lang');
+			$sem_domain_number = $semantic_domains[0];
+			$sem_domain = Webonary_SemanticDomains::GetDomainName($sem_domain_number, self::getCurrentLanguage());
+			$url = get_site_url() . '/browse/categories/?semdomain=' . urlencode($sem_domain) . '&semnumber=' . $sem_domain_number . '.&lang=en';
+			if ($url_lang != '')
+				$url .= '&lang=' . $url_lang;
+
+			wp_redirect($url, 302, 'Webonary');
+			exit();
+		}
+		else {
 			$key = filter_input(INPUT_GET, 'key', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 
 			$apiParams = [
