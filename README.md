@@ -69,3 +69,29 @@ UPDATE webonary.wp_895_posts
 SET guid = CONCAT('https://www.webonary.org/test-tepehuan5', SUBSTRING(guid, LOCATE('/files/', guid)))
 WHERE post_type = 'attachment' AND LOCATE('/files/', guid) > 0;
 ```
+
+
+### TeamCity PR Build Configuration
+
+_Step 1: Composer Install_
+```bash
+curl -o composer.phar https://getcomposer.org/composer-2.phar
+php composer.phar install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+php ./wp-resources/localizations/recompile-all-sil-dictionary.php
+```
+
+
+### TeamCity Deploy Build Configuration
+
+_Step 1: Composer Install_
+```bash
+curl -o composer.phar https://getcomposer.org/composer-2.phar
+php composer.phar install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+php ./wp-resources/localizations/recompile-all-sil-dictionary.php
+```
+
+_Step 2: Deploy to Testing or Production_
+```bash
+./deployer/team-city.sh --stage testing --user your_user_name
+./deployer/team-city.sh --stage production --user your_user_name
+```

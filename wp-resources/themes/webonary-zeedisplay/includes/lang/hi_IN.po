@@ -23,11 +23,11 @@ msgstr ""
 
 #: 404.php:12
 msgid "Entry not found."
-msgstr ""
+msgstr "प्रविष्टि नहीं मिली"
 
 #: archive.php:5 archive.php:6 archive.php:7
 msgid "Archive for"
-msgstr ""
+msgstr "के लिए संग्रह"
 
 #: archive.php:8
 msgid "Tag Archive for"
@@ -35,73 +35,73 @@ msgstr ""
 
 #: archive.php:9 page-sitemap.php:48
 msgid "Archives"
-msgstr ""
+msgstr "संग्रह"
 
 #: comments.php:8
 msgid "Enter password to view comments."
-msgstr ""
+msgstr "टिप्पणियाँ देखने के लिए पासवर्ड दर्ज करो"
 
 #: comments.php:16 includes/entry.php:15
 msgid "No comments"
-msgstr ""
+msgstr "कोई टिप्पणी नहीं"
 
 #: comments.php:16 includes/entry.php:15
 msgid "One comment"
-msgstr ""
+msgstr "एक टिप्पणी"
 
 #: comments.php:16 includes/entry.php:15
 #, php-format
 msgid "% comments"
-msgstr ""
+msgstr "% टिप्पणियाँ"
 
 #: footer.php:140
 msgid "Terms of Service"
-msgstr ""
+msgstr "सेवा की शर्तें"
 
 #: includes/entry.php:31
 msgid "Read more"
-msgstr ""
+msgstr "और पढ़ें"
 
 #: includes/navigation.php:17
 msgid "&laquo; Previous Entries"
-msgstr ""
+msgstr "&laquo; पिछली प्रविष्टियाँ"
 
 #: includes/navigation.php:18
 msgid "Next Entries &raquo;"
-msgstr ""
+msgstr "अगली प्रविष्टियाँ &raquo;"
 
 #: page-sitemap.php:27
 msgid "Latest Posts"
-msgstr ""
+msgstr "नवीनतम पोस्ट"
 
 #: page-sitemap.php:38
 msgid "Pages"
-msgstr ""
+msgstr "Pages"
 
 #: page-sitemap.php:43
 msgid "Categories"
-msgstr ""
+msgstr "श्रेणियाँ"
 
 #: page-sitemap.php:53
 msgid "Posts by Category"
-msgstr ""
+msgstr "श्रेणी के अनुसार पद"
 
 #: page-sitemap.php:56
 msgid "Category"
-msgstr ""
+msgstr "श्रेणी"
 
 #: search.php:46
 #, php-format
 msgid "Search results for \"%s\""
-msgstr ""
+msgstr "परिणाम खोज करो %s"
 
 #: search.php:67
 msgid "Comments"
-msgstr ""
+msgstr "टिप्पणियाँ"
 
 #: search.php:78
 msgid "No matches. Please try again, or use the navigation menus to find what you search for."
-msgstr ""
+msgstr "कोई मेल नहीं। कृपया पुन: प्रयास करें, या आप जो खोज रहे हैं उसे खोजने के लिए नेविगेशन मेनू का उपयोग करें।"
 
 #: slide.php:8 slide.php:9
 msgid "featured"
