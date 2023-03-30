@@ -20,6 +20,7 @@
  * @apiSuccess {String} partsOfSpeech.abbreviation Abbreviation of this part of speech
  * @apiSuccess {String} partsOfSpeech.name Name of this part of speech
  * @apiSuccess {String} partsOfSpeech.guid
+ * @apiSuccess {String} partsOfSpeech.count Number of entries having this part of speech
  *
  * @apiSuccess {Object[]} reversalLanguages Reversal languages defined for the main language
  * @apiSuccess {String} reversalLanguages.lang ISO language code
@@ -74,7 +75,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   dbClient = await connectToDB();
   const db = dbClient.db(MONGO_DB_NAME);
-  const dbItem: Dictionary | null = await db
+  const dbItem = await db
     .collection<Dictionary>(DB_COLLECTION_DICTIONARIES)
     .findOne({ _id: dictionaryId });
 
@@ -104,6 +105,41 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     ].map((key) => entriesCollection.distinct(key)),
   );
   dbItem.definitionOrGlossLangs = [...new Set(senseLangs.flat(1))].filter((lang) => lang !== '');
+
+  // get parts of speech counts
+  dbItem.partsOfSpeech =
+    dbItem.partsOfSpeech
+      ?.filter(
+        // de-dup
+        (part, index, self) =>
+          index ===
+          self.findIndex((p) => (p.lang === part.lang && p.abbreviation) === part.abbreviation),
+      )
+      ?.map((part) => {
+        // For some reason, FLex sends these decomposed, but entries are composed (e.g. for accented chars)
+        return { ...part, abbreviation: part.abbreviation.normalize('NFC') };
+      }) ?? [];
+
+  const partsOfSpeechCounts = await Promise.all(
+    dbItem.partsOfSpeech.map(async ({ abbreviation }) => {
+      return abbreviation
+        ? entriesCollection.countDocuments({
+            dictionaryId,
+            $or: [
+              { [DbPaths.ENTRY_PART_OF_SPEECH_VALUE]: abbreviation },
+              { [DbPaths.ENTRY_GRAM_INFO_ABBREV_VALUE]: abbreviation },
+            ],
+          })
+        : 0;
+    }),
+  );
+
+  // send only those that are used in entries
+  dbItem.partsOfSpeech = dbItem.partsOfSpeech
+    .map((part, index) => {
+      return { ...part, entriesCount: partsOfSpeechCounts[index] };
+    })
+    .filter((part) => part.entriesCount);
 
   // get reversal entry counts
   if (!dbItem.reversalLanguages) {

@@ -11,10 +11,38 @@ setupMongo();
 const testUsername = 'test-username';
 
 describe('get Dictionary', () => {
-  test('get dictionary entries derived data', async () => {
+  test('entries derived data', async () => {
     const guids = ['guid1', 'guid2'];
     const senseLangs = ['senseLangA', 'senseLangB'];
-    const dictionaryId = await createDictionary('{ "mainLanguage": { "lang": "mainLangA" } }');
+
+    const partsOfSpeech = senseLangs
+      .map((lang) => {
+        return { lang, abbreviation: `part-${lang}` };
+      })
+      .concat(
+        senseLangs.map((lang) => {
+          return { lang, abbreviation: `gram-${lang}` };
+        }),
+      )
+      // duplicates
+      .concat(
+        senseLangs.map((lang) => {
+          return { lang, abbreviation: `gram-${lang}` };
+        }),
+      )
+      // unused in entries
+      .concat(
+        senseLangs.map((lang) => {
+          return { lang, abbreviation: `unused-${lang}` };
+        }),
+      );
+
+    const dictionaryId = await createDictionary(
+      JSON.stringify({
+        mainLanguage: { lang: 'mainLangA' },
+        partsOfSpeech,
+      }),
+    );
 
     const posts = guids.map((guid) => {
       return {
@@ -26,6 +54,14 @@ describe('get Dictionary', () => {
             }),
           },
         ],
+        morphosyntaxanalysis: {
+          partofspeech: senseLangs.map((lang) => {
+            return { lang, value: `part-${lang}` };
+          }),
+          graminfoabbrev: senseLangs.map((lang) => {
+            return { lang, value: `gram-${lang}` };
+          }),
+        },
       };
     });
 
@@ -39,9 +75,22 @@ describe('get Dictionary', () => {
 
     expect(dictionary.definitionOrGlossLangs).toStrictEqual(['senseLangA', 'senseLangB']);
     expect(dictionary.mainLanguage.entriesCount).toBe(2);
+
+    // should not contain duplicates or those unused in entries
+    expect(dictionary.partsOfSpeech).toStrictEqual(
+      senseLangs
+        .map((lang) => {
+          return { lang, abbreviation: `part-${lang}`, entriesCount: 2 };
+        })
+        .concat(
+          senseLangs.map((lang) => {
+            return { lang, abbreviation: `gram-${lang}`, entriesCount: 2 };
+          }),
+        ),
+    );
   });
 
-  test('get dictionary reversal entries derived data', async () => {
+  test('reversal entries derived data', async () => {
     const guids = ['guid1', 'guid2'];
     const reversalformLangs = ['reversalLangA', 'reversalLangB'];
     const dictionaryData: Partial<Dictionary> = {

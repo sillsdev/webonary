@@ -23,6 +23,7 @@ export interface ListOption {
   name: string;
   nameInsensitive?: string; // lowercase and normalized
   guid?: string;
+  entriesCount?: number;
 }
 
 export class ListOptionItem implements ListOption {
