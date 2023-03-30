@@ -20,7 +20,7 @@
  * @apiSuccess {String} partsOfSpeech.abbreviation Abbreviation of this part of speech
  * @apiSuccess {String} partsOfSpeech.name Name of this part of speech
  * @apiSuccess {String} partsOfSpeech.guid
- * @apiSuccess {String} partsOfSpeech.count Number of entries having this part of speech
+ * @apiSuccess {String} partsOfSpeech.entriesCount Number of entries having this part of speech
  *
  * @apiSuccess {Object[]} reversalLanguages Reversal languages defined for the main language
  * @apiSuccess {String} reversalLanguages.lang ISO language code
