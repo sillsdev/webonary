@@ -1,23 +1,15 @@
-import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { APIGatewayEvent } from 'aws-lambda';
 
-import { handler } from '../searchEntries';
+import { createDictionary, setupMongo, parseGuids } from './databaseSetup';
+
 import { upsertEntries } from '../postEntry';
-import { createDictionary, setupMongo } from './databaseSetup';
+import { handler } from '../searchEntries';
 import { removeDiacritics } from '../utils';
 
 setupMongo();
 
 const testUsername = 'test-username';
 const text = 'têstFullTextWôrd';
-
-function parseGuids(response: APIGatewayProxyResult): string[] {
-  return (
-    JSON.parse(response.body)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((entry: any) => entry.guid)
-      .filter((guid: string) => guid)
-  );
-}
 
 describe('searchEntries params', () => {
   test('empty dictionary returns 404', async () => {

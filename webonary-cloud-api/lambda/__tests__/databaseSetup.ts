@@ -1,9 +1,8 @@
-// 'mongodb-memory-server' is' there in devDependencies. Not sure why it's not working.
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { APIGatewayProxyResult } from 'aws-lambda';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { connectToDB } from '../mongo';
-import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
 
+import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
+import { connectToDB } from '../mongo';
 import { upsertDictionary } from '../postDictionary';
 
 export function setupMongo(): void {
@@ -31,4 +30,13 @@ export async function createDictionary(data = '{}'): Promise<string> {
 
   await upsertDictionary(data, dictionaryId, 'test-user');
   return dictionaryId;
+}
+
+export function parseGuids(response: APIGatewayProxyResult): string[] {
+  return (
+    JSON.parse(response.body)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((entry: any) => entry.guid)
+      .filter((guid: string) => guid)
+  );
 }
