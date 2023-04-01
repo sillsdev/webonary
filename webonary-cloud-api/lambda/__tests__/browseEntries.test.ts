@@ -1,6 +1,7 @@
 import { APIGatewayEvent } from 'aws-lambda';
 
-import { createDictionary, setupMongo, parseGuids } from './databaseSetup';
+import { createDictionary, setupMongo } from './databaseSetup';
+import { parseGuids } from './utils';
 
 import { handler } from '../browseEntries';
 import { ENTRY_TYPE_REVERSAL } from '../entry.model';

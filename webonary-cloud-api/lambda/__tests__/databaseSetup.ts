@@ -31,12 +31,3 @@ export async function createDictionary(data = '{}'): Promise<string> {
   await upsertDictionary(data, dictionaryId, 'test-user');
   return dictionaryId;
 }
-
-export function parseGuids(response: APIGatewayProxyResult): string[] {
-  return (
-    JSON.parse(response.body)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((entry: any) => entry.guid)
-      .filter((guid: string) => guid)
-  );
-}
