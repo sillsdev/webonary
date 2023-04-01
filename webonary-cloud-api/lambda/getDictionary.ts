@@ -113,7 +113,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         // de-dup
         (part, index, self) =>
           index ===
-          self.findIndex((p) => (p.lang === part.lang && p.abbreviation) === part.abbreviation),
+          self.findIndex((p) => p.lang === part.lang && p.abbreviation === part.abbreviation),
       )
       ?.map((part) => {
         // For some reason, FLex sends these decomposed, but entries are composed (e.g. for accented chars)
