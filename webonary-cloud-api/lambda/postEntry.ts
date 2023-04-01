@@ -214,7 +214,7 @@
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { load } from 'cheerio';
-import { MongoClient, UpdateResult } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 import { connectToDB } from './mongo';
 import {

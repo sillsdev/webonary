@@ -246,8 +246,6 @@ export enum DbPaths {
   ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
   ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
 
-  ENTRY_PLURAL_VALUE = 'morphosyntaxanalysis.partofspeech.value',
-
   ENTRY_LANG_TEXTS = 'langTexts',
   ENTRY_LANG_UNACCENTED_TEXTS = 'langUnaccentedTexts',
   ENTRY_SEARCH_TEXTS = 'searchTexts',
