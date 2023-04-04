@@ -724,9 +724,18 @@ class Webonary_Cloud
 		if (!self::isValidDictionary($dictionary))
 			return [];
 
-		foreach ($dictionary->partsOfSpeech as $part) {
-			$part->name = $part->name . '&ensp;(' . $part->entriesCount . ')';
-			self::$parts_of_speech[] = $part;
+		self::$parts_of_speech = [];
+		foreach ($dictionary->partsOfSpeech as $item) {
+			if (empty($item->entriesCount))
+				continue;
+
+			$part = [
+				'abbreviation' => $item->abbreviation,
+				'lang' => $item->lang,
+				'name' => $item->name . '&ensp;(' . $item->entriesCount . ')',
+				'guid' => $item->guid
+			];
+			self::$parts_of_speech[] = (object)$part;
 		}
 
 		return self::$parts_of_speech;
