@@ -7,6 +7,7 @@
  * @property string abbreviation
  * @property string name
  * @property string guid
+ * @property int entriesCount
  *
  */
 interface ICloudPartOfSpeech
