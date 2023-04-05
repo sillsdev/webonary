@@ -1,9 +1,8 @@
-// 'mongodb-memory-server' is' there in devDependencies. Not sure why it's not working.
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { APIGatewayProxyResult } from 'aws-lambda';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { connectToDB } from '../mongo';
-import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
 
+import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
+import { connectToDB } from '../mongo';
 import { upsertDictionary } from '../postDictionary';
 
 export function setupMongo(): void {
