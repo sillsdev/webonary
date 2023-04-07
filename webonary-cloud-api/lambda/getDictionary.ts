@@ -110,6 +110,10 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   dbItem.partsOfSpeech =
     dbItem.partsOfSpeech
       ?.filter(
+        // remove nulls
+        (part) => part.lang && part.abbreviation,
+      )
+      ?.filter(
         // de-dup
         (part, index, self) =>
           index ===
