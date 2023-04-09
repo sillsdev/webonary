@@ -78,13 +78,17 @@
  */
 
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { getSignedUrl } from './s3Utils';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+
 import * as Response from './response';
 
-const dictionaryBucket = process.env.S3_DOMAIN_NAME ?? '';
-if (dictionaryBucket === '') {
+const Bucket = process.env.S3_DOMAIN_NAME ?? '';
+if (Bucket === '') {
   throw Error('S3 bucket not set');
 }
+
+const s3Client = new S3Client({});
 
 export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   const { objectId, action } = JSON.parse(event.body as string);
@@ -94,22 +98,26 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
   if (!objectId) {
     errorMessage = 'Missing objectId in the request body';
   }
+
   if (action !== 'putObject') {
     errorMessage = 'Invalid action in the request body';
   }
 
   if (errorMessage) {
+    // eslint-disable-next-line no-console
+    console.log('Error in S3 request', errorMessage);
     return Response.badRequest(errorMessage);
   }
 
   // Ensure that dictionaryId is lowercase
   const [dictionaryId, ...fileName] = objectId.split('/');
-  const signedUrl = getSignedUrl(
-    dictionaryBucket,
-    action,
-    `${dictionaryId.toLocaleLowerCase()}/${fileName.join('/')}`,
-  );
+  const Key = `${dictionaryId.toLocaleLowerCase()}/${fileName.join('/')}`;
+  const signedUrl = await getSignedUrl(s3Client, new PutObjectCommand({ Bucket, Key }), {
+    expiresIn: 30,
+  });
 
+  // eslint-disable-next-line no-console
+  console.log(`Created signed URL for ${action} ${Key}`);
   return Response.success(signedUrl);
 }
 
