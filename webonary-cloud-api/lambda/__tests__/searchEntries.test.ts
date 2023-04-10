@@ -179,6 +179,52 @@ describe('searchEntries search', () => {
     expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
+  test('matches part of speech using shared gram info', async () => {
+    const sharedGramGuid = `${matchingGuid}-part-shared`;
+    const sharedGramEntry = {
+      ...testEntry,
+      guid: sharedGramGuid,
+      morphosyntaxanalysis: { partofspeech: [{ lang, value: `${partOfSpeech}sharedGram` }] },
+    };
+
+    await upsertEntries([sharedGramEntry], false, dictionaryId, testUsername);
+
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+      multiValueQueryStringParameters: {
+        partOfSpeech: [`${partOfSpeech}sharedGram`],
+      },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([sharedGramGuid]);
+  });
+
+  test('matches part of speech using senses', async () => {
+    const sensesPartGuid = `${matchingGuid}-senses-part`;
+    const sensesPartEntry = {
+      ...testEntry,
+      guid: sensesPartGuid,
+      senses: [
+        { morphosyntaxanalysis: { partofspeech: [{ lang, value: `${partOfSpeech}sensesPart` }] } },
+      ],
+    };
+
+    await upsertEntries([sensesPartEntry], false, dictionaryId, testUsername);
+
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+      multiValueQueryStringParameters: {
+        partOfSpeech: [`${partOfSpeech}sensesPart`],
+      },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([sensesPartGuid]);
+  });
+
   test('does not match part of speech', async () => {
     event = {
       ...event,

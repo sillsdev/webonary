@@ -75,11 +75,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: "14.X"
+          node-version: "18.X"
           registry-url: "https://registry.npmjs.org"
 
-      - name: NPM 6.x latest
-        run: npm install -g npm@~6
+      - name: NPM 9.x latest
+        run: npm install -g npm@~9
 
       - name: NPM clean install main package
         run: cd webonary-cloud-api; npm ci
