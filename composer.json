@@ -1,7 +1,7 @@
 {
   "name": "sillsdev/webonary",
   "description": "Webonary dictionary builder",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "proprietary",
   "config": {
     "platform": {
@@ -45,7 +45,7 @@
     "ext-json": "*",
     "composer/installers": "^2.2",
     "bootscore/bootscore": "^5.2",
-    "johnpbloch/wordpress": "dev-master",
+    "johnpbloch/wordpress": "^6.2",
     "mdsimpson/contact-form-7-to-database-extension": "2.10.37",
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "dev-master",
@@ -76,7 +76,7 @@
     "wpackagist-plugin/plugin-activation-status": "1.0.2.1",
     "wpackagist-plugin/really-simple-ssl": "^6.0",
     "wpackagist-plugin/sidebar-manager": "^1.1",
-    "wpackagist-plugin/tablepress": "^1.14",
+    "wpackagist-plugin/tablepress": "^2.1",
     "wpackagist-plugin/timber-library": "^1.18",
     "wpackagist-plugin/tinymce-advanced": "^5.6",
     "wpackagist-plugin/unconfirmed": "^1.3",
