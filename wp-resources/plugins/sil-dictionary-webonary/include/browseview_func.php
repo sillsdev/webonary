@@ -156,14 +156,15 @@ HTML;
 	else {
 		$content = '';
 
+		$permalink = explode('?', $permalink)[0];
+
+		$query_vars = $_GET ?? [];
+		$query_vars['key'] = $languageCode;
+
 		foreach($alphas as $letter) {
 
-			$lang = '';
-
-			if(isset($_GET['lang']))
-				$lang = '&lang=' . $_GET['lang'];
-
-			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?letter=' . urlencode($letter) . '&key=' . $languageCode . $lang, stripslashes($letter));
+			$query_vars['letter'] = $letter;
+			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?' . http_build_query($query_vars), stripslashes($letter));
 		}
 	}
 
