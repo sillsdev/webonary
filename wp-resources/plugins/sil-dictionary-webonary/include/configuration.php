@@ -255,6 +255,12 @@ function save_configurations()
 
 		echo "<br>" . _e('Settings saved');
 	}
+
+	if (!empty($_POST['refresh_cloud_settings'])) {
+
+		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
+		Webonary_Cloud::resetDictionary($dictionaryId);
+	}
 }
 
 function webonary_conf_dashboard()
@@ -415,9 +421,15 @@ function webonary_conf_widget($showTitle = false)
 					</select>
 				</div>
 
-				<p style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
-					Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', IS_CLOUD_BACKEND); ?> />
-				</p>
+				<div style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:12px 0;max-width:610px">
+			        <div>Use cloud backend: <input name="useCloudBackend" type="checkbox" value="1" <?php checked('1', IS_CLOUD_BACKEND); ?> /></div>
+			        <?php if (IS_CLOUD_BACKEND) { ?>
+			        <div style="margin-top: 8px">
+						<button style="margin: 0" class="button button-webonary" type="submit"
+								name="refresh_cloud_settings" value="refresh"><?php _e('Refresh Settings From Cloud Data', 'sil_dictionary'); ?></button>
+					</div>
+			        <?php } ?>
+				</div>
 
 				<h3><?php _e('Delete Data', 'sil_dictionary'); ?></h3>
 				<div style="margin: 1rem 0">
