@@ -581,8 +581,10 @@ class Webonary_Cloud
 				array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
 			);
 
+			$reversal_index = 0;
+
 			foreach ($dictionary->reversalLanguages as $index => $reversal) {
-				$reversal_index = $index + 1;
+				$reversal_index++;
 				update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
 				update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
 
@@ -592,6 +594,14 @@ class Webonary_Cloud
 					array('description' => $reversal->title, 'slug' => $reversal->lang)
 				);
 			}
+
+			// remove any leftover reversal settings
+			while ($reversal_index < 3) {
+				$reversal_index++;
+				delete_option('reversal' . $reversal_index . '_langcode');
+				delete_option('reversal' . $reversal_index . '_alphabet');
+			}
+
 			$arrDirectory = wp_upload_dir();
 			$uploadPath = $arrDirectory['path'];
 			self::setFontFaces($dictionary, $uploadPath);
