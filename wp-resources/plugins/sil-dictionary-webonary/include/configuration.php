@@ -577,8 +577,12 @@ function webonary_conf_widget($showTitle = false)
 				<div style="margin:1rem 0">
 					<?php
 					$DisplaySubentriesAsMainEntries = get_option('DisplaySubentriesAsMainEntries');
-					if($DisplaySubentriesAsMainEntries == 1)
+					if ($DisplaySubentriesAsMainEntries == 1)
 					{
+						if (IS_CLOUD_BACKEND) {
+							update_option('DisplaySubentriesAsMainEntries', 0);
+						}
+						else {
 					?>
 					<input name="DisplaySubentriesAsMainEntries" type="checkbox" value="1"
 						<?php checked('1', $DisplaySubentriesAsMainEntries); ?> />
@@ -586,6 +590,7 @@ function webonary_conf_widget($showTitle = false)
 				</div>
 				<div style="margin:1rem 0">
 					<?php
+					    }
 					}
 					if(count($arrLanguageCodes) == 0)
 					{
