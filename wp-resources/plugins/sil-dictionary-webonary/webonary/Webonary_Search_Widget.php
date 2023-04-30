@@ -186,7 +186,7 @@ SQL;
 		$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($site_url_no_http) . "' OR link_url LIKE 'http_://" . trim($site_url_no_http) . "/'");
 
 		if (!empty($published_date) && $published_date != '0000-00-00 00:00:00')
-			return __('Date published:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($published_date));
+			return __('Date published:', 'sil_dictionary') . ' ' . Webonary_Utility::FormatLongDate(strtotime($published_date));
 
 		return '';
 	}
@@ -241,7 +241,7 @@ HTML;
 		if (empty($this->last_edit_date))
 			$last_upload = '';
 		else
-			$last_upload = __('Last upload:', 'sil_dictionary') . ' ' . Webonary_Utility::GetDateFormatter()->format(strtotime($this->last_edit_date));
+			$last_upload = __('Last upload:', 'sil_dictionary') . ' ' . Webonary_Utility::FormatLongDate(strtotime($this->last_edit_date));
 
 		return <<<HTML
 <form name="searchform" id="searchform" method="get" action="$url">
@@ -257,7 +257,7 @@ HTML;
                     </button>
 		</div>
         <div id="advancedSearch" style="display: block">
-            $language_dropdown 
+            $language_dropdown
             $parts_of_speech_dropdown
             $semantic_domains_dropdown
             <div class="pos-container">

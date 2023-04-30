@@ -103,13 +103,13 @@ msgstr ""
 #. default is ','
 #: wp-includes/class-wp-locale.php:200
 msgid "number_format_thousands_sep"
-msgstr "."
+msgstr ","
 
 #. translators: $dec_point argument for https://www.php.net/number_format,
 #. default is '.'
 #: wp-includes/class-wp-locale.php:208
 msgid "number_format_decimal_point"
-msgstr ","
+msgstr "."
 
 #: wp-includes/category-template.php:161
 #: wp-includes/js/dist/block-editor.js:22552
