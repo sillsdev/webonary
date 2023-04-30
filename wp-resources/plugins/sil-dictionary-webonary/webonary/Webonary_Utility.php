@@ -8,11 +8,11 @@
 class Webonary_Utility
 {
 	// Legacy default
-	private static $default_posts_per_page = 25;
+	private static int $default_posts_per_page = 25;
 
-	private static $posts_per_page = 0;
-	private static $current_page_number = 0;
-	private static $date_formatter;
+	private static int $posts_per_page = 0;
+	private static int $current_page_number = 0;
+	private static ?IntlDateFormatter $date_formatter;
 
 	// Receive upload. Unzip it to uploadPath. Remove upload file.
 	public static function unzip($zip_file, $uploadPath, $zipFolderPath)
@@ -264,19 +264,12 @@ class Webonary_Utility
 		$dst_image = imagecreatetruecolor($rect->width, $rect->height);
 		imagecopyresized($dst_image, $src_image, $rect->x, $rect->y, 0, 0, $rect->width, $rect->height, $src_width, $src_height);
 
-		switch ($img_type) {
-			case IMAGETYPE_PNG:
-				return imagepng($dst_image, $dst_dir . '/' . $entry);
-
-			case IMAGETYPE_GIF:
-				return imagegif($dst_image, $dst_dir . '/' . $entry);
-
-			case IMAGETYPE_JPEG:
-				return imagejpeg($dst_image, $dst_dir . '/' . $entry, 90);
-
-			default:
-				return false;
-		}
+		return match ($img_type) {
+			IMAGETYPE_PNG => imagepng($dst_image, $dst_dir . '/' . $entry),
+			IMAGETYPE_GIF => imagegif($dst_image, $dst_dir . '/' . $entry),
+			IMAGETYPE_JPEG => imagejpeg($dst_image, $dst_dir . '/' . $entry, 90),
+			default => false,
+		};
 	}
 
 	/**
@@ -628,7 +621,7 @@ class Webonary_Utility
 		return (int)$val;
 	}
 
-	public static function GetDateFormatter()
+	public static function GetLongDateFormatter()
 	{
 		if (!empty(self::$date_formatter))
 			return self::$date_formatter;
@@ -642,6 +635,47 @@ class Webonary_Utility
 		);
 
 		return self::$date_formatter;
+	}
+
+	public static function FormatLongDate($timestamp)
+	{
+		// first, see if there is a custom format defined in qTranslate
+		if (function_exists('qtranxf_get_language_date_or_time_format')) {
+
+			$test = qtranxf_get_language_date_or_time_format('date_format');
+			if (!empty($test) && !str_contains($test, '%'))
+				$pattern = $test;
+		}
+
+		// if not, get the pattern from the current locale
+		if (empty($pattern)) {
+
+			$pattern = self::GetLongDateFormatter()->getPattern();
+
+			// convert the pattern from ICU format to PHP format, which is used by the wp_date() function
+			// https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table
+			// https://www.php.net/manual/en/datetime.format.php
+			$pattern = preg_replace('/[yY]+/', 'Y', $pattern);
+			$pattern = preg_replace('/(^|[^M])M($|[^M])/', '\\1n\\2', $pattern);
+			$pattern = preg_replace('/(^|[^M])MM($|[^M])/', '\\1m\\2', $pattern);
+			$pattern = preg_replace('/(^|[^M])MMM($|[^M])/', '\\1M\\2', $pattern);
+			$pattern = preg_replace('/(^|[^M])MMMM($|[^M])/', '\\1F\\2', $pattern);
+			$pattern = preg_replace('/(^|[^L])L($|[^L])/', '\\1n\\2', $pattern);
+			$pattern = preg_replace('/(^|[^L])LL($|[^L])/', '\\1m\\2', $pattern);
+			$pattern = preg_replace('/(^|[^L])LLL($|[^L])/', '\\1M\\2', $pattern);
+			$pattern = preg_replace('/(^|[^L])LLLL($|[^L])/', '\\1F\\2', $pattern);
+			$pattern = preg_replace('/(^|[^E])E{1,3}($|[^E])/i', '\\1D\\2', $pattern);
+			$pattern = preg_replace('/(^|[^E])EEEE($|[^E])/i', '\\1l\\2', $pattern);
+			$pattern = preg_replace('/(^|[^c])c{1,3}($|[^c])/', '\\1D\\2', $pattern);
+			$pattern = preg_replace('/(^|[^c])cccc($|[^c])/', '\\1l\\2', $pattern);
+			$pattern = preg_replace('/(^|[^d])d($|[^d])/', '\\1j\\2', $pattern);
+			$pattern = preg_replace('/(^|[^d])dd($|[^d])/', '\\1d\\2', $pattern);
+			$pattern = preg_replace('/(^|[^D])D($|[^D])/', '\\1z\\2', $pattern);
+			$pattern = preg_replace('/(^|[^G])G{1,5}($|[^G])/', '\\1\\2', $pattern);
+		}
+
+		// use wp_date() to get the localized month and day names from `wordpress/wp-content/languages/*.mo`
+		return wp_date($pattern, $timestamp);
 	}
 
 	public static function RemoveEmptyStrings($array): array

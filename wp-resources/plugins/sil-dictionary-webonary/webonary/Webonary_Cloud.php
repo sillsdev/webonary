@@ -806,7 +806,7 @@ class Webonary_Cloud
 
 		// using DateTimeImmutable to get microseconds
 		$date = new DateTimeImmutable();
-		$message = '[' . $date->format('D, a M Y h:i:s.u P') . '] [client ' . $_SERVER['REMOTE_ADDR'] . '] Message: ' . trim($message);
+		$message = '[' . $date->format('D, d M Y h:i:s.u P') . '] [client ' . $_SERVER['REMOTE_ADDR'] . '] Message: ' . trim($message);
 		error_log($message . PHP_EOL, 3, DEBUG_LOG_FILE);
 	}
 

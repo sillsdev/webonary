@@ -263,7 +263,7 @@ function webonary_status($indexed_languages, $lastEditDate): string
 	}
 
 	if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
-		$last_edit = __('Last upload:', 'sil_dictionary') . '&nbsp;' . Webonary_Utility::GetDateFormatter()->format(strtotime($lastEditDate)) . '<br>';
+		$last_edit = __('Last upload:', 'sil_dictionary') . '&nbsp;' . Webonary_Utility::FormatLongDate(strtotime($lastEditDate)) . '<br>';
 	else
 		$last_edit = '';
 
@@ -272,7 +272,7 @@ function webonary_status($indexed_languages, $lastEditDate): string
 	$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%://" . trim($site_url_no_http) . "' OR link_url LIKE '%://" . trim($site_url_no_http) . "/'");
 
 	if(isset($published_date) && $published_date != "0000-00-00 00:00:00")
-		$published = __('Date published:', 'sil_dictionary') . ':&nbsp;'. Webonary_Utility::GetDateFormatter()->format(strtotime($published_date)) . '<br>';
+		$published = __('Date published:', 'sil_dictionary') . ':&nbsp;'. Webonary_Utility::FormatLongDate(strtotime($published_date)) . '<br>';
 	else
 		$published = '';
 
