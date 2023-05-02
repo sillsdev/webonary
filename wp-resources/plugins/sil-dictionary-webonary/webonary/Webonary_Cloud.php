@@ -182,40 +182,50 @@ class Webonary_Cloud
 
 	private static function validatePermissionToPost($header): stdClass
 	{
-		$response = new stdClass();
-		$response->message = 'Invalid or missing authorization header';
-		$response->code = 401;
+		// NOTE: in order to get the authorization header, you may need to add this line
+		//       to .htaccess: `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1`
 		if (isset($header['authorization'][0])) {
 			$credentials = base64_decode(str_replace('Basic ', '', $header['authorization'][0]));
 			list($username, $password) = explode(':', $credentials, 2);
-			if ($username !== '' && $password !== '') {
-				$user = wp_authenticate($username, $password);
-
-				if (isset($user->ID)) {
-					$blogs = get_blogs_of_user($user->ID);
-					$blogsToPost = array();
-					foreach ($blogs as $blogId => $blogData) {
-						$userData = get_users(array(
-								'blog_id' => $blogId,
-								'search' => $user->ID)
-						);
-						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
-							$blogsToPost[] = trim($blogData->path, '/');
-						}
-					}
-					if (count($blogsToPost)) {
-						$response->message = implode(',', $blogsToPost);
-						$response->code = 200;
-					} else {
-						$response->message = 'No permission to post to a dictionary';
-					}
-				} else {
-					$response->message = 'Invalid username or password';
-				}
-			}
 		}
 
-		return $response;
+		// if the username or password is missing, return not authorized
+		if (empty($username) || empty($password))
+			return (object)['code' => 401, 'message' => 'Invalid or missing authorization header'];
+
+		// escape single quotes in the password
+		$password = str_replace('\'', '\\\'', $password);
+
+		// validate these credentials
+		$user = wp_authenticate($username, $password);
+
+		// if no valid user found, return not authorized
+		if (!isset($user->id))
+			return (object)['code' => 401, 'message' => 'Invalid username or password'];
+
+		// get a list of blogs for which this user is allowed to upload data
+		$blogs = get_blogs_of_user($user->ID);
+		$blogsToPost = [];
+
+		foreach ($blogs as $blogId => $blogData) {
+
+			$userData = get_users(
+				[
+					'blog_id' => $blogId,
+					'search' => $user->ID
+				]
+			);
+
+			if (in_array($userData[0]->roles[0], ['editor', 'administrator']))
+				$blogsToPost[] = trim($blogData->path, '/');
+		}
+
+		// if not allowed to upload, return not authorized
+		if (!count($blogsToPost))
+			return (object)['code' => 401, 'message' => 'No permission to post to a dictionary'];
+
+		// return authorized, with a list of authorized dictionaries
+		return (object)['code' => 200, 'message' => implode(',', $blogsToPost)];
 	}
 
 	public static function entryToFakePost($entry): stdClass
@@ -537,7 +547,7 @@ class Webonary_Cloud
 		);
 	}
 
-	public static function apiValidate($request): WP_REST_Response
+	public static function apiValidate(WP_REST_Request $request): WP_REST_Response
 	{
 		$response = self::validatePermissionToPost($request->get_headers());
 		return new WP_REST_Response($response->message, $response->code);
