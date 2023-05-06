@@ -95,6 +95,46 @@ msgstr ""
 msgid "Found in Semantic Domains:"
 msgstr ""
 
+#: webonary/Webonary_Infrastructure.php:187
+msgid "Semantic Domains"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:188
+msgid "Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:189
+msgid "Search Domains"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:190
+msgid "All Semantic Domains"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:191
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:192
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:193
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:194
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:195
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:196
+msgid "New Semantic Domain Name"
+msgstr ""
+
 #: include/searchform_func.php:395
 msgid "Publication Status"
 msgstr ""
