@@ -77,7 +77,7 @@ msgstr "Sambatang o pongoretan"
 
 #: include/searchform_func.php:315 webonary/Webonary_Search_Widget.php:66
 msgid "Match accents and tones"
-msgstr ""
+msgstr "Mogihim, do nokosuvang it ongotanda (diakritik) do pongingvagat (aksen) om dolou (ton)"
 
 #: include/searchform_func.php:322 webonary/Webonary_Search_Widget.php:68
 msgid "Number of Entries"

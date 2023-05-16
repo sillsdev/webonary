@@ -296,7 +296,7 @@ msgstr "Padan perkataan keseluruhan"
 
 #: include/searchform_func.php:321
 msgid "Match accents and tones"
-msgstr ""
+msgstr "Cari termasuk tanda aksen dan tanda nada (diakritik)"
 
 #: include/searchform_func.php:328
 msgid "Number of Entries"
