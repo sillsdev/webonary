@@ -28,7 +28,7 @@ msgstr ""
 
 #: include/browseview_func.php:141
 msgid "No entries exist for"
-msgstr ""
+msgstr "Aso pongoretan siti do"
 
 #: include/browseview_func.php:260
 msgid "Page"
@@ -44,20 +44,20 @@ msgstr ""
 
 #: include/browseview_func.php:832
 msgid "No entries exist starting with this letter."
-msgstr ""
+msgstr "Aso pongoretan siti do tumimpuun diti hurupAso pongoretan siti do tumimpuun diti hurup"
 
 #: include/dictionary-search.php:46
 msgid "Because of the brevity of your search term, partial search was omitted."
-msgstr ""
+msgstr "Sabab tu onibak banal i boros di nehim nu, amu ehim i sambahagi o pongoretan"
 
 #: include/dictionary-search.php:49
 msgid "Click here to include searching through partial words."
-msgstr ""
+msgstr "Todsokon siti supaya sambahagi o pongoretan nga ehim-i"
 
 #: include/searchform_func.php:57 include/searchform_func.php:144
 #: webonary/Webonary_Search_Widget.php:267
 msgid "All Parts of Speech"
-msgstr ""
+msgstr "Sokoviai Gingis do Pongoretan"
 
 #: webonary/Webonary_Parts_Of_Speech.php:53
 msgid "Parts of Speech"
@@ -65,31 +65,31 @@ msgstr ""
 
 #: include/searchform_func.php:295 webonary/Webonary_Search_Widget.php:57
 msgid "Search"
-msgstr ""
+msgstr "Mogihim"
 
 #: include/searchform_func.php:304 webonary/Webonary_Search_Widget.php:251
 msgid "All Languages"
-msgstr ""
+msgstr "Kavi i boros"
 
 #: include/searchform_func.php:313 webonary/Webonary_Search_Widget.php:64
 msgid "Match whole words"
-msgstr ""
+msgstr "Sambatang o pongoretan"
 
 #: include/searchform_func.php:315 webonary/Webonary_Search_Widget.php:66
 msgid "Match accents and tones"
-msgstr ""
+msgstr "Mogihim, do nokosuvang it ongotanda (diakritik) do pongingvagat (aksen) om dolou (ton)"
 
 #: include/searchform_func.php:322 webonary/Webonary_Search_Widget.php:68
 msgid "Number of Entries"
-msgstr ""
+msgstr "Pongizapan di sokoviai it ongopongoretan"
 
 #: include/searchform_func.php:339 webonary/Webonary_Search_Widget.php:82
 msgid "Last upload:"
-msgstr ""
+msgstr "Natagan dit addau dot:"
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
 msgid "Date published:"
-msgstr ""
+msgstr "Addau kensan pinematan sitid webonary"
 
 #: include/searchform_func.php:360 webonary/Webonary_Search_Widget.php:338
 msgid "Found in Semantic Domains:"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: webonary/Webonary_Infrastructure.php:187
 msgid "Semantic Domains"
-msgstr ""
+msgstr "Umpug do pongoretan isuhut harati"
 
 #: webonary/Webonary_Infrastructure.php:188
 msgid "Semantic Domain"
@@ -137,31 +137,31 @@ msgstr ""
 
 #: include/searchform_func.php:395
 msgid "Publication Status"
-msgstr ""
+msgstr "Kobuatano di kamus diti"
 
 #: include/searchform_func.php:396
 msgid "Rough draft"
-msgstr ""
+msgstr "Draf koosurat ogi, a-po natagan"
 
 #: include/searchform_func.php:397
 msgid "Self-reviewed draft"
-msgstr ""
+msgstr "Natagan kondiri"
 
 #: include/searchform_func.php:398
 msgid "Community-reviewed draft"
-msgstr ""
+msgstr "Natagan dot umpug"
 
 #: include/searchform_func.php:399
 msgid "Consultant approved"
-msgstr ""
+msgstr "Nokunan do konsultan"
 
 #: include/searchform_func.php:400
 msgid "Finished (no formal publication)"
-msgstr ""
+msgstr "Nopongo (Amu po narasmi i pinongobuukan)"
 
 #: include/searchform_func.php:401
 msgid "Formally published"
-msgstr ""
+msgstr "Pinongobuukan do Rasmi"
 
 #: webonary/Webonary_Search_Widget.php:19
 msgid "Webonary Search Widget"
@@ -170,3 +170,7 @@ msgstr ""
 #: webonary/Webonary_Published_Widget.php:13
 msgid "Webonary Published Status Widget"
 msgstr ""
+
+#: extra string
+msgid "Number of entries"
+msgstr "Pongizapan di sokoviai it ongopongoretan"

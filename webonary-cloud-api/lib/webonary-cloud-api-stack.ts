@@ -31,7 +31,7 @@ const createLambdaFunction = (
   const externalDependencies = getExternalDependencies('./lambda/package.json');
 
   const functionProps: NodejsFunctionProps = {
-    runtime: Runtime.NODEJS_14_X,
+    runtime: Runtime.NODEJS_18_X,
     entry: `./lambda/${handlerName}.ts`,
     functionName,
     timeout: Duration.seconds(60), // maximum value is 15 minutes

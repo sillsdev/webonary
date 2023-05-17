@@ -132,6 +132,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
             $or: [
               { [DbPaths.ENTRY_PART_OF_SPEECH_VALUE]: abbreviation },
               { [DbPaths.ENTRY_GRAM_INFO_ABBREV_VALUE]: abbreviation },
+              { [DbPaths.ENTRY_SENSES_PART_OF_SPEECH_VALUE]: abbreviation },
             ],
           })
         : 0;

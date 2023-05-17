@@ -93,12 +93,9 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     // part of speech can be in several different fields
     dbFind = {
       $or: [
-        {
-          [DbPaths.ENTRY_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded },
-        },
-        {
-          [DbPaths.ENTRY_GRAM_INFO_ABBREV_VALUE]: { $in: partOfSpeechDecoded },
-        },
+        { [DbPaths.ENTRY_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded } },
+        { [DbPaths.ENTRY_GRAM_INFO_ABBREV_VALUE]: { $in: partOfSpeechDecoded } },
+        { [DbPaths.ENTRY_SENSES_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded } },
       ],
     };
   }

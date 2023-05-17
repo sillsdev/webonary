@@ -189,42 +189,6 @@ msgstr "Disebabkan pencarian kata yang ringkas, carian separa tidak dapat dilaku
 msgid "Click here to include searching through partial words."
 msgstr "Klik sini untuk merangkumi carian kata separa"
 
-#: include/infrastructure.php:168
-msgid "Search Domains"
-msgstr ""
-
-#: include/infrastructure.php:169
-msgid "All Semantic Domains"
-msgstr ""
-
-#: include/infrastructure.php:170
-msgid "Parent Semantic Domain"
-msgstr ""
-
-#: include/infrastructure.php:171
-msgid "Parent Semantic Domain:"
-msgstr ""
-
-#: include/infrastructure.php:172
-msgid "Edit Semantic Domain"
-msgstr ""
-
-#: include/infrastructure.php:173
-msgid "Update Semantic Domain"
-msgstr ""
-
-#: include/infrastructure.php:174
-msgid "Add New Semantic Domain"
-msgstr ""
-
-#: include/infrastructure.php:175
-msgid "New Semantic Domain Name"
-msgstr ""
-
-#: include/infrastructure.php:176
-msgid "Semantic Domain"
-msgstr ""
-
 #: include/infrastructure.php:202 include/infrastructure.php:210
 msgid "Parts of Speech"
 msgstr ""
@@ -328,11 +292,11 @@ msgstr "Cari"
 
 #: include/searchform_func.php:319
 msgid "Match whole words"
-msgstr ""
+msgstr "Padan perkataan keseluruhan"
 
 #: include/searchform_func.php:321
 msgid "Match accents and tones"
-msgstr ""
+msgstr "Cari termasuk tanda aksen dan tanda nada (diakritik)"
 
 #: include/searchform_func.php:328
 msgid "Number of Entries"
@@ -348,6 +312,46 @@ msgstr "Tarik diterbitkan"
 
 #: include/searchform_func.php:366
 msgid "Found in Semantic Domains:"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:187
+msgid "Semantic Domains"
+msgstr "Domain Semantik (Bidang makna)"
+
+#: webonary/Webonary_Infrastructure.php:188
+msgid "Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:189
+msgid "Search Domains"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:190
+msgid "All Semantic Domains"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:191
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:192
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:193
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:194
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:195
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:196
+msgid "New Semantic Domain Name"
 msgstr ""
 
 #: include/searchform_func.php:403

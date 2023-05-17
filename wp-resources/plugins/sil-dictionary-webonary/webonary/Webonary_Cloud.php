@@ -39,6 +39,7 @@ class Webonary_Cloud
 	{
 		if (!defined('WEBONARY_CLOUD_API_URL')) {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
+			self::logDebugMessage('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
 			return null;
 		}
 
@@ -67,23 +68,28 @@ class Webonary_Cloud
 
 		if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
 			error_log($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
+			self::logDebugMessage($url . ' is not a valid URL. Is WEBONARY_CLOUD_API_URL in wp-config.php set to a correct URL?');
 			return null;
 		}
 
-		if (defined('WP_DEBUG_WEBONARY_CLOUD') && WP_DEBUG_WEBONARY_CLOUD) {
-			error_log('Getting results from ' . $url);
-		}
+		self::logDebugMessage('Getting results from ' . $url);
 
 		// check the cache first
 		$found = false;
 		$cached_val = wp_cache_get($url, 'webonary', false, $found);
-		if ($found !== false)
+		if ($found !== false) {
+			self::logDebugMessage('Returned cached results.');
 			return $cached_val;
+		}
 
-		$response = wp_remote_get($url);
+		self::logDebugMessage('Cached results not found, checking the cloud.');
+
+		// the default timeout is just 5 seconds, sometimes not enough to get a dictionary
+		$response = wp_remote_get($url, ['timeout' => 30, 'compress' => true]);
 
 		if (is_wp_error($response)) {
 			error_log($response->get_error_message());
+			self::logDebugMessage($response->get_error_message());
 			return null;
 		}
 
@@ -91,6 +97,8 @@ class Webonary_Cloud
 		$returned_val = json_decode($body);
 
 		wp_cache_set($url, $returned_val, 'webonary');
+
+		self::logDebugMessage('Returned cloud results.');
 
 		return $returned_val;
 	}
@@ -174,40 +182,50 @@ class Webonary_Cloud
 
 	private static function validatePermissionToPost($header): stdClass
 	{
-		$response = new stdClass();
-		$response->message = 'Invalid or missing authorization header';
-		$response->code = 401;
+		// NOTE: in order to get the authorization header, you may need to add this line
+		//       to .htaccess: `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1`
 		if (isset($header['authorization'][0])) {
 			$credentials = base64_decode(str_replace('Basic ', '', $header['authorization'][0]));
 			list($username, $password) = explode(':', $credentials, 2);
-			if ($username !== '' && $password !== '') {
-				$user = wp_authenticate($username, $password);
-
-				if (isset($user->ID)) {
-					$blogs = get_blogs_of_user($user->ID);
-					$blogsToPost = array();
-					foreach ($blogs as $blogId => $blogData) {
-						$userData = get_users(array(
-								'blog_id' => $blogId,
-								'search' => $user->ID)
-						);
-						if (in_array($userData[0]->roles[0], array('editor', 'administrator'))) {
-							$blogsToPost[] = trim($blogData->path, '/');
-						}
-					}
-					if (count($blogsToPost)) {
-						$response->message = implode(',', $blogsToPost);
-						$response->code = 200;
-					} else {
-						$response->message = 'No permission to post to a dictionary';
-					}
-				} else {
-					$response->message = 'Invalid username or password';
-				}
-			}
 		}
 
-		return $response;
+		// if the username or password is missing, return not authorized
+		if (empty($username) || empty($password))
+			return (object)['code' => 401, 'message' => 'Invalid or missing authorization header'];
+
+		// escape single quotes in the password
+		$password = str_replace('\'', '\\\'', $password);
+
+		// validate these credentials
+		$user = wp_authenticate($username, $password);
+
+		// if no valid user found, return not authorized
+		if (!isset($user->id))
+			return (object)['code' => 401, 'message' => 'Invalid username or password'];
+
+		// get a list of blogs for which this user is allowed to upload data
+		$blogs = get_blogs_of_user($user->ID);
+		$blogsToPost = [];
+
+		foreach ($blogs as $blogId => $blogData) {
+
+			$userData = get_users(
+				[
+					'blog_id' => $blogId,
+					'search' => $user->ID
+				]
+			);
+
+			if (in_array($userData[0]->roles[0], ['editor', 'administrator']))
+				$blogsToPost[] = trim($blogData->path, '/');
+		}
+
+		// if not allowed to upload, return not authorized
+		if (!count($blogsToPost))
+			return (object)['code' => 401, 'message' => 'No permission to post to a dictionary'];
+
+		// return authorized, with a list of authorized dictionaries
+		return (object)['code' => 200, 'message' => implode(',', $blogsToPost)];
 	}
 
 	public static function entryToFakePost($entry): stdClass
@@ -529,7 +547,7 @@ class Webonary_Cloud
 		);
 	}
 
-	public static function apiValidate($request): WP_REST_Response
+	public static function apiValidate(WP_REST_Request $request): WP_REST_Response
 	{
 		$response = self::validatePermissionToPost($request->get_headers());
 		return new WP_REST_Response($response->message, $response->code);
@@ -549,9 +567,7 @@ class Webonary_Cloud
 		if ($response->message === '') {
 			$message = 'You do not have permission to reset any dictionary';
 		} elseif (in_array($dictionaryId, explode(',', $response->message))) {
-			$code = 200;
-			$message = 'Successfully reset dictionary ' . $dictionaryId;
-			self::resetDictionary($dictionaryId);
+			list($code, $message) = self::resetDictionary($dictionaryId);
 		} else {
 			$message = 'You do not have permission to reset dictionary ' . $dictionaryId;
 		}
@@ -559,7 +575,7 @@ class Webonary_Cloud
 		return new WP_REST_Response($message, $code);
 	}
 
-	public static function resetDictionary($dictionaryId): void
+	public static function resetDictionary($dictionaryId): array
 	{
 		// Since dictionary is persisted in options, unset it first
 		delete_option('dictionary');
@@ -567,39 +583,54 @@ class Webonary_Cloud
 		self::$dictionary_id = $dictionaryId;
 
 		$dictionary = self::getDictionary();
-		if (!is_null($dictionary)) {
-			$language = $dictionary->mainLanguage;
-			update_option('languagecode', $language->lang);
-			update_option('totalConfiguredEntries', $language->entriesCount);
 
-			if (!empty($language->letters))
-				update_option('vernacular_alphabet', implode(',', $language->letters));
+		// return Noy Found if $dictionary is null
+		if (is_null($dictionary))
+			return [404, 'Dictionary ' . $dictionaryId . ' not found'];
+
+		$language = $dictionary->mainLanguage;
+		update_option('languagecode', $language->lang);
+		update_option('totalConfiguredEntries', $language->entriesCount);
+
+		if (!empty($language->letters))
+			update_option('vernacular_alphabet', implode(',', $language->letters));
+
+		wp_insert_term(
+			$language->title,
+			self::$languageCategory,
+			array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+		);
+
+		$reversal_index = 0;
+
+		foreach ($dictionary->reversalLanguages as $reversal) {
+			$reversal_index++;
+			update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
+			update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
 
 			wp_insert_term(
-				$language->title,
+				$reversal->title,
 				self::$languageCategory,
-				array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+				array('description' => $reversal->title, 'slug' => $reversal->lang)
 			);
-
-			foreach ($dictionary->reversalLanguages as $index => $reversal) {
-				$reversal_index = $index + 1;
-				update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
-				update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
-
-				wp_insert_term(
-					$reversal->title,
-					self::$languageCategory,
-					array('description' => $reversal->title, 'slug' => $reversal->lang)
-				);
-			}
-			$arrDirectory = wp_upload_dir();
-			$uploadPath = $arrDirectory['path'];
-			self::setFontFaces($dictionary, $uploadPath);
-
-			// Store this both as a blog option and metadata for convenience
-			update_option('useCloudBackend', '1');
-			update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
 		}
+
+		// remove any leftover reversal settings
+		while ($reversal_index < 3) {
+			$reversal_index++;
+			delete_option('reversal' . $reversal_index . '_langcode');
+			delete_option('reversal' . $reversal_index . '_alphabet');
+		}
+
+		$arrDirectory = wp_upload_dir();
+		$uploadPath = $arrDirectory['path'];
+		self::setFontFaces($dictionary, $uploadPath);
+
+		// Store this both as a blog option and metadata for convenience
+		update_option('useCloudBackend', '1');
+		update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
+
+		return [200, 'Successfully reset dictionary ' . $dictionaryId];
 	}
 
 	/**
@@ -761,5 +792,70 @@ class Webonary_Cloud
 		});
 
 		return self::$semantic_domains;
+	}
+
+	private static function logDebugMessage(string $message): void
+	{
+		if (!defined('WP_DEBUG_WEBONARY_CLOUD') || empty(WP_DEBUG_WEBONARY_CLOUD))
+			return;
+
+		if (!defined('DEBUG_LOG_FILE') || empty(DEBUG_LOG_FILE))
+			return;
+
+		// make sure the log directory exists
+		$log_dir = dirname(DEBUG_LOG_FILE);
+		if (!is_dir($log_dir))
+			mkdir($log_dir, 0775, true);
+
+		if (!is_dir($log_dir)) {
+			error_log('Not able to create directory "' . $log_dir . '"');
+			return;
+		}
+
+		self::checkLogFileSize(DEBUG_LOG_FILE);
+
+		// using DateTimeImmutable to get microseconds
+		$date = new DateTimeImmutable();
+		$message = '[' . $date->format('D, d M Y h:i:s.u P') . '] [client ' . $_SERVER['REMOTE_ADDR'] . '] Message: ' . trim($message);
+		error_log($message . PHP_EOL, 3, DEBUG_LOG_FILE);
+	}
+
+	/**
+	 * Keep the log file under 5MB
+	 * @param string $file_name
+	 * @return void
+	 * @noinspection PhpSameParameterValueInspection
+	 */
+	private static function checkLogFileSize(string $file_name): void
+	{
+		if (!is_file($file_name)) {
+			file_put_contents($file_name, '');
+			chmod($file_name, 0666);
+		}
+
+		$bytes = filesize($file_name);
+
+		// OK if file doesn't exist
+		if (empty($bytes))
+			return;
+
+		// OK if under 5MB
+		if ($bytes < (1024 * 1024 * 5))
+			return;
+
+		$suffix = date('YmdHis');
+
+		if (is_file($file_name . '.' . $suffix)) {
+
+			$i = 1;
+
+			while (is_file($file_name . '.' . $suffix . '.' . $i)) {
+				$i++;
+			}
+
+			$suffix = $suffix . '.' . $i;
+		}
+
+		rename($file_name, $file_name . '.' . $suffix);
 	}
 }

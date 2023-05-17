@@ -223,7 +223,11 @@ export enum DbPaths {
   ENTRY_CITATION_FORM_VALUE = 'citationform.value',
   ENTRY_LEXEME_FORM_VALUE = 'lexemeform.value',
 
-  ENTRY_SENSES = 'senses',
+  ENTRY_PART_OF_SPEECH_VALUE = 'morphosyntaxanalysis.partofspeech.value',
+  ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
+  ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
+
+  ENTRY_SENSES_PART_OF_SPEECH_VALUE = `senses.morphosyntaxanalysis.partofspeech.value`,
   ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
   ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
   ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
@@ -239,12 +243,6 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV = 'senses.semanticdomains.abbreviation',
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticdomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticdomains.name.value',
-
-  ENTRY_PART_OF_SPEECH = 'morphosyntaxanalysis.partofspeech',
-  ENTRY_PART_OF_SPEECH_VALUE = 'morphosyntaxanalysis.partofspeech.value',
-  ENTRY_GRAM_INFO_ABBREV = 'morphosyntaxanalysis.graminfoabbrev',
-  ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
-  ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
 
   ENTRY_LANG_TEXTS = 'langTexts',
   ENTRY_LANG_UNACCENTED_TEXTS = 'langUnaccentedTexts',
