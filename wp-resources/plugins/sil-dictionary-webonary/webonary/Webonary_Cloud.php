@@ -228,7 +228,7 @@ class Webonary_Cloud
 		return (object)['code' => 200, 'message' => implode(',', $blogsToPost)];
 	}
 
-	public static function entryToFakePost($entry): stdClass
+	public static function entryToFakePost($entry): WP_Post
 	{
 		$post = new stdClass();
 		$post->post_title = $entry->mainheadword[0]->value;
@@ -236,10 +236,10 @@ class Webonary_Cloud
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
-		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!
+		$post->filter = 'display'; // important, to prevent WP looking up this post in db!
 		$post->post_content = self::entryToDisplayXhtml($entry);
 
-		return $post;
+		return new WP_Post($post);
 	}
 
 	public static function entryToReversal($entry): stdClass
