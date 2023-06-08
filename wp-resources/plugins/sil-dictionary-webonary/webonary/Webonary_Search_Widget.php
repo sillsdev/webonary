@@ -170,7 +170,9 @@ SQL;
 			if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
 				continue;
 
-			$return_val .= $indexed->language_name . ':&nbsp;' . $indexed->totalIndexed . '<br>';
+			$localized_name = __($indexed->language_name);
+
+			$return_val .= $localized_name . ':&nbsp;' . $indexed->totalIndexed . '<br>';
 			$reversals[] = $indexed->language_name;
 		}
 
