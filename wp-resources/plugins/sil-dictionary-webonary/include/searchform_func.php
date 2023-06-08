@@ -258,7 +258,8 @@ function webonary_status($indexed_languages, $lastEditDate): string
 		if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
 			continue;
 
-		$num_entries_text .= $indexed->language_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
+		$localized_name = __($indexed->language_name);
+		$num_entries_text .= $localized_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
 		$reversals[] = $indexed->language_name;
 	}
 
