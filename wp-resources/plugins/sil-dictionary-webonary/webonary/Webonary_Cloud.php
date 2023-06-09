@@ -236,7 +236,7 @@ class Webonary_Cloud
 		$post->post_status = 'publish';
 		$post->comment_status = 'closed';
 		$post->post_type = 'post';
-		$post->filter = 'display'; // important, to prevent WP looking up this post in db!
+		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!
 		$post->post_content = self::entryToDisplayXhtml($entry);
 
 		return new WP_Post($post);
