@@ -166,14 +166,12 @@ ul.qtrans_language_chooser li.active { display:none }
 }
 #sidebar ul li h2 {
   color: #85005b;
-  height: 25px;
-  line-height: 25px;
-  padding: 2px 15px;
+  padding: 6px 15px;
   margin-bottom: 5px;
   font-size: 1.1em;
   font-weight: bold;
   border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #eee;
+  background-color: #eee;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
   -webkit-border-radius: 10px; /* Safari, Chrome */
@@ -472,16 +470,6 @@ html[dir=rtl] #topnavi {
 }
 .arh {
   width: 80%;
-  font-size: 1.4em;
-  color:#444;
-  padding: 10px 15px;
-  margin: 10px 5px 20px 0;
-  border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
-  border-radius: 10px;
-  -moz-border-radius: 10px; /* Firefox */
-  -webkit-border-radius: 10px; /* Safari, Chrome */
-  -khtml-border-radius: 10px; /* Konqueror */
 }
 .postmeta {
   font-size: 0.9em;
@@ -500,7 +488,7 @@ html[dir=rtl] #topnavi {
   padding: 5px 15px;
   color: #333;
   font-size: 0.9em;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
+  background-color: #ddd;
   border: 1px solid #ccc;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
@@ -733,13 +721,13 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
   padding: 5px;
   background-color: #fff;
 }
-#comments h3, #respond h3 {
+#comments h3, #respond h3, .arh {
   font-size: 1.4em;
   color:#444;
   padding: 10px 15px;
   margin: 10px 5px 20px 0;
   border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
+  background-color: #ddd;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
   -webkit-border-radius: 10px; /* Safari, Chrome */
