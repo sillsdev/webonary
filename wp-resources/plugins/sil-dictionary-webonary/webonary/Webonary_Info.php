@@ -156,7 +156,7 @@ SQL;
 		$args = [];
 
 		$sql = <<<SQL
-SELECT p.ID 
+SELECT p.ID
 FROM {$wpdb->prefix}posts AS p
   INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
   INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
@@ -217,7 +217,7 @@ SQL;
 		global $wpdb;
 
 		$sql = <<<SQL
-SELECT ID, post_title, post_content, post_parent, menu_order 
+SELECT ID, post_title, post_content, post_parent, menu_order
 FROM $wpdb->posts AS p
 WHERE ID = %s
 SQL;
@@ -231,12 +231,12 @@ SQL;
 		global $wpdb;
 
 		$sql = <<<SQL
-SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order 
+SELECT p.ID, p.post_title, p.post_content, p.post_parent, p.menu_order
 FROM $wpdb->posts AS p
     INNER JOIN $wpdb->term_relationships AS r ON p.id = r.object_id
     INNER JOIN $wpdb->term_taxonomy AS x ON r.term_taxonomy_id = x.term_taxonomy_id
     INNER JOIN $wpdb->terms AS t ON x.term_id = t.term_id
-WHERE t.slug = 'webonary' 
+WHERE t.slug = 'webonary'
   AND p.post_status = 'publish'
   AND p.pinged = ''
 ORDER BY p.ID
@@ -288,7 +288,7 @@ SQL;
 
 		$status = "";
 		foreach ($arrIndexed as $indexed) {
-			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;' . $indexed->totalIndexed;
+			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;' . $indexed->total_indexed;
 
 			$table_name = Webonary_Configuration::$search_table_name;
 			/** @noinspection SqlResolve */
@@ -317,7 +317,7 @@ SQL;
 
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
-SELECT COUNT(*) 
+SELECT COUNT(*)
 FROM $table_name
 SQL;
 
