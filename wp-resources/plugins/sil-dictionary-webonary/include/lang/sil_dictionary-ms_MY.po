@@ -300,7 +300,7 @@ msgstr "Cari termasuk tanda aksen dan tanda nada (diakritik)"
 
 #: include/searchform_func.php:328
 msgid "Number of Entries"
-msgstr ""
+msgstr "Jumlah entri"
 
 #: include/searchform_func.php:345
 msgid "Last upload:"
