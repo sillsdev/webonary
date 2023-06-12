@@ -1,4 +1,5 @@
-<?php get_header();
+<?php
+get_header();
 include 'highlight-code.php';
 ?>
 	<div style="padding: 10px 25px;">
