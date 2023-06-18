@@ -17,6 +17,7 @@ class Webonary_Infrastructure
 		self::RegisterPartOfSpeechTaxonomy();
 		self::RegisterLanguageTaxonomy();
 		self::RegisterWebStringsTaxonomy();
+		self::RegisterCustomPostType();
 	}
 
 	private static function CreateCustomRelevance(): void
@@ -54,7 +55,7 @@ SQL;
 
 			$sql = <<<SQL
 CREATE TABLE $table (
-  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   post_id bigint(20) NOT NULL,
   language_code varchar(30),
   relevance tinyint,
@@ -243,20 +244,20 @@ SQL;
 		);
 	}
 
-	public static function RegisterLanguageTaxonomy (): void
+	public static function RegisterLanguageTaxonomy(): void
 	{
 		$labels = array(
-			'name' => _x( 'Languages', 'taxonomy general name' ),
-			'singular_name' => _x( 'Language', 'taxonomy singular name' ),
-			'search_items' =>  __( 'Language' ),
-			'all_items' => __( 'All Languages' ),
-			'parent_item' => __( 'Parent Language' ),
-			'parent_item_colon' => __( 'Parent Language:' ),
-			'edit_item' => __( 'Edit Language' ),
-			'update_item' => __( 'Update Language' ),
-			'add_new_item' => __( 'Add New Language' ),
-			'new_item_name' => __( 'New Language Name' ),
-			'menu_name' => __( 'Language' ),
+			'name' => _x('Languages', 'taxonomy general name'),
+			'singular_name' => _x('Language', 'taxonomy singular name'),
+			'search_items' => __('Language'),
+			'all_items' => __('All Languages'),
+			'parent_item' => __('Parent Language'),
+			'parent_item_colon' => __('Parent Language:'),
+			'edit_item' => __('Edit Language'),
+			'update_item' => __('Update Language'),
+			'add_new_item' => __('Add New Language'),
+			'new_item_name' => __('New Language Name'),
+			'menu_name' => __('Language'),
 		);
 
 		register_taxonomy(
@@ -274,20 +275,20 @@ SQL;
 		);
 	}
 
-	public static function RegisterWebStringsTaxonomy (): void
+	public static function RegisterWebStringsTaxonomy(): void
 	{
 		$labels = array(
-			'name' => _x( 'Website strings', 'taxonomy general name' ),
-			'singular_name' => _x( 'Website strings', 'taxonomy singular name' ),
-			'search_items' =>  __( 'Website strings' ),
-			'all_items' => __( 'All Website strings' ),
-			'parent_item' => __( 'Parent Website strings' ),
-			'parent_item_colon' => __( 'Parent Website strings:' ),
-			'edit_item' => __( 'Edit Website strings' ),
-			'update_item' => __( 'Update Website strings' ),
-			'add_new_item' => __( 'Add New Website strings' ),
-			'new_item_name' => __( 'New Website strings Name' ),
-			'menu_name' => __( 'Website strings' ),
+			'name' => _x('Website strings', 'taxonomy general name'),
+			'singular_name' => _x('Website strings', 'taxonomy singular name'),
+			'search_items' => __('Website strings'),
+			'all_items' => __('All Website strings'),
+			'parent_item' => __('Parent Website strings'),
+			'parent_item_colon' => __('Parent Website strings:'),
+			'edit_item' => __('Edit Website strings'),
+			'update_item' => __('Update Website strings'),
+			'add_new_item' => __('Add New Website strings'),
+			'new_item_name' => __('New Website strings Name'),
+			'menu_name' => __('Website strings'),
 		);
 
 		register_taxonomy(
@@ -302,6 +303,20 @@ SQL;
 				'public' => true,
 				'show_ui' => true
 			)
+		);
+	}
+
+	private static function RegisterCustomPostType(): void
+	{
+		register_post_type('webonary_cloud',
+			[
+				'labels' => [
+					'name' => __('Cloud Entries'),
+					'singular_name' => __('Cloud Entry'),
+				],
+				'public' => false,
+				'rewrite' => false
+			]
 		);
 	}
 }

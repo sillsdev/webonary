@@ -26,9 +26,9 @@ function webonary_autoloader($class_name)
 {
 	global $webonary_class_path, $webonary_include_path;
 
-	$pinyin_namespace = 'Overtrue\\Pinyin\\';	
+	$pinyin_namespace = 'Overtrue\\Pinyin\\';
 	$pinyin_namespace_length = strlen($pinyin_namespace);
-	
+
 	if (substr($class_name, 0, $pinyin_namespace_length) === $pinyin_namespace) {
 		$success = include_once $webonary_include_path . DS . 'pinyin' . DS . 'src' . DS . substr($class_name, $pinyin_namespace_length). '.php';
 	}
