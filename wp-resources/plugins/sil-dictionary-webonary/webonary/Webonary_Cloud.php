@@ -230,16 +230,64 @@ class Webonary_Cloud
 
 	public static function entryToFakePost($entry): WP_Post
 	{
-		$post = new stdClass();
-		$post->post_title = $entry->mainheadword[0]->value;
-		$post->post_name = $entry->guid;
-		$post->post_status = 'publish';
-		$post->comment_status = 'closed';
-		$post->post_type = 'post';
-		$post->filter = 'raw'; // important, to prevent WP looking up this post in db!
-		$post->post_content = self::entryToDisplayXhtml($entry);
+		$allow_comments = get_option('default_comment_status') == 'open';
+		$updated_timestamp = strtotime($entry->updatedAt);
+		$post_date = date('Y-m-d H:i:s', $updated_timestamp);
+		$post_title = $entry->mainheadword[0]->value;
 
-		return new WP_Post($post);
+		// create the fake post
+		$fake_post = new stdClass();
+		$fake_post->post_title = $post_title;
+		$fake_post->post_name = $entry->guid;
+		$fake_post->post_status = 'publish';
+		$fake_post->comment_status = $allow_comments ? 'open' : 'closed';
+		$fake_post->post_type = 'webonary_cloud';
+		$fake_post->filter = 'raw'; // important, to prevent WP looking up this post in db!
+		$fake_post->post_content = self::entryToDisplayXhtml($entry);
+		$fake_post->post_date = $post_date;
+		$fake_post->post_date_gmt = $post_date;
+
+		// find the placeholder for linking comments
+		$placeholder_posts = get_posts([
+			'post_type' => 'webonary_cloud',
+			'title' => $post_title,
+			'post_status' => 'all',
+			'numberposts' => 1,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'orderby' => 'post_date ID',
+			'order' => 'DESC'
+		]);
+
+		if (empty($placeholder_posts)) {
+
+			// no placeholder found, create it now
+			$fake_post->ID = wp_insert_post([
+				'post_title' => $post_title,
+				'post_name' => 'cloud',
+				'guid' => '0',
+				'post_status' => 'publish',
+				'comment_status' => 'open',
+				'post_type' => 'webonary_cloud',
+				'post_content' => '',
+				'post_date' => $post_date,
+				'post_date_gmt' => $post_date
+			]);
+		}
+		else {
+
+			// placeholder found, get the ID for linking comments
+			$found_post = $placeholder_posts[0];
+			$fake_post->ID = $found_post->ID;
+
+			// if the post has been updated, update the placeholder timestamp also
+			if (strtotime($found_post->post_date_gmt) < $updated_timestamp) {
+				$found_post->post_date_gmt = $post_date;
+				wp_update_post($found_post->to_array());
+			}
+		}
+
+		return new WP_Post($fake_post);
 	}
 
 	public static function entryToReversal($entry): stdClass
@@ -350,7 +398,6 @@ class Webonary_Cloud
 		foreach ($response as $key => $entry) {
 			if (self::isValidEntry($entry)) {
 				$post = self::entryToFakePost($entry);
-				$post->ID = -$key; // negative ID, to avoid clash with a valid post
 				$posts[$key] = $post;
 			}
 		}
@@ -386,7 +433,6 @@ class Webonary_Cloud
 		$posts = [];
 		if (self::isValidEntry($entry)) {
 			$post = self::entryToFakePost($entry);
-			$post->ID = -1; // negative ID, to avoid clash with a valid post
 			$posts[0] = $post;
 		}
 
@@ -860,5 +906,16 @@ class Webonary_Cloud
 		}
 
 		rename($file_name, $file_name . '.' . $suffix);
+	}
+
+	public static function commentRedirect($location): string
+	{
+		// redirect back to the page we just came from
+		$from = $_SERVER['HTTP_REFERER'] ?? null;
+
+		if (!empty($from))
+			return $from;
+
+		return $location;
 	}
 }
