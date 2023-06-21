@@ -108,11 +108,15 @@ msgstr ""
 #: search.php:33
 #, php-format
 msgid "Search results for \"%s\""
-msgstr "Hasil pencarian \"%s\""
+msgstr "Hasil carian untuk \"%s\""
 
 #: search.php:58
 msgid "Comments"
 msgstr "Komen"
+
+#: search.php:87
+msgid "Display Comments"
+msgstr "Paparkan Komen"
 
 # @ dictrans
 #: search.php:71
@@ -120,8 +124,11 @@ msgid ""
 "No matches. Please try again, or use the navigation menus to find what you "
 "search for."
 msgstr ""
-"Yang telah dicari, tidak ditemui. Silakan cuba cari lagi, atau menggunakan "
-"menu di atas (Kamus) untuk mencari lagi."
+"Padanan tidak ditemui. Sila cuba lagi, atau gunakan menu pengemudian untuk mencari apa yang anda cari."
+
+#: footer.php:138
+msgid "Terms of Service"
+msgstr "Syarat Perkhidmatan"
 
 # @ dictrans
 #: slide.php:8 slide.php:9

@@ -22,7 +22,8 @@ class Webonary_Languages
 		foreach ($entries as $entry) {
 
 			$selected = ($entry->language_code === $selected_language) ? 'selected' : '';
-			$options[] = sprintf($template, $entry->language_code, $selected, $entry->language_name);
+			$localized_name = __($entry->language_name);
+			$options[] = sprintf($template, $entry->language_code, $selected, $localized_name);
 		}
 
 		$option_str = implode(PHP_EOL, $options);

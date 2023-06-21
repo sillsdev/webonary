@@ -29,7 +29,6 @@ function categories_func($atts, $content, $shortcode_tag)
 	if(!file_exists($_SERVER['DOCUMENT_ROOT'] . '/wp-content/plugins/sil-dictionary-webonary/js/categoryNodes_' . $qTransLang . '.js'))
 		$qTransLang = 'en';
 
-	$dictionaryId = null;
 	if (IS_CLOUD_BACKEND)
 	{
 		Webonary_Cloud::registerAndEnqueueMainStyles();
@@ -160,6 +159,13 @@ HTML;
 
 		$query_vars = $_GET ?? [];
 		$query_vars['key'] = $languageCode;
+
+		// remove page numbers from the new link, we always want to show the first page
+		if (isset($query_vars['pagenr']))
+			unset($query_vars['pagenr']);
+
+		if (isset($query_vars['totalEntries']))
+			unset($query_vars['totalEntries']);
 
 		foreach($alphas as $letter) {
 
@@ -634,7 +640,6 @@ function getVernacularEntries(string $letter, string $langcode, int $page, int $
 {
 	global $wpdb;
 
-	$postsPerPage = $postsPerPage ?? Webonary_Utility::getPostsPerPage();
 	$limitSql = getLimitSql($page, $postsPerPage);
 
 	$collate = "COLLATE " . MYSQL_CHARSET . "_BIN"; //"COLLATE 'UTF8_BIN'";

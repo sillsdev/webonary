@@ -106,3 +106,7 @@ msgstr "Aso nemot do miontok o boros. Tiiman vagu, atau pakazo ilo menu pogihima
 #: slide.php:8 slide.php:9
 msgid "featured"
 msgstr ""
+
+#: search.php:87
+msgid "Display Comments"
+msgstr "Valad dot Ongoboroson"

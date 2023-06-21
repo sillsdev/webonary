@@ -946,7 +946,7 @@ msgstr "Malta"
 
 #: wp-includes/script-loader.php:425
 msgid "Malay"
-msgstr "Melayu"
+msgstr "Malazu"
 
 #: wp-includes/script-loader.php:424
 msgid "Macedonian"

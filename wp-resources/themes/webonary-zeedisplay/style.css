@@ -39,10 +39,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 html {
   font-size: 100.01%;
+  line-height: 1.4em;
 }
 
 body {
-  font-family: Arial, Tahoma, sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   font-size: 100% !important;
   border: 0;
   color: #222;
@@ -80,7 +81,7 @@ input, textarea {
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   color: #333;
-  font-family: "Arial Unicode MS", serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
 }
 img {
 	max-width: 100%;
@@ -166,14 +167,12 @@ ul.qtrans_language_chooser li.active { display:none }
 }
 #sidebar ul li h2 {
   color: #85005b;
-  height: 25px;
-  line-height: 25px;
-  padding: 2px 15px;
+  padding: 6px 15px;
   margin-bottom: 5px;
   font-size: 1.1em;
   font-weight: bold;
   border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #eee;
+  background-color: #eee;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
   -webkit-border-radius: 10px; /* Safari, Chrome */
@@ -248,7 +247,7 @@ ul.qtrans_language_chooser li.active { display:none }
   background: buttonface;
   border: 1px solid #ddd;
   padding: 6px 5px;
-  font-family: "Arial Unicode MS", serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   font-size: 1.0em;
   color: #333;
   width: 150px;
@@ -410,7 +409,7 @@ html[dir=rtl] #topnavi {
   color:#0066ee;
 }
 .page h2 {
-  font-family: "Arial Unicode MS", sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   /* font-size: 1.8em; */
 }
 .post h2 a:link, .post h2 a:visited {
@@ -433,7 +432,7 @@ html[dir=rtl] #topnavi {
   line-height: 1.5em;
   font-size: 1.8em;
   margin: 10px 0 0 0;
-  font-family: "Arial Unicode MS", sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   color: #444;
 }
 .pageentry h2 {
@@ -463,25 +462,15 @@ html[dir=rtl] #topnavi {
   font-size: 1.0em;
   margin: 5px 0 0 0;
   color: #444;
-  font-family: "Arial Unicode MS", sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   font-weight: bold;
 }
 .pageentry p {
   margin: 5px 0 5px 0;
-  font-family: Arial, Tahoma, sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
 }
 .arh {
   width: 80%;
-  font-size: 1.4em;
-  color:#444;
-  padding: 10px 15px;
-  margin: 10px 5px 20px 0;
-  border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
-  border-radius: 10px;
-  -moz-border-radius: 10px; /* Firefox */
-  -webkit-border-radius: 10px; /* Safari, Chrome */
-  -khtml-border-radius: 10px; /* Konqueror */
 }
 .postmeta {
   font-size: 0.9em;
@@ -500,7 +489,7 @@ html[dir=rtl] #topnavi {
   padding: 5px 15px;
   color: #333;
   font-size: 0.9em;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
+  background-color: #ddd;
   border: 1px solid #ccc;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
@@ -733,13 +722,13 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
   padding: 5px;
   background-color: #fff;
 }
-#comments h3, #respond h3 {
+#comments h3, #respond h3, .arh {
   font-size: 1.4em;
   color:#444;
   padding: 10px 15px;
   margin: 10px 5px 20px 0;
   border: 1px solid #ccc;
-  background: url(images/sidebar_bg.png) repeat-x #ddd;
+  background-color: #ddd;
   border-radius: 10px;
   -moz-border-radius: 10px; /* Firefox */
   -webkit-border-radius: 10px; /* Safari, Chrome */
@@ -859,7 +848,7 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
   margin: 0 0 10px 0;
   padding: 3px 10px;
   line-height: 1.2em;
-  font-family: tahoma, arial, sans-serif;
+  font-family: "Arial Unicode MS", Ubuntu, Roboto, Arial, sans-serif;
   color: #fff;
 }
 #copyright {
@@ -966,7 +955,7 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .alignright {float:right; }
 .alignleft {float:left; }
 .aligncenter {display: block; margin-left: auto; margin-right: auto}
-span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-family:"Times New Roman","Lucida Sans Unicode","Arial Unicode MS",Arial,sans-serif;color:black;}
+span.lpMiniHeading {font-size:9.0pt;font-style:italic;font-weight:normal;font-family:"Times New Roman","Lucida Sans Unicode","Arial Unicode MS",Ubuntu,Roboto,Arial,sans-serif;color:black;}
 
 img.ft-node {width: 16px; height: 22px; border: 0; max-width: none}
 img.ft-blank2 {width: 2px; height: 2px; border: 0; max-width: none}
@@ -1064,6 +1053,7 @@ div.publication-status {
   border: 3px solid #85005b;
   width: calc(100% - 40px);
   font-size: 1rem;
+  line-height: 1.2em;
 }
 
 .bottom-content-sidebar div.publication-status {

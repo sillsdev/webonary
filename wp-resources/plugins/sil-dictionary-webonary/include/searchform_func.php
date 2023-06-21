@@ -94,13 +94,15 @@ function webonary_searchform($use_li = false): void
 
 				// add the main language
 				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? 'selected' : '';
-				$language_dropdown_options .= sprintf($option_template, $dictionary->mainLanguage->lang, $selected, $mainIndexed->language_name);
+				$localized_name = __($mainIndexed->language_name);
+				$language_dropdown_options .= sprintf($option_template, $dictionary->mainLanguage->lang, $selected, $localized_name);
 
 				// add the reversal languages
 				foreach ($other_search_languages as $lang) {
 
 					$selected = ($lang === $selected_language) ? 'selected' : '';
-					$language_dropdown_options .= sprintf($option_template, $lang, $selected, Webonary_Cloud::getLanguageName($lang));
+					$localized_name = __(Webonary_Cloud::getLanguageName($lang));
+					$language_dropdown_options .= sprintf($option_template, $lang, $selected, $localized_name);
 				}
 			}
 
@@ -126,11 +128,13 @@ function webonary_searchform($use_li = false): void
 
 					if ( $language['name'] != $vernacularLanguageName) {
 
+						$localized_name = __($language['name']);
+
 						$language_dropdown_options .= '<option value="' . $language['language_code'] . '"';
 						if ( $selected_language == $language['language_code'] ) {
 							$language_dropdown_options .= ' selected';
 						}
-						$language_dropdown_options .= '>' . $language['name'] . '</option>';
+						$language_dropdown_options .= '>' . $localized_name . '</option>';
 					}
 				}
 			}
@@ -258,7 +262,8 @@ function webonary_status($indexed_languages, $lastEditDate): string
 		if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
 			continue;
 
-		$num_entries_text .= $indexed->language_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
+		$localized_name = __($indexed->language_name);
+		$num_entries_text .= $localized_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
 		$reversals[] = $indexed->language_name;
 	}
 

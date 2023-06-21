@@ -145,6 +145,7 @@ add_filter('rest_authentication_errors', function ($result) {
 
 if (IS_CLOUD_BACKEND) {
 	add_filter('posts_pre_query', 'Webonary_Cloud::searchEntries', 10, 2);
+	add_filter('comment_post_redirect', 'Webonary_Cloud::commentRedirect');
 }
 
 function add_rewrite_rules($aRules): array
