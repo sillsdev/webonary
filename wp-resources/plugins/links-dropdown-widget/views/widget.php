@@ -47,7 +47,7 @@ foreach ( (array) $cats as $cat ) {
     function fillDictionariesDropdown(dictionaries) {
         let $published_sites = jQuery('#publishedSites');
         dictionaries.forEach((dictionary) => {
-            let link_name = dictionary.link_name.replace('&#039;', "'");
+            let link_name = dictionary.link_name.replace('&#039;', "'").replace('&amp;', '&');
             $published_sites.append(jQuery('<option/>').attr('value', dictionary.link_url).text(link_name));
         });
     }
