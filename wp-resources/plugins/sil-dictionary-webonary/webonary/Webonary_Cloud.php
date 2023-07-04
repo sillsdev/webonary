@@ -121,11 +121,17 @@ class Webonary_Cloud
 		return $url;
 	}
 
-	private static function semanticDomainToLink($lang, $domain): string
+	private static function semanticDomainHref($lang, $domain_id): string
 	{
-		return '<a href="' . get_site_url() . '?s=&lang=' . $lang . '&tax=' . urlencode($domain) . '">' . $domain . '</a>';
+		if (!empty($lang))
+			return get_site_url() . '/browse/categories/?s=&lang=' . $lang . '&semnumber=' . urlencode($domain_id) ;
+
+		return get_site_url() . '/browse/categories/?semnumber=' . urlencode($domain_id) ;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	private static function entryToDisplayXhtml($entry): string
 	{
 		if (!isset($entry->displayXhtml) || $entry->displayXhtml === '') {
@@ -152,32 +158,60 @@ class Webonary_Cloud
 		}, $displayXhtml);
 
 		// set semantic domains as links, if they are found in the entry
-		if (preg_match_all(
-				'/<span class=\"semanticdomain\">.*<span class=\"name\">(<span lang=\"\S+\">(.*)<\/span>)+<\/span>/U',
-				$displayXhtml,
-				$matches) > 0) {
-			foreach ($matches[0] as $semDom) {
-				if (preg_match_all(
-						'/(?:<span class=\"name\">|\G)+?(<span lang=\"(\S+)\">(.*?)<\/span>)/',
-						$semDom,
-						$semDomNames) > 0) {
-					// <span lang="en">Language and thought</span>
-					$newSemDom = $semDom;
-					foreach ($semDomNames[1] as $index => $semDomNameSpan) {
-						$lang = $semDomNames[2][$index];
-						$domain = $semDomNames[3][$index];
-						// @todo: For some reason, only the first semantic domain is made  in a link. Need to verify if correct.
-						$newSemDom = str_replace(
-							$semDomNameSpan,
-							'<span lang="' . $lang . '">' . self::semanticDomainToLink($lang, $domain) . '</span>',
-							$newSemDom);
-					}
-					$displayXhtml = str_replace($semDom, $newSemDom, $displayXhtml);
+		$lang = get_query_var('lang');
+		$xml = new SimpleXMLElement($displayXhtml);
+		$sem_domains = $xml->xpath('//*[@class="semanticdomain"]');
+
+		if (!empty($sem_domains)) {
+			foreach ($sem_domains as $sem_domain) {
+
+				$abbreviations = $sem_domain->xpath('//*[@class="abbreviation"]');
+
+				if (empty($abbreviations))
+					continue;
+
+				// get the domain number and ID
+				$domain_text = (string)$abbreviations[0]->span[0];
+				$domain_id = $domain_text;
+				if (preg_match('/^([\d\-.]+)$/', $domain_id)) {
+					if (!str_ends_with($domain_id, '.'))
+						$domain_id .= '.';
+				}
+
+				$sem_domain_href = self::semanticDomainHref($lang, $domain_id);
+
+				// change the domain number to a hyperlink
+				foreach ($abbreviations as $abbreviation) {
+
+					$tag_lang = (string)$abbreviation->span[0]->attributes()->lang;
+
+					unset($abbreviation->span[0]);
+
+					$span = $abbreviation->addChild('span');
+					$span->addAttribute('lang', $tag_lang);
+					$a = $span->addChild('a', $domain_text);
+					$a->addAttribute('href', $sem_domain_href);
+				}
+
+				$names = $sem_domain->xpath('//*[@class="name"]');
+
+				// change the domain name to a hyperlink
+				foreach ($names as $name) {
+
+					$tag_lang = (string)$name->span[0]->attributes()->lang;
+					$tag_text = (string)$name[0]->span[0];
+
+					unset($name->span[0]);
+
+					$span = $name->addChild('span');
+					$span->addAttribute('lang', $tag_lang);
+					$a = $span->addChild('a', $tag_text);
+					$a->addAttribute('href', $sem_domain_href);
 				}
 			}
 		}
 
-		return $displayXhtml;
+		return $xml->asXML();
 	}
 
 	private static function validatePermissionToPost($header): stdClass
@@ -228,6 +262,11 @@ class Webonary_Cloud
 		return (object)['code' => 200, 'message' => implode(',', $blogsToPost)];
 	}
 
+	/**
+	 * @param $entry
+	 * @return WP_Post
+	 * @throws Exception
+	 */
 	public static function entryToFakePost($entry): WP_Post
 	{
 		$allow_comments = get_option('default_comment_status') == 'open';
@@ -290,6 +329,11 @@ class Webonary_Cloud
 		return new WP_Post($fake_post);
 	}
 
+	/**
+	 * @param $entry
+	 * @return stdClass
+	 * @throws Exception
+	 */
 	public static function entryToReversal($entry): stdClass
 	{
 		$reversal = new stdClass();
@@ -387,6 +431,9 @@ class Webonary_Cloud
 		return $response->count ?? 0;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
@@ -405,6 +452,9 @@ class Webonary_Cloud
 		return $posts;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public static function getEntriesAsReversals($apiParams): array
 	{
 		$request = self::$doBrowseByLetter . '/' . self::getBlogDictionaryId();
@@ -422,6 +472,9 @@ class Webonary_Cloud
 		return $reversals;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public static function getEntryAsPost($doAction, $id): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
@@ -505,6 +558,7 @@ class Webonary_Cloud
 	 * @param WP_Query $query
 	 * @return array|null
 	 * @noinspection PhpUnusedParameterInspection
+	 * @throws Exception
 	 */
 	public static function searchEntries($posts, WP_Query $query): ?array
 	{
