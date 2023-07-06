@@ -1881,7 +1881,7 @@ SQL;
 		{
 			sort($arrLetters);
 		}
-		$alphabet = implode(',', $arrLetters);
+		$alphabet = Webonary_Cloud::filterLetterList($arrLetters, true);
 
 		if($filetype == 'configured')
 		{
