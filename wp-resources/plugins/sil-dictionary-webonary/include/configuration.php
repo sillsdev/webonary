@@ -141,6 +141,11 @@ function save_configurations()
 
 		if(is_super_admin()) {
 			$letters = trim($_POST['vernacular_alphabet'] ?? '');
+
+			// remove empty items from the list
+			$chars = Webonary_Cloud::filterLetterList($letters);
+			$letters = implode(',', $chars);
+
 			if (strlen($letters) > 0)
 				update_option('vernacular_alphabet', $letters);
 		}

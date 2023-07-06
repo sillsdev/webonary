@@ -695,8 +695,13 @@ class Webonary_Cloud
 		update_option('languagecode', $language->lang);
 		update_option('totalConfiguredEntries', $language->entriesCount);
 
-		if (!empty($language->letters))
-			update_option('vernacular_alphabet', implode(',', $language->letters));
+		if (!empty($language->letters)) {
+
+			// remove empty items from the list
+			$chars = self::filterLetterList($language->letters);
+
+			update_option('vernacular_alphabet', implode(',', $chars));
+		}
 
 		wp_insert_term(
 			$language->title,
@@ -971,5 +976,17 @@ class Webonary_Cloud
 			return $from;
 
 		return $location;
+	}
+
+	public static function filterLetterList(array|string $letters): array
+	{
+		if (!is_array($letters))
+			$letters = explode(',', $letters);
+
+		if (empty($letters))
+			return [];
+
+		// remove empty items from the list
+		return array_filter($letters, fn($value) => $value !== '');
 	}
 }
