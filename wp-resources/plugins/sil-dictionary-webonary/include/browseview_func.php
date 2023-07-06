@@ -667,7 +667,7 @@ SQL;
 		$sql .= " JOIN " . SEARCHTABLE . " AS s ON p.ID = s.post_id";
 		$sql .= " WHERE LOWER(search_strings) LIKE %s $collate AND language_code = %s AND relevance >= 95";
 
-		$alphas = explode(",",  get_option('vernacular_alphabet'));
+		$alphas = Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'));
 		$chosenLetter = get_letter($alphas[0]);
 
 		$noLetters = getNoLetters($chosenLetter, $alphas);
@@ -746,7 +746,7 @@ function vernacularalphabet_func( $atts )
 
 	$language_code = get_option('languagecode');
 
-	$alphas = explode(",",  get_option('vernacular_alphabet'));
+	$alphas = Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'));
 
 	$chosenLetter = get_letter($alphas[0]);
 
