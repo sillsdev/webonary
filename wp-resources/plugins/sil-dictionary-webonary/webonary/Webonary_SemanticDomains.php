@@ -298,7 +298,13 @@ JS;
 				return;
 		}
 
-		include_once $webonary_include_path . '/default_domains.php';
+		$sem_domain_file = match (get_option('displayCustomDomains', 'default')) {
+			'spanishfoods' => 'default_domains-SpanishFoods.php',
+			'yakan' => 'default_domains-yakan.php',
+			default => 'default_domains.php',
+		};
+
+		include_once $webonary_include_path . DS . $sem_domain_file;
 
 		$use_dash = str_contains($test['slug'] ?? '', '-');
 
