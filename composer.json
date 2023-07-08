@@ -47,7 +47,7 @@
     "composer/installers": "^2.2",
     "bootscore/bootscore": "^5.2",
     "johnpbloch/wordpress": "^6.2",
-    "mdsimpson/contact-form-7-to-database-extension": "2.10.37",
+    "mdsimpson/contact-form-7-to-database-extension": "^2.10",
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "^3.15",
     "wpackagist-plugin/akismet": "^5.0",
