@@ -17,6 +17,7 @@ mysql> UPDATE wp_blogs SET domain = replace(domain, 'webonary.org', 'webonary.wo
 mysql> quit
 cd ~/
 wp eval-file updateDataLive2Work.php --path='/var/www/sites/webonary.work/current/wordpress'
+#wp eval-file updateDataLive2Localhost.php --path='/var/www/projects/webonary/wordpress' --debug
 ```
 
 ### How to use old submenus

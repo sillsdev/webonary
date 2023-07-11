@@ -141,6 +141,10 @@ function save_configurations()
 
 		if(is_super_admin()) {
 			$letters = trim($_POST['vernacular_alphabet'] ?? '');
+
+			// remove empty items from the list
+			$letters = Webonary_Cloud::filterLetterList($letters, true);
+
 			if (strlen($letters) > 0)
 				update_option('vernacular_alphabet', $letters);
 		}
@@ -614,12 +618,12 @@ function webonary_conf_widget($showTitle = false)
 					{
 						?>
 						<span style="color:red;">Only remove letters, do not change/add letters!</span><br>
-						<input type="text" name="vernacular_alphabet" class="admin-alphabet" size=50 value="<?php echo stripslashes(get_option('vernacular_alphabet')); ?>">
+						<input type="text" name="vernacular_alphabet" class="admin-alphabet" size=50 value="<?php echo stripslashes(Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'), true)); ?>">
 						<?php
 					}
 					else
 					{
-						echo stripslashes(get_option('vernacular_alphabet'));
+						echo stripslashes(Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'), true));
 					}?>
 				</div>
 				<div style="margin:1rem 0">
