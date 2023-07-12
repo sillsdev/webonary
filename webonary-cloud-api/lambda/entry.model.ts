@@ -227,7 +227,7 @@ export enum DbPaths {
   ENTRY_GRAM_INFO_ABBREV_LANG = 'morphosyntaxanalysis.graminfoabbrev.lang',
   ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
 
-  ENTRY_SENSES_PART_OF_SPEECH_VALUE = `senses.morphosyntaxanalysis.partofspeech.value`,
+  ENTRY_SENSES_PART_OF_SPEECH_VALUE = 'senses.morphosyntaxanalysis.partofspeech.value',
   ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
   ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
   ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
@@ -243,6 +243,8 @@ export enum DbPaths {
   ENTRY_SEM_DOMS_ABBREV = 'senses.semanticdomains.abbreviation',
   ENTRY_SEM_DOMS_ABBREV_VALUE = 'senses.semanticdomains.abbreviation.value',
   ENTRY_SEM_DOMS_NAME_VALUE = 'senses.semanticdomains.name.value',
+
+  ENTRY_SUBENTRIES_PART_OF_SPEECH_VALUE = 'subentries mainentrysubentries.morphosyntaxanalysis.partofspeech.value',
 
   ENTRY_LANG_TEXTS = 'langTexts',
   ENTRY_LANG_UNACCENTED_TEXTS = 'langUnaccentedTexts',

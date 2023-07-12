@@ -225,6 +225,30 @@ describe('searchEntries search', () => {
     expect(parseGuids(response)).toEqual([sensesPartGuid]);
   });
 
+  test('matches part of speech using subentries', async () => {
+    const subentriesPartGuid = `${matchingGuid}-subentries-part`;
+    const subentriesPartEntry = {
+      ...testEntry,
+      guid: subentriesPartGuid,
+      'subentries mainentrysubentries': [
+        { morphosyntaxanalysis: { partofspeech: [{ lang, value: `${partOfSpeech}sensesPart` }] } },
+      ],
+    };
+
+    await upsertEntries([subentriesPartEntry], false, dictionaryId, testUsername);
+
+    event = {
+      ...event,
+      queryStringParameters: { lang, text },
+      multiValueQueryStringParameters: {
+        partOfSpeech: [`${partOfSpeech}sensesPart`],
+      },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([subentriesPartGuid]);
+  });
+
   test('does not match part of speech', async () => {
     event = {
       ...event,

@@ -96,6 +96,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
         { [DbPaths.ENTRY_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded } },
         { [DbPaths.ENTRY_GRAM_INFO_ABBREV_VALUE]: { $in: partOfSpeechDecoded } },
         { [DbPaths.ENTRY_SENSES_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded } },
+        { [DbPaths.ENTRY_SUBENTRIES_PART_OF_SPEECH_VALUE]: { $in: partOfSpeechDecoded } },
       ],
     };
   }
