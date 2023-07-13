@@ -584,42 +584,18 @@ class Webonary_Cloud
 
 		// get the selected parts of speech list
 		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
+	
+		$key = filter_input(INPUT_GET, 'key', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 
-		if ($searchText === '' && !empty($taxonomies[0])) {
-
-			// This is a listing by semantic domains
-			$apiParams = array(
-				'text' => $taxonomies[0],
-				'searchSemDoms' => '1'
-			);
-
-		}
-		elseif ($searchText === '' && !empty($semantic_domains) && !empty(get_page_by_path('/browse/categories'))) {
-
-			// redirect to the semantic domains page
-			$url_lang = get_query_var('lang');
-			$sem_domain_number = $semantic_domains[0];
-			$sem_domain = Webonary_SemanticDomains::GetDomainName($sem_domain_number, self::getCurrentLanguage());
-			$url = get_site_url() . '/browse/categories/?semdomain=' . urlencode($sem_domain) . '&semnumber=' . $sem_domain_number . '.&lang=en';
-			if ($url_lang != '')
-				$url .= '&lang=' . $url_lang;
-
-			wp_redirect($url, 302, 'Webonary');
-			exit();
-		}
-		else {
-			$key = filter_input(INPUT_GET, 'key', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
-
-			$apiParams = [
-				'text' => $searchText,
-				'lang' => $key,
-				'partOfSpeech' => $taxonomies,
-				'semanticDomain' => $semantic_domains,
-				'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
-				'matchAccents' => $search_cookie->match_accents ? '1' : ''
-			];
-		}
-
+		$apiParams = [
+			'text' => $searchText,
+			'lang' => $key,
+			'partOfSpeech' => $taxonomies,
+			'semanticDomain' => $semantic_domains,
+			'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
+			'matchAccents' => $search_cookie->match_accents ? '1' : ''
+		];
+	
 		if (!isset($apiParams))
 			return null;
 

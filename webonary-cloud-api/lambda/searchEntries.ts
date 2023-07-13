@@ -49,10 +49,8 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     return Response.badRequest('Dictionary must be in the path.');
   }
 
-  let text = event.queryStringParameters?.text?.trim();
-  if (!text) {
-    return Response.badRequest('Search text must be specified.');
-  }
+  // Search text may or may not be specified
+  let text = event.queryStringParameters?.text?.trim() ?? '';
   text = decodeURIComponent(text.replace(/\+/g, ' '));
 
   // `lang` is used to limit which language to search. Webonary will always send this.
@@ -79,10 +77,14 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     DB_MAX_DOCUMENTS_PER_CALL,
   );
 
+  // STEP 1: Validate input parameters
+  if (!text && !searchSemDoms && !partOfSpeech && !semanticDomain) {
+    return Response.badRequest('Search parameter must be specified.');
+  }
+
+  // STEP 2: Set main filters
   const dbClient: MongoClient = await connectToDB();
   const dbCollection = dbClient.db(MONGO_DB_NAME).collection(dbCollectionEntries(dictionaryId));
-
-  // STEP 1: Set main filters
   let dbFind: DbFindParameters = {};
   if (partOfSpeech && partOfSpeech.length > 0) {
     // decode since spaces can exist in part of speech
@@ -105,7 +107,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     dbFind[DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE] = semanticDomainAbbrevRegex(semanticDomain);
   }
 
-  // STEP 2: Set language condition
+  // STEP 3: Set language condition
   let langTextsPath;
   if (matchAccents) {
     langTextsPath = DbPaths.ENTRY_LANG_TEXTS;
@@ -114,9 +116,11 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     text = removeDiacritics(text);
   }
 
-  // STEP 3: Conduct main search (semantic domain, partial search, or fulltext search)
+  // STEP 4: Conduct main search (semantic domain, partial search, or fulltext search)
   let cursor;
-  if (searchSemDoms) {
+  if (!text) {
+    cursor = dbCollection.find(dbFind);
+  } else if (searchSemDoms) {
     if (semDomAbbrev && semDomAbbrev !== '') {
       dbFind[DbPaths.ENTRY_SEM_DOMS_ABBREV_VALUE] = semanticDomainAbbrevRegex(semDomAbbrev);
     } else {
