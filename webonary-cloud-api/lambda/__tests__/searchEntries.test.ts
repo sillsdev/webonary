@@ -56,6 +56,15 @@ describe('searchEntries search', () => {
     };
   });
 
+  test('no search params', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { ...event.queryStringParameters, text: '' },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(400);
+  });
+
   test('matches word in displayXhtml', async () => {
     // Use base event without modification
     const response = await handler(event as APIGatewayEvent);
@@ -179,6 +188,17 @@ describe('searchEntries search', () => {
     expect(parseGuids(response)).toEqual([matchingGuid]);
   });
 
+  test('matches part of speech with no search text', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: '' },
+      multiValueQueryStringParameters: { partOfSpeech: [partOfSpeech, `${partOfSpeech}Not`] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
+
   test('matches part of speech using shared gram info', async () => {
     const sharedGramGuid = `${matchingGuid}-part-shared`;
     const sharedGramEntry = {
@@ -268,6 +288,17 @@ describe('searchEntries search', () => {
     event = {
       ...event,
       queryStringParameters: { lang, text, semanticDomain },
+      multiValueQueryStringParameters: { partOfSpeech: [partOfSpeech] },
+    };
+    const response = await handler(event as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([matchingGuid]);
+  });
+
+  test('matches part of speech and semantic domain with no search text', async () => {
+    event = {
+      ...event,
+      queryStringParameters: { lang, text: '', semanticDomain },
       multiValueQueryStringParameters: { partOfSpeech: [partOfSpeech] },
     };
     const response = await handler(event as APIGatewayEvent);
