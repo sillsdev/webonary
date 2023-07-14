@@ -175,6 +175,14 @@ port=3306
 
 5. That's it, you're finished!
 
+### Install MongoDB Shell
+```bash
+wget -qO- https://www.mongodb.org/static/pgp/server-6.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-6.0.asc
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+sudo apt update
+sudo apt install mongodb-mongosh
+mongosh --version
+```
 
 ### Install MongoDB tools
 
