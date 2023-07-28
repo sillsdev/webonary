@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e336bc07da25a374626739fce73e6e0d",
+    "content-hash": "f4b0f806e20c5603ff47fdabb5991c99",
     "packages": [
         {
             "name": "bootscore/bootscore",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bootscore/bootscore.git",
-                "reference": "3e24e88a9fa7d1dce509fd796d62025674bbb6ba"
+                "reference": "bfd2ab9b356f112cb16ade56084374deb87ae7e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/3e24e88a9fa7d1dce509fd796d62025674bbb6ba",
-                "reference": "3e24e88a9fa7d1dce509fd796d62025674bbb6ba",
+                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/bfd2ab9b356f112cb16ade56084374deb87ae7e5",
+                "reference": "bfd2ab9b356f112cb16ade56084374deb87ae7e5",
                 "shasum": ""
             },
             "type": "wordpress-theme",
@@ -46,7 +46,7 @@
                 "issues": "https://github.com/bootscore/bootscore/issues",
                 "source": "https://github.com/bootscore/bootscore"
             },
-            "time": "2023-06-02T15:02:58+00:00"
+            "time": "2023-07-10T18:41:01+00:00"
         },
         {
             "name": "composer/installers",
@@ -955,16 +955,16 @@
         },
         {
             "name": "qtranslate/qtranslate-xt",
-            "version": "3.15.1",
+            "version": "3.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/qtranslate/qtranslate-xt.git",
-                "reference": "04ecaf038113cdaa0d49a0704c36c424a1438e4f"
+                "reference": "7c89d2514f9833184e70322a292d149022736fe5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/04ecaf038113cdaa0d49a0704c36c424a1438e4f",
-                "reference": "04ecaf038113cdaa0d49a0704c36c424a1438e4f",
+                "url": "https://api.github.com/repos/qtranslate/qtranslate-xt/zipball/7c89d2514f9833184e70322a292d149022736fe5",
+                "reference": "7c89d2514f9833184e70322a292d149022736fe5",
                 "shasum": ""
             },
             "require": {
@@ -1022,7 +1022,7 @@
                 "source": "https://github.com/qtranslate/qtranslate-xt",
                 "wiki": "https://github.com/qtranslate/qtranslate-xt/wiki"
             },
-            "time": "2023-05-01T23:53:07+00:00"
+            "time": "2023-07-13T22:37:24+00:00"
         },
         {
             "name": "wpackagist-plugin/akismet",
@@ -1041,24 +1041,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/akismet/"
-        },
-        {
-            "name": "wpackagist-plugin/blog-copier",
-            "version": "1.0.7",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/blog-copier/",
-                "reference": "tags/1.0.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/blog-copier.1.0.7.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/blog-copier/"
         },
         {
             "name": "wpackagist-plugin/change-admin-email-setting-without-outbound-email",
@@ -1224,15 +1206,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "8.17",
+            "version": "8.18",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/8.17"
+                "reference": "tags/8.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.17.zip"
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.18.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1494,15 +1476,15 @@
         },
         {
             "name": "wpackagist-plugin/sidebar-manager",
-            "version": "1.1.7",
+            "version": "1.1.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sidebar-manager/",
-                "reference": "tags/1.1.7"
+                "reference": "tags/1.1.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sidebar-manager.1.1.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/sidebar-manager.1.1.8.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1584,15 +1566,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.10.0",
+            "version": "7.10.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.10.0"
+                "reference": "tags/7.10.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.10.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.10.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
