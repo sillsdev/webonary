@@ -51,7 +51,6 @@
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "^3.15",
     "wpackagist-plugin/akismet": "^5.0",
-    "wpackagist-plugin/blog-copier": "^1.0",
     "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "^3.1",
     "wpackagist-plugin/classic-editor": "^1.6",
     "wpackagist-plugin/contact-form-7": "^5.7",
