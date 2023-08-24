@@ -425,7 +425,7 @@ SQL;
 
 		$selected_domains = Webonary_Info::getSelectedSemanticDomains();
 
-		$options = ['<option value="">' . __('Semantic Domains', 'sil_dictionary') . '</option>'];
+		$options = ['<option value="">' . __('Semantic Domains', 'sil_domains') . '</option>'];
 
 		foreach ($domains as $domain) {
 
