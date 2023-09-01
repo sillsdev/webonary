@@ -165,7 +165,7 @@ class Webonary_Cloud
 		if (!empty($sem_domains)) {
 			foreach ($sem_domains as $sem_domain) {
 
-				$abbreviations = $sem_domain->xpath('//*[@class="abbreviation"]');
+				$abbreviations = $sem_domain->xpath('*[@class="abbreviation"]');
 
 				if (empty($abbreviations))
 					continue;
@@ -193,7 +193,7 @@ class Webonary_Cloud
 					$a->addAttribute('href', $sem_domain_href);
 				}
 
-				$names = $sem_domain->xpath('//*[@class="name"]');
+				$names = $sem_domain->xpath('*[@class="name"]');
 
 				// change the domain name to a hyperlink
 				foreach ($names as $name) {
@@ -584,7 +584,7 @@ class Webonary_Cloud
 
 		// get the selected parts of speech list
 		$taxonomies = Webonary_Parts_Of_Speech::GetPartsOfSpeechSelected();
-	
+
 		$key = filter_input(INPUT_GET, 'key', FILTER_UNSAFE_RAW, array('options' => array('default' => '')));
 
 		$apiParams = [
@@ -595,7 +595,7 @@ class Webonary_Cloud
 			'matchPartial' => $search_cookie->match_whole_word ? '' : '1',  // note reverse logic, b/c params are opposite
 			'matchAccents' => $search_cookie->match_accents ? '1' : ''
 		];
-	
+
 		if (!isset($apiParams))
 			return null;
 
