@@ -296,7 +296,15 @@ JS;
 		if ($test !== false) {
 			if (!preg_match('/^([\d\-.]+)$/', $test['slug']))
 				return;
+
+			// find a slug long enough to have a dot or dash in it
+			while ($test !== false && strlen($test['slug']) < 3) {
+				$test = next($domains);
+			}
 		}
+
+		// does this dictionary use dash instead of dot as a separator?
+		$use_dash = str_contains($test['slug'] ?? '', '-');
 
 		$sem_domain_file = match (get_option('displayCustomDomains', 'default')) {
 			'spanishfoods' => 'default_domains-SpanishFoods.php',
@@ -305,8 +313,6 @@ JS;
 		};
 
 		include_once $webonary_include_path . DS . $sem_domain_file;
-
-		$use_dash = str_contains($test['slug'] ?? '', '-');
 
 		foreach ($defaultDomain as $key => $value) {
 
@@ -382,7 +388,7 @@ SQL;
 				if ($lang_code == 'en' && isset($defaultDomain[$domain_number])) {
 					$domain['name'] = $defaultDomain[$domain_number];
 				} else {
-					$domain['name'] = __($domain['name'], 'sil_dictionary');
+					$domain['name'] = __($domain['name'], 'sil_domains');
 				}
 			}
 		}
