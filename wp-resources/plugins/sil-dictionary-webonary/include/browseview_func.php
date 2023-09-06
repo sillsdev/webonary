@@ -1,9 +1,5 @@
 <?php
-/** @noinspection PhpMultipleClassDeclarationsInspection */
-/** @noinspection PhpMissingReturnTypeInspection */
-/** @noinspection PhpComposerExtensionStubsInspection */
-/** @noinspection HtmlUnknownTarget */
-/** @noinspection CssUnusedSymbol */
+
 
 /**
  * @param array $atts
@@ -13,10 +9,11 @@
  * @return string
  * @noinspection PhpMissingParamTypeInspection
  * @noinspection PhpUnusedParameterInspection
+ * @throws Exception
  */
-function categories_func($atts, $content, $shortcode_tag)
+function categories_func($atts, $content, $shortcode_tag): string
 {
-	global $wp_query;
+	global $wpdb;
 
 	Webonary_SemanticDomains::GetRoots();
 
@@ -80,8 +77,22 @@ function categories_func($atts, $content, $shortcode_tag)
 		}
 		else
 		{
-			$arrPosts = query_posts("semdomain=" . $semdomain . "&semnumber=" . $semnumber_internal . "&posts_per_page=" . $postsPerPage . "&paged=" . $pagenr);
-			$totalEntries = $_GET['totalEntries'] ?? $wp_query->found_posts;
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT SQL_CALC_FOUND_ROWS p.*
+FROM $wpdb->posts AS p
+     INNER JOIN $wpdb->term_relationships AS r ON p.ID = r.object_id
+     INNER JOIN $wpdb->term_taxonomy AS x ON x.term_taxonomy_id = r.term_taxonomy_id
+     INNER JOIN $wpdb->terms AS t ON t.term_id = x.term_id
+WHERE x.taxonomy = 'sil_semantic_domains'
+  AND t.slug LIKE '$semnumber_internal%'
+ORDER BY p.post_title, p.ID
+SQL;
+			$sql .= getLimitSql($pagenr, $postsPerPage);
+
+			$arrPosts = $wpdb->get_results($sql);
+
+			$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS();');
 		}
 	}
 	else
@@ -110,7 +121,6 @@ function categories_func($atts, $content, $shortcode_tag)
 
  	wp_reset_query();
 	return $display;
-
 }
 add_shortcode( 'categories', 'categories_func' );
 
@@ -121,7 +131,7 @@ add_shortcode( 'categories', 'categories_func' );
  *
  * @return string
  */
-function displayAlphabet($alphas, $languageCode, $rtl)
+function displayAlphabet($alphas, $languageCode, $rtl): string
 {
 	global $wpdb;
 
@@ -190,7 +200,7 @@ HTML;
 HTML;
 }
 
-function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languageCode, $requestName = null, $currentPage = null)
+function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $languageCode, $requestName = null, $currentPage = null): string
 {
 	if(!isset($requestName))
 		$requestName = 'letter';
@@ -289,8 +299,14 @@ $item_str
 HTML;
 }
 
-/** @noinspection PhpUnused */
-function english_alphabet_func($atts, $content, $tag)
+/**
+ * @param $atts
+ * @param $content
+ * @param $tag
+ * @return string
+ * @throws Exception
+ */
+function english_alphabet_func($atts, $content, $tag): string
 {
 	if(strlen(trim(get_option('reversal1_alphabet'))) == 0)
 	{
@@ -322,7 +338,7 @@ add_shortcode('englishalphabet', 'english_alphabet_func');
 /**
  * @return bool
  */
-function get_has_reversal_browseletters()
+function get_has_reversal_browseletters(): bool
 {
 	global $wpdb;
 
@@ -340,7 +356,7 @@ function get_has_reversal_browseletters()
  *
  * @return string
  */
-function getLimitSql($page=null, $postsPerPage=null)
+function getLimitSql($page=null, $postsPerPage=null): string
 {
 	if (is_null($page))
 		$page = Webonary_Utility::getPageNumber();
@@ -360,9 +376,10 @@ function getLimitSql($page=null, $postsPerPage=null)
  * @param string $reversalnr
  * @param int|null $postsPerPage
  *
- * @return array|object|null
+ * @return mixed
+ * @noinspection PhpMixedReturnTypeCanBeReducedInspection
  */
-function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $reversalnr, $postsPerPage = null)
+function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $reversalnr, $postsPerPage = null): mixed
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
 	{
@@ -451,7 +468,14 @@ add_shortcode( 'reversalindex2', 'reversalalphabet_func' );
 add_shortcode( 'reversalindex3', 'reversalalphabet_func' );
 add_shortcode( 'reversalindex4', 'reversalalphabet_func' );
 
-function reversalalphabet_func($atts, $content, $tag)
+/**
+ * @param $atts
+ * @param $content
+ * @param $tag
+ * @return string
+ * @throws Exception
+ */
+function reversalalphabet_func($atts, $content, $tag): string
 {
 	if($tag == "reversalindex2")
 	{
@@ -487,7 +511,15 @@ function reversalalphabet_func($atts, $content, $tag)
 	return reversalindex($display, $chosenLetter, get_option('reversal' . $reversalnr . '_langcode'), $reversalnr);
 }
 
-function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
+/**
+ * @param $display
+ * @param $chosenLetter
+ * @param $langcode
+ * @param $reversalnr
+ * @return string
+ * @throws Exception
+ */
+function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): string
 {
 	global $wpdb;
 
@@ -604,7 +636,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = "")
 	return $display;
 }
 
-function getNoLetters($chosenLetter, $alphas)
+function getNoLetters($chosenLetter, $alphas): string
 {
 	//if for example somebody searches for "k", but there is also a letter 'kp' in the alphabet then
 	//words starting with kp should not appear
@@ -634,9 +666,10 @@ function getNoLetters($chosenLetter, $alphas)
  * @param int $page
  * @param int $postsPerPage
  *
- * @return array|object|null
+ * @return mixed
+ * @noinspection PhpMixedReturnTypeCanBeReducedInspection
  */
-function getVernacularEntries(string $letter, string $langcode, int $page, int $postsPerPage)
+function getVernacularEntries(string $letter, string $langcode, int $page, int $postsPerPage): mixed
 {
 	global $wpdb;
 
@@ -690,7 +723,7 @@ SQL;
 	return $arrEntries;
 }
 
-function getVernacularHeadword($post_id, $language_code)
+function getVernacularHeadword($post_id, $language_code): ?string
 {
 	global $wpdb;
 
@@ -702,6 +735,7 @@ function getVernacularHeadword($post_id, $language_code)
 
 }
 
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 function get_letter($firstLetterOfAlphabet = "") {
 	if (!isset($_GET['letter'])) {
 		return $firstLetterOfAlphabet;
@@ -720,7 +754,13 @@ function get_letter($firstLetterOfAlphabet = "") {
 	return $chosenLetter;
 }
 
-function vernacularalphabet_func( $atts )
+/**
+ * @param $atts
+ * @return string
+ * @throws Exception
+ * @noinspection PhpMultipleClassDeclarationsInspection
+ */
+function vernacularalphabet_func($atts ): string
 {
 	global $wpdb;
 
