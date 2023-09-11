@@ -5839,6 +5839,9 @@ msgstr ""
 msgid "Yiddish"
 msgstr ""
 
+msgid "Yazghulami"
+msgstr "Язгуломи"
+
 #: wp-includes/script-loader.php:1020
 msgid "Welsh"
 msgstr ""
@@ -5858,6 +5861,9 @@ msgstr ""
 #: wp-includes/script-loader.php:1016
 msgid "Thai"
 msgstr ""
+
+msgid "Tajik"
+msgstr "тоҷикӣ"
 
 #: wp-includes/script-loader.php:1015
 msgid "Tagalog"
@@ -5998,7 +6004,7 @@ msgstr ""
 #: wp-includes/script-loader.php:980 wp-includes/js/dist/block-library.js:25247
 #: wp-admin/includes/ms.php:664
 msgid "English"
-msgstr ""
+msgstr "англисӣ"
 
 #: wp-includes/script-loader.php:979
 msgid "Dutch"
