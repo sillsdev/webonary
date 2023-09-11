@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-02-02 09:16-0500\n"
+"PO-Revision-Date: 2023-09-10 19:18-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tg_TJ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: Projects/webonary-zeedisplay\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: functions.php\n"
+"X-Poedit-SearchPathExcluded-1: includes/admin/theme-admin.php\n"
+"X-Poedit-SearchPathExcluded-2: includes/admin/theme-settings.php\n"
+"X-Poedit-SearchPathExcluded-3: includes/plugins/theme_ads_widget.php\n"
+"X-Poedit-SearchPathExcluded-4: includes/plugins/theme_socialmedia_widget.php\n"
+
+#: 404.php:12
+msgid "Entry not found."
+msgstr "Вурудӣ пайдо нашуд."
+
+#: archive.php:5 archive.php:6 archive.php:7
+msgid "Archive for"
+msgstr "Бойгонӣ барои"
+
+#: archive.php:8
+msgid "Tag Archive for"
+msgstr ""
+
+#: archive.php:9 page-sitemap.php:48
+msgid "Archives"
+msgstr "Бойгониҳо"
+
+#: comments.php:8
+msgid "Enter password to view comments."
+msgstr "Барои дидани шарҳҳо парол ворид кунед."
+
+#: comments.php:16 includes/entry.php:15
+msgid "No comments"
+msgstr "Шарҳҳо нест"
+
+#: comments.php:16 includes/entry.php:15
+msgid "One comment"
+msgstr "Як шарҳ ҳаст"
+
+#: comments.php:16 includes/entry.php:15
+#, no-php-format
+msgid "% comments"
+msgstr ""
+
+#: footer.php:140
+msgid "Terms of Service"
+msgstr "Шартҳои хизматрасонӣ"
+
+#: includes/entry.php:31
+msgid "Read more"
+msgstr "Идомаи хониш"
+
+#: includes/navigation.php:17
+msgid "&laquo; Previous Entries"
+msgstr "&laquo; Вурудиҳои пешина"
+
+#: includes/navigation.php:18
+msgid "Next Entries &raquo;"
+msgstr "Вурудиҳои баъдӣ &raquo;"
+
+#: page-sitemap.php:27
+msgid "Latest Posts"
+msgstr "Мақолаҳои охирин"
+
+#: page-sitemap.php:38
+msgid "Pages"
+msgstr "Саҳифаҳо"
+
+#: page-sitemap.php:43
+msgid "Categories"
+msgstr "Категорияҳо"
+
+#: page-sitemap.php:53
+msgid "Posts by Category"
+msgstr "Мақолаҳо мувофиқи категория"
+
+#: page-sitemap.php:56
+msgid "Category"
+msgstr "Категория"
+
+#: search.php:46
+#, php-format
+msgid "Search results for \"%s\""
+msgstr "Натиҷаи ҷустуҷӯ барои \"%s\""
+
+#: search.php:67
+msgid "Comments"
+msgstr "Шарҳҳо"
+
+#: search.php:78
+msgid "No matches. Please try again, or use the navigation menus to find what you search for."
+msgstr "Натиҷаи ҷустуҷӯ нест. Лутфан барои ёфтани матлаб дубора кӯшиш кунед ё аз менуҳои паймоиш истифода баред."
+
+#: slide.php:8 slide.php:9
+msgid "featured"
+msgstr ""

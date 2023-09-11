@@ -1,8 +1,8 @@
 <?php
 
 
-$lang_code = 'drg';
-$locale_code = 'drg_MY';
+$lang_code = 'tg';
+$locale_code = 'tg_TJ';
 
 
 include_once 'shared-functions.php';

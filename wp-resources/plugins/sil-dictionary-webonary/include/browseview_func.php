@@ -226,7 +226,7 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 
 	$items = [];
 	$limit_pages = 10;
-	$items[] = '<li class="page_info">' . gettext('Page') . ' ' . $currentPage . ' ' . gettext('of') . ' ' . $totalPages . '</li>';
+	$items[] = '<li class="page_info">' . __('Page', 'sil_dictionary') . ' ' . $currentPage . ' ' . __('of', 'sil_dictionary') . ' ' . $totalPages . '</li>';
 
 
 
@@ -629,7 +629,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): st
 	{
 		if($_GET['p'] == 0)
 		{
-			$display = "<p>" . gettext("Entry not found");
+			$display = "<p>" . __('Entry not found', 'sil_dictionary');
 		}
 	}
 
