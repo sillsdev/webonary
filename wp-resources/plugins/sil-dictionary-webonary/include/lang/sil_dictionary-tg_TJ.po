@@ -97,7 +97,7 @@ msgstr "Дар ҳавзаҳои маъноӣ ёфт шуд:"
 
 #: webonary/Webonary_Infrastructure.php:187
 msgid "Semantic Domains"
-msgstr ""
+msgstr "Ҳавзаҳои маъноӣ"
 
 #: webonary/Webonary_Infrastructure.php:188
 msgid "Semantic Domain"
