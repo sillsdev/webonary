@@ -1296,15 +1296,15 @@
         },
         {
             "name": "wpackagist-plugin/jquery-collapse-o-matic",
-            "version": "1.8.5.4",
+            "version": "1.8.5.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jquery-collapse-o-matic/",
-                "reference": "tags/1.8.5.4"
+                "reference": "tags/1.8.5.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jquery-collapse-o-matic.1.8.5.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/jquery-collapse-o-matic.1.8.5.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1314,15 +1314,15 @@
         },
         {
             "name": "wpackagist-plugin/jquery-updater",
-            "version": "3.7.1",
+            "version": "3.7.1.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jquery-updater/",
-                "reference": "tags/3.7.1"
+                "reference": "tags/3.7.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jquery-updater.3.7.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/jquery-updater.3.7.1.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1458,15 +1458,15 @@
         },
         {
             "name": "wpackagist-plugin/really-simple-ssl",
-            "version": "7.0.8",
+            "version": "7.0.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
-                "reference": "tags/7.0.8"
+                "reference": "tags/7.0.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.7.0.8.zip"
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.7.0.9.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1781,9 +1781,9 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Deployer\\Component\\PharUpdate\\": "src/",
                     "Deployer\\Component\\PHPUnit\\": "src/PHPUnit/",
-                    "Deployer\\Component\\Version\\": "src/Version/"
+                    "Deployer\\Component\\Version\\": "src/Version/",
+                    "Deployer\\Component\\PharUpdate\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
