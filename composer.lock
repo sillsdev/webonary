@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bootscore/bootscore",
-            "version": "v5.3.2",
+            "version": "v5.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bootscore/bootscore.git",
-                "reference": "c4da040d7aad88f5a9029b5b75ee337b516c98c0"
+                "reference": "00a418bbcaf2221925d61b018f252ca5b2113e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/c4da040d7aad88f5a9029b5b75ee337b516c98c0",
-                "reference": "c4da040d7aad88f5a9029b5b75ee337b516c98c0",
+                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/00a418bbcaf2221925d61b018f252ca5b2113e8e",
+                "reference": "00a418bbcaf2221925d61b018f252ca5b2113e8e",
                 "shasum": ""
             },
             "type": "wordpress-theme",
@@ -46,7 +46,7 @@
                 "issues": "https://github.com/bootscore/bootscore/issues",
                 "source": "https://github.com/bootscore/bootscore"
             },
-            "time": "2023-08-11T12:22:49+00:00"
+            "time": "2023-09-12T16:28:45+00:00"
         },
         {
             "name": "composer/installers",
@@ -1026,15 +1026,15 @@
         },
         {
             "name": "wpackagist-plugin/akismet",
-            "version": "5.2",
+            "version": "5.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/akismet/",
-                "reference": "tags/5.2"
+                "reference": "tags/5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/akismet.5.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/akismet.5.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1170,15 +1170,15 @@
         },
         {
             "name": "wpackagist-plugin/enable-media-replace",
-            "version": "4.1.2",
+            "version": "4.1.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/enable-media-replace/",
-                "reference": "tags/4.1.2"
+                "reference": "tags/4.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.4.1.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/enable-media-replace.4.1.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
