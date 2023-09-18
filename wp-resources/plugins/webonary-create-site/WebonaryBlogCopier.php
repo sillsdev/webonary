@@ -217,7 +217,7 @@ HTML;
 HTML;
 	}
 
-	private function get_desired_url(array $appPost, string $current_site_path): string
+	private function get_desired_url(array $appPost, array $application, string $current_site_path): string
 	{
 		$label = __('New Site Address', $this->_domain);
 
@@ -274,10 +274,11 @@ HTML;
 	<th scope='row'>$label</th>
 	<td>
 	    <input name="blog[ethnologueCode]" type="text" title="$label" value="$ethnologueCode"/>
-		<br>
-		The following menu links will be created:
-		<a href="https://www.ethnologue.com/language/$ethnologueCode" target="_blank">https://www.ethnologue.com/language/$ethnologueCode</a> /
-		<a href="https://www.sil.org/search/node/$ethnologueCode" target="_blank">https://www.sil.org/search/node/$ethnologueCode</a>
+	    <p>The following menu links will be created:
+		<ul style="list-style: unset; padding-left: 20px; margin: 4px 0 0">
+		    <li><a href="https://www.ethnologue.com/language/$ethnologueCode" target="_blank">https://www.ethnologue.com/language/$ethnologueCode</a></li>
+		    <li><a href="https://www.sil.org/search/node/$ethnologueCode" target="_blank">https://www.sil.org/search/node/$ethnologueCode</a></li>
+        </ul></p>
 	</td>
 </tr>
 HTML;
@@ -464,7 +465,7 @@ HTML;
 		}
 		else {
 			$content[] = $this->get_choose_site_to_copy($blogs, $application, $from_blog_id);
-			$content[] = $this->get_desired_url($appPost, $current_site->path);
+			$content[] = $this->get_desired_url($appPost, $application, $current_site->path);
 			$content[] = $this->get_new_site_title($site_title);
 			$content[] = $this->get_ethnologue_code($appPost, $application);
 			$content[] = $this->get_country($appPost, $application);
