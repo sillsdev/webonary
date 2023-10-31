@@ -767,6 +767,9 @@ SQL;
 					$allow_comments = 'no';
 				}
 
+				// 30 Oct 2023: default all new sites to cloud backend
+				update_option('useCloudBackend', 1);
+
 				//20200207 chungh: Webonary.org reconfig to use subdirectory
 				$msg[] = sprintf(__('Copied: %s in %s seconds', $this->_domain), '<a href="' . $siteurl . '" target="_blank">' . $title . '</a>', number_format_i18n(timer_stop()));
 				$msg[] = "- Welcome email sent to: $email";
