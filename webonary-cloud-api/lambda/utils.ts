@@ -9,7 +9,8 @@ export interface BasicAuthCredentials {
 
 export function getBasicAuthCredentials(authHeaders: string): BasicAuthCredentials {
   const encodedCredentials = authHeaders.split(' ')[1];
-  const [username, password] = Buffer.from(encodedCredentials, 'base64').toString().split(':');
+  const [username, ...passParts] = Buffer.from(encodedCredentials, 'base64').toString().split(':');
+  const password = passParts.join(':');
 
   return { username, password };
 }
