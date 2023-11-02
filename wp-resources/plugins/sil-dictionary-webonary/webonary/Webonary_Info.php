@@ -57,7 +57,7 @@ class Webonary_Info
 			}
 
 			if (!empty($counts->indexed_date)) {
-				$status .= 'Last upload of configured xhtml was at ' . $counts->indexed_date . ' (GMT).<br>';
+				$status .= 'Last Upload: ' . $counts->indexed_date . ' (GMT).<br>';
 				$status .= 'Download data sent from FLEx: ';
 
 				$archiveFile = Webonary_Cloud::getBlogDictionaryId() . '.zip';

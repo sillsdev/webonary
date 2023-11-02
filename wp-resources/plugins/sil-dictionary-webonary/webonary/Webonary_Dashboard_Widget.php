@@ -21,7 +21,7 @@ class Webonary_Dashboard_Widget extends WP_Widget
 		echo <<<HTML
 <div style="padding:0 3px">
 	<p>
-		Webonary provides the administration tools and framework for using WordPress for dictionaries. 
+		Webonary provides the administration tools and framework for using WordPress for dictionaries.
 		See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.
 	</p>
 	<div style="max-width: 600px; border-style:solid; border-width: 1px; border-color: red; padding: 5px;">
@@ -44,7 +44,7 @@ HTML;
 				return '<p style="font-weight:700">No dictionary data found.</p>';
 
 			$import_status = [
-				'Last Upload:&ensp;<em>' . $dictionary->updatedAt . '</em>',
+				'Last Upload:&ensp;<em>' . date('Y-m-d h:i:s', strtotime($dictionary->updatedAt)) . ' (GMT)</em>',
 				'Main Language (' . $dictionary->mainLanguage->lang . ') entries:&ensp;<em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>',
 			];
 

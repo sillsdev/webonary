@@ -320,7 +320,7 @@ function webonary_conf_widget($showTitle = false)
 		$dictionary = Webonary_Cloud::getDictionary();
 		$import_status = '';
 		if (!is_null($dictionary)) {
-			$import_status .= '<li>Last Upload: <em>' . $dictionary->updatedAt . '</em>';
+			$import_status .= '<li>Last Upload: <em>' . date('Y-m-d h:i:s', strtotime($dictionary->updatedAt)) . ' (GMT)</em>';
 			$import_status .= '<li>Main Language (' . $dictionary->mainLanguage->lang . ')';
 			$import_status .= ' entries: <em>' . number_format($dictionary->mainLanguage->entriesCount) . '</em>';
 			$arrLanguageCodes[] = array(
