@@ -41,9 +41,11 @@ function openImage(image)
 					$search_query = isset($term) ? $term->name : $taxonomy;
 				}
 			}
+
+			$search_query = htmlspecialchars($search_query);
 		}
 		?>
-		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), htmlspecialchars($search_query));?></h2>
+		<h2 class="arh"><?php printf( __('Search results for "%s"', ZEE_LANG), $search_query);?></h2>
 		<?php
 
 		$query = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
