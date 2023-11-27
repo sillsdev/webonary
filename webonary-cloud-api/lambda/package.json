@@ -9,9 +9,9 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.309.0",
     "@aws-sdk/s3-request-presigner": "^3.309.0",
-    "axios": "^0.27.2",
+    "axios": "^1.6",
     "cheerio": "^1.0.0-rc.12",
-    "mongodb": "^4.7.0",
-    "mongodb-client-encryption": "^2.3.0"
+    "mongodb": "^4.17.1",
+    "mongodb-client-encryption": "^2.9.1"
   }
 }
