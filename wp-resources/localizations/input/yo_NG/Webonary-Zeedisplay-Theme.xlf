@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:sil="http://sil.org/software/XLiff" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="Webonary-Zeedisplay-Theme" source-language="en" datatype="plaintext" product-version="1.2.000.0" sil:hard-linebreak-replacement="\n" target-language="yo">
+    <body>
+      <trans-unit id="Search.results.for">
+        <source xml:lang="en">Search results for ""</source>
+        <target xml:lang="yo" state="translated">Èsì àwárí fún ''''</target>
+        <note>ID: Search.results.for</note>
+      </trans-unit>
+      <trans-unit id="No.matches">
+        <source xml:lang="en">No matches. Please try again, or use the navigation menus to find what you search for.</source>
+        <target xml:lang="yo" state="translated">Kò sí ìbámu. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan si, tàbí kí o lo ìtọ́ni lárìnká láti wá ohun tí ò ń wá.</target>
+        <note>ID: No.matches</note>
+      </trans-unit>
+      <trans-unit id="Terms.of.Service">
+        <source xml:lang="en">Terms of Service</source>
+        <target xml:lang="yo" state="translated">Àdéhùn iṣẹ́</target>
+        <note>ID: Terms.of.Service</note>
+      </trans-unit>
+      <trans-unit id="Display.Comments">
+        <source xml:lang="en">Display Comments</source>
+        <target xml:lang="yo" state="translated">Ṣàfihàn ìsọ̀rọ̀sí</target>
+        <note>ID: Display.Comments</note>
+      </trans-unit>
+      <trans-unit id="Comments">
+        <source xml:lang="en">Comments</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rọ̀sí</target>
+        <note>ID: Comments</note>
+      </trans-unit>
+      <trans-unit id="comments">
+        <source>% comments</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rọ̀sí %</target>
+        <note>SIL-dictionary-plugin.dll&#13;
+comments&#13;
+ID: comments</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
