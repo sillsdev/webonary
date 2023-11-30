@@ -77,13 +77,13 @@ function getUsfmDomains(): array
 
 		$line = trim($line);
 
-		if (strpos($line, '\is ') === 0) {
+		if (str_starts_with($line, '\is ')) {
 			$current_entry = ['code' => trim(substr($line, 4))];
 		}
-		elseif (strpos($line, '\sd ') === 0 && !is_null($current_entry)) {
+		elseif (str_starts_with($line, '\sd ') && !is_null($current_entry)) {
 			$current_entry['eng'] =  trim(substr($line, 4));
 		}
-		elseif (strpos($line, '\sdn ') === 0 && !is_null($current_entry)) {
+		elseif (str_starts_with($line, '\sdn ') && !is_null($current_entry)) {
 			$current_entry['name'] = trim(substr($line, 5));
 		}
 		else {
@@ -107,7 +107,7 @@ function getXmlPOLines($output): array
 	$lines = file($po_file_name, FILE_IGNORE_NEW_LINES);
 
 	// process the output array
-	addOrReplacePO($output['eng'], $output['name'], '', $lines);
+	addOrReplaceInPO($output['eng'], $output['name'], $lines, false, 'semantic domain');
 
 	foreach ($output['domains'] as $domain) {
 		processPODomain($domain, $lines);
@@ -127,7 +127,7 @@ function getUsfmPOLines($output): array
 	$lines = file($po_file_name, FILE_IGNORE_NEW_LINES);
 
 	foreach ($output as $item) {
-		addOrReplacePO($item['eng'], $item['name'], $item['code'], $lines);
+		addOrReplaceInPO($item['eng'], $item['name'], $lines, false, 'semantic domain ' . $item['code']);
 	}
 
 	if ($lines[count($lines) - 1] != '')
@@ -159,32 +159,9 @@ function getSubPossibilities(SimpleXMLElement $e): array
 	return $sem_domains;
 }
 
-function addOrReplacePO(string $key, string $value, string $code, array &$po_list)
-{
-	$e_key = escapeString($key);
-	$e_val = escapeString($value);
-
-	$find = 'msgid "' . $e_key . '"';
-	$idx = array_search($find, $po_list);
-
-	if ($idx === false) {
-
-		// add a blank line
-		if ($po_list[count($po_list) - 1] != '')
-			$po_list[] = '';
-
-		$po_list[] = '#: semantic domain ' . $code;
-		$po_list[] = 'msgid "' . $e_key . '"';
-		$po_list[] = 'msgstr "' . $e_val . '"';
-	}
-	else {
-		$po_list[$idx + 1] = 'msgstr "' . $e_val . '"';
-	}
-}
-
 function processPODomain($domain, array &$po_list)
 {
-	addOrReplacePO($domain['eng'], $domain['name'], $domain['code'], $po_list);
+	addOrReplaceInPO($domain['eng'], $domain['name'], $po_list, false, 'semantic domain ' . $domain['code']);
 
 	foreach ($domain['domains'] as $d) {
 		processPODomain($d, $po_list);

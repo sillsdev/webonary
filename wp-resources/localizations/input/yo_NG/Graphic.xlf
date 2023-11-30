@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:sil="http://sil.org/software/XLiff" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="Graphic" source-language="en" datatype="plaintext" product-version="1.0.000.0" sil:hard-linebreak-replacement="\n" target-language="yo">
+    <body>
+      <trans-unit id="Publication.Status">
+        <source xml:lang="en">Publication Status</source>
+        <target xml:lang="yo" state="translated">Ipò àtẹ̀jáde</target>
+        <note>ID: Publication.Status</note>
+      </trans-unit>
+      <trans-unit id="Rough.draft">
+        <source xml:lang="en">Rough draft</source>
+        <target xml:lang="yo" state="translated">Iṣẹ̀ àìparí</target>
+        <note>ID: Rough.draft</note>
+      </trans-unit>
+      <trans-unit id="Self.reviewed.draft">
+        <source xml:lang="en">Self-reviewed draft</source>
+        <target xml:lang="yo" state="translated">Ìṣẹ̀ àtúnyẹ̀wò fún araẹni</target>
+        <note>ID: Self.reviewed.draft</note>
+      </trans-unit>
+      <trans-unit id="Community.reviewed.draft">
+        <source xml:lang="en">Community-reviewed draft</source>
+        <target xml:lang="yo" state="translated">Iṣẹ́ tí ìgbìmọ̀ tí gbéyẹ̀wò</target>
+        <note>ID: Community.reviewed.draft</note>
+      </trans-unit>
+      <trans-unit id="Consultant.approved">
+        <source xml:lang="en">Consultant approved</source>
+        <target xml:lang="yo" state="translated">Iṣẹ tí Onímọ̀ ti gbéyẹ̀wò</target>
+        <note>ID: Consultant.approved</note>
+      </trans-unit>
+      <trans-unit id="Finished">
+        <source xml:lang="en">Finished (no formal publication)</source>
+        <target xml:lang="yo" state="translated">Ò ti parí (kò sí àtẹ̀jáde àìgbafẹ́)</target>
+        <note>ID: Finished</note>
+      </trans-unit>
+      <trans-unit id="Formally.published">
+        <source xml:lang="en">Formally published</source>
+        <target xml:lang="yo" state="translated">A tí tẹ̀ ẹ́ jáde fún gbogbogbò</target>
+        <note>ID: Formally.published</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

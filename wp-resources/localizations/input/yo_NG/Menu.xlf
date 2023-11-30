@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:sil="http://sil.org/software/XLiff" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="Menu" source-language="en" datatype="plaintext" product-version="1.0.000.0" sil:hard-linebreak-replacement="\n" target-language="yo">
+    <body>
+      <trans-unit id="Overview" approved="yes">
+        <source xml:lang="en">Overview</source>
+        <target xml:lang="yo" state="final">Ìpàtẹ ìwò</target>
+        <note>ID: Overview</note>
+      </trans-unit>
+      <trans-unit id="Search" approved="yes">
+        <source xml:lang="en">Search</source>
+        <target xml:lang="yo" state="final">Wá nǹkan</target>
+        <note>ID: Search</note>
+      </trans-unit>
+      <trans-unit id="Searching" approved="yes">
+        <source xml:lang="en">Searching</source>
+        <target xml:lang="yo" state="final">Ó ń wá</target>
+        <note>ID: Searching</note>
+      </trans-unit>
+      <trans-unit id="Browse" approved="yes">
+        <source xml:lang="en">Browse</source>
+        <target xml:lang="yo" state="final">Wo àtẹ</target>
+        <note>ID: Browse</note>
+      </trans-unit>
+      <trans-unit id="Browsing" approved="yes">
+        <source xml:lang="en">Browsing</source>
+        <target xml:lang="yo" state="final">Ó ti ń wo àtẹ</target>
+        <note>ID: Browsing</note>
+      </trans-unit>
+      <trans-unit id="Browse.English" approved="yes">
+        <source xml:lang="en">Browse English</source>
+        <target xml:lang="yo" state="final">Wo àtẹ Gẹ̀ẹ́sì</target>
+        <note>ID: Browse.English</note>
+      </trans-unit>
+      <trans-unit id="Browse.French" approved="yes">
+        <source xml:lang="en">Browse French</source>
+        <target xml:lang="yo" state="final">Wo àtẹ Faransé</target>
+        <note>ID: Browse.French</note>
+      </trans-unit>
+      <trans-unit id="Browse.vernacular" approved="yes">
+        <source xml:lang="en">Browse vernacular</source>
+        <target xml:lang="yo" state="final">Wo àtẹ èdè ìbílẹ̀</target>
+        <note>ID: Browse.vernacular</note>
+      </trans-unit>
+      <trans-unit id="Download" approved="yes">
+        <source xml:lang="en">Download</source>
+        <target xml:lang="yo" state="final">Gbà á sórí ẹ̀rọ rẹ</target>
+        <note>ID: Download</note>
+      </trans-unit>
+      <trans-unit id="Language" approved="yes">
+        <source xml:lang="en">Language</source>
+        <target xml:lang="yo" state="final">Èdè</target>
+        <note>ID: Language</note>
+      </trans-unit>
+      <trans-unit id="Links" approved="yes">
+        <source xml:lang="en">Links</source>
+        <target xml:lang="yo" state="final">Àsopọ̀</target>
+        <note>ID: Links</note>
+      </trans-unit>
+      <trans-unit id="Help" approved="yes">
+        <source xml:lang="en">Help</source>
+        <target xml:lang="yo" state="final">Ìrànlọ́wọ́</target>
+        <note>ID: Help</note>
+      </trans-unit>
+      <trans-unit id="Introduction" approved="yes">
+        <source xml:lang="en">Introduction</source>
+        <target xml:lang="yo" state="final">Ìfáàrà</target>
+        <note>ID: Introduction</note>
+      </trans-unit>
+      <trans-unit id="Foreword" approved="yes">
+        <source xml:lang="en">Foreword</source>
+        <target xml:lang="yo" state="final">Ọ̀rọ̀ Àkọ́sọ</target>
+        <note>ID: Foreword</note>
+      </trans-unit>
+      <trans-unit id="Copyright" approved="yes">
+        <source xml:lang="en">Copyright</source>
+        <target xml:lang="yo" state="final">Àṣẹ-ìkọ̀wé</target>
+        <note>ID: Copyright</note>
+      </trans-unit>
+      <trans-unit id="Credits.and.acknowledgements" approved="yes">
+        <source xml:lang="en">Credits and acknowledgements</source>
+        <target xml:lang="yo" state="final">Ìmòore àti ìmọrírì</target>
+        <note>ID: Credits.and.acknowledgements</note>
+      </trans-unit>
+      <trans-unit id="Alphabet" approved="yes">
+        <source xml:lang="en">Alphabet</source>
+        <target xml:lang="yo" state="final">Álúfábẹ̀ẹ̀tì</target>
+        <note>ID: Alphabet</note>
+      </trans-unit>
+      <trans-unit id="Abbreviations" approved="yes">
+        <source xml:lang="en">Abbreviations</source>
+        <target xml:lang="yo" state="final">Ìgékúrú ọ̀rọ̀</target>
+        <note>ID: Abbreviations</note>
+      </trans-unit>
+      <trans-unit id="Entry.explained" approved="yes">
+        <source xml:lang="en">Entry explained</source>
+        <target xml:lang="yo" state="final">Àlàyé ọ̀rọ̀</target>
+        <note>ID: Entry.explained</note>
+      </trans-unit>
+      <trans-unit id="Link.to.Ethnologue.page" approved="yes">
+        <source xml:lang="en">Link to Ethnologue page</source>
+        <target xml:lang="yo" state="final">Ọ̀nà sí òpó Ethnologue</target>
+        <note>ID: Link.to.Ethnologue.page</note>
+      </trans-unit>
+      <trans-unit id="Phonology" approved="yes">
+        <source xml:lang="en">Phonology</source>
+        <target xml:lang="yo" state="final">Fọnọ́lọ́jì</target>
+        <note>ID: Phonology</note>
+      </trans-unit>
+      <trans-unit id="Grammar" approved="yes">
+        <source xml:lang="en">Grammar</source>
+        <target xml:lang="yo" state="final">Gírámà</target>
+        <note>ID: Grammar</note>
+      </trans-unit>
+      <trans-unit id="Map" approved="yes">
+        <source xml:lang="en">Map</source>
+        <target xml:lang="yo" state="final">Máàpù</target>
+        <note>ID: Map</note>
+      </trans-unit>
+      <trans-unit id="Photo.Journal" approved="yes">
+        <source xml:lang="en">Photo Journal</source>
+        <target xml:lang="yo" state="final">Itẹ́ àwòrán</target>
+        <note>ID: Photo.Journal</note>
+      </trans-unit>
+      <trans-unit id="Appendices" approved="yes">
+        <source xml:lang="en">Appendices</source>
+        <target xml:lang="yo" state="final">Àpẹ́ndídìsì</target>
+        <note>ID: Appendices</note>
+      </trans-unit>
+      <trans-unit id="Bibliography" approved="yes">
+        <source xml:lang="en">Bibliography</source>
+        <target xml:lang="yo" state="final">Ìwé ìtọ́kasí</target>
+        <note>ID: Bibliography</note>
+      </trans-unit>
+      <trans-unit id="Semantic.Domains" approved="yes">
+        <source xml:lang="en">Semantic Domains</source>
+        <target xml:lang="yo" state="final">Agbọn ìtumọ̀</target>
+        <note>ID: Semantic.Domains</note>
+      </trans-unit>
+      <trans-unit id="Webonary.Home.Page" approved="yes">
+        <source xml:lang="en">Webonary Home Page</source>
+        <target xml:lang="yo" state="final">Abala ilé ní Webonary</target>
+        <note>ID: Webonary Home Page</note>
+      </trans-unit>
+      <trans-unit id="Project.website" approved="yes">
+        <source xml:lang="en">Project website</source>
+        <target xml:lang="yo" state="final">Òpó-ayélujára iṣẹ́ yìí</target>
+        <note>ID: Project.website</note>
+      </trans-unit>
+      <trans-unit id="Branch.website" approved="yes">
+        <source xml:lang="en">Branch website</source>
+        <target xml:lang="yo" state="final">Òpó-ayélujára ẹ̀ka</target>
+        <note>ID: Branch.website</note>
+      </trans-unit>
+      <trans-unit id="SIL.website" approved="yes">
+        <source xml:lang="en">SIL website</source>
+        <target xml:lang="yo" state="final">Òpó-ayélujára SIL</target>
+        <note>ID: SIL.website</note>
+      </trans-unit>
+      <trans-unit id="Downloading" approved="yes">
+        <source xml:lang="en">Downloading</source>
+        <target xml:lang="yo" state="final">Ó ń bọ́ sórí ẹ̀rọ rẹ</target>
+        <note>ID: Downloading</note>
+      </trans-unit>
+      <trans-unit id="Dictionary.fonts" approved="yes">
+        <source xml:lang="en">Dictionary {font, plural, one {font} other {fonts}}</source>
+        <target xml:lang="yo" state="final">Dictionary {font, plural, other {fonts}}</target>
+        <note>ID: Dictionary.fonts</note>
+      </trans-unit>
+      <trans-unit id="Contact.us" approved="yes">
+        <source xml:lang="en">Contact us</source>
+        <target xml:lang="yo" state="final">Kàn síwa</target>
+        <note>ID: Contact.us</note>
+      </trans-unit>
+      <trans-unit id="About.Software" approved="yes">
+        <source xml:lang="en">About Software</source>
+        <target xml:lang="yo" state="final">Nípa Abákọ̀npútà-ṣiṣẹ́</target>
+        <note>ID: About.Software</note>
+      </trans-unit>
+      <trans-unit id="Dictionary" approved="yes">
+        <source xml:lang="en">Dictionary</source>
+        <target xml:lang="yo" state="final">Atúmọ̀èdè</target>
+        <note>ID: Dictionary</note>
+      </trans-unit>
+      <trans-unit id="Compilers" approved="yes">
+        <source xml:lang="en">{Compiler, plural, one {Compiler} other {Compilers}}</source>
+        <target xml:lang="yo" state="final">{Compiler, plural, other {Olùkójọ}}</target>
+        <note>ID: Compilers</note>
+      </trans-unit>
+      <trans-unit id="Published.by" approved="yes">
+        <source xml:lang="en">Published by</source>
+        <target xml:lang="yo" state="final">Àtẹ̀jáde láti</target>
+        <note>ID: Published.by</note>
+      </trans-unit>
+      <trans-unit id="cited.as" approved="yes">
+        <source xml:lang="en">This web edition of the dictionary may be cited as:</source>
+        <target xml:lang="yo" state="final">Ẹ leè ṣàfihàn atúmọ̀èdè torí ayélujára yìí báyìí:</target>
+        <note>ID: cited.as</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
