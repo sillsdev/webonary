@@ -45,7 +45,44 @@ describe('searchEntries search', () => {
   let event: Partial<APIGatewayEvent> = {};
 
   beforeEach(async () => {
-    dictionaryId = await createDictionary();
+    dictionaryId = await createDictionary(
+      JSON.stringify({
+        mainLanguage: {
+          lang: 'testLang',
+          title: 'Language with hyphen as a word-forming character',
+          letters: [
+            '-',
+            'a',
+            'b',
+            'c',
+            'd',
+            'e',
+            'ɛ',
+            'ə',
+            'f',
+            'g',
+            'h',
+            'i',
+            'j',
+            'k',
+            'l',
+            'm',
+            'n',
+            'o',
+            'ɔ',
+            'p',
+            'r',
+            's',
+            't',
+            'u',
+            'v',
+            'w',
+            'y',
+          ],
+        },
+      }),
+    );
+
     await upsertEntries([testEntry], false, dictionaryId, testUsername);
 
     // This is the base event, which all tests can start with.
@@ -378,5 +415,33 @@ describe('searchEntries search', () => {
     const response = await handler(event as APIGatewayEvent);
     expect(response.statusCode).toBe(200);
     expect(JSON.parse(response.body).count).toEqual(1);
+  });
+
+  test('fulltext search matches word with hyphen', async () => {
+    // add an entry with a hyphen
+    const testGuid = `${matchingGuid}-matches-hyphen`;
+    const newTestEntry = {
+      ...testEntry,
+      guid: testGuid,
+      displayXhtml: `<span lang="${lang}">qwerty-asdfgh</span>`,
+    };
+    await upsertEntries([newTestEntry], false, dictionaryId, testUsername);
+
+    // search for the whole the word, should find the entry
+    let newEvent = {
+      ...event,
+      queryStringParameters: { lang, text: 'qwerty-asdfgh' },
+    };
+    let response = await handler(newEvent as APIGatewayEvent);
+    expect(response.statusCode).toBe(200);
+    expect(parseGuids(response)).toEqual([testGuid]);
+
+    // search for the first part of the word, should NOT find the entry
+    newEvent = {
+      ...event,
+      queryStringParameters: { lang, text: 'qwerty' },
+    };
+    response = await handler(newEvent as APIGatewayEvent);
+    expect(response.statusCode).toBe(404);
   });
 });

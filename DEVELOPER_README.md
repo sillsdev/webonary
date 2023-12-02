@@ -192,10 +192,13 @@ Instructions, [https://www.mongodb.com/docs/database-tools/installation/installa
 
 ```bash
 mongoexport --config=/home/phil/.mongo/webonary_org.yml --db=webonary --collection=webonaryDictionaries --out=/home/phil/dumps/dictionaries.json --query='{ "_id": "test-stutzman" }'
-mongoexport --config=/home/phil/.mongo/webonary_org.yml --db=webonary --collection=webonaryReversals --out=/home/phil/dumps/reversals.json --query='{ "dictionaryId": "test-stutzman" }'
+# mongoexport --config=/home/phil/.mongo/webonary_org.yml --db=webonary --collection=webonaryReversals --out=/home/phil/dumps/reversals.json --query='{ "dictionaryId": "test-stutzman" }'
 mongoexport --config=/home/phil/.mongo/webonary_org.yml --db=webonary --collection=webonaryEntries_test-stutzman --out=/home/phil/dumps/entries.json
+mongoexport --config=/home/phil/.mongo/webonary_org.yml --db=webonary --collection=webonaryReversals --out=/home/phil/dumps/reversals.json
 
-mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryReversals --mode=upsert --file=/home/phil/dumps/reversals.json
+
+# mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryReversals --mode=upsert --file=/home/phil/dumps/reversals.json
 mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryDictionaries --mode=upsert --file=/home/phil/dumps/dictionaries.json
 mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryEntries_test-stutzman --drop --mode=upsert --file=/home/phil/dumps/entries.json
+mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryReversals --drop --mode=upsert --file=/home/phil/dumps/reversals.json
 ```
