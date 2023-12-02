@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:sil="http://sil.org/software/XLiff" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="Program-Strings" source-language="en" datatype="plaintext" product-version="1.0.000.0" sil:hard-linebreak-replacement="\n" target-language="yo">
+    <body>
+      <trans-unit id="Entry.not.found">
+        <source xml:lang="en">Entry not found.</source>
+        <target xml:lang="yo" state="translated">A ko rí ọ̀rọ̀.</target>
+        <note>ID: Entry.not.found</note>
+      </trans-unit>
+      <trans-unit id="Archives.for">
+        <source xml:lang="en">Archives for</source>
+        <target xml:lang="yo" state="needs-translation">Archives for</target>
+        <note>ID: Archives.for</note>
+      </trans-unit>
+      <trans-unit id="Archives">
+        <source xml:lang="en">Archives</source>
+        <target xml:lang="yo" state="translated">Àká</target>
+        <note>ID: Archives</note>
+      </trans-unit>
+      <trans-unit id="Enter.password.to.view.comments">
+        <source xml:lang="en">Enter password to view comments.</source>
+        <target xml:lang="yo" state="translated">Tẹ ọ̀rọ̀-ìgbaniwọlẹ́ láti rí ìsọ̀rọ̀sí.</target>
+        <note>ID: Enter.password.to.view.comments</note>
+      </trans-unit>
+      <trans-unit id="No Comments">
+        <source xml:lang="en">No Comments</source>
+        <target xml:lang="yo" state="translated">Kò sí ìsọ̀rọ̀sí</target>
+        <note>ID: No.Comments</note>
+      </trans-unit>
+      <trans-unit id="One.comment">
+        <source xml:lang="en">One comment</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rọ̀sí kan</target>
+        <note>ID: One comment</note>
+      </trans-unit>
+      <trans-unit id="Read.more">
+        <source xml:lang="en">Read more</source>
+        <target xml:lang="yo" state="translated">Kà á síwájú</target>
+        <note>ID: Read.more</note>
+      </trans-unit>
+      <trans-unit id="Previous.Entries">
+        <source xml:lang="en">Previous Entries</source>
+        <target xml:lang="yo" state="translated">Ọ̀rọ̀ àtẹ̀yịìnwá</target>
+        <note>ID: Previous.Entries</note>
+      </trans-unit>
+      <trans-unit id="Next.Entries">
+        <source xml:lang="en">Next Entries</source>
+        <target xml:lang="yo" state="translated">Ọ̀rọ̀ tó kàn</target>
+        <note>ID: Next.Entries</note>
+      </trans-unit>
+      <trans-unit id="Latest.Posts">
+        <source xml:lang="en">Latest Posts</source>
+        <target xml:lang="yo" state="translated">Àjáàbalẹ̀ àgbéjáde</target>
+        <note>ID: Latest.Posts</note>
+      </trans-unit>
+      <trans-unit id="Pages">
+        <source xml:lang="en">Pages</source>
+        <target xml:lang="yo" state="translated">Ojú ewé</target>
+        <note>ID: Pages</note>
+      </trans-unit>
+      <trans-unit id="Categories">
+        <source xml:lang="en">Categories</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rí</target>
+        <note>ID: Categories</note>
+      </trans-unit>
+      <trans-unit id="Posts by Category">
+        <source xml:lang="en">Posts by Category</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rí àtẹ̀jáde</target>
+        <note>ID: Posts.by.Category</note>
+      </trans-unit>
+      <trans-unit id="Category">
+        <source xml:lang="en">Category</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rí</target>
+        <note>ID:Category</note>
+      </trans-unit>
+      <trans-unit id="Search.results.for">
+        <source xml:lang="en">Search results for</source>
+        <target xml:lang="yo" state="translated">Èsì àwárí fún ''''</target>
+        <note>ID: Search.results.for</note>
+      </trans-unit>
+      <trans-unit id="Comments">
+        <source xml:lang="en">Comments</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rọ̀sí</target>
+        <note>ID: Comments</note>
+      </trans-unit>
+      <trans-unit id="No.matches">
+        <source xml:lang="en">No matches. Please try again, or use the navigation menus to find what you search for.</source>
+        <target xml:lang="yo" state="translated">Kò sí ìbámu. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan si, tàbí kí o lo ìtọ́ni lárìnká láti wá ohun tí ò ń wá.</target>
+        <note>ID: No.matches</note>
+      </trans-unit>
+      <trans-unit id="No.entries.exist.for">
+        <source xml:lang="en">No entries exist for</source>
+        <target xml:lang="yo" state="translated">Kò sí ọ̀rọ̀ bíi</target>
+        <note>ID: No.entries.exist.for</note>
+      </trans-unit>
+      <trans-unit id="Page">
+        <source xml:lang="en">Page</source>
+        <target xml:lang="yo" state="translated">Ojú ewé</target>
+        <note>ID: Page</note>
+      </trans-unit>
+      <trans-unit id="of">
+        <source xml:lang="en">of</source>
+        <target xml:lang="yo" state="translated">ti</target>
+        <note>ID: of</note>
+      </trans-unit>
+      <trans-unit id="No.entries.exist.starting.with">
+        <source xml:lang="en">No entries exist starting with this letter.</source>
+        <target xml:lang="yo" state="translated">Kò sì ọ̀rọ̀ tó bẹ̀rẹ̀ pẹ̀lú lẹ́tà yí.</target>
+        <note>ID: No.entries.exist.starting.with</note>
+      </trans-unit>
+      <trans-unit id="Parts.of.Speech">
+        <source xml:lang="en">Parts of Speech</source>
+        <target xml:lang="yo" state="translated">Ìsọ̀rí ọ̀rọ̀</target>
+        <note>ID: Parts.of.Speech</note>
+      </trans-unit>
+      <trans-unit id="Match.whole.words">
+        <source xml:lang="en">Match whole words</source>
+        <target xml:lang="yo" state="translated">Kó gbogbo ọ̀rọ̀</target>
+        <note>ID: Match.whole.words</note>
+      </trans-unit>
+      <trans-unit id="Match.accents.and.tones">
+        <source xml:lang="en">Match accents and tones</source>
+        <target xml:lang="yo" state="translated">Kó àmì abẹ́ àti àmì ohùn</target>
+        <note>ID: Match.accents.and.tones</note>
+      </trans-unit>
+      <trans-unit id="Number.of.entries">
+        <source xml:lang="en">Number of Entries</source>
+        <target xml:lang="yo" state="translated">Iye ọ̀rọ̀</target>
+        <note>ID: Number.of.Entries</note>
+      </trans-unit>
+      <trans-unit id="Last.upload">
+        <source xml:lang="en">Last upload:</source>
+        <target xml:lang="yo" state="translated">Àgbéjáde tó gbẹ̀yìn:</target>
+        <note>ID: Last.upload</note>
+      </trans-unit>
+      <trans-unit id="Found.in.Semantic.Domains">
+        <source xml:lang="en">Found in Semantic Domains:</source>
+        <target xml:lang="yo" state="translated">Ó wà ní agbọn ìtumọ̀:</target>
+        <note>ID: Found.in.Semantic.Domains</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

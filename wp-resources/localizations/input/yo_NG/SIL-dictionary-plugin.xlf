@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns:sil="http://sil.org/software/XLiff" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="SIL-dictionary-plugin.dll" source-language="en" datatype="plaintext" product-version="1.0.000.0" sil:hard-linebreak-replacement="\n" target-language="yo">
+    <body>
+      <trans-unit id="No.entries.exist.for">
+        <source xml:lang="en">No entries exist for</source>
+        <target xml:lang="yo" state="translated">Kò sí ọ̀rọ̀ bíi</target>
+        <note>ID: No.entries.exist.for</note>
+      </trans-unit>
+      <trans-unit id="No.entries.exist.starting.with">
+        <source xml:lang="en">No entries exist starting with this letter.</source>
+        <target xml:lang="yo" state="translated">Kò sì ọ̀rọ̀ tó bẹ̀rẹ̀ pẹ̀lú lẹ́tà yí.</target>
+        <note>ID: No.entries.exist.starting.with</note>
+      </trans-unit>
+      <trans-unit id="partial.search.was.omitted">
+        <source xml:lang="en">Because of the brevity of your search term, partial search was omitted.</source>
+        <target xml:lang="yo" state="translated">Torípé ọ̀rọ̀ tí o wá kúrú, a kò lo wíwá ẹlẹ́yọ.</target>
+        <note>ID: partial.search.was.omitted</note>
+      </trans-unit>
+      <trans-unit id="All.Parts.of.Speech">
+        <source xml:lang="en">All Parts of Speech</source>
+        <target xml:lang="yo" state="translated">Gbogbo ìsọ̀rí ọ̀rọ̀</target>
+        <note>ID: All.Parts.of.Speech</note>
+      </trans-unit>
+      <trans-unit id="All.Languages">
+        <source xml:lang="en">All Languages</source>
+        <target xml:lang="yo" state="translated">Èdè gbogbo</target>
+        <note>ID: All.Languages</note>
+      </trans-unit>
+      <trans-unit id="Search">
+        <source xml:lang="en">Search</source>
+        <target xml:lang="yo" state="translated">Wá nǹkan</target>
+        <note>ID: Search</note>
+      </trans-unit>
+      <trans-unit id="Number.of.entries">
+        <source xml:lang="en">Number of entries</source>
+        <target xml:lang="yo" state="translated">Iye ọ̀rọ̀</target>
+        <note>ID: Number.of.entries</note>
+      </trans-unit>
+      <trans-unit id="Last.update">
+        <source xml:lang="en">Last update:</source>
+        <target xml:lang="yo" state="translated">Àgbéyẹ̀wò tó kẹ́yìn:</target>
+        <note>ID: Last.update</note>
+      </trans-unit>
+      <trans-unit id="Date.published">
+        <source xml:lang="en">Date published:</source>
+        <target xml:lang="yo" state="translated">Ọjọ́ àtẹ̀jáde:</target>
+        <note>ID: Date.published</note>
+      </trans-unit>
+      <trans-unit id="Advanced.Search">
+        <source xml:lang="en">Advanced Search</source>
+        <target xml:lang="yo" state="translated">Wíwá nǹkan pẹ̀lú ètò</target>
+        <note>ID: Advanced.Search</note>
+      </trans-unit>
+      <trans-unit id="Hide.Advanced.Search">
+        <source xml:lang="en">Hide Advanced Search</source>
+        <target xml:lang="yo" state="translated">Fi wíwá nǹkan pẹ̀lú ètò pamọ́</target>
+        <note>ID: Hide.Advanced.Search</note>
+      </trans-unit>
+      <trans-unit id="Match.whole.words">
+        <source xml:lang="en">Match whole words</source>
+        <target xml:lang="yo" state="translated">Kó gbogbo ọ̀rọ̀</target>
+        <note>ID: Match.whole.words</note>
+      </trans-unit>
+      <trans-unit id="Match.accents.and.tones">
+        <source xml:lang="en">Match accents and tones</source>
+        <target xml:lang="yo" state="translated">Kó àmì abẹ́ àti àmì ohùn</target>
+        <note>ID: Match.accents.and.tones</note>
+      </trans-unit>
+      <trans-unit id="Click.here.to.include.searching">
+        <source>Click here to include searching through partial words.</source>
+        <target xml:lang="yo" state="translated">Tẹ ibí tí o bá fẹ́ wíwá ẹlẹ́yọ.</target>
+      </trans-unit>
+      <trans-unit id="Entry.not.found">
+        <source>Entry not found</source>
+        <target xml:lang="yo" state="translated">A ko rí ọ̀rọ̀</target>
+      </trans-unit>
+      <trans-unit id="Semantic.Domain">
+        <source>Semantic Domain</source>
+        <target xml:lang="yo" state="translated">Agbọn ìtumọ̀</target>
+        <note>ID: Semantic.Domain</note>
+      </trans-unit>
+      <trans-unit id="Search.Domains">
+        <source>Search Domains</source>
+        <target xml:lang="yo" state="translated">Agbọn ìsàwárí</target>
+        <note>SIL-dictionary-plugin&#13;
+Search.Domains&#13;
+ID: Search.Domains</note>
+      </trans-unit>
+      <trans-unit id="All.Semantic.Domains">
+        <source>All Semantic Domains</source>
+        <target xml:lang="yo" state="translated">Gbogbo agbọn ìtumọ̀</target>
+        <note>SIL-dictionary-plugin.dll&#13;
+All.Semantic.Domains&#13;
+ID: All.Semantic.Domains</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
