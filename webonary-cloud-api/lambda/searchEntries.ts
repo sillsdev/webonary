@@ -28,14 +28,12 @@ import { DbFindParameters } from './base.model';
 import { DbPaths } from './entry.model';
 import {
   MONGO_DB_NAME,
-  DB_COLLECTION_DICTIONARIES,
   DB_MAX_DOCUMENTS_PER_CALL,
   DB_COLLATION_LOCALE_DEFAULT_FOR_INSENSITIVITY,
   DbCollationStrength,
   DB_COLLATION_LOCALES,
   dbCollectionEntries,
 } from './db';
-import { Dictionary } from './dictionary.model';
 import { connectToDB } from './mongo';
 import * as Response from './response';
 import {
@@ -86,8 +84,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   // STEP 2: Set main filters
   const dbClient: MongoClient = await connectToDB();
-  const db = dbClient.db(MONGO_DB_NAME);
-  const dbCollection = db.collection(dbCollectionEntries(dictionaryId));
+  const dbCollection = dbClient.db(MONGO_DB_NAME).collection(dbCollectionEntries(dictionaryId));
   let dbFind: DbFindParameters = {};
   if (partOfSpeech && partOfSpeech.length > 0) {
     // decode since spaces can exist in part of speech
@@ -150,41 +147,15 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
       .sort({ [DbPaths.SORT_INDEX]: 1 });
   } else {
     if (lang) {
-      // NOTE: This is where the whole-word search starts
-
-      // get the word-forming characters from the database
-      const dbItem = await db
-        .collection<Dictionary>(DB_COLLECTION_DICTIONARIES)
-        .findOne({ _id: dictionaryId });
-      const letters = dbItem?.mainLanguage.letters || [];
-
-      // build a regex string from the word-forming characters
-      let wordForming = '';
-      letters.forEach((item) => {
-        if (item.length === 1) wordForming += item;
-        else if (item.length > 1) wordForming += `[.${item}.]`;
-      });
-
-      const escaped = escapeStringRegexp(text);
-      const wholeWordRegex = new RegExp(`(^|[^${wordForming}])${escaped}([^${wordForming}]|$)`);
-
+      // We need to make sure that the word found in full text search was for the right language.
+      // But doing so is not trivial in ALL languages. The \b boundary marker only works for Latin characters, not all else.
+      // So instead, we can just make sure that the string at least matches partially for the right language.
+      // This should suffice in almost 100% of real life situations.
+      // https://jira.mongodb.org/browse/SERVER-23881
       dbFind[`${langTextsPath}.${lang}`] = {
-        $regex: wholeWordRegex,
+        $regex: /^[a-z]+$/i.test(text) ? new RegExp(`\\b${text}\\b`) : escapeStringRegexp(text),
         $options: 'i',
       };
-
-      /* NOTE: The code commented out below was the original way of doing it.
-       *
-       * // We need to make sure that the word found in full text search was for the right language.
-       * // But doing so is not trivial in ALL languages. The \b boundary marker only works for Latin characters, not all else.
-       * // So instead, we can just make sure that the string at least matches partially for the right language.
-       * // This should suffice in almost 100% of real life situations.
-       * // https://jira.mongodb.org/browse/SERVER-23881
-       * dbFind[`${langTextsPath}.${lang}`] = {
-       *   $regex: /^[a-z]+$/i.test(text) ? new RegExp(`\\b${text}\\b`) : escapeStringRegexp(text),
-       *   $options: 'i',
-       * };
-       */
     }
 
     // TODO: Mongo text search can do language specific stemming, by setting $language
