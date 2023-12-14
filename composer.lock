@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bootscore/bootscore",
-            "version": "v5.3.3",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bootscore/bootscore.git",
-                "reference": "00a418bbcaf2221925d61b018f252ca5b2113e8e"
+                "reference": "aaff27960b92aa6186e5770aab5a989eac7538e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/00a418bbcaf2221925d61b018f252ca5b2113e8e",
-                "reference": "00a418bbcaf2221925d61b018f252ca5b2113e8e",
+                "url": "https://api.github.com/repos/bootscore/bootscore/zipball/aaff27960b92aa6186e5770aab5a989eac7538e6",
+                "reference": "aaff27960b92aa6186e5770aab5a989eac7538e6",
                 "shasum": ""
             },
             "type": "wordpress-theme",
@@ -46,7 +46,13 @@
                 "issues": "https://github.com/bootscore/bootscore/issues",
                 "source": "https://github.com/bootscore/bootscore"
             },
-            "time": "2023-09-12T16:28:45+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/bootscore",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-11-14T15:26:56+00:00"
         },
         {
             "name": "composer/installers",
@@ -195,20 +201,20 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.16.0",
+            "version": "v4.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8"
+                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/523407fb06eb9e5f3d59889b3978d5bfe94299c8",
-                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/bbc513d79acf6691fa9cf10f192c90dd2957f18c",
+                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
             },
             "require-dev": {
                 "cerdic/css-tidy": "^1.7 || ^2.0",
@@ -250,26 +256,26 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
             },
-            "time": "2022-09-18T07:06:19+00:00"
+            "time": "2023-11-17T15:01:25+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "6.3.2",
+            "version": "6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "95f0b339643817935ac043b98d4aa1e1a0d08049"
+                "reference": "cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/95f0b339643817935ac043b98d4aa1e1a0d08049",
-                "reference": "95f0b339643817935ac043b98d4aa1e1a0d08049",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286",
+                "reference": "cea8e15d973a3dc55ea336cb0ceb7aeee4ebd286",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "6.3.2",
+                "johnpbloch/wordpress-core": "6.4.2",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=7.0.0"
             },
@@ -298,20 +304,20 @@
                 "issues": "https://core.trac.wordpress.org/",
                 "source": "https://core.trac.wordpress.org/browser"
             },
-            "time": "2023-10-12T19:02:29+00:00"
+            "time": "2023-12-06T16:30:48+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "6.3.2",
+            "version": "6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "0a18695e2ae028ea8485c45053c14525544c1dc7"
+                "reference": "00ea636cf89fd17daacbc3862f368a2782267825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/0a18695e2ae028ea8485c45053c14525544c1dc7",
-                "reference": "0a18695e2ae028ea8485c45053c14525544c1dc7",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/00ea636cf89fd17daacbc3862f368a2782267825",
+                "reference": "00ea636cf89fd17daacbc3862f368a2782267825",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +325,7 @@
                 "php": ">=7.0.0"
             },
             "provide": {
-                "wordpress/core-implementation": "6.3.2"
+                "wordpress/core-implementation": "6.4.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -346,7 +352,7 @@
                 "source": "https://core.trac.wordpress.org/browser",
                 "wiki": "https://codex.wordpress.org/"
             },
-            "time": "2023-10-12T19:02:24+00:00"
+            "time": "2023-12-06T16:30:44+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -1080,15 +1086,15 @@
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
-            "version": "5.8.1",
+            "version": "5.8.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/5.8.1"
+                "reference": "tags/5.8.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.8.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.8.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1206,15 +1212,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "8.20.1",
+            "version": "8.22.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/8.20.1"
+                "reference": "tags/8.22.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.20.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.8.22.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1224,15 +1230,15 @@
         },
         {
             "name": "wpackagist-plugin/iframe",
-            "version": "4.7",
+            "version": "4.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/iframe/",
-                "reference": "tags/4.7"
+                "reference": "tags/4.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/iframe.4.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/iframe.4.9.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1404,7 +1410,7 @@
         },
         {
             "name": "wpackagist-plugin/osm",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/osm/",
@@ -1412,7 +1418,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/osm.zip?timestamp=1665850025"
+                "url": "https://downloads.wordpress.org/plugin/osm.zip?timestamp=1698799769"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1458,15 +1464,15 @@
         },
         {
             "name": "wpackagist-plugin/really-simple-ssl",
-            "version": "7.1.3",
+            "version": "7.2.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
-                "reference": "tags/7.1.3"
+                "reference": "tags/7.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.7.1.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.7.2.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1494,15 +1500,15 @@
         },
         {
             "name": "wpackagist-plugin/tablepress",
-            "version": "2.1.8",
+            "version": "2.2.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tablepress/",
-                "reference": "tags/2.1.8"
+                "reference": "tags/2.2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tablepress.2.1.8.zip"
+                "url": "https://downloads.wordpress.org/plugin/tablepress.2.2.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1512,15 +1518,15 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "1.22.1",
+            "version": "1.23.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.22.1"
+                "reference": "tags/1.23.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.22.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.23.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1548,15 +1554,15 @@
         },
         {
             "name": "wpackagist-plugin/unconfirmed",
-            "version": "1.3.6",
+            "version": "1.3.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/unconfirmed/",
-                "reference": "tags/1.3.6"
+                "reference": "tags/1.3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/unconfirmed.1.3.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/unconfirmed.1.3.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1566,15 +1572,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.10.4",
+            "version": "7.11.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.10.4"
+                "reference": "tags/7.11.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.10.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.11.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1602,15 +1608,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-data-access",
-            "version": "5.3.17",
+            "version": "5.3.19",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-data-access/",
-                "reference": "tags/5.3.17"
+                "reference": "tags/5.3.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-data-access.5.3.17.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-data-access.5.3.19.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1656,15 +1662,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-super-cache",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
-                "reference": "tags/1.10.0"
+                "reference": "tags/1.11.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.10.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.11.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1692,15 +1698,15 @@
         },
         {
             "name": "wpackagist-theme/twentytwentyone",
-            "version": "1.8",
+            "version": "1.9",
             "source": {
                 "type": "svn",
                 "url": "https://themes.svn.wordpress.org/twentytwentyone/",
-                "reference": "1.8"
+                "reference": "1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/twentytwentyone.1.8.zip"
+                "url": "https://downloads.wordpress.org/theme/twentytwentyone.1.9.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1942,16 +1948,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.28",
+            "version": "v5.4.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "f4f71842f24c2023b91237c72a365306f3c58827"
+                "reference": "c70df1ffaf23a8d340bded3cfab1b86752ad6ed7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/f4f71842f24c2023b91237c72a365306f3c58827",
-                "reference": "f4f71842f24c2023b91237c72a365306f3c58827",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c70df1ffaf23a8d340bded3cfab1b86752ad6ed7",
+                "reference": "c70df1ffaf23a8d340bded3cfab1b86752ad6ed7",
                 "shasum": ""
             },
             "require": {
@@ -2021,7 +2027,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.28"
+                "source": "https://github.com/symfony/console/tree/v5.4.32"
             },
             "funding": [
                 {
@@ -2037,11 +2043,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-07T06:12:30+00:00"
+            "time": "2023-11-18T18:23:04+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -2088,7 +2094,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -2662,16 +2668,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4"
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
-                "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
                 "shasum": ""
             },
             "require": {
@@ -2724,7 +2730,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -2740,20 +2746,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T14:45:45+00:00"
+            "time": "2023-07-30T20:28:31+00:00"
         },
         {
             "name": "symfony/string",
-            "version": "v6.3.5",
+            "version": "v6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "13d76d0fb049051ed12a04bef4f9de8715bea339"
+                "reference": "b45fcf399ea9c3af543a92edf7172ba21174d809"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/13d76d0fb049051ed12a04bef4f9de8715bea339",
-                "reference": "13d76d0fb049051ed12a04bef4f9de8715bea339",
+                "url": "https://api.github.com/repos/symfony/string/zipball/b45fcf399ea9c3af543a92edf7172ba21174d809",
+                "reference": "b45fcf399ea9c3af543a92edf7172ba21174d809",
                 "shasum": ""
             },
             "require": {
@@ -2767,11 +2773,11 @@
                 "symfony/translation-contracts": "<2.5"
             },
             "require-dev": {
-                "symfony/error-handler": "^5.4|^6.0",
-                "symfony/http-client": "^5.4|^6.0",
-                "symfony/intl": "^6.2",
+                "symfony/error-handler": "^5.4|^6.0|^7.0",
+                "symfony/http-client": "^5.4|^6.0|^7.0",
+                "symfony/intl": "^6.2|^7.0",
                 "symfony/translation-contracts": "^2.5|^3.0",
-                "symfony/var-exporter": "^5.4|^6.0"
+                "symfony/var-exporter": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -2810,7 +2816,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.3.5"
+                "source": "https://github.com/symfony/string/tree/v6.4.0"
             },
             "funding": [
                 {
@@ -2826,20 +2832,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-18T10:38:32+00:00"
+            "time": "2023-11-28T20:41:49+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.4.23",
+            "version": "v5.4.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "4cd2e3ea301aadd76a4172756296fe552fb45b0b"
+                "reference": "f387675d7f5fc4231f7554baa70681f222f73563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/4cd2e3ea301aadd76a4172756296fe552fb45b0b",
-                "reference": "4cd2e3ea301aadd76a4172756296fe552fb45b0b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/f387675d7f5fc4231f7554baa70681f222f73563",
+                "reference": "f387675d7f5fc4231f7554baa70681f222f73563",
                 "shasum": ""
             },
             "require": {
@@ -2885,7 +2891,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v5.4.23"
+                "source": "https://github.com/symfony/yaml/tree/v5.4.31"
             },
             "funding": [
                 {
@@ -2901,7 +2907,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-23T19:33:36+00:00"
+            "time": "2023-11-03T14:41:28+00:00"
         }
     ],
     "aliases": [],

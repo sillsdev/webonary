@@ -596,9 +596,6 @@ class Webonary_Cloud
 			'matchAccents' => $search_cookie->match_accents ? '1' : ''
 		];
 
-		if (!isset($apiParams))
-			return null;
-
 		$apiParams['pageNumber'] = $query->query_vars['paged'];
 		$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
 
