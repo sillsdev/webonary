@@ -26,12 +26,6 @@ class Webonary_Delete_Data
 
 	private static function DeleteMySqlDictionaryData(bool $delete_taxonomies): array
 	{
-		//deletes the xhtml file, if still there because import didn't get completed
-		$import = new Webonary_Pathway_Xhtml_Import();
-		$file = $import->get_latest_xhtml_file();
-		if (isset($file->ID))
-			wp_delete_attachment($file->ID);
-
 		// Remove all the old dictionary entries.
 		self::RemoveEntries();
 
