@@ -181,3 +181,5 @@ function register_custom_widgets(): void
 }
 
 add_action('widgets_init', 'register_custom_widgets');
+
+add_filter('new_admin_email_content','Webonary_Email::AdminEmailChangeHandler', 10, 1);
