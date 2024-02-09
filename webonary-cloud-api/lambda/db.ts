@@ -3,7 +3,7 @@ import { DbPaths } from './entry.model';
 
 export const MONGO_DB_NAME = process.env.MONGO_DB_NAME as string;
 
-export const DB_MAX_DOCUMENTS_PER_CALL = 100;
+export const DB_MAX_DOCUMENTS_PER_CALL = 300;
 export const DB_MAX_UPDATES_PER_CALL = 50;
 
 // TODO: Vietnamese seems to have the most Latin diacritics, so use this for insensitive search

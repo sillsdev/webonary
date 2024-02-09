@@ -597,7 +597,7 @@ class Webonary_Cloud
 		];
 
 		$apiParams['pageNumber'] = $query->query_vars['paged'];
-		$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
+		$apiParams['pageLimit'] = min($query->query_vars['posts_per_page'], 300);
 
 		$totalEntries = self::getTotalCount(self::$doSearchEntry, $apiParams);
 		$query->found_posts = $totalEntries;
