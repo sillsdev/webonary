@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93b33496e629cbc5adbdbb07344b2c3d",
+    "content-hash": "fdb67f50ff2a769e8a16e3e7117e1fa7",
     "packages": [
         {
             "name": "bootscore/bootscore",
@@ -1571,6 +1571,24 @@
             "homepage": "https://wordpress.org/plugins/unconfirmed/"
         },
         {
+            "name": "wpackagist-plugin/user-role-editor",
+            "version": "4.64.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/user-role-editor/",
+                "reference": "tags/4.64.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/user-role-editor.4.64.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/user-role-editor/"
+        },
+        {
             "name": "wpackagist-plugin/wordfence",
             "version": "7.11.1",
             "source": {
@@ -2895,6 +2913,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "wpackagist-plugin/user-role-editor": 0,
         "wpackagist-theme/twentytwentyone": 0
     },
     "prefer-stable": false,
