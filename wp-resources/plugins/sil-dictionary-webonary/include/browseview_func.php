@@ -804,7 +804,7 @@ function vernacularalphabet_func($atts ): string
 		return $display;
 	}
 
-	$displaySubentriesAsMinorEntries = get_option('DisplaySubentriesAsMainEntries') != 'no';
+	$displaySubentriesAsMinorEntries = get_option('DisplaySubentriesAsMainEntries') == 1;
 
 	$pagenr = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
@@ -843,7 +843,7 @@ HTML;
 		foreach($arrPosts as $my_post)
 		{
 			//legacy
-			if($displaySubentriesAsMinorEntries)
+			if(!IS_CLOUD_BACKEND && $displaySubentriesAsMinorEntries)
 			{
 				if(trim($my_post->post_title ?? '') != trim($my_post->search_strings ?? ''))
 				{

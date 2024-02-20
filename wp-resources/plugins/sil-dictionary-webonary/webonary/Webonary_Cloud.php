@@ -597,7 +597,7 @@ class Webonary_Cloud
 		];
 
 		$apiParams['pageNumber'] = $query->query_vars['paged'];
-		$apiParams['pageLimit'] = $query->query_vars['posts_per_page'];
+		$apiParams['pageLimit'] = min($query->query_vars['posts_per_page'], 300);
 
 		$totalEntries = self::getTotalCount(self::$doSearchEntry, $apiParams);
 		$query->found_posts = $totalEntries;
@@ -705,6 +705,9 @@ class Webonary_Cloud
 		// Store this both as a blog option and metadata for convenience
 		update_option('useCloudBackend', '1');
 		update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
+
+		// This should be reset for cloud to prevent odd behavior
+		update_option('DisplaySubentriesAsMainEntries', 0);
 
 		return [200, 'Successfully reset dictionary ' . $dictionaryId];
 	}

@@ -53,14 +53,7 @@ class Webonary_Ajax
 
 	public static function ajaxRestartIndexing(): void
 	{
-		$import = new Webonary_Pathway_Xhtml_Import();
-
-		Webonary_Utility::sendAndContinue(function() {
-			header('Content-Type: application/json');
-			echo json_encode(array('result' => 'OK'));
-		});
-
-		$import->index_searchstrings();
+		echo 'This functionality has been disabled.';
 	}
 
 	public static function ajaxDisplaySites(): void
