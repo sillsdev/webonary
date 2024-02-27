@@ -228,6 +228,7 @@ export enum DbPaths {
   ENTRY_GRAM_INFO_ABBREV_VALUE = 'morphosyntaxanalysis.graminfoabbrev.value',
 
   ENTRY_SENSES_PART_OF_SPEECH_VALUE = 'senses.morphosyntaxanalysis.partofspeech.value',
+  ENTRY_SENSES_GRAM_INFO_ABBREV_VALUE = 'senses.morphosyntaxanalysis.graminfoabbrev.value',
   ENTRY_DEFINITION_OR_GLOSS = 'senses.definitionorgloss',
   ENTRY_DEFINITION_OR_GLOSS_LANG = 'senses.definitionorgloss.lang',
   ENTRY_DEFINITION_OR_GLOSS_VALUE = 'senses.definitionorgloss.value',
