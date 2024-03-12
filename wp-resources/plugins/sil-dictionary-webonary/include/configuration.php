@@ -10,7 +10,7 @@ add_action('wp_ajax_getAjaxRestartIndexing', 'Webonary_Ajax::ajaxRestartIndexing
 add_action('wp_ajax_getAjaxDisplaySites', 'Webonary_Ajax::ajaxDisplaySites');
 add_action('wp_ajax_postAjaxDeleteData', 'Webonary_Ajax::deleteData');
 
-function relevanceSave()
+function relevanceSave(): bool
 {
 	global $wpdb;
 
@@ -31,7 +31,7 @@ function relevanceSave()
 
 		$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}sil_search SET relevance = %s WHERE class = %s", $relevance, $class_name));
 
-		$found = Webonary_Db::GetBool("SELECT COUNT(*) FROM {$tableCustomRelevance} WHERE class = %s", $class_name);
+		$found = Webonary_Db::GetBool("SELECT COUNT(*) FROM $tableCustomRelevance WHERE class = %s", $class_name);
 
 		if ($found) {
 			$wpdb->query($wpdb->prepare("UPDATE {$tableCustomRelevance} SET relevance = %s WHERE class = %s", $relevance, $class_name));
@@ -77,7 +77,7 @@ function relevanceSave()
 }
 
 //display the senses that don't get linked in the reversal browse view
-function report_missing_senses()
+function report_missing_senses(): void
 {
 	global $wpdb;
 
@@ -109,170 +109,15 @@ HTML;
 }
 
 /**
- * Do what the user said to do.
+ * @return void
+ * @throws Exception
  */
-function save_configurations()
-{
-	global $wpdb;
-
-	if (!empty($_POST['delete_data'])) {
-		Webonary_Delete_Data::DeleteDictionaryData();
-	}
-	if (!empty($_POST['save_settings'])) {
-		update_option('publicationStatus', $_POST['publicationStatus']);
-		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
-		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
-		if(isset($_POST['normalization'])) {
-			update_option('normalization', $_POST['normalization']);
-		}
-
-		$special_characters = trim($_POST['characters']);
-		if(empty($special_characters))
-			$special_characters = 'empty';
-
-		update_option('special_characters', $special_characters);
-		update_option('special_characters_rtl', $_POST['special_characters_rtl'] ?? 'no');
-		update_option('inputFont', $_POST['inputFont']);
-		update_option('vernacularLettersFont', $_POST['vernacularLettersFont']);
-
-		//We no longer give the option to set this (only to unset it) as this can be done in FLEx
-		update_option('DisplaySubentriesAsMainEntries', $_POST['DisplaySubentriesAsMainEntries'] ?? 'no');
-		update_option('languagecode', $_POST['languagecode']);
-
-		if(is_super_admin()) {
-			$letters = trim($_POST['vernacular_alphabet'] ?? '');
-
-			// remove empty items from the list
-			$letters = Webonary_Cloud::filterLetterList($letters, true);
-
-			if (strlen($letters) > 0)
-				update_option('vernacular_alphabet', $letters);
-		}
-
-		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
-		update_option('IncludeCharactersWithDiacritics', $_POST['IncludeCharactersWithDiacritics'] ?? 'no');
-
-		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
-
-		update_option('vernacularRightToLeft', $_POST['vernacularRightToLeft'] ?? 'no');
-
-		update_option('reversal1_langcode', $_POST['reversal1_langcode'] ?? '');
-		update_option('reversal2_langcode', $_POST['reversal2_langcode'] ?? '');
-		update_option('reversal3_langcode', $_POST['reversal3_langcode'] ?? '');
-		if(is_super_admin())
-		{
-			update_option('reversal1_alphabet', $_POST['reversal1_alphabet'] ?? '');
-			update_option('reversal2_alphabet', $_POST['reversal2_alphabet'] ?? '');
-			update_option('reversal3_alphabet', $_POST['reversal3_alphabet'] ?? '');
-		}
-
-		update_option('reversal1RightToLeft', $_POST['reversal1RightToLeft'] ?? 'no');
-		update_option('reversal2RightToLeft', $_POST['reversal2RightToLeft'] ?? 'no');
-		update_option('reversal3RightToLeft', $_POST['reversal3RightToLeft'] ?? 'no');
-
-		if(trim(strlen($_POST['txtVernacularName'])) == 0)
-			echo '<br><span style="color:red">Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.</span><br>';
-
-		$arrLanguages[0]['name'] = 'txtVernacularName';
-		$arrLanguages[0]['code'] = 'languagecode';
-		$arrLanguages[1]['name'] = 'txtReversalName';
-		$arrLanguages[1]['code'] = 'reversal1_langcode';
-		$arrLanguages[2]['name'] = 'txtReversal2Name';
-		$arrLanguages[2]['code'] = 'reversal2_langcode';
-		$arrLanguages[3]['name'] = 'txtReversal3Name';
-		$arrLanguages[3]['code'] = 'reversal3_langcode';
-
-		foreach($arrLanguages as $language) {
-
-			if(strlen(trim($_POST[$language['code']] ?? '')) != 0) {
-
-				$sql = $wpdb->prepare("SELECT term_id, `name` FROM {$wpdb->terms} WHERE slug = %s", array($_POST[$language['code']]));
-				$arrLanguageNames = $wpdb->get_results($sql);
-
-				if(count($arrLanguageNames) > 0) {
-					$sql = $wpdb->prepare("UPDATE {$wpdb->terms} SET `name` = %s WHERE slug = %s", array($_POST[$language['name']], $_POST[$language['code']]));
-					$wpdb->query($sql);
-					$term_id = $arrLanguageNames[0]->term_id;
-				}
-				else {
-					$sql = $wpdb->prepare("INSERT INTO {$wpdb->terms} (`name`, slug) VALUES (%s, %s)", array($_POST[$language['name']], $_POST[$language['code']]));
-					$wpdb->query($sql);
-					$term_id = $wpdb->insert_id;
-				}
-
-				if(count($arrLanguageNames) > 0)
-				{
-					$sql = "UPDATE $wpdb->term_taxonomy SET description = '" . $_POST[$language['name']] . "' WHERE term_id = " . $term_id;
-				}
-				else
-				{
-					$sql = "INSERT INTO  $wpdb->term_taxonomy (term_id, taxonomy,description,count) VALUES (" . $term_id . ", 'sil_writing_systems', '" . $_POST[$language['name']] . "',999999)";
-				}
-
-				$wpdb->query($sql);
-			}
-		}
-
-		if(isset($_POST['txtNotes']))
-		{
-			update_option("notes", $_POST['txtNotes']);
-		}
-
-		$noSearchForm = 0;
-		if(isset($_POST['noSearchForm']))
-		{
-			$noSearchForm = $_POST['noSearchForm'];
-			if (is_plugin_active('wp-super-cache/wp-cache.php') && $noSearchForm == 1)
-			{
-				prune_super_cache(get_supercache_dir(), true);
-			}
-
-		}
-		update_option("noSearch", $noSearchForm);
-
-		$useCloudBackend = filter_input(
-			INPUT_POST,
-			'useCloudBackend',
-			FILTER_SANITIZE_NUMBER_INT,
-			array('options' => array('default' => '')));
-
-		if ($useCloudBackend !== '1')
-			$useCloudBackend = '';
-
-		if($useCloudBackend != get_option('useCloudBackend', ''))
-		{
-			if (is_plugin_active('wp-super-cache/wp-cache.php'))
-			{
-				prune_super_cache(get_supercache_dir(), true);
-			}
-
-			// Store this both as a blog option and metadata for convenience
-			update_option('useCloudBackend', $useCloudBackend);
-			update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
-
-			// initial set up of dictionary using cloud values
-			if ($useCloudBackend) {
-				$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-				Webonary_Cloud::resetDictionary($dictionaryId);
-			}
-		}
-
-		echo "<br>" . _e('Settings saved');
-	}
-
-	if (!empty($_POST['refresh_cloud_settings'])) {
-
-		$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
-		Webonary_Cloud::resetDictionary($dictionaryId);
-	}
-}
-
-function webonary_conf_dashboard()
+function webonary_conf_dashboard(): void
 {
 	webonary_conf_widget(true);
 }
 
-function webonary_register_custom_css()
+function webonary_register_custom_css(): void
 {
 	$upload_dir = wp_upload_dir();
 	wp_register_style(
@@ -286,9 +131,16 @@ function webonary_register_custom_css()
 }
 add_action('wp_enqueue_scripts', 'webonary_register_custom_css', 999993);
 
-function webonary_conf_widget($showTitle = false)
+/**
+ * @param bool $showTitle
+ * @return void
+ * @throws Exception
+ */
+function webonary_conf_widget(bool $showTitle = false): void
 {
-	save_configurations();
+	Webonary_Configuration_Widget::UpdateConfiguration();
+	Webonary_Configuration_Widget::DisplayConfiguration();
+	return;
 
 	$upload_dir = wp_upload_dir();
 
@@ -298,11 +150,8 @@ function webonary_conf_widget($showTitle = false)
 	if(file_exists($configured_css_file))
 		$css_string = file_get_contents($configured_css_file);
 
-
 	if(is_super_admin() && isset($_POST['uploadButton']))
-	{
 		$fontClass->uploadFontForm();
-	}
 
 	if(isset($_GET['changerelevance']))
 		echo Webonary_Configuration::relevanceForm();
@@ -551,7 +400,7 @@ function webonary_conf_widget($showTitle = false)
 					<select name="inputFont" style="display: block">
 						<option value=""></option>
 						<?php
-						$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+						$arrUniqueCSSFonts = Webonary_Font_Management::get_fonts_fromCssText($css_string);
 						if (isset($arrUniqueCSSFonts)) {
 
 							/** @noinspection HtmlUnknownAttribute */
@@ -609,7 +458,7 @@ function webonary_conf_widget($showTitle = false)
 					<i><?php _e('Vernacular Browse view:'); ?></i><br>
 					<?php $i = array_search(get_option('languagecode'), array_column($arrLanguageCodes, 'language_code')); ?>
 					<input type="hidden" name="languagecode" value="<?php echo get_option('languagecode'); ?>">
-					<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>">
+					<strong>[<?php  echo get_option('languagecode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=vernacularName type="text" name="txtVernacularName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$i]['name']; } ?>" <?php if (IS_CLOUD_BACKEND) echo 'readonly'; ?>>
 				</div>
 				<div style="margin:1rem 0">
 					<?php _e('Vernacular Alphabet'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
@@ -631,7 +480,7 @@ function webonary_conf_widget($showTitle = false)
 					<select name=vernacularLettersFont>
 						<option value=""></option>
 						<?php
-						$arrUniqueCSSFonts = $fontClass->get_fonts_fromCssText($css_string);
+						$arrUniqueCSSFonts = Webonary_Font_Management::get_fonts_fromCssText($css_string);
 						if(isset($arrUniqueCSSFonts))
 						{
 							foreach($arrUniqueCSSFonts as $font)
@@ -679,7 +528,7 @@ function webonary_conf_widget($showTitle = false)
 						<br><br>
 						<input type="hidden" name="reversal1_langcode" value="<?php echo get_option('reversal1_langcode'); ?>">
 						<strong>[<?php echo get_option('reversal1_langcode'); ?>]</strong>
-						<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+						<?php _e('Language Name:'); ?> <input id=reversalName type="text" name="txtReversalName" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>" <?php if (IS_CLOUD_BACKEND) echo 'readonly'; ?>>
 						<br><br>
 						<?php
 						if(strlen(trim(stripslashes(get_option('reversal1_alphabet')))) == 0)
@@ -730,7 +579,7 @@ function webonary_conf_widget($showTitle = false)
 					<div style="margin:1rem 0">
 						<input type="hidden" name="reversal2_langcode" value="<?php echo get_option('reversal2_langcode'); ?>">
 						<?php $k = array_search(get_option('reversal2_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-						<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+						<strong>[<?php echo get_option('reversal2_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal2Name type="text" name="txtReversal2Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>" <?php if (IS_CLOUD_BACKEND) echo 'readonly'; ?>>
 					</div>
 					<div style="margin:1rem 0">
 						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/"
@@ -761,7 +610,7 @@ function webonary_conf_widget($showTitle = false)
 					<div style="margin:1rem 0">
 						<input type="hidden" name="reversal3_langcode" value="<?php echo get_option('reversal3_langcode'); ?>">
 						<?php $k = array_search(get_option('reversal3_langcode'), array_column($arrLanguageCodes, 'language_code')); ?>
-						<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>">
+						<strong>[<?php echo get_option('reversal3_langcode'); ?>]</strong> <?php _e('Language Name:'); ?> <input id=reversal3Name type="text" name="txtReversal3Name" value="<?php if(count($arrLanguageCodes) > 0) { echo $arrLanguageCodes[$k]['name']; } ?>" <?php if (IS_CLOUD_BACKEND) echo 'readonly'; ?>>
 					</div>
 					<div style="margin:1rem 0">
 						<?php _e('Alphabet:'); ?> (<a href="https://www.webonary.org/help/alphabet/" target="_blank"><?php _e('configure in FLEx'); ?></a>):
@@ -827,7 +676,7 @@ function webonary_conf_widget($showTitle = false)
 				$customCSSFilePath = $upload_dir['basedir'] . '/custom.css';
 				if (file_exists($customCSSFilePath)) {
 					$fontFacesFile = file_get_contents($customCSSFilePath);
-					$arrFontFacesFile = $fontClass->get_fonts_fromCssText($fontFacesFile);
+					$arrFontFacesFile = Webonary_Font_Management::get_fonts_fromCssText($fontFacesFile);
 				}
 
 				$arrFont = $fontClass->getFontsAvailable();
@@ -867,7 +716,7 @@ function webonary_conf_widget($showTitle = false)
 							}
 							else
 							{
-								if(in_array($userFont, $fontClass->get_system_fonts()))
+								if(in_array($userFont, Webonary_Font_Management::get_system_fonts()))
 								{
 									echo 'This is a system font that most computers already have installed.';
 								}
@@ -886,7 +735,7 @@ function webonary_conf_widget($showTitle = false)
 								}
 							}
 
-							if(is_super_admin() && !in_array($userFont, $fontClass->get_system_fonts()))
+							if(is_super_admin() && !in_array($userFont, Webonary_Font_Management::get_system_fonts()))
 							{
 							?>
 								<input type="hidden" name="fontname[<?php echo $fontNr; ?>]" value="<?php echo $userFont; ?>">
