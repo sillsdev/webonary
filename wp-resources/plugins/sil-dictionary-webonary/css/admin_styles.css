@@ -23,4 +23,55 @@
 .admin-alphabet {
     display: block;
     margin-bottom: 6px;
+    width: 100%;
+}
+
+.webonary-admin-block {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.webonary-admin-block:last-of-type {
+  border-bottom: none;
+}
+
+.webonary-admin-block * {
+  box-sizing: border-box;
+}
+
+.flex-start-center {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 2px;
+}
+
+.webonary-admin-block .flex-column {
+  width: 100%;
+}
+
+.webonary-admin-block input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.webonary-admin-block input[type=checkbox]:checked::before {
+  width: 24px;
+  height: 24px;
+}
+
+.webonary-admin-block h3, .webonary-admin-block h4 {
+  margin-top: 0.5rem;
 }

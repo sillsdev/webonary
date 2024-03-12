@@ -47,18 +47,19 @@ class Webonary_Configuration
 		$wp_admin_bar->remove_menu( "menus" );
 	}
 
-	public static function get_admin_sections()
+	public static function get_admin_sections(): array
 	{
-		$admin_sections = array();
+		$sections = [
+			'import' => __('Data (Upload)', 'sil_dictionary'),
+			'search' => __('Search', 'sil_dictionary'),
+			'browse' => __('Browse Views', 'sil_dictionary'),
+			'fonts' => __('Fonts', 'sil_dictionary')
+		];
 
-		$admin_sections['import'] = __('Data (Upload)', 'sil_dictionary');
-		$admin_sections['search'] = __('Search', 'sil_dictionary');
-		$admin_sections['browse'] = __('Browse Views', 'sil_dictionary');
-		$admin_sections['fonts'] = __('Fonts', 'sil_dictionary');
 		if(is_super_admin())
-			$admin_sections['superadmin'] = __('Super Admin', 'sil_dictionary');
+			$sections['superadmin'] = __('Super Admin', 'sil_dictionary');
 
-		return $admin_sections;
+		return $sections;
 	}
 
 	public static function admin_section_start($nm)

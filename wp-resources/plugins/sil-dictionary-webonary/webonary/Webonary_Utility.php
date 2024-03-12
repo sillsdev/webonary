@@ -698,4 +698,23 @@ class Webonary_Utility
 	{
 		return preg_replace('/(^[\p{Z}\x{200B}-\x{200D}\x{2060}]+)|([\p{Z}\x{200B}-\x{200D}\x{2060}]+$)/u', '', $string);
 	}
+
+	/**
+	 * @param string $name
+	 * @param array $items  Array key = value of select element
+	 * @param mixed $value
+	 * @return string
+	 */
+	public static function BuildSelectElement(string $name, array $items, mixed $value): string
+	{
+		$return_val = ['<select id="' . $name . '" name="' . $name . '">'];
+
+		foreach($items as $key => $text) {
+			$return_val[] = '<option value="' . $key . '" ' . selected($value, $key, false) . '>' . $text . '</option>';
+		}
+
+		$return_val[] = '</select>';
+
+		return implode(PHP_EOL, $return_val);
+	}
 }
