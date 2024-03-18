@@ -965,4 +965,31 @@ class Webonary_Cloud
 
 		return implode(',', $letters);
 	}
+
+	public static function getLanguageCodes(): array
+	{
+		$lang_codes = [];
+		$dictionary = self::getDictionary();
+
+		if (!is_null($dictionary)) {
+
+			$lang_codes[] = [
+				'language_code' => $dictionary->mainLanguage->lang,
+				'name' => $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang
+			];
+
+			foreach ($dictionary->reversalLanguages as $reversal) {
+
+				if (isset($reversal->entriesCount) && $reversal->entriesCount) {
+
+					$lang_codes[] = [
+						'language_code' => $reversal->lang,
+						'name' => $reversal->title ?? $reversal->lang
+					];
+				}
+			}
+		}
+
+		return $lang_codes;
+	}
 }

@@ -34,7 +34,7 @@ class Webonary_Dashboard_Widget extends WP_Widget
 HTML;
 	}
 
-	private static function GetImportStatus(): string
+	public static function GetImportStatus(): string
 	{
 		if (IS_CLOUD_BACKEND) {
 
