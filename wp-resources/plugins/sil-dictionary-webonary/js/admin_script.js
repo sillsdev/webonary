@@ -192,6 +192,80 @@ function DeleteWebonaryData() {
     });
 }
 
+function ShowCopyMessage(site, message_id) {
+
+    let txt = document.getElementById('copy-data-progress');
+
+    switch (message_id) {
+        case 1:
+            txt.value = 'Copying database record for ' + site + '.';
+            break;
+
+        case 2:
+            txt.value += '\nCopying vernacular entries for ' + site + '.';
+            break;
+
+        case 3:
+            txt.value += '\nCopying reversal entries for ' + site + '.';
+            break;
+
+        case 4:
+            txt.value += '\nFinished copying.';
+            break;
+
+        default:
+            txt.value += '\nUnknown command ' + message_id + '.';
+    }
+}
+
+function DoCopyAjax(site, step, callback) {
+
+    // noinspection JSUnresolvedReference
+    jQuery.ajax({
+        url: webonary_ajax_obj.ajax_url,
+        data: {action: 'postCopyMongoData', site: site, step: step},
+        type: 'POST',
+        dataType: 'json',
+        success: function() {
+
+            if (callback)
+                callback(site);
+        },
+        error: function(jqXHR, status, message) {
+            let txt = document.getElementById('copy-data-progress');
+            txt.value += '\n' + message;
+        }
+    });
+}
+
+function CopyDataStep2(site) {
+
+    ShowCopyMessage(site, 2);
+    DoCopyAjax(site, 2, CopyDataStep3);
+}
+
+function CopyDataStep3(site) {
+
+    ShowCopyMessage(site, 3);
+    DoCopyAjax(site, 3, CopyDataFinished);
+}
+
+function CopyDataFinished(site) {
+
+    ShowCopyMessage(site, 4);
+}
+
+function CopyMongoData() {
+
+    let site = window.location.pathname
+        .replace(/^\/+/, '')
+        .replace(/\/+$/, '')
+        .split('/')[0];
+
+    ShowCopyMessage(site, 1);
+    DoCopyAjax(site, 1, CopyDataStep2);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // site-address must be lowercase, and replace underscore with hyphen
