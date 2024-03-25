@@ -367,6 +367,8 @@ SQL;
 			$domains = $wpdb->get_results($sql, ARRAY_A);
 		}
 
+		self::GetRoots();
+
 		if (!count($domains) && $include_defaults) {
 			self::LoadDefaultsIfNeeded($domains);
 			$found_lang_code = 'en';
