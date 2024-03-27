@@ -1004,8 +1004,8 @@ HTML;
 <div class="webonary-admin-block">
     <div class="flex-column">
 		<p style="margin: 0 0 0.3rem">Copy cloud MongoDB data for this site from .org to .work.</p>
-		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data">Copy MongoDB Data</button>
-		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly" onclick="CopyMongoData()">Progress</textarea>
+		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data" onclick="CopyMongoData();">Copy MongoDB Data</button>
+		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly">Progress</textarea>
 	</div>
 </div>
 HTML;

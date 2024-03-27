@@ -216,6 +216,8 @@ function ShowCopyMessage(site, message_id) {
         default:
             txt.value += '\nUnknown command ' + message_id + '.';
     }
+
+    txt.scrollTop = txt.scrollHeight;
 }
 
 function DoCopyAjax(site, step, callback) {
@@ -226,8 +228,17 @@ function DoCopyAjax(site, step, callback) {
         data: {action: 'postCopyMongoData', site: site, step: step},
         type: 'POST',
         dataType: 'json',
-        success: function() {
+        success: function(response) {
 
+            if (response.hasOwnProperty('error')) {
+                toastr.error(response.error);
+                return;
+            }
+
+            if (response.hasOwnProperty('msg')) {
+                toastr.success(response.msg);
+                document.getElementById('copy-data-progress').value += '\n   ...' + response.msg;
+            }
             if (callback)
                 callback(site);
         },
@@ -236,6 +247,17 @@ function DoCopyAjax(site, step, callback) {
             txt.value += '\n' + message;
         }
     });
+}
+
+function CopyMongoData() {
+
+    let site = window.location.pathname
+        .replace(/^\/+/, '')
+        .replace(/\/+$/, '')
+        .split('/')[0];
+
+    ShowCopyMessage(site, 1);
+    DoCopyAjax(site, 1, CopyDataStep2);
 }
 
 function CopyDataStep2(site) {
@@ -253,17 +275,6 @@ function CopyDataStep3(site) {
 function CopyDataFinished(site) {
 
     ShowCopyMessage(site, 4);
-}
-
-function CopyMongoData() {
-
-    let site = window.location.pathname
-        .replace(/^\/+/, '')
-        .replace(/\/+$/, '')
-        .split('/')[0];
-
-    ShowCopyMessage(site, 1);
-    DoCopyAjax(site, 1, CopyDataStep2);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

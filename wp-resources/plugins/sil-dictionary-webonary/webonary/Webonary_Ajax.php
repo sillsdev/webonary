@@ -80,4 +80,37 @@ class Webonary_Ajax
 		echo json_encode($data);
 		exit();
 	}
+
+	public static function copyMongoData(): void
+	{
+		header('Content-Type: application/json');
+
+		$site = filter_input(INPUT_POST, 'site', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+
+		if (($site ?? '') == '') {
+			echo json_encode(['error' => 'No site specified']);
+			exit();
+		}
+
+		$step = filter_input(INPUT_POST, 'step', FILTER_VALIDATE_INT, ['options' => ['default' => 0]]);
+
+		switch ($step) {
+			case 1:
+				echo json_encode(['msg' => '1 Site data record copied']);
+				break;
+
+			case 2:
+				echo json_encode(['msg' =>'2 Vernacular entries copied']);
+				break;
+
+			case 3:
+				echo json_encode(['msg' => '3 Reversal entries copied']);
+				break;
+
+			default:
+				echo json_encode(['error' => 'Invalid step']);
+		}
+
+		exit();
+	}
 }

@@ -8,6 +8,7 @@ add_action('wp_ajax_getAjaxCurrentIndexedCount', 'Webonary_Ajax::ajaxCurrentInde
 add_action('wp_ajax_getAjaxCurrentImportedCount', 'Webonary_Ajax::ajaxCurrentImportedCount');
 add_action('wp_ajax_getAjaxRestartIndexing', 'Webonary_Ajax::ajaxRestartIndexing');
 add_action('wp_ajax_postAjaxDeleteData', 'Webonary_Ajax::deleteData');
+add_action('wp_ajax_postCopyMongoData', 'Webonary_Ajax::copyMongoData');
 
 function relevanceSave(): bool
 {
