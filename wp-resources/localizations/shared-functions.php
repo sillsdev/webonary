@@ -26,9 +26,9 @@ function makeMOFile($po_file_name, $rename_existing = true): void
 
 function escapeString($string): string
 {
-	$string = str_replace("\n", '\\n', $string);
+	return str_replace("\n", '\\n', $string);
 
-	return str_replace("\"", '\\"', $string);
+	// return str_replace("\"", '\\"', $string);
 }
 
 function addOrReplaceInPO(string $key, string $value, array &$po_list, bool $do_not_add = false, string $comment = 'extra string'): void

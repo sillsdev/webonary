@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnhandledExceptionInspection */
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
@@ -94,8 +95,8 @@ for ($i = 0; $i < $sheet_count; $i++) {
 
 	// get rows, skipping the first one
 	for ($j = 2; $j <= $last_row; $j++) {
-		$eng = $sheet->getCell([1, $j])->getValue();
-		$ver = $sheet->getCell([2, $j])->getValue();
+		$eng = trim($sheet->getCell([1, $j])->getValue());
+		$ver = trim($sheet->getCell([2, $j])->getValue());
 
 		if (!empty($eng) && !empty($ver))
 			$entries[] = [$eng, $ver];
@@ -104,6 +105,7 @@ for ($i = 0; $i < $sheet_count; $i++) {
 unset($spreadsheet);
 
 $po_files = [];
+
 
 // update strings in sil_dictionary-xx_YY.po
 $locale_code = str_replace('-', '_', $locale_code);
@@ -116,6 +118,19 @@ if (!is_file($po_file))
 
 process_po_file($po_file, $entries, $locale_code);
 
+
+// update strings in sil_domains-xx_YY.po
+$locale_code = str_replace('-', '_', $locale_code);
+$po_name = 'sil_domains-' . $locale_code . '.po';
+$po_file = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/sem-domains/' . $po_name;
+$po_files[] = $po_file;
+
+if (!is_file($po_file))
+	copy(__DIR__ . '/english/sil_domains-en_US.po', $po_file);
+
+process_po_file($po_file, $entries, $locale_code);
+
+
 // update strings in webonary-zeedisplay xx_YY.po
 $po_name = $locale_code . '.po';
 $po_file = dirname(__DIR__) . '/themes/webonary-zeedisplay/includes/lang/' . $po_name;
@@ -124,6 +139,7 @@ if (!is_file($po_file))
 	copy(__DIR__ . '/english/webonary-theme-en_US.po', $po_file);
 
 process_po_file($po_file, $entries, $locale_code);
+
 
 // update string in Wordpress xx_YY.po
 $po_file = __DIR__ . '/wordpress-base/' . $po_name;
