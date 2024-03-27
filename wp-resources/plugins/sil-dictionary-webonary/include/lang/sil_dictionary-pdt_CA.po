@@ -89,7 +89,7 @@ msgstr "Daut latste enjespikjat:"
 
 #: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
 msgid "Date published:"
-msgstr "Drekj Dotem: "
+msgstr "Drekj Dotem:"
 
 #: include/searchform_func.php:360 webonary/Webonary_Search_Widget.php:338
 msgid "Found in Semantic Domains:"
@@ -161,7 +161,7 @@ msgstr "Volstendich (nich jedrekjt)"
 
 #: include/searchform_func.php:401
 msgid "Formally published"
-msgstr ""
+msgstr "Volstendich jedrekjt"
 
 #: webonary/Webonary_Search_Widget.php:19
 msgid "Webonary Search Widget"

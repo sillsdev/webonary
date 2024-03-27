@@ -93,7 +93,7 @@ msgstr "Grupp"
 #: search.php:46
 #, php-format
 msgid "Search results for \"%s\""
-msgstr ""
+msgstr "Jefungen fa \"%s\""
 
 #: search.php:67
 msgid "Comments"

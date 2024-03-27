@@ -13724,7 +13724,7 @@ msgstr ""
 #: wp-includes/general-template.php:1738
 msgctxt "post format archive title"
 msgid "Links"
-msgstr ""
+msgstr "Toophank"
 
 #: wp-includes/general-template.php:1734
 msgctxt "post format archive title"
@@ -18748,7 +18748,7 @@ msgstr ""
 #: wp-includes/js/dist/format-library.js:1723 wp-admin/user-edit.php:381
 #: wp-admin/user-new.php:557
 msgid "Language"
-msgstr ""
+msgstr "Sproak"
 
 #: wp-includes/class-wp-editor.php:1270
 msgid "The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?"
@@ -18935,7 +18935,7 @@ msgstr ""
 #: wp-includes/js/dist/edit-widgets.js:3798 wp-admin/customize.php:241
 #: wp-admin/includes/class-wp-screen.php:979
 msgid "Help"
-msgstr ""
+msgstr "Halp"
 
 #: wp-includes/class-wp-theme.php:1064 wp-includes/js/dist/block-editor.js:3831
 msgid "Black"
