@@ -96,7 +96,9 @@ class Webonary_Ajax
 
 		switch ($step) {
 			case 1:
-				echo json_encode(['msg' => '1 Site data record copied']);
+				$count = self::BackupSiteRecord();
+				$plural = ($count !== 1) ? 's' : '';
+				echo json_encode(['msg' => "$count Site data record$plural copied"]);
 				break;
 
 			case 2:
@@ -112,5 +114,18 @@ class Webonary_Ajax
 		}
 
 		exit();
+	}
+
+	private static function BackupSiteRecord(): int
+	{
+		$client = new MongoDB\Client(
+			'mongodb+srv://phillip_hopper:MWvpWREkJzA7xP8S@cluster0.hlbyb.mongodb.net'
+		);
+
+		$db = $client->{'webonary-work'}->collection;
+		$result = $db->find()->toArray();
+		$x = 1;
+
+		return 1;
 	}
 }
