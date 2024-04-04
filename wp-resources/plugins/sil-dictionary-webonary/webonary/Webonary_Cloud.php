@@ -997,4 +997,26 @@ class Webonary_Cloud
 
 		return $lang_codes;
 	}
+
+	/**
+	 * Gets the contents of a file for this site from the S3 bucket.
+	 *
+	 * @param $file_name
+	 * @return string|null
+	 */
+	public static function getFileContents($file_name): ?string
+	{
+		$url = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . Webonary_Cloud::getBlogDictionaryId() . '/' . $file_name;
+
+		// the default timeout is just 5 seconds, sometimes not enough to get a dictionary
+		$response = wp_remote_get($url, ['timeout' => 30, 'compress' => true]);
+
+		if (is_wp_error($response)) {
+			error_log($response->get_error_message());
+			self::logDebugMessage($response->get_error_message());
+			return null;
+		}
+
+		return wp_remote_retrieve_body($response);
+	}
 }
