@@ -329,7 +329,7 @@ class Webonary_Cloud
 		// set alignment for the post
 		$rtl = get_option('vernacularRightToLeft') == '1';
 		$align_class = $rtl ? 'right' : 'left';
-		$fake_post->post_content = preg_replace('/(<div[^>]class="[^"]*?)entry([^"]*?")/m', "$1entry $align_class$2", $fake_post->post_content);
+		$fake_post->post_content = preg_replace('/(<div[^>]+class="[^"]*?entry[^"]*?)(")/m', "$1 $align_class$2", $fake_post->post_content);
 
 		return new WP_Post($fake_post);
 	}
