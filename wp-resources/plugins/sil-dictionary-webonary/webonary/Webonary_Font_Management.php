@@ -102,18 +102,23 @@ class Webonary_Font_Management
 		return $return_val;
 	}
 
+	private static function GetConfiguredCssText(): ?string
+	{
+		if (!IS_CLOUD_BACKEND)
+			return Webonary_Utility::GetUploadedSiteFile('imported-with-xhtml.css');
+
+		if (defined('WEBONARY_CLOUD_FILE_URL'))
+			return Webonary_Cloud::getFileContents('configured.css');
+
+		return null;
+	}
+
 	public static function GetConfiguredFonts(): array
 	{
 		if (!is_null(self::$fonts_configured))
 			return self::$fonts_configured;
 
-		$upload_dir = wp_upload_dir();
-		$css_string = '';
-		$configured_css_file = $upload_dir['basedir'] . '/imported-with-xhtml.css';
-		if (file_exists($configured_css_file))
-			$css_string = file_get_contents($configured_css_file);
-
-		$fonts = Webonary_Font_Management::get_fonts_fromCssText($css_string);
+		$fonts = self::get_fonts_fromCssText(self::GetConfiguredCssText());
 
 		$return_val = [];
 		foreach ($fonts as $font) {
@@ -157,7 +162,7 @@ class Webonary_Font_Management
 	//////////////////////
 	public function set_fontFaces($css_string, $uploadPath): void
 	{
-		$arrUniqueCSSFonts = Webonary_Font_Management::get_fonts_fromCssText($css_string);
+		$arrUniqueCSSFonts = self::get_fonts_fromCssText($css_string);
 		$arrFont = $this->getFontsAvailable();
 
 		$fontFace = '';
@@ -257,89 +262,5 @@ class Webonary_Font_Management
 		$css = implode(PHP_EOL, $entries);
 
 		file_put_contents($upload_path . '/custom.css' , $css);
-	}
-
-	public function uploadFont(): void
-	{
-		$filetype = strtolower(pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_EXTENSION));
-		$filename = str_replace(" ", "", $_POST["fontname"]);
-		$fontType = "R";
-		if($_POST['fonttype'] == "bold")
-		{
-			$fontType = "B";
-		}
-		if($_POST['fonttype'] == "cursive")
-		{
-			$fontType = "I";
-		}
-
-		$filenameFull = $filename . "-" . $fontType . "." . $filetype;
-		$target_file = ABSPATH . FONTFOLDER . $filenameFull;
-		$uploadOk = 1;
-
-		echo "<h3>";
-		// Allow certain file formats
-		if($filetype != "woff" && $filetype != "ttf") {
-			echo "Sorry, only woff and ttf files are allowed.";
-			$uploadOk = 0;
-		}
-		// Check if $uploadOk is set to 0 by an error
-		if ($uploadOk == 1) {
-			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-				echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-
-				$arrFont["name"] = $_POST["fontname"];
-				$arrFont["filename"] = $filename;
-				$arrFont["hasSubFonts"] = false;
-				$arrFont["type"] = $filetype;
-
-				$inp = file_get_contents(ABSPATH . FONTFOLDER . 'fonts.json');
-				$tempArray = json_decode($inp);
-
-				$hasFont = array_search($_POST["fontname"], array_column($tempArray, 'name'));
-				if(!$hasFont)
-				{
-					$tempArray[] = $arrFont;
-					$jsonData = json_encode($tempArray);
-					file_put_contents(ABSPATH . FONTFOLDER . 'fonts.json', $jsonData);
-				}
-
-				$upload_dir = wp_upload_dir();
-				$target_path = $upload_dir['path'] . "/imported-with-xhtml.css";
-				$css_string = file_get_contents($target_path);
-				$this->set_fontFaces($css_string, $upload_dir['path']);
-
-			} else {
-				echo "Sorry, there was an error uploading your file.";
-			}
-		}
-		echo "</h3>";
-		echo "<hr>";
-	}
-
-	public function uploadFontForm(): void
-	{
-		$keys = array_keys($_REQUEST['uploadButton']);
-		$submitNumber = array_pop($keys);
-		?>
-		<a id="uploadfont"></a>
-		<h1>Upload Font</h1>
-		<h3><?php echo $_POST['fontname'][$submitNumber]; ?></h3>
-		<p></p>
-		<form action="#" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="fontname" value="<?php echo $_POST['fontname'][$submitNumber]; ?>">
-			Type:
-            <select name="fonttype" title="">
-				<option value="regular">regular</option>
-				<option value="bold">bold</option>
-				<option value="cursive">cursive</option>
-			</select>
-			<p></p>
-			Font file: <input type="file" name="fileToUpload">
-			<p></p>
-			<input type="submit" value="Upload Font" name="uploadFont">
-		</form>
-		<hr>
-		<?php
 	}
 }
