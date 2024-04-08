@@ -387,6 +387,11 @@ HTML;
     </div>
     $vernacular_block
     $reversals_block
+    <div class="webonary-admin-block">
+		<div style="margin: 2rem 0">
+			<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
+		</div>
+	</div>
 </div>
 HTML;
 		$lines[] = $html;
