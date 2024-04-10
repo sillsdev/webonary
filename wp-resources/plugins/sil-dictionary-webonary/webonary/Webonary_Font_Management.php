@@ -166,7 +166,7 @@ class Webonary_Font_Management
 		$arrFont = $this->getFontsAvailable();
 
 		$fontFace = '';
-		$arrFontStyles = array('R', 'B', 'I', 'BI');
+		$arrFontStyles = ['R', 'B', 'I', 'BI'];
 		if(count($arrUniqueCSSFonts) > 0)
 		{
 			foreach($arrUniqueCSSFonts as $userFont)
