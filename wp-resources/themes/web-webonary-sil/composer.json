@@ -4,6 +4,6 @@
   },
   "require": {
     "fortawesome/font-awesome": "4.*",
-    "timber/timber": "^1.2"
+    "timber/timber": "^2.1"
   }
 }
