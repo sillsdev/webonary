@@ -1019,4 +1019,10 @@ class Webonary_Cloud
 
 		return wp_remote_retrieve_body($response);
 	}
+
+	public static function HasSemanticDomains(): bool
+	{
+		$dictionary = self::getDictionary();
+		return !empty($dictionary->usedSemanticDomains) || !empty($dictionary->semanticDomainAbbreviationsUsed);
+	}
 }
