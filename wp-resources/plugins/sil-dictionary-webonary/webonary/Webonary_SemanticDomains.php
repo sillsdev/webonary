@@ -402,6 +402,10 @@ SQL;
 	{
 		// check for cached list
 		if (IS_CLOUD_BACKEND) {
+
+			if (!Webonary_Cloud::HasSemanticDomains())
+				return '';
+
 			$dictionary = Webonary_Cloud::getDictionary();
 
 			if (!empty($dictionary->usedSemanticDomains))

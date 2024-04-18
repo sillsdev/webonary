@@ -296,27 +296,25 @@ HTML;
 
 function found_semantic_domains($search_term, $sem_domains): string
 {
-	if($search_term !== '')
-	{
-		if(count($sem_domains) > 0 && count($sem_domains) <= 10)
-		{
-			$found_header = __('Found in Semantic Domains:', 'sil_dictionary');
+	if (IS_CLOUD_BACKEND && !Webonary_Cloud::HasSemanticDomains())
+		return '';
 
-			$found_text = '';
-			foreach ($sem_domains as $sem_domain ) {
-				$found_text .= '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">'. $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>' . PHP_EOL;
-			}
+	$domain_count = count($sem_domains);
+	if ($search_term === '' || $domain_count == 0 || $domain_count > 10)
+		return '';
 
-			return <<<HTML
-<strong>$found_header</strong>
-<ul>
-	$found_text
-</ul>
-HTML;
-		}
+	$found_header = __('Found in Semantic Domains:', 'sil_dictionary');
+	$found_text = '';
+	foreach ($sem_domains as $sem_domain) {
+		$found_text .= '<li><a href="?s=&partialsearch=1&tax=' . $sem_domain->term_id . '">' . $sem_domain->slug . ' ' . $sem_domain->description . '</a></li>' . PHP_EOL;
 	}
 
-	return '';
+	return <<<HTML
+<strong>$found_header</strong>
+<ul>
+$found_text
+</ul>
+HTML;
 }
 
 function add_header(): void

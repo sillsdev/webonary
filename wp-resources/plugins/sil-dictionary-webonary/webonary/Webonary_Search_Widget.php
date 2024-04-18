@@ -195,6 +195,9 @@ SQL;
 
 	private function GetSemanticDomains($search_term): string
 	{
+		if (IS_CLOUD_BACKEND && !Webonary_Cloud::HasSemanticDomains())
+			return '';
+
 		if ($search_term == '')
 			return '';
 
