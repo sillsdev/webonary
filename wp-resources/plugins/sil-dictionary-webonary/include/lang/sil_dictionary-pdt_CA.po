@@ -1,0 +1,172 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webonary Plugin\n"
+"POT-Creation-Date: 2022-02-02 09:04-0500\n"
+"PO-Revision-Date: 2022-02-02 09:10-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pdt_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/sil-dictionary-webonary\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: webonary/Webonary_Pathway_Xhtml_Import.php\n"
+"X-Poedit-SearchPathExcluded-1: webonary/Webonary_SemanticDomains.php\n"
+"X-Poedit-SearchPathExcluded-2: include/default_domains.php\n"
+"X-Poedit-SearchPathExcluded-3: include/default_domains-SpanishFoods.php\n"
+"X-Poedit-SearchPathExcluded-4: include/default_domains-yakan.php\n"
+"X-Poedit-SearchPathExcluded-5: include/infrastructure.php\n"
+"X-Poedit-SearchPathExcluded-6: include/configuration.php\n"
+"X-Poedit-SearchPathExcluded-7: include/comments_func.php\n"
+"X-Poedit-SearchPathExcluded-8: webonary/Webonary_Configuration.php\n"
+"X-Poedit-SearchPathExcluded-9: sil-dictionary.php\n"
+
+#: include/browseview_func.php:141
+msgid "No entries exist for"
+msgstr "Kjeene Enfierungen fa"
+
+#: include/browseview_func.php:260
+msgid "Page"
+msgstr "Sied"
+
+#: include/browseview_func.php:260
+msgid "of"
+msgstr "von"
+
+#: include/browseview_func.php:642
+msgid "Entry not found"
+msgstr "Nich eene Enfierunk"
+
+#: include/browseview_func.php:832
+msgid "No entries exist starting with this letter."
+msgstr "Kjeene Enfierungen fangen aun met."
+
+#: include/dictionary-search.php:46
+msgid "Because of the brevity of your search term, partial search was omitted."
+msgstr ""
+
+#: include/dictionary-search.php:49
+msgid "Click here to include searching through partial words."
+msgstr "Wiess een Stekj von een Wuat."
+
+#: include/searchform_func.php:57 include/searchform_func.php:144
+#: webonary/Webonary_Search_Widget.php:267
+msgid "All Parts of Speech"
+msgstr "Sproak Klaussen"
+
+#: webonary/Webonary_Parts_Of_Speech.php:53
+msgid "Parts of Speech"
+msgstr "Sproak Klaussen"
+
+#: include/searchform_func.php:295 webonary/Webonary_Search_Widget.php:57
+msgid "Search"
+msgstr "Sieekj"
+
+#: include/searchform_func.php:304 webonary/Webonary_Search_Widget.php:251
+msgid "All Languages"
+msgstr "Aule Sproaken"
+
+#: include/searchform_func.php:313 webonary/Webonary_Search_Widget.php:64
+msgid "Match whole words"
+msgstr "Sieekj gaunze Wieeda"
+
+#: include/searchform_func.php:315 webonary/Webonary_Search_Widget.php:66
+msgid "Match accents and tones"
+msgstr "Vejlikj Betoonunk"
+
+#: include/searchform_func.php:322 webonary/Webonary_Search_Widget.php:68
+msgid "Number of Entries"
+msgstr "Zol von Enfierungen"
+
+#: include/searchform_func.php:339 webonary/Webonary_Search_Widget.php:82
+msgid "Last upload:"
+msgstr "Daut latste enjespikjat:"
+
+#: include/searchform_func.php:349 webonary/Webonary_Search_Widget.php:318
+msgid "Date published:"
+msgstr "Drekj Dotem:"
+
+#: include/searchform_func.php:360 webonary/Webonary_Search_Widget.php:338
+msgid "Found in Semantic Domains:"
+msgstr "En Bediedunksgruppen jefungen:"
+
+#: webonary/Webonary_Infrastructure.php:187
+msgid "Semantic Domains"
+msgstr "Bediedunksgruppen"
+
+#: webonary/Webonary_Infrastructure.php:188
+msgid "Semantic Domain"
+msgstr "Bediedunk Gruppen"
+
+#: webonary/Webonary_Infrastructure.php:189
+msgid "Search Domains"
+msgstr "Sieekj en Gruppen"
+
+#: webonary/Webonary_Infrastructure.php:190
+msgid "All Semantic Domains"
+msgstr "Aule Bediedunksgruppen"
+
+#: webonary/Webonary_Infrastructure.php:191
+msgid "Parent Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:192
+msgid "Parent Semantic Domain:"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:193
+msgid "Edit Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:194
+msgid "Update Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:195
+msgid "Add New Semantic Domain"
+msgstr ""
+
+#: webonary/Webonary_Infrastructure.php:196
+msgid "New Semantic Domain Name"
+msgstr ""
+
+#: include/searchform_func.php:395
+msgid "Publication Status"
+msgstr "Wäajen drekjen"
+
+#: include/searchform_func.php:396
+msgid "Rough draft"
+msgstr "Onbeschläpne Proow"
+
+#: include/searchform_func.php:397
+msgid "Self-reviewed draft"
+msgstr "Derchjesochte Proow"
+
+#: include/searchform_func.php:398
+msgid "Community-reviewed draft"
+msgstr "Läsaderchjesochte Proow"
+
+#: include/searchform_func.php:399
+msgid "Consultant approved"
+msgstr "Meista gootjenant"
+
+#: include/searchform_func.php:400
+msgid "Finished (no formal publication)"
+msgstr "Volstendich (nich jedrekjt)"
+
+#: include/searchform_func.php:401
+msgid "Formally published"
+msgstr "Volstendich jedrekjt"
+
+#: webonary/Webonary_Search_Widget.php:19
+msgid "Webonary Search Widget"
+msgstr ""
+
+#: webonary/Webonary_Published_Widget.php:13
+msgid "Webonary Published Status Widget"
+msgstr ""

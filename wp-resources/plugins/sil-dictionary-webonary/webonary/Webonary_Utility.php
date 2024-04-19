@@ -717,4 +717,16 @@ class Webonary_Utility
 
 		return implode(PHP_EOL, $return_val);
 	}
+
+	public static function GetUploadedSiteFile($file_name): ?string
+	{
+		$upload_dir = wp_upload_dir();
+		$target_path = $upload_dir['path'] . '/' . $file_name;
+		$contents = file_get_contents($target_path);
+
+		if ($contents === false)
+			return null;
+
+		return $contents;
+	}
 }

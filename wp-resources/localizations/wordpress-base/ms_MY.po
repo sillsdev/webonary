@@ -16,7 +16,7 @@ msgstr ""
 #. not translate into your own language.
 #: wp-includes/general-template.php:704
 msgid "html_lang_attribute"
-msgstr "html_lang_attribute"
+msgstr "ms-MY"
 
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/class-wp-locale.php:228

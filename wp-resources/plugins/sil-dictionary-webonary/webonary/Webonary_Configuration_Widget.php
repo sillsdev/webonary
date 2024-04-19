@@ -387,6 +387,11 @@ HTML;
     </div>
     $vernacular_block
     $reversals_block
+    <div class="webonary-admin-block">
+		<div style="margin: 2rem 0">
+			<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
+		</div>
+	</div>
 </div>
 HTML;
 		$lines[] = $html;
@@ -407,7 +412,33 @@ HTML;
 
 		$blocks_combined = implode(PHP_EOL, $blocks);
 
+		// load available font faces
+		$available = Webonary_Font_Management::getFontsAvailable();
+		$styles = ['R', 'B', 'I', 'BI'];
+		$template = '@font-face { font-family: %s; src: url(/wp-content/uploads/fonts/%s); %s %s }';
+		$loaded_fonts = '';
+		foreach ($available as $font) {
+			// add all available font styles to the css
+			foreach ($styles as $style) {
+
+				$file_name = $font['filename'] . '-' . $style . '.' . $font['type'];
+
+				if (file_exists(ABSPATH . FONTFOLDER . $file_name)) {
+
+					$bold = str_contains($style, 'B') ? 'font-weight: bold;' : '';
+					$italic = str_contains($style, 'I') ? 'font-style: italic;' : '';
+					$css = sprintf($template, $font['name'], $file_name, $bold, $italic);
+
+					// remove extra spaces before saving
+					$loaded_fonts .= preg_replace('/\s\s+/', ' ', $css) . PHP_EOL;
+				}
+			}
+		}
+
 		$html = <<<HTML
+<style>
+$loaded_fonts
+</style>
 <div id="tab-fonts" class="hidden">
     <h3>Fonts</h3>
     <div class="webonary-admin-block">
@@ -709,22 +740,28 @@ HTML;
 		if (empty($lang_codes))
 			return '<span style="color:red">You need to first upload your dictionary.</span>';
 
+		$vernacular_font = get_option('vernacularLettersFont', '');
+		if (empty($vernacular_font))
+			$font_family = '';
+		else
+			$font_family = 'style="font-family:' . $vernacular_font . '"';
+
 		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
 		$lang_code = get_option('languagecode');
 		$i = array_search($lang_code, array_column($lang_codes, 'language_code'));
 		$lang_name = $lang_codes[$i]['name'];
 		$alphabet = stripslashes(Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'), true));
-		$select = self::GetConfiguredFontSelect('vernacularLettersFont', get_option('vernacularLettersFont', ''));
+		$select = self::GetConfiguredFontSelect('vernacularLettersFont', $vernacular_font);
 		$rtl_checked = checked('1', get_option('vernacularRightToLeft'), false);
 		$diacritics_checked = checked('1', get_option('IncludeCharactersWithDiacritics'), false);
 
 		if (is_super_admin()) {
 			$red_text = '<span style="color:red;">Only remove letters, do not change/add letters!</span>';
-			$alphabet_out = '<input type="text" name="vernacular_alphabet" id="vernacular_alphabet" class="admin-alphabet" value="' . $alphabet . '">';
+			$alphabet_out = '<input type="text" name="vernacular_alphabet" id="vernacular_alphabet" class="admin-alphabet" value="' . $alphabet . '" ' . $font_family . '>';
 		}
 		else {
 			$red_text = '';
-			$alphabet_out = '<span>' . $alphabet . '</span>';
+			$alphabet_out = '<span id="vernacular_alphabet" ' . $font_family . '>' . $alphabet . '</span>';
 		}
 
 		return <<<HTML
@@ -758,6 +795,13 @@ HTML;
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+		document.getElementById('vernacularLettersFont').onchange = function() {
+			document.getElementById('vernacular_alphabet').style.fontFamily = this.value;
+		}
+	});
+</script>
 HTML;
 	}
 

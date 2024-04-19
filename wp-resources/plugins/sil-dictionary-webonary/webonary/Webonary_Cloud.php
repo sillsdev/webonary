@@ -329,7 +329,7 @@ class Webonary_Cloud
 		// set alignment for the post
 		$rtl = get_option('vernacularRightToLeft') == '1';
 		$align_class = $rtl ? 'right' : 'left';
-		$fake_post->post_content = preg_replace('/(<div[^>]class="[^"]*?)entry([^"]*?")/m', "$1entry $align_class$2", $fake_post->post_content);
+		$fake_post->post_content = preg_replace('/(<div[^>]+class="[^"]*?entry[^"]*?)(")/m', "$1 $align_class$2", $fake_post->post_content);
 
 		return new WP_Post($fake_post);
 	}
@@ -996,5 +996,33 @@ class Webonary_Cloud
 		}
 
 		return $lang_codes;
+	}
+
+	/**
+	 * Gets the contents of a file for this site from the S3 bucket.
+	 *
+	 * @param $file_name
+	 * @return string|null
+	 */
+	public static function getFileContents($file_name): ?string
+	{
+		$url = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . Webonary_Cloud::getBlogDictionaryId() . '/' . $file_name;
+
+		// the default timeout is just 5 seconds, sometimes not enough to get a dictionary
+		$response = wp_remote_get($url, ['timeout' => 30, 'compress' => true]);
+
+		if (is_wp_error($response)) {
+			error_log($response->get_error_message());
+			self::logDebugMessage($response->get_error_message());
+			return null;
+		}
+
+		return wp_remote_retrieve_body($response);
+	}
+
+	public static function HasSemanticDomains(): bool
+	{
+		$dictionary = self::getDictionary();
+		return !empty($dictionary->usedSemanticDomains) || !empty($dictionary->semanticDomainAbbreviationsUsed);
 	}
 }

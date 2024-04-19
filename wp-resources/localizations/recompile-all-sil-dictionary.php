@@ -34,4 +34,15 @@ foreach($po_files as $po_file) {
 	makeMOFile($po_file);
 }
 
+
+echo 'Compiling WordPress...' . PHP_EOL;
+
+$po_directory = __DIR__ . '/wordpress-base';
+$po_files = glob("$po_directory/*.po");
+
+foreach($po_files as $po_file) {
+	echo ' - ' . basename($po_file) . PHP_EOL;
+	makeMOFile($po_file);
+}
+
 echo 'Finished.' . PHP_EOL;

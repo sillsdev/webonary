@@ -1,9 +1,0 @@
-{
-  "require-dev": {
-    "twbs/bootstrap": "3.1.*"
-  },
-  "require": {
-    "fortawesome/font-awesome": "4.*",
-    "timber/timber": "^1.2"
-  }
-}

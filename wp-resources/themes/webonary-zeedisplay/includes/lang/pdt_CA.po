@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-02-02 09:16-0500\n"
+"PO-Revision-Date: 2022-02-02 09:16-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pdt_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: Projects/webonary-zeedisplay\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: functions.php\n"
+"X-Poedit-SearchPathExcluded-1: includes/admin/theme-admin.php\n"
+"X-Poedit-SearchPathExcluded-2: includes/admin/theme-settings.php\n"
+"X-Poedit-SearchPathExcluded-3: includes/plugins/theme_ads_widget.php\n"
+"X-Poedit-SearchPathExcluded-4: includes/plugins/theme_socialmedia_widget."
+"php\n"
+
+#: 404.php:12
+msgid "Entry not found."
+msgstr "Nich eene Enfierunk."
+
+#: archive.php:5 archive.php:6 archive.php:7
+msgid "Archive for"
+msgstr ""
+
+#: archive.php:8
+msgid "Tag Archive for"
+msgstr ""
+
+#: archive.php:9 page-sitemap.php:48
+msgid "Archives"
+msgstr "Jespikjat"
+
+#: comments.php:8
+msgid "Enter password to view comments."
+msgstr "Jeff Schlätel to waut see sajen."
+
+#: comments.php:16 includes/entry.php:15
+msgid "No comments"
+msgstr "Kjeena sajcht waut"
+
+#: comments.php:16 includes/entry.php:15
+msgid "One comment"
+msgstr "Eena sajcht"
+
+#: comments.php:16 includes/entry.php:15
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: footer.php:140
+msgid "Terms of Service"
+msgstr "Oabeits Bedinjungen"
+
+#: includes/entry.php:31
+msgid "Read more"
+msgstr "Lass wieda"
+
+#: includes/navigation.php:17
+msgid "&laquo; Previous Entries"
+msgstr ""
+
+#: includes/navigation.php:18
+msgid "Next Entries &raquo;"
+msgstr ""
+
+#: page-sitemap.php:27
+msgid "Latest Posts"
+msgstr "Waut see nu sajen"
+
+#: page-sitemap.php:38
+msgid "Pages"
+msgstr "Sieden"
+
+#: page-sitemap.php:43
+msgid "Categories"
+msgstr "Gruppen"
+
+#: page-sitemap.php:53
+msgid "Posts by Category"
+msgstr "Waut see to eene Grupp sajen"
+
+#: page-sitemap.php:56
+msgid "Category"
+msgstr "Grupp"
+
+#: search.php:46
+#, php-format
+msgid "Search results for \"%s\""
+msgstr "Jefungen fa \"%s\""
+
+#: search.php:67
+msgid "Comments"
+msgstr "Waut see sajen"
+
+#: search.php:78
+msgid "No matches. Please try again, or use the navigation menus to find what you search for."
+msgstr "Nich jefungen. Proow wada oda bruck Sieekjsorten."
+
+#: slide.php:8 slide.php:9
+msgid "featured"
+msgstr ""
