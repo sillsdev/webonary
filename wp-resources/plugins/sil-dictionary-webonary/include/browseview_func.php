@@ -49,7 +49,7 @@ function categories_func($atts, $content, $shortcode_tag): string
 	$js = Webonary_SemanticDomains::GetJavaScript($qTransLang, $selected_domain_key);
 	wp_add_inline_script('webonary_ftiens_script', $js);
 
-	$pagenr = Webonary_Utility::getPageNumber();
+	$page_num = Webonary_Utility::getPageNumber();
 
 	$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
 	$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
@@ -69,7 +69,7 @@ function categories_func($atts, $content, $shortcode_tag): string
 				'lang' => $qTransLang,
 				'semDomAbbrev' => rtrim($semnumber, '.'),
 				'searchSemDoms' => '1',
-				'pageNumber' => $pagenr,
+				'pageNumber' => $page_num,
 				'pageLimit' => $postsPerPage
 			);
 			$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $apiParams);
@@ -88,7 +88,7 @@ WHERE x.taxonomy = 'sil_semantic_domains'
   AND t.slug LIKE '$semnumber_internal%'
 ORDER BY p.post_title, p.ID
 SQL;
-			$sql .= getLimitSql($pagenr, $postsPerPage);
+			$sql .= getLimitSql($page_num, $postsPerPage);
 
 			$arrPosts = $wpdb->get_results($sql);
 
@@ -116,7 +116,7 @@ SQL;
 		}
 	}
 
-	$display .= displayPageNumbers($semnumber, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $pagenr);
+	$display .= displayPageNumbers($semnumber, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $page_num);
 	$display .= "</div>";
 
  	wp_reset_query();
@@ -526,7 +526,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): st
 	$rtl = get_option('reversal' . $reversalnr . 'RightToLeft') == '1';
 	$align_class = $rtl ? 'right' : 'left';
 
-	$pagenr = Webonary_Utility::getPageNumber();
+	$page_num = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 	$displayXHTML = true;
 
@@ -538,7 +538,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): st
 			'text' => $chosenLetter,
 			'lang' => $langcode,
 			'entryType' => 'reversalindexentry',
-			'pageNumber' => $pagenr,
+			'pageNumber' => $page_num,
 			'pageLimit' => $postsPerPage
 		);
 
@@ -558,7 +558,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): st
 		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
 		wp_enqueue_style( 'reversal_stylesheet');
 
-		$arrReversals = getReversalEntries($chosenLetter, $pagenr, $langcode, $displayXHTML, $reversalnr, $postsPerPage);
+		$arrReversals = getReversalEntries($chosenLetter, $page_num, $langcode, $displayXHTML, $reversalnr, $postsPerPage);
 		$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
 	}
 
@@ -736,21 +736,25 @@ function getVernacularHeadword($post_id, $language_code): ?string
 }
 
 /** @noinspection PhpMultipleClassDeclarationsInspection */
-function get_letter($firstLetterOfAlphabet = "") {
-	if (!isset($_GET['letter'])) {
-		return $firstLetterOfAlphabet;
-	}
-	$chosenLetter = filter_input(INPUT_GET, 'letter', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+function get_letter($firstLetterOfAlphabet = '')
+{
+	$chosenLetter = filter_input(
+		INPUT_GET,
+		'letter',
+		FILTER_UNSAFE_RAW, ['options' => ['default' => $firstLetterOfAlphabet]]
+	);
+
 	// REVIEW: Do we really want to silently fail if this is not true? CP 2017-02
-	if (class_exists('Normalizer', false))
-	{
-		$normalization = Normalizer::FORM_C;
-		if(get_option("normalization") == "FORM_D")
-		{
-			$normalization = Normalizer::FORM_D;
-		}
+	if (class_exists('Normalizer', false)) {
+
+		$normalization = match (get_option('normalization')) {
+			'FORM_D' => Normalizer::FORM_D,
+			default => Normalizer::FORM_C
+		};
+
 		$chosenLetter = normalizer_normalize($chosenLetter, $normalization);
 	}
+
 	return $chosenLetter;
 }
 
@@ -760,27 +764,23 @@ function get_letter($firstLetterOfAlphabet = "") {
  * @throws Exception
  * @noinspection PhpMultipleClassDeclarationsInspection
  */
-function vernacularalphabet_func($atts ): string
+function vernacularalphabet_func($atts): string
 {
 	global $wpdb;
 
 	$rtl = get_option('vernacularRightToLeft') == '1';
 	$align_class = $rtl ? 'right' : 'left';
 
-	if (IS_CLOUD_BACKEND)
-	{
+	if (IS_CLOUD_BACKEND) {
 		Webonary_Cloud::registerAndEnqueueMainStyles();
-	}
-	else
-	{
+	} else {
 		$upload_dir = wp_upload_dir();
 		wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
-		wp_enqueue_style( 'configured_stylesheet');
+		wp_enqueue_style('configured_stylesheet');
 
-		if(file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css'))
-		{
+		if (file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css')) {
 			wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
-			wp_enqueue_style( 'overrides_stylesheet');
+			wp_enqueue_style('overrides_stylesheet');
 		}
 	}
 
@@ -793,43 +793,38 @@ function vernacularalphabet_func($atts ): string
 	$display = displayAlphabet($alphas, $language_code, $rtl);
 
 	//just displaying letters, not entries (for homepage)
-	if($atts == 'frontpage')
+	if ($atts == 'frontpage')
 		return $display;
 
 	$display .= '<div class="center"><h1 id=chosenLetterHead>' . $chosenLetter . '</h1></div><br>';
 
-	if(empty($language_code))
-	{
-		$display .=  'No language code provided. Please import your dictionary.';
+	if (empty($language_code)) {
+		$display .= 'No language code provided. Please import your dictionary.';
 		return $display;
 	}
 
 	$displaySubentriesAsMinorEntries = get_option('DisplaySubentriesAsMainEntries') == 1;
 
-	$pagenr = Webonary_Utility::getPageNumber();
+	$page_num = Webonary_Utility::getPageNumber();
 	$postsPerPage = Webonary_Utility::getPostsPerPage();
 
-	if(IS_CLOUD_BACKEND)
-	{
+	if (IS_CLOUD_BACKEND) {
 		$apiParams = array(
 			'text' => $chosenLetter,
 			'mainLang' => $language_code,
-			'pageNumber' => $pagenr,
+			'pageNumber' => $page_num,
 			'pageLimit' => $postsPerPage);
 
 		$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doBrowseByLetter, $apiParams);
 		$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doBrowseByLetter, $apiParams);
-	}
-	else
-	{
-		$arrPosts = getVernacularEntries($chosenLetter, $language_code, $pagenr, $postsPerPage);
+	} else {
+		$arrPosts = getVernacularEntries($chosenLetter, $language_code, $page_num, $postsPerPage);
 		$totalEntries = $_GET['totalEntries'] ?? $wpdb->get_var('SELECT FOUND_ROWS()');
 	}
 
-	if(empty($arrPosts)) {
+	if (empty($arrPosts)) {
 		$content = __('No entries exist starting with this letter.', 'sil_dictionary');
-	}
-	else {
+	} else {
 
 		$template = <<<HTML
 <div class="entry">
@@ -840,27 +835,20 @@ HTML;
 
 		$content = '';
 
-		foreach($arrPosts as $my_post)
-		{
+		foreach ($arrPosts as $my_post) {
 			//legacy
-			if(!IS_CLOUD_BACKEND && $displaySubentriesAsMinorEntries)
-			{
-				if(trim($my_post->post_title ?? '') != trim($my_post->search_strings ?? ''))
-				{
+			if (!IS_CLOUD_BACKEND && $displaySubentriesAsMinorEntries) {
+				if (trim($my_post->post_title ?? '') != trim($my_post->search_strings ?? '')) {
 					$headword = getVernacularHeadword($my_post->ID, $language_code);
 					$content .= sprintf($template, $my_post->search_strings, $headword, $headword);
-				}
-				else
-				{
+				} else {
 					$the_content = addLangQuery($my_post->post_content);
-					$the_content = normalizer_normalize($the_content, Normalizer::NFC );
+					$the_content = normalizer_normalize($the_content, Normalizer::NFC);
 					$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 				}
-			}
-			else
-			{
+			} else {
 				$the_content = addLangQuery($my_post->post_content);
-				$the_content = normalizer_normalize($the_content, Normalizer::NFC );
+				$the_content = normalizer_normalize($the_content, Normalizer::NFC);
 				$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 			}
 		}
