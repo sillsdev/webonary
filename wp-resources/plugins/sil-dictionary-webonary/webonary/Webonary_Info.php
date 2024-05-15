@@ -75,7 +75,10 @@ class Webonary_Info
 		}
 
 		if ($import_status == 'indexing') {
-			$percent = (int)ceil(($countIndexed / $countImported) * 100);
+			if ($countImported == 0)
+				$percent = 0;
+			else
+				$percent = (int)ceil(($countIndexed / $countImported) * 100);
 			if ($percent > 100)
 				$percent = 100;
 
