@@ -181,3 +181,48 @@ function register_custom_widgets(): void
 }
 
 add_action('widgets_init', 'register_custom_widgets');
+
+/**
+ * Check for audio file names mangled by the WordPress content editor
+ */
+add_filter(
+	'shortcode_atts_audio',
+	function ($out) {
+
+		// the array key we need is either a file extension or "src"
+		$audio_types = wp_get_audio_extensions();
+		$audio_types[] = 'src';
+
+		// check if this audio short code contains a file name
+		foreach ($audio_types as $type) {
+
+			if (empty($out[$type]))
+				continue;
+
+			if (!is_string($out[$type]))
+				continue;
+
+			// check if the file name contains HTML encoded text
+			if (str_contains($out[$type], '&#')) {
+
+				$parts = explode('/', $out[$type]);
+				$changed = false;
+
+				foreach ($parts as $key => $part) {
+
+					// decode the text into unicode characters
+					if (str_contains($part, '&#')) {
+						$parts[$key] = html_entity_decode($part);
+						$changed = true;
+					}
+				}
+
+				// the browser will URL encode the file name if needed
+				if ($changed)
+					$out[$type] = implode('/', $parts);
+			}
+		}
+
+		return $out;
+	}
+);
