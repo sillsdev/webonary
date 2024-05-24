@@ -382,7 +382,14 @@ class Webonary_Cloud
 	{
 		$term = get_term_by('slug', $code, self::$languageCategory);
 		if ($term) {
-			return $term->name;
+			if (!empty($term->name))
+				return $term->name;
+
+			// if the name is not set, set it now (happens on some old dictionaries updated to MongoDB)
+			if (!empty($default)) {
+				wp_update_term($term->term_id, self::$languageCategory, ['name' => $default, 'description' => $default]);
+				return $default;
+			}
 		}
 
 		$name = $default ?: $code;
