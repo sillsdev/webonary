@@ -83,7 +83,7 @@ class Webonary_Configuration
 
 			/** @noinspection SqlResolve */
 			$sql = <<<SQL
-SELECT s.language_code, MAX(t.`name`) AS `name`
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
 LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
 WHERE IFNULL(s.language_code, '') <> ''
@@ -96,7 +96,7 @@ SQL;
 
 			/** @noinspection SqlResolve */
 			$sql = <<<SQL
-SELECT s.language_code, MAX(t.`name`) AS `name`
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
 LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
 WHERE IF(%s = '', s.language_code, %s) = s.language_code
