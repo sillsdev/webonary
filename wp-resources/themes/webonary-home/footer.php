@@ -92,11 +92,19 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
   <a href="https://www.facebook.com/webonary" target="_blank"><img src="<?php echo  get_template_directory_uri(); ?>/images/facebook.png" style="float:right; margin:5px;"></a>
 	</div>
 	<?php endif; ?>
-		<div id="footer" class="<?php echo $color ?? ''; ?>" style="text-align:center; padding-bottom: 8px; font-size:12px;">
-			<div id="copyright">
-				<div><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="width: 20%; margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
-				<div style="text-align:center;"><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <span style="margin-right:30px;"><a href="https://www.webonary.org" target="_blank">Webonary.org</a></span></div>
-				<div id=termsofservice><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>" style="width:20%;"><?php _e("Terms of Service", 'themezee_lang'); ?></a></div>
+		<div id="footer" class="<?php echo $color ?? ''; ?>">
+			<div style="margin: 0.3rem 0.5rem 0.3rem 0.2rem">
+				<div id="copyright">
+					<div class="cr-left">
+						<img src="<?php echo  get_template_directory_uri(); ?>/images/sil-logo.svg">
+						<span style="white-space: nowrap">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span>
+					</div>
+					<div class="cr-center">
+						<img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png">
+						<span><a href="https://www.webonary.org" target="_blank">Webonary.org</a></span>
+					</div>
+					<div class="cr-right"><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>"><?php _e("Terms of Service", 'themezee_lang'); ?></a></div>
+				</div>
 			</div>
 		</div>
 

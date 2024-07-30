@@ -852,21 +852,38 @@ div.pageentry .senses .tables table td {border: none; text-align: left; font-wei
   color: #fff;
 }
 #copyright {
-	display: block;
-    position: relative;
-    text-align: center;
+	display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#copyright > div {
-  display: inline-block;
-    margin-bottom: 5px;
-}
+
 #copyright > .cr-left {
-  position: absolute;
-  left: 0
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 50%;
+  margin-left: -0.2rem;
+  margin-right: 0.2rem;
+  gap: 0.25rem;
 }
+
+#copyright > .cr-left > img {
+  height: 32px;
+}
+
+#copyright > .cr-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 0.35rem;
+}
+
 #copyright > .cr-right {
-  position: absolute;
-  right: 0
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 50%;
 }
 
 .pink
