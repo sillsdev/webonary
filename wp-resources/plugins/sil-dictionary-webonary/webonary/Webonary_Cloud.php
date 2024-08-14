@@ -240,17 +240,18 @@ class Webonary_Cloud
 		// get a list of blogs for which this user is allowed to upload data
 		$blogs = get_blogs_of_user($user->ID);
 		$blogsToPost = [];
+		$allowed_roles = ['editor', 'editorplus', 'administrator'];
 
 		foreach ($blogs as $blogId => $blogData) {
 
-			$userData = get_users(
+			$user_data = get_users(
 				[
 					'blog_id' => $blogId,
 					'search' => $user->ID
 				]
 			);
 
-			if (in_array($userData[0]->roles[0], ['editor', 'administrator']))
+			if (!empty(array_intersect($allowed_roles, $user_data[0]->roles)))
 				$blogsToPost[] = trim($blogData->path, '/');
 		}
 

@@ -620,9 +620,17 @@ HTML;
 	<input type="hidden" name="delete_taxonomies" value="1">
 	<input type="hidden" id="confirm-delete-text" value="Are you sure you want to delete the dictionary data?">
 	<div id="webonary-delete-msg"></div>
+	<div style="padding: 0 1rem; border: 1px solid #bbb">
+        <p>In this section you can delete either the cloud dictionary data or Wordpress posts data.</p>
+        <ul style="list-style: disc outside; margin-left: 1.5rem;">
+		    <li>To delete cloud dictionary data, make sure the "Use cloud backend" box above is checked.</li>
+		    <li>To delete WordPress dictionary data, make sure the "Use cloud backend" box above is unchecked.</li>
+		</ul>
+		<p>Then enter your password and click on Delete.</p>
+		<p>Older dictionaries which were later uploaded to the cloud may have both types of data.</p>
+    </div>
 	$pwd_block
 	<button style="margin: 0 0 12px 0; display: block" class="button button-webonary" type="button" onclick="DeleteWebonaryData();">Delete</button>
-	<p>(deletes all posts in the category "webonary")</p>
 </div>
 HTML;
 	}

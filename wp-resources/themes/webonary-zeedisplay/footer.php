@@ -132,14 +132,16 @@ else
 			$color="blue";
 		}
 		?>
-		<div id="footer" class="<?php echo $color; ?>" style="text-align:center; padding-bottom: 8px; font-size:12px;">
+		<div id="footer" class="<?php echo $color; ?>" style="text-align:center; padding-bottom: 4px; font-size:12px;">
 			<div style="text-align:center;"><?php echo str_replace("[year]", date("Y"),$options['themeZee_footer']); ?></div>
 			<hr style="font-size:5px; margin-bottom: 4px; clear:both;">
 			<div id="copyright">
-				<div class="cr-left"><img src="<?php echo  get_template_directory_uri(); ?>/images/sil-icon.gif" style="vertical-align:middle;"> <span style="margin-left:10px;">© <?php echo "2013 - " . date("Y"); ?> <a href="https://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span></div>
+				<div class="cr-left">
+					<img src="<?php echo  get_template_directory_uri(); ?>/images/sil-logo.svg">
+					<span style="white-space: nowrap">© <?php echo "2013 - " . date("Y"); ?> <a href="https://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span>
+				</div>
 				<div class="cr-center"><img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png" style="vertical-align:middle;"> <span><a href="https://www.webonary.org" target="_blank">Webonary.org</a></span></div>
 				<div class="cr-right"><a href="https://www.webonary.org/sil-international-terms-of-service-for-webonary-org/?lang=<?php if (function_exists('qtranxf_init_language')) { echo qtranxf_getLanguage(); } else { echo "en"; } ?>"><?php _e("Terms of Service", ZEE_LANG); ?></a></div>
-				<div class="clear"></div>
 			</div>
 		</div>
 	</div>
