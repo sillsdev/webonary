@@ -69,6 +69,7 @@ class WebonaryBlogCopier
 	 * Shows a list of applications that can be processed
 	 *
 	 * @return void
+	 * @noinspection SqlResolve
 	 */
 	private function show_applications(): void
 	{
@@ -277,7 +278,7 @@ HTML;
 	    <p>The following menu links will be created:
 		<ul style="list-style: unset; padding-left: 20px; margin: 4px 0 0">
 		    <li><a href="https://www.ethnologue.com/language/$ethnologueCode" target="_blank">https://www.ethnologue.com/language/$ethnologueCode</a></li>
-		    <li><a href="https://www.sil.org/search/node/$ethnologueCode" target="_blank">https://www.sil.org/search/node/$ethnologueCode</a></li>
+		    <li><a href="https://www.sil.org/resources/search/language/$ethnologueCode" target="_blank">https://www.sil.org/resources/search/language/$ethnologueCode</a></li>
         </ul></p>
 	</td>
 </tr>
@@ -503,7 +504,8 @@ HTML;
 
 	/**
 	* Admin page
-	*/
+	 * @noinspection SqlResolve
+	 */
 	public function admin_page(): void
 	{
 		global $wpdb, $current_site;
@@ -747,7 +749,7 @@ SQL;
 				$bibliography_link_id = $wpdb->get_var("SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%www.sil.org/search/node%'");
 				$setBibliography = false;
 				if ($bibliography_link_id != NULL) {
-					$sql = "UPDATE $wpdb->postmeta SET meta_value = 'https://www.sil.org/search/node/$ethnologueCode' WHERE meta_id = $bibliography_link_id";
+					$sql = "UPDATE $wpdb->postmeta SET meta_value = 'https://www.sil.org/resources/search/language/$ethnologueCode' WHERE meta_id = $bibliography_link_id";
 
 					$wpdb->query($sql);
 					$setBibliography = true;
@@ -779,7 +781,7 @@ SQL;
 					$msg[] = "- Set ethnologue link to https://www.ethnologue.com/language/$ethnologueCode";
 
 				if ($setBibliography)
-					$msg[] = "- Set bibliography link to https://www.sil.org/search/node/$ethnologueCode";
+					$msg[] = "- Set bibliography link to https://www.sil.org/resources/search/language/$ethnologueCode";
 
 				$msg[] = '- Set the copyright text in footer';
 				$msg[] = '- Set the Publication status';
