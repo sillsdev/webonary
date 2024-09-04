@@ -20,26 +20,25 @@ global $BlogCopier;
 $BlogCopier = new WebonaryBlogCopier();
 
 /** @noinspection SqlResolve */
-function add_link_action($linkid): void
+function add_link_action($link_id): void
 {
 	global $wpdb;
 
 	$sql = <<<SQL
-SELECT blog_id, link_url, link_name
-FROM wp_links
-  INNER JOIN wp_term_relationships ON  wp_term_relationships.object_id = wp_links.link_id
-  INNER JOIN wp_blogs ON wp_blogs.domain = replace(replace(wp_links.link_url, 'https://',''),'/','')
-WHERE link_id = %d AND wp_term_relationships.term_taxonomy_id = 8
+SELECT b.blog_id, l.link_url, l.link_name
+FROM webonary.wp_links AS l
+  INNER JOIN webonary.wp_blogs AS b ON b.path <> '/' AND l.link_url LIKE CONCAT('%', b.path)
+WHERE link_id = %d
 SQL;
 
-	$blog = $wpdb->get_results($wpdb->prepare($sql, $linkid), ARRAY_A);
+	$blog = $wpdb->get_row($wpdb->prepare($sql, $link_id));
 
-	$sql = "SELECT option_value FROM wp_{$blog[0]['blog_id']}_options WHERE option_name LIKE 'admin_email'";
+	$sql = "SELECT option_value FROM wp_{$blog->blog_id}_options WHERE option_name LIKE 'admin_email'";
 
 	$admin_email = $wpdb->get_var($sql);
 
 	$msg = <<<TXT
-Congratulations! The {$blog[0]['link_name']} dictionary has been published on https://www.webonary.org/. In a few days it will appear in the Open Language Archives Community catalogue, https://www.language-archives.org/archive/webonary.org.
+Congratulations! The $blog->link_name dictionary has been published on https://www.webonary.org/. In a few days it will appear in the Open Language Archives Community catalogue, https://www.language-archives.org/archive/webonary.org.
 
 If you have any questions or concerns, please reply to this email.
 
@@ -59,11 +58,15 @@ add_action('add_link', 'add_link_action');
 //20200207 chungh: validate subdirectory name
 add_action('wpcf7_init', 'custom_add_form_tag_subdirectory');
 
+/** @noinspection PhpUndefinedFunctionInspection */
 function custom_add_form_tag_subdirectory(): void
 {
 	wpcf7_add_form_tag('subdirectory*', 'custom_subdirectory_form_tag_handler', array('name-attr' => true));
 }
 
+/** @noinspection PhpUndefinedFunctionInspection
+ * @noinspection PhpUnused
+ */
 function custom_subdirectory_form_tag_handler($tag): string
 {
 	if (empty($tag->name))
