@@ -41,8 +41,10 @@
   "require": {
     "php": ">=7.3|>8.1",
     "ext-curl": "*",
+    "ext-dom": "*",
     "ext-gettext": "*",
     "ext-json": "*",
+    "ext-libxml": "*",
     "ext-simplexml": "*",
     "composer/installers": "^2.2",
     "bootscore/bootscore": "^5.2",
