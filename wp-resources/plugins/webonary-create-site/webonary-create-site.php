@@ -24,14 +24,18 @@ function add_link_action($link_id): void
 {
 	global $wpdb;
 
+	// make sure the value is only digits (BIGINT UNSIGNED)
+	if (!ctype_digit($link_id))
+		return;
+
 	$sql = <<<SQL
 SELECT b.blog_id, l.link_url, l.link_name
 FROM webonary.wp_links AS l
   INNER JOIN webonary.wp_blogs AS b ON b.path <> '/' AND l.link_url LIKE CONCAT('%', b.path)
-WHERE link_id = %d
+WHERE link_id = $link_id
 SQL;
 
-	$blog = $wpdb->get_row($wpdb->prepare($sql, $link_id));
+	$blog = $wpdb->get_row($sql);
 
 	$sql = "SELECT option_value FROM wp_{$blog->blog_id}_options WHERE option_name LIKE 'admin_email'";
 
