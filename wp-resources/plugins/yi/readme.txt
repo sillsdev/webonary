@@ -1,9 +1,9 @@
 === Plugin Name ===
 Yi
-Contributors Steve Miller, SIL International
+Contributors Steve Miller, SIL Global
 Tags: Yi character chart index radical syllabary
 Requires at least: 3.0
-Tested up to: 
+Tested up to:
 Stable tag: 0.0
 
 == Description ==
@@ -24,16 +24,16 @@ Installation Instructions:
 2. Put the yi plugin into your wp-content/plugins/ directory.
 3. Go to the Plugins page in your WordPress Administration area, find the plugin, and click 'Activate'.
 4. Go to Widgets. Drag into the sidebar of your choice.
-	
+
 == Known Issues ==
 
 Currently, the background, font, and link colors match those of Multilingual-Dictionary. If you change themes, these colors will remain the same.
-	
+
 == Frequently Asked Questions ==
 
 == Screenshots ==
 
 == Support ==
 
-Language Software Development, SIL International
+Language Software Development, SIL Global
 http://pathway.sil.org/support/

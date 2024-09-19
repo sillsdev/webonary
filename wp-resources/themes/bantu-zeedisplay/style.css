@@ -3,7 +3,7 @@ Theme Name: bantu-zeedisplay
 Theme URI: http://code.google.com/p/pathway/
 Description: A Webonary theme created for dictionaries based on the theme zeeDisplay. See: http://themezee.com/zeeDisplay
 Version: 1.0.0
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Tags:  dictionary, two-columns, light, custom-background, custom-menu, threaded-comments, translation-ready, theme-options, fixed-width, custom-colors
 License: GNU General Public License v2.0
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 /*
  * Using @import to import style sheets will process statements sequentially.
- * Using <link> tages will process statements in parallel. See: 
+ * Using <link> tages will process statements in parallel. See:
  * http://themeshaper.com/2009/04/30/modular-css-wordpress-child-themes/
  * The other style sheets are brought in with <link> tags in
  * functions.php/webonary_zeedisplay_link_style_sheets

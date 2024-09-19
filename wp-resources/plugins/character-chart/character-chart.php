@@ -17,7 +17,7 @@
 Plugin Name: Character Chart
 Plugin URI: http://www.webonary.org
 Description: A popup chart for the special characters above the search box
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: dict
 Domain Path: /lang/

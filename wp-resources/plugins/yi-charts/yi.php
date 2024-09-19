@@ -17,7 +17,7 @@
 Plugin Name: Yi Charts
 Plugin URI: http://code.google.com/p/pathway/
 Description: Yi: Index Chart, Radical Stroke Index, and other functions specific to the Yi dialect.
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: yi-popup
 Domain Path: /lang/

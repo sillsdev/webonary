@@ -17,7 +17,7 @@
 Plugin Name: Webonary User Roles
 Plugin URI: http://www.webonary.org
 Description: This changes the permissions for author and possibly other roles for Webonary usage
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: webonary-user-roles
 Version: 0.2.1

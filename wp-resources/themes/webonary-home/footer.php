@@ -97,7 +97,7 @@ $menuitems = wp_get_nav_menu_items( $menu->term_id, array( 'order' => 'DESC' ) )
 				<div id="copyright">
 					<div class="cr-left">
 						<img src="<?php echo  get_template_directory_uri(); ?>/images/sil-logo.svg">
-						<span style="white-space: nowrap">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL International</a><sup>®</sup></span>
+						<span style="white-space: nowrap">© <?php echo "2013 - " . date("Y"); ?> <a href="http://www.sil.org" target="_blank">SIL Global</a><sup>®</sup></span>
 					</div>
 					<div class="cr-center">
 						<img src="<?php echo  get_template_directory_uri(); ?>/images/webonary-icon.png">
