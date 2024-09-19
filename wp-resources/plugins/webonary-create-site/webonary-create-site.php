@@ -4,7 +4,7 @@
 Plugin Name: Webonary Create Site
 Plugin URI: http://www.webonary.org
 Description: This plugin helps with automating things when creating a new webonary site
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: webonary-create-site
 Version: 0.2

@@ -35,7 +35,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		role="Developer" />
 	<participant email="verna_stutzman@sil.org" name="Verna Stutzman"
 		role="Editor" />
-	<institution>SIL International</institution>
+	<institution>SIL Global</institution>
 	<institutionURL>http://www.sil.org</institutionURL>
     <shortLocation>Dallas, USA</shortLocation>
     <location>7500 W. Camp Wisdom Rd., Dallas, TX 75236, U.S.A.</location>
@@ -128,7 +128,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 						<dcterms:extent><?php echo $entriesTotal; ?> entries</dcterms:extent>
 
 						<dc:date><?php echo $blog['link_updated']; ?></dc:date>
-						<dc:publisher>SIL International</dc:publisher>
+						<dc:publisher>SIL Global</dc:publisher>
 					</olac:olac>
 				</oai:metadata>
 			 </oai:record>

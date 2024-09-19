@@ -17,7 +17,7 @@
 Plugin Name: Special Character Buttons
 Plugin URI: http://pathway.sil.org/webonary/
 Description: Provides buttons for special characters
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: special-characters
 Version: 0.1
