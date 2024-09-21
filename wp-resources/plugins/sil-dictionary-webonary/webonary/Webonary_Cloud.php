@@ -211,7 +211,7 @@ class Webonary_Cloud
 			}
 		}
 
-		return $xml->asXML();
+		return preg_replace('/<\?xml[^\n]*\?>\n/m', '', $xml->asXML());
 	}
 
 	private static function validatePermissionToPost($header): stdClass
