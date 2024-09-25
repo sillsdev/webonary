@@ -3,7 +3,7 @@
  * Plugin Name: Webonary Backend Type
  * Description: View and search Webonary backend type in WordPress Multisite
  * Version: 1.0.0
- * Author: SIL International
+ * Author: SIL Global
  * Author URI: http://www.sil.org/
  * License: MIT
  */
@@ -31,7 +31,7 @@ class webonary_backend_type {
 	}
 
 	public function filter_site_search( $args ) {
-		if ( isset( $_REQUEST['s'] ) 
+		if ( isset( $_REQUEST['s'] )
 		     && in_array( strtolower( $_REQUEST['s'] ), array( 'cloud', 'wordpress' ) ) ) {
 			global $wpdb;
 			$sql = $wpdb->prepare( "SELECT blog_id FROM {$wpdb->blogmeta} WHERE meta_key=%s AND meta_value=%s", "useCloudBackend", "1" );

@@ -1,36 +1,67 @@
 <?php
-function addLangQuery($content)
+
+function addLangQuery($content): string
 {
-	if(isset($_GET['lang']))
-	{
-		$doc = new DOMDocument();
-		$doc->preserveWhitespace = true;
-		$doc->formatOutput = false;
+	$lang = $_GET['lang'] ?? false;
 
-		// load the string into the DOM (this is your page's HTML), see below for more info
-		libxml_use_internal_errors(true);
-		$doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+	$doc = new DOMDocument();
+	$doc->preserveWhiteSpace = true;
+	$doc->formatOutput = false;
 
-		//Loop through each <a> tag in the dom and change the href property
-		foreach($doc->getElementsByTagName('a') as $anchor) {
-			$link = $anchor->getAttribute('href');
-			if(strpos($link, "?") > 0)
-			{
-				$link .= '&lang=' . $_GET['lang'];
-			}
-			else
-			{
-				$link .= '?lang=' . $_GET['lang'];
-			}
-			if(!strpos($link, ".apk"))
-			{
-				$anchor->setAttribute('href', $link);
-			}
-		}
-		$content = $doc->saveHTML();
-	}
+	// load the string into the DOM (this is your page's HTML), see below for more info
+	libxml_use_internal_errors(true);
+	$doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
 
-	return $content;
+	if ($lang !== false)
+		ProcessHrefs($doc, $lang);
+
+	// render the content
+	$content = $doc->saveHTML();
+
+	// return the innerHTML of the <body> tag
+	$re = '/^.*?<body>(.*)?<\/body>.*$/s';
+	return preg_replace($re, '$1', $content);
 }
+
+/**
+ * Loop through the document, adding the lang to the href query string
+ *
+ * @param DOMDocument $doc
+ * @param string $lang
+ * @return void
+ */
+function ProcessHrefs(DOMDocument $doc, string $lang): void
+{
+	//Loop through each <a> tag in the dom and change the href property
+	foreach ($doc->getElementsByTagName('a') as $anchor) {
+
+		$link = $anchor->getAttribute('href');
+
+		// skip this for .apk links
+		if (str_contains($link, '.apk'))
+			continue;
+
+		$parts = explode('?', $link);
+
+		if (count($parts) > 1) {
+
+			// remove any existing lang values
+			$qs_parts = array_filter(
+				explode('&', $parts[1]),
+				function ($val) { return !str_starts_with($val, 'lang='); }
+			);
+		}
+		else {
+			$qs_parts = [];
+		}
+
+		$qs_parts[] = 'lang=' . $lang;
+
+		$link = $parts[0] . '?' . implode('&', $qs_parts);
+
+		$anchor->setAttribute('href', $link);
+	}
+}
+
 remove_filter('the_content', 'wptexturize');
-add_filter( 'the_content', 'addLangQuery');
+add_filter('the_content', 'addLangQuery');

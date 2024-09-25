@@ -202,3 +202,9 @@ mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --co
 mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryEntries_test-stutzman --drop --mode=upsert --file=/home/phil/dumps/entries.json
 mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --collection=webonaryReversals --drop --mode=upsert --file=/home/phil/dumps/reversals.json
 ```
+
+### Copy S3 folder from .org to .work
+```bash
+aws s3 cp --recursive --profile webonary s3://cloud-storage.webonary.org/lietuviukalba-espanol /home/phil/Downloads/webonary
+aws s3 cp --recursive --profile webonary /home/phil/Downloads/webonary s3://cloud-storage.webonary.work/lietuviukalba-espanol
+```

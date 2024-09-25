@@ -5,7 +5,7 @@ Plugin Name: Webonary
 Plugin URI: https://github.com/sillsdev/sil-dictionary-webonary
 Description: Webonary gives language groups the ability to publish their bilingual or multilingual dictionaries on the web.
 The SIL Dictionary plugin has several components. It includes a dashboard, an import for XHTML (export from Fieldworks Language Explorer), and multilingual dictionary search.
-Author: SIL International
+Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
 Domain Path: /lang/
