@@ -56,14 +56,6 @@ class Webonary_Ajax
 		echo 'This functionality has been disabled.';
 	}
 
-	public static function ajaxDisplaySites(): void
-	{
-		header('Content-Type: application/json');
-		$data = ['data' => Webonary_Excel::GetAllSites(false)];
-		echo json_encode($data);
-		exit();
-	}
-
 	/**
 	 * @return void
 	 * @throws Exception

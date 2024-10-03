@@ -105,6 +105,8 @@ class Webonary_Configuration_Widget
 		}
 
 		update_option('noSearch', $noSearchForm);
+		update_option('countryName', $_POST['countryName']);
+		update_option('languageFamily', $_POST['languageFamily']);
 
 		$useCloudBackend = filter_input(
 			INPUT_POST,
@@ -473,6 +475,8 @@ HTML;
 		$blog_id = get_current_blog_id();
 		$notes = stripslashes(get_option('notes'));
 		$checked = checked('1', get_option('noSearch'), false);
+		$country = get_option('countryName', 'N/A');
+		$language_family = get_option('languageFamily', 'N/A');
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -485,6 +489,18 @@ HTML;
 			<div class="flex-start-center" style="margin: 1rem 0">
 				<label for="noSearchForm">Hide search form:</label>
 				<input name="noSearchForm" id="noSearchForm" type="checkbox" value="1" $checked>
+			</div>
+			<div class="flex-start-center" style="margin: 1rem 0">
+				<table>
+					<tr>
+						<td><label for="countryName">Country:</label></td>
+						<td><input name="countryName" id="countryName" type="text" value="$country"></td>
+					</tr>
+					<tr>
+						<td><label for="languageFamily">Language Family:</label></td>
+						<td><input name="languageFamily" id="languageFamily" type="text" value="$language_family"></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div style="margin: 2rem 0">
