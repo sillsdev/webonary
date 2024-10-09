@@ -50,6 +50,7 @@
     "bootscore/bootscore": "^5.2",
     "johnpbloch/wordpress": "^6.2",
     "mdsimpson/contact-form-7-to-database-extension": "^2.10",
+    "mongodb/mongodb": "^1.19",
     "phpoffice/phpspreadsheet": "^1.17.1",
     "qtranslate/qtranslate-xt": "^3.15",
     "wpackagist-plugin/akismet": "^5.0",

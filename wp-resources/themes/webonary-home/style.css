@@ -1288,3 +1288,7 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 		margin-top: 0;
 	}
 }
+
+table.dataTable thead th, table.dataTable thead td {
+  padding: 10px 18px 10px 8px;
+}
