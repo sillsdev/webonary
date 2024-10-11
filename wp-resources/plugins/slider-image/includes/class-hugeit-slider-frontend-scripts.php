@@ -6,7 +6,7 @@ class Hugeit_Slider_Frontend_Scripts {
 		add_action('hugeit_slider_before_shortcode', array($this, 'enqueue_scripts'));
 		add_action('hugeit_slider_before_shortcode', array($this, 'enqueue_styles'));
 		add_action('hugeit_slider_before_shortcode', array($this, 'localize_script'));
-		add_action('hugeit_slider_before_shortcode', array(get_class(), 'localize_single_slider_params'));
+		add_action('hugeit_slider_before_shortcode', array(get_class($this), 'localize_single_slider_params'));
 	}
 
 	public function enqueue_scripts() {

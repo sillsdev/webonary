@@ -10,7 +10,7 @@ function addLangQuery($content): string
 
 	// load the string into the DOM (this is your page's HTML), see below for more info
 	libxml_use_internal_errors(true);
-	$doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+	$doc->loadHTML(iconv('UTF-8', 'UCS-4', $content));
 
 	if ($lang !== false)
 		ProcessHrefs($doc, $lang);

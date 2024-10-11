@@ -273,7 +273,7 @@ class Webonary_Cloud
 		$allow_comments = get_option('default_comment_status') == 'open';
 		$updated_timestamp = strtotime($entry->updatedAt);
 		$post_date = date('Y-m-d H:i:s', $updated_timestamp);
-		$post_title = $entry->mainheadword[0]->value;
+		$post_title = $entry->mainheadword[0]->value ?? '';
 
 		// create the fake post
 		$fake_post = new stdClass();
