@@ -43,6 +43,7 @@
     "ext-curl": "*",
     "ext-dom": "*",
     "ext-gettext": "*",
+    "ext-iconv": "*",
     "ext-json": "*",
     "ext-libxml": "*",
     "ext-simplexml": "*",
