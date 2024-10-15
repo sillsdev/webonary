@@ -281,6 +281,7 @@ class Webonary_Cloud
 		$fake_post->post_name = $entry->guid;
 		$fake_post->post_status = 'publish';
 		$fake_post->comment_status = $allow_comments ? 'open' : 'closed';
+		$fake_post->comment_count = 0;
 		$fake_post->post_type = 'webonary_cloud';
 		$fake_post->filter = 'raw'; // important, to prevent WP looking up this post in db!
 		$fake_post->post_content = self::entryToDisplayXhtml($entry);
@@ -493,13 +494,21 @@ class Webonary_Cloud
 		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams = array('guid' => $id);
 		$entry = self::remoteGetJson($request, $apiParams);
-		if (empty($entry))
+		if (empty($entry)) {
+			status_header(404);
+			nocache_headers();
 			return [];
+		}
 
 		$posts = [];
 		if (self::isValidEntry($entry)) {
 			$post = self::entryToFakePost($entry);
 			$posts[0] = $post;
+		}
+		else {
+			status_header(404);
+			nocache_headers();
+			exit();
 		}
 
 		return $posts;
