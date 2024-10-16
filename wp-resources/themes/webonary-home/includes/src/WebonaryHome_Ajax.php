@@ -273,11 +273,15 @@ SQL;
 
 			$language_name = $lang_name ?: $lang_code ?: 'Unknown';
 
+			$site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
+			$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%://" . trim($site_url_no_http) . "' OR link_url LIKE '%://" . trim($site_url_no_http) . "/'");
+
 			$rows[] = [
 				'id' => $blog->blog_id,
 				'language' => $language_name,
 				'family' => get_option('languageFamily', 'N/A'),
 				'country' => get_option('countryName', 'N/A'),
+				'published' => date('Y-m-d', strtotime($published_date)),
 				'blog_name' => $blog_name,
 				'url' => path_join($blog_details->path, 'grammar')
 			];
