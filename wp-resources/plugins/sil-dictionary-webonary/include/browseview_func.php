@@ -136,13 +136,13 @@ function displayAlphabet($alphas, $languageCode, $rtl): string
 	global $wpdb;
 
 	$dir_class = $rtl ? 'rtl' : 'ltr';
+	$no_alphas = (empty($alphas) || trim($alphas[0]) == '');
 
-	if(trim($alphas[0]) == "" && is_front_page())
+	if ($no_alphas && is_front_page())
 		return '';
 
 	$permalink = '';
-	if(is_front_page())
-	{
+	if (is_front_page()) {
 		/** @noinspection SqlResolve */
 		$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 		$post_id = $wpdb->get_var($sql);
@@ -159,7 +159,7 @@ function displayAlphabet($alphas, $languageCode, $rtl): string
 </div>
 HTML;
 
-	if (empty($alphas) || trim($alphas[0]) == '') {
+	if ($no_alphas) {
 		$content = sprintf($template, 'not-configured', get_site_url() . '/wp-admin/admin.php?page=webonary#browse', 'Alphabet not configured');
 	}
 	else {
@@ -177,7 +177,7 @@ HTML;
 		if (isset($query_vars['totalEntries']))
 			unset($query_vars['totalEntries']);
 
-		foreach($alphas as $letter) {
+		foreach ($alphas as $letter) {
 
 			$query_vars['letter'] = $letter;
 			$content .= sprintf($template, 'lpTitleLetter', $permalink . '?' . http_build_query($query_vars), stripslashes($letter));
@@ -787,6 +787,9 @@ function vernacularalphabet_func($atts): string
 	$language_code = get_option('languagecode');
 
 	$alphas = Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'));
+
+	if (empty($alphas) || trim($alphas[0]) == '')
+		return '';
 
 	$chosenLetter = get_letter($alphas[0]);
 

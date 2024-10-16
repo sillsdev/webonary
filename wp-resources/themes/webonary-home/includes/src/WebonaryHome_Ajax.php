@@ -1,6 +1,7 @@
 <?php
 
 use MongoDB\Client;
+use MongoDB\Driver\ServerApi;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -209,8 +210,14 @@ SQL;
 			return $rows;
 
 		$settings = WEBONARY_MONGO;
-		$mongo = new Client("mongodb+srv://{$settings['usr']}:{$settings['pwd']}@{$settings['url']}");
 		$catalog = $settings['cat'];
+		$uri = "mongodb+srv://{$settings['usr']}:{$settings['pwd']}@{$settings['url']}/?retryWrites=true&w=majority&appName=Cluster0";
+
+		// set the version of the Stable API on the client
+		$api_version = new ServerApi(ServerApi::V1);
+
+		// create a new client and connect to the server
+		$mongo = new Client($uri, [], ['serverApi' => $api_version]);
 
 		/** @noinspection PhpUndefinedFieldInspection */
 		$collection = $mongo->$catalog->webonaryDictionaries;

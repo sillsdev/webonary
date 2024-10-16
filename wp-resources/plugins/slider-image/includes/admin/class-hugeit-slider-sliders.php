@@ -87,12 +87,12 @@ class Hugeit_Slider_Sliders {
 		}
 
 		$query = "SELECT id FROM " . Hugeit_Slider()->get_slider_table_name() . (!empty($search) ? " WHERE name LIKE '%" . $search . "%'" : '');
-		$total = $wpdb->get_var("SELECT COUNT(1) FROM (${query}) AS combined_table");
+		$total = $wpdb->get_var("SELECT COUNT(1) FROM ($query) AS combined_table");
 
 		$items_per_page = 30;
 		$page = isset( $_GET['cpage'] ) ? absint($_GET['cpage']) : 1;
 		$offset = ( $page * $items_per_page ) - $items_per_page;
-		$sliders = $wpdb->get_results( $query . " ORDER BY id ASC LIMIT ${offset}, ${items_per_page}" );
+		$sliders = $wpdb->get_results( $query . " ORDER BY id ASC LIMIT $offset, $items_per_page" );
 
 		foreach ($sliders as &$slider) {
 			$slider = new Hugeit_Slider_Slider($slider->id);
@@ -128,7 +128,7 @@ class Hugeit_Slider_Sliders {
 				} catch (Exception $e) {
 					die($e->getMessage());
 				}
-			} 
+			}
 		}
 
 		foreach ( $slides as $order => $slide_data ) {
