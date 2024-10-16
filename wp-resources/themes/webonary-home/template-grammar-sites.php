@@ -19,6 +19,7 @@ function BuildTable(): void
   #grammar-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
   #grammar-sites-table span {border-bottom: 1px dashed #000}
   div.dt-buttons {display: none}
+  #grammar-sites-table tbody tr:nth-child(odd) {background-color: #ebebef;}
 </style>
 <div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
   <table id="grammar-sites-table" style="width: 100%; box-sizing: border-box">
@@ -27,6 +28,7 @@ function BuildTable(): void
         <th>Language</th>
         <th>Family</th>
         <th>Country</th>
+        <th>Published</th>
         <th>Dictionary</th>
 	</tr>
     </thead>
@@ -81,6 +83,7 @@ function BuildTable(): void
 				{data: 'language'},
 				{data: 'family'},
 				{data: 'country'},
+				{data: 'published'},
 				{data: 'blog_name', render: function(data, _type, row) { return '<a href="' + row['url'] + '" target="_blank">' + data + '</a>'; }},
 	        ],
 	        initComplete: function() {
