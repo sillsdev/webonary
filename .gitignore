@@ -21,3 +21,5 @@
 .DS_Store
 /test*.*
 /shared/
+wp-config.php
+cli-config.php
