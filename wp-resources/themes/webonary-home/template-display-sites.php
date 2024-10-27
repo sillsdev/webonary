@@ -26,6 +26,7 @@ function BuildTable(): void
       <tr>
         <th>Site Title</th>
         <th>Country</th>
+        <th>Region</th>
         <th>URL</th>
         <th>Copyright</th>
         <th>Code</th>
@@ -98,16 +99,16 @@ function BuildTable(): void
 	        order: [[0, 'asc']],
 	        columnDefs: [
                 {
-                    targets: 2,
+                    targets: 3,
                     render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
                 },
                 {
-                    targets: 4,
+                    targets: 5,
                     render: function(data) { return fixedRender(data, 6); }
                 }
                 ,
                 {
-                    targets: [6, 7, 10],
+                    targets: [7, 8, 11],
                     render: function(data) { return dateTimeRender(data); }
                 }
 	        ],

@@ -67,7 +67,7 @@ class WebonaryHome_Ajax
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['SiteTitle', 'Country', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
+			$rows[] = ['SiteTitle', 'Country', 'Region', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
 
 		$sql = <<<SQL
 SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered
@@ -103,6 +103,7 @@ SQL;
 				$fields[] = trim($blog_details->blogname);
 
 			$fields[] = get_option('countryName');
+			$fields[] = get_option('regionName');
 
 			$fields[] = 'https://' . $domain_path;
 
@@ -189,7 +190,7 @@ SQL;
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['DictionaryID', 'LanguageName', 'LanguageFamily', 'Country', 'DictionaryName', 'GrammarLink'];
+			$rows[] = ['DictionaryID', 'LanguageName', 'LanguageFamily', 'Country', 'Region', 'DictionaryName', 'GrammarLink'];
 
 		$sql = <<<SQL
 SELECT b.blog_id, l.link_updated
@@ -281,6 +282,7 @@ SQL;
 				'language' => $language_name,
 				'family' => get_option('languageFamily', 'N/A'),
 				'country' => get_option('countryName', 'N/A'),
+				'region' => get_option('regionName', 'N/A'),
 				'published' => date('Y-m-d', strtotime($published_date)),
 				'blog_name' => $blog_name,
 				'url' => path_join($blog_details->path, 'grammar')

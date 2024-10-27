@@ -107,6 +107,7 @@ class Webonary_Configuration_Widget
 		update_option('noSearch', $noSearchForm);
 		update_option('countryName', $_POST['countryName']);
 		update_option('languageFamily', $_POST['languageFamily']);
+		update_option('regionName', $_POST['regionName']);
 
 		$useCloudBackend = filter_input(
 			INPUT_POST,
@@ -477,6 +478,7 @@ HTML;
 		$checked = checked('1', get_option('noSearch'), false);
 		$country = get_option('countryName', 'N/A');
 		$language_family = get_option('languageFamily', 'N/A');
+		$region = get_option('regionName', 'N/A');
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -499,6 +501,10 @@ HTML;
 					<tr>
 						<td><label for="languageFamily">Language Family:</label></td>
 						<td><input name="languageFamily" id="languageFamily" type="text" value="$language_family"></td>
+					</tr>
+					<tr>
+						<td><label for="regionName">Region:</label></td>
+						<td><input name="regionName" id="regionName" type="text" value="$region"></td>
 					</tr>
 				</table>
 			</div>

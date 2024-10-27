@@ -28,6 +28,7 @@ function BuildTable(): void
         <th>Language</th>
         <th>Family</th>
         <th>Country</th>
+        <th>Region</th>
         <th>Published</th>
         <th>Dictionary</th>
 	</tr>
@@ -83,6 +84,7 @@ function BuildTable(): void
 				{data: 'language'},
 				{data: 'family'},
 				{data: 'country'},
+				{data: 'region'},
 				{data: 'published'},
 				{data: 'blog_name', render: function(data, _type, row) { return '<a href="' + row['url'] + '" target="_blank">' + data + '</a>'; }},
 	        ],
