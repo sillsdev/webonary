@@ -5,46 +5,45 @@ class Webonary_Configuration
 {
 
 	//region Table and taxonomy attributes
-	public static $search_table_name = SEARCHTABLE;
-	public static $reversal_table_name = REVERSALTABLE;
-	public static $pos_taxonomy = 'sil_parts_of_speech';
-	public static $semantic_domains_taxonomy = 'sil_semantic_domains';
+	public static string $search_table_name = SEARCHTABLE;
+	public static string $reversal_table_name = REVERSALTABLE;
 	//endregion
+
+	private static array $allowed_roles = ['editor', 'editorplus', 'administrator'];
+	private static ?bool $is_allowed = null;
+
 
 	/**
 	 * Set up the SIL Dictionary in WordPress Dashboard Tools
 	 */
-	public static function add_admin_menu()
+	public static function add_admin_menu(): void
 	{
-		$data = get_userdata( get_current_user_id() );
-		$role = ( array ) $data->roles;
+		remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
 
-		if (is_super_admin() || ( isset($role[0]) && in_array($role[0], array('editor', 'administrator')) ) )
-		{
-			add_menu_page( "Webonary", "Webonary", 'edit_pages', "webonary", "webonary_conf_dashboard",  get_bloginfo('wpurl') . "/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png", 76 );
+		if (!self::IsAllowed())
+			return;
 
-			// This page is no longer used, as of version 8.3.5
-			// add_submenu_page('edit.php', 'Missing Senses', 'Missing Senses', 3, __FILE__, 'report_missing_senses');
-
-			remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
-		}
+		add_menu_page('Webonary', 'Webonary', 'edit_pages', 'webonary', 'webonary_conf_dashboard', get_bloginfo('wpurl') . '/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png', 76);
 	}
 
-	public static function on_admin_bar()
+	public static function on_admin_bar(): void
 	{
 		/** @var WP_Admin_Bar $wp_admin_bar */
 		global $wp_admin_bar;
 
-		$wp_admin_bar->add_menu(array(
+		$wp_admin_bar->remove_menu( 'themes' );
+		$wp_admin_bar->remove_menu( 'widgets' );
+		$wp_admin_bar->remove_menu( 'menus' );
+
+		if (!self::IsAllowed())
+			return;
+
+		$wp_admin_bar->add_menu([
 			'id' => 'Webonary',
 			'title' => 'Webonary',
 			'parent' => 'site-name',
-			'href' => admin_url('/admin.php?page=webonary'),
-		));
-
-		$wp_admin_bar->remove_menu( "themes" );
-		$wp_admin_bar->remove_menu( "widgets" );
-		$wp_admin_bar->remove_menu( "menus" );
+			'href' => admin_url('/admin.php?page=webonary')
+		]);
 	}
 
 	public static function get_admin_sections(): array
@@ -62,20 +61,7 @@ class Webonary_Configuration
 		return $sections;
 	}
 
-	public static function admin_section_start($nm)
-	{
-		echo '<div id="tab-' . $nm . '" class="hidden">' . PHP_EOL;
-	}
-
-	public static function admin_section_end($nm, $button_name=null, $button_class='button-primary')
-	{
-		if(!empty($button_name))
-			echo '<div style="margin:2rem 0"><input type="submit" name="save_settings" class="'.$button_class.'" value="'.$button_name.'" /></div>';
-
-		echo '</div><!-- id="tab-'.$nm.'" -->' . PHP_EOL;
-	}
-
-	public static function get_LanguageCodes($language_code = null)
+	public static function get_LanguageCodes($language_code = null): array|null|object
 	{
 		global $wpdb;
 
@@ -85,7 +71,7 @@ class Webonary_Configuration
 			$sql = <<<SQL
 SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
-LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
 WHERE IFNULL(s.language_code, '') <> ''
 GROUP BY s.language_code
 ORDER BY s.language_code
@@ -98,7 +84,7 @@ SQL;
 			$sql = <<<SQL
 SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
-LEFT JOIN {$wpdb->terms} AS t ON t.slug = s.language_code
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
 WHERE IF(%s = '', s.language_code, %s) = s.language_code
 GROUP BY s.language_code
 ORDER BY s.language_code
@@ -106,90 +92,37 @@ SQL;
 			$sql = $wpdb->prepare($sql, array($language_code, $language_code));
 		}
 
-
 		return $wpdb->get_results($sql, 'ARRAY_A');
 	}
 
-	public static function use_pinyin($language_code)
+	public static function use_pinyin($language_code): bool
 	{
 		return in_array($language_code, array('zh-CN', 'zh-Hans-CN'));
 	}
 
-	private static function SkipClass($class)
+	private static function IsAllowed(): bool
 	{
-		return (
-			strpos($class->classname, 'abbr') !== false
-			|| strpos($class->classname, 'partofspeech') !== false
-			|| strpos($class->classname, 'name') !== false
-			|| (strpos($class->classname, 'headword') !== false && $class->relevance == 0)
-		);
-	}
+		if (!is_null(self::$is_allowed))
+			return self::$is_allowed;
 
-	private static function FixedRelevance($class)
-	{
-		return (
-			$class->relevance == 100 && (strpos($class->classname, 'headword') !== false
-				                         || strpos($class->classname, 'lexemeform') !== false
-				                         || strpos($class->classname, 'reversalform') !== false)
-		);
-	}
-
-	public static function relevanceForm()
-	{
-		global $wpdb;
-
-		/** @noinspection SqlResolve */
-		$sql = <<<SQL
-SELECT `class` AS classname, MAX(`relevance`) AS `relevance`
-FROM {$wpdb->prefix}sil_search
-GROUP BY `class`
-ORDER BY relevance DESC
-SQL;
-
-		$arrClasses = $wpdb->get_results($sql);
-
-		if (empty($arrClasses) || empty($arrClasses[0]->classname)) {
-			$part = '<strong>You need to reimport this dictionary if you want to change the relevance settings.</strong>';
-		}
-		else {
-
-			$list_items = array();
-
-			foreach($arrClasses as $class) {
-
-				if (self::SkipClass($class))
-				    continue;
-
-				$li = "<div><strong>{$class->classname}: </strong></div>";
-
-				if (self::FixedRelevance($class))
-				{
-					$li .= $class->relevance;
-				}
-				else {
-					$li .= <<<HTML
-<div>
-    <input type="hidden" name=classname[] value="{$class->classname}">
-    <input type="text" name=relevance[] size=5 value="{$class->relevance}">
-</div>
-HTML;
-				}
-
-				$list_items[] = "<li>{$li}</li>";
-			}
-
-			$part = '<ul>' . implode(PHP_EOL, $list_items) . '</ul>';
-			$part .= '<p><input type="submit" name="btnSaveRelevance" value="Save"></p>';
+		// super admin is always allowed
+		if (is_super_admin()) {
+			self::$is_allowed = true;
+			return true;
 		}
 
-		/** @noinspection HtmlUnknownTarget */
-		return <<<HTML
-<form action="admin.php?page=webonary#search" method="post" enctype="multipart/form-data">
-    <h1>Relevance Settings for Fields</h1>
-    <p>The search returns results based on relevance. That is, if the word you are looking for is found in a headword, that will be more important than finding the word in a definition for another word.</p>
-    <p>Normally you don't need to change anything here. But if you import a custom field, it will be imported with a relevance of zero in which case you have the option to change the relevance setting.</p>
-    {$part}
-</form>
-HTML;
+		// get the current user
+		$user = get_userdata(get_current_user_id());
+
+		// if not found or no roles, return false
+		if ($user === false || empty($user->roles)) {
+			self::$is_allowed = false;
+			return false;
+		}
+
+		// does the user have one of the allowed roles?
+		self::$is_allowed = !empty(array_intersect(self::$allowed_roles, $user->roles));
+
+		return self::$is_allowed;
 	}
 }

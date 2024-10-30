@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Display Sites
+Template Name: Display Grammar Sites
 */
 
 include_once 'includes/src/WebonaryHome_Ajax.php';
@@ -10,32 +10,26 @@ function BuildTable(): void
 {
 	$url = admin_url('admin-ajax.php');
 	if (!str_contains($url, '?'))
-		$url .= '?action=getAjaxDisplaySites';
+		$url .= '?action=getAjaxGrammarSites';
 	else
-		$url .= '&action=getAjaxDisplaySites';
+		$url .= '&action=getAjaxGrammarSites';
 
 	echo <<<HTML
 <style>
-  #all-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
-  #all-sites-table span {border-bottom: 1px dashed #000}
+  #grammar-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
+  #grammar-sites-table span {border-bottom: 1px dashed #000}
   div.dt-buttons {display: none}
+  #grammar-sites-table tbody tr:nth-child(odd) {background-color: #ebebef;}
 </style>
 <div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
-  <table id="all-sites-table" style="width: 100%; box-sizing: border-box">
+  <table id="grammar-sites-table" style="width: 100%; box-sizing: border-box">
     <thead>
       <tr>
-        <th>Site Title</th>
+        <th>Language</th>
+        <th>Family</th>
         <th>Country</th>
-        <th>URL</th>
-        <th>Copyright</th>
-        <th>Code</th>
-        <th>Backend</th>
-        <th>Entries</th>
-        <th>Create Date</th>
-        <th>Publish Date</th>
-        <th>Contact Email</th>
-        <th>Last Upload</th>
-        <th>Notes</th>
+        <th>Published</th>
+        <th>Dictionary</th>
 	</tr>
     </thead>
     <tbody></tbody>
@@ -43,20 +37,9 @@ function BuildTable(): void
 </div>
 <script type="text/javascript">
 
-    function fixedRender(data, len) {
-        if (data.length <= len)
-            return data;
-
-        return '<span title="' + data + '">' + data.substring(0, len) + '</span>';
-    }
-
-    function dateTimeRender(data) {
-    	return '<span style="white-space: nowrap">' + data + '</span>';
-    }
-
     function setTableHeight() {
 
-        let container = $('#all-sites-table').closest('.dataTables_scroll');
+        let container = $('#grammar-sites-table').closest('.dataTables_scroll');
         let tbody = container.find('.dataTables_scrollBody');
         let offset = tbody.offset().top + 1;
 
@@ -85,7 +68,7 @@ function BuildTable(): void
     }
 
 	$(document).ready(function() {
-        let table = $('#all-sites-table');
+        let table = $('#grammar-sites-table');
 
 	    table.DataTable({
 	        ajax: '$url',
@@ -96,20 +79,12 @@ function BuildTable(): void
             scrollX: true,
 	        ordering: true,
 	        order: [[0, 'asc']],
-	        columnDefs: [
-                {
-                    targets: 2,
-                    render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
-                },
-                {
-                    targets: 4,
-                    render: function(data) { return fixedRender(data, 6); }
-                }
-                ,
-                {
-                    targets: [6, 7, 10],
-                    render: function(data) { return dateTimeRender(data); }
-                }
+	        columns: [
+				{data: 'language'},
+				{data: 'family'},
+				{data: 'country'},
+				{data: 'published'},
+				{data: 'blog_name', render: function(data, _type, row) { return '<a href="' + row['url'] + '" target="_blank">' + data + '</a>'; }},
 	        ],
 	        initComplete: function() {
                 setTableHeight();
@@ -137,7 +112,7 @@ $is_excel = str_contains($url, 'excel');
 
 if ($is_excel) {
 	/** @noinspection PhpUnhandledExceptionInspection */
-	WebonaryHome_Ajax::ExportAllSitesToExcel();
+	WebonaryHome_Ajax::ExportGrammarSitesToExcel();
 	exit();
 }
 
