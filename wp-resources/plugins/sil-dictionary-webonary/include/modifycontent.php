@@ -10,17 +10,14 @@ function addLangQuery($content): string
 
 	// load the string into the DOM (this is your page's HTML), see below for more info
 	libxml_use_internal_errors(true);
-	$doc->loadHTML(iconv('UTF-8', 'UCS-4', $content));
+	$doc->loadHTML(iconv('UTF-8', 'UCS-4', trim($content)));
 
 	if ($lang !== false)
 		ProcessHrefs($doc, $lang);
 
-	// render the content
-	$content = $doc->saveHTML();
-
-	// return the innerHTML of the <body> tag
+	// render the content, and return the innerHTML of the <body> tag
 	$re = '/^.*?<body>(.*)?<\/body>.*$/s';
-	return preg_replace($re, '$1', $content);
+	return preg_replace($re, '$1', $doc->saveHTML());
 }
 
 /**
@@ -64,4 +61,6 @@ function ProcessHrefs(DOMDocument $doc, string $lang): void
 }
 
 remove_filter('the_content', 'wptexturize');
-add_filter('the_content', 'addLangQuery');
+
+// setting the priority to 99 because we need this to run after the short-code hooks
+add_filter('the_content', 'addLangQuery', 99);
