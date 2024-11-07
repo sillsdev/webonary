@@ -16,7 +16,7 @@ Stable tag: trunk
 	The wp_list_bookmarks_plus function is an evolution of the wp_list_bookmarks function that is privded with Wordpress. Having this function here will allow this plugin to evolve even further than originally intended in the future.
 */
 
-define ('WPRBLVERSION', '2.1.7');
+define ('WPRBLVERSION', '2.1.8.Webonary');
 
 function walk_bookmarks_plus($bookmarks, $args = '' ) {
 	$defaults = array(
@@ -167,6 +167,7 @@ function wp_list_bookmarks_plus ($args = '') {
 		'catdescription_after'=> '</p>'
 	);
 	$r = wp_parse_args( $args, $defaults );
+	$r['limit'] = intval($r['limit']);
 	extract( $r, EXTR_SKIP );
 	$output = '';
 	if ($categorize) {
@@ -232,7 +233,7 @@ function wp_list_bookmarks_plus ($args = '') {
 function renderlinks_tc_hnd ($att,$content=null) {
 	$wprbr_n = 'WP Render Blogroll Links ';
 	$wprbl_v = WPRBLVERSION;
-	extract	(shortcode_atts(array('showhide'=>0,'show_images'=>1,'always_show_names'=>0,'show_names_under_images'=>0,'excludecat'=>'','limit'=>'-1','forcerel'=>'','linkclass'=>'','livelinks'=>0,'catorder'=>'ASC','catorderby'=>'name','order'=>'ASC','orderby'=>'name','catid' => '','catname' => '','showcatdesc' => '0','showdesc' => '0','showbrk'=> ' ','showdash'=> '0','notitle'=>'0','rss_image'=>'/wp-includes/images/rss.png','show_rss'=>0), $att));
+	extract	(shortcode_atts(array('showhide'=>0,'show_images'=>1,'always_show_names'=>0,'show_names_under_images'=>0,'excludecat'=>'','limit'=>-1,'forcerel'=>'','linkclass'=>'','livelinks'=>0,'catorder'=>'ASC','catorderby'=>'name','order'=>'ASC','orderby'=>'name','catid' => '','catname' => '','showcatdesc' => '0','showdesc' => '0','showbrk'=> ' ','showdash'=> '0','notitle'=>'0','rss_image'=>'/wp-includes/images/rss.png','show_rss'=>0), $att));
 	if ($notitle=="1"){$notitletag='&categorize=0&title_li= ';} else {$notitletag='';}
 	if ($showbrk=="1"){$brk="<br />";} else  if ($showdash=="1") {$brk=" - ";} else {$brk=' ';}
 	$wprbl_s = '
