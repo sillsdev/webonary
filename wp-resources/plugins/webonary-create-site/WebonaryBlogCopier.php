@@ -642,20 +642,21 @@ SQL;
 HTML;
 	}
 
-    /**
-     * @param $domain
-     * @param $title
-     * @param $from_blog_id
-     * @param $copy_files
-     * @param $email
-     * @param $username
-     * @param $applicationid
-     * @param $ethnologueCode
-     * @param $countryName
-     * @param $copyright
-     * @param $allow_comments
-     * @param $publicationStatus
-     * @return string
+	/**
+	 * @param $domain
+	 * @param $title
+	 * @param $from_blog_id
+	 * @param $copy_files
+	 * @param $email
+	 * @param $username
+	 * @param $applicationid
+	 * @param $ethnologueCode
+	 * @param $countryName
+	 * @param $copyright
+	 * @param $allow_comments
+	 * @param $publicationStatus
+	 * @param $regionName
+	 * @return string
 	 * @noinspection SqlResolve
 	 */
     public function copy_blog($domain, $title, $from_blog_id, $copy_files, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus, $regionName): string
@@ -751,11 +752,7 @@ TXT;
 				];
 
 				$sql = $wpdb->prepare("UPDATE wp_{$to_blog_id}_postmeta SET meta_value = %s WHERE meta_key = '_mail'", maybe_serialize($contact_options));
-
 				$wpdb->query($sql);
-
-				//Set ethnologue link
-				$meta_id = $wpdb->get_var("SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%www.ethnologue.com/language%'");
 
 				//Set footer (copyright)
 				$themeZeeOpt = get_option('themezee_options');
@@ -763,28 +760,12 @@ TXT;
 				update_option('themezee_options', $themeZeeOpt);
 
 				//Set the ethnologue menu link
-				$setEthnologueCode = false;
-				if ($meta_id != NULL) {
-					$sql = <<<SQL
-UPDATE $wpdb->postmeta
-SET meta_value = 'https://www.ethnologue.com/language/$ethnologueCode'
-WHERE meta_id = $meta_id
-SQL;
-
-					$wpdb->query($sql);
-					$setEthnologueCode = true;
-				}
+				$ethnologue_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.ethnologue.com/language');
 
 				//Set Bibliography Link
-				//Set ethnologue link
-				$bibliography_link_id = $wpdb->get_var("SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%www.sil.org/search/node%'");
-				$setBibliography = false;
-				if ($bibliography_link_id != NULL) {
-					$sql = "UPDATE $wpdb->postmeta SET meta_value = 'https://www.sil.org/resources/search/language/$ethnologueCode' WHERE meta_id = $bibliography_link_id";
-
-					$wpdb->query($sql);
-					$setBibliography = true;
-				}
+				$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/resources/search/language');
+				if (!$bibliography_link_set)
+					$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/search/node', 'www.sil.org/resources/search/language');
 
 				//Set country name
 				update_option('countryName', $countryName);
@@ -811,10 +792,10 @@ SQL;
 				$msg[] = "- Welcome email sent to: $email";
 				$msg[] = '- Set this email as contact person for contact form.';
 
-				if ($setEthnologueCode)
+				if ($ethnologue_link_set)
 					$msg[] = "- Set ethnologue link to https://www.ethnologue.com/language/$ethnologueCode";
 
-				if ($setBibliography)
+				if ($bibliography_link_set)
 					$msg[] = "- Set bibliography link to https://www.sil.org/resources/search/language/$ethnologueCode";
 
 				$msg[] = '- Set the copyright text in footer';
@@ -839,6 +820,41 @@ SQL;
 
         return implode('<br>', $msg);
     }
+
+	private function update_link(wpdb $wpdb, string $ethnologue_code, string $url_base, string $replace_with = null): bool
+	{
+		// remove http part
+		$parts = explode('://', $url_base);
+		$url_base = rtrim(end($parts), '/');
+
+		// check replace with
+		if (empty($replace_with)) {
+			$replace_with = $url_base;
+		}
+		else {
+			$parts = explode('://', $replace_with);
+			$replace_with = rtrim(end($parts), '/');
+		}
+
+		$sql = <<<SQL
+SELECT meta_id
+FROM $wpdb->postmeta
+WHERE meta_key = '_menu_item_url'
+  AND meta_value LIKE %s
+SQL;
+		$meta_id = $wpdb->get_var($wpdb->prepare($sql, "%$url_base%"));
+
+		if (empty($meta_id))
+			return false;
+
+		$sql = <<<SQL
+UPDATE $wpdb->postmeta
+SET meta_value = %s
+WHERE meta_id = %s
+SQL;
+		$wpdb->query($wpdb->prepare($sql, "https://$replace_with/$ethnologue_code", $meta_id));
+		return true;
+	}
 
 	/**
 	 * Copy blog data from one blog to another
