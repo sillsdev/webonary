@@ -67,6 +67,7 @@ function webonary_searchform($use_li = false): void
 			/** @var ILanguageEntryCount $mainIndexed */
 			$mainIndexed = new stdClass();
 		    $mainIndexed->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
+			$mainIndexed->language_code = $dictionary->mainLanguage->lang;
 			$mainIndexed->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
 			$arrIndexed[] = $mainIndexed;
 
@@ -76,8 +77,10 @@ function webonary_searchform($use_li = false): void
 
 			foreach ($dictionary->reversalLanguages as $reversal) {
 
+				/** @var ILanguageEntryCount $indexed */
 				$indexed = new stdClass();
 				$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
+				$indexed->language_code = $reversal->lang;
 				$indexed->total_indexed = $reversal->entriesCount ?? 0;
 				$arrIndexed[] = $indexed;
 			}
@@ -86,6 +89,9 @@ function webonary_searchform($use_li = false): void
 			$other_search_languages = array_filter($dictionary->definitionOrGlossLangs, function($lang) use($dictionary) {
 				return $lang != $dictionary->mainLanguage->lang;
 			});
+
+			/** @var ILanguageEntryCount[] $other_languages */
+			$other_languages = [];
 
 			if (count($other_search_languages)) {
 
@@ -101,10 +107,23 @@ function webonary_searchform($use_li = false): void
 				foreach ($other_search_languages as $lang) {
 
 					$selected = ($lang === $selected_language) ? 'selected' : '';
-					$localized_name = __(Webonary_Cloud::getLanguageName($lang));
+					$localized_name = __(Webonary_Cloud::getLanguageName($lang, '', $arrIndexed));
 					$language_dropdown_options .= sprintf($option_template, $lang, $selected, $localized_name);
+
+					/** @var ILanguageEntryCount $other_lang */
+					$other_lang = new stdClass();
+					$other_lang->language_name = $localized_name;
+					$other_lang->language_code = $lang;
+					$other_lang->total_indexed = 0;
+					$other_languages[] = $other_lang;
 				}
 			}
+
+			// get a list of the unique language codes used
+			$lang_codes = array_values(array_unique(array_column(array_merge($arrIndexed, $other_languages), 'language_code')));
+
+			// clean up list of languages
+			Webonary_Cloud::cleanLanguageList($lang_codes);
 
 			$lastEditDate = $dictionary->updatedAt;
 		}
