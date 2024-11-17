@@ -44,6 +44,7 @@
     "ext-dom": "*",
     "ext-gettext": "*",
     "ext-iconv": "*",
+    "ext-intl": "*",
     "ext-json": "*",
     "ext-libxml": "*",
     "ext-mongodb": "*",
