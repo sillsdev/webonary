@@ -107,17 +107,26 @@ SQL;
 
 			$fields[] = 'https://' . $domain_path;
 
-			$theme_options = get_option('themezee_options');
-			$theme_footer = $theme_options['themeZee_footer'];
-			$arr_footer = explode('©', str_replace('®', '', $theme_footer), 2);
+			$copyright_notice = Webonary_Utility::GetCopyright();
+
+			// split on the copyright symbol, remove the trademark symbol
+			$arr_footer = explode('©', str_replace('®', '', $copyright_notice), 2);
+
 			if (count($arr_footer) > 1) {
+
+				// take the part to the right of the copyright symbol
 				$copyright = $arr_footer[1];
+
+				// remove the 4-digit year
 				$copyright = preg_replace('/\d{4}/', '', $copyright);
+
+				// remove the year short tag
 				$copyright = str_replace('[year]', '', $copyright);
+
 				$fields[] = trim($copyright);
 			}
 			else {
-				$fields[] = trim($theme_footer);
+				$fields[] = trim($copyright_notice);
 			}
 
 			$sql = <<<SQL

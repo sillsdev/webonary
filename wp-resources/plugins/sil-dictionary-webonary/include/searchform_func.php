@@ -356,8 +356,9 @@ function add_header(): void
 add_action('wp_head', 'add_header');
 
 
-
-
+/**
+ * @throws Exception
+ */
 function add_footer(): void
 {
 	global $post, $wpdb;
@@ -382,7 +383,7 @@ function add_footer(): void
 
 			$browse_title = $wpdb->get_var($sql);
 
-			$alphabetDisplay = vernacularalphabet_func($letter);
+			$alphabetDisplay = Webonary_ShortCodes::VernacularAlphabet($letter);
 
 			if(strlen($alphabetDisplay) > 0)
 			{

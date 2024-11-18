@@ -729,4 +729,18 @@ class Webonary_Utility
 
 		return $contents;
 	}
+
+	public static function GetCopyright(): string
+	{
+		$copyright = get_option('copyrightNotice');
+		if (empty($copyright)) {
+			$options = get_option('themezee_options');
+			$copyright = $options['themeZee_footer'] ?? '';
+		}
+
+		if (empty($copyright))
+			return '';
+
+		return str_replace('[year]', date('Y'), do_shortcode($copyright, true));
+	}
 }
