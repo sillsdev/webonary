@@ -5,7 +5,7 @@ class Webonary_ShortCodes
 	public static function Init(): void
 	{
 		add_shortcode('year', [self::class, 'CurrentYear']);
-		add_shortcode('copyright', [self::class, 'CopyrightNotice']);
+		add_shortcode('copyright', [self::class, 'CopyrightHolder']);
 		add_shortcode('vernacularalphabet', [self::class, 'VernacularAlphabet']);
 		add_shortcode('reversalindex1', [self::class, 'ReversalAlphabet']);
 		add_shortcode('reversalindex2', [self::class, 'ReversalAlphabet']);
@@ -20,10 +20,10 @@ class Webonary_ShortCodes
 		return date('Y');
 	}
 
-	public static function CopyrightNotice(): string
+	public static function CopyrightHolder(): string
 	{
-		$copyright_notice = get_option('copyrightNotice');
-		return do_shortcode($copyright_notice, true);
+		$copyright_holder = get_option('copyrightHolder');
+		return do_shortcode($copyright_holder, true);
 	}
 
 	/**

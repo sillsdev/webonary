@@ -732,7 +732,7 @@ class Webonary_Utility
 
 	public static function GetCopyright(): string
 	{
-		$copyright = get_option('copyrightNotice');
+		$copyright = get_option('copyrightHolder');
 		if (empty($copyright)) {
 			$options = get_option('themezee_options');
 			$copyright = $options['themeZee_footer'] ?? '';

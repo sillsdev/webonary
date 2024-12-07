@@ -107,10 +107,10 @@ SQL;
 
 			$fields[] = 'https://' . $domain_path;
 
-			$copyright_notice = Webonary_Utility::GetCopyright();
+			$copyright_holder = Webonary_Utility::GetCopyright();
 
 			// split on the copyright symbol, remove the trademark symbol
-			$arr_footer = explode('©', str_replace('®', '', $copyright_notice), 2);
+			$arr_footer = explode('©', str_replace('®', '', $copyright_holder), 2);
 
 			if (count($arr_footer) > 1) {
 
@@ -126,7 +126,7 @@ SQL;
 				$fields[] = trim($copyright);
 			}
 			else {
-				$fields[] = trim($copyright_notice);
+				$fields[] = trim($copyright_holder);
 			}
 
 			$sql = <<<SQL

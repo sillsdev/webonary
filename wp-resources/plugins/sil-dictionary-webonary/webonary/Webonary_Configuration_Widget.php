@@ -83,7 +83,7 @@ class Webonary_Configuration_Widget
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
 		update_option('IncludeCharactersWithDiacritics', $_POST['IncludeCharactersWithDiacritics'] ?? 'no');
 
-		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
+		update_option('displayCustomDomains', $_POST['displayCustomDomains'] ?? 'no');
 		update_option('vernacularRightToLeft', $_POST['vernacularRightToLeft'] ?? 'no');
 		update_option('reversal1_langcode', $_POST['reversal1_langcode'] ?? '');
 		update_option('reversal2_langcode', $_POST['reversal2_langcode'] ?? '');
@@ -109,7 +109,7 @@ class Webonary_Configuration_Widget
 		update_option('countryName', $_POST['countryName']);
 		update_option('languageFamily', $_POST['languageFamily']);
 		update_option('regionName', $_POST['regionName']);
-		update_option('copyrightNotice', $_POST['copyrightNotice']);
+		update_option('copyrightHolder', $_POST['copyrightHolder']);
 
 		$useCloudBackend = filter_input(
 			INPUT_POST,
@@ -481,7 +481,7 @@ HTML;
 		$country = get_option('countryName', 'N/A');
 		$language_family = get_option('languageFamily', 'N/A');
 		$region = get_option('regionName', 'N/A');
-		$copyright_notice = get_option('copyrightNotice');
+		$copyright_holder = get_option('copyrightHolder');
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -513,16 +513,8 @@ HTML;
 						<td colspan="2"><div style="border-bottom: 1px solid #ccc; margin: 1rem 0"></div></td>
 					</tr>
 					<tr>
-						<td><label for="copyrightNotice" style="white-space: nowrap">Copyright Notice:</label></td>
-						<td><input name="copyrightNotice" id="copyrightNotice" type="text" value="$copyright_notice" style="max-width: 100%; width: 100%"></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<span>The text <span style="font-weight: 700; color: #990000">[year]</span> will be replaced with the current year.</span>
-							<br>
-							<span>Example: <span style="font-weight: 700">© [year] SIL Global®</span></span>
-						</td>
+						<td><label for="copyrightHolder" style="white-space: nowrap">Copyright Holder:</label></td>
+						<td><input name="copyrightHolder" id="copyrightHolder" type="text" value="$copyright_holder" style="max-width: 100%; width: 100%"></td>
 					</tr>
 				</table>
 			</div>
