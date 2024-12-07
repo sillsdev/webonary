@@ -332,16 +332,16 @@ HTML;
 HTML;
 	}
 
-	private function get_copyright(array $appPost, array $application, string $site_title): string
+	private function get_copyright(array $appPost, array $application): string
 	{
-		$label = __( 'Copyright footer text:', $this->_domain );
-		$label_footer = __( 'Copyright footer', $this->_domain );
+		$label = __( 'Copyright holder text:', $this->_domain );
+		$label_footer = __( 'Copyright holder', $this->_domain );
 
 		$copyright = '';
 		if(isset($_POST['blog']))
 			$copyright = $appPost['copyright'];
 		elseif(isset($application['copyright-holder']->field_value))
-			$copyright =  $site_title . ' © ' . date('Y') . ' ' . $application['copyright-holder']->field_value . '<sup>®</sup>';
+			$copyright =  $application['copyright-holder']->field_value;
 
 
 		return <<<HTML
@@ -500,7 +500,7 @@ HTML;
 			$content[] = $this->get_ethnologue_code($appPost, $application);
 			$content[] = $this->get_country($appPost, $application);
 			$content[] = $this->get_region($appPost, $application);
-			$content[] = $this->get_copyright($appPost, $application, $site_title);
+			$content[] = $this->get_copyright($appPost, $application);
 			$content[] = $this->get_publication_status($appPost, $application);
 			$content[] = $this->get_allow_comments($appPost, $application);
 			$content[] = $this->get_email($admin_email);
@@ -756,8 +756,11 @@ TXT;
 
 				//Set footer (copyright)
 				$themeZeeOpt = get_option('themezee_options');
-				$themeZeeOpt['themeZee_footer'] = $copyright;
+				$themeZeeOpt['themeZee_footer'] = $title . ' © ' . date('Y') . ' [copyright]';
 				update_option('themezee_options', $themeZeeOpt);
+
+				//Set copyright holder
+				update_option('copyrightHolder', $copyright);
 
 				//Set the ethnologue menu link
 				$ethnologue_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.ethnologue.com/language');
