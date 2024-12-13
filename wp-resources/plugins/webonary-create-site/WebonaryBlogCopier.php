@@ -11,8 +11,8 @@ class WebonaryBlogCopier
 	 */
 	public function __construct()
 	{
-		add_action('network_admin_menu', array($this, 'ms_add_page'));
-		add_filter('manage_sites_action_links', array($this, 'add_site_action'), 10, 2);
+		add_action('network_admin_menu',[$this, 'ms_add_page']);
+		add_filter('manage_sites_action_links', [$this, 'add_site_action'], 10, 2);
 	}
 
 	/**
@@ -21,7 +21,14 @@ class WebonaryBlogCopier
 	public function ms_add_page(): void
 	{
 		$this->setup_localization();
-		add_submenu_page('sites.php', $this->_name, $this->_name, 'manage_sites', $this->_domain, array($this, 'admin_page'));
+		add_submenu_page(
+			'sites.php',
+			$this->_name,
+			$this->_name,
+			'manage_sites',
+			$this->_domain,
+			[$this, 'admin_page']
+		);
 	}
 
 	/**
@@ -29,10 +36,11 @@ class WebonaryBlogCopier
 	 */
 	private function setup_localization(): void
 	{
-		if (!isset($this->_name)) {
-			load_plugin_textdomain($this->_domain, false, trailingslashit(dirname(__FILE__)) . 'lang/');
-			$this->_name = __('Create Webonary Site', $this->_domain);
-		}
+		if (isset($this->_name))
+			return;
+
+		load_plugin_textdomain($this->_domain, false, trailingslashit(dirname(__FILE__)) . 'lang/');
+		$this->_name = __('Create Webonary Site', $this->_domain);
 	}
 
 	/**
@@ -48,10 +56,13 @@ class WebonaryBlogCopier
 			return $actions;
 
 		$this->setup_localization();
-		$url = add_query_arg(array(
-			'page' => $this->_domain,
-			'blog' => $blog_id
-		), network_admin_url('sites.php'));
+		$url = add_query_arg(
+			[
+				'page' => $this->_domain,
+				'blog' => $blog_id
+			],
+			network_admin_url('sites.php')
+		);
 		$nonce_string = sprintf('%s-%s', $this->_domain, $blog_id);
 		$actions[$this->_domain] = '<a href="' . esc_url(wp_nonce_url($url, $nonce_string)) . '">' . __('Copy', $this->_domain) . '</a>';
 
@@ -295,24 +306,42 @@ HTML;
 		elseif (isset($application['country-name']->field_value))
 			$countryName = $application['country-name']->field_value;
 
-		return <<<HYML
+		return <<<HTML
 <tr class="form-required">
 	<th scope='row'>$label</th>
 	<td><input name="blog[countryName]" type="text" value="$countryName"/></td>
 </tr>
-HYML;
+HTML;
 	}
 
-	private function get_copyright(array $appPost, array $application, string $site_title): string
+	private function get_region(array $app_post, array $application): string
 	{
-		$label = __( 'Copyright footer text:', $this->_domain );
-		$label_footer = __( 'Copyright footer', $this->_domain );
+		$label = __('Region', $this->_domain);
+
+		$region_name = '';
+		if (isset($_POST['blog']))
+			$region_name = $app_post['regionName'];
+		elseif (isset($application['region-name']->field_value))
+			$region_name = $application['region-name']->field_value;
+
+		return <<<HTML
+<tr class="form-required">
+	<th scope='row'>$label</th>
+	<td><input name="blog[regionName]" type="text" value="$region_name"/></td>
+</tr>
+HTML;
+	}
+
+	private function get_copyright(array $appPost, array $application): string
+	{
+		$label = __( 'Copyright holder text:', $this->_domain );
+		$label_footer = __( 'Copyright holder', $this->_domain );
 
 		$copyright = '';
 		if(isset($_POST['blog']))
 			$copyright = $appPost['copyright'];
 		elseif(isset($application['copyright-holder']->field_value))
-			$copyright =  $site_title . ' © ' . date('Y') . ' ' . $application['copyright-holder']->field_value . '<sup>®</sup>';
+			$copyright =  $application['copyright-holder']->field_value;
 
 
 		return <<<HTML
@@ -470,7 +499,8 @@ HTML;
 			$content[] = $this->get_new_site_title($site_title);
 			$content[] = $this->get_ethnologue_code($appPost, $application);
 			$content[] = $this->get_country($appPost, $application);
-			$content[] = $this->get_copyright($appPost, $application, $site_title);
+			$content[] = $this->get_region($appPost, $application);
+			$content[] = $this->get_copyright($appPost, $application);
 			$content[] = $this->get_publication_status($appPost, $application);
 			$content[] = $this->get_allow_comments($appPost, $application);
 			$content[] = $this->get_email($admin_email);
@@ -575,7 +605,7 @@ SQL;
             if (empty($msg)) {
                 $applicationid = $_GET['applicationid'] ?? '';
 
-                $msg[] = $this->copy_blog($domain, $title, $from_blog_id, $copy_files, $appPost['email'], $appPost['username'], $applicationid, $appPost['ethnologueCode'], $appPost['countryName'], $appPost['copyright'], $appPost['comments'], $appPost['publicationStatus']);
+                $msg[] = $this->copy_blog($domain, $title, $from_blog_id, $copy_files, $appPost['email'], $appPost['username'], $applicationid, $appPost['ethnologueCode'], $appPost['countryName'], $appPost['copyright'], $appPost['comments'], $appPost['publicationStatus'], $appPost['regionName']);
             }
         } else {
             $copy_files = true; // set the default for first page load
@@ -612,23 +642,24 @@ SQL;
 HTML;
 	}
 
-    /**
-     * @param $domain
-     * @param $title
-     * @param $from_blog_id
-     * @param $copy_files
-     * @param $email
-     * @param $username
-     * @param $applicationid
-     * @param $ethnologueCode
-     * @param $countryName
-     * @param $copyright
-     * @param $allow_comments
-     * @param $publicationStatus
-     * @return string
+	/**
+	 * @param $domain
+	 * @param $title
+	 * @param $from_blog_id
+	 * @param $copy_files
+	 * @param $email
+	 * @param $username
+	 * @param $applicationid
+	 * @param $ethnologueCode
+	 * @param $countryName
+	 * @param $copyright
+	 * @param $allow_comments
+	 * @param $publicationStatus
+	 * @param $regionName
+	 * @return string
 	 * @noinspection SqlResolve
 	 */
-    public function copy_blog($domain, $title, $from_blog_id, $copy_files, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus): string
+    public function copy_blog($domain, $title, $from_blog_id, $copy_files, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus, $regionName): string
     {
         global $wpdb, $current_site, $base;
 
@@ -694,7 +725,8 @@ HTML;
 				$wpdb->query($sql);
 
 
-				$siteurl = get_blog_option($to_blog_id, 'siteurl');
+				$site_url = get_blog_option($to_blog_id, 'siteurl');
+
 
 				$body = <<<TXT
 From: [your-name] <[your-email]>
@@ -704,7 +736,7 @@ Message Body:
 [your-message]
 
 --
-This e-mail was sent from a contact form on $siteurl
+This e-mail was sent from a contact form on $site_url
 
 TXT;
 				$contact_options = [
@@ -720,43 +752,29 @@ TXT;
 				];
 
 				$sql = $wpdb->prepare("UPDATE wp_{$to_blog_id}_postmeta SET meta_value = %s WHERE meta_key = '_mail'", maybe_serialize($contact_options));
-
 				$wpdb->query($sql);
-
-				//Set ethnologue link
-				$meta_id = $wpdb->get_var("SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%www.ethnologue.com/language%'");
 
 				//Set footer (copyright)
 				$themeZeeOpt = get_option('themezee_options');
-				$themeZeeOpt['themeZee_footer'] = $copyright;
+				$themeZeeOpt['themeZee_footer'] = $title . ' © ' . date('Y') . ' [copyright]';
 				update_option('themezee_options', $themeZeeOpt);
 
-				//Set the ethnologue menu link
-				$setEthnologueCode = false;
-				if ($meta_id != NULL) {
-					$sql = <<<SQL
-UPDATE $wpdb->postmeta
-SET meta_value = 'https://www.ethnologue.com/language/$ethnologueCode'
-WHERE meta_id = $meta_id
-SQL;
+				//Set copyright holder
+				update_option('copyrightHolder', $copyright);
 
-					$wpdb->query($sql);
-					$setEthnologueCode = true;
-				}
+				//Set the ethnologue menu link
+				$ethnologue_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.ethnologue.com/language');
 
 				//Set Bibliography Link
-				//Set ethnologue link
-				$bibliography_link_id = $wpdb->get_var("SELECT meta_id FROM $wpdb->postmeta WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%www.sil.org/search/node%'");
-				$setBibliography = false;
-				if ($bibliography_link_id != NULL) {
-					$sql = "UPDATE $wpdb->postmeta SET meta_value = 'https://www.sil.org/resources/search/language/$ethnologueCode' WHERE meta_id = $bibliography_link_id";
-
-					$wpdb->query($sql);
-					$setBibliography = true;
-				}
+				$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/resources/search/language');
+				if (!$bibliography_link_set)
+					$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/search/node', 'www.sil.org/resources/search/language');
 
 				//Set country name
 				update_option('countryName', $countryName);
+
+				//Set region name
+				update_option('regionName', $regionName);
 
 				//Set publication status
 				update_option('publicationStatus', $publicationStatus);
@@ -773,14 +791,14 @@ SQL;
 				update_option('useCloudBackend', 1);
 
 				//20200207 chungh: Webonary.org reconfig to use subdirectory
-				$msg[] = sprintf(__('Copied: %s in %s seconds', $this->_domain), '<a href="' . $siteurl . '" target="_blank">' . $title . '</a>', number_format_i18n(timer_stop()));
+				$msg[] = sprintf(__('Copied: %s in %s seconds', $this->_domain), '<a href="' . $site_url . '" target="_blank">' . $title . '</a>', number_format_i18n(timer_stop()));
 				$msg[] = "- Welcome email sent to: $email";
 				$msg[] = '- Set this email as contact person for contact form.';
 
-				if ($setEthnologueCode)
+				if ($ethnologue_link_set)
 					$msg[] = "- Set ethnologue link to https://www.ethnologue.com/language/$ethnologueCode";
 
-				if ($setBibliography)
+				if ($bibliography_link_set)
 					$msg[] = "- Set bibliography link to https://www.sil.org/resources/search/language/$ethnologueCode";
 
 				$msg[] = '- Set the copyright text in footer';
@@ -805,6 +823,41 @@ SQL;
 
         return implode('<br>', $msg);
     }
+
+	private function update_link(wpdb $wpdb, string $ethnologue_code, string $url_base, string $replace_with = null): bool
+	{
+		// remove http part
+		$parts = explode('://', $url_base);
+		$url_base = rtrim(end($parts), '/');
+
+		// check replace with
+		if (empty($replace_with)) {
+			$replace_with = $url_base;
+		}
+		else {
+			$parts = explode('://', $replace_with);
+			$replace_with = rtrim(end($parts), '/');
+		}
+
+		$sql = <<<SQL
+SELECT meta_id
+FROM $wpdb->postmeta
+WHERE meta_key = '_menu_item_url'
+  AND meta_value LIKE %s
+SQL;
+		$meta_id = $wpdb->get_var($wpdb->prepare($sql, "%$url_base%"));
+
+		if (empty($meta_id))
+			return false;
+
+		$sql = <<<SQL
+UPDATE $wpdb->postmeta
+SET meta_value = %s
+WHERE meta_id = %s
+SQL;
+		$wpdb->query($wpdb->prepare($sql, "https://$replace_with/$ethnologue_code", $meta_id));
+		return true;
+	}
 
 	/**
 	 * Copy blog data from one blog to another

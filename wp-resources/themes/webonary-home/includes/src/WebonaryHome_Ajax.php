@@ -67,7 +67,7 @@ class WebonaryHome_Ajax
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['SiteTitle', 'Country', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
+			$rows[] = ['SiteTitle', 'Country', 'Region', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
 
 		$sql = <<<SQL
 SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered
@@ -103,20 +103,30 @@ SQL;
 				$fields[] = trim($blog_details->blogname);
 
 			$fields[] = get_option('countryName');
+			$fields[] = get_option('regionName');
 
 			$fields[] = 'https://' . $domain_path;
 
-			$theme_options = get_option('themezee_options');
-			$theme_footer = $theme_options['themeZee_footer'];
-			$arr_footer = explode('©', str_replace('®', '', $theme_footer), 2);
+			$copyright_holder = Webonary_Utility::GetCopyright();
+
+			// split on the copyright symbol, remove the trademark symbol
+			$arr_footer = explode('©', str_replace('®', '', $copyright_holder), 2);
+
 			if (count($arr_footer) > 1) {
+
+				// take the part to the right of the copyright symbol
 				$copyright = $arr_footer[1];
+
+				// remove the 4-digit year
 				$copyright = preg_replace('/\d{4}/', '', $copyright);
+
+				// remove the year short tag
 				$copyright = str_replace('[year]', '', $copyright);
+
 				$fields[] = trim($copyright);
 			}
 			else {
-				$fields[] = trim($theme_footer);
+				$fields[] = trim($copyright_holder);
 			}
 
 			$sql = <<<SQL
@@ -189,7 +199,7 @@ SQL;
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['DictionaryID', 'LanguageName', 'LanguageFamily', 'Country', 'DictionaryName', 'GrammarLink'];
+			$rows[] = ['DictionaryID', 'LanguageName', 'LanguageFamily', 'Country', 'Region', 'DictionaryName', 'GrammarLink'];
 
 		$sql = <<<SQL
 SELECT b.blog_id, l.link_updated
@@ -281,6 +291,7 @@ SQL;
 				'language' => $language_name,
 				'family' => get_option('languageFamily', 'N/A'),
 				'country' => get_option('countryName', 'N/A'),
+				'region' => get_option('regionName', 'N/A'),
 				'published' => date('Y-m-d', strtotime($published_date)),
 				'blog_name' => $blog_name,
 				'url' => path_join($blog_details->path, 'grammar')

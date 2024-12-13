@@ -378,13 +378,20 @@ class Webonary_Cloud
 	/**
 	 * @param string $code
 	 * @param string $default
+	 * @param ILanguageEntryCount[] $indexed_languages
 	 * @return string
 	 */
-	public static function getLanguageName(string $code, string $default = ''): string
+	public static function getLanguageName(string $code, string $default = '', array $indexed_languages = []): string
 	{
+		if ($default == $code)
+			$default = '';
+
+		// first look in the saved terms
 		$term = get_term_by('slug', $code, self::$languageCategory);
-		if ($term) {
-			if (!empty($term->name))
+		if (!empty($term)) {
+
+			// return the name, if we found it
+			if (!empty($term->name) && $term->name != $code)
 				return $term->name;
 
 			// if the name is not set, set it now (happens on some old dictionaries updated to MongoDB)
@@ -394,14 +401,60 @@ class Webonary_Cloud
 			}
 		}
 
-		$name = $default ?: $code;
+		// now look in the indexed languages
+		foreach($indexed_languages as $lang) {
+
+			if ($lang->language_code == $code && !empty($lang->language_name)) {
+				$name = $lang->language_name;
+				break;
+			}
+		}
+
+		// if still not found, try the default
+		if (empty($name))
+			$name = $default;
+
+		// can use either locale_get_display_name or locale_get_display_language
+		if (empty($name))
+			$name = locale_get_display_name($code, 'en');
+
+		// if the locale was not found, it just returns the $code
+		if (empty($name))
+			$name = $code;
+
 		wp_insert_term(
 			$name,
 			self::$languageCategory,
-			array('description' => $default, 'slug' => $code)
+			array('description' => $name, 'slug' => $code)
 		);
 
 		return $name;
+	}
+
+	/**
+	 * Removes languages that are no longer used.
+	 * @param string[] $current_slugs
+	 * @return void
+	 */
+	public static function cleanLanguageList(array $current_slugs): void
+	{
+		/** @var WP_Term[] $terms */
+		$terms = get_terms(
+			[
+				'get' => 'all',
+				'taxonomy' => self::$languageCategory,
+				'orderby' => 'none',
+				'suppress_filter' =>1
+			]
+		);
+
+		$terms = array_filter($terms, function ($term) use ($current_slugs) {
+			return (!in_array($term->slug, $current_slugs));
+		});
+
+		foreach ($terms as $term) {
+			wp_delete_term($term->term_id, self::$languageCategory);
+		}
 	}
 
 	/**
@@ -693,11 +746,14 @@ class Webonary_Cloud
 		if (!empty($language->letters))
 			update_option('vernacular_alphabet', self::filterLetterList($language->letters, true));
 
-		wp_insert_term(
-			$language->title,
-			self::$languageCategory,
-			array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
-		);
+		$term = get_term_by('slug', $dictionary->mainLanguage->lang, self::$languageCategory);
+		if (empty($term)) {
+			wp_insert_term(
+				$language->title,
+				self::$languageCategory,
+				array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+			);
+		}
 
 		$reversal_index = 0;
 
@@ -706,11 +762,14 @@ class Webonary_Cloud
 			update_option('reversal' . $reversal_index . '_langcode', $reversal->lang);
 			update_option('reversal' . $reversal_index . '_alphabet', implode(',', $reversal->letters));
 
-			wp_insert_term(
-				$reversal->title,
-				self::$languageCategory,
-				array('description' => $reversal->title, 'slug' => $reversal->lang)
-			);
+			$term = get_term_by('slug', $reversal->lang, self::$languageCategory);
+			if (empty($term)) {
+				wp_insert_term(
+					$reversal->title,
+					self::$languageCategory,
+					array('description' => $reversal->title, 'slug' => $reversal->lang)
+				);
+			}
 		}
 
 		// remove any leftover reversal settings

@@ -53,6 +53,7 @@ class Webonary_Configuration_Widget
 		return '';
 	}
 
+	/** @noinspection PhpUndefinedFunctionInspection */
 	private static function SaveSettings(): string
 	{
 		$return_val = [];
@@ -82,7 +83,7 @@ class Webonary_Configuration_Widget
 		//We no longer give the option to set this (only to unset it) as the letter headers/sorting should be done in FLEx
 		update_option('IncludeCharactersWithDiacritics', $_POST['IncludeCharactersWithDiacritics'] ?? 'no');
 
-		update_option('displayCustomDomains', $_POST['displayCustomDomains']);
+		update_option('displayCustomDomains', $_POST['displayCustomDomains'] ?? 'no');
 		update_option('vernacularRightToLeft', $_POST['vernacularRightToLeft'] ?? 'no');
 		update_option('reversal1_langcode', $_POST['reversal1_langcode'] ?? '');
 		update_option('reversal2_langcode', $_POST['reversal2_langcode'] ?? '');
@@ -107,6 +108,8 @@ class Webonary_Configuration_Widget
 		update_option('noSearch', $noSearchForm);
 		update_option('countryName', $_POST['countryName']);
 		update_option('languageFamily', $_POST['languageFamily']);
+		update_option('regionName', $_POST['regionName']);
+		update_option('copyrightHolder', $_POST['copyrightHolder']);
 
 		$useCloudBackend = filter_input(
 			INPUT_POST,
@@ -477,6 +480,8 @@ HTML;
 		$checked = checked('1', get_option('noSearch'), false);
 		$country = get_option('countryName', 'N/A');
 		$language_family = get_option('languageFamily', 'N/A');
+		$region = get_option('regionName', 'N/A');
+		$copyright_holder = get_option('copyrightHolder');
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -490,15 +495,26 @@ HTML;
 				<label for="noSearchForm">Hide search form:</label>
 				<input name="noSearchForm" id="noSearchForm" type="checkbox" value="1" $checked>
 			</div>
-			<div class="flex-start-center" style="margin: 1rem 0">
-				<table>
+			<div class="flex-start-center" style="margin: 1rem 0; width: 100%">
+				<table style="width: 100%">
 					<tr>
 						<td><label for="countryName">Country:</label></td>
-						<td><input name="countryName" id="countryName" type="text" value="$country"></td>
+						<td style="width: 100%"><input name="countryName" id="countryName" type="text" value="$country"></td>
 					</tr>
 					<tr>
-						<td><label for="languageFamily">Language Family:</label></td>
+						<td><label for="languageFamily" style="white-space: nowrap">Language Family:</label></td>
 						<td><input name="languageFamily" id="languageFamily" type="text" value="$language_family"></td>
+					</tr>
+					<tr>
+						<td><label for="regionName">Region:</label></td>
+						<td><input name="regionName" id="regionName" type="text" value="$region"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><div style="border-bottom: 1px solid #ccc; margin: 1rem 0"></div></td>
+					</tr>
+					<tr>
+						<td><label for="copyrightHolder" style="white-space: nowrap">Copyright Holder:</label></td>
+						<td><input name="copyrightHolder" id="copyrightHolder" type="text" value="$copyright_holder" style="max-width: 100%; width: 100%"></td>
 					</tr>
 				</table>
 			</div>
@@ -637,7 +653,7 @@ HTML;
 	<input type="hidden" id="confirm-delete-text" value="Are you sure you want to delete the dictionary data?">
 	<div id="webonary-delete-msg"></div>
 	<div style="padding: 0 1rem; border: 1px solid #bbb">
-        <p>In this section you can delete either the cloud dictionary data or Wordpress posts data.</p>
+        <p>In this section you can delete either the cloud dictionary data or WordPress posts data.</p>
         <ul style="list-style: disc outside; margin-left: 1.5rem;">
 		    <li>To delete cloud dictionary data, make sure the "Use cloud backend" box above is checked.</li>
 		    <li>To delete WordPress dictionary data, make sure the "Use cloud backend" box above is unchecked.</li>
@@ -703,7 +719,6 @@ HTML;
 
 			// This is here for legacy purposes. The special characters used to be Widget in a separate plugin.
 			// We need to get those characters for older dictionary sites and display them in the dashboard.
-			/** @noinspection PhpMultipleClassDeclarationsInspection */
 			$charWidget = new special_characters();
 			$settings = $charWidget->get_settings();
 			$settings = reset($settings);
