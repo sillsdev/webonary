@@ -52,8 +52,8 @@ The Webonary team
 
 TXT;
 
-	$headers[] = 'From: Webonary <webonary@sil.org>';
-	$headers[] = 'Bcc: Webonary <webonary@sil.org>';
+	$headers[] = 'From: Webonary <accounts@webonary.org>';
+	$headers[] = 'Bcc: Webonary <accounts@webonary.org>';
 	wp_mail($admin_email, 'Webonary Dictionary got published', $msg, $headers);
 }
 
@@ -138,3 +138,21 @@ function custom_subdirectory_validation_filter($result, $tag)
 //	{
 //	}
 //}
+
+add_filter('wp_mail_from', 'webonary_from_email');
+function webonary_from_email($original_email_address): string
+{
+	if (str_starts_with(strtolower($original_email_address), 'wordpress@'))
+		return 'accounts@webonary.org';
+
+	return $original_email_address;
+}
+
+add_filter('wp_mail_from_name', 'webonary_email_from_name');
+function webonary_email_from_name($original_email_from)
+{
+	if (str_starts_with(strtolower($original_email_from), 'wordpress'))
+		return 'Webonary';
+
+	return $original_email_from;
+}
