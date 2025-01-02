@@ -309,7 +309,9 @@ JS;
 		self::SearchTab($lines);
 		self::BrowseTab($lines);
 		self::FontsTab($lines);
-		self::SuperAdminTab($lines);
+
+		if (is_super_admin())
+			self::SuperAdminTab($lines);
 
 		$lines[] = '</div>';
 		$lines[] = '</form>';
@@ -482,6 +484,7 @@ HTML;
 		$language_family = get_option('languageFamily', 'N/A');
 		$region = get_option('regionName', 'N/A');
 		$copyright_holder = get_option('copyrightHolder');
+		$data_tx = self::BuildDataTx();
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -523,6 +526,7 @@ HTML;
 			<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
 		</div>
     </div>
+    $data_tx
 </div>
 HTML;
 		$lines[] = $html;
@@ -984,6 +988,26 @@ HTML;
 	<td>$select</td>
 	<td style="padding-left: 0.5rem"><span style="color: #990000">$saved</span></td>
 </tr>
+HTML;
+
+	}
+
+	public static function BuildDataTx(): string
+	{
+		if (!IS_CLOUD_BACKEND)
+			return '';
+
+		if (str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
+			return '';
+
+		return <<<HTML
+<div class="webonary-admin-block">
+    <div class="flex-column">
+		<p style="margin: 0 0 0.3rem">Copy cloud MongoDB data for this site from .org to .work.</p>
+		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data" onclick="CopyMongoData();">Copy MongoDB Data</button>
+		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly">Progress</textarea>
+	</div>
+</div>
 HTML;
 
 	}
