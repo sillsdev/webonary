@@ -997,7 +997,7 @@ HTML;
 		if (!IS_CLOUD_BACKEND)
 			return '';
 
-		if (str_contains(DOMAIN_CURRENT_SITE, 'webonary.work'))
+		if (str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
 			return '';
 
 		return <<<HTML

@@ -1,5 +1,9 @@
 <?php
 
+use MongoDB\Client;
+use MongoDB\Database;
+use MongoDB\Driver\ServerApi;
+
 class Webonary_Cloud
 {
 	private static ?string $dictionary_id = null;
@@ -1110,5 +1114,21 @@ class Webonary_Cloud
 	{
 		$dictionary = self::getDictionary();
 		return !empty($dictionary->usedSemanticDomains) || !empty($dictionary->semanticDomainAbbreviationsUsed);
+	}
+
+	public static function GetMongoDbConnection($live_site = false): Database
+	{
+		if ($live_site)
+			$settings = WEBONARY_MONGO_PRODUCTION;
+		else
+			$settings = WEBONARY_MONGO_WORK;
+
+		$catalog = $settings['cat'];
+		$uri = "mongodb+srv://{$settings['usr']}:{$settings['pwd']}@{$settings['url']}/?retryWrites=true&w=majority&appName=Cluster0";
+
+		$api_version = new ServerApi(ServerApi::V1);
+		$client = new Client($uri, [], ['serverApi' => $api_version]);
+
+		return $client->$catalog;
 	}
 }

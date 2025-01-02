@@ -92,8 +92,7 @@
     "wpackagist-plugin/wp-maintenance-mode": "^2.6",
     "wpackagist-plugin/wp-super-cache": "^1.7",
     "wpackagist-plugin/wps-menu-exporter": "^1.3",
-    "wpackagist-theme/twentytwentyone": "@stable",
-    "mongodb/mongodb": "^1.17"
+    "wpackagist-theme/twentytwentyone": "@stable"
   },
   "extra": {
     "installer-paths": {
