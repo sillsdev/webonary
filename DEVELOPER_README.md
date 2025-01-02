@@ -208,3 +208,18 @@ mongoimport --config=/home/phil/.mongo/webonary_work.yml --db=webonary-work --co
 aws s3 cp --recursive --profile webonary s3://cloud-storage.webonary.org/lietuviukalba-espanol /home/phil/Downloads/webonary
 aws s3 cp --recursive --profile webonary /home/phil/Downloads/webonary s3://cloud-storage.webonary.work/lietuviukalba-espanol
 ```
+
+### Install redis on the server
+See <https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-22-04>
+```bash
+sudo apt update
+sudo apt install redis-server
+sudo nano /etc/redis/redis.conf
+# set the `supervised` value to `systemd`
+sudo systemctl restart redis.service
+sudo systemctl status redis
+redis-cli
+> ping
+# response should be PONG
+exit
+```

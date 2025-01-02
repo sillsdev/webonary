@@ -126,6 +126,7 @@ cp -r "${PROJ_DIR}/wp-resources/mu-plugins" "${RELEASE_DIR}/wordpress/wp-content
 cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
 cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
 cp "${PROJ_DIR}/wp-resources/clear-wordpress-cache.php" "${RELEASE_DIR}/wordpress/clear-wordpress-cache.php"
+cp "${PROJ_DIR}/wp-resources/object-cache.php" "${RELEASE_DIR}/wordpress/wp-content/object-cache.php"
 
 
 # copy files in the web root directory

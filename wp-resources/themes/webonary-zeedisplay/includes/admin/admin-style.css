@@ -31,7 +31,7 @@
     text-shadow: 2px 2px 2px #333333;
     display: block;
     padding: 10px 15px;
-        
+
 }
 #zee_admin_menu li a:hover {
 	color: #aaa;
@@ -63,14 +63,14 @@
 .form-table {
 	margin: 0 5px 20px 5px !important;
 }
-.form-table input[type=text]{ 
-	width: 495px; 
-}
-.form-table textarea{ 
+.form-table input[type=text]{
 	width: 495px;
 }
-.form-table .colorpickerfield { 
-	width: 70px !important; 
+.form-table textarea{
+	width: 495px;
+}
+.form-table .colorpickerfield {
+	width: 70px !important;
 }
 .zee_settings {
 	background: #fff;
@@ -83,4 +83,9 @@
 	border: 1px solid #ddd;
 	padding: 10px !important;
 	margin: 10px 0 !important;
+}
+
+/* fix buttons in Customize menu */
+.accordion-section-title button.accordion-trigger {
+  height: auto !important;
 }

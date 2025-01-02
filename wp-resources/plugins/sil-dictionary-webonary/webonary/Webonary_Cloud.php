@@ -393,20 +393,25 @@ class Webonary_Cloud
 			// return the name, if we found it
 			if (!empty($term->name) && $term->name != $code)
 				return $term->name;
-
-			// if the name is not set, set it now (happens on some old dictionaries updated to MongoDB)
-			if (!empty($default)) {
-				wp_update_term($term->term_id, self::$languageCategory, ['name' => $default, 'description' => $default]);
-				return $default;
-			}
 		}
 
-		// now look in the indexed languages
-		foreach($indexed_languages as $lang) {
+		// Check if this is a major language code
+		$name = locale_get_display_language($code, 'en');
 
-			if ($lang->language_code == $code && !empty($lang->language_name)) {
-				$name = $lang->language_name;
-				break;
+		// locale_get_display_language returns the locale code if it doesn't know the name
+		if ($name == $code)
+			$name = '';
+		else
+			$description = locale_get_display_name($code, 'en');
+
+		// now look in the indexed languages
+		if (empty($name)) {
+			foreach ($indexed_languages as $lang) {
+
+				if ($lang->language_code == $code && !empty($lang->language_name)) {
+					$name = $lang->language_name;
+					break;
+				}
 			}
 		}
 
@@ -414,19 +419,24 @@ class Webonary_Cloud
 		if (empty($name))
 			$name = $default;
 
-		// can use either locale_get_display_name or locale_get_display_language
-		if (empty($name))
-			$name = locale_get_display_name($code, 'en');
-
 		// if the locale was not found, it just returns the $code
 		if (empty($name))
 			$name = $code;
 
-		wp_insert_term(
-			$name,
-			self::$languageCategory,
-			array('description' => $name, 'slug' => $code)
-		);
+		if (empty($description))
+			$description = $name;
+
+		if (!empty($term)) {
+			if (!empty($name) && $name != $code)
+				wp_update_term($term->term_id, self::$languageCategory, ['name' => $name, 'description' => $description]);
+		}
+		else {
+			wp_insert_term(
+				$name,
+				self::$languageCategory,
+				array('description' => $description, 'slug' => $code)
+			);
+		}
 
 		return $name;
 	}
