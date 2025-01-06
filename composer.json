@@ -74,7 +74,6 @@
     "wpackagist-plugin/jquery-collapse-o-matic": "^1.7",
     "wpackagist-plugin/jquery-updater": "^3.6",
     "wpackagist-plugin/list-categories": "^0.4|^0.5",
-    "wpackagist-plugin/magazine-columns": "^1.0",
     "wpackagist-plugin/multisite-plugin-manager": "^3.1",
     "wpackagist-plugin/opml-importer": "^0.3",
     "wpackagist-plugin/osm": "^5.7|^6.0",

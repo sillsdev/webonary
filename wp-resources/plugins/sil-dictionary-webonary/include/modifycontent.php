@@ -2,6 +2,9 @@
 
 function addLangQuery($content): string
 {
+	if (empty($content))
+		return '';
+
 	$lang = $_GET['lang'] ?? false;
 
 	$doc = new DOMDocument();
@@ -10,7 +13,12 @@ function addLangQuery($content): string
 
 	// load the string into the DOM (this is your page's HTML), see below for more info
 	libxml_use_internal_errors(true);
-	$doc->loadHTML(iconv('UTF-8', 'UCS-4', trim($content)));
+	$content = iconv('UTF-8', 'UCS-4', trim($content));
+
+	if (empty($content))
+		return '';
+
+	$doc->loadHTML($content);
 
 	if ($lang !== false)
 		ProcessHrefs($doc, $lang);
