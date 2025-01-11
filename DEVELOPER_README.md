@@ -223,3 +223,69 @@ redis-cli
 # response should be PONG
 exit
 ```
+
+### To drop all "BACKUP" tables
+
+```bash
+sudo mysql -A
+
+USE webonary;
+
+SELECT CONCAT('DROP TABLE ', TABLE_SCHEMA, '.', TABLE_NAME, ';')
+FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%\_BACKUP\_%' AND TABLE_SCHEMA = 'webonary'
+INTO OUTFILE '/tmp/drop.sql';
+
+SOURCE /tmp/drop.sql;
+
+quit
+```
+
+
+### How to restore a site (site 433 in this example) from a backup
+
+1 - On webonary.org server:
+```bash
+sudo -i
+cd /mnt/backups/mysql/daily/webonary
+ls -lh
+cp webonary_2024-12-20_06h25m.Friday.sql.gz /tmp/webonary.sql.gz
+chown your_username:root /tmp/webonary.sql.gz
+exit
+```
+
+2 - On your computer:
+```bash
+rsync -avz --chmod=D2775,F664 -e 'ssh' sysops.webonary.org:/tmp/webonary.sql.gz ~/webonary.sql.gz
+cd ~/
+rm -f webonary.sql
+gunzip webonary.sql.gz
+mysql --defaults-file=~/.mysql/my.local.conf -A --default-character-set=utf8mb4 webonary
+
+mysql> USE webonary;
+mysql> SOURCE webonary.sql;
+mysql> quit
+
+mysqldump --defaults-file="~/.mysql/my.local.conf" webonary $(mysql --defaults-file="~/.mysql/my.local.conf" -D webonary -Bse "show tables like 'wp\_433_%'") > backup_433.sql
+rsync -avz --chmod=D2775,F664 -e 'ssh' ~/backup_433.sql sysops.webonary.org:/home/your_username/backup_433.sql
+```
+
+3 - On webonary.org server:
+```bash
+cd ~/
+
+sudo mysql -A
+
+mysql> USE webonary;
+mysql> SOURCE backup_433.sql;
+mysql> quit
+```
+
+4 - On your computer. Get the supporting files from webonary.work
+```bash
+rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' sysops.webonary.work:/var/www/sites/webonary/shared/blogs.dir/433 /var/www/projects/webonary/shared/blogs.dir/
+```
+
+5 - On your computer. Send supporting files to webonary.org
+```bash
+rsync -avz --chmod=D2775,F664 -e 'ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes' /var/www/projects/webonary/shared/blogs.dir/433 sysops.webonary.org:/var/www/sites/webonary/shared/blogs.dir/
+```
