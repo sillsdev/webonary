@@ -241,7 +241,7 @@ SQL;
 			$sql = <<<SQL
 SELECT COUNT(*)
 FROM wp_{$blog->blog_id}_posts AS p
-WHERE p.post_name = 'grammar' AND p.post_type = 'page'
+WHERE p.post_name = 'grammar' AND p.post_type = 'page' AND p.post_status = 'publish'
 SQL;
 			$has_grammar = intval($wpdb->get_var($sql) ?? 0);
 
