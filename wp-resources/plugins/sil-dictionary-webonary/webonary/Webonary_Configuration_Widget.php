@@ -887,7 +887,7 @@ HTML;
 
 		if (is_super_admin()) {
 			$red_text = '<span style="color:red;">Only remove letters, do not change/add letters!</span>';
-			$alphabet_out = sprintf('<input type="text" name="%1$s" id="%1$s" class="admin-alphabet" value="' . $alphabet . '">', $field_name);
+			$alphabet_out = sprintf('<input type="text" name="%1$s" id="%1$s" class="admin-alphabet" value="%2$s">', $field_name, $alphabet);
 		}
 		else {
 			$red_text = '';
