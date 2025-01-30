@@ -321,8 +321,8 @@ HTML;
 		$region_name = '';
 		if (isset($_POST['blog']))
 			$region_name = $app_post['regionName'];
-		elseif (isset($application['region-name']->field_value))
-			$region_name = $application['region-name']->field_value;
+		elseif (isset($application['region']->field_value))
+			$region_name = $application['region']->field_value;
 
 		return <<<HTML
 <tr class="form-required">
