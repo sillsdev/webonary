@@ -1,102 +1,5 @@
 
-let previous_count = 0;
-let same_count = 0;
 const gray_cover = '<div id="gray-cover" style="position:fixed;top:0;left:0;overflow:hidden;display:none;width:100%;height:100%;background-color:#000000;opacity:0.5;z-index:20000;filter:alpha(opacity=50);cursor: wait;"></div>';
-
-function GetCurrentIndexedCount() {
-
-    const count_span = jQuery('#sil-count-indexed');
-    if (count_span.length === 0)
-        return;
-
-    // webonary_ajax_obj is added by WordPress `wp_localize_script()`
-    // noinspection JSUnresolvedVariable
-    jQuery.ajax({
-        url: webonary_ajax_obj.ajax_url,
-        data: {action: 'getAjaxCurrentIndexedCount'},
-        type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-
-            const indexed = data.indexed;
-            const total = data.total;
-
-            if (indexed >= total)
-                window.location.reload();
-
-            if (indexed !== previous_count) {
-                previous_count = indexed;
-                same_count = 0;
-                jQuery('#timed-out-msg').hide();
-            }
-            else {
-                same_count++;
-
-                if (same_count > 5) {
-                    jQuery('#timed-out-msg').show();
-                }
-            }
-
-            count_span.html(indexed.toString());
-            let percent = Math.ceil((indexed / total) * 100);
-            if (percent > 100)
-                percent = 100;
-
-            jQuery('#sil-index-progress').val(percent.toString());
-            window.setTimeout(GetCurrentIndexedCount, 5000);
-        },
-        error: function(jqXHR, status, message) {
-            console.log(message);
-        }
-    });
-}
-
-function GetCurrentImportedCount() {
-
-    const count_span = jQuery('#sil-count-imported');
-    if (count_span.length === 0)
-        return;
-
-    // webonary_ajax_obj is added by WordPress `wp_localize_script()`
-    // noinspection JSUnresolvedVariable
-    jQuery.ajax({
-        url: webonary_ajax_obj.ajax_url,
-        data: {action: 'getAjaxCurrentImportedCount'},
-        type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-
-            const imported = data.imported;
-            if (imported < 0)
-                window.location.reload();
-            else
-                count_span.html(imported.toString());
-
-            window.setTimeout(GetCurrentImportedCount, 5000);
-        },
-        error: function(jqXHR, status, message) {
-            console.log(message);
-        }
-    });
-}
-
-function RestartIndexing() {
-
-    // webonary_ajax_obj is added by WordPress `wp_localize_script()`
-    // noinspection JSUnresolvedVariable
-    jQuery.ajax({
-        url: webonary_ajax_obj.ajax_url,
-        data: {action: 'getAjaxRestartIndexing'},
-        type: 'POST',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-        },
-        error: function(jqXHR, status, message) {
-            console.log(message);
-        }
-    });
-}
 
 function DisablePage() {
 
@@ -190,6 +93,101 @@ function DeleteWebonaryData() {
             EnablePage();
         }
     });
+}
+
+function ShowCopyMessage(site, message_id) {
+
+    let txt = document.getElementById('copy-data-progress');
+
+    switch (message_id) {
+        case 1:
+            txt.value = 'Copying database record for ' + site + '.';
+            break;
+
+        case 2:
+            txt.value += '\nCopying vernacular entries.';
+            break;
+
+        case 3:
+            txt.value += '\nCreating vernacular indexes.';
+            break;
+
+        case 4:
+            txt.value += '\nCopying reversal entries.';
+            break;
+
+        case 5:
+            txt.value += '\nFinished copying.';
+            break;
+
+        default:
+            txt.value += '\nUnknown command ' + message_id + '.';
+    }
+
+    txt.scrollTop = txt.scrollHeight;
+}
+
+function DoCopyAjax(site, step, callback) {
+
+    // noinspection JSUnresolvedReference
+    jQuery.ajax({
+        url: webonary_ajax_obj.ajax_url,
+        data: {action: 'postCopyMongoData', site: site, step: step},
+        type: 'POST',
+        dataType: 'json',
+        success: function(response) {
+
+            if (response.hasOwnProperty('error')) {
+                toastr.error(response.error);
+                return;
+            }
+
+            if (response.hasOwnProperty('msg'))
+                document.getElementById('copy-data-progress').value += '\n   ...' + response.msg;
+
+            if (callback)
+                callback(site);
+        },
+        error: function(jqXHR, status, message) {
+            let txt = document.getElementById('copy-data-progress');
+            txt.value += '\n' + message;
+        }
+    });
+}
+
+function CopyMongoData() {
+
+    let site = window.location.pathname
+        .replace(/^\/+/, '')
+        .replace(/\/+$/, '')
+        .split('/')[0];
+
+    ShowCopyMessage(site, 1);
+    DoCopyAjax(site, 1, CopyDataStep2);
+}
+
+function CopyDataStep2(site) {
+
+    ShowCopyMessage(site, 2);
+    DoCopyAjax(site, 2, CopyDataStep3);
+}
+
+function CopyDataStep3(site) {
+
+    ShowCopyMessage(site, 3);
+    DoCopyAjax(site, 3, CopyDataStep4);
+}
+
+function CopyDataStep4(site) {
+
+    ShowCopyMessage(site, 4);
+    DoCopyAjax(site, 4, CopyDataFinished);
+}
+
+function CopyDataFinished(site) {
+
+    ShowCopyMessage(site, 5);
+    toastr.success('Finished copying data to .work');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
