@@ -136,7 +136,7 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 			$class='class="active_page"';
 
 		if($requestName == 'semnumber')
-			$items[] = "<li $class ><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$page\"></a></li>";
+			$items[] = "<li $class ><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$page\">$page</a></li>";
 		else
 			$items[] = "<li $class><a href=\"$url&pagenr=$page\">$page</a></li>";
 
@@ -156,7 +156,7 @@ function displayPageNumbers($chosenLetter, $totalEntries, $entriesPerPage, $lang
 	{
 		$next_page_num = $currentPage + 1;
 		if($requestName == 'semnumber')
-			$items[] = "<li><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$next_page_num\"></a></li>";
+			$items[] = "<li><a href=\"?semdomain=$languageCode&semnumber=$chosenLetter&pagenr=$next_page_num\">$next_page</a></li>";
 		else
 			$items[] = "<li><a href=\" $url&pagenr=$next_page_num\">$next_page</a></li>";
 	}
