@@ -120,6 +120,33 @@ if ($is_excel) {
 
 get_header();
 
+$id = $id = get_the_ID();
+$post = get_post($id);
+$post_class = esc_attr(implode(' ', get_post_class('', $post)));
+$post_title = '';
+$post_content = '';
+
+if (!empty($post->post_title))
+	$post_title = "<h2 style='margin-bottom: 1rem'>$post->post_title</h2>";
+
+if (!empty($post->post_content))
+	$post_content = <<<HTML
+<div class="entry">
+  $post->post_content
+  <div class="clear"></div>
+</div>
+HTML;
+
+if (!empty($post_title) || !empty($post_content))
+	echo <<<HTML
+<div id="content">
+  <div id="page-$id" class="$post_class">
+    $post_title
+    $post_content
+  </div>
+</div>
+HTML;
+
 BuildTable();
 
 get_footer();

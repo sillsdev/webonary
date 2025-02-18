@@ -3,7 +3,10 @@
 // Load additional Predefined Color Schemes if Custom Colors is deactivated
 function themezee_load_custom_css() {
 	$options = get_option('themezee_options');
-	
+
+	if (empty($options))
+		return;
+
 	// Load PredefinedColor CSS
 	if ( !isset($options['themeZee_color_activate']) or $options['themeZee_color_activate'] != 'true' ) {
 		$cssfile = $options['themeZee_stylesheet'] <> '' ? $options['themeZee_stylesheet'] : 'standard.css';
