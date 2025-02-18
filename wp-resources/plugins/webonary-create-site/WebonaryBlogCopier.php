@@ -468,6 +468,29 @@ HTML;
 
 	}
 
+	private function get_first_and_last_name(array $app_post, array $application): string
+	{
+		if (isset($_POST['blog'])) {
+			$first_name = $app_post['first_name'] ?? '';
+			$last_name = $app_post['last_name'] ?? '';
+		}
+		else {
+			$first_name = $application['FirstName']->field_value ?? '';
+			$last_name = $application['LastName']->field_value ?? '';
+		}
+
+		return <<<HTML
+<tr class="form-required">
+	<th scope='row'>First Name</th>
+	<td><input name="blog[first_name]" type="text" value="$first_name"/></td>
+</tr>
+<tr class="form-required">
+	<th scope='row'>Last Name</th>
+	<td><input name="blog[last_name]" type="text" value="$last_name"/></td>
+</tr>
+HTML;
+	}
+
 	private function show_form($from_blog, array $blogs, $copy_id, array $application, $from_blog_id, array $appPost, $current_site, $copy_files): string
     {
 		$site_title = '';
@@ -489,22 +512,26 @@ HTML;
 		elseif (isset($application['from_email']->field_value))
             $admin_email = $application['from_email']->field_value;
 
-		$content = [];
 		if ($from_blog) {
-			$content[] = $this->get_from_blog_row($from_blog, $copy_id);
+			$content = [
+				$this->get_from_blog_row($from_blog, $copy_id)
+			];
 		}
 		else {
-			$content[] = $this->get_choose_site_to_copy($blogs, $application, $from_blog_id);
-			$content[] = $this->get_desired_url($appPost, $application, $current_site->path);
-			$content[] = $this->get_new_site_title($site_title);
-			$content[] = $this->get_ethnologue_code($appPost, $application);
-			$content[] = $this->get_country($appPost, $application);
-			$content[] = $this->get_region($appPost, $application);
-			$content[] = $this->get_copyright($appPost, $application);
-			$content[] = $this->get_publication_status($appPost, $application);
-			$content[] = $this->get_allow_comments($appPost, $application);
-			$content[] = $this->get_email($admin_email);
-			$content[] = $this->get_user_name($appPost, $application, $admin_email);
+			$content = [
+				$this->get_choose_site_to_copy($blogs, $application, $from_blog_id),
+				$this->get_desired_url($appPost, $application, $current_site->path),
+				$this->get_new_site_title($site_title),
+				$this->get_ethnologue_code($appPost, $application),
+				$this->get_country($appPost, $application),
+				$this->get_region($appPost, $application),
+				$this->get_copyright($appPost, $application),
+				$this->get_publication_status($appPost, $application),
+				$this->get_allow_comments($appPost, $application),
+				$this->get_email($admin_email),
+				$this->get_user_name($appPost, $application, $admin_email),
+				$this->get_first_and_last_name($appPost, $application)
+			];
 		}
 
 		$create_now_label = __( 'Create Now', $this->_domain );
@@ -605,7 +632,7 @@ SQL;
             if (empty($msg)) {
                 $applicationid = $_GET['applicationid'] ?? '';
 
-                $msg[] = $this->copy_blog($domain, $title, $from_blog_id, $copy_files, $appPost['email'], $appPost['username'], $applicationid, $appPost['ethnologueCode'], $appPost['countryName'], $appPost['copyright'], $appPost['comments'], $appPost['publicationStatus'], $appPost['regionName']);
+                $msg[] = $this->copy_blog($domain, $title, $from_blog_id, $copy_files, $applicationid, $appPost);
             }
         } else {
             $copy_files = true; // set the default for first page load
@@ -647,31 +674,31 @@ HTML;
 	 * @param $title
 	 * @param $from_blog_id
 	 * @param $copy_files
-	 * @param $email
-	 * @param $username
 	 * @param $applicationid
-	 * @param $ethnologueCode
-	 * @param $countryName
-	 * @param $copyright
-	 * @param $allow_comments
-	 * @param $publicationStatus
-	 * @param $regionName
+	 * @param $post_data
 	 * @return string
 	 * @noinspection SqlResolve
 	 */
-    public function copy_blog($domain, $title, $from_blog_id, $copy_files, $email, $username, $applicationid, $ethnologueCode, $countryName, $copyright, $allow_comments, $publicationStatus, $regionName): string
+	public function copy_blog($domain, $title, $from_blog_id, $copy_files, $applicationid, $post_data): string
     {
         global $wpdb, $current_site, $base;
 
 		// The user id of the user that will become the blog admin of the new blog.
 		//$user_id = apply_filters('copy_blog_user_id', $user_id, $from_blog_id);
-		$user_id = $wpdb->get_var($wpdb->prepare('SELECT ID FROM wp_users WHERE user_login = %s', $username));
+		$user_id = $wpdb->get_var($wpdb->prepare('SELECT ID FROM wp_users WHERE user_login = %s', $post_data['username']));
 
 		$password = 'Your existing password';
 		if ($user_id == NULL) {
-			do_action('pre_network_site_new_created_user', $email);
+			do_action('pre_network_site_new_created_user', $post_data['email']);
 			$password = wp_generate_password(12, false);
-			$user_id = wpmu_create_user($username, $password, $email);
+			$user_id = wpmu_create_user($post_data['username'], $password, $post_data['email']);
+
+			wp_update_user([
+				'ID' => $user_id, // this is the ID of the user you want to update.
+				'first_name' => $post_data['first_name'],
+				'last_name' => $post_data['last_name'],
+			]);
+
 			do_action('network_site_new_created_user', $user_id);
 		}
 
@@ -717,7 +744,7 @@ HTML;
 				$user->set_role('editor');
 
 				//Set site admin email address (comments will be sent to that email)
-				$sql = "UPDATE  $wpdb->options SET option_value = '" . $email . "' WHERE option_name = 'admin_email'";
+				$sql = "UPDATE  $wpdb->options SET option_value = '" . $post_data['email'] . "' WHERE option_name = 'admin_email'";
 				$wpdb->query($sql);
 
 				//Sets domain to https
@@ -743,7 +770,7 @@ TXT;
 					'active' => true,
 					'subject' => '[text* your-subject]',
 					'sender' => '[your-name] <wordpress@webonary.org>',
-					'recipient' => $email,
+					'recipient' => $post_data['email'],
 					'body' => $body,
 					'additional_headers' => 'Reply-To: [your-email]',
 					'attachments' => '',
@@ -760,26 +787,27 @@ TXT;
 				update_option('themezee_options', $themeZeeOpt);
 
 				//Set copyright holder
-				update_option('copyrightHolder', $copyright);
+				update_option('copyrightHolder', $post_data['copyright']);
 
 				//Set the ethnologue menu link
-				$ethnologue_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.ethnologue.com/language');
+				$ethnologue_link_set = $this->update_link($wpdb, $post_data['ethnologueCode'], 'www.ethnologue.com/language');
 
 				//Set Bibliography Link
-				$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/resources/search/language');
+				$bibliography_link_set = $this->update_link($wpdb, $post_data['ethnologueCode'], 'www.sil.org/resources/search/language');
 				if (!$bibliography_link_set)
-					$bibliography_link_set = $this->update_link($wpdb, $ethnologueCode, 'www.sil.org/search/node', 'www.sil.org/resources/search/language');
+					$bibliography_link_set = $this->update_link($wpdb, $post_data['ethnologueCode'], 'www.sil.org/search/node', 'www.sil.org/resources/search/language');
 
 				//Set country name
-				update_option('countryName', $countryName);
+				update_option('countryName', $post_data['countryName']);
 
 				//Set region name
-				update_option('regionName', $regionName);
+				update_option('regionName', $post_data['regionName']);
 
 				//Set publication status
-				update_option('publicationStatus', $publicationStatus);
+				update_option('publicationStatus', $post_data['publicationStatus']);
 
 				//Set allow comments
+				$allow_comments = $post_data['comments'];
 				if (strtolower($allow_comments) == 'yes') {
 					update_option('default_comment_status', 'open');
 				} else {
@@ -792,14 +820,14 @@ TXT;
 
 				//20200207 chungh: Webonary.org reconfig to use subdirectory
 				$msg[] = sprintf(__('Copied: %s in %s seconds', $this->_domain), '<a href="' . $site_url . '" target="_blank">' . $title . '</a>', number_format_i18n(timer_stop()));
-				$msg[] = "- Welcome email sent to: $email";
+				$msg[] = "- Welcome email sent to: {$post_data['email']}";
 				$msg[] = '- Set this email as contact person for contact form.';
 
 				if ($ethnologue_link_set)
-					$msg[] = "- Set ethnologue link to https://www.ethnologue.com/language/$ethnologueCode";
+					$msg[] = "- Set ethnologue link to https://www.ethnologue.com/language/{$post_data['ethnologueCode']}";
 
 				if ($bibliography_link_set)
-					$msg[] = "- Set bibliography link to https://www.sil.org/resources/search/language/$ethnologueCode";
+					$msg[] = "- Set bibliography link to https://www.sil.org/resources/search/language/{$post_data['ethnologueCode']}";
 
 				$msg[] = '- Set the copyright text in footer';
 				$msg[] = '- Set the Publication status';
