@@ -20,6 +20,25 @@ foreach ( (array) $cats as $cat ) {
 			'hide_empty' => false, 'exclude' => "2,8"
 	) );
 
+	// sort countries that start with characters that are not letters or number at the bottom
+	usort($countries, function($a, $b) {
+
+		$a_name = $a->name;
+		$b_name = $b->name;
+
+		// unicode character 129769 (U+1FAE9) is "face with bags under eyes"
+		$compare = [33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,58,59,60,61,62,63,64,.91,92,93,94,95,96,123,124,125,126];
+		$test = mb_ord($a_name[0]);
+		if (in_array($test, $compare))
+			$a_name = mb_chr(129769) . $a_name;
+
+		$test = mb_ord($b_name[0]);
+		if (in_array($test, $compare))
+			$b_name = mb_chr(129769) . $b_name;
+
+		return $a_name <=> $b_name;
+	});
+
 	$countryOutput = '';
 	foreach($countries as $country)
 	{
