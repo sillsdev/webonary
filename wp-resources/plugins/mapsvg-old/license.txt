@@ -1,7 +1,0 @@
-You must purchase Regular or Extended license to use MapSVG plugin.
-
-Plugin's page @ CodeCanyon:
-http://codecanyon.net/item/mapsvg-interactive-vector-maps/2547255
-
-Licenses:
-http://codecanyon.net/licenses/regular_extended
