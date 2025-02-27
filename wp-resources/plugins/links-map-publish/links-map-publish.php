@@ -89,22 +89,22 @@ function add_links_to_map()
 
     <form id="map-coordinates-form" onsubmit="return false;">
         <h3>Markers not yet set</h3>
-        
+
         <table>
             $has_not_str
         </table>
-        
+
         <br>
-        <button type="button" onclick="saveMapCoordinates();">Save</button>
+        <button type="button" onclick="saveMapCoordinates();">Save and Rebuild Map</button>
         <br>
         <h3>Existing Markers</h3>
-        
+
         <table>
             $has_str
         </table>
-        
+
         <br><br><br>
-        <button type="button" onclick="saveMapCoordinates();">Save</button>
+        <button type="button" onclick="saveMapCoordinates();">Save and Rebuild Map</button>
     </form>
 </div>
 <script type="text/javascript">
@@ -114,23 +114,32 @@ function add_links_to_map()
         jQuery(evt.target).closest('tr')[0]['dataset'].changed = '1';
     });
 
+	jQuery('button.delete-link').on('click', (evt) => {
+
+		let jq_tr = jQuery(evt.target).closest('tr');
+		jq_tr[0]['dataset'].changed = '1';
+		jq_tr.find('input').val('DELETE').attr('disabled', true);
+		evt.target.disabled = true;
+	})
+
+
     function saveMapCoordinates() {
-        
+
         // get the values that have changed
         const elements = document.querySelectorAll("[data-changed='1']");
-        
+
         if (elements.length === 0) {
             toastr.info('Nothing to save.');
             return;
         }
-        
+
         // collect the data for changed items
         let changed = [];
-        
+
         elements.forEach(tr => {
-            
+
             let jqtr = jQuery(tr);
-            
+
             changed.push(
                 {
                     link_id: jqtr.data('linkId'),
@@ -151,14 +160,14 @@ function add_links_to_map()
 
             // check for error condition
             if ('success' in data && data['success'] === 'OK') {
-                
+
                 // reload the page
                 location.reload();
                 return;
             }
 
             toastr.warning('Unexpected response. Data may not be saved.')
-            
+
         }).fail(function () {
             toastr.warning('Failed. Data may not be saved.')
         });
@@ -186,7 +195,7 @@ FROM wp_links
 WHERE slug = 'available-dictionaries'
 SQL;
 
-    if($hasCoordinates)
+    if ($hasCoordinates)
         $sql .= '  AND lat IS NOT NULL' . PHP_EOL;
     else
         $sql .= '  AND lat IS NULL' . PHP_EOL;
@@ -202,7 +211,7 @@ SQL;
 <td><a href="%1$s" target="_blank">%2$s</a></td>
 <td>Lat: <input class="coordinate lat" type="text" name="lat[]" value="%5$s"></td>
 <td>Lon: <input class="coordinate lon" type="text" name="lon[]" value="%6$s"></td>
-<td><a href="https://www.whatsmygps.com/index.php?lat=%5$s&lng=%6$s" target="_blank">Find coordinates</a></td>
+<td><a href="https://www.whatsmygps.com/index.php?lat=%5$s&lng=%6$s" target="_blank">Find coordinates</a>%8$s</td>
 </tr>
 HTML;
 
@@ -244,12 +253,18 @@ HTML;
 			$lon = '';
 		}
 
+		if ($hasCoordinates) {
+			$delete = '&emsp;<button type="button" class="delete-link">Delete</button>';
+		}
+		else {
+			$delete = '';
+		}
 		if (!$hasCoordinates) {
 			if ($lat && $lon)
 				$changed = 1;
 		}
 
-        $values[] = sprintf($template, $link->link_url, $link->link_name, $link->link_id, $link->markerid, $lat, $lon, $changed);
+        $values[] = sprintf($template, $link->link_url, $link->link_name, $link->link_id, $link->markerid, $lat, $lon, $changed, $delete);
 	}
 
     return $values;
@@ -306,7 +321,15 @@ function saveMapCoordinates()
 			$lat = filterCoordinate($item['lat']);
 			$lon = filterCoordinate($item['lon']);
 
-			if ($lat != '' && $lon != '')
+			if ($item['lat'] == 'DELETE' && $item['lon'] == 'DELETE') {
+
+				$sql = <<<SQL
+DELETE FROM wp_map WHERE markerid = %d
+SQL;
+				$sql = $wpdb->prepare($sql, [$marker_id]);
+				$wpdb->query($sql);
+			}
+			elseif ($lat != '' && $lon != '')
             {
 				if ($marker_id > 0)
 				{
