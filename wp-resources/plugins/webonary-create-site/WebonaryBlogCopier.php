@@ -438,21 +438,28 @@ HTML;
 
         $label = __('Username', $this->_domain);
 
-        $username = '';
         if (isset($_POST['blog'])) {
             $username = $appPost['username'];
-        } elseif (isset($application['from_name']->field_value)) {
-            $username = $wpdb->get_var("SELECT user_login FROM wp_users WHERE user_email = '" . $admin_email . "'");
-
-            if ($username == NULL) {
-                $username = str_replace(' ', '', strtolower($application['from_name']->field_value));
-
-                $otherEmail = $wpdb->get_var("SELECT user_email FROM wp_users WHERE user_login = '" . $username . "'");
-            }
         }
+		else {
+			$username = $wpdb->get_var("SELECT user_login FROM wp_users WHERE user_email = '" . $admin_email . "'");
 
-		if (!empty($otherEmail))
-			$msg = sprintf('<p style="color: #aa0000">This username already exists with another email address: %s<br>Please change the username.</p>', $otherEmail);
+			if (empty($username)) {
+
+				$first_name = $application['FirstName']->field_value ?? '';
+				$last_name = $application['LastName']->field_value ?? '';
+				$username = str_replace(' ', '', strtolower($first_name . $last_name));
+
+				if (empty($username))
+					$username = str_replace(' ', '', strtolower(explode('@', $admin_email)[0]));
+
+				if (!empty($username))
+					$other_email = $wpdb->get_var("SELECT user_email FROM wp_users WHERE user_login = '" . $username . "'");
+			}
+		}
+
+		if (!empty($other_email))
+			$msg = sprintf('<p style="color: #aa0000">This username already exists with another email address: %s<br>Please change the username.</p>', $other_email);
 		else
 			$msg = '';
 
