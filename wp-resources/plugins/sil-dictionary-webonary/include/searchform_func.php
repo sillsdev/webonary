@@ -21,6 +21,8 @@ function webonary_searchform($use_li = false): void
 	if(get_option('noSearch') == 1)
 		return;
 
+	$language_dropdown = Webonary_Languages::GetLanguageDropdown();
+
 	$whole_words_checked = $search_cookie->match_whole_word ? 'checked' : '';
 	$accents_checked = $search_cookie->match_accents ? 'checked' : '';
 

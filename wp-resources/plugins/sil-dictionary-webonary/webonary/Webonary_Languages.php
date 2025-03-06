@@ -55,15 +55,26 @@ HTML;
 		if (!is_null(self::$language_entries))
 			return self::$language_entries;
 
+		$languages = get_option('cloud_languages');
+		if (!empty($languages['timestamp'])) {
+			$time_diff = time() - intval($languages['timestamp']);
+
+			if ($time_diff < (86400 * 2)) {
+				self::$language_entries = $languages['entries'];
+				return self::$language_entries;
+			}
+		}
+
 		$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
 
 		// get the languages used in senses
-		self::$language_entries = array_map(
+		$def_gloss_langs = array_map(
 			function($lang) {
 				/** @var ILanguageEntryCount $lang_entry */
 				$lang_entry = new stdClass();
 				$lang_entry->language_code = $lang;
 				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang);
+				$lang_entry->total_indexed = 0;
 				return $lang_entry;
 			},
 			array_filter(
@@ -74,12 +85,45 @@ HTML;
 			)
 		);
 
+		// get the reversal languages
+		$reversal_langs = array_map(
+			function($lang) {
+				/** @var ILanguageEntryCount $lang_entry */
+				$lang_entry = new stdClass();
+				$lang_entry->language_code = $lang->lang;
+				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang->lang, $lang->title);
+				$lang_entry->total_indexed = $lang->entriesCount ?? 0;
+				return $lang_entry;
+			},
+			array_filter($dictionary->reversalLanguages, function ($v) use ($dictionary) {
+				return !empty($v->lang) && $v->lang != $dictionary->mainLanguage->lang;
+			})
+		);
+
 		// prepend the main language to the list
 		/** @var ILanguageEntryCount $main_entry */
 		$main_entry = new stdClass();
 		$main_entry->language_code = $dictionary->mainLanguage->lang;
 		$main_entry->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-		array_unshift(self::$language_entries, $main_entry);
+		$main_entry->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
+
+		self::$language_entries = [$main_entry->language_code => $main_entry];
+
+		foreach ($def_gloss_langs as $lang) {
+			if (!isset(self::$language_entries[$lang->language_code]))
+				self::$language_entries[$lang->language_code] = $lang;
+		}
+
+		foreach ($reversal_langs as $lang) {
+			if (!isset(self::$language_entries[$lang->language_code]))
+				self::$language_entries[$lang->language_code] = $lang;
+		}
+
+		$languages = [
+			'timestamp' => time(),
+			'entries' => self::$language_entries
+		];
+		update_option('cloud_languages', $languages);
 
 		return self::$language_entries;
 	}
