@@ -432,7 +432,7 @@ SQL;
 
 			// cache the list of used domains
 			$dictionary->usedSemanticDomains = $domains;
-			update_option('dictionary', $dictionary);
+			Webonary_Cache::Save('dictionary', $dictionary->_id, $dictionary);
 		}
 
 		$selected_domains = Webonary_Info::getSelectedSemanticDomains();

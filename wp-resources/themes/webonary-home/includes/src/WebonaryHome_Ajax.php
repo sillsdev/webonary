@@ -142,7 +142,7 @@ SQL;
 				$fields[] = 'Cloud';
 
 				$dictionary_id = str_replace('/', '', $blog_details->path);
-				$dictionary = get_option('dictionary', null) ?? Webonary_Cloud::getDictionaryById($dictionary_id);
+				$dictionary = Webonary_Cache::Get('dictionary', $dictionary_id) ?? Webonary_Cloud::getDictionaryById($dictionary_id);
 				if (is_null($dictionary)) {
 					$num_posts = '';
 					$last_edit_date = '';
