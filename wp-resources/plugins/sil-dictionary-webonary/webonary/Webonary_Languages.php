@@ -50,6 +50,9 @@ HTML;
 			return self::GetWordpressLanguageEntries();
 	}
 
+	/**
+	 * @return array|ILanguageEntryCount[]
+	 */
 	private static function GetCloudLanguageEntries(): array
 	{
 		if (!is_null(self::$language_entries))
@@ -57,13 +60,20 @@ HTML;
 
 		$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
 
+		$cached_languages = Webonary_Cache::Get('cloud_languages', $dictionary->_id);
+		if (is_array($cached_languages)) {
+			self::$language_entries = $cached_languages;
+			return self::$language_entries;
+		}
+
 		// get the languages used in senses
-		self::$language_entries = array_map(
+		$def_gloss_languages = array_map(
 			function($lang) {
 				/** @var ILanguageEntryCount $lang_entry */
 				$lang_entry = new stdClass();
 				$lang_entry->language_code = $lang;
 				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang);
+				$lang_entry->total_indexed = 0;
 				return $lang_entry;
 			},
 			array_filter(
@@ -74,12 +84,46 @@ HTML;
 			)
 		);
 
+		// get the reversal languages
+		$reversal_languages = array_map(
+			function($lang) {
+				/** @var ILanguageEntryCount $lang_entry */
+				$lang_entry = new stdClass();
+				$lang_entry->language_code = $lang->lang;
+				$lang_entry->language_name = Webonary_Cloud::getLanguageName($lang->lang, $lang->title);
+				$lang_entry->total_indexed = $lang->entriesCount ?? 0;
+				return $lang_entry;
+			},
+			array_filter($dictionary->reversalLanguages, function ($v) use ($dictionary) {
+				return !empty($v->lang) && $v->lang != $dictionary->mainLanguage->lang;
+			})
+		);
+
 		// prepend the main language to the list
 		/** @var ILanguageEntryCount $main_entry */
 		$main_entry = new stdClass();
 		$main_entry->language_code = $dictionary->mainLanguage->lang;
 		$main_entry->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-		array_unshift(self::$language_entries, $main_entry);
+		$main_entry->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
+
+		self::$language_entries = [$main_entry->language_code => $main_entry];
+
+		foreach ($def_gloss_languages as $lang) {
+			if (!isset(self::$language_entries[$lang->language_code]))
+				self::$language_entries[$lang->language_code] = $lang;
+		}
+
+		foreach ($reversal_languages as $lang) {
+			if (!isset(self::$language_entries[$lang->language_code]))
+				self::$language_entries[$lang->language_code] = $lang;
+		}
+
+		$languages = [
+			'timestamp' => time(),
+			'entries' => self::$language_entries
+		];
+
+		Webonary_Cache::Save('cloud_languages', $dictionary->_id, $languages);
 
 		return self::$language_entries;
 	}
