@@ -39,7 +39,7 @@ class Webonary_Cloud
 		return is_object($entry) && isset($entry->_id);
 	}
 
-	private static function remoteGetJson($path, $apiParams = array())
+	private static function remoteGetJson($path, $dictionary_id, $apiParams = array())
 	{
 		if (!defined('WEBONARY_CLOUD_API_URL')) {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
@@ -79,9 +79,9 @@ class Webonary_Cloud
 		self::logDebugMessage('Getting results from ' . $url);
 
 		// check the cache first
-		$found = false;
-		$cached_val = wp_cache_get($url, 'webonary', false, $found);
-		if ($found !== false) {
+		$hashed_url = hash('haval192,3', $url);
+		$cached_val = Webonary_Cache::Get($hashed_url, $dictionary_id);
+		if (!is_null($cached_val)) {
 			self::logDebugMessage('Returned cached results.');
 			return $cached_val;
 		}
@@ -100,7 +100,7 @@ class Webonary_Cloud
 		$body = wp_remote_retrieve_body($response);
 		$returned_val = json_decode($body);
 
-		wp_cache_set($url, $returned_val, 'webonary');
+		Webonary_Cache::Save($hashed_url, $dictionary_id, $returned_val);
 
 		self::logDebugMessage('Returned cloud results.');
 
@@ -452,18 +452,20 @@ class Webonary_Cloud
 	 */
 	public static function cleanLanguageList(array $current_slugs): void
 	{
+		$lower_slugs = array_map('strtolower', $current_slugs);
+
 		/** @var WP_Term[] $terms */
 		$terms = get_terms(
 			[
 				'get' => 'all',
 				'taxonomy' => self::$languageCategory,
 				'orderby' => 'none',
-				'suppress_filter' =>1
+				'suppress_filter' => 1
 			]
 		);
 
-		$terms = array_filter($terms, function ($term) use ($current_slugs) {
-			return (!in_array($term->slug, $current_slugs));
+		$terms = array_filter($terms, function ($term) use ($lower_slugs) {
+			return (!in_array(strtolower($term->slug), $lower_slugs));
 		});
 
 		foreach ($terms as $term) {
@@ -478,9 +480,9 @@ class Webonary_Cloud
 	public static function getDictionaryById(string $dictionaryId): ICloudDictionary|stdClass|null
 	{
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
-		$response = self::remoteGetJson($request);
+		$response = self::remoteGetJson($request, $dictionaryId);
 		if (self::isValidDictionary($response)) {
-			update_option('dictionary', $response);
+			Webonary_Cache::Save('dictionary', $dictionaryId, $response);
 			return $response;
 		}
 
@@ -495,7 +497,7 @@ class Webonary_Cloud
 			if (!is_null(self::$dictionary))
 				return self::$dictionary;
 
-			$dictionary = get_option('dictionary');
+			$dictionary = Webonary_Cache::Get('dictionary', self::getBlogDictionaryId());
 			if (empty($dictionary)) {
 				$dictionary = self::getDictionaryById(self::getBlogDictionaryId());
 			}
@@ -508,7 +510,7 @@ class Webonary_Cloud
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams['countTotalOnly'] = '1';
-		$response = self::remoteGetJson($request, $apiParams);
+		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
 		return $response->count ?? 0;
 	}
 
@@ -518,7 +520,7 @@ class Webonary_Cloud
 	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
-		$response = self::remoteGetJson($request, $apiParams);
+		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
 		if (empty($response))
 			return [];
 
@@ -539,7 +541,7 @@ class Webonary_Cloud
 	public static function getEntriesAsReversals($apiParams): array
 	{
 		$request = self::$doBrowseByLetter . '/' . self::getBlogDictionaryId();
-		$response = self::remoteGetJson($request, $apiParams);
+		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
 		if (empty($response))
 			return [];
 
@@ -560,7 +562,7 @@ class Webonary_Cloud
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams = array('guid' => $id);
-		$entry = self::remoteGetJson($request, $apiParams);
+		$entry = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
 		if (empty($entry)) {
 			status_header(404);
 			nocache_headers();
@@ -743,7 +745,7 @@ class Webonary_Cloud
 	public static function resetDictionary($dictionaryId): array
 	{
 		// Since dictionary is persisted in options, unset it first
-		delete_option('dictionary');
+		Webonary_Cache::Delete('dictionary', self::getBlogDictionaryId());
 		self::$dictionary = null;
 		self::$dictionary_id = $dictionaryId;
 
@@ -859,7 +861,7 @@ class Webonary_Cloud
 
 		// first check for a successful response
 		if (isset($response->Content->deleteDictionaryCount)) {
-			delete_option('dictionary');
+			Webonary_Cache::Delete('dictionary', self::getBlogDictionaryId());
 			return ['deleted' => 1, 'msg' => __('Finished deleting Webonary data', 'sil_dictionary')];
 		}
 
