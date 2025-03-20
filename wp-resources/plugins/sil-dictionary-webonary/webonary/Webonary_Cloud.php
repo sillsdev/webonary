@@ -745,7 +745,7 @@ class Webonary_Cloud
 	public static function resetDictionary($dictionaryId): array
 	{
 		// Since dictionary is persisted in options, unset it first
-		Webonary_Cache::Delete('dictionary', self::getBlogDictionaryId());
+		Webonary_Cache::DeleteAllForDictionary(self::getBlogDictionaryId());
 		self::$dictionary = null;
 		self::$dictionary_id = $dictionaryId;
 
@@ -861,7 +861,7 @@ class Webonary_Cloud
 
 		// first check for a successful response
 		if (isset($response->Content->deleteDictionaryCount)) {
-			Webonary_Cache::Delete('dictionary', self::getBlogDictionaryId());
+			Webonary_Cache::DeleteAllForDictionary(self::getBlogDictionaryId());
 			return ['deleted' => 1, 'msg' => __('Finished deleting Webonary data', 'sil_dictionary')];
 		}
 
