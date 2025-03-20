@@ -62,4 +62,27 @@ class Webonary_Cache
 		if (is_file($key))
 			unlink($key);
 	}
+
+	public static function DeleteAllForDictionary(string $site_name): void
+	{
+		self::ClearDirectory(self::GetCacheDir($site_name), false);
+	}
+
+	private static function ClearDirectory(string $dirName, bool $deleteDirectoryAlso): void
+	{
+		$structure = glob(rtrim($dirName, "/") . '/*');
+
+		if (is_array($structure)) {
+			foreach ($structure as $file) {
+
+				if (is_dir($file))
+					self::ClearDirectory($file, true);
+				elseif (is_file($file))
+					unlink($file);
+			}
+		}
+
+		if ($deleteDirectoryAlso)
+			rmdir($dirName);
+	}
 }
