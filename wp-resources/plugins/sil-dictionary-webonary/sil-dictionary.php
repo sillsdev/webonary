@@ -226,3 +226,5 @@ add_filter(
 		return $out;
 	}
 );
+
+add_action('network_admin_menu', 'Webonary_Admin::AddLanguageProblemMenuItem');
