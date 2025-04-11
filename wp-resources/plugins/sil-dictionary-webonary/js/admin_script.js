@@ -213,4 +213,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // NOTE: these timers are no longer needed because this import method no longer works
 //    window.setTimeout(GetCurrentImportedCount, 5000);
 //    window.setTimeout(GetCurrentIndexedCount, 5000);
+
+    jQuery(($) => {
+
+        // after a term has been added via AJAX
+        $(document).ajaxComplete(() => {
+            jQuery('#hide_language.new-language').prop('checked', false);
+        });
+    });
 });
