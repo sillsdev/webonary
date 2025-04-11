@@ -305,3 +305,4 @@ function ajax_grammar_sites(): void
 	exit();
 }
 add_action('wp_ajax_nopriv_getAjaxGrammarSites', 'ajax_grammar_sites');
+add_action('wp_ajax_getAjaxGrammarSites', 'ajax_grammar_sites');
