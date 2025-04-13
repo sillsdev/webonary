@@ -15,6 +15,9 @@ class Webonary_Cloud
 	/** @var ICloudSemanticDomain[]|null  */
 	private static ?array $semantic_domains = null;
 
+	private static ILanguageEntryCount|stdClass|null $main_language = null;
+	private static ?array $language_list = null;
+
 	public static string $doBrowseByLetter = 'browse/entry';
 
 	public static string $doGetDictionary = 'get/dictionary';
@@ -1132,5 +1135,113 @@ class Webonary_Cloud
 		$client = new Client($uri, [], ['serverApi' => $api_version]);
 
 		return $client->$catalog;
+	}
+
+	/**
+	 * @param ICloudDictionary|stdClass $dictionary
+	 * @return ILanguageEntryCount[]
+	 */
+	public static function GetLanguageList(ICloudDictionary|stdClass $dictionary): array
+	{
+		// did we do this already?
+		if (!is_null(self::$language_list))
+			return self::$language_list;
+
+		// is this value cached?
+		$cache_key = 'language-list';
+		$cached_val = Webonary_Cache::Get($cache_key, $dictionary->_id);
+		if (!is_null($cached_val)) {
+			self::$language_list = $cached_val;
+			return self::$language_list;
+		}
+
+		$main_language = self::GetMainLanguage($dictionary);
+
+		$language_list[strtolower($main_language->language_code)] = $main_language;
+
+		/** @var ICloudLanguage[] $reversalLanguages */
+		$reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
+			return !empty($v->lang);
+		}));
+
+		foreach ($reversalLanguages as $reversal) {
+
+			$key = strtolower($reversal->lang);
+			if (array_key_exists($key, $language_list))
+				continue;
+
+			/** @var ILanguageEntryCount $lang */
+			$lang = new stdClass();
+			$lang->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title, $language_list);
+			$lang->language_code = $reversal->lang;
+			$lang->total_indexed = $reversal->entriesCount ?? 0;
+			$lang->is_main = false;
+			$lang->is_reversal = true;
+			$language_list[$key] = $lang;
+		}
+
+		$other_search_languages = array_filter($dictionary->definitionOrGlossLangs, function($search_lang) use($main_language) {
+			return $search_lang != $main_language->language_code;
+		});
+
+		foreach ($other_search_languages as $search_lang) {
+
+			$key = strtolower($search_lang);
+			if (array_key_exists($key, $language_list))
+				continue;
+
+			$localized_name = __(Webonary_Cloud::getLanguageName($search_lang, '', $language_list));
+
+			/** @var ILanguageEntryCount $lang */
+			$lang = new stdClass();
+			$lang->language_name = $localized_name;
+			$lang->language_code = $search_lang;
+			$lang->total_indexed = 0;
+			$lang->is_main = false;
+			$lang->is_reversal = false;
+			$language_list[$key] = $lang;
+		}
+
+		// mark hidden languages
+		foreach ($language_list as $lang) {
+
+			$term = get_term_by('slug', $lang->language_code, self::$languageCategory);
+			$text_field_hidden = get_term_meta($term->term_id, 'hide_language', true);
+			$lang->hidden = !empty($text_field_hidden);
+		}
+
+		self::$language_list = $language_list;
+
+		Webonary_Cache::Save($cache_key, $dictionary->_id, self::$language_list);
+
+		return self::$language_list;
+	}
+
+	/**
+	 * @param ICloudDictionary|stdClass $dictionary
+	 * @return ILanguageEntryCount|stdClass
+	 */
+	public static function GetMainLanguage(ICloudDictionary|stdClass $dictionary): ILanguageEntryCount|stdClass
+	{
+		if (!is_null(self::$main_language))
+			return self::$main_language;
+
+		$cache_key = 'main-language';
+		$cached_val = Webonary_Cache::Get($cache_key, $dictionary->_id);
+		if (!is_null($cached_val)) {
+			self::$main_language = $cached_val;
+			return self::$main_language;
+		}
+
+		self::$main_language = new stdClass();
+		self::$main_language->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
+		self::$main_language->language_code = $dictionary->mainLanguage->lang;
+		self::$main_language->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
+		self::$main_language->is_main = true;
+		self::$main_language->is_reversal = false;
+
+		Webonary_Cache::Save($cache_key, $dictionary->_id, self::$main_language);
+
+		return self::$main_language;
 	}
 }
