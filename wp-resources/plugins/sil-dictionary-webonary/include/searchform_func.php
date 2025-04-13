@@ -64,68 +64,29 @@ function webonary_searchform($use_li = false): void
 			}
 
 			// set up dictionary info
-			/** @var ILanguageEntryCount $mainIndexed */
-			$mainIndexed = new stdClass();
-		    $mainIndexed->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-			$mainIndexed->language_code = $dictionary->mainLanguage->lang;
-			$mainIndexed->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
-			$arrIndexed[] = $mainIndexed;
+			$languages = Webonary_Cloud::GetLanguageList($dictionary);
 
-            $dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
-	            return !empty($v->lang);
-            }));
+			/** @noinspection HtmlUnknownAttribute */
+			$option_template = '<option value="%s" %s>%s</option>' . PHP_EOL;
 
-			foreach ($dictionary->reversalLanguages as $reversal) {
+			foreach ($languages as $language) {
 
-				/** @var ILanguageEntryCount $indexed */
-				$indexed = new stdClass();
-				$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
-				$indexed->language_code = $reversal->lang;
-				$indexed->total_indexed = $reversal->entriesCount ?? 0;
-				$arrIndexed[] = $indexed;
-			}
+				if ($language->hidden)
+					continue;
 
-			// set up languages dropdown options
-			$other_search_languages = array_filter($dictionary->definitionOrGlossLangs, function($lang) use($dictionary) {
-				return $lang != $dictionary->mainLanguage->lang;
-			});
-
-			/** @var ILanguageEntryCount[] $other_languages */
-			$other_languages = [];
-
-			if (count($other_search_languages)) {
-
-				/** @noinspection HtmlUnknownAttribute */
-				$option_template = '<option value="%s" %s>%s</option>' . PHP_EOL;
-
-				// add the main language
-				$selected = ($dictionary->mainLanguage->lang === $selected_language) ? 'selected' : '';
-				$localized_name = __($mainIndexed->language_name);
-				$language_dropdown_options .= sprintf($option_template, $dictionary->mainLanguage->lang, $selected, $localized_name);
-
-				// add the reversal languages
-				foreach ($other_search_languages as $lang) {
-
-					$selected = ($lang === $selected_language) ? 'selected' : '';
-					$localized_name = __(Webonary_Cloud::getLanguageName($lang, '', $arrIndexed));
-					$language_dropdown_options .= sprintf($option_template, $lang, $selected, $localized_name);
-
-					/** @var ILanguageEntryCount $other_lang */
-					$other_lang = new stdClass();
-					$other_lang->language_name = $localized_name;
-					$other_lang->language_code = $lang;
-					$other_lang->total_indexed = 0;
-					$other_languages[] = $other_lang;
-				}
+				$selected = ($language->language_code == $selected_language) ? 'selected' : '';
+				$language_dropdown_options .= sprintf($option_template, $language->language_code, $selected, $language->language_name);
 			}
 
 			// get a list of the unique language codes used
-			$lang_codes = array_values(array_unique(array_column(array_merge($arrIndexed, $other_languages), 'language_code')));
+			$lang_codes = array_values(array_unique(array_column($languages, 'language_code')));
 
 			// clean up list of languages
 			Webonary_Cloud::cleanLanguageList($lang_codes);
 
 			$lastEditDate = $dictionary->updatedAt;
+
+			$arrIndexed = array_filter($languages, fn($lang) => $lang->is_main || $lang->is_reversal);
 		}
 	} else {
 
