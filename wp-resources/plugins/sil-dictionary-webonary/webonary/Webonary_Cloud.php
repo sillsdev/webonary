@@ -8,6 +8,7 @@ class Webonary_Cloud
 {
 	private static ?string $dictionary_id = null;
 	private static ICloudDictionary|stdClass|null $dictionary = null;
+	private static bool $use_sem_domain_child = false;
 
 	/** @var ICloudPartOfSpeech[]|null  */
 	private static ?array $parts_of_speech = null;
@@ -178,7 +179,16 @@ class Webonary_Cloud
 					continue;
 
 				// get the domain number and ID
-				$domain_text = (string)$abbreviations[0]->span[0];
+				if (self::$use_sem_domain_child)
+					$domain_text = (string)$abbreviations[0]->span[0]->children();
+				else
+					$domain_text = (string)$abbreviations[0]->span[0];
+
+				if (!self::$use_sem_domain_child && $domain_text == '') {
+					$domain_text = (string)$abbreviations[0]->span[0]->children();
+					self::$use_sem_domain_child = true;
+				}
+
 				$domain_id = $domain_text;
 				if (preg_match('/^([\d\-.]+)$/', $domain_id)) {
 					if (!str_ends_with($domain_id, '.'))
@@ -206,7 +216,11 @@ class Webonary_Cloud
 				foreach ($names as $name) {
 
 					$tag_lang = (string)$name->span[0]->attributes()->lang;
-					$tag_text = (string)$name[0]->span[0];
+
+					if (self::$use_sem_domain_child)
+						$tag_text = (string)$name[0]->span[0]->children();
+					else
+						$tag_text = (string)$name[0]->span[0];
 
 					unset($name->span[0]);
 
