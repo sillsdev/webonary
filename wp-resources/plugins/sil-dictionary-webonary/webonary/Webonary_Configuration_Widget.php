@@ -47,6 +47,14 @@ class Webonary_Configuration_Widget
 			return '';
 		}
 
+		if (!empty($_POST['clear_local_cache'])) {
+
+			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
+			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
+			echo '<div class="notice notice-success"><p>' . __('Local cache cleared.') . '</p></div>';
+			return '';
+		}
+
 		if (!empty($_POST['save_settings']))
 			return self::SaveSettings();
 
@@ -485,6 +493,7 @@ HTML;
 		$region = get_option('regionName', 'N/A');
 		$copyright_holder = get_option('copyrightHolder');
 		$data_tx = self::BuildDataTx();
+		$clear_cache = self::BuildClearCache();
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -527,6 +536,7 @@ HTML;
 		</div>
     </div>
     $data_tx
+    $clear_cache
 </div>
 HTML;
 		$lines[] = $html;
@@ -1006,6 +1016,19 @@ HTML;
 		<p style="margin: 0 0 0.3rem">Copy cloud MongoDB data for this site from .org to .work.</p>
 		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data" onclick="CopyMongoData();">Copy MongoDB Data</button>
 		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly">Progress</textarea>
+	</div>
+</div>
+HTML;
+
+	}
+
+	public static function BuildClearCache(): string
+	{
+		return <<<HTML
+<div class="webonary-admin-block">
+    <div class="flex-column">
+		<p style="margin: 0 0 0.3rem">Clear the data cached locally on the web server.</p>
+		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="submit" name="clear_local_cache" value="clear cache">Clear Cache</button>
 	</div>
 </div>
 HTML;

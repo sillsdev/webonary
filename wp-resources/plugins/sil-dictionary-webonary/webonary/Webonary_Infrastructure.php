@@ -273,6 +273,8 @@ SQL;
 				'show_ui' => true
 			)
 		);
+
+		self::RegisterLanguageCustomFields();
 	}
 
 	public static function RegisterWebStringsTaxonomy(): void
@@ -318,5 +320,71 @@ SQL;
 				'rewrite' => false
 			]
 		);
+	}
+
+	public static function RegisterLanguageCustomFields(): void
+	{
+		add_action('sil_writing_systems_add_form_fields', 'Webonary_Infrastructure::language_add_form');
+		add_action('sil_writing_systems_edit_form_fields', 'Webonary_Infrastructure::language_edit_form', 10, 1);
+		add_action('created_sil_writing_systems', 'Webonary_Infrastructure::language_save_form');
+		add_action('edited_sil_writing_systems', 'Webonary_Infrastructure::language_save_form');
+		add_filter('manage_edit-sil_writing_systems_columns', 'Webonary_Infrastructure::add_language_hidden_columns');
+		add_filter('manage_sil_writing_systems_custom_column', 'Webonary_Infrastructure::add_language_hidden_column_content', 10, 3);
+	}
+
+	public static function language_add_form(): void
+	{
+		echo <<<HTML
+<div class="form-field">
+	<label for="hide_language">Hide Language</label>
+	<input type="checkbox" name="hide_language" id="hide_language" class="new-language">
+	<p>When checked, this language will not be shown in drop-down lists.</p>
+</div>
+HTML;
+	}
+
+	public static function language_edit_form(WP_Term $term): void
+	{
+		$text_field_hidden = get_term_meta($term->term_id, 'hide_language', true);
+		$checked = checked(1, $text_field_hidden, false);
+		echo <<<HTML
+<tr class="form-field">
+	<th><label for="hide_language">Hide Language</label></th>
+	<td>
+		<input type="checkbox" name="hide_language" id="hide_language" class="new-language" $checked>
+		<p>When checked, this language will not be shown in drop-down lists.</p>
+	</td>
+</tr>
+HTML;
+	}
+
+	public static function language_save_form($term_id): void
+	{
+		update_term_meta(
+			$term_id,
+			'hide_language',
+			!empty($_POST['hide_language'])
+		);
+	}
+
+	public static function add_language_hidden_columns($columns)
+	{
+		// add Hide as the next-to-last column
+		return array_slice($columns, 0, count($columns) - 1) + ['hide_language' => 'Hide'] + $columns;
+	}
+
+	public static function add_language_hidden_column_content($content, $column_name, $term_id)
+	{
+		$text_field_hidden = get_term_meta($term_id, 'hide_language', true);
+		switch ($column_name) {
+			case 'hide_language':
+				// Do your stuff here with $term or $term_id
+				$content = !empty($text_field_hidden) ? 'Hidden' : '';
+				break;
+			default:
+				break;
+		}
+
+		return $content;
 	}
 }
