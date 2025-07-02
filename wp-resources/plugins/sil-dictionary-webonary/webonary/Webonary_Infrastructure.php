@@ -379,7 +379,7 @@ HTML;
 		switch ($column_name) {
 			case 'hide_language':
 				// Do your stuff here with $term or $term_id
-				$content = !empty($text_field_hidden) ? 'Hidden' : '';
+				$content = !empty($text_field_hidden) ? '<span style="font-size: x-large;color: darkgreen">&check;</span>' : '';
 				break;
 			default:
 				break;

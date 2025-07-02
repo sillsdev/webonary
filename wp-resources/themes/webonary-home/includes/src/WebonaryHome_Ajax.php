@@ -1,7 +1,9 @@
 <?php
 
 use MongoDB\Client;
+use MongoDB\Database;
 use MongoDB\Driver\ServerApi;
+use MongoDB\Model\BSONDocument;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -84,12 +86,18 @@ SQL;
 		if (count($blogs) == 0)
 			return $rows;
 
+		$db = self::GetMongoDB();
+
+		/** @var BSONDocument[] $last_updated */
+		/** @noinspection PhpUndefinedFieldInspection */
+		$last_updated = $db->webonaryDictionaries->find(
+			[],
+			['projection' => ['_id' => 1, 'updatedAt' => 1]]
+		)->toArray();
+
 		foreach ($blogs as $blog)  {
 
 			switch_to_blog($blog['blog_id']);
-
-			if (get_theme_mod('show_in_home', 'on') !== 'on')
-				continue;
 
 			$blog_details = get_blog_details($blog['blog_id']);
 			$fields = [];
@@ -142,15 +150,20 @@ SQL;
 				$fields[] = 'Cloud';
 
 				$dictionary_id = str_replace('/', '', $blog_details->path);
-				$dictionary = Webonary_Cache::Get('dictionary', $dictionary_id) ?? Webonary_Cloud::getDictionaryById($dictionary_id);
-				if (is_null($dictionary)) {
-					$num_posts = '';
+
+				$collection_name = 'webonaryEntries_' . $dictionary_id;
+				$num_posts = $db->$collection_name->countDocuments() ?? '';
+
+				$last_updated_row = array_find($last_updated, function ($row) use ($dictionary_id) {
+					return $row['_id'] == $dictionary_id;
+				});
+
+				if (empty($last_updated_row))
 					$last_edit_date = '';
-				}
-				else {
-					$num_posts = $dictionary->mainLanguage->entriesCount;
-					$last_edit_date = date("Y-m-d H:m:s", strtotime($dictionary->updatedAt));
-				}
+				elseif (gettype($last_updated_row->updatedAt) == 'string')
+					$last_edit_date = date("Y-m-d H:m:s", strtotime($last_updated_row->updatedAt));
+				else
+					$last_edit_date = $last_updated_row->updatedAt->toDateTime()->format('Y-m-d H:m:s');
 			}
 			else {
 				$fields[] = 'Wordpress';
@@ -219,18 +232,10 @@ SQL;
 		if (count($blogs) == 0)
 			return $rows;
 
-		$settings = WEBONARY_MONGO;
-		$catalog = $settings['cat'];
-		$uri = "mongodb+srv://{$settings['usr']}:{$settings['pwd']}@{$settings['url']}/?retryWrites=true&w=majority&appName=Cluster0";
-
-		// set the version of the Stable API on the client
-		$api_version = new ServerApi(ServerApi::V1);
-
-		// create a new client and connect to the server
-		$mongo = new Client($uri, [], ['serverApi' => $api_version]);
+		$db = self::GetMongoDB();
 
 		/** @noinspection PhpUndefinedFieldInspection */
-		$collection = $mongo->$catalog->webonaryDictionaries;
+		$collection = $db->webonaryDictionaries;
 
 		// get a list of all the sites that have a grammar page
 		foreach ($blogs as $blog)  {
@@ -434,5 +439,21 @@ SQL;
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		header('Content-Disposition: attachment; filename="' . $file_name . '.xlsx"');
 		$writer->save('php://output');
+	}
+
+	private static function GetMongoDB(): Database
+	{
+		$settings = WEBONARY_MONGO;
+		$catalog = $settings['cat'];
+
+		$uri = "mongodb+srv://{$settings['usr']}:{$settings['pwd']}@{$settings['url']}/?retryWrites=true&w=majority&appName=Cluster0";
+
+		// set the version of the Stable API on the client
+		$api_version = new ServerApi(ServerApi::V1);
+
+		// create a new client and connect to the server
+		$client = new Client($uri, [], ['serverApi' => $api_version]);
+
+		return $client->$catalog;
 	}
 }
