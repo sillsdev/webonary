@@ -798,16 +798,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.29.10",
+            "version": "1.29.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "c80041b1628c4f18030407134fe88303661d4e4e"
+                "reference": "05b6c4378ddf3e81b460ea645c42b46432c0db25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/c80041b1628c4f18030407134fe88303661d4e4e",
-                "reference": "c80041b1628c4f18030407134fe88303661d4e4e",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/05b6c4378ddf3e81b460ea645c42b46432c0db25",
+                "reference": "05b6c4378ddf3e81b460ea645c42b46432c0db25",
                 "shasum": ""
             },
             "require": {
@@ -898,9 +898,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.10"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.11"
             },
-            "time": "2025-02-08T02:56:14+00:00"
+            "time": "2025-06-23T01:22:06+00:00"
         },
         {
             "name": "psr/http-client",
@@ -1366,15 +1366,15 @@
         },
         {
             "name": "wpackagist-plugin/contact-form-7",
-            "version": "6.0.6",
+            "version": "6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/6.0.6"
+                "reference": "tags/6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.6.0.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.6.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1474,15 +1474,15 @@
         },
         {
             "name": "wpackagist-plugin/google-analytics-for-wordpress",
-            "version": "9.6.0",
+            "version": "9.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/google-analytics-for-wordpress/",
-                "reference": "tags/9.6.0"
+                "reference": "tags/9.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.9.6.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/google-analytics-for-wordpress.9.6.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1690,15 +1690,15 @@
         },
         {
             "name": "wpackagist-plugin/really-simple-ssl",
-            "version": "9.4.0",
+            "version": "9.4.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
-                "reference": "tags/9.4.0"
+                "reference": "tags/9.4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.9.4.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.9.4.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1816,15 +1816,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-maintenance-mode",
-            "version": "2.6.18",
+            "version": "2.6.19",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-maintenance-mode/",
-                "reference": "tags/2.6.18"
+                "reference": "tags/2.6.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-maintenance-mode.2.6.18.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-maintenance-mode.2.6.19.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -1852,15 +1852,15 @@
         },
         {
             "name": "wpackagist-plugin/wps-menu-exporter",
-            "version": "1.3.7.1",
+            "version": "1.3.7.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wps-menu-exporter/",
-                "reference": "tags/1.3.7.1"
+                "reference": "tags/1.3.7.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wps-menu-exporter.1.3.7.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wps-menu-exporter.1.3.7.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
