@@ -8,7 +8,7 @@ The SIL Dictionary plugin has several components. It includes a dashboard, an im
 Author: SIL Global
 Author URI: http://www.sil.org/
 Text Domain: sil_dictionary
-Domain Path: /lang/
+Domain Path: /include/lang/
 Version: v. 8.3.9
 License: MIT
 */

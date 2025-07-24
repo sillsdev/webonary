@@ -140,4 +140,5 @@ function webonary_conf_widget(bool $showTitle = false): void
 {
 	Webonary_Configuration_Widget::UpdateConfiguration();
 	Webonary_Configuration_Widget::DisplayConfiguration();
+	do_action('admin_notices');
 }

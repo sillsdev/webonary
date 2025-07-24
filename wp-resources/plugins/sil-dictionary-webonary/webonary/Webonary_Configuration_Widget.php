@@ -51,7 +51,14 @@ class Webonary_Configuration_Widget
 
 			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
 			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
-			echo '<div class="notice notice-success"><p>' . __('Local cache cleared.') . '</p></div>';
+			self::AddAdminNotice('success', __('Local cache cleared.'));
+			return '';
+		}
+
+		if (!empty($_POST['send_test_email'])) {
+
+			wp_mail('webonary@sil.org', 'Testing Webonary Email', 'This is the full test message.');
+			self::AddAdminNotice('success', __('Test email sent.'));
 			return '';
 		}
 
@@ -535,6 +542,12 @@ HTML;
 			<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
 		</div>
     </div>
+	<div class="webonary-admin-block">
+		<div class="flex-column">
+			<p style="margin: 0 0 0.3rem">Send a test email to webonary@sil.org.</p>
+			<button style="margin: 0 0 0.5rem" class="button button-webonary" type="submit" name="send_test_email" value="send test email">Send Test Email</button>
+		</div>
+	</div>
     $data_tx
     $clear_cache
 </div>
@@ -736,7 +749,7 @@ HTML;
 			$charWidget = new special_characters();
 			$settings = $charWidget->get_settings();
 			$settings = reset($settings);
-			$special_characters = $settings['characters'];
+			$special_characters = $settings['characters'] ?? '';
 		}
 
 		$special_characters = str_replace('empty', '', $special_characters);
@@ -1033,5 +1046,21 @@ HTML;
 </div>
 HTML;
 
+	}
+
+	/**
+	 * @param string $type Values: "success", "warning"
+	 * @param string $msg Note: may contain some HTML
+	 * @return void
+	 */
+	private static function AddAdminNotice(string $type, string $msg): void
+	{
+		add_action('admin_notices', function() use ($type, $msg) {
+			echo <<<HTML
+<div class="notice notice-$type is-dismissible">
+    <p>$msg</p>
+</div>
+HTML;
+		});
 	}
 }
