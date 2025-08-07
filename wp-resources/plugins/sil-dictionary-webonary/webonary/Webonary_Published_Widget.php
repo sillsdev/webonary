@@ -22,18 +22,14 @@ class Webonary_Published_Widget extends WP_Widget
 	 * @see WP_Widget::widget()
 	 *
 	 */
-	public function widget($args, $instance)
+	public function widget($args, $instance): void
 	{
 		$publication_status = (int)(get_option('publicationStatus') ?? 0);
 
 		echo $args['before_widget'] ?? '';
 
-		if ($publication_status < 1) {
-			echo $args['after_widget'] ?? '';
-			return;
-		}
-
-		echo self::getDictStageFlex($publication_status);
+		if ($publication_status > 0)
+			echo self::getDictStageFlex($publication_status);
 
 		echo $args['after_widget'] ?? '';
 	}
@@ -45,7 +41,7 @@ class Webonary_Published_Widget extends WP_Widget
 	 *
 	 * @param array $instance Previously saved values from database.
 	 */
-	public function form( $instance )
+	public function form( $instance ): void
 	{
 		echo '<p>There are no settings for this widget</p>';
 	}
@@ -87,7 +83,7 @@ class Webonary_Published_Widget extends WP_Widget
 		return <<<HTML
 <div class="publication-status">
     <h4 class="center">$header</h4>
-    
+
     <div class="status-flex">
         <div class="stage">
             <div class="stage-inner">
@@ -109,14 +105,14 @@ class Webonary_Published_Widget extends WP_Widget
                 <div class="purple-line"><span class="dot"></span></div>
                 <p class="stage-text">$community</p>
             </div>
-        </div>    
+        </div>
         <div class="stage">
             <div class="stage-inner">
                 <div class="arrow $active[3]"></div>
                 <div class="purple-line"><span class="dot"></span></div>
                 <p class="stage-text">$consultant</p>
             </div>
-        </div>    
+        </div>
         <div class="stage">
             <div class="stage-inner">
                 <div class="arrow $active[4]"></div>

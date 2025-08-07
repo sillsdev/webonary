@@ -442,7 +442,10 @@ HTML;
             $username = $appPost['username'];
         }
 		else {
-			$username = $wpdb->get_var("SELECT user_login FROM wp_users WHERE user_email = '" . $admin_email . "'");
+			if (mb_strlen($admin_email) > 5)
+				$username = $wpdb->get_var("SELECT user_login FROM wp_users WHERE user_email = '" . $admin_email . "'");
+			else
+				$username = '';
 
 			if (empty($username)) {
 
