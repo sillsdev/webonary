@@ -441,6 +441,10 @@ SQL;
 		$writer->save('php://output');
 	}
 
+	/**
+	 * @return Database
+	 * @noinspection DuplicatedCode
+	 */
 	private static function GetMongoDB(): Database
 	{
 		$settings = WEBONARY_MONGO;
