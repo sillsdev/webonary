@@ -38,7 +38,7 @@ class Webonary_Cloud
 		return is_object($dictionary) && isset($dictionary->_id);
 	}
 
-	private static function isValidEntry($entry): bool
+	public static function isValidEntry($entry): bool
 	{
 		return is_object($entry) && isset($entry->_id);
 	}
@@ -292,7 +292,12 @@ class Webonary_Cloud
 	public static function entryToFakePost($entry): WP_Post
 	{
 		$allow_comments = get_option('default_comment_status') == 'open';
-		$updated_timestamp = strtotime($entry->updatedAt);
+
+		if (is_object($entry->updatedAt))
+			$updated_timestamp = intval($entry->updatedAt->{'$date'}->{'$numberLong'} / 1000);
+		else
+			$updated_timestamp = strtotime($entry->updatedAt);
+
 		$post_date = date('Y-m-d H:i:s', $updated_timestamp);
 		$post_title = $entry->mainheadword[0]->value ?? '';
 
