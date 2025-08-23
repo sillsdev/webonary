@@ -184,7 +184,7 @@ HTML;
 
 		$display = '<div id="domRoot"></div>' . PHP_EOL;
 
-		$postsPerPage = Webonary_Utility::getPostsPerPage();
+		$posts_per_page = Webonary_Utility::getPostsPerPage();
 
 		$qTransLang = Webonary_Cloud::getCurrentLanguage();
 
@@ -216,27 +216,17 @@ HTML;
 
 		$semdomain = trim((string)filter_input(INPUT_GET, 'semdomain', FILTER_UNSAFE_RAW));
 		$semnumber = trim((string)filter_input(INPUT_GET, 'semnumber', FILTER_UNSAFE_RAW));
-		$semnumber_internal = rtrim(str_replace(".", "-",$semnumber), "-");
+		$semnumber_internal = rtrim(str_replace('.', '-', $semnumber), '-');
 		$arrPosts = null;
 
 		$display .= '<div id="searchresults" class="semantic-domain">';
-		if($semnumber != '')
-		{
+		if ($semnumber != '') {
 			if ($semdomain == '')
 				$semdomain = Webonary_SemanticDomains::GetDomainName($semnumber, $qTransLang);
 
 			if(IS_CLOUD_BACKEND)
 			{
-				$apiParams = array(
-					'text' => $semdomain,
-					'lang' => $qTransLang,
-					'semDomAbbrev' => rtrim($semnumber, '.'),
-					'searchSemDoms' => '1',
-					'pageNumber' => $page_num,
-					'pageLimit' => $postsPerPage
-				);
-				$totalEntries = $_GET['totalEntries'] ?? Webonary_Cloud::getTotalCount(Webonary_Cloud::$doSearchEntry, $apiParams);
-				$arrPosts = Webonary_Cloud::getEntriesAsPosts(Webonary_Cloud::$doSearchEntry, $apiParams);
+				list($totalEntries, $arrPosts) = Webonary_MongoDB::DoSemanticDomainSearch($semdomain, rtrim($semnumber, '.'), $page_num, $posts_per_page);
 			}
 			else
 			{
@@ -251,7 +241,7 @@ WHERE x.taxonomy = 'sil_semantic_domains'
   AND t.slug LIKE '$semnumber_internal%'
 ORDER BY p.post_title, p.ID
 SQL;
-				$sql .= getLimitSql($page_num, $postsPerPage);
+				$sql .= getLimitSql($page_num, $posts_per_page);
 
 				$arrPosts = $wpdb->get_results($sql);
 
@@ -279,7 +269,7 @@ SQL;
 			}
 		}
 
-		$display .= displayPageNumbers($semnumber, $totalEntries, $postsPerPage,  $semdomain , "semnumber", $page_num);
+		$display .= displayPageNumbers($semnumber, $totalEntries, $posts_per_page,  $semdomain , "semnumber", $page_num);
 		$display .= "</div>";
 
 		wp_reset_query();
