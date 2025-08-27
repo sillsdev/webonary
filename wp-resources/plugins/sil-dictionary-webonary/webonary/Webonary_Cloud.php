@@ -780,6 +780,7 @@ class Webonary_Cloud
 		$language = $dictionary->mainLanguage;
 		update_option('languagecode', $language->lang);
 		update_option('totalConfiguredEntries', $language->entriesCount);
+		update_option('mongo_sem_domain', false);
 
 		if (!empty($language->letters))
 			update_option('vernacular_alphabet', self::filterLetterList($language->letters, true));
