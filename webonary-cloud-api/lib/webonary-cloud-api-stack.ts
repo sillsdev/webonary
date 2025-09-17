@@ -3,7 +3,7 @@ import { App, CfnOutput, Duration, Stack, StackProps } from 'aws-cdk-lib';
 import { CfnPermission, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
-import { Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
+import { BlockPublicAccess, Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import {
   DomainName,
@@ -73,6 +73,7 @@ export class WebonaryCloudApiStack extends Stack {
     // S3
     const dictionaryBucket = new Bucket(this, envSpecific('dictionaryBucket'), {
       encryption: BucketEncryption.S3_MANAGED,
+      blockPublicAccess: BlockPublicAccess.BLOCK_ACLS_ONLY,
       publicReadAccess: true,
       bucketName: S3_DOMAIN_NAME,
     });

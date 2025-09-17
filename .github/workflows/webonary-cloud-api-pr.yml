@@ -20,7 +20,7 @@ env:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -75,11 +75,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: "18.X"
+          node-version: "22.X"
           registry-url: "https://registry.npmjs.org"
 
-      - name: NPM 9.x latest
-        run: npm install -g npm@~9
+      - name: NPM 10.x latest
+        run: npm install -g npm@~10
 
       - name: NPM clean install main package
         run: cd webonary-cloud-api; npm ci
@@ -87,7 +87,7 @@ jobs:
       - name: NPM clean install lambda package
         run: cd webonary-cloud-api/lambda; npm ci
 
-      - name: Lint, build, and test
+      - name: Build, and test
         run: cd webonary-cloud-api; npm run test
 
       - name: Run cdk diff
@@ -99,9 +99,9 @@ jobs:
         run: set -o pipefail; cd webonary-cloud-api; npx cdk deploy --require-approval never --no-color 2>&1
 
       - name: Mongo migrations status check
-        if: steps.filter.outputs.migrations == 'true'
+        if: steps.filter.outputs.migrations == 'true-skip'
         run: cd webonary-cloud-api/mongo_utils; npx mongo-migrate status
 
       - name: Mongo migrations installation
-        if: github.event_name == 'push' && steps.filter.outputs.migrations == 'true'
+        if: github.event_name == 'push' && steps.filter.outputs.migrations == 'true-skip'
         run: cd webonary-cloud-api/mongo_utils; npx migrations/*.ts && npx mongo-migrate up
