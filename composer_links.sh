@@ -2,91 +2,98 @@
 
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-
-# uploads directory
-if [[ -d "${thisDir}/shared/uploads" ]]; then
-  ln -sfn "${thisDir}/shared/uploads/" "${thisDir}/wordpress/wp-content/uploads"
-fi
-
-if [[ -d "${thisDir}/shared/blogs.dir" ]]; then
-  ln -sfn "${thisDir}/shared/blogs.dir/" "${thisDir}/wordpress/wp-content/blogs.dir"
-fi
-
-# mu-plugins directory
-ln -sfn "${thisDir}/wp-resources/mu-plugins/" "${thisDir}/wordpress/wp-content/mu-plugins"
-
-
 # link wp-config
 FILE="${thisDir}/shared/config/wp-config.php"
 if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress/wp-config.php
+  ln -sfn "${FILE}" "${thisDir}/wordpress-develop/src/wp-config.php"
 fi
 
-
-# link wp-config
+# link wp-cache-config
 FILE="${thisDir}/shared/config/wp-cache-config.php"
 if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress/wp-content/wp-cache-config.php
+  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/wp-content/wp-cache-config.php
 fi
 
+# link wp-tests-config
+FILE="${thisDir}/shared/config/wp-tests-config.php"
+if [[ -f "$FILE" ]]; then
+  ln -sfn "${FILE}" "${thisDir}/wordpress-develop/wp-tests-config.php"
+fi
 
 # link .htaccess
 FILE="${thisDir}/shared/config/.htaccess"
 if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress/.htaccess
+  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/.htaccess
 fi
 
-
 # set default favicon
-FILE="${thisDir}/wp-resources/plugins/shockingly-simple-favicon/default/favicon.ico"
+FILE="${thisDir}/plugins-theirs/shockingly-simple-favicon/default/favicon.ico"
 if [[ -f "$FILE" ]]; then
   rm -f "$FILE"
 fi
-ln -sfn "${thisDir}/wp-resources/favicon.ico" "${FILE}"
+ln -sfn "${thisDir}/resources/favicon.ico" "${FILE}"
 
+# uploads directory
+if [[ -d "${thisDir}/shared/uploads" ]]; then
+  ln -sfn "${thisDir}/shared/uploads/" "${thisDir}/wordpress-develop/src/wp-content/uploads"
+fi
+
+if [[ -d "${thisDir}/shared/blogs.dir" ]]; then
+  ln -sfn "${thisDir}/shared/blogs.dir/" "${thisDir}/wordpress-develop/src/wp-content/blogs.dir"
+fi
+
+# link plugins directories
+DIRS="${thisDir}/plugins/*/"
+for d in $DIRS
+do
+  fn=$(basename "$d")
+  target="${thisDir}/wordpress-develop/src/wp-content/plugins/${fn}"
+  ln -sfn "${d}" "${target}"
+done
+
+DIRS="${thisDir}/plugins-theirs/*/"
+for d in $DIRS
+do
+  fn=$(basename "$d")
+  target="${thisDir}/wordpress-develop/src/wp-content/plugins/${fn}"
+  ln -sfn "${d}" "${target}"
+done
+
+# mu-plugins directory
+ln -sfn "${thisDir}/mu-plugins/" "${thisDir}/wordpress-develop/src/wp-content/mu-plugins"
+
+# link themes directories
+DIRS="${thisDir}/themes/*/"
+for d in $DIRS
+do
+  fn=$(basename "$d")
+  target="${thisDir}/wordpress-develop/src/wp-content/themes/${fn}"
+  ln -sfn "${d}" "${target}"
+done
+
+mkdir -p "${thisDir}/uploads"
+mkdir -p "${thisDir}/upgrade"
+mkdir -p "${thisDir}/upgrade-temp-backup"
+ln -sfn "${thisDir}/uploads/" "${thisDir}/wordpress-develop/src/wp-content/uploads"
+ln -sfn "${thisDir}/upgrade/" "${thisDir}/wordpress-develop/src/wp-content/upgrade"
+ln -sfn "${thisDir}/upgrade-temp-backup/" "${thisDir}/wordpress-develop/src/wp-content/upgrade-temp-backup"
 
 # link files in the web root directory
-FILES="${thisDir}/wp-resources/*.*"
+FILES="${thisDir}/resources/*.*"
 for f in $FILES
 do
   fn=$(basename "$f")
-  ln -sfn "${f}" "${thisDir}/wordpress/${fn}"
-done
-
-
-# remove stray wp-content directory
-if [[ -d "${thisDir}/wordpress/wp-content/wp-content" ]]; then
-  rm -rf "${thisDir}/wordpress/wp-content/wp-content"
-fi
-
-
-# link plugins directories
-DIRS="${thisDir}/wp-resources/plugins/*/"
-for d in $DIRS
-do
-  fn=$(basename "$d")
-  target="${thisDir}/wordpress/wp-content/plugins/${fn}"
-  ln -sfn "${d}" "${target}"
-done
-
-
-# link themes directories
-DIRS="${thisDir}/wp-resources/themes/*/"
-for d in $DIRS
-do
-  fn=$(basename "$d")
-  target="${thisDir}/wordpress/wp-content/themes/${fn}"
-  ln -sfn "${d}" "${target}"
+  ln -sfn "${f}" "${thisDir}/wordpress-develop/src/${fn}"
 done
 
 
 # copy additional default localizations
-mkdir -p "${thisDir}/wordpress/wp-content/languages"
-FILES="${thisDir}/wp-resources/localizations/wordpress-base/*.mo"
+mkdir -p "${thisDir}/wordpress-develop/src/wp-content/languages"
+FILES="${thisDir}/localizations/wordpress-base/*.mo"
 for f in $FILES
 do
   fn=$(basename "$f")
-  target="${thisDir}/wordpress/wp-content/languages/${fn}"
+  target="${thisDir}/wordpress-develop/src/wp-content/languages/${fn}"
 
   if [[ ! -f "$target" ]]; then
     cp "$f" "$target"

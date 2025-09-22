@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="font-awesome">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/wp-resources/themes/web-webonary-sil/vendor/fortawesome/font-awesome/src/3.2.1/assets/font-awesome.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

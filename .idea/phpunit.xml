@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPUnit">
+    <option name="directories">
+      <list>
+        <option value="$PROJECT_DIR$/wordpress/wp-includes/sodium_compat/tests" />
+        <option value="$PROJECT_DIR$/wordpress/wp-content/themes/bootscore/inc/scssphp/tests" />
+        <option value="$PROJECT_DIR$/wp-resources/plugins/sil-dictionary-webonary/include/pinyin/tests" />
+        <option value="$PROJECT_DIR$/wordpress/wp-content/plugins/contact-form-7-to-database-extension/tests" />
+        <option value="$PROJECT_DIR$/tests" />
+        <option value="$PROJECT_DIR$/wordpress/wp-content/plugins/timber-library/timber-starter-theme/tests" />
+        <option value="$PROJECT_DIR$/wordpress/wp-content/plugins/contact-form-7-to-database-extension/phpunit" />
+        <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/idna/tests" />
+        <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/contact-form-7-to-database-extension/phpunit" />
+        <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/url/tests" />
+        <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/punycode/tests" />
+        <option value="$PROJECT_DIR$/plugins/sil-dictionary-webonary/tests" />
+      </list>
+    </option>
+  </component>
+</project>
