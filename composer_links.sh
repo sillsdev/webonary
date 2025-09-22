@@ -27,7 +27,7 @@ if [[ -f "$FILE" ]]; then
 fi
 
 # set default favicon
-FILE="${thisDir}/plugins-theirs/shockingly-simple-favicon/default/favicon.ico"
+FILE="${thisDir}/plugins/third-party/shockingly-simple-favicon/default/favicon.ico"
 if [[ -f "$FILE" ]]; then
   rm -f "$FILE"
 fi
@@ -43,7 +43,7 @@ if [[ -d "${thisDir}/shared/blogs.dir" ]]; then
 fi
 
 # link plugins directories
-DIRS="${thisDir}/plugins/*/"
+DIRS="${thisDir}/plugins/sil/*/"
 for d in $DIRS
 do
   fn=$(basename "$d")
@@ -51,7 +51,7 @@ do
   ln -sfn "${d}" "${target}"
 done
 
-DIRS="${thisDir}/plugins-theirs/*/"
+DIRS="${thisDir}/plugins/third-party/*/"
 for d in $DIRS
 do
   fn=$(basename "$d")
@@ -60,7 +60,7 @@ do
 done
 
 # mu-plugins directory
-ln -sfn "${thisDir}/mu-plugins/" "${thisDir}/wordpress-develop/src/wp-content/mu-plugins"
+ln -sfn "${thisDir}/plugins/mu-plugins/" "${thisDir}/wordpress-develop/src/wp-content/mu-plugins"
 
 # link themes directories
 DIRS="${thisDir}/themes/*/"
@@ -71,12 +71,10 @@ do
   ln -sfn "${d}" "${target}"
 done
 
-mkdir -p "${thisDir}/uploads"
-mkdir -p "${thisDir}/upgrade"
-mkdir -p "${thisDir}/upgrade-temp-backup"
-ln -sfn "${thisDir}/uploads/" "${thisDir}/wordpress-develop/src/wp-content/uploads"
-ln -sfn "${thisDir}/upgrade/" "${thisDir}/wordpress-develop/src/wp-content/upgrade"
-ln -sfn "${thisDir}/upgrade-temp-backup/" "${thisDir}/wordpress-develop/src/wp-content/upgrade-temp-backup"
+mkdir -p "${thisDir}/shared/upgrade"
+mkdir -p "${thisDir}/shared/upgrade-temp-backup"
+ln -sfn "${thisDir}/shared/upgrade/" "${thisDir}/wordpress-develop/src/wp-content/upgrade"
+ln -sfn "${thisDir}/shared/upgrade-temp-backup/" "${thisDir}/wordpress-develop/src/wp-content/upgrade-temp-backup"
 
 # link files in the web root directory
 FILES="${thisDir}/resources/*.*"
