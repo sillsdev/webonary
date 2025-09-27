@@ -109,5 +109,10 @@
     "pre-update-cmd" : "./get-wordpress-files.sh",
     "post-install-cmd": "./composer_links.sh",
     "post-update-cmd": "./composer_links.sh"
+  },
+  "autoload": {
+    "psr-4": {
+      "SIL\\Tests\\": "test-php/src/"
+    }
   }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="phpunit-bootstrap.php"
+         colors="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         processIsolation="false"
+         failOnWarning="true"
+         cacheResult="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+    <coverage>
+        <include>
+            <directory suffix=".php">./wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary</directory>
+        </include>
+        <report>
+            <clover outputFile="test-results/clover.xml"/>
+            <html outputDirectory="./test-results" lowUpperBound="35" highLowerBound="70"/>
+            <text outputFile="test-results/coverage.txt" showUncoveredFiles="true"/>
+        </report>
+    </coverage>
+    <php>
+        <ini name="error_reporting" value="32767"/>
+        <ini name="memory_limit" value="-1"/>
+        <ini name="xdebug.mode" value="coverage,debug"/>
+    </php>
+    <testsuites>
+        <testsuite name="webonary-tests">
+            <directory suffix="Test.php">test-php/src</directory>
+        </testsuite>
+    </testsuites>
+    <logging/>
+</phpunit>
