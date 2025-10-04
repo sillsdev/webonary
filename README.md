@@ -19,3 +19,23 @@ cd ..
 mysql --defaults-file=~/.mysql/my.local.conf -Bse "DROP SCHEMA IF EXISTS wp_webonary_test;"
 mysql --defaults-file=~/.mysql/my.local.conf -Bse "CREATE SCHEMA IF NOT EXISTS wp_webonary_test DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;"
 ```
+
+### Original TeamCity PR task
+```bash
+curl -o composer.phar https://getcomposer.org/composer-2.phar
+php composer.phar install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+php ./wp-resources/localizations/recompile-all-sil-dictionary.php
+```
+
+### New TeamCity PR task
+```bash
+# download composer and install composer dependencies
+curl -o composer.phar https://getcomposer.org/composer-2.phar
+COMPOSER=composer-team-city.json composer install --verbose --no-progress --no-interaction --optimize-autoloader
+
+# compile the localization files
+php ./localizations/recompile-all-sil-dictionary.php
+
+# run PHP Unit tests
+./phpunit.sh
+```
