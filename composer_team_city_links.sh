@@ -3,7 +3,7 @@
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # link wp-tests-config
-FILE="${thisDir}/shared/config/wp-tests-config.php"
+FILE="${thisDir}/resources/wp-tests-config.php"
 if [[ -f "$FILE" ]]; then
   ln -sfn "${FILE}" "${thisDir}/wordpress-develop/wp-tests-config.php"
 fi
