@@ -29,10 +29,6 @@
         "wpackagist-plugin/*",
         "wpackagist-theme/*"
       ]
-    },
-    {
-      "type": "vcs",
-      "url":  "git@github.com:mdsimpson/contact-form-7-to-database-extension.git"
     }
   ],
 

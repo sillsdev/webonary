@@ -2,7 +2,7 @@
 
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-./vendor/bin/phpunit --testsuite=webonary-tests --configuration="${thisDir}/phpunit.xml"
+./vendor/bin/phpunit --testsuite=webonary-tests --configuration="./phpunit.xml"
 exitCode=$?
 
 exit ${exitcode}

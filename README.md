@@ -31,11 +31,11 @@ php ./wp-resources/localizations/recompile-all-sil-dictionary.php
 ```bash
 # download composer and install composer dependencies
 curl -o composer.phar https://getcomposer.org/composer-2.phar
-COMPOSER=composer-team-city.json composer install --verbose --no-progress --no-interaction --optimize-autoloader
+COMPOSER=composer-team-city.json php composer.phar install --verbose --no-progress --no-interaction --optimize-autoloader
 
 # compile the localization files
 php ./localizations/recompile-all-sil-dictionary.php
 
 # run PHP Unit tests
-./phpunit.sh
+./vendor/bin/phpunit --testsuite=webonary-tests --configuration="./phpunit.xml"
 ```
