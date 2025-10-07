@@ -3,6 +3,10 @@
 /* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
 define('ABSPATH', dirname(__DIR__) . '/wordpress-develop/src/');
 
+define('DB_DIR', dirname(__DIR__) . '/sqlite_db');
+if (!is_dir(DB_DIR))
+	mkdir(DB_DIR, 0777, true);
+
 /*
  * Path to the theme to test with.
  *
