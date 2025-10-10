@@ -1,0 +1,107 @@
+{
+  "name": "sillsdev/webonary",
+  "description": "Webonary dictionary builder",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "config": {
+    "platform": {
+      "php": "8.3"
+    },
+    "preferred-install": {
+      "*": "dist"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "johnpbloch/wordpress-core-installer": true
+    }
+  },
+  "authors": [
+    {
+      "name": "Phil Hopper",
+      "email": "phillip_hopper@sil.org"
+    }
+  ],
+  "repositories": [
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "require": {
+    "php": ">8.1",
+    "ext-curl": "*",
+    "ext-dom": "*",
+    "ext-gettext": "*",
+    "ext-iconv": "*",
+    "ext-intl": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
+    "ext-mongodb": "*",
+    "ext-simplexml": "*",
+    "ext-zlib": "*",
+    "johnpbloch/wordpress": "^6.7",
+    "mdsimpson/contact-form-7-to-database-extension": "@stable",
+    "mongodb/mongodb": "@stable",
+    "phpoffice/phpspreadsheet": "^1.17",
+    "qtranslate/qtranslate-xt": "^3.15",
+    "wpackagist-plugin/akismet": "@stable",
+    "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "@stable",
+    "wpackagist-plugin/classic-editor": "@stable",
+    "wpackagist-plugin/contact-form-7": "@stable",
+    "wpackagist-plugin/database-collation-fix": "@stable",
+    "wpackagist-plugin/disable-comments-rb": "@stable",
+    "wpackagist-plugin/display-posts-shortcode": "@stable",
+    "wpackagist-plugin/enable-media-replace": "@stable",
+    "wpackagist-plugin/enhanced-recent-posts": "@stable",
+    "wpackagist-plugin/google-analytics-for-wordpress": "@stable",
+    "wpackagist-plugin/iframe": "@stable",
+    "wpackagist-plugin/imsanity": "@stable",
+    "wpackagist-plugin/infinite-scroll": "@stable",
+    "wpackagist-plugin/inline-google-spreadsheet-viewer": "@stable",
+    "wpackagist-plugin/jquery-collapse-o-matic": "@stable",
+    "wpackagist-plugin/list-categories": "@stable",
+    "wpackagist-plugin/multisite-plugin-manager": "@stable",
+    "wpackagist-plugin/opml-importer": "@stable",
+    "wpackagist-plugin/osm": "@stable",
+    "wpackagist-plugin/pdf-embedder": "@stable",
+    "wpackagist-plugin/plugin-activation-status": "@stable",
+    "wpackagist-plugin/really-simple-ssl": "@stable",
+    "wpackagist-plugin/redis-cache": "@stable",
+    "wpackagist-plugin/tinymce-advanced": "@stable",
+    "wpackagist-plugin/unconfirmed": "@stable",
+    "wpackagist-plugin/wordfence": "@stable",
+    "wpackagist-plugin/wordpress-importer": "@stable",
+    "wpackagist-plugin/wp-google-fonts": "@stable",
+    "wpackagist-plugin/wp-maintenance-mode": "@stable",
+    "wpackagist-plugin/wp-super-cache": "@stable",
+    "wpackagist-plugin/wps-menu-exporter": "@stable",
+    "wpackagist-theme/twentytwentyone": "@stable",
+    "wpackagist-theme/twentytwentyfive": "@stable"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0",
+    "yoast/phpunit-polyfills": "@stable"
+  },
+  "extra": {
+    "installer-paths": {
+      "wordpress/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "wordpress/wp-content/plugins/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "wordpress/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "wordpress"
+  },
+  "scripts": {
+    "post-install-cmd": "./composer_links.sh",
+    "post-update-cmd": "./composer_links.sh"
+  }
+}
