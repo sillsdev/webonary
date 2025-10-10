@@ -145,8 +145,24 @@ done
 echo "Copying files to web root."
 cp "${PROJ_DIR}/resources/clear-wordpress-cache.php" "${RELEASE_DIR}/wordpress/clear-wordpress-cache.php"
 cp "${PROJ_DIR}/resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
+cp "${PROJ_DIR}/resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
 cp "${PROJ_DIR}/resources/object-cache.php" "${RELEASE_DIR}/wordpress/object-cache.php"
 cp "${PROJ_DIR}/resources/webonary.png" "${RELEASE_DIR}/wordpress/webonary.png"
+
+
+# copy additional default localizations
+echo "Copying localization files to wp-content/languages."
+mkdir -p "${RELEASE_DIR}/wordpress/wp-content/languages"
+FILES="${PROJ_DIR}/localizations/wordpress-base/*.mo"
+for f in $FILES
+do
+  fn=$(basename "$f")
+  target="${RELEASE_DIR}/wordpress/wp-content/languages/${fn}"
+
+  if [[ ! -f "$target" ]]; then
+    cp "$f" "$target"
+  fi
+done
 
 
 # link themes directories
