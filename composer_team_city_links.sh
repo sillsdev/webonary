@@ -2,44 +2,10 @@
 
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# link wp-config
-FILE="${thisDir}/shared/config/wp-config.php"
-if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}/wordpress-develop/src/wp-config.php"
-fi
-
-# link wp-cache-config
-FILE="${thisDir}/shared/config/wp-cache-config.php"
-if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/wp-content/wp-cache-config.php
-fi
-
 # link wp-tests-config
-FILE="${thisDir}/shared/config/wp-tests-config.php"
+FILE="${thisDir}/resources/wp-tests-config.php"
 if [[ -f "$FILE" ]]; then
   ln -sfn "${FILE}" "${thisDir}/wordpress-develop/wp-tests-config.php"
-fi
-
-# link .htaccess
-FILE="${thisDir}/shared/config/.htaccess"
-if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/.htaccess
-fi
-
-# set default favicon
-FILE="${thisDir}/plugins/third-party/shockingly-simple-favicon/default/favicon.ico"
-if [[ -f "$FILE" ]]; then
-  rm -f "$FILE"
-fi
-ln -sfn "${thisDir}/resources/favicon.ico" "${FILE}"
-
-# uploads directory
-if [[ -d "${thisDir}/shared/uploads" ]]; then
-  ln -sfn "${thisDir}/shared/uploads/" "${thisDir}/wordpress-develop/src/wp-content/uploads"
-fi
-
-if [[ -d "${thisDir}/shared/blogs.dir" ]]; then
-  ln -sfn "${thisDir}/shared/blogs.dir/" "${thisDir}/wordpress-develop/src/wp-content/blogs.dir"
 fi
 
 # link plugins directories
@@ -83,6 +49,12 @@ do
   fn=$(basename "$f")
   ln -sfn "${f}" "${thisDir}/wordpress-develop/src/${fn}"
 done
+
+# copy the SQLite db file
+FILE="${thisDir}/wordpress-develop/src/wp-content/plugins/sqlite-database-integration/db.copy"
+if [[ -f "$FILE" ]]; then
+  cp "${FILE}" "${thisDir}/wordpress-develop/src/wp-content/db.php"
+fi
 
 
 # copy additional default localizations

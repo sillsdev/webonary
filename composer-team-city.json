@@ -31,6 +31,7 @@
       ]
     }
   ],
+
   "require": {
     "php": ">8.1",
     "ext-curl": "*",
@@ -70,6 +71,7 @@
     "wpackagist-plugin/plugin-activation-status": "@stable",
     "wpackagist-plugin/really-simple-ssl": "@stable",
     "wpackagist-plugin/redis-cache": "@stable",
+    "wpackagist-plugin/sqlite-database-integration": "@stable",
     "wpackagist-plugin/tinymce-advanced": "@stable",
     "wpackagist-plugin/unconfirmed": "@stable",
     "wpackagist-plugin/wordfence": "@stable",
@@ -102,8 +104,8 @@
   "scripts": {
     "pre-install-cmd" : "./get-wordpress-files.sh",
     "pre-update-cmd" : "./get-wordpress-files.sh",
-    "post-install-cmd": "./composer_links.sh",
-    "post-update-cmd": "./composer_links.sh"
+    "post-install-cmd": "./composer_team_city_links.sh",
+    "post-update-cmd": "./composer_team_city_links.sh"
   },
   "autoload": {
     "psr-4": {
