@@ -99,9 +99,5 @@
       ]
     },
     "wordpress-install-dir": "wordpress"
-  },
-  "scripts": {
-    "post-install-cmd": "./composer_links.sh",
-    "post-update-cmd": "./composer_links.sh"
   }
 }
