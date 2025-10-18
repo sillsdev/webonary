@@ -43,6 +43,7 @@
     "ext-mongodb": "*",
     "ext-simplexml": "*",
     "ext-zlib": "*",
+    "johnpbloch/wordpress": "^6.7",
     "mdsimpson/contact-form-7-to-database-extension": "@stable",
     "mongodb/mongodb": "@stable",
     "phpoffice/phpspreadsheet": "^1.17",
@@ -87,27 +88,16 @@
   },
   "extra": {
     "installer-paths": {
-      "wordpress-develop/src/wp-content/plugins/{$name}/": [
+      "wordpress/wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
       ],
-      "wordpress-develop/src/wp-content/plugins/mu-plugins/{$name}/": [
+      "wordpress/wp-content/plugins/mu-plugins/{$name}/": [
         "type:wordpress-muplugin"
       ],
-      "wordpress-develop/src/wp-content/themes/{$name}/": [
+      "wordpress/wp-content/themes/{$name}/": [
         "type:wordpress-theme"
       ]
     },
-    "wordpress-install-dir": "wordpress-develop/src"
-  },
-  "scripts": {
-    "pre-install-cmd" : "./get-wordpress-files.sh",
-    "pre-update-cmd" : "./get-wordpress-files.sh",
-    "post-install-cmd": "./composer_links.sh",
-    "post-update-cmd": "./composer_links.sh"
-  },
-  "autoload": {
-    "psr-4": {
-      "SIL\\Tests\\": "test-php/src/"
-    }
+    "wordpress-install-dir": "wordpress"
   }
 }

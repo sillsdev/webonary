@@ -120,27 +120,19 @@ rm -f "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/def
 rm -rf "${RELEASE_DIR}/wordpress/wp-content/wp-content"
 
 
-# copy files from wp-resources to the corresponding location in wordpress
-echo "Copying files from wp-resources."
-cp -r "${PROJ_DIR}/wp-resources/mu-plugins" "${RELEASE_DIR}/wordpress/wp-content/mu-plugins"
-# cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
-cp "${PROJ_DIR}/wp-resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
-cp "${PROJ_DIR}/wp-resources/clear-wordpress-cache.php" "${RELEASE_DIR}/wordpress/clear-wordpress-cache.php"
-# cp "${PROJ_DIR}/wp-resources/object-cache.php" "${RELEASE_DIR}/wordpress/wp-content/object-cache.php"
+# copy plugins
+echo "Copying files from plugins."
+cp -r "${PROJ_DIR}/plugins/mu-plugins" "${RELEASE_DIR}/wordpress/wp-content/mu-plugins"
 
-
-# copy files in the web root directory
-FILES="${PROJ_DIR}/wp-resources/*.*"
-for f in $FILES
+DIRS="${PROJ_DIR}/plugins/sil/*/"
+for d in $DIRS
 do
-  fn=$(basename "$f")
-  cp "${f}" "${RELEASE_DIR}/wordpress/${fn}"
+  fn=$(basename "$d")
+  target="${RELEASE_DIR}/wordpress/wp-content/plugins/${fn}"
+  cp -r "${d}" "${target}"
 done
 
-
-# link plugins directories
-echo "Copying plugin directories."
-DIRS="${PROJ_DIR}/wp-resources/plugins/*/"
+DIRS="${PROJ_DIR}/plugins/third-party/*/"
 for d in $DIRS
 do
   fn=$(basename "$d")
@@ -149,9 +141,33 @@ do
 done
 
 
+# copy files in the web root directory
+echo "Copying files to web root."
+cp "${PROJ_DIR}/resources/clear-wordpress-cache.php" "${RELEASE_DIR}/wordpress/clear-wordpress-cache.php"
+cp "${PROJ_DIR}/resources/favicon.ico" "${RELEASE_DIR}/wordpress/favicon.ico"
+cp "${PROJ_DIR}/resources/favicon.ico" "${RELEASE_DIR}/wordpress/wp-content/plugins/shockingly-simple-favicon/default/favicon.ico"
+cp "${PROJ_DIR}/resources/object-cache.php" "${RELEASE_DIR}/wordpress/object-cache.php"
+cp "${PROJ_DIR}/resources/webonary.png" "${RELEASE_DIR}/wordpress/webonary.png"
+
+
+# copy additional default localizations
+echo "Copying localization files to wp-content/languages."
+mkdir -p "${RELEASE_DIR}/wordpress/wp-content/languages"
+FILES="${PROJ_DIR}/localizations/wordpress-base/*.mo"
+for f in $FILES
+do
+  fn=$(basename "$f")
+  target="${RELEASE_DIR}/wordpress/wp-content/languages/${fn}"
+
+  if [[ ! -f "$target" ]]; then
+    cp "$f" "$target"
+  fi
+done
+
+
 # link themes directories
 echo "Copying theme directories."
-DIRS="${PROJ_DIR}/wp-resources/themes/*/"
+DIRS="${PROJ_DIR}/themes/*/"
 for d in $DIRS
 do
   fn=$(basename "$d")
