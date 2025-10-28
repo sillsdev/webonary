@@ -8,11 +8,11 @@ if [[ -f "$FILE" ]]; then
   ln -sfn "${FILE}" "${thisDir}/wordpress-develop/src/wp-config.php"
 fi
 
-# link wp-cache-config
-FILE="${thisDir}/shared/config/wp-cache-config.php"
-if [[ -f "$FILE" ]]; then
-  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/wp-content/wp-cache-config.php
-fi
+## link wp-cache-config
+#FILE="${thisDir}/shared/config/wp-cache-config.php"
+#if [[ -f "$FILE" ]]; then
+#  ln -sfn "${FILE}" "${thisDir}"/wordpress-develop/src/wp-content/wp-cache-config.php
+#fi
 
 # link wp-tests-config
 FILE="${thisDir}/shared/config/wp-tests-config.php"

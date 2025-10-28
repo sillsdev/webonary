@@ -1,16 +1,18 @@
 <?php
 
 
+use SIL\Webonary\Interfaces\ISearchCookie;
+
 class Webonary_SearchCookie
 {
-	private static $search_cookie_name = 'webonary_search';
+	private static string $search_cookie_name = 'webonary_search';
 
 	// default values
-	public $match_whole_word = true;
-	public $match_accents = false;
+	public bool $match_whole_word = true;
+	public bool $match_accents = false;
 
 
-	public static function GetSearchCookie()
+	public static function GetSearchCookie(): void
 	{
 		global $search_cookie;
 		$search_cookie = new Webonary_SearchCookie();
@@ -38,7 +40,7 @@ class Webonary_SearchCookie
 		$this->Save();
 	}
 
-	private function Save()
+	private function Save(): void
 	{
 		/*
 		 * NB: using this version of the built-in PHP function `setcookie` because it allows us to set the SameSite
@@ -64,7 +66,7 @@ class Webonary_SearchCookie
 	/**
 	 * @return string
 	 */
-	private static function GetDomain()
+	private static function GetDomain(): string
 	{
 		// if not set, probably running from command line
 		if (isset($_SERVER['SERVER_NAME']))
@@ -73,7 +75,7 @@ class Webonary_SearchCookie
 		$svr_name = $_SERVER['SERVER_NAME'];
 
 		// domain must be empty for localhost
-		if (strpos(strtolower($svr_name), 'localhost') !== false)
+		if (str_contains(strtolower($svr_name), 'localhost'))
 			return '';
 
 		$parts = explode('.', $svr_name);

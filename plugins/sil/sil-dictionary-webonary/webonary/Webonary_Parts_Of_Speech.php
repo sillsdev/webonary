@@ -1,5 +1,7 @@
 <?php
 
+use SIL\Webonary\Interfaces\ICloudPartOfSpeech;
+
 class Webonary_Parts_Of_Speech
 {
 	/** @var ICloudPartOfSpeech[] */

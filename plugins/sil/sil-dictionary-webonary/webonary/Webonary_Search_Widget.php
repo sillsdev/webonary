@@ -27,7 +27,7 @@ class Webonary_Search_Widget extends WP_Widget
 	 * @see WP_Widget::widget()
 	 *
 	 */
-	public function widget($args, $instance)
+	public function widget($args, $instance): void
 	{
 		echo $args['before_widget'] ?? '';
 
@@ -55,7 +55,7 @@ class Webonary_Search_Widget extends WP_Widget
 	 * @see WP_Widget::form()
 	 *
 	 */
-	public function form($instance)
+	public function form($instance): void
 	{
 		echo '<p>There are no settings for this widget</p>';
 	}
@@ -75,7 +75,7 @@ class Webonary_Search_Widget extends WP_Widget
 		return $new_instance;
 	}
 
-	private function getCloudLists($search_term)
+	private function getCloudLists($search_term): void
 	{
 		$dictionary = Webonary_Cloud::getDictionary();
 		$cloud_domains = Webonary_Cloud::getSemanticDomains();
@@ -119,7 +119,7 @@ class Webonary_Search_Widget extends WP_Widget
 		$this->last_edit_date = $dictionary->updatedAt;
 	}
 
-	private function getMySqlLists($search_term)
+	private function getMySqlLists($search_term): void
 	{
 		global $wpdb;
 

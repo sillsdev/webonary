@@ -1,5 +1,7 @@
 <?php
 
+use SIL\Webonary\Interfaces\ILanguageEntryCount;
+
 class Webonary_Languages
 {
 	private static ?array $language_entries = null;
@@ -58,7 +60,7 @@ HTML;
 		if (!is_null(self::$language_entries))
 			return self::$language_entries;
 
-		$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
+		$dictionary = Webonary_Cloud::getDictionary();
 
 		$cached_languages = Webonary_Cache::Get('cloud_languages', $dictionary->_id);
 		if (is_array($cached_languages)) {

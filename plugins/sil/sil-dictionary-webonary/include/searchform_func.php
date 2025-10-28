@@ -1,6 +1,9 @@
 <?php
 /** @noinspection SqlResolve */
 /** @noinspection HtmlUnknownTarget */
+
+use SIL\Webonary\Interfaces\ILanguageEntryCount;
+
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
  * in the theme, and make a call to this function, like so:

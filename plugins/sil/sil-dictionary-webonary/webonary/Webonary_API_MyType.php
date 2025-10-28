@@ -41,6 +41,7 @@ class Webonary_API_MyType
 	 * @param WP_REST_Request $_headers
 	 * @param bool $newAPI
 	 * @throws Exception
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public static function Import(WP_REST_Request $_headers, bool $newAPI = true): void
 	{

@@ -1,5 +1,7 @@
 <?php
 
+namespace SIL\Webonary\Interfaces;
+
 /**
  * @property string id
  * @property string language_code

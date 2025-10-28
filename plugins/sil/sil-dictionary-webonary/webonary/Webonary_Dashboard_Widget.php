@@ -12,7 +12,7 @@ class Webonary_Dashboard_Widget extends WP_Widget
 		'Formally published'
 	];
 
-	public static function OutputDashboardWidget()
+	public static function OutputDashboardWidget(): void
 	{
 		$upload_status = self::GetImportStatus();
 		$publication_status = self::$publication_status[intval(get_option('publicationStatus', 0))];

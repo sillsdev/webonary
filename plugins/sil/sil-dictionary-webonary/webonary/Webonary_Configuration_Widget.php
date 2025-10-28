@@ -68,7 +68,6 @@ class Webonary_Configuration_Widget
 		return '';
 	}
 
-	/** @noinspection PhpUndefinedFunctionInspection */
 	private static function SaveSettings(): string
 	{
 		$return_val = [];

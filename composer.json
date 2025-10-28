@@ -40,6 +40,7 @@
     "ext-intl": "*",
     "ext-json": "*",
     "ext-libxml": "*",
+    "ext-mbstring": "*",
     "ext-mongodb": "*",
     "ext-simplexml": "*",
     "ext-zlib": "*",
@@ -76,7 +77,6 @@
     "wpackagist-plugin/wordpress-importer": "@stable",
     "wpackagist-plugin/wp-google-fonts": "@stable",
     "wpackagist-plugin/wp-maintenance-mode": "@stable",
-    "wpackagist-plugin/wp-super-cache": "@stable",
     "wpackagist-plugin/wps-menu-exporter": "@stable",
     "wpackagist-theme/twentytwentyone": "@stable",
     "wpackagist-theme/twentytwentyfive": "@stable"
@@ -107,6 +107,8 @@
   },
   "autoload": {
     "psr-4": {
+      "SIL\\Webonary\\": "plugins/sil/sil-dictionary-webonary/src/",
+      "SIL\\Webonary\\Interfaces\\": "plugins/sil/sil-dictionary-webonary/src/Interfaces/",
       "SIL\\Tests\\": "test-php/src/"
     }
   }

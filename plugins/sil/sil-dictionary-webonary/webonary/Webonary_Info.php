@@ -1,26 +1,28 @@
 <?php /** @noinspection SqlResolve */
 
+use SIL\Webonary\Interfaces\IIndexedCounts;
+use SIL\Webonary\Interfaces\ILanguageEntryCount;
 
 class Webonary_Info
 {
 	private static ?array $selected_semantic_domains = null;
 
-	public static function getCountIndexed()
+	public static function getCountIndexed(): int
 	{
 		$counts = self::postCountByImportStatus();
-		return (int)(empty($counts->indexed_count) ? 0 : $counts->indexed_count);
+		return empty($counts->indexed_count) ? 0 : $counts->indexed_count;
 	}
 
-	public static function getCountImported()
+	public static function getCountImported(): int
 	{
 		$counts = self::postCountByImportStatus();
-		return (int)(empty($counts->unindexed_count) ? 0 : $counts->unindexed_count);
+		return empty($counts->unindexed_count) ? 0 : $counts->unindexed_count;
 	}
 
 	/**
 	 * @return string
 	 */
-	public static function import_status()
+	public static function import_status(): string
 	{
 		global $wpdb;
 
@@ -50,7 +52,7 @@ class Webonary_Info
 
 				if (empty($sdCount)) {
 					$status .= '<br>';
-					$status .= '<span style="color:red;">It appears you uploaded semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary.. in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
+					$status .= '<span style="color:red;">It appears you uploaded semantic domains without the domain numbers. Please go to Tools -> Configure -> Dictionary in FLEx and check "Abbreviation" under Senses/Semantic Domains.</span><br>';
 					$status .= 'Tip: You can hide the domain numbers from displaying, <a href=" https://www.webonary.org/help/tips-tricks/" target=_"blank">see here</a>.';
 					$status .= '<hr>';
 				}
@@ -152,7 +154,7 @@ SQL;
 		return $wpdb->get_results($sql);
 	}
 
-	public static function posts($index = '')
+	public static function posts($index = ''): array|object|null
 	{
 		global $wpdb;
 
@@ -184,7 +186,7 @@ SQL;
 		return $wpdb->get_results($sql);
 	}
 
-	public static function getPostCount($index = '')
+	public static function getPostCount($index = ''): int
 	{
 		global $wpdb;
 
@@ -215,7 +217,7 @@ SQL;
 		return (int)$wpdb->get_var($sql);
 	}
 
-	public static function getPost($post_id)
+	public static function getPost($post_id): array|stdClass|null
 	{
 		global $wpdb;
 
@@ -229,7 +231,7 @@ SQL;
 		return $wpdb->get_row($sql);
 	}
 
-	public static function getNextPost()
+	public static function getNextPost(): array|stdClass|null
 	{
 		global $wpdb;
 
@@ -249,9 +251,9 @@ SQL;
 	}
 
 	/**
-	 * @return IIndexedCounts
+	 * @return IIndexedCounts|stdClass
 	 */
-	public static function postCountByImportStatus()
+	public static function postCountByImportStatus(): IIndexedCounts|stdClass
 	{
 		global $wpdb;
 
@@ -285,34 +287,22 @@ SQL;
 		return $post_counts;
 	}
 
-	public static function reversalsMissing($arrIndexed)
+	public static function reversalsMissing($arrIndexed): string
 	{
-		global $wpdb;
-
-		$status = "";
+		$status = '';
 		foreach ($arrIndexed as $indexed) {
-			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;' . $indexed->total_indexed;
-
-			$table_name = Webonary_Configuration::$search_table_name;
-			/** @noinspection SqlResolve */
-			$sql = <<<SQL
-SELECT COUNT(language_code) AS missing
-FROM $table_name
-WHERE post_id = 0 AND language_code = '$indexed->language_code'
-SQL;
-
-			$missingReversals = $wpdb->get_var($sql);
-
-			// This feature was removed in:  v. 8.3.5 15 Oct 2019 removed missing senses link
-			// if($missingReversals > 0)
-			// $status .= ' <a href="edit.php?page=sil-dictionary-webonary/include/configuration.php&reportMissingSenses=1&languageCode=' . $indexed->language_code . '&language=' . $indexed->language_name . '" style="color:red;">missing senses for ' . $missingReversals . ' entries</a>';
-
-			$status .= '</div></div>';
+			$status .= <<<HTML
+<div style="clear:both;">
+    <div style="text-align:right;float:left;white-space:nowrap">
+		$indexed->language_code:</div><div style="float:left;">&nbsp;$indexed->total_indexed</div>
+</div>
+HTML;
 		}
+
 		return $status;
 	}
 
-	public static function getCountReversals()
+	public static function getCountReversals(): ?string
 	{
 		global $wpdb;
 

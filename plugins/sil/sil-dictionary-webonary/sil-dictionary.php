@@ -18,7 +18,7 @@ License: MIT
  *
  * SIL Dictionaries: Includes a dashboard, an import for XHTML, and multilingual dictionary search.
  *
- * PHP version 5.2
+ * PHP version 8.3
  *
  * LICENSE GPL v2
  *
@@ -29,6 +29,28 @@ License: MIT
 // don't load directly
 if ( ! defined('ABSPATH') )
 	die( '-1' );
+
+/**
+ * This function loads the Webonary classes when needed.
+ *
+ * @param string $class_name
+ * @return bool
+ */
+function webonary_autoloader(string $class_name): bool
+{
+	if (str_starts_with($class_name, 'Overtrue\\Pinyin\\'))
+		$file = __DIR__ . '/pinyin/src/' . substr($class_name, 16). '.php';
+	elseif (str_starts_with($class_name, 'SIL\\Webonary\\'))
+		$file = __DIR__ . '/src/' . substr($class_name, 13). '.php';
+	elseif (str_starts_with($class_name, 'Webonary_'))
+		$file = __DIR__ . '/webonary/' . $class_name . '.php';
+	else
+		return false;
+
+	$success = include_once($file);
+	return $success !== false;
+}
+spl_autoload_register('webonary_autoloader');
 
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
 

@@ -3,6 +3,11 @@
 use MongoDB\Client;
 use MongoDB\Database;
 use MongoDB\Driver\ServerApi;
+use SIL\Webonary\Interfaces\ICloudDictionary;
+use SIL\Webonary\Interfaces\ICloudLanguage;
+use SIL\Webonary\Interfaces\ICloudPartOfSpeech;
+use SIL\Webonary\Interfaces\ICloudSemanticDomain;
+use SIL\Webonary\Interfaces\ILanguageEntryCount;
 
 class Webonary_Cloud
 {

@@ -5,11 +5,11 @@ class Webonary_Db
 {
 	/**
 	 * @param string $query
-	 * @param mixed $args,...
+	 * @param $args,...
 	 *
 	 * @return bool
 	 */
-	public static function GetBool($query, $args)
+	public static function GetBool(string $query, $args): bool
 	{
 		/** @var wpdb $wpdb */
 		global $wpdb;

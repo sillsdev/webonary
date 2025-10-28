@@ -1,5 +1,7 @@
 <?php
 
+namespace SIL\Webonary\Interfaces;
+
 /**
  * Interface ICloudPartOfSpeech
  *
