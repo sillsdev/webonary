@@ -13,47 +13,41 @@ Version: v. 8.3.9
 License: MIT
 */
 
-/**
- * SIL Dictionary
- *
- * SIL Dictionaries: Includes a dashboard, an import for XHTML, and multilingual dictionary search.
- *
- * PHP version 5.2
- *
- * LICENSE GPL v2
- *
- * @package WordPress
- * @since 3.1
- */
+use SIL\Webonary\Main;
 
 // don't load directly
 if ( ! defined('ABSPATH') )
 	die( '-1' );
 
+/**
+ * This function loads the Webonary classes when needed.
+ *
+ * @param string $class_name
+ * @return bool
+ */
+function webonary_autoloader(string $class_name): bool
+{
+	if (str_starts_with($class_name, 'Overtrue\\Pinyin\\'))
+		$file = __DIR__ . '/pinyin/src/' . substr($class_name, 16). '.php';
+	elseif (str_starts_with($class_name, 'SIL\\Webonary\\'))
+		$file = __DIR__ . '/src/' . substr($class_name, 13). '.php';
+	elseif (str_starts_with($class_name, 'Webonary_'))
+		$file = __DIR__ . '/webonary/' . $class_name . '.php';
+	else
+		return false;
+
+	$success = include_once($file);
+	return $success !== false;
+}
+spl_autoload_register('webonary_autoloader');
+
+define('WBNY_PLUGIN_URL', plugin_dir_url(__FILE__));
+
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
 
 global $wpdb, $search_cookie;
 
-function webonary_admin_script(): void
-{
-	wp_register_script('webonary_admin_script', plugin_dir_url(__FILE__) . 'js/admin_script.js', [], false, true);
-	wp_enqueue_script('webonary_admin_script');
-	wp_localize_script(
-		'webonary_admin_script',
-		'webonary_ajax_obj',
-		['ajax_url' => admin_url('admin-ajax.php')]
-	);
-
-	wp_register_style('webonary_admin_style', plugin_dir_url(__FILE__) . 'css/admin_styles.css');
-	wp_enqueue_style('webonary_admin_style');
-
-	wp_register_script('webonary_toastr_script', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', [], false, true);
-	wp_enqueue_script('webonary_toastr_script');
-
-	wp_register_style('webonary_toastr_style', 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css');
-	wp_enqueue_style('webonary_toastr_style');
-}
-add_action('admin_enqueue_scripts', 'webonary_admin_script');
+Main::Run();
 
 add_action('init', 'Webonary_Utility::LoadTextDomains');
 
