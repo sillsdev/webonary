@@ -2,6 +2,8 @@
 
 namespace SIL\Webonary;
 
+use WP_Admin_Bar;
+
 class Admin
 {
 	private static array $allowed_roles = ['editor', 'editorplus', 'administrator'];
@@ -74,5 +76,43 @@ class Admin
 			'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'
 		);
 		wp_enqueue_style('webonary_toastr_style');
+	}
+
+	public static function SetAdminMenu(): void
+	{
+		if (!self::IsAdminAllowed())
+			return;
+
+		remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
+
+		if (!Admin::IsAdminAllowed())
+			return;
+
+		$menu_icon_svg = file_get_contents(dirname(__DIR__) . '/images/menu-icon.svg');
+		add_menu_page(
+			'Webonary',
+			'Webonary',
+			'edit_pages',
+			'webonary',
+			'webonary_conf_dashboard',
+			'data:image/svg+xml;base64,' . base64_encode($menu_icon_svg),
+			76
+		);
+	}
+
+	public static function SetAdminBar(): void
+	{
+		if (!self::IsAdminAllowed())
+			return;
+
+		/** @var WP_Admin_Bar $wp_admin_bar */
+		global $wp_admin_bar;
+
+		$wp_admin_bar->add_menu([
+			'id' => 'Webonary',
+			'title' => 'Webonary',
+			'parent' => 'site-name',
+			'href' => admin_url('/admin.php?page=webonary')
+		]);
 	}
 }

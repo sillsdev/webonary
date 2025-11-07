@@ -1,7 +1,8 @@
 <?php
 global $blog_id;
 $options = get_option('themezee_options');
-$footer_content = do_shortcode($options['themeZee_footer'], true);
+if (!empty($options['themeZee_footer']))
+	$footer_content = do_shortcode($options['themeZee_footer'], true);
 ?>
 <script type="text/javascript">
 	function popitup(url) {
@@ -134,7 +135,7 @@ else
 		}
 		?>
 		<div id="footer" class="<?php echo $color; ?>" style="text-align:center; padding-bottom: 4px; font-size:12px;">
-			<div style="text-align:center;"><?php echo $footer_content; ?></div>
+			<div style="text-align:center;"><?php echo $footer_content ?? ''; ?></div>
 			<hr style="font-size:5px; margin-bottom: 4px; clear:both;">
 			<div id="copyright">
 				<div class="cr-left">
