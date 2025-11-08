@@ -2,6 +2,13 @@
 
 namespace SIL\Webonary;
 
+use Webonary_API_MyType;
+use Webonary_Cloud;
+use Webonary_Infrastructure;
+use Webonary_SearchCookie;
+use Webonary_Utility;
+use WP_Error;
+
 class Hooks
 {
 	public static function SetHooks(): int
@@ -50,19 +57,23 @@ class Hooks
 	{
 		$hooks_set = 0;
 
-		$hooks_set += (int)add_action('init', 'SIL\Webonary\Hooks::LoadAdditionalTextDomains');
-		$hooks_set += (int)add_action('init', 'Webonary_Infrastructure::InstallInfrastructure', 0);
+		$hooks_set += (int)add_action('init', [Hooks::class, 'LoadAdditionalTextDomains']);
+		$hooks_set += (int)add_action('init', [Webonary_Infrastructure::class, 'InstallInfrastructure'], 0);
 		$hooks_set += (int)add_filter('posts_request', 'replace_default_search_filter', 10, 2);
 
 		// be sure these style sheets are loaded last, after the theme
-		$hooks_set += (int)add_action('wp_enqueue_scripts', 'Webonary_Utility::EnqueueJsAndCss', 999991);
+		$hooks_set += (int)add_action('wp_enqueue_scripts', [Webonary_Utility::class, 'EnqueueJsAndCss'], 999991);
 
 		// this executes just before wordpress determines which template page to load
-		$hooks_set += (int)add_action('after_setup_theme', 'Webonary_SearchCookie::GetSearchCookie');
+		$hooks_set += (int)add_action('after_setup_theme', [Webonary_SearchCookie::class, 'GetSearchCookie']);
 
 		$hooks_set += (int)add_action('preprocess_comment' , 'preprocess_comment_add_type');
-		$hooks_set += (int)add_action('rest_api_init', 'Webonary_API_MyType::Register_New_Routes');
-		$hooks_set += (int)add_action('rest_api_init', 'Webonary_Cloud::registerApiRoutes');
+		$hooks_set += (int)add_action('rest_api_init', [Webonary_API_MyType::class, 'Register_New_Routes']);
+		$hooks_set += (int)add_action('rest_api_init', [Webonary_Cloud::class, 'registerApiRoutes']);
+
+		// Block all API requests from users not logged in, with exceptions
+		// See https://developer.wordpress.org/rest-api/frequently-asked-questions/#require-authentication-for-all-requests
+		$hooks_set += (int)add_filter('rest_authentication_errors', [Hooks::class, 'ApplyRestAuthenticationExceptions']);
 
 //		$hooks_set += (int)add_action('switch_blog', 'SIL\Webonary\Dictionaries::BlogWasSwitched');
 
@@ -76,5 +87,36 @@ class Hooks
 	{
 		$include_dir = 'sil-dictionary-webonary/include';
 		load_plugin_textdomain('sil_domains', false, $include_dir . '/sem-domains');
+	}
+
+	public static function ApplyRestAuthenticationExceptions($result)
+	{
+		// If a previous authentication check was applied, pass that result along without modification.
+		if (true === $result || is_wp_error($result)) {
+			return $result;
+		}
+
+		if (is_user_logged_in()) {
+			return $result;
+		}
+
+		// exceptions, by path
+		global $wp;
+		$path = add_query_arg(array(), $wp->request);
+
+		if (str_starts_with($path, 'wp-json/wordfence')) {
+			return $result;
+		}
+
+		if ($path === 'wp-json/webonary/import'
+			|| str_starts_with($path, 'wp-json/' . Webonary_Cloud::$apiNamespace)) {
+			return $result;
+		}
+
+		return new WP_Error(
+			'rest_not_logged_in',
+			__('This API can only be called if you are logged in first.'),
+			array('status' => 401)
+		);
 	}
 }

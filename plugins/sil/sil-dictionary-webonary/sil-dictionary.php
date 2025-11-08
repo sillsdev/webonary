@@ -51,38 +51,7 @@ Main::Run();
 
 
 
-// Block all API requests from users not logged in, with exceptions
-// See https://developer.wordpress.org/rest-api/frequently-asked-questions/#require-authentication-for-all-requests
-add_filter('rest_authentication_errors', function ($result) {
 
-	// If a previous authentication check was applied, pass that result along without modification.
-	if (true === $result || is_wp_error($result)) {
-		return $result;
-	}
-
-	if (is_user_logged_in()) {
-		return $result;
-	}
-
-	// exceptions, by path
-	global $wp;
-	$path = add_query_arg(array(), $wp->request);
-
-	if (str_starts_with($path, 'wp-json/wordfence')) {
-		return $result;
-	}
-
-	if ($path === 'wp-json/webonary/import'
-		|| str_starts_with($path, 'wp-json/' . Webonary_Cloud::$apiNamespace)) {
-		return $result;
-	}
-
-	return new WP_Error(
-		'rest_not_logged_in',
-		__('This API can only be called if you are logged in first.'),
-		array('status' => 401)
-	);
-});
 
 
 if (IS_CLOUD_BACKEND) {
