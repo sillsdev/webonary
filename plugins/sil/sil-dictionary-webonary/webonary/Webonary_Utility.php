@@ -569,15 +569,6 @@ class Webonary_Utility
 	}
 
 	/**
-	 * Loads the translated strings
-	 */
-	public static function LoadTextDomains()
-	{
-		$include_dir = 'sil-dictionary-webonary/include';
-		load_plugin_textdomain('sil_domains', false, $include_dir . '/sem-domains');
-	}
-
-	/**
 	 * Returns the $_GET[$variable_name] value as a string
 	 * @param string $variable_name
 	 * @param string $default

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 siteID=${1:-missing}
 if [[ "${siteID}" == "missing" ]]; then
   read -p "Enter the site number: " siteID
@@ -9,7 +10,10 @@ fi
 
 if [[ -f "${thisDir}/config/data-server" ]]
 then
+  echo "there"
 	. "${thisDir}/config/data-server"
+else
+  echo "elsewhere"
 fi
 
 dumpDir="/tmp/data-transfer/"
@@ -19,6 +23,7 @@ rm -rf "${dumpDir}"
 mkdir -p "${dumpDir}"
 
 echo "Backing up..."
+echo "${dataServer}"
 ssh -A "${dataServer}" "./backup_site.sh ${siteID}"
 
 echo "Copying from the server"

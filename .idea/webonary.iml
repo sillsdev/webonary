@@ -50,6 +50,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php85" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yoast/phpunit-polyfills" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

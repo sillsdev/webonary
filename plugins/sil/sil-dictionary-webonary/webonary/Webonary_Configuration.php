@@ -1,17 +1,13 @@
 <?php
 
+use SIL\Webonary\Admin;
 
 class Webonary_Configuration
 {
-
 	//region Table and taxonomy attributes
 	public static string $search_table_name = SEARCHTABLE;
 	public static string $reversal_table_name = REVERSALTABLE;
 	//endregion
-
-	private static array $allowed_roles = ['editor', 'editorplus', 'administrator'];
-	private static ?bool $is_allowed = null;
-
 
 	/**
 	 * Set up the SIL Dictionary in WordPress Dashboard Tools
@@ -20,7 +16,7 @@ class Webonary_Configuration
 	{
 		remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
 
-		if (!self::IsAllowed())
+		if (!Admin::IsAdminAllowed())
 			return;
 
 		add_menu_page('Webonary', 'Webonary', 'edit_pages', 'webonary', 'webonary_conf_dashboard', get_bloginfo('wpurl') . '/wp-content/plugins/sil-dictionary-webonary/images/webonary-icon.png', 76);
@@ -35,7 +31,7 @@ class Webonary_Configuration
 		$wp_admin_bar->remove_menu( 'widgets' );
 		$wp_admin_bar->remove_menu( 'menus' );
 
-		if (!self::IsAllowed())
+		if (!Admin::IsAdminAllowed())
 			return;
 
 		$wp_admin_bar->add_menu([
@@ -98,31 +94,5 @@ SQL;
 	public static function use_pinyin($language_code): bool
 	{
 		return in_array($language_code, array('zh-CN', 'zh-Hans-CN'));
-	}
-
-	private static function IsAllowed(): bool
-	{
-		if (!is_null(self::$is_allowed))
-			return self::$is_allowed;
-
-		// super admin is always allowed
-		if (is_super_admin()) {
-			self::$is_allowed = true;
-			return true;
-		}
-
-		// get the current user
-		$user = get_userdata(get_current_user_id());
-
-		// if not found or no roles, return false
-		if ($user === false || empty($user->roles)) {
-			self::$is_allowed = false;
-			return false;
-		}
-
-		// does the user have one of the allowed roles?
-		self::$is_allowed = !empty(array_intersect(self::$allowed_roles, $user->roles));
-
-		return self::$is_allowed;
 	}
 }
