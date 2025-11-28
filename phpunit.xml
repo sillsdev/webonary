@@ -11,7 +11,8 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
     <coverage>
         <include>
-            <directory suffix=".php">./wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary</directory>
+            <directory suffix=".php">./wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary/src</directory>
+            <directory suffix=".php">./test-php/src/Mocks</directory>
         </include>
         <report>
             <clover outputFile="test-results/clover.xml"/>

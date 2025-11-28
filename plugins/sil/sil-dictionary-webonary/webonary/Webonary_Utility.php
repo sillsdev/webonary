@@ -712,6 +712,10 @@ class Webonary_Utility
 	{
 		$upload_dir = wp_upload_dir();
 		$target_path = $upload_dir['path'] . '/' . $file_name;
+
+		if (!is_file($target_path))
+			return null;
+
 		$contents = file_get_contents($target_path);
 
 		if ($contents === false)

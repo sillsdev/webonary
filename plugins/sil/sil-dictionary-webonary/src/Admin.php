@@ -86,10 +86,32 @@ class Admin
 
 		remove_submenu_page('edit.php', 'sil-dictionary-webonary/include/configuration.php');
 
-		if (!Admin::IsAdminAllowed())
-			return;
-
 		$menu_icon_svg = file_get_contents(dirname(__DIR__) . '/images/menu-icon.svg');
+
+		if (get_current_blog_id() == 1) {
+
+			add_menu_page(
+				'Webonary',
+				'Webonary',
+				'edit_pages',
+				'webonary',
+				[AdminWidget::class, 'ShowWidget'],
+				'data:image/svg+xml;base64,' . base64_encode($menu_icon_svg),
+				76
+			);
+
+			add_submenu_page(
+				'webonary',
+				'Webonary Reports',
+				'Reports',
+				'edit_pages',
+				'webonary-reports',
+				[AdminWidget::class, 'ShowReports']
+			);
+
+			return;
+		}
+
 		add_menu_page(
 			'Webonary',
 			'Webonary',
@@ -187,6 +209,15 @@ HTML;
 	<div>
 		<p style="margin-top: 0; font-size: inherit">Finished.</p>
 	</div>
+</div>
+HTML;
+	}
+
+	public static function AddSvgIcons(): void
+	{
+		echo <<<'HTML'
+<div style="display: none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><g id="fa-excel"><path d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm212-240h-28.8c-4.4 0-8.4 2.4-10.5 6.3-18 33.1-22.2 42.4-28.6 57.7-13.9-29.1-6.9-17.3-28.6-57.7-2.1-3.9-6.2-6.3-10.6-6.3H124c-9.3 0-15 10-10.4 18l46.3 78-46.3 78c-4.7 8 1.1 18 10.4 18h28.9c4.4 0 8.4-2.4 10.5-6.3 21.7-40 23-45 28.6-57.7 14.9 30.2 5.9 15.9 28.6 57.7 2.1 3.9 6.2 6.3 10.6 6.3H260c9.3 0 15-10 10.4-18L224 320c.7-1.1 30.3-50.5 46.3-78 4.7-8-1.1-18-10.3-18z"/></g></svg>
 </div>
 HTML;
 	}

@@ -212,7 +212,7 @@ HTML;
 			$blogs_html .= sprintf($option_template, $blog->blog_id, $selected, $blog->path) . PHP_EOL;
 		}
 
-		return <<<HTML
+		$html = <<<HTML
 <tr class="form-required">
     <th scope='row'>$choose_msg</th>
     <td>
@@ -222,11 +222,16 @@ HTML;
 		</select>
 	</td>
 </tr>
+HTML;
+		if (!empty($application['other-template'])) {
+			$html .= <<<HTML
 <tr>
     <th>Other template</th>
     <td>{$application['other-template']->field_value}</td>
 </tr>
 HTML;
+		}
+		return $html;
 	}
 
 	private function get_desired_url(array $appPost, array $application, string $current_site_path): string
@@ -550,6 +555,9 @@ HTML;
 
 		$content_html = implode(PHP_EOL, $content);
 
+		$msg = $application['message']->field_value ?? '';
+		$lang = $application['ui-languages']->field_value ?? '';
+
         return <<<HTML
 <div class="wrap">
 	<form method="POST">
@@ -558,8 +566,8 @@ HTML;
             $content_html
 		</table>
 		<hr>
-		<p><b>Comments:</b> {$application['message']->field_value}</p>
-		<p><b>Display Languages (need to be enabled manually):</b> {$application['ui-languages']->field_value}</p>
+		<p><b>Comments:</b> {$msg}</p>
+		<p><b>Display Languages (need to be enabled manually):</b> {$lang}</p>
 		<hr>
 		<p>An email will be sent to the user informing him about his new site. See <a href="/wp-admin/network/settings.php">Welcome Email</a>.</p>
 		<p class="submit"><input class="button" type="submit" value="$create_now_label"></p>

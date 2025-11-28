@@ -43,6 +43,7 @@
     "ext-mongodb": "*",
     "ext-simplexml": "*",
     "ext-zlib": "*",
+    "kcs/class-finder": "^0.6",
     "johnpbloch/wordpress": "^6.7",
     "mdsimpson/contact-form-7-to-database-extension": "@stable",
     "mongodb/mongodb": "@stable",
