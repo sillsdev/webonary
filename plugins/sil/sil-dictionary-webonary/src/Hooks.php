@@ -29,17 +29,14 @@ class Hooks
 			return 0;
 
 		$hooks_set = 0;
-		$blog_id = get_current_blog_id();
 
 		$hooks_set += (int)add_action('admin_enqueue_scripts', [Admin::class, 'EnqueueAdminScripts']);
+		$hooks_set += (int)add_action('admin_menu', [Admin::class, 'SetAdminMenu']);
 
-		// only show these for dictionary sites, not the main site
-		if ($blog_id > 1) {
-			$hooks_set += (int)add_action('admin_menu', [Admin::class, 'SetAdminMenu']);
-			$hooks_set += (int)add_action('admin_bar_menu', [Admin::class, 'SetAdminBar'], 35);
-
-//			$hooks_set += (int)add_action('wp_dashboard_setup', 'SIL\Webonary\DashboardWidget::AddWidget');
-		}
+		$hooks_set += (int)add_action('admin_bar_menu', [Admin::class, 'SetAdminBar'], 35);
+//		$hooks_set += (int)add_action('wp_dashboard_setup', 'SIL\Webonary\DashboardWidget::AddWidget');
+		$hooks_set += (int)add_action('in_admin_header', [Admin::class, 'AddSvgIcons']);
+		$hooks_set += (int)add_action('wp_ajax_getReportExcel', [AdminWidget::class, 'DisplayReports']);
 
 		$hooks_set += (int)add_action('network_admin_menu', [Admin::class, 'AddLanguageProblemMenuItem']);
 

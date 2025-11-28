@@ -3,6 +3,7 @@
 const PHP_UNIT = true;
 const TESTS_DIR = __DIR__ . '/test-php';
 const CONFIG_DIR = TESTS_DIR . '/config';
+const TEST_RESOURCES = TESTS_DIR . '/resources';
 
 register_shutdown_function(function(){
     print 'SHUTDOWN' . PHP_EOL;

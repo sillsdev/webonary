@@ -16,8 +16,8 @@ License: MIT
 use SIL\Webonary\Main;
 
 // don't load directly
-if ( ! defined('ABSPATH') )
-	die( '-1' );
+if (!defined('ABSPATH'))
+	die('-1');
 
 /**
  * This function loads the Webonary classes when needed.
@@ -36,7 +36,7 @@ function webonary_autoloader(string $class_name): bool
 	else
 		return false;
 
-	$success = include_once($file);
+	$success = include_once(str_replace('\\', '/', $file));
 	return $success !== false;
 }
 spl_autoload_register('webonary_autoloader');
