@@ -1,4 +1,4 @@
-# Translation of WordPress - 6.8.x - Development in English (United States)
+# Translation of WordPress - 6.8.x - Development in Turkmen (Turkmenistan)
 # This file is distributed under the same license as the WordPress - 6.8.x - Development package.
 msgid ""
 msgstr ""
@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/4.0.3\n"
-"Language: en_US\n"
+"Language: tk_TM\n"
 "Project-Id-Version: WordPress - 6.8.x - Development\n"
 
 #. translators: Use this to specify the proper Google Font name and variants to
@@ -2706,7 +2706,7 @@ msgstr ""
 #: wp-includes/blocks/comments/block.json
 msgctxt "block title"
 msgid "Comments"
-msgstr ""
+msgstr "Teswirler"
 
 #: wp-includes/blocks/comments-pagination-previous/block.json
 msgctxt "block title"
@@ -4293,7 +4293,7 @@ msgstr ""
 #: wp-includes/block-template-utils.php:164
 msgctxt "Template name"
 msgid "Pages"
-msgstr ""
+msgstr "Sahypalar"
 
 #: wp-includes/block-template-utils.php:160
 msgctxt "Template name"
@@ -5967,7 +5967,7 @@ msgstr ""
 #: wp-includes/blocks/search/block.json
 msgctxt "block title"
 msgid "Search"
-msgstr ""
+msgstr "Gözle"
 
 #: wp-includes/blocks/rss/block.json
 msgctxt "block title"
@@ -6007,7 +6007,7 @@ msgstr ""
 #: wp-includes/blocks/latest-posts/block.json
 msgctxt "block title"
 msgid "Latest Posts"
-msgstr ""
+msgstr "Soňky habarlar"
 
 #: wp-includes/blocks/latest-comments/block.json
 msgctxt "block title"
@@ -6072,7 +6072,7 @@ msgstr ""
 #: wp-includes/blocks/archives/block.json
 msgctxt "block title"
 msgid "Archives"
-msgstr ""
+msgstr "Arhiwler"
 
 #: wp-includes/blocks/gallery/block.json
 msgctxt "block title"
@@ -11464,7 +11464,7 @@ msgstr ""
 #: wp-includes/theme.php:2334
 msgctxt "Theme starter content"
 msgid "Categories"
-msgstr ""
+msgstr "Kategoriýalar"
 
 #: wp-includes/theme.php:2358
 msgctxt "Theme starter content"
@@ -13849,7 +13849,7 @@ msgstr[1] "%s <span class=\"screen-reader-text\">Comments</span>"
 #: wp-includes/js/dist/block-library.js:53502
 #: wp-includes/js/dist/block-library.js:53594
 msgid "Read more"
-msgstr ""
+msgstr "Mundan köpräk okaň"
 
 #. translators: Hidden accessibility text.
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:66
@@ -14829,7 +14829,7 @@ msgstr ""
 #: wp-includes/general-template.php:1750
 msgctxt "post format archive title"
 msgid "Links"
-msgstr ""
+msgstr "Baglanyşyklar"
 
 #: wp-includes/general-template.php:1748
 msgctxt "post format archive title"
@@ -14959,7 +14959,7 @@ msgstr ""
 #: wp-includes/post.php:51
 msgctxt "add new from admin bar"
 msgid "Page"
-msgstr ""
+msgstr "Sahypa"
 
 #: wp-includes/post.php:27
 msgctxt "add new from admin bar"
@@ -16071,7 +16071,7 @@ msgstr ""
 #: wp-admin/network/upgrade.php:22 wp-admin/network/user-new.php:20
 #: wp-admin/network/users.php:229
 msgid "Overview"
-msgstr ""
+msgstr "Ummumy syn"
 
 #: wp-includes/general-template.php:4963
 msgctxt "admin color scheme"
@@ -17951,7 +17951,7 @@ msgstr ""
 #: wp-includes/class-wp-taxonomy.php:614
 msgctxt "taxonomy singular name"
 msgid "Category"
-msgstr ""
+msgstr "Kategoriýa"
 
 #: wp-includes/class-wp-taxonomy.php:613
 msgctxt "taxonomy general name"
@@ -18827,7 +18827,7 @@ msgstr ""
 
 #: wp-includes/script-loader.php:990
 msgid "of"
-msgstr ""
+msgstr "-dan"
 
 #: wp-includes/class-wp-editor.php:1222 wp-includes/script-loader.php:989
 #: wp-includes/widgets/class-wp-widget-media-image.php:28
@@ -19469,7 +19469,7 @@ msgstr ""
 #: wp-includes/js/dist/format-library.js:1814 wp-admin/user-edit.php:387
 #: wp-admin/user-new.php:571
 msgid "Language"
-msgstr ""
+msgstr "Dil"
 
 #: wp-includes/class-wp-editor.php:1213
 msgid "Document properties"
@@ -20156,7 +20156,7 @@ msgstr ""
 
 #: wp-includes/comment-template.php:1000
 msgid "No Comments"
-msgstr ""
+msgstr "Teswir ýok"
 
 #: wp-includes/comment-template.php:1688
 msgid "Enter your password to view comments."
@@ -20534,7 +20534,7 @@ msgstr ""
 #: wp-includes/js/dist/edit-widgets.js:4112 wp-includes/js/dist/editor.js:29694
 #: wp-admin/customize.php:245 wp-admin/includes/class-wp-screen.php:979
 msgid "Help"
-msgstr ""
+msgstr "Kömek"
 
 #. translators: displayed when a page has an empty title.
 #: wp-includes/blocks/latest-comments.php:31
