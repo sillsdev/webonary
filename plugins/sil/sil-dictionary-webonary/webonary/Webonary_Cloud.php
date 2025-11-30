@@ -631,19 +631,21 @@ class Webonary_Cloud
 	public static function registerAndEnqueueReversalStyles($lang): void
 	{
 		$dictionary = self::getDictionary();
+
+		if (is_null($dictionary))
+			return;
+
 		$time = strtotime($dictionary->updatedAt);
-		if (!is_null($dictionary)) {
-			//$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
-			foreach ($dictionary->reversalLanguages as $reversal) {
-				if ($lang === $reversal->lang) {
-					foreach ($reversal->cssFiles as $index => $cssFile) {
-						$handle = 'reversal_stylesheet' . ($index ?: '');
-						$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
-						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
-						wp_enqueue_style($handle);
-					}
-					break;
+
+		foreach ($dictionary->reversalLanguages as $reversal) {
+			if ($lang === $reversal->lang) {
+				foreach ($reversal->cssFiles as $index => $cssFile) {
+					$handle = 'reversal_stylesheet' . ($index ?: '');
+					$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
+					wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
+					wp_enqueue_style($handle);
 				}
+				break;
 			}
 		}
 	}

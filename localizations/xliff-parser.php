@@ -64,7 +64,7 @@ function verify_po_files(): bool
 	// WordPress core file
 	$po_file = __DIR__ . '/wordpress-base/' . $locale . '.po';
 	if (!is_file($po_file)) {
-		$en_file = __DIR__ . '/wordpress-base/en_US.po';
+		$en_file = __DIR__ . '/english/wordpress-en_US.po';
 		$data = file_get_contents($en_file);
 		$data = str_replace('en_US', $locale, $data);
 		file_put_contents($po_file, $data);
@@ -84,7 +84,7 @@ function verify_po_files(): bool
 	$po_files[] = $po_file;
 
 	// webonary file
-	$po_file = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/lang/sil_dictionary-' . $locale . '.po';
+	$po_file = dirname(__DIR__) . '/plugins/sil/sil-dictionary-webonary/include/lang/sil_dictionary-' . $locale . '.po';
 	if (!is_file($po_file)) {
 		$en_file = __DIR__ . '/english/sil_dictionary-en_US.po';
 		$data = file_get_contents($en_file);
@@ -95,7 +95,7 @@ function verify_po_files(): bool
 	$po_files[] = $po_file;
 
 	// semantic domains
-	$po_file = dirname(__DIR__) . '/plugins/sil-dictionary-webonary/include/sem-domains/sil_domains-' . $locale . '.po';
+	$po_file = dirname(__DIR__) . '/plugins/sil/sil-dictionary-webonary/include/sem-domains/sil_domains-' . $locale . '.po';
 	if (!is_file($po_file)) {
 		$en_file = __DIR__ . '/english/sil_domains-en_US.po';
 		$data = file_get_contents($en_file);
