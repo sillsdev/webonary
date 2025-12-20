@@ -709,12 +709,12 @@ class Webonary_Cloud
 		if (!empty($language->letters))
 			update_option('vernacular_alphabet', self::filterLetterList($language->letters, true));
 
-		$term = get_term_by('slug', $dictionary->mainLanguage->lang, self::$languageCategory);
+		$term = get_term_by('slug', $language->lang, self::$languageCategory);
 		if (empty($term)) {
 			wp_insert_term(
 				$language->title,
 				self::$languageCategory,
-				array('description' => $dictionary->mainLanguage->title, 'slug' => $dictionary->mainLanguage->lang)
+				array('description' => $language->title, 'slug' => $language->lang)
 			);
 		}
 
