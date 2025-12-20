@@ -44,6 +44,15 @@ class Admin
 	public static function EnqueueAdminScripts(): void
 	{
 		wp_register_script(
+			'webonary_old_admin_script',
+			WBNY_PLUGIN_URL . 'js/admin_script.js',
+			[],
+			false,
+			true
+		);
+		wp_enqueue_script('webonary_old_admin_script');
+
+		wp_register_script(
 			'webonary_admin_script',
 			WBNY_PLUGIN_URL . 'js/webonary-admin.js',
 			[],

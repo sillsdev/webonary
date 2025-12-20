@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
+import { APIGatewayRequestAuthorizerEventHeaders } from "aws-lambda";
 
 export interface BasicAuthCredentials {
   username: string;
@@ -40,7 +41,7 @@ export function setSearchableEntries(entries: ListOptionItem[]): ListOptionItem[
 }
 
 export function sortEntries(entries: DictionaryEntry[], lang?: string): DictionaryEntry[] {
-  let entriesSorted: DictionaryEntry[] = [];
+  let entriesSorted: DictionaryEntry[];
   if (lang !== '') {
     entriesSorted = entries.sort((a, b) => {
       const aWord = a.senses[0].definitionorgloss.find((letter) => letter.lang === lang);
@@ -69,4 +70,48 @@ export function escapeStringRegexp(value: string) {
 
 export function semanticDomainAbbrevRegex(abbrev: string) {
   return { $in: [abbrev, new RegExp(`^${escapeStringRegexp(abbrev)}.`, 'i')] };
+}
+
+export function isFieldWorksVersionOK(headers: APIGatewayRequestAuthorizerEventHeaders | null): boolean {
+
+  // return true if no user-agent header found
+  if (!headers || !('user-agent' in headers))
+    return true;
+
+  // expecting a string like "FieldWorks Language Explorer v.9.2.5"
+  const userAgent = headers['user-agent'] ?? '';
+
+  // if not FieldWorks, return true
+  if (!userAgent.includes('FieldWorks'))
+    return true;
+
+  // the string should end with the version number
+  const found = userAgent.match(/\d[\d.]+$/);
+  if (!found)
+    return false;
+
+  const minVersion = [9, 2, 5];
+  const parts = found[0].split('.').map(Number);
+
+  if (parts[0] > minVersion[0])
+    return true;
+
+  if (parts[0] < minVersion[0])
+    return false;
+
+  // parts[0] == minVersion[0]
+  if (parts.length < 2)
+    return false;
+
+  if (parts[1] > minVersion[1])
+    return true;
+
+  if (parts[1] < minVersion[1])
+    return false;
+
+  // parts[0] == minVersion[0] and parts[1] == minVersion[1]
+  if (parts.length < 3)
+    return false;
+
+  return (parts[2] >= minVersion[2]);
 }

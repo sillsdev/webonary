@@ -1,7 +1,6 @@
 import { APIGatewayRequestAuthorizerEvent, APIGatewayAuthorizerResult } from 'aws-lambda';
 import axios, { AxiosError } from 'axios';
-
-import { getBasicAuthCredentials } from './utils';
+import { getBasicAuthCredentials, isFieldWorksVersionOK } from './utils';
 
 type Effect = 'Allow' | 'Deny';
 
@@ -10,7 +9,8 @@ function generatePolicy(
   effect: Effect,
   resources: string[],
 ): APIGatewayAuthorizerResult {
-  const authResult: APIGatewayAuthorizerResult = {
+
+  return {
     principalId,
     policyDocument: {
       Version: '2012-10-17',
@@ -23,13 +23,16 @@ function generatePolicy(
       ],
     },
   };
-
-  return authResult;
 }
 
 export async function handler(
   event: APIGatewayRequestAuthorizerEvent,
 ): Promise<APIGatewayAuthorizerResult> {
+
+  if (!isFieldWorksVersionOK(event.headers)) {
+    throw Error('FieldWorks version must be 9.2.5 or newer.');
+  }
+
   const authHeaders = event.headers?.Authorization;
   const dictionaryPath = event.pathParameters?.dictionaryId ?? '';
   const dictionaryId = dictionaryPath.toLowerCase();
