@@ -2,6 +2,7 @@
 
 namespace SIL\Webonary;
 
+use SIL\Webonary\Helpers\EmailHelper;
 use Webonary_API_MyType;
 use Webonary_Cloud;
 use Webonary_Infrastructure;
@@ -64,7 +65,12 @@ class Hooks
 		// this executes just before wordpress determines which template page to load
 		$hooks_set += (int)add_action('after_setup_theme', [Webonary_SearchCookie::class, 'GetSearchCookie']);
 
+		// comments
 		$hooks_set += (int)add_action('preprocess_comment' , 'preprocess_comment_add_type');
+		$hooks_set += (int)add_filter('comment_notification_headers', [EmailHelper::class, 'SetCommentNotificationReplyTo'], 10, 2);
+		$hooks_set += (int)add_filter('comment_moderation_headers', [EmailHelper::class, 'SetCommentNotificationReplyTo'], 10, 2);
+
+		// REST API
 		$hooks_set += (int)add_action('rest_api_init', [Webonary_API_MyType::class, 'Register_New_Routes']);
 		$hooks_set += (int)add_action('rest_api_init', [Webonary_Cloud::class, 'registerApiRoutes']);
 
