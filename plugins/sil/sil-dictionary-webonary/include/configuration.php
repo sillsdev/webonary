@@ -34,10 +34,10 @@ function relevanceSave(): bool
 		$found = Webonary_Db::GetBool("SELECT COUNT(*) FROM $tableCustomRelevance WHERE class = %s", $class_name);
 
 		if ($found) {
-			$wpdb->query($wpdb->prepare("UPDATE {$tableCustomRelevance} SET relevance = %s WHERE class = %s", $relevance, $class_name));
+			$wpdb->query($wpdb->prepare("UPDATE $tableCustomRelevance SET relevance = %s WHERE class = %s", $relevance, $class_name));
 		}
 		else {
-			$wpdb->query($wpdb->prepare("INSERT INTO {$tableCustomRelevance} (relevance, class) VALUES (%s, %s)", $relevance, $class_name));
+			$wpdb->query($wpdb->prepare("INSERT INTO $tableCustomRelevance (relevance, class) VALUES (%s, %s)", $relevance, $class_name));
 		}
 	}
 
@@ -56,10 +56,10 @@ function relevanceSave(): bool
 		$result = $wpdb->get_results($wpdb->prepare('SELECT relevance FROM $tableCustomRelevance WHERE class = %s', $class));
 
 		if (count ($result) > 0) {
-			$wpdb->query($wpdb->prepare("UPDATE {$tableCustomRelevance} SET relevance = %s WHERE class = %s", $_POST['relevance'][$r], $class));
+			$wpdb->query($wpdb->prepare("UPDATE $tableCustomRelevance SET relevance = %s WHERE class = %s", $_POST['relevance'][$r], $class));
 		}
 		else {
-			$wpdb->query($wpdb->prepare("INSERT INTO {$tableCustomRelevance} (class, relevance) VALUES (%s, %s)", $class, $_POST['relevance'][$r]));
+			$wpdb->query($wpdb->prepare("INSERT INTO $tableCustomRelevance (class, relevance) VALUES (%s, %s)", $class, $_POST['relevance'][$r]));
 		}
 
 		$r++;
@@ -90,7 +90,7 @@ SQL;
 	$arrMissing = $wpdb->get_results($sql);
 	$missing_items = '';
 	foreach($arrMissing as $missing) {
-		$missing_items .= "<li>{$missing->search_strings}</li>\n";
+		$missing_items .= "<li>$missing->search_strings</li>\n";
 	}
 
 	$html = <<<HTML
@@ -108,15 +108,6 @@ HTML;
 	echo $html;
 }
 
-/**
- * @return void
- * @throws Exception
- */
-function webonary_conf_dashboard(): void
-{
-	webonary_conf_widget(true);
-}
-
 function webonary_register_custom_css(): void
 {
 	$upload_dir = wp_upload_dir();
@@ -124,21 +115,8 @@ function webonary_register_custom_css(): void
 		'custom_stylesheet',
 		$upload_dir['baseurl'] . '/custom.css',
 		[],
-		date('U'),
-		'all'
+		date('U')
 	);
 	wp_enqueue_style('custom_stylesheet');
 }
 add_action('wp_enqueue_scripts', 'webonary_register_custom_css', 999993);
-
-/**
- * @param bool $showTitle
- * @return void
- * @throws Exception
- */
-function webonary_conf_widget(bool $showTitle = false): void
-{
-	Webonary_Configuration_Widget::UpdateConfiguration();
-	Webonary_Configuration_Widget::DisplayConfiguration();
-	do_action('admin_notices');
-}

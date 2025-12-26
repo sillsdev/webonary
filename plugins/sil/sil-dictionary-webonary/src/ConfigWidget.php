@@ -1,87 +1,75 @@
 <?php
 
-class Webonary_Configuration_Widget
+namespace SIL\Webonary;
+
+use Exception;
+use special_characters;
+use Webonary_Cache;
+use Webonary_Cloud;
+use Webonary_Configuration;
+use Webonary_Dashboard_Widget;
+use Webonary_Delete_Data;
+use Webonary_Font_Management;
+use Webonary_Utility;
+
+class ConfigWidget
 {
-	public static function DisplayConfiguration(): void
-	{
-		// javascript and styles
-		self::RegisterScriptsAndStyles();
-
-		// opening tags
-		$lines = [
-			'<div class="wrap">',
-			'<h2>' . __('Webonary', 'sil_dictionary') . '</h2>',
-			__('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary')
-		];
-
-		// get tabs
-		self::BuildTabs($lines);
-
-		// not sure what this one is for
-		$lines[] = '<div id="icon-tools" class="icon32"></div>';
-
-		// the form
-		self::BuildForm($lines);
-
-		// closing tags
-		$lines[] = '</div>';
-
-		echo implode(PHP_EOL, $lines);
-	}
-
 	/**
 	 * @return string
 	 * @throws Exception
 	 */
-	public static function UpdateConfiguration(): string
+	public static function ShowWidget(): string
+	{
+		self::UpdateConfiguration();
+		$return_val = self::DisplayConfiguration();
+		return $return_val . Admin::DoAdminNotices();
+	}
+
+	/**
+	 * @return void
+	 * @throws Exception
+	 */
+	private static function UpdateConfiguration(): void
 	{
 		if (!empty($_POST['delete_data'])) {
 			Webonary_Delete_Data::DeleteDictionaryData();
-			return '';
+			Admin::AddAdminNotice('success', 'Dictionary data deleted.');
+			return;
 		}
 
 		if (!empty($_POST['refresh_cloud_settings'])) {
-
 			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 			Webonary_Cloud::resetDictionary($dictionaryId);
-			return '';
+			Admin::AddAdminNotice('success', 'Dictionary settings refreshed from the cloud.');
+			return;
 		}
 
 		if (!empty($_POST['clear_local_cache'])) {
-
 			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
 			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
-			self::AddAdminNotice('success', __('Local cache cleared.'));
-			return '';
+			Admin::AddAdminNotice('success', __('Local cache cleared.'));
+			return;
 		}
 
 		if (!empty($_POST['send_test_email'])) {
-
 			wp_mail('webonary@sil.org', 'Testing Webonary Email', 'This is the full test message.');
-			self::AddAdminNotice('success', __('Test email sent.'));
-			return '';
+			Admin::AddAdminNotice('success', __('Test email sent.'));
+			return;
 		}
 
 		if (!empty($_POST['save_settings']))
-			return self::SaveSettings();
-
-		return '';
+			self::SaveSettings();
 	}
 
-	/** @noinspection PhpUndefinedFunctionInspection */
-	private static function SaveSettings(): string
+	private static function SaveSettings(): void
 	{
-		$return_val = [];
-
 		update_option('publicationStatus', $_POST['publicationStatus']);
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
-		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
 
-		if (isset($_POST['normalization'])) {
+		if (isset($_POST['normalization']))
 			update_option('normalization', $_POST['normalization']);
-		}
 
-		$special_characters = trim($_POST['characters']);
+		$special_characters = stripslashes(trim($_POST['characters']));
 		if (empty($special_characters))
 			$special_characters = 'empty';
 
@@ -108,7 +96,7 @@ class Webonary_Configuration_Widget
 		update_option('reversal3RightToLeft', $_POST['reversal3RightToLeft'] ?? 'no');
 
 		if (trim(strlen($_POST['txtVernacularName'])) == 0)
-			$return_val[] = '<br><span style="color:red">Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.</span><br>';
+			Admin::AddAdminNotice('error', 'Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.');
 
 		if (isset($_POST['txtNotes']))
 			update_option("notes", $_POST['txtNotes']);
@@ -116,8 +104,8 @@ class Webonary_Configuration_Widget
 		$noSearchForm = 0;
 		if (isset($_POST['noSearchForm'])) {
 			$noSearchForm = $_POST['noSearchForm'];
-			if (is_plugin_active('wp-super-cache/wp-cache.php') && $noSearchForm == 1)
-				prune_super_cache(get_supercache_dir(), true);
+			if ($noSearchForm == 1)
+				Admin::ClearSuperCache();
 		}
 
 		update_option('noSearch', $noSearchForm);
@@ -136,9 +124,7 @@ class Webonary_Configuration_Widget
 			$useCloudBackend = '';
 
 		if ($useCloudBackend != get_option('useCloudBackend', '')) {
-			if (is_plugin_active('wp-super-cache/wp-cache.php')) {
-				prune_super_cache(get_supercache_dir(), true);
-			}
+			Admin::ClearSuperCache();
 
 			// Store this both as a blog option and metadata for convenience
 			update_option('useCloudBackend', $useCloudBackend);
@@ -192,9 +178,7 @@ class Webonary_Configuration_Widget
 			update_option('reversal3_alphabet', $_POST['reversal3_alphabet'] ?? '');
 		}
 
-		$return_val[] = "<br>" . _e('Settings saved');
-
-		return implode(PHP_EOL, $return_val);
+		Admin::AddAdminNotice('success', __('Settings saved'));
 	}
 
 	private static function UpdateLanguageCodesAndNames(): void
@@ -239,21 +223,36 @@ class Webonary_Configuration_Widget
 		}
 	}
 
-	private static function BuildTabs(&$lines): void
+	private static function DisplayConfiguration(): string
 	{
-		$sections = Webonary_Configuration::get_admin_sections();
-		$lines[] = '<h2 class="nav-tab-wrapper">';
-		$title = __('Click to switch to %s', 'sil_dictionary');
-		/** @noinspection HtmlUnknownAnchorTarget */
-		$template = <<<HTML
-<a class="nav-tab" href="#%s" title="$title">%s</a>
-HTML;
+		// javascript and styles
+		self::RegisterScriptsAndStyles();
 
-		foreach ($sections as $slug => $name) {
-			$lines[] = sprintf($template, $slug, $name, $name);
-		}
+		// opening tags
+		$lines = [
+			'<div class="wrap">',
+			'<h2>' . __('Webonary', 'sil_dictionary') . '</h2>',
+			__('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary')
+		];
 
-		$lines[] = '</h2>';
+		// get tabs
+		self::BuildTabs($lines);
+
+		// not sure what this one is for
+		$lines[] = '<div id="icon-tools" class="icon32"></div>';
+
+		// the form
+		self::BuildForm($lines);
+
+		// closing tags
+		$lines[] = '</div>';
+
+		$return_val = implode(PHP_EOL, $lines);
+
+		if (!defined('PHP_UNIT'))
+			echo $return_val;
+
+		return $return_val;
 	}
 
 	private static function RegisterScriptsAndStyles(): void
@@ -280,6 +279,7 @@ HTML;
 	{
 		$admin_url = admin_url('admin-ajax.php');
 		/** @noinspection JSUnusedLocalSymbols */
+		/** @noinspection JSUnresolvedReference */
 		$js = <<<JS
 function getLanguageName(select_box, lang_name) {
 	let e = document.getElementById(select_box);
@@ -330,6 +330,23 @@ JS;
 
 		$lines[] = '</div>';
 		$lines[] = '</form>';
+	}
+
+	private static function BuildTabs(&$lines): void
+	{
+		$sections = Webonary_Configuration::get_admin_sections();
+		$lines[] = '<h2 class="nav-tab-wrapper">';
+		$title = __('Click to switch to %s', 'sil_dictionary');
+		/** @noinspection HtmlUnknownAnchorTarget */
+		$template = <<<HTML
+<a class="nav-tab" href="#%s" title="$title">%s</a>
+HTML;
+
+		foreach ($sections as $slug => $name) {
+			$lines[] = sprintf($template, $slug, $name, $name);
+		}
+
+		$lines[] = '</h2>';
 	}
 
 	private static function DataTab(&$lines): void
@@ -572,76 +589,6 @@ HTML;
 		return Webonary_Utility::BuildSelectElement('publicationStatus', $list, $pub_status);
 	}
 
-	private static function FindSelectedValue(?string $value, array $array): ?string
-	{
-		// make sure the selected value is a key
-		if (($value ?? false) !== false) {
-			if (!array_key_exists($value, $array)) {
-				$found = array_search($value, $array);
-				if ($found !== false)
-					return $found;
-			}
-		}
-
-		return $value;
-	}
-
-	private static function GetConfiguredFontSelect(string $element_name, ?string $selected_value): string
-	{
-		$fonts = Webonary_Font_Management::GetConfiguredFonts();
-		$selected_value = self::FindSelectedValue($selected_value, $fonts);
-		$fonts_plus = ['' => ''] + $fonts;
-
-		return Webonary_Utility::BuildSelectElement($element_name, $fonts_plus, $selected_value);
-	}
-
-	private static function GetAvailableFontSelect(string $element_name, ?string $selected_value): string
-	{
-		$fonts_available = Webonary_Font_Management::getFontsAvailableNames();
-		$fonts_system = Webonary_Font_Management::get_system_fonts();
-		$fonts_default = ['monospace', 'sans-serif', 'serif'];
-
-		$return_val = [
-			'<select id="' . $element_name . '" name="' . $element_name . '">',
-			'<optgroup label="Not Set">',
-			'<option value="">(not set)</option>',
-			'</optgroup>'
-		];
-		if (!empty($fonts_available)) {
-			$return_val[] = '<optgroup label="Available Fonts">';
-
-			foreach ($fonts_available as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		if (!empty($fonts_system)) {
-			$return_val[] = '<optgroup label="System Fonts">';
-
-			foreach ($fonts_system as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		if (!empty($fonts_default)) {
-			$return_val[] = '<optgroup label="Default Fonts">';
-
-			foreach ($fonts_default as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		$return_val[] = '</select>';
-
-		return implode(PHP_EOL, $return_val);
-	}
-
 	private static function GetRefreshCloudButton(): string
 	{
 		if (!IS_CLOUD_BACKEND)
@@ -764,7 +711,7 @@ HTML;
 		<strong>Special character input buttons</strong>
 		<span>These will appear above the search field.</span>
 		<label for="characters">Separate the characters by comma:</label>
-		<input type="text" name="characters" id=characters style="width: 100%" value="$special_characters">
+		<textarea name="characters" id=characters rows="1" style="width: 100%; line-height: 1.8rem">$special_characters</textarea>
 		<div class="flex-start-center" style="margin-top: 1rem">
 			<input name="special_characters_rtl" id="special_characters_rtl" type="checkbox" value="1" $rtl_checked>
 			<label for="special_characters_rtl">Display right-to-left</label>
@@ -901,62 +848,6 @@ HTML;
 HTML;
 	}
 
-	private static function BuildReversalIndexBlock(int $idx, string $lang_code, string $lang_name, bool $is_last): string
-	{
-		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
-		$field_name = 'reversal' . $idx . '_alphabet';
-		$rtl_checked = checked('1', get_option('reversal' . $idx . 'RightToLeft'), false);
-		$alphabet = trim(stripslashes(get_option($field_name)));
-
-		// default to English alphabet
-		if (strlen($alphabet) == 0)
-			$alphabet = implode(',', range('a', 'z'));
-
-		if (is_super_admin()) {
-			$red_text = '<span style="color:red;">Only remove letters, do not change/add letters!</span>';
-			$alphabet_out = sprintf('<input type="text" name="%1$s" id="%1$s" class="admin-alphabet" value="%2$s">', $field_name, $alphabet);
-		}
-		else {
-			$red_text = '';
-			$alphabet_out = '<span>' . $alphabet . '</span>';
-		}
-
-		if ($is_last)
-			$button = <<<HTML
-<div style="margin: 2rem 0">
-	<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
-</div>
-HTML;
-		else
-			$button = '';
-
-		return <<<HTML
-<div class="flex-column">
-	<em>Reversal Index $idx</em>
-	<span>Shortcode: [reversalindex$idx]</span>
-	<input type="hidden" name="reversal{$idx}_langcode" value="$lang_code">
-	<div class="flex-start-center" style="margin-top: 1rem">
-		<strong>[$lang_code]</strong>
-		<label for="reversalName$idx">Language Name:</label>
-		<input id="reversalName$idx" type="text" name="txtReversalName" value="$lang_name" $read_only>
-	</div>
-	<div class="flex-start-center" style="margin-top: 1rem">
-		<label for="$field_name">Alphabet</label>
-		<span>(<a href="https://www.webonary.org/help/alphabet/" target="_blank">configure in FLEx</a>):</span>
-		$red_text
-	</div>
-	<div class="flex-start-center" style="width: 100%">
-		$alphabet_out
-	</div>
-	<div class="flex-start-center" style="margin: 0.2rem 0 2rem">
-		<input name="reversal{$idx}RightToLeft" id="reversal{$idx}RightToLeft" type="checkbox" value="1" $rtl_checked>
-		<label for="reversal{$idx}RightToLeft">Display right-to-left</label>
-	</div>
-	$button
-</div>
-HTML;
-	}
-
 	private static function BuildFontBlock(string $font, array $fonts_available, array $system_fonts, array $fonts_default): string
 	{
 		// check for saved value
@@ -1048,19 +939,129 @@ HTML;
 
 	}
 
-	/**
-	 * @param string $type Values: "success", "warning"
-	 * @param string $msg Note: may contain some HTML
-	 * @return void
-	 */
-	private static function AddAdminNotice(string $type, string $msg): void
+	private static function GetConfiguredFontSelect(string $element_name, ?string $selected_value): string
 	{
-		add_action('admin_notices', function() use ($type, $msg) {
-			echo <<<HTML
-<div class="notice notice-$type is-dismissible">
-    <p>$msg</p>
+		$fonts = Webonary_Font_Management::GetConfiguredFonts();
+		$selected_value = self::FindSelectedValue($selected_value, $fonts);
+		$fonts_plus = ['' => ''] + $fonts;
+
+		return Webonary_Utility::BuildSelectElement($element_name, $fonts_plus, $selected_value);
+	}
+
+	private static function BuildReversalIndexBlock(int $idx, string $lang_code, string $lang_name, bool $is_last): string
+	{
+		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
+		$field_name = 'reversal' . $idx . '_alphabet';
+		$rtl_checked = checked('1', get_option('reversal' . $idx . 'RightToLeft'), false);
+		$alphabet = trim(stripslashes(get_option($field_name)));
+
+		// default to English alphabet
+		if (strlen($alphabet) == 0)
+			$alphabet = implode(',', range('a', 'z'));
+
+		if (is_super_admin()) {
+			$red_text = '<span style="color:red;">Only remove letters, do not change/add letters!</span>';
+			$alphabet_out = sprintf('<input type="text" name="%1$s" id="%1$s" class="admin-alphabet" value="%2$s">', $field_name, $alphabet);
+		}
+		else {
+			$red_text = '';
+			$alphabet_out = '<span>' . $alphabet . '</span>';
+		}
+
+		if ($is_last)
+			$button = <<<HTML
+<div style="margin: 2rem 0">
+	<input type="submit" name="save_settings" class="button-primary" value="Save Changes">
 </div>
 HTML;
-		});
+		else
+			$button = '';
+
+		return <<<HTML
+<div class="flex-column">
+	<em>Reversal Index $idx</em>
+	<span>Shortcode: [reversalindex$idx]</span>
+	<input type="hidden" name="reversal{$idx}_langcode" value="$lang_code">
+	<div class="flex-start-center" style="margin-top: 1rem">
+		<strong>[$lang_code]</strong>
+		<label for="reversalName$idx">Language Name:</label>
+		<input id="reversalName$idx" type="text" name="txtReversalName" value="$lang_name" $read_only>
+	</div>
+	<div class="flex-start-center" style="margin-top: 1rem">
+		<label for="$field_name">Alphabet</label>
+		<span>(<a href="https://www.webonary.org/help/alphabet/" target="_blank">configure in FLEx</a>):</span>
+		$red_text
+	</div>
+	<div class="flex-start-center" style="width: 100%">
+		$alphabet_out
+	</div>
+	<div class="flex-start-center" style="margin: 0.2rem 0 2rem">
+		<input name="reversal{$idx}RightToLeft" id="reversal{$idx}RightToLeft" type="checkbox" value="1" $rtl_checked>
+		<label for="reversal{$idx}RightToLeft">Display right-to-left</label>
+	</div>
+	$button
+</div>
+HTML;
+	}
+
+	private static function GetAvailableFontSelect(string $element_name, ?string $selected_value): string
+	{
+		$fonts_available = Webonary_Font_Management::getFontsAvailableNames();
+		$fonts_system = Webonary_Font_Management::get_system_fonts();
+		$fonts_default = ['monospace', 'sans-serif', 'serif'];
+
+		$return_val = [
+			'<select id="' . $element_name . '" name="' . $element_name . '">',
+			'<optgroup label="Not Set">',
+			'<option value="">(not set)</option>',
+			'</optgroup>'
+		];
+		if (!empty($fonts_available)) {
+			$return_val[] = '<optgroup label="Available Fonts">';
+
+			foreach ($fonts_available as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
+			}
+
+			$return_val[] = '</optgroup>';
+		}
+
+		if (!empty($fonts_system)) {
+			$return_val[] = '<optgroup label="System Fonts">';
+
+			foreach ($fonts_system as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
+			}
+
+			$return_val[] = '</optgroup>';
+		}
+
+		if (!empty($fonts_default)) {
+			$return_val[] = '<optgroup label="Default Fonts">';
+
+			foreach ($fonts_default as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
+			}
+
+			$return_val[] = '</optgroup>';
+		}
+
+		$return_val[] = '</select>';
+
+		return implode(PHP_EOL, $return_val);
+	}
+
+	private static function FindSelectedValue(?string $value, array $array): ?string
+	{
+		// make sure the selected value is a key
+		if (($value ?? false) !== false) {
+			if (!array_key_exists($value, $array)) {
+				$found = array_search($value, $array);
+				if ($found !== false)
+					return $found;
+			}
+		}
+
+		return $value;
 	}
 }
