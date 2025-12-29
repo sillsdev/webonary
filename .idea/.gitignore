@@ -7,4 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 /data_source_mapping.xml
+/db-forest-config.xml
 aws.xml
+/queries/
