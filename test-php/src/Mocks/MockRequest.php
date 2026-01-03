@@ -21,7 +21,6 @@ class MockRequest
 
 		$_SERVER['REQUEST_METHOD'] = 'GET';
 
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']))
-			unset($_SERVER['HTTP_X_REQUESTED_WITH']);
+		unset($_SERVER['HTTP_X_REQUESTED_WITH']);
 	}
 }

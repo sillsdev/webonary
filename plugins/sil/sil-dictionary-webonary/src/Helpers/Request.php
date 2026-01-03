@@ -347,7 +347,7 @@ class Request
 			if (defined('PHP_UNIT'))
 				$file_name = self::$input_vars_file ?? TEST_RESOURCES . '/php-input.txt';
 			else
-				$file_name = 'php://input';  // @codeCoverageIgnore
+				$file_name = 'php://input';
 
 			if (self::ServerStr('REQUEST_METHOD') == 'PUT')
 				parse_str(file_get_contents($file_name), self::$put_vars);

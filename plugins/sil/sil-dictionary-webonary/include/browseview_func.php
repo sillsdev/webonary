@@ -222,9 +222,7 @@ function getLimitSql($page=null, $postsPerPage=null): string
 function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $reversalnr, $postsPerPage = null): mixed
 {
 	if(strlen($reversalLangcode) === 0 && $reversalnr > 0)
-	{
 		return null;
-	}
 
 	global $wpdb;
 
@@ -257,18 +255,15 @@ function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $
 			$sql .= " AND reversal_head LIKE  '" . $letter . "%' " . $collate;
 		}
 	}
+
 	if(strlen($reversalLangcode) > 0)
-	{
 		$sql .=	" AND language_code = '" . $reversalLangcode . "' ";
-	}
-	if($sortorderExists && !Webonary_Configuration::use_pinyin($reversalLangcode))
-	{
+
+	if($sortorderExists && !in_array($reversalLangcode, ['zh-CN', 'zh-Hans-CN']))
 		$sql .= " ORDER BY sortorder, reversal_head ASC";
-	}
 	else
-	{
 		$sql .= " ORDER BY reversal_head ASC";
-	}
+
 	$sql .= $limitSql;
 
 	$arrReversals = $wpdb->get_results($sql);
@@ -294,10 +289,7 @@ function getReversalEntries($letter, $page, $reversalLangcode, &$displayXHTML, $
 
 		$arrReversals = $wpdb->get_results($sql);
 		if(count($arrReversals) > 0)
-		{
 			$displayXHTML = false;
-		}
-
 	}
 
 	return $arrReversals;

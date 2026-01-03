@@ -6,7 +6,6 @@ use Exception;
 use special_characters;
 use Webonary_Cache;
 use Webonary_Cloud;
-use Webonary_Configuration;
 use Webonary_Dashboard_Widget;
 use Webonary_Delete_Data;
 use Webonary_Font_Management;
@@ -101,12 +100,9 @@ class ConfigWidget
 		if (isset($_POST['txtNotes']))
 			update_option("notes", $_POST['txtNotes']);
 
-		$noSearchForm = 0;
-		if (isset($_POST['noSearchForm'])) {
-			$noSearchForm = $_POST['noSearchForm'];
-			if ($noSearchForm == 1)
-				Admin::ClearSuperCache();
-		}
+		$noSearchForm = intval($_POST['noSearchForm'] ?? 0);
+		if ($noSearchForm == 1)
+			Admin::ClearSuperCache();
 
 		update_option('noSearch', $noSearchForm);
 		update_option('countryName', $_POST['countryName']);
@@ -114,11 +110,7 @@ class ConfigWidget
 		update_option('regionName', $_POST['regionName']);
 		update_option('copyrightHolder', $_POST['copyrightHolder']);
 
-		$useCloudBackend = filter_input(
-			INPUT_POST,
-			'useCloudBackend',
-			FILTER_SANITIZE_NUMBER_INT,
-			array('options' => array('default' => '')));
+		$useCloudBackend = $_POST['useCloudBackend'] ?? '';
 
 		if ($useCloudBackend !== '1')
 			$useCloudBackend = '';
@@ -128,7 +120,9 @@ class ConfigWidget
 
 			// Store this both as a blog option and metadata for convenience
 			update_option('useCloudBackend', $useCloudBackend);
-			update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
+
+			if (function_exists('update_site_meta'))
+				update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
 
 			// initial set up of dictionary using cloud values
 			if ($useCloudBackend) {
@@ -178,7 +172,7 @@ class ConfigWidget
 			update_option('reversal3_alphabet', $_POST['reversal3_alphabet'] ?? '');
 		}
 
-		Admin::AddAdminNotice('success', __('Settings saved'));
+		Admin::AddAdminNotice('success', __('Settings saved.'));
 	}
 
 	private static function UpdateLanguageCodesAndNames(): void
@@ -334,7 +328,7 @@ JS;
 
 	private static function BuildTabs(&$lines): void
 	{
-		$sections = Webonary_Configuration::get_admin_sections();
+		$sections = self::GetAdminSections();
 		$lines[] = '<h2 class="nav-tab-wrapper">';
 		$title = __('Click to switch to %s', 'sil_dictionary');
 		/** @noinspection HtmlUnknownAnchorTarget */
@@ -410,7 +404,7 @@ HTML;
 		if (IS_CLOUD_BACKEND)
 			$lang_codes = Webonary_Cloud::getLanguageCodes();
 		else
-			$lang_codes = Webonary_Configuration::get_LanguageCodes();
+			$lang_codes = self::GetLanguageCodes();
 
 		$sub_entries_block = self::GetSubEntriesBlock();
 		$vernacular_block = self::GetVernacularBrowseBlock($lang_codes);
@@ -689,6 +683,7 @@ HTML;
 	{
 		$special_characters = trim(get_option('special_characters', ''));
 
+		// @codeCoverageIgnoreStart
 		if (empty($special_characters) && !isset($_POST['characters']) && class_exists('special_characters')) {
 
 			// This is here for legacy purposes. The special characters used to be Widget in a separate plugin.
@@ -698,6 +693,7 @@ HTML;
 			$settings = reset($settings);
 			$special_characters = $settings['characters'] ?? '';
 		}
+		// @codeCoverageIgnoreEnd
 
 		$special_characters = str_replace('empty', '', $special_characters);
 		$rtl_checked = checked('1', get_option('special_characters_rtl'), false);
@@ -896,9 +892,10 @@ HTML;
 		}
 
 		$select = self::GetAvailableFontSelect($option_name, $selected);
+		$label = htmlentities($font);
 		return <<<HTML
 <tr>
-	<td style="padding-right: 0.5rem"><label for="$option_name" style="font-weight: 700">$font</label></td>
+	<td style="padding-right: 0.5rem"><label for="$option_name" style="font-weight: 700">$label</label></td>
 	<td>$select</td>
 	<td style="padding-left: 0.5rem"><span style="color: #990000">$saved</span></td>
 </tr>
@@ -1063,5 +1060,54 @@ HTML;
 		}
 
 		return $value;
+	}
+
+	private static function GetAdminSections(): array
+	{
+		$sections = [
+			'import' => __('Data (Upload)', 'sil_dictionary'),
+			'search' => __('Search', 'sil_dictionary'),
+			'browse' => __('Browse Views', 'sil_dictionary'),
+			'fonts' => __('Fonts', 'sil_dictionary')
+		];
+
+		if(is_super_admin())
+			$sections['superadmin'] = __('Super Admin', 'sil_dictionary');
+
+		return $sections;
+	}
+
+	public static function GetLanguageCodes($language_code = null): array|null|object
+	{
+		global $wpdb;
+
+		if (is_null($language_code)) {
+
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
+FROM {$wpdb->prefix}sil_search AS s
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
+WHERE IFNULL(s.language_code, '') <> ''
+GROUP BY s.language_code
+ORDER BY s.language_code
+SQL;
+		}
+		else {
+			$language_code = trim($language_code);
+
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
+FROM {$wpdb->prefix}sil_search AS s
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
+WHERE IF(%s = '', s.language_code, %s) = s.language_code
+GROUP BY s.language_code
+ORDER BY s.language_code
+SQL;
+			$sql = $wpdb->prepare($sql, [$language_code, $language_code]);
+		}
+
+		return $wpdb->get_results($sql, 'ARRAY_A');
 	}
 }

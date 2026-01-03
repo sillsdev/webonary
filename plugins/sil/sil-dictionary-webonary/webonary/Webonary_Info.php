@@ -125,8 +125,8 @@ class Webonary_Info
 	{
 		global $wpdb;
 
-		$search_table = Webonary_Configuration::$search_table_name;
-		$reversal_table = Webonary_Configuration::$reversal_table_name;
+		$search_table = SEARCHTABLE;
+		$reversal_table = REVERSALTABLE;
 
 		$sql = <<<SQL
 SELECT s.language_code, o.option_value AS language_name, IFNULL(r.totalIndexed, s.totalIndexed) AS total_indexed
@@ -293,7 +293,7 @@ SQL;
 		foreach ($arrIndexed as $indexed) {
 			$status .= '<div style="clear:both;"><div style="text-align:right;float:left;white-space:nowrap">' . $indexed->language_code . ':</div><div style="float:left;">&nbsp;' . $indexed->total_indexed;
 
-			$table_name = Webonary_Configuration::$search_table_name;
+			$table_name = SEARCHTABLE;
 			/** @noinspection SqlResolve */
 			$sql = <<<SQL
 SELECT COUNT(language_code) AS missing
@@ -316,7 +316,7 @@ SQL;
 	{
 		global $wpdb;
 
-		$table_name = Webonary_Configuration::$reversal_table_name;
+		$table_name = REVERSALTABLE;
 
 		/** @noinspection SqlResolve */
 		$sql = <<<SQL
