@@ -11,6 +11,7 @@ use WP_UnitTestCase_Base;
 /**
  * @covers SIL\Webonary\ConfigWidget
  * @covers SIL\Webonary\Admin
+ * @covers SIL\Tests\Mocks\MockWP_Http
  *
  * @noinspection PhpUndefinedNamespaceInspection
  */
