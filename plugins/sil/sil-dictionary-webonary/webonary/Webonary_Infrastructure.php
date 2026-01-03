@@ -4,7 +4,7 @@ class Webonary_Infrastructure
 {
 	public static function InstallInfrastructure(): void
 	{
-		if (is_admin()) {
+		if (is_admin() || defined('PHP_UNIT')) {
 			self::CreateCustomRelevance();
 			self::CreateSearchTables();
 			self::CreateReversalTables();

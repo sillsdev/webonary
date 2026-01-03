@@ -86,6 +86,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/kcs/class-finder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
       <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/themes/webonary-home" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/special-characters" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

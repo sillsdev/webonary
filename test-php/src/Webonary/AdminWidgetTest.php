@@ -8,6 +8,7 @@ use WP_UnitTestCase;
 
 /**
  * @covers SIL\Webonary\AdminWidget
+ * @covers SIL\Webonary\Admin
  * @covers SIL\Webonary\AdminReportTable
  * @covers SIL\Webonary\Reports
  * @covers SIL\Webonary\Attributes\Report

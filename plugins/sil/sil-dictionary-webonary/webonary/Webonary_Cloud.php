@@ -826,7 +826,8 @@ class Webonary_Cloud
 
 		// Store this both as a blog option and metadata for convenience
 		update_option('useCloudBackend', '1');
-		update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
+		if (function_exists('update_site_meta'))
+			update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
 
 		// This should be reset for cloud to prevent odd behavior
 		update_option('DisplaySubentriesAsMainEntries', 0);

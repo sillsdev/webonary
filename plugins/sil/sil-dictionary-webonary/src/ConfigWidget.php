@@ -1,87 +1,74 @@
 <?php
 
-class Webonary_Configuration_Widget
+namespace SIL\Webonary;
+
+use Exception;
+use special_characters;
+use Webonary_Cache;
+use Webonary_Cloud;
+use Webonary_Dashboard_Widget;
+use Webonary_Delete_Data;
+use Webonary_Font_Management;
+use Webonary_Utility;
+
+class ConfigWidget
 {
-	public static function DisplayConfiguration(): void
-	{
-		// javascript and styles
-		self::RegisterScriptsAndStyles();
-
-		// opening tags
-		$lines = [
-			'<div class="wrap">',
-			'<h2>' . __('Webonary', 'sil_dictionary') . '</h2>',
-			__('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary')
-		];
-
-		// get tabs
-		self::BuildTabs($lines);
-
-		// not sure what this one is for
-		$lines[] = '<div id="icon-tools" class="icon32"></div>';
-
-		// the form
-		self::BuildForm($lines);
-
-		// closing tags
-		$lines[] = '</div>';
-
-		echo implode(PHP_EOL, $lines);
-	}
-
 	/**
 	 * @return string
 	 * @throws Exception
 	 */
-	public static function UpdateConfiguration(): string
+	public static function ShowWidget(): string
+	{
+		self::UpdateConfiguration();
+		$return_val = self::DisplayConfiguration();
+		return $return_val . Admin::DoAdminNotices();
+	}
+
+	/**
+	 * @return void
+	 * @throws Exception
+	 */
+	private static function UpdateConfiguration(): void
 	{
 		if (!empty($_POST['delete_data'])) {
 			Webonary_Delete_Data::DeleteDictionaryData();
-			return '';
+			Admin::AddAdminNotice('success', 'Dictionary data deleted.');
+			return;
 		}
 
 		if (!empty($_POST['refresh_cloud_settings'])) {
-
 			$dictionaryId = Webonary_Cloud::getBlogDictionaryId();
 			Webonary_Cloud::resetDictionary($dictionaryId);
-			return '';
+			Admin::AddAdminNotice('success', 'Dictionary settings refreshed from the cloud.');
+			return;
 		}
 
 		if (!empty($_POST['clear_local_cache'])) {
-
 			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
 			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
-			self::AddAdminNotice('success', __('Local cache cleared.'));
-			return '';
+			Admin::AddAdminNotice('success', __('Local cache cleared.'));
+			return;
 		}
 
 		if (!empty($_POST['send_test_email'])) {
-
 			wp_mail('webonary@sil.org', 'Testing Webonary Email', 'This is the full test message.');
-			self::AddAdminNotice('success', __('Test email sent.'));
-			return '';
+			Admin::AddAdminNotice('success', __('Test email sent.'));
+			return;
 		}
 
 		if (!empty($_POST['save_settings']))
-			return self::SaveSettings();
-
-		return '';
+			self::SaveSettings();
 	}
 
-	/** @noinspection PhpUndefinedFunctionInspection */
-	private static function SaveSettings(): string
+	private static function SaveSettings(): void
 	{
-		$return_val = [];
-
 		update_option('publicationStatus', $_POST['publicationStatus']);
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
-		//update_option('distinguish_diacritics', $_POST['distinguish_diacritics']);
 
-		if (isset($_POST['normalization'])) {
+		if (isset($_POST['normalization']))
 			update_option('normalization', $_POST['normalization']);
-		}
 
-		$special_characters = trim($_POST['characters']);
+		$special_characters = stripslashes(trim($_POST['characters']));
 		if (empty($special_characters))
 			$special_characters = 'empty';
 
@@ -108,17 +95,14 @@ class Webonary_Configuration_Widget
 		update_option('reversal3RightToLeft', $_POST['reversal3RightToLeft'] ?? 'no');
 
 		if (trim(strlen($_POST['txtVernacularName'])) == 0)
-			$return_val[] = '<br><span style="color:red">Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.</span><br>';
+			Admin::AddAdminNotice('error', 'Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.');
 
 		if (isset($_POST['txtNotes']))
 			update_option("notes", $_POST['txtNotes']);
 
-		$noSearchForm = 0;
-		if (isset($_POST['noSearchForm'])) {
-			$noSearchForm = $_POST['noSearchForm'];
-			if (is_plugin_active('wp-super-cache/wp-cache.php') && $noSearchForm == 1)
-				prune_super_cache(get_supercache_dir(), true);
-		}
+		$noSearchForm = intval($_POST['noSearchForm'] ?? 0);
+		if ($noSearchForm == 1)
+			Admin::ClearSuperCache();
 
 		update_option('noSearch', $noSearchForm);
 		update_option('countryName', $_POST['countryName']);
@@ -126,23 +110,19 @@ class Webonary_Configuration_Widget
 		update_option('regionName', $_POST['regionName']);
 		update_option('copyrightHolder', $_POST['copyrightHolder']);
 
-		$useCloudBackend = filter_input(
-			INPUT_POST,
-			'useCloudBackend',
-			FILTER_SANITIZE_NUMBER_INT,
-			array('options' => array('default' => '')));
+		$useCloudBackend = $_POST['useCloudBackend'] ?? '';
 
 		if ($useCloudBackend !== '1')
 			$useCloudBackend = '';
 
 		if ($useCloudBackend != get_option('useCloudBackend', '')) {
-			if (is_plugin_active('wp-super-cache/wp-cache.php')) {
-				prune_super_cache(get_supercache_dir(), true);
-			}
+			Admin::ClearSuperCache();
 
 			// Store this both as a blog option and metadata for convenience
 			update_option('useCloudBackend', $useCloudBackend);
-			update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
+
+			if (function_exists('update_site_meta'))
+				update_site_meta(get_current_blog_id(), 'useCloudBackend', '1');
 
 			// initial set up of dictionary using cloud values
 			if ($useCloudBackend) {
@@ -192,9 +172,7 @@ class Webonary_Configuration_Widget
 			update_option('reversal3_alphabet', $_POST['reversal3_alphabet'] ?? '');
 		}
 
-		$return_val[] = "<br>" . _e('Settings saved');
-
-		return implode(PHP_EOL, $return_val);
+		Admin::AddAdminNotice('success', __('Settings saved.'));
 	}
 
 	private static function UpdateLanguageCodesAndNames(): void
@@ -239,21 +217,36 @@ class Webonary_Configuration_Widget
 		}
 	}
 
-	private static function BuildTabs(&$lines): void
+	private static function DisplayConfiguration(): string
 	{
-		$sections = Webonary_Configuration::get_admin_sections();
-		$lines[] = '<h2 class="nav-tab-wrapper">';
-		$title = __('Click to switch to %s', 'sil_dictionary');
-		/** @noinspection HtmlUnknownAnchorTarget */
-		$template = <<<HTML
-<a class="nav-tab" href="#%s" title="$title">%s</a>
-HTML;
+		// javascript and styles
+		self::RegisterScriptsAndStyles();
 
-		foreach ($sections as $slug => $name) {
-			$lines[] = sprintf($template, $slug, $name, $name);
-		}
+		// opening tags
+		$lines = [
+			'<div class="wrap">',
+			'<h2>' . __('Webonary', 'sil_dictionary') . '</h2>',
+			__('Webonary provides the administration tools and framework for using WordPress for dictionaries. See <a href="https://www.webonary.org/help" target="_blank">Webonary Support</a> for help.', 'sil_dictionary')
+		];
 
-		$lines[] = '</h2>';
+		// get tabs
+		self::BuildTabs($lines);
+
+		// not sure what this one is for
+		$lines[] = '<div id="icon-tools" class="icon32"></div>';
+
+		// the form
+		self::BuildForm($lines);
+
+		// closing tags
+		$lines[] = '</div>';
+
+		$return_val = implode(PHP_EOL, $lines);
+
+		if (!defined('PHP_UNIT'))
+			echo $return_val;
+
+		return $return_val;
 	}
 
 	private static function RegisterScriptsAndStyles(): void
@@ -280,6 +273,7 @@ HTML;
 	{
 		$admin_url = admin_url('admin-ajax.php');
 		/** @noinspection JSUnusedLocalSymbols */
+		/** @noinspection JSUnresolvedReference */
 		$js = <<<JS
 function getLanguageName(select_box, lang_name) {
 	let e = document.getElementById(select_box);
@@ -330,6 +324,23 @@ JS;
 
 		$lines[] = '</div>';
 		$lines[] = '</form>';
+	}
+
+	private static function BuildTabs(&$lines): void
+	{
+		$sections = self::GetAdminSections();
+		$lines[] = '<h2 class="nav-tab-wrapper">';
+		$title = __('Click to switch to %s', 'sil_dictionary');
+		/** @noinspection HtmlUnknownAnchorTarget */
+		$template = <<<HTML
+<a class="nav-tab" href="#%s" title="$title">%s</a>
+HTML;
+
+		foreach ($sections as $slug => $name) {
+			$lines[] = sprintf($template, $slug, $name, $name);
+		}
+
+		$lines[] = '</h2>';
 	}
 
 	private static function DataTab(&$lines): void
@@ -393,7 +404,7 @@ HTML;
 		if (IS_CLOUD_BACKEND)
 			$lang_codes = Webonary_Cloud::getLanguageCodes();
 		else
-			$lang_codes = Webonary_Configuration::get_LanguageCodes();
+			$lang_codes = self::GetLanguageCodes();
 
 		$sub_entries_block = self::GetSubEntriesBlock();
 		$vernacular_block = self::GetVernacularBrowseBlock($lang_codes);
@@ -572,76 +583,6 @@ HTML;
 		return Webonary_Utility::BuildSelectElement('publicationStatus', $list, $pub_status);
 	}
 
-	private static function FindSelectedValue(?string $value, array $array): ?string
-	{
-		// make sure the selected value is a key
-		if (($value ?? false) !== false) {
-			if (!array_key_exists($value, $array)) {
-				$found = array_search($value, $array);
-				if ($found !== false)
-					return $found;
-			}
-		}
-
-		return $value;
-	}
-
-	private static function GetConfiguredFontSelect(string $element_name, ?string $selected_value): string
-	{
-		$fonts = Webonary_Font_Management::GetConfiguredFonts();
-		$selected_value = self::FindSelectedValue($selected_value, $fonts);
-		$fonts_plus = ['' => ''] + $fonts;
-
-		return Webonary_Utility::BuildSelectElement($element_name, $fonts_plus, $selected_value);
-	}
-
-	private static function GetAvailableFontSelect(string $element_name, ?string $selected_value): string
-	{
-		$fonts_available = Webonary_Font_Management::getFontsAvailableNames();
-		$fonts_system = Webonary_Font_Management::get_system_fonts();
-		$fonts_default = ['monospace', 'sans-serif', 'serif'];
-
-		$return_val = [
-			'<select id="' . $element_name . '" name="' . $element_name . '">',
-			'<optgroup label="Not Set">',
-			'<option value="">(not set)</option>',
-			'</optgroup>'
-		];
-		if (!empty($fonts_available)) {
-			$return_val[] = '<optgroup label="Available Fonts">';
-
-			foreach ($fonts_available as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		if (!empty($fonts_system)) {
-			$return_val[] = '<optgroup label="System Fonts">';
-
-			foreach ($fonts_system as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		if (!empty($fonts_default)) {
-			$return_val[] = '<optgroup label="Default Fonts">';
-
-			foreach ($fonts_default as $font) {
-				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
-			}
-
-			$return_val[] = '</optgroup>';
-		}
-
-		$return_val[] = '</select>';
-
-		return implode(PHP_EOL, $return_val);
-	}
-
 	private static function GetRefreshCloudButton(): string
 	{
 		if (!IS_CLOUD_BACKEND)
@@ -742,6 +683,7 @@ HTML;
 	{
 		$special_characters = trim(get_option('special_characters', ''));
 
+		// @codeCoverageIgnoreStart
 		if (empty($special_characters) && !isset($_POST['characters']) && class_exists('special_characters')) {
 
 			// This is here for legacy purposes. The special characters used to be Widget in a separate plugin.
@@ -751,6 +693,7 @@ HTML;
 			$settings = reset($settings);
 			$special_characters = $settings['characters'] ?? '';
 		}
+		// @codeCoverageIgnoreEnd
 
 		$special_characters = str_replace('empty', '', $special_characters);
 		$rtl_checked = checked('1', get_option('special_characters_rtl'), false);
@@ -764,7 +707,7 @@ HTML;
 		<strong>Special character input buttons</strong>
 		<span>These will appear above the search field.</span>
 		<label for="characters">Separate the characters by comma:</label>
-		<input type="text" name="characters" id=characters style="width: 100%" value="$special_characters">
+		<textarea name="characters" id=characters rows="1" style="width: 100%; line-height: 1.8rem">$special_characters</textarea>
 		<div class="flex-start-center" style="margin-top: 1rem">
 			<input name="special_characters_rtl" id="special_characters_rtl" type="checkbox" value="1" $rtl_checked>
 			<label for="special_characters_rtl">Display right-to-left</label>
@@ -901,6 +844,107 @@ HTML;
 HTML;
 	}
 
+	private static function BuildFontBlock(string $font, array $fonts_available, array $system_fonts, array $fonts_default): string
+	{
+		// check for saved value
+		$option_name = Webonary_Font_Management::GetFontOptionName($font);
+		$selected = get_option($option_name, '');
+		$find_len = mb_strlen($font);
+		$saved = '';
+
+		// check for an available font
+		if (empty($selected)) {
+			foreach ($fonts_available as $available) {
+				if (mb_strlen($available) == $find_len) {
+					if (mb_stripos($available, $font) !== false) {
+						$selected = $available;
+						$saved = 'Auto-selected, not saved';
+						break;
+					}
+				}
+			}
+		}
+
+		// check for a system font
+		if (empty($selected)) {
+			foreach ($system_fonts as $system) {
+				if (mb_strlen($system) == $find_len) {
+					if (mb_stripos($system, $font) !== false) {
+						$selected = $system;
+						$saved = 'Auto-selected, not saved';
+						break;
+					}
+				}
+			}
+		}
+
+		// check for a default font
+		if (empty($selected)) {
+			foreach ($fonts_default as $default) {
+				if (mb_strlen($default) == $find_len) {
+					if (mb_stripos($default, $font) !== false) {
+						$selected = $default;
+						$saved = 'Auto-selected, not saved';
+						break;
+					}
+				}
+			}
+		}
+
+		$select = self::GetAvailableFontSelect($option_name, $selected);
+		$label = htmlentities($font);
+		return <<<HTML
+<tr>
+	<td style="padding-right: 0.5rem"><label for="$option_name" style="font-weight: 700">$label</label></td>
+	<td>$select</td>
+	<td style="padding-left: 0.5rem"><span style="color: #990000">$saved</span></td>
+</tr>
+HTML;
+
+	}
+
+	public static function BuildDataTx(): string
+	{
+		if (!IS_CLOUD_BACKEND)
+			return '';
+
+		if (defined('DOMAIN_CURRENT_SITE') && str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
+			return '';
+
+		return <<<HTML
+<div class="webonary-admin-block">
+    <div class="flex-column">
+		<p style="margin: 0 0 0.3rem">Copy cloud MongoDB data for this site from .org to .work.</p>
+		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data" onclick="CopyMongoData();">Copy MongoDB Data</button>
+		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly">Progress</textarea>
+	</div>
+</div>
+HTML;
+
+	}
+
+	public static function BuildClearCache(): string
+	{
+		return <<<HTML
+<div class="webonary-admin-block">
+    <div class="flex-column">
+		<p style="margin: 0 0 0.3rem">Clear the data cached locally on the web server.</p>
+		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="submit" name="clear_local_cache" value="clear cache">Clear Cache</button>
+	</div>
+</div>
+HTML;
+
+	}
+
+	private static function GetConfiguredFontSelect(string $element_name, ?string $selected_value): string
+	{
+		$fonts = Webonary_Font_Management::GetConfiguredFonts();
+		$selected_value = self::FindSelectedValue($selected_value, $fonts);
+		$fonts_plus = ['' => ''] + $fonts;
+
+		return Webonary_Utility::BuildSelectElement($element_name, $fonts_plus, $selected_value);
+	}
+
 	private static function BuildReversalIndexBlock(int $idx, string $lang_code, string $lang_name, bool $is_last): string
 	{
 		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
@@ -957,110 +1001,120 @@ HTML;
 HTML;
 	}
 
-	private static function BuildFontBlock(string $font, array $fonts_available, array $system_fonts, array $fonts_default): string
+	private static function GetAvailableFontSelect(string $element_name, ?string $selected_value): string
 	{
-		// check for saved value
-		$option_name = Webonary_Font_Management::GetFontOptionName($font);
-		$selected = get_option($option_name, '');
-		$find_len = mb_strlen($font);
-		$saved = '';
+		$fonts_available = Webonary_Font_Management::getFontsAvailableNames();
+		$fonts_system = Webonary_Font_Management::get_system_fonts();
+		$fonts_default = ['monospace', 'sans-serif', 'serif'];
 
-		// check for an available font
-		if (empty($selected)) {
-			foreach ($fonts_available as $available) {
-				if (mb_strlen($available) == $find_len) {
-					if (mb_stripos($available, $font) !== false) {
-						$selected = $available;
-						$saved = 'Auto-selected, not saved';
-						break;
-					}
-				}
+		$return_val = [
+			'<select id="' . $element_name . '" name="' . $element_name . '">',
+			'<optgroup label="Not Set">',
+			'<option value="">(not set)</option>',
+			'</optgroup>'
+		];
+		if (!empty($fonts_available)) {
+			$return_val[] = '<optgroup label="Available Fonts">';
+
+			foreach ($fonts_available as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
 			}
+
+			$return_val[] = '</optgroup>';
 		}
 
-		// check for a system font
-		if (empty($selected)) {
-			foreach ($system_fonts as $system) {
-				if (mb_strlen($system) == $find_len) {
-					if (mb_stripos($system, $font) !== false) {
-						$selected = $system;
-						$saved = 'Auto-selected, not saved';
-						break;
-					}
-				}
+		if (!empty($fonts_system)) {
+			$return_val[] = '<optgroup label="System Fonts">';
+
+			foreach ($fonts_system as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
 			}
+
+			$return_val[] = '</optgroup>';
 		}
 
-		// check for a default font
-		if (empty($selected)) {
-			foreach ($fonts_default as $default) {
-				if (mb_strlen($default) == $find_len) {
-					if (mb_stripos($default, $font) !== false) {
-						$selected = $default;
-						$saved = 'Auto-selected, not saved';
-						break;
-					}
-				}
+		if (!empty($fonts_default)) {
+			$return_val[] = '<optgroup label="Default Fonts">';
+
+			foreach ($fonts_default as $font) {
+				$return_val[] = '<option value="' . $font . '" ' . selected($selected_value, $font, false) . '>' . $font . '</option>';
 			}
+
+			$return_val[] = '</optgroup>';
 		}
 
-		$select = self::GetAvailableFontSelect($option_name, $selected);
-		return <<<HTML
-<tr>
-	<td style="padding-right: 0.5rem"><label for="$option_name" style="font-weight: 700">$font</label></td>
-	<td>$select</td>
-	<td style="padding-left: 0.5rem"><span style="color: #990000">$saved</span></td>
-</tr>
-HTML;
+		$return_val[] = '</select>';
 
+		return implode(PHP_EOL, $return_val);
 	}
 
-	public static function BuildDataTx(): string
+	private static function FindSelectedValue(?string $value, array $array): ?string
 	{
-		if (!IS_CLOUD_BACKEND)
-			return '';
+		// make sure the selected value is a key
+		if (($value ?? false) !== false) {
+			if (!array_key_exists($value, $array)) {
+				$found = array_search($value, $array);
+				if ($found !== false)
+					return $found;
+			}
+		}
 
-		if (str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
-			return '';
-
-		return <<<HTML
-<div class="webonary-admin-block">
-    <div class="flex-column">
-		<p style="margin: 0 0 0.3rem">Copy cloud MongoDB data for this site from .org to .work.</p>
-		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="button" name="copy_mongodb_data" onclick="CopyMongoData();">Copy MongoDB Data</button>
-		<textarea id="copy-data-progress" style="width: 100%; height: 100px; color: #707377" readonly="readonly">Progress</textarea>
-	</div>
-</div>
-HTML;
-
+		return $value;
 	}
 
-	public static function BuildClearCache(): string
+	private static function GetAdminSections(): array
 	{
-		return <<<HTML
-<div class="webonary-admin-block">
-    <div class="flex-column">
-		<p style="margin: 0 0 0.3rem">Clear the data cached locally on the web server.</p>
-		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="submit" name="clear_local_cache" value="clear cache">Clear Cache</button>
-	</div>
-</div>
-HTML;
+		$sections = [
+			'import' => __('Data (Upload)', 'sil_dictionary'),
+			'search' => __('Search', 'sil_dictionary'),
+			'browse' => __('Browse Views', 'sil_dictionary'),
+			'fonts' => __('Fonts', 'sil_dictionary')
+		];
 
+		if(is_super_admin())
+			$sections['superadmin'] = __('Super Admin', 'sil_dictionary');
+
+		return $sections;
 	}
 
 	/**
-	 * @param string $type Values: "success", "warning"
-	 * @param string $msg Note: may contain some HTML
-	 * @return void
+	 * This is for the old, WordPress backend sites.
+	 *
+	 * @param $language_code
+	 * @return array|object|null
+	 * @codeCoverageIgnore
 	 */
-	private static function AddAdminNotice(string $type, string $msg): void
+	public static function GetLanguageCodes($language_code = null): array|null|object
 	{
-		add_action('admin_notices', function() use ($type, $msg) {
-			echo <<<HTML
-<div class="notice notice-$type is-dismissible">
-    <p>$msg</p>
-</div>
-HTML;
-		});
+		global $wpdb;
+
+		if (is_null($language_code)) {
+
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
+FROM {$wpdb->prefix}sil_search AS s
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
+WHERE IFNULL(s.language_code, '') <> ''
+GROUP BY s.language_code
+ORDER BY s.language_code
+SQL;
+		}
+		else {
+			$language_code = trim($language_code);
+
+			/** @noinspection SqlResolve */
+			$sql = <<<SQL
+SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
+FROM {$wpdb->prefix}sil_search AS s
+LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
+WHERE (%s = '' OR %s = s.language_code)
+GROUP BY s.language_code
+ORDER BY s.language_code
+SQL;
+			$sql = $wpdb->prepare($sql, [$language_code, $language_code]);
+		}
+
+		return $wpdb->get_results($sql, 'ARRAY_A');
 	}
 }
