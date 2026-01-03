@@ -908,7 +908,7 @@ HTML;
 		if (!IS_CLOUD_BACKEND)
 			return '';
 
-		if (str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
+		if (defined('DOMAIN_CURRENT_SITE') && str_contains(DOMAIN_CURRENT_SITE, 'webonary.org'))
 			return '';
 
 		return <<<HTML
@@ -1077,6 +1077,13 @@ HTML;
 		return $sections;
 	}
 
+	/**
+	 * This is for the old, WordPress backend sites.
+	 *
+	 * @param $language_code
+	 * @return array|object|null
+	 * @codeCoverageIgnore
+	 */
 	public static function GetLanguageCodes($language_code = null): array|null|object
 	{
 		global $wpdb;
@@ -1101,7 +1108,7 @@ SQL;
 SELECT s.language_code, IFNULL(MAX(t.`name`), s.language_code) AS `name`
 FROM {$wpdb->prefix}sil_search AS s
 LEFT JOIN $wpdb->terms AS t ON t.slug = s.language_code
-WHERE IF(%s = '', s.language_code, %s) = s.language_code
+WHERE (%s = '' OR %s = s.language_code)
 GROUP BY s.language_code
 ORDER BY s.language_code
 SQL;

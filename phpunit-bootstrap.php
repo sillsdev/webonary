@@ -16,6 +16,9 @@ register_shutdown_function(function(){
 
 include_once 'wordpress-develop/tests/phpunit/includes/bootstrap.php';
 
+// we need to set this before activating the plugin
+update_option('useCloudBackend', '1');
+
 // activate the Webonary plugin
 activate_plugin('sil-dictionary-webonary/sil-dictionary.php');
 do_action('init');
