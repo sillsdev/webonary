@@ -29,6 +29,10 @@
         "wpackagist-plugin/*",
         "wpackagist-theme/*"
       ]
+    },
+    {
+      "type": "vcs",
+      "url":  "git@github.com:phillip-hopper/php-mongomock.git"
     }
   ],
   "require": {
@@ -40,12 +44,13 @@
     "ext-intl": "*",
     "ext-json": "*",
     "ext-libxml": "*",
+    "ext-mbstring": "*",
     "ext-mongodb": "*",
     "ext-simplexml": "*",
     "ext-zlib": "*",
-    "mdsimpson/contact-form-7-to-database-extension": "@stable",
+    "kcs/class-finder": "^0.6",
     "mongodb/mongodb": "@stable",
-    "phpoffice/phpspreadsheet": "^1.17",
+    "phpoffice/phpspreadsheet": "^5.2",
     "qtranslate/qtranslate-xt": "^3.15",
     "wpackagist-plugin/akismet": "@stable",
     "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "@stable",
@@ -76,12 +81,12 @@
     "wpackagist-plugin/wordpress-importer": "@stable",
     "wpackagist-plugin/wp-google-fonts": "@stable",
     "wpackagist-plugin/wp-maintenance-mode": "@stable",
-    "wpackagist-plugin/wp-super-cache": "@stable",
     "wpackagist-plugin/wps-menu-exporter": "@stable",
     "wpackagist-theme/twentytwentyone": "@stable",
     "wpackagist-theme/twentytwentyfive": "@stable"
   },
   "require-dev": {
+    "helmich/mongomock": "dev-master",
     "phpunit/phpunit": "^9.0",
     "yoast/phpunit-polyfills": "@stable"
   },
@@ -107,7 +112,13 @@
   },
   "autoload": {
     "psr-4": {
-      "SIL\\Tests\\": "test-php/src/"
+      "SIL\\Webonary\\": "plugins/sil/sil-dictionary-webonary/src/",
+      "SIL\\Webonary\\Abstracts\\": "plugins/sil/sil-dictionary-webonary/src/Abstracts/",
+      "SIL\\Webonary\\Attributes\\": "plugins/sil/sil-dictionary-webonary/src/Attributes/",
+      "SIL\\Webonary\\Helpers\\": "plugins/sil/sil-dictionary-webonary/src/Helpers/",
+      "SIL\\Webonary\\Reports\\": "plugins/sil/sil-dictionary-webonary/src/Reports/",
+      "SIL\\Tests\\Mocks\\": "test-php/src/Mocks/",
+      "SIL\\Tests\\Webonary\\": "test-php/src/Webonary/"
     }
   }
 }

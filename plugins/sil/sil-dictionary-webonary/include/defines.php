@@ -20,46 +20,6 @@ define('MYSQL_COLLATION', $wpdb->collate);
 
 define('IS_CLOUD_BACKEND', !empty(get_option('useCloudBackend')));
 
-// This is the Webonary Auto-Loader.
-// It must be loaded before the includes below.
-function webonary_autoloader($class_name)
-{
-	global $webonary_class_path, $webonary_include_path;
-
-	$pinyin_namespace = 'Overtrue\\Pinyin\\';
-	$pinyin_namespace_length = strlen($pinyin_namespace);
-
-	if (substr($class_name, 0, $pinyin_namespace_length) === $pinyin_namespace) {
-		$success = include_once $webonary_include_path . DS . 'pinyin' . DS . 'src' . DS . substr($class_name, $pinyin_namespace_length). '.php';
-	}
-	else {
-
-		$pos = strpos($class_name, 'Webonary_');
-
-		// class name must begin with "Webonary_"
-		if ($pos === false || $pos != 0)
-			return null;
-
-		// check for an interface file
-		$pos = strpos($class_name, 'Webonary_Interface_');
-
-		if ($pos !== false)
-			$class_file = 'interface' . DS . substr($class_name, 19) . '.php';
-		else
-			$class_file = $class_name . '.php';
-
-		$success = include_once $webonary_class_path . DS . $class_file;
-	}
-
-	if ($success === false)
-		return new WP_Error('Failed', 'Not able to include ' . $class_name);
-
-	return null;
-}
-
-spl_autoload_register('webonary_autoloader');
-
-
 $root_dir = dirname(dirname(__FILE__));
 
 $webonary_class_path    = $root_dir . DS . 'webonary';

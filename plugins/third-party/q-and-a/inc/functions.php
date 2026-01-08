@@ -1,5 +1,6 @@
 <?php
 
+global $qaplus_options;
 $qaplus_options = get_option( 'qaplus_options' );
 $qaplus_auth = get_option( 'qaplus_auth' );
 

@@ -631,19 +631,21 @@ class Webonary_Cloud
 	public static function registerAndEnqueueReversalStyles($lang): void
 	{
 		$dictionary = self::getDictionary();
+
+		if (is_null($dictionary))
+			return;
+
 		$time = strtotime($dictionary->updatedAt);
-		if (!is_null($dictionary)) {
-			//$baseUrl = rtrim(WEBONARY_CLOUD_FILE_URL, '/') . '/' . $dictionaryId . '/';
-			foreach ($dictionary->reversalLanguages as $reversal) {
-				if ($lang === $reversal->lang) {
-					foreach ($reversal->cssFiles as $index => $cssFile) {
-						$handle = 'reversal_stylesheet' . ($index ?: '');
-						$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
-						wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
-						wp_enqueue_style($handle);
-					}
-					break;
+
+		foreach ($dictionary->reversalLanguages as $reversal) {
+			if ($lang === $reversal->lang) {
+				foreach ($reversal->cssFiles as $index => $cssFile) {
+					$handle = 'reversal_stylesheet' . ($index ?: '');
+					$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
+					wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
+					wp_enqueue_style($handle);
 				}
+				break;
 			}
 		}
 	}
@@ -824,7 +826,8 @@ class Webonary_Cloud
 
 		// Store this both as a blog option and metadata for convenience
 		update_option('useCloudBackend', '1');
-		update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
+		if (function_exists('update_site_meta'))
+			update_site_meta(get_id_from_blogname($dictionaryId), 'useCloudBackend', '1');
 
 		// This should be reset for cloud to prevent odd behavior
 		update_option('DisplaySubentriesAsMainEntries', 0);

@@ -210,11 +210,11 @@ class Webonary_Font_Management
 	{
 		$available = self::getFontsAvailable();
 		$styles = ['R', 'B', 'I', 'BI'];
-		$template = '@font-face { font-family: %s; src: url(/wp-content/uploads/fonts/%s); %s %s }';
-		$monospace = '@font-face { font-family: %s; src: local(ui-monospace), local(Menlo), local(Monaco), local("Cascadia Mono"), local("Segoe UI Mono"), local("Roboto Mono"), local("Oxygen Mono"), local("Ubuntu Mono"), local("Ubuntu Monospace"), local("Source Code Pro"), local("Fira Mono"), local("Droid Sans Mono"), local("DejaVu Sans Mono"), local("Courier New"), local(Courier); }';
-		$serif = '@font-face { font-family: %s; src: local(Times), local(Georgia), local("Droid Serif"), local("Noto Serif"), local("Times New Roman"), local("Free Serif"), local("Droid Serif"), local("DejaVu Serif"); }';
-		$sans_serif = '@font-face { font-family: %s; src: local("San Francisco"), local("Helvetica Neue"), local("Lucida Grande"), local("Segoe UI"), local("Tahoma"), local("Arial"), local("Helvetica"), local(Ubuntu), local("Red Hat"), local("Liberation Sans"), local("DejaVu Sans"), local("Droid Sans"), local("Roboto"); }';
-		$local = '@font-face { font-family: %s; src: local("%s"); }';
+		$template = '@font-face { font-family: "%s"; src: url(/wp-content/uploads/fonts/%s); %s %s }';
+		$monospace = '@font-face { font-family: "%s"; src: local(ui-monospace), local(Menlo), local(Monaco), local("Cascadia Mono"), local("Segoe UI Mono"), local("Roboto Mono"), local("Oxygen Mono"), local("Ubuntu Mono"), local("Ubuntu Monospace"), local("Source Code Pro"), local("Fira Mono"), local("Droid Sans Mono"), local("DejaVu Sans Mono"), local("Courier New"), local(Courier); }';
+		$serif = '@font-face { font-family: "%s"; src: local(Times), local(Georgia), local("Droid Serif"), local("Noto Serif"), local("Times New Roman"), local("Free Serif"), local("Droid Serif"), local("DejaVu Serif"); }';
+		$sans_serif = '@font-face { font-family: "%s"; src: local("San Francisco"), local("Helvetica Neue"), local("Lucida Grande"), local("Segoe UI"), local("Tahoma"), local("Arial"), local("Helvetica"), local(Ubuntu), local("Red Hat"), local("Liberation Sans"), local("DejaVu Sans"), local("Droid Sans"), local("Roboto"); }';
+		$local = '@font-face { font-family: "%s"; src: local("%s"); }';
 		$entries = [];
 
 		foreach ($fonts as $css_name => $system_name) {

@@ -1,6 +1,9 @@
 <?php
 /** @noinspection SqlResolve */
 /** @noinspection HtmlUnknownTarget */
+
+use SIL\Webonary\ConfigWidget;
+
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
  * in the theme, and make a call to this function, like so:
@@ -91,7 +94,7 @@ function webonary_searchform($use_li = false): void
 	} else {
 
 		//$catalog_terms = get_terms('sil_writing_systems');
-		$arrLanguages = Webonary_Configuration::get_LanguageCodes();
+		$arrLanguages = ConfigWidget::GetLanguageCodes();
 		if ( ! empty( $arrLanguages ) ) {
 
         	$lang_code = get_option('languagecode');

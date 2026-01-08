@@ -1,5 +1,7 @@
 <?php
 
+use SIL\Webonary\Admin;
+
 class Webonary_Delete_Data
 {
 	/**
@@ -11,9 +13,7 @@ class Webonary_Delete_Data
 	 */
 	public static function DeleteDictionaryData(bool $delete_taxonomies = false): array
 	{
-		if (is_plugin_active('wp-super-cache/wp-cache.php')) {
-			prune_super_cache(get_supercache_dir(), true);
-		}
+		Admin::ClearSuperCache();
 
 		if (!$delete_taxonomies)
 			$delete_taxonomies = (bool)($_POST['delete_taxonomies'] ?? false);

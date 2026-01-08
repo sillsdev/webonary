@@ -93,6 +93,9 @@ register_importer(
 
 function preprocess_comment_add_type( $comment_data )
 {
-	$comment_data['comment_type'] = basename(get_permalink());
+	$new_type = basename(get_permalink());
+	if (!empty($new_type))
+		$comment_data['comment_type'] = $new_type;
+
 	return $comment_data;
 }
