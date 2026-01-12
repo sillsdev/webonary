@@ -24,7 +24,11 @@ export class FlexXhtmlParser {
   public parsedEntries: Entry[];
 
   public constructor(toBeParsed: string, options: Partial<Options> = {}) {
-    this.toBeParsed = toBeParsed;
+
+    // remove the version numbers from the span classes before parsing
+    const regex = /<span class="([^"\s]+?)-\d+"/g;
+    const subst = `<span class="$1"`;
+    this.toBeParsed = toBeParsed.replace(regex, subst);
 
     this.options = Object.assign(options);
 
