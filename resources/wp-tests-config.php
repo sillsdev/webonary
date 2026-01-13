@@ -37,9 +37,9 @@ define('WP_DEBUG', true);
  * DO NOT use a production database or one that is shared with something else.
  */
 
-define('DB_NAME', getenv('MARIADB_DATABASE'));
-define('DB_USER', getenv('MARIADB_USER'));
-define('DB_PASSWORD', getenv('MARIADB_PASSWORD'));
+define('DB_NAME', 'wp_webonary_test');
+define('DB_USER', 'root');
+define('DB_PASSWORD', getenv('MARIADB_ROOT_PASSWORD'));
 define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', 'utf8mb4_unicode_ci');
