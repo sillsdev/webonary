@@ -72,7 +72,6 @@
     "wpackagist-plugin/plugin-activation-status": "@stable",
     "wpackagist-plugin/really-simple-ssl": "@stable",
     "wpackagist-plugin/redis-cache": "@stable",
-    "wpackagist-plugin/sqlite-database-integration": "@stable",
     "wpackagist-plugin/tinymce-advanced": "@stable",
     "wpackagist-plugin/unconfirmed": "@stable",
     "wpackagist-plugin/wordfence": "@stable",

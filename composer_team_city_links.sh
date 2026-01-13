@@ -50,13 +50,6 @@ do
   ln -sfn "${f}" "${thisDir}/wordpress-develop/src/${fn}"
 done
 
-# copy the SQLite db file
-FILE="${thisDir}/wordpress-develop/src/wp-content/plugins/sqlite-database-integration/db.copy"
-if [[ -f "$FILE" ]]; then
-  cp "${FILE}" "${thisDir}/wordpress-develop/src/wp-content/db.php"
-fi
-
-
 # copy additional default localizations
 mkdir -p "${thisDir}/wordpress-develop/src/wp-content/languages"
 FILES="${thisDir}/localizations/wordpress-base/*.mo"
