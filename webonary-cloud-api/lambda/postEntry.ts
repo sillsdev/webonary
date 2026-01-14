@@ -25,7 +25,7 @@
  * @apiParam (Post Body) {String} body.mainheadword.lang ISO language code for the head word
  * @apiParam (Post Body) {String} body.mainheadword.value ISO head word
  * @apiParam (Post Body) {Object} body.audio Audio associated with the entry
- * @apiParam (Post Body) {String} body.audio.fileClass Css class for the audio
+ * @apiParam (Post Body) {String} body.audio.fileClass CSS class for the audio
  * @apiParam (Post Body) {String} body.audio.id Unique id for audio file
  * @apiParam (Post Body) {String} body.audio.src Relative file path to the audio
  * @apiParam (Post Body) {Object[]} body.pictures Images associated with the entry
@@ -99,7 +99,7 @@
  * HTTP/1.1 500 Internal Server Error
  * {
  *    "errorType": "SyntaxError",
- *    "errorMessage": "Unexpected token } in JSON at position 243"
+ *    "errorMessage": "Unexpected token { in JSON at position 243"
  * }
  */
 
@@ -247,7 +247,7 @@ const getLangTexts = (xhtml: string) => {
   const searchTexts: string[] = [];
 
   // eslint-disable-next-line array-callback-return
-  $('span[lang]').each((index, elem) => {
+  $('span[lang]').each((_index, elem) => {
     const lang = $(elem).attr('lang');
     const text = $(elem).text();
     if (!lang || !text) {
@@ -330,6 +330,22 @@ export const transformToEntry = ({
   };
 };
 
+/**
+ * This is to remove the version numbers FLEx is now appending to the class name of some span tags.
+ *
+ * @param postedEntry
+ */
+const fixSpanClassVersions = (postedEntry: any) => {
+
+  if (!postedEntry.displayXhtml)
+    return;
+
+  // remove the version numbers from the span classes before processing
+  const regex = /<span class="([^"\s]+?)-\d+"/g;
+  const subst = `<span class="$1"`;
+  postedEntry.displayXhtml = postedEntry.displayXhtml.replace(regex, subst);
+};
+
 export async function upsertEntries(
   postedEntries: Array<any>,
   isReversal: boolean,
@@ -338,7 +354,11 @@ export async function upsertEntries(
 ) {
   const updatedAt = new Date();
   const transformEntryFunction = isReversal ? transformToReversalEntry : transformToEntry;
+
   const entries = postedEntries.map((postedEntry) => {
+
+    fixSpanClassVersions(postedEntry);
+
     const entry = transformEntryFunction({ postedEntry, dictionaryId });
     entry.updatedAt = updatedAt;
     entry.updatedBy = username;
