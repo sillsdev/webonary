@@ -1,5 +1,4 @@
 <?php
-print '*** ' . getenv('MARIADB_ROOT_PASSWORD') . ' ***';
 
 /* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
 define('ABSPATH', dirname(__DIR__) . '/wordpress-develop/src/');
@@ -39,8 +38,8 @@ define('WP_DEBUG', true);
  */
 
 define('DB_NAME', 'wp_webonary_test');
-define('DB_USER', 'root');
-define('DB_PASSWORD', getenv('MARIADB_ROOT_PASSWORD'));
+define('DB_USER', 'webonary');
+define('DB_PASSWORD', getenv('MARIADB_PASSWORD'));
 define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', 'utf8mb4_unicode_ci');
