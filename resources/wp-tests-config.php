@@ -1,4 +1,5 @@
 <?php
+print '*** ' . getenv('MARIADB_ROOT_PASSWORD') . ' ***';
 
 /* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
 define('ABSPATH', dirname(__DIR__) . '/wordpress-develop/src/');
