@@ -44,6 +44,6 @@
     "constructs": "^10.0.0",
     "mime-types": "^2.1.35",
     "mongodb": "^4.17.1",
-    "npm-check-updates": "^16.10.7"
+    "npm-check-updates": "^19.3.1"
   }
 }
