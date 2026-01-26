@@ -86,6 +86,7 @@
     "wpackagist-theme/twentytwentyfive": "@stable"
   },
   "require-dev": {
+    "deployer/deployer": "^7.5",
     "helmich/mongomock": "dev-master",
     "phpunit/phpunit": "^9.0",
     "yoast/phpunit-polyfills": "@stable"
