@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2021-12-15 11:44-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en_US\n"
+"Language: th_TH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2373,7 +2373,7 @@ msgstr "ความประพฤติไม่ดี"
 
 #: default_domains.php:591
 msgid "Help"
-msgstr "ช่วยเหลือ"
+msgstr "ความช่วยเหลือ"
 
 #: default_domains.php:592
 msgid "Hinder"
@@ -4913,7 +4913,7 @@ msgstr ""
 
 #: default_domains.php:1226
 msgid "Map"
-msgstr ""
+msgstr "แผนที่"
 
 #: default_domains.php:1227
 msgid "Accompany"
@@ -5277,7 +5277,7 @@ msgstr "ซ่อน"
 
 #: default_domains.php:1317
 msgid "Search"
-msgstr "ค้นหา/ตรวจสอบ"
+msgstr "ค้นหา"
 
 #: default_domains.php:1318
 msgid "Find"
@@ -6529,7 +6529,7 @@ msgstr ""
 
 #: default_domains.php:1630
 msgid "Grammar"
-msgstr ""
+msgstr "ไวยากรณ์"
 
 #: default_domains.php:1631
 msgid "General words"
@@ -7199,6 +7199,6 @@ msgstr ""
 msgid "Names of buildings"
 msgstr ""
 
-#: semantic domain 
+#: semantic domain
 msgid "Semantic Domains"
-msgstr ""
+msgstr "ขอบเขตความหมาย"
