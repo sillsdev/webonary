@@ -9,7 +9,7 @@ import('hosts.yml');
 
 set('application', 'webonary');
 set('repository', 'https://github.com/sillsdev/webonary.git');
-set('cleanup_use_sudo', false);
+set('cleanup_use_sudo', true);
 set('keep_releases', 5);
 
 // Shared files/dirs between deploys
@@ -121,8 +121,8 @@ task('deploy', [
 	'sil:clean_files',
 	'deploy:symlink',
 	'deploy:unlock',
-	'cleanup',
-	'success'
+	'deploy:cleanup',
+	'deploy:success'
 ]);
 
 // [Optional] If deploy fails automatically unlock.
