@@ -3,10 +3,6 @@
 /* Path to the WordPress codebase you'd like to test. Add a forward slash in the end. */
 define('ABSPATH', dirname(__DIR__) . '/wordpress-develop/src/');
 
-define('DB_DIR', dirname(__DIR__) . '/sqlite_db');
-if (!is_dir(DB_DIR))
-	mkdir(DB_DIR, 0777, true);
-
 /*
  * Path to the theme to test with.
  *
@@ -42,9 +38,9 @@ define('WP_DEBUG', true);
  */
 
 define('DB_NAME', 'wp_webonary_test');
-define('DB_USER', getenv('BITBUCKET_MYSQL_USER'));
-define('DB_PASSWORD', getenv('BITBUCKET_MYSQL_PASSWORD'));
-define('DB_HOST', getenv('BITBUCKET_MYSQL_SERVER'));
+define('DB_USER', 'webonary');
+define('DB_PASSWORD', getenv('MARIADB_PASSWORD'));
+define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', 'utf8mb4_unicode_ci');
 
