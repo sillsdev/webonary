@@ -11,9 +11,9 @@ deploy_stage=$1
 
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cd "$thisDir/deployer"
+cd "$thisDir/deployer" || exit 1
 
-"${thisDir}/vendor/deployer/deployer/bin/dep" deploy -vvv "$deploy_stage"
+"${thisDir}/vendor/bin/dep" deploy -vvv stage="$deploy_stage"
 exitcode=$?
 
 cd "$thisDir"
