@@ -1,5 +1,7 @@
 <?php
 
+use SIL\Webonary\Helpers\Cache;
+
 class Webonary_Languages
 {
 	private static ?array $language_entries = null;
@@ -58,9 +60,9 @@ HTML;
 		if (!is_null(self::$language_entries))
 			return self::$language_entries;
 
-		$dictionary = Webonary_Cloud::getDictionary(Webonary_Cloud::getBlogDictionaryId());
+		$dictionary = Webonary_Cloud::getDictionary();
 
-		$cached_languages = Webonary_Cache::Get('cloud_languages', $dictionary->_id);
+		$cached_languages = Cache::Get('cloud_languages');
 		if (is_array($cached_languages)) {
 			self::$language_entries = $cached_languages;
 			return self::$language_entries;
@@ -123,7 +125,7 @@ HTML;
 			'entries' => self::$language_entries
 		];
 
-		Webonary_Cache::Save('cloud_languages', $dictionary->_id, $languages);
+		Cache::Save('cloud_languages', $languages);
 
 		return self::$language_entries;
 	}

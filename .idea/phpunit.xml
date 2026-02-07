@@ -4,8 +4,8 @@
     <option name="directories">
       <list>
         <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/contact-form-7-to-database-extension/phpunit" />
-        <option value="$PROJECT_DIR$/test-php" />
         <option value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/url/tests" />
+        <option value="$PROJECT_DIR$/test-php" />
       </list>
     </option>
   </component>

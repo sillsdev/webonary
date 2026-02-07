@@ -1,5 +1,7 @@
 <?php
 
+use SIL\Webonary\Helpers\Cache;
+
 /**
  * Class Webonary_SemanticDomains
  */
@@ -432,7 +434,7 @@ SQL;
 
 			// cache the list of used domains
 			$dictionary->usedSemanticDomains = $domains;
-			Webonary_Cache::Save('dictionary', $dictionary->_id, $dictionary);
+			Cache::Save('dictionary', $dictionary);
 		}
 
 		$selected_domains = Webonary_Info::getSelectedSemanticDomains();

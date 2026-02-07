@@ -3,6 +3,7 @@
 use MongoDB\Client;
 use MongoDB\Database;
 use MongoDB\Driver\ServerApi;
+use SIL\Webonary\Helpers\Cache;
 
 class Webonary_Cloud
 {
@@ -84,7 +85,7 @@ class Webonary_Cloud
 
 		// check the cache first
 		$hashed_url = hash('haval192,3', $url);
-		$cached_val = Webonary_Cache::Get($hashed_url, $dictionary_id);
+		$cached_val = Cache::Get($hashed_url);
 		if (!is_null($cached_val)) {
 			self::logDebugMessage('Returned cached results.');
 			return $cached_val;
@@ -104,7 +105,7 @@ class Webonary_Cloud
 		$body = wp_remote_retrieve_body($response);
 		$returned_val = json_decode($body);
 
-		Webonary_Cache::Save($hashed_url, $dictionary_id, $returned_val);
+		Cache::Save($hashed_url, $returned_val);
 
 		self::logDebugMessage('Returned cloud results.');
 
@@ -504,7 +505,7 @@ class Webonary_Cloud
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
 		$response = self::remoteGetJson($request, $dictionaryId);
 		if (self::isValidDictionary($response)) {
-			Webonary_Cache::Save('dictionary', $dictionaryId, $response);
+			Cache::Save('dictionary', $response);
 			return $response;
 		}
 
@@ -519,7 +520,7 @@ class Webonary_Cloud
 			if (!is_null(self::$dictionary))
 				return self::$dictionary;
 
-			$dictionary = Webonary_Cache::Get('dictionary', self::getBlogDictionaryId());
+			$dictionary = Cache::Get('dictionary');
 			if (empty($dictionary)) {
 				$dictionary = self::getDictionaryById(self::getBlogDictionaryId());
 			}
@@ -769,7 +770,7 @@ class Webonary_Cloud
 	public static function resetDictionary($dictionaryId): array
 	{
 		// Since dictionary is persisted in options, unset it first
-		Webonary_Cache::DeleteAllForDictionary(self::getBlogDictionaryId());
+		Cache::DeleteAllForThisDictionary();
 		self::$dictionary = null;
 		self::$dictionary_id = $dictionaryId;
 
@@ -887,7 +888,7 @@ class Webonary_Cloud
 
 		// first check for a successful response
 		if (isset($response->Content->deleteDictionaryCount)) {
-			Webonary_Cache::DeleteAllForDictionary(self::getBlogDictionaryId());
+			Cache::DeleteAllForThisDictionary();
 			return ['deleted' => 1, 'msg' => __('Finished deleting Webonary data', 'sil_dictionary')];
 		}
 
@@ -1172,7 +1173,7 @@ class Webonary_Cloud
 
 		// is this value cached?
 		$cache_key = 'language-list';
-		$cached_val = Webonary_Cache::Get($cache_key, $dictionary->_id);
+		$cached_val = Cache::Get($cache_key);
 		if (!is_null($cached_val)) {
 			self::$language_list = $cached_val;
 			return self::$language_list;
@@ -1193,7 +1194,7 @@ class Webonary_Cloud
 			if (array_key_exists($key, $language_list))
 				continue;
 
-			/** @var ILanguageEntryCount $lang */
+			/** @var ILanguageEntryCount|stdClass $lang */
 			$lang = new stdClass();
 			$lang->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title, $language_list);
 			$lang->language_code = $reversal->lang;
@@ -1235,7 +1236,7 @@ class Webonary_Cloud
 
 		self::$language_list = $language_list;
 
-		Webonary_Cache::Save($cache_key, $dictionary->_id, self::$language_list);
+		Cache::Save($cache_key, self::$language_list);
 
 		return self::$language_list;
 	}
@@ -1250,7 +1251,7 @@ class Webonary_Cloud
 			return self::$main_language;
 
 		$cache_key = 'main-language';
-		$cached_val = Webonary_Cache::Get($cache_key, $dictionary->_id);
+		$cached_val = Cache::Get($cache_key);
 		if (!is_null($cached_val)) {
 			self::$main_language = $cached_val;
 			return self::$main_language;
@@ -1263,7 +1264,7 @@ class Webonary_Cloud
 		self::$main_language->is_main = true;
 		self::$main_language->is_reversal = false;
 
-		Webonary_Cache::Save($cache_key, $dictionary->_id, self::$main_language);
+		Cache::Save($cache_key, self::$main_language);
 
 		return self::$main_language;
 	}

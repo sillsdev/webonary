@@ -66,4 +66,8 @@ class WebonaryAdmin {
         // noinspection JSUnresolvedReference
         frame.src = webonary_ajax_obj.ajax_url + WebonaryAdmin.CombineQueryStringPairs(query_pairs);
     }
+
+    static SelectChanged(select, btn_id) {
+        document.getElementById(btn_id).disabled = select.selectedIndex < 1
+    }
 }

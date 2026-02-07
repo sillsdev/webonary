@@ -3,8 +3,9 @@
 namespace SIL\Webonary;
 
 use Exception;
+use SIL\Webonary\Helpers\Cache;
 use special_characters;
-use Webonary_Cache;
+
 use Webonary_Cloud;
 use Webonary_Dashboard_Widget;
 use Webonary_Delete_Data;
@@ -44,8 +45,7 @@ class ConfigWidget
 		}
 
 		if (!empty($_POST['clear_local_cache'])) {
-			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
+			Cache::DeleteAllForThisDictionary();
 			Admin::AddAdminNotice('success', __('Local cache cleared.'));
 			return;
 		}
@@ -526,7 +526,7 @@ HTML;
 				<input name="noSearchForm" id="noSearchForm" type="checkbox" value="1" $checked>
 			</div>
 			<div class="flex-start-center" style="margin: 1rem 0; width: 100%">
-				<table style="width: 100%">
+				<table class="flex-table" style="width: 100%">
 					<tr>
 						<td><label for="countryName">Country:</label></td>
 						<td style="width: 100%"><input name="countryName" id="countryName" type="text" value="$country"></td>
