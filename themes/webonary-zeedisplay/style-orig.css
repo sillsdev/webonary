@@ -1102,7 +1102,7 @@ blockquote:after{
 /*
  * The languages drop down box was too wide for a loooong language name.
  */
-.webonary_searchform_language_select {
+.webonary_language_select {
 	width:250px;
 }
 /* Image wrapping in Wordpress menu pages */

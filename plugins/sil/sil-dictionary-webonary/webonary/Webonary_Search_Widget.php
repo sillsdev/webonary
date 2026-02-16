@@ -1,5 +1,8 @@
 <?php
 
+use SIL\Webonary\Helpers\LanguageHelper;
+use SIL\Webonary\Models\Language;
+
 class Webonary_Search_Widget extends WP_Widget
 {
 	private array $indexed_entries = [];
@@ -99,10 +102,14 @@ class Webonary_Search_Widget extends WP_Widget
 		}
 
 		// set up dictionary info
-		$mainIndexed = new stdClass();
-		$mainIndexed->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-		$mainIndexed->totalIndexed = $dictionary->mainLanguage->entriesCount ?? 0;
-		$this->indexed_entries[] = $mainIndexed;
+		$languages = LanguageHelper::GetLanguages();
+		$lang = array_filter($languages, fn($l) => $l->IsMain);
+		if (count($lang) > 0) {
+			$mainIndexed = new stdClass();
+			$mainIndexed->language_name = $lang[0]->Name;
+			$mainIndexed->totalIndexed = $lang[0]->TotalIndexed;
+			$this->indexed_entries[] = $mainIndexed;
+		}
 
 		$dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
 			return !empty($v->lang);
@@ -241,7 +248,7 @@ HTML;
 		$semantic_domains = $this->GetSemanticDomains($search_term);
 		$parts_of_speech_dropdown = Webonary_Parts_Of_Speech::GetDropdown();
 		$semantic_domains_dropdown = Webonary_SemanticDomains::GetDropdown();
-		$language_dropdown = Webonary_Languages::GetLanguageDropdown();
+		$language_dropdown = LanguageHelper::GetLanguageDropdown();
 
 		if (empty($this->last_edit_date))
 			$last_upload = '';

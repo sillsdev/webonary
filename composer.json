@@ -117,6 +117,7 @@
       "SIL\\Webonary\\Attributes\\": "plugins/sil/sil-dictionary-webonary/src/Attributes/",
       "SIL\\Webonary\\Helpers\\": "plugins/sil/sil-dictionary-webonary/src/Helpers/",
       "SIL\\Webonary\\Interfaces\\": "plugins/sil/sil-dictionary-webonary/src/Interfaces/",
+      "SIL\\Webonary\\Models\\": "plugins/sil/sil-dictionary-webonary/src/Models/",
       "SIL\\Webonary\\Reports\\": "plugins/sil/sil-dictionary-webonary/src/Reports/",
       "SIL\\Tests\\Mocks\\": "test-php/src/Mocks/",
       "SIL\\Tests\\Webonary\\": "test-php/src/Webonary/"

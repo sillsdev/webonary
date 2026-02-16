@@ -3,6 +3,7 @@
 /** @noinspection HtmlUnknownTarget */
 
 use SIL\Webonary\ConfigWidget;
+use SIL\Webonary\Helpers\LanguageHelper;
 
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
@@ -67,31 +68,22 @@ function webonary_searchform($use_li = false): void
 			}
 
 			// set up dictionary info
-			$languages = Webonary_Cloud::GetLanguageList($dictionary);
+			$languages = LanguageHelper::GetVisibleLanguages();
 
 			/** @noinspection HtmlUnknownAttribute */
 			$option_template = '<option value="%s" %s>%s</option>' . PHP_EOL;
 
 			foreach ($languages as $language) {
-
-				if ($language->hidden)
-					continue;
-
-				$selected = ($language->language_code == $selected_language) ? 'selected' : '';
-				$language_dropdown_options .= sprintf($option_template, $language->language_code, $selected, $language->language_name);
+				$selected = ($language->Code == $selected_language) ? 'selected' : '';
+				$language_dropdown_options .= sprintf($option_template, $language->Code, $selected, $language->Name);
 			}
-
-			// get a list of the unique language codes used
-			$lang_codes = array_values(array_unique(array_column($languages, 'language_code')));
-
-			// clean up list of languages
-			Webonary_Cloud::cleanLanguageList($lang_codes);
 
 			$lastEditDate = $dictionary->updatedAt;
 
-			$arrIndexed = array_filter($languages, fn($lang) => $lang->is_main || $lang->is_reversal);
+			$arrIndexed = array_filter($languages, fn($lang) => $lang->IsMain || $lang->IsReversal);
 		}
-	} else {
+	}
+	else {
 
 		//$catalog_terms = get_terms('sil_writing_systems');
 		$arrLanguages = ConfigWidget::GetLanguageCodes();
@@ -178,7 +170,7 @@ SQL;
 
 			<?php
 			if ($language_dropdown_options !== '') {
-				$language_dropdown = '<select name="key" class="webonary_searchform_language_select">';
+				$language_dropdown = '<select name="key" class="webonary_language_select">';
 				$language_dropdown .= $language_dropdown_options;
 				$language_dropdown .= '</select>';
 				echo '<div class="pos-container">' . $language_dropdown . '</div>';

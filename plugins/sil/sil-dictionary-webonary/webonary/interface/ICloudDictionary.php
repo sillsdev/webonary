@@ -8,7 +8,7 @@
  * @property ICloudPartOfSpeech[] partsOfSpeech
  * @property ICloudLanguage[] reversalLanguages
  * @property ICloudSemanticDomain[] semanticDomains
- * @property ICloudLanguage[] definitionOrGlossLangs
+ * @property string[] definitionOrGlossLangs
  * @property string updatedAt
  * @property string updatedBy
  *

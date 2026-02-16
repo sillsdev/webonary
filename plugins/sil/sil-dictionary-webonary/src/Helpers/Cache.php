@@ -2,6 +2,8 @@
 
 namespace SIL\Webonary\Helpers;
 
+use Exception;
+
 class Cache
 {
 	private static ?string $cache_directory = null;
@@ -94,6 +96,7 @@ class Cache
 	public static function DeleteAllForThisDictionary(): void
 	{
 		self::ClearDirectory(self::GetCacheDir(), false);
+		self::ClearFPMCache();
 	}
 
 	/**
@@ -104,6 +107,7 @@ class Cache
 	public static function DeleteAllForAllDictionaries(): void
 	{
 		self::ClearDirectory(dirname(self::GetCacheDir()), false);
+		self::ClearFPMCache();
 	}
 
 	/**
@@ -129,5 +133,21 @@ class Cache
 
 		if ($delete_directory_also)
 			rmdir($dir_name);
+	}
+
+	/**
+	 * Clears the PHP-FPM cache.
+	 *
+	 * @return void
+	 */
+	private static function ClearFPMCache(): void
+	{
+		try {
+			/** @noinspection PhpComposerExtensionStubsInspection */
+			opcache_reset();
+		}
+		catch (Exception) {
+			// ignore
+		}
 	}
 }

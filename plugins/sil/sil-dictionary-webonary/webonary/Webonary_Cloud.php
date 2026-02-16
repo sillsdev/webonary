@@ -4,6 +4,8 @@ use MongoDB\Client;
 use MongoDB\Database;
 use MongoDB\Driver\ServerApi;
 use SIL\Webonary\Helpers\Cache;
+use SIL\Webonary\Helpers\LanguageHelper;
+use SIL\Webonary\Models\Language;
 
 class Webonary_Cloud
 {
@@ -16,9 +18,6 @@ class Webonary_Cloud
 
 	/** @var ICloudSemanticDomain[]|null  */
 	private static ?array $semantic_domains = null;
-
-	private static ILanguageEntryCount|stdClass|null $main_language = null;
-	private static ?array $language_list = null;
 
 	public static string $doBrowseByLetter = 'browse/entry';
 
@@ -44,7 +43,7 @@ class Webonary_Cloud
 		return is_object($entry) && isset($entry->_id);
 	}
 
-	private static function remoteGetJson($path, $dictionary_id, $apiParams = array())
+	private static function remoteGetJson($path, $apiParams = array())
 	{
 		if (!defined('WEBONARY_CLOUD_API_URL')) {
 			error_log('WEBONARY_CLOUD_API_URL is not set! Please do so in wp-config.php.');
@@ -405,95 +404,18 @@ class Webonary_Cloud
 	/**
 	 * @param string $code
 	 * @param string $default
-	 * @param ILanguageEntryCount[] $indexed_languages
 	 * @return string
 	 */
-	public static function getLanguageName(string $code, string $default = '', array $indexed_languages = []): string
+	public static function getLanguageName(string $code, string $default = ''): string
 	{
 		if ($default == $code)
 			$default = '';
 
-		// first look in the saved terms
-		$term = get_term_by('slug', $code, self::$languageCategory);
-		if (!empty($term)) {
+		$lang = new Language($code, $default);
 
-			// return the name, if we found it
-			if (!empty($term->name) && $term->name != $code)
-				return $term->name;
-		}
+		LanguageHelper::GetLanguageName($lang);
 
-		// Check if this is a major language code
-		$name = locale_get_display_language($code, 'en');
-
-		// locale_get_display_language returns the locale code if it doesn't know the name
-		if ($name == $code)
-			$name = '';
-		else
-			$description = locale_get_display_name($code, 'en');
-
-		// now look in the indexed languages
-		if (empty($name)) {
-			foreach ($indexed_languages as $lang) {
-
-				if ($lang->language_code == $code && !empty($lang->language_name)) {
-					$name = $lang->language_name;
-					break;
-				}
-			}
-		}
-
-		// if still not found, try the default
-		if (empty($name))
-			$name = $default;
-
-		// if the locale was not found, it just returns the $code
-		if (empty($name))
-			$name = $code;
-
-		if (empty($description))
-			$description = $name;
-
-		if (!empty($term)) {
-			if (!empty($name) && $name != $code)
-				wp_update_term($term->term_id, self::$languageCategory, ['name' => $name, 'description' => $description]);
-		}
-		else {
-			wp_insert_term(
-				$name,
-				self::$languageCategory,
-				array('description' => $description, 'slug' => $code)
-			);
-		}
-
-		return $name;
-	}
-
-	/**
-	 * Removes languages that are no longer used.
-	 * @param string[] $current_slugs
-	 * @return void
-	 */
-	public static function cleanLanguageList(array $current_slugs): void
-	{
-		$lower_slugs = array_map('strtolower', $current_slugs);
-
-		/** @var WP_Term[] $terms */
-		$terms = get_terms(
-			[
-				'get' => 'all',
-				'taxonomy' => self::$languageCategory,
-				'orderby' => 'none',
-				'suppress_filter' => 1
-			]
-		);
-
-		$terms = array_filter($terms, function ($term) use ($lower_slugs) {
-			return (!in_array(strtolower($term->slug), $lower_slugs));
-		});
-
-		foreach ($terms as $term) {
-			wp_delete_term($term->term_id, self::$languageCategory);
-		}
+		return $lang->Name;
 	}
 
 	/**
@@ -503,7 +425,7 @@ class Webonary_Cloud
 	public static function getDictionaryById(string $dictionaryId): ICloudDictionary|stdClass|null
 	{
 		$request = self::$doGetDictionary . '/' . $dictionaryId;
-		$response = self::remoteGetJson($request, $dictionaryId);
+		$response = self::remoteGetJson($request);
 		if (self::isValidDictionary($response)) {
 			Cache::Save('dictionary', $response);
 			return $response;
@@ -533,7 +455,7 @@ class Webonary_Cloud
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams['countTotalOnly'] = '1';
-		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
+		$response = self::remoteGetJson($request, $apiParams);
 		return $response->count ?? 0;
 	}
 
@@ -543,7 +465,7 @@ class Webonary_Cloud
 	public static function getEntriesAsPosts($doAction, $apiParams = array()): array
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
-		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
+		$response = self::remoteGetJson($request, $apiParams);
 		if (empty($response))
 			return [];
 
@@ -564,7 +486,7 @@ class Webonary_Cloud
 	public static function getEntriesAsReversals($apiParams): array
 	{
 		$request = self::$doBrowseByLetter . '/' . self::getBlogDictionaryId();
-		$response = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
+		$response = self::remoteGetJson($request, $apiParams);
 		if (empty($response))
 			return [];
 
@@ -585,7 +507,7 @@ class Webonary_Cloud
 	{
 		$request = $doAction . '/' . self::getBlogDictionaryId();
 		$apiParams = array('guid' => $id);
-		$entry = self::remoteGetJson($request, self::getBlogDictionaryId(), $apiParams);
+		$entry = self::remoteGetJson($request, $apiParams);
 		if (empty($entry)) {
 			status_header(404);
 			nocache_headers();
@@ -651,7 +573,7 @@ class Webonary_Cloud
 		}
 	}
 
-	public static function setFontFaces($dictionary, $uploadPath)
+	public static function setFontFaces($dictionary, $uploadPath): void
 	{
 		if (!empty($dictionary->mainLanguage->cssFiles)) {
 			$cssPath = $dictionary->_id . '/' . $dictionary->mainLanguage->cssFiles[0];
@@ -659,14 +581,13 @@ class Webonary_Cloud
 
 			if (is_wp_error($response)) {
 				error_log($response->get_error_message());
-				return null;
+				return;
 			}
 
 			$body = wp_remote_retrieve_body($response);
 			$fontClass = new Webonary_Font_Management();
 			$fontClass->set_fontFaces($body, $uploadPath);
 		}
-		return null;
 	}
 
 	/**
@@ -726,14 +647,14 @@ class Webonary_Cloud
 	{
 		register_rest_route(self::$apiNamespace, '/validate', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiValidate',
+				'callback' => [__CLASS__, 'apiValidate'],
 				'permission_callback' => '__return_true'
 			)
 		);
 
 		register_rest_route(self::$apiNamespace, '/resetDictionary', array(
 				'methods' => WP_REST_Server::CREATABLE,
-				'callback' => __CLASS__ . '::apiResetDictionary',
+				'callback' => [__CLASS__, 'apiResetDictionary'],
 				'permission_callback' => '__return_true'
 			)
 		);
@@ -1090,33 +1011,6 @@ class Webonary_Cloud
 		return implode(',', $letters);
 	}
 
-	public static function getLanguageCodes(): array
-	{
-		$lang_codes = [];
-		$dictionary = self::getDictionary();
-
-		if (!is_null($dictionary)) {
-
-			$lang_codes[] = [
-				'language_code' => $dictionary->mainLanguage->lang,
-				'name' => $dictionary->mainLanguage->title ?? $dictionary->mainLanguage->lang
-			];
-
-			foreach ($dictionary->reversalLanguages as $reversal) {
-
-				if (isset($reversal->entriesCount) && $reversal->entriesCount) {
-
-					$lang_codes[] = [
-						'language_code' => $reversal->lang,
-						'name' => $reversal->title ?? $reversal->lang
-					];
-				}
-			}
-		}
-
-		return $lang_codes;
-	}
-
 	/**
 	 * Gets the contents of a file for this site from the S3 bucket.
 	 *
@@ -1145,7 +1039,12 @@ class Webonary_Cloud
 		return !empty($dictionary->usedSemanticDomains) || !empty($dictionary->semanticDomainAbbreviationsUsed);
 	}
 
-	public static function GetMongoDbConnection($live_site = false): Database
+	/**
+	 * @param bool $live_site
+	 * @return Database
+	 * @noinspection DuplicatedCode
+	 */
+	public static function GetMongoDbConnection(bool $live_site = false): Database
 	{
 		if ($live_site)
 			$settings = WEBONARY_MONGO_PRODUCTION;
@@ -1159,113 +1058,5 @@ class Webonary_Cloud
 		$client = new Client($uri, [], ['serverApi' => $api_version]);
 
 		return $client->$catalog;
-	}
-
-	/**
-	 * @param ICloudDictionary|stdClass $dictionary
-	 * @return ILanguageEntryCount[]
-	 */
-	public static function GetLanguageList(ICloudDictionary|stdClass $dictionary): array
-	{
-		// did we do this already?
-		if (!is_null(self::$language_list))
-			return self::$language_list;
-
-		// is this value cached?
-		$cache_key = 'language-list';
-		$cached_val = Cache::Get($cache_key);
-		if (!is_null($cached_val)) {
-			self::$language_list = $cached_val;
-			return self::$language_list;
-		}
-
-		$main_language = self::GetMainLanguage($dictionary);
-
-		$language_list[strtolower($main_language->language_code)] = $main_language;
-
-		/** @var ICloudLanguage[] $reversalLanguages */
-		$reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
-			return !empty($v->lang);
-		}));
-
-		foreach ($reversalLanguages as $reversal) {
-
-			$key = strtolower($reversal->lang);
-			if (array_key_exists($key, $language_list))
-				continue;
-
-			/** @var ILanguageEntryCount|stdClass $lang */
-			$lang = new stdClass();
-			$lang->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title, $language_list);
-			$lang->language_code = $reversal->lang;
-			$lang->total_indexed = $reversal->entriesCount ?? 0;
-			$lang->is_main = false;
-			$lang->is_reversal = true;
-			$language_list[$key] = $lang;
-		}
-
-		$other_search_languages = array_filter($dictionary->definitionOrGlossLangs, function($search_lang) use($main_language) {
-			return $search_lang != $main_language->language_code;
-		});
-
-		foreach ($other_search_languages as $search_lang) {
-
-			$key = strtolower($search_lang);
-			if (array_key_exists($key, $language_list))
-				continue;
-
-			$localized_name = __(Webonary_Cloud::getLanguageName($search_lang, '', $language_list));
-
-			/** @var ILanguageEntryCount $lang */
-			$lang = new stdClass();
-			$lang->language_name = $localized_name;
-			$lang->language_code = $search_lang;
-			$lang->total_indexed = 0;
-			$lang->is_main = false;
-			$lang->is_reversal = false;
-			$language_list[$key] = $lang;
-		}
-
-		// mark hidden languages
-		foreach ($language_list as $lang) {
-
-			$term = get_term_by('slug', $lang->language_code, self::$languageCategory);
-			$text_field_hidden = get_term_meta($term->term_id, 'hide_language', true);
-			$lang->hidden = !empty($text_field_hidden);
-		}
-
-		self::$language_list = $language_list;
-
-		Cache::Save($cache_key, self::$language_list);
-
-		return self::$language_list;
-	}
-
-	/**
-	 * @param ICloudDictionary|stdClass $dictionary
-	 * @return ILanguageEntryCount|stdClass
-	 */
-	public static function GetMainLanguage(ICloudDictionary|stdClass $dictionary): ILanguageEntryCount|stdClass
-	{
-		if (!is_null(self::$main_language))
-			return self::$main_language;
-
-		$cache_key = 'main-language';
-		$cached_val = Cache::Get($cache_key);
-		if (!is_null($cached_val)) {
-			self::$main_language = $cached_val;
-			return self::$main_language;
-		}
-
-		self::$main_language = new stdClass();
-		self::$main_language->language_name = Webonary_Cloud::getLanguageName($dictionary->mainLanguage->lang, $dictionary->mainLanguage->title);
-		self::$main_language->language_code = $dictionary->mainLanguage->lang;
-		self::$main_language->total_indexed = $dictionary->mainLanguage->entriesCount ?? 0;
-		self::$main_language->is_main = true;
-		self::$main_language->is_reversal = false;
-
-		Cache::Save($cache_key, self::$main_language);
-
-		return self::$main_language;
 	}
 }
