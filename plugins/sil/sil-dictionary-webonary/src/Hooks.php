@@ -48,6 +48,8 @@ class Hooks
 		 */
 		$hooks_set += (int)add_filter('monsterinsights_show_dashboard_widget', '__return_false');
 
+		$hooks_set += (int)add_action('admin_enqueue_scripts', [Webonary_Utility::class, 'EnqueueFinalJs'], 999995);
+
 		return $hooks_set;
 	}
 
@@ -89,6 +91,8 @@ class Hooks
 		$hooks_set += (int)add_filter('shortcode_atts_audio', [Hooks::class, 'FixAudioFileNames']);
 
 //		$hooks_set += (int)add_action('switch_blog', 'SIL\Webonary\Dictionaries::BlogWasSwitched');
+
+		$hooks_set += (int)add_action('wp_enqueue_scripts', [Webonary_Utility::class, 'EnqueueFinalJs'], 999995);
 
 		return $hooks_set;
 	}
