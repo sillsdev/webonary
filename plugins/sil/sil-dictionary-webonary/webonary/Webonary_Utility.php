@@ -568,6 +568,18 @@ class Webonary_Utility
 		}
 	}
 
+	public static function EnqueueFinalJs()
+	{
+		wp_register_script(
+			'webonary_final_script',
+			WBNY_PLUGIN_URL . 'js/webonary-final.js',
+			[],
+			false,
+			true
+		);
+		wp_enqueue_script('webonary_final_script');
+	}
+
 	/**
 	 * Returns the $_GET[$variable_name] value as a string
 	 * @param string $variable_name

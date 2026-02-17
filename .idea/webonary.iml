@@ -41,8 +41,13 @@
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-intl-normalizer/src" isTestSource="false" packagePrefix="Symfony\Polyfill\Intl\Normalizer\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-php80/" isTestSource="false" packagePrefix="Symfony\Polyfill\Php80\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-php80/src" isTestSource="false" packagePrefix="Symfony\Polyfill\Php80\" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/themes/webonary-home" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/special-characters" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/helmich/mongomock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kcs/class-finder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/maennchen/zipstream-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/markbaker/complex" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/markbaker/matrix" />
@@ -58,9 +63,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-text-template" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-client" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/cli-parser" />
@@ -80,13 +82,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php85" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yoast/phpunit-polyfills" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/kcs/class-finder" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/themes/webonary-home" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/special-characters" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
