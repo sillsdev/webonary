@@ -36,6 +36,8 @@
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/punycode/src" isTestSource="false" packagePrefix="Rowbot\Punycode\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/url/src" isTestSource="false" packagePrefix="Rowbot\URL\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-ctype/" isTestSource="false" packagePrefix="Symfony\Polyfill\Ctype\" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Interfaces" isTestSource="false" packagePrefix="SIL\Webonary\Interfaces\" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Models" isTestSource="false" packagePrefix="SIL\Webonary\Models\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-ctype/src" isTestSource="false" packagePrefix="Symfony\Polyfill\Ctype\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-intl-normalizer/" isTestSource="false" packagePrefix="Symfony\Polyfill\Intl\Normalizer\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-intl-normalizer/src" isTestSource="false" packagePrefix="Symfony\Polyfill\Intl\Normalizer\" />
