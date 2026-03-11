@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListOptionItem } from './dictionary.model';
 import { DictionaryEntry } from './entry.model';
+import {APIGatewayProxyEventHeaders} from "aws-lambda/trigger/api-gateway-proxy";
 
 export interface BasicAuthCredentials {
   username: string;
@@ -69,4 +70,27 @@ export function escapeStringRegexp(value: string) {
 
 export function semanticDomainAbbrevRegex(abbrev: string) {
   return { $in: [abbrev, new RegExp(`^${escapeStringRegexp(abbrev)}.`, 'i')] };
+}
+
+export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null) {
+
+  // return true if no user-agent header found
+  if (!headers || !('user-agent' in headers))
+    return null;
+
+  // expecting a string like "FieldWorks Language Explorer v.9.2.5"
+  const userAgent = headers['user-agent'] ?? '';
+
+  // if not FieldWorks, return true
+  if (!userAgent.includes('FieldWorks'))
+    return null;
+
+  // the string should end with the version number
+  const found = userAgent.match(/\d[\d.\-a-zA-Z]+$/);
+  if (!found)
+    return null;
+
+  return found[0].split('.').map((val) => {
+    return /^\d+$/.test(val) ? parseInt(val) : val;
+  });
 }
