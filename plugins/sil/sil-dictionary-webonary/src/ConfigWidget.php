@@ -7,7 +7,6 @@ use SIL\Webonary\Helpers\Cache;
 use SIL\Webonary\Helpers\LanguageHelper;
 use SIL\Webonary\Models\Language;
 use special_characters;
-
 use Webonary_Cloud;
 use Webonary_Dashboard_Widget;
 use Webonary_Delete_Data;
@@ -65,6 +64,8 @@ class ConfigWidget
 	private static function SaveSettings(): void
 	{
 		update_option('publicationStatus', $_POST['publicationStatus']);
+		update_option('use_classic_widget_editor', $_POST['use_classic_widget_editor'] ?? 'no');
+
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
 
 		if (isset($_POST['normalization']))
@@ -305,7 +306,7 @@ HTML;
 		$use_cloud_checked = checked('1', IS_CLOUD_BACKEND, false);
 		$refresh_cloud_button = self::GetRefreshCloudButton();
 		$delete_block = self::GetDeleteDataBlock();
-
+		$use_classic_widget_checked = checked('1', get_option('use_classic_widget_editor'), false);
 
 		$html = <<<HTML
 <div id="tab-import" class="hidden">
@@ -321,10 +322,16 @@ HTML;
 	</div>
 	<div class="webonary-admin-block">
 		<div class="flex-start-center">
-		    <label for="useCloudBackend">Use cloud backend:</label>
 			<input name="useCloudBackend" id="useCloudBackend" type="checkbox" value="1" $use_cloud_checked>
+			<label for="useCloudBackend" class="sil-bold">Use cloud backend</label>
 		</div>
 		$refresh_cloud_button
+	</div>
+	<div class="webonary-admin-block">
+		<div class="flex-start-center">
+			<input name="use_classic_widget_editor" id="use_classic_widget_editor" type="checkbox" value="1" $use_classic_widget_checked>
+			<label for="use_classic_widget_editor" class="sil-bold">Use classic widget editor</label>
+		</div>
 	</div>
 	<div class="webonary-admin-block">
 		$delete_block

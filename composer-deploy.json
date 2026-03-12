@@ -44,7 +44,7 @@
     "ext-simplexml": "*",
     "ext-zlib": "*",
     "kcs/class-finder": "^0.6",
-    "johnpbloch/wordpress": "v6.9",
+    "johnpbloch/wordpress": "^6.9",
     "mdsimpson/contact-form-7-to-database-extension": "@stable",
     "mongodb/mongodb": "@stable",
     "phpoffice/phpspreadsheet": "^1.17",
