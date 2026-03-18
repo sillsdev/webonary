@@ -4,6 +4,7 @@
 
 use SIL\Webonary\ConfigWidget;
 use SIL\Webonary\Helpers\LanguageHelper;
+use SIL\Webonary\Models\Language;
 
 /**
  * A replacement for search box for dictionaries. To use, create searchform.php
@@ -233,13 +234,18 @@ function webonary_status($indexed_languages, $lastEditDate): string
 	$num_entries_text = '';
 	$reversals = [];
 
+	/** @var Language $indexed */
 	foreach($indexed_languages as $indexed) {
-		if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
+
+		if ($indexed->Hidden)
 			continue;
 
-		$localized_name = __($indexed->language_name);
-		$num_entries_text .= $localized_name . ':&nbsp;'. $indexed->total_indexed. '<br>';
-		$reversals[] = $indexed->language_name;
+		if (empty($indexed->Name) || in_array($indexed->Name, $reversals))
+			continue;
+
+		$localized_name = __($indexed->Name);
+		$num_entries_text .= $localized_name . ':&nbsp;'. $indexed->TotalIndexed. '<br>';
+		$reversals[] = $indexed->Name;
 	}
 
 	if(!empty($lastEditDate) && $lastEditDate != '0000-00-00 00:00:00')
