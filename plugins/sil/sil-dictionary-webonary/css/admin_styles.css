@@ -57,6 +57,10 @@
   gap: 2px;
 }
 
+.flex-table {
+  max-width: 100%;
+}
+
 .webonary-admin-block .flex-column {
   width: 100%;
 }
@@ -74,4 +78,16 @@
 
 .webonary-admin-block h3, .webonary-admin-block h4 {
   margin-top: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+
+  .flex-table > tbody > tr {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .flex-table > tbody > tr > td {
+    display: block;
+  }
 }

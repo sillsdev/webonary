@@ -268,4 +268,16 @@ HTML;
 		if (is_plugin_active('wp-super-cache/wp-cache.php'))
 			prune_super_cache(get_supercache_dir(), true);
 	}
+
+	public static function ApplyAdminSettings(): void
+	{
+		if (get_option('use_classic_widget_editor') == '1') {
+
+			// Disables the block editor from managing widgets in the Gutenberg plugin.
+			add_filter('gutenberg_use_widgets_block_editor', '__return_false');
+
+			// Disables the block editor from managing widgets.
+			add_filter('use_widgets_block_editor', '__return_false');
+		}
+	}
 }

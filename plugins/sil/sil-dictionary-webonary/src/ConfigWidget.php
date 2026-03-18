@@ -3,8 +3,10 @@
 namespace SIL\Webonary;
 
 use Exception;
+use SIL\Webonary\Helpers\Cache;
+use SIL\Webonary\Helpers\LanguageHelper;
+use SIL\Webonary\Models\Language;
 use special_characters;
-use Webonary_Cache;
 use Webonary_Cloud;
 use Webonary_Dashboard_Widget;
 use Webonary_Delete_Data;
@@ -44,8 +46,7 @@ class ConfigWidget
 		}
 
 		if (!empty($_POST['clear_local_cache'])) {
-			$dictionary_id = Webonary_Cloud::getBlogDictionaryId();
-			Webonary_Cache::DeleteAllForDictionary($dictionary_id);
+			Cache::DeleteAllForThisDictionary();
 			Admin::AddAdminNotice('success', __('Local cache cleared.'));
 			return;
 		}
@@ -63,6 +64,8 @@ class ConfigWidget
 	private static function SaveSettings(): void
 	{
 		update_option('publicationStatus', $_POST['publicationStatus']);
+		update_option('use_classic_widget_editor', $_POST['use_classic_widget_editor'] ?? 'no');
+
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
 
 		if (isset($_POST['normalization']))
@@ -93,9 +96,6 @@ class ConfigWidget
 		update_option('reversal1RightToLeft', $_POST['reversal1RightToLeft'] ?? 'no');
 		update_option('reversal2RightToLeft', $_POST['reversal2RightToLeft'] ?? 'no');
 		update_option('reversal3RightToLeft', $_POST['reversal3RightToLeft'] ?? 'no');
-
-		if (trim(strlen($_POST['txtVernacularName'])) == 0)
-			Admin::AddAdminNotice('error', 'Please fill out the text fields for the language names, as they will appear in a dropdown below the search box.');
 
 		if (isset($_POST['txtNotes']))
 			update_option("notes", $_POST['txtNotes']);
@@ -130,8 +130,6 @@ class ConfigWidget
 				Webonary_Cloud::resetDictionary($dictionaryId);
 			}
 		}
-
-		self::UpdateLanguageCodesAndNames();
 
 		// configured fonts
 		$mapped = array_filter(
@@ -173,48 +171,6 @@ class ConfigWidget
 		}
 
 		Admin::AddAdminNotice('success', __('Settings saved.'));
-	}
-
-	private static function UpdateLanguageCodesAndNames(): void
-	{
-		global $wpdb;
-
-		$languages['txtVernacularName'] = 'languagecode';
-		$languages['txtReversalName'] = 'reversal1_langcode';
-		$languages['txtReversal2Name'] = 'reversal2_langcode';
-		$languages['txtReversal3Name'] = 'reversal3_langcode';
-
-		foreach ($languages as $key => $value) {
-
-			$lang_code = trim($_POST[$value] ?? '');
-			if (empty($lang_code))
-				continue;
-
-			$lang_name = trim($_POST[$key] ?? '');
-
-			// is this an existing record?
-			$sql = $wpdb->prepare("SELECT term_id FROM $wpdb->terms WHERE slug = %s", $lang_code);
-			$found_term_id = $wpdb->get_var($sql);
-
-			// update the terms table
-			if (!empty($found_term_id)) {
-				$sql = $wpdb->prepare("UPDATE $wpdb->terms SET `name` = %s WHERE slug = %s", $lang_name, $lang_code);
-				$wpdb->query($sql);
-				$term_id = $found_term_id;
-			} else {
-				$sql = $wpdb->prepare("INSERT INTO $wpdb->terms (`name`, slug) VALUES (%s, %s)", $lang_name, $lang_code);
-				$wpdb->query($sql);
-				$term_id = $wpdb->insert_id;
-			}
-
-			// update the terms_taxonomy table
-			if (!empty($found_term_id))
-				$sql = $wpdb->prepare("UPDATE $wpdb->term_taxonomy SET description = %s WHERE term_id = %s", $lang_name, $term_id);
-			else
-				$sql = $wpdb->prepare("INSERT INTO $wpdb->term_taxonomy (term_id, taxonomy, description, count) VALUES (%s, 'sil_writing_systems', %s, 999999)", $term_id, $lang_name);
-
-			$wpdb->query($sql);
-		}
 	}
 
 	private static function DisplayConfiguration(): string
@@ -350,7 +306,7 @@ HTML;
 		$use_cloud_checked = checked('1', IS_CLOUD_BACKEND, false);
 		$refresh_cloud_button = self::GetRefreshCloudButton();
 		$delete_block = self::GetDeleteDataBlock();
-
+		$use_classic_widget_checked = checked('1', get_option('use_classic_widget_editor'), false);
 
 		$html = <<<HTML
 <div id="tab-import" class="hidden">
@@ -366,10 +322,16 @@ HTML;
 	</div>
 	<div class="webonary-admin-block">
 		<div class="flex-start-center">
-		    <label for="useCloudBackend">Use cloud backend:</label>
 			<input name="useCloudBackend" id="useCloudBackend" type="checkbox" value="1" $use_cloud_checked>
+			<label for="useCloudBackend" class="sil-bold">Use cloud backend</label>
 		</div>
 		$refresh_cloud_button
+	</div>
+	<div class="webonary-admin-block">
+		<div class="flex-start-center">
+			<input name="use_classic_widget_editor" id="use_classic_widget_editor" type="checkbox" value="1" $use_classic_widget_checked>
+			<label for="use_classic_widget_editor" class="sil-bold">Use classic widget editor</label>
+		</div>
 	</div>
 	<div class="webonary-admin-block">
 		$delete_block
@@ -401,14 +363,11 @@ HTML;
 
 	private static function BrowseTab(&$lines): void
 	{
-		if (IS_CLOUD_BACKEND)
-			$lang_codes = Webonary_Cloud::getLanguageCodes();
-		else
-			$lang_codes = self::GetLanguageCodes();
+		$languages = LanguageHelper::GetLanguages();
 
 		$sub_entries_block = self::GetSubEntriesBlock();
-		$vernacular_block = self::GetVernacularBrowseBlock($lang_codes);
-		$reversals_block = self::GetReversalIndexesBlock($lang_codes);
+		$vernacular_block = self::GetVernacularBrowseBlock($languages);
+		$reversals_block = self::GetReversalIndexesBlock($languages);
 
 
 		$html = <<<HTML
@@ -526,7 +485,7 @@ HTML;
 				<input name="noSearchForm" id="noSearchForm" type="checkbox" value="1" $checked>
 			</div>
 			<div class="flex-start-center" style="margin: 1rem 0; width: 100%">
-				<table style="width: 100%">
+				<table class="flex-table" style="width: 100%">
 					<tr>
 						<td><label for="countryName">Country:</label></td>
 						<td style="width: 100%"><input name="countryName" id="countryName" type="text" value="$country"></td>
@@ -744,9 +703,13 @@ HTML;
 HTML;
 	}
 
-	private static function GetVernacularBrowseBlock(array $lang_codes): string
+	/**
+	 * @param Language[] $languages
+	 * @return string
+	 */
+	private static function GetVernacularBrowseBlock(array $languages): string
 	{
-		if (empty($lang_codes))
+		if (empty($languages))
 			return '<span style="color:red">You need to first upload your dictionary.</span>';
 
 		$vernacular_font = get_option('vernacularLettersFont', '');
@@ -755,10 +718,11 @@ HTML;
 		else
 			$font_family = 'style="font-family:' . $vernacular_font . '"';
 
-		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
 		$lang_code = get_option('languagecode');
-		$i = array_search($lang_code, array_column($lang_codes, 'language_code'));
-		$lang_name = $lang_codes[$i]['name'];
+
+		$i = array_search($lang_code, array_column($languages, 'Code'));
+
+		$lang_name = $languages[$i]->Name;
 		$alphabet = stripslashes(Webonary_Cloud::filterLetterList(get_option('vernacular_alphabet'), true));
 		$select = self::GetConfiguredFontSelect('vernacularLettersFont', $vernacular_font);
 		$rtl_checked = checked('1', get_option('vernacularRightToLeft'), false);
@@ -780,7 +744,7 @@ HTML;
     	<input type="hidden" name="languagecode" value="$lang_code">
     	<div class="flex-start-center">
     	    <label for="txtVernacularName"><strong>[$lang_code]</strong> Language Name:</label>
-    	    <input id=vernacularName type="text" name="txtVernacularName" id="txtVernacularName" value="$lang_name" $read_only>
+    	    <input id=vernacularName type="text" id="txtVernacularName" value="$lang_name" readonly>
         </div>
         <div class="flex-start-center" style="margin-top: 1rem">
             <label for="vernacular_alphabet">Vernacular Alphabet</label>
@@ -814,7 +778,11 @@ HTML;
 HTML;
 	}
 
-	private static function GetReversalIndexesBlock(array $lang_codes): string
+	/**
+	 * @param Language[] $languages
+	 * @return string
+	 */
+	private static function GetReversalIndexesBlock(array $languages): string
 	{
 		$return_val = [];
 		$is_last = true;
@@ -822,9 +790,9 @@ HTML;
 		for ($i = 3; $i > 0; $i--) {
 
 			$lang_code = get_option('reversal' . $i . '_langcode');
-			$k = array_search($lang_code, array_column($lang_codes, 'language_code'));
+			$k = array_search($lang_code, array_column($languages, 'Code'));
 			if ($k !== false) {
-				array_unshift($return_val, self::BuildReversalIndexBlock($i, $lang_code, $lang_codes[$k]['name'], $is_last));
+				array_unshift($return_val, self::BuildReversalIndexBlock($i, $lang_code, $languages[$k]->Name, $is_last));
 				$is_last = false;
 			}
 		}
@@ -947,7 +915,6 @@ HTML;
 
 	private static function BuildReversalIndexBlock(int $idx, string $lang_code, string $lang_name, bool $is_last): string
 	{
-		$read_only = !empty(IS_CLOUD_BACKEND) ? 'readonly' : '';
 		$field_name = 'reversal' . $idx . '_alphabet';
 		$rtl_checked = checked('1', get_option('reversal' . $idx . 'RightToLeft'), false);
 		$alphabet = trim(stripslashes(get_option($field_name)));
@@ -982,7 +949,7 @@ HTML;
 	<div class="flex-start-center" style="margin-top: 1rem">
 		<strong>[$lang_code]</strong>
 		<label for="reversalName$idx">Language Name:</label>
-		<input id="reversalName$idx" type="text" name="txtReversalName" value="$lang_name" $read_only>
+		<input id="reversalName$idx" type="text" value="$lang_name" readonly>
 	</div>
 	<div class="flex-start-center" style="margin-top: 1rem">
 		<label for="$field_name">Alphabet</label>

@@ -3,14 +3,25 @@
 namespace SIL\Webonary;
 
 use SIL\Webonary\Abstracts\AdminReportTrait;
+use SIL\Webonary\Helpers\Cache;
 use SIL\Webonary\Helpers\Request;
 
 class AdminWidget
 {
 	public static function ShowWidget(): string
 	{
+		self::DoAction();
 		$return_val = self::DisplayOptions();
 		return $return_val . Admin::DoAdminNotices();
+	}
+
+	private static function DoAction(): void
+	{
+		if (Request::PostStr('clear_all_cache') == 'clear all cache') {
+			Cache::DeleteAllForAllDictionaries();
+			Admin::AddAdminNotice('success', 'Cache cleared for all dictionaries.');
+			return;
+		}
 	}
 
 	public static function ShowReports(): string
@@ -25,9 +36,13 @@ class AdminWidget
 		$lines = [
 			'<div class="wrap">',
 			'<h1>' . __('Webonary Admin Tools', 'sil_dictionary') . '</h1>',
+			'<form id="configuration-form" method="post" action="">'
 		];
 
+		$lines[] = self::DisplayCacheControl();
+
 		// closing tags
+		$lines[] = '</form>';
 		$lines[] = '</div>';
 
 		$return_val = implode(PHP_EOL, $lines);
@@ -83,5 +98,25 @@ class AdminWidget
 			echo $return_val;
 
 		return $return_val;
+	}
+
+	private static function DisplayCacheControl(): string
+	{
+		return <<<HTML
+<div class="webonary-admin-block">
+	<div class="flex-column">
+		<h4>Cache</h4>
+		<table class="flex-table">
+			<tbody>
+			<tr>
+				<td>
+					<button class="button button-webonary" type="submit" name="clear_all_cache" value="clear all cache">Clear All Cache</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+HTML;
 	}
 }
