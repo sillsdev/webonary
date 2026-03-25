@@ -112,15 +112,18 @@ import { MONGO_DB_NAME, DB_COLLECTION_DICTIONARIES, createEntriesIndexes } from 
 import { PostResult } from './base.model';
 import {
   getBasicAuthCredentials,
+  getFieldWorksVersion,
   isMaintenanceMode,
   maintenanceModeMessage,
   setSearchableEntries,
 } from './utils';
 import * as Response from './response';
+import { DictionaryMetaData } from './dictionary.model';
 
 let dbClient: MongoClient;
 
 export async function upsertDictionary(
+  event: APIGatewayEvent,
   eventBody: string | null,
   dictionaryId: string,
   username: string,
@@ -131,6 +134,14 @@ export async function upsertDictionary(
   const dictionaryItem = { ...posted, updatedAt, updatedBy: username };
   if (dictionaryItem.semanticDomains) {
     dictionaryItem.semanticDomains = setSearchableEntries(dictionaryItem.semanticDomains);
+  }
+
+  // collect the dictionary metadata
+  const fw_version = getFieldWorksVersion(event.headers);
+  if (fw_version) {
+    const meta = new DictionaryMetaData();
+    meta.flexVersion = fw_version;
+    dictionaryItem.metaData = meta;
   }
 
   dbClient = await connectToDB();
@@ -164,7 +175,7 @@ export async function handler(event: APIGatewayEvent): Promise<APIGatewayProxyRe
     `Received request to post dictionary ${dictionaryId} by user ${auth.username}`,
     eventBody,
   );
-  const { updatedAt, dbResult } = await upsertDictionary(eventBody, dictionaryId, auth.username);
+  const { updatedAt, dbResult } = await upsertDictionary(event, eventBody, dictionaryId, auth.username);
 
   // Call Webonary to alert that dictionary data is ready and refreshed
   axios.defaults.headers.post['Content-Type'] = 'application/json';

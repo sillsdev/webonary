@@ -121,4 +121,27 @@ describe('get Dictionary', () => {
     expect(dictionary.reversalLanguages[0].entriesCount).toBe(3);
     expect(dictionary.reversalLanguages[1].entriesCount).toBe(2);
   });
+
+  test('FieldWorks version', async () => {
+
+    // create a dictionary
+    const guids = ['guid1', 'guid2'];
+    const senseLangs = ['senseLangA', 'senseLangB'];
+    const dictionaryData: Partial<Dictionary> = {
+      mainLanguage: { lang: 'mainLangA', title: '', letters: [''], cssFiles: [''] },
+      reversalLanguages: []
+    };
+    const dictionaryId = await createDictionary(JSON.stringify(dictionaryData));
+
+    const event: Partial<APIGatewayEvent> = {
+      pathParameters: { dictionaryId },
+    };
+    const results = await handler(event as APIGatewayEvent);
+    const dictionary = JSON.parse(results.body);
+
+    expect(dictionary.metaData.flexVersion.length).toBe(3);
+    expect(dictionary.metaData.flexVersion[0]).toBe(9);
+    expect(dictionary.metaData.flexVersion[1]).toBe(7);
+    expect(dictionary.metaData.flexVersion[2]).toBe(8);
+  });
 });
