@@ -75,22 +75,26 @@ export function semanticDomainAbbrevRegex(abbrev: string) {
 export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null) {
 
   // return null if no user-agent header found
-  if (!headers || !('user-agent' in headers))
-    return [9, 10, 11];  // return null;
+  if (!headers)
+    return ['no', 'headers'];  // return null;
 
-  // expecting a string like "FieldWorks Language Explorer v.9.2.5"
-  const userAgent = headers['user-agent'] ?? '';
-
-  // if not FieldWorks, return null
-  if (!userAgent.includes('FieldWorks'))
-    return [9, 11, 12];  // return null;
-
-  // the string should end with the version number
-  const found = userAgent.match(/\d[\d.\-a-zA-Z]+$/);
-  if (!found)
-    return [9, 12, 13];  // return null;
-
-  return found[0].split('.').map((val) => {
-    return /^\d+$/.test(val) ? parseInt(val) : val;
-  });
+  return [JSON.stringify(headers)];
+  // if (!headers || !('user-agent' in headers))
+  //   return [9, 10, 11];  // return null;
+  //
+  // // expecting a string like "FieldWorks Language Explorer v.9.2.5"
+  // const userAgent = headers['user-agent'] ?? '';
+  //
+  // // if not FieldWorks, return null
+  // if (!userAgent.includes('FieldWorks'))
+  //   return [9, 11, 12];  // return null;
+  //
+  // // the string should end with the version number
+  // const found = userAgent.match(/\d[\d.\-a-zA-Z]+$/);
+  // if (!found)
+  //   return [9, 12, 13];  // return null;
+  //
+  // return found[0].split('.').map((val) => {
+  //   return /^\d+$/.test(val) ? parseInt(val) : val;
+  // });
 }
