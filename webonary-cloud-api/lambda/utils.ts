@@ -74,21 +74,21 @@ export function semanticDomainAbbrevRegex(abbrev: string) {
 
 export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null) {
 
-  // return true if no user-agent header found
+  // return null if no user-agent header found
   if (!headers || !('user-agent' in headers))
-    return null;
+    return [9, 10, 11];  // return null;
 
   // expecting a string like "FieldWorks Language Explorer v.9.2.5"
   const userAgent = headers['user-agent'] ?? '';
 
-  // if not FieldWorks, return true
+  // if not FieldWorks, return null
   if (!userAgent.includes('FieldWorks'))
-    return null;
+    return [9, 11, 12];  // return null;
 
   // the string should end with the version number
   const found = userAgent.match(/\d[\d.\-a-zA-Z]+$/);
   if (!found)
-    return null;
+    return [9, 12, 13];  // return null;
 
   return found[0].split('.').map((val) => {
     return /^\d+$/.test(val) ? parseInt(val) : val;
