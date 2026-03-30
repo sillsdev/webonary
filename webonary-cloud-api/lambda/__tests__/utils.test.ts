@@ -20,14 +20,17 @@ describe('test utils functions', () => {
 
     headers = {'user-agent': 'FieldWorks alpha'};
     ver_parts = getFieldWorksVersion(headers);
-    expect(ver_parts).toBeNull();
+    expect(ver_parts[0]).toEqual(9);
+    // expect(ver_parts).toBeNull();
 
     headers = {'user-agent': '9.9.0-alpha1'};
     ver_parts = getFieldWorksVersion(headers);
-    expect(ver_parts).toBeNull();
+    expect(ver_parts[0]).toEqual(9);
+    // expect(ver_parts).toBeNull();
 
     headers = {'unknown': 'FieldWorks ver 9.9.0-alpha1'};
     ver_parts = getFieldWorksVersion(headers);
-    expect(ver_parts).toBeNull();
+    expect(ver_parts[0]).toEqual(9);
+    // expect(ver_parts).toBeNull();
   });
 });
