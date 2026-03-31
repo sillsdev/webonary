@@ -139,10 +139,9 @@ describe('get Dictionary', () => {
     const results = await handler(event as APIGatewayEvent);
     const dictionary = JSON.parse(results.body);
 
-    expect(dictionary.metaData.flexVersion.length).toBeGreaterThan(0);
-    // expect(dictionary.metaData.flexVersion.length).toBe(3);
-    // expect(dictionary.metaData.flexVersion[0]).toBe(9);
-    // expect(dictionary.metaData.flexVersion[1]).toBe(7);
-    // expect(dictionary.metaData.flexVersion[2]).toBe(8);
+    expect(dictionary.metaData.flexVersion.length).toBe(3);
+    expect(dictionary.metaData.flexVersion[0]).toBe(9);
+    expect(dictionary.metaData.flexVersion[1]).toBe(7);
+    expect(dictionary.metaData.flexVersion[2]).toBe(8);
   });
 });

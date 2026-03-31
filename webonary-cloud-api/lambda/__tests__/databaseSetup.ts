@@ -31,7 +31,7 @@ export async function createDictionary(data = '{}'): Promise<string> {
 
   let event: APIGatewayEvent = {
     body: '',
-    headers: {'user-agent': 'FieldWorks 9.7.8'},
+    headers: {'User-Agent': 'FieldWorks 9.7.8'},
     multiValueHeaders: {},
     httpMethod: 'get',
     isBase64Encoded: false,
