@@ -80,6 +80,10 @@
   margin-top: 0.5rem;
 }
 
+.min-width-200 {
+  min-width: 200px;
+}
+
 @media (max-width: 767.98px) {
 
   .flex-table > tbody > tr {

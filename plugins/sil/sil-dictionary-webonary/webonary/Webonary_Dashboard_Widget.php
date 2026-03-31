@@ -57,6 +57,10 @@ HTML;
 				$import_status[] = $reversal_lang;
 			}
 
+			if (!empty($dictionary->metaData->flexVersion))
+				$import_status[] = 'FieldWorks Version:&ensp;<em>' . implode('.', $dictionary->metaData->flexVersion) . '</em>';
+			else
+				$import_status[] = 'FieldWorks Version:&ensp;<em>Unknown</em>';
 
 			return '<p>' . implode('<br>' . PHP_EOL, $import_status) . '</p>';
 		}

@@ -91,6 +91,6 @@ export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null
     return [userAgent];
 
   return found[0].split('.').map((val) => {
-    return /^\d+$/.test(val) ? parseInt(val) : val;
+    return /^\d+$/.test(val) ? Number(val) : val;
   });
 }
