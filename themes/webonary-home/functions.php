@@ -273,6 +273,21 @@ function webonary_home_enqueue_jquery(): void
 
 	wp_deregister_script( 'jquery-migrate' );
 	wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.3.2.min.js', ['jquery-core'], '3.3.2' );
+
+	wp_register_style(
+		'datatables-style',
+		'https://cdn.datatables.net/v/dt/dt-2.3.7/datatables.min.css'
+	);
+	wp_enqueue_style('datatables-style');
+
+	wp_register_script(
+		'datatables-script',
+		'https://cdn.datatables.net/v/dt/dt-2.3.7/datatables.min.js',
+		[],
+		false,
+		true
+	);
+	wp_enqueue_script('datatables-script');
 }
 
 // load jquery first
@@ -283,6 +298,17 @@ function full_width_body_classes($classes) {
 	$classes[] = 'full-width';
 	return $classes;
 }
+
+function ajax_display_sites(): void
+{
+	include_once 'includes/src/WebonaryHome_Ajax.php';
+
+	header('Content-Type: application/json');
+	$data = ['data' => WebonaryHome_Ajax::GetAllSites(false)];
+	echo json_encode($data);
+	exit();
+}
+add_action('wp_ajax_getAjaxDisplaySites', 'ajax_display_sites');
 
 function ajax_grammar_sites(): void
 {

@@ -19,7 +19,6 @@ class ReportsTest extends WP_UnitTestCase
 		$this->assertIsArray($routes);
 		$titles = array_column($routes, 'title');
 		$this->assertContains('Languages Used In Webonary', $titles);
-		$this->assertContains('Display All Sites', $titles);
 	}
 
 	public function testGetByID()
