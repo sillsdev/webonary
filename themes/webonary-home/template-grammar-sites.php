@@ -17,12 +17,9 @@ function BuildTable(): void
 	echo <<<HTML
 <style>
   #grammar-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
-  #grammar-sites-table span {border-bottom: 1px dashed #000}
-  div.dt-buttons {display: none}
-  #grammar-sites-table tbody tr:nth-child(odd) {background-color: #ebebef;}
 </style>
 <div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
-  <table id="grammar-sites-table" style="width: 100%; box-sizing: border-box">
+  <table id="grammar-sites-table" class="stripe" style="width: 100%; box-sizing: border-box">
     <thead>
       <tr>
         <th>Language</th>
@@ -38,70 +35,25 @@ function BuildTable(): void
 </div>
 <script type="text/javascript">
 
-    function setTableHeight() {
+	addEventListener('load', () => {
 
-        let container = $('#grammar-sites-table').closest('.dataTables_scroll');
-        let tbody = container.find('.dataTables_scrollBody');
-        let offset = tbody.offset().top + 1;
+		let columns = [
+			{data: 'language'},
+			{data: 'family'},
+			{data: 'country'},
+			{data: 'region'},
+			{data: 'published', type: 'datetime'},
+			{data: 'blog_name', render: function(data, _type, row) { return '<a href="' + row['url'] + '" target="_blank">' + data + '</a>'; }},
+		];
 
-        let card = tbody.closest('#table-container-div');
-        let padding = parseInt(card.css('padding-bottom'));
-        if (padding)
-            offset += padding;
-
-        let paginate = $('#list-table_paginate');
-        if (paginate.length)
-            offset += paginate.outerHeight(true) + 2;
-
-        let filter = $('div.list-table-filter');
-        if (filter.length) {
-
-            if (!paginate.length) {
-                offset += filter.outerHeight(true) + 2;
-            }
-        }
-
-        let footer = container.find('.dataTables_scrollFootInner');
-        if (footer.length)
-            offset += footer.outerHeight(true) + 2;
-
-        tbody.css('max-height', 'calc(100vh - ' + (offset + 30).toString() + 'px)');
-    }
-
-	$(document).ready(function() {
-        let table = $('#grammar-sites-table');
-
-	    table.DataTable({
-	        ajax: '$url',
-	        paging: false,
-	        sScrollY: 'auto',
-            scrollY: false,
-            sScrollX: '100%',
-            scrollX: true,
-	        ordering: true,
-	        order: [[0, 'asc']],
-	        columns: [
-				{data: 'language'},
-				{data: 'family'},
-				{data: 'country'},
-				{data: 'region'},
-				{data: 'published'},
-				{data: 'blog_name', render: function(data, _type, row) { return '<a href="' + row['url'] + '" target="_blank">' + data + '</a>'; }},
-	        ],
-	        initComplete: function() {
-                setTableHeight();
-	        }
-	    });
-
-        let tbody = table.find('tbody');
-
-        tbody.on('click', 'tr', function() {
-
-	        let tr = $(this).closest('tr');
-	        let tbl = $(this).closest('table').DataTable();
-	        tbl.row(tr).select();
-	        tbl.rows(tr.siblings()).deselect();
-        });
+		DatatablesWebonary.createDataTable(
+			'grammar-sites-table',
+			'$url',
+			columns,
+			null,
+			[[0, 'asc']],
+			$('<button type="button" onclick="window.open(\'?excel\', \'_blank\');" class="spbutton">Excel</button>')
+		);
 	});
 </script>
 HTML;
