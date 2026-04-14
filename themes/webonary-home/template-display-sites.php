@@ -17,11 +17,9 @@ function BuildTable(): void
 	echo <<<HTML
 <style>
   #all-sites-table tbody td {font-weight: 400; font-size: 13px; vertical-align: top}
-  #all-sites-table span {border-bottom: 1px dashed #000}
-  div.dt-buttons {display: none}
 </style>
 <div id="table-container-div" style="width: 100%; box-sizing: border-box; padding: 0 10px">
-  <table id="all-sites-table" style="width: 100%; box-sizing: border-box">
+  <table id="all-sites-table" class="stripe" style="width: 100%; box-sizing: border-box">
     <thead>
       <tr>
         <th>Site Title</th>
@@ -44,88 +42,37 @@ function BuildTable(): void
 </div>
 <script type="text/javascript">
 
-    function fixedRender(data, len) {
-        if (data.length <= len)
-            return data;
-
-        return '<span title="' + data + '">' + data.substring(0, len) + '</span>';
-    }
 
     function dateTimeRender(data) {
     	return '<span style="white-space: nowrap">' + data + '</span>';
     }
 
-    function setTableHeight() {
+	addEventListener('load', () => {
 
-        let container = $('#all-sites-table').closest('.dataTables_scroll');
-        let tbody = container.find('.dataTables_scrollBody');
-        let offset = tbody.offset().top + 1;
+		let column_defs = [
+			{
+				targets: 3,
+				render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
+			},
+			{
+				targets: 7,
+				type: 'number'
+			},
+			{
+				targets: [8, 9, 11],
+				type: 'datetime',
+				render: function(data) { return dateTimeRender(data); }
+			}
+		];
 
-        let card = tbody.closest('#table-container-div');
-        let padding = parseInt(card.css('padding-bottom'));
-        if (padding)
-            offset += padding;
-
-        let paginate = $('#list-table_paginate');
-        if (paginate.length)
-            offset += paginate.outerHeight(true) + 2;
-
-        let filter = $('div.list-table-filter');
-        if (filter.length) {
-
-            if (!paginate.length) {
-                offset += filter.outerHeight(true) + 2;
-            }
-        }
-
-        let footer = container.find('.dataTables_scrollFootInner');
-        if (footer.length)
-            offset += footer.outerHeight(true) + 2;
-
-        tbody.css('max-height', 'calc(100vh - ' + (offset + 30).toString() + 'px)');
-    }
-
-	$(document).ready(function() {
-        let table = $('#all-sites-table');
-
-	    table.DataTable({
-	        ajax: '$url',
-	        paging: false,
-	        sScrollY: 'auto',
-            scrollY: false,
-            sScrollX: '100%',
-            scrollX: true,
-	        ordering: true,
-	        order: [[0, 'asc']],
-	        columnDefs: [
-                {
-                    targets: 3,
-                    render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
-                },
-                {
-                    targets: 5,
-                    render: function(data) { return fixedRender(data, 6); }
-                }
-                ,
-                {
-                    targets: [7, 8, 11],
-                    render: function(data) { return dateTimeRender(data); }
-                }
-	        ],
-	        initComplete: function() {
-                setTableHeight();
-	        }
-	    });
-
-        let tbody = table.find('tbody');
-
-        tbody.on('click', 'tr', function() {
-
-	        let tr = $(this).closest('tr');
-	        let tbl = $(this).closest('table').DataTable();
-	        tbl.row(tr).select();
-	        tbl.rows(tr.siblings()).deselect();
-        });
+		DatatablesWebonary.createDataTable(
+			'all-sites-table',
+			'$url',
+			null,
+			column_defs,
+			[[0, 'asc']],
+			$('<button type="button" onclick="window.open(\'?excel\', \'_blank\');" class="spbutton">Excel</button>')
+		);
 	});
 </script>
 HTML;

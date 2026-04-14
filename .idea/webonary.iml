@@ -16,16 +16,15 @@
       <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Reports" isTestSource="false" packagePrefix="SIL\Webonary\Reports\" />
       <sourceFolder url="file://$MODULE_DIR$/test-php/src/Mocks" isTestSource="false" packagePrefix="SIL\Tests\Mocks\" />
       <sourceFolder url="file://$MODULE_DIR$/test-php/src/Webonary" isTestSource="false" packagePrefix="SIL\Tests\Webonary\" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/filesystem/src" isTestSource="false" packagePrefix="EnableMediaReplace\FileSystem" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/filesystem/src" isTestSource="false" packagePrefix="ShortPixel\FileSystem\" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/log/src" isTestSource="false" packagePrefix="EnableMediaReplace\ShortPixelLogger" />
+      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/filesystem/src" isTestSource="false" packagePrefix="EnableMediaReplace\FileSystem" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/log/src" isTestSource="false" packagePrefix="ShortPixel\ShortPixelLogger\" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/notices/src" isTestSource="false" packagePrefix="EnableMediaReplace\Notices" />
+      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/log/src" isTestSource="false" packagePrefix="EnableMediaReplace\ShortPixelLogger" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/notices/src" isTestSource="false" packagePrefix="ShortPixel\Notices\" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/replacer/src" isTestSource="false" packagePrefix="EnableMediaReplace\Replacer" />
+      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/notices/src" isTestSource="false" packagePrefix="EnableMediaReplace\Notices" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/replacer/src" isTestSource="false" packagePrefix="ShortPixel\Replacer\" />
+      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/enable-media-replace/build/shortpixel/replacer/src" isTestSource="false" packagePrefix="EnableMediaReplace\Replacer" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/google-analytics-for-wordpress/includes/gutenberg/headline-tool/phpinsight/lib" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/redis-cache/dependencies/predis/predis/src" isTestSource="false" packagePrefix="Predis\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/brick/math/src" isTestSource="false" packagePrefix="Brick\Math\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/brick/math/tests" isTestSource="true" packagePrefix="Brick\Math\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/psr/event-dispatcher/src" isTestSource="false" packagePrefix="Psr\EventDispatcher\" />

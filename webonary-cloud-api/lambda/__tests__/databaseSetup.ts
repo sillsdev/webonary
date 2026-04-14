@@ -1,9 +1,10 @@
-import { APIGatewayProxyResult } from 'aws-lambda';
+import {APIGatewayEvent, APIGatewayProxyResult} from 'aws-lambda';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 import { MONGO_DB_NAME, createReversalsIndexes } from '../db';
 import { connectToDB } from '../mongo';
 import { upsertDictionary } from '../postDictionary';
+import {APIGatewayEventRequestContextWithAuthorizer} from "aws-lambda/common/api-gateway";
 
 export function setupMongo(): void {
   let mongoServer: MongoMemoryServer;
@@ -28,6 +29,21 @@ export async function createDictionary(data = '{}'): Promise<string> {
   const dictionaryId = `test-dictionary-${nextDictionaryNumber}`;
   nextDictionaryNumber += 1;
 
-  await upsertDictionary(data, dictionaryId, 'test-user');
+  let event: APIGatewayEvent = {
+    body: '',
+    headers: {'User-Agent': 'FieldWorks 9.7.8'},
+    multiValueHeaders: {},
+    httpMethod: 'get',
+    isBase64Encoded: false,
+    path: '',
+    pathParameters: {},
+    queryStringParameters: {},
+    multiValueQueryStringParameters: {},
+    requestContext: <APIGatewayEventRequestContextWithAuthorizer<any>>{},
+    resource: "",
+    stageVariables: {},
+  };
+
+  await upsertDictionary(event, data, dictionaryId, 'test-user');
   return dictionaryId;
 }

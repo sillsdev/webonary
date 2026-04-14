@@ -38,6 +38,10 @@ export class ListOptionItem implements ListOption {
   guid? = '';
 }
 
+export class DictionaryMetaData {
+  flexVersion: Array<number|string>;
+}
+
 export interface Dictionary {
   _id: string;
   mainLanguage: Language;
@@ -46,6 +50,7 @@ export interface Dictionary {
   partsOfSpeech?: ListOption[];
   semanticDomains?: ListOption[];
   semanticDomainAbbreviationsUsed?: string[];
+  metaData?: DictionaryMetaData;
   updatedAt?: Date;
   updatedBy?: string;
 }
@@ -61,6 +66,8 @@ export class DictionaryItem implements Dictionary {
 
   semanticDomains?: ListOptionItem[];
 
+  metaData?: DictionaryMetaData;
+
   updatedAt?: Date;
 
   updatedBy?: string;
@@ -75,5 +82,6 @@ export class DictionaryItem implements Dictionary {
     this.reversalLanguages = Array(new LanguageItem());
     this.partsOfSpeech = Array(new ListOptionItem());
     this.semanticDomains = Array(new ListOptionItem());
+    this.metaData = new DictionaryMetaData();
   }
 }

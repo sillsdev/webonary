@@ -30,7 +30,6 @@ trait AdminReportTrait
 			'vertical' => Alignment::VERTICAL_CENTER
 		]
 	];
-
 	private static array $header_style = [
 		'font' => [
 			'bold' => true,
@@ -46,7 +45,6 @@ trait AdminReportTrait
 			'vertical' => Alignment::VERTICAL_CENTER
 		]
 	];
-
 	private static array $title_style = [
 		'font' => [
 			'bold' => true,
@@ -62,9 +60,13 @@ trait AdminReportTrait
 		]
 	];
 
+	protected bool $is_excel;
+
 	public function Run(): string
 	{
-		if (Request::GetInt('excel') === 1)
+		$this->is_excel = Request::GetInt('excel') === 1;
+
+		if ($this->is_excel)
 			$this->GetExcel();
 
 		return $this->GetReport();
@@ -265,5 +267,19 @@ HTML;
 		];
 
 		echo implode(PHP_EOL, $lines);
+	}
+
+	/**
+	 * Displays a date or date/time with non-breaking characters.
+	 *
+	 * @param $value
+	 * @return string
+	 */
+	protected function NonBreakingDate($value): string
+	{
+		if ($this->is_excel)
+			return $value ?? '';
+
+		return str_replace(' ', '&nbsp;', str_replace('-', '&#8209;', $value ?? ''));
 	}
 }
