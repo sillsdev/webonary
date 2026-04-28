@@ -1,5 +1,22 @@
 <?php
-load_theme_textdomain('dictrans');
+/** @noinspection DuplicatedCode */
+
+add_action('init', 'nuosu_yi_theme_init');
+function nuosu_yi_theme_init(): void
+{
+	load_theme_textdomain('dictrans');
+}
+
+add_action('wp_enqueue_scripts', 'nuosu_yi_enqueue_scripts');
+function nuosu_yi_enqueue_scripts(): void
+{
+	$stylesheet = 'imported-with-xhtml.css';
+	if ( file_exists( get_stylesheet_directory() . '/' . $stylesheet ) ) {
+		wp_register_style( 'Multilingual-Dictionary', get_stylesheet_directory_uri() . "/" . $stylesheet );
+		wp_enqueue_style( 'Multilingual-Dictionary' );
+	}
+}
+
 register_sidebar(array(
         'name' => __( 'Search Bar Popups', 'dictrans' ),
 		'id' => 'topsearchbar',
@@ -8,7 +25,7 @@ register_sidebar(array(
         'before_title' => '<h4>',
         'after_title' => '</h4>',
     ));
-    
+
 if ( function_exists('register_sidebar') ){
     register_sidebar(array(
         'name' => __( 'Left Side Bar', 'dictrans' ),
@@ -54,22 +71,14 @@ function get_id_by_slug($page_slug) {
 // @todo: Make the importer put file put the .css where it should go. Using
 // WP_PLUGIN_URL looks like standard practice.
 
-$stylesheet = 'imported-with-xhtml.css';
-//$stylesheet = WP_PLUGIN_URL . '/Multilingual-Dictionary.css';
-if ( file_exists( get_stylesheet_directory() . '/' . $stylesheet ) ) {
-	wp_register_style( 'Multilingual-Dictionary', get_stylesheet_directory_uri() . "/" . $stylesheet );
-	wp_enqueue_style( 'Multilingual-Dictionary' );
-}
 
-function remove_title($input) {
-  return preg_replace_callback('#\stitle=["|\'].*["|\']#',
-    create_function(
-      '$matches',
-      'return "";'
-      ),
-      $input
-    );
-  }
+//$stylesheet = WP_PLUGIN_URL . '/Multilingual-Dictionary.css';
+
+
+function remove_title($input): string
+{
+	return preg_replace('#\stitle=["|\'].*["|\']#', '', $input);
+}
 add_filter('wp_list_pages','remove_title');
 
 function qtranslate_edit_taxonomies(){
@@ -85,8 +94,8 @@ function qtranslate_edit_taxonomies(){
    if  ($taxonomies) {
      foreach ($taxonomies  as $taxonomy ) {
          add_action( $taxonomy->name.'_add_form', 'qtrans_modifyTermFormFor');
-         add_action( $taxonomy->name.'_edit_form', 'qtrans_modifyTermFormFor');        
-      
+         add_action( $taxonomy->name.'_edit_form', 'qtrans_modifyTermFormFor');
+
      }
    }
 
@@ -100,11 +109,12 @@ add_action('admin_init', 'qtranslate_edit_taxonomies');
 
 add_filter('get_pagenum_link', 'qtranslate_next_previous_fix');
 
-function qtranslate_next_previous_fix($url) {
-   if (function_exists('qtrans_init'))
-   {
-   	return qtrans_convertURL($url);
-   }
+function qtranslate_next_previous_fix($url)
+{
+	if (function_exists('qtrans_init'))
+		return qtrans_convertURL($url);
+
+	return $url;
 }
 
 /***************************************************************
@@ -152,5 +162,3 @@ function qtrans_getLanguageLinks($style='', $id='') {
 	}
  }
 }
-
-?>
