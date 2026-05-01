@@ -69,10 +69,12 @@ class WebonaryHome_Ajax
 		$rows = [];
 
 		if ($include_header_row)
-			$rows[] = ['SiteTitle', 'Country', 'Region', 'URL', 'Copyright', 'Code', 'Backend', 'Entries', 'CreateDate', 'PublishDate', 'ContactEmail', 'LastUpload', 'Notes'];
+			$rows[] = ['SiteTitle', 'Country', 'Region', 'URL', 'Code', 'Entries', 'CreateDate', 'PublishDate', 'LastUpload', 'LastUpdated', 'Copyright', 'ContactEmail', 'Backend', 'Notes'];
 
 		$sql = <<<SQL
-SELECT blog_id, domain, DATE_FORMAT(registered, '%Y-%m-%d') AS registered
+SELECT blog_id, domain,
+       DATE_FORMAT(registered, '%Y-%m-%d') AS registered,
+       DATE_FORMAT(last_updated, '%Y-%m-%d') AS last_updated
 FROM $wpdb->blogs
 WHERE blog_id != $wpdb->blogid
   AND site_id = '$wpdb->siteid'
@@ -104,39 +106,23 @@ SQL;
 
 			$domain_path = $blog_details->domain . $blog_details->path;
 
+			// 0. SITE TITLE
 			preg_match_all('~[:en]](.+?)\[~', $blog_details->blogname, $blog_name_matches);
 			if(count($blog_name_matches[0]) > 0)
 				$fields[] = trim($blog_name_matches[1][0]);
 			else
 				$fields[] = trim($blog_details->blogname);
 
+			// 1. COUNTRY
 			$fields[] = get_option('countryName');
+
+			// 2. REGION
 			$fields[] = get_option('regionName');
 
+			// 3. SITE URL
 			$fields[] = 'https://' . $domain_path;
 
-			$copyright_holder = Webonary_Utility::GetCopyright();
-
-			// split on the copyright symbol, remove the trademark symbol
-			$arr_footer = explode('©', str_replace('®', '', $copyright_holder), 2);
-
-			if (count($arr_footer) > 1) {
-
-				// take the part to the right of the copyright symbol
-				$copyright = $arr_footer[1];
-
-				// remove the 4-digit year
-				$copyright = preg_replace('/\d{4}/', '', $copyright);
-
-				// remove the year short tag
-				$copyright = str_replace('[year]', '', $copyright);
-
-				$fields[] = trim($copyright);
-			}
-			else {
-				$fields[] = trim($copyright_holder);
-			}
-
+			// 4. LANGUAGE CODE
 			$sql = <<<SQL
 SELECT REPLACE(meta_value, 'https://www.ethnologue.com/language/','') AS ethnologue_code
 FROM wp_{$blog['blog_id']}_postmeta
@@ -146,48 +132,34 @@ SQL;
 			$ethnologue_code = trim($wpdb->get_var($sql));
 			$fields[] = $ethnologue_code;
 
-			if (get_option('useCloudBackend')) {
-				$fields[] = 'Cloud';
-
-				$dictionary_id = str_replace('/', '', $blog_details->path);
-
-				$collection_name = 'webonaryEntries_' . $dictionary_id;
-				$num_posts = $db->$collection_name->countDocuments() ?? '';
-
-				$last_updated_row = array_find($last_updated, function ($row) use ($dictionary_id) {
-					return $row['_id'] == $dictionary_id;
-				});
-
-				if (empty($last_updated_row))
-					$last_edit_date = '';
-				elseif (gettype($last_updated_row->updatedAt) == 'string')
-					$last_edit_date = date("Y-m-d H:m:s", strtotime($last_updated_row->updatedAt));
-				else
-					$last_edit_date = $last_updated_row->updatedAt->toDateTime()->format('Y-m-d H:m:s');
-			}
-			else {
-				$fields[] = 'Wordpress';
-
-				$num_posts = $wpdb->get_var("SELECT COUNT(*) FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post'");
-				$last_edit_date = $wpdb->get_var("SELECT post_date FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
-			}
-
+			// 5. NUM ENTRIES
+			list($backend, $num_posts, $last_edit_date) = self::GetVariousValues($db, $blog_details, $blog, $last_updated);
 			$fields[] = $num_posts;
+
+			// 6. CREATE DATE
 			$fields[] = $blog['registered'];
 
+			// 7. PUBLISH DATE
 			/** @noinspection SqlResolve */
 			$published_date = $wpdb->get_var("SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM wp_links WHERE link_url LIKE '%$domain_path%'");
-			$fields[]      = $published_date;
+			$fields[] = $published_date;
 
+			// 8. LAST UPLOAD
+			$fields[] = $last_edit_date;
+
+			// 9. LAST UPDATED
+			$fields[] = $blog['last_updated'];
+
+			// 10. COPYRIGHT
+			$fields[] = self::GetCopyright();
+
+			// 11. CONTACT EMAIL
 			$fields[] = get_option('admin_email');
 
-			if (empty($last_edit_date))
-				$fields[] = '';
-			elseif ($last_edit_date == '0000-00-00 00:00:00')
-				$fields[] = '';
-			else
-				$fields[] = $last_edit_date;
+			// 12. BACKEND
+			$fields[] = $backend;
 
+			// 13. NOTES
 			$fields[] = stripslashes(get_option('notes'));
 
 			$mapped = array_map(function($a) {
@@ -354,6 +326,7 @@ SQL;
 	 * @param string $file_name
 	 * @return void
 	 * @throws Exception
+	 * @noinspection DuplicatedCode
 	 */
 	private static function SendExcel(array $sites, string $title, string $file_name): void
 	{
@@ -459,5 +432,71 @@ SQL;
 		$client = new Client($uri, [], ['serverApi' => $api_version]);
 
 		return $client->$catalog;
+	}
+
+	/**
+	 * @param Database $db
+	 * @param WP_Site $blog_details
+	 * @param $blog
+	 * @param BSONDocument[] $last_updated
+	 * @return array
+	 */
+	private static function GetVariousValues(Database $db, WP_Site $blog_details, $blog, array $last_updated): array
+	{
+		global $wpdb;
+
+		if (get_option('useCloudBackend')) {
+			$backend = 'Cloud';
+
+			$dictionary_id = str_replace('/', '', $blog_details->path);
+
+			$collection_name = 'webonaryEntries_' . $dictionary_id;
+			$num_posts = $db->$collection_name->countDocuments() ?? '';
+
+			$last_updated_row = array_find($last_updated, function ($row) use ($dictionary_id) {
+				return $row['_id'] == $dictionary_id;
+			});
+
+			if (empty($last_updated_row))
+				$last_edit_date = '';
+			elseif (gettype($last_updated_row->updatedAt) == 'string')
+				$last_edit_date = date("Y-m-d H:m:s", strtotime($last_updated_row->updatedAt));
+			else
+				$last_edit_date = $last_updated_row->updatedAt->toDateTime()->format('Y-m-d H:m:s');
+		}
+		else {
+			$backend = 'Wordpress';
+			$num_posts = $wpdb->get_var("SELECT COUNT(*) FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post'");
+			$last_edit_date = $wpdb->get_var("SELECT post_date FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+		}
+
+		if (is_null($last_edit_date) || $last_edit_date == '0000-00-00 00:00:00')
+			$last_edit_date = '';
+
+		return [$backend, $num_posts, $last_edit_date];
+	}
+
+	public static function GetCopyright(): string
+	{
+		$copyright_holder = Webonary_Utility::GetCopyright();
+
+		// split on the copyright symbol, remove the trademark symbol
+		$arr_footer = explode('©', str_replace('®', '', $copyright_holder), 2);
+
+		if (count($arr_footer) > 1) {
+
+			// take the part to the right of the copyright symbol
+			$copyright = $arr_footer[1];
+
+			// remove the 4-digit year
+			$copyright = preg_replace('/\d{4}/', '', $copyright);
+
+			// remove the year short tag
+			$copyright = str_replace('[year]', '', $copyright);
+
+			return trim($copyright);
+		}
+
+		return trim($copyright_holder);
 	}
 }
