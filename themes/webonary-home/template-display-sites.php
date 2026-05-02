@@ -26,14 +26,15 @@ function BuildTable(): void
         <th>Country</th>
         <th>Region</th>
         <th>URL</th>
-        <th>Copyright</th>
         <th>Code</th>
-        <th>Backend</th>
         <th>Entries</th>
         <th>Create Date</th>
         <th>Publish Date</th>
-        <th>Contact Email</th>
         <th>Last Upload</th>
+        <th>Last Updated</th>
+        <th>Copyright</th>
+        <th>Contact Email</th>
+        <th>Backend</th>
         <th>Notes</th>
 	</tr>
     </thead>
@@ -55,11 +56,11 @@ function BuildTable(): void
 				render: function(data) { return '<a href="' + data + '" target="_blank">' + data + '</a>'; }
 			},
 			{
-				targets: 7,
-				type: 'number'
+				targets: 5,
+				type: 'num'
 			},
 			{
-				targets: [8, 9, 11],
+				targets: [6, 7, 8, 9],
 				type: 'datetime',
 				render: function(data) { return dateTimeRender(data); }
 			}
