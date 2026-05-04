@@ -45,6 +45,7 @@
       <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary" />
       <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/themes/webonary-home" />
       <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/special-characters" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/webonary-create-site" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
