@@ -123,13 +123,20 @@ SQL;
 			$fields[] = 'https://' . $domain_path;
 
 			// 4. LANGUAGE CODE
+			$ethnologue_code = '';
 			$sql = <<<SQL
-SELECT REPLACE(meta_value, 'https://www.ethnologue.com/language/','') AS ethnologue_code
+SELECT meta_value AS ethnologue_code
 FROM wp_{$blog['blog_id']}_postmeta
 WHERE meta_key = '_menu_item_url'
   AND meta_value LIKE '%ethnologue%'
 SQL;
-			$ethnologue_code = trim($wpdb->get_var($sql));
+			$ethnologue_link = trim($wpdb->get_var($sql), " /\n\r\t\v\0");
+			if (str_contains($ethnologue_link, '/')) {
+				$re = '#^.*?\.ethnologue\.com/language/([a-zA-Z_-]+)/?$#';
+				if (preg_match($re, $ethnologue_link, $matches))
+					$ethnologue_code = $matches[1];
+			}
+
 			$fields[] = $ethnologue_code;
 
 			// 5. NUM ENTRIES
