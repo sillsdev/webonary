@@ -75,7 +75,7 @@ export function semanticDomainAbbrevRegex(abbrev: string) {
 
 export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null) {
 
-  // return null if no user-agent header found
+  // return null if no User-Agent header found
   if (!headers || !('User-Agent' in headers))
     return null;
 
@@ -96,47 +96,56 @@ export function getFieldWorksVersion(headers: APIGatewayProxyEventHeaders | null
   });
 }
 
-export function isFieldWorksVersionOK(headers: APIGatewayRequestAuthorizerEventHeaders | null): boolean {
+export function isFieldWorksVersionOK(headers: APIGatewayRequestAuthorizerEventHeaders | null) {
 
-  // return true if no user-agent header found
-  if (!headers || !('user-agent' in headers))
+  // return false if no User-Agent header found
+  if (!headers || !('User-Agent' in headers))
     return true;
 
   // expecting a string like "FieldWorks Language Explorer v.9.2.5"
-  const userAgent = headers['user-agent'] ?? '';
+  const userAgent = headers['User-Agent'] ?? '';
 
   // if not FieldWorks, return true
   if (!userAgent.includes('FieldWorks'))
     return true;
 
-  // the string should end with the version number
-  const found = userAgent.match(/\d[\d.]+$/);
-  if (!found)
+  const minVersion = [9, 2, 5];
+  const parts = getFieldWorksVersion(headers);
+
+  if (!parts)
     return false;
 
-  const minVersion = [9, 2, 5];
-  const parts = found[0].split('.').map(Number);
+  if (!Number.isInteger(parts[0]))
+    return false;
 
-  if (parts[0] > minVersion[0])
+  if (<number>parts[0] > minVersion[0])
     return true;
 
-  if (parts[0] < minVersion[0])
+  if (<number>parts[0] < minVersion[0])
     return false;
 
-  // parts[0] == minVersion[0]
+  /** parts[0] == minVersion[0] **/
+
   if (parts.length < 2)
     return false;
 
-  if (parts[1] > minVersion[1])
-    return true;
-
-  if (parts[1] < minVersion[1])
+  if (!Number.isInteger(parts[1]))
     return false;
 
-  // parts[0] == minVersion[0] and parts[1] == minVersion[1]
+  if (<number>parts[1] > minVersion[1])
+    return true;
+
+  if (<number>parts[1] < minVersion[1])
+    return false;
+
+  /** parts[0] == minVersion[0] and parts[1] == minVersion[1] **/
+
   if (parts.length < 3)
     return false;
 
-  return (parts[2] >= minVersion[2]);
+  if (!Number.isInteger(parts[2]))
+    return false;
+
+  return (<number>parts[2] >= minVersion[2]);
 }
 

@@ -38,45 +38,42 @@ describe('test utils functions', () => {
   test('isFieldWorksVersionOK: not FieldWorks', () => {
 
     let headers: any = null;
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
     headers = {};
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
-    headers = { 'user-agent': '' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    headers = { 'User-Agent': '' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
-    headers = { 'user-agent': 'Unit Testing' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
-
-    headers = { 'user-agent': 'Unit Testing' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    headers = { 'User-Agent': 'Unit Testing' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
   });
 
   test('isFieldWorksVersionOK: FieldWorks not valid', () => {
 
-    let headers = { 'user-agent': 'FieldWorks' };
-    expect(isFieldWorksVersionOK(headers)).toBeFalsy();
+    let headers = { 'User-Agent': 'FieldWorks' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(false);
 
-    headers = { 'user-agent': 'FieldWorks Language Explorer v.0.0.0' };
-    expect(isFieldWorksVersionOK(headers)).toBeFalsy();
+    headers = { 'User-Agent': 'FieldWorks Language Explorer v.0.0.0' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(false);
 
-    headers = { 'user-agent': 'FieldWorks Language Explorer v.9.2.4' };
-    expect(isFieldWorksVersionOK(headers)).toBeFalsy();
+    headers = { 'User-Agent': 'FieldWorks Language Explorer v.9.2.4' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(false);
   });
 
   test('isFieldWorksVersionOK: FieldWorks is valid', () => {
 
-    let headers = { 'user-agent': 'FieldWorks Language Explorer v.9.2.5' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    let headers = { 'User-Agent': 'FieldWorks Language Explorer v.9.2.5' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
-    headers = { 'user-agent': 'FieldWorks Language Explorer v.9.3' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    headers = { 'User-Agent': 'FieldWorks Language Explorer v.9.3' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
-    headers = { 'user-agent': 'FieldWorks Language Explorer v.10' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    headers = { 'User-Agent': 'FieldWorks Language Explorer v.10' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
 
-    headers = { 'user-agent': 'FieldWorks Language Explorer v.10.0.1' };
-    expect(isFieldWorksVersionOK(headers)).toBeTruthy();
+    headers = { 'User-Agent': 'FieldWorks Language Explorer v.10.0.1' };
+    expect(isFieldWorksVersionOK(headers)).toEqual(true);
   });
 });
