@@ -1,7 +1,7 @@
 {
   "name": "sillsdev/webonary",
   "description": "Webonary dictionary builder",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "license": "proprietary",
   "config": {
     "platform": {
@@ -44,7 +44,7 @@
     "ext-simplexml": "*",
     "ext-zlib": "*",
     "kcs/class-finder": "^0.6",
-    "johnpbloch/wordpress": "^6.9",
+    "johnpbloch/wordpress": "7.0.x-dev",
     "mdsimpson/contact-form-7-to-database-extension": "@stable",
     "mongodb/mongodb": "@stable",
     "phpoffice/phpspreadsheet": "^1.17",
