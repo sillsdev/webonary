@@ -16,11 +16,15 @@ class Cache
 	 */
 	public static function GetCacheDir(): string
 	{
-		if (is_null(self::$cache_directory))
-			self::$cache_directory = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache/site-' . get_current_blog_id();
+		if (is_null(self::$cache_directory)) {
+			if (defined('PHP_UNIT'))
+				self::$cache_directory = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache-php-unit/site-' . get_current_blog_id();
+			else
+				self::$cache_directory = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache/site-' . get_current_blog_id();
+		}
 
 		if (!is_dir(self::$cache_directory))
-			mkdir(self::$cache_directory, 0775, true);
+			mkdir(self::$cache_directory, 2775, true);
 
 		return self::$cache_directory;
 	}
