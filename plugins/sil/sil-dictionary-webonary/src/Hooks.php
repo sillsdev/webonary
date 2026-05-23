@@ -3,6 +3,7 @@
 namespace SIL\Webonary;
 
 use SIL\Webonary\Helpers\EmailHelper;
+use SIL\Webonary\Helpers\GA4Helper;
 use Webonary_API_MyType;
 use Webonary_Cloud;
 use Webonary_Infrastructure;
@@ -17,18 +18,19 @@ class Hooks
 		if (wp_installing())
 			return 0;
 
-		$hooks_set = self::SetAdminHooks();
+		if (is_admin())
+			$hooks_set = self::SetAdminHooks();
+		else
+			$hooks_set = self::SetDictionaryHooks();
+
 		$hooks_set += self::SetAllPageHooks();
-//		$hooks_set += self::SetDictionaryHooks();
+
 
 		return $hooks_set;
 	}
 
 	private static function SetAdminHooks(): int
 	{
-		if (!is_admin())
-			return 0;
-
 		$hooks_set = 0;
 
 		$hooks_set += (int)add_action('admin_enqueue_scripts', [Admin::class, 'EnqueueAdminScripts']);
@@ -93,6 +95,16 @@ class Hooks
 //		$hooks_set += (int)add_action('switch_blog', 'SIL\Webonary\Dictionaries::BlogWasSwitched');
 
 		$hooks_set += (int)add_action('wp_enqueue_scripts', [Webonary_Utility::class, 'EnqueueFinalJs'], 999995);
+
+		return $hooks_set;
+	}
+
+	private static function SetDictionaryHooks(): int
+	{
+		$hooks_set = 0;
+
+		$hooks_set += (int)add_action('wp_head', [GA4Helper::class, 'HookHead'], 10, 10);
+		$hooks_set += (int)add_action('monsterinsights_get_v4_id_to_output', [GA4Helper::class, 'HookMonsterInsightsG4ID'], 10, 1);
 
 		return $hooks_set;
 	}
