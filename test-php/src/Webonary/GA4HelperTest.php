@@ -3,11 +3,15 @@
 
 namespace SIL\Tests\Webonary;
 
+use SIL\Webonary\Helpers\Curl;
 use SIL\Webonary\Helpers\GA4Helper;
+use SIL\Webonary\Helpers\MockCurlResponse;
 use WP_UnitTestCase;
 
 /**
  * @covers SIL\Webonary\Helpers\GA4Helper
+ * @covers SIL\Webonary\Helpers\Curl
+ * @covers SIL\Webonary\Helpers\MockCurlResponse
  *
  * @noinspection PhpUndefinedNamespaceInspection
  */
@@ -25,18 +29,33 @@ class GA4HelperTest extends WP_UnitTestCase
 		GA4Helper::ResetForTesting();
 	}
 
-	public function testGA4Helper_Tag_Found()
+	public function testGA4Helper_Has_Numbers()
 	{
-		GA4Helper::SetGA4ID('PHP-UNIT-GA4-ID1');
-		GA4Helper::HookMonsterInsightsG4ID('PHP-UNIT-GA4-ID1');
-		$html = GA4Helper::HookHead();
-		$this->assertEquals('', $html);
+		$resp = new MockCurlResponse(
+			'POST',
+			(object)[
+				'Content' => '',
+				'ErrorNumber' => 0,
+				'ErrorMessage' => '',
+				'HttpCode' => 204
+			]
+		);
+
+		Curl::$MockCurl = true;
+		Curl::$UrlMockResponse = [
+			'https://www.google-analytics.com/mp' => $resp
+		];
+
+		GA4Helper::SetGA4ID('GA4-ID1');
+		GA4Helper::SetClientID('Client-ID1');
+		GA4Helper::SetGA4Secret('GA4-Secret1');
+		$code = GA4Helper::HookFooter();
+		$this->assertEquals(204, $code);
 	}
 
-	public function testGA4Helper_Tag_Not_Found()
+	public function testGA4Helper_Has_No_Numbers()
 	{
-		GA4Helper::SetGA4ID('PHP-UNIT-GA4-ID2');
-		$html = GA4Helper::HookHead();
-		$this->assertStringContainsString('<script async src="https://www.googletagmanager.com/gtag/js?id=PHP-UNIT-GA4-ID2&l=webonaryLayer"></script>', $html);
+		$code = GA4Helper::HookFooter();
+		$this->assertEquals(0, $code);
 	}
 }

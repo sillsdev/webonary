@@ -62,7 +62,10 @@ function ProcessHrefs(DOMDocument $doc, string $lang): void
 
 		$qs_parts[] = 'lang=' . $lang;
 
-		$link = $parts[0] . '?' . implode('&', $qs_parts);
+		if (preg_match('/.+[^\/]\.\w+$/', $parts[0]))
+			$link = $parts[0] . '?' . implode('&', $qs_parts);
+		else
+			$link = $parts[0] . (str_ends_with($parts[0], '/') ? '' : '/') . '?' . implode('&', $qs_parts);
 
 		$anchor->setAttribute('href', $link);
 	}

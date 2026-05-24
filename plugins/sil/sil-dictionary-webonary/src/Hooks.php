@@ -18,13 +18,12 @@ class Hooks
 		if (wp_installing())
 			return 0;
 
+		$hooks_set = self::SetAllPageHooks();
+
 		if (is_admin())
-			$hooks_set = self::SetAdminHooks();
+			$hooks_set += self::SetAdminHooks();
 		else
-			$hooks_set = self::SetDictionaryHooks();
-
-		$hooks_set += self::SetAllPageHooks();
-
+			$hooks_set += self::SetDictionaryHooks();
 
 		return $hooks_set;
 	}
@@ -103,8 +102,7 @@ class Hooks
 	{
 		$hooks_set = 0;
 
-		$hooks_set += (int)add_action('wp_head', [GA4Helper::class, 'HookHead'], 10, 10);
-		$hooks_set += (int)add_action('monsterinsights_get_v4_id_to_output', [GA4Helper::class, 'HookMonsterInsightsG4ID'], 10, 1);
+		$hooks_set += (int)add_action('wp_footer', [GA4Helper::class, 'HookFooter']);
 
 		return $hooks_set;
 	}
