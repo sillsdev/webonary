@@ -545,7 +545,7 @@ class Webonary_Cloud
 				}
 
 				$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
-				wp_register_style($handle, self::remoteFileUrl($cssPath), $deps, $time);
+				wp_register_style($handle, self::remoteFileUrl($cssPath), $deps);
 				wp_enqueue_style($handle);
 			}
 		}
@@ -565,7 +565,7 @@ class Webonary_Cloud
 				foreach ($reversal->cssFiles as $index => $cssFile) {
 					$handle = 'reversal_stylesheet' . ($index ?: '');
 					$cssPath = self::getBlogDictionaryId() . '/' . $cssFile;
-					wp_register_style($handle, self::remoteFileUrl($cssPath), array(), $time);
+					wp_register_style($handle, self::remoteFileUrl($cssPath));
 					wp_enqueue_style($handle);
 				}
 				break;

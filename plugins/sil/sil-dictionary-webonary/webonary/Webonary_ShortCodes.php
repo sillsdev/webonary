@@ -43,11 +43,11 @@ class Webonary_ShortCodes
 			Webonary_Cloud::registerAndEnqueueMainStyles();
 		} else {
 			$upload_dir = wp_upload_dir();
-			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css');
 			wp_enqueue_style('configured_stylesheet');
 
 			if (file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css')) {
-				wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+				wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css');
 				wp_enqueue_style('overrides_stylesheet');
 			}
 		}
@@ -196,7 +196,7 @@ HTML;
 		}
 		else {
 			$upload_dir = wp_upload_dir();
-			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css');
 			wp_enqueue_style('configured_stylesheet');
 		}
 

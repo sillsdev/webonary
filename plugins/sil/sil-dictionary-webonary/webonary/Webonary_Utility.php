@@ -525,9 +525,7 @@ class Webonary_Utility
 
 		wp_register_style(
 			'webonary_dictionary_style',
-			plugin_dir_url(__DIR__) . 'css/dictionary_styles.css',
-			[],
-			date('U')
+			plugin_dir_url(__DIR__) . 'css/dictionary_styles.css'
 		);
 		wp_enqueue_style('webonary_dictionary_style');
 
@@ -546,8 +544,7 @@ class Webonary_Utility
 			wp_register_style(
 				'configured_stylesheet',
 				$upload_dir['baseurl'] . '/imported-with-xhtml.css',
-				['webonary_dictionary_style'],
-				date('U')
+				['webonary_dictionary_style']
 			);
 			wp_enqueue_style('configured_stylesheet');
 
@@ -560,8 +557,7 @@ class Webonary_Utility
 				wp_register_style(
 					'overrides_stylesheet',
 					$overrides_css,
-					['webonary_dictionary_style', 'configured_stylesheet'],
-					date('U')
+					['webonary_dictionary_style', 'configured_stylesheet']
 				);
 				wp_enqueue_style('overrides_stylesheet');
 			}
