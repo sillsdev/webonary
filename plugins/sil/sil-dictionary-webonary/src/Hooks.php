@@ -13,6 +13,9 @@ use WP_Error;
 
 class Hooks
 {
+	private static array $stylesheet_uri = [];
+	private static array $theme_uri = [];
+
 	public static function SetHooks(): int
 	{
 		if (wp_installing())
@@ -94,6 +97,8 @@ class Hooks
 //		$hooks_set += (int)add_action('switch_blog', 'SIL\Webonary\Dictionaries::BlogWasSwitched');
 
 		$hooks_set += (int)add_action('wp_enqueue_scripts', [Webonary_Utility::class, 'EnqueueFinalJs'], 999995);
+		$hooks_set += (int)add_action('stylesheet_directory_uri', [self::class, 'OptimizeStylesheetUri'], 1000, 3);
+		$hooks_set += (int)add_action('template_directory_uri', [self::class, 'OptimizeThemeUri'], 1000, 3);
 
 		return $hooks_set;
 	}
@@ -220,5 +225,36 @@ class Hooks
 		$headers['Cache-Control'] = 'public, must-revalidate, max-age=' . $age;
 
 		return $headers;
+	}
+
+	/**
+	 * @param $stylesheet_dir_uri
+	 * @param $stylesheet
+	 * @param $theme_root_uri
+	 * @return string
+	 * @noinspection PhpUnusedParameterInspection
+	 */
+	public static function OptimizeStylesheetUri($stylesheet_dir_uri, $stylesheet, $theme_root_uri): string
+	{
+		if (isset(self::$stylesheet_uri[$theme_root_uri]))
+			return self::$stylesheet_uri[$theme_root_uri];
+
+		$host = get_home_url(1);
+		$parts = explode('/wp-content/', $stylesheet_dir_uri, 2);
+		self::$stylesheet_uri[$theme_root_uri] = $host . '/wp-content/' . $parts[1];
+
+		return self::$stylesheet_uri[$theme_root_uri];
+	}
+
+	public static function OptimizeThemeUri($template_dir_uri, $template, $theme_root_uri): string
+	{
+		if (isset(self::$theme_uri[$theme_root_uri]))
+			return self::$theme_uri[$theme_root_uri];
+
+		$host = get_home_url(1);
+		$parts = explode('/wp-content/', $template_dir_uri, 2);
+		self::$theme_uri[$theme_root_uri] = $host . '/wp-content/' . $parts[1];
+
+		return self::$theme_uri[$theme_root_uri];
 	}
 }

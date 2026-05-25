@@ -4,6 +4,8 @@
 if ( ! isset( $content_width ) )
   $content_width = 480;
 
+define('WBNY_HOME_URL', get_template_directory_uri());
+
 function isMobile(): bool
 {
 	$useragent=$_SERVER['HTTP_USER_AGENT'];
@@ -26,20 +28,20 @@ function themezee_enqueue_scripts(): void
 {
 
   // Register and Enqueue Stylesheet
-  wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css');
+  wp_register_style('zee_stylesheet', WBNY_HOME_URL . '/style.css');
   wp_enqueue_style( 'zee_stylesheet');
 
-  wp_register_style('responsive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/css/responsive-menu.css');
+  wp_register_style('responsive_menu_stylesheet', WBNY_HOME_URL . '/includes/css/responsive-menu.css');
   wp_enqueue_style('responsive_menu_stylesheet');
 
   // Enqueue jQuery Framework
   wp_enqueue_script('jquery');
 
   // Register and enqueue the Malsup Cycle Plugin
-  wp_register_script('zee_jquery-cycle', get_template_directory_uri() .'/includes/js/jquery.cycle.all.min.js', array('jquery'));
+  wp_register_script('zee_jquery-cycle', WBNY_HOME_URL .'/includes/js/jquery.cycle.all.min.js', array('jquery'));
   wp_enqueue_script('zee_jquery-cycle');
 
-  wp_register_script('responsiveMenu', get_template_directory_uri() .'/includes/js/responsive-menu.js?v=1.1', array('jquery'));
+  wp_register_script('responsiveMenu', WBNY_HOME_URL .'/includes/js/responsive-menu.js?v=1.1', array('jquery'));
   wp_enqueue_script( 'responsiveMenu' );
 }
 endif;
@@ -76,7 +78,7 @@ function themezee_setup(): void
 
   // Add Custom Header
   add_theme_support('custom-header', array(
-    'default-image' => get_template_directory_uri() . '/images/default_header.jpg',
+    'default-image' => WBNY_HOME_URL . '/images/default_header.jpg',
     'header-text' => false,
     'width'  => 900,
     'height' => 140,
@@ -291,7 +293,7 @@ function webonary_home_enqueue_jquery(): void
 
 	wp_register_script(
 		'datatables-webonary-script',
-		get_template_directory_uri() . '/includes/js/datatables.webonary.js',
+		WBNY_HOME_URL . '/includes/js/datatables.webonary.js',
 		[],
 		false,
 		true

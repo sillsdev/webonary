@@ -214,7 +214,7 @@ function get_special_char_buttons(): string
 		$buttons .= sprintf($btn_html, trim($char), $css_class) . PHP_EOL;
 	}
 
-	wp_register_script('webonary_special_chars_script', plugin_dir_url(__DIR__) . 'js/special_characters.js', [], false, true);
+	wp_register_script('webonary_special_chars_script', WBNY_PLUGIN_URL . 'js/special_characters.js', [], false, true);
 	wp_enqueue_script('webonary_special_chars_script');
 
 	return <<<HTML

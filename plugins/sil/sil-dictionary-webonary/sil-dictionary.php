@@ -41,7 +41,9 @@ function webonary_autoloader(string $class_name): bool
 }
 spl_autoload_register('webonary_autoloader');
 
-define('WBNY_PLUGIN_URL', plugin_dir_url(__FILE__));
+$host = get_home_url(1);
+$parts = explode('/wp-content/', plugin_dir_url(__FILE__), 2);
+define('WBNY_PLUGIN_URL', $host . '/wp-content/' . $parts[1]);
 
 include_once __DIR__ . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'defines.php';
 

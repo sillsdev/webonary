@@ -11,7 +11,7 @@
 			extract($args, EXTR_SKIP);
 			$title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 
-			$url = get_template_directory_uri() . '/images/icons';
+			$url = WBNY_HOME_URL . '/images/icons';
 			$options = get_option('themeZee_options');
 			$networks = '';
 

@@ -10,7 +10,7 @@ function themezee_load_custom_css() {
 	// Load PredefinedColor CSS
 	if ( !isset($options['themeZee_color_activate']) or $options['themeZee_color_activate'] != 'true' ) {
 		$cssfile = $options['themeZee_stylesheet'] <> '' ? $options['themeZee_stylesheet'] : 'standard.css';
-		$stylesheet = get_template_directory_uri() . '/includes/css/colorschemes/' . $cssfile;
+		$stylesheet = WBNY_HOME_URL . '/includes/css/colorschemes/' . $cssfile;
 		wp_register_style('zeeDisplay_colorscheme', $stylesheet, array('zeeDisplay_stylesheet'));
 		wp_enqueue_style( 'zeeDisplay_colorscheme');
 	}
