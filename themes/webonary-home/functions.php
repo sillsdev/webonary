@@ -26,10 +26,10 @@ function themezee_enqueue_scripts(): void
 {
 
   // Register and Enqueue Stylesheet
-  wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css?v=1.6');
+  wp_register_style('zee_stylesheet', get_stylesheet_directory_uri() . '/style.css');
   wp_enqueue_style( 'zee_stylesheet');
 
-  wp_register_style('responsive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/css/responsive-menu.css?v=1');
+  wp_register_style('responsive_menu_stylesheet', get_stylesheet_directory_uri() . '/includes/css/responsive-menu.css');
   wp_enqueue_style('responsive_menu_stylesheet');
 
   // Enqueue jQuery Framework

@@ -36,18 +36,22 @@ class Webonary_ShortCodes
 	{
 		global $wpdb;
 
+		if (get_current_blog_id() < 2)
+			return '';
+
 		$rtl = get_option('vernacularRightToLeft') == '1';
 		$align_class = $rtl ? 'right' : 'left';
 
 		if (IS_CLOUD_BACKEND) {
 			Webonary_Cloud::registerAndEnqueueMainStyles();
-		} else {
+		}
+		else {
 			$upload_dir = wp_upload_dir();
-			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css');
 			wp_enqueue_style('configured_stylesheet');
 
 			if (file_exists($upload_dir['basedir'] . '/ProjectDictionaryOverrides.css')) {
-				wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css?time=' . date("U"));
+				wp_register_style('overrides_stylesheet', $upload_dir['baseurl'] . '/ProjectDictionaryOverrides.css');
 				wp_enqueue_style('overrides_stylesheet');
 			}
 		}
@@ -196,7 +200,7 @@ HTML;
 		}
 		else {
 			$upload_dir = wp_upload_dir();
-			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css?time=' . date("U"));
+			wp_register_style('configured_stylesheet', $upload_dir['baseurl'] . '/imported-with-xhtml.css');
 			wp_enqueue_style('configured_stylesheet');
 		}
 

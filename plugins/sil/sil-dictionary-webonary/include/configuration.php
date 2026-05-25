@@ -110,12 +110,13 @@ HTML;
 
 function webonary_register_custom_css(): void
 {
+	if (get_current_blog_id() < 2)
+		return;
+
 	$upload_dir = wp_upload_dir();
 	wp_register_style(
 		'custom_stylesheet',
-		$upload_dir['baseurl'] . '/custom.css',
-		[],
-		date('U')
+		$upload_dir['baseurl'] . '/custom.css'
 	);
 	wp_enqueue_style('custom_stylesheet');
 }
