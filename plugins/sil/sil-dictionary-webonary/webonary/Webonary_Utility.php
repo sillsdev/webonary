@@ -519,13 +519,13 @@ class Webonary_Utility
 	public static function EnqueueJsAndCss()
 	{
 		if (!is_admin()) {
-			wp_register_script('webonary_plugin_script', plugin_dir_url(__DIR__) . 'js/webonary.js', [], false, true);
+			wp_register_script('webonary_plugin_script', WBNY_PLUGIN_URL . 'js/webonary.js', [], false, true);
 			wp_enqueue_script('webonary_plugin_script');
 		}
 
 		wp_register_style(
 			'webonary_dictionary_style',
-			plugin_dir_url(__DIR__) . 'css/dictionary_styles.css'
+			WBNY_PLUGIN_URL . 'css/dictionary_styles.css'
 		);
 		wp_enqueue_style('webonary_dictionary_style');
 

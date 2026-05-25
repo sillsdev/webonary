@@ -15,7 +15,7 @@ function themezee_options_page() {
 		<div id="zee_admin_header">
 
 			<div id="zee_admin_logo">
-				<img src="<?php echo get_template_directory_uri(); ?>/includes/admin/images/themezee_logo.png" alt="Logo" />
+				<img src="<?php echo WBNY_THEME_URL; ?>/includes/admin/images/themezee_logo.png" alt="Logo" />
 			</div>
 
 			<div id="zee_admin_menu">

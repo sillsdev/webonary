@@ -1,8 +1,8 @@
 <?php
-	
+
 	// Define Theme URL
 	define('ZEE_THEME_URL', 'http://themezee.com/zeedisplay/');
-	
+
 	// Define all Settings Pages Tabs
 	function themezee_get_settings_page_tabs() {
 		$tabs = array(
@@ -15,9 +15,9 @@
 		);
 		return $tabs;
 	}
-	
+
 	function themezee_get_sections($tab) {
-			
+
 		// Get Section
 		switch ( $tab ) :
 			case 'general' :
@@ -45,12 +45,12 @@
 				$themezee_sections = themezee_get_general_sections();
 			break;
 		endswitch;
-		
+
 		return $themezee_sections;
 	}
-	
+
 	function themezee_get_settings($tab = 'general') {
-	
+
 		// Get Section
 		switch ( $tab ) :
 			case 'general' :
@@ -78,44 +78,44 @@
 				$themezee_settings = themezee_get_general_settings();
 			break;
 		 endswitch;
-		
+
 		return $themezee_settings;
 	}
 
-	// Add Scripts and CSS for ThemeZee Options Panel	
+	// Add Scripts and CSS for ThemeZee Options Panel
 	add_action('admin_enqueue_scripts', 'themezee_admin_head');
-	function themezee_admin_head() { 
+	function themezee_admin_head() {
 		if ( isset($_GET['page']) and $_GET['page'] == 'themezee' ) :
-			wp_register_style('zee_admin_css', get_template_directory_uri() .'/includes/admin/admin-style.css');
+			wp_register_style('zee_admin_css', WBNY_HOME_URL .'/includes/admin/admin-style.css');
 			wp_enqueue_style( 'zee_admin_css');
-			
-			wp_register_style('zee_colorpicker_css', get_template_directory_uri().'/includes/admin/colorpicker/colorpicker.css');
+
+			wp_register_style('zee_colorpicker_css', WBNY_HOME_URL .'/includes/admin/colorpicker/colorpicker.css');
 			wp_enqueue_style( 'zee_colorpicker_css');
-			
-			wp_register_script('zee_colorpicker_js', get_template_directory_uri() .'/includes/admin/colorpicker/colorpicker.js', false);
+
+			wp_register_script('zee_colorpicker_js', WBNY_HOME_URL .'/includes/admin/colorpicker/colorpicker.js', false);
 			wp_enqueue_script('zee_colorpicker_js');
-			
-			wp_register_script('zee_eye', get_template_directory_uri() .'/includes/admin/colorpicker/eye.js', array('zee_colorpicker_js'));
+
+			wp_register_script('zee_eye', WBNY_HOME_URL .'/includes/admin/colorpicker/eye.js', array('zee_colorpicker_js'));
 			wp_enqueue_script('zee_eye');
-			
-			wp_register_script('zee_utils', get_template_directory_uri() .'/includes/admin/colorpicker/utils.js', array('zee_eye'));
+
+			wp_register_script('zee_utils', WBNY_HOME_URL .'/includes/admin/colorpicker/utils.js', array('zee_eye'));
 			wp_enqueue_script('zee_utils');
-			
-			wp_register_script('zee_mycolorpicker', get_template_directory_uri() .'/includes/admin/colorpicker/mycolorpicker.js', array('zee_utils'));
+
+			wp_register_script('zee_mycolorpicker', WBNY_HOME_URL .'/includes/admin/colorpicker/mycolorpicker.js', array('zee_utils'));
 			wp_enqueue_script('zee_mycolorpicker');
-			
+
 			wp_enqueue_script('media-upload');
 			wp_enqueue_script('thickbox');
-			
-			wp_register_script('zee_image_upload', get_template_directory_uri() .'/includes/admin/jquery-image-upload.js', array('jquery','media-upload','thickbox'));
+
+			wp_register_script('zee_image_upload', WBNY_HOME_URL .'/includes/admin/jquery-image-upload.js', array('jquery','media-upload','thickbox'));
 			wp_localize_script('zee_image_upload', 'zee_localizing_upload_js', array(
 				'use_this_image' => __('Use this Image', 'themezee_lang')
 			));
-			
+
 			wp_enqueue_script('zee_image_upload');
 			wp_enqueue_style('thickbox');
 		endif;
 	}
-	
-	
+
+
 ?>

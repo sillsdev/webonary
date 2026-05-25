@@ -1,5 +1,5 @@
 <?php
-	
+
 	$color_styles = array(
 		'brown.css' => __('Brown', ZEE_LANG),
 		'darkblue.css' => __('Darkblue', ZEE_LANG),
@@ -12,19 +12,19 @@
 		'standard.css' => __('Standard', ZEE_LANG),
 		'custom-color' => __('Custom Color', ZEE_LANG));
 
-	//$default_logo =  get_template_directory_uri() . '/images/logo.png';
-	$default_banner = get_template_directory_uri() . '/images/ad_125x125.png';
-	
+	//$default_logo =  WBNY_THEME_URL . '/images/logo.png';
+	$default_banner = WBNY_THEME_URL . '/images/ad_125x125.png';
+
 	$sections = array();
 	global $sections;
-	
+
 	$sections[] = array("id" => "themeZee_main",
 				"name" => __('Theme Settings', ZEE_LANG));
 
 	$settings = array();
 	global $settings;
-	
-	
+
+
 ### MAIN SETTINGS
 #######################################################################################
   /*
@@ -37,21 +37,21 @@
 								0 => 'Dictionary',
 								1 => 'Blog'),
 					"section" => "themeZee_main");
-	
+
 	$settings[] = array("name" => __('Meta Description', ZEE_LANG),
 			"desc" => __('Enter the description displayed by search engines.', ZEE_LANG),
 			"id" => "themeZee_description",
 			"std" => "",
 			"type" => "textarea",
 			"section" => "themeZee_main");
-	
+
 	$settings[] = array("name" => __('Meta Keywords', ZEE_LANG),
 			"desc" => __('Enter some keywords for better indexing.', ZEE_LANG),
 			"id" => "themeZee_keywords",
 			"std" => "",
 			"type" => "textarea",
 			"section" => "themeZee_main");
-	
+
 	*/
 	$settings[] = array("name" => __('Footer Content', ZEE_LANG),
 					"desc" => __('Enter here the content which is displayed in the footer.', ZEE_LANG),
@@ -77,7 +77,7 @@
 					'choices' => $color_styles,
 					"section" => "themeZee_main"
 					);
-	
+
 	$settings[] = array("name" => __('Custom Color', ZEE_LANG),
 					"desc" => __("Select a custom color here (You have to select the 'custom color' option above).", ZEE_LANG),
 					"id" => "themeZee_color",
@@ -85,7 +85,7 @@
 					"type" => "colorpicker",
 					"section" => "themeZee_main");
 	*/
-	
+
 	$customcss = "hideCustomCSS";
 	if (isset($_GET['customcss']) && $_GET['customcss'] == 1)
 	{
