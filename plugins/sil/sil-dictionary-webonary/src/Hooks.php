@@ -58,7 +58,7 @@ class Hooks
 	{
 		$hooks_set = 0;
 
-		$hooks_set += (int)add_action('init', [Hooks::class, 'LoadAdditionalTextDomains']);
+		$hooks_set += (int)add_action('init', [self::class, 'LoadAdditionalTextDomains']);
 		$hooks_set += (int)add_action('init', [Webonary_Infrastructure::class, 'InstallInfrastructure'], 0);
 		$hooks_set += (int)add_filter('posts_request', 'replace_default_search_filter', 10, 2);
 
@@ -79,17 +79,17 @@ class Hooks
 
 		// Block all API requests from users not logged in, with exceptions
 		// See https://developer.wordpress.org/rest-api/frequently-asked-questions/#require-authentication-for-all-requests
-		$hooks_set += (int)add_filter('rest_authentication_errors', [Hooks::class, 'ApplyRestAuthenticationExceptions']);
+		$hooks_set += (int)add_filter('rest_authentication_errors', [self::class, 'ApplyRestAuthenticationExceptions']);
 
 		if (IS_CLOUD_BACKEND) {
 			$hooks_set += (int)add_filter('posts_pre_query', [Webonary_Cloud::class, 'searchEntries'], 10, 2);
 			$hooks_set += (int)add_filter('comment_post_redirect', [Webonary_Cloud::class, 'commentRedirect']);
 		}
 
-		$hooks_set += (int)add_filter('post_rewrite_rules', [Hooks::class, 'AddRewriteRules']);
-		$hooks_set += (int)add_filter('query_vars', [Hooks::class, 'AddQueryVars']);
-		$hooks_set += (int)add_action('widgets_init', [Hooks::class, 'RegisterCustomWidgets']);
-		$hooks_set += (int)add_filter('shortcode_atts_audio', [Hooks::class, 'FixAudioFileNames']);
+		$hooks_set += (int)add_filter('post_rewrite_rules', [self::class, 'AddRewriteRules']);
+		$hooks_set += (int)add_filter('query_vars', [self::class, 'AddQueryVars']);
+		$hooks_set += (int)add_action('widgets_init', [self::class, 'RegisterCustomWidgets']);
+		$hooks_set += (int)add_filter('shortcode_atts_audio', [self::class, 'FixAudioFileNames']);
 
 //		$hooks_set += (int)add_action('switch_blog', 'SIL\Webonary\Dictionaries::BlogWasSwitched');
 
@@ -103,6 +103,7 @@ class Hooks
 		$hooks_set = 0;
 
 		$hooks_set += (int)add_action('wp_footer', [GA4Helper::class, 'HookFooter']);
+		$hooks_set += (int)add_action('wp_headers', [self::class, 'ModifyResponseHeaders'], 100);
 
 		return $hooks_set;
 	}
@@ -210,5 +211,14 @@ class Hooks
 		}
 
 		return $out;
+	}
+
+	public static function ModifyResponseHeaders(array $headers): array
+	{
+		// 345600 seconds is 4 days
+		$age = defined('CACHE_CONTROL_MAX_AGE') ? CACHE_CONTROL_MAX_AGE : 345600;
+		$headers['Cache-Control'] = 'public, must-revalidate, max-age=' . $age;
+
+		return $headers;
 	}
 }

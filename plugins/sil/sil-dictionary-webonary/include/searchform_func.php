@@ -325,6 +325,9 @@ function add_footer(): void
 {
 	global $post, $wpdb;
 
+	if (get_current_blog_id() < 2)
+		return;
+
 	// for new themes this is implemented through a widget
 	$template = wp_get_theme()->get_template();
 	if ($template == 'bootscore')
