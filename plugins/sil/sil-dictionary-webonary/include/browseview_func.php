@@ -339,7 +339,7 @@ function reversalindex($display, $chosenLetter, $langcode, $reversalnr = ""): st
 			$reversalCSSFile = str_replace('-', '_', $reversalCSSFile);
 		}
 
-		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile . '?time=' . date("U"));
+		wp_register_style('reversal_stylesheet', $upload_dir['baseurl'] . '/' . $reversalCSSFile);
 		wp_enqueue_style( 'reversal_stylesheet');
 
 		$arrReversals = getReversalEntries($chosenLetter, $page_num, $langcode, $displayXHTML, $reversalnr, $postsPerPage);
