@@ -1,6 +1,8 @@
 <?php
 /** @noinspection PhpMissingParamTypeInspection */
 
+use SIL\Webonary\Helpers\Request;
+
 /**
  * @param $alphas
  * @param string $languageCode
@@ -18,13 +20,15 @@ function displayAlphabet($alphas, $languageCode, $rtl): string
 	if ($no_alphas && is_front_page())
 		return '';
 
-	$permalink = '';
 	if (is_front_page()) {
 		/** @noinspection SqlResolve */
 		$sql = "SELECT ID FROM $wpdb->posts WHERE post_content LIKE '%[vernacularalphabet]%'";
 		$post_id = $wpdb->get_var($sql);
 
 		$permalink = get_permalink($post_id);
+	}
+	else {
+		$permalink = Request::ServerStr('REQUEST_URI');
 	}
 
 	/** @noinspection HtmlUnknownTarget */

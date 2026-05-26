@@ -301,9 +301,10 @@ HTML;
 function add_header(): void
 {
 	 if(!is_front_page()) {
+		 $host = get_home_url(1);
 ?>
-	<link rel="stylesheet" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/audiolibs/css/styles.css" />
-	<script src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sil-dictionary-webonary/js/jquery.ubaplayer.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="<?php echo $host; ?>/wp-content/plugins/sil-dictionary-webonary/audiolibs/css/styles.css" />
+	<script src="<?php echo $host; ?>/wp-content/plugins/sil-dictionary-webonary/js/jquery.ubaplayer.js" type="text/javascript"></script>
 	<script>
 	jQuery(function(){
 		jQuery("#ubaPlayer").ubaPlayer({

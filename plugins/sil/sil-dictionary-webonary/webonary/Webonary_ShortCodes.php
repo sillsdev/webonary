@@ -204,12 +204,12 @@ HTML;
 			wp_enqueue_style('configured_stylesheet');
 		}
 
-		$blog_url = get_bloginfo('wpurl');
+		$host_url = get_home_url(1);
 
-		wp_register_script('webonary_ua_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ua.js', [], false, true);
+		wp_register_script('webonary_ua_script', $host_url . '/wp-content/plugins/sil-dictionary-webonary/js/ua.js', [], false, true);
 		wp_enqueue_script('webonary_ua_script');
 
-		wp_register_script('webonary_ftiens_script', $blog_url . '/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js', [], false, true);
+		wp_register_script('webonary_ftiens_script', $host_url . '/wp-content/plugins/sil-dictionary-webonary/js/ftiens4.js', [], false, true);
 		wp_enqueue_script('webonary_ftiens_script');
 
 		$selected_domain_key = get_query_var('semnumber');
