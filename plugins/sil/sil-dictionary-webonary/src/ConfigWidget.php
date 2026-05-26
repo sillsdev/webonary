@@ -210,7 +210,7 @@ class ConfigWidget
 		// add scripts
 		wp_register_script(
 			'webonary_options_script',
-			get_bloginfo('wpurl') . '/wp-content/plugins/sil-dictionary-webonary/js/options.js',
+			get_home_url(1) . '/wp-content/plugins/sil-dictionary-webonary/js/options.js',
 			[],
 			false,
 			true);

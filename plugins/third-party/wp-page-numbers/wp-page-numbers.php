@@ -18,31 +18,23 @@ function wp_page_numbers_stylesheet()
         return;
 
 	$head_stylesheet = $settings['head_stylesheetsheet'];
-	$head_stylesheet_folder_name = $settings['head_stylesheetsheet_folder_name'];
+	$folder_name = $settings['head_stylesheetsheet_folder_name'];
 	$style_theme = $settings['style_theme'];
 
 	if($head_stylesheet == 'on' || $head_stylesheet == '' && (is_archive() || is_search() || is_home() ||is_page()))
 	{
-		echo '<link rel="stylesheet" href="'. get_bloginfo('wpurl') . '/wp-content/plugins/wp-page-numbers/';
-		if($head_stylesheet_folder_name == '')
-		{
-			switch ($style_theme) {
-				case 'default':
-				case 'classic':
-				case 'tiny':
-				case 'panther':
-				case 'stylish':
-					echo $style_theme;
-					break;
+		$plugin_dir = plugin_dir_url(__FILE__);
 
-				default:
-					echo 'default';
-			}
+		if($folder_name == '') {
+			$folder_name = match ($style_theme) {
+				'default', 'classic', 'tiny', 'panther', 'stylish' => $style_theme,
+				default => 'default',
+			};
 		}
-		else {
-			echo $head_stylesheet_folder_name;
-		}
-		echo '/wp-page-numbers.css" type="text/css" media="screen" />';
+
+		echo <<<HTML
+<link rel="stylesheet" href="$plugin_dir$folder_name/wp-page-numbers.css" type="text/css" media="screen">
+HTML;
 	}
 }
 add_action('wp_head', 'wp_page_numbers_stylesheet');

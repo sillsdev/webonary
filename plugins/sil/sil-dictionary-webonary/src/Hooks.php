@@ -13,11 +13,16 @@ use WP_Error;
 
 class Hooks
 {
+	private static string $host;
 	private static array $stylesheet_uri = [];
 	private static array $theme_uri = [];
+	private static array $plugin_uri = [];
+	private static array $includes_uri = [];
 
 	public static function SetHooks(): int
 	{
+		self::$host = get_home_url(1);
+
 		if (wp_installing())
 			return 0;
 
@@ -99,6 +104,8 @@ class Hooks
 		$hooks_set += (int)add_action('wp_enqueue_scripts', [Webonary_Utility::class, 'EnqueueFinalJs'], 999995);
 		$hooks_set += (int)add_action('stylesheet_directory_uri', [self::class, 'OptimizeStylesheetUri'], 1000, 3);
 		$hooks_set += (int)add_action('template_directory_uri', [self::class, 'OptimizeThemeUri'], 1000, 3);
+		$hooks_set += (int)add_action('plugins_url', [self::class, 'OptimizePluginUri'], 1000, 3);
+		$hooks_set += (int)add_action('includes_url', [self::class, 'OptimizeIncludesUri'], 1000, 2);
 
 		return $hooks_set;
 	}
@@ -228,10 +235,6 @@ class Hooks
 	}
 
 	/**
-	 * @param $stylesheet_dir_uri
-	 * @param $stylesheet
-	 * @param $theme_root_uri
-	 * @return string
 	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public static function OptimizeStylesheetUri($stylesheet_dir_uri, $stylesheet, $theme_root_uri): string
@@ -239,22 +242,53 @@ class Hooks
 		if (isset(self::$stylesheet_uri[$theme_root_uri]))
 			return self::$stylesheet_uri[$theme_root_uri];
 
-		$host = get_home_url(1);
-		$parts = explode('/wp-content/', $stylesheet_dir_uri, 2);
-		self::$stylesheet_uri[$theme_root_uri] = $host . '/wp-content/' . $parts[1];
+		self::$stylesheet_uri[$theme_root_uri] = self::RemoveSiteSlug($stylesheet_dir_uri);
 
 		return self::$stylesheet_uri[$theme_root_uri];
 	}
 
+	/**
+	 * @noinspection PhpUnusedParameterInspection
+	 */
 	public static function OptimizeThemeUri($template_dir_uri, $template, $theme_root_uri): string
 	{
 		if (isset(self::$theme_uri[$theme_root_uri]))
 			return self::$theme_uri[$theme_root_uri];
 
-		$host = get_home_url(1);
-		$parts = explode('/wp-content/', $template_dir_uri, 2);
-		self::$theme_uri[$theme_root_uri] = $host . '/wp-content/' . $parts[1];
+		self::$theme_uri[$theme_root_uri] = self::RemoveSiteSlug($template_dir_uri);
 
 		return self::$theme_uri[$theme_root_uri];
+	}
+
+	/**
+	 * @noinspection PhpUnusedParameterInspection
+	 */
+	public static function OptimizePluginUri($url, $path, $plugin): string
+	{
+		$key = explode('/', explode('/plugins/', $plugin, 2)[1], 2)[0];
+
+		if (isset(self::$plugin_uri[$key]))
+			return self::$plugin_uri[$key];
+
+		self::$plugin_uri[$key] = self::RemoveSiteSlug($url);
+
+		return self::$plugin_uri[$key];
+	}
+
+	public static function OptimizeIncludesUri($url, $path): string
+	{
+		if (isset(self::$includes_uri[$path]))
+			return self::$includes_uri[$path];
+
+		self::$includes_uri[$path] = self::RemoveSiteSlug($url);
+
+		return self::$includes_uri[$path];
+	}
+
+	private static function RemoveSiteSlug($url): string
+	{
+		$host = self::$host;
+		$re = '/^(.*)(\/)(wp-content|wp-includes)(\/)(.*)$/';
+		return preg_replace($re, "$host$2$3$4$5", $url);
 	}
 }
