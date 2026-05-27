@@ -14,9 +14,6 @@ use WP_Error;
 class Hooks
 {
 	private static string $host;
-	private static array $stylesheet_uri = [];
-	private static array $theme_uri = [];
-	private static array $plugin_uri = [];
 	private static array $includes_uri = [];
 
 	public static function SetHooks(): int
@@ -239,12 +236,7 @@ class Hooks
 	 */
 	public static function OptimizeStylesheetUri($stylesheet_dir_uri, $stylesheet, $theme_root_uri): string
 	{
-		if (isset(self::$stylesheet_uri[$theme_root_uri]))
-			return self::$stylesheet_uri[$theme_root_uri];
-
-		self::$stylesheet_uri[$theme_root_uri] = self::RemoveSiteSlug($stylesheet_dir_uri);
-
-		return self::$stylesheet_uri[$theme_root_uri];
+		return self::RemoveSiteSlug($stylesheet_dir_uri);
 	}
 
 	/**
@@ -252,12 +244,7 @@ class Hooks
 	 */
 	public static function OptimizeThemeUri($template_dir_uri, $template, $theme_root_uri): string
 	{
-		if (isset(self::$theme_uri[$theme_root_uri]))
-			return self::$theme_uri[$theme_root_uri];
-
-		self::$theme_uri[$theme_root_uri] = self::RemoveSiteSlug($template_dir_uri);
-
-		return self::$theme_uri[$theme_root_uri];
+		return self::RemoveSiteSlug($template_dir_uri);
 	}
 
 	/**
@@ -265,14 +252,7 @@ class Hooks
 	 */
 	public static function OptimizePluginUri($url, $path, $plugin): string
 	{
-		$key = explode('/', explode('/plugins/', $plugin, 2)[1], 2)[0];
-
-		if (isset(self::$plugin_uri[$key]))
-			return self::$plugin_uri[$key];
-
-		self::$plugin_uri[$key] = self::RemoveSiteSlug($url);
-
-		return self::$plugin_uri[$key];
+		return self::RemoveSiteSlug($url);
 	}
 
 	public static function OptimizeIncludesUri($url, $path): string
