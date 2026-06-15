@@ -47,7 +47,7 @@ class ConfigWidget
 
 		if (!empty($_POST['clear_local_cache'])) {
 			Cache::DeleteAllForThisDictionary();
-			Admin::AddAdminNotice('success', __('Local cache cleared.'));
+			Admin::AddAdminNotice('success', __('Cached data has been cleared.'));
 			return;
 		}
 
@@ -307,6 +307,7 @@ HTML;
 		$refresh_cloud_button = self::GetRefreshCloudButton();
 		$delete_block = self::GetDeleteDataBlock();
 		$use_classic_widget_checked = checked('1', get_option('use_classic_widget_editor'), false);
+		$clear_cache = self::BuildClearCache();
 
 		$html = <<<HTML
 <div id="tab-import" class="hidden">
@@ -333,6 +334,7 @@ HTML;
 			<label for="use_classic_widget_editor" class="sil-bold">Use classic widget editor</label>
 		</div>
 	</div>
+	$clear_cache
 	<div class="webonary-admin-block">
 		$delete_block
 		<div style="margin: 2rem 0">
@@ -470,7 +472,6 @@ HTML;
 		$region = get_option('regionName', 'N/A');
 		$copyright_holder = get_option('copyrightHolder');
 		$data_tx = self::BuildDataTx();
-		$clear_cache = self::BuildClearCache();
 
 		$html = <<<HTML
 <div id="tab-superadmin" class="hidden">
@@ -519,7 +520,6 @@ HTML;
 		</div>
 	</div>
     $data_tx
-    $clear_cache
 </div>
 HTML;
 		$lines[] = $html;
@@ -896,8 +896,9 @@ HTML;
 		return <<<HTML
 <div class="webonary-admin-block">
     <div class="flex-column">
-		<p style="margin: 0 0 0.3rem">Clear the data cached locally on the web server.</p>
+		<p style="margin: 0 0 0.3rem; font-weight: 700">Clear the cached data for this dictionary.</p>
 		<button style="margin: 0 0 0.5rem" class="button button-webonary" type="submit" name="clear_local_cache" value="clear cache">Clear Cache</button>
+		<p style="margin: 0">This will clear the local cache and the Cloudflare cache.</p>
 	</div>
 </div>
 HTML;

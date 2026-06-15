@@ -156,16 +156,16 @@ SQL;
 
 	public static function RemoveDoubleTerms(): void
 	{
-		global $wpdb;
-
-		//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
-		/** @noinspection SqlResolve */
-		$sql = <<<SQL
-DELETE t1 FROM $wpdb->terms t1, $wpdb->terms t2
-WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug
-SQL;
-
-		$wpdb->query($sql);
+//		global $wpdb;
+//
+//		//This deals specifically with the problem that languages (sil_writing_systems) sometimes get inserted several times
+//		/** @noinspection SqlResolve */
+//		$sql = <<<SQL
+//DELETE t1 FROM $wpdb->terms t1, $wpdb->terms t2
+//WHERE t1.term_id < t2.term_id AND t1.slug = t2.slug
+//SQL;
+//
+//		$wpdb->query($sql);
 	}
 
 	private static function SetFieldSortOrder(): void
