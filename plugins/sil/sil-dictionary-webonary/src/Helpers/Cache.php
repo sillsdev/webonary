@@ -20,11 +20,13 @@ class Cache
 			if (defined('PHP_UNIT'))
 				self::$cache_directory = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache-php-unit/site-' . get_current_blog_id();
 			else
+// @codeCoverageIgnoreStart
 				self::$cache_directory = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache/site-' . get_current_blog_id();
+// @codeCoverageIgnoreEnd
 		}
 
 		if (!is_dir(self::$cache_directory))
-			mkdir(self::$cache_directory, 2775, true);
+			mkdir(self::$cache_directory, 0777, true);
 
 		return self::$cache_directory;
 	}
@@ -35,7 +37,7 @@ class Cache
 	 * @param string $option_name
 	 * @return string The file path.
 	 */
-	private static function GetCacheKey(string $option_name): string
+	public static function GetCacheKey(string $option_name): string
 	{
 		return self::GetCacheDir() . DS . $option_name . '.cache';
 	}
@@ -70,8 +72,10 @@ class Cache
 		// check if expired
 		$file_created = filemtime($key);
 		if (($file_created + self::$cache_duration) < time()) {
+// @codeCoverageIgnoreStart
 			unlink($key);
 			return null;
+// @codeCoverageIgnoreEnd
 		}
 
 		$serialized = gzuncompress(file_get_contents($key));
@@ -96,22 +100,59 @@ class Cache
 	 * Deletes all cache entries for the current dictionary.
 	 *
 	 * @return void
+	 * @throws Exception
+	 * @codeCoverageIgnore
 	 */
 	public static function DeleteAllForThisDictionary(): void
 	{
 		self::ClearDirectory(self::GetCacheDir(), false);
 		self::ClearFPMCache();
+
+		$site = get_site();
+
+		// only clear Cloudflare for webonary.org
+		if (!str_contains(!$site->domain, 'webonary.org'))
+			return;
+
+		// only clear for dictionaies, not the main site
+		if (mb_strlen($site->path) < 3)
+			return;
+
+		$path = rtrim($site->path, '/');
+		$paths = [
+			'webonary.org' . $path,
+			'www.webonary.org' . $path
+		];
+
+		Cloudflare::ClearByPrefix($paths);
 	}
 
 	/**
 	 * Deletes all cache entries for all dictionaries.
 	 *
 	 * @return void
+	 * @codeCoverageIgnore
 	 */
 	public static function DeleteAllForAllDictionaries(): void
 	{
 		self::ClearDirectory(dirname(self::GetCacheDir()), false);
 		self::ClearFPMCache();
+	}
+
+	/**
+	 * @return void
+	 * @throws Exception
+	 * @codeCoverageIgnore
+	 */
+	public static function DeleteCloudflareForAllDictionaries(): void
+	{
+		$site = get_site();
+
+		// only clear Cloudflare for webonary.org
+		if (!str_contains(!$site->domain, 'webonary.org'))
+			return;
+
+		Cloudflare::ClearCache();
 	}
 
 	/**
@@ -121,9 +162,10 @@ class Cache
 	 * @param bool $delete_directory_also
 	 * @return void
 	 */
-	private static function ClearDirectory(string $dir_name, bool $delete_directory_also): void
+	public static function ClearDirectory(string $dir_name, bool $delete_directory_also): void
 	{
-		$structure = glob(rtrim($dir_name, "/") . '/*');
+		$pattern = rtrim($dir_name, '/') . '/*';
+		$structure = glob($pattern);
 
 		if (is_array($structure)) {
 			foreach ($structure as $file) {
@@ -143,6 +185,7 @@ class Cache
 	 * Clears the PHP-FPM cache.
 	 *
 	 * @return void
+	 * @codeCoverageIgnore
 	 */
 	private static function ClearFPMCache(): void
 	{

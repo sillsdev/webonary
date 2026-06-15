@@ -9,6 +9,8 @@ const TEST_RESOURCES = TESTS_DIR . '/resources';
 const WEBONARY_CLOUD_DEFAULT_DICTIONARY_ID = 'unit_test';
 const WEBONARY_CLOUD_API_URL = 'https://unit-test.local/v1/';
 const WEBONARY_CLOUD_FILE_URL = 'https://unit-test.local/';
+const MULTISITE = true;
+const SUBDOMAIN_INSTALL = false;
 
 register_shutdown_function(function(){
     print 'SHUTDOWN' . PHP_EOL;
@@ -25,3 +27,8 @@ do_action('init');
 
 // this is so we can mock requests to the cloud
 add_filter('pre_http_request', [MockWP_Http::class, 'HandleHttpRequest'], 10, 3);
+
+// remove the test cache directory, if it exists
+$cache_dir = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache-php-unit';
+if (is_dir($cache_dir))
+	SIL\Webonary\Helpers\Cache::ClearDirectory($cache_dir, true);

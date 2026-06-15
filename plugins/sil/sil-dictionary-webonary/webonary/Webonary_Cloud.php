@@ -534,7 +534,6 @@ class Webonary_Cloud
 
 		if (!is_null($dictionary)) {
 
-			$time = strtotime($dictionary->updatedAt);
 			foreach ($dictionary->mainLanguage->cssFiles as $index => $cssFile) {
 				if ($index === 0) {
 					$handle = 'configured_stylesheet';
@@ -557,8 +556,6 @@ class Webonary_Cloud
 
 		if (is_null($dictionary))
 			return;
-
-		$time = strtotime($dictionary->updatedAt);
 
 		foreach ($dictionary->reversalLanguages as $reversal) {
 			if ($lang === $reversal->lang) {
@@ -666,6 +663,11 @@ class Webonary_Cloud
 		return new WP_REST_Response($response->message, $response->code);
 	}
 
+	/**
+	 * @param $request
+	 * @return WP_REST_Response
+	 * @throws Exception
+	 */
 	public static function apiResetDictionary($request): WP_REST_Response
 	{
 		$response = self::validatePermissionToPost($request->get_headers());
@@ -688,6 +690,11 @@ class Webonary_Cloud
 		return new WP_REST_Response($message, $code);
 	}
 
+	/**
+	 * @param $dictionaryId
+	 * @return array
+	 * @throws Exception
+	 */
 	public static function resetDictionary($dictionaryId): array
 	{
 		// Since dictionary is persisted in options, unset it first

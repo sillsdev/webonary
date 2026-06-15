@@ -224,9 +224,15 @@ class Hooks
 
 	public static function ModifyResponseHeaders(array $headers): array
 	{
+		//  86400 seconds is 1 day
 		// 345600 seconds is 4 days
 		$age = defined('CACHE_CONTROL_MAX_AGE') ? CACHE_CONTROL_MAX_AGE : 345600;
-		$headers['Cache-Control'] = 'public, must-revalidate, max-age=' . $age;
+
+		// set a short TTL for the browser
+		$headers['Cache-Control'] = 'public, must-revalidate, max-age=600';
+
+		// set a long TTL for Cloudflare
+		$headers['Cloudflare-CDN-Cache-Control'] = 'public, must-revalidate, max-age=' . $age;
 
 		return $headers;
 	}

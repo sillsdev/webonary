@@ -55,7 +55,7 @@ class ConfigWidgetTest extends WP_UnitTestCase
 	{
 		$_POST['clear_local_cache'] = 1;
 		$html = ConfigWidget::ShowWidget();
-		$this->assertStringContainsString('Local cache cleared.', $html);
+		$this->assertStringContainsString('Cached data has been cleared.', $html);
 	}
 
 	public function testSendTestEmail()

@@ -2,12 +2,17 @@
 
 namespace SIL\Webonary;
 
+use Exception;
 use SIL\Webonary\Abstracts\AdminReportTrait;
 use SIL\Webonary\Helpers\Cache;
 use SIL\Webonary\Helpers\Request;
 
 class AdminWidget
 {
+	/**
+	 * @return string
+	 * @throws Exception
+	 */
 	public static function ShowWidget(): string
 	{
 		self::DoAction();
@@ -15,12 +20,22 @@ class AdminWidget
 		return $return_val . Admin::DoAdminNotices();
 	}
 
+	/**
+	 * @return void
+	 * @throws Exception
+	 * @codeCoverageIgnore
+	 */
 	private static function DoAction(): void
 	{
 		if (Request::PostStr('clear_all_cache') == 'clear all cache') {
 			Cache::DeleteAllForAllDictionaries();
-			Admin::AddAdminNotice('success', 'Cache cleared for all dictionaries.');
+			Admin::AddAdminNotice('success', 'Local cache cleared for all dictionaries.');
 			return;
+		}
+
+		if (Request::PostStr('clear_all_cloudflare') == 'clear all cloudflare') {
+			Cache::DeleteCloudflareForAllDictionaries();
+			Admin::AddAdminNotice('success', 'Cloudflare cache cleared for all dictionaries.');
 		}
 	}
 
@@ -47,8 +62,10 @@ class AdminWidget
 
 		$return_val = implode(PHP_EOL, $lines);
 
+// @codeCoverageIgnoreStart
 		if (!defined('PHP_UNIT'))
 			echo $return_val;
+// @codeCoverageIgnoreEnd
 
 		return $return_val;
 	}
@@ -94,25 +111,50 @@ class AdminWidget
 
 		$return_val = implode(PHP_EOL, $lines);
 
+// @codeCoverageIgnoreStart
 		if (!defined('PHP_UNIT'))
 			echo $return_val;
+// @codeCoverageIgnoreEnd
 
 		return $return_val;
 	}
 
 	private static function DisplayCacheControl(): string
 	{
+		$rows[] = <<<'HTML'
+<tr>
+	<td>
+		<button class="button button-webonary" type="submit" name="clear_all_cache" value="clear all cache">Clear All Local Cache</button>
+		<p style="margin: 0.4rem 0 0"><span style="font-weight: 700">WARNING:</span> This will clear the local cache for ALL dictionaries. This may take a few minutes.</p>
+	</td>
+</tr>
+HTML;
+
+		$site = get_site();
+
+		// only clear Cloudflare for webonary.org
+// @codeCoverageIgnoreStart
+		if (str_contains($site->domain, 'webonary.org')) {
+			$rows[] = <<<'HTML'
+<tr>
+	<td>
+		<button class="button button-webonary" type="submit" name="clear_all_cloudflare" value="clear all cloudflare" style="margin: 2rem 0 0">Clear All Cloudflare Cache</button>
+		<p style="margin: 0.4rem 0 0"><span style="font-weight: 700">WARNING:</span> This will clear the Cloudflare cache for ALL dictionaries. This will result in a heavier load on the server until the cache has been rebuilt.</p>
+	</td>
+</tr>
+HTML;
+		}
+// @codeCoverageIgnoreEnd
+
+		$html = implode(PHP_EOL, $rows);
+
 		return <<<HTML
 <div class="webonary-admin-block">
 	<div class="flex-column">
 		<h4>Cache</h4>
 		<table class="flex-table">
 			<tbody>
-			<tr>
-				<td>
-					<button class="button button-webonary" type="submit" name="clear_all_cache" value="clear all cache">Clear All Cache</button>
-				</td>
-			</tr>
+			$html
 			</tbody>
 		</table>
 	</div>
