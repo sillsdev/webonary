@@ -1,0 +1,50 @@
+
+.form-table {
+  input[type="text"] {
+    &.w-100 {
+      width: 100%
+    }
+  }
+
+  .label-field {
+    border: 1px solid #949494;
+    padding: 0.6rem 0.75rem;
+    min-height: 18px;
+  }
+
+  .field-info {
+    font-style: italic;
+  }
+}
+
+.form-table td div.desired-url {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+
+  span {
+    flex-shrink: 0;
+  }
+
+  input[type="text"] {
+    display: inline-block;
+    flex-shrink: 1;
+  }
+}
+
+.wcs2-admin-block {
+  border-top: 1px solid #ccc;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+span.delete {
+  a, .button-link {
+    color: #b32d2e;
+
+    &:hover {
+      color: #982627;
+    }
+  }
+}

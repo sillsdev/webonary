@@ -119,6 +119,7 @@
       "SIL\\Webonary\\Widgets\\": "plugins/sil/sil-dictionary-webonary/src/Widgets/",
       "SIL\\Tests\\Mocks\\": "test-php/src/Mocks/",
       "SIL\\Tests\\Webonary\\": "test-php/src/Webonary/",
+      "SIL\\Tests\\CreateSite\\": "test-php/src/CreateSite/",
       "SIL\\WebonaryCreateSite2\\": "plugins/sil/webonary-create-site2/src/"
     }
   }

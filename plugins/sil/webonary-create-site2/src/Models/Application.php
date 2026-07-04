@@ -67,4 +67,34 @@ class Application
 			}
 		}
 	}
+
+	/**
+	 * Gets the value from the field name on the form.
+	 * __The form contains field names that aren't valid property names in PHP.__
+	 *
+	 * @param string $field_name The name of the field on the form
+	 * @return string|null
+	 */
+	public function GetFieldValue(string $field_name): ?string
+	{
+		if (!array_key_exists($field_name, self::$field_map))
+			return null;
+
+		$property_name = self::$field_map[$field_name];
+
+		return $this->$property_name;
+	}
+
+	public function MarkRemoved(): void
+	{
+		global $wpdb;
+
+		$sql = <<<SQL
+UPDATE {$wpdb->prefix}cf7dbplugin_submits
+SET field_name = 'removed'
+WHERE field_name LIKE 'newapplication' AND submit_time = %f
+SQL;
+		$sql = $wpdb->prepare($sql, $this->ID);
+		$wpdb->query($sql);
+	}
 }

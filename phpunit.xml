@@ -12,6 +12,7 @@
     <coverage>
         <include>
             <directory suffix=".php">./wordpress-develop/src/wp-content/plugins/sil-dictionary-webonary/src</directory>
+            <directory suffix=".php">./wordpress-develop/src/wp-content/plugins/webonary-create-site2/src</directory>
             <directory suffix=".php">./test-php/src/Mocks</directory>
         </include>
         <report>

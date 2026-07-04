@@ -14,15 +14,15 @@ class Applications
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
-		$sql = <<<'SQL'
+		$sql = <<<SQL
 SELECT submit_time
-FROM wp_cf7dbplugin_submits
+FROM {$wpdb->prefix}cf7dbplugin_submits
 WHERE field_name = 'newapplication'
 SQL;
 		$new_apps = $wpdb->get_results($sql);
 
-		$sql = <<<'SQL'
-SELECT field_name, field_value FROM wp_cf7dbplugin_submits
+		$sql = <<<SQL
+SELECT field_name, field_value FROM {$wpdb->prefix}cf7dbplugin_submits
 WHERE submit_time = %s
 SQL;
 		$return_val = [];
@@ -40,8 +40,8 @@ SQL;
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
-		$sql = <<<'SQL'
-SELECT field_name, field_value FROM wp_cf7dbplugin_submits
+		$sql = <<<SQL
+SELECT field_name, field_value FROM {$wpdb->prefix}cf7dbplugin_submits
 WHERE submit_time = %s
 SQL;
 		$fields = $wpdb->get_results($wpdb->prepare($sql, $app_id));
