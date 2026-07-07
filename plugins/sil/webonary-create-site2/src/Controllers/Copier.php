@@ -43,18 +43,21 @@ class Copier
 		$id2 = $_POST['app-id'];
 
 		if ($id1 !== $id2) {
-			Admin::AddAdminNotice(NoticeType::Warning, 'Application was NOT removed: invalid data received.');
+			$notice = __('Application was NOT removed: invalid data received.', 'webonary-create-site2');
+			Admin::AddAdminNotice(NoticeType::Warning, $notice);
 			return;
 		}
 
 		$app = Applications::GetByID($id1);
 		if (empty($app)) {
-			Admin::AddAdminNotice(NoticeType::Warning, 'Application was NOT removed: application not found.');
+			$notice = __('Application was NOT removed: application not found.', 'webonary-create-site2');
+			Admin::AddAdminNotice(NoticeType::Warning, $notice);
 			return;
 		}
 
 		$app->MarkRemoved();
-		Admin::AddAdminNotice(NoticeType::Success, 'Application for ' . $app->LanguageName . ' has been removed.');
+		$notice = sprintf(__('Application for %s has been removed.', 'webonary-create-site2'), $app->LanguageName);
+		Admin::AddAdminNotice(NoticeType::Success, $notice);
 	}
 
 	public static function AjaxCreateSite()

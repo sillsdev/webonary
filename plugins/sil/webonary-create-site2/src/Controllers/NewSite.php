@@ -12,7 +12,7 @@ class NewSite
 	{
 		if (!empty($app_id) && $app_id != 'new') {
 			$app = Applications::GetByID($app_id);
-			$sub_title = 'Language: ' . $app->LanguageName;
+			$sub_title = sprintf(__('Language: %s', 'webonary-create-site2'), $app->LanguageName);
 		}
 		else {
 			$app = new Application();
@@ -21,10 +21,12 @@ class NewSite
 
 		$rows = self::AddFields($app);
 		$rows_html = implode(PHP_EOL, $rows);
+		$title = __('Create Webonary Site', 'webonary-create-site2');
+		$button_text = __('Create Now', 'webonary-create-site2');
 
 		return <<<HTML
 <div class="wrap">
-    <h1 class="wp-heading-inline">Create Webonary Site</h1>
+    <h1 class="wp-heading-inline">$title</h1>
 	<h2>$sub_title</h2>
 	<form id="wcs2-configuration-form" method="post" action="" onsubmit="return false;">
 		<input type="hidden" name="action" value="createNewSite">
@@ -36,7 +38,7 @@ class NewSite
 		</table>
 		<div class="wcs2-admin-block">
 			<div style="margin: 1rem 0">
-				<button type="button" name="create-now" class="button-primary" value="$app->ID" onclick="postNewSite();">Create Now</button>
+				<button type="button" name="create-now" class="button-primary" value="$app->ID" onclick="postNewSite();">$button_text</button>
 			</div>
 		</div>
 	</form>
@@ -93,10 +95,12 @@ HTML;
 	private static function AddLabelField($field_name, $field, $field_value): string
 	{
 		$info = self::BuildInfoBlock($field['info'] ?? '');
+		$field_label = __($field['label'], 'webonary-create-site2');
+
 		return <<<HTML
 <tr>
 	<th scope="row">
-		<label for="$field_name">{$field['label']}</label>
+		<label for="$field_name">$field_label</label>
 	</th>
 	<td>
 		<div class="label-field" id="$field_name">$field_value</div>
@@ -120,6 +124,9 @@ HTML;
 
 		foreach ($src as $key => $text) {
 			$selected = ($text == $field_value) ? 'selected' : '';
+
+			$text = __($text, 'webonary-create-site2');
+
 			$options[] = <<<HTML
 <option value="$key" $selected>$text</option>
 HTML;
@@ -162,6 +169,8 @@ HTML;
 	{
 		if ($info == '')
 			return '';
+
+		$info = __($info, 'webonary-create-site2');
 
 		return <<<HTML
 <p class="field-info">$info</p>

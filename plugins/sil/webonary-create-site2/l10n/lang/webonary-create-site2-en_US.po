@@ -8,12 +8,140 @@ msgstr ""
 "Language: en_US\n"
 "Project-Id-Version: Webonary Create Site 2\n"
 
+# Title for new application list page
 msgid "Create Webonary Site"
 msgstr ""
 
+# Possible sub-title for new application list page
 msgid "All applications have been processed"
 msgstr ""
 
+# Possible sub-title for new application list page
 msgid "New Applications"
 msgstr ""
 
+# Label for link to delete a record
+msgid "Delete"
+msgstr ""
+
+# Column header for new application list page
+msgid "Timestamp"
+msgstr ""
+
+# Column header for new application list page
+msgid "Language"
+msgstr ""
+
+# Column header for new application list page
+msgid "Desired URL"
+msgstr ""
+
+# Column header for new application list page
+msgid "Contact Email"
+msgstr ""
+
+# Notification for new application list page
+msgid "Application was NOT removed: invalid data received."
+msgstr ""
+
+# Notification for new application list page
+msgid "Application was NOT removed: application not found."
+msgstr ""
+
+# Notification for new application list page
+# %s is replaced with the language name
+msgid "Application for %s has been removed."
+msgstr ""
+
+# Sub-title for new site page
+# %s is replaced with the language name
+msgid "Language: %s"
+msgstr ""
+
+# Submit button text for new site page
+msgid "Create Now"
+msgstr ""
+
+# Field label for new site page
+msgid "Choose Source Site to Copy"
+msgstr ""
+
+# Field label for new site page
+msgid "New Site Address"
+msgstr ""
+
+# Field label for new site page
+msgid "New Site Title"
+msgstr ""
+
+# Field label for new site page
+msgid "Ethnologue Code"
+msgstr ""
+
+# Field label for new site page
+msgid "Country"
+msgstr ""
+
+# Field label for new site page
+msgid "Region"
+msgstr ""
+
+# Field label for new site page
+msgid "Copyright Holder Text"
+msgstr ""
+
+# Field label for new site page
+msgid "Publication Status"
+msgstr ""
+
+# Field label for new site page
+msgid "Allow Comments"
+msgstr ""
+
+# Field label for new site page
+msgid "Admin Email"
+msgstr ""
+
+# Field label for new site page
+msgid "First Name"
+msgstr ""
+
+# Field label for new site page
+msgid "Last Name"
+msgstr ""
+
+# Field label for new site page
+msgid "Comments"
+msgstr ""
+
+# Field label for new site page
+msgid "Display Languages"
+msgstr ""
+
+# Field label for new site page
+msgid "Need to be enabled manually"
+msgstr ""
+
+# Publication status list
+msgid "Rough draft"
+msgstr ""
+
+# Publication status list
+msgid "Self-reviewed draft"
+msgstr ""
+
+# Publication status list
+msgid "Community-reviewed draft"
+msgstr ""
+
+# Publication status list
+msgid "Consultant approved"
+msgstr ""
+
+# Publication status list
+msgid "Finished (no formal publication)"
+msgstr ""
+
+# Publication status list
+msgid "Formally published"
+msgstr ""

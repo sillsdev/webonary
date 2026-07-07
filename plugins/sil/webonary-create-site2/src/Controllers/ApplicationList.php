@@ -29,6 +29,7 @@ class ApplicationList
 HTML;
 
 		$admin_url = admin_url('/network/sites.php?page=webonary-create-site-2');
+		$delete = __('Delete', 'webonary-create-site2');
 
 		foreach ($applications as $app) {
 
@@ -36,13 +37,12 @@ HTML;
 			$desired_url = self::GetDesiredSiteURL($app->DesiredUrl);
 			$language_url = $admin_url . '&app-id=' . $app->ID;
 			$language_link = '<a href="' . $language_url . '">' . $app->LanguageName . '</a>';
-			$remove_url = $admin_url . '&remove=' . $app->ID;
-//			$remove_link = '<span class="delete"><a href="' . $remove_url . '" onclick="return confirmDeleteApplication(\'' . $app->LanguageName .  '\');">Delete</a></span>';
+
 			$remove_link = <<<HTML
 <form method="post" action="$admin_url" onsubmit="return confirmDeleteApplication('$app->LanguageName');">
 	<input type="hidden" name="app-id" value="$app->ID">
 	<span class="delete">
-	    <button type="submit" name="remove" value="$app->ID" class="button-link">Delete</button>
+	    <button type="submit" name="remove" value="$app->ID" class="button-link">$delete</button>
     </span>
 </form>
 HTML;
@@ -58,6 +58,10 @@ HTML;
 		}
 
 		$rows_html = implode(PHP_EOL, $rows);
+		$timestamp = __('Timestamp', 'webonary-create-site2');
+		$language = __('Language', 'webonary-create-site2');
+		$desired_url = __('Desired URL', 'webonary-create-site2');
+		$contact_email = __('Contact Email', 'webonary-create-site2');
 
 		return <<<HTML
 <div class="wrap">
@@ -70,10 +74,10 @@ HTML;
 	<table class="wp-list-table widefat striped">
 	<thead>
 		<tr>
-			<th>Timestamp</th>
-			<th>Language</th>
-			<th>Desired URL</th>
-			<th>Contact Email</th>
+			<th>$timestamp</th>
+			<th>$language</th>
+			<th>$desired_url</th>
+			<th>$contact_email</th>
 			<th></th>
 		</tr>
 	</thead>
