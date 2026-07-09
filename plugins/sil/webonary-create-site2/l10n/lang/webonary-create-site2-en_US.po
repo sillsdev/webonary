@@ -145,3 +145,8 @@ msgstr ""
 # Publication status list
 msgid "Formally published"
 msgstr ""
+
+# New site notification
+# %s is replaced with the language name
+msgid "New site created for %s."
+msgstr ""

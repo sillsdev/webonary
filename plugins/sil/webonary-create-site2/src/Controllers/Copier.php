@@ -70,12 +70,13 @@ class Copier
 
 		}
 
+		$data = ['status' => 'OK'];
 //		if ($id1 !== $id2) {
 //			Admin::AddAdminNotice(NoticeType::Warning, 'New site was NOT created: invalid data received.');
 //			return false;
 //		}
-//
-//		echo json_encode($x);
-//		exit();
+
+		echo json_encode($data);
+		exit();
 	}
 }

@@ -6,8 +6,6 @@ function confirmDeleteApplication(language) {
 
 function postNewSite() {
 
-    console.log('postNewSite');
-
     // webonary_ajax_obj is added by WordPress `wp_localize_script()`
     // noinspection JSUnresolvedReference
     const url = webonary_ajax_obj.ajax_url;
@@ -15,7 +13,7 @@ function postNewSite() {
     x_headers.append('X-Requested-With', 'XMLHttpRequest');
     x_headers.append('Content-type', 'application/x-www-form-urlencoded');
     const form_data = new FormData(document.getElementById('wcs2-configuration-form'));
-
+    const {value: language_name} = document.getElementById('language-name');
 
     const request = new Request(url, {
         method: 'POST',
@@ -23,7 +21,23 @@ function postNewSite() {
         body: new URLSearchParams([...form_data])
     });
 
-    fetch(request).then();
+    fetch(request)
+        .then((response) => {
+
+            if (!response.ok) {
+                console.log(response.statusText);
+                return;
+            }
+            
+            response.json().then((value) => {
+
+                if (value.status === 'OK')
+                    window.location.href = '/wp-admin/network/sites.php?page=webonary-create-site-2&created=' + encodeURIComponent(language_name);
+            });
+        })
+        .catch((reason) => {
+            console.log(reason);
+        });
 
 
 }

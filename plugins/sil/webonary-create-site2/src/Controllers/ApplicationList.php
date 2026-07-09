@@ -2,12 +2,20 @@
 
 namespace SIL\WebonaryCreateSite2\Controllers;
 
+use SIL\WebonaryCreateSite2\Abstracts\NoticeType;
+use SIL\WebonaryCreateSite2\Admin\Admin;
 use SIL\WebonaryCreateSite2\Models\Applications;
 
 class ApplicationList
 {
 	public static function DisplayApplicationList(): string
 	{
+		// was a new site just created?
+		if (!empty($_GET['created'])) {
+			$msg = sprintf(__('New site created for %s.', 'webonary-create-site2'), urldecode($_GET['created']));
+			Admin::AddAdminNotice(NoticeType::Success, $msg);
+		}
+
 		$applications = Applications::GetActiveApplications();
 
 		$title = get_admin_page_title();
