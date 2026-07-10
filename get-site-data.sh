@@ -5,7 +5,9 @@ siteID=${1:-missing}
 if [[ "${siteID}" == "missing" ]]; then
   read -p "Enter the site number: " siteID
 else
-  read -p "Enter the site number [${siteID}]: " siteID
+  defaultID="${siteID}"
+  read -p "Enter the site number [${defaultID}]: " siteID
+  siteID=${siteID:-$defaultID}
 fi
 
 if [[ -f "${thisDir}/config/data-server" ]]
