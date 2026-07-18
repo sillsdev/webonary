@@ -9,9 +9,9 @@ mkdir -p "${dumpDir}"
 rm -f "/tmp/webonary-tables.txt"
 
 if [[ "${siteID}" == "all" ]]; then
-  sql="SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary';"
+  sql="SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary' AND TABLE_NAME NOT LIKE 'wp_wf%';"
 else
-  sql="SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary' AND TABLE_NAME NOT REGEXP 'wp_[0-9]+_' UNION SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary' AND TABLE_NAME LIKE '%\_${siteID}\_%';"
+  sql="SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary' AND TABLE_NAME NOT REGEXP 'wp_[0-9]+_' AND TABLE_NAME NOT LIKE 'wp_wf%' UNION SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'webonary' AND TABLE_NAME LIKE '%\_${siteID}\_%';"
 fi
 
 mysql --defaults-file=~/.mysql/my.local.conf -D webonary -Bse "${sql}" > /tmp/webonary-tables.txt

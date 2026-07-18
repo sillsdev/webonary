@@ -4,6 +4,7 @@ namespace SIL\Webonary\Helpers;
 
 use SIL\Webonary\Models\Language;
 use Webonary_Cloud;
+use Webonary_Info;
 use WP_Term;
 
 class LanguageHelper
@@ -118,8 +119,18 @@ SQL;
 		$rows = $wpdb->get_results($sql) ?? [];
 		$return_val = [];
 
+		$entries = Webonary_Info::number_of_entries();
+
 		foreach ($rows as $row) {
-			$return_val[] = new Language($row->Code, $row->Name);
+
+			$found = array_find($entries, fn ($v) => $v->language_code == $row->Code);
+			$num_entries = $found->total_indexed ?? 0;
+			$new_lang = new Language($row->Code, $row->Name, $num_entries);
+
+			if (!$found)
+				$new_lang->Hidden = true;
+
+			$return_val[] = $new_lang;
 		}
 
 		return $return_val;

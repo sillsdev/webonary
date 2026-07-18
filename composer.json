@@ -52,6 +52,7 @@
     "mongodb/mongodb": "@stable",
     "phpoffice/phpspreadsheet": "^5.2",
     "qtranslate/qtranslate-xt": "^3.15",
+    "symfony/polyfill-php85": "@stable",
     "wpackagist-plugin/akismet": "@stable",
     "wpackagist-plugin/change-admin-email-setting-without-outbound-email": "@stable",
     "wpackagist-plugin/classic-editor": "@stable",

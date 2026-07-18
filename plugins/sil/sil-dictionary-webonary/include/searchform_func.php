@@ -134,7 +134,7 @@ SQL;
 		}
 
 		// set up dictionary info
-		$arrIndexed = Webonary_Info::number_of_entries();
+		$arrIndexed = LanguageHelper::GetVisibleLanguages();
 		$lastEditDate = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}
 
@@ -237,7 +237,7 @@ function webonary_status($indexed_languages, $lastEditDate): string
 	/** @var Language $indexed */
 	foreach($indexed_languages as $indexed) {
 
-		if ($indexed->Hidden)
+		if ($indexed->Hidden ?? false)
 			continue;
 
 		if (empty($indexed->Name) || in_array($indexed->Name, $reversals))
