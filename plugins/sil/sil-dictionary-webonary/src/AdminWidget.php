@@ -56,6 +56,8 @@ class AdminWidget
 
 		$lines[] = self::DisplayCacheControl();
 
+		$lines[] = self::DisplayVersion();
+
 		// closing tags
 		$lines[] = '</form>';
 		$lines[] = '</div>';
@@ -155,6 +157,31 @@ HTML;
 		<table class="flex-table">
 			<tbody>
 			$html
+			</tbody>
+		</table>
+	</div>
+</div>
+HTML;
+	}
+
+	private static function DisplayVersion(): string
+	{
+		$file_name = dirname(__DIR__) . '/version.txt';
+		if (is_file($file_name))
+			$version = trim(file_get_contents($file_name));
+
+		if (empty($version))
+			$version = 'Unknown version';
+
+		return <<<HTML
+<div class="webonary-admin-block">
+	<div class="flex-column">
+		<h4>Version</h4>
+		<table class="flex-table">
+			<tbody>
+			<tr>
+				<td>$version</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>

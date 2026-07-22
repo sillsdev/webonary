@@ -47,10 +47,12 @@ if [[ "${STAGE}" == "production" ]]; then
   SERVER="sysops.webonary.org"
   SITE_DIR="/var/www/sites/webonary"
   CACHE_SCRIPT="https://webonary.org/clear-wordpress-cache.php"
+  VERSION="$(date -u '+%y.%m.%d.%H%M%S')"
 else
   SERVER="sysops.webonary.work"
   SITE_DIR="/var/www/sites/webonary"
   CACHE_SCRIPT="https://webonary.work/clear-wordpress-cache.php"
+  VERSION="$(date -u '+%y.%m.%d.%H%M%S')-dev"
 fi
 
 
@@ -184,6 +186,10 @@ ln -sf "${SITE_DIR}/shared/wp-cache-config.php" "${RELEASE_DIR}/wordpress/wp-con
 
 ln -sfn "${SITE_DIR}/shared/uploads/" "${RELEASE_DIR}/wordpress/wp-content/uploads"
 ln -sfn "${SITE_DIR}/shared/blogs.dir/" "${RELEASE_DIR}/wordpress/wp-content/blogs.dir"
+
+
+# save the version number
+echo "${VERSION}" > "${RELEASE_DIR}/wordpress/wp-content/plugins/sil-dictionary-webonary/version.txt"
 
 
 # link from the new release to current

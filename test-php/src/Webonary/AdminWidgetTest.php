@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace SIL\Tests\Webonary;
 
@@ -29,6 +30,7 @@ class AdminWidgetTest extends WP_UnitTestCase
 	{
 		$html = AdminWidget::ShowWidget();
 		$this->assertStringContainsString('<h1>Webonary Admin Tools</h1>', $html);
+		$this->assertStringContainsString('<h4>Version</h4>', $html);
 	}
 
 	public function testShowReports()

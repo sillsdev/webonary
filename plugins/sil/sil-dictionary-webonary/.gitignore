@@ -7,9 +7,8 @@
 phpunit.phar
 phpunit.xml
 
-# SRDB (Search Replace DB) used when moving a Wordpress database to different server
-srdb/
-
 # Composer
 /composer.*
 /vendor/
+
+version.txt
