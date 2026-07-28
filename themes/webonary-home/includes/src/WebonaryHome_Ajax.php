@@ -148,7 +148,7 @@ SQL;
 
 			// 7. PUBLISH DATE
 			/** @noinspection SqlResolve */
-			$published_date = $wpdb->get_var("SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM wp_links WHERE link_url LIKE '%$domain_path%'");
+			$published_date = $wpdb->get_var("SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM {$wpdb->prefix}links WHERE link_url LIKE '%$domain_path%'");
 			$fields[] = $published_date;
 
 			// 8. LAST UPLOAD
@@ -201,7 +201,7 @@ FROM $wpdb->blogs AS b
       FROM information_schema.tables
       WHERE table_schema = 'webonary' AND table_name LIKE '%_posts'
 ) AS t ON table_name LIKE CONCAT('%\_', b.blog_id, '\_posts')
-  LEFT JOIN wp_links AS l ON l.link_url LIKE CONCAT('%', b.path)
+  LEFT JOIN {$wpdb->prefix}links AS l ON l.link_url LIKE CONCAT('%', b.path)
 WHERE NOT b.deleted
   AND b.public
 ;
@@ -224,7 +224,7 @@ SQL;
 
 			$sql = <<<SQL
 SELECT COUNT(*)
-FROM wp_{$blog->blog_id}_posts AS p
+FROM {$wpdb->prefix}{$blog->blog_id}_posts AS p
 WHERE p.post_name = 'grammar' AND p.post_type = 'page' AND p.post_status = 'publish'
 SQL;
 			$has_grammar = intval($wpdb->get_var($sql) ?? 0);
@@ -268,7 +268,7 @@ SQL;
 			$language_name = $lang_name ?: $lang_code ?: 'Unknown';
 
 			$site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
-			$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE '%://" . trim($site_url_no_http) . "' OR link_url LIKE '%://" . trim($site_url_no_http) . "/'");
+			$published_date = $wpdb->get_var("SELECT link_updated FROM {$wpdb->prefix}links WHERE link_url LIKE '%://" . trim($site_url_no_http) . "' OR link_url LIKE '%://" . trim($site_url_no_http) . "/'");
 
 			$rows[] = [
 				'id' => $blog->blog_id,
@@ -473,8 +473,8 @@ SQL;
 		}
 		else {
 			$backend = 'Wordpress';
-			$num_posts = $wpdb->get_var("SELECT COUNT(*) FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post'");
-			$last_edit_date = $wpdb->get_var("SELECT post_date FROM wp_{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+			$num_posts = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post'");
+			$last_edit_date = $wpdb->get_var("SELECT post_date FROM {$wpdb->prefix}{$blog ['blog_id']}_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 		}
 
 		if (is_null($last_edit_date) || $last_edit_date == '0000-00-00 00:00:00')

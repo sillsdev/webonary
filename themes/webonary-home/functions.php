@@ -227,11 +227,13 @@ function getPublishedSitesCount($atts): ?string
 {
 	global $wpdb;
 
-	$sql = "SELECT COUNT(link_url) AS publishedSitesCount " .
-			" FROM wp_links " .
-			" INNER JOIN wp_term_relationships ON wp_links.link_id = wp_term_relationships.object_id " .
-			" INNER JOIN wp_terms ON wp_terms.term_id = wp_term_relationships.term_taxonomy_id " .
-			" WHERE wp_terms.slug = 'available-dictionaries'";
+	$sql = <<<SQL
+SELECT COUNT(link_url) AS publishedSitesCount
+FROM {$wpdb->prefix}links AS l
+  INNER JOIN {$wpdb->prefix}term_relationships AS r ON l.link_id = r.object_id
+  INNER JOIN {$wpdb->prefix}terms AS t ON t.term_id = r.term_taxonomy_id
+WHERE t.slug = 'available-dictionaries'
+SQL;
 
 	return $wpdb->get_var($sql);
 }

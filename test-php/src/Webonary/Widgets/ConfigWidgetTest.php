@@ -1,15 +1,15 @@
 <?php
 /** @noinspection PhpUnhandledExceptionInspection */
 
-namespace SIL\Tests\Webonary;
+namespace SIL\Tests\Webonary\Widgets;
 
 use SIL\Tests\Mocks\MockRequest;
-use SIL\Webonary\ConfigWidget;
+use SIL\Webonary\Widgets\ConfigWidget;
 use WP_UnitTestCase;
 use WP_UnitTestCase_Base;
 
 /**
- * @covers SIL\Webonary\ConfigWidget
+ * @covers SIL\Webonary\Widgets\ConfigWidget
  * @covers SIL\Webonary\Admin
  * @covers SIL\Webonary\Helpers\Cache
  * @covers SIL\Tests\Mocks\MockWP_Http

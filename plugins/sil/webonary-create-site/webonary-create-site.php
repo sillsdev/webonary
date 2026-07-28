@@ -30,14 +30,14 @@ function add_link_action($link_id): void
 
 	$sql = <<<SQL
 SELECT b.blog_id, l.link_url, l.link_name
-FROM webonary.wp_links AS l
-  INNER JOIN webonary.wp_blogs AS b ON b.path <> '/' AND l.link_url LIKE CONCAT('%', b.path)
+FROM webonary.{$wpdb->prefix}links AS l
+  INNER JOIN webonary.{$wpdb->prefix}blogs AS b ON b.path <> '/' AND l.link_url LIKE CONCAT('%', b.path)
 WHERE link_id = $link_id
 SQL;
 
 	$blog = $wpdb->get_row($sql);
 
-	$sql = "SELECT option_value FROM wp_{$blog->blog_id}_options WHERE option_name LIKE 'admin_email'";
+	$sql = "SELECT option_value FROM $wpdb->prefix{$blog->blog_id}_options WHERE option_name LIKE 'admin_email'";
 
 	$admin_email = $wpdb->get_var($sql);
 
@@ -62,13 +62,12 @@ add_action('add_link', 'add_link_action');
 //20200207 chungh: validate subdirectory name
 add_action('wpcf7_init', 'custom_add_form_tag_subdirectory');
 
-/** @noinspection PhpUndefinedFunctionInspection */
 function custom_add_form_tag_subdirectory(): void
 {
 	wpcf7_add_form_tag('subdirectory*', 'custom_subdirectory_form_tag_handler', array('name-attr' => true));
 }
 
-/** @noinspection PhpUndefinedFunctionInspection
+/**
  * @noinspection PhpUnused
  */
 function custom_subdirectory_form_tag_handler($tag): string

@@ -1,20 +1,31 @@
 <?php
 
+namespace SIL\Webonary\Widgets;
+
 use SIL\Webonary\Helpers\LanguageHelper;
 use SIL\Webonary\Models\Language;
+use stdClass;
+use Webonary_Cloud;
+use Webonary_Parts_Of_Speech;
+use Webonary_SemanticDomains;
+use Webonary_Utility;
+use WP_Widget;
 
-class Webonary_Search_Widget extends WP_Widget
+class SearchWidget extends WP_Widget
 {
+	/** @var Language[]  */
 	private array $indexed_entries = [];
 	private array $sem_domains = [];
 	private string $last_edit_date = '';
-
+	private bool $use_li;
 
 	/**
 	 * Register widget with WordPress.
 	 */
-	public function __construct()
+	public function __construct(bool $use_li = false)
 	{
+		$this->use_li = $use_li;
+
 		parent::__construct(
 			'webonary_search',
 			'Webonary Search',
@@ -30,25 +41,47 @@ class Webonary_Search_Widget extends WP_Widget
 	 * @see WP_Widget::widget()
 	 *
 	 */
-	public function widget($args, $instance)
+	public function widget($args, $instance): string
 	{
-		echo $args['before_widget'] ?? '';
+		if (post_password_required())
+			return 'Password required.';
 
-		if (get_option('noSearch') == 1) {
-			echo $args['after_widget'] ?? '';
-			return;
+		wp_register_script('webonary_special_chars_script', WBNY_PLUGIN_URL . 'js/special_characters.js', [], false, true);
+		wp_enqueue_script('webonary_special_chars_script');
+
+		$lines = [];
+
+		if ($this->use_li)
+			$lines[] = '<li id="search-2" class="widget widget_search">' . PHP_EOL;
+
+		$lines[] = $args['before_widget'] ?? '';
+
+		if (get_option('noSearch') != 1) {
+
+			$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+			$this->indexed_entries = LanguageHelper::GetVisibleLanguages();
+
+			if (IS_CLOUD_BACKEND)
+				$this->getCloudLists($search_term);
+			else
+				$this->getMySqlLists($search_term);
+
+			$lines[] = $this->GetHTML($search_term);
 		}
 
-		$search_term = filter_input(INPUT_GET, 's', FILTER_UNSAFE_RAW, ['options' => ['default' => '']]);
+		$lines[] = $args['after_widget'] ?? '';
 
-		if (IS_CLOUD_BACKEND)
-			$this->getCloudLists($search_term);
-		else
-			$this->getMySqlLists($search_term);
+		if ($this->use_li)
+			$lines[] = '</li>' . PHP_EOL;
 
-		echo $this->GetHTML($search_term);
+		$return_val = implode(PHP_EOL, $lines);
 
-		echo $args['after_widget'] ?? '';
+		// @codeCoverageIgnoreStart
+		if (!defined('PHP_UNIT'))
+			echo $return_val;
+		// @codeCoverageIgnoreEnd
+
+		return $return_val;
 	}
 
 	/**
@@ -58,9 +91,16 @@ class Webonary_Search_Widget extends WP_Widget
 	 * @see WP_Widget::form()
 	 *
 	 */
-	public function form($instance)
+	public function form($instance): string
 	{
-		echo '<p>There are no settings for this widget</p>';
+		$return_val = '<p>There are no settings for this widget</p>';
+
+		// @codeCoverageIgnoreStart
+		if (!defined('PHP_UNIT'))
+			echo $return_val;
+		// @codeCoverageIgnoreEnd
+
+		return $return_val;
 	}
 
 	/**
@@ -72,13 +112,14 @@ class Webonary_Search_Widget extends WP_Widget
 	 * @return array Updated safe values to be saved.
 	 * @see WP_Widget::update()
 	 *
+	 * @codeCoverageIgnore
 	 */
 	public function update($new_instance, $old_instance): array
 	{
 		return $new_instance;
 	}
 
-	private function getCloudLists($search_term)
+	private function getCloudLists($search_term): void
 	{
 		$dictionary = Webonary_Cloud::getDictionary();
 		$cloud_domains = Webonary_Cloud::getSemanticDomains();
@@ -101,32 +142,10 @@ class Webonary_Search_Widget extends WP_Widget
 			}
 		}
 
-		// set up dictionary info
-		$languages = LanguageHelper::GetLanguages();
-		$lang = array_filter($languages, fn($l) => $l->IsMain);
-		if (count($lang) > 0) {
-			$mainIndexed = new stdClass();
-			$mainIndexed->language_name = $lang[0]->Name;
-			$mainIndexed->totalIndexed = $lang[0]->TotalIndexed;
-			$this->indexed_entries[] = $mainIndexed;
-		}
-
-		$dictionary->reversalLanguages = array_values(array_filter($dictionary->reversalLanguages, function ($v) {
-			return !empty($v->lang);
-		}));
-
-		foreach ($dictionary->reversalLanguages as $reversal) {
-			$indexed = new stdClass();
-			$indexed->language_name = Webonary_Cloud::getLanguageName($reversal->lang, $reversal->title);
-			$indexed->totalIndexed = $reversal->entriesCount ?? 0;
-			$this->indexed_entries[] = $indexed;
-		}
-
-
 		$this->last_edit_date = $dictionary->updatedAt;
 	}
 
-	private function getMySqlLists($search_term)
+	private function getMySqlLists($search_term): void
 	{
 		global $wpdb;
 
@@ -148,8 +167,6 @@ SQL;
 			$this->sem_domains = $wpdb->get_results($query);
 		}
 
-		// set up dictionary info
-		$this->indexed_entries = Webonary_Info::number_of_entries();
 		/** @noinspection SqlResolve */
 		$this->last_edit_date = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
 	}
@@ -162,7 +179,7 @@ SQL;
 
 		$special_buttons = [];
 		foreach ($special_chars as $char) {
-			$special_buttons[] = "<button type='button' class='button btn btn-outline-default btn-special-char' value='$char' onClick='addChar(this)'>$char</button>";
+			$special_buttons[] = "<button type='button' class='spbutton' value='$char' onClick='addChar(this)'>$char</button>";
 		}
 
 		return implode(' ', $special_buttons);
@@ -174,13 +191,16 @@ SQL;
 		$reversals = [];
 
 		foreach ($this->indexed_entries as $indexed) {
-			if (empty($indexed->language_name) || in_array($indexed->language_name, $reversals))
+
+			if ($indexed->Hidden ?? false)
 				continue;
 
-			$localized_name = __($indexed->language_name);
+			if (empty($indexed->Name) || in_array($indexed->Name, $reversals))
+				continue;
 
-			$return_val .= $localized_name . ':&nbsp;' . $indexed->totalIndexed . '<br>';
-			$reversals[] = $indexed->language_name;
+			$localized_name = __($indexed->Name);
+			$return_val .= $localized_name . ':&nbsp;' . $indexed->TotalIndexed . '<br>';
+			$reversals[] = $indexed->Name;
 		}
 
 		return $return_val;
@@ -192,7 +212,7 @@ SQL;
 
 		$site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
 
-		$published_date = $wpdb->get_var("SELECT link_updated FROM wp_links WHERE link_url LIKE 'http_://" . trim($site_url_no_http) . "' OR link_url LIKE 'http_://" . trim($site_url_no_http) . "/'");
+		$published_date = $wpdb->get_var("SELECT link_updated FROM {$wpdb->prefix}links WHERE link_url LIKE 'http_://" . trim($site_url_no_http) . "' OR link_url LIKE 'http_://" . trim($site_url_no_http) . "/'");
 
 		if (!empty($published_date) && $published_date != '0000-00-00 00:00:00')
 			return __('Date published:', 'sil_dictionary') . ' ' . Webonary_Utility::FormatLongDate(strtotime($published_date));
@@ -255,43 +275,59 @@ HTML;
 		else
 			$last_upload = __('Last upload:', 'sil_dictionary') . ' ' . Webonary_Utility::FormatLongDate(strtotime($this->last_edit_date));
 
-		return <<<HTML
+		$html = <<<HTML
 <form name="searchform" id="searchform" method="get" action="$url">
     <input type="hidden" id="lang" name="lang" value="$lang" />
     <input type="hidden" name="search_options_set" value="1" />
 
-    <div class="normalSearch">
-        <div>$buttons</div>
-        <div class="pos-container">
-        	<input type="text" name="s" id="s" value="$query" title="" class="form-control">
-        	<button type="submit" id="webonary-search-submit" name="search" value="$search" class="btn btn-secondary no-wrap">
-                        $search
-                    </button>
+    <div class="flex-column" style="gap: 0.5rem">
+        <div class="spbutton-div">$buttons</div>
+        <div class="flex-row no-border no-margin no-padding" style="gap:0.5rem">
+        	<input type="text" name="s" id="s" value="$query" title="" class="no-margin flex-grow">
+        	<button type="submit" id="webonary-search-submit" name="search" value="$search" class="spbutton no-wrap no-margin">$search</button>
 		</div>
-        <div id="advancedSearch" style="display: block">
-            $language_dropdown
-            $parts_of_speech_dropdown
-            $semantic_domains_dropdown
-            <div class="pos-container">
-                <input id="match_whole_words" name="match_whole_words" class="form-check form-check-input m-0" value="1" $whole_words_checked type="checkbox" />
-                <label for="match_whole_words">$match_whole_words</label>
-            </div>
 
-            <div class="pos-container">
-                <input id="match_accents" name="match_accents" class="form-check form-check-input m-0" $accents_checked type="checkbox" />
-                <label for="match_accents">$match_accents</label>
-            </div>
+		$language_dropdown
+		$parts_of_speech_dropdown
+		$semantic_domains_dropdown
+		<div class="flex-row no-border no-margin no-padding" style="gap:0.3rem">
+			<input id="match_whole_words" name="match_whole_words" class="form-check form-check-input m-0" value="1" $whole_words_checked type="checkbox" />
+			<label for="match_whole_words">$match_whole_words</label>
+		</div>
 
-        </div>
+		<div class="flex-row no-border no-margin no-padding" style="gap:0.3rem">
+			<input id="match_accents" name="match_accents" class="form-check form-check-input m-0" $accents_checked type="checkbox" />
+			<label for="match_accents">$match_accents</label>
+		</div>
     </div>
 </form>
-<div class="mt-3">
-    <h2>$num_entries_title</h2>
-    $num_entries
-</div>
-<div>$last_upload</div>
-<div>$date_published</div>
-<div>$semantic_domains</div>
 HTML;
+
+		$divs = [
+			$num_entries,
+			$last_upload
+		];
+
+		if (!empty($date_published))
+			$divs[] = $date_published;
+
+		$divs_combined = implode("</div>\n<div>", $divs);
+
+		$html .= <<<HTML
+<div class="dictionary-stats">
+    <h2>$num_entries_title</h2>
+    <div>
+    	$divs_combined
+    </div>
+</div>
+HTML;
+
+		if (!empty($semantic_domains))
+			$html .= <<<HTML
+<div class="dictionary-stats">$semantic_domains</div>
+HTML;
+
+		return $html;
 	}
+
 }

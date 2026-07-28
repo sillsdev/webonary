@@ -23,6 +23,7 @@ update_option('useCloudBackend', '1');
 
 // activate the Webonary plugin
 activate_plugin('sil-dictionary-webonary/sil-dictionary.php');
+activate_plugin('links-dropdown-widget/plugin.php');
 do_action('init');
 
 // this is so we can mock requests to the cloud
