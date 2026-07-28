@@ -456,7 +456,7 @@ SQL;
 		$option_str = implode(PHP_EOL, $options);
 
 		return <<<HTML
-<div class="pos-container">
+<div class="no-padding no-border">
 	<select name="semantic_domain" class="webonary_searchform_domain_select">
 		$option_str
 	</select>

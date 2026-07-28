@@ -3,11 +3,13 @@ global $wpdb, $default_option;
 $cats = get_terms('link_category', array('name__like' => '', 'exclude' => '2'));
 $bookmarks = [];
 foreach ( (array) $cats as $cat ) {
-	$sql = "SELECT link_url, link_name, term_taxonomy_id " .
-			" FROM wp_links " .
-			" INNER JOIN wp_term_relationships ON wp_links.link_id = wp_term_relationships.object_id " .
-			" WHERE term_taxonomy_id = " . $cat->term_id .
-	        " ORDER BY link_name ASC";
+	$sql = <<<SQL
+SELECT link_url, link_name, term_taxonomy_id
+FROM {$wpdb->prefix}links AS l
+INNER JOIN {$wpdb->prefix}term_relationships AS r ON l.link_id = r.object_id
+WHERE term_taxonomy_id = '$cat->term_id'
+ORDER BY link_name
+SQL;
 
 	//$bookmarks[] = get_bookmarks(array('category'=>$cat->term_id));
 	$bookmarks[] = $wpdb->get_results($sql);

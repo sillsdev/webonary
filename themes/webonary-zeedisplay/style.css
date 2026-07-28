@@ -190,9 +190,15 @@ ul.qtrans_language_chooser li.active { display:none }
   -khtml-border-radius: 10px; /* Konqueror */
 }
 
-#sidebar ul li div.dictionary-stats {
+#sidebar ul li > div.dictionary-stats {
   border: none;
   padding: 0 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar ul li div.dictionary-stats div {
+  border: none;
 }
 
 #sidebar ul li div ul, #sidebar ul li div ul li {

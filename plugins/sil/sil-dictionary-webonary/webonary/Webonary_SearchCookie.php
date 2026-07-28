@@ -58,7 +58,8 @@ class Webonary_SearchCookie
 			'samesite' => 'Strict'
 		];
 
-		setcookie(self::$search_cookie_name, base64_encode(serialize($this)), $options);
+		if (!defined('PHP_UNIT'))
+			setcookie(self::$search_cookie_name, base64_encode(serialize($this)), $options);
 	}
 
 	/**
