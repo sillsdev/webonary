@@ -1,11 +1,14 @@
 <?php
 
-namespace SIL\Webonary;
+namespace SIL\Webonary\Widgets;
 
 use Exception;
 use SIL\Webonary\Abstracts\AdminReportTrait;
+use SIL\Webonary\Admin;
+use SIL\Webonary\AdminReportTable;
 use SIL\Webonary\Helpers\Cache;
 use SIL\Webonary\Helpers\Request;
+use SIL\Webonary\Reports;
 
 class AdminWidget
 {

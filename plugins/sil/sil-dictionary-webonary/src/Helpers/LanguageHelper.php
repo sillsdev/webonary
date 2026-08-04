@@ -261,12 +261,10 @@ SQL;
 		$option_str = implode(PHP_EOL, $options);
 
 		return <<<HTML
-<div class="pos-container">
-	<div class="pos-select">
-		<select name="key" class="webonary_language_select">
-			$option_str
-		</select>
-	</div>
+<div class="no-border no-margin no-padding">
+	<select name="key" class="webonary_language_select">
+		$option_str
+	</select>
 </div>
 HTML;
 	}

@@ -4,6 +4,8 @@ namespace SIL\Webonary;
 
 use SIL\Webonary\Helpers\EmailHelper;
 use SIL\Webonary\Helpers\GA4Helper;
+use SIL\Webonary\Widgets\AdminWidget;
+use SIL\Webonary\Widgets\SearchWidget;
 use Webonary_API_MyType;
 use Webonary_Cloud;
 use Webonary_Infrastructure;
@@ -179,7 +181,7 @@ class Hooks
 
 	public static function RegisterCustomWidgets(): void
 	{
-		register_widget('Webonary_Search_Widget');
+		register_widget(SearchWidget::class);
 		register_widget('Webonary_Published_Widget');
 	}
 

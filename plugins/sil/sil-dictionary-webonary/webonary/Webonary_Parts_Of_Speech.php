@@ -179,7 +179,7 @@ class Webonary_Parts_Of_Speech
             jQuery('.pos-list').hide();
     });
 </script>
-<div class="pos-container">
+<div class="pos-container no-margin no-padding">
 	<div class="pos-select" id="pos-select">
 		<select class="form-select webonary_searchform_pos_select"><option id="pos-option">$button_text</option></select>
 		<div class="pos-cover" id="pos-cover"></div>

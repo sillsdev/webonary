@@ -2,6 +2,8 @@
 
 namespace SIL\Webonary;
 
+use SIL\Webonary\Widgets\AdminWidget;
+use SIL\Webonary\Widgets\ConfigWidget;
 use WP_Admin_Bar;
 use wpdb;
 

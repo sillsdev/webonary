@@ -188,10 +188,10 @@ function display_links_coordinates(bool $hasCoordinates, array $ethnologueData):
 
     $sql = <<<SQL
 SELECT markerid, link_id, link_url, link_name, lat, lon
-FROM wp_links
-  INNER JOIN wp_term_relationships ON wp_term_relationships.object_id = wp_links.link_id
-  INNER JOIN wp_terms ON wp_terms.term_id = wp_term_relationships.term_taxonomy_id
-  LEFT JOIN wp_map ON wp_links.link_id = wp_map.linkid
+FROM {$wpdb->prefix}links AS l
+  INNER JOIN {$wpdb->prefix}term_relationships AS r ON r.object_id = l.link_id
+  INNER JOIN {$wpdb->prefix}terms AS t ON t.term_id = r.term_taxonomy_id
+  LEFT JOIN {$wpdb->prefix}map AS m ON l.link_id = m.linkid
 WHERE slug = 'available-dictionaries'
 SQL;
 
@@ -222,7 +222,7 @@ HTML;
 		{
 			$domain = str_replace("https://", "", $link->link_url);
 			$domain = str_replace("/", "", $domain);
-			$sql = "SELECT blog_id FROM wp_blogs WHERE domain = '" . $domain . "'";
+			$sql = "SELECT blog_id FROM {$wpdb->prefix}blogs WHERE domain = '" . $domain . "'";
 		}
 		else
 		{
@@ -230,12 +230,12 @@ HTML;
             if (empty($matches[1]))
                 continue;
 
-			$sql = "SELECT blog_id FROM wp_blogs WHERE path = '/" . $matches[1] . "/'";
+			$sql = "SELECT blog_id FROM {$wpdb->prefix}blogs WHERE path = '/" . $matches[1] . "/'";
 		}
 
 		$blog_id = trim($wpdb->get_var ( $sql ));
 
-		$sql = "SELECT REPLACE(meta_value, 'https://www.ethnologue.com/language/','') AS ethnologueCode " . " FROM wp_" . $blog_id . "_postmeta " . " WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%ethnologue%'";
+		$sql = "SELECT REPLACE(meta_value, 'https://www.ethnologue.com/language/','') AS ethnologueCode " . " FROM {$wpdb->prefix}" . $blog_id . "_postmeta " . " WHERE meta_key = '_menu_item_url' AND meta_value LIKE '%ethnologue%'";
 
 		$ethnologue_code = trim($wpdb->get_var ( $sql ));
 		$changed = 0;
@@ -273,7 +273,7 @@ HTML;
 function create_map_table () {
 	global $wpdb;
 
-	$sql = "CREATE TABLE IF NOT EXISTS wp_map (
+	$sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}map (
 			markerid int(11) NOT NULL AUTO_INCREMENT,
 			linkid int(11) NOT NULL,
 			lat double NOT NULL,
@@ -324,7 +324,7 @@ function saveMapCoordinates()
 			if ($item['lat'] == 'DELETE' && $item['lon'] == 'DELETE') {
 
 				$sql = <<<SQL
-DELETE FROM wp_map WHERE markerid = %d
+DELETE FROM {$wpdb->prefix}map WHERE markerid = %d
 SQL;
 				$sql = $wpdb->prepare($sql, [$marker_id]);
 				$wpdb->query($sql);
@@ -334,14 +334,14 @@ SQL;
 				if ($marker_id > 0)
 				{
                     $sql = <<<SQL
-UPDATE wp_map SET lat = %s, lon = %s WHERE markerid = %d
+UPDATE {$wpdb->prefix}map SET lat = %s, lon = %s WHERE markerid = %d
 SQL;
 					$sql = $wpdb->prepare($sql, [$lat, $lon, $marker_id]);
 				}
 				else
 				{
                     $sql = <<<SQL
-INSERT INTO wp_map (linkid, lat, lon) VALUES( %d, %s, %s)
+INSERT INTO {$wpdb->prefix}map (linkid, lat, lon) VALUES( %d, %s, %s)
 SQL;
 					$sql = $wpdb->prepare($sql, [$link_id, $lat, $lon]);
 				}
@@ -374,8 +374,8 @@ function saveGpxFile()
 
     $sql = <<<SQL
 SELECT l.link_name, l.link_url, l.link_description, m.lat, m.lon
-FROM wp_links AS l
-  INNER JOIN wp_map AS m ON l.link_id = m.linkid
+FROM {$wpdb->prefix}links AS l
+  INNER JOIN {$wpdb->prefix}map AS m ON l.link_id = m.linkid
 ORDER BY m.markerid
 SQL;
 

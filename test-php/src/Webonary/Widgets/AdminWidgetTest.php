@@ -1,14 +1,14 @@
 <?php
 /** @noinspection PhpUnhandledExceptionInspection */
 
-namespace SIL\Tests\Webonary;
+namespace SIL\Tests\Webonary\Widgets;
 
 use SIL\Tests\Mocks\MockRequest;
-use SIL\Webonary\AdminWidget;
+use SIL\Webonary\Widgets\AdminWidget;
 use WP_UnitTestCase;
 
 /**
- * @covers SIL\Webonary\AdminWidget
+ * @covers SIL\Webonary\Widgets\AdminWidget
  * @covers SIL\Webonary\Admin
  * @covers SIL\Webonary\AdminReportTable
  * @covers SIL\Webonary\Reports
@@ -24,6 +24,7 @@ class AdminWidgetTest extends WP_UnitTestCase
 	{
 		parent::setUp();
 		MockRequest::Init();
+		$_SERVER['HTTP_HOST'] = 'example.com';
 	}
 
 	public function testShowWidget()

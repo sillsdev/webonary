@@ -1,8 +1,9 @@
 <?php
 
-namespace SIL\Webonary;
+namespace SIL\Webonary\Widgets;
 
 use Exception;
+use SIL\Webonary\Admin;
 use SIL\Webonary\Helpers\Cache;
 use SIL\Webonary\Helpers\LanguageHelper;
 use SIL\Webonary\Models\Language;
@@ -61,6 +62,10 @@ class ConfigWidget
 			self::SaveSettings();
 	}
 
+	/**
+	 * @return void
+	 * @throws Exception
+	 */
 	private static function SaveSettings(): void
 	{
 		update_option('publicationStatus', $_POST['publicationStatus']);
