@@ -169,7 +169,7 @@ HTML;
 
 	private static function DisplayVersion(): string
 	{
-		$file_name = dirname(__DIR__) . '/version.txt';
+		$file_name = dirname(__DIR__, 2) . '/version.txt';
 		if (is_file($file_name))
 			$version = trim(file_get_contents($file_name));
 
