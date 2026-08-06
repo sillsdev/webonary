@@ -99,24 +99,27 @@ class Cache
 	/**
 	 * Deletes all cache entries for the current dictionary.
 	 *
-	 * @return void
+	 * @return string[]
 	 * @throws Exception
-	 * @codeCoverageIgnore
 	 */
-	public static function DeleteAllForThisDictionary(): void
+	public static function DeleteAllForThisDictionary(): array
 	{
-		self::ClearDirectory(self::GetCacheDir(), false);
-		self::ClearFPMCache();
+		$return_val = [self::ClearDirectory(self::GetCacheDir(), false)];
+		$return_val[] = self::ClearFPMCache();
 
 		$site = get_site();
 
 		// only clear Cloudflare for webonary.org
-		if (!str_contains(!$site->domain, 'webonary.org'))
-			return;
+		if (!str_contains($site->domain, 'webonary.org')) {
+			$return_val[] = 'Not webonary.org.';
+			return $return_val;
+		}
 
 		// only clear for dictionaies, not the main site
-		if (mb_strlen($site->path) < 3)
-			return;
+		if (mb_strlen($site->path) < 3) {
+			$return_val[] = 'Not a dictionary site.';
+			return $return_val;
+		}
 
 		$path = rtrim($site->path, '/');
 		$paths = [
@@ -124,7 +127,20 @@ class Cache
 			'www.webonary.org' . $path
 		];
 
-		Cloudflare::ClearByPrefix($paths);
+		$cloudflare_response = Cloudflare::ClearByPrefix($paths);
+
+		if (is_null($cloudflare_response)) {
+			$return_val[] = 'Cloudflare returned null.';
+		}
+		else {
+			$decoded = json_decode($cloudflare_response->Content);
+			if (!empty($decoded->errors))
+			 	$return_val[] = (string)$decoded->errors[0];
+			else
+				$return_val[] = 'Cloudflare cleared.';
+		}
+
+		return $return_val;
 	}
 
 	/**
@@ -149,7 +165,7 @@ class Cache
 		$site = get_site();
 
 		// only clear Cloudflare for webonary.org
-		if (!str_contains(!$site->domain, 'webonary.org'))
+		if (!str_contains($site->domain, 'webonary.org'))
 			return;
 
 		Cloudflare::ClearCache();
@@ -160,9 +176,9 @@ class Cache
 	 *
 	 * @param string $dir_name
 	 * @param bool $delete_directory_also
-	 * @return void
+	 * @return string
 	 */
-	public static function ClearDirectory(string $dir_name, bool $delete_directory_also): void
+	public static function ClearDirectory(string $dir_name, bool $delete_directory_also): string
 	{
 		$pattern = rtrim($dir_name, '/') . '/*';
 		$structure = glob($pattern);
@@ -179,22 +195,26 @@ class Cache
 
 		if ($delete_directory_also)
 			rmdir($dir_name);
+
+		return 'Cache directory cleared.';
 	}
 
 	/**
 	 * Clears the PHP-FPM cache.
 	 *
-	 * @return void
-	 * @codeCoverageIgnore
+	 * @return string
 	 */
-	private static function ClearFPMCache(): void
+	private static function ClearFPMCache(): string
 	{
 		try {
 			/** @noinspection PhpComposerExtensionStubsInspection */
-			opcache_reset();
+			if (opcache_reset())
+				return 'FPM cache cleared.';
 		}
 		catch (Exception) {
 			// ignore
 		}
+
+		return 'FPM cache NOT cleared.';
 	}
 }
