@@ -24,6 +24,8 @@ update_option('useCloudBackend', '1');
 // activate the Webonary plugin
 activate_plugin('sil-dictionary-webonary/sil-dictionary.php');
 activate_plugin('links-dropdown-widget/plugin.php');
+activate_plugin('webonary-create-site2/webonary-create-site2.php');
+activate_plugin('contact-form-7-to-database-extension/contact-form-7-db.php');
 do_action('init');
 
 // this is so we can mock requests to the cloud
@@ -33,3 +35,16 @@ add_filter('pre_http_request', [MockWP_Http::class, 'HandleHttpRequest'], 10, 3)
 $cache_dir = rtrim(sys_get_temp_dir(), '/\\') . '/webonary-cache-php-unit';
 if (is_dir($cache_dir))
 	SIL\Webonary\Helpers\Cache::ClearDirectory($cache_dir, true);
+
+// add a couple test sites
+$data = get_site(1)->to_array();
+
+// webonary.org site, no path
+$data['domain'] = 'webonary.org';
+$data['path'] = '/';
+wp_insert_site($data);
+
+
+// webonary.org site, with path
+$data['path'] = '/unit-test';
+wp_insert_site($data);
