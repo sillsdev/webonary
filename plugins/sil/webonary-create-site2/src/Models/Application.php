@@ -2,6 +2,8 @@
 
 namespace SIL\WebonaryCreateSite2\Models;
 
+use wpdb;
+
 class Application
 {
 	public string $FirstName;
@@ -26,6 +28,7 @@ class Application
 	private static array $field_map = [
 		'FirstName' => 'FirstName',
 		'LastName' => 'LastName',
+		'username' => 'username',
 		'from_email' => 'FromEmail',
 		'language-name' => 'LanguageName',
 		'language-iso-code' => 'IsoCode',
@@ -82,19 +85,61 @@ class Application
 
 		$property_name = self::$field_map[$field_name];
 
+		if ($property_name == 'username')
+			return $this->GuessUsername();
+
 		return $this->$property_name;
 	}
 
-	public function MarkRemoved(): void
+	private function GuessUsername(): string
+	{
+		/** @var $wpdb wpdb */
+		global $wpdb;
+
+		// check for user
+		$admin_email = $this->GetFieldValue('from_email');
+		if (mb_strlen($admin_email) > 5) {
+			$user_name = $wpdb->get_var($wpdb->prepare("SELECT user_login FROM $wpdb->users WHERE user_email = %s", $admin_email));
+			if (empty($user_name))
+				return $user_name;
+		}
+
+		$first_name = $this->GetFieldValue('FirstName') ?? '';
+		$last_name = $this->GetFieldValue('LastName') ?? '';
+		$user_name = str_replace(' ', '', strtolower($first_name . $last_name));
+
+		if (empty($user_name))
+			$user_name = str_replace(' ', '', strtolower(explode('@', $admin_email)[0]));
+
+		if (!empty($user_name))
+			$other_email = $wpdb->get_var($wpdb->prepare("SELECT user_email FROM $wpdb->users WHERE user_login = %s", $user_name));
+
+		if (!empty($other_email))
+			$msg = sprintf('<p style="color: #aa0000">This username already exists with another email address: %s<br>Please change the username.</p>', $other_email);
+		else
+			$msg = '';
+	}
+
+	private function MarkApplication(string $mark_as): void
 	{
 		global $wpdb;
 
 		$sql = <<<SQL
 UPDATE {$wpdb->prefix}cf7dbplugin_submits
-SET field_name = 'removed'
+SET field_name = '$mark_as'
 WHERE field_name LIKE 'newapplication' AND submit_time = %f
 SQL;
 		$sql = $wpdb->prepare($sql, $this->ID);
 		$wpdb->query($sql);
+	}
+
+	public function MarkRemoved(): void
+	{
+		$this->MarkApplication('removed');
+	}
+
+	public function MarkCreated(): void
+	{
+		$this->MarkApplication('created');
 	}
 }

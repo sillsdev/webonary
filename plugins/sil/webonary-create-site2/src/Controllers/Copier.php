@@ -59,24 +59,4 @@ class Copier
 		$notice = sprintf(__('Application for %s has been removed.', 'webonary-create-site2'), $app->LanguageName);
 		Admin::AddAdminNotice(NoticeType::Success, $notice);
 	}
-
-	public static function AjaxCreateSite()
-	{
-		$app_id = $_POST['app-id'];
-		if ($app_id == 'new') {
-
-		}
-		else {
-
-		}
-
-		$data = ['status' => 'OK'];
-//		if ($id1 !== $id2) {
-//			Admin::AddAdminNotice(NoticeType::Warning, 'New site was NOT created: invalid data received.');
-//			return false;
-//		}
-
-		echo json_encode($data);
-		exit();
-	}
 }

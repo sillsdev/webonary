@@ -65,6 +65,11 @@ class AppFields
 			'type' => 'text',
 			'label' => 'Admin Email'
 		],
+		'username' => [
+			'tag' => 'input',
+			'type' => 'text',
+			'label' => 'Username'
+		],
 		'FirstName' => [
 			'tag' => 'input',
 			'type' => 'text',

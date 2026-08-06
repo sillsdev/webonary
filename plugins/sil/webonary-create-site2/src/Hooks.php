@@ -3,6 +3,7 @@
 namespace SIL\WebonaryCreateSite2;
 
 use SIL\WebonaryCreateSite2\Controllers\Copier;
+use SIL\WebonaryCreateSite2\Controllers\NewSite;
 
 class Hooks
 {
@@ -21,7 +22,7 @@ class Hooks
 
 		$hooks_set = (int)add_action('network_admin_menu', [__CLASS__, 'MultiSiteAddPage']);
 		$hooks_set += (int)add_action('admin_enqueue_scripts', [__CLASS__, 'EnqueueAdminScripts']);
-		$hooks_set += (int)add_action('wp_ajax_createNewSite', [Copier::class, 'AjaxCreateSite']);
+		$hooks_set += (int)add_action('wp_ajax_createNewSite', [NewSite::class, 'AjaxCreateSite']);
 
 		return $hooks_set;
 	}

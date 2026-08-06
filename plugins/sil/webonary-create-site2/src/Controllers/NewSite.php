@@ -5,6 +5,7 @@ namespace SIL\WebonaryCreateSite2\Controllers;
 use SIL\WebonaryCreateSite2\Abstracts\AppFields;
 use SIL\WebonaryCreateSite2\Models\Application;
 use SIL\WebonaryCreateSite2\Models\Applications;
+use wpdb;
 
 class NewSite
 {
@@ -224,5 +225,37 @@ HTML;
 	</td>
 </tr>
 HTML;
+	}
+
+	public static function AjaxCreateSite(): string
+	{
+
+
+
+
+		$app_id = $_POST['app-id'];
+		if ($app_id != 'new')
+			Applications::GetByID($app_id)->MarkCreated();
+
+		$return_val = json_encode(['status' => 'OK']);
+
+		if (defined('PHP_UNIT'))
+			return $return_val;
+
+		echo $return_val;
+		exit();
+	}
+
+	private static function GetSiteAdmin()
+	{
+		/** @var $wpdb wpdb */
+		global $wpdb;
+
+		// {$wpdb->prefix}
+		// check for user
+		$sql = "SELECT ID FROM $wpdb->users WHERE user_login = %s";
+
+		$user_id = $wpdb->get_var($wpdb->prepare($sql, $post_data['username']));
+
 	}
 }
