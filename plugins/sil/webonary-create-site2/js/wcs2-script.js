@@ -12,7 +12,8 @@ function postNewSite() {
     const x_headers = new Headers();
     x_headers.append('X-Requested-With', 'XMLHttpRequest');
     x_headers.append('Content-type', 'application/x-www-form-urlencoded');
-    const form_data = new FormData(document.getElementById('wcs2-configuration-form'));
+    const form = document.getElementById('wcs2-configuration-form');
+    const form_data = new FormData(form);
     const {value: language_name} = document.getElementById('language-name');
 
     const request = new Request(url, {
@@ -28,8 +29,24 @@ function postNewSite() {
                 console.log(response.statusText);
                 return;
             }
-            
+
             response.json().then((value) => {
+
+                if (value.errors) {
+
+                    value.errors.forEach((err) => {
+
+                        let div = document.createElement('div');
+                        div.classList.add('notice', 'notice-warning', 'is-dismissible');
+                        div.innerHTML = `<p>${err}</p>`;
+                        form.parentElement.insertBefore(div, form);
+
+                    });
+
+                    jQuery(document).trigger('wp-updates-notice-added');
+                    jQuery('html, body').animate({scrollTop: 0});
+                    return;
+                }
 
                 if (value.status === 'OK')
                     window.location.href = '/wp-admin/network/sites.php?page=webonary-create-site-2&created=' + encodeURIComponent(language_name);

@@ -229,8 +229,20 @@ HTML;
 
 	public static function AjaxCreateSite(): string
 	{
+		if (!headers_sent())
+			header('Content-Type: application/json');
 
+		list($messages, $from_blog_id, $domain, $title) = self::CheckPostData();
 
+		if (!empty($messages)) {
+			echo json_encode(['errors' => $messages]);
+			exit();
+		}
+
+		// get the admin user
+		$user_id = self::GetSiteAdmin();
+
+		self::CreateBlog($user_id, $from_blog_id, $domain, $title);
 
 
 		$app_id = $_POST['app-id'];
@@ -246,16 +258,104 @@ HTML;
 		exit();
 	}
 
-	private static function GetSiteAdmin()
+	private static function CheckPostData(): array
+	{
+		$messages = [];
+
+		$from_blog_id = (int)($_POST['template-to-use'] ?? 0);
+		if (!$from_blog_id)
+			$messages[] = __('Please select a Source Site to Copy.', 'webonary-create-site2');
+
+		$domain = sanitize_user(str_replace('/', '', $_POST['desired-url']));
+		if (empty($domain))
+			$messages[] = __('Please enter a New Site Address.', 'webonary-create-site2');
+
+		$title = $_POST['language-name'];
+		if (empty($title))
+			$messages[] = __('Please enter a New Site Title.', 'webonary-create-site2');
+
+		return [$messages, $from_blog_id, $domain, $title];
+	}
+
+	private static function GetSiteAdmin(): int
 	{
 		/** @var $wpdb wpdb */
 		global $wpdb;
 
-		// {$wpdb->prefix}
-		// check for user
-		$sql = "SELECT ID FROM $wpdb->users WHERE user_login = %s";
+		$user_name = $_POST['username'] ?? '';
+		$user_email = $_POST['from_email'] ?? '';
+		$error = null;
 
-		$user_id = $wpdb->get_var($wpdb->prepare($sql, $post_data['username']));
+		if (!empty($user_name)) {
 
+			// check for existing user with this username
+			$sql = "SELECT ID, user_email, user_login FROM $wpdb->users WHERE user_login = %s";
+			$row = $wpdb->get_row($wpdb->prepare($sql, $user_name));
+		}
+
+		if (empty($row->ID) && !empty($user_email)) {
+
+			// check for existing user with this email
+			$sql = "SELECT ID, user_email, user_login FROM $wpdb->users WHERE user_email = %s";
+			$row = $wpdb->get_row($wpdb->prepare($sql, $user_email));
+		}
+
+		if (!empty($row->ID)) {
+
+			// check the existing username and email
+			if ($row->user_login != $user_name)
+				$error = 'An existing user with the email "' . $user_email . '" was found, but the username is "' . $user_name . '"';
+
+			if ($row->user_email != $user_email)
+				$error = 'An existing user with the username "' . $user_name . '" was found, but the email is "' . $user_email . '"';
+
+			// if no error, return the user ID
+			if (empty($error))
+				return $row->ID;
+
+			// notify the user that there is an error
+			echo json_encode(['errors' => [$error]]);
+			exit();
+		}
+
+		// user doesn't exist already, create it now
+		do_action('pre_network_site_new_created_user', $user_email);
+		$password = wp_generate_password(12, false);
+		$user_id = wpmu_create_user($user_name, $password, $user_email);
+
+		wp_update_user([
+			'ID' => $user_id, // this is the ID of the user you want to update.
+			'first_name' => $_POST['first_name'] ?? '',
+			'last_name' => $_POST['last_name'] ?? ''
+		]);
+
+		do_action('network_site_new_created_user', $user_id);
+
+		return $user_id;
+	}
+
+	private static function CreateBlog(int $user_id, int $from_blog_id, string $domain, string $title): void
+	{
+		/** @var $wpdb wpdb */
+		global $wpdb, $base, $current_site;
+
+		if (is_subdomain_install()) {
+			$new_domain = $domain . '.webonary.org';
+			$path = $base;
+		}
+		else {
+			$new_domain = $_SERVER['HTTP_HOST'];
+			$path = '/' . $domain . '/';
+		}
+
+		// The new domain that will be created for the destination blog.
+		$new_domain = apply_filters('copy_blog_domain', $new_domain, $domain);
+
+		// The new path that will be created for the destination blog.
+		$path = apply_filters('copy_blog_path', $path, $domain);
+
+		$wpdb->hide_errors();
+		$to_blog_id = wpmu_create_blog($new_domain, $path, $title, $user_id, ['public' => 1], $current_site->id);
+		$wpdb->show_errors();
 	}
 }

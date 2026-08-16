@@ -150,3 +150,15 @@ msgstr ""
 # %s is replaced with the language name
 msgid "New site created for %s."
 msgstr ""
+
+# Warning message for new site form
+msgid "Please select a Source Site to Copy."
+msgstr ""
+
+# Warning message for new site form
+msgid "Please enter a New Site Address."
+msgstr ""
+
+# Warning message for new site form
+msgid "Please enter a New Site Title."
+msgstr ""

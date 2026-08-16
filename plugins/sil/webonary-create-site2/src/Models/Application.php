@@ -8,6 +8,7 @@ class Application
 {
 	public string $FirstName;
 	public string $LastName;
+	public string $UserName;
 	public string $FromEmail;
 	public string $LanguageName;
 	public string $IsoCode;
@@ -28,7 +29,7 @@ class Application
 	private static array $field_map = [
 		'FirstName' => 'FirstName',
 		'LastName' => 'LastName',
-		'username' => 'username',
+		'username' => 'UserName',
 		'from_email' => 'FromEmail',
 		'language-name' => 'LanguageName',
 		'language-iso-code' => 'IsoCode',
