@@ -67,6 +67,7 @@ class Hooks
 
 		$hooks_set += (int)add_action('init', [self::class, 'LoadAdditionalTextDomains']);
 		$hooks_set += (int)add_action('init', [Webonary_Infrastructure::class, 'InstallInfrastructure'], 0);
+		$hooks_set += (int)add_action('init', [self::class, 'CheckPrivateSite'], 0);
 		$hooks_set += (int)add_filter('posts_request', 'replace_default_search_filter', 10, 2);
 
 		// be sure these style sheets are loaded last, after the theme
@@ -271,6 +272,46 @@ class Hooks
 		self::$includes_uri[$path] = self::RemoveSiteSlug($url);
 
 		return self::$includes_uri[$path];
+	}
+
+	public static function CheckPrivateSite(): string
+	{
+		global $wp;
+		$path = add_query_arg([], $wp->request);
+
+		// we're good if the site is not marked "private"
+		$is_private = (int)get_option('site_is_private');
+		if (!$is_private)
+			return 'Not private';
+
+		// skip the check for some wp-json paths
+		if (str_starts_with($path, 'wp-json/wordfence'))
+			return 'JSON wordfence';
+
+		if ($path === 'wp-json/webonary/import'
+			|| str_starts_with($path, 'wp-json/' . Webonary_Cloud::$apiNamespace))
+			return 'JSON webonary';
+
+		// we're good if the user is already logged in
+		if (is_user_logged_in())
+			return 'Logged in';
+
+		// allow the user to log in
+		$parts = preg_split('/[\/?]/', $_SERVER['REQUEST_URI']);
+		if (array_intersect($parts, ['wp-login.php', 'admin-ajax.php']))
+			return 'Logging in';
+
+		// if we get here, the site is marked "private" and the user is not logged in
+		$url = get_site_url() . '/wp-login.php';
+
+		// @codeCoverageIgnoreStart
+		if (!defined('PHP_UNIT')) {
+			wp_redirect($url);
+			exit();
+		}
+		// @codeCoverageIgnoreEnd
+
+		return 'Redirect to login';
 	}
 
 	private static function RemoveSiteSlug($url): string

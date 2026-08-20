@@ -168,7 +168,8 @@ SQL;
 		}
 
 		/** @noinspection SqlResolve */
-		$this->last_edit_date = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+		$post_date = $wpdb->get_var("SELECT post_date FROM " . $wpdb->posts . " WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+		$this->last_edit_date = $post_date ?? '';
 	}
 
 	private function GetSpecialButtons(): string

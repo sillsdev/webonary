@@ -70,6 +70,7 @@ class ConfigWidget
 	{
 		update_option('publicationStatus', $_POST['publicationStatus']);
 		update_option('use_classic_widget_editor', $_POST['use_classic_widget_editor'] ?? 'no');
+		update_option('site_is_private', $_POST['site_is_private'] ?? 'no');
 
 		update_option('searchSomposedCharacters', $_POST['search_composed_characters'] ?? 'no');
 
@@ -312,6 +313,7 @@ HTML;
 		$refresh_cloud_button = self::GetRefreshCloudButton();
 		$delete_block = self::GetDeleteDataBlock();
 		$use_classic_widget_checked = checked('1', get_option('use_classic_widget_editor'), false);
+		$site_is_private_checked = checked('1', get_option('site_is_private'), false);
 		$clear_cache = self::BuildClearCache();
 
 		$html = <<<HTML
@@ -332,6 +334,12 @@ HTML;
 			<label for="useCloudBackend" class="sil-bold">Use cloud backend</label>
 		</div>
 		$refresh_cloud_button
+	</div>
+	<div class="webonary-admin-block">
+		<div class="flex-start-center">
+			<input name="site_is_private" id="site_is_private" type="checkbox" value="1" $site_is_private_checked>
+			<label for="site_is_private" class="sil-bold">Make this site private</label>
+		</div>
 	</div>
 	<div class="webonary-admin-block">
 		<div class="flex-start-center">
