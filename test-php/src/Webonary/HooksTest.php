@@ -94,4 +94,25 @@ class HooksTest extends WP_UnitTestCase
 		$headers = Hooks::ModifyResponseHeaders([]);
 		$this->assertArrayHasKey('Cache-Control', $headers);
 	}
+
+	public function testCheckPrivateSite()
+	{
+		global $wp;
+
+		update_option('site_is_private', 'no');
+		$this->assertEquals('Not private', Hooks::CheckPrivateSite());
+
+		update_option('site_is_private', 1);
+		$this->assertEquals('Redirect to login', Hooks::CheckPrivateSite());
+
+		$wp->request = 'wp-json/wordfence/test';
+		$this->assertEquals('JSON wordfence', Hooks::CheckPrivateSite());
+
+		$wp->request = 'wp-json/webonary/import';
+		$this->assertEquals('JSON webonary', Hooks::CheckPrivateSite());
+
+		$wp->request = '';
+		$_SERVER['REQUEST_URI'] = 'wp-login.php';
+		$this->assertEquals('Logging in', Hooks::CheckPrivateSite());
+	}
 }

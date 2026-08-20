@@ -87,6 +87,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-dismissible-notices-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-review-me" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/julien731/wp-dismissible-notices-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-dismissible-notices-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-review-me" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
