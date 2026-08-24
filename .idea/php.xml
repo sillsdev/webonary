@@ -61,13 +61,23 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-review-me" />
+      <path value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-dismissible-notices-handler" />
+      <path value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-dismissible-notices-handler" />
+      <path value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-review-me" />
+      <path value="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/julien731/wp-dismissible-notices-handler" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
+  <component name="PhpProjectSharedConfiguration">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/autoload.php" />
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
     </phpunit_settings>
   </component>
