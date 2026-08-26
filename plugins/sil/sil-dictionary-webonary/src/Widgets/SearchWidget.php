@@ -211,9 +211,15 @@ SQL;
 	{
 		global $wpdb;
 
-		$site_url_no_http = preg_replace('@https?://@m', '', get_bloginfo('wpurl'));
+		$site_url_no_http = trim(preg_replace('@https?://@m', '', get_bloginfo('wpurl')) ?? '');
 
-		$published_date = $wpdb->get_var("SELECT link_updated FROM {$wpdb->prefix}links WHERE link_url LIKE 'http_://" . trim($site_url_no_http) . "' OR link_url LIKE 'http_://" . trim($site_url_no_http) . "/'");
+		// NOTE: $wpdb->prefix includes the site ID, like wp_1234_, but $wpdb->base_prefix does not, like wp_
+		$sql = <<<SQL
+SELECT link_updated
+FROM {$wpdb->base_prefix}links
+WHERE link_url REGEXP '^https?://$site_url_no_http/?'
+SQL;
+		$published_date = $wpdb->get_var($sql);
 
 		if (!empty($published_date) && $published_date != '0000-00-00 00:00:00')
 			return __('Date published:', 'sil_dictionary') . ' ' . Webonary_Utility::FormatLongDate(strtotime($published_date));

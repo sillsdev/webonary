@@ -148,7 +148,7 @@ SQL;
 
 			// 7. PUBLISH DATE
 			/** @noinspection SqlResolve */
-			$published_date = $wpdb->get_var("SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM {$wpdb->prefix}links WHERE link_url LIKE '%$domain_path%'");
+			$published_date = $wpdb->get_var("SELECT DATE_FORMAT(link_updated, '%Y-%m-%d') AS link_updated FROM {$wpdb->base_prefix}links WHERE link_url LIKE '%$domain_path%'");
 			$fields[] = $published_date;
 
 			// 8. LAST UPLOAD
