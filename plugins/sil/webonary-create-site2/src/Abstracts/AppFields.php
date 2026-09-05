@@ -62,7 +62,7 @@ class AppFields
 		],
 		'from_email' => [
 			'tag' => 'input',
-			'type' => 'text',
+			'type' => 'email',
 			'label' => 'Admin Email'
 		],
 		'username' => [

@@ -48,3 +48,70 @@ wp_insert_site($data);
 // webonary.org site, with path
 $data['path'] = '/unit-test';
 wp_insert_site($data);
+
+
+// create an application for new site
+global $wpdb;
+
+$wpdb->query("DELETE FROM {$wpdb->base_prefix}cf7dbplugin_st WHERE submit_time > 0");
+$wpdb->query("DELETE FROM {$wpdb->base_prefix}cf7dbplugin_submits WHERE submit_time > 0");
+
+$sql = <<<SQL
+INSERT INTO {$wpdb->base_prefix}cf7dbplugin_st (submit_time)
+VALUES (1234567890.1234),
+       (1234567890.5678)
+SQL;
+
+$sql = "";
+$wpdb->query($sql);
+
+$sql = <<<SQL
+INSERT INTO {$wpdb->base_prefix}cf7dbplugin_submits (submit_time, form_name, field_name, field_value, field_order, file)
+VALUES  (1234567890.1234, 'Application for Account', 'FirstName', 'Unit', 0, NULL),
+        (1234567890.1234, 'Application for Account', 'LastName', 'Test', 1, NULL),
+        (1234567890.1234, 'Application for Account', 'from_email', 'unit-test@email.com', 2, NULL),
+        (1234567890.1234, 'Application for Account', 'language-name', 'Unit Test Lang', 3, NULL),
+        (1234567890.1234, 'Application for Account', 'language-iso-code', 'utl', 4, NULL),
+        (1234567890.1234, 'Application for Account', 'country-name', 'Test Land', 5, NULL),
+        (1234567890.1234, 'Application for Account', 'region', 'America - North', 6, NULL),
+        (1234567890.1234, 'Application for Account', 'desired-url', 'unit-test-lang', 7, NULL),
+        (1234567890.1234, 'Application for Account', 'template-to-use', 'http://webonary.localhost/template-spanish', 8, NULL),
+        (1234567890.1234, 'Application for Account', 'ui-languages', 'Pig-Latin English', 9, NULL),
+        (1234567890.1234, 'Application for Account', 'reversal-languages', 'Pig-Latin English', 10, NULL),
+        (1234567890.1234, 'Application for Account', 'the-publication-status-of-the-dictionary', 'Rough draft', 11, NULL),
+        (1234567890.1234, 'Application for Account', 'message', '', 12, NULL),
+        (1234567890.1234, 'Application for Account', 'copyright-holder', 'Unit Tester', 13, NULL),
+        (1234567890.1234, 'Application for Account', 'This-dictionary-has-pictures-and-I-have', 'Yes', 14, NULL),
+        (1234567890.1234, 'Application for Account', 'i-have-read-the-terms-of-service', '1', 15, NULL),
+        (1234567890.1234, 'Application for Account', 'newapplication', '', 16, NULL),
+        (1234567890.1234, 'Application for Account', 'Page Title', 'Application for Webonary account', 17, NULL),
+        (1234567890.1234, 'Application for Account', 'Page URL', 'http://webonary.localhost/application-for-webonary-account/', 18, NULL),
+        (1234567890.1234, 'Application for Account', 'Submitted From', '000:000:000:000:000:000:000:000', 10000, NULL);
+SQL;
+$wpdb->query($sql);
+
+// this application has a username (admin) that is already taken
+$sql = <<<SQL
+INSERT INTO {$wpdb->base_prefix}cf7dbplugin_submits (submit_time, form_name, field_name, field_value, field_order, file)
+VALUES  (1234567890.5678, 'Application for Account', 'FirstName', '', 0, NULL),
+        (1234567890.5678, 'Application for Account', 'LastName', '', 1, NULL),
+        (1234567890.5678, 'Application for Account', 'from_email', 'admin@email.com', 2, NULL),
+        (1234567890.5678, 'Application for Account', 'language-name', 'Unit Test Lang', 3, NULL),
+        (1234567890.5678, 'Application for Account', 'language-iso-code', 'utl', 4, NULL),
+        (1234567890.5678, 'Application for Account', 'country-name', 'Test Land', 5, NULL),
+        (1234567890.5678, 'Application for Account', 'region', 'America - North', 6, NULL),
+        (1234567890.5678, 'Application for Account', 'desired-url', 'unit-test-lang', 7, NULL),
+        (1234567890.5678, 'Application for Account', 'template-to-use', 'http://webonary.localhost/template-spanish', 8, NULL),
+        (1234567890.5678, 'Application for Account', 'ui-languages', 'Pig-Latin English', 9, NULL),
+        (1234567890.5678, 'Application for Account', 'reversal-languages', 'Pig-Latin English', 10, NULL),
+        (1234567890.5678, 'Application for Account', 'the-publication-status-of-the-dictionary', 'Rough draft', 11, NULL),
+        (1234567890.5678, 'Application for Account', 'message', '', 12, NULL),
+        (1234567890.5678, 'Application for Account', 'copyright-holder', 'Unit Tester', 13, NULL),
+        (1234567890.5678, 'Application for Account', 'This-dictionary-has-pictures-and-I-have', 'Yes', 14, NULL),
+        (1234567890.5678, 'Application for Account', 'i-have-read-the-terms-of-service', '1', 15, NULL),
+        (1234567890.5678, 'Application for Account', 'newapplication', '', 16, NULL),
+        (1234567890.5678, 'Application for Account', 'Page Title', 'Application for Webonary account', 17, NULL),
+        (1234567890.5678, 'Application for Account', 'Page URL', 'http://webonary.localhost/application-for-webonary-account/', 18, NULL),
+        (1234567890.5678, 'Application for Account', 'Submitted From', '000:000:000:000:000:000:000:000', 10000, NULL);
+SQL;
+$wpdb->query($sql);

@@ -24,7 +24,7 @@ class HooksTest extends WP_UnitTestCase
 		set_current_screen('dashboard');
 
 		$hook_count = Hooks::SetHooks();
-		$this->assertEquals(2, $hook_count);
+		$this->assertEquals(3, $hook_count);
 
 		$scripts = $wp_filter['admin_enqueue_scripts'];
 		$callbacks = $scripts->callbacks;

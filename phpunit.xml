@@ -28,7 +28,10 @@
     </php>
     <testsuites>
         <testsuite name="webonary-tests">
-            <directory suffix="Test.php">test-php/src</directory>
+            <directory suffix="Test.php">test-php/src/Webonary</directory>
+        </testsuite>
+        <testsuite name="create-site-tests">
+            <directory suffix="Test.php">test-php/src/CreateSite</directory>
         </testsuite>
     </testsuites>
     <logging/>

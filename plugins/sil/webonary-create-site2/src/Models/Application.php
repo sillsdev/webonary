@@ -25,6 +25,7 @@ class Application
 	public string $HasReadTOS;
 	public int $Timestamp;
 	public ?string $ID;
+	public string $Status = 'Unknown';
 
 	private static array $field_map = [
 		'FirstName' => 'FirstName',
@@ -43,7 +44,7 @@ class Application
 		'message' => 'Message',
 		'copyright-holder' => 'CopyrightHolder',
 		'This-dictionary-has-pictures-and-I-have' => 'HasImagePermission',
-		'i-have-read-the-terms-of-service' => 'HasReadTOS'
+		'i-have-read-the-terms-of-service' => 'HasReadTOS',
 	];
 
 	public function __construct(array $fields = null, string $submit_time = null)
@@ -51,16 +52,29 @@ class Application
 		if (!empty($fields)) {
 			$this->Timestamp = floor($submit_time);
 			$this->ID = $submit_time;
+			$status = null;
 
 			foreach ($fields as $field) {
 
 				$field_name = self::$field_map[$field->field_name] ?? false;
 
-				if ($field_name === false)
+				if ($field_name === false) {
+
+					if ($field->field_name == 'newapplication')
+						$status = 'New Application';
+					elseif ($field->field_name == 'removed')
+						$status = 'Removed';
+					elseif ($field->field_name == 'created')
+						$status = 'Created';
+
 					continue;
+				}
 
 				$this->$field_name = $field->field_value;
 			}
+
+			if (isset($status))
+				$this->Status = $status;
 		}
 		else {
 			$this->Timestamp = 0;
@@ -86,7 +100,7 @@ class Application
 
 		$property_name = self::$field_map[$field_name];
 
-		if ($property_name == 'username')
+		if ($property_name == 'UserName')
 			return $this->GuessUsername();
 
 		return $this->$property_name;
@@ -101,7 +115,7 @@ class Application
 		$admin_email = $this->GetFieldValue('from_email');
 		if (mb_strlen($admin_email) > 5) {
 			$user_name = $wpdb->get_var($wpdb->prepare("SELECT user_login FROM $wpdb->users WHERE user_email = %s", $admin_email));
-			if (empty($user_name))
+			if (!empty($user_name))
 				return $user_name;
 		}
 
@@ -115,10 +129,8 @@ class Application
 		if (!empty($user_name))
 			$other_email = $wpdb->get_var($wpdb->prepare("SELECT user_email FROM $wpdb->users WHERE user_login = %s", $user_name));
 
-		if (!empty($other_email))
-			$msg = sprintf('<p style="color: #aa0000">This username already exists with another email address: %s<br>Please change the username.</p>', $other_email);
-		else
-			$msg = '';
+		// if $other_email is not empty, this user name already exists for someone else
+		return empty($other_email) ? $user_name : '';
 	}
 
 	private function MarkApplication(string $mark_as): void
@@ -126,9 +138,9 @@ class Application
 		global $wpdb;
 
 		$sql = <<<SQL
-UPDATE {$wpdb->prefix}cf7dbplugin_submits
+UPDATE {$wpdb->base_prefix}cf7dbplugin_submits
 SET field_name = '$mark_as'
-WHERE field_name LIKE 'newapplication' AND submit_time = %f
+WHERE field_name = 'newapplication' AND submit_time = %f
 SQL;
 		$sql = $wpdb->prepare($sql, $this->ID);
 		$wpdb->query($sql);

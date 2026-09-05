@@ -68,7 +68,7 @@
       <path value="$PROJECT_DIR$/wordpress/wp-content/plugins/wps-menu-exporter/vendor/composer" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.3">
+  <component name="PhpProjectSharedConfiguration">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpUnit">

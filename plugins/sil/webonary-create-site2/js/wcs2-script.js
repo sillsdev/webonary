@@ -22,6 +22,8 @@ function postNewSite() {
         body: new URLSearchParams([...form_data])
     });
 
+    jQuery('.wcs2-notice').remove();
+
     fetch(request)
         .then((response) => {
 
@@ -37,7 +39,7 @@ function postNewSite() {
                     value.errors.forEach((err) => {
 
                         let div = document.createElement('div');
-                        div.classList.add('notice', 'notice-warning', 'is-dismissible');
+                        div.classList.add('notice', 'notice-warning', 'is-dismissible', 'wcs2-notice');
                         div.innerHTML = `<p>${err}</p>`;
                         form.parentElement.insertBefore(div, form);
 

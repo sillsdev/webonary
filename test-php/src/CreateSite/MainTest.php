@@ -14,6 +14,6 @@ class MainTest extends WP_UnitTestCase
 	public function testSetHooks_Admin()
 	{
 		set_current_screen('dashboard');
-		$this->assertEquals(2, Main::Run());
+		$this->assertEquals(3, Main::Run());
 	}
 }

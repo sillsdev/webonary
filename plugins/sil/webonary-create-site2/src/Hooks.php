@@ -9,8 +9,10 @@ class Hooks
 {
 	public static function SetHooks(): int
 	{
+		// @codeCoverageIgnoreStart
 		if (wp_installing())
 			return 0;
+		// @codeCoverageIgnoreEnd
 
 		return self::SetAdminHooks();
 	}
