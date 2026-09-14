@@ -117,7 +117,7 @@ SELECT field_name, field_value FROM wp_cf7dbplugin_submits
 WHERE submit_time = $newApplication->submit_time
 SQL;
 				$newSite = $wpdb->get_results($sql, OBJECT_K);
-				$timestamp = $newSite['date_time']->field_value ?? date('D, j M Y H:i:s', $newApplication->submit_time);
+				$timestamp = $newSite['date_time']->field_value ?? date('D, j M Y H:i:s', floor($newApplication->submit_time));
 				$desired_name = $this->get_desired_site_name($newSite['desired-url']->field_value ?? '');
 
 				$lines[] = sprintf(

@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/idna/tests" isTestSource="true" packagePrefix="Rowbot\Idna\Test\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/punycode/tests" isTestSource="true" packagePrefix="Rowbot\Punycode\Test\" />
-      <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/url/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/rowbot/url/tests" isTestSource="true" packagePrefix="Rowbot\URL\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/test-php" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src" isTestSource="false" packagePrefix="SIL\Webonary\" />
@@ -36,6 +35,8 @@
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-ctype/" isTestSource="false" packagePrefix="Symfony\Polyfill\Ctype\" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Interfaces" isTestSource="false" packagePrefix="SIL\Webonary\Interfaces\" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Models" isTestSource="false" packagePrefix="SIL\Webonary\Models\" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/sil/webonary-create-site2/src" isTestSource="false" packagePrefix="SIL\WebonaryCreateSite2\" />
+      <sourceFolder url="file://$MODULE_DIR$/test-php/src/CreateSite" isTestSource="false" packagePrefix="SIL\Tests\CreateSite\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-ctype/src" isTestSource="false" packagePrefix="Symfony\Polyfill\Ctype\" />
       <sourceFolder url="file://$MODULE_DIR$/plugins/sil/sil-dictionary-webonary/src/Widgets" isTestSource="false" packagePrefix="SIL\Webonary\Widgets\" />
       <sourceFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wordpress-importer/php-toolkit/DataLiberation/vendor-patched/symfony/polyfill-intl-normalizer/" isTestSource="false" packagePrefix="Symfony\Polyfill\Intl\Normalizer\" />
@@ -87,11 +88,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/version" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/thecodingmachine/safe" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-dismissible-notices-handler" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/NicolasKulka/wp-review-me" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/julien731/wp-dismissible-notices-handler" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-dismissible-notices-handler" />
-      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/wps-menu-exporter/vendor/nicolaskulka/wp-review-me" />
+      <excludeFolder url="file://$MODULE_DIR$/wordpress-develop/src/wp-content/plugins/webonary-create-site2" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
