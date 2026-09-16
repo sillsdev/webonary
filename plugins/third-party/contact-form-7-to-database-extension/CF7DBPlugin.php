@@ -573,7 +573,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         if ($slashPos !== false) {
             $url = substr($url, 0, $slashPos);
         }
-        $redirectUrl = "$url{$_SERVER['REQUEST_URI']}";
+        $redirectUrl = $url . $_SERVER['REQUEST_URI'];
         $loginUrl = wp_login_url($redirectUrl);
         header("Location: $loginUrl");
         die();
