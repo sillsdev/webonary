@@ -345,20 +345,24 @@ HTML;
 		$parts = explode('://', get_option('siteurl'), 2);
 		$domain = end($parts);
 		$new_path = '/' . $path . '/';
-		$new_blog_response = wpmu_create_blog($domain, $new_path, $title, $owner_user_id, ['public' => 1]);
+		$blog_id_or_error = wpmu_create_blog($domain, $new_path, $title, $owner_user_id, ['public' => 1]);
 
 		// notify the user if there was an error
-		if (is_wp_error($new_blog_response))
-			return self::AjaxReturn(['errors' => [$new_blog_response->get_error_message()]]);
+		if (is_wp_error($blog_id_or_error))
+			return self::AjaxReturn(['errors' => [$blog_id_or_error->get_error_message()]]);
 
-		switch_to_blog($new_blog_response);
+		switch_to_blog($blog_id_or_error);
 
 		$user = new WP_User($owner_user_id);
 		$user->set_role('editor');
 
+		$pub_year = $_POST['publication-year'] ?? date('Y');
+		update_option('publication_year', $pub_year);
+		update_option('language_name', $title);
+
 		restore_current_blog();
 
-		return ['blog_id' => $new_blog_response];
+		return ['blog_id' => $blog_id_or_error];
 	}
 
 	public static function CopyTemplateToBlog($from_blog_id, $to_blog_id, $owner_user_id, $password): string

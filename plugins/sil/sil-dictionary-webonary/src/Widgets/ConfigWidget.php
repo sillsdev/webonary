@@ -111,9 +111,11 @@ class ConfigWidget
 			Admin::ClearSuperCache();
 
 		update_option('noSearch', $noSearchForm);
+		update_option('language_name', $_POST['language-name']);
 		update_option('countryName', $_POST['countryName']);
 		update_option('languageFamily', $_POST['languageFamily']);
 		update_option('regionName', $_POST['regionName']);
+		update_option('publication_year', $_POST['publication-year']);
 		update_option('copyrightHolder', $_POST['copyrightHolder']);
 
 		$useCloudBackend = $_POST['useCloudBackend'] ?? '';
@@ -484,6 +486,17 @@ HTML;
 		$language_family = get_option('languageFamily', 'N/A');
 		$region = get_option('regionName', 'N/A');
 		$copyright_holder = get_option('copyrightHolder');
+
+		$publication_year = get_option('publication_year');
+		if ($publication_year === false) {
+			$blog_info = get_blog_details(['blog_id' => $blog_id], false);
+			$publication_year = date('Y', strtotime($blog_info->registered));
+		}
+
+		$language_name = get_option('language_name');
+		if ($language_name === false)
+			$language_name = get_option('blogname');
+
 		$data_tx = self::BuildDataTx();
 
 		$html = <<<HTML
@@ -501,6 +514,10 @@ HTML;
 			<div class="flex-start-center" style="margin: 1rem 0; width: 100%">
 				<table class="flex-table" style="width: 100%">
 					<tr>
+						<td><label for="language-name">Language:</label></td>
+						<td style="width: 100%"><input name="language-name" id="language-name" type="text" value="$language_name"></td>
+					</tr>
+					<tr>
 						<td><label for="countryName">Country:</label></td>
 						<td style="width: 100%"><input name="countryName" id="countryName" type="text" value="$country"></td>
 					</tr>
@@ -514,6 +531,10 @@ HTML;
 					</tr>
 					<tr>
 						<td colspan="2"><div style="border-bottom: 1px solid #ccc; margin: 1rem 0"></div></td>
+					</tr>
+					<tr>
+						<td><label for="publication-year">Publication Year:</label></td>
+						<td style="width: 100%"><input name="publication-year" id="publication-year" type="text" value="$publication_year"></td>
 					</tr>
 					<tr>
 						<td><label for="copyrightHolder" style="white-space: nowrap">Copyright Holder:</label></td>

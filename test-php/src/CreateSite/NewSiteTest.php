@@ -90,7 +90,8 @@ SQL;
 			'username' => 'createblog',
 			'from_email' => 'crate_blog@email.com',
 			'first_name' => 'Create',
-			'last_name' => 'Blog'
+			'last_name' => 'Blog',
+			'publication-year' => '1999'
 		];
 		list($user_id, $password) = NewSite::GetSiteAdmin();
 
@@ -101,6 +102,8 @@ SQL;
 		// create a new blog
 		$response = NewSite::CreateNewBlog($user_id, 'new-blog-1', 'New Blog One');
 		$this->assertEquals($max_blog_id + 1, $response['blog_id']);
+		$this->assertEquals('1999', get_blog_option($response['blog_id'], 'publication_year'));
+		$this->assertEquals('New Blog One', get_blog_option($response['blog_id'], 'language_name'));
 
 		// try to create a duplicate blog
 		$response2 = NewSite::CreateNewBlog($user_id, 'new-blog-1', 'New Blog One');

@@ -26,6 +26,7 @@ class ApplicationsTest extends WP_UnitTestCase
 		$this->assertEquals('unit-test@email.com', $app->GetFieldValue('from_email'));
 		$this->assertEquals(null, $app->GetFieldValue('bogus'));
 		$this->assertEquals('New Application', $app->Status);
+		$this->assertEquals(date('Y'), $app->PublicationYear);
 
 		// test new username
 		$this->assertEquals('unittest', $app->GetFieldValue('username'));

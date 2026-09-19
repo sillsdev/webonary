@@ -84,6 +84,8 @@ class ConfigWidgetTest extends WP_UnitTestCase
 		$_POST['txtNotes'] = 'Notes.';
 		$_POST['noSearchForm'] = 1;
 		$_POST['useCloudBackend'] = '1';
+		$_POST['language-name'] = 'Pig Latin';
+		$_POST['publication-year'] = '1999 - 2026';
 
 		$html = ConfigWidget::ShowWidget();
 		$this->assertStringContainsString('Settings saved.', $html);

@@ -41,6 +41,12 @@ class AppFields
 			'label' => 'Copyright Holder Text',
 			'class' => 'w-100'
 		],
+		'publication-year' => [
+			'tag' => 'input',
+			'type' => 'text',
+			'label' => 'Publication Year(s)',
+			'info' => 'Can be a single year, or multiple years'
+		],
 		'the-publication-status-of-the-dictionary' => [
 			'tag' => 'select',
 			'src' => [
