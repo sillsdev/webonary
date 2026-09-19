@@ -26,7 +26,9 @@ class Application
 	public int $Timestamp;
 	public ?string $ID;
 	public string $Status = 'Unknown';
+	public string $PublicationYear;
 
+	/** Maps field names from the application to property names of this class. */
 	private static array $field_map = [
 		'FirstName' => 'FirstName',
 		'LastName' => 'LastName',
@@ -45,6 +47,7 @@ class Application
 		'copyright-holder' => 'CopyrightHolder',
 		'This-dictionary-has-pictures-and-I-have' => 'HasImagePermission',
 		'i-have-read-the-terms-of-service' => 'HasReadTOS',
+		'publication-year' => 'PublicationYear'
 	];
 
 	public function __construct(array $fields = null, string $submit_time = null)
@@ -84,6 +87,8 @@ class Application
 				$this->$field_name = '';
 			}
 		}
+
+		$this->PublicationYear = date('Y');
 	}
 
 	/**

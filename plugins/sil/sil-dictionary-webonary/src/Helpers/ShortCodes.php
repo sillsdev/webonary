@@ -1,6 +1,14 @@
 <?php
 
-class Webonary_ShortCodes
+namespace SIL\Webonary\Helpers;
+
+use Exception;
+use Webonary_Cloud;
+use Webonary_MongoDB;
+use Webonary_SemanticDomains;
+use Webonary_Utility;
+
+class ShortCodes
 {
 	public static function Init(): void
 	{
@@ -13,11 +21,24 @@ class Webonary_ShortCodes
 		add_shortcode('reversalindex4', [self::class, 'ReversalAlphabet']);
 		add_shortcode('categories', [self::class, 'Categories']);
 		add_shortcode('englishalphabet', [self::class, 'EnglishAlphabet']);
+		add_shortcode('LangName', [self::class, 'LanguageName']);
+		add_shortcode('PubYear', [self::class, 'PublicationYear']);
 	}
 
 	public static function CurrentYear(): string
 	{
 		return date('Y');
+	}
+
+	public static function PublicationYear(): string
+	{
+		$pub_year = get_option('publication_year');
+		if ($pub_year === false) {
+			$blog_info = get_blog_details(null, false);
+			$pub_year = date('Y', strtotime($blog_info->registered));
+		}
+
+		return do_shortcode($pub_year, true);
 	}
 
 	public static function CopyrightHolder(): string
@@ -26,11 +47,21 @@ class Webonary_ShortCodes
 		return do_shortcode($copyright_holder, true);
 	}
 
+	public static function LanguageName(): string
+	{
+		$language_name = get_option('language_name');
+		if ($language_name === false)
+			$language_name = get_option('blogname');
+
+		return do_shortcode($language_name, true);
+	}
+
 	/**
 	 * @param $attributes
 	 * @return string
 	 * @throws Exception
 	 * @noinspection PhpMultipleClassDeclarationsInspection
+	 * @noinspection PhpFullyQualifiedNameUsageInspection
 	 */
 	public static function VernacularAlphabet($attributes): string
 	{
@@ -118,12 +149,12 @@ HTML;
 						$content .= sprintf($template, $my_post->search_strings, $headword, $headword);
 					} else {
 						$the_content = addLangQuery($my_post->post_content);
-						$the_content = normalizer_normalize($the_content, Normalizer::NFC);
+						$the_content = normalizer_normalize($the_content, \Normalizer::NFC);
 						$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 					}
 				} else {
 					$the_content = addLangQuery($my_post->post_content);
-					$the_content = normalizer_normalize($the_content, Normalizer::NFC);
+					$the_content = normalizer_normalize($the_content, \Normalizer::NFC);
 					$content .= '<div class="post">' . $the_content . '</div>' . PHP_EOL;
 				}
 			}
@@ -305,7 +336,7 @@ SQL;
 		}
 		else
 		{
-			$display = Webonary_ShortCodes::ReversalAlphabet(null, '', 'reversalindex1');
+			$display = self::ReversalAlphabet(null, '', 'reversalindex1');
 		}
 
 		return $display;

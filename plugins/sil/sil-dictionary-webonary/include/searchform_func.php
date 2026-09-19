@@ -1,6 +1,7 @@
 <?php
 /** @noinspection HtmlUnknownTarget */
 
+use SIL\Webonary\Helpers\ShortCodes;
 use SIL\Webonary\Widgets\SearchWidget;
 
 /**
@@ -75,7 +76,7 @@ function add_footer(): void
 
 			$browse_title = $wpdb->get_var($sql);
 
-			$alphabetDisplay = Webonary_ShortCodes::VernacularAlphabet($letter);
+			$alphabetDisplay = ShortCodes::VernacularAlphabet($letter);
 
 			if(strlen($alphabetDisplay) > 0)
 			{
