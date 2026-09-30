@@ -211,13 +211,13 @@ SQL;
 	{
 		global $wpdb;
 
-		$site_url_no_http = trim(preg_replace('@https?://@m', '', get_bloginfo('wpurl')) ?? '');
+		$site = get_blog_details();
 
 		// NOTE: $wpdb->prefix includes the site ID, like wp_1234_, but $wpdb->base_prefix does not, like wp_
 		$sql = <<<SQL
 SELECT link_updated
 FROM {$wpdb->base_prefix}links
-WHERE link_url REGEXP '^https?://$site_url_no_http/?'
+WHERE link_url LIKE '%$site->path'
 SQL;
 		$published_date = $wpdb->get_var($sql);
 
