@@ -135,7 +135,7 @@ class Cache
 		else {
 			$decoded = json_decode($cloudflare_response->Content);
 			if (!empty($decoded->errors))
-			 	$return_val[] = (string)$decoded->errors[0];
+			 	$return_val[] = $decoded->errors[0]->message ?? json_encode($decoded->errors);
 			else
 				$return_val[] = 'Cloudflare cleared.';
 		}

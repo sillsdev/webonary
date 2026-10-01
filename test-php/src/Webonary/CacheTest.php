@@ -116,7 +116,7 @@ class CacheTest extends WP_UnitTestCase
 		$this->assertCount(3, $response);
 		$this->assertContains('Cache directory cleared.', $response);
 		$this->assertContains('FPM cache NOT cleared.', $response);
-		$this->assertContains('Cloudflare error', $response);
+		$this->assertContains('["Cloudflare error"]', $response);
 
 		$resp1 = new MockCurlResponse(
 			'POST',

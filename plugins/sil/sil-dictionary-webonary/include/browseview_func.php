@@ -545,5 +545,3 @@ function get_letter($firstLetterOfAlphabet = '')
 
 	return $chosenLetter;
 }
-
-Webonary_ShortCodes::Init();

@@ -1,0 +1,62 @@
+
+function confirmDeleteApplication(language) {
+    return confirm('Are you sure you want to delete the ' + language + ' site application?');
+}
+
+
+function postNewSite() {
+
+    // webonary_ajax_obj is added by WordPress `wp_localize_script()`
+    // noinspection JSUnresolvedReference
+    const url = webonary_ajax_obj.ajax_url;
+    const x_headers = new Headers();
+    x_headers.append('X-Requested-With', 'XMLHttpRequest');
+    x_headers.append('Content-type', 'application/x-www-form-urlencoded');
+    const form = document.getElementById('wcs2-configuration-form');
+    const form_data = new FormData(form);
+    const {value: language_name} = document.getElementById('language-name');
+
+    const request = new Request(url, {
+        method: 'POST',
+        headers: x_headers,
+        body: new URLSearchParams([...form_data])
+    });
+
+    jQuery('.wcs2-notice').remove();
+
+    fetch(request)
+        .then((response) => {
+
+            if (!response.ok) {
+                console.log(response.statusText);
+                return;
+            }
+
+            response.json().then((value) => {
+
+                if (value.errors) {
+
+                    value.errors.forEach((err) => {
+
+                        let div = document.createElement('div');
+                        div.classList.add('notice', 'notice-warning', 'is-dismissible', 'wcs2-notice');
+                        div.innerHTML = `<p>${err}</p>`;
+                        form.parentElement.insertBefore(div, form);
+
+                    });
+
+                    jQuery(document).trigger('wp-updates-notice-added');
+                    jQuery('html, body').animate({scrollTop: 0});
+                    return;
+                }
+
+                if (value.status === 'OK')
+                    window.location.href = '/wp-admin/network/sites.php?page=webonary-create-site-2&created=' + encodeURIComponent(language_name);
+            });
+        })
+        .catch((reason) => {
+            console.log(reason);
+        });
+
+
+}
