@@ -225,7 +225,10 @@ SQL;
 			$sql = <<<SQL
 SELECT COUNT(*)
 FROM $wpdb->base_prefix{$blog->blog_id}_posts AS p
-WHERE p.post_name = 'grammar' AND p.post_type = 'page' AND p.post_status = 'publish'
+WHERE p.post_name = 'grammar'
+  AND p.post_type = 'page'
+  AND p.post_status = 'publish'
+  AND p.post_content NOT LIKE '%Use this page to provide information about the Grammar of the language, either directly, or as a link or as a download%'
 SQL;
 			$has_grammar = intval($wpdb->get_var($sql) ?? 0);
 
