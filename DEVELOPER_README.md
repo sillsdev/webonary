@@ -1,6 +1,6 @@
 # Instructions for WordPress Developers
 
-First, [install PHP 7.3 on your machine](https://kinsta.com/blog/install-php/).
+First, [install PHP 8.3 on your machine](https://kinsta.com/blog/install-php/).
 
 Installation of WordPress and most plugins is handled with [Composer](https://getcomposer.org/). If
 you aren't familiar with Composer, you can get instructions on installation
