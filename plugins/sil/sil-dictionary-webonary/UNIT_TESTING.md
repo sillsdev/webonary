@@ -5,7 +5,7 @@
 The `intl` extension for PHP is required:
 
 ```bash
-sudo apt install php7.3-intl
+sudo apt install php8.3-intl
 ```
 
 
